@@ -6,7 +6,7 @@ SET ALLOCATED_RAM=8G
 SET JVM_ARGUMENTS=-XX:+UseG1GC -XX:+UnlockExperimentalVMOptions -XX:MaxGCPauseMillis=100 -XX:+DisableExplicitGC -XX:TargetSurvivorRatio=90 -XX:G1NewSizePercent=50 -XX:G1MaxNewSizePercent=80 -XX:G1MixedGCLiveThresholdPercent=50 -XX:+AlwaysPreTouch
 
 REM Make sure this matches the Neoforge version of the server if you update.
-SET NEOFORGE_VERSION=1.20.1-47.3.25
+SET NEOFORGE_VERSION=21.1.200
 
 REM Install Minecraft Neoforge if it isn't already installed:
 if not exist .\libraries/net/minecraftforge/forge/%NEOFORGE_VERSION% (

@@ -1,0 +1,13 @@
+name = "Ctrl Q"
+filename = "ctrl-q-neoforge-1.9.2.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "44d13eebbd6216c481d3f24af80316d24ed97a6a"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 6392346
+project-id = 455479

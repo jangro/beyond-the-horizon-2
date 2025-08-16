@@ -1,0 +1,13 @@
+name = "Nebulus' Jungle Tree"
+filename = "nebulus_giant_jungle_tree-2.1-neoforge-1.21.1.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "680035f96a666447659428ca36582166a0ec6124"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 6410329
+project-id = 1035265

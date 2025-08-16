@@ -1,0 +1,13 @@
+name = "Dragon Mounts Remastered"
+filename = "Dragon Mounts Remastered-1.21.1-1.8.3.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "35286008a7829795c1c38ed0ff0ab281c7224d52"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 6670844
+project-id = 975216

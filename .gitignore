@@ -1,0 +1,21 @@
+# Exclude exported CurseForge zip files
+/*.zip
+
+# Exclude exported Modrinth modpacks
+/*.mrpack
+
+# Exclude executable files (such as packwiz.exe itself, if running from the same directory rather than PATH).
+*.exe
+packwiz
+
+# Exclude Visual Studio folder
+/.vs/
+
+# Exclude Visual Studio Code folder
+/.vscode/
+
+# Exclude Icons (to avoid uploading copyrighted content into repo - generate using IconExporter mod locally instead).
+/icon-exports-x32/
+
+# Exclude macOS folder metadata
+**/.DS_Store

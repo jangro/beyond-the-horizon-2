@@ -1,0 +1,13 @@
+name = "Plushie Buddies"
+filename = "plushie_buddies-0.1.6-neofroge-1.21.1.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "8b59c7fe4f3b3eaebf017653033b0b84d0af95f8"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 6640705
+project-id = 990265

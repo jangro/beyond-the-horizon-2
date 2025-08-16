@@ -1,0 +1,13 @@
+name = "Illager Fortress"
+filename = "illager_fortress-1.0.4-neoforge-1.21.1.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "d04089afb0318c4ebc758f65eb2a7f52606f32c8"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 6435760
+project-id = 1226849

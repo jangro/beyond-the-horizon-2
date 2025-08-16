@@ -1,0 +1,13 @@
+name = "Integrated Manager"
+filename = "integratedmanager-1.0.7.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "e6e1070878ad2391e12f120abe20da36ee1b45be"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 6839140
+project-id = 1319235

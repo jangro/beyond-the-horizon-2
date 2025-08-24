@@ -1,0 +1,13 @@
+name = "EntityJS"
+filename = "entityjs-1.3.9-1.21.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "2227333515de72badc4a3cbc4243190d84d6339e"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 6923414
+project-id = 967617

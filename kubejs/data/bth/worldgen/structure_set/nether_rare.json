@@ -1,0 +1,27 @@
+{
+    "placement": {
+        "salt": 19872837,
+        "spacing": 120,
+        "separation": 60,
+        "type": "valhelsia_structures:valhelsia_random_spread",
+        "exclusion_zones": []
+    },
+    "structures": [
+        {
+            "structure": "incendium:sanctum",
+            "weight": 10
+        },
+        {
+            "structure": "incendium:forbidden_castle",
+            "weight": 10
+        },
+        {
+            "structure": "incendium:nether_reactor",
+            "weight": 10
+        },
+        {
+            "structure": "irons_spellbooks:citadel",
+            "weight": 10
+        }
+    ]
+}

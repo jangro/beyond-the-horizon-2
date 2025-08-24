@@ -1,0 +1,14 @@
+{
+  "structures": [
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 399125,
+    "exclusion_zone": {
+      "other_set": "incendium:greater_structures",
+      "chunk_count": 10
+    },
+    "spacing": 20,
+    "separation": 12
+  }
+}

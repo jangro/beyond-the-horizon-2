@@ -1,0 +1,15 @@
+{
+  "placement": {
+    "salt": 10722802,
+    "spacing": 40,
+    "separation": 20,
+    "type": "valhelsia_structures:valhelsia_random_spread",
+    "exclusion_zones": []
+  },
+  "structures": [
+    {
+      "structure": "irons_spellbooks:catacombs",
+      "weight": 10
+    }
+  ]
+}

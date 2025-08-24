@@ -1,0 +1,13 @@
+name = "KubeJS EnderIO"
+filename = "kubejs_enderio-neoforge-1.21.1-0.7.2.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "3d70b47c7cef68e45a3c54acf98c68a989fa0740"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 6353143
+project-id = 910379

@@ -1,0 +1,12 @@
+{
+  "placement": {
+    "salt": 10387312,
+    "spacing": 200,
+    "separation": 100,
+    "type": "valhelsia_structures:valhelsia_random_spread",
+    "exclusion_zones": [
+    ]
+  },
+  "structures": [
+  ]
+}

@@ -1,0 +1,32 @@
+{
+    "placement": {
+        "salt": 98274827,
+        "spacing": 40,
+        "separation": 20,
+        "type": "valhelsia_structures:valhelsia_random_spread",
+        "exclusion_zones": [
+            {
+                "chunk_count": 10,
+                "other_set": "bth:aether_rare"
+            }
+        ]
+    },
+    "structures": [
+        {
+            "structure": "aether:bronze_dungeon",
+            "weight": 30
+        },
+        {
+            "structure": "aether:silver_dungeon",
+            "weight": 20
+        },
+        {
+            "structure": "aether:gold_dungeon",
+            "weight": 10
+        },
+        {
+            "structure": "bth_structures:aether_portal_floating_aether",
+            "weight": 10
+        }
+    ]
+}

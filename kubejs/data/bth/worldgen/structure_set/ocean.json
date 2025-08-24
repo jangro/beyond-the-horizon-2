@@ -1,0 +1,20 @@
+{
+  "placement": {
+    "salt": 12482964,
+    "spacing": 80,
+    "separation": 40,
+    "type": "valhelsia_structures:valhelsia_random_spread",
+    "exclusion_zones": [
+      {
+        "chunk_count": 10,
+        "other_set": "bth:submerged"
+      }
+    ]
+  },
+  "structures": [
+    {
+      "structure": "minecolonies:ship",
+      "weight": 10
+    }
+  ]
+}

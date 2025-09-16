@@ -1,28 +1,28 @@
 {
   "placement": {
     "salt": 96932964,
-    "spacing": 20,
-    "separation": 10,
+    "spacing": 30,
+    "separation": 20,
     "type": "valhelsia_structures:valhelsia_random_spread",
     "exclusion_zones": [
       {
-        "chunk_count": 3,
+        "chunk_count": 6,
         "other_set": "bth:common"
       },
       {
-        "chunk_count": 3,
+        "chunk_count": 6,
         "other_set": "bth:rare"
       },
       {
-        "chunk_count": 3,
+        "chunk_count": 6,
         "other_set": "bth:towers"
       },
       {
-        "chunk_count": 3,
+        "chunk_count": 6,
         "other_set": "bth:outposts"
       },
       {
-        "chunk_count": 3,
+        "chunk_count": 6,
         "other_set": "bth:villages"
       }
     ]
@@ -30,11 +30,11 @@
   "structures": [
     {
       "structure": "bth_structures:aether_portal_floating",
-      "weight": 10
+      "weight": 5
     },
     {
       "structure": "bth_structures:aether_portal_framed",
-      "weight": 10
+      "weight": 5
     },
     {
       "structure": "graveyard:small_desert_grave",

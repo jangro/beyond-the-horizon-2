@@ -158,8 +158,20 @@ file = "config/iris.properties"
 hash = "ccf8a846b268c67a7b44020c4c3d4b18cc2e22b1adc5cbddc3da67ae1310657a"
 
 [[files]]
+file = "config/irons_spellbooks-client.toml"
+hash = "1e06be28fcc6588df2c8947c238b050a0caf872d77d71e2bc86b19d571f277ac"
+
+[[files]]
 file = "config/irons_spellbooks-server.toml"
 hash = "dce291e22c74c31e5d0d4093fcd928298929353573f95925fb422d207377610b"
+
+[[files]]
+file = "config/lightmanscurrency-common.txt"
+hash = "7ccafabbc76d08dcd7d6c5db68ef9539b3c6557455ad0bbfedfc159b1b5e755a"
+
+[[files]]
+file = "config/lightmanscurrency-server.txt"
+hash = "e46e6fa4d1c40ee2551ebbb240c27cfb48b0de05280b0b4c018e67f29e6e9ce5"
 
 [[files]]
 file = "config/notenoughcrashes.json"
@@ -178,8 +190,12 @@ file = "kubejs/README.txt"
 hash = "989f3737ae4621b8ff6730bce4cbeeee756921e7e510e0c281c8a350501d98af"
 
 [[files]]
+file = "kubejs/assets/bth/lang/en_us.json"
+hash = "31c4692e7174a4f174c83d5683606c41c35944975f6c01bed169b76c6f4d51b2"
+
+[[files]]
 file = "kubejs/assets/bth/models/item/adventurers_spell_book.json"
-hash = "a2525c55b5c9ddff76cd41340f55d4f119a5571fb3b8e40622171b87a13ff7c5"
+hash = "bf0d56e7e3a79d45daf00c769442ec9846105235b937cf78c93c623545a35672"
 
 [[files]]
 file = "kubejs/assets/bth/models/item/adventurers_spell_book_gui.json"
@@ -188,6 +204,30 @@ hash = "f194d39639fd9196723d144e10d0bd65a181a2375728ee4cbd936316fd5e0c9f"
 [[files]]
 file = "kubejs/assets/bth/models/item/adventurers_spell_book_model.json"
 hash = "3134063feb70ff74f55a1a0882810b05b857b4386014bce9eeff3dfd66e0c8f5"
+
+[[files]]
+file = "kubejs/assets/bth/textures/gui/spell_icons/terminus_singularity.png"
+hash = "2e1985168f7f2161a6feeb604510f5f2a25930cb997ff2942dbc0764b31d6b63"
+
+[[files]]
+file = "kubejs/assets/bth/textures/gui/spell_icons/terminus_space_fold.png"
+hash = "5aa90e70e791c4c64b0d1942814f13b7034269ab0fc1449ff97c767e228e68a6"
+
+[[files]]
+file = "kubejs/assets/bth/textures/item/adventurers_spell_book.png"
+hash = "7924492b36c39b5e7681a90cf955693ae59a90b11d26b802d442bdf93bc12340"
+
+[[files]]
+file = "kubejs/assets/bth/textures/item/coconut_maul.png"
+hash = "eccd2ca27b2d3a0c9af775ee1826846ec26a4f3dab0d6566a5ddafbbc0a051ad"
+
+[[files]]
+file = "kubejs/assets/bth/textures/item/spell_book_models/adventurers_spell_book.png"
+hash = "d0412ed150c71720e106ac009a43fd1f011cbd914023d985641ddb84292b7c5d"
+
+[[files]]
+file = "kubejs/assets/bth/textures/item/terminus.png"
+hash = "aadee2369bf21188b17c00d0c3c3820f64091fb0fc534502ae7199f239aa270a"
 
 [[files]]
 file = "kubejs/client_scripts/main.js"
@@ -330,6 +370,10 @@ file = "kubejs/data/biomeswevegone/worldgen/structure_set/villages.json"
 hash = "abfc1178bc5d160a8b59c090f95e752d9fff1d5ccf124315e6df23d07ad0de36"
 
 [[files]]
+file = "kubejs/data/bth/damage_type/coconut_maul.json"
+hash = "1182688786a3e4d30880dcb359d1ad9242719f9f28f967260088802dae1daf18"
+
+[[files]]
 file = "kubejs/data/bth/worldgen/structure_set/aether_common.json"
 hash = "ad61e191fed1f8f1c408dfb9b4e4d6e1c585b09c9bf61e9f47a5b124eb288718"
 
@@ -339,7 +383,7 @@ hash = "c4ef1f424da94016320ca2b04436f5b9e0480b4c3673d85eff08ca2584f7f46b"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/common.json"
-hash = "22a7d72a4fc558b3c4a3a4816d6c47892afcc6d3f124597fcef39f2a996bdd4e"
+hash = "aaf1159f68db13ae2434c089013d4005a3ea618848ee420f5c863815d60be5b9"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/end_common.json"
@@ -371,7 +415,7 @@ hash = "acafaddeedd67fbe7914e7c4524b7c7a461bffb8ce464ed84db807dc6b9d710f"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/small.json"
-hash = "bf4d9f65c7cffca3f39efa7cf831f4ad62e56320e6a16d69ee3482620cc73f01"
+hash = "281bd538633784d307663d89c890ebe8dd62834b17ede07dfc72e79284fefcab"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/submerged.json"
@@ -379,7 +423,7 @@ hash = "27df7d82866e0e46dcc5b04e3329f92d1931b1b35d77124adb89dfdffd3c5625"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/towers.json"
-hash = "5c76c07dcd2f212e7a6b12621b961d8b4b6a190f6cac693416e574f653e26e07"
+hash = "a0e484ff1e125d4a6e00351d8ab7aa76fcaa14869cfd0c50d36f7fda70caab08"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/underground_common.json"
@@ -394,8 +438,12 @@ file = "kubejs/data/bth/worldgen/structure_set/villages.json"
 hash = "633b2365c0f5b8c6081bba85d6e93f745f01a1d4675038dfefa10e24eebbf02f"
 
 [[files]]
-file = "kubejs/data/bth_structures/loot_tables/archeology/dw20.json"
-hash = "213240ca34f7f2ed884830459c5be5cf169b38f1386561d346941f6cf18706ec"
+file = "kubejs/data/bth_structures/loot_table/archeology/dw20.json"
+hash = "38e4e0088d761fbc1b99060d63b920c0db040c82a4990439ae30f55364a84570"
+
+[[files]]
+file = "kubejs/data/bth_structures/loot_table/archeology/tower.json"
+hash = "d8991b3d16de2603d25280d4081ffd1cd2192646c384834b3d722c3975cca9fa"
 
 [[files]]
 file = "kubejs/data/bth_structures/structures/aether_portal_floating.nbt"
@@ -411,15 +459,31 @@ hash = "a31b863e39e838e8dc0e7bc4c049baee5074e7af604aa4e908b99732ab6a0bde"
 
 [[files]]
 file = "kubejs/data/bth_structures/structures/dw20.nbt"
-hash = "cb3ff411a8245024a14e2d5bc4ec3a74294c240d308c23922dfa9227525ed28e"
+hash = "3e9bd548d7db586ca5b4c2f7956f03241f763ff0eb011cc5107d6b2f704aa5cf"
+
+[[files]]
+file = "kubejs/data/bth_structures/structures/tower_forest.nbt"
+hash = "57a93daa1174d8f3514c5e83e0d21465fa6455fe24979a3997629fc46ad1ab88"
+
+[[files]]
+file = "kubejs/data/bth_structures/structures/tower_frozen.nbt"
+hash = "17c45e93556232832ad840d564377df779d2c871161535492a6a2a88d8cd3a8f"
+
+[[files]]
+file = "kubejs/data/bth_structures/structures/tower_scarlet.nbt"
+hash = "14ff68f45ac664a371d48f0556d6e8e6b78663af75ec108a20280e63a202b253"
 
 [[files]]
 file = "kubejs/data/bth_structures/structures/wagon.nbt"
-hash = "78fcf12feda87c75dc374e4a398fffda4f5efbd740963469b62c421d3bf54588"
+hash = "8434be6e09755361615eb57deb6e882bed9b2916ecbe2405ef524440dda47ddf"
 
 [[files]]
 file = "kubejs/data/bth_structures/worldgen/processor_list/dw20.json"
 hash = "57df3ba8fa69f6cba05ec691296ec7d2e9e93a51bfe661b64352268aeeafadb6"
+
+[[files]]
+file = "kubejs/data/bth_structures/worldgen/processor_list/tower.json"
+hash = "d3c4fef5ab56eaa2d61feb20da604621f1b049365a3ff504d77429c30549ecc5"
 
 [[files]]
 file = "kubejs/data/bth_structures/worldgen/structure/aether_portal_floating.json"
@@ -440,6 +504,18 @@ hash = "bebe21f1fd0cecf9cd95d404be9decb3696c13c30593b3dd03b4172ccf1a7251"
 [[files]]
 file = "kubejs/data/bth_structures/worldgen/structure/dw20.json"
 hash = "d30c557f6fd751b858f621030a9f4496644477faf497ea78cce41d4649ffa96d"
+
+[[files]]
+file = "kubejs/data/bth_structures/worldgen/structure/tower_forest.json"
+hash = "2ea5afd1da52d9d9a062265e4b5a54be2f5c2ca4d4629fb71627ab89a1267139"
+
+[[files]]
+file = "kubejs/data/bth_structures/worldgen/structure/tower_frozen.json"
+hash = "50770c2589e14ca9f97142de8466cfe6e3ad48496dad30f66d12592e23375b85"
+
+[[files]]
+file = "kubejs/data/bth_structures/worldgen/structure/tower_scarlet.json"
+hash = "9bba7befb837ca09e533dd02dd7d9d5b209ff339d91822aaf7d216e2ece40be0"
 
 [[files]]
 file = "kubejs/data/bth_structures/worldgen/structure/wagon.json"
@@ -468,6 +544,18 @@ hash = "696d01272538d90f888f40dfc3e7ea1e4c48605fbdff82ae0034d832d05fcf39"
 [[files]]
 file = "kubejs/data/bth_structures/worldgen/template_pool/dw20.json"
 hash = "86432355394891c233bdbbe54417a8a13757ce74b5a2d07f2ffc02032d8a1df8"
+
+[[files]]
+file = "kubejs/data/bth_structures/worldgen/template_pool/tower_forest.json"
+hash = "6e53ecaca806925b63f11f0381ee5f44cfc88c9cbc92d5c908efd899b060d391"
+
+[[files]]
+file = "kubejs/data/bth_structures/worldgen/template_pool/tower_frozen.json"
+hash = "c6e9fb29b472ed87da5b49ccc6216a4ba7b408647165f7a46deeee3a76b8f7d4"
+
+[[files]]
+file = "kubejs/data/bth_structures/worldgen/template_pool/tower_scarlet.json"
+hash = "7ed5c6df286901936c2ecb3e3d6edecfe15d2f94cc16f334ab935df99231ddc2"
 
 [[files]]
 file = "kubejs/data/bth_structures/worldgen/template_pool/wagon.json"
@@ -571,7 +659,7 @@ hash = "a619519d12ac811015ca3b337ef1928d3902d3e052a1327954febf95caaef50f"
 
 [[files]]
 file = "kubejs/data/graveyard/worldgen/structure_set/lich_prison_structure.json"
-hash = "349e7b35b193efddcc6dbbbae85840f899b75c9c7e90cfb5ec8ecc8225659074"
+hash = "0506821a07f76a8ffed511540b8a8e54add3f55a463c229b6388eb51ca193e86"
 
 [[files]]
 file = "kubejs/data/graveyard/worldgen/structure_set/medium_graveyard_structure.json"
@@ -974,12 +1062,20 @@ file = "kubejs/data/villagesandpillages/worldgen/structure_set/village_witch.jso
 hash = "702624d2021e336b92337ca10d580cb3b85ab49725dc76e243ae8af5887cfdb6"
 
 [[files]]
+file = "kubejs/server_scripts/functions.js"
+hash = "c1428ab0f3bfdfdb20343e639e4e5d757577ae55f40bfe63e28b5bfab5ef804d"
+
+[[files]]
 file = "kubejs/server_scripts/loot_tables/chests.js"
-hash = "925d05f0f47b2f0f2dcb4c003ef6ad209362c448cb213c47b5d2ee47db0c3a8f"
+hash = "1dd848f261673462aafdffe7655b91e4d11b3deac56ede2479434831fcf6331b"
 
 [[files]]
 file = "kubejs/server_scripts/loot_tables/constants.js"
 hash = "dfa144dbe79032e586045a83b049e4038db23581d2e46f0518de51728c460f7e"
+
+[[files]]
+file = "kubejs/server_scripts/recipes/pneumaticcraft.js"
+hash = "e00437a6f2560572d5506bfdf291a1e429e01658b902dc74d7f61bb5b096e07c"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/shaped.js"
@@ -987,7 +1083,7 @@ hash = "93f7f8d83ead078d3d4525b156c9b0aea51533a940f4d409ae897cb7e38811ff"
 
 [[files]]
 file = "kubejs/server_scripts/tags/biome.js"
-hash = "6ae6071fc57190588051508756180723b627a7677694722aa13f03c383223051"
+hash = "ccf4fe0b633901cf654fe15922cd8bd7bbac68aae0e0c5ad9f7763322dd1ac2b"
 
 [[files]]
 file = "kubejs/server_scripts/tags/generated.js"
@@ -995,7 +1091,15 @@ hash = "95c2358ffaf297accc34a4d7c6367ef7c8b8c6f5424a653d23787671e8eeb08c"
 
 [[files]]
 file = "kubejs/startup_scripts/item.js"
-hash = "71d9e55bca96ae4eea8d9ede5f4941161a1429fcbd0238ca86102f3d64ef77e6"
+hash = "c2240033650d4d58f3ceb247d58aa12ea8e08ef235b642dcbf8405d52e763f8c"
+
+[[files]]
+file = "kubejs/startup_scripts/main.js"
+hash = "eee687398a434f9ebc00d6d372542cc8561b55884a1a3607a945ce2e3ad75a59"
+
+[[files]]
+file = "kubejs/startup_scripts/spell.js"
+hash = "89375ea71077071a57f1c215d1f608e6d338ee636522a6131b230e4fbfa46d81"
 
 [[files]]
 file = "mods.txt"
@@ -1176,6 +1280,10 @@ hash = "ef4c7bb9f0c537709c43666c5a341e113a0bd5b1838eca3738046eea21181a90"
 metafile = true
 
 [[files]]
+file = "mods/botania-neoforge-1.21.1-451-SNAPSHOT.jar"
+hash = "fe8ef632225f932bb746c25d8a5fc1e89bd1fe6379dca7dd8717a78d849eecf0"
+
+[[files]]
 file = "mods/building-gadgets.pw.toml"
 hash = "88908286eebea979713b5626891f634317fcc4c5a5bd4ec0c9444a33863a4518"
 metafile = true
@@ -1207,6 +1315,11 @@ hash = "f5e8872a2ccca38aa210c477c84d5f2ba3e8f054328b6816461af4c1f8c460a5"
 [[files]]
 file = "mods/cc-tweaked.pw.toml"
 hash = "76a175f859f5d051ffee34c3834925c637b762cc938c06d0655e378984e758f5"
+metafile = true
+
+[[files]]
+file = "mods/charm-of-undying.pw.toml"
+hash = "a5a04d39791ce824b7b0b78fd1fa4f08d1584c77c9c52edcb7210439f8917e98"
 metafile = true
 
 [[files]]
@@ -1732,6 +1845,11 @@ metafile = true
 [[files]]
 file = "mods/kubejs-irons-spells.pw.toml"
 hash = "e81c0f1b30c8ca5f7d8fe6bc789bc33d5edc6389953ef4324e4ff9898d89e7f8"
+metafile = true
+
+[[files]]
+file = "mods/kubejs-tweaks.pw.toml"
+hash = "09f7de99a6acfe4a55eb66aa2a47390174b67895590f253821c9865e43976a6c"
 metafile = true
 
 [[files]]

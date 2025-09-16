@@ -1,12 +1,23 @@
 {
   "parent": "minecraft:item/handheld",
-  "loader": "forge:separate_transforms",
+  "loader": "neoforge:separate_transforms",
   "base": {
+    "textures": {
+    "book": "bth:item/spell_book_models/adventurers_spell_book",
+      "particle": "bth:item/spell_book_models/adventurers_spell_book"
+    },
     "parent": "bth:item/adventurers_spell_book_model"
   },
   "perspectives": {
     "gui": {
       "parent": "bth:item/adventurers_spell_book_gui"
+    },
+    "head": {
+      "textures": {
+        "book": "bth:item/spell_book_models/adventurers_spell_book",
+        "particle": "bth:item/spell_book_models/adventurers_spell_book"
+      },
+      "parent": "irons_spellbooks:item/template_spell_book_model_open"
     }
   }
 }

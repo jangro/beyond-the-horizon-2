@@ -161,9 +161,9 @@ ServerEvents.tags('worldgen/biome', event => {
   event.add('bth_structures:has_structure/aether_portal_framed', ['terralith:lavender_forest', 'terralith:lavender_valley', 'terralith:moonlight_grove', 'terralith:moonlight_valley']);
   event.add('bth_structures:has_structure/battle_grounds', ['minecraft:plains', 'minecraft:old_growth_birch_forest', 'minecraft:savanna']);
   event.add('bth_structures:has_structure/dw20', ['minecraft:plains', 'minecraft:jungle']);
-  // event.add('bth_structures:has_structure/tower_forest', '#bth:is_forest_tower_biome');
-  // event.add('bth_structures:has_structure/tower_frozen', '#bth:is_frozen_tower_biome');
-  // event.add('bth_structures:has_structure/tower_scarlet', '#bth:is_scarlet_tower_biome');
+  event.add('bth_structures:has_structure/tower_forest', '#bth:is_forest_tower_biome');
+  event.add('bth_structures:has_structure/tower_frozen', '#bth:is_frozen_tower_biome');
+  event.add('bth_structures:has_structure/tower_scarlet', '#bth:is_scarlet_tower_biome');
   event.add('bth_structures:has_structure/wagon', ['minecraft:plains']);
 
   // Aether and add-ons

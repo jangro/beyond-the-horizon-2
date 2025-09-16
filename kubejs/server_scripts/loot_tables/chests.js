@@ -34,7 +34,7 @@ LootJS.lootTables(event => {
         });
 
 
-    event.create('bth_structures:dw20/hidden')
+    event.create('bth_structures:chests/dw20/hidden')
         .createPool(pool => {
             pool.addEntry(LootEntry.of('bth:adventurers_spell_book', 1));
         })

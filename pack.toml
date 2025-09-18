@@ -1,13 +1,13 @@
 name = "Beyond the Horizon 2"
 author = "BTH Team"
-version = "0.1"
+version = "0.1.3"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "d785b65496feecde62db79a79f1797606efb886cc4bf517cbe38f198705b4677"
+hash = "a9e1bcad1831f417087a6d42516c2decae9b92d69ed008b7ebf58fc00a341e01"
 
 [versions]
 minecraft = "1.21.1"
-neoforge = "21.1.200"
+neoforge = "21.1.209"

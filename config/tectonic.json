@@ -7,6 +7,16 @@
     "vegetation_offset": 0.0,
     "vegetation_scale": 0.25
   },
+  "caves": {
+    "carvers_enabled": true,
+    "cheese_additive": 0.27,
+    "cheese_enabled": true,
+    "depth_cutoff_size": 0.1,
+    "depth_cutoff_start": 0.1,
+    "noodle_additive": -0.075,
+    "noodle_enabled": true,
+    "spaghetti_enabled": true
+  },
   "continents": {
     "continents_scale": 0.13,
     "erosion_scale": 0.2,
@@ -20,13 +30,13 @@
   },
   "general": {
     "mod_enabled": true,
-    "snow_start_offset": 196
+    "snow_start_offset": 128
   },
   "global_terrain": {
     "increased_height": true,
     "lava_tunnels": true,
     "ultrasmooth": false,
-    "vertical_scale": 1.4
+    "vertical_scale": 1.125
   },
   "islands": {
     "enabled": true,

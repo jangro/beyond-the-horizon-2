@@ -91,7 +91,7 @@ hash = "f06bbe705b7a390b93f83960600dd7e6b30f9fcbef0e700cff915f9117ed03a6"
 
 [[files]]
 file = "config/ars_nouveau-common.toml"
-hash = "4ac4b84d631cf5bb55d39dd075498e9c374b1e98a65587b9a71e38ae65388e44"
+hash = "58dc66d48ff843f092398578a2e88c85a7bdddf1847efd294e9dcaa93a0c4bca"
 
 [[files]]
 file = "config/auto_third_person-client.toml"
@@ -148,6 +148,10 @@ hash = "7100a5d755f5bdd452d3cb2f585080fa575c2c8cc93ea08a7f39f0c29912df42"
 [[files]]
 file = "config/horseman-server.toml"
 hash = "69df2bbde9a4173a21cc67d971f6f55cb74131ac5066b9ecbe7dee7c864119ec"
+
+[[files]]
+file = "config/integrateddynamics-common.toml"
+hash = "d2910e4975e0a16a6903f1e947a9bde58f3644b3055b2f847ff88df96ef7d4db"
 
 [[files]]
 file = "config/inventoryhud-client.toml"
@@ -1063,7 +1067,7 @@ hash = "702624d2021e336b92337ca10d580cb3b85ab49725dc76e243ae8af5887cfdb6"
 
 [[files]]
 file = "kubejs/server_scripts/constants.js"
-hash = "06eb50f25a0757f574fb48f5f49b46fcaddd67562d10e431cc7a42c6d1475533"
+hash = "a1474221ac380402eaafacb5e90b1f00b927737fc224c24c9f7e9fb888fd2a46"
 
 [[files]]
 file = "kubejs/server_scripts/functions.js"
@@ -1079,7 +1083,7 @@ hash = "dfa144dbe79032e586045a83b049e4038db23581d2e46f0518de51728c460f7e"
 
 [[files]]
 file = "kubejs/server_scripts/player_events.js"
-hash = "487f9a4510fb4eec4aab098c8d9b006c20188044be764c255431d1541904a42f"
+hash = "f62827be4412fdadfc79a40c8733a3fa2e748bc09e7d28f4f2220bdd90503b29"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/pneumaticcraft.js"

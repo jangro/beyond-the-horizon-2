@@ -4,17 +4,16 @@
  * @file Global Constants for use in other scripts.
  */
 
-const ECCENTRIC_TOME_NBT = '{"eccentrictome:mods":{\
-  advancedperipherals:{0:{Count:1b,id:"patchouli:guide_book",tag:{"patchouli:book":"advancedperipherals:manual"}}},\
-  ae2:{0:{Count:1b,id:"ae2:guide"}},\
-  ars_nouveau:{0:{Count:1b,id:"ars_nouveau:worn_notebook"}},\
-  buildinggadgets2:{0:{Count:1b,id:"patchouli:guide_book",tag:{"patchouli:book":"buildinggadgets2:buildinggadgets2book"}}},\
-  immersiveengineering:{0:{Count:1b,id:"immersiveengineering:manual"}},\
-  integrateddynamics:{0:{Count:1b,id:"integrateddynamics:on_the_dynamics_of_integration"}},\
-  irons_spellbooks:{0:{Count:1b,id:"patchouli:guide_book",tag:{"patchouli:book":"irons_spellbooks:iss_guide_book"}}},\
-  modularrouters:{0:{Count:1b,id:"patchouli:guide_book",tag:{"patchouli:book":"modularrouters:book"}}},\
-  pneumaticcraft:{0:{Count:1b,id:"patchouli:guide_book",tag:{"patchouli:book":"pneumaticcraft:book"}}},\
-  simplyswords:{0:{Count:1b,id:"patchouli:guide_book",tag:{"patchouli:book":"simplyswords:runic_grimoire"}}}}}';
+const ECCENTRIC_TOME = 'eccentrictome:tome[eccentrictome:mod_list={ \
+   ae2:[{count:1,id:"ae2:guide"}], \
+   ars_nouveau:[{count:1,id:"ars_nouveau:worn_notebook"}],\
+   buildinggadgets2:[{components:{"patchouli:book":"buildinggadgets2:buildinggadgets2book"},count:1,id:"patchouli:guide_book"}],\
+   justdirethings:[{components:{"patchouli:book":"justdirethings:justdirethingsbook"},count:1,id:"patchouli:guide_book"}],\
+   lightmanscurrency:[{components:{"patchouli:book":"lightmanscurrency:trader_guide"},count:1,id:"patchouli:guide_book"}],\
+   modularrouters:[{components:{"patchouli:book":"modularrouters:book"},count:1,id:"patchouli:guide_book"}],\
+   pneumaticcraft:[{components:{"patchouli:book":"pneumaticcraft:book"},count:1,id:"patchouli:guide_book"}],\
+   simplyswords:[{components:{"patchouli:book":"simplyswords:runic_grimoire"},count:1,id:"patchouli:guide_book"}]\
+}]'
 
 /**
  * Minecraft's default colors, as used in vanilla item IDs and by most mods.

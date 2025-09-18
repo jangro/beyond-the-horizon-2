@@ -11,7 +11,7 @@ JVM_ARGUMENTS="-XX:+UseG1GC -XX:+UnlockExperimentalVMOptions -XX:MaxGCPauseMilli
 NEOFORGE_VERSION="21.1.209"
 
 # Install Minecraft Neoforge if it isn't already installed.
-FILE=./libraries/net/minecraftforge/forge/${NEOFORGE_VERSION}
+FILE=./libraries/net/neoforged/neoforge/${NEOFORGE_VERSION}
 if [ ! -d "${FILE}" ]; then
     echo "Installing Minecraft Neoforge Server."
     ${JAVA_PATH} -jar ./neoforge-${NEOFORGE_VERSION}-installer.jar --installServer
@@ -43,7 +43,7 @@ if [ -f "${INSTALLER_FILE}" ]; then
 fi
 
 echo "Starting Beyond The Horizon Server."
-${JAVA_PATH} -Xms${ALLOCATED_RAM} -Xmx${ALLOCATED_RAM} "${JVM_ARGUMENTS}" @libraries/net/neoforged/neoforge/${NEOFORGE_VERSION}/unix_args.txt nogui
+${JAVA_PATH} -Xms${ALLOCATED_RAM} -Xmx${ALLOCATED_RAM} ${JVM_ARGUMENTS} @libraries/net/neoforged/neoforge/${NEOFORGE_VERSION}/unix_args.txt nogui
 
 printf "Press enter to continue."
 read -r _

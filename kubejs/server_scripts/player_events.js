@@ -16,7 +16,7 @@ PlayerEvents.loggedIn(event => {
 
     event.player.tell(Text.translate('bth.chat.first_start_message'));
 
-    event.player.give(Item.of('eccentrictome:tome', ECCENTRIC_TOME_NBT));
+    event.player.give(ECCENTRIC_TOME);
 
     // Give player a wallet with slightly random amount of coins
     // let count = 3 + Math.floor(7 * Math.random());

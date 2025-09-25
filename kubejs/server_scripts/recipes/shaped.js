@@ -33,6 +33,16 @@ ServerEvents.recipes(event => {
     }).id(`${ID_PREFIX}saddle`);
 
 
+    COLORS.forEach(color => {
+        event.shaped(`8x minecraft:${color}_terracotta`, [
+            'TTT',
+            'TDT',
+            'TTT'
+        ], {
+            D: `#c:dyes/${color}`,
+            T: '#minecraft:terracotta'
+        }).id(`${ID_PREFIX}${color}_terracotta`);
+    });
 
 
 });

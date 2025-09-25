@@ -15,6 +15,7 @@
 /UPDATING.md
 /CHANGELOG.md
 /overrides
+/structure-mods.txt
 
 # Exclude build scripts + executables.
 *.bat

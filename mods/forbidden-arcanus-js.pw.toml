@@ -1,0 +1,13 @@
+name = "Forbidden Arcanus JS"
+filename = "forbidden_arcanus_js-2101.1.1.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "d379382ad6ba37c2698cfc43e10ded9747dd809b"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 7003098
+project-id = 1346176

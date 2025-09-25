@@ -90,6 +90,10 @@ file = "config/ae2-common.toml"
 hash = "f06bbe705b7a390b93f83960600dd7e6b30f9fcbef0e700cff915f9117ed03a6"
 
 [[files]]
+file = "config/aether-startup.toml"
+hash = "e3915bf50d806c5caa3dcebc243818c2c4aeb149599b33e6286ea2828370dd69"
+
+[[files]]
 file = "config/ars_nouveau-common.toml"
 hash = "58dc66d48ff843f092398578a2e88c85a7bdddf1847efd294e9dcaa93a0c4bca"
 
@@ -147,7 +151,7 @@ hash = "7100a5d755f5bdd452d3cb2f585080fa575c2c8cc93ea08a7f39f0c29912df42"
 
 [[files]]
 file = "config/horseman-server.toml"
-hash = "69df2bbde9a4173a21cc67d971f6f55cb74131ac5066b9ecbe7dee7c864119ec"
+hash = "b87d823cbffc4e4900624c32ceb98b2d9b1003512f0b626296eb228a9ad4b12f"
 
 [[files]]
 file = "config/integrateddynamics-common.toml"
@@ -170,6 +174,10 @@ file = "config/irons_spellbooks-server.toml"
 hash = "dce291e22c74c31e5d0d4093fcd928298929353573f95925fb422d207377610b"
 
 [[files]]
+file = "config/lightmanscurrency-client.txt"
+hash = "91a79afee44ef997eda0072e4a6f4494a26257ea1c519fe7966cc3dad1795c94"
+
+[[files]]
 file = "config/lightmanscurrency-common.txt"
 hash = "7ccafabbc76d08dcd7d6c5db68ef9539b3c6557455ad0bbfedfc159b1b5e755a"
 
@@ -182,8 +190,20 @@ file = "config/notenoughcrashes.json"
 hash = "52bbbe8941b67ef9874554c0d603058d4f5ea8edd69ba1bb2a818eefcc4391c1"
 
 [[files]]
+file = "config/packingtape-server.toml"
+hash = "2cadcb48a90ed8aad0e7194cf589769c8587432f2f26c779e63317fa2589e7d8"
+
+[[files]]
+file = "config/sol_valheim_reforged-common.toml"
+hash = "d0d1e7fa2103d4e9243d33c9bc20484296800a65fdfc665d08ca227d0d4786fa"
+
+[[files]]
 file = "config/sophisticatedbackpacks-server.toml"
-hash = "5721bc09ea888cf3acd792c925869ce01d6ba37668567e72190f52646a1742b3"
+hash = "078b1523a8a78947b32fa193401a71125aa481a3fc48b70c650369005662afb0"
+
+[[files]]
+file = "config/supplementaries-common.toml"
+hash = "b8b56e0d64e07edab3119481e9c43110f947b0701a29119bbde73f1562a3ff7b"
 
 [[files]]
 file = "config/tectonic.json"
@@ -1074,6 +1094,10 @@ file = "kubejs/server_scripts/functions.js"
 hash = "c1428ab0f3bfdfdb20343e639e4e5d757577ae55f40bfe63e28b5bfab5ef804d"
 
 [[files]]
+file = "kubejs/server_scripts/item_events.js"
+hash = "444711435104edb0bf5fa241898df6e5538d2d559fca83f8073d2e2e33ab611f"
+
+[[files]]
 file = "kubejs/server_scripts/loot_tables/chests.js"
 hash = "1dd848f261673462aafdffe7655b91e4d11b3deac56ede2479434831fcf6331b"
 
@@ -1090,8 +1114,12 @@ file = "kubejs/server_scripts/recipes/pneumaticcraft.js"
 hash = "e00437a6f2560572d5506bfdf291a1e429e01658b902dc74d7f61bb5b096e07c"
 
 [[files]]
+file = "kubejs/server_scripts/recipes/replace.js"
+hash = "9393e94b41a06123afd4bd1765ef2b0c054eb54af2d009ac6d8a7139964a8588"
+
+[[files]]
 file = "kubejs/server_scripts/recipes/shaped.js"
-hash = "93f7f8d83ead078d3d4525b156c9b0aea51533a940f4d409ae897cb7e38811ff"
+hash = "08ee1e3ace6a6f3f08f7c27f719d4b84d5a62d589579692ccf3730f709066448"
 
 [[files]]
 file = "kubejs/server_scripts/tags/biome.js"
@@ -1371,6 +1399,11 @@ hash = "22e49b8df2a614ed7d0142baa2da9b672ca55e50749346aae52d8cddf3d1b77b"
 metafile = true
 
 [[files]]
+file = "mods/compact-machines.pw.toml"
+hash = "7d1bea70ca8773294c69d6f681f12242c23d5918697c56f7eac80c63f7c2a30e"
+metafile = true
+
+[[files]]
 file = "mods/controlling.pw.toml"
 hash = "42ffb6f5835250003da6ca3667ff751709ea295faee43b49c365b0f6c1e8f4d8"
 metafile = true
@@ -1491,6 +1524,11 @@ hash = "f619c1ed2e189f9d482d081411fccee4bd26c05cce52a5db914f1989303f080c"
 metafile = true
 
 [[files]]
+file = "mods/easy-anvils.pw.toml"
+hash = "541520814421d829976fbb2162e7a195b18e9d82ed3b3c8dc9c7fbc50b2cb491"
+metafile = true
+
+[[files]]
 file = "mods/eccentric-tome.pw.toml"
 hash = "1ef3291d3b96932284f9e57c9301b656cbd2b53d247592c70d7ccf264a81d6c6"
 metafile = true
@@ -1578,6 +1616,16 @@ metafile = true
 [[files]]
 file = "mods/fishing-bobber-detector.pw.toml"
 hash = "076fa5496f2a724cfec0edaaabe02f7f2564be24a0368522846dfa130c442ff5"
+metafile = true
+
+[[files]]
+file = "mods/forbidden-arcanus-js.pw.toml"
+hash = "d3ba84e5389660098a1b1400579939f2328143ee63f6460c5ada8b9ddbc3e772"
+metafile = true
+
+[[files]]
+file = "mods/forbidden-arcanus.pw.toml"
+hash = "d7343664280e8b3d1c96f9a6726caf2d25376fd7e378fdfc47a0be9bccde3a3c"
 metafile = true
 
 [[files]]
@@ -2397,7 +2445,3 @@ hash = "b3d6ebd50f5ac464be7695a97072fbb85927bf0ac2fbf741d011881347332a5d"
 [[files]]
 file = "shaderpacks/ComplementaryUnbound_r5.5.1 + EuphoriaPatches_1.6.5.txt"
 hash = "cf144e5793652efb513869283951530987c9732364d1795d250cbf291aded373"
-
-[[files]]
-file = "structure-mods.txt"
-hash = "064c0652df828c9cb3c857d207896dbdf862347690f7ac6c74ec85e65f6cea0c"

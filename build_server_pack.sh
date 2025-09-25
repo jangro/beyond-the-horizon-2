@@ -52,24 +52,3 @@ cp -r "${PRISM_PATH}/bth2-${pack_version}-server/minecraft/" "bth2-${pack_versio
 cd "bth2-${pack_version}-server-output/"
 zip -r "../bth2-${pack_version}-server-full.zip" * -x "mods/.index/*"
 cd ..
-
-
-
-# # Run the commands with the extracted version
-# $PACKWIZ curseforge export -s server
-# mv -v "Beyond the Horizon 2-${pack_version}.zip" "bth2-${pack_version}-server.zip"
-
-# $PACKWIZ curseforge export
-# mv -v "Beyond the Horizon 2-${pack_version}.zip" "bth2-${pack_version}.zip"
-
-# # Add icon to the client zip
-# zip "bth2-${pack_version}.zip" "overrides/icon.png"
-
-# # Add server files to server zip
-# for f in overrides/*; do
-#   [ -e "$f" ] && zip "bth2-${pack_version}-server.zip" "$f"
-# done
-
-# for f in overrides/config/*; do
-#   [ -e "$f" ] && zip "bth2-${pack_version}-server.zip" "$f"
-# done

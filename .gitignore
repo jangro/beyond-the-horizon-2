@@ -1,6 +1,9 @@
 # Exclude exported CurseForge zip files
 /*.zip
 
+# Exclude temporary output folder
+/bth*-output
+
 # Exclude exported Modrinth modpacks
 /*.mrpack
 

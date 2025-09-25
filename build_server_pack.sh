@@ -16,41 +16,60 @@ then
     exit 1
 fi
 
-# Remove existing instance if it exists but ask first
+# Import the pack into PrismLauncher
 if [ -d "${PRISM_PATH}/bth2-${pack_version}-server" ]; then
 	echo "\n==> Warning: existing PrismLauncher instance found at ${PRISM_PATH}/bth2-${pack_version}-server\n"
-	read -p "Do you want to remove it? (y/n) " choice
+	read -p "Do you want to remove it (no means use existing instance)? (y/n) " choice
 	if [ "$choice" = "y" ]; then
 		rm -rf "${PRISM_PATH}/bth2-${pack_version}-server"
+        $PRISM --import "bth2-${pack_version}-server.zip"
+		# rm "bth2-${pack_version}-server-packwiz.zip"
+		# mv "bth2-${pack_version}-server.zip" "bth2-${pack_version}-server-packwiz.zip"
 	fi
 fi
 
-# Import the pack into PrismLauncher
-$PRISM --import "bth2-${pack_version}-server.zip"
+# Ask to remove output folder if it exists
+if [ -d "bth2-${pack_version}-server-output" ]; then
+	echo "\n==> Warning: existing output folder found at bth2-${pack_version}-server-output\n"
+	read -p "Do you want to remove it (required to continue)? (y/n) " choice
+	if [ "$choice" = "y" ]; then
+		rm -rf "bth2-${pack_version}-server-output"
+	else
+		echo "Cannot continue, exiting"
+		exit 1
+	fi
+fi
 
 # Build server pack with mods from prismlauncher instance
-unzip bth2-${pack_version}-server.zip
-cp -r "${PRISM_PATH}/bth2-${pack_version}-server/mods" bth2-${pack_version}-server/
+mkdir -p "bth2-${pack_version}-server-output"
+
+# Copy required file from packwiz export
+unzip -d "bth2-${pack_version}-server-output" "bth2-${pack_version}-server.zip" manifest.json
+
+# Copy the rest of the files from the prismlauncher instance
+cp -r "${PRISM_PATH}/bth2-${pack_version}-server/minecraft/" "bth2-${pack_version}-server-output/"
+
+cd "bth2-${pack_version}-server-output/"
+zip -r "../bth2-${pack_version}-server-full.zip" * -x "mods/.index/*"
+cd ..
 
 
 
+# # Run the commands with the extracted version
+# $PACKWIZ curseforge export -s server
+# mv -v "Beyond the Horizon 2-${pack_version}.zip" "bth2-${pack_version}-server.zip"
 
+# $PACKWIZ curseforge export
+# mv -v "Beyond the Horizon 2-${pack_version}.zip" "bth2-${pack_version}.zip"
 
-# Run the commands with the extracted version
-$PACKWIZ curseforge export -s server
-mv -v "Beyond the Horizon 2-${pack_version}.zip" "bth2-${pack_version}-server.zip"
+# # Add icon to the client zip
+# zip "bth2-${pack_version}.zip" "overrides/icon.png"
 
-$PACKWIZ curseforge export
-mv -v "Beyond the Horizon 2-${pack_version}.zip" "bth2-${pack_version}.zip"
+# # Add server files to server zip
+# for f in overrides/*; do
+#   [ -e "$f" ] && zip "bth2-${pack_version}-server.zip" "$f"
+# done
 
-# Add icon to the client zip
-zip "bth2-${pack_version}.zip" "overrides/icon.png"
-
-# Add server files to server zip
-for f in overrides/*; do
-  [ -e "$f" ] && zip "bth2-${pack_version}-server.zip" "$f"
-done
-
-for f in overrides/config/*; do
-  [ -e "$f" ] && zip "bth2-${pack_version}-server.zip" "$f"
-done
+# for f in overrides/config/*; do
+#   [ -e "$f" ] && zip "bth2-${pack_version}-server.zip" "$f"
+# done

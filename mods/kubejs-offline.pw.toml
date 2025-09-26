@@ -1,0 +1,13 @@
+name = "KubeJS Offline Documentation"
+filename = "kubejsoffline-neoforge-5.0.7.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "e4a7c02dadae66d188607ab21a1c281618752195"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 6873496
+project-id = 641627

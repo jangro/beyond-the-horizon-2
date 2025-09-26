@@ -1,0 +1,13 @@
+name = "Tax' Deep Villager"
+filename = "TaxDeepVillager+M.1.21.1+NeoF.2.0.0.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "1df97584c92d462d57bf6459eb3d0489dd8cc409"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 5798121
+project-id = 636043

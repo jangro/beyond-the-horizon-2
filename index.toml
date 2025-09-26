@@ -83,7 +83,7 @@ hash = "46f30ad8010482dfab4237c6110891092cfe30b545184f64ea48a4a75aaedb71"
 
 [[files]]
 file = "config/PeacefulSurface_Rules/DefaultRule.json"
-hash = "fee3643f66bd1ce88ba2d6aa3b596b3e31183500ef1803f37752358560295472"
+hash = "64727e84ee9763bd632019083cb593a3816edfa4ef10465027e78a3243438cc3"
 
 [[files]]
 file = "config/ae2-common.toml"
@@ -656,6 +656,38 @@ hash = "d42d8b5d7a1d8c6fbf23e51c724ee9b9f22d96041dc3747e3bf9ce0a0c39d281"
 [[files]]
 file = "kubejs/data/enderscape/worldgen/structure_set/ruins.json"
 hash = "71221c24a7df799cd29939007afc3c8d33becffca44a5a46cf943e44be405f98"
+
+[[files]]
+file = "kubejs/data/enhancedcelestials/enhancedcelestials/lunar/event/blood_moon.json"
+hash = "e371bf0771a3132a73b33187b64d76a0c05848aca6af690724c5ab779aedf02e"
+
+[[files]]
+file = "kubejs/data/enhancedcelestials/enhancedcelestials/lunar/event/blue_moon.json"
+hash = "59639b9de796ee377a741ff00d5b99daca891d03c1c6b2492d1d8930c7f2454e"
+
+[[files]]
+file = "kubejs/data/enhancedcelestials/enhancedcelestials/lunar/event/default.json"
+hash = "e12da713a25cd994f7afa994d5d3ab7287fbdcf6ed5043cf6058b4b6631e3432"
+
+[[files]]
+file = "kubejs/data/enhancedcelestials/enhancedcelestials/lunar/event/harvest_moon.json"
+hash = "efb7056f1aa4dadf3f3dbea95b2ce0f65530bf337f4ccd3f085ff5e26f23c780"
+
+[[files]]
+file = "kubejs/data/enhancedcelestials/enhancedcelestials/lunar/event/super_blood_moon.json"
+hash = "9ac9f4bd4005378d9dd1021e94b6ce71c0684dfb746df3a252b94fd45cb7b690"
+
+[[files]]
+file = "kubejs/data/enhancedcelestials/enhancedcelestials/lunar/event/super_blue_moon.json"
+hash = "7d25d61dc03859eca48f1959ff24fa0e126131c245296bd488201f3451865d2c"
+
+[[files]]
+file = "kubejs/data/enhancedcelestials/enhancedcelestials/lunar/event/super_harvest_moon.json"
+hash = "1241c573fb42330ea34b47cb5aee6d5411176eae842755571c653a3d60264423"
+
+[[files]]
+file = "kubejs/data/enhancedcelestials/enhancedcelestials/lunar/event/super_moon.json"
+hash = "8846ad2f546e48f1bf62b21da67c120ccb0f98199065509ae548b68bfc17b94d"
 
 [[files]]
 file = "kubejs/data/graveyard/worldgen/structure_set/altar_structure.json"

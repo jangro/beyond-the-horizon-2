@@ -3,6 +3,7 @@ alshanex_familiars
 ars_nouveau
 biomeswevegone
 ctov
+eidolon-repraised
 enderscape
 graveyard
 hauntedharvest

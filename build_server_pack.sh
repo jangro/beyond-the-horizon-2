@@ -10,10 +10,9 @@ PRISM_PATH="$HOME/Library/Application Support/PrismLauncher/instances"
 pack_version=$(grep -e "^version" pack.toml | cut -f3 -d' ' | tr -d '"')
 bcc_version=$(grep -e "modpackVersion" config/bcc-common.toml | cut -f3 -d' ' | tr -d '"')
 
-if [ "${pack_version}" != "${bcc_version}" ]
-then
-    echo "\n==> Error: version in pack.toml (${pack_version}) and config/bcc-common.toml (${bcc_version}) does not match\n"
-    exit 1
+if [ "${pack_version}" != "${bcc_version}" ]; then
+	echo "\n==> Error: version in pack.toml (${pack_version}) and config/bcc-common.toml (${bcc_version}) does not match\n"
+	exit 1
 fi
 
 # Import the pack into PrismLauncher
@@ -22,10 +21,9 @@ if [ -d "${PRISM_PATH}/bth2-${pack_version}-server" ]; then
 	read -p "Do you want to remove it (no means use existing instance)? (y/n) " choice
 	if [ "$choice" = "y" ]; then
 		rm -rf "${PRISM_PATH}/bth2-${pack_version}-server"
-        $PRISM --import "bth2-${pack_version}-server.zip"
-		# rm "bth2-${pack_version}-server-packwiz.zip"
-		# mv "bth2-${pack_version}-server.zip" "bth2-${pack_version}-server-packwiz.zip"
 	fi
+else
+	$PRISM --import "bth2-${pack_version}-server.zip"
 fi
 
 # Ask to remove output folder if it exists

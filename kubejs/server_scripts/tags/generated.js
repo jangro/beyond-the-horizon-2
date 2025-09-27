@@ -37,6 +37,8 @@ ServerEvents.tags('worldgen/structure', event => {
     "bth_structures:battle_grounds",
     "bth_structures:dw20",
     "bth_structures:wagon",
+    "eidolon_repraised:stray_tower",
+    "eidolon_repraised:lab",
     "graveyard:dead_tree",
     "graveyard:haunted_house",
     "graveyard:large_graveyard",
@@ -191,7 +193,7 @@ ServerEvents.tags('worldgen/structure', event => {
     "terralith:igloo",
   ]);
 
-  event.add('bth:submerged', [
+  event.add('bth:submerged_common', [
     "towns_and_towers:wreckage_ocean",
     "underwater_village:cold_big_gate",
     "underwater_village:cold_broken_house",
@@ -210,6 +212,10 @@ ServerEvents.tags('worldgen/structure', event => {
     "underwater_village:warm_broken_house",
     "underwater_village:warm_fountain",
     "underwater_village:warm_gate",
+  ]);
+
+  event.add('bth:submerged_rare', [
+    "betteroceanmonuments:ocean_monument",
   ]);
 
   event.add('bth:towers', [
@@ -231,6 +237,7 @@ ServerEvents.tags('worldgen/structure', event => {
   ]);
 
   event.add('bth:underground_rare', [
+    "eidolon_repraised:catacomb",
     "graveyard:crypt",
     "irons_spellbooks:catacombs",
   ]);

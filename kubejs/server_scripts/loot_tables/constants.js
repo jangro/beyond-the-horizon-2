@@ -4,6 +4,10 @@
  * @file Constants used by other loot table scripts.
  */
 
+
+// XXX: cartographers_quill depends on quark, so these are disabled for now
+
+
 // const AQUAMIRAE_SHELTER_MAP =
 //   Item.of('supplementaries:cartographers_quill', '{decoration:"filled_map.aquamirae_shelter",\
 //            display:{Name:\'{"translate":"filled_map.aquamirae_shelter"}\'},maxSearchRadius:100,skinKnown:1b,\

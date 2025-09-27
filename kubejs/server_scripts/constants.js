@@ -65,7 +65,7 @@ const FIRST_START_FOODS = [
   'hauntedharvest:corn_on_the_cob',
   'hauntedharvest:cornbread',
   'miners_delight:vegetable_soup_cup',
-  // 'neapolitan:banana_bread',
+  'neapolitan:banana_bread',
   // 'rats:assorted_vegetables',
-  // 'upgrade_aquatic:mulberry_bread',
+  'upgrade_aquatic:mulberry_bread',
 ];

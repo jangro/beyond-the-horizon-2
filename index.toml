@@ -5179,7 +5179,7 @@ hash = "945b24f462fd56196c77de7590a7f8a7388f8011ff839c0616d3e46d4bbb3239"
 
 [[files]]
 file = "kubejs/server_scripts/constants.js"
-hash = "c0966928c78ce61f77bf02adc457d9f8acea6f2987e4a100f5ab0c69b287780a"
+hash = "e22e9b7d5b0ca547363b1eca8013a894870f5cdc6bef39979f990917ac15c900"
 
 [[files]]
 file = "kubejs/server_scripts/functions.js"
@@ -5195,7 +5195,7 @@ hash = "5e1ecb791e22400c9df69063cb7f859fa6f3b824c62fc1500ed9a7bdca7f57c7"
 
 [[files]]
 file = "kubejs/server_scripts/loot_tables/constants.js"
-hash = "dfa144dbe79032e586045a83b049e4038db23581d2e46f0518de51728c460f7e"
+hash = "383d7765185b321b7223ee73541222435aeea89f866e6fb723b211a7c997781a"
 
 [[files]]
 file = "kubejs/server_scripts/player_events.js"
@@ -5219,7 +5219,7 @@ hash = "5baf46fea7046ec158fb37afe0d644942e3b2f5af7801a814e927ec047f2e546"
 
 [[files]]
 file = "kubejs/server_scripts/tags/generated.js"
-hash = "9bf11fb5bc1e2570502fe7b3e885286f7505c73b4968d1cf78e799aa33b3c569"
+hash = "43c8aeffba038a638d5892693f2c9965b7481acc140b637c5258dd3dfd2dae9c"
 
 [[files]]
 file = "kubejs/startup_scripts/item.js"

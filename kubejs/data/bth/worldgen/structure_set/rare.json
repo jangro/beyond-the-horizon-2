@@ -21,15 +21,15 @@
   },
   "structures": [
     {
+      "structure": "betterdeserttemples:desert_temple",
+      "weight": 10
+    },
+    {
       "structure": "illager_fortress:illager_fortress",
       "weight": 10
     },
     {
       "structure": "illager_manor:illager_manor",
-      "weight": 10
-    },
-    {
-      "structure": "minecraft:desert_pyramid",
       "weight": 10
     },
     {

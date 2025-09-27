@@ -2246,11 +2246,6 @@ hash = "35a3db355534b338f75aed38ff8a1ebd47ec5954532699f9487362634d5f84f0"
 metafile = true
 
 [[files]]
-file = "bth2-0.1.5-server-output/mods/.index/nebulus-jungle-tree.pw.toml"
-hash = "ebdbb869f672544b077123ebb3ccdf9306ccd93dd4876fcf2a572b7a07fd25cf"
-metafile = true
-
-[[files]]
 file = "bth2-0.1.5-server-output/mods/.index/noisium.pw.toml"
 hash = "a0d02eeebb7348f0f23ee2ea2cda1d3be52b9df381e7fa69380a2fbda77e5a4c"
 metafile = true
@@ -4182,6 +4177,34 @@ file = "config/dynamic_fps.json"
 hash = "50b1d994790ba685f79999bc864a1a4caa55860f4ba2fe1d816f66611e525524"
 
 [[files]]
+file = "config/fancymenu/custom_gui_screens.txt"
+hash = "ff492043eaf454c46e949d5eef32ece90cc5a19feb50a161dd29a43b5732c880"
+
+[[files]]
+file = "config/fancymenu/customizablemenus.txt"
+hash = "a83e520716f7d5fa43025d5991acd6e2160fc43ba604bd4c258b9f5c0812830f"
+
+[[files]]
+file = "config/fancymenu/legacy_checklist.txt"
+hash = "9a25d3dc708e43eabafce5479a13c02dae15bc7f673afb2745b8b2ba48a97dc0"
+
+[[files]]
+file = "config/fancymenu/options.txt"
+hash = "d84be5b5efad8e4921d4c35ea9bf8bbcb64001fa16c46be5100ebfe1844ea29d"
+
+[[files]]
+file = "config/fancymenu/ui_themes/dark.json"
+hash = "45541e5c5019585b9c4ff114aed530826129e8a7ac6866b5d5fe41dd278abae4"
+
+[[files]]
+file = "config/fancymenu/ui_themes/light.json"
+hash = "6954379d658fdf496f162792a3244f0f08635858ed4b0553a718a7ef63b8a620"
+
+[[files]]
+file = "config/fancymenu/user_variables.db"
+hash = "3d7d4cda73d6bde134a568ccbe4e8d2e7fbe701570012b71fa45acdb2258c823"
+
+[[files]]
 file = "config/forgivingvoid-common.toml"
 hash = "7100a5d755f5bdd452d3cb2f585080fa575c2c8cc93ea08a7f39f0c29912df42"
 
@@ -4475,7 +4498,7 @@ hash = "a0b463540bb4745bb81b5e8778980eee0b97359e9171780c8c7bb0a607c96dd2"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/rare.json"
-hash = "6232c43b2c4020ebf4547b4ece9c79f7d1727164efcfb35b3d8bb6a229a44edc"
+hash = "a5d3e2796226f368ae044ab7855cf3d66f8433d194853d247408722e413d71cf"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/small.json"
@@ -5219,7 +5242,7 @@ hash = "5baf46fea7046ec158fb37afe0d644942e3b2f5af7801a814e927ec047f2e546"
 
 [[files]]
 file = "kubejs/server_scripts/tags/generated.js"
-hash = "43c8aeffba038a638d5892693f2c9965b7481acc140b637c5258dd3dfd2dae9c"
+hash = "d1540c079fd14976497fad6bd041bf0c7e57547a844fb08d692192d8b5ecfe88"
 
 [[files]]
 file = "kubejs/startup_scripts/item.js"
@@ -6313,11 +6336,6 @@ metafile = true
 [[files]]
 file = "mods/neapolitan.pw.toml"
 hash = "a431af3e3cdd3bb2370b12e0a7578b298a7e7fdfec1c059543a88711fbebefd8"
-metafile = true
-
-[[files]]
-file = "mods/nebulus-jungle-tree.pw.toml"
-hash = "3c3f4b9821904f701e832f10dfbcae4e94df52b15794bef8a2031b7bebd55dcf"
 metafile = true
 
 [[files]]

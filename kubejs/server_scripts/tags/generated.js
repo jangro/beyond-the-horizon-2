@@ -167,7 +167,6 @@ ServerEvents.tags('worldgen/structure', event => {
     "illager_manor:illager_manor",
     "minecraft:desert_pyramid",
     "minecraft:mansion",
-    "nebulus_giant_jungle_tree:giantjungletree",
     "terralith:spire",
   ]);
 

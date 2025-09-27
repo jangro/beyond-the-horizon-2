@@ -105,9 +105,6 @@ empty_colony.json
 desert_camp.json
 barbarian_camp.json
 
-=== mods/nebulus_giant_jungle_tree-2.1-neoforge-1.21.1.jar ===
-giantjungletree.json
-
 === mods/Oh-The-Biomes-Weve-Gone-NeoForge-2.4.7.jar ===
 aspen_manors.json
 bog_trial.json

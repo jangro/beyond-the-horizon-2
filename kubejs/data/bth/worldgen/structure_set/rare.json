@@ -37,10 +37,6 @@
       "weight": 10
     },
     {
-      "structure": "nebulus_giant_jungle_tree:giantjungletree",
-      "weight": 10
-    },
-    {
       "structure": "terralith:spire",
       "weight": 10
     }

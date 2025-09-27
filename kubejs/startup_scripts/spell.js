@@ -31,11 +31,11 @@ StartupEvents.registry('irons_spellbooks:spells', event => {
         Component.green('12 Block Radius'),
       ]
     });
-    // .checkPreCastConditions(ctx => { // This method can be used to check if the spell can be cast. If it returns false, the spell won't be cast.
-    //   // You can use this for targeting spells, like how the Slow spell works. preCastTargetHelper returns true or false based on the target conditions.
-    //   // The parameters of this method include the level, entity, the player's magic data, the spell, the range, and the aim assist.
-    //   return ISSUtils.preCastTargetHelper(ctx.level, ctx.entity, ctx.playerMagicData, ctx.spell, 24, 0.35)
-    // });
+  // .checkPreCastConditions(ctx => { // This method can be used to check if the spell can be cast. If it returns false, the spell won't be cast.
+  //   // You can use this for targeting spells, like how the Slow spell works. preCastTargetHelper returns true or false based on the target conditions.
+  //   // The parameters of this method include the level, entity, the player's magic data, the spell, the range, and the aim assist.
+  //   return ISSUtils.preCastTargetHelper(ctx.level, ctx.entity, ctx.playerMagicData, ctx.spell, 24, 0.35)
+  // });
 
   event.create('bth:terminus_space_fold')
     //.setCastTime(20)                          // Cast time in ticks

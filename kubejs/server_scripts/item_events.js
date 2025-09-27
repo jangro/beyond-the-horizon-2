@@ -1,8 +1,8 @@
-// priority: 5                  
+// priority: 5
 
 /**
  * @file Item Events Script - Handles item-related events in the game.
- * 
+ *
  * This includes things like right-clicking items, using items, and any other interactions
  * that involve items.
  */

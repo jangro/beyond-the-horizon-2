@@ -1,0 +1,15 @@
+{
+  "placement": {
+    "salt": 83759273,
+    "spacing": 80,
+    "separation": 40,
+    "type": "valhelsia_structures:valhelsia_random_spread",
+    "exclusion_zones": []
+  },
+  "structures": [
+    {
+      "structure": "betteroceanmonuments:ocean_monument",
+      "weight": 10
+    }
+  ]
+}

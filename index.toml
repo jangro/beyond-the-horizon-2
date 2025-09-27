@@ -1,6 +1,10 @@
 hash-format = "sha256"
 
 [[files]]
+file = ".editorconfig"
+hash = "6bf0694d0ab39cef60ca535555e6d64822929a73fc5fd4a2b0f0c491f4827126"
+
+[[files]]
 file = "bth2-0.1.5-server-output/config/Advancedperipherals/world.toml"
 hash = "03c1b662e51404e5b257d6a1c8b2b978deca25a626d39e3e1183525e88e582c9"
 
@@ -4382,6 +4386,10 @@ file = "kubejs/data/ars_nouveau/worldgen/structure_set/wilden_den_set.json"
 hash = "d9b091aa9aca10efa72e020d4bd68c0c1d219c54c2c75261d463782991e4ba56"
 
 [[files]]
+file = "kubejs/data/autumnity/worldgen/structure_set/maple_huts.json"
+hash = "884fa2699ec661b17b087a03b46248c45e232addd2564233ae03cec264175ca0"
+
+[[files]]
 file = "kubejs/data/biomeswevegone/worldgen/structure_set/aspen_manors.json"
 hash = "abae7252e70e5cc5b1cbce031c3add5ebead1573f2c7a64c892246057a84dda6"
 
@@ -4439,7 +4447,7 @@ hash = "c4ef1f424da94016320ca2b04436f5b9e0480b4c3673d85eff08ca2584f7f46b"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/common.json"
-hash = "aaf1159f68db13ae2434c089013d4005a3ea618848ee420f5c863815d60be5b9"
+hash = "0f238e56ddfee1be4d348827b3e8b0200f2d085321d9a1b57551b04c42799f09"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/end_common.json"
@@ -4459,7 +4467,7 @@ hash = "fc4dadfc78c912006b8498afb8989dde10b083ec8ae8165cc9b4ade67b58ef5f"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/ocean.json"
-hash = "d6648a6569666db7a225b1a5a838d3fc14709c4366155158a566268323b6e0b4"
+hash = "128b2d673fef6088647bf7dc3ce493475aa9e7dac98d36047090cbfd5ea21ace"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/outposts.json"
@@ -4467,15 +4475,19 @@ hash = "a0b463540bb4745bb81b5e8778980eee0b97359e9171780c8c7bb0a607c96dd2"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/rare.json"
-hash = "acafaddeedd67fbe7914e7c4524b7c7a461bffb8ce464ed84db807dc6b9d710f"
+hash = "6232c43b2c4020ebf4547b4ece9c79f7d1727164efcfb35b3d8bb6a229a44edc"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/small.json"
 hash = "281bd538633784d307663d89c890ebe8dd62834b17ede07dfc72e79284fefcab"
 
 [[files]]
-file = "kubejs/data/bth/worldgen/structure_set/submerged.json"
-hash = "27df7d82866e0e46dcc5b04e3329f92d1931b1b35d77124adb89dfdffd3c5625"
+file = "kubejs/data/bth/worldgen/structure_set/submerged_common.json"
+hash = "996a0a6466663218af2511f912546103f33314c8c2e545ea21b5f48ca31a83e2"
+
+[[files]]
+file = "kubejs/data/bth/worldgen/structure_set/submerged_rare.json"
+hash = "d1fc85043a261ba31cbc579d3f54f78ada6e10dd3220be46559adca061955073"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/towers.json"
@@ -4483,15 +4495,15 @@ hash = "a0e484ff1e125d4a6e00351d8ab7aa76fcaa14869cfd0c50d36f7fda70caab08"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/underground_common.json"
-hash = "6cc7671ff744e5355c3a8f4e71b727f8488e958ef86d161ee56bc252c44b4d6c"
+hash = "ef1263991b853ad25f07ef2a50b65897c62c984ad033eeabaee192edc379cb1d"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/underground_rare.json"
-hash = "434dbd8ca09a01869b8b7c4da4bf9058eedbb9dfe65f85dc2912d051aa18e468"
+hash = "4119cda687168b61232b8e4b0c743e2ee66a221fd2063a0b59f45dd515e32727"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/villages.json"
-hash = "633b2365c0f5b8c6081bba85d6e93f745f01a1d4675038dfefa10e24eebbf02f"
+hash = "b1be66c177b1d097ed0fb4adef373c95d8c9290f22b4ab6b67a12b84d6f9d51e"
 
 [[files]]
 file = "kubejs/data/bth_structures/loot_table/archeology/dw20.json"
@@ -4682,6 +4694,18 @@ file = "kubejs/data/deep_aether/worldgen/structure_set/brass_dungeon.json"
 hash = "25ccdcb5a85eb5c96385885a63c95de9dd88f89834fa047b225b1648b642154b"
 
 [[files]]
+file = "kubejs/data/eidolon_repraised/worldgen/structure_set/catacomb.json"
+hash = "bda3cb1363f7c36c05e8bd48c161ecc1babd13cb387a5d6570f7ae8e06d4b09d"
+
+[[files]]
+file = "kubejs/data/eidolon_repraised/worldgen/structure_set/lab.json"
+hash = "4c1a53fd724f581b75b360d5f469d8dd557df65d017adf78575d26107cbc72c4"
+
+[[files]]
+file = "kubejs/data/eidolon_repraised/worldgen/structure_set/stray_tower.json"
+hash = "8a078ed2d91c085e2e1a6e5e8284bc9b06eeefc567dc92cbd2e34826857459a1"
+
+[[files]]
 file = "kubejs/data/enderscape/worldgen/structure_set/gateways.json"
 hash = "d42d8b5d7a1d8c6fbf23e51c724ee9b9f22d96041dc3747e3bf9ce0a0c39d281"
 
@@ -4727,7 +4751,7 @@ hash = "fb43bfb402eb5223b8dd2be91b6605564d33a7b51ad705d5688e0795cb9c3dcf"
 
 [[files]]
 file = "kubejs/data/graveyard/worldgen/structure_set/crypt_structure.json"
-hash = "24a09179e511665ba3b0a266015ff60e65e2bf66dba863cc72a558a43dfecd5d"
+hash = "20ed5c8093b0b9981bf0356f191809e30f9bb82ccdd3b26516a94beb38385448"
 
 [[files]]
 file = "kubejs/data/graveyard/worldgen/structure_set/dead_tree_structure.json"
@@ -4990,6 +5014,10 @@ file = "kubejs/data/pneumaticcraft/worldgen/placed_feature/oil_lake_surface.json
 hash = "33272d89f5937e53bd985d9a572296ef79a22ecd83a349e78319dcb497fb2f2d"
 
 [[files]]
+file = "kubejs/data/ribbits/worldgen/structure_set/ribbit_village.json"
+hash = "21aad7b648b8d5a0c6745b81cb413848c3a43987eafdac5c53935427f3e45f87"
+
+[[files]]
 file = "kubejs/data/spanish_fort/worldgen/structure_set/spanishfort.json"
 hash = "324daee78416cf730294a77004b1c51d78b59eb1f633fb03773fc0b46f21db05"
 
@@ -5147,11 +5175,11 @@ hash = "5fbe18f4bf9bc7b63e1abd32622c080fa1f2cd86cb14e31afb9f3a302dc86a54"
 
 [[files]]
 file = "kubejs/data/villagesandpillages/worldgen/structure_set/village_witch.json"
-hash = "702624d2021e336b92337ca10d580cb3b85ab49725dc76e243ae8af5887cfdb6"
+hash = "945b24f462fd56196c77de7590a7f8a7388f8011ff839c0616d3e46d4bbb3239"
 
 [[files]]
 file = "kubejs/server_scripts/constants.js"
-hash = "a1474221ac380402eaafacb5e90b1f00b927737fc224c24c9f7e9fb888fd2a46"
+hash = "c0966928c78ce61f77bf02adc457d9f8acea6f2987e4a100f5ab0c69b287780a"
 
 [[files]]
 file = "kubejs/server_scripts/functions.js"
@@ -5159,11 +5187,11 @@ hash = "c1428ab0f3bfdfdb20343e639e4e5d757577ae55f40bfe63e28b5bfab5ef804d"
 
 [[files]]
 file = "kubejs/server_scripts/item_events.js"
-hash = "444711435104edb0bf5fa241898df6e5538d2d559fca83f8073d2e2e33ab611f"
+hash = "068ba67e3720f7069539716132ffe2d82bb3e7954ed13153a57670fa303a8c4f"
 
 [[files]]
 file = "kubejs/server_scripts/loot_tables/chests.js"
-hash = "1dd848f261673462aafdffe7655b91e4d11b3deac56ede2479434831fcf6331b"
+hash = "5e1ecb791e22400c9df69063cb7f859fa6f3b824c62fc1500ed9a7bdca7f57c7"
 
 [[files]]
 file = "kubejs/server_scripts/loot_tables/constants.js"
@@ -5171,7 +5199,7 @@ hash = "dfa144dbe79032e586045a83b049e4038db23581d2e46f0518de51728c460f7e"
 
 [[files]]
 file = "kubejs/server_scripts/player_events.js"
-hash = "f62827be4412fdadfc79a40c8733a3fa2e748bc09e7d28f4f2220bdd90503b29"
+hash = "dd638447f9959a450849f8f3496411dc67afe73d8ee89fe1b51e8c5cd2060cd0"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/pneumaticcraft.js"
@@ -5179,23 +5207,23 @@ hash = "e00437a6f2560572d5506bfdf291a1e429e01658b902dc74d7f61bb5b096e07c"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/replace.js"
-hash = "9393e94b41a06123afd4bd1765ef2b0c054eb54af2d009ac6d8a7139964a8588"
+hash = "dfb66fbc2deed12b003006b8c3fcc9c3b2d4d858f45ada71e195f9aae2c939c6"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/shaped.js"
-hash = "08ee1e3ace6a6f3f08f7c27f719d4b84d5a62d589579692ccf3730f709066448"
+hash = "8eac212a039a04be1aba8720e3b13dcb9e7f0a83b0485f4e19ea9ecc9fbc33fd"
 
 [[files]]
 file = "kubejs/server_scripts/tags/biome.js"
-hash = "6ae6071fc57190588051508756180723b627a7677694722aa13f03c383223051"
+hash = "5baf46fea7046ec158fb37afe0d644942e3b2f5af7801a814e927ec047f2e546"
 
 [[files]]
 file = "kubejs/server_scripts/tags/generated.js"
-hash = "95c2358ffaf297accc34a4d7c6367ef7c8b8c6f5424a653d23787671e8eeb08c"
+hash = "9bf11fb5bc1e2570502fe7b3e885286f7505c73b4968d1cf78e799aa33b3c569"
 
 [[files]]
 file = "kubejs/startup_scripts/item.js"
-hash = "c2240033650d4d58f3ceb247d58aa12ea8e08ef235b642dcbf8405d52e763f8c"
+hash = "b9307d8d670ccb0a8285cf9cc363239ecfb1af5fd7e1c919e9a952c84a1afcea"
 
 [[files]]
 file = "kubejs/startup_scripts/main.js"
@@ -5203,7 +5231,7 @@ hash = "eee687398a434f9ebc00d6d372542cc8561b55884a1a3607a945ce2e3ad75a59"
 
 [[files]]
 file = "kubejs/startup_scripts/spell.js"
-hash = "89375ea71077071a57f1c215d1f608e6d338ee636522a6131b230e4fbfa46d81"
+hash = "c54e28206376628825d797eabf1aecb23c7efa4ac280a2b17c0563eda50d46db"
 
 [[files]]
 file = "mods/Graveyard-neoforge-1.21.1-2.6.2.jar"

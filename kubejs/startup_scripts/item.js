@@ -31,17 +31,17 @@ StartupEvents.registry("item", event => {
 
   // Terminus, Blade of the Dimensional Master
   // event.create('bth:terminus', 'sword')
-    // .attackDamageBaseline(13.0)
-    // .speedBaseline(-2)
-    // .fireResistant(true)
-    // .rarity('EPIC')
-    // .texture('bth:item/terminus')
-    // .tier('netherite')
-    // .tooltip(Text.translate('tooltip.bth.terminus'))
-    // .translationKey('item.bth.terminus')
-    // .addSpell('bth:terminus_singularity', 1)
-    // .addSpell('bth:terminus_space_fold', 1)
-    // .unstackable();
+  // .attackDamageBaseline(13.0)
+  // .speedBaseline(-2)
+  // .fireResistant(true)
+  // .rarity('EPIC')
+  // .texture('bth:item/terminus')
+  // .tier('netherite')
+  // .tooltip(Text.translate('tooltip.bth.terminus'))
+  // .translationKey('item.bth.terminus')
+  // .addSpell('bth:terminus_singularity', 1)
+  // .addSpell('bth:terminus_space_fold', 1)
+  // .unstackable();
 
 });
 

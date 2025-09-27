@@ -1,232 +1,244 @@
 {
-    "placement": {
-        "salt": 15282642,
-        "spacing": 40,
-        "separation": 20,
-        "type": "valhelsia_structures:valhelsia_random_spread",
-        "exclusion_zones": [
-            {
-                "chunk_count": 10,
-                "other_set": "bth:rare"
-            },
-            {
-                "chunk_count": 10,
-                "other_set": "bth:towers"
-            },
-            {
-                "chunk_count": 10,
-                "other_set": "bth:outposts"
-            },
-            {
-                "chunk_count": 10,
-                "other_set": "bth:villages"
-            }
-        ]
-    },
-    "structures": [
-        {
-            "structure": "ae2:meteorite",
-            "weight": 20
-        },
-        {
-            "structure": "alshanex_familiars:hunter_campsite",
-            "weight": 10
-        },
-        {
-            "structure": "ars_nouveau:hunter_wilden_den",
-            "weight": 10
-        },
-        {
-            "structure": "ars_nouveau:guardian_wilden_den",
-            "weight": 10
-        },
-        {
-            "structure": "ars_nouveau:stalker_wilden_den",
-            "weight": 10
-        },
-        {
-            "structure": "biomeswevegone:aspen_manor_1",
-            "weight": 10
-        },
-        {
-            "structure": "biomeswevegone:aspen_manor_2",
-            "weight": 10
-        },
-        {
-            "structure": "biomeswevegone:bog_trial",
-            "weight": 10
-        },
-        {
-            "structure": "biomeswevegone:prairie_house",
-            "weight": 10
-        },
-        {
-            "structure": "bth_structures:battle_grounds",
-            "weight": 10
-        },
-        {
-            "structure": "bth_structures:dw20",
-            "weight": 10
-        },
-        {
-            "structure": "bth_structures:wagon",
-            "weight": 10
-        },
-        {
-            "structure": "graveyard:dead_tree",
-            "weight": 10
-        },
-        {
-            "structure": "graveyard:haunted_house",
-            "weight": 10
-        },
-        {
-            "structure": "graveyard:large_graveyard",
-            "weight": 10
-        },
-        {
-            "structure": "graveyard:medium_graveyard",
-            "weight": 10
-        },
-        {
-            "structure": "graveyard:memorial_tree",
-            "weight": 10
-        },
-        {
-            "structure": "graveyard:mushroom_grave",
-            "weight": 10
-        },
-        {
-            "structure": "graveyard:ruins",
-            "weight": 10
-        },
-        {
-            "structure": "hauntedharvest:abandoned_farm",
-            "weight": 10
-        },
-        {
-            "structure": "hexerei:baba_yaga_hut",
-            "weight": 10
-        },
-        {
-            "structure": "hexerei:owl_post_office",
-            "weight": 10
-        },
-        {
-            "structure": "hexerei:witch_hut",
-            "weight": 10
-        },
-        {
-            "structure": "irons_spellbooks:evoker_fort",
-            "weight": 10
-        },
-        {
-            "structure": "irons_spellbooks:ice_spider_den",
-            "weight": 10
-        },
-        {
-            "structure": "irons_spellbooks:impaled_icebreaker",
-            "weight": 10
-        },
-        {
-            "structure": "irons_spellbooks:mangrove_hut",
-            "weight": 10
-        },
-        {
-            "structure": "irons_spellbooks:mountain_tower",
-            "weight": 10
-        },
-        {
-            "structure": "irons_spellbooks:pyromancer_tower",
-            "weight": 10
-        },
-        {
-            "structure": "minecolonies:amazon_camp",
-            "weight": 10
-        },
-        {
-            "structure": "minecolonies:barbarian_camp",
-            "weight": 10
-        },
-        {
-            "structure": "minecolonies:desert_camp",
-            "weight": 10
-        },
-        {
-            "structure": "minecraft:jungle_pyramid",
-            "weight": 10
-        },
-        {
-            "structure": "minecraft:swamp_hut",
-            "weight": 10
-        },
-        {
-            "structure": "minecraft:trail_ruins",
-            "weight": 10
-        },
-        {
-            "structure": "spanish_fort:spanishfort",
-            "weight": 10
-        },
-        {
-            "structure": "terralith:mage_tower",
-            "weight": 10
-        },
-        {
-            "structure": "terralith:mage_complex",
-            "weight": 10
-        },
-        {
-            "structure": "terralith:witch_hut",
-            "weight": 10
-        },
-        {
-            "structure": "terralith:desert_outpost",
-            "weight": 10
-        },
-        {
-            "structure": "terralith:valley_lodge",
-            "weight": 10
-        },
-        {
-            "structure": "terralith:glacial_hut",
-            "weight": 10
-        },
-        {
-            "structure": "towns_and_towers:mimic_desert",
-            "weight": 10
-        },
-        {
-            "structure": "valhelsia_structures:big_tree",
-            "weight": 10
-        },
-        {
-            "structure": "valhelsia_structures:castle_ruin",
-            "weight": 10
-        },
-        {
-            "structure": "valhelsia_structures:castle",
-            "weight": 10
-        },
-        {
-            "structure": "valhelsia_structures:desert_house",
-            "weight": 10
-        },
-        {
-            "structure": "valhelsia_structures:forge",
-            "weight": 10
-        },
-        {
-            "structure": "valhelsia_structures:player_house",
-            "weight": 10
-        },
-        {
-            "structure": "valhelsia_structures:tower_ruin",
-            "weight": 10
-        },
-        {
-            "structure": "valhelsia_structures:witch_hut",
-            "weight": 10
-        }
+  "placement": {
+    "salt": 15282642,
+    "spacing": 40,
+    "separation": 20,
+    "type": "valhelsia_structures:valhelsia_random_spread",
+    "exclusion_zones": [
+      {
+        "chunk_count": 10,
+        "other_set": "bth:rare"
+      },
+      {
+        "chunk_count": 10,
+        "other_set": "bth:towers"
+      },
+      {
+        "chunk_count": 10,
+        "other_set": "bth:outposts"
+      },
+      {
+        "chunk_count": 10,
+        "other_set": "bth:villages"
+      }
     ]
+  },
+  "structures": [
+    {
+      "structure": "ae2:meteorite",
+      "weight": 20
+    },
+    {
+      "structure": "alshanex_familiars:hunter_campsite",
+      "weight": 10
+    },
+    {
+      "structure": "ars_nouveau:hunter_wilden_den",
+      "weight": 10
+    },
+    {
+      "structure": "ars_nouveau:guardian_wilden_den",
+      "weight": 10
+    },
+    {
+      "structure": "ars_nouveau:stalker_wilden_den",
+      "weight": 10
+    },
+    {
+      "structure": "autumnity:maple_hut",
+      "weight": 10
+    },
+    {
+      "structure": "biomeswevegone:aspen_manor_1",
+      "weight": 10
+    },
+    {
+      "structure": "biomeswevegone:aspen_manor_2",
+      "weight": 10
+    },
+    {
+      "structure": "biomeswevegone:bog_trial",
+      "weight": 10
+    },
+    {
+      "structure": "biomeswevegone:prairie_house",
+      "weight": 10
+    },
+    {
+      "structure": "bth_structures:battle_grounds",
+      "weight": 10
+    },
+    {
+      "structure": "bth_structures:dw20",
+      "weight": 10
+    },
+    {
+      "structure": "bth_structures:wagon",
+      "weight": 10
+    },
+    {
+      "structure": "eidolon_repraised:stray_tower",
+      "weight": 10
+    },
+    {
+      "structure": "eidolon_repraised:lab",
+      "weight": 5
+    },
+    {
+      "structure": "graveyard:dead_tree",
+      "weight": 10
+    },
+    {
+      "structure": "graveyard:haunted_house",
+      "weight": 10
+    },
+    {
+      "structure": "graveyard:large_graveyard",
+      "weight": 10
+    },
+    {
+      "structure": "graveyard:medium_graveyard",
+      "weight": 10
+    },
+    {
+      "structure": "graveyard:memorial_tree",
+      "weight": 10
+    },
+    {
+      "structure": "graveyard:mushroom_grave",
+      "weight": 10
+    },
+    {
+      "structure": "graveyard:ruins",
+      "weight": 10
+    },
+    {
+      "structure": "hauntedharvest:abandoned_farm",
+      "weight": 10
+    },
+    {
+      "structure": "hexerei:baba_yaga_hut",
+      "weight": 10
+    },
+    {
+      "structure": "hexerei:owl_post_office",
+      "weight": 10
+    },
+    {
+      "structure": "hexerei:witch_hut",
+      "weight": 10
+    },
+    {
+      "structure": "irons_spellbooks:evoker_fort",
+      "weight": 10
+    },
+    {
+      "structure": "irons_spellbooks:ice_spider_den",
+      "weight": 10
+    },
+    {
+      "structure": "irons_spellbooks:impaled_icebreaker",
+      "weight": 10
+    },
+    {
+      "structure": "irons_spellbooks:mangrove_hut",
+      "weight": 10
+    },
+    {
+      "structure": "irons_spellbooks:mountain_tower",
+      "weight": 10
+    },
+    {
+      "structure": "irons_spellbooks:pyromancer_tower",
+      "weight": 10
+    },
+    {
+      "structure": "minecolonies:amazon_camp",
+      "weight": 10
+    },
+    {
+      "structure": "minecolonies:barbarian_camp",
+      "weight": 10
+    },
+    {
+      "structure": "minecolonies:desert_camp",
+      "weight": 10
+    },
+    {
+      "structure": "minecraft:jungle_pyramid",
+      "weight": 10
+    },
+    {
+      "structure": "minecraft:swamp_hut",
+      "weight": 10
+    },
+    {
+      "structure": "minecraft:trail_ruins",
+      "weight": 10
+    },
+    {
+      "structure": "spanish_fort:spanishfort",
+      "weight": 10
+    },
+    {
+      "structure": "terralith:mage_tower",
+      "weight": 10
+    },
+    {
+      "structure": "terralith:mage_complex",
+      "weight": 10
+    },
+    {
+      "structure": "terralith:witch_hut",
+      "weight": 10
+    },
+    {
+      "structure": "terralith:desert_outpost",
+      "weight": 10
+    },
+    {
+      "structure": "terralith:valley_lodge",
+      "weight": 10
+    },
+    {
+      "structure": "terralith:glacial_hut",
+      "weight": 10
+    },
+    {
+      "structure": "towns_and_towers:mimic_desert",
+      "weight": 10
+    },
+    {
+      "structure": "valhelsia_structures:big_tree",
+      "weight": 10
+    },
+    {
+      "structure": "valhelsia_structures:castle_ruin",
+      "weight": 10
+    },
+    {
+      "structure": "valhelsia_structures:castle",
+      "weight": 10
+    },
+    {
+      "structure": "valhelsia_structures:desert_house",
+      "weight": 10
+    },
+    {
+      "structure": "valhelsia_structures:forge",
+      "weight": 10
+    },
+    {
+      "structure": "valhelsia_structures:player_house",
+      "weight": 10
+    },
+    {
+      "structure": "valhelsia_structures:tower_ruin",
+      "weight": 10
+    },
+    {
+      "structure": "valhelsia_structures:witch_hut",
+      "weight": 10
+    }
+  ]
 }

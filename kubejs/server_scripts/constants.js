@@ -17,7 +17,7 @@ const ECCENTRIC_TOME = 'eccentrictome:tome[eccentrictome:mod_list={ \
 
 /**
  * Minecraft's default colors, as used in vanilla item IDs and by most mods.
- * Note: Some mods use abnormal names for colors, such as Absent By Design (which uses 'silver' in some places 
+ * Note: Some mods use abnormal names for colors, such as Absent By Design (which uses 'silver' in some places
  * instead of 'light_gray'), so this shouldn't be used blindly without verifying that the mod uses standard
  * color names.
  */

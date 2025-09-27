@@ -1,48 +1,48 @@
 {
-    "placement": {
-        "salt": 52749273,
-        "spacing": 80,
-        "separation": 40,
-        "type": "valhelsia_structures:valhelsia_random_spread",
-        "exclusion_zones": [
-            {
-                "chunk_count": 10,
-                "other_set": "bth:towers"
-            },
-            {
-                "chunk_count": 10,
-                "other_set": "bth:outposts"
-            },
-            {
-                "chunk_count": 10,
-                "other_set": "bth:villages"
-            }
-        ]
-    },
-    "structures": [
-        {
-            "structure": "illager_fortress:illager_fortress",
-            "weight": 10
-        },
-        {
-            "structure": "illager_manor:illager_manor",
-            "weight": 10
-        },
-        {
-            "structure": "minecraft:desert_pyramid",
-            "weight": 10
-        },
-        {
-            "structure": "minecraft:mansion",
-            "weight": 10
-        },
-        {
-            "structure": "nebulus_giant_jungle_tree:giantjungletree",
-            "weight": 10
-        },
-        {
-            "structure": "terralith:spire",
-            "weight": 10
-        }
+  "placement": {
+    "salt": 52749273,
+    "spacing": 80,
+    "separation": 40,
+    "type": "valhelsia_structures:valhelsia_random_spread",
+    "exclusion_zones": [
+      {
+        "chunk_count": 10,
+        "other_set": "bth:towers"
+      },
+      {
+        "chunk_count": 10,
+        "other_set": "bth:outposts"
+      },
+      {
+        "chunk_count": 10,
+        "other_set": "bth:villages"
+      }
     ]
+  },
+  "structures": [
+    {
+      "structure": "illager_fortress:illager_fortress",
+      "weight": 10
+    },
+    {
+      "structure": "illager_manor:illager_manor",
+      "weight": 10
+    },
+    {
+      "structure": "minecraft:desert_pyramid",
+      "weight": 10
+    },
+    {
+      "structure": "minecraft:mansion",
+      "weight": 10
+    },
+    {
+      "structure": "nebulus_giant_jungle_tree:giantjungletree",
+      "weight": 10
+    },
+    {
+      "structure": "terralith:spire",
+      "weight": 10
+    }
+  ]
 }

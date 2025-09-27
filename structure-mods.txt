@@ -1,24 +1,211 @@
-ae2
-alshanex_familiars
-ars_nouveau
-biomeswevegone
-ctov
-eidolon-repraised
-enderscape
-graveyard
-hauntedharvest
-hexerei
-illager_fortress
-illager_manor
-incendium
-irons_spellbooks
-minecolonies
-minecraft
-nebulus_giant_jungle_tree
-phantasm
-spanish_fort
-terralith
-towns_and_towers
-underwater_village
-valhelsia_structures
-villagesandpillages
+=== mods/aether-1.21.1-1.5.9-neoforge.jar ===
+large_aercloud.json
+silver_and_gold_dungeons.json
+bronze_dungeon.json
+ruined_portals.json
+
+=== mods/AetherVillages-1.21.1-1.0.8-neoforge.jar ===
+aether_villages_structures.json
+
+=== mods/alshanex_familiars-1.21.1_v3.0.jar ===
+end_laboratory.json
+graveyard.json
+hunter_campsite.json
+origin_island.json
+
+=== mods/appliedenergistics2-19.2.17.jar ===
+meteorite.json
+
+=== mods/ars_elemental-1.21.1-0.7.6.0-pre2.jar ===
+starbuncle_shrine.json
+
+=== mods/ars_nouveau-1.21.1-5.10.4.jar ===
+wilden_den_set.json
+
+=== mods/autumnity-1.21.1-6.0.0.jar ===
+maple_huts.json
+
+=== mods/deep_aether-1.21.1-1.1.4.jar ===
+altar_camp.json
+brass_dungeon.json
+campfire.json
+combiner_corridor.json
+
+=== mods/eidolon_repraised-1.21.1-0.5.0.0-pre.jar ===
+catacomb.json
+lab.json
+stray_tower.json
+
+=== mods/enderscape-neoforge-1.0.9+mc1.21.1.jar ===
+gateways.json
+ruins.json
+end_cities.json
+
+=== mods/Graveyard-neoforge-1.21.1-2.6.2.jar ===
+altar_structure.json
+crypt_structure.json
+dead_tree_structure.json
+giant_mushroom_structure.json
+haunted_house_structure.json
+large_graveyard_structure.json
+lich_prison_structure.json
+medium_graveyard_structure.json
+memorial_tree_structure.json
+mushroom_grave_structure.json
+ruins_structure.json
+small_desert_graveyard_structure.json
+small_desert_grave_structure.json
+small_graveyard_structure.json
+small_grave_structure.json
+small_mountain_grave_structure.json
+small_savanna_grave_structure.json
+
+=== mods/hauntedharvest-1.21-3.3.6-neoforge.jar ===
+abandoned_farm.json
+
+=== mods/hexerei-0.5.0.3.jar ===
+baba_yaga_hut.json
+dark_coven.json
+nature_coven.json
+owl_post_office.json
+witch_hut.json
+
+=== mods/illager_fortress-1.0.4-neoforge-1.21.1.jar ===
+illager_fortress.json
+
+=== mods/illager_manor-1.0.0-neoforge-1.21.1.jar ===
+illager_manor.json
+
+=== mods/Incendium_1.21.x_v5.4.4.jar ===
+lesser_structures.json
+greater_structures.json
+nether_complexes.json
+
+=== mods/irons_spellbooks-1.21.1-3.14.4.jar ===
+ancient_battleground.json
+catacombs.json
+citadel.json
+evoker_fort.json
+ice_spider_den.json
+impaled_icebreaker.json
+mangrove_hut.json
+mountain_tower.json
+pyromancer_tower.json
+
+=== mods/lukis-grand-capitals-1.1.2.jar ===
+villages.json
+
+=== mods/malum-1.21.1-1.7.3.1.jar ===
+weeping_well.json
+
+=== mods/minecolonies-1.1.1135-1.21.1-snapshot.jar ===
+amazon_camp.json
+ship.json
+empty_colony.json
+desert_camp.json
+barbarian_camp.json
+
+=== mods/nebulus_giant_jungle_tree-2.1-neoforge-1.21.1.jar ===
+giantjungletree.json
+
+=== mods/Oh-The-Biomes-Weve-Gone-NeoForge-2.4.7.jar ===
+aspen_manors.json
+bog_trial.json
+dripstone_arches.json
+ironwood_gour_plateau.json
+large_cold_lake.json
+lush_arch.json
+prairie_houses.json
+red_rock_arches.json
+rugged_fossils.json
+sharpened_rocks.json
+villages.json
+
+=== mods/phantasm-1.0.3.jar ===
+obsidian_tower.json
+
+=== mods/Ribbits-1.21.1-NeoForge-4.1.4.jar ===
+village_avoid.json
+ribbit_village.json
+
+=== mods/spanish_fort-1.0.0-neoforge-1.21.1.jar ===
+spanishfort.json
+
+=== mods/supplementaries-1.21-3.4.16-neoforge.jar ===
+way_signs.json
+
+=== mods/t_and_t-neoforge-fabric-1.13.2.jar ===
+other.json
+towers.json
+towns.json
+
+=== mods/Terralith_1.21.x_v2.5.8.jar ===
+rare_village.json
+rare_dungeon.json
+regular.json
+rubble.json
+underground.json
+underground_dungeon.json
+mage.json
+
+=== mods/underwater_village-1.0.2-neoforge-1.21.1.jar ===
+cold_big_gate.json
+cold_broken_house.json
+cold_fountain.json
+cold_gate.json
+dungeon.json
+library.json
+ruins.json
+shrine.json
+small_gate.json
+temple.json
+temple_broken.json
+temple_ruins.json
+tower.json
+warm_big_gate.json
+warm_broken_house.json
+warm_fountain.json
+warm_gate.json
+
+=== mods/valhelsia_structures-neoforge-1.21.1-1.1.2.jar ===
+big_trees.json
+castles.json
+castle_ruins.json
+deep_spawner_rooms.json
+desert_houses.json
+forges.json
+player_houses.json
+spawner_dungeons.json
+spawner_rooms.json
+tower_ruins.json
+witch_huts.json
+
+=== mods/villagesandpillages-neoforge-mc1.21.1-1.0.3.jar ===
+village_witch.json
+
+=== mods/YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar ===
+desert_temples.json
+
+=== mods/YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar ===
+skeleton_dungeons.json
+small_dungeons.json
+small_nether_dungeons.json
+spider_dungeons.json
+zombie_dungeons.json
+
+=== mods/YungsBetterJungleTemples-1.21.1-NeoForge-3.1.2.jar ===
+jungle_temple_avoid.json
+jungle_temples.json
+
+=== mods/YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar ===
+mineshafts.json
+
+=== mods/YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar ===
+fortress_avoid.json
+fortress.json
+
+=== mods/YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.2.jar ===
+ocean_monument.json
+
+=== mods/YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar ===
+stronghold.json

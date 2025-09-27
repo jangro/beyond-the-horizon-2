@@ -3,7 +3,7 @@
 # Script that generates structure tags based on BTH structure sets
 # Usage: ./gen_structure_tags.sh
 
-OUTPUT="kubejs/server_scripts/src/tags/generated.js"
+OUTPUT="kubejs/server_scripts/tags/generated.js"
 
 # Build set list
 SETS=$(find kubejs/data/bth/worldgen/structure_set/ -type f -name "*.json" | sort | sed 's|kubejs/data/bth/worldgen/structure_set/||; s|\.json||')

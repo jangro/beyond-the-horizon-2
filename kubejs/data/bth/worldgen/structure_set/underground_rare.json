@@ -8,6 +8,14 @@
   },
   "structures": [
     {
+      "structure": "eidolon_repraised:catacomb",
+      "weight": 10
+    },
+    {
+      "structure": "graveyard:crypt",
+      "weight": 10
+    },
+    {
       "structure": "irons_spellbooks:catacombs",
       "weight": 10
     }

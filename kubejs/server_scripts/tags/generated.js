@@ -11,27 +11,31 @@
  */
 ServerEvents.tags('worldgen/structure', event => {
 
+  event.add('bth:aether_common', [
+    "aether:bronze_dungeon",
+    "aether:silver_dungeon",
+    "aether:gold_dungeon",
+    "bth_structures:aether_portal_floating_aether",
+  ]);
+
+  event.add('bth:aether_rare', [
+    "aether_villages:olympic_citadel",
+    "deep_aether:brass_dungeon",
+  ]);
+
   event.add('bth:common', [
     "ae2:meteorite",
     "alshanex_familiars:hunter_campsite",
     "ars_nouveau:hunter_wilden_den",
     "ars_nouveau:guardian_wilden_den",
     "ars_nouveau:stalker_wilden_den",
+    "autumnity:maple_hut",
     "biomeswevegone:aspen_manor_1",
     "biomeswevegone:aspen_manor_2",
     "biomeswevegone:bog_trial",
     "biomeswevegone:prairie_house",
-    "bth_structures:aether_portal_floating",
-    "bth_structures:aether_portal_framed",
     "bth_structures:battle_grounds",
     "bth_structures:dw20",
-    "bth_structures:elven_gateway",
-    "bth_structures:magician_house",
-    "bth_structures:ruined_hangar",
-    "bth_structures:tinkerer_house",
-    "bth_structures:tower_forest",
-    "bth_structures:tower_frozen",
-    "bth_structures:tower_scarlet",
     "bth_structures:wagon",
     "graveyard:dead_tree",
     "graveyard:haunted_house",
@@ -53,17 +57,7 @@ ServerEvents.tags('worldgen/structure', event => {
     "minecolonies:amazon_camp",
     "minecolonies:barbarian_camp",
     "minecolonies:desert_camp",
-    "minecraft:igloo",
     "minecraft:jungle_pyramid",
-    "minecraft:ruined_portal",
-    "minecraft:ruined_portal_desert",
-    "minecraft:ruined_portal_jungle",
-    "minecraft:ruined_portal_swamp",
-    "minecraft:ruined_portal_mountain",
-    "minecraft:ruined_portal_ocean",
-    "minecraft:ruined_portal_nether",
-    "minecraft:shipwreck",
-    "minecraft:shipwreck_beached",
     "minecraft:swamp_hut",
     "minecraft:trail_ruins",
     "spanish_fort:spanishfort",
@@ -73,7 +67,6 @@ ServerEvents.tags('worldgen/structure', event => {
     "terralith:desert_outpost",
     "terralith:valley_lodge",
     "terralith:glacial_hut",
-    "terralith:igloo",
     "towns_and_towers:mimic_desert",
     "valhelsia_structures:big_tree",
     "valhelsia_structures:castle_ruin",
@@ -106,7 +99,7 @@ ServerEvents.tags('worldgen/structure', event => {
     "incendium:infernal_altar",
     "incendium:ruined_lab",
     "irons_spellbooks:ancient_battleground",
-    "minecraft:fortress",
+    "betterfortresses:fortress",
     "minecraft:bastion_remnant",
   ]);
 
@@ -177,12 +170,25 @@ ServerEvents.tags('worldgen/structure', event => {
   ]);
 
   event.add('bth:small', [
+    "bth_structures:aether_portal_floating",
+    "bth_structures:aether_portal_framed",
     "graveyard:small_desert_grave",
     "graveyard:small_desert_graveyard",
     "graveyard:small_grave",
     "graveyard:small_graveyard",
     "graveyard:small_mountain_grave",
     "graveyard:small_savanna_grave",
+    "minecraft:igloo",
+    "minecraft:ruined_portal",
+    "minecraft:ruined_portal_desert",
+    "minecraft:ruined_portal_jungle",
+    "minecraft:ruined_portal_swamp",
+    "minecraft:ruined_portal_mountain",
+    "minecraft:ruined_portal_ocean",
+    "minecraft:ruined_portal_nether",
+    "minecraft:shipwreck",
+    "minecraft:shipwreck_beached",
+    "terralith:igloo",
   ]);
 
   event.add('bth:submerged', [
@@ -225,6 +231,7 @@ ServerEvents.tags('worldgen/structure', event => {
   ]);
 
   event.add('bth:underground_rare', [
+    "graveyard:crypt",
     "irons_spellbooks:catacombs",
   ]);
 
@@ -279,6 +286,7 @@ ServerEvents.tags('worldgen/structure', event => {
     "ctov:small/village_taiga_fortified",
     "hexerei:dark_coven",
     "hexerei:nature_coven",
+    "ribbits:ribbit_village",
     "terralith:fortified_village",
     "terralith:fortified_desert_village",
     "villagesandpillages:village_witch",

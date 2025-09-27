@@ -20,7 +20,7 @@ ServerEvents.tags('worldgen/biome', event => {
   event.get('bth:is_forest_tower_biome').remove('minecraft:meadow');
 
   // Fill Snowy Mountain Biome tag and remove snowy biomes from forest tower tag.
-  const snowy_biomes = event.get('forge:is_snowy').getObjectIds();
+  const snowy_biomes = event.get('c:is_snowy').getObjectIds();
   const forest_and_snowy_tower_biomes = event.get('bth:is_forest_tower_biome').getObjectIds();
   snowy_biomes.forEach(snowyBiomeID => {
     forest_and_snowy_tower_biomes.forEach(mountainBiomeID => {
@@ -57,8 +57,11 @@ ServerEvents.tags('worldgen/biome', event => {
 
   // Remove these structures from all biomes to be re-added below
   [
+    'aether_villages:has_structure/olympic_citadel_biomes',
+
     "alshanex_familiars:has_structure/hunter_campsite",
 
+    // Towers are not converted to BTH 2 yet
     // 'bth_structures:has_structure/tower_forest',
     // 'bth_structures:has_structure/tower_frozen',
     // 'bth_structures:has_structure/tower_scarlet',
@@ -69,8 +72,9 @@ ServerEvents.tags('worldgen/biome', event => {
     'bth_structures:has_structure/dw20',
     'bth_structures:has_structure/wagon',
 
-    'aether_villages:has_structure/olympic_citadel_biomes',
     'deep_aether:has_brass_dungeon',
+
+    'eidolon:has_structure/stray_tower_biomes',
 
     "graveyard:dead_tree",
     "graveyard:haunted_house",
@@ -79,13 +83,13 @@ ServerEvents.tags('worldgen/biome', event => {
     "graveyard:memorial_tree",
     "graveyard:mushroom_grave",
     "graveyard:ruins",
+
     'hauntedharvest:has_abandoned_farm',
 
     'irons_spellbooks:has_structure/evoker_fort',
     'irons_spellbooks:has_structure/mountain_tower',
     'irons_spellbooks:has_structure/pyromancer_tower',
 
-    // adjust biomes for barbarian camps
     'minecolonies:has_structure/barbarian_camp',
 
     'ribbits:has_structure/ribbit_village',
@@ -124,13 +128,12 @@ ServerEvents.tags('worldgen/biome', event => {
 
   // BTH: Meadow
   [
-    'bth_structures:ruined_hangar',
+    'bth_structures:has_structure/ruined_hangar',
     'valhelsia_structures:has_structure/spawner_dungeon',
   ].forEach((tag) => event.add(tag, ['minecraft:meadow']));
 
   // BTH: Plains
   [
-    'bth_structures:dw20',
   ].forEach((tag) => event.add(tag, ['minecraft:plains']));
 
   // BTH: Savanna type biomes
@@ -143,7 +146,7 @@ ServerEvents.tags('worldgen/biome', event => {
 
   // BTH: Spooky
   [
-    'bth_structures:magician_house',
+    'bth_structures:has_structure/magician_house',
     'graveyard:has_structure/mushroom_grave',
     'graveyard:has_structure/dead_tree',
     'graveyard:has_structure/haunted_house',
@@ -161,6 +164,7 @@ ServerEvents.tags('worldgen/biome', event => {
   event.add('bth_structures:has_structure/aether_portal_framed', ['terralith:lavender_forest', 'terralith:lavender_valley', 'terralith:moonlight_grove', 'terralith:moonlight_valley']);
   event.add('bth_structures:has_structure/battle_grounds', ['minecraft:plains', 'minecraft:old_growth_birch_forest', 'minecraft:savanna']);
   event.add('bth_structures:has_structure/dw20', ['minecraft:plains', 'minecraft:jungle']);
+  // Towers are not converted to BTH 2 yet
   // event.add('bth_structures:has_structure/tower_forest', '#bth:is_forest_tower_biome');
   // event.add('bth_structures:has_structure/tower_frozen', '#bth:is_frozen_tower_biome');
   // event.add('bth_structures:has_structure/tower_scarlet', '#bth:is_scarlet_tower_biome');
@@ -172,7 +176,7 @@ ServerEvents.tags('worldgen/biome', event => {
   event.add('deep_aether:has_brass_dungeon', ['#aether:is_aether']);
 
   // Eidolon - Stray Towers spawn only in snowy mountains.
-  // event.add('eidolon:has_structure/stray_tower_biomes', '#bth:is_frozen_tower_biome');
+  event.add('eidolon:has_structure/stray_tower_biomes', '#bth:is_frozen_tower_biome');
 
   // Graveyard
   event.add('graveyard:has_structure/ruins', ['terralith:shrubland']);
@@ -184,10 +188,10 @@ ServerEvents.tags('worldgen/biome', event => {
   event.add('irons_spellbooks:has_structure/pyromancer_tower', ['terralith:volcanic_peaks', 'terralith:scarlet_mountains', 'terralith:yellowstone']);
 
   // Haunted Harvest
-  event.add('hauntedharvest:has_abandoned_farm', ['minecraft:forest']);
+  event.add('hauntedharvest:has_abandoned_farm', ['autumnity:maple_forest', 'autumnity:pumpkin_fields']);
 
   // Ribbit village
-  event.add('ribbits:has_structure/ribbit_village', ['minecraft:swamp']);
+  event.add('ribbits:has_structure/ribbit_village', ['#c:is_swamp']);
 
   // Terralith
   event.add('terralith:has_structure/mage_complex', ['terralith:moonlight_grove', 'terralith:moonlight_valley']);
@@ -198,11 +202,11 @@ ServerEvents.tags('worldgen/biome', event => {
 
   // MineColonies barbarian camp (snowy biomes removed)
   event.add('minecolonies:has_structure/barbarian_camp', [
-    'minecraft:plains',
-    '#forge:is_plains',
+    '#c:is_plains',
+    '#c:is_forest',
     'minecraft:sunflower_plains',
+    'minecraft:plains',
     'minecraft:forest',
-    '#minecraft:is_forest',
     'minecraft:flower_forest',
     'minecraft:birch_forest',
     'minecraft:old_growth_birch_forest',

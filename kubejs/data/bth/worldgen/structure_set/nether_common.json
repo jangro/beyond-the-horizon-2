@@ -17,6 +17,14 @@
       "weight": 10
     },
     {
+      "structure": "betterdungeons:small_nether_dungeon",
+      "weight": 10
+    },
+    {
+      "structure": "betterfortresses:fortress",
+      "weight": 10
+    },
+    {
       "structure": "incendium:quartz_kitchen",
       "weight": 10
     },
@@ -42,10 +50,6 @@
     },
     {
       "structure": "irons_spellbooks:ancient_battleground",
-      "weight": 10
-    },
-    {
-      "structure": "betterfortresses:fortress",
       "weight": 10
     },
     {

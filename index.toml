@@ -390,12 +390,36 @@ file = "kubejs/data/betterdeserttemples/worldgen/structure_set/desert_temples.js
 hash = "524f3515c5e8e44184eee6e2418d281eefb1e25699e93d8fd24c8f36c11a0685"
 
 [[files]]
+file = "kubejs/data/betterdungeons/worldgen/structure_set/skeleton_dungeons.json"
+hash = "118ba846557ecb562287ca313d05d0fa1678e12be0db604b5f128ec372f194ec"
+
+[[files]]
+file = "kubejs/data/betterdungeons/worldgen/structure_set/small_dungeons.json"
+hash = "fa8d078c1c8d4aba30619d0e5be652f9a1cc391096afb00f2300f90216284804"
+
+[[files]]
+file = "kubejs/data/betterdungeons/worldgen/structure_set/small_nether_dungeons.json"
+hash = "19f9c2e8693b0e3d6e391f61ac4b4a928beabf8198e0592ad02cf44d5315ee8c"
+
+[[files]]
+file = "kubejs/data/betterdungeons/worldgen/structure_set/spider_dungeons.json"
+hash = "38727dfde70cc82972826eed17990941bbb5bc712a2e34cdefaa0b875de56aae"
+
+[[files]]
+file = "kubejs/data/betterdungeons/worldgen/structure_set/zombie_dungeons.json"
+hash = "922fa4f14f03edcd5c2cfb79ec447d96acaab02157b80d38b52f7781aab40956"
+
+[[files]]
 file = "kubejs/data/betterfortresses/worldgen/structure_set/fortress.json"
-hash = "16307fc1301e1d2ea5c1cc77c3948fb6c5f60b22f606b19d7ec383f8043a7b6b"
+hash = "9821e5f667017f48c9bc884434123131d6ac1961b3f6c969cb909d0011ef057e"
 
 [[files]]
 file = "kubejs/data/betterjungletemples/worldgen/structure_set/jungle_temples.json"
 hash = "c458f96abf960d7364171e8008425339258a59dc99ee181bcc60de562d0a1518"
+
+[[files]]
+file = "kubejs/data/betteroceanmonuments/worldgen/structure_set/ocean_monument.json"
+hash = "f0e0c66d95970fc1af240e435009074c1503b884abe265d54f46ed941b0df5da"
 
 [[files]]
 file = "kubejs/data/biomeswevegone/worldgen/structure_set/aspen_manors.json"
@@ -455,7 +479,7 @@ hash = "3a264cf486b69c83017a4a4808823d63bfbf3010a15b0732236dc629f8c05690"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/common.json"
-hash = "0f238e56ddfee1be4d348827b3e8b0200f2d085321d9a1b57551b04c42799f09"
+hash = "a71f1bd5825cf775fbe06fd4fecdc555f153d7d42030829d8a5ff4377e1fd19a"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/end_common.json"
@@ -467,7 +491,7 @@ hash = "cfafa8c3f58457a2743b9a4815ca9a21fd0c2f9bc93d3b23e7586ca5c392a0ac"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/nether_common.json"
-hash = "b65a7f405bffb998e6a97568d7bcd46bcc9a660a92c5bbc4c2d4ce1fb44ce11a"
+hash = "6900a12605e6bb336b1328e26a761782713f8375b5468402939ba156410f82f1"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/nether_rare.json"
@@ -499,11 +523,11 @@ hash = "d1fc85043a261ba31cbc579d3f54f78ada6e10dd3220be46559adca061955073"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/towers.json"
-hash = "60e3f5a5e0cea284f843d2f5a78c85143a80e411f864508c801129c520d83ea4"
+hash = "9bead72d9e310ebf86d1a4c44f98ebf79d0b4843455896a85275395ee39b0b0c"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/underground_common.json"
-hash = "ef1263991b853ad25f07ef2a50b65897c62c984ad033eeabaee192edc379cb1d"
+hash = "03160c6e33ab63a5e8b3b5e4f5a1ea88d93b12c3724df662280284f6fc6085a3"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/underground_rare.json"
@@ -518,48 +542,28 @@ file = "kubejs/data/bth_structures/loot_table/archeology/dw20.json"
 hash = "38e4e0088d761fbc1b99060d63b920c0db040c82a4990439ae30f55364a84570"
 
 [[files]]
-file = "kubejs/data/bth_structures/loot_table/archeology/tower.json"
-hash = "d8991b3d16de2603d25280d4081ffd1cd2192646c384834b3d722c3975cca9fa"
-
-[[files]]
-file = "kubejs/data/bth_structures/structures/aether_portal_floating.nbt"
+file = "kubejs/data/bth_structures/structure/aether_portal_floating.nbt"
 hash = "315140406c1b29db5822a94f9230b003e4753d5c1c6e8e7d2c22a4f2f1a2e6be"
 
 [[files]]
-file = "kubejs/data/bth_structures/structures/aether_portal_framed.nbt"
+file = "kubejs/data/bth_structures/structure/aether_portal_framed.nbt"
 hash = "421dec4e8e0e6f61066a91af963d8c160521695d20a12a464cda5a2b421e2881"
 
 [[files]]
-file = "kubejs/data/bth_structures/structures/battle_grounds.nbt"
+file = "kubejs/data/bth_structures/structure/battle_grounds.nbt"
 hash = "a31b863e39e838e8dc0e7bc4c049baee5074e7af604aa4e908b99732ab6a0bde"
 
 [[files]]
-file = "kubejs/data/bth_structures/structures/dw20.nbt"
+file = "kubejs/data/bth_structures/structure/dw20.nbt"
 hash = "3e9bd548d7db586ca5b4c2f7956f03241f763ff0eb011cc5107d6b2f704aa5cf"
 
 [[files]]
-file = "kubejs/data/bth_structures/structures/tower_forest.nbt"
-hash = "57a93daa1174d8f3514c5e83e0d21465fa6455fe24979a3997629fc46ad1ab88"
-
-[[files]]
-file = "kubejs/data/bth_structures/structures/tower_frozen.nbt"
-hash = "17c45e93556232832ad840d564377df779d2c871161535492a6a2a88d8cd3a8f"
-
-[[files]]
-file = "kubejs/data/bth_structures/structures/tower_scarlet.nbt"
-hash = "14ff68f45ac664a371d48f0556d6e8e6b78663af75ec108a20280e63a202b253"
-
-[[files]]
-file = "kubejs/data/bth_structures/structures/wagon.nbt"
-hash = "8434be6e09755361615eb57deb6e882bed9b2916ecbe2405ef524440dda47ddf"
+file = "kubejs/data/bth_structures/structure/wagon.nbt"
+hash = "b084868c35f941428817fcf70f8c753ccaa5e8b13ae480c6b2d572a244d31ba2"
 
 [[files]]
 file = "kubejs/data/bth_structures/worldgen/processor_list/dw20.json"
 hash = "57df3ba8fa69f6cba05ec691296ec7d2e9e93a51bfe661b64352268aeeafadb6"
-
-[[files]]
-file = "kubejs/data/bth_structures/worldgen/processor_list/tower.json"
-hash = "d3c4fef5ab56eaa2d61feb20da604621f1b049365a3ff504d77429c30549ecc5"
 
 [[files]]
 file = "kubejs/data/bth_structures/worldgen/structure/aether_portal_floating.json"
@@ -580,18 +584,6 @@ hash = "bebe21f1fd0cecf9cd95d404be9decb3696c13c30593b3dd03b4172ccf1a7251"
 [[files]]
 file = "kubejs/data/bth_structures/worldgen/structure/dw20.json"
 hash = "d30c557f6fd751b858f621030a9f4496644477faf497ea78cce41d4649ffa96d"
-
-[[files]]
-file = "kubejs/data/bth_structures/worldgen/structure/tower_forest.json"
-hash = "2ea5afd1da52d9d9a062265e4b5a54be2f5c2ca4d4629fb71627ab89a1267139"
-
-[[files]]
-file = "kubejs/data/bth_structures/worldgen/structure/tower_frozen.json"
-hash = "50770c2589e14ca9f97142de8466cfe6e3ad48496dad30f66d12592e23375b85"
-
-[[files]]
-file = "kubejs/data/bth_structures/worldgen/structure/tower_scarlet.json"
-hash = "9bba7befb837ca09e533dd02dd7d9d5b209ff339d91822aaf7d216e2ece40be0"
 
 [[files]]
 file = "kubejs/data/bth_structures/worldgen/structure/wagon.json"
@@ -620,18 +612,6 @@ hash = "696d01272538d90f888f40dfc3e7ea1e4c48605fbdff82ae0034d832d05fcf39"
 [[files]]
 file = "kubejs/data/bth_structures/worldgen/template_pool/dw20.json"
 hash = "86432355394891c233bdbbe54417a8a13757ce74b5a2d07f2ffc02032d8a1df8"
-
-[[files]]
-file = "kubejs/data/bth_structures/worldgen/template_pool/tower_forest.json"
-hash = "6e53ecaca806925b63f11f0381ee5f44cfc88c9cbc92d5c908efd899b060d391"
-
-[[files]]
-file = "kubejs/data/bth_structures/worldgen/template_pool/tower_frozen.json"
-hash = "c6e9fb29b472ed87da5b49ccc6216a4ba7b408647165f7a46deeee3a76b8f7d4"
-
-[[files]]
-file = "kubejs/data/bth_structures/worldgen/template_pool/tower_scarlet.json"
-hash = "7ed5c6df286901936c2ecb3e3d6edecfe15d2f94cc16f334ab935df99231ddc2"
 
 [[files]]
 file = "kubejs/data/bth_structures/worldgen/template_pool/wagon.json"
@@ -919,7 +899,7 @@ hash = "91f413185cd2af8792f974f9a66aadad66bdbd0c5a962bf10d1050b84d87f20c"
 
 [[files]]
 file = "kubejs/data/minecolonies/worldgen/structure_set/desert_camp.json"
-hash = "91f413185cd2af8792f974f9a66aadad66bdbd0c5a962bf10d1050b84d87f20c"
+hash = "aaf65ac4c0c7ef74396afb6a6f2674e9da3c01bf7704f9428b3f66b8921136d7"
 
 [[files]]
 file = "kubejs/data/minecolonies/worldgen/structure_set/empty_colony.json"
@@ -1223,7 +1203,7 @@ hash = "8eac212a039a04be1aba8720e3b13dcb9e7f0a83b0485f4e19ea9ecc9fbc33fd"
 
 [[files]]
 file = "kubejs/server_scripts/tags/biome.js"
-hash = "5baf46fea7046ec158fb37afe0d644942e3b2f5af7801a814e927ec047f2e546"
+hash = "b902c5f0c7788783a5edc3cd866414939bd16a4069686ee18b9caa22137ee20c"
 
 [[files]]
 file = "kubejs/server_scripts/tags/generated.js"

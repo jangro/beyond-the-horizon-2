@@ -33,6 +33,9 @@ ServerEvents.tags('worldgen/biome', event => {
 
   // Create biome tag with biomes suitable for player houses
   event.add('bth:house_biomes', [
+    'biomeswevegone:amaranth_grassland',
+    'biomeswevegone:allium_shrubland',
+    'biomeswevegone:orchard',
     'terralith:blooming_valley',
     'terralith:arid_highlands',
     'terralith:brushland',
@@ -52,7 +55,8 @@ ServerEvents.tags('worldgen/biome', event => {
     'terralith:ashen_savanna',
     'terralith:fractured_savanna',
     'terralith:savanna_badlands',
-    'terralith:savanna_slopes']);
+    'terralith:savanna_slopes'
+  ]);
 
 
   // Remove these structures from all biomes to be re-added below
@@ -76,13 +80,13 @@ ServerEvents.tags('worldgen/biome', event => {
 
     'eidolon:has_structure/stray_tower_biomes',
 
-    "graveyard:dead_tree",
-    "graveyard:haunted_house",
-    "graveyard:large_graveyard",
-    "graveyard:medium_graveyard",
-    "graveyard:memorial_tree",
-    "graveyard:mushroom_grave",
-    "graveyard:ruins",
+    "graveyard:has_structure/dead_tree",
+    "graveyard:has_structure/haunted_house",
+    "graveyard:has_structure/large_graveyard",
+    "graveyard:has_structure/medium_graveyard",
+    "graveyard:has_structure/memorial_tree",
+    "graveyard:has_structure/mushroom_grave",
+    "graveyard:has_structure/ruins",
 
     'hauntedharvest:has_abandoned_farm',
 
@@ -115,16 +119,16 @@ ServerEvents.tags('worldgen/biome', event => {
   // BTH: Forests
   [
     "alshanex_familiars:hunter_campsite",
-  ].forEach((tag) => event.add(tag, ['#minecraft:forest']));
+  ].forEach((tag) => event.add(tag, ['#c:is_forest']));
 
   // BTH: Birch forest
   [
-  ].forEach((tag) => event.add(tag, ['minecraft:birch_forest', 'minecraft:old_growth_birch_forest']));
+  ].forEach((tag) => event.add(tag, ['#c:is_birch_forest']));
 
   // BTH: Forested highlands
   [
     'valhelsia_structures:has_structure/castle',
-  ].forEach((tag) => event.add(tag, ['terralith:forested_highlands']));
+  ].forEach((tag) => event.add(tag, ['biomeswevegone:temperate_grove', 'terralith:temperate_highlands', 'terralith:forested_highlands']));
 
   // BTH: Meadow
   [
@@ -138,7 +142,7 @@ ServerEvents.tags('worldgen/biome', event => {
 
   // BTH: Savanna type biomes
   [
-  ].forEach((tag) => event.add(tag, ['minecraft:savanna', 'minecraft:savanna_plateau', 'minecraft:windswept_savanna', 'minecraft:shattered_savanna_plateau']));
+  ].forEach((tag) => event.add(tag, ['#c:is_savanna']));
 
   // BTH: Sparse jungle
   [
@@ -153,12 +157,14 @@ ServerEvents.tags('worldgen/biome', event => {
     'graveyard:has_structure/medium_graveyard',
     'graveyard:has_structure/small_graveyard',
     'graveyard:has_structure/ruins',
-  ].forEach((tag) => event.add(tag, ['minecraft:dark_forest']));
+  ].forEach((tag) => event.add(tag, ['biomeswevegone:ebony_woods', 'minecraft:dark_forest']));
 
   // BTH: Taiga
   [
+    'graveyard:has_structure/haunted_house',
+    'graveyard:has_structure/large_graveyard',
     'valhelsia_structures:has_structure/has_forge',
-  ].forEach((tag) => event.add(tag, ['minecraft:taiga', 'minecraft:old_growth_spruce_taiga', 'minecraft:old_growth_pine_taiga']));
+  ].forEach((tag) => event.add(tag, ['#c:is_taiga']));
 
   // BTH Structures
   event.add('bth_structures:has_structure/aether_portal_framed', ['terralith:lavender_forest', 'terralith:lavender_valley', 'terralith:moonlight_grove', 'terralith:moonlight_valley']);
@@ -168,7 +174,7 @@ ServerEvents.tags('worldgen/biome', event => {
   // event.add('bth_structures:has_structure/tower_forest', '#bth:is_forest_tower_biome');
   // event.add('bth_structures:has_structure/tower_frozen', '#bth:is_frozen_tower_biome');
   // event.add('bth_structures:has_structure/tower_scarlet', '#bth:is_scarlet_tower_biome');
-  event.add('bth_structures:has_structure/wagon', ['minecraft:plains']);
+  event.add('bth_structures:has_structure/wagon', ['#c:is_plains']);
 
   // Aether and add-ons
   // Allow structures to generate in any biome so we can control distribution better
@@ -183,7 +189,7 @@ ServerEvents.tags('worldgen/biome', event => {
   event.add('graveyard:has_structure/dead_tree', ['terralith:ice_marsh']);
 
   // Iron's Spellbooks
-  event.add('irons_spellbooks:has_structure/evoker_fort', ['minecraft:snowy_plains']);
+  event.add('irons_spellbooks:has_structure/evoker_fort', ['#c:is_snowy_plains']);
   event.add('irons_spellbooks:has_structure/mountain_tower', ['minecraft:stony_peaks', 'terralith:rocky_mountains']);
   event.add('irons_spellbooks:has_structure/pyromancer_tower', ['terralith:volcanic_peaks', 'terralith:scarlet_mountains', 'terralith:yellowstone']);
 
@@ -202,17 +208,8 @@ ServerEvents.tags('worldgen/biome', event => {
 
   // MineColonies barbarian camp (snowy biomes removed)
   event.add('minecolonies:has_structure/barbarian_camp', [
-    '#c:is_plains',
-    '#c:is_forest',
-    'minecraft:sunflower_plains',
     'minecraft:plains',
     'minecraft:forest',
-    'minecraft:flower_forest',
-    'minecraft:birch_forest',
-    'minecraft:old_growth_birch_forest',
-    'minecraft:windswept_hills',
-    'minecraft:windswept_forest',
-    'minecraft:meadow'
   ]);
 
 });

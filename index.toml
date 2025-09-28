@@ -2272,11 +2272,6 @@ hash = "530b8fd2c7931ca790d3c81e5b8bb0d6ca8f8a117d028507cb0f9c3d082ff7cb"
 metafile = true
 
 [[files]]
-file = "mods/more-mobgriefing-options.pw.toml"
-hash = "6df8d6a2587a9386443a98d27e5064c186b4beed49f5d16bd18c43e743fcc27f"
-metafile = true
-
-[[files]]
 file = "mods/morejs.pw.toml"
 hash = "b1a1157abdc88e4b6e86f4ea3df6dc41f3e7c5aebd763b5fc7604d1704628886"
 metafile = true

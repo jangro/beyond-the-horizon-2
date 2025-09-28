@@ -1,0 +1,13 @@
+{
+  "structures": [],
+  "placement": {
+    "salt": 92746251,
+    "spacing": 30,
+    "separation": 20,
+    "exclusion_zone": {
+      "chunk_count": 6,
+      "other_set": "minecraft:villages"
+    },
+    "type": "betterdeserttemples:desert_temple"
+  }
+}

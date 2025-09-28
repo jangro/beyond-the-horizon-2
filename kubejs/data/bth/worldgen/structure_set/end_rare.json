@@ -1,27 +1,27 @@
 {
-    "placement": {
-        "salt": 26352947,
-        "spacing": 120,
-        "separation": 60,
-        "type": "valhelsia_structures:valhelsia_random_spread",
-        "exclusion_zones": []
+  "placement": {
+    "salt": 26352947,
+    "spacing": 120,
+    "separation": 60,
+    "type": "valhelsia_structures:valhelsia_random_spread",
+    "exclusion_zones": []
+  },
+  "structures": [
+    {
+      "structure": "enderscape:large_center_gateway",
+      "weight": 10
     },
-    "structures": [
-        {
-            "structure": "enderscape:large_center_gateway",
-            "weight": 10
-        },
-        {
-            "structure": "enderscape:mirestone_ruins",
-            "weight": 10
-        },
-        {
-            "structure": "minecraft:end_city",
-            "weight": 10
-        },
-        {
-            "structure": "phantasm:obsidian_tower",
-            "weight": 10
-        }
-    ]
+    {
+      "structure": "enderscape:mirestone_ruins",
+      "weight": 10
+    },
+    {
+      "structure": "minecraft:end_city",
+      "weight": 10
+    },
+    {
+      "structure": "phantasm:obsidian_tower",
+      "weight": 10
+    }
+  ]
 }

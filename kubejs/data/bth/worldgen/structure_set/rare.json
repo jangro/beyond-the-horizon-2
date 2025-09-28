@@ -25,6 +25,10 @@
       "weight": 10
     },
     {
+      "structure": "betterjungletemples:jungle_temple",
+      "weight": 10
+    },
+    {
       "structure": "illager_fortress:illager_fortress",
       "weight": 10
     },

@@ -1,20 +1,19 @@
 {
-    "placement": {
-        "salt": 23637463,
-        "spacing": 120,
-        "separation": 80,
-        "type": "valhelsia_structures:valhelsia_random_spread",
-        "exclusion_zones": [
-        ]
+  "placement": {
+    "salt": 23637463,
+    "spacing": 120,
+    "separation": 80,
+    "type": "valhelsia_structures:valhelsia_random_spread",
+    "exclusion_zones": []
+  },
+  "structures": [
+    {
+      "structure": "aether_villages:olympic_citadel",
+      "weight": 5
     },
-    "structures": [
-        {
-            "structure": "aether_villages:olympic_citadel",
-            "weight": 5
-        },
-        {
-            "structure": "deep_aether:brass_dungeon",
-            "weight": 10
-        }
-    ]
+    {
+      "structure": "deep_aether:brass_dungeon",
+      "weight": 10
+    }
+  ]
 }

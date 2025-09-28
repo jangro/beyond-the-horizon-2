@@ -163,9 +163,10 @@ ServerEvents.tags('worldgen/structure', event => {
   ]);
 
   event.add('bth:rare', [
+    "betterdeserttemples:desert_temple",
+    "betterjungletemples:jungle_temple",
     "illager_fortress:illager_fortress",
     "illager_manor:illager_manor",
-    "minecraft:desert_pyramid",
     "minecraft:mansion",
     "terralith:spire",
   ]);

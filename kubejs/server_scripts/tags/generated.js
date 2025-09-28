@@ -94,6 +94,8 @@ ServerEvents.tags('worldgen/structure', event => {
 
   event.add('bth:nether_common', [
     "alshanex_familiars:graveyard",
+    "betterdungeons:small_nether_dungeon",
+    "betterfortresses:fortress",
     "incendium:quartz_kitchen",
     "incendium:abandoned_tower",
     "incendium:pipeline",
@@ -101,7 +103,6 @@ ServerEvents.tags('worldgen/structure', event => {
     "incendium:infernal_altar",
     "incendium:ruined_lab",
     "irons_spellbooks:ancient_battleground",
-    "betterfortresses:fortress",
     "minecraft:bastion_remnant",
   ]);
 
@@ -219,12 +220,13 @@ ServerEvents.tags('worldgen/structure', event => {
   ]);
 
   event.add('bth:towers', [
-    "bth_structures:tower_forest",
-    "bth_structures:tower_frozen",
-    "bth_structures:tower_scarlet",
   ]);
 
   event.add('bth:underground_common', [
+    "betterdungeons:skeleton_dungeon",
+    "betterdungeons:small_dungeon",
+    "betterdungeons:spider_dungeon",
+    "betterdungeons:zombie_dungeon",
     "terralith:underground/frosted_dungeon",
     "terralith:underground/oak_cabin",
     "terralith:underground/giant_bee_hive",

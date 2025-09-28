@@ -1207,7 +1207,7 @@ hash = "b902c5f0c7788783a5edc3cd866414939bd16a4069686ee18b9caa22137ee20c"
 
 [[files]]
 file = "kubejs/server_scripts/tags/generated.js"
-hash = "f2c6a8c7d37a94f0ba58e03eed52d559570d88609577ade20feea2df284e2e16"
+hash = "6a65044a1fc335f8c91441ca8dc231fadf485281b2cf0c8ca98b9f19d2fa19ec"
 
 [[files]]
 file = "kubejs/startup_scripts/item.js"

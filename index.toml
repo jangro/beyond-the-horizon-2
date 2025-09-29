@@ -418,6 +418,10 @@ file = "kubejs/data/betterjungletemples/worldgen/structure_set/jungle_temples.js
 hash = "c458f96abf960d7364171e8008425339258a59dc99ee181bcc60de562d0a1518"
 
 [[files]]
+file = "kubejs/data/bettermineshafts/worldgen/structure_set/mineshafts.json"
+hash = "5fbff7ea954c051aa6061fb9cf633e50b4c18590ee2762bb724a440af627df24"
+
+[[files]]
 file = "kubejs/data/betteroceanmonuments/worldgen/structure_set/ocean_monument.json"
 hash = "f0e0c66d95970fc1af240e435009074c1503b884abe265d54f46ed941b0df5da"
 
@@ -958,10 +962,6 @@ file = "kubejs/data/minecraft/worldgen/structure_set/woodland_mansions.json"
 hash = "72494cd866753af75efd0c7df6a34c7736c1e231271c92264170bc53c505fc53"
 
 [[files]]
-file = "kubejs/data/nebulus_giant_jungle_tree/worldgen/structure_set/giantjungletree.json"
-hash = "497c32ce14feba05e396a2eed431a55fb4dee58bfe34545f8a5527ce44f606e5"
-
-[[files]]
 file = "kubejs/data/oritech/neoforge/biome_modifier/oil_spring.json"
 hash = "6f60ffd193fe653da47976f0817700132698aedd31cc1bc94b71beddfed2e4d5"
 
@@ -1207,7 +1207,7 @@ hash = "a166a8c7d6f92b860c818d4c243622e3702f28f44940b8660fe2703982a71067"
 
 [[files]]
 file = "kubejs/server_scripts/tags/generated.js"
-hash = "6a65044a1fc335f8c91441ca8dc231fadf485281b2cf0c8ca98b9f19d2fa19ec"
+hash = "55ae18c2d00eec419119b32dcada901c64722e8ae91b7efdb11f7304693695f0"
 
 [[files]]
 file = "kubejs/startup_scripts/item.js"
@@ -2821,6 +2821,14 @@ hash = "3888d9c90ba3f9d42f9e7885253631423f007cc309528ee5c10121cc1062a06d"
 [[files]]
 file = "resourcepacks/Updated_Engineering_v1.7.zip"
 hash = "b3d6ebd50f5ac464be7695a97072fbb85927bf0ac2fbf741d011881347332a5d"
+
+[[files]]
+file = "scripts/gen_structure_sets.py"
+hash = "30736ecbd48890ccf375d246f7b2e0d30eaa4aab4a77d84787ebe72a3d019eeb"
+
+[[files]]
+file = "scripts/structures.yml"
+hash = "ef8adec1ccb3441227957ef55d862278a6ac14ad7cec418b8ea9c0c47b2f6754"
 
 [[files]]
 file = "shaderpacks/ComplementaryUnbound_r5.5.1 + EuphoriaPatches_1.6.5.txt"

@@ -7,11 +7,7 @@
     "exclusion_zones": [
       {
         "chunk_count": 3,
-        "other_set": "bth:outposts"
-      },
-      {
-        "chunk_count": 3,
-        "other_set": "bth:villages"
+        "other_set": "bth:small"
       }
     ]
   },

@@ -35,12 +35,16 @@ ServerEvents.tags('worldgen/biome', event => {
   event.add('bth:house_biomes', [
     'biomeswevegone:amaranth_grassland',
     'biomeswevegone:allium_shrubland',
+    'biomeswevegone:enchanted_tangle',
     'biomeswevegone:orchard',
+    'biomeswevegone:skyrise_vale',
+    'integrateddynamics:meneglin',
     'terralith:blooming_valley',
     'terralith:arid_highlands',
     'terralith:brushland',
     'minecraft:flower_forest',
     'minecraft:forest',
+    'minecraft:taiga',
     'minecraft:cherry_grove',
     'terralith:sakura_grove',
     'terralith:sakura_valley']);
@@ -105,6 +109,7 @@ ServerEvents.tags('worldgen/biome', event => {
 
     'valhelsia_structures:has_structure/big_tree',
     'valhelsia_structures:has_structure/castle',
+    'valhelsia_structures:has_structure/castle_ruin',
     'valhelsia_structures:has_structure/has_forge',
     'valhelsia_structures:has_structure/player_house',
     'valhelsia_structures:has_structure/spawner_dungeon',
@@ -128,16 +133,19 @@ ServerEvents.tags('worldgen/biome', event => {
   // BTH: Forested highlands
   [
     'valhelsia_structures:has_structure/castle',
+    'valhelsia_structures:has_structure/castle_ruin',
   ].forEach((tag) => event.add(tag, ['biomeswevegone:temperate_grove', 'terralith:temperate_highlands', 'terralith:forested_highlands']));
 
   // BTH: Meadow
   [
     'bth_structures:has_structure/ruined_hangar',
     'valhelsia_structures:has_structure/spawner_dungeon',
-  ].forEach((tag) => event.add(tag, ['minecraft:meadow']));
+  ].forEach((tag) => event.add(tag, ['biomeswevegone:coconino_meadow', 'minecraft:meadow']));
 
   // BTH: Plains
   [
+    'valhelsia_structures:has_structure/big_tree',
+    'valhelsia_structures:has_structure/spawner_dungeon',
   ].forEach((tag) => event.add(tag, ['minecraft:plains']));
 
   // BTH: Savanna type biomes
@@ -163,7 +171,6 @@ ServerEvents.tags('worldgen/biome', event => {
   [
     'graveyard:has_structure/haunted_house',
     'graveyard:has_structure/large_graveyard',
-    'valhelsia_structures:has_structure/has_forge',
   ].forEach((tag) => event.add(tag, ['#c:is_taiga']));
 
   // BTH Structures
@@ -200,11 +207,13 @@ ServerEvents.tags('worldgen/biome', event => {
   event.add('ribbits:has_structure/ribbit_village', ['#c:is_swamp']);
 
   // Terralith
+  // TODO: add more biomes here
   event.add('terralith:has_structure/mage_complex', ['terralith:moonlight_grove', 'terralith:moonlight_valley']);
   event.add('terralith:has_structure/mage_tower', ['terralith:moonlight_grove', 'terralith:moonlight_valley']);
 
   // Valhelsia Structures
   event.add('valhelsia_structures:has_structure/player_house', ['#bth:house_biomes']);
+  event.add('valhelsia_structures:has_structure/has_forge', ['#bth:house_biomes']);
 
   // MineColonies barbarian camp (snowy biomes removed)
   event.add('minecolonies:has_structure/barbarian_camp', [

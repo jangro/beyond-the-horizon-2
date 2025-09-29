@@ -5,10 +5,6 @@
     "separation": 3,
     "type": "valhelsia_structures:valhelsia_random_spread",
     "exclusion_zones": [
-      {
-        "chunk_count": 4,
-        "other_set": "bth:underground_rare"
-      }
     ]
   },
   "structures": [

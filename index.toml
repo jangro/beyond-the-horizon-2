@@ -471,31 +471,31 @@ hash = "1182688786a3e4d30880dcb359d1ad9242719f9f28f967260088802dae1daf18"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/aether_common.json"
-hash = "f6a3661c9c2b86c25a433defcf9e074609d6c2942916c1912f01579c663397c9"
+hash = "d2131c2a7c29c6b55ecb952e754b2bac84330a4adfafe41aab4597045e78e3e6"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/aether_rare.json"
-hash = "3a264cf486b69c83017a4a4808823d63bfbf3010a15b0732236dc629f8c05690"
+hash = "672ebeeca82ab1b197f867e13154c5cd3703208a873aa197c9841d1986466ee0"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/common.json"
-hash = "a71f1bd5825cf775fbe06fd4fecdc555f153d7d42030829d8a5ff4377e1fd19a"
+hash = "85340361896e999a8c330f6d17f411851ac0220ed04b549e40b68abbdee5083f"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/end_common.json"
-hash = "f4f0ab07189bda70f340f36b6c6d164b790f05b5f78f6734bc0592f3ff943419"
+hash = "047caeff0098f811c20204d2c6578eea259916453396d3aeb479f92d13645eb0"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/end_rare.json"
-hash = "cfafa8c3f58457a2743b9a4815ca9a21fd0c2f9bc93d3b23e7586ca5c392a0ac"
+hash = "9cf3b897b4c0a82933290c90ad82757dda10c5db711452f655c04e08f098c83f"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/nether_common.json"
-hash = "6900a12605e6bb336b1328e26a761782713f8375b5468402939ba156410f82f1"
+hash = "0efd9164afe54910a88338d94cfa01a69b899a74459eaf8004a916977f5b3bd4"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/nether_rare.json"
-hash = "5fc257aca947f0f65326978fa2da72b5c21aa3ffc0dfa12a0ed0818d0c890e05"
+hash = "eaf9fa71a50385e2164e000654b855f1cd1acf878847857673120e4182df8fc2"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/ocean.json"
@@ -503,15 +503,15 @@ hash = "12348658c1cf1aa2a9a4c3a380442eedfb56e153e38762b22a91fdb9b86affdf"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/outposts.json"
-hash = "a283c47bd745be6019954aa3360679b8e505ea5dd458857daeeb2b0175790418"
+hash = "f6dfdc7a366b7de988f1af76b33d97c7c731484d5d1cc53d3c751114ec45b1ef"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/rare.json"
-hash = "d8c38907c54986f75622e049386b171c10992b836ef379557343379af78f4740"
+hash = "51f7b9dece6d6ba4bf2d7d78b07207e19ff416bc2da56125963b486eaa45054e"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/small.json"
-hash = "458fdeaaf1cbd21e3ccab8bbc150f73956e60a2fc85c1ae748e91368d731f003"
+hash = "087c6940512629d4f25583005dcc0ca1e52e8ed9eddf41ec77d412a1aa85e0f2"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/submerged_common.json"
@@ -519,23 +519,23 @@ hash = "996a0a6466663218af2511f912546103f33314c8c2e545ea21b5f48ca31a83e2"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/submerged_rare.json"
-hash = "d1fc85043a261ba31cbc579d3f54f78ada6e10dd3220be46559adca061955073"
+hash = "ae0a5fa78f6f4a4eb0ac9e4ff56cb8798f23af2b91e271128adc9ea909fad3bb"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/towers.json"
-hash = "9bead72d9e310ebf86d1a4c44f98ebf79d0b4843455896a85275395ee39b0b0c"
+hash = "b6672b19bf6a9803c6925c3a6b8d905e22b999585fa02e0be112b19f70e8cb9c"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/underground_common.json"
-hash = "03160c6e33ab63a5e8b3b5e4f5a1ea88d93b12c3724df662280284f6fc6085a3"
+hash = "32aed996cec63a41756ae6ec95422b62c3ef234efb09c2f19fda33951316625d"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/underground_rare.json"
-hash = "4119cda687168b61232b8e4b0c743e2ee66a221fd2063a0b59f45dd515e32727"
+hash = "ee8af4c38749c35a7765af8eeefd690b219bd01c450a83149d907697f4bd56e5"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/villages.json"
-hash = "ff975e27075d974c65c45752c2f8d8bd9ee1154659dac24ad096b73cb24f2e5a"
+hash = "1d4f2e57c985a9b99326577627503b58b3c20d5ca1a42c18226c9c511ce87ad7"
 
 [[files]]
 file = "kubejs/data/bth_structures/loot_table/archeology/dw20.json"
@@ -1203,7 +1203,7 @@ hash = "8eac212a039a04be1aba8720e3b13dcb9e7f0a83b0485f4e19ea9ecc9fbc33fd"
 
 [[files]]
 file = "kubejs/server_scripts/tags/biome.js"
-hash = "b902c5f0c7788783a5edc3cd866414939bd16a4069686ee18b9caa22137ee20c"
+hash = "a166a8c7d6f92b860c818d4c243622e3702f28f44940b8660fe2703982a71067"
 
 [[files]]
 file = "kubejs/server_scripts/tags/generated.js"

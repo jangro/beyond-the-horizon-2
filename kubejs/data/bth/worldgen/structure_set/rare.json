@@ -6,16 +6,16 @@
     "type": "valhelsia_structures:valhelsia_random_spread",
     "exclusion_zones": [
       {
+        "chunk_count": 3,
+        "other_set": "bth:small"
+      },
+      {
         "chunk_count": 10,
         "other_set": "bth:towers"
       },
       {
         "chunk_count": 10,
-        "other_set": "bth:outposts"
-      },
-      {
-        "chunk_count": 10,
-        "other_set": "bth:villages"
+        "other_set": "bth:common"
       }
     ]
   },

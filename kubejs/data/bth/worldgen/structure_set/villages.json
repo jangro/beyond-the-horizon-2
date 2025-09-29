@@ -4,7 +4,28 @@
     "spacing": 120,
     "separation": 60,
     "type": "valhelsia_structures:valhelsia_random_spread",
-    "exclusion_zones": []
+    "exclusion_zones": [
+      {
+        "chunk_count": 3,
+        "other_set": "bth:small"
+      },
+      {
+        "chunk_count": 10,
+        "other_set": "bth:towers"
+      },
+      {
+        "chunk_count": 10,
+        "other_set": "bth:common"
+      },
+      {
+        "chunk_count": 10,
+        "other_set": "bth:rare"
+      },
+      {
+        "chunk_count": 10,
+        "other_set": "bth:outposts"
+      }
+    ]
   },
   "structures": [
     {

@@ -4,7 +4,12 @@
     "spacing": 120,
     "separation": 60,
     "type": "valhelsia_structures:valhelsia_random_spread",
-    "exclusion_zones": []
+    "exclusion_zones": [
+      {
+        "chunk_count": 10,
+        "other_set": "bth:end_common"
+      }
+    ]
   },
   "structures": [
     {

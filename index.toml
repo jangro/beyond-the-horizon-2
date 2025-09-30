@@ -226,6 +226,10 @@ file = "config/packingtape-server.toml"
 hash = "2cadcb48a90ed8aad0e7194cf589769c8587432f2f26c779e63317fa2589e7d8"
 
 [[files]]
+file = "config/simplebackups-common.toml"
+hash = "619d70557a301d89ed3394b23eb7247ca6c1e08a63aac4e577d279fede3bb678"
+
+[[files]]
 file = "config/sol_valheim_reforged-common.toml"
 hash = "d0d1e7fa2103d4e9243d33c9bc20484296800a65fdfc665d08ca227d0d4786fa"
 
@@ -482,10 +486,6 @@ file = "kubejs/data/bth/worldgen/structure_set/aether_rare.json"
 hash = "672ebeeca82ab1b197f867e13154c5cd3703208a873aa197c9841d1986466ee0"
 
 [[files]]
-file = "kubejs/data/bth/worldgen/structure_set/common.json"
-hash = "85340361896e999a8c330f6d17f411851ac0220ed04b549e40b68abbdee5083f"
-
-[[files]]
 file = "kubejs/data/bth/worldgen/structure_set/end_common.json"
 hash = "047caeff0098f811c20204d2c6578eea259916453396d3aeb479f92d13645eb0"
 
@@ -502,44 +502,12 @@ file = "kubejs/data/bth/worldgen/structure_set/nether_rare.json"
 hash = "eaf9fa71a50385e2164e000654b855f1cd1acf878847857673120e4182df8fc2"
 
 [[files]]
-file = "kubejs/data/bth/worldgen/structure_set/ocean.json"
-hash = "12348658c1cf1aa2a9a4c3a380442eedfb56e153e38762b22a91fdb9b86affdf"
+file = "kubejs/data/bth/worldgen/structure_set/overworld.json"
+hash = "19e6e1948811712e8bf5c2262bd86e3b26f7607b7147022111b7f04dab1fad0a"
 
 [[files]]
-file = "kubejs/data/bth/worldgen/structure_set/outposts.json"
-hash = "f6dfdc7a366b7de988f1af76b33d97c7c731484d5d1cc53d3c751114ec45b1ef"
-
-[[files]]
-file = "kubejs/data/bth/worldgen/structure_set/rare.json"
-hash = "51f7b9dece6d6ba4bf2d7d78b07207e19ff416bc2da56125963b486eaa45054e"
-
-[[files]]
-file = "kubejs/data/bth/worldgen/structure_set/small.json"
-hash = "087c6940512629d4f25583005dcc0ca1e52e8ed9eddf41ec77d412a1aa85e0f2"
-
-[[files]]
-file = "kubejs/data/bth/worldgen/structure_set/submerged_common.json"
-hash = "996a0a6466663218af2511f912546103f33314c8c2e545ea21b5f48ca31a83e2"
-
-[[files]]
-file = "kubejs/data/bth/worldgen/structure_set/submerged_rare.json"
-hash = "ae0a5fa78f6f4a4eb0ac9e4ff56cb8798f23af2b91e271128adc9ea909fad3bb"
-
-[[files]]
-file = "kubejs/data/bth/worldgen/structure_set/towers.json"
-hash = "b6672b19bf6a9803c6925c3a6b8d905e22b999585fa02e0be112b19f70e8cb9c"
-
-[[files]]
-file = "kubejs/data/bth/worldgen/structure_set/underground_common.json"
-hash = "32aed996cec63a41756ae6ec95422b62c3ef234efb09c2f19fda33951316625d"
-
-[[files]]
-file = "kubejs/data/bth/worldgen/structure_set/underground_rare.json"
-hash = "ee8af4c38749c35a7765af8eeefd690b219bd01c450a83149d907697f4bd56e5"
-
-[[files]]
-file = "kubejs/data/bth/worldgen/structure_set/villages.json"
-hash = "1d4f2e57c985a9b99326577627503b58b3c20d5ca1a42c18226c9c511ce87ad7"
+file = "kubejs/data/bth/worldgen/structure_set/overworld_underground.json"
+hash = "5128ac62863d170dd0d84d712c99f9f3904145ab02eb008483d0226213bdc325"
 
 [[files]]
 file = "kubejs/data/bth_structures/loot_table/archeology/dw20.json"
@@ -1207,7 +1175,7 @@ hash = "a166a8c7d6f92b860c818d4c243622e3702f28f44940b8660fe2703982a71067"
 
 [[files]]
 file = "kubejs/server_scripts/tags/generated.js"
-hash = "55ae18c2d00eec419119b32dcada901c64722e8ae91b7efdb11f7304693695f0"
+hash = "c05c1915b9ca82ee74c2af96fe73e1a83f75602bb74523f8b05a80ea68b0f652"
 
 [[files]]
 file = "kubejs/startup_scripts/item.js"
@@ -2824,11 +2792,11 @@ hash = "b3d6ebd50f5ac464be7695a97072fbb85927bf0ac2fbf741d011881347332a5d"
 
 [[files]]
 file = "scripts/gen_structure_sets.py"
-hash = "30736ecbd48890ccf375d246f7b2e0d30eaa4aab4a77d84787ebe72a3d019eeb"
+hash = "8def83100904cc2f616de07458e96774da75fd95f23a28313a9943cfcf725d65"
 
 [[files]]
 file = "scripts/structures.yml"
-hash = "ef8adec1ccb3441227957ef55d862278a6ac14ad7cec418b8ea9c0c47b2f6754"
+hash = "7e38764dadcc6406a1f04855f401a7dc192e22069e9567a520bac15e1e346183"
 
 [[files]]
 file = "shaderpacks/ComplementaryUnbound_r5.5.1 + EuphoriaPatches_1.6.5.txt"

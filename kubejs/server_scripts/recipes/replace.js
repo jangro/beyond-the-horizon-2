@@ -79,17 +79,13 @@ ServerEvents.recipes(event => {
   replaceInputID('enderio:energy_conduit', 'enderio:conductive_alloy_ingot', 'enderio:conductive_alloy_nugget');
   replaceInputID('enderio:enhanced_energy_conduit', 'enderio:energetic_alloy_ingot', 'enderio:energetic_alloy_nugget');
   replaceInputID('enderio:ender_energy_conduit', 'enderio:vibrant_alloy_ingot', 'enderio:vibrant_alloy_nugget');
-
   replaceInputID('enderio:redstone_conduit', 'enderio:redstone_alloy_ingot', 'enderio:redstone_alloy_nugget');
-
 
   // Candles
   replaceInputID('minecraft:candle', 'minecraft:honeycomb', '#bth:candle_material');
   replaceInputID('eidolon_repraised:candle', 'eidolon_repraised:tallow', '#bth:candle_material');
-  replaceInputID('forbidden_arcanus:purifying_soap', 'forbidden_arcanus:wax', '#bth:candle_material');
-  replaceInputID('forbidden_arcanus:purifying_soap', 'minecraft:slime_ball', '#forge:slimeballs');
+  replaceInputID('eidolon_repraised:candle', '#c:string', '#c:strings'); // Fix bug in mod
   replaceInputID('supplementaries:soap', 'minecraft:porkchop', ['#bth:candle_material', 'minecraft:porkchop']);
-
 
   // Dough Compatibility
   replaceInput('create:dough', '#c:dough/wheat');
@@ -99,57 +95,49 @@ ServerEvents.recipes(event => {
   // // Dust Compatibility
   // replaceInput('alexscaves:sulfur_dust', '#forge:dusts/sulfur');
 
-  // // Feather Compatibility
-  // replaceInputID([
-  //   'minecraft:brush',
-  //   'minecraft:writable_book',
-  //   'ars_elemental:flight_alt',
-  //   'ars_nouveau:orange_sbed',
-  //   'ars_nouveau:ritual_cloudshaping',
-  //   'ars_nouveau:ritual_gravity',
-  //   'ars_nouveau:spike_to_arrow',
-  //   'botania:flighttiara_0',
-  //   'botania:tornado_rod',
-  //   'botania:runic_altar/air',
-  //   'enlightened_end:helium_dart',
-  //   'enlightened_end:xenon_dart',
-  //   'forbidden_arcanus:corrupted_pixie',
-  //   'minecolonies:blockhutschool',
-  //   'pneumaticcraft:jet_boots_upgrade_2',
-  //   'rats:feathery_wing',
-  //   'rats:piper_hat',
-  //   'wardrobe:fletchers_hat_recipe',
-  //   'xercamusic:music_sheet',
-  // ], 'minecraft:feather', '#forge:feathers');
-  // event.replaceInput({output:'#minecraft:arrows'}, 'minecraft:feather', '#forge:feathers');
+  // Feather Compatibility
+  replaceInputID([
+    'minecraft:brush',
+    'minecraft:writable_book',
+    'ars_elemental:flight_alt',
+    'ars_nouveau:orange_sbed',
+    'ars_nouveau:ritual_cloudshaping',
+    'ars_nouveau:ritual_gravity',
+    'ars_nouveau:spike_to_arrow',
+    'botania:flighttiara_0',
+    'botania:tornado_rod',
+    'botania:runic_altar/air',
+    'hexerei:notebook',
+    'irons_spellbooks:speed_boots',
+    'justdirethings:upgrade_flight',
+    'minecolonies:blockhutschool',
+    'pneumaticcraft:jet_boots_upgrade_2',
+    'redstonepen:pen',
+    'redstonepen:quill',
+    'xercamusic:music_sheet',
+  ], 'minecraft:feather', '#c:feathers');
+  event.replaceInput({output:'#minecraft:arrows'}, 'minecraft:feather', '#c:feathers');
 
-  // // Fibre Compatibility
-  // replaceInputID('immersiveengineering:crafting/hemp_fabric', 'immersiveengineering:hemp_fiber', ['immersiveengineering:hemp_fiber', 'supplementaries:flax']);
+  // Fibre Compatibility
+  replaceInputID('immersiveengineering:crafting/hemp_fabric', 'immersiveengineering:hemp_fiber', ['immersiveengineering:hemp_fiber', 'supplementaries:flax']);
 
-  // // Flour Compatibility
-  // replaceInput('create:wheat_flour', '#forge:flour/wheat');
-  // replaceInput('pneumaticcraft:wheat_flour', '#forge:flour/wheat');
+  // Flour Compatibility
+  replaceInput('create:wheat_flour', '#c:flour/wheat');
+  replaceInput('pneumaticcraft:wheat_flour', '#c:flour/wheat');
 
-  // // Glass Compatibility
-  // replaceInputID([
-  //   'minecraft:beacon',
-  //   'minecraft:end_crystal',
-  //   'botania:glass_pickaxe',
-  //   'botania:lens_normal',
-  //   'botania:prism',
-  //   'enlightened_end:gas_jar',
-  //   'enlightened_end:xenon_laser',
-  //   'littlelogistics:fluid_barge',
-  //   'littlelogistics:fluid_car',
-  //   'littlelogistics:fluid_hopper',
-  //   'minecolonies:blockhutglassblower',
-  //   'quark:building/crafting/stone_brick_lamp',
-  //   'shoppy:shaped_bartering_station',
-  //   'shoppy:shaped_shop_block',
-  //   'starbunclemania:fluid_jar',
-  //   'supplementaries:hourglass',
-  //   'supplementaries:jar',
-  // ], 'minecraft:glass', '#forge:glass/colorless');
+  // Glass Compatibility
+  replaceInputID([
+    'minecraft:beacon',
+    'minecraft:end_crystal',
+    'botania:glass_pickaxe',
+    'botania:lens_normal',
+    'botania:prism',
+    'minecolonies:blockhutglassblower',
+    'quark:building/crafting/stone_brick_lamp',
+    'starbunclemania:fluid_jar',
+    'supplementaries:hourglass',
+    'supplementaries:jar',
+  ], 'minecraft:glass', '#c:glass/colorless');
 
   // // Ingot Compatibility
   // replaceInput('eidolon_repraised:arcane_gold_ingot', '#forge:ingots/arcane_gold');

@@ -1,0 +1,35 @@
+{
+  "placement": {
+    "type": "valhelsia_structures:valhelsia_random_spread",
+    "spacing": 40,
+    "separation": 20,
+    "salt": 13462137,
+    "exclusion_zones": []
+  },
+  "structures": [
+    {
+      "structure": "bth_structures:aether_portal_floating_aether",
+      "weight": 32
+    },
+    {
+      "structure": "aether:bronze_dungeon",
+      "weight": 32
+    },
+    {
+      "structure": "aether:silver_dungeon",
+      "weight": 22
+    },
+    {
+      "structure": "aether:gold_dungeon",
+      "weight": 10
+    },
+    {
+      "structure": "deep_aether:brass_dungeon",
+      "weight": 2
+    },
+    {
+      "structure": "aether_villages:olympic_citadel",
+      "weight": 2
+    }
+  ]
+}

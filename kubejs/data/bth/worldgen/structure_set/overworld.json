@@ -1,0 +1,824 @@
+{
+  "placement": {
+    "type": "valhelsia_structures:valhelsia_random_spread",
+    "spacing": 35,
+    "separation": 10,
+    "salt": 78184732,
+    "exclusion_zones": [
+      {
+        "chunk_count": 2,
+        "other_set": "minecraft:ruined_portals"
+      }
+    ]
+  },
+  "structures": [
+    {
+      "structure": "bth_structures:aether_portal_floating",
+      "weight": 26
+    },
+    {
+      "structure": "bth_structures:aether_portal_framed",
+      "weight": 26
+    },
+    {
+      "structure": "minecraft:igloo",
+      "weight": 26
+    },
+    {
+      "structure": "minecraft:shipwreck",
+      "weight": 26
+    },
+    {
+      "structure": "minecraft:shipwreck_beached",
+      "weight": 26
+    },
+    {
+      "structure": "terralith:igloo",
+      "weight": 26
+    },
+    {
+      "structure": "ae2:meteorite",
+      "weight": 63
+    },
+    {
+      "structure": "biomeswevegone:prairie_house",
+      "weight": 13
+    },
+    {
+      "structure": "bth_structures:dw20",
+      "weight": 13
+    },
+    {
+      "structure": "hexerei:baba_yaga_hut",
+      "weight": 13
+    },
+    {
+      "structure": "hexerei:owl_post_office",
+      "weight": 13
+    },
+    {
+      "structure": "hexerei:witch_hut",
+      "weight": 13
+    },
+    {
+      "structure": "irons_spellbooks:evoker_fort",
+      "weight": 13
+    },
+    {
+      "structure": "irons_spellbooks:mountain_tower",
+      "weight": 13
+    },
+    {
+      "structure": "irons_spellbooks:pyromancer_tower",
+      "weight": 13
+    },
+    {
+      "structure": "spanish_fort:spanishfort",
+      "weight": 13
+    },
+    {
+      "structure": "valhelsia_structures:castle",
+      "weight": 13
+    },
+    {
+      "structure": "valhelsia_structures:forge",
+      "weight": 13
+    },
+    {
+      "structure": "valhelsia_structures:player_house",
+      "weight": 13
+    },
+    {
+      "structure": "alshanex_familiars:hunter_campsite",
+      "weight": 4
+    },
+    {
+      "structure": "ars_nouveau:guardian_wilden_den",
+      "weight": 4
+    },
+    {
+      "structure": "ars_nouveau:hunter_wilden_den",
+      "weight": 4
+    },
+    {
+      "structure": "ars_nouveau:stalker_wilden_den",
+      "weight": 4
+    },
+    {
+      "structure": "autumnity:maple_hut",
+      "weight": 4
+    },
+    {
+      "structure": "biomeswevegone:aspen_manor_1",
+      "weight": 4
+    },
+    {
+      "structure": "biomeswevegone:aspen_manor_2",
+      "weight": 4
+    },
+    {
+      "structure": "biomeswevegone:bog_trial",
+      "weight": 4
+    },
+    {
+      "structure": "bth_structures:battle_grounds",
+      "weight": 4
+    },
+    {
+      "structure": "bth_structures:wagon",
+      "weight": 4
+    },
+    {
+      "structure": "eidolon_repraised:lab",
+      "weight": 4
+    },
+    {
+      "structure": "eidolon_repraised:stray_tower",
+      "weight": 4
+    },
+    {
+      "structure": "graveyard:dead_tree",
+      "weight": 4
+    },
+    {
+      "structure": "graveyard:haunted_house",
+      "weight": 4
+    },
+    {
+      "structure": "graveyard:large_graveyard",
+      "weight": 4
+    },
+    {
+      "structure": "graveyard:medium_graveyard",
+      "weight": 4
+    },
+    {
+      "structure": "graveyard:memorial_tree",
+      "weight": 4
+    },
+    {
+      "structure": "graveyard:mushroom_grave",
+      "weight": 4
+    },
+    {
+      "structure": "graveyard:ruins",
+      "weight": 4
+    },
+    {
+      "structure": "hauntedharvest:abandoned_farm",
+      "weight": 4
+    },
+    {
+      "structure": "irons_spellbooks:ice_spider_den",
+      "weight": 4
+    },
+    {
+      "structure": "irons_spellbooks:impaled_icebreaker",
+      "weight": 4
+    },
+    {
+      "structure": "irons_spellbooks:mangrove_hut",
+      "weight": 4
+    },
+    {
+      "structure": "minecolonies:amazon_camp",
+      "weight": 4
+    },
+    {
+      "structure": "minecolonies:barbarian_camp",
+      "weight": 4
+    },
+    {
+      "structure": "minecolonies:desert_camp",
+      "weight": 4
+    },
+    {
+      "structure": "minecolonies:ship",
+      "weight": 4
+    },
+    {
+      "structure": "minecraft:swamp_hut",
+      "weight": 4
+    },
+    {
+      "structure": "minecraft:trail_ruins",
+      "weight": 4
+    },
+    {
+      "structure": "terralith:desert_outpost",
+      "weight": 4
+    },
+    {
+      "structure": "terralith:glacial_hut",
+      "weight": 4
+    },
+    {
+      "structure": "terralith:mage_complex",
+      "weight": 4
+    },
+    {
+      "structure": "terralith:mage_tower",
+      "weight": 4
+    },
+    {
+      "structure": "terralith:valley_lodge",
+      "weight": 4
+    },
+    {
+      "structure": "terralith:witch_hut",
+      "weight": 4
+    },
+    {
+      "structure": "towns_and_towers:wreckage_ocean",
+      "weight": 4
+    },
+    {
+      "structure": "underwater_village:cold_big_gate",
+      "weight": 4
+    },
+    {
+      "structure": "underwater_village:cold_broken_house",
+      "weight": 4
+    },
+    {
+      "structure": "underwater_village:cold_fountain",
+      "weight": 4
+    },
+    {
+      "structure": "underwater_village:cold_gate",
+      "weight": 4
+    },
+    {
+      "structure": "underwater_village:dungeon",
+      "weight": 4
+    },
+    {
+      "structure": "underwater_village:library",
+      "weight": 4
+    },
+    {
+      "structure": "underwater_village:ruins",
+      "weight": 4
+    },
+    {
+      "structure": "underwater_village:shrine",
+      "weight": 4
+    },
+    {
+      "structure": "underwater_village:small_gate",
+      "weight": 4
+    },
+    {
+      "structure": "underwater_village:temple",
+      "weight": 4
+    },
+    {
+      "structure": "underwater_village:temple_broken",
+      "weight": 4
+    },
+    {
+      "structure": "underwater_village:temple_ruins",
+      "weight": 4
+    },
+    {
+      "structure": "underwater_village:tower",
+      "weight": 4
+    },
+    {
+      "structure": "underwater_village:warm_big_gate",
+      "weight": 4
+    },
+    {
+      "structure": "underwater_village:warm_broken_house",
+      "weight": 4
+    },
+    {
+      "structure": "underwater_village:warm_fountain",
+      "weight": 4
+    },
+    {
+      "structure": "underwater_village:warm_gate",
+      "weight": 4
+    },
+    {
+      "structure": "valhelsia_structures:big_tree",
+      "weight": 4
+    },
+    {
+      "structure": "valhelsia_structures:castle_ruin",
+      "weight": 4
+    },
+    {
+      "structure": "valhelsia_structures:desert_house",
+      "weight": 4
+    },
+    {
+      "structure": "valhelsia_structures:tower_ruin",
+      "weight": 4
+    },
+    {
+      "structure": "valhelsia_structures:witch_hut",
+      "weight": 4
+    },
+    {
+      "structure": "betterdeserttemples:desert_temple",
+      "weight": 26
+    },
+    {
+      "structure": "betterjungletemples:jungle_temple",
+      "weight": 26
+    },
+    {
+      "structure": "betteroceanmonuments:ocean_monument",
+      "weight": 26
+    },
+    {
+      "structure": "biomeswevegone:village/forgotten",
+      "weight": 1
+    },
+    {
+      "structure": "biomeswevegone:village/pumpkin_patch",
+      "weight": 1
+    },
+    {
+      "structure": "biomeswevegone:village/red_rock",
+      "weight": 1
+    },
+    {
+      "structure": "biomeswevegone:village/salem",
+      "weight": 1
+    },
+    {
+      "structure": "biomeswevegone:village/skyris",
+      "weight": 1
+    },
+    {
+      "structure": "biomeswevegone:village/swamp",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:medium/village_beach",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:medium/village_christmas",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:medium/village_dark_forest",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:medium/village_desert",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:medium/village_desert_oasis",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:medium/village_jungle",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:medium/village_jungle_tree",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:medium/village_mesa",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:medium/village_mesa_fortified",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:medium/village_mushroom",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:medium/village_plains",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:medium/village_plains_fortified",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:medium/village_savanna",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:medium/village_savanna_na",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:medium/village_snowy_igloo",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:medium/village_swamp",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:medium/village_swamp_fortified",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:medium/village_taiga",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:medium/village_taiga_fortified",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:small/village_beach",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:small/village_christmas",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:small/village_dark_forest",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:small/village_desert",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:small/village_desert_oasis",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:small/village_jungle",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:small/village_jungle_tree",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:small/village_mesa",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:small/village_mesa_fortified",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:small/village_mountain",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:small/village_mountain_alpine",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:small/village_mushroom",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:small/village_plains",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:small/village_plains_fortified",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:small/village_savanna",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:small/village_savanna_na",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:small/village_snowy_igloo",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:small/village_swamp",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:small/village_swamp_fortified",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:small/village_taiga",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:small/village_taiga_fortified",
+      "weight": 1
+    },
+    {
+      "structure": "hexerei:dark_coven",
+      "weight": 1
+    },
+    {
+      "structure": "hexerei:nature_coven",
+      "weight": 1
+    },
+    {
+      "structure": "ribbits:ribbit_village",
+      "weight": 1
+    },
+    {
+      "structure": "terralith:fortified_desert_village",
+      "weight": 1
+    },
+    {
+      "structure": "terralith:fortified_village",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:exclusives/village_classic",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:exclusives/village_iberian",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:exclusives/village_mediterranean",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:exclusives/village_nilotic",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:exclusives/village_piglin",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:exclusives/village_rustic",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:exclusives/village_swedish",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:exclusives/village_tudor",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:exclusives/village_wandering_trader_camp",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:village_badlands",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:village_beach",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:village_birch_forest",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:village_flower_forest",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:village_forest",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:village_grove",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:village_jungle",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:village_meadow",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:village_mushroom_fields",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:village_ocean",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:village_old_growth_taiga",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:village_savanna_plateau",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:village_snowy_slopes",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:village_snowy_taiga",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:village_sparse_jungle",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:village_sunflower_plains",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:village_swamp",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:village_wooded_badlands",
+      "weight": 1
+    },
+    {
+      "structure": "villagesandpillages:village_witch",
+      "weight": 1
+    },
+    {
+      "structure": "ctov:pillager_outpost_badlands",
+      "weight": 2
+    },
+    {
+      "structure": "ctov:pillager_outpost_beach",
+      "weight": 2
+    },
+    {
+      "structure": "ctov:pillager_outpost_dark_forest",
+      "weight": 2
+    },
+    {
+      "structure": "ctov:pillager_outpost_desert",
+      "weight": 2
+    },
+    {
+      "structure": "ctov:pillager_outpost_jungle",
+      "weight": 2
+    },
+    {
+      "structure": "ctov:pillager_outpost_mountain",
+      "weight": 2
+    },
+    {
+      "structure": "ctov:pillager_outpost_plains",
+      "weight": 2
+    },
+    {
+      "structure": "ctov:pillager_outpost_savanna",
+      "weight": 2
+    },
+    {
+      "structure": "ctov:pillager_outpost_snowy",
+      "weight": 2
+    },
+    {
+      "structure": "ctov:pillager_outpost_swamp",
+      "weight": 2
+    },
+    {
+      "structure": "ctov:pillager_outpost_taiga",
+      "weight": 2
+    },
+    {
+      "structure": "minecraft:pillager_outpost",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:exclusives/pillager_outpost_classic",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:exclusives/pillager_outpost_iberian",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:exclusives/pillager_outpost_mediterranean",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:exclusives/pillager_outpost_nilotic",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:exclusives/pillager_outpost_oriental",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:exclusives/pillager_outpost_rustic",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:exclusives/pillager_outpost_swedish",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:exclusives/pillager_outpost_tudor",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:pillager_outpost_badlands",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:pillager_outpost_beach",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:pillager_outpost_birch_forest",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:pillager_outpost_desert",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:pillager_outpost_flower_forest",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:pillager_outpost_forest",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:pillager_outpost_grove",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:pillager_outpost_jungle",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:pillager_outpost_meadow",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:pillager_outpost_mushroom_fields",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:pillager_outpost_ocean",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:pillager_outpost_old_growth_taiga",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:pillager_outpost_savanna",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:pillager_outpost_savanna_plateau",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:pillager_outpost_snowy_beach",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:pillager_outpost_snowy_plains",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:pillager_outpost_snowy_slopes",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:pillager_outpost_snowy_taiga",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:pillager_outpost_sparse_jungle",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:pillager_outpost_sunflower_plains",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:pillager_outpost_swamp",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:pillager_outpost_taiga",
+      "weight": 2
+    },
+    {
+      "structure": "towns_and_towers:pillager_outpost_wooded_badlands",
+      "weight": 2
+    }
+  ]
+}

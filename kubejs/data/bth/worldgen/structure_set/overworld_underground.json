@@ -1,0 +1,80 @@
+{
+  "placement": {
+    "type": "valhelsia_structures:valhelsia_random_spread",
+    "spacing": 6,
+    "separation": 3,
+    "salt": 62926482,
+    "exclusion_zones": [
+      {
+        "chunk_count": 8,
+        "other_set": "bettermineshafts:mineshafts"
+      }
+    ]
+  },
+  "structures": [
+    {
+      "structure": "betterdungeons:small_dungeon",
+      "weight": 20
+    },
+    {
+      "structure": "valhelsia_structures:spawner_room",
+      "weight": 20
+    },
+    {
+      "structure": "valhelsia_structures:deep_spawner_room",
+      "weight": 20
+    },
+    {
+      "structure": "betterdungeons:skeleton_dungeon",
+      "weight": 3
+    },
+    {
+      "structure": "betterdungeons:spider_dungeon",
+      "weight": 3
+    },
+    {
+      "structure": "betterdungeons:zombie_dungeon",
+      "weight": 3
+    },
+    {
+      "structure": "terralith:underground/frosted_dungeon",
+      "weight": 3
+    },
+    {
+      "structure": "terralith:underground/giant_bee_hive",
+      "weight": 3
+    },
+    {
+      "structure": "terralith:underground/mining_outpost",
+      "weight": 3
+    },
+    {
+      "structure": "terralith:underground/oak_cabin",
+      "weight": 3
+    },
+    {
+      "structure": "terralith:underground/old_refinery",
+      "weight": 3
+    },
+    {
+      "structure": "terralith:underground/sunken_tower",
+      "weight": 3
+    },
+    {
+      "structure": "valhelsia_structures:spawner_dungeon",
+      "weight": 3
+    },
+    {
+      "structure": "eidolon_repraised:catacomb",
+      "weight": 3
+    },
+    {
+      "structure": "graveyard:crypt",
+      "weight": 3
+    },
+    {
+      "structure": "irons_spellbooks:catacombs",
+      "weight": 3
+    }
+  ]
+}

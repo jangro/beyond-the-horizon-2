@@ -1,0 +1,349 @@
+# Structure spawn settings for Beyond The Horizon 2
+
+# To add structures from mod X, copy the structure set json from that mod to
+# kubejs/data/X/worldgen/structure_set/, remove all structures from the set and add them here.
+
+# Adjust groups, weights and settings as needed.
+
+# To generate structure set json files, use the following command:
+# scripts/gen_all_structure_sets.sh
+# (creates kubejs/data/bth/worldgen/structure_set/*.json)
+
+# Then to generate the tags, run:
+# scripts/gen_structure_tags.sh
+# (creates kubejs/server_scripts/tags/generated.js)
+
+overworld:
+  weights:
+    small: 20
+    common: 30
+    common_priority: 20
+    meteorites: 8
+    rare: 10
+    villages: 10
+    outposts: 10
+  settings:
+    spacing: 35
+    separation: 10
+    salt: 78184732
+    exclusion_zones:
+      - chunks: 2
+        set: minecraft:ruined_portals
+  structures:
+    small:
+      - bth_structures:aether_portal_floating
+      - bth_structures:aether_portal_framed
+      - minecraft:igloo
+      - minecraft:shipwreck
+      - minecraft:shipwreck_beached
+      - terralith:igloo
+    meteorites:
+      - ae2:meteorite
+    common_priority:
+      - biomeswevegone:prairie_house
+      - bth_structures:dw20
+      - hexerei:baba_yaga_hut
+      - hexerei:owl_post_office
+      - hexerei:witch_hut
+      - irons_spellbooks:evoker_fort
+      - irons_spellbooks:mountain_tower
+      - irons_spellbooks:pyromancer_tower
+      - spanish_fort:spanishfort
+      - valhelsia_structures:castle
+      - valhelsia_structures:forge
+      - valhelsia_structures:player_house
+    common:
+      - alshanex_familiars:hunter_campsite
+      - ars_nouveau:guardian_wilden_den
+      - ars_nouveau:hunter_wilden_den
+      - ars_nouveau:stalker_wilden_den
+      - autumnity:maple_hut
+      - biomeswevegone:aspen_manor_1
+      - biomeswevegone:aspen_manor_2
+      - biomeswevegone:bog_trial
+      - bth_structures:battle_grounds
+      - bth_structures:wagon
+      - eidolon_repraised:lab
+      - eidolon_repraised:stray_tower
+      - graveyard:dead_tree
+      - graveyard:haunted_house
+      - graveyard:large_graveyard
+      - graveyard:medium_graveyard
+      - graveyard:memorial_tree
+      - graveyard:mushroom_grave
+      - graveyard:ruins
+      - hauntedharvest:abandoned_farm
+      - irons_spellbooks:ice_spider_den
+      - irons_spellbooks:impaled_icebreaker
+      - irons_spellbooks:mangrove_hut
+      - minecolonies:amazon_camp
+      - minecolonies:barbarian_camp
+      - minecolonies:desert_camp
+      - minecolonies:ship
+      - minecraft:swamp_hut
+      - minecraft:trail_ruins
+      - terralith:desert_outpost
+      - terralith:glacial_hut
+      - terralith:mage_complex
+      - terralith:mage_tower
+      - terralith:valley_lodge
+      - terralith:witch_hut
+      - towns_and_towers:wreckage_ocean
+      - underwater_village:cold_big_gate
+      - underwater_village:cold_broken_house
+      - underwater_village:cold_fountain
+      - underwater_village:cold_gate
+      - underwater_village:dungeon
+      - underwater_village:library
+      - underwater_village:ruins
+      - underwater_village:shrine
+      - underwater_village:small_gate
+      - underwater_village:temple
+      - underwater_village:temple_broken
+      - underwater_village:temple_ruins
+      - underwater_village:tower
+      - underwater_village:warm_big_gate
+      - underwater_village:warm_broken_house
+      - underwater_village:warm_fountain
+      - underwater_village:warm_gate
+      - valhelsia_structures:big_tree
+      - valhelsia_structures:castle_ruin
+      - valhelsia_structures:desert_house
+      - valhelsia_structures:tower_ruin
+      - valhelsia_structures:witch_hut
+    rare:
+      - betterdeserttemples:desert_temple
+      - betterjungletemples:jungle_temple
+      - betteroceanmonuments:ocean_monument
+    villages:
+      - biomeswevegone:village/forgotten
+      - biomeswevegone:village/pumpkin_patch
+      - biomeswevegone:village/red_rock
+      - biomeswevegone:village/salem
+      - biomeswevegone:village/skyris
+      - biomeswevegone:village/swamp
+      - ctov:medium/village_beach
+      - ctov:medium/village_christmas
+      - ctov:medium/village_dark_forest
+      - ctov:medium/village_desert
+      - ctov:medium/village_desert_oasis
+      - ctov:medium/village_jungle
+      - ctov:medium/village_jungle_tree
+      - ctov:medium/village_mesa
+      - ctov:medium/village_mesa_fortified
+      - ctov:medium/village_mushroom
+      - ctov:medium/village_plains
+      - ctov:medium/village_plains_fortified
+      - ctov:medium/village_savanna
+      - ctov:medium/village_savanna_na
+      - ctov:medium/village_snowy_igloo
+      - ctov:medium/village_swamp
+      - ctov:medium/village_swamp_fortified
+      - ctov:medium/village_taiga
+      - ctov:medium/village_taiga_fortified
+      - ctov:small/village_beach
+      - ctov:small/village_christmas
+      - ctov:small/village_dark_forest
+      - ctov:small/village_desert
+      - ctov:small/village_desert_oasis
+      - ctov:small/village_jungle
+      - ctov:small/village_jungle_tree
+      - ctov:small/village_mesa
+      - ctov:small/village_mesa_fortified
+      - ctov:small/village_mountain
+      - ctov:small/village_mountain_alpine
+      - ctov:small/village_mushroom
+      - ctov:small/village_plains
+      - ctov:small/village_plains_fortified
+      - ctov:small/village_savanna
+      - ctov:small/village_savanna_na
+      - ctov:small/village_snowy_igloo
+      - ctov:small/village_swamp
+      - ctov:small/village_swamp_fortified
+      - ctov:small/village_taiga
+      - ctov:small/village_taiga_fortified
+      - hexerei:dark_coven
+      - hexerei:nature_coven
+      - ribbits:ribbit_village
+      - terralith:fortified_desert_village
+      - terralith:fortified_village
+      - towns_and_towers:exclusives/village_classic
+      - towns_and_towers:exclusives/village_iberian
+      - towns_and_towers:exclusives/village_mediterranean
+      - towns_and_towers:exclusives/village_nilotic
+      - towns_and_towers:exclusives/village_piglin
+      - towns_and_towers:exclusives/village_rustic
+      - towns_and_towers:exclusives/village_swedish
+      - towns_and_towers:exclusives/village_tudor
+      - towns_and_towers:exclusives/village_wandering_trader_camp
+      - towns_and_towers:village_badlands
+      - towns_and_towers:village_beach
+      - towns_and_towers:village_birch_forest
+      - towns_and_towers:village_flower_forest
+      - towns_and_towers:village_forest
+      - towns_and_towers:village_grove
+      - towns_and_towers:village_jungle
+      - towns_and_towers:village_meadow
+      - towns_and_towers:village_mushroom_fields
+      - towns_and_towers:village_ocean
+      - towns_and_towers:village_old_growth_taiga
+      - towns_and_towers:village_savanna_plateau
+      - towns_and_towers:village_snowy_slopes
+      - towns_and_towers:village_snowy_taiga
+      - towns_and_towers:village_sparse_jungle
+      - towns_and_towers:village_sunflower_plains
+      - towns_and_towers:village_swamp
+      - towns_and_towers:village_wooded_badlands
+      - villagesandpillages:village_witch
+    outposts:
+      - ctov:pillager_outpost_badlands
+      - ctov:pillager_outpost_beach
+      - ctov:pillager_outpost_dark_forest
+      - ctov:pillager_outpost_desert
+      - ctov:pillager_outpost_jungle
+      - ctov:pillager_outpost_mountain
+      - ctov:pillager_outpost_plains
+      - ctov:pillager_outpost_savanna
+      - ctov:pillager_outpost_snowy
+      - ctov:pillager_outpost_swamp
+      - ctov:pillager_outpost_taiga
+      - minecraft:pillager_outpost
+      - towns_and_towers:exclusives/pillager_outpost_classic
+      - towns_and_towers:exclusives/pillager_outpost_iberian
+      - towns_and_towers:exclusives/pillager_outpost_mediterranean
+      - towns_and_towers:exclusives/pillager_outpost_nilotic
+      - towns_and_towers:exclusives/pillager_outpost_oriental
+      - towns_and_towers:exclusives/pillager_outpost_rustic
+      - towns_and_towers:exclusives/pillager_outpost_swedish
+      - towns_and_towers:exclusives/pillager_outpost_tudor
+      - towns_and_towers:pillager_outpost_badlands
+      - towns_and_towers:pillager_outpost_beach
+      - towns_and_towers:pillager_outpost_birch_forest
+      - towns_and_towers:pillager_outpost_desert
+      - towns_and_towers:pillager_outpost_flower_forest
+      - towns_and_towers:pillager_outpost_forest
+      - towns_and_towers:pillager_outpost_grove
+      - towns_and_towers:pillager_outpost_jungle
+      - towns_and_towers:pillager_outpost_meadow
+      - towns_and_towers:pillager_outpost_mushroom_fields
+      - towns_and_towers:pillager_outpost_ocean
+      - towns_and_towers:pillager_outpost_old_growth_taiga
+      - towns_and_towers:pillager_outpost_savanna
+      - towns_and_towers:pillager_outpost_savanna_plateau
+      - towns_and_towers:pillager_outpost_snowy_beach
+      - towns_and_towers:pillager_outpost_snowy_plains
+      - towns_and_towers:pillager_outpost_snowy_slopes
+      - towns_and_towers:pillager_outpost_snowy_taiga
+      - towns_and_towers:pillager_outpost_sparse_jungle
+      - towns_and_towers:pillager_outpost_sunflower_plains
+      - towns_and_towers:pillager_outpost_swamp
+      - towns_and_towers:pillager_outpost_taiga
+      - towns_and_towers:pillager_outpost_wooded_badlands
+
+overworld_underground:
+  weights:
+    small: 60
+    common: 30
+    rare: 10
+  settings:
+    spacing: 6
+    separation: 3
+    salt: 62926482
+    exclusion_zones:
+      - chunks: 8
+        set: bettermineshafts:mineshafts
+  structures:
+    small:
+      - betterdungeons:small_dungeon
+      - valhelsia_structures:spawner_room
+      - valhelsia_structures:deep_spawner_room
+    common:
+      - betterdungeons:skeleton_dungeon
+      - betterdungeons:spider_dungeon
+      - betterdungeons:zombie_dungeon
+      - terralith:underground/frosted_dungeon
+      - terralith:underground/giant_bee_hive
+      - terralith:underground/mining_outpost
+      - terralith:underground/oak_cabin
+      - terralith:underground/old_refinery
+      - terralith:underground/sunken_tower
+      - valhelsia_structures:spawner_dungeon
+    rare:
+      - eidolon_repraised:catacomb
+      - graveyard:crypt
+      - irons_spellbooks:catacombs
+
+aether:
+  weights:
+    common: 32
+    bronze: 32
+    silver: 22
+    gold: 10
+    brass: 2
+    villages: 2
+  settings:
+    spacing: 40
+    separation: 20
+    salt: 13462137
+  structures:
+    common:
+      - bth_structures:aether_portal_floating_aether
+    bronze:
+      - aether:bronze_dungeon
+    silver:
+      - aether:silver_dungeon
+    gold:
+      - aether:gold_dungeon
+    brass:
+      - deep_aether:brass_dungeon
+    villages:
+      - aether_villages:olympic_citadel
+
+nether:
+  weights:
+    common: 60
+    rare: 20
+    rare_priority: 20
+  settings:
+    spacing: 40
+    separation: 20
+    salt: 10372916
+  structures:
+    common:
+      - alshanex_familiars:graveyard
+      - betterdungeons:small_nether_dungeon
+      - incendium:abandoned_tower
+      - incendium:infernal_altar
+      - incendium:piglin_village
+      - incendium:pipeline
+      - incendium:quartz_kitchen
+      - incendium:ruined_lab
+      - irons_spellbooks:ancient_battleground
+    rare:
+      - incendium:forbidden_castle
+      - incendium:nether_reactor
+      - incendium:sanctum
+      - irons_spellbooks:citadel
+    rare_priority:
+      - betterfortresses:fortress
+      - minecraft:bastion_remnant
+
+end:
+  weights:
+    common: 60
+    rare: 20
+    rare_priority: 20
+  settings:
+    spacing: 40
+    separation: 20
+    salt: 90713726
+  structures:
+    common:
+      - enderscape:center_gateway
+    rare:
+      - alshanex_familiars:end_laboratory
+      - enderscape:large_center_gateway
+      - enderscape:mirestone_ruins
+      - phantasm:obsidian_tower
+    rare_priority:
+      - enderscape:end_city

@@ -1,0 +1,35 @@
+{
+  "placement": {
+    "type": "valhelsia_structures:valhelsia_random_spread",
+    "spacing": 40,
+    "separation": 20,
+    "salt": 90713726,
+    "exclusion_zones": []
+  },
+  "structures": [
+    {
+      "structure": "enderscape:center_gateway",
+      "weight": 60
+    },
+    {
+      "structure": "alshanex_familiars:end_laboratory",
+      "weight": 5
+    },
+    {
+      "structure": "enderscape:large_center_gateway",
+      "weight": 5
+    },
+    {
+      "structure": "enderscape:mirestone_ruins",
+      "weight": 5
+    },
+    {
+      "structure": "phantasm:obsidian_tower",
+      "weight": 5
+    },
+    {
+      "structure": "enderscape:end_city",
+      "weight": 20
+    }
+  ]
+}

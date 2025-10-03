@@ -207,15 +207,15 @@ hash = "dce291e22c74c31e5d0d4093fcd928298929353573f95925fb422d207377610b"
 
 [[files]]
 file = "config/lightmanscurrency-client.txt"
-hash = "91a79afee44ef997eda0072e4a6f4494a26257ea1c519fe7966cc3dad1795c94"
+hash = "fe338d802ead8dd55736b531f0f995ae01c1fd4cb4434f13cef2e9b0149e9933"
 
 [[files]]
 file = "config/lightmanscurrency-common.txt"
-hash = "7ccafabbc76d08dcd7d6c5db68ef9539b3c6557455ad0bbfedfc159b1b5e755a"
+hash = "a796f680e418dd49531985eaa3a1483cee45855e12ab1169feb195dcdc331ff4"
 
 [[files]]
 file = "config/lightmanscurrency-server.txt"
-hash = "e46e6fa4d1c40ee2551ebbb240c27cfb48b0de05280b0b4c018e67f29e6e9ce5"
+hash = "4d7eb0454b26293aaece93e81916bd3bae32185cc7934c90939039f44de9813c"
 
 [[files]]
 file = "config/notenoughcrashes.json"

@@ -1239,7 +1239,7 @@ hash = "5e1ecb791e22400c9df69063cb7f859fa6f3b824c62fc1500ed9a7bdca7f57c7"
 
 [[files]]
 file = "kubejs/server_scripts/loot_tables/coins.js"
-hash = "076914f50e762ecd422f44f6f5398b3a3ba1532a84b71ef1a588c1788d14d3ec"
+hash = "7ea2b03a64395d961bd7b1b0bbf474c725f34ac72dad4a612ef4707f68b822dd"
 
 [[files]]
 file = "kubejs/server_scripts/loot_tables/constants.js"
@@ -1255,7 +1255,7 @@ hash = "e00437a6f2560572d5506bfdf291a1e429e01658b902dc74d7f61bb5b096e07c"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/replace.js"
-hash = "dfb66fbc2deed12b003006b8c3fcc9c3b2d4d858f45ada71e195f9aae2c939c6"
+hash = "d09c4aff98c0096ced3d24156616525b30c93f54540de855161c41fef5be1ffc"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/shaped.js"
@@ -1268,6 +1268,10 @@ hash = "8af7829cf64ef55959e1f481ad983f207a58809b94ccb94850de7652e9e2af2d"
 [[files]]
 file = "kubejs/server_scripts/tags/generated.js"
 hash = "f295ef0b04fa3a774523208127f7886371e43296ab25b61af0ce9216d7f2686c"
+
+[[files]]
+file = "kubejs/server_scripts/tags/item.js"
+hash = "c693a1f1cae7abe11e28317bf6b3968a29e5c7383b3d61eb706808433a747df4"
 
 [[files]]
 file = "kubejs/startup_scripts/item.js"

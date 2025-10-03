@@ -1243,7 +1243,7 @@ hash = "7ea2b03a64395d961bd7b1b0bbf474c725f34ac72dad4a612ef4707f68b822dd"
 
 [[files]]
 file = "kubejs/server_scripts/loot_tables/constants.js"
-hash = "9ee15f80cddd60aba47127e302bd330e813d5e73e4ec2b23435e17acb9d201f4"
+hash = "43fad3040e531d80cf7ed73b22787c2c2e22807cdff89c6143ea1d62f0e30f00"
 
 [[files]]
 file = "kubejs/server_scripts/player_events.js"
@@ -1255,7 +1255,7 @@ hash = "e00437a6f2560572d5506bfdf291a1e429e01658b902dc74d7f61bb5b096e07c"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/replace.js"
-hash = "d09c4aff98c0096ced3d24156616525b30c93f54540de855161c41fef5be1ffc"
+hash = "5ce02e0c632a319269f44db046612a98da216f4f61e7acfe515e46cde4589864"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/shaped.js"
@@ -1263,7 +1263,7 @@ hash = "8eac212a039a04be1aba8720e3b13dcb9e7f0a83b0485f4e19ea9ecc9fbc33fd"
 
 [[files]]
 file = "kubejs/server_scripts/tags/biome.js"
-hash = "8af7829cf64ef55959e1f481ad983f207a58809b94ccb94850de7652e9e2af2d"
+hash = "fcf7bcacac7f29a5e1b16709f6e27146d0db281f2ad032ef9deea7b2e0697514"
 
 [[files]]
 file = "kubejs/server_scripts/tags/generated.js"
@@ -1271,7 +1271,7 @@ hash = "f295ef0b04fa3a774523208127f7886371e43296ab25b61af0ce9216d7f2686c"
 
 [[files]]
 file = "kubejs/server_scripts/tags/item.js"
-hash = "c693a1f1cae7abe11e28317bf6b3968a29e5c7383b3d61eb706808433a747df4"
+hash = "14d6e4e89dbdbf65c403ed9353054e88111e19f7d0acb69a95a2d3b1a45c36d0"
 
 [[files]]
 file = "kubejs/startup_scripts/item.js"

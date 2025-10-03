@@ -28,7 +28,7 @@ ServerEvents.tags('item', event => {
   ]);
 
   event.add('bth:candle_material', [
-    'eidolon:tallow',
+    'eidolon_repraised:tallow',
     'forbidden_arcanus:wax',
     'minecraft:honeycomb',
   ]);
@@ -54,11 +54,11 @@ ServerEvents.tags('item', event => {
 
   // Minecraft Tags
   event.add('minecraft:slabs', [
-    'eidolon:illwood_planks_slab',
+    'eidolon_repraised:illwood_planks_slab',
   ]);
 
   event.add('minecraft:wooden_slabs', [
-    'eidolon:illwood_planks_slab',
+    'eidolon_repraised:illwood_planks_slab',
   ]);
 
   event.add('minecraft:swords', [
@@ -182,11 +182,11 @@ ServerEvents.tags('item', event => {
 
     '#botania:rods',
 
-    'eidolon:bonechill_wand',
-    'eidolon:soulfire_wand',
-    'eidolon:warlock_hat',
-    'eidolon:warlock_cloak',
-    'eidolon:warlock_boots',
+    'eidolon_repraised:bonechill_wand',
+    'eidolon_repraised:soulfire_wand',
+    'eidolon_repraised:warlock_hat',
+    'eidolon_repraised:warlock_cloak',
+    'eidolon_repraised:warlock_boots',
 
     'irons_spellbooks:artificer_cane',
     'irons_spellbooks:blood_staff',
@@ -203,7 +203,7 @@ ServerEvents.tags('item', event => {
 
   // Ars Nouveau Tags
   event.add('ars_nouveau:golem/shard', [
-    'eidolon:sulfur',
+    'eidolon_repraised:sulfur',
     'quark:red_corundum_cluster',
     'quark:orange_corundum_cluster',
     'quark:yellow_corundum_cluster',
@@ -253,7 +253,7 @@ ServerEvents.tags('item', event => {
 
   // Axes
   const axes = [
-    'eidolon:silver_axe',
+    'eidolon_repraised:silver_axe',
     'forbidden_arcanus:draco_arcanus_axe',
     'forbidden_arcanus:reinforced_deorum_axe',
     'immersiveengineering:axe_steel',
@@ -269,7 +269,7 @@ ServerEvents.tags('item', event => {
 
   // Hoes
   const hoes = [
-    'eidolon:silver_hoe',
+    'eidolon_repraised:silver_hoe',
     'forbidden_arcanus:draco_arcanus_hoe',
     'forbidden_arcanus:reinforced_deorum_hoe',
     'immersiveengineering:hoe_steel',
@@ -285,8 +285,8 @@ ServerEvents.tags('item', event => {
 
   // Pickaxes
   const pickaxes = [
-    'eidolon:reversal_pick',
-    'eidolon:silver_pickaxe',
+    'eidolon_repraised:reversal_pick',
+    'eidolon_repraised:silver_pickaxe',
     'forbidden_arcanus:diamond_blacksmith_gavel',
     'forbidden_arcanus:draco_arcanus_pickaxe',
     'forbidden_arcanus:golden_blacksmith_gavel',
@@ -309,7 +309,7 @@ ServerEvents.tags('item', event => {
 
   // Shovels
   const shovels = [
-    'eidolon:silver_shovel',
+    'eidolon_repraised:silver_shovel',
     'forbidden_arcanus:draco_arcanus_shovel',
     'forbidden_arcanus:reinforced_deorum_shovel',
     'immersiveengineering:shovel_steel',
@@ -337,12 +337,12 @@ ServerEvents.tags('item', event => {
   const swords = [
     'deep_aether:blade_of_luck',
     'deep_aether:storm_sword',
-    'eidolon:athame',
-    'eidolon:cleaving_axe',
-    'eidolon:deathbringer_scythe',
-    'eidolon:reaper_scythe',
-    'eidolon:sapping_sword',
-    'eidolon:silver_sword',
+    'eidolon_repraised:athame',
+    'eidolon_repraised:cleaving_axe',
+    'eidolon_repraised:deathbringer_scythe',
+    'eidolon_repraised:reaper_scythe',
+    'eidolon_repraised:sapping_sword',
+    'eidolon_repraised:silver_sword',
     'enderio:dark_steel_sword',
     'forbidden_arcanus:draco_arcanus_sword',
     'forbidden_arcanus:mystical_dagger',
@@ -377,9 +377,9 @@ ServerEvents.tags('item', event => {
     'ars_technica:technomancer_helmet',
     'create:cardboard_helmet',
     'deep_aether:stormforged_helmet',
-    'eidolon:bonelord_helm',
-    'eidolon:silver_helmet',
-    'eidolon:warlock_hat',
+    'eidolon_repraised:bonelord_helm',
+    'eidolon_repraised:silver_helmet',
+    'eidolon_repraised:warlock_hat',
     'forbidden_arcanus:draco_arcanus_helmet',
     'forbidden_arcanus:mortem_helmet',
     'forbidden_arcanus:tyr_helmet',
@@ -420,9 +420,9 @@ ServerEvents.tags('item', event => {
     'ars_technica:technomancer_chestplate',
     'create:cardboard_chestplate',
     'deep_aether:stormforged_chestplate',
-    'eidolon:bonelord_chestplate',
-    'eidolon:silver_chestplate',
-    'eidolon:warlock_cloak',
+    'eidolon_repraised:bonelord_chestplate',
+    'eidolon_repraised:silver_chestplate',
+    'eidolon_repraised:warlock_cloak',
     'forbidden_arcanus:draco_arcanus_chestplate',
     'forbidden_arcanus:mortem_chestplate',
     'forbidden_arcanus:tyr_chestplate',
@@ -448,8 +448,8 @@ ServerEvents.tags('item', event => {
     'ars_elemental:fire_leggings',
     'ars_technica:technomancer_leggings',
     'deep_aether:stormforged_leggings',
-    'eidolon:bonelord_greaves',
-    'eidolon:silver_leggings',
+    'eidolon_repraised:bonelord_greaves',
+    'eidolon_repraised:silver_leggings',
     'forbidden_arcanus:draco_arcanus_leggings',
     'forbidden_arcanus:mortem_leggings',
     'forbidden_arcanus:tyr_leggings',
@@ -474,8 +474,8 @@ ServerEvents.tags('item', event => {
     'ars_elemental:fire_boots',
     'ars_technica:technomancer_boots',
     'deep_aether:stormforged_boots',
-    'eidolon:silver_boots',
-    'eidolon:warlock_boots',
+    'eidolon_repraised:silver_boots',
+    'eidolon_repraised:warlock_boots',
     'forbidden_arcanus:draco_arcanus_boots',
     'forbidden_arcanus:mortem_boots',
     'forbidden_arcanus:tyr_boots',

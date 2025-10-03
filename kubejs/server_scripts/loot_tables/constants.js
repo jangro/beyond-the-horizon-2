@@ -54,12 +54,12 @@
 // const EIDOLON_LAB_MAP =
 //   Item.of('supplementaries:cartographers_quill', '{decoration:"filled_map.eidolon_lab",\
 //            display:{Name:\'{"translate":"filled_map.eidolon_lab"}\'},maxSearchRadius:100,skinKnown:1b,\
-//            targetStructure:"eidolon:lab",zoomLevel:2}');
+//            targetStructure:"eidolon_repraised:lab",zoomLevel:2}');
 
 // const EIDOLON_CATACOMB_MAP =
 //   Item.of('supplementaries:cartographers_quill', '{decoration:"filled_map.eidolon_catacomb",\
 //            display:{Name:\'{"translate":"filled_map.eidolon_catacomb"}\'},maxSearchRadius:100,skinKnown:1b,\
-//            targetStructure:"eidolon:catacomb",zoomLevel:2}');
+//            targetStructure:"eidolon_repraised:catacomb",zoomLevel:2}');
 
 // const NETHER_FORTRESS_MAP =
 //   Item.of('supplementaries:cartographers_quill', '{decoration:"filled_map.nether_fortress",\

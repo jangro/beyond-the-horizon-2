@@ -112,7 +112,7 @@ ServerEvents.tags('worldgen/biome', event => {
 
     'deep_aether:has_brass_dungeon',
 
-    'eidolon:has_structure/stray_tower_biomes',
+    'eidolon_repraised:has_structure/stray_tower_biomes',
 
     "graveyard:has_structure/dead_tree",
     "graveyard:has_structure/haunted_house",
@@ -230,7 +230,7 @@ ServerEvents.tags('worldgen/biome', event => {
   event.add('deep_aether:has_brass_dungeon', ['#aether:is_aether']);
 
   // Eidolon - Stray Towers spawn only in snowy mountains.
-  event.add('eidolon:has_structure/stray_tower_biomes', '#bth:is_frozen_tower_biome');
+  event.add('eidolon_repraised:has_structure/stray_tower_biomes', '#bth:is_frozen_tower_biome');
 
   // Graveyard
   event.add('graveyard:has_structure/ruins', ['terralith:shrubland']);

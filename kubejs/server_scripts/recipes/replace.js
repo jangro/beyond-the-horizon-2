@@ -75,7 +75,7 @@ ServerEvents.recipes(event => {
   // Use tags instead of items for all dye colours.
   COLORS.forEach((color) => replaceInput(`minecraft:${color}_dye`, `#c:dyes/${color}`));
 
-  // // EnderIO
+  // EnderIO
   replaceInputID('enderio:energy_conduit', 'enderio:conductive_alloy_ingot', 'enderio:conductive_alloy_nugget');
   replaceInputID('enderio:enhanced_energy_conduit', 'enderio:energetic_alloy_ingot', 'enderio:energetic_alloy_nugget');
   replaceInputID('enderio:ender_energy_conduit', 'enderio:vibrant_alloy_ingot', 'enderio:vibrant_alloy_nugget');
@@ -83,22 +83,18 @@ ServerEvents.recipes(event => {
   replaceInputID('enderio:redstone_conduit', 'enderio:redstone_alloy_ingot', 'enderio:redstone_alloy_nugget');
 
 
+  // Candles
+  replaceInputID('minecraft:candle', 'minecraft:honeycomb', '#bth:candle_material');
+  replaceInputID('eidolon_repraised:candle', 'eidolon_repraised:tallow', '#bth:candle_material');
+  replaceInputID('forbidden_arcanus:purifying_soap', 'forbidden_arcanus:wax', '#bth:candle_material');
+  replaceInputID('forbidden_arcanus:purifying_soap', 'minecraft:slime_ball', '#forge:slimeballs');
+  replaceInputID('supplementaries:soap', 'minecraft:porkchop', ['#bth:candle_material', 'minecraft:porkchop']);
 
 
-
-
-  // // Candles
-  // replaceInputID('minecraft:candle', 'minecraft:honeycomb', '#bth:candle_material');
-  // replaceInputID('eidolon:candle', 'eidolon:tallow', '#bth:candle_material');
-  // replaceInputID('forbidden_arcanus:purifying_soap', 'forbidden_arcanus:wax', '#bth:candle_material');
-  // replaceInputID('forbidden_arcanus:purifying_soap', 'minecraft:slime_ball', '#forge:slimeballs');
-  // replaceInputID('supplementaries:soap', 'minecraft:porkchop', ['#bth:candle_material', 'minecraft:porkchop']);
-
-
-  // // Dough Compatibility
-  // replaceInput('create:dough', '#forge:dough/wheat');
-  // replaceInput('farmersdelight:wheat_dough', '#forge:dough/wheat');
-  // replaceInput('minecolonies:bread_dough', '#forge:dough/wheat');
+  // Dough Compatibility
+  replaceInput('create:dough', '#c:dough/wheat');
+  replaceInput('farmersdelight:wheat_dough', '#c:dough/wheat');
+  replaceInput('minecolonies:bread_dough', '#c:dough/wheat');
 
   // // Dust Compatibility
   // replaceInput('alexscaves:sulfur_dust', '#forge:dusts/sulfur');
@@ -156,7 +152,7 @@ ServerEvents.recipes(event => {
   // ], 'minecraft:glass', '#forge:glass/colorless');
 
   // // Ingot Compatibility
-  // replaceInput('eidolon:arcane_gold_ingot', '#forge:ingots/arcane_gold');
+  // replaceInput('eidolon_repraised:arcane_gold_ingot', '#forge:ingots/arcane_gold');
   // replaceInput('forbidden_arcanus:deorum_ingot', '#forge:ingots/arcane_gold');
   // replaceInput('forbidden_arcanus:obsidian_ingot', '#forge:ingots/obsidian');
   // replaceInput('galosphere:silver_ingot', '#forge:ingots/silver');
@@ -201,8 +197,8 @@ ServerEvents.recipes(event => {
   // replaceInput('immersiveengineering:nugget_silver', '#forge:nuggets/silver');
 
   // // Ore Compatibility
-  // replaceInput('eidolon:silver_ore', '#forge:ores/silver');
-  // replaceInput('eidolon:deep_silver_ore', '#forge:ores/silver');
+  // replaceInput('eidolon_repraised:silver_ore', '#forge:ores/silver');
+  // replaceInput('eidolon_repraised:deep_silver_ore', '#forge:ores/silver');
   // replaceInput('galosphere:silver_ore', '#forge:ores/silver');
   // replaceInput('galosphere:deepslate_silver_ore', '#forge:ores/silver');
   // replaceInput('immersiveengineering:ore_silver', '#forge:ores/silver');
@@ -271,22 +267,22 @@ ServerEvents.recipes(event => {
   // // ----- Output Unification -----
 
   // // Dusts
-  // replaceOutput('alexscaves:sulfur_dust', 'eidolon:sulfur');
-  // replaceOutput('immersiveengineering:dust_sulfur', 'eidolon:sulfur');
+  // replaceOutput('alexscaves:sulfur_dust', 'eidolon_repraised:sulfur');
+  // replaceOutput('immersiveengineering:dust_sulfur', 'eidolon_repraised:sulfur');
 
   // // Ingots
-  // replaceOutput('galosphere:silver_ingot', 'eidolon:silver_ingot');
+  // replaceOutput('galosphere:silver_ingot', 'eidolon_repraised:silver_ingot');
   // replaceOutput('immersiveengineering:ingot_electrum', 'createaddition:electrum_ingot');
-  // replaceOutput('immersiveengineering:ingot_lead', 'eidolon:lead_ingot');
-  // replaceOutput('immersiveengineering:ingot_silver', 'eidolon:silver_ingot');
+  // replaceOutput('immersiveengineering:ingot_lead', 'eidolon_repraised:lead_ingot');
+  // replaceOutput('immersiveengineering:ingot_silver', 'eidolon_repraised:silver_ingot');
   // replaceOutput('immersiveengineering:ingot_uranium', 'alexscaves:uranium');
 
   // // Nuggets
-  // replaceOutput('galosphere:silver_nugget', 'eidolon:silver_nugget');
+  // replaceOutput('galosphere:silver_nugget', 'eidolon_repraised:silver_nugget');
   // replaceOutput('immersiveengineering:nugget_copper', 'create:copper_nugget');
   // replaceOutput('immersiveengineering:nugget_electrum', 'createaddition:electrum_nugget');
-  // replaceOutput('immersiveengineering:nugget_lead', 'eidolon:lead_nugget');
-  // replaceOutput('immersiveengineering:nugget_silver', 'eidolon:silver_nugget');
+  // replaceOutput('immersiveengineering:nugget_lead', 'eidolon_repraised:lead_nugget');
+  // replaceOutput('immersiveengineering:nugget_silver', 'eidolon_repraised:silver_nugget');
   // replaceOutput('pneumaticcraft:copper_nugget', 'create:copper_nugget');
   // // Note: Unsure of how best to handle Alex's Caves Uranium Shards, as they're nuggets but ones
   // // that convert to raw material, not an ingot.
@@ -301,21 +297,21 @@ ServerEvents.recipes(event => {
   // replaceOutput('createaddition:iron_rod', 'immersiveengineering:stick_iron');
 
   // // Ore
-  // replaceOutput('galosphere:deepslate_silver_ore', 'eidolon:deep_silver_ore');
-  // replaceOutput('galosphere:silver_ore', 'eidolon:silver_ore');
-  // replaceOutput('immersiveengineering:deepslate_ore_silver', 'eidolon:deep_silver_ore');
-  // replaceOutput('immersiveengineering:ore_silver', 'eidolon:silver_ore');
+  // replaceOutput('galosphere:deepslate_silver_ore', 'eidolon_repraised:deep_silver_ore');
+  // replaceOutput('galosphere:silver_ore', 'eidolon_repraised:silver_ore');
+  // replaceOutput('immersiveengineering:deepslate_ore_silver', 'eidolon_repraised:deep_silver_ore');
+  // replaceOutput('immersiveengineering:ore_silver', 'eidolon_repraised:silver_ore');
 
   // // Raw Materials
-  // replaceOutput('immersiveengineering:raw_lead', 'eidolon:raw_lead');
-  // replaceOutput('galosphere:raw_silver', 'eidolon:raw_silver');
-  // replaceOutput('immersiveengineering:raw_silver', 'eidolon:raw_silver');
+  // replaceOutput('immersiveengineering:raw_lead', 'eidolon_repraised:raw_lead');
+  // replaceOutput('galosphere:raw_silver', 'eidolon_repraised:raw_silver');
+  // replaceOutput('immersiveengineering:raw_silver', 'eidolon_repraised:raw_silver');
 
   // // Storage Blocks
-  // replaceOutput('galosphere:raw_silver_block', 'eidolon:raw_silver_block');
-  // replaceOutput('galosphere:silver_block', 'eidolon:silver_block');
-  // replaceOutput('immersiveengineering:raw_block_silver', 'eidolon:raw_silver_block');
-  // replaceOutput('immersiveengineering:storage_silver', 'eidolon:silver_block');
+  // replaceOutput('galosphere:raw_silver_block', 'eidolon_repraised:raw_silver_block');
+  // replaceOutput('galosphere:silver_block', 'eidolon_repraised:silver_block');
+  // replaceOutput('immersiveengineering:raw_block_silver', 'eidolon_repraised:raw_silver_block');
+  // replaceOutput('immersiveengineering:storage_silver', 'eidolon_repraised:silver_block');
 
   // // Wires
   // replaceOutput('createaddition:copper_wire', 'immersiveengineering:wire_copper');

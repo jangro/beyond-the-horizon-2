@@ -137,7 +137,7 @@ ServerEvents.recipes(event => {
     'starbunclemania:fluid_jar',
     'supplementaries:hourglass',
     'supplementaries:jar',
-  ], 'minecraft:glass', '#c:glass/colorless');
+  ], 'minecraft:glass', '#c:glass_blocks/colorless');
 
   // // Ingot Compatibility
   // replaceInput('eidolon_repraised:arcane_gold_ingot', '#forge:ingots/arcane_gold');

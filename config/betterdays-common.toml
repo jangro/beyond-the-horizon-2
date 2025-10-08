@@ -4,16 +4,16 @@
 	#Vanilla speed: 1.0
 	#Range: 0.0 ~ 24000.0
 
-	# BTH: Day is 45 minutes (10 / 0.222)
-	daySpeed = 0.22222222222
+	# BTH: Day is 40 minutes (10 / 0.25)
+	daySpeed = 0.25
 
 	#The speed at which time passes during the night.
 	#Night is defined as any time between dayStart (see below) and nightStart (see below).
 	#Vanilla speed: 1.0
 	#Range: 0.0 ~ 24000.0
 
-	# BTH: Night is 15 minutes (10 / 0.666)
-	nightSpeed = 0.666666666666
+	# BTH: Night is 20 minutes (10 / 0.5)
+	nightSpeed = 0.5
 
 	#The time to start day. This is configurable within the time the sun appears and day starts.
 	#Default: 23500
@@ -26,7 +26,7 @@
 	#Enabling this will allow the setting of an infinite amount of time speeds defined as pairs in the form:
 	#(currentTick, desiredSpeed)
 	#where between each value bezier spline interpolation is performed for smooth transitioning
-	#The two default pairs at 0 and 24000 are necessary as they act as bounds. However 
+	#The two default pairs at 0 and 24000 are necessary as they act as bounds. However
 	#The time speed value for each of them can be freely modified
 	enableInterpolatedTime = false
 	#The value that determines the smoothing factor in the interpolation algorithm.
@@ -165,6 +165,6 @@
 			#Sets where this message appears.
 			#Allowed Values: SYSTEM, GAME_INFO
 			type = "GAME_INFO"
-			#Sets to whom this message is sent. 
+			#Sets to whom this message is sent.
 			#Allowed Values: ALL, DIMENSION, SLEEPING
 			target = "DIMENSION"

@@ -17,6 +17,8 @@
 /overrides
 /structure-mods.txt
 
+/bth2-*-server-output
+
 # Exclude build scripts + executables.
 *.bat
 *.sh

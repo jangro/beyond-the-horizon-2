@@ -139,183 +139,151 @@ ServerEvents.recipes(event => {
     'supplementaries:jar',
   ], 'minecraft:glass', '#c:glass_blocks/colorless');
 
-  // // Ingot Compatibility
-  // replaceInput('eidolon_repraised:arcane_gold_ingot', '#forge:ingots/arcane_gold');
-  // replaceInput('forbidden_arcanus:deorum_ingot', '#forge:ingots/arcane_gold');
-  // replaceInput('forbidden_arcanus:obsidian_ingot', '#forge:ingots/obsidian');
-  // replaceInput('galosphere:silver_ingot', '#forge:ingots/silver');
-  // replaceInput('immersiveengineering:ingot_silver', '#forge:ingots/silver');
-  // replaceInput('#forge:ingots/uranium', 'alexscaves:uranium');
+  // Ingot Compatibility
+  replaceInput('eidolon_repraised:arcane_gold_ingot', '#c:ingots/arcane_gold');
+  replaceInput('forbidden_arcanus:deorum_ingot', '#c:ingots/arcane_gold');
+  replaceInput('forbidden_arcanus:obsidian_ingot', '#c:ingots/obsidiansteel');
 
-  // // Leather Compatibility
-  // replaceInputID([
-  //   'minecraft:book',
-  //   'aether:aether_saddle',
-  //   'alexsmobs:falconry_glove',
-  //   'alexsmobs:falconry_hood',
-  //   'alexsmobs:falconry_hood_alt',
-  //   'alexsmobs:pocket_sand',
-  //   'aquamirae:remnants_saber',
-  //   'aquamirae:three_bolt_boots',
-  //   'aquamirae:three_bolt_leggings',
-  //   'aquamirae:three_bolt_suit',
-  //   'ars_nouveau:annotated_codex',
-  //   'botania:bellows',
-  //   'botania:drum_canopy',
-  //   'botania:drum_gathering',
-  //   'botania:drum_wild',
-  //   'botania:ender_hand',
-  //   'botania:knockback_belt',
-  //   'botania:travel_belt',
-  //   'domesticationinnovation:drum',
-  //   'irons_spellbooks:pumpkin_chestplate',
-  //   'irons_spellbooks:pumpkin_leggings',
-  //   'minecolonies:blockhutfield',
-  //   'minecolonies:build_goggles',
-  //   'minecolonies:clipboard',
-  //   'minecolonies:questlog',
-  //   'minecolonies:resourcescroll',
-  //   'quark:tools/crafting/seed_pouch',
-  //   'supplementaries:bellows',
-  //   'xercamusic:drum',
-  // ], 'minecraft:leather', '#forge:leather');
+  // Leather Compatibility
+  replaceInputID([
+    'minecraft:book',
+    'ars_nouveau:annotated_codex',
+    'botania:bellows',
+    'botania:drum_canopy',
+    'botania:drum_gathering',
+    'botania:drum_wild',
+    'botania:ender_hand',
+    'botania:knockback_belt',
+    'botania:travel_belt',
+    'irons_spellbooks:pumpkin_chestplate',
+    'irons_spellbooks:pumpkin_leggings',
+    'minecolonies:blockhutfield',
+    'minecolonies:build_goggles',
+    'minecolonies:clipboard',
+    'minecolonies:questlog',
+    'minecolonies:resourcescroll',
+    'quark:tools/crafting/seed_pouch',
+    'supplementaries:bellows',
+    'xercamusic:drum',
+  ], 'minecraft:leather', '#c:leathers');
 
-  // // Nugget Compatibility
-  // replaceInput('galosphere:silver_nugget', '#forge:nuggets/silver');
-  // replaceInput('immersiveengineering:nugget_silver', '#forge:nuggets/silver');
+  // Nugget Compatibility
 
-  // // Ore Compatibility
-  // replaceInput('eidolon_repraised:silver_ore', '#forge:ores/silver');
-  // replaceInput('eidolon_repraised:deep_silver_ore', '#forge:ores/silver');
-  // replaceInput('galosphere:silver_ore', '#forge:ores/silver');
-  // replaceInput('galosphere:deepslate_silver_ore', '#forge:ores/silver');
-  // replaceInput('immersiveengineering:ore_silver', '#forge:ores/silver');
-  // replaceInput('immersiveengineering:deepslate_ore_silver', '#forge:ores/silver');
+  // Ore Compatibility
+  replaceInput('eidolon_repraised:silver_ore', '#c:ores/silver');
+  replaceInput('eidolon_repraised:deep_silver_ore', '#c:ores/silver');
+  replaceInput('immersiveengineering:ore_silver', '#c:ores/silver');
+  replaceInput('immersiveengineering:deepslate_ore_silver', '#c:ores/silver');
 
-  // // Plate Compatibility
-  // replaceInput('create:iron_sheet', '#forge:plates/iron');
-  // replaceInput('create:golden_sheet', '#forge:plates/gold');
-  // replaceInput('createaddition:zinc_sheet', '#forge:plates/zinc');
-  // replaceInput('createdeco:zinc_sheet', '#forge:plates/zinc');
+  // Plate Compatibility
+  replaceInput('create:iron_sheet', '#c:plates/iron');
+  replaceInput('create:golden_sheet', '#c:plates/gold');
+  replaceInput('createaddition:zinc_sheet', '#c:plates/zinc');
+  replaceInput('createdeco:zinc_sheet', '#c:plates/zinc');
 
-  // // Propeller Compatibility
-  // replaceInput('immersive_aircraft:propeller', 'create:propeller');
+  // Propeller Compatibility
+  replaceInput('immersive_aircraft:propeller', 'create:propeller');
 
-  // // Raw Material Compatibility
-  // replaceInput('galosphere:raw_silver', '#forge:raw_materials/silver');
-  // replaceInput('immersiveengineering:raw_silver', '#forge:raw_materials/silver');
+  // Raw Material Compatibility
+  replaceInput('immersiveengineering:raw_silver', '#c:raw_materials/silver');
 
-  // // Slime Compatibility
-  // replaceInputID([
-  //   'minecraft:lead',
-  //   'minecraft:sticky_piston',
-  //   'alexsmobs:pupfish_locator',
-  //   'botania:dynamic/composite_lens',
-  //   'botania:green_pavement',
-  //   'botania:runic_altar/summer',
-  //   'forbidden_arcanus:slimec_pickaxe',
-  //   'forbidden_arcanus:wax',
-  //   'immersive_aircraft:eco_engine',
-  //   'packingtape:tape',
-  //   'supplementaries:item_lore_display',
-  //   'supplementaries:slingshot',
-  // ], 'minecraft:slime_ball', '#forge:slimeballs');
+  // Slime Compatibility
+  replaceInputID([
+    'minecraft:lead',
+    'minecraft:sticky_piston',
+    'alexsmobs:pupfish_locator',
+    'botania:dynamic/composite_lens',
+    'botania:green_pavement',
+    'botania:runic_altar/summer',
+    'forbidden_arcanus:slimec_pickaxe',
+    'forbidden_arcanus:wax',
+    'immersive_aircraft:eco_engine',
+    'packingtape:tape',
+    'supplementaries:item_lore_display',
+    'supplementaries:slingshot',
+  ], 'minecraft:slime_ball', '#c:slimeballs');
 
-  // // Steel compatibility (IE/EnderIO) for selected items
-  // replaceInputID([
-  //   'immersiveengineering:crafting/steel_wallmount',
-  //   'immersiveengineering:crafting/steel_scaffolding_standard',
-  //   'immersiveengineering:crafting/plate_steel_hammering',
-  //   'immersiveengineering:crafting/steel_fence',
-  //   'immersiveengineering:metalpress/rod_steel',
-  //   'createaddition:rolling/steel_ingot',
-  // ], 'immersiveengineering:ingot_steel', '#bth:ingots/steel');
+  // Steel compatibility (IE/EnderIO) for selected items
+  replaceInputID([
+    'immersiveengineering:crafting/steel_wallmount',
+    'immersiveengineering:crafting/steel_scaffolding_standard',
+    'immersiveengineering:crafting/plate_steel_hammering',
+    'immersiveengineering:crafting/steel_fence',
+    'immersiveengineering:metalpress/rod_steel',
+    'createaddition:rolling/steel_ingot',
+  ], 'immersiveengineering:ingot_steel', '#bth:ingots/steel');
 
-  // // Stick / Rod Compatibility
-  // event.replaceInput({output:'#minecraft:arrows'}, 'minecraft:stick', '#forge:rods/wooden');
+  // Stick / Rod Compatibility
+  event.replaceInput({output:'#minecraft:arrows'}, 'minecraft:stick', '#c:rods/wooden');
 
-  // // Storage Block Compatibility
-  // replaceInput('galosphere:silver_block', '#forge:storage_blocks/silver');
-  // replaceInput('immersiveengineering:raw_block_silver', '#forge:storage_blocks/raw_silver');
-  // replaceInput('immersiveengineering:storage_silver', '#forge:storage_blocks/silver');
-  // replaceInput('immersiveengineering:storage_uranium', '#forge:storage_blocks/uranium');
+  // Storage Block Compatibility
+  replaceInput('immersiveengineering:raw_block_silver', '#c:storage_blocks/raw_silver');
+  replaceInput('immersiveengineering:storage_silver', '#c:storage_blocks/silver');
+  replaceInput('immersiveengineering:storage_uranium', '#c:storage_blocks/uranium');
 
-  // // Wire Compatibility
-  // replaceInput('immersiveengineering:wire_copper', '#forge:wires/copper');
+  // Wire Compatibility
+  replaceInput('immersiveengineering:wire_copper', '#c:wires/copper');
 
-  // // Misc Compatibility
-  // replaceInput('minecraft:blast_furnace', ['minecraft:blast_furnace', 'nethersdelight:blackstone_blast_furnace']);
-  // replaceInput('minecraft:furnace', ['minecraft:furnace', 'quark:blackstone_furnace', 'quark:deepslate_furnace']);
-  // replaceInput('minecraft:smoker', ['minecraft:smoker', 'nethersdelight:nether_brick_smoker']);
-  // replaceInput('nethersdelight:blackstone_furnace', ['minecraft:furnace', 'quark:blackstone_furnace', 'quark:deepslate_furnace']);
+  // Misc Compatibility
+  replaceInput('minecraft:blast_furnace', ['minecraft:blast_furnace', 'nethersdelight:blackstone_blast_furnace']);
+  replaceInput('minecraft:furnace', ['minecraft:furnace', 'quark:blackstone_furnace', 'quark:deepslate_furnace']);
+  replaceInput('minecraft:smoker', ['minecraft:smoker', 'nethersdelight:nether_brick_smoker']);
+  replaceInput('nethersdelight:blackstone_furnace', ['minecraft:furnace', 'quark:blackstone_furnace', 'quark:deepslate_furnace']);
 
-  // // Make the alchemist cauldron more accessible
-  // replaceInputID('irons_spellbooks:alchemist_cauldron', 'irons_spellbooks:cinder_essence', 'minecraft:blaze_powder');
+  // Make the alchemist cauldron more accessible
+  replaceInputID('irons_spellbooks:alchemist_cauldron', 'irons_spellbooks:cinder_essence', 'minecraft:blaze_powder');
 
-  // // ----- Output Unification -----
+  // ----- Output Unification -----
 
-  // // Dusts
-  // replaceOutput('alexscaves:sulfur_dust', 'eidolon_repraised:sulfur');
-  // replaceOutput('immersiveengineering:dust_sulfur', 'eidolon_repraised:sulfur');
+  // Dusts
+  replaceOutput('immersiveengineering:dust_sulfur', 'eidolon_repraised:sulfur');
 
-  // // Ingots
-  // replaceOutput('galosphere:silver_ingot', 'eidolon_repraised:silver_ingot');
-  // replaceOutput('immersiveengineering:ingot_electrum', 'createaddition:electrum_ingot');
-  // replaceOutput('immersiveengineering:ingot_lead', 'eidolon_repraised:lead_ingot');
-  // replaceOutput('immersiveengineering:ingot_silver', 'eidolon_repraised:silver_ingot');
-  // replaceOutput('immersiveengineering:ingot_uranium', 'alexscaves:uranium');
+  // Ingots
+  replaceOutput('immersiveengineering:ingot_electrum', 'createaddition:electrum_ingot');
+  replaceOutput('immersiveengineering:ingot_lead', 'eidolon_repraised:lead_ingot');
+  replaceOutput('immersiveengineering:ingot_silver', 'eidolon_repraised:silver_ingot');
 
-  // // Nuggets
-  // replaceOutput('galosphere:silver_nugget', 'eidolon_repraised:silver_nugget');
-  // replaceOutput('immersiveengineering:nugget_copper', 'create:copper_nugget');
-  // replaceOutput('immersiveengineering:nugget_electrum', 'createaddition:electrum_nugget');
-  // replaceOutput('immersiveengineering:nugget_lead', 'eidolon_repraised:lead_nugget');
-  // replaceOutput('immersiveengineering:nugget_silver', 'eidolon_repraised:silver_nugget');
-  // replaceOutput('pneumaticcraft:copper_nugget', 'create:copper_nugget');
-  // // Note: Unsure of how best to handle Alex's Caves Uranium Shards, as they're nuggets but ones
-  // // that convert to raw material, not an ingot.
+  // Nuggets
+  replaceOutput('immersiveengineering:nugget_copper', 'create:copper_nugget');
+  replaceOutput('immersiveengineering:nugget_electrum', 'createaddition:electrum_nugget');
+  replaceOutput('immersiveengineering:nugget_lead', 'eidolon_repraised:lead_nugget');
+  replaceOutput('immersiveengineering:nugget_silver', 'eidolon_repraised:silver_nugget');
+  replaceOutput('pneumaticcraft:copper_nugget', 'create:copper_nugget');
 
-  // // Plates
-  // replaceOutput('immersiveengineering:plate_copper', 'create:copper_sheet');
-  // replaceOutput('immersiveengineering:plate_electrum', 'createaddition:electrum_sheet');
-  // replaceOutput('immersiveengineering:plate_gold', 'create:golden_sheet');
-  // replaceOutput('immersiveengineering:plate_iron', 'create:iron_sheet');
+  // Plates
+  replaceOutput('immersiveengineering:plate_copper', 'create:copper_sheet');
+  replaceOutput('immersiveengineering:plate_electrum', 'createaddition:electrum_sheet');
+  replaceOutput('immersiveengineering:plate_gold', 'create:golden_sheet');
+  replaceOutput('immersiveengineering:plate_iron', 'create:iron_sheet');
 
-  // // Rods
-  // replaceOutput('createaddition:iron_rod', 'immersiveengineering:stick_iron');
+  // Rods
+  replaceOutput('createaddition:iron_rod', 'immersiveengineering:stick_iron');
 
-  // // Ore
-  // replaceOutput('galosphere:deepslate_silver_ore', 'eidolon_repraised:deep_silver_ore');
-  // replaceOutput('galosphere:silver_ore', 'eidolon_repraised:silver_ore');
-  // replaceOutput('immersiveengineering:deepslate_ore_silver', 'eidolon_repraised:deep_silver_ore');
-  // replaceOutput('immersiveengineering:ore_silver', 'eidolon_repraised:silver_ore');
+  // Ore
+  replaceOutput('immersiveengineering:deepslate_ore_silver', 'eidolon_repraised:deep_silver_ore');
+  replaceOutput('immersiveengineering:ore_silver', 'eidolon_repraised:silver_ore');
 
-  // // Raw Materials
-  // replaceOutput('immersiveengineering:raw_lead', 'eidolon_repraised:raw_lead');
-  // replaceOutput('galosphere:raw_silver', 'eidolon_repraised:raw_silver');
-  // replaceOutput('immersiveengineering:raw_silver', 'eidolon_repraised:raw_silver');
+  // Raw Materials
+  replaceOutput('immersiveengineering:raw_lead', 'eidolon_repraised:raw_lead');
+  replaceOutput('immersiveengineering:raw_silver', 'eidolon_repraised:raw_silver');
 
-  // // Storage Blocks
-  // replaceOutput('galosphere:raw_silver_block', 'eidolon_repraised:raw_silver_block');
-  // replaceOutput('galosphere:silver_block', 'eidolon_repraised:silver_block');
-  // replaceOutput('immersiveengineering:raw_block_silver', 'eidolon_repraised:raw_silver_block');
-  // replaceOutput('immersiveengineering:storage_silver', 'eidolon_repraised:silver_block');
+  // Storage Blocks
+  replaceOutput('immersiveengineering:raw_block_silver', 'eidolon_repraised:raw_silver_block');
+  replaceOutput('immersiveengineering:storage_silver', 'eidolon_repraised:silver_block');
 
-  // // Wires
-  // replaceOutput('createaddition:copper_wire', 'immersiveengineering:wire_copper');
-  // replaceOutput('createaddition:electrum_wire', 'immersiveengineering:wire_electrum');
+  // Wires
+  replaceOutput('createaddition:copper_wire', 'immersiveengineering:wire_copper');
+  replaceOutput('createaddition:electrum_wire', 'immersiveengineering:wire_electrum');
 
-  // // Misc
-  // replaceInput('rats:raw_plastic', 'pneumaticcraft:plastic');
-  // replaceInput('bbb:rope', 'supplementaries:rope');
-  // replaceInput('farmersdelight:rope', 'supplementaries:rope');
-  // replaceOutput('bbb:rope', 'supplementaries:rope');
-  // replaceOutput('farmersdelight:rope', 'supplementaries:rope');
-  // replaceOutput('createaddition:chocolate_cake', 'neapolitan:chocolate_cake');
-  // replaceOutput('incubation:fried_egg', 'farmersdelight:fried_egg');
+  // Misc
+  replaceInput('farmersdelight:rope', 'supplementaries:rope');
+  replaceOutput('bbb:rope', 'supplementaries:rope');
+  replaceOutput('farmersdelight:rope', 'supplementaries:rope');
+  replaceOutput('createaddition:chocolate_cake', 'neapolitan:chocolate_cake');
+  replaceOutput('incubation:fried_egg', 'farmersdelight:fried_egg');
 
-  // // Changes in specific recipes.
-  // replaceInputID('minecraft:copper_ingot', 'minecraft:copper_block', ['minecraft:copper_block', 'minecraft:waxed_copper_block']);
+  // Changes in specific recipes.
+  replaceInputID('minecraft:copper_ingot', 'minecraft:copper_block', ['minecraft:copper_block', 'minecraft:waxed_copper_block']);
   // replaceInputID('nethersdelight:blackstone_blast_furnace', 'nethersdelight:blackstone_furnace', 'quark:blackstone_furnace');
 
   // // Quark tuff changes for the addition of copper and tuff backport mod.

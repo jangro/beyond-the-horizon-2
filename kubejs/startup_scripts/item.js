@@ -12,8 +12,8 @@ StartupEvents.registry("item", event => {
     .setMaxSpellSlots(8)
     .addAttribute('minecraft:generic.movement_speed', 0.2, 'add_multiplied_total')
     .addAttribute('irons_spellbooks:max_mana', 100, 'add_value')
-    .addSpell('irons_spellbooks:summon_horse', 1)
-    .addSpell('irons_spellbooks:recall', 1)
+    // .addSpell('irons_spellbooks:summon_horse', 1)
+    // .addSpell('irons_spellbooks:recall', 1)
     .translationKey('item.bth.adventurers_spell_book');
 
   // Coconut Maul

@@ -235,7 +235,7 @@ hash = "619d70557a301d89ed3394b23eb7247ca6c1e08a63aac4e577d279fede3bb678"
 
 [[files]]
 file = "config/sol_valheim_reforged-common.toml"
-hash = "d0d1e7fa2103d4e9243d33c9bc20484296800a65fdfc665d08ca227d0d4786fa"
+hash = "93133ac214ef71882b680dd336f47fe961f4a303b089d02c3a35aa1c646a3e62"
 
 [[files]]
 file = "config/sophisticatedbackpacks-server.toml"
@@ -1522,6 +1522,11 @@ hash = "ab4369feacbd745c55a57f455c13cf5a6f94a0463026587de220d277b3a031c9"
 metafile = true
 
 [[files]]
+file = "mods/chipped.pw.toml"
+hash = "3024466ae43de66612dc5ec4cfe5b3a273f71cee29fc6940308798a817d561b6"
+metafile = true
+
+[[files]]
 file = "mods/choccos-mobs.pw.toml"
 hash = "e4d12c563a13dd5d5bea4998f2e08801bfac25e23e0aba2b364c9e52f2961226"
 metafile = true
@@ -2499,6 +2504,11 @@ metafile = true
 [[files]]
 file = "mods/rebind-narrator.pw.toml"
 hash = "41a6ace309ba52aad5df46a629b19159b6844e6ddfa4318b1053de1cd2de6634"
+metafile = true
+
+[[files]]
+file = "mods/rechiseled-chipped.pw.toml"
+hash = "612c164e5085e12f5976abe5489521a90f1b9e130d0714ce5e284b3fde788f31"
 metafile = true
 
 [[files]]

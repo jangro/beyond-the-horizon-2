@@ -190,6 +190,14 @@ file = "config/immersiveengineering-server.toml"
 hash = "b46c4f20577baecf40fa5da3a720eda7a54737a02e84b94cdcb832b9f2950fca"
 
 [[files]]
+file = "config/incontrol-server.toml"
+hash = "80a23a4938a90bc3ba34f2ee16d6b2619ca131ea6fd11f3328816da94eb1a951"
+
+[[files]]
+file = "config/incontrol/spawn.json"
+hash = "c608cd7e81002e844d4e0682fd73de00fc9c08639b07788f61e6bd65dd60b7d2"
+
+[[files]]
 file = "config/integrateddynamics-common.toml"
 hash = "d2910e4975e0a16a6903f1e947a9bde58f3644b3055b2f847ff88df96ef7d4db"
 
@@ -1303,11 +1311,11 @@ hash = "feb027a82565fcea439fd9535220bc0d35dda12c3c3414d905c2aaa25de6f945"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/replace.js"
-hash = "4fe88cecf5366a32a99fa22be1191821b30e19205d84ae530615b96368847512"
+hash = "0dc86d7358c029e0dac282516f9dd47f457aaeffaf5b48053442be5479031696"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/shaped.js"
-hash = "2ed7db9d51ea6e72ced9b77785b2773dae67a2f74bd41b6bbde24ea79e44c8f4"
+hash = "2425393baf510bb2863aa4a29470cbf09da4f9a6cf6476370358a492580589e3"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/shapeless.js"
@@ -1323,7 +1331,7 @@ hash = "f295ef0b04fa3a774523208127f7886371e43296ab25b61af0ce9216d7f2686c"
 
 [[files]]
 file = "kubejs/server_scripts/tags/item.js"
-hash = "14d6e4e89dbdbf65c403ed9353054e88111e19f7d0acb69a95a2d3b1a45c36d0"
+hash = "7ee82156127189393bd1999abe0b5ca8703951c2528906eafd8584ff25d97be1"
 
 [[files]]
 file = "kubejs/startup_scripts/fluid.js"
@@ -1864,11 +1872,6 @@ hash = "d54dfeaf2549f083b59990d0ca73a22525fac367a9a3d09592d378533972cb34"
 metafile = true
 
 [[files]]
-file = "mods/engineers-delight.pw.toml"
-hash = "0a9a294fa98a922d95a0fd005b53364f43ba185bfac47aa96f4908615591a4c4"
-metafile = true
-
-[[files]]
 file = "mods/enhanced-celestials.pw.toml"
 hash = "39cbab92fb61fa1809540a828858e16c2386ff6fbd5bc01140d180c74ad94002"
 metafile = true
@@ -2011,6 +2014,11 @@ metafile = true
 [[files]]
 file = "mods/goblin-traders.pw.toml"
 hash = "29abe36be13fe414e13125140f1c4fe373f7daf79a11ba511e0f77a47ea7f946"
+metafile = true
+
+[[files]]
+file = "mods/granular-mob-griefing.pw.toml"
+hash = "01d40d2efe781865ee06644cd93b915600d0bd8598b076e6922da64e6d92a6fe"
 metafile = true
 
 [[files]]

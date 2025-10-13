@@ -301,9 +301,9 @@ aether:
 
 nether:
   weights:
-    common: 60
+    common: 50
     rare: 20
-    rare_priority: 20
+    rare_priority: 30
   settings:
     spacing: 40
     separation: 20

@@ -1,14 +1,17 @@
 declare module "com.stereowalker.unionlib.world.item.AccessoryItem" {
 import {$AccessorySlot, $AccessorySlot$$Type} from "com.stereowalker.unionlib.world.entity.AccessorySlot"
-import {$AccessorySlot$Group, $AccessorySlot$Group$$Type} from "com.stereowalker.unionlib.world.entity.AccessorySlot$Group"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$AttributeModifier, $AttributeModifier$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeModifier"
+import {$AccessorySlot$Group, $AccessorySlot$Group$$Type} from "com.stereowalker.unionlib.world.entity.AccessorySlot$Group"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$Multimap, $Multimap$$Type} from "com.google.common.collect.Multimap"
 import {$List, $List$$Type} from "java.util.List"
+import {$Multimap, $Multimap$$Type} from "com.google.common.collect.Multimap"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
@@ -18,7 +21,7 @@ import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.Liv
 export class $AccessoryItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -27,11 +30,12 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type, arg1: $AccessorySlot$$Type)
 constructor(arg0: $Item$Properties$$Type, arg1: $AccessorySlot$Group$$Type)
 
-public "accessoryInformation"(): $Component
+public "accessoryTick"(arg0: $Level$$Type, arg1: $LivingEntity$$Type, arg2: $ItemStack$$Type, arg3: integer): void
 public "getAccessorySlots"(): $List<($AccessorySlot)>
 public "getAttributeModifiers"(arg0: $AccessorySlot$Group$$Type, arg1: $ItemStack$$Type): $Multimap<($Attribute), ($AttributeModifier)>
 public "getAttributeModifiers"(arg0: $AccessorySlot$$Type, arg1: $ItemStack$$Type): $Multimap<($Attribute), ($AttributeModifier)>
-public "accessoryTick"(arg0: $Level$$Type, arg1: $LivingEntity$$Type, arg2: $ItemStack$$Type, arg3: integer): void
+public "accessoryInformation"(): $Component
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "accessorySlots"(): $List<($AccessorySlot)>
 }
 /**
@@ -64,20 +68,20 @@ static readonly "BACK_5": $AccessorySlot
 static readonly "BACK_4": $AccessorySlot
 
 
-public "getName"(): string
-public static "values"(): ($AccessorySlot)[]
-public static "valueOf"(arg0: string): $AccessorySlot
 public "getIndex"(): integer
+public "getName"(): StringJS
+public static "values"(): ($AccessorySlot)[]
+public static "valueOf"(arg0: StringJS): $AccessorySlot
+public static "byName"(arg0: StringJS): $AccessorySlot
 public "getGroup"(): $AccessorySlot$Group
-public static "byName"(arg0: string): $AccessorySlot
-public "getTextureIndex"(): integer
-public static "byGroupAndIndex"(arg0: $AccessorySlot$Group$$Type, arg1: integer): $AccessorySlot
 public "getValidStack"(): $Predicate<($ItemStack)>
-get "name"(): string
+public static "byGroupAndIndex"(arg0: $AccessorySlot$Group$$Type, arg1: integer): $AccessorySlot
+public "getTextureIndex"(): integer
 get "index"(): integer
+get "name"(): StringJS
 get "group"(): $AccessorySlot$Group
-get "textureIndex"(): integer
 get "validStack"(): $Predicate<($ItemStack)>
+get "textureIndex"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -125,17 +129,17 @@ static readonly "NECK": $AccessorySlotGroup
 
 public static "values"(): ($AccessorySlotGroup)[]
 public "test"(arg0: $AccessorySlot$$Type): boolean
-public static "valueOf"(arg0: string): $AccessorySlotGroup
+public static "valueOf"(arg0: StringJS): $AccessorySlotGroup
 public static "bySlot"(arg0: $AccessorySlot$$Type): $AccessorySlotGroup
-public "getSerializedName"(): string
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -240,9 +244,9 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($NoRem
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($NoRemainderShaplessRecipe)>
 public "codec"(): $MapCodec<($NoRemainderShaplessRecipe)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($NoRemainderShaplessRecipe)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -342,8 +346,8 @@ import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$AttributeModifier, $AttributeModifier$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeModifier"
 import {$AccessorySlot, $AccessorySlot$$Type} from "com.stereowalker.unionlib.world.entity.AccessorySlot"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$BiConsumer, $BiConsumer$$Type} from "java.util.function.BiConsumer"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
+import {$BiConsumer, $BiConsumer$$Type} from "java.util.function.BiConsumer"
 import {$AccessorySlotGroup, $AccessorySlotGroup$$Type} from "com.stereowalker.unionlib.world.entity.AccessorySlotGroup"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$AccessoryItem, $AccessoryItem$$Type} from "com.stereowalker.unionlib.world.item.AccessoryItem"
@@ -354,9 +358,9 @@ export interface $AccessoryStack {
 
  "self"(): $ItemStack
  "getAccessory"(): $AccessoryItem
+ "addTooltipLines"(arg0: $Player$$Type, arg1: $Consumer$$Type<($Component)>): void
  "forEachModifier"(arg0: $AccessorySlotGroup$$Type, arg1: $BiConsumer$$Type<($Holder<($Attribute)>), ($AttributeModifier)>): void
  "forEachModifier"(arg0: $AccessorySlot$$Type, arg1: $BiConsumer$$Type<($Holder<($Attribute)>), ($AttributeModifier)>): void
- "addTooltipLines"(arg0: $Player$$Type, arg1: $Consumer$$Type<($Component)>): void
 get "accessory"(): $AccessoryItem
 }
 
@@ -368,9 +372,9 @@ export class $AccessoryStack$$Static implements $AccessoryStack {
 
  "self"(): $ItemStack
  "getAccessory"(): $AccessoryItem
+ "addTooltipLines"(arg0: $Player$$Type, arg1: $Consumer$$Type<($Component)>): void
  "forEachModifier"(arg0: $AccessorySlotGroup$$Type, arg1: $BiConsumer$$Type<($Holder<($Attribute)>), ($AttributeModifier)>): void
  "forEachModifier"(arg0: $AccessorySlot$$Type, arg1: $BiConsumer$$Type<($Holder<($Attribute)>), ($AttributeModifier)>): void
- "addTooltipLines"(arg0: $Player$$Type, arg1: $Consumer$$Type<($Component)>): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -401,13 +405,12 @@ readonly "player": $Player
 
 constructor(arg0: $Player$$Type)
 
+public "tick"(): void
+public "replaceWith"(arg0: $UnionInventory$$Type): void
 public "load"(arg0: $ListTag$$Type, arg1: $HolderLookup$Provider$$Type): void
 public "save"(arg0: $HolderLookup$Provider$$Type): $ListTag
-public "replaceWith"(arg0: $UnionInventory$$Type): void
-public "tick"(): void
 public "getAccessory"(arg0: $AccessorySlot$$Type): $ItemStack
 public "dropAll"(): void
-public "isUsableByPlayer"(arg0: $Player$$Type): boolean
 /**
  * 
  * @deprecated
@@ -418,8 +421,9 @@ public "getFirstRing"(): $ItemStack
  * @deprecated
  */
 public "getSecondRing"(): $ItemStack
-public static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type, arg2: float): boolean
+public "isUsableByPlayer"(arg0: $Player$$Type): boolean
 public static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type): boolean
+public static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type, arg2: float): boolean
 public static "tryClear"(arg0: any): void
 get "firstRing"(): $ItemStack
 get "secondRing"(): $ItemStack
@@ -441,10 +445,10 @@ import {$UnionInventory, $UnionInventory$$Type} from "com.stereowalker.unionlib.
 
 export interface $CustomInventoryGetter {
 
- "getUnionInventory"(): $UnionInventory
  "setUnionInventory"(arg0: $UnionInventory$$Type): void
-get "unionInventory"(): $UnionInventory
+ "getUnionInventory"(): $UnionInventory
 set "unionInventory"(value: $UnionInventory$$Type)
+get "unionInventory"(): $UnionInventory
 }
 
 export namespace $CustomInventoryGetter {
@@ -453,8 +457,8 @@ const probejs$$marker: never
 export class $CustomInventoryGetter$$Static implements $CustomInventoryGetter {
 
 
- "getUnionInventory"(): $UnionInventory
  "setUnionInventory"(arg0: $UnionInventory$$Type): void
+ "getUnionInventory"(): $UnionInventory
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -475,9 +479,9 @@ import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 
 export interface $TierAffixer {
 
+ "player"(): $ServerPlayer
  "InvCopy"(): $NonNullList<($ItemStack)>
  "SetInvCopy"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
- "player"(): $ServerPlayer
  "copyDefaultedList"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): $NonNullList<($ItemStack)>
 }
 
@@ -487,9 +491,9 @@ const probejs$$marker: never
 export class $TierAffixer$$Static implements $TierAffixer {
 
 
+ "player"(): $ServerPlayer
  "InvCopy"(): $NonNullList<($ItemStack)>
  "SetInvCopy"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
- "player"(): $ServerPlayer
  "copyDefaultedList"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): $NonNullList<($ItemStack)>
 }
 /**
@@ -511,11 +515,11 @@ import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.Liv
 
 export interface $CosmeticHandler$LERAccess<T extends $LivingEntity, M extends $EntityModel<(T)>> {
 
- "getWhiteOverlayProgressA"(arg0: T, arg1: float): float
  "scaleA"(arg0: T, arg1: $PoseStack$$Type, arg2: float): void
- "setupRotationsA"(arg0: T, arg1: $PoseStack$$Type, arg2: float, arg3: float, arg4: float, arg5: float): void
  "isBodyVisibleA"(arg0: T): boolean
  "getBobA"(arg0: T, arg1: float): float
+ "setupRotationsA"(arg0: T, arg1: $PoseStack$$Type, arg2: float, arg3: float, arg4: float, arg5: float): void
+ "getWhiteOverlayProgressA"(arg0: T, arg1: float): float
 }
 
 export namespace $CosmeticHandler$LERAccess {
@@ -524,11 +528,11 @@ const probejs$$marker: never
 export class $CosmeticHandler$LERAccess$$Static<T extends $LivingEntity, M extends $EntityModel<(T)>> implements $CosmeticHandler$LERAccess {
 
 
- "getWhiteOverlayProgressA"(arg0: T, arg1: float): float
  "scaleA"(arg0: T, arg1: $PoseStack$$Type, arg2: float): void
- "setupRotationsA"(arg0: T, arg1: $PoseStack$$Type, arg2: float, arg3: float, arg4: float, arg5: float): void
  "isBodyVisibleA"(arg0: T): boolean
  "getBobA"(arg0: T, arg1: float): float
+ "setupRotationsA"(arg0: T, arg1: $PoseStack$$Type, arg2: float, arg3: float, arg4: float, arg5: float): void
+ "getWhiteOverlayProgressA"(arg0: T, arg1: float): float
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -545,19 +549,19 @@ export type $CosmeticHandler$LERAccess_<T, M> = $CosmeticHandler$LERAccess$$Type
 declare module "com.stereowalker.unionlib.world.item.crafting.NoRemainderShaplessRecipe" {
 import {$CraftingInput, $CraftingInput$$Type} from "net.minecraft.world.item.crafting.CraftingInput"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
-import {$CraftingBookCategory, $CraftingBookCategory$$Type} from "net.minecraft.world.item.crafting.CraftingBookCategory"
+import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$ShapelessRecipe, $ShapelessRecipe$$Type} from "net.minecraft.world.item.crafting.ShapelessRecipe"
-import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
+import {$CraftingBookCategory, $CraftingBookCategory$$Type} from "net.minecraft.world.item.crafting.CraftingBookCategory"
 import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.item.crafting.RecipeSerializer"
+import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 
 export class $NoRemainderShaplessRecipe extends $ShapelessRecipe {
 readonly "result": $ItemStack
 readonly "ingredients": $NonNullList<($Ingredient)>
-readonly "group": string
+readonly "group": StringJS
 
-constructor(arg0: string, arg1: $CraftingBookCategory$$Type, arg2: $ItemStack$$Type, arg3: $NonNullList$$Type<($Ingredient$$Type)>)
+constructor(arg0: StringJS, arg1: $CraftingBookCategory$$Type, arg2: $ItemStack$$Type, arg3: $NonNullList$$Type<($Ingredient$$Type)>)
 
 public "getSerializer"(): $RecipeSerializer<(any)>
 public "getRemainingItems"(arg0: $RecipeInput$$Type): $NonNullList<(any)>
@@ -586,8 +590,8 @@ import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$BlockAndTintGetter, $BlockAndTintGetter$$Type} from "net.minecraft.world.level.BlockAndTintGetter"
 import {$Function, $Function$$Type} from "java.util.function.Function"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
 import {$Boat, $Boat$$Type} from "net.minecraft.world.entity.vehicle.Boat"
 
@@ -596,25 +600,25 @@ static readonly "fluidProps": $Map<($Fluid), ($FluidProperties)>
 
 constructor()
 
-public "name"(): $ResourceLocation
-public static "create"(arg0: $ResourceLocation$$Type): $FluidProperties$Builder
 public static "or"<T>(arg0: $Fluid$$Type, arg1: $Function$$Type<($FluidProperties), (T)>, arg2: T): T
 public "move"(arg0: $FluidState$$Type, arg1: $LivingEntity$$Type, arg2: $Vec3$$Type, arg3: double): boolean
-public "stillTexture"(): $ResourceLocation
-public "flowingTexture"(): $ResourceLocation
+public static "create"(arg0: $ResourceLocation$$Type): $FluidProperties$Builder
+public "name"(): $ResourceLocation
 public "canDrownIn"(arg0: $LivingEntity$$Type): boolean
 public "motionScale"(arg0: $Entity$$Type): double
 public "canPushEntity"(arg0: $Entity$$Type): boolean
 public "canSwim"(arg0: $Entity$$Type): boolean
 public "canExtinguish"(arg0: $Entity$$Type): boolean
-public "fallDistanceModifier"(arg0: $Entity$$Type): float
-public "itemMovement"(arg0: $ItemEntity$$Type): void
+public "stillTexture"(): $ResourceLocation
+public "flowingTexture"(): $ResourceLocation
 public "supportsBoats"(arg0: $Boat$$Type): boolean
 public "supportsBoats"(arg0: $FluidState$$Type, arg1: $Boat$$Type): boolean
+public "itemMovement"(arg0: $ItemEntity$$Type): void
 public "tintColor"(arg0: $FluidState$$Type, arg1: $BlockAndTintGetter$$Type, arg2: $BlockPos$$Type): integer
 public "tintColor"(): integer
-public "overlayTexture"(): $ResourceLocation
 public static "fromFluid"(arg0: $Fluid$$Type): $FluidProperties
+public "overlayTexture"(): $ResourceLocation
+public "fallDistanceModifier"(arg0: $Entity$$Type): float
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -637,11 +641,11 @@ static readonly "BACK": $AccessorySlot$Group
 static readonly "NECK": $AccessorySlot$Group
 
 
-public "getName"(): string
+public "getName"(): StringJS
 public static "values"(): ($AccessorySlot$Group)[]
-public static "valueOf"(arg0: string): $AccessorySlot$Group
-public static "byName"(arg0: string): $AccessorySlot$Group
-get "name"(): string
+public static "valueOf"(arg0: StringJS): $AccessorySlot$Group
+public static "byName"(arg0: StringJS): $AccessorySlot$Group
+get "name"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -694,8 +698,8 @@ import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material
 
 export interface $EntityHook {
 
- "fluidInEyes"(): $FluidState
  "fluidHeights"(): $Object2DoubleMap<($FluidProperties)>
+ "fluidInEyes"(): $FluidState
  "isInFluid"(arg0: $FluidProperties$$Type): boolean
  "isInFluid"(arg0: $FluidState$$Type, arg1: $Function$$Type<($FluidProperties), (boolean)>): boolean
  "isInFluid"(arg0: $FluidState$$Type): boolean
@@ -708,8 +712,8 @@ const probejs$$marker: never
 export class $EntityHook$$Static implements $EntityHook {
 
 
- "fluidInEyes"(): $FluidState
  "fluidHeights"(): $Object2DoubleMap<($FluidProperties)>
+ "fluidInEyes"(): $FluidState
  "isInFluid"(arg0: $FluidProperties$$Type): boolean
  "isInFluid"(arg0: $FluidState$$Type, arg1: $Function$$Type<($FluidProperties), (boolean)>): boolean
  "isInFluid"(arg0: $FluidState$$Type): boolean
@@ -731,8 +735,8 @@ declare module "com.stereowalker.unionlib.event.item.ItemAttributeEvent" {
 import {$AttributeModifier, $AttributeModifier$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeModifier"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$EquipmentSlot, $EquipmentSlot$$Type} from "net.minecraft.world.entity.EquipmentSlot"
-import {$Event, $Event$$Type} from "net.neoforged.bus.api.Event"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
+import {$Event, $Event$$Type} from "net.neoforged.bus.api.Event"
 import {$HashMultimap, $HashMultimap$$Type} from "com.google.common.collect.HashMultimap"
 
 export class $ItemAttributeEvent extends $Event {
@@ -769,13 +773,13 @@ constructor(arg0: $Potion$$Type)
 
 public "getFluid"(): $Fluid
 public "setFluid"(arg0: $Fluid$$Type): void
-public "getFlowingFluid"(): $Fluid
 public "getPotion"(): $Potion
+public "getFlowingFluid"(): $Fluid
 public "setFlowingFluid"(arg0: $Fluid$$Type): void
 get "fluid"(): $Fluid
 set "fluid"(value: $Fluid$$Type)
-get "flowingFluid"(): $Fluid
 get "potion"(): $Potion
+get "flowingFluid"(): $Fluid
 set "flowingFluid"(value: $Fluid$$Type)
 }
 /**
@@ -804,19 +808,19 @@ import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material
 export class $FluidProperties$Builder {
 
 
-public "stillTexture"(arg0: $ResourceLocation$$Type): $FluidProperties$Builder
-public "flowingTexture"(arg0: $ResourceLocation$$Type): $FluidProperties$Builder
+public "tint"(arg0: integer): $FluidProperties$Builder
+public "tint"(arg0: $Funcs$_3$$Type<($FluidState), ($BlockAndTintGetter), ($BlockPos), (integer)>): $FluidProperties$Builder
 public "canDrownIn"(arg0: boolean): $FluidProperties$Builder
 public "motionScale"(arg0: double): $FluidProperties$Builder
 public "canPushEntity"(arg0: boolean): $FluidProperties$Builder
 public "canSwim"(arg0: boolean): $FluidProperties$Builder
 public "canExtinguish"(arg0: boolean): $FluidProperties$Builder
+public "stillTexture"(arg0: $ResourceLocation$$Type): $FluidProperties$Builder
+public "flowingTexture"(arg0: $ResourceLocation$$Type): $FluidProperties$Builder
 public "toProperties"(): $FluidProperties
-public "tint"(arg0: $Funcs$_3$$Type<($FluidState), ($BlockAndTintGetter), ($BlockPos), (integer)>): $FluidProperties$Builder
-public "tint"(arg0: integer): $FluidProperties$Builder
-public "fallDistanceModifier"(arg0: float): $FluidProperties$Builder
 public "supportsBoats"(arg0: boolean): $FluidProperties$Builder
 public "overlayTexture"(arg0: $ResourceLocation$$Type): $FluidProperties$Builder
+public "fallDistanceModifier"(arg0: float): $FluidProperties$Builder
 public "customMovement"(arg0: $Funcs$_4$$Type<($FluidState), ($LivingEntity), ($Vec3), (double), (boolean)>): $FluidProperties$Builder
 }
 /**

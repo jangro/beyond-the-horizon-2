@@ -41,15 +41,15 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$BushBlock, $BushBlock$$Type} from "net.minecraft.world.level.block.BushBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$EquipmentSlot, $EquipmentSlot$$Type} from "net.minecraft.world.entity.EquipmentSlot"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -68,7 +68,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float

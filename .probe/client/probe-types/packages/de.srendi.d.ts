@@ -16,7 +16,7 @@ constructor(arg0: $ItemStack$$Type)
 public "getType"(): $UpgradeType<($IPocketUpgrade)>
 public "getPeripheral"(arg0: $IPocketAccess$$Type): $EnvironmentDetectorPeripheral
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($IPocketUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 get "type"(): $UpgradeType<($IPocketUpgrade)>
 }
 /**
@@ -33,12 +33,12 @@ export type $PocketEnvironmentUpgrade_ = $PocketEnvironmentUpgrade$$Type;
 }}
 declare module "de.srendi.advancedperipherals.common.addons.computercraft.peripheral.metaphysics.OverpoweredHusbandryAutomataCorePeripheral" {
 import {$HusbandryAutomataCorePeripheral, $HusbandryAutomataCorePeripheral$$Type} from "de.srendi.advancedperipherals.common.addons.computercraft.peripheral.metaphysics.HusbandryAutomataCorePeripheral"
-import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$ITurtleAccess, $ITurtleAccess$$Type} from "dan200.computercraft.api.turtle.ITurtleAccess"
+import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 
 export class $OverpoweredHusbandryAutomataCorePeripheral extends $HusbandryAutomataCorePeripheral {
-static readonly "ATTR_STORING_TOOL_DURABILITY": string
-static readonly "TYPE": string
+static readonly "ATTR_STORING_TOOL_DURABILITY": StringJS
+static readonly "TYPE": StringJS
 
 constructor(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type)
 
@@ -64,8 +64,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$FrontAndTop, $FrontAndTop$$Type} from "net.minecraft.core.FrontAndTop"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
@@ -91,7 +91,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "ORIENTATION": $EnumProperty<($FrontAndTop)>
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -123,9 +123,9 @@ import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resource
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$PeripheralTurtleUpgrade, $PeripheralTurtleUpgrade$$Type} from "de.srendi.advancedperipherals.lib.turtle.PeripheralTurtleUpgrade"
 import {$Registry, $Registry$$Type} from "net.minecraft.core.Registry"
-import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$ITurtleAccess, $ITurtleAccess$$Type} from "dan200.computercraft.api.turtle.ITurtleAccess"
 import {$ModelResourceLocation, $ModelResourceLocation$$Type} from "net.minecraft.client.resources.model.ModelResourceLocation"
+import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$ChunkyPeripheral, $ChunkyPeripheral$$Type} from "de.srendi.advancedperipherals.common.addons.computercraft.peripheral.ChunkyPeripheral"
 import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
 import {$UpgradeType, $UpgradeType$$Type} from "dan200.computercraft.api.upgrades.UpgradeType"
@@ -136,14 +136,14 @@ constructor(arg0: $ItemStack$$Type)
 
 public "update"(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type): void
 public "getType"(): $UpgradeType<($ITurtleUpgrade)>
-public "getRightModel"(): $ModelResourceLocation
 public "getLeftModel"(): $ModelResourceLocation
+public "getRightModel"(): $ModelResourceLocation
 public static "createKey"(arg0: $ResourceLocation$$Type): $ResourceKey<($ITurtleUpgrade)>
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($ITurtleUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 get "type"(): $UpgradeType<($ITurtleUpgrade)>
-get "rightModel"(): $ModelResourceLocation
 get "leftModel"(): $ModelResourceLocation
+get "rightModel"(): $ModelResourceLocation
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -159,8 +159,8 @@ export type $TurtleChunkyUpgrade_ = $TurtleChunkyUpgrade$$Type;
 }}
 declare module "de.srendi.advancedperipherals.common.addons.computercraft.owner.IPeripheralOwner" {
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$PeripheralOwnerAbility, $PeripheralOwnerAbility$$Type} from "de.srendi.advancedperipherals.common.addons.computercraft.owner.PeripheralOwnerAbility"
@@ -178,32 +178,32 @@ export interface $IPeripheralOwner {
  "getOwner"(): $Player
  "move"(arg0: $Level$$Type, arg1: $BlockPos$$Type): boolean
  "getLevel"(): $Level
- "getDataStorage"(): $DataComponentPatch
- "getAbilities"(): $Collection<($IOwnerAbility)>
- "getCustomName"(): string
  "getPos"(): $BlockPos
+ "getDataStorage"(): $DataComponentPatch
+ "getCustomName"(): StringJS
+ "getAbilities"(): $Collection<($IOwnerAbility)>
  "getAbility"<T extends $IOwnerAbility>(arg0: $PeripheralOwnerAbility$$Type<(T)>): T
- "getFacing"(): $Direction
  "getOrientation"(): $FrontAndTop
+ "getFacing"(): $Direction
  "attachOperation"(...arg0: ($IPeripheralOperation$$Type<(any)>)[]): void
  "attachOperation"(arg0: $Collection$$Type<($IPeripheralOperation$$Type<(any)>)>): void
  "attachAbility"<T extends $IOwnerAbility>(arg0: $PeripheralOwnerAbility$$Type<(T)>, arg1: T): void
- "getNbtStorage"(): $CompoundTag
- "putDataStorage"(arg0: $DataComponentPatch$$Type): void
  "withPlayer"<T>(arg0: $Function$$Type<($APFakePlayer), (T)>): T
+ "putDataStorage"(arg0: $DataComponentPatch$$Type): void
  "storeItem"(arg0: $ItemStack$$Type): $ItemStack
+ "getNbtStorage"(): $CompoundTag
  "destroyUpgrade"(): void
  "markDataStorageDirty"(): void
  "getToolInMainHand"(): $ItemStack
  "isMovementPossible"(arg0: $Level$$Type, arg1: $BlockPos$$Type): boolean
 get "owner"(): $Player
 get "level"(): $Level
-get "dataStorage"(): $DataComponentPatch
-get "abilities"(): $Collection<($IOwnerAbility)>
-get "customName"(): string
 get "pos"(): $BlockPos
-get "facing"(): $Direction
+get "dataStorage"(): $DataComponentPatch
+get "customName"(): StringJS
+get "abilities"(): $Collection<($IOwnerAbility)>
 get "orientation"(): $FrontAndTop
+get "facing"(): $Direction
 get "nbtStorage"(): $CompoundTag
 get "toolInMainHand"(): $ItemStack
 }
@@ -217,20 +217,20 @@ export class $IPeripheralOwner$$Static implements $IPeripheralOwner {
  "getOwner"(): $Player
  "move"(arg0: $Level$$Type, arg1: $BlockPos$$Type): boolean
  "getLevel"(): $Level
- "getDataStorage"(): $DataComponentPatch
- "getAbilities"(): $Collection<($IOwnerAbility)>
- "getCustomName"(): string
  "getPos"(): $BlockPos
+ "getDataStorage"(): $DataComponentPatch
+ "getCustomName"(): StringJS
+ "getAbilities"(): $Collection<($IOwnerAbility)>
  "getAbility"<T extends $IOwnerAbility>(arg0: $PeripheralOwnerAbility$$Type<(T)>): T
- "getFacing"(): $Direction
  "getOrientation"(): $FrontAndTop
+ "getFacing"(): $Direction
  "attachOperation"(...arg0: ($IPeripheralOperation$$Type<(any)>)[]): void
  "attachOperation"(arg0: $Collection$$Type<($IPeripheralOperation$$Type<(any)>)>): void
  "attachAbility"<T extends $IOwnerAbility>(arg0: $PeripheralOwnerAbility$$Type<(T)>, arg1: T): void
- "getNbtStorage"(): $CompoundTag
- "putDataStorage"(arg0: $DataComponentPatch$$Type): void
  "withPlayer"<T>(arg0: $Function$$Type<($APFakePlayer), (T)>): T
+ "putDataStorage"(arg0: $DataComponentPatch$$Type): void
  "storeItem"(arg0: $ItemStack$$Type): $ItemStack
+ "getNbtStorage"(): $CompoundTag
  "destroyUpgrade"(): void
  "markDataStorageDirty"(): void
  "getToolInMainHand"(): $ItemStack
@@ -254,12 +254,12 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 
 export interface $IHarvestableBlock {
 
- "getHarvestTag"(): $TagKey<($Block)>
  "getToolTag"(): $TagKey<($Block)>
+ "getHarvestTag"(): $TagKey<($Block)>
 
 (): $TagKey$$Type<($Block$$Type)>
-get "harvestTag"(): $TagKey<($Block)>
 get "toolTag"(): $TagKey<($Block)>
+get "harvestTag"(): $TagKey<($Block)>
 }
 
 export namespace $IHarvestableBlock {
@@ -268,8 +268,8 @@ const probejs$$marker: never
 export class $IHarvestableBlock$$Static implements $IHarvestableBlock {
 
 
- "getHarvestTag"(): $TagKey<($Block)>
  "getToolTag"(): $TagKey<($Block)>
+ "getHarvestTag"(): $TagKey<($Block)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -321,22 +321,25 @@ declare global {
 export type $IPeripheralTileEntity_ = $IPeripheralTileEntity$$Type;
 }}
 declare module "de.srendi.advancedperipherals.common.items.APBlockItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$BaseBlockItem, $BaseBlockItem$$Type} from "de.srendi.advancedperipherals.common.items.base.BaseBlockItem"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $APBlockItem extends $BaseBlockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -356,6 +359,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "enabled"(): boolean
 }
 /**
@@ -396,6 +400,7 @@ export type $PeripheralOwnerAbility_<T> = $PeripheralOwnerAbility$$Type<(T)>;
 declare module "de.srendi.advancedperipherals.common.blocks.base.PeripheralBlockEntity" {
 import {$Iterable, $Iterable$$Type} from "java.lang.Iterable"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$ICapabilityProvider, $ICapabilityProvider$$Type} from "de.srendi.advancedperipherals.common.blocks.base.ICapabilityProvider"
@@ -410,7 +415,6 @@ import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.leve
 import {$IComputerAccess, $IComputerAccess$$Type} from "dan200.computercraft.api.peripheral.IComputerAccess"
 import {$LockCode, $LockCode$$Type} from "net.minecraft.world.LockCode"
 import {$IFluidHandler, $IFluidHandler$$Type} from "net.neoforged.neoforge.fluids.capability.IFluidHandler"
-import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$IPeripheralTileEntity, $IPeripheralTileEntity$$Type} from "de.srendi.advancedperipherals.lib.peripherals.IPeripheralTileEntity"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
@@ -426,45 +430,48 @@ import {$IPeripheral, $IPeripheral$$Type} from "dan200.computercraft.api.periphe
 
 export class $PeripheralBlockEntity<T extends $BasePeripheral<(any)>> extends $BaseContainerBlockEntity implements $WorldlyContainer, $MenuProvider, $IPeripheralTileEntity, $ICapabilityProvider {
  "name": $Component
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
  "lockKey": $LockCode
 
-constructor(arg0: $BlockEntityType$$Type<(any)>, arg1: $BlockPos$$Type, arg2: $BlockState$$Type)
 
 public "removeItem"(arg0: integer, arg1: integer): $ItemStack
-public "isEmpty"(): boolean
 public "getItem"(arg0: integer): $ItemStack
-public "canPlaceItemThroughFace"(arg0: integer, arg1: $ItemStack$$Type, arg2: $Direction$$Type): boolean
-public "createMenu"(arg0: integer, arg1: $Inventory$$Type, arg2: $Player$$Type): $AbstractContainerMenu
-public "setItem"(arg0: integer, arg1: $ItemStack$$Type): void
-public "setItems"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
+public "isEmpty"(): boolean
 public "getItems"(): $NonNullList<($ItemStack)>
+public "setItem"(arg0: integer, arg1: $ItemStack$$Type): void
+public "createMenu"(arg0: integer, arg1: $Inventory$$Type, arg2: $Player$$Type): $AbstractContainerMenu
 public "clearContent"(): void
+public "setItems"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
 public "stillValid"(arg0: $Player$$Type): boolean
+public "getPeripheral"(): T
+public "getConnectedComputers"(): $Iterable<($IComputerAccess)>
 public "createFluidHandlerCap"(arg0: $Direction$$Type): $IFluidHandler
 public "createItemHandlerCap"(arg0: $Direction$$Type): $IItemHandler
 public "createPeripheralCap"(arg0: $Direction$$Type): $IPeripheral
-public "getContainerSize"(): integer
-public "removeItemNoUpdate"(arg0: integer): $ItemStack
 public "getSlotsForFace"(arg0: $Direction$$Type): (integer)[]
 public "canTakeItemThroughFace"(arg0: integer, arg1: $ItemStack$$Type, arg2: $Direction$$Type): boolean
-public "getConnectedComputers"(): $Iterable<($IComputerAccess)>
+public "getContainerSize"(): integer
+public "removeItemNoUpdate"(arg0: integer): $ItemStack
+public "getPeripheralOptional"(): $Optional<(T)>
 public "getPeripheralSettings"(): $CompoundTag
 public "markSettingsChanged"(): void
+public "canPlaceItemThroughFace"(arg0: integer, arg1: $ItemStack$$Type, arg2: $Direction$$Type): boolean
 public "getDisplayName"(): $Component
 public "handleTick"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): void
 public "createEnergyStorageCap"(arg0: $Direction$$Type): $IEnergyStorage
 public "setChanged"(): void
-public static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type, arg2: float): boolean
 public static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type): boolean
+public static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type, arg2: float): boolean
 public static "tryClear"(arg0: any): void
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "empty"(): boolean
-set "items"(value: $NonNullList$$Type<($ItemStack$$Type)>)
 get "items"(): $NonNullList<($ItemStack)>
-get "containerSize"(): integer
+set "items"(value: $NonNullList$$Type<($ItemStack$$Type)>)
+get "peripheral"(): T
 get "connectedComputers"(): $Iterable<($IComputerAccess)>
+get "containerSize"(): integer
+get "peripheralOptional"(): $Optional<(T)>
 get "peripheralSettings"(): $CompoundTag
 get "displayName"(): $Component
 }
@@ -483,11 +490,11 @@ export type $PeripheralBlockEntity_<T> = $PeripheralBlockEntity$$Type<(T)>;
 declare module "de.srendi.advancedperipherals.lib.peripherals.BasePeripheral" {
 import {$Iterable, $Iterable$$Type} from "java.lang.Iterable"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$ILuaContext, $ILuaContext$$Type} from "dan200.computercraft.api.lua.ILuaContext"
 import {$IDynamicPeripheral, $IDynamicPeripheral$$Type} from "dan200.computercraft.api.peripheral.IDynamicPeripheral"
+import {$ILuaContext, $ILuaContext$$Type} from "dan200.computercraft.api.lua.ILuaContext"
 import {$MethodResult, $MethodResult$$Type} from "dan200.computercraft.api.lua.MethodResult"
-import {$IComputerAccess, $IComputerAccess$$Type} from "dan200.computercraft.api.peripheral.IComputerAccess"
 import {$IArguments, $IArguments$$Type} from "dan200.computercraft.api.lua.IArguments"
+import {$IComputerAccess, $IComputerAccess$$Type} from "dan200.computercraft.api.peripheral.IComputerAccess"
 import {$Set, $Set$$Type} from "java.util.Set"
 import {$IBasePeripheral, $IBasePeripheral$$Type} from "de.srendi.advancedperipherals.lib.peripherals.IBasePeripheral"
 import {$IPeripheral, $IPeripheral$$Type} from "dan200.computercraft.api.peripheral.IPeripheral"
@@ -496,30 +503,30 @@ import {$IPeripheralOwner, $IPeripheralOwner$$Type} from "de.srendi.advancedperi
 export class $BasePeripheral<O extends $IPeripheralOwner> implements $IBasePeripheral<(O)>, $IDynamicPeripheral {
 
 
-public "getName"(): string
-public "equals"(arg0: $IPeripheral$$Type): boolean
-public "getType"(): string
 public "getTarget"(): any
 public "attach"(arg0: $IComputerAccess$$Type): void
 public "detach"(arg0: $IComputerAccess$$Type): void
-public "getMethodNames"(): (string)[]
-public "getConnectedComputers"(): $Iterable<($IComputerAccess)>
+public "getName"(): StringJS
+public "equals"(arg0: $IPeripheral$$Type): boolean
+public "getType"(): StringJS
+public "getMethodNames"(): (StringJS)[]
+public "getConfiguration"(): $Map<(StringJS), (any)>
 public "callMethod"(arg0: $IComputerAccess$$Type, arg1: $ILuaContext$$Type, arg2: integer, arg3: $IArguments$$Type): $MethodResult
-public "getConfiguration"(): $Map<(string), (any)>
-public "getPeripheralConfiguration"(): $Map<(string), (any)>
+public "getConnectedComputers"(): $Iterable<($IComputerAccess)>
 public "getPeripheralOwner"(): O
+public "getPeripheralConfiguration"(): $Map<(StringJS), (any)>
 public "isEnabled"(): boolean
-public "getAdditionalTypes"(): $Set<(string)>
-get "name"(): string
-get "type"(): string
+public "getAdditionalTypes"(): $Set<(StringJS)>
 get "target"(): any
-get "methodNames"(): (string)[]
+get "name"(): StringJS
+get "type"(): StringJS
+get "methodNames"(): (StringJS)[]
+get "configuration"(): $Map<(StringJS), (any)>
 get "connectedComputers"(): $Iterable<($IComputerAccess)>
-get "configuration"(): $Map<(string), (any)>
-get "peripheralConfiguration"(): $Map<(string), (any)>
 get "peripheralOwner"(): O
+get "peripheralConfiguration"(): $Map<(StringJS), (any)>
 get "enabled"(): boolean
-get "additionalTypes"(): $Set<(string)>
+get "additionalTypes"(): $Set<(StringJS)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -549,14 +556,14 @@ export class $OverpoweredWeakAutomata extends $ClockwiseAnimatedTurtleUpgrade<($
 constructor(arg0: $ItemStack$$Type)
 
 public "getType"(): $UpgradeType<($ITurtleUpgrade)>
-public "getRightModel"(): $ModelResourceLocation
 public "getLeftModel"(): $ModelResourceLocation
+public "getRightModel"(): $ModelResourceLocation
 public static "createKey"(arg0: $ResourceLocation$$Type): $ResourceKey<($ITurtleUpgrade)>
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($ITurtleUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 get "type"(): $UpgradeType<($ITurtleUpgrade)>
-get "rightModel"(): $ModelResourceLocation
 get "leftModel"(): $ModelResourceLocation
+get "rightModel"(): $ModelResourceLocation
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -571,25 +578,28 @@ declare global {
 export type $OverpoweredWeakAutomata_ = $OverpoweredWeakAutomata$$Type;
 }}
 declare module "de.srendi.advancedperipherals.common.items.base.BaseBlockItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $BaseBlockItem extends $BlockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -611,6 +621,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "description"(): $Component
 get "enabled"(): boolean
 }
@@ -642,14 +653,14 @@ export class $HusbandryAutomata extends $ClockwiseAnimatedTurtleUpgrade<($Husban
 constructor(arg0: $ItemStack$$Type)
 
 public "getType"(): $UpgradeType<($ITurtleUpgrade)>
-public "getRightModel"(): $ModelResourceLocation
 public "getLeftModel"(): $ModelResourceLocation
+public "getRightModel"(): $ModelResourceLocation
 public static "createKey"(arg0: $ResourceLocation$$Type): $ResourceKey<($ITurtleUpgrade)>
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($ITurtleUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 get "type"(): $UpgradeType<($ITurtleUpgrade)>
-get "rightModel"(): $ModelResourceLocation
 get "leftModel"(): $ModelResourceLocation
+get "rightModel"(): $ModelResourceLocation
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -699,14 +710,14 @@ declare module "de.srendi.advancedperipherals.common.addons.computercraft.periph
 import {$IPocketAccess, $IPocketAccess$$Type} from "dan200.computercraft.api.pocket.IPocketAccess"
 import {$MethodResult, $MethodResult$$Type} from "dan200.computercraft.api.lua.MethodResult"
 import {$BasePeripheral, $BasePeripheral$$Type} from "de.srendi.advancedperipherals.lib.peripherals.BasePeripheral"
-import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$ITurtleAccess, $ITurtleAccess$$Type} from "dan200.computercraft.api.turtle.ITurtleAccess"
 import {$IArguments, $IArguments$$Type} from "dan200.computercraft.api.lua.IArguments"
+import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$PeripheralBlockEntity, $PeripheralBlockEntity$$Type} from "de.srendi.advancedperipherals.common.blocks.base.PeripheralBlockEntity"
 import {$IPeripheralOwner, $IPeripheralOwner$$Type} from "de.srendi.advancedperipherals.common.addons.computercraft.owner.IPeripheralOwner"
 
 export class $ChatBoxPeripheral extends $BasePeripheral<($IPeripheralOwner)> {
-static readonly "PERIPHERAL_TYPE": string
+static readonly "PERIPHERAL_TYPE": StringJS
 
 constructor(arg0: $IPocketAccess$$Type)
 constructor(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type)
@@ -715,11 +726,11 @@ constructor(arg0: $PeripheralBlockEntity$$Type<(any)>)
 public "update"(): void
 public "isEnabled"(): boolean
 public "sendMessage"(arg0: $IArguments$$Type): $MethodResult
-public "sendFormattedMessageToPlayer"(arg0: $IArguments$$Type): $MethodResult
-public "sendFormattedToastToPlayer"(arg0: $IArguments$$Type): $MethodResult
 public "sendFormattedMessage"(arg0: $IArguments$$Type): $MethodResult
 public "sendMessageToPlayer"(arg0: $IArguments$$Type): $MethodResult
 public "sendToastToPlayer"(arg0: $IArguments$$Type): $MethodResult
+public "sendFormattedMessageToPlayer"(arg0: $IArguments$$Type): $MethodResult
+public "sendFormattedToastToPlayer"(arg0: $IArguments$$Type): $MethodResult
 get "enabled"(): boolean
 }
 /**
@@ -775,7 +786,7 @@ export class $BasePocketUpgrade<T extends $IBasePeripheral<(any)>> extends $Abst
 
 public "createPeripheral"(arg0: $IPocketAccess$$Type): $IPeripheral
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($IPocketUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -791,12 +802,12 @@ export type $BasePocketUpgrade_<T> = $BasePocketUpgrade$$Type<(T)>;
 }}
 declare module "de.srendi.advancedperipherals.common.addons.computercraft.peripheral.metaphysics.OverpoweredEndAutomataCorePeripheral" {
 import {$EndAutomataCorePeripheral, $EndAutomataCorePeripheral$$Type} from "de.srendi.advancedperipherals.common.addons.computercraft.peripheral.metaphysics.EndAutomataCorePeripheral"
-import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$ITurtleAccess, $ITurtleAccess$$Type} from "dan200.computercraft.api.turtle.ITurtleAccess"
+import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 
 export class $OverpoweredEndAutomataCorePeripheral extends $EndAutomataCorePeripheral {
-static readonly "ATTR_STORING_TOOL_DURABILITY": string
-static readonly "TYPE": string
+static readonly "ATTR_STORING_TOOL_DURABILITY": StringJS
+static readonly "TYPE": StringJS
 
 constructor(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type)
 
@@ -823,17 +834,18 @@ import {$ServerPlayerGameMode, $ServerPlayerGameMode$$Type} from "net.minecraft.
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$ServerGamePacketListenerImpl, $ServerGamePacketListenerImpl$$Type} from "net.minecraft.server.network.ServerGamePacketListenerImpl"
 import {$TrackedDataContainer, $TrackedDataContainer$$Type} from "dev.corgitaco.dataanchor.data.TrackedDataContainer"
-import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$FakePlayer, $FakePlayer$$Type} from "net.neoforged.neoforge.common.util.FakePlayer"
+import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$Inventory, $Inventory$$Type} from "net.minecraft.world.entity.player.Inventory"
-import {$Pose, $Pose$$Type} from "net.minecraft.world.entity.Pose"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
+import {$Pose, $Pose$$Type} from "net.minecraft.world.entity.Pose"
 import {$Abilities, $Abilities$$Type} from "net.minecraft.world.entity.player.Abilities"
 import {$Pair, $Pair$$Type} from "de.srendi.advancedperipherals.common.util.Pair"
-import {$FishingHook, $FishingHook$$Type} from "net.minecraft.world.entity.projectile.FishingHook"
-import {$EntityDataAccessor, $EntityDataAccessor$$Type} from "net.minecraft.network.syncher.EntityDataAccessor"
-import {$Function, $Function$$Type} from "java.util.function.Function"
 import {$EquipmentSlot, $EquipmentSlot$$Type} from "net.minecraft.world.entity.EquipmentSlot"
+import {$EntityDataAccessor, $EntityDataAccessor$$Type} from "net.minecraft.network.syncher.EntityDataAccessor"
+import {$FishingHook, $FishingHook$$Type} from "net.minecraft.world.entity.projectile.FishingHook"
+import {$Function, $Function$$Type} from "java.util.function.Function"
 import {$WalkAnimationState, $WalkAnimationState$$Type} from "net.minecraft.world.entity.WalkAnimationState"
 import {$ScoreHolder, $ScoreHolder$$Type} from "net.minecraft.world.scores.ScoreHolder"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -847,8 +859,8 @@ import {$TrackedData, $TrackedData$$Type} from "dev.corgitaco.dataanchor.data.Tr
 import {$LevelRenderer, $LevelRenderer$$Type} from "net.minecraft.client.renderer.LevelRenderer"
 import {$HitResult, $HitResult$$Type} from "net.minecraft.world.phys.HitResult"
 import {$ChangeSubscriber, $ChangeSubscriber$$Type} from "net.caffeinemc.mods.lithium.common.util.change_tracking.ChangeSubscriber"
-import {$Entity$RemovalReason, $Entity$RemovalReason$$Type} from "net.minecraft.world.entity.Entity$RemovalReason"
 import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.dataanchor.data.registry.TrackedDataRegistry"
+import {$Entity$RemovalReason, $Entity$RemovalReason$$Type} from "net.minecraft.world.entity.Entity$RemovalReason"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
@@ -880,7 +892,7 @@ static readonly "USE_ITEM_INTERVAL": integer
  "swingingArm": $InteractionHand
 static readonly "CRAFTING_SLOT_OFFSET": integer
 static readonly "INTERACTION_DISTANCE_VERIFICATION_BUFFER": double
-static readonly "ID_TAG": string
+static readonly "ID_TAG": StringJS
 static readonly "DATA_HEALTH_ID": $EntityDataAccessor<(float)>
 static readonly "WAKE_UP_DURATION": integer
 static readonly "DELTA_AFFECTED_BY_BLOCKS_BELOW_1_0": double
@@ -898,7 +910,7 @@ readonly "server": $MinecraftServer
  "oAttackAnim": float
  "yHeadRotO": float
  "containerCounter": integer
-static readonly "UUID_TAG": string
+static readonly "UUID_TAG": StringJS
 static readonly "DEFAULT_MODEL_CUSTOMIZATION": integer
  "hurtDuration": integer
 static readonly "DEATH_DURATION": integer
@@ -911,16 +923,16 @@ static readonly "DEFAULT_ENTITY_INTERACTION_RANGE": float
  "experienceLevel": integer
 static readonly "DEFAULT_BABY_SCALE": float
  "eyeHeight": float
-static readonly "ATTRIBUTES_FIELD": string
+static readonly "ATTRIBUTES_FIELD": StringJS
  "camera": $Entity
-static readonly "PERSISTED_NBT_TAG": string
+static readonly "PERSISTED_NBT_TAG": StringJS
 static readonly "DEFAULT_BB_HEIGHT": float
  "seenCredits": boolean
  "xxa": float
  "zCloak": double
  "flyDist": float
  "currentImpulseImpactPos": $Vec3
-static readonly "PASSENGERS_TAG": string
+static readonly "PASSENGERS_TAG": StringJS
  "xCloakO": double
  "wasOnFire": boolean
  "attackAnim": float
@@ -936,6 +948,7 @@ static readonly "SLEEP_DURATION": integer
 static readonly "HELD_ITEM_SLOT": integer
  "yCloak": double
  "swingTime": integer
+ "entityJs$builder": any
 static readonly "BODY_ARMOR_OFFSET": integer
  "xCloak": double
 readonly "abilities": $Abilities
@@ -991,7 +1004,7 @@ static readonly "EXTRA_RENDER_CULLING_SIZE_WITH_BIG_HAT": float
 static readonly "SWIMMING_BB_WIDTH": float
 static readonly "FREEZE_HURT_FREQUENCY": integer
  "isInPowderSnow": boolean
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
  "yBodyRot": float
  "blocksBuilding": boolean
  "takeXpDelay": integer
@@ -1007,33 +1020,34 @@ static readonly "BASE_SAFE_FALL_DISTANCE": integer
 
 constructor(arg0: $ServerLevel$$Type, arg1: $Entity$$Type, arg2: $GameProfile$$Type)
 
-public "use"(arg0: boolean, arg1: boolean, arg2: $Predicate$$Type<($Entity)>): $InteractionResult
 public "use"(arg0: boolean, arg1: boolean): $InteractionResult
+public "use"(arg0: boolean, arg1: boolean, arg2: $Predicate$$Type<($Entity)>): $InteractionResult
 public "setLevel"(arg0: $Level$$Type): void
+public "getEyeHeight"(arg0: $Pose$$Type): float
+public "playSound"(arg0: $SoundEvent$$Type, arg1: float, arg2: float): void
 public "isSilent"(): boolean
 public "canAttack"(arg0: $LivingEntity$$Type): boolean
 public "awardStat"(arg0: $Stat$$Type<(any)>): void
-public "playSound"(arg0: $SoundEvent$$Type, arg1: float, arg2: float): void
-public "getEyeHeight"(arg0: $Pose$$Type): float
+public "digBlock"(): $Pair<(boolean), (StringJS)>
 public "useOnEntity"(): $InteractionResult
 public "useOnBlock"(): $InteractionResult
-public "digBlock"(): $Pair<(boolean), (string)>
 public "findHit"(arg0: boolean, arg1: boolean): $HitResult
 public "findHit"(arg0: boolean, arg1: boolean, arg2: $Predicate$$Type<($Entity)>): $HitResult
-public static "wrapActionWithRot"<T>(arg0: float, arg1: float, arg2: $Function$$Type<($APFakePlayer), (T)>): $Function<($APFakePlayer), (T)>
-public static "wrapActionWithShiftKey"<T>(arg0: boolean, arg1: $Function$$Type<($APFakePlayer), (T)>): $Function<($APFakePlayer), (T)>
-public "useOnFilteredEntity"(arg0: $Predicate$$Type<($Entity)>): $InteractionResult
 public "useOnSpecificEntity"(arg0: $Entity$$Type, arg1: $HitResult$$Type): $InteractionResult
 public "doActionWithShiftKey"<T>(arg0: boolean, arg1: $Function$$Type<($APFakePlayer), (T)>): T
 public "doActionWithRot"<T>(arg0: float, arg1: float, arg2: $Function$$Type<($APFakePlayer), (T)>): T
-public "sodiumdynamiclights$scheduleTrackedChunksRebuild"(arg0: $LevelRenderer$$Type): void
-public "sodiumdynamiclights$updateDynamicLight"(arg0: $LevelRenderer$$Type): boolean
-public "sdl$getDynamicLightLevel"(): $Level
-public "sdl$shouldUpdateDynamicLight"(): boolean
+public static "wrapActionWithRot"<T>(arg0: float, arg1: float, arg2: $Function$$Type<($APFakePlayer), (T)>): $Function<($APFakePlayer), (T)>
+public static "wrapActionWithShiftKey"<T>(arg0: boolean, arg1: $Function$$Type<($APFakePlayer), (T)>): $Function<($APFakePlayer), (T)>
+public "useOnFilteredEntity"(arg0: $Predicate$$Type<($Entity)>): $InteractionResult
+public "self"(): $Player
 public "sdl$getDynamicLightX"(): double
 public "sdl$getDynamicLightY"(): double
 public "sdl$getDynamicLightZ"(): double
 public "sdl$resetDynamicLight"(): void
+public "sodiumdynamiclights$updateDynamicLight"(arg0: $LevelRenderer$$Type): boolean
+public "sdl$getDynamicLightLevel"(): $Level
+public "sdl$shouldUpdateDynamicLight"(): boolean
+public "sodiumdynamiclights$scheduleTrackedChunksRebuild"(arg0: $LevelRenderer$$Type): void
 public static "tickEntity"(entity: $LivingEntity$$Type): void
 public static "getAlpha"(le: $LivingEntity$$Type, partialTicks: float): float
 public static "getAlternativeStack"(livingEntity: $LivingEntity$$Type, equipmentSlot: $EquipmentSlot$$Type, consumer: $Consumer$$Type<($ItemStack)>): void
@@ -1044,10 +1058,10 @@ public static "setSpawnedFromEndTrialSpawner"(arg0: $Entity$$Type, arg1: boolean
 public static "getMagniaProperties"(arg0: $Entity$$Type): $MagniaProperties
 public static "canMagniaAffect"(arg0: $Entity$$Type): boolean
 public static "getMagnetismFactor"(arg0: $Entity$$Type): float
+public static "dashed"(arg0: $Entity$$Type): boolean
 public static "setDashed"(arg0: $Entity$$Type, arg1: boolean): void
 public static "dashTicks"(arg0: $Entity$$Type): integer
 public static "setDashTicks"(arg0: $Entity$$Type, arg1: integer): void
-public static "dashed"(arg0: $Entity$$Type): boolean
 /**
  * 
  * @deprecated
@@ -1056,14 +1070,14 @@ public "serializeNBT"(arg0: $HolderLookup$Provider$$Type): $Tag
 public static "without"<T>(arg0: $ChangeSubscriber$$Type<(T)>, arg1: $ChangeSubscriber$$Type<(T)>, arg2: integer, arg3: boolean): $ChangeSubscriber<(T)>
 public static "without"<T>(arg0: $ChangeSubscriber$$Type<(T)>, arg1: $ChangeSubscriber$$Type<(T)>): $ChangeSubscriber<(T)>
 public static "combine"<T>(arg0: $ChangeSubscriber$$Type<(T)>, arg1: integer, arg2: $ChangeSubscriber$$Type<(T)>, arg3: integer): $ChangeSubscriber<(T)>
+public static "dataOf"(arg0: $ChangeSubscriber$$Type<(any)>, arg1: $ChangeSubscriber$$Type<(any)>, arg2: integer): integer
 public static "dataWithout"<T>(arg0: $ChangeSubscriber$$Type<(T)>, arg1: $ChangeSubscriber$$Type<(T)>, arg2: integer, arg3: integer, arg4: boolean): integer
 public static "dataWithout"<T>(arg0: $ChangeSubscriber$$Type<(T)>, arg1: $ChangeSubscriber$$Type<(T)>, arg2: integer): integer
-public static "dataOf"(arg0: $ChangeSubscriber$$Type<(any)>, arg1: $ChangeSubscriber$$Type<(any)>, arg2: integer): integer
 public static "containsSubscriber"(arg0: $ChangeSubscriber$$Type<($ItemStack$$Type)>, arg1: integer, arg2: $ChangeSubscriber$$Type<($ItemStack$$Type)>, arg3: integer): boolean
-public static "forNameOnly"(arg0: string): $ScoreHolder
+public static "forNameOnly"(arg0: StringJS): $ScoreHolder
 public static "fromGameProfile"(arg0: $GameProfile$$Type): $ScoreHolder
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 set "level"(value: $Level$$Type)
 get "silent"(): boolean
 }
@@ -1095,14 +1109,14 @@ export class $WeakAutomata extends $ClockwiseAnimatedTurtleUpgrade<($WeakAutomat
 constructor(arg0: $ItemStack$$Type)
 
 public "getType"(): $UpgradeType<($ITurtleUpgrade)>
-public "getRightModel"(): $ModelResourceLocation
 public "getLeftModel"(): $ModelResourceLocation
+public "getRightModel"(): $ModelResourceLocation
 public static "createKey"(arg0: $ResourceLocation$$Type): $ResourceKey<($ITurtleUpgrade)>
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($ITurtleUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 get "type"(): $UpgradeType<($ITurtleUpgrade)>
-get "rightModel"(): $ModelResourceLocation
 get "leftModel"(): $ModelResourceLocation
+get "rightModel"(): $ModelResourceLocation
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1131,25 +1145,25 @@ import {$SingleOperation, $SingleOperation$$Type} from "de.srendi.advancedperiph
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 
 export class $AutomataCorePeripheral extends $BasePeripheral<($TurtlePeripheralOwner)> {
-static readonly "ATTR_STORING_TOOL_DURABILITY": string
+static readonly "ATTR_STORING_TOOL_DURABILITY": StringJS
 
 
-public "hasAttribute"(arg0: string): boolean
-public "setAttribute"(arg0: string): void
-public "getInteractionRadius"(): integer
+public "hasAttribute"(arg0: StringJS): boolean
+public "setAttribute"(arg0: StringJS): void
+public "validateSide"(arg0: StringJS): $Direction
 public "withOperation"(arg0: $SingleOperation$$Type, arg1: $IPeripheralFunction$$Type<($SingleOperationContext), ($MethodResult$$Type)>): $MethodResult
 public "withOperation"(arg0: $SingleOperation$$Type, arg1: $IPeripheralFunction$$Type<($SingleOperationContext), ($MethodResult$$Type)>, arg2: $IPeripheralCheck$$Type<($SingleOperationContext)>): $MethodResult
 public "withOperation"<T>(arg0: $IPeripheralOperation$$Type<(T)>, arg1: T, arg2: $IPeripheralFunction$$Type<(T), ($MethodResult$$Type)>, arg3: $IPeripheralCheck$$Type<(T)>): $MethodResult
-public "validateSide"(arg0: string): $Direction
-public "getPeripheralConfiguration"(): $Map<(string), (any)>
+public "getInteractionRadius"(): integer
+public "getPeripheralConfiguration"(): $Map<(StringJS), (any)>
 public "toDistance"(arg0: $BlockPos$$Type): $SingleOperationContext
+public "forUnknownDistance"(): $SingleOperationContext
 public "possibleOperations"(): $List<($IPeripheralOperation<(any)>)>
 public "addRotationCycle"(): void
 public "addRotationCycle"(arg0: integer): void
-public "forUnknownDistance"(): $SingleOperationContext
-set "attribute"(value: string)
+set "attribute"(value: StringJS)
 get "interactionRadius"(): integer
-get "peripheralConfiguration"(): $Map<(string), (any)>
+get "peripheralConfiguration"(): $Map<(StringJS), (any)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1167,21 +1181,21 @@ declare module "de.srendi.advancedperipherals.common.addons.computercraft.periph
 import {$IPocketAccess, $IPocketAccess$$Type} from "dan200.computercraft.api.pocket.IPocketAccess"
 import {$MethodResult, $MethodResult$$Type} from "dan200.computercraft.api.lua.MethodResult"
 import {$BasePeripheral, $BasePeripheral$$Type} from "de.srendi.advancedperipherals.lib.peripherals.BasePeripheral"
-import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$ITurtleAccess, $ITurtleAccess$$Type} from "dan200.computercraft.api.turtle.ITurtleAccess"
 import {$IArguments, $IArguments$$Type} from "dan200.computercraft.api.lua.IArguments"
+import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$PeripheralBlockEntity, $PeripheralBlockEntity$$Type} from "de.srendi.advancedperipherals.common.blocks.base.PeripheralBlockEntity"
 import {$IPeripheralOwner, $IPeripheralOwner$$Type} from "de.srendi.advancedperipherals.common.addons.computercraft.owner.IPeripheralOwner"
 
 export class $GeoScannerPeripheral extends $BasePeripheral<($IPeripheralOwner)> {
-static readonly "PERIPHERAL_TYPE": string
+static readonly "PERIPHERAL_TYPE": StringJS
 
 constructor(arg0: $IPocketAccess$$Type)
 constructor(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type)
 constructor(arg0: $PeripheralBlockEntity$$Type<(any)>)
 
-public "isEnabled"(): boolean
 public "scan"(arg0: $IArguments$$Type): $MethodResult
+public "isEnabled"(): boolean
 public "cost"(arg0: integer): $MethodResult
 public "chunkAnalyze"(): $MethodResult
 get "enabled"(): boolean
@@ -1200,8 +1214,8 @@ export type $GeoScannerPeripheral_ = $GeoScannerPeripheral$$Type;
 }}
 declare module "de.srendi.advancedperipherals.common.addons.computercraft.owner.FuelAbility" {
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$IPeripheralOperation, $IPeripheralOperation$$Type} from "de.srendi.advancedperipherals.lib.peripherals.IPeripheralOperation"
 import {$MethodResult, $MethodResult$$Type} from "dan200.computercraft.api.lua.MethodResult"
+import {$IPeripheralOperation, $IPeripheralOperation$$Type} from "de.srendi.advancedperipherals.lib.peripherals.IPeripheralOperation"
 import {$List, $List$$Type} from "java.util.List"
 import {$IPeripheralPlugin, $IPeripheralPlugin$$Type} from "de.srendi.advancedperipherals.lib.peripherals.IPeripheralPlugin"
 import {$IOwnerAbility, $IOwnerAbility$$Type} from "de.srendi.advancedperipherals.common.addons.computercraft.owner.IOwnerAbility"
@@ -1213,10 +1227,10 @@ export class $FuelAbility<T extends $IPeripheralOwner> implements $IOwnerAbility
 
 constructor(arg0: T)
 
+public "addFuel"(arg0: integer): void
 public "getFuelLevel"(): integer
 public "consumeFuel"(arg0: integer, arg1: boolean): boolean
-public "addFuel"(arg0: integer): void
-public "collectConfiguration"(arg0: $Map$$Type<(string), (any)>): void
+public "collectConfiguration"(arg0: $Map$$Type<(StringJS), (any)>): void
 public "getFuelCount"(): integer
 public "reduceCooldownAccordingToConsumptionRate"(arg0: integer): integer
 public "getFuelMaxCount"(): integer
@@ -1267,14 +1281,14 @@ export class $TurtleCompassUpgrade extends $PeripheralTurtleUpgrade<($CompassPer
 constructor(arg0: $ItemStack$$Type)
 
 public "getType"(): $UpgradeType<($ITurtleUpgrade)>
-public "getRightModel"(): $ModelResourceLocation
 public "getLeftModel"(): $ModelResourceLocation
+public "getRightModel"(): $ModelResourceLocation
 public static "createKey"(arg0: $ResourceLocation$$Type): $ResourceKey<($ITurtleUpgrade)>
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($ITurtleUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 get "type"(): $UpgradeType<($ITurtleUpgrade)>
-get "rightModel"(): $ModelResourceLocation
 get "leftModel"(): $ModelResourceLocation
+get "rightModel"(): $ModelResourceLocation
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1295,8 +1309,8 @@ import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resource
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$PeripheralTurtleUpgrade, $PeripheralTurtleUpgrade$$Type} from "de.srendi.advancedperipherals.lib.turtle.PeripheralTurtleUpgrade"
 import {$Registry, $Registry$$Type} from "net.minecraft.core.Registry"
-import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$ITurtleAccess, $ITurtleAccess$$Type} from "dan200.computercraft.api.turtle.ITurtleAccess"
+import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
 import {$IBasePeripheral, $IBasePeripheral$$Type} from "de.srendi.advancedperipherals.lib.peripherals.IBasePeripheral"
 import {$UpgradeType, $UpgradeType$$Type} from "dan200.computercraft.api.upgrades.UpgradeType"
@@ -1311,7 +1325,7 @@ public "getUpgradeData"(arg0: $ItemStack$$Type): $DataComponentPatch
 public "chargeConsumingCallback"(): void
 public static "createKey"(arg0: $ResourceLocation$$Type): $ResourceKey<($ITurtleUpgrade)>
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($ITurtleUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1344,17 +1358,17 @@ static readonly "SUCK": $SingleOperation
 
 
 public static "values"(): ($SingleOperation)[]
-public static "valueOf"(arg0: string): $SingleOperation
-public "getCost"(arg0: any): integer
+public static "valueOf"(arg0: StringJS): $SingleOperation
 public "getCost"(arg0: $SingleOperationContext$$Type): integer
-public "dataComponentType"(): $DataComponentType<(long)>
-public "getInitialCooldown"(): integer
-public "computerDescription"(): $Map<(string), (any)>
+public "getCost"(arg0: any): integer
 public "addToConfig"(arg0: $ModConfigSpec$Builder$$Type): void
 public "getCooldown"(arg0: any): integer
 public "getCooldown"(arg0: $SingleOperationContext$$Type): integer
-public "settingsPostfix"(): string
-public "settingsName"(): string
+public "getInitialCooldown"(): integer
+public "computerDescription"(): $Map<(StringJS), (any)>
+public "dataComponentType"(): $DataComponentType<(long)>
+public "settingsName"(): StringJS
+public "settingsPostfix"(): StringJS
 get "initialCooldown"(): integer
 }
 /**
@@ -1370,15 +1384,18 @@ declare global {
 export type $SingleOperation_ = $SingleOperation$$Type;
 }}
 declare module "de.srendi.advancedperipherals.common.items.WeakAutomataCore" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$IFeedableAutomataCore, $IFeedableAutomataCore$$Type} from "de.srendi.advancedperipherals.lib.metaphysics.IFeedableAutomataCore"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$APItem, $APItem$$Type} from "de.srendi.advancedperipherals.common.items.APItem"
@@ -1390,7 +1407,7 @@ import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.Liv
 export class $WeakAutomataCore extends $APItem implements $IFeedableAutomataCore {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1401,6 +1418,7 @@ constructor()
 
 public "interactLivingEntity"(arg0: $ItemStack$$Type, arg1: $Player$$Type, arg2: $LivingEntity$$Type, arg3: $InteractionHand$$Type): $InteractionResult
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1416,12 +1434,12 @@ export type $WeakAutomataCore_ = $WeakAutomataCore$$Type;
 }}
 declare module "de.srendi.advancedperipherals.common.addons.computercraft.peripheral.metaphysics.HusbandryAutomataCorePeripheral" {
 import {$WeakAutomataCorePeripheral, $WeakAutomataCorePeripheral$$Type} from "de.srendi.advancedperipherals.common.addons.computercraft.peripheral.metaphysics.WeakAutomataCorePeripheral"
-import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$ITurtleAccess, $ITurtleAccess$$Type} from "dan200.computercraft.api.turtle.ITurtleAccess"
+import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 
 export class $HusbandryAutomataCorePeripheral extends $WeakAutomataCorePeripheral {
-static readonly "ATTR_STORING_TOOL_DURABILITY": string
-static readonly "TYPE": string
+static readonly "ATTR_STORING_TOOL_DURABILITY": StringJS
+static readonly "TYPE": StringJS
 
 constructor(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type)
 
@@ -1520,7 +1538,7 @@ constructor(arg0: $ItemStack$$Type)
 public "getType"(): $UpgradeType<($IPocketUpgrade)>
 public "getPeripheral"(arg0: $IPocketAccess$$Type): $ChatBoxPeripheral
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($IPocketUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 get "type"(): $UpgradeType<($IPocketUpgrade)>
 }
 /**
@@ -1581,50 +1599,50 @@ import {$PeripheralBlockEntity, $PeripheralBlockEntity$$Type} from "de.srendi.ad
 import {$IPeripheralOwner, $IPeripheralOwner$$Type} from "de.srendi.advancedperipherals.common.addons.computercraft.owner.IPeripheralOwner"
 
 export class $ColonyPeripheral extends $BasePeripheral<($IPeripheralOwner)> {
-static readonly "PERIPHERAL_TYPE": string
+static readonly "PERIPHERAL_TYPE": StringJS
 
 constructor(arg0: $PeripheralBlockEntity$$Type<(any)>)
 constructor(arg0: $IPocketAccess$$Type)
 
+public "isActive"(): boolean
 public "isEnabled"(): boolean
 public "getLocation"(): any
-public "isActive"(): boolean
-public "getBuildings"(): any
-public "getResearch"(): any
-public "getWorkOrders"(): any
+public "isUnderRaid"(): boolean
+public "isUnderAttack"(): boolean
+public "amountOfGraves"(): integer
+public "getRequests"(): any
+public "getVisitors"(): any
+public "getColonyID"(): integer
+public "getColonyStyle"(): StringJS
+public "maxOfCitizens"(): integer
+public "isWithin"(arg0: $Map$$Type<(any), (any)>): boolean
+public "getColonyName"(): StringJS
 public "getCitizens"(): any
 public "isInColony"(): boolean
 public "getHappiness"(): double
-public "isWithin"(arg0: $Map$$Type<(any), (any)>): boolean
-public "getColonyID"(): integer
-public "getColonyStyle"(): string
-public "isUnderAttack"(): boolean
-public "isUnderRaid"(): boolean
-public "maxOfCitizens"(): integer
-public "amountOfGraves"(): integer
-public "getVisitors"(): any
-public "getRequests"(): any
-public "getColonyName"(): string
-public "amountOfConstructionSites"(): integer
+public "getBuildings"(): any
+public "getWorkOrders"(): any
+public "getResearch"(): any
 public "amountOfCitizens"(): integer
 public "getWorkOrderResources"(arg0: integer): any
 public "getBuilderResources"(arg0: $Map$$Type<(any), (any)>): any
+public "amountOfConstructionSites"(): integer
+get "active"(): boolean
 get "enabled"(): boolean
 get "location"(): any
-get "active"(): boolean
-get "buildings"(): any
-get "research"(): any
-get "workOrders"(): any
+get "underRaid"(): boolean
+get "underAttack"(): boolean
+get "requests"(): any
+get "visitors"(): any
+get "colonyID"(): integer
+get "colonyStyle"(): StringJS
+get "colonyName"(): StringJS
 get "citizens"(): any
 get "inColony"(): boolean
 get "happiness"(): double
-get "colonyID"(): integer
-get "colonyStyle"(): string
-get "underAttack"(): boolean
-get "underRaid"(): boolean
-get "visitors"(): any
-get "requests"(): any
-get "colonyName"(): string
+get "buildings"(): any
+get "workOrders"(): any
+get "research"(): any
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1655,7 +1673,7 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 
 export class $PlayerDetectorEntity extends $PeripheralBlockEntity<($PlayerDetectorPeripheral)> {
  "name": $Component
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
  "lockKey": $LockCode
 
 constructor(arg0: $BlockPos$$Type, arg1: $BlockState$$Type)
@@ -1663,11 +1681,11 @@ constructor(arg0: $BlockPos$$Type, arg1: $BlockState$$Type)
 public "handleTick"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): void
 public "getDisplayName"(): $Component
 public "setChanged"(): void
-public static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type, arg2: float): boolean
 public static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type): boolean
+public static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type, arg2: float): boolean
 public static "tryClear"(arg0: any): void
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "displayName"(): $Component
 }
 /**
@@ -1688,9 +1706,9 @@ import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resource
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$PeripheralTurtleUpgrade, $PeripheralTurtleUpgrade$$Type} from "de.srendi.advancedperipherals.lib.turtle.PeripheralTurtleUpgrade"
 import {$Registry, $Registry$$Type} from "net.minecraft.core.Registry"
-import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$ITurtleAccess, $ITurtleAccess$$Type} from "dan200.computercraft.api.turtle.ITurtleAccess"
 import {$ModelResourceLocation, $ModelResourceLocation$$Type} from "net.minecraft.client.resources.model.ModelResourceLocation"
+import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$ChatBoxPeripheral, $ChatBoxPeripheral$$Type} from "de.srendi.advancedperipherals.common.addons.computercraft.peripheral.ChatBoxPeripheral"
 import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
 import {$UpgradeType, $UpgradeType$$Type} from "dan200.computercraft.api.upgrades.UpgradeType"
@@ -1701,14 +1719,14 @@ constructor(arg0: $ItemStack$$Type)
 
 public "update"(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type): void
 public "getType"(): $UpgradeType<($ITurtleUpgrade)>
-public "getRightModel"(): $ModelResourceLocation
 public "getLeftModel"(): $ModelResourceLocation
+public "getRightModel"(): $ModelResourceLocation
 public static "createKey"(arg0: $ResourceLocation$$Type): $ResourceKey<($ITurtleUpgrade)>
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($ITurtleUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 get "type"(): $UpgradeType<($ITurtleUpgrade)>
-get "rightModel"(): $ModelResourceLocation
 get "leftModel"(): $ModelResourceLocation
+get "rightModel"(): $ModelResourceLocation
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1727,8 +1745,8 @@ import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
 import {$Mirror, $Mirror$$Type} from "net.minecraft.world.level.block.Mirror"
 import {$RenderShape, $RenderShape$$Type} from "net.minecraft.world.level.block.RenderShape"
-import {$IHarvestableBlock, $IHarvestableBlock$$Type} from "de.srendi.advancedperipherals.common.blocks.base.IHarvestableBlock"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$IHarvestableBlock, $IHarvestableBlock$$Type} from "de.srendi.advancedperipherals.common.blocks.base.IHarvestableBlock"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
@@ -1756,7 +1774,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "ORIENTATION": $EnumProperty<($FrontAndTop)>
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -1769,10 +1787,10 @@ constructor(arg0: $TagKey$$Type<($Block)>)
 constructor()
 
 public "rotate"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $BlockState
-public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
 public "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
 public "getHarvestTag"(): $TagKey<($Block)>
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "getToolTag"(): $TagKey<($Block)>
 public "asHolder"(): $Holder<(any)>
 get "harvestTag"(): $TagKey<($Block)>
@@ -1821,18 +1839,22 @@ declare global {
 export type $IDataComponentProvider_<T> = $IDataComponentProvider$$Type<(T)>;
 }}
 declare module "de.srendi.advancedperipherals.common.items.APItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$BaseItem, $BaseItem$$Type} from "de.srendi.advancedperipherals.common.items.base.BaseItem"
 
 export class $APItem extends $BaseItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1842,6 +1864,7 @@ constructor(arg0: $Item$Properties$$Type, arg1: $Supplier$$Type<(boolean)>)
 constructor(arg0: $Supplier$$Type<(boolean)>)
 
 public "isEnabled"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "enabled"(): boolean
 }
 /**
@@ -1857,15 +1880,17 @@ declare global {
 export type $APItem_ = $APItem$$Type;
 }}
 declare module "de.srendi.advancedperipherals.common.items.MemoryCardItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
@@ -1875,7 +1900,7 @@ import {$BaseItem, $BaseItem$$Type} from "de.srendi.advancedperipherals.common.i
 export class $MemoryCardItem extends $BaseItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1883,9 +1908,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "isEnabled"(): boolean
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "isEnabled"(): boolean
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "enabled"(): boolean
 }
 /**
@@ -1916,14 +1942,14 @@ export class $TurtleEnvironmentDetectorUpgrade extends $PeripheralTurtleUpgrade<
 constructor(arg0: $ItemStack$$Type)
 
 public "getType"(): $UpgradeType<($ITurtleUpgrade)>
-public "getRightModel"(): $ModelResourceLocation
 public "getLeftModel"(): $ModelResourceLocation
+public "getRightModel"(): $ModelResourceLocation
 public static "createKey"(arg0: $ResourceLocation$$Type): $ResourceKey<($ITurtleUpgrade)>
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($ITurtleUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 get "type"(): $UpgradeType<($ITurtleUpgrade)>
-get "rightModel"(): $ModelResourceLocation
 get "leftModel"(): $ModelResourceLocation
+get "rightModel"(): $ModelResourceLocation
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1940,18 +1966,18 @@ export type $TurtleEnvironmentDetectorUpgrade_ = $TurtleEnvironmentDetectorUpgra
 declare module "de.srendi.advancedperipherals.common.addons.computercraft.peripheral.CompassPeripheral" {
 import {$TurtlePeripheralOwner, $TurtlePeripheralOwner$$Type} from "de.srendi.advancedperipherals.common.addons.computercraft.owner.TurtlePeripheralOwner"
 import {$BasePeripheral, $BasePeripheral$$Type} from "de.srendi.advancedperipherals.lib.peripherals.BasePeripheral"
-import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$ITurtleAccess, $ITurtleAccess$$Type} from "dan200.computercraft.api.turtle.ITurtleAccess"
+import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 
 export class $CompassPeripheral extends $BasePeripheral<($TurtlePeripheralOwner)> {
-static readonly "PERIPHERAL_TYPE": string
+static readonly "PERIPHERAL_TYPE": StringJS
 
 constructor(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type)
 
 public "isEnabled"(): boolean
-public "getFacing"(): string
+public "getFacing"(): StringJS
 get "enabled"(): boolean
-get "facing"(): string
+get "facing"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1966,15 +1992,17 @@ declare global {
 export type $CompassPeripheral_ = $CompassPeripheral$$Type;
 }}
 declare module "de.srendi.advancedperipherals.common.items.base.BaseItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
@@ -1984,19 +2012,20 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 export class $BaseItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(arg0: $Item$Properties$$Type)
 constructor()
+constructor(arg0: $Item$Properties$$Type)
 
+public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
 public "getDescription"(): $Component
 public "isEnabled"(): boolean
-public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "description"(): $Component
 get "enabled"(): boolean
 }
@@ -2057,7 +2086,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "ORIENTATION": $EnumProperty<($FrontAndTop)>
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -2069,10 +2098,10 @@ constructor(arg0: boolean)
 constructor(arg0: boolean, arg1: $BlockBehaviour$Properties$$Type)
 
 public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
-public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
-public "useItemOn"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type, arg2: $Level$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type, arg5: $InteractionHand$$Type, arg6: $BlockHitResult$$Type): $ItemInteractionResult
 public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
+public "useItemOn"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type, arg2: $Level$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type, arg5: $InteractionHand$$Type, arg6: $BlockHitResult$$Type): $ItemInteractionResult
 /**
  * 
  * @deprecated
@@ -2104,13 +2133,13 @@ import {$ModConfigSpec$Builder, $ModConfigSpec$Builder$$Type} from "net.neoforge
 export interface $IPeripheralOperation<T> extends $IConfigHandler, $IDataComponentProvider<(long)> {
 
  "getCost"(arg0: T): integer
- "getInitialCooldown"(): integer
- "computerDescription"(): $Map<(string), (any)>
  "getCooldown"(arg0: T): integer
- "name"(): string
- "settingsPostfix"(): string
+ "getInitialCooldown"(): integer
+ "computerDescription"(): $Map<(StringJS), (any)>
+ "name"(): StringJS
  "addToConfig"(arg0: $ModConfigSpec$Builder$$Type): void
- "settingsName"(): string
+ "settingsName"(): StringJS
+ "settingsPostfix"(): StringJS
  "dataComponentType"(): $DataComponentType<(long)>
 get "initialCooldown"(): integer
 }
@@ -2122,13 +2151,13 @@ export class $IPeripheralOperation$$Static<T> implements $IPeripheralOperation {
 
 
  "getCost"(arg0: T): integer
- "getInitialCooldown"(): integer
- "computerDescription"(): $Map<(string), (any)>
  "getCooldown"(arg0: T): integer
- "name"(): string
- "settingsPostfix"(): string
+ "getInitialCooldown"(): integer
+ "computerDescription"(): $Map<(StringJS), (any)>
+ "name"(): StringJS
  "addToConfig"(arg0: $ModConfigSpec$Builder$$Type): void
- "settingsName"(): string
+ "settingsName"(): StringJS
+ "settingsPostfix"(): StringJS
  "dataComponentType"(): $DataComponentType<(long)>
 }
 /**
@@ -2159,14 +2188,14 @@ export class $OverpoweredEndAutomata extends $ClockwiseAnimatedTurtleUpgrade<($O
 constructor(arg0: $ItemStack$$Type)
 
 public "getType"(): $UpgradeType<($ITurtleUpgrade)>
-public "getRightModel"(): $ModelResourceLocation
 public "getLeftModel"(): $ModelResourceLocation
+public "getRightModel"(): $ModelResourceLocation
 public static "createKey"(arg0: $ResourceLocation$$Type): $ResourceKey<($ITurtleUpgrade)>
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($ITurtleUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 get "type"(): $UpgradeType<($ITurtleUpgrade)>
-get "rightModel"(): $ModelResourceLocation
 get "leftModel"(): $ModelResourceLocation
+get "rightModel"(): $ModelResourceLocation
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2182,12 +2211,12 @@ export type $OverpoweredEndAutomata_ = $OverpoweredEndAutomata$$Type;
 }}
 declare module "de.srendi.advancedperipherals.common.addons.computercraft.peripheral.metaphysics.WeakAutomataCorePeripheral" {
 import {$AutomataCorePeripheral, $AutomataCorePeripheral$$Type} from "de.srendi.advancedperipherals.lib.peripherals.AutomataCorePeripheral"
-import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$ITurtleAccess, $ITurtleAccess$$Type} from "dan200.computercraft.api.turtle.ITurtleAccess"
+import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 
 export class $WeakAutomataCorePeripheral extends $AutomataCorePeripheral {
-static readonly "ATTR_STORING_TOOL_DURABILITY": string
-static readonly "TYPE": string
+static readonly "ATTR_STORING_TOOL_DURABILITY": StringJS
+static readonly "TYPE": StringJS
 
 constructor(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type)
 
@@ -2208,58 +2237,58 @@ export type $WeakAutomataCorePeripheral_ = $WeakAutomataCorePeripheral$$Type;
 }}
 declare module "de.srendi.advancedperipherals.common.addons.computercraft.peripheral.EnvironmentDetectorPeripheral" {
 import {$MethodResult, $MethodResult$$Type} from "dan200.computercraft.api.lua.MethodResult"
-import {$IArguments, $IArguments$$Type} from "dan200.computercraft.api.lua.IArguments"
 import {$ITurtleAccess, $ITurtleAccess$$Type} from "dan200.computercraft.api.turtle.ITurtleAccess"
+import {$IArguments, $IArguments$$Type} from "dan200.computercraft.api.lua.IArguments"
 import {$IPeripheralOwner, $IPeripheralOwner$$Type} from "de.srendi.advancedperipherals.common.addons.computercraft.owner.IPeripheralOwner"
 import {$IPocketAccess, $IPocketAccess$$Type} from "dan200.computercraft.api.pocket.IPocketAccess"
 import {$BasePeripheral, $BasePeripheral$$Type} from "de.srendi.advancedperipherals.lib.peripherals.BasePeripheral"
-import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$IComputerAccess, $IComputerAccess$$Type} from "dan200.computercraft.api.peripheral.IComputerAccess"
 import {$Function, $Function$$Type} from "java.util.function.Function"
+import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$Set, $Set$$Type} from "java.util.Set"
 import {$PeripheralBlockEntity, $PeripheralBlockEntity$$Type} from "de.srendi.advancedperipherals.common.blocks.base.PeripheralBlockEntity"
 import {$IPeripheralPlugin, $IPeripheralPlugin$$Type} from "de.srendi.advancedperipherals.lib.peripherals.IPeripheralPlugin"
 
 export class $EnvironmentDetectorPeripheral extends $BasePeripheral<($IPeripheralOwner)> {
-static readonly "PERIPHERAL_TYPE": string
+static readonly "PERIPHERAL_TYPE": StringJS
 
 constructor(arg0: $IPocketAccess$$Type)
 constructor(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type)
 constructor(arg0: $PeripheralBlockEntity$$Type<(any)>)
 
-public "getDimension"(): string
-public "isEnabled"(): boolean
 public "getTime"(): long
-public "getBiome"(): string
+public "getDimension"(): StringJS
+public "isEnabled"(): boolean
 public "isRaining"(): boolean
-public "isMoon"(arg0: integer): boolean
+public "getBiome"(): StringJS
+public "isSlimeChunk"(): boolean
+public "isSunny"(): boolean
+public "canSleepPlayer"(arg0: StringJS): $MethodResult
+public "canSleepHere"(): $MethodResult
+public "scanCost"(arg0: integer): $MethodResult
+public "scanEntities"(arg0: $IComputerAccess$$Type, arg1: $IArguments$$Type): $MethodResult
+public "isThunder"(): boolean
+public "getMoonName"(): StringJS
+public "listDimensions"(): $Set<(StringJS)>
+public "isDimension"(arg0: StringJS): boolean
+public "getMoonId"(): integer
 public "getBlockLightLevel"(): integer
 public "getSkyLightLevel"(): integer
-public "isSlimeChunk"(): boolean
-public "isDimension"(arg0: string): boolean
-public "listDimensions"(): $Set<(string)>
-public "getMoonId"(): integer
-public "getMoonName"(): string
-public "isThunder"(): boolean
-public "isSunny"(): boolean
-public "scanEntities"(arg0: $IComputerAccess$$Type, arg1: $IArguments$$Type): $MethodResult
-public "scanCost"(arg0: integer): $MethodResult
-public "canSleepHere"(): $MethodResult
-public "canSleepPlayer"(arg0: string): $MethodResult
+public "isMoon"(arg0: integer): boolean
 public static "addIntegrationPlugin"(arg0: $Function$$Type<($IPeripheralOwner), ($IPeripheralPlugin$$Type)>): void
 public "getDayLightLevel"(): integer
-get "dimension"(): string
-get "enabled"(): boolean
 get "time"(): long
-get "biome"(): string
+get "dimension"(): StringJS
+get "enabled"(): boolean
 get "raining"(): boolean
+get "biome"(): StringJS
+get "slimeChunk"(): boolean
+get "sunny"(): boolean
+get "thunder"(): boolean
+get "moonName"(): StringJS
+get "moonId"(): integer
 get "blockLightLevel"(): integer
 get "skyLightLevel"(): integer
-get "slimeChunk"(): boolean
-get "moonId"(): integer
-get "moonName"(): string
-get "thunder"(): boolean
-get "sunny"(): boolean
 get "dayLightLevel"(): integer
 }
 /**
@@ -2284,7 +2313,7 @@ static readonly "NOT_ENOUGH_FUEL": $OperationAbility$FailReason
 
 
 public static "values"(): ($OperationAbility$FailReason)[]
-public static "valueOf"(arg0: string): $OperationAbility$FailReason
+public static "valueOf"(arg0: StringJS): $OperationAbility$FailReason
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2315,8 +2344,8 @@ import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.bloc
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
-import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$BaseBlockEntityBlock, $BaseBlockEntityBlock$$Type} from "de.srendi.advancedperipherals.common.blocks.base.BaseBlockEntityBlock"
+import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $APBlockEntityBlock<T extends $BlockEntity> extends $BaseBlockEntityBlock {
 static readonly "UPDATE_IMMEDIATE": integer
@@ -2332,7 +2361,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "ORIENTATION": $EnumProperty<($FrontAndTop)>
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -2377,7 +2406,7 @@ constructor(arg0: $ItemStack$$Type)
 public "getType"(): $UpgradeType<($IPocketUpgrade)>
 public "getPeripheral"(arg0: $IPocketAccess$$Type): $GeoScannerPeripheral
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($IPocketUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 get "type"(): $UpgradeType<($IPocketUpgrade)>
 }
 /**
@@ -2401,8 +2430,8 @@ export class $Pair<T, V> {
 
 constructor(arg0: T, arg1: V)
 
-public static "of"<T, V>(arg0: T, arg1: V): $Pair<(T), (V)>
 public "reduce"<R>(arg0: $BiFunction$$Type<(T), (V), (R)>): R
+public static "of"<T, V>(arg0: T, arg1: V): $Pair<(T), (V)>
 public "mapBoth"<T1, V1>(arg0: $BiFunction$$Type<(T), (V), ($Pair$$Type<(T1), (V1)>)>): $Pair<(T1), (V1)>
 public "mapLeft"<T1>(arg0: $Function$$Type<(T), (T1)>): $Pair<(T1), (V)>
 public "mapRight"<V1>(arg0: $Function$$Type<(V), (V1)>): $Pair<(T), (V1)>
@@ -2433,12 +2462,12 @@ export type $Pair_<T, V> = $Pair$$Type<(T), (V)>;
 }}
 declare module "de.srendi.advancedperipherals.common.addons.computercraft.peripheral.metaphysics.OverpoweredWeakAutomataCorePeripheral" {
 import {$WeakAutomataCorePeripheral, $WeakAutomataCorePeripheral$$Type} from "de.srendi.advancedperipherals.common.addons.computercraft.peripheral.metaphysics.WeakAutomataCorePeripheral"
-import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$ITurtleAccess, $ITurtleAccess$$Type} from "dan200.computercraft.api.turtle.ITurtleAccess"
+import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 
 export class $OverpoweredWeakAutomataCorePeripheral extends $WeakAutomataCorePeripheral {
-static readonly "ATTR_STORING_TOOL_DURABILITY": string
-static readonly "TYPE": string
+static readonly "ATTR_STORING_TOOL_DURABILITY": StringJS
+static readonly "TYPE": StringJS
 
 constructor(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type)
 
@@ -2472,7 +2501,7 @@ constructor(arg0: $ItemStack$$Type)
 
 public "getType"(): $UpgradeType<($IPocketUpgrade)>
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($IPocketUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 get "type"(): $UpgradeType<($IPocketUpgrade)>
 }
 /**
@@ -2497,8 +2526,8 @@ import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$DataComponentPatch, $DataComponentPatch$$Type} from "net.minecraft.core.component.DataComponentPatch"
 import {$APFakePlayer, $APFakePlayer$$Type} from "de.srendi.advancedperipherals.common.util.fakeplayer.APFakePlayer"
 import {$FrontAndTop, $FrontAndTop$$Type} from "net.minecraft.core.FrontAndTop"
-import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$Function, $Function$$Type} from "java.util.function.Function"
+import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BasePeripheralOwner, $BasePeripheralOwner$$Type} from "de.srendi.advancedperipherals.common.addons.computercraft.owner.BasePeripheralOwner"
 
@@ -2511,30 +2540,30 @@ constructor(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type)
 public "getOwner"(): $Player
 public "move"(arg0: $Level$$Type, arg1: $BlockPos$$Type): boolean
 public "getLevel"(): $Level
-public "getDataStorage"(): $DataComponentPatch
-public "getCustomName"(): string
-public "getSide"(): $TurtleSide
 public "getPos"(): $BlockPos
-public "getFacing"(): $Direction
-public "getOrientation"(): $FrontAndTop
+public "getDataStorage"(): $DataComponentPatch
+public "getCustomName"(): StringJS
+public "getSide"(): $TurtleSide
 public "attachFuel"(arg0: integer): $TurtlePeripheralOwner
-public "getNbtStorage"(): $CompoundTag
-public "putDataStorage"(arg0: $DataComponentPatch$$Type): void
+public "getOrientation"(): $FrontAndTop
+public "getFacing"(): $Direction
 public "withPlayer"<T>(arg0: $Function$$Type<($APFakePlayer), (T)>): T
+public "putDataStorage"(arg0: $DataComponentPatch$$Type): void
 public "storeItem"(arg0: $ItemStack$$Type): $ItemStack
-public "destroyUpgrade"(): void
+public "getNbtStorage"(): $CompoundTag
 public "getTurtle"(): $ITurtleAccess
+public "destroyUpgrade"(): void
 public "markDataStorageDirty"(): void
 public "getToolInMainHand"(): $ItemStack
 public "isMovementPossible"(arg0: $Level$$Type, arg1: $BlockPos$$Type): boolean
 get "owner"(): $Player
 get "level"(): $Level
-get "dataStorage"(): $DataComponentPatch
-get "customName"(): string
-get "side"(): $TurtleSide
 get "pos"(): $BlockPos
-get "facing"(): $Direction
+get "dataStorage"(): $DataComponentPatch
+get "customName"(): StringJS
+get "side"(): $TurtleSide
 get "orientation"(): $FrontAndTop
+get "facing"(): $Direction
 get "nbtStorage"(): $CompoundTag
 get "turtle"(): $ITurtleAccess
 get "toolInMainHand"(): $ItemStack
@@ -2554,8 +2583,8 @@ export type $TurtlePeripheralOwner_ = $TurtlePeripheralOwner$$Type;
 declare module "de.srendi.advancedperipherals.common.addons.computercraft.turtles.TurtlePlayerDetectorUpgrade" {
 import {$ITurtleUpgrade, $ITurtleUpgrade$$Type} from "dan200.computercraft.api.turtle.ITurtleUpgrade"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$PlayerDetectorPeripheral, $PlayerDetectorPeripheral$$Type} from "de.srendi.advancedperipherals.common.addons.computercraft.peripheral.PlayerDetectorPeripheral"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$PeripheralTurtleUpgrade, $PeripheralTurtleUpgrade$$Type} from "de.srendi.advancedperipherals.lib.turtle.PeripheralTurtleUpgrade"
 import {$Registry, $Registry$$Type} from "net.minecraft.core.Registry"
 import {$ModelResourceLocation, $ModelResourceLocation$$Type} from "net.minecraft.client.resources.model.ModelResourceLocation"
@@ -2567,14 +2596,14 @@ export class $TurtlePlayerDetectorUpgrade extends $PeripheralTurtleUpgrade<($Pla
 constructor(arg0: $ItemStack$$Type)
 
 public "getType"(): $UpgradeType<($ITurtleUpgrade)>
-public "getRightModel"(): $ModelResourceLocation
 public "getLeftModel"(): $ModelResourceLocation
+public "getRightModel"(): $ModelResourceLocation
 public static "createKey"(arg0: $ResourceLocation$$Type): $ResourceKey<($ITurtleUpgrade)>
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($ITurtleUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 get "type"(): $UpgradeType<($ITurtleUpgrade)>
-get "rightModel"(): $ModelResourceLocation
 get "leftModel"(): $ModelResourceLocation
+get "rightModel"(): $ModelResourceLocation
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2611,9 +2640,9 @@ constructor(arg0: $IPeripheralOwner$$Type)
 public "isOnCooldown"(arg0: $IPeripheralOperation$$Type<(any)>): boolean
 public "registerOperation"(arg0: $IPeripheralOperation$$Type<(any)>): void
 public "performOperation"<T>(arg0: $IPeripheralOperation$$Type<(T)>, arg1: T, arg2: $IPeripheralCheck$$Type<(T)>, arg3: $IPeripheralFunction$$Type<(T), ($MethodResult$$Type)>, arg4: $Consumer$$Type<(T)>, arg5: $BiConsumer$$Type<($MethodResult), ($OperationAbility$FailReason)>): $MethodResult
-public "collectConfiguration"(arg0: $Map$$Type<(string), (any)>): void
+public "collectConfiguration"(arg0: $Map$$Type<(StringJS), (any)>): void
 public "getCurrentCooldown"(arg0: $IPeripheralOperation$$Type<(any)>): integer
-public "getOperationCooldown"(arg0: string): $MethodResult
+public "getOperationCooldown"(arg0: StringJS): $MethodResult
 public "getOperations"(): ($IPeripheralOperation<(any)>)[]
 public "getMethods"(): $List<($BoundMethod)>
 public "isSuitable"(arg0: $IPeripheral$$Type): boolean
@@ -2634,12 +2663,12 @@ export type $OperationAbility_ = $OperationAbility$$Type;
 }}
 declare module "de.srendi.advancedperipherals.common.addons.computercraft.peripheral.metaphysics.EndAutomataCorePeripheral" {
 import {$WeakAutomataCorePeripheral, $WeakAutomataCorePeripheral$$Type} from "de.srendi.advancedperipherals.common.addons.computercraft.peripheral.metaphysics.WeakAutomataCorePeripheral"
-import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$ITurtleAccess, $ITurtleAccess$$Type} from "dan200.computercraft.api.turtle.ITurtleAccess"
+import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 
 export class $EndAutomataCorePeripheral extends $WeakAutomataCorePeripheral {
-static readonly "ATTR_STORING_TOOL_DURABILITY": string
-static readonly "TYPE": string
+static readonly "ATTR_STORING_TOOL_DURABILITY": StringJS
+static readonly "TYPE": StringJS
 
 constructor(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type)
 
@@ -2674,14 +2703,14 @@ export class $EndAutomata extends $ClockwiseAnimatedTurtleUpgrade<($EndAutomataC
 constructor(arg0: $ItemStack$$Type)
 
 public "getType"(): $UpgradeType<($ITurtleUpgrade)>
-public "getRightModel"(): $ModelResourceLocation
 public "getLeftModel"(): $ModelResourceLocation
+public "getRightModel"(): $ModelResourceLocation
 public static "createKey"(arg0: $ResourceLocation$$Type): $ResourceKey<($ITurtleUpgrade)>
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($ITurtleUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 get "type"(): $UpgradeType<($ITurtleUpgrade)>
-get "rightModel"(): $ModelResourceLocation
 get "leftModel"(): $ModelResourceLocation
+get "rightModel"(): $ModelResourceLocation
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2712,15 +2741,15 @@ import {$IPeripheral, $IPeripheral$$Type} from "dan200.computercraft.api.periphe
 export class $PeripheralTurtleUpgrade<T extends $IBasePeripheral<(any)>> extends $AbstractTurtleUpgrade {
 
 
-public "createPeripheral"(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type): $IPeripheral
-public "isItemSuitable"(arg0: $ItemStack$$Type): boolean
-public "getRightModel"(): $ModelResourceLocation
 public "getLeftModel"(): $ModelResourceLocation
+public "getRightModel"(): $ModelResourceLocation
+public "isItemSuitable"(arg0: $ItemStack$$Type): boolean
+public "createPeripheral"(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type): $IPeripheral
 public static "createKey"(arg0: $ResourceLocation$$Type): $ResourceKey<($ITurtleUpgrade)>
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($ITurtleUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
-get "rightModel"(): $ModelResourceLocation
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 get "leftModel"(): $ModelResourceLocation
+get "rightModel"(): $ModelResourceLocation
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2737,8 +2766,8 @@ export type $PeripheralTurtleUpgrade_<T> = $PeripheralTurtleUpgrade$$Type<(T)>;
 declare module "de.srendi.advancedperipherals.common.addons.computercraft.pocket.PocketPlayerDetectorUpgrade" {
 import {$IPocketAccess, $IPocketAccess$$Type} from "dan200.computercraft.api.pocket.IPocketAccess"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$PlayerDetectorPeripheral, $PlayerDetectorPeripheral$$Type} from "de.srendi.advancedperipherals.common.addons.computercraft.peripheral.PlayerDetectorPeripheral"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Registry, $Registry$$Type} from "net.minecraft.core.Registry"
 import {$BasePocketUpgrade, $BasePocketUpgrade$$Type} from "de.srendi.advancedperipherals.lib.pocket.BasePocketUpgrade"
 import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
@@ -2752,7 +2781,7 @@ constructor(arg0: $ItemStack$$Type)
 public "getType"(): $UpgradeType<($IPocketUpgrade)>
 public "getPeripheral"(arg0: $IPocketAccess$$Type): $PlayerDetectorPeripheral
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($IPocketUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 get "type"(): $UpgradeType<($IPocketUpgrade)>
 }
 /**
@@ -2772,34 +2801,34 @@ import {$IPocketAccess, $IPocketAccess$$Type} from "dan200.computercraft.api.poc
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$MethodResult, $MethodResult$$Type} from "dan200.computercraft.api.lua.MethodResult"
 import {$BasePeripheral, $BasePeripheral$$Type} from "de.srendi.advancedperipherals.lib.peripherals.BasePeripheral"
-import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
+import {$List, $List$$Type} from "java.util.List"
 import {$ITurtleAccess, $ITurtleAccess$$Type} from "dan200.computercraft.api.turtle.ITurtleAccess"
 import {$IArguments, $IArguments$$Type} from "dan200.computercraft.api.lua.IArguments"
-import {$List, $List$$Type} from "java.util.List"
+import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$PeripheralBlockEntity, $PeripheralBlockEntity$$Type} from "de.srendi.advancedperipherals.common.blocks.base.PeripheralBlockEntity"
 import {$IPeripheralOwner, $IPeripheralOwner$$Type} from "de.srendi.advancedperipherals.common.addons.computercraft.owner.IPeripheralOwner"
 
 export class $PlayerDetectorPeripheral extends $BasePeripheral<($IPeripheralOwner)> {
-static readonly "PERIPHERAL_TYPE": string
+static readonly "PERIPHERAL_TYPE": StringJS
 
 constructor(arg0: $IPocketAccess$$Type)
 constructor(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type)
 constructor(arg0: $PeripheralBlockEntity$$Type<(any)>)
 
 public "isEnabled"(): boolean
-public "getOnlinePlayers"(): (string)[]
-public "getPlayerPos"(arg0: $IArguments$$Type): $Map<(string), (any)>
-public "getPlayersInRange"(arg0: integer): $List<(string)>
+public "getPlayerPos"(arg0: $IArguments$$Type): $Map<(StringJS), (any)>
+public "getPlayersInRange"(arg0: integer): $List<(StringJS)>
+public "getOnlinePlayers"(): (StringJS)[]
 public "getPlayersInCoords"(arg0: $Map$$Type<(any), (any)>, arg1: $Map$$Type<(any), (any)>): $MethodResult
-public "getPlayersInCubic"(arg0: integer, arg1: integer, arg2: integer): $List<(string)>
+public "getPlayersInCubic"(arg0: integer, arg1: integer, arg2: integer): $List<(StringJS)>
 public "isPlayersInCoords"(arg0: $Map$$Type<(any), (any)>, arg1: $Map$$Type<(any), (any)>): boolean
 public "isPlayersInCubic"(arg0: integer, arg1: integer, arg2: integer): boolean
 public "isPlayersInRange"(arg0: integer): boolean
-public "isPlayerInCoords"(arg0: $Map$$Type<(any), (any)>, arg1: $Map$$Type<(any), (any)>, arg2: string): boolean
-public "isPlayerInCubic"(arg0: integer, arg1: integer, arg2: integer, arg3: string): boolean
-public "isPlayerInRange"(arg0: integer, arg1: string): boolean
+public "isPlayerInCoords"(arg0: $Map$$Type<(any), (any)>, arg1: $Map$$Type<(any), (any)>, arg2: StringJS): boolean
+public "isPlayerInCubic"(arg0: integer, arg1: integer, arg2: integer, arg3: StringJS): boolean
+public "isPlayerInRange"(arg0: integer, arg1: StringJS): boolean
 get "enabled"(): boolean
-get "onlinePlayers"(): (string)[]
+get "onlinePlayers"(): (StringJS)[]
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2829,14 +2858,14 @@ export class $OverpoweredHusbandryAutomata extends $ClockwiseAnimatedTurtleUpgra
 constructor(arg0: $ItemStack$$Type)
 
 public "getType"(): $UpgradeType<($ITurtleUpgrade)>
-public "getRightModel"(): $ModelResourceLocation
 public "getLeftModel"(): $ModelResourceLocation
+public "getRightModel"(): $ModelResourceLocation
 public static "createKey"(arg0: $ResourceLocation$$Type): $ResourceKey<($ITurtleUpgrade)>
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($ITurtleUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 get "type"(): $UpgradeType<($ITurtleUpgrade)>
-get "rightModel"(): $ModelResourceLocation
 get "leftModel"(): $ModelResourceLocation
+get "rightModel"(): $ModelResourceLocation
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2882,19 +2911,19 @@ export type $IPeripheralFunction_<T, R> = $IPeripheralFunction$$Type<(T), (R)>;
 declare module "de.srendi.advancedperipherals.common.addons.computercraft.peripheral.ChunkyPeripheral" {
 import {$TurtlePeripheralOwner, $TurtlePeripheralOwner$$Type} from "de.srendi.advancedperipherals.common.addons.computercraft.owner.TurtlePeripheralOwner"
 import {$BasePeripheral, $BasePeripheral$$Type} from "de.srendi.advancedperipherals.lib.peripherals.BasePeripheral"
-import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
-import {$IComputerAccess, $IComputerAccess$$Type} from "dan200.computercraft.api.peripheral.IComputerAccess"
 import {$ITurtleAccess, $ITurtleAccess$$Type} from "dan200.computercraft.api.turtle.ITurtleAccess"
+import {$IComputerAccess, $IComputerAccess$$Type} from "dan200.computercraft.api.peripheral.IComputerAccess"
+import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$ChunkPos, $ChunkPos$$Type} from "net.minecraft.world.level.ChunkPos"
 
 export class $ChunkyPeripheral extends $BasePeripheral<($TurtlePeripheralOwner)> {
-static readonly "PERIPHERAL_TYPE": string
+static readonly "PERIPHERAL_TYPE": StringJS
 
 constructor(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type)
 
-public "isEnabled"(): boolean
 public "attach"(arg0: $IComputerAccess$$Type): void
 public "detach"(arg0: $IComputerAccess$$Type): void
+public "isEnabled"(): boolean
 public "getChunkPos"(): $ChunkPos
 public "updateChunkState"(): void
 get "enabled"(): boolean
@@ -2928,14 +2957,14 @@ export class $TurtleGeoScannerUpgrade extends $PeripheralTurtleUpgrade<($GeoScan
 constructor(arg0: $ItemStack$$Type)
 
 public "getType"(): $UpgradeType<($ITurtleUpgrade)>
-public "getRightModel"(): $ModelResourceLocation
 public "getLeftModel"(): $ModelResourceLocation
+public "getRightModel"(): $ModelResourceLocation
 public static "createKey"(arg0: $ResourceLocation$$Type): $ResourceKey<($ITurtleUpgrade)>
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($ITurtleUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 get "type"(): $UpgradeType<($ITurtleUpgrade)>
-get "rightModel"(): $ModelResourceLocation
 get "leftModel"(): $ModelResourceLocation
+get "rightModel"(): $ModelResourceLocation
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2954,10 +2983,10 @@ import {$ModConfigSpec$Builder, $ModConfigSpec$Builder$$Type} from "net.neoforge
 
 export interface $IConfigHandler {
 
- "name"(): string
- "settingsPostfix"(): string
+ "name"(): StringJS
  "addToConfig"(arg0: $ModConfigSpec$Builder$$Type): void
- "settingsName"(): string
+ "settingsName"(): StringJS
+ "settingsPostfix"(): StringJS
 }
 
 export namespace $IConfigHandler {
@@ -2966,10 +2995,10 @@ const probejs$$marker: never
 export class $IConfigHandler$$Static implements $IConfigHandler {
 
 
- "name"(): string
- "settingsPostfix"(): string
+ "name"(): StringJS
  "addToConfig"(arg0: $ModConfigSpec$Builder$$Type): void
- "settingsName"(): string
+ "settingsName"(): StringJS
+ "settingsPostfix"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2986,19 +3015,19 @@ export type $IConfigHandler_ = $IConfigHandler$$Type;
 declare module "de.srendi.advancedperipherals.lib.peripherals.BoundMethod" {
 import {$ILuaContext, $ILuaContext$$Type} from "dan200.computercraft.api.lua.ILuaContext"
 import {$MethodResult, $MethodResult$$Type} from "dan200.computercraft.api.lua.MethodResult"
-import {$IComputerAccess, $IComputerAccess$$Type} from "dan200.computercraft.api.peripheral.IComputerAccess"
 import {$IArguments, $IArguments$$Type} from "dan200.computercraft.api.lua.IArguments"
+import {$IComputerAccess, $IComputerAccess$$Type} from "dan200.computercraft.api.peripheral.IComputerAccess"
 import {$PeripheralMethod, $PeripheralMethod$$Type} from "dan200.computercraft.core.methods.PeripheralMethod"
 
 export class $BoundMethod {
 
-constructor(arg0: any, arg1: string, arg2: $PeripheralMethod$$Type)
+constructor(arg0: any, arg1: StringJS, arg2: $PeripheralMethod$$Type)
 
-public "getName"(): string
+public "getName"(): StringJS
 public "equals"(arg0: any): boolean
 public "hashCode"(): integer
 public "apply"(arg0: $IComputerAccess$$Type, arg1: $ILuaContext$$Type, arg2: $IArguments$$Type): $MethodResult
-get "name"(): string
+get "name"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3017,7 +3046,7 @@ import {$Map, $Map$$Type} from "java.util.Map"
 
 export interface $IOwnerAbility {
 
- "collectConfiguration"(arg0: $Map$$Type<(string), (any)>): void
+ "collectConfiguration"(arg0: $Map$$Type<(StringJS), (any)>): void
 }
 
 export namespace $IOwnerAbility {
@@ -3026,7 +3055,7 @@ const probejs$$marker: never
 export class $IOwnerAbility$$Static implements $IOwnerAbility {
 
 
- "collectConfiguration"(arg0: $Map$$Type<(string), (any)>): void
+ "collectConfiguration"(arg0: $Map$$Type<(StringJS), (any)>): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3052,18 +3081,18 @@ export interface $IBasePeripheral<T extends $IPeripheralOwner> extends $IPeriphe
  "isEnabled"(): boolean
  "getConnectedComputers"(): $Iterable<($IComputerAccess)>
  "getPeripheralOwner"(): T
- "equals"(arg0: $IPeripheral$$Type): boolean
- "getType"(): string
  "getTarget"(): any
  "attach"(arg0: $IComputerAccess$$Type): void
  "detach"(arg0: $IComputerAccess$$Type): void
- "getAdditionalTypes"(): $Set<(string)>
+ "equals"(arg0: $IPeripheral$$Type): boolean
+ "getType"(): StringJS
+ "getAdditionalTypes"(): $Set<(StringJS)>
 get "enabled"(): boolean
 get "connectedComputers"(): $Iterable<($IComputerAccess)>
 get "peripheralOwner"(): T
-get "type"(): string
 get "target"(): any
-get "additionalTypes"(): $Set<(string)>
+get "type"(): StringJS
+get "additionalTypes"(): $Set<(StringJS)>
 }
 
 export namespace $IBasePeripheral {
@@ -3075,12 +3104,12 @@ export class $IBasePeripheral$$Static<T extends $IPeripheralOwner> implements $I
  "isEnabled"(): boolean
  "getConnectedComputers"(): $Iterable<($IComputerAccess)>
  "getPeripheralOwner"(): T
- "equals"(arg0: $IPeripheral$$Type): boolean
- "getType"(): string
  "getTarget"(): any
  "attach"(arg0: $IComputerAccess$$Type): void
  "detach"(arg0: $IComputerAccess$$Type): void
- "getAdditionalTypes"(): $Set<(string)>
+ "equals"(arg0: $IPeripheral$$Type): boolean
+ "getType"(): StringJS
+ "getAdditionalTypes"(): $Set<(StringJS)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3096,8 +3125,8 @@ export type $IBasePeripheral_<T> = $IBasePeripheral$$Type<(T)>;
 }}
 declare module "de.srendi.advancedperipherals.common.addons.computercraft.owner.BasePeripheralOwner" {
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$IPeripheralOwner, $IPeripheralOwner$$Type} from "de.srendi.advancedperipherals.common.addons.computercraft.owner.IPeripheralOwner"
@@ -3121,17 +3150,17 @@ public "attachAbility"<T extends $IOwnerAbility>(arg0: $PeripheralOwnerAbility$$
 public "getOwner"(): $Player
 public "move"(arg0: $Level$$Type, arg1: $BlockPos$$Type): boolean
 public "getLevel"(): $Level
-public "getDataStorage"(): $DataComponentPatch
-public "getCustomName"(): string
 public "getPos"(): $BlockPos
-public "getFacing"(): $Direction
+public "getDataStorage"(): $DataComponentPatch
+public "getCustomName"(): StringJS
 public "getOrientation"(): $FrontAndTop
+public "getFacing"(): $Direction
 public "attachOperation"(...arg0: ($IPeripheralOperation$$Type<(any)>)[]): void
 public "attachOperation"(arg0: $Collection$$Type<($IPeripheralOperation$$Type<(any)>)>): void
-public "getNbtStorage"(): $CompoundTag
-public "putDataStorage"(arg0: $DataComponentPatch$$Type): void
 public "withPlayer"<T>(arg0: $Function$$Type<($APFakePlayer), (T)>): T
+public "putDataStorage"(arg0: $DataComponentPatch$$Type): void
 public "storeItem"(arg0: $ItemStack$$Type): $ItemStack
+public "getNbtStorage"(): $CompoundTag
 public "destroyUpgrade"(): void
 public "markDataStorageDirty"(): void
 public "getToolInMainHand"(): $ItemStack
@@ -3139,11 +3168,11 @@ public "isMovementPossible"(arg0: $Level$$Type, arg1: $BlockPos$$Type): boolean
 get "abilities"(): $Collection<($IOwnerAbility)>
 get "owner"(): $Player
 get "level"(): $Level
-get "dataStorage"(): $DataComponentPatch
-get "customName"(): string
 get "pos"(): $BlockPos
-get "facing"(): $Direction
+get "dataStorage"(): $DataComponentPatch
+get "customName"(): StringJS
 get "orientation"(): $FrontAndTop
+get "facing"(): $Direction
 get "nbtStorage"(): $CompoundTag
 get "toolInMainHand"(): $ItemStack
 }

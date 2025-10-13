@@ -12,16 +12,16 @@ import {$AABB, $AABB$$Type} from "net.minecraft.world.phys.AABB"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $BobberDetectorBlockEntity extends $SmartBlockEntity {
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 constructor(type: $BlockEntityType$$Type<(any)>, pos: $BlockPos$$Type, blockState: $BlockState$$Type)
 
 public "tick"(): void
-public "getAffectedArea"(): $AABB
 public "addBehaviours"(behaviours: $List$$Type<($BlockEntityBehaviour$$Type)>): void
+public "getAffectedArea"(): $AABB
 public "getUpdatePacket"(): $Packet<(any)>
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "affectedArea"(): $AABB
 get "updatePacket"(): $Packet<(any)>
 }
@@ -58,15 +58,15 @@ import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ItemInteractionResult, $ItemInteractionResult$$Type} from "net.minecraft.world.ItemInteractionResult"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $BobberDetectorBlock extends $Block implements $IBE<($BobberDetectorBlockEntity)> {
@@ -84,7 +84,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "LIT": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -95,18 +95,18 @@ static readonly "FACING": $DirectionProperty
 
 constructor(properties: $BlockBehaviour$Properties$$Type)
 
+public static "setLit"(state: $BlockState$$Type, level: $Level$$Type, pos: $BlockPos$$Type, lit: boolean): void
 public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
 public static "setPowered"(state: $BlockState$$Type, level: $Level$$Type, pos: $BlockPos$$Type, powered: boolean): void
 public "isSignalSource"(state: $BlockState$$Type): boolean
 public "getSignal"(blockState: $BlockState$$Type, blockAccess: $BlockGetter$$Type, pos: $BlockPos$$Type, side: $Direction$$Type): integer
-public static "setLit"(state: $BlockState$$Type, level: $Level$$Type, pos: $BlockPos$$Type, lit: boolean): void
 public "getBlockEntityClass"(): $Class<($BobberDetectorBlockEntity)>
 public "getBlockEntityType"(): $BlockEntityType<($BobberDetectorBlockEntity)>
 public "getStateForPlacement"(context: $BlockPlaceContext$$Type): $BlockState
 public static "getFacingDirection"(state: $BlockState$$Type): $Direction
-public "getBlockEntity"(arg0: $BlockGetter$$Type, arg1: $BlockPos$$Type): $BobberDetectorBlockEntity
 public static "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type): void
 public "getTicker"<S extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(S)>): $BlockEntityTicker<(S)>
+public "getBlockEntity"(arg0: $BlockGetter$$Type, arg1: $BlockPos$$Type): $BobberDetectorBlockEntity
 public "getBlockEntityOptional"(arg0: $BlockGetter$$Type, arg1: $BlockPos$$Type): $Optional<($BobberDetectorBlockEntity)>
 public "onBlockEntityUse"(arg0: $BlockGetter$$Type, arg1: $BlockPos$$Type, arg2: $Function$$Type<($BobberDetectorBlockEntity), ($InteractionResult$$Type)>): $InteractionResult
 public "onBlockEntityUseItemOn"(arg0: $BlockGetter$$Type, arg1: $BlockPos$$Type, arg2: $Function$$Type<($BobberDetectorBlockEntity), ($ItemInteractionResult$$Type)>): $ItemInteractionResult

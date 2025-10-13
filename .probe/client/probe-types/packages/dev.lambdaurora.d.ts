@@ -13,8 +13,8 @@ export interface $DynamicLightHandler<T> {
 
 export namespace $DynamicLightHandler {
 function makeHandler<T extends $LivingEntity>(luminance: $Function$$Type<(T), (integer)>, waterSensitive: $Function$$Type<(T), (boolean)>): $DynamicLightHandler<(T)>
-function makeCreeperEntityHandler<T extends $Creeper>(handler: $DynamicLightHandler$$Type<(T)>): $DynamicLightHandler<(T)>
 function makeLivingEntityHandler<T extends $LivingEntity>(handler: $DynamicLightHandler$$Type<(T)>): $DynamicLightHandler<(T)>
+function makeCreeperEntityHandler<T extends $Creeper>(handler: $DynamicLightHandler$$Type<(T)>): $DynamicLightHandler<(T)>
 const probejs$$marker: never
 }
 export class $DynamicLightHandler$$Static<T> implements $DynamicLightHandler {
@@ -22,9 +22,9 @@ export class $DynamicLightHandler$$Static<T> implements $DynamicLightHandler {
 
  "getLuminance"(arg0: T): integer
 static "makeHandler"<T extends $LivingEntity>(luminance: $Function$$Type<(T), (integer)>, waterSensitive: $Function$$Type<(T), (boolean)>): $DynamicLightHandler<(T)>
-static "makeCreeperEntityHandler"<T extends $Creeper>(handler: $DynamicLightHandler$$Type<(T)>): $DynamicLightHandler<(T)>
-static "makeLivingEntityHandler"<T extends $LivingEntity>(handler: $DynamicLightHandler$$Type<(T)>): $DynamicLightHandler<(T)>
  "isWaterSensitive"(lightSource: T): boolean
+static "makeLivingEntityHandler"<T extends $LivingEntity>(handler: $DynamicLightHandler$$Type<(T)>): $DynamicLightHandler<(T)>
+static "makeCreeperEntityHandler"<T extends $Creeper>(handler: $DynamicLightHandler$$Type<(T)>): $DynamicLightHandler<(T)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

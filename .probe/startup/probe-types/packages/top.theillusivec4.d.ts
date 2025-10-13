@@ -60,29 +60,6 @@ export interface $ICurio {
  "canEquip"(arg0: $SlotContext$$Type): boolean
  "isEnderMask"(arg0: $SlotContext$$Type, arg1: $EnderMan$$Type): boolean
  "getEquipSound"(arg0: $SlotContext$$Type): $ICurio$SoundInfo
- "canEquipFromUse"(arg0: $SlotContext$$Type): boolean
- "getAttributesTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $Item$TooltipContext$$Type): $List<($Component)>
-/**
- * 
- * @deprecated
- */
- "getAttributesTooltip"(arg0: $List$$Type<($Component$$Type)>): $List<($Component)>
-/**
- * 
- * @deprecated
- */
- "getSlotsTooltip"(arg0: $List$$Type<($Component$$Type)>): $List<($Component)>
- "getSlotsTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $Item$TooltipContext$$Type): $List<($Component)>
-/**
- * 
- * @deprecated
- */
- "getAttributeModifiers"(arg0: $SlotContext$$Type, arg1: $UUID$$Type): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
- "getAttributeModifiers"(arg0: $SlotContext$$Type, arg1: $ResourceLocation$$Type): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
- "getLootingLevel"(arg0: $SlotContext$$Type, arg1: $LootContext$$Type): integer
- "getFortuneLevel"(arg0: $SlotContext$$Type, arg1: $LootContext$$Type): integer
- "canWalkOnPowderedSnow"(arg0: $SlotContext$$Type): boolean
- "makesPiglinsNeutral"(arg0: $SlotContext$$Type): boolean
  "curioTick"(arg0: $SlotContext$$Type): void
  "curioBreak"(arg0: $SlotContext$$Type): void
  "canSync"(arg0: $SlotContext$$Type): boolean
@@ -98,6 +75,29 @@ export interface $ICurio {
  "getDropRule"(arg0: $SlotContext$$Type, arg1: $DamageSource$$Type, arg2: integer, arg3: boolean): $ICurio$DropRule
  "getDropRule"(arg0: $SlotContext$$Type, arg1: $DamageSource$$Type, arg2: boolean): $ICurio$DropRule
  "onEquipFromUse"(arg0: $SlotContext$$Type): void
+ "canEquipFromUse"(arg0: $SlotContext$$Type): boolean
+ "getAttributesTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $Item$TooltipContext$$Type): $List<($Component)>
+/**
+ * 
+ * @deprecated
+ */
+ "getAttributesTooltip"(arg0: $List$$Type<($Component$$Type)>): $List<($Component)>
+ "getLootingLevel"(arg0: $SlotContext$$Type, arg1: $LootContext$$Type): integer
+ "getFortuneLevel"(arg0: $SlotContext$$Type, arg1: $LootContext$$Type): integer
+ "canWalkOnPowderedSnow"(arg0: $SlotContext$$Type): boolean
+ "makesPiglinsNeutral"(arg0: $SlotContext$$Type): boolean
+/**
+ * 
+ * @deprecated
+ */
+ "getAttributeModifiers"(arg0: $SlotContext$$Type, arg1: $UUID$$Type): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
+ "getAttributeModifiers"(arg0: $SlotContext$$Type, arg1: $ResourceLocation$$Type): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
+ "getSlotsTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $Item$TooltipContext$$Type): $List<($Component)>
+/**
+ * 
+ * @deprecated
+ */
+ "getSlotsTooltip"(arg0: $List$$Type<($Component$$Type)>): $List<($Component)>
 
 (): $ItemStack$$Type
 get "stack"(): $ItemStack
@@ -114,30 +114,6 @@ export class $ICurio$$Static implements $ICurio {
  "canEquip"(arg0: $SlotContext$$Type): boolean
  "isEnderMask"(arg0: $SlotContext$$Type, arg1: $EnderMan$$Type): boolean
  "getEquipSound"(arg0: $SlotContext$$Type): $ICurio$SoundInfo
- "canEquipFromUse"(arg0: $SlotContext$$Type): boolean
- "getAttributesTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $Item$TooltipContext$$Type): $List<($Component)>
-/**
- * 
- * @deprecated
- */
- "getAttributesTooltip"(arg0: $List$$Type<($Component$$Type)>): $List<($Component)>
-/**
- * 
- * @deprecated
- */
- "getSlotsTooltip"(arg0: $List$$Type<($Component$$Type)>): $List<($Component)>
- "getSlotsTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $Item$TooltipContext$$Type): $List<($Component)>
-static "playBreakAnimation"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): void
-/**
- * 
- * @deprecated
- */
- "getAttributeModifiers"(arg0: $SlotContext$$Type, arg1: $UUID$$Type): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
- "getAttributeModifiers"(arg0: $SlotContext$$Type, arg1: $ResourceLocation$$Type): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
- "getLootingLevel"(arg0: $SlotContext$$Type, arg1: $LootContext$$Type): integer
- "getFortuneLevel"(arg0: $SlotContext$$Type, arg1: $LootContext$$Type): integer
- "canWalkOnPowderedSnow"(arg0: $SlotContext$$Type): boolean
- "makesPiglinsNeutral"(arg0: $SlotContext$$Type): boolean
  "curioTick"(arg0: $SlotContext$$Type): void
  "curioBreak"(arg0: $SlotContext$$Type): void
  "canSync"(arg0: $SlotContext$$Type): boolean
@@ -153,6 +129,30 @@ static "playBreakAnimation"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): 
  "getDropRule"(arg0: $SlotContext$$Type, arg1: $DamageSource$$Type, arg2: integer, arg3: boolean): $ICurio$DropRule
  "getDropRule"(arg0: $SlotContext$$Type, arg1: $DamageSource$$Type, arg2: boolean): $ICurio$DropRule
  "onEquipFromUse"(arg0: $SlotContext$$Type): void
+ "canEquipFromUse"(arg0: $SlotContext$$Type): boolean
+ "getAttributesTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $Item$TooltipContext$$Type): $List<($Component)>
+/**
+ * 
+ * @deprecated
+ */
+ "getAttributesTooltip"(arg0: $List$$Type<($Component$$Type)>): $List<($Component)>
+ "getLootingLevel"(arg0: $SlotContext$$Type, arg1: $LootContext$$Type): integer
+ "getFortuneLevel"(arg0: $SlotContext$$Type, arg1: $LootContext$$Type): integer
+ "canWalkOnPowderedSnow"(arg0: $SlotContext$$Type): boolean
+ "makesPiglinsNeutral"(arg0: $SlotContext$$Type): boolean
+/**
+ * 
+ * @deprecated
+ */
+ "getAttributeModifiers"(arg0: $SlotContext$$Type, arg1: $UUID$$Type): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
+ "getAttributeModifiers"(arg0: $SlotContext$$Type, arg1: $ResourceLocation$$Type): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
+ "getSlotsTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $Item$TooltipContext$$Type): $List<($Component)>
+/**
+ * 
+ * @deprecated
+ */
+ "getSlotsTooltip"(arg0: $List$$Type<($Component$$Type)>): $List<($Component)>
+static "playBreakAnimation"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -171,8 +171,8 @@ import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$ICurioStacksHandler, $ICurioStacksHandler$$Type} from "top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$ISlotType, $ISlotType$$Type} from "top.theillusivec4.curios.api.type.ISlotType"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Set, $Set$$Type} from "java.util.Set"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$SortedMap, $SortedMap$$Type} from "java.util.SortedMap"
 
 /**
@@ -190,37 +190,7 @@ export interface $ISlotHelper {
  * 
  * @deprecated
  */
- "getSlotsForType"(arg0: $LivingEntity$$Type, arg1: string): integer
-/**
- * 
- * @deprecated
- */
- "setSlotsForType"(arg0: string, arg1: $LivingEntity$$Type, arg2: integer): void
-/**
- * 
- * @deprecated
- */
- "addSlotType"(arg0: $ISlotType$$Type): void
-/**
- * 
- * @deprecated
- */
- "getSlotType"(arg0: string): $Optional<($ISlotType)>
-/**
- * 
- * @deprecated
- */
- "getSlotTypes"(): $Collection<($ISlotType)>
-/**
- * 
- * @deprecated
- */
- "getSlotTypes"(arg0: $LivingEntity$$Type): $Collection<($ISlotType)>
-/**
- * 
- * @deprecated
- */
- "getSlotTypeIds"(): $Set<(string)>
+ "getSlotTypeIds"(): $Set<(StringJS)>
 /**
  * 
  * @deprecated
@@ -235,34 +205,64 @@ export interface $ISlotHelper {
  * 
  * @deprecated
  */
- "growSlotType"(arg0: string, arg1: integer, arg2: $LivingEntity$$Type): void
+ "growSlotType"(arg0: StringJS, arg1: $LivingEntity$$Type): void
 /**
  * 
  * @deprecated
  */
- "growSlotType"(arg0: string, arg1: $LivingEntity$$Type): void
+ "growSlotType"(arg0: StringJS, arg1: integer, arg2: $LivingEntity$$Type): void
 /**
  * 
  * @deprecated
  */
- "shrinkSlotType"(arg0: string, arg1: integer, arg2: $LivingEntity$$Type): void
+ "shrinkSlotType"(arg0: StringJS, arg1: $LivingEntity$$Type): void
 /**
  * 
  * @deprecated
  */
- "shrinkSlotType"(arg0: string, arg1: $LivingEntity$$Type): void
+ "shrinkSlotType"(arg0: StringJS, arg1: integer, arg2: $LivingEntity$$Type): void
 /**
  * 
  * @deprecated
  */
- "unlockSlotType"(arg0: string, arg1: $LivingEntity$$Type): void
+ "unlockSlotType"(arg0: StringJS, arg1: $LivingEntity$$Type): void
 /**
  * 
  * @deprecated
  */
- "lockSlotType"(arg0: string, arg1: $LivingEntity$$Type): void
+ "lockSlotType"(arg0: StringJS, arg1: $LivingEntity$$Type): void
+/**
+ * 
+ * @deprecated
+ */
+ "getSlotType"(arg0: StringJS): $Optional<($ISlotType)>
+/**
+ * 
+ * @deprecated
+ */
+ "getSlotTypes"(arg0: $LivingEntity$$Type): $Collection<($ISlotType)>
+/**
+ * 
+ * @deprecated
+ */
+ "getSlotTypes"(): $Collection<($ISlotType)>
+/**
+ * 
+ * @deprecated
+ */
+ "addSlotType"(arg0: $ISlotType$$Type): void
+/**
+ * 
+ * @deprecated
+ */
+ "getSlotsForType"(arg0: $LivingEntity$$Type, arg1: StringJS): integer
+/**
+ * 
+ * @deprecated
+ */
+ "setSlotsForType"(arg0: StringJS, arg1: $LivingEntity$$Type, arg2: integer): void
+get "slotTypeIds"(): $Set<(StringJS)>
 get "slotTypes"(): $Collection<($ISlotType)>
-get "slotTypeIds"(): $Set<(string)>
 }
 
 export namespace $ISlotHelper {
@@ -280,37 +280,7 @@ export class $ISlotHelper$$Static implements $ISlotHelper {
  * 
  * @deprecated
  */
- "getSlotsForType"(arg0: $LivingEntity$$Type, arg1: string): integer
-/**
- * 
- * @deprecated
- */
- "setSlotsForType"(arg0: string, arg1: $LivingEntity$$Type, arg2: integer): void
-/**
- * 
- * @deprecated
- */
- "addSlotType"(arg0: $ISlotType$$Type): void
-/**
- * 
- * @deprecated
- */
- "getSlotType"(arg0: string): $Optional<($ISlotType)>
-/**
- * 
- * @deprecated
- */
- "getSlotTypes"(): $Collection<($ISlotType)>
-/**
- * 
- * @deprecated
- */
- "getSlotTypes"(arg0: $LivingEntity$$Type): $Collection<($ISlotType)>
-/**
- * 
- * @deprecated
- */
- "getSlotTypeIds"(): $Set<(string)>
+ "getSlotTypeIds"(): $Set<(StringJS)>
 /**
  * 
  * @deprecated
@@ -325,32 +295,62 @@ export class $ISlotHelper$$Static implements $ISlotHelper {
  * 
  * @deprecated
  */
- "growSlotType"(arg0: string, arg1: integer, arg2: $LivingEntity$$Type): void
+ "growSlotType"(arg0: StringJS, arg1: $LivingEntity$$Type): void
 /**
  * 
  * @deprecated
  */
- "growSlotType"(arg0: string, arg1: $LivingEntity$$Type): void
+ "growSlotType"(arg0: StringJS, arg1: integer, arg2: $LivingEntity$$Type): void
 /**
  * 
  * @deprecated
  */
- "shrinkSlotType"(arg0: string, arg1: integer, arg2: $LivingEntity$$Type): void
+ "shrinkSlotType"(arg0: StringJS, arg1: $LivingEntity$$Type): void
 /**
  * 
  * @deprecated
  */
- "shrinkSlotType"(arg0: string, arg1: $LivingEntity$$Type): void
+ "shrinkSlotType"(arg0: StringJS, arg1: integer, arg2: $LivingEntity$$Type): void
 /**
  * 
  * @deprecated
  */
- "unlockSlotType"(arg0: string, arg1: $LivingEntity$$Type): void
+ "unlockSlotType"(arg0: StringJS, arg1: $LivingEntity$$Type): void
 /**
  * 
  * @deprecated
  */
- "lockSlotType"(arg0: string, arg1: $LivingEntity$$Type): void
+ "lockSlotType"(arg0: StringJS, arg1: $LivingEntity$$Type): void
+/**
+ * 
+ * @deprecated
+ */
+ "getSlotType"(arg0: StringJS): $Optional<($ISlotType)>
+/**
+ * 
+ * @deprecated
+ */
+ "getSlotTypes"(arg0: $LivingEntity$$Type): $Collection<($ISlotType)>
+/**
+ * 
+ * @deprecated
+ */
+ "getSlotTypes"(): $Collection<($ISlotType)>
+/**
+ * 
+ * @deprecated
+ */
+ "addSlotType"(arg0: $ISlotType$$Type): void
+/**
+ * 
+ * @deprecated
+ */
+ "getSlotsForType"(arg0: $LivingEntity$$Type, arg1: StringJS): integer
+/**
+ * 
+ * @deprecated
+ */
+ "setSlotsForType"(arg0: StringJS, arg1: $LivingEntity$$Type, arg2: integer): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -366,15 +366,15 @@ export type $ISlotHelper_ = $ISlotHelper$$Type;
 }}
 declare module "top.theillusivec4.curios.api.event.SlotModifiersUpdatedEvent" {
 import {$LivingEvent, $LivingEvent$$Type} from "net.neoforged.neoforge.event.entity.living.LivingEvent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Set, $Set$$Type} from "java.util.Set"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 
 export class $SlotModifiersUpdatedEvent extends $LivingEvent {
 
-constructor(arg0: $LivingEntity$$Type, arg1: $Set$$Type<(string)>)
+constructor(arg0: $LivingEntity$$Type, arg1: $Set$$Type<(StringJS)>)
 
-public "getTypes"(): $Set<(string)>
-get "types"(): $Set<(string)>
+public "getTypes"(): $Set<(StringJS)>
+get "types"(): $Set<(StringJS)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -402,8 +402,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$SlotContext, $SlotContext$$Type} from "top.theillusivec4.curios.api.SlotContext"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$ICuriosItemHandler, $ICuriosItemHandler$$Type} from "top.theillusivec4.curios.api.type.capability.ICuriosItemHandler"
 import {$ICurioItem, $ICurioItem$$Type} from "top.theillusivec4.curios.api.type.capability.ICurioItem"
+import {$ICuriosItemHandler, $ICuriosItemHandler$$Type} from "top.theillusivec4.curios.api.type.capability.ICuriosItemHandler"
 import {$ISlotType, $ISlotType$$Type} from "top.theillusivec4.curios.api.type.ISlotType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$Set, $Set$$Type} from "java.util.Set"
@@ -418,62 +418,59 @@ import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attrib
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 
 export class $CuriosApi {
-static readonly "MODID": string
+static readonly "MODID": StringJS
 
 constructor()
 
-public static "getSlot"(arg0: string, arg1: boolean): $Optional<($ISlotType)>
+public static "getSlot"(arg0: StringJS, arg1: boolean): $Optional<($ISlotType)>
+public static "getSlot"(arg0: StringJS, arg1: $Level$$Type): $Optional<($ISlotType)>
 /**
  * 
  * @deprecated
  */
-public static "getSlot"(arg0: string): $Optional<($ISlotType)>
-public static "getSlot"(arg0: string, arg1: $Level$$Type): $Optional<($ISlotType)>
-public static "withSlotModifier"(arg0: $ItemAttributeModifiers$$Type, arg1: string, arg2: $ResourceLocation$$Type, arg3: double, arg4: $AttributeModifier$Operation$$Type, arg5: $EquipmentSlotGroup$$Type): $ItemAttributeModifiers
-public static "registerCurioPredicate"(arg0: $ResourceLocation$$Type, arg1: $Predicate$$Type<($SlotResult)>): void
-public static "getCurioPredicate"(arg0: $ResourceLocation$$Type): $Optional<($Predicate<($SlotResult)>)>
-public static "getCurioPredicates"(): $Map<($ResourceLocation), ($Predicate<($SlotResult)>)>
-public static "testCurioPredicates"(arg0: $Set$$Type<($ResourceLocation$$Type)>, arg1: $SlotResult$$Type): boolean
-public static "addModifier"(arg0: $ItemStack$$Type, arg1: $Holder$$Type<($Attribute)>, arg2: $ResourceLocation$$Type, arg3: double, arg4: $AttributeModifier$Operation$$Type, arg5: string): void
+public static "getSlot"(arg0: StringJS): $Optional<($ISlotType)>
 public static "getCurio"(arg0: $ItemStack$$Type): $Optional<($ICurio)>
+public static "getEntitySlots"(arg0: $EntityType$$Type<(any)>, arg1: $Level$$Type): $Map<(StringJS), ($ISlotType)>
+public static "getEntitySlots"(arg0: $EntityType$$Type<(any)>, arg1: boolean): $Map<(StringJS), ($ISlotType)>
 /**
  * 
  * @deprecated
  */
-public static "getEntitySlots"(arg0: $EntityType$$Type<(any)>): $Map<(string), ($ISlotType)>
-public static "getEntitySlots"(arg0: $LivingEntity$$Type): $Map<(string), ($ISlotType)>
-public static "getEntitySlots"(arg0: $EntityType$$Type<(any)>, arg1: $Level$$Type): $Map<(string), ($ISlotType)>
-public static "getEntitySlots"(arg0: $EntityType$$Type<(any)>, arg1: boolean): $Map<(string), ($ISlotType)>
+public static "getEntitySlots"(arg0: $EntityType$$Type<(any)>): $Map<(StringJS), ($ISlotType)>
+public static "getEntitySlots"(arg0: $LivingEntity$$Type): $Map<(StringJS), ($ISlotType)>
 /**
  * 
  * @deprecated
  */
-public static "getSlots"(): $Map<(string), ($ISlotType)>
-public static "getSlots"(arg0: boolean): $Map<(string), ($ISlotType)>
-public static "getSlots"(arg0: $Level$$Type): $Map<(string), ($ISlotType)>
+public static "getSlots"(): $Map<(StringJS), ($ISlotType)>
+public static "getSlots"(arg0: boolean): $Map<(StringJS), ($ISlotType)>
+public static "getSlots"(arg0: $Level$$Type): $Map<(StringJS), ($ISlotType)>
+public static "getPlayerSlots"(arg0: $Player$$Type): $Map<(StringJS), ($ISlotType)>
 /**
  * 
  * @deprecated
  */
-public static "setCuriosHelper"(arg0: $ICuriosHelper$$Type): void
-public static "getAttributeModifiers"(arg0: $SlotContext$$Type, arg1: $ResourceLocation$$Type, arg2: $ItemStack$$Type): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
-public static "getItemStackSlots"(arg0: $ItemStack$$Type, arg1: $Level$$Type): $Map<(string), ($ISlotType)>
+public static "getPlayerSlots"(): $Map<(StringJS), ($ISlotType)>
+public static "getPlayerSlots"(arg0: $Level$$Type): $Map<(StringJS), ($ISlotType)>
+public static "getPlayerSlots"(arg0: boolean): $Map<(StringJS), ($ISlotType)>
 /**
  * 
  * @deprecated
  */
-public static "getItemStackSlots"(arg0: $ItemStack$$Type): $Map<(string), ($ISlotType)>
-public static "getItemStackSlots"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): $Map<(string), ($ISlotType)>
-public static "getItemStackSlots"(arg0: $ItemStack$$Type, arg1: boolean): $Map<(string), ($ISlotType)>
-public static "getCuriosInventory"(arg0: $LivingEntity$$Type): $Optional<($ICuriosItemHandler)>
-public static "addSlotModifier"(arg0: $Multimap$$Type<($Holder$$Type<($Attribute$$Type)>), ($AttributeModifier$$Type)>, arg1: string, arg2: $ResourceLocation$$Type, arg3: double, arg4: $AttributeModifier$Operation$$Type): void
-public static "addSlotModifier"(arg0: $ItemStack$$Type, arg1: string, arg2: $ResourceLocation$$Type, arg3: double, arg4: $AttributeModifier$Operation$$Type, arg5: string): void
+public static "getSlotIcon"(arg0: StringJS): $ResourceLocation
 /**
  * 
  * @deprecated
  */
-public static "getCuriosHelper"(): $ICuriosHelper
+public static "getIconHelper"(): $IIconHelper
 public static "registerCurio"(arg0: $Item$$Type, arg1: $ICurioItem$$Type): void
+/**
+ * 
+ * @deprecated
+ */
+public static "setIconHelper"(arg0: $IIconHelper$$Type): void
+public static "isStackValid"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
+public static "getSlotId"(arg0: $SlotContext$$Type): $ResourceLocation
 /**
  * 
  * @deprecated
@@ -484,31 +481,34 @@ public static "setSlotHelper"(arg0: $ISlotHelper$$Type): void
  * @deprecated
  */
 public static "getSlotHelper"(): $ISlotHelper
-public static "isStackValid"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
+public static "addModifier"(arg0: $ItemStack$$Type, arg1: $Holder$$Type<($Attribute)>, arg2: $ResourceLocation$$Type, arg3: double, arg4: $AttributeModifier$Operation$$Type, arg5: StringJS): void
 /**
  * 
  * @deprecated
  */
-public static "setIconHelper"(arg0: $IIconHelper$$Type): void
-public static "getSlotId"(arg0: $SlotContext$$Type): $ResourceLocation
-public static "getPlayerSlots"(arg0: $Player$$Type): $Map<(string), ($ISlotType)>
-public static "getPlayerSlots"(arg0: $Level$$Type): $Map<(string), ($ISlotType)>
-public static "getPlayerSlots"(arg0: boolean): $Map<(string), ($ISlotType)>
+public static "getCuriosHelper"(): $ICuriosHelper
 /**
  * 
  * @deprecated
  */
-public static "getPlayerSlots"(): $Map<(string), ($ISlotType)>
+public static "setCuriosHelper"(arg0: $ICuriosHelper$$Type): void
+public static "getItemStackSlots"(arg0: $ItemStack$$Type, arg1: $Level$$Type): $Map<(StringJS), ($ISlotType)>
 /**
  * 
  * @deprecated
  */
-public static "getSlotIcon"(arg0: string): $ResourceLocation
-/**
- * 
- * @deprecated
- */
-public static "getIconHelper"(): $IIconHelper
+public static "getItemStackSlots"(arg0: $ItemStack$$Type): $Map<(StringJS), ($ISlotType)>
+public static "getItemStackSlots"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): $Map<(StringJS), ($ISlotType)>
+public static "getItemStackSlots"(arg0: $ItemStack$$Type, arg1: boolean): $Map<(StringJS), ($ISlotType)>
+public static "getAttributeModifiers"(arg0: $SlotContext$$Type, arg1: $ResourceLocation$$Type, arg2: $ItemStack$$Type): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
+public static "getCuriosInventory"(arg0: $LivingEntity$$Type): $Optional<($ICuriosItemHandler)>
+public static "withSlotModifier"(arg0: $ItemAttributeModifiers$$Type, arg1: StringJS, arg2: $ResourceLocation$$Type, arg3: double, arg4: $AttributeModifier$Operation$$Type, arg5: $EquipmentSlotGroup$$Type): $ItemAttributeModifiers
+public static "registerCurioPredicate"(arg0: $ResourceLocation$$Type, arg1: $Predicate$$Type<($SlotResult)>): void
+public static "getCurioPredicate"(arg0: $ResourceLocation$$Type): $Optional<($Predicate<($SlotResult)>)>
+public static "getCurioPredicates"(): $Map<($ResourceLocation), ($Predicate<($SlotResult)>)>
+public static "testCurioPredicates"(arg0: $Set$$Type<($ResourceLocation$$Type)>, arg1: $SlotResult$$Type): boolean
+public static "addSlotModifier"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: $ResourceLocation$$Type, arg3: double, arg4: $AttributeModifier$Operation$$Type, arg5: StringJS): void
+public static "addSlotModifier"(arg0: $Multimap$$Type<($Holder$$Type<($Attribute$$Type)>), ($AttributeModifier$$Type)>, arg1: StringJS, arg2: $ResourceLocation$$Type, arg3: double, arg4: $AttributeModifier$Operation$$Type): void
 public static "broadcastCurioBreakEvent"(arg0: $SlotContext$$Type): void
 }
 /**
@@ -542,13 +542,13 @@ static readonly "CODEC": $Codec<($EquipCurioTrigger$TriggerInstance)>
 
 constructor(player: $Optional$$Type<($ContextAwarePredicate$$Type)>, item: $Optional$$Type<($ItemPredicate$$Type)>, location: $Optional$$Type<($LocationPredicate$$Type)>, slot: $Optional$$Type<($SlotPredicate$$Type)>)
 
+public "item"(): $Optional<($ItemPredicate)>
 public "slot"(): $Optional<($SlotPredicate)>
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "matches"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type, arg2: $LootContext$$Type): boolean
 public "location"(): $Optional<($LocationPredicate)>
-public "item"(): $Optional<($ItemPredicate)>
 public "player"(): $Optional<($ContextAwarePredicate)>
 public "validate"(arg0: $CriterionValidator$$Type): void
 }
@@ -556,7 +556,7 @@ public "validate"(arg0: $CriterionValidator$$Type): void
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $EquipCurioTrigger$TriggerInstance$$Type = ({"location"?: ($LocationPredicate$$Type)?, "slot"?: ($SlotPredicate$$Type)?, "player"?: ($ContextAwarePredicate$$Type)?, "item"?: ($ItemPredicate$$Type)?}) | ([location?: ($LocationPredicate$$Type)?, slot?: ($SlotPredicate$$Type)?, player?: ($ContextAwarePredicate$$Type)?, item?: ($ItemPredicate$$Type)?]);
+export type $EquipCurioTrigger$TriggerInstance$$Type = ({"item"?: ($ItemPredicate$$Type)?, "location"?: ($LocationPredicate$$Type)?, "slot"?: ($SlotPredicate$$Type)?, "player"?: ($ContextAwarePredicate$$Type)?}) | ([item?: ($ItemPredicate$$Type)?, location?: ($LocationPredicate$$Type)?, slot?: ($SlotPredicate$$Type)?, player?: ($ContextAwarePredicate$$Type)?]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -575,7 +575,7 @@ constructor(slotContext: $SlotContext$$Type, stack: $ItemStack$$Type)
 
 public "stack"(): $ItemStack
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "slotContext"(): $SlotContext
 }
@@ -583,7 +583,7 @@ public "slotContext"(): $SlotContext
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $SlotResult$$Type = ({"stack"?: $ItemStack$$Type, "slotContext"?: $SlotContext$$Type}) | ([stack?: $ItemStack$$Type, slotContext?: $SlotContext$$Type]);
+export type $SlotResult$$Type = ({"slotContext"?: $SlotContext$$Type, "stack"?: $ItemStack$$Type}) | ([slotContext?: $SlotContext$$Type, stack?: $ItemStack$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -595,8 +595,8 @@ declare module "top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$Container, $Container$$Type} from "net.minecraft.world.Container"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ItemPredicate, $ItemPredicate$$Type} from "dev.latvian.mods.kubejs.item.ItemPredicate"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemPredicate, $ItemPredicate$$Type} from "dev.latvian.mods.kubejs.item.ItemPredicate"
 import {$IItemHandlerModifiable, $IItemHandlerModifiable$$Type} from "net.neoforged.neoforge.items.IItemHandlerModifiable"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockContainerJS, $BlockContainerJS$$Type} from "dev.latvian.mods.kubejs.level.BlockContainerJS"
@@ -606,15 +606,14 @@ import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraf
 export interface $IDynamicStackHandler extends $IItemHandlerModifiable {
 
  "grow"(arg0: integer): void
+ "shrink"(arg0: integer): void
  "deserializeNBT"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): void
  "serializeNBT"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
  "setStackInSlot"(arg0: integer, arg1: $ItemStack$$Type): void
  "getStackInSlot"(arg0: integer): $ItemStack
  "getSlots"(): integer
- "shrink"(arg0: integer): void
- "getPreviousStackInSlot"(arg0: integer): $ItemStack
  "setPreviousStackInSlot"(arg0: integer, arg1: $ItemStack$$Type): void
- "kjs$self"(): $IItemHandler
+ "getPreviousStackInSlot"(arg0: integer): $ItemStack
  "getBlock"(arg0: $Level$$Type): $BlockContainerJS
  "insertItem"(arg0: integer, arg1: $ItemStack$$Type, arg2: boolean): $ItemStack
  "extractItem"(arg0: integer, arg1: integer, arg2: boolean): $ItemStack
@@ -623,22 +622,23 @@ export interface $IDynamicStackHandler extends $IItemHandlerModifiable {
  "isMutable"(): boolean
  "getSlots"(): integer
  "insertItem"(arg0: integer, arg1: $ItemStack$$Type, arg2: boolean): $ItemStack
+ "kjs$self"(): $IItemHandler
  "setStackInSlot"(arg0: integer, arg1: $ItemStack$$Type): void
  "getStackInSlot"(arg0: integer): $ItemStack
  "extractItem"(arg0: integer, arg1: integer, arg2: boolean): $ItemStack
  "getSlotLimit"(arg0: integer): integer
  "isItemValid"(arg0: integer, arg1: $ItemStack$$Type): boolean
- "isEmpty"(): boolean
  "insertItem"(arg0: $ItemStack$$Type, arg1: boolean): $ItemStack
- "clear"(arg0: $ItemPredicate$$Type): void
  "clear"(): void
- "find"(arg0: $ItemPredicate$$Type): integer
+ "clear"(arg0: $ItemPredicate$$Type): void
  "find"(): integer
+ "find"(arg0: $ItemPredicate$$Type): integer
  "count"(): integer
  "count"(arg0: $ItemPredicate$$Type): integer
  "getWidth"(): integer
  "getHeight"(): integer
  "setChanged"(): void
+ "isEmpty"(): boolean
  "countNonEmpty"(arg0: $ItemPredicate$$Type): integer
  "countNonEmpty"(): integer
  "getAllItems"(): $List<($ItemStack)>
@@ -646,9 +646,9 @@ export interface $IDynamicStackHandler extends $IItemHandlerModifiable {
 get "slots"(): integer
 get "mutable"(): boolean
 get "slots"(): integer
-get "empty"(): boolean
 get "width"(): integer
 get "height"(): integer
+get "empty"(): boolean
 get "allItems"(): $List<($ItemStack)>
 }
 
@@ -659,15 +659,14 @@ export class $IDynamicStackHandler$$Static implements $IDynamicStackHandler {
 
 
  "grow"(arg0: integer): void
+ "shrink"(arg0: integer): void
  "deserializeNBT"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): void
  "serializeNBT"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
  "setStackInSlot"(arg0: integer, arg1: $ItemStack$$Type): void
  "getStackInSlot"(arg0: integer): $ItemStack
  "getSlots"(): integer
- "shrink"(arg0: integer): void
- "getPreviousStackInSlot"(arg0: integer): $ItemStack
  "setPreviousStackInSlot"(arg0: integer, arg1: $ItemStack$$Type): void
- "kjs$self"(): $IItemHandler
+ "getPreviousStackInSlot"(arg0: integer): $ItemStack
  "getBlock"(arg0: $Level$$Type): $BlockContainerJS
  "insertItem"(arg0: integer, arg1: $ItemStack$$Type, arg2: boolean): $ItemStack
  "extractItem"(arg0: integer, arg1: integer, arg2: boolean): $ItemStack
@@ -676,22 +675,23 @@ export class $IDynamicStackHandler$$Static implements $IDynamicStackHandler {
  "isMutable"(): boolean
  "getSlots"(): integer
  "insertItem"(arg0: integer, arg1: $ItemStack$$Type, arg2: boolean): $ItemStack
+ "kjs$self"(): $IItemHandler
  "setStackInSlot"(arg0: integer, arg1: $ItemStack$$Type): void
  "getStackInSlot"(arg0: integer): $ItemStack
  "extractItem"(arg0: integer, arg1: integer, arg2: boolean): $ItemStack
  "getSlotLimit"(arg0: integer): integer
  "isItemValid"(arg0: integer, arg1: $ItemStack$$Type): boolean
- "isEmpty"(): boolean
  "insertItem"(arg0: $ItemStack$$Type, arg1: boolean): $ItemStack
- "clear"(arg0: $ItemPredicate$$Type): void
  "clear"(): void
- "find"(arg0: $ItemPredicate$$Type): integer
+ "clear"(arg0: $ItemPredicate$$Type): void
  "find"(): integer
+ "find"(arg0: $ItemPredicate$$Type): integer
  "count"(): integer
  "count"(arg0: $ItemPredicate$$Type): integer
  "getWidth"(): integer
  "getHeight"(): integer
  "setChanged"(): void
+ "isEmpty"(): boolean
  "countNonEmpty"(arg0: $ItemPredicate$$Type): integer
  "countNonEmpty"(): integer
  "getAllItems"(): $List<($ItemStack)>
@@ -715,51 +715,88 @@ import {$LootContext, $LootContext$$Type} from "net.minecraft.world.level.storag
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
-import {$Multimap, $Multimap$$Type} from "com.google.common.collect.Multimap"
 import {$List, $List$$Type} from "java.util.List"
+import {$Multimap, $Multimap$$Type} from "com.google.common.collect.Multimap"
+import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$SlotResult, $SlotResult$$Type} from "top.theillusivec4.curios.api.SlotResult"
 import {$ListTag, $ListTag$$Type} from "net.minecraft.nbt.ListTag"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$ICurioStacksHandler, $ICurioStacksHandler$$Type} from "top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$AttributeModifier$Operation, $AttributeModifier$Operation$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation"
 import {$IItemHandlerModifiable, $IItemHandlerModifiable$$Type} from "net.neoforged.neoforge.items.IItemHandlerModifiable"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$Set, $Set$$Type} from "java.util.Set"
 import {$Tag, $Tag$$Type} from "net.minecraft.nbt.Tag"
+import {$Set, $Set$$Type} from "java.util.Set"
 import {$Logger, $Logger$$Type} from "org.slf4j.Logger"
 
 export interface $ICuriosItemHandler {
 
  "reset"(): void
- "getModifiers"(): $Multimap<(string), ($AttributeModifier)>
- "addTransientSlotModifier"(arg0: string, arg1: $ResourceLocation$$Type, arg2: double, arg3: $AttributeModifier$Operation$$Type): void
- "addPermanentSlotModifiers"(arg0: $Multimap$$Type<(string), ($AttributeModifier$$Type)>): void
- "addPermanentSlotModifier"(arg0: string, arg1: $ResourceLocation$$Type, arg2: double, arg3: $AttributeModifier$Operation$$Type): void
- "addTransientSlotModifiers"(arg0: $Multimap$$Type<(string), ($AttributeModifier$$Type)>): void
- "clearCachedSlotModifiers"(): void
+ "getModifiers"(): $Multimap<(StringJS), ($AttributeModifier)>
+ "findCurios"(arg0: $Predicate$$Type<($ItemStack)>, arg1: boolean, arg2: StringJS): $List<($SlotResult)>
+ "findCurios"(...arg0: (StringJS)[]): $List<($SlotResult)>
  "findCurios"(arg0: $Predicate$$Type<($ItemStack)>): $List<($SlotResult)>
- "findCurios"(arg0: boolean, ...arg1: (string)[]): $List<($SlotResult)>
  "findCurios"(arg0: $Item$$Type): $List<($SlotResult)>
- "findCurios"(arg0: $Predicate$$Type<($ItemStack)>, arg1: boolean, arg2: string): $List<($SlotResult)>
- "findCurios"(...arg0: (string)[]): $List<($SlotResult)>
- "findCurio"(arg0: string, arg1: integer): $Optional<($SlotResult)>
- "findCurio"(arg0: string, arg1: integer, arg2: boolean): $Optional<($SlotResult)>
+ "findCurios"(arg0: boolean, ...arg1: (StringJS)[]): $List<($SlotResult)>
+ "findCurio"(arg0: StringJS, arg1: integer, arg2: boolean): $Optional<($SlotResult)>
+ "findCurio"(arg0: StringJS, arg1: integer): $Optional<($SlotResult)>
+ "findFirstCurio"(arg0: $Predicate$$Type<($ItemStack)>, arg1: StringJS): $Optional<($SlotResult)>
+ "findFirstCurio"(arg0: $Item$$Type): $Optional<($SlotResult)>
+ "findFirstCurio"(arg0: $Predicate$$Type<($ItemStack)>): $Optional<($SlotResult)>
+ "findFirstCurio"(arg0: $Predicate$$Type<($ItemStack)>, arg1: boolean, arg2: StringJS): $Optional<($SlotResult)>
+ "getCurios"(): $Map<(StringJS), ($ICurioStacksHandler)>
+ "isEquipped"(arg0: $Item$$Type): boolean
+ "isEquipped"(arg0: $Predicate$$Type<($ItemStack)>): boolean
 /**
  * 
  * @deprecated
  */
  "processSlots"(): void
- "isEquipped"(arg0: $Predicate$$Type<($ItemStack)>): boolean
- "isEquipped"(arg0: $Item$$Type): boolean
- "getCurios"(): $Map<(string), ($ICurioStacksHandler)>
- "findFirstCurio"(arg0: $Item$$Type): $Optional<($SlotResult)>
- "findFirstCurio"(arg0: $Predicate$$Type<($ItemStack)>): $Optional<($SlotResult)>
- "findFirstCurio"(arg0: $Predicate$$Type<($ItemStack)>, arg1: string): $Optional<($SlotResult)>
- "findFirstCurio"(arg0: $Predicate$$Type<($ItemStack)>, arg1: boolean, arg2: string): $Optional<($SlotResult)>
  "getSlots"(): integer
- "removeSlotModifiers"(arg0: $Multimap$$Type<(string), ($AttributeModifier$$Type)>): void
+ "saveInventory"(arg0: boolean): $ListTag
+/**
+ * 
+ * @deprecated
+ */
+ "growSlotType"(arg0: StringJS, arg1: integer): void
+/**
+ * 
+ * @deprecated
+ */
+ "shrinkSlotType"(arg0: StringJS, arg1: integer): void
+/**
+ * 
+ * @deprecated
+ */
+ "unlockSlotType"(arg0: StringJS, arg1: integer, arg2: boolean, arg3: boolean): void
+/**
+ * 
+ * @deprecated
+ */
+ "lockSlotType"(arg0: StringJS): void
+ "setCurios"(arg0: $Map$$Type<(StringJS), ($ICurioStacksHandler$$Type)>): void
+ "isSlotActive"(arg0: StringJS, arg1: integer): boolean
+ "setSlotActive"(arg0: StringJS, arg1: integer, arg2: boolean): void
+ "setSlotsActive"(arg0: StringJS, arg1: boolean): void
+ "getWearer"(): $LivingEntity
+ "loadInventory"(arg0: $ListTag$$Type): void
+/**
+ * 
+ * @deprecated
+ */
+ "getLockedSlots"(): $Set<(StringJS)>
+ "readTag"(arg0: $Tag$$Type): void
+ "writeTag"(): $Tag
+ "removeSlotModifiers"(arg0: $Multimap$$Type<(StringJS), ($AttributeModifier$$Type)>): void
+ "getEquippedCurios"(): $IItemHandlerModifiable
+ "getLootingLevel"(arg0: $LootContext$$Type): integer
+ "getFortuneLevel"(arg0: $LootContext$$Type): integer
+ "getStacksHandler"(arg0: StringJS): $Optional<($ICurioStacksHandler)>
+ "setEquippedCurio"(arg0: StringJS, arg1: integer, arg2: $ItemStack$$Type): void
+ "removeSlotModifier"(arg0: StringJS, arg1: $ResourceLocation$$Type): void
+ "clearSlotModifiers"(): void
+ "addPermanentSlotModifier"(arg0: StringJS, arg1: $ResourceLocation$$Type, arg2: double, arg3: $AttributeModifier$Operation$$Type): void
  "getVisibleSlots"(): integer
  "loseInvalidStack"(arg0: $ItemStack$$Type): void
  "handleInvalidStacks"(): void
@@ -769,57 +806,20 @@ export interface $ICuriosItemHandler {
  * @deprecated
  */
  "getFortuneBonus"(): integer
- "getStacksHandler"(arg0: string): $Optional<($ICurioStacksHandler)>
- "setEquippedCurio"(arg0: string, arg1: integer, arg2: $ItemStack$$Type): void
- "removeSlotModifier"(arg0: string, arg1: $ResourceLocation$$Type): void
- "clearSlotModifiers"(): void
- "getEquippedCurios"(): $IItemHandlerModifiable
- "getLootingLevel"(arg0: $LootContext$$Type): integer
- "getFortuneLevel"(arg0: $LootContext$$Type): integer
- "setCurios"(arg0: $Map$$Type<(string), ($ICurioStacksHandler$$Type)>): void
- "isSlotActive"(arg0: string, arg1: integer): boolean
- "setSlotActive"(arg0: string, arg1: integer, arg2: boolean): void
- "setSlotsActive"(arg0: string, arg1: boolean): void
- "getWearer"(): $LivingEntity
- "saveInventory"(arg0: boolean): $ListTag
- "loadInventory"(arg0: $ListTag$$Type): void
- "writeTag"(): $Tag
- "readTag"(arg0: $Tag$$Type): void
-/**
- * 
- * @deprecated
- */
- "getLockedSlots"(): $Set<(string)>
-/**
- * 
- * @deprecated
- */
- "growSlotType"(arg0: string, arg1: integer): void
-/**
- * 
- * @deprecated
- */
- "shrinkSlotType"(arg0: string, arg1: integer): void
-/**
- * 
- * @deprecated
- */
- "unlockSlotType"(arg0: string, arg1: integer, arg2: boolean, arg3: boolean): void
-/**
- * 
- * @deprecated
- */
- "lockSlotType"(arg0: string): void
-get "modifiers"(): $Multimap<(string), ($AttributeModifier)>
-get "curios"(): $Map<(string), ($ICurioStacksHandler)>
+ "addTransientSlotModifiers"(arg0: $Multimap$$Type<(StringJS), ($AttributeModifier$$Type)>): void
+ "clearCachedSlotModifiers"(): void
+ "addTransientSlotModifier"(arg0: StringJS, arg1: $ResourceLocation$$Type, arg2: double, arg3: $AttributeModifier$Operation$$Type): void
+ "addPermanentSlotModifiers"(arg0: $Multimap$$Type<(StringJS), ($AttributeModifier$$Type)>): void
+get "modifiers"(): $Multimap<(StringJS), ($AttributeModifier)>
+get "curios"(): $Map<(StringJS), ($ICurioStacksHandler)>
 get "slots"(): integer
+set "curios"(value: $Map$$Type<(StringJS), ($ICurioStacksHandler$$Type)>)
+get "wearer"(): $LivingEntity
+get "lockedSlots"(): $Set<(StringJS)>
+get "equippedCurios"(): $IItemHandlerModifiable
 get "visibleSlots"(): integer
 get "updatingInventories"(): $Set<($ICurioStacksHandler)>
 get "fortuneBonus"(): integer
-get "equippedCurios"(): $IItemHandlerModifiable
-set "curios"(value: $Map$$Type<(string), ($ICurioStacksHandler$$Type)>)
-get "wearer"(): $LivingEntity
-get "lockedSlots"(): $Set<(string)>
 }
 
 export namespace $ICuriosItemHandler {
@@ -831,33 +831,70 @@ static readonly "LOGGER": $Logger
 
 
  "reset"(): void
- "getModifiers"(): $Multimap<(string), ($AttributeModifier)>
- "addTransientSlotModifier"(arg0: string, arg1: $ResourceLocation$$Type, arg2: double, arg3: $AttributeModifier$Operation$$Type): void
- "addPermanentSlotModifiers"(arg0: $Multimap$$Type<(string), ($AttributeModifier$$Type)>): void
- "addPermanentSlotModifier"(arg0: string, arg1: $ResourceLocation$$Type, arg2: double, arg3: $AttributeModifier$Operation$$Type): void
- "addTransientSlotModifiers"(arg0: $Multimap$$Type<(string), ($AttributeModifier$$Type)>): void
- "clearCachedSlotModifiers"(): void
+ "getModifiers"(): $Multimap<(StringJS), ($AttributeModifier)>
+ "findCurios"(arg0: $Predicate$$Type<($ItemStack)>, arg1: boolean, arg2: StringJS): $List<($SlotResult)>
+ "findCurios"(...arg0: (StringJS)[]): $List<($SlotResult)>
  "findCurios"(arg0: $Predicate$$Type<($ItemStack)>): $List<($SlotResult)>
- "findCurios"(arg0: boolean, ...arg1: (string)[]): $List<($SlotResult)>
  "findCurios"(arg0: $Item$$Type): $List<($SlotResult)>
- "findCurios"(arg0: $Predicate$$Type<($ItemStack)>, arg1: boolean, arg2: string): $List<($SlotResult)>
- "findCurios"(...arg0: (string)[]): $List<($SlotResult)>
- "findCurio"(arg0: string, arg1: integer): $Optional<($SlotResult)>
- "findCurio"(arg0: string, arg1: integer, arg2: boolean): $Optional<($SlotResult)>
+ "findCurios"(arg0: boolean, ...arg1: (StringJS)[]): $List<($SlotResult)>
+ "findCurio"(arg0: StringJS, arg1: integer, arg2: boolean): $Optional<($SlotResult)>
+ "findCurio"(arg0: StringJS, arg1: integer): $Optional<($SlotResult)>
+ "findFirstCurio"(arg0: $Predicate$$Type<($ItemStack)>, arg1: StringJS): $Optional<($SlotResult)>
+ "findFirstCurio"(arg0: $Item$$Type): $Optional<($SlotResult)>
+ "findFirstCurio"(arg0: $Predicate$$Type<($ItemStack)>): $Optional<($SlotResult)>
+ "findFirstCurio"(arg0: $Predicate$$Type<($ItemStack)>, arg1: boolean, arg2: StringJS): $Optional<($SlotResult)>
+ "getCurios"(): $Map<(StringJS), ($ICurioStacksHandler)>
+ "isEquipped"(arg0: $Item$$Type): boolean
+ "isEquipped"(arg0: $Predicate$$Type<($ItemStack)>): boolean
 /**
  * 
  * @deprecated
  */
  "processSlots"(): void
- "isEquipped"(arg0: $Predicate$$Type<($ItemStack)>): boolean
- "isEquipped"(arg0: $Item$$Type): boolean
- "getCurios"(): $Map<(string), ($ICurioStacksHandler)>
- "findFirstCurio"(arg0: $Item$$Type): $Optional<($SlotResult)>
- "findFirstCurio"(arg0: $Predicate$$Type<($ItemStack)>): $Optional<($SlotResult)>
- "findFirstCurio"(arg0: $Predicate$$Type<($ItemStack)>, arg1: string): $Optional<($SlotResult)>
- "findFirstCurio"(arg0: $Predicate$$Type<($ItemStack)>, arg1: boolean, arg2: string): $Optional<($SlotResult)>
  "getSlots"(): integer
- "removeSlotModifiers"(arg0: $Multimap$$Type<(string), ($AttributeModifier$$Type)>): void
+ "saveInventory"(arg0: boolean): $ListTag
+/**
+ * 
+ * @deprecated
+ */
+ "growSlotType"(arg0: StringJS, arg1: integer): void
+/**
+ * 
+ * @deprecated
+ */
+ "shrinkSlotType"(arg0: StringJS, arg1: integer): void
+/**
+ * 
+ * @deprecated
+ */
+ "unlockSlotType"(arg0: StringJS, arg1: integer, arg2: boolean, arg3: boolean): void
+/**
+ * 
+ * @deprecated
+ */
+ "lockSlotType"(arg0: StringJS): void
+ "setCurios"(arg0: $Map$$Type<(StringJS), ($ICurioStacksHandler$$Type)>): void
+ "isSlotActive"(arg0: StringJS, arg1: integer): boolean
+ "setSlotActive"(arg0: StringJS, arg1: integer, arg2: boolean): void
+ "setSlotsActive"(arg0: StringJS, arg1: boolean): void
+ "getWearer"(): $LivingEntity
+ "loadInventory"(arg0: $ListTag$$Type): void
+/**
+ * 
+ * @deprecated
+ */
+ "getLockedSlots"(): $Set<(StringJS)>
+ "readTag"(arg0: $Tag$$Type): void
+ "writeTag"(): $Tag
+ "removeSlotModifiers"(arg0: $Multimap$$Type<(StringJS), ($AttributeModifier$$Type)>): void
+ "getEquippedCurios"(): $IItemHandlerModifiable
+ "getLootingLevel"(arg0: $LootContext$$Type): integer
+ "getFortuneLevel"(arg0: $LootContext$$Type): integer
+ "getStacksHandler"(arg0: StringJS): $Optional<($ICurioStacksHandler)>
+ "setEquippedCurio"(arg0: StringJS, arg1: integer, arg2: $ItemStack$$Type): void
+ "removeSlotModifier"(arg0: StringJS, arg1: $ResourceLocation$$Type): void
+ "clearSlotModifiers"(): void
+ "addPermanentSlotModifier"(arg0: StringJS, arg1: $ResourceLocation$$Type, arg2: double, arg3: $AttributeModifier$Operation$$Type): void
  "getVisibleSlots"(): integer
  "loseInvalidStack"(arg0: $ItemStack$$Type): void
  "handleInvalidStacks"(): void
@@ -867,47 +904,10 @@ static readonly "LOGGER": $Logger
  * @deprecated
  */
  "getFortuneBonus"(): integer
- "getStacksHandler"(arg0: string): $Optional<($ICurioStacksHandler)>
- "setEquippedCurio"(arg0: string, arg1: integer, arg2: $ItemStack$$Type): void
- "removeSlotModifier"(arg0: string, arg1: $ResourceLocation$$Type): void
- "clearSlotModifiers"(): void
- "getEquippedCurios"(): $IItemHandlerModifiable
- "getLootingLevel"(arg0: $LootContext$$Type): integer
- "getFortuneLevel"(arg0: $LootContext$$Type): integer
- "setCurios"(arg0: $Map$$Type<(string), ($ICurioStacksHandler$$Type)>): void
- "isSlotActive"(arg0: string, arg1: integer): boolean
- "setSlotActive"(arg0: string, arg1: integer, arg2: boolean): void
- "setSlotsActive"(arg0: string, arg1: boolean): void
- "getWearer"(): $LivingEntity
- "saveInventory"(arg0: boolean): $ListTag
- "loadInventory"(arg0: $ListTag$$Type): void
- "writeTag"(): $Tag
- "readTag"(arg0: $Tag$$Type): void
-/**
- * 
- * @deprecated
- */
- "getLockedSlots"(): $Set<(string)>
-/**
- * 
- * @deprecated
- */
- "growSlotType"(arg0: string, arg1: integer): void
-/**
- * 
- * @deprecated
- */
- "shrinkSlotType"(arg0: string, arg1: integer): void
-/**
- * 
- * @deprecated
- */
- "unlockSlotType"(arg0: string, arg1: integer, arg2: boolean, arg3: boolean): void
-/**
- * 
- * @deprecated
- */
- "lockSlotType"(arg0: string): void
+ "addTransientSlotModifiers"(arg0: $Multimap$$Type<(StringJS), ($AttributeModifier$$Type)>): void
+ "clearCachedSlotModifiers"(): void
+ "addTransientSlotModifier"(arg0: StringJS, arg1: $ResourceLocation$$Type, arg2: double, arg3: $AttributeModifier$Operation$$Type): void
+ "addPermanentSlotModifiers"(arg0: $Multimap$$Type<(StringJS), ($AttributeModifier$$Type)>): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -946,30 +946,6 @@ export interface $ICurioItem {
  "canEquip"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
  "isEnderMask"(arg0: $SlotContext$$Type, arg1: $EnderMan$$Type, arg2: $ItemStack$$Type): boolean
  "getEquipSound"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): $ICurio$SoundInfo
- "canEquipFromUse"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
-/**
- * 
- * @deprecated
- */
- "getAttributesTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $ItemStack$$Type): $List<($Component)>
- "getAttributesTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $Item$TooltipContext$$Type, arg2: $ItemStack$$Type): $List<($Component)>
- "hasCurioCapability"(arg0: $ItemStack$$Type): boolean
- "getSlotsTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $Item$TooltipContext$$Type, arg2: $ItemStack$$Type): $List<($Component)>
-/**
- * 
- * @deprecated
- */
- "getSlotsTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $ItemStack$$Type): $List<($Component)>
-/**
- * 
- * @deprecated
- */
- "getAttributeModifiers"(arg0: $SlotContext$$Type, arg1: $UUID$$Type, arg2: $ItemStack$$Type): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
- "getAttributeModifiers"(arg0: $SlotContext$$Type, arg1: $ResourceLocation$$Type, arg2: $ItemStack$$Type): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
- "getLootingLevel"(arg0: $SlotContext$$Type, arg1: $LootContext$$Type, arg2: $ItemStack$$Type): integer
- "getFortuneLevel"(arg0: $SlotContext$$Type, arg1: $LootContext$$Type, arg2: $ItemStack$$Type): integer
- "canWalkOnPowderedSnow"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
- "makesPiglinsNeutral"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
  "curioTick"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): void
  "curioBreak"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): void
  "canSync"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
@@ -978,13 +954,37 @@ export interface $ICurioItem {
  "onEquip"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type, arg2: $ItemStack$$Type): void
  "onUnequip"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type, arg2: $ItemStack$$Type): void
  "canUnequip"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
+ "getDropRule"(arg0: $SlotContext$$Type, arg1: $DamageSource$$Type, arg2: boolean, arg3: $ItemStack$$Type): $ICurio$DropRule
 /**
  * 
  * @deprecated
  */
  "getDropRule"(arg0: $SlotContext$$Type, arg1: $DamageSource$$Type, arg2: integer, arg3: boolean, arg4: $ItemStack$$Type): $ICurio$DropRule
- "getDropRule"(arg0: $SlotContext$$Type, arg1: $DamageSource$$Type, arg2: boolean, arg3: $ItemStack$$Type): $ICurio$DropRule
  "onEquipFromUse"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): void
+ "hasCurioCapability"(arg0: $ItemStack$$Type): boolean
+ "canEquipFromUse"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
+ "getAttributesTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $Item$TooltipContext$$Type, arg2: $ItemStack$$Type): $List<($Component)>
+/**
+ * 
+ * @deprecated
+ */
+ "getAttributesTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $ItemStack$$Type): $List<($Component)>
+ "getLootingLevel"(arg0: $SlotContext$$Type, arg1: $LootContext$$Type, arg2: $ItemStack$$Type): integer
+ "getFortuneLevel"(arg0: $SlotContext$$Type, arg1: $LootContext$$Type, arg2: $ItemStack$$Type): integer
+ "canWalkOnPowderedSnow"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
+ "makesPiglinsNeutral"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
+/**
+ * 
+ * @deprecated
+ */
+ "getAttributeModifiers"(arg0: $SlotContext$$Type, arg1: $UUID$$Type, arg2: $ItemStack$$Type): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
+ "getAttributeModifiers"(arg0: $SlotContext$$Type, arg1: $ResourceLocation$$Type, arg2: $ItemStack$$Type): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
+/**
+ * 
+ * @deprecated
+ */
+ "getSlotsTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $ItemStack$$Type): $List<($Component)>
+ "getSlotsTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $Item$TooltipContext$$Type, arg2: $ItemStack$$Type): $List<($Component)>
 }
 
 export namespace $ICurioItem {
@@ -998,30 +998,6 @@ static readonly "defaultInstance": $ICurio
  "canEquip"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
  "isEnderMask"(arg0: $SlotContext$$Type, arg1: $EnderMan$$Type, arg2: $ItemStack$$Type): boolean
  "getEquipSound"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): $ICurio$SoundInfo
- "canEquipFromUse"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
-/**
- * 
- * @deprecated
- */
- "getAttributesTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $ItemStack$$Type): $List<($Component)>
- "getAttributesTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $Item$TooltipContext$$Type, arg2: $ItemStack$$Type): $List<($Component)>
- "hasCurioCapability"(arg0: $ItemStack$$Type): boolean
- "getSlotsTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $Item$TooltipContext$$Type, arg2: $ItemStack$$Type): $List<($Component)>
-/**
- * 
- * @deprecated
- */
- "getSlotsTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $ItemStack$$Type): $List<($Component)>
-/**
- * 
- * @deprecated
- */
- "getAttributeModifiers"(arg0: $SlotContext$$Type, arg1: $UUID$$Type, arg2: $ItemStack$$Type): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
- "getAttributeModifiers"(arg0: $SlotContext$$Type, arg1: $ResourceLocation$$Type, arg2: $ItemStack$$Type): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
- "getLootingLevel"(arg0: $SlotContext$$Type, arg1: $LootContext$$Type, arg2: $ItemStack$$Type): integer
- "getFortuneLevel"(arg0: $SlotContext$$Type, arg1: $LootContext$$Type, arg2: $ItemStack$$Type): integer
- "canWalkOnPowderedSnow"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
- "makesPiglinsNeutral"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
  "curioTick"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): void
  "curioBreak"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): void
  "canSync"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
@@ -1030,13 +1006,37 @@ static readonly "defaultInstance": $ICurio
  "onEquip"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type, arg2: $ItemStack$$Type): void
  "onUnequip"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type, arg2: $ItemStack$$Type): void
  "canUnequip"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
+ "getDropRule"(arg0: $SlotContext$$Type, arg1: $DamageSource$$Type, arg2: boolean, arg3: $ItemStack$$Type): $ICurio$DropRule
 /**
  * 
  * @deprecated
  */
  "getDropRule"(arg0: $SlotContext$$Type, arg1: $DamageSource$$Type, arg2: integer, arg3: boolean, arg4: $ItemStack$$Type): $ICurio$DropRule
- "getDropRule"(arg0: $SlotContext$$Type, arg1: $DamageSource$$Type, arg2: boolean, arg3: $ItemStack$$Type): $ICurio$DropRule
  "onEquipFromUse"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): void
+ "hasCurioCapability"(arg0: $ItemStack$$Type): boolean
+ "canEquipFromUse"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
+ "getAttributesTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $Item$TooltipContext$$Type, arg2: $ItemStack$$Type): $List<($Component)>
+/**
+ * 
+ * @deprecated
+ */
+ "getAttributesTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $ItemStack$$Type): $List<($Component)>
+ "getLootingLevel"(arg0: $SlotContext$$Type, arg1: $LootContext$$Type, arg2: $ItemStack$$Type): integer
+ "getFortuneLevel"(arg0: $SlotContext$$Type, arg1: $LootContext$$Type, arg2: $ItemStack$$Type): integer
+ "canWalkOnPowderedSnow"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
+ "makesPiglinsNeutral"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
+/**
+ * 
+ * @deprecated
+ */
+ "getAttributeModifiers"(arg0: $SlotContext$$Type, arg1: $UUID$$Type, arg2: $ItemStack$$Type): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
+ "getAttributeModifiers"(arg0: $SlotContext$$Type, arg1: $ResourceLocation$$Type, arg2: $ItemStack$$Type): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
+/**
+ * 
+ * @deprecated
+ */
+ "getSlotsTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $ItemStack$$Type): $List<($Component)>
+ "getSlotsTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $Item$TooltipContext$$Type, arg2: $ItemStack$$Type): $List<($Component)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1056,22 +1056,22 @@ import {$Record, $Record$$Type} from "java.lang.Record"
 
 export class $SlotContext extends $Record {
 
-constructor(identifier: string, entity: $LivingEntity$$Type, index: integer, cosmetic: boolean, visible: boolean)
+constructor(identifier: StringJS, entity: $LivingEntity$$Type, index: integer, cosmetic: boolean, visible: boolean)
 
-public "identifier"(): string
 public "entity"(): $LivingEntity
+public "identifier"(): StringJS
+public "visible"(): boolean
 public "index"(): integer
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "visible"(): boolean
 public "cosmetic"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $SlotContext$$Type = ({"index"?: integer, "cosmetic"?: boolean, "visible"?: boolean, "entity"?: $LivingEntity$$Type, "identifier"?: string}) | ([index?: integer, cosmetic?: boolean, visible?: boolean, entity?: $LivingEntity$$Type, identifier?: string]);
+export type $SlotContext$$Type = ({"entity"?: $LivingEntity$$Type, "identifier"?: StringJS, "index"?: integer, "cosmetic"?: boolean, "visible"?: boolean}) | ([entity?: $LivingEntity$$Type, identifier?: StringJS, index?: integer, cosmetic?: boolean, visible?: boolean]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1087,15 +1087,11 @@ export class $ICurio$SoundInfo extends $Record {
 
 constructor(soundEvent: $SoundEvent$$Type, volume: float, pitch: float)
 
-public "volume"(): float
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-/**
- * 
- * @deprecated
- */
-public "getSoundEvent"(): $SoundEvent
+public "volume"(): float
+public "pitch"(): float
 /**
  * 
  * @deprecated
@@ -1107,13 +1103,17 @@ public "getVolume"(): float
  */
 public "getPitch"(): float
 public "soundEvent"(): $SoundEvent
-public "pitch"(): float
+/**
+ * 
+ * @deprecated
+ */
+public "getSoundEvent"(): $SoundEvent
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ICurio$SoundInfo$$Type = ({"volume"?: float, "soundEvent"?: $SoundEvent$$Type, "pitch"?: float}) | ([volume?: float, soundEvent?: $SoundEvent$$Type, pitch?: float]);
+export type $ICurio$SoundInfo$$Type = ({"pitch"?: float, "volume"?: float, "soundEvent"?: $SoundEvent$$Type}) | ([pitch?: float, volume?: float, soundEvent?: $SoundEvent$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1168,8 +1168,8 @@ import {$DamageSource, $DamageSource$$Type} from "net.minecraft.world.damagesour
 import {$ICuriosItemHandler, $ICuriosItemHandler$$Type} from "top.theillusivec4.curios.api.type.capability.ICuriosItemHandler"
 import {$ICurio$DropRule, $ICurio$DropRule$$Type} from "top.theillusivec4.curios.api.type.capability.ICurio$DropRule"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$ImmutableList, $ImmutableList$$Type} from "com.google.common.collect.ImmutableList"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Tuple, $Tuple$$Type} from "net.minecraft.util.Tuple"
 
 export class $DropRulesEvent extends $LivingEvent {
@@ -1178,13 +1178,13 @@ constructor(arg0: $LivingEntity$$Type, arg1: $ICuriosItemHandler$$Type, arg2: $D
 
 public "getSource"(): $DamageSource
 public "addOverride"(arg0: $Predicate$$Type<($ItemStack)>, arg1: $ICurio$DropRule$$Type): void
-public "isRecentlyHit"(): boolean
 public "getOverrides"(): $ImmutableList<($Tuple<($Predicate<($ItemStack)>), ($ICurio$DropRule)>)>
+public "isRecentlyHit"(): boolean
 public "getCurioHandler"(): $ICuriosItemHandler
 public "getLootingLevel"(): integer
 get "source"(): $DamageSource
-get "recentlyHit"(): boolean
 get "overrides"(): $ImmutableList<($Tuple<($Predicate<($ItemStack)>), ($ICurio$DropRule)>)>
+get "recentlyHit"(): boolean
 get "curioHandler"(): $ICuriosItemHandler
 get "lootingLevel"(): integer
 }
@@ -1209,24 +1209,24 @@ import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.Tooltip
 
 export interface $ICurioSlotExtension {
 
- "getDisplayStack"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): $ItemStack
- "getCloneStack"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): $ItemStack
  "getSlotTooltip"(arg0: $SlotContext$$Type, arg1: $TooltipFlag$$Type): $List<($Component)>
+ "getCloneStack"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): $ItemStack
+ "getDisplayStack"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): $ItemStack
 }
 
 export namespace $ICurioSlotExtension {
 const DEFAULT: $ICurioSlotExtension
-function from(arg0: string): $ICurioSlotExtension
+function from(arg0: StringJS): $ICurioSlotExtension
 const probejs$$marker: never
 }
 export class $ICurioSlotExtension$$Static implements $ICurioSlotExtension {
 static readonly "DEFAULT": $ICurioSlotExtension
 
 
-static "from"(arg0: string): $ICurioSlotExtension
- "getDisplayStack"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): $ItemStack
- "getCloneStack"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): $ItemStack
+static "from"(arg0: StringJS): $ICurioSlotExtension
  "getSlotTooltip"(arg0: $SlotContext$$Type, arg1: $TooltipFlag$$Type): $List<($Component)>
+ "getCloneStack"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): $ItemStack
+ "getDisplayStack"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): $ItemStack
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1251,13 +1251,13 @@ export class $CurioCanUnequipEvent extends $LivingEvent {
 constructor(arg0: $ItemStack$$Type, arg1: $SlotContext$$Type)
 
 public "getStack"(): $ItemStack
+public "getSlotContext"(): $SlotContext
 public "getUnequipResult"(): $TriState
 public "setUnequipResult"(arg0: $TriState$$Type): void
-public "getSlotContext"(): $SlotContext
 get "stack"(): $ItemStack
+get "slotContext"(): $SlotContext
 get "unequipResult"(): $TriState
 set "unequipResult"(value: $TriState$$Type)
-get "slotContext"(): $SlotContext
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1284,7 +1284,7 @@ export interface $IIconHelper {
  * 
  * @deprecated
  */
- "getIcon"(arg0: string): $ResourceLocation
+ "getIcon"(arg0: StringJS): $ResourceLocation
 /**
  * 
  * @deprecated
@@ -1294,7 +1294,7 @@ export interface $IIconHelper {
  * 
  * @deprecated
  */
- "addIcon"(arg0: string, arg1: $ResourceLocation$$Type): void
+ "addIcon"(arg0: StringJS, arg1: $ResourceLocation$$Type): void
 }
 
 export namespace $IIconHelper {
@@ -1307,7 +1307,7 @@ export class $IIconHelper$$Static implements $IIconHelper {
  * 
  * @deprecated
  */
- "getIcon"(arg0: string): $ResourceLocation
+ "getIcon"(arg0: StringJS): $ResourceLocation
 /**
  * 
  * @deprecated
@@ -1317,7 +1317,7 @@ export class $IIconHelper$$Static implements $IIconHelper {
  * 
  * @deprecated
  */
- "addIcon"(arg0: string, arg1: $ResourceLocation$$Type): void
+ "addIcon"(arg0: StringJS, arg1: $ResourceLocation$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1334,9 +1334,9 @@ export type $IIconHelper_ = $IIconHelper$$Type;
 declare module "top.theillusivec4.curios.api.event.CurioAttributeModifierEvent" {
 import {$SlotContext, $SlotContext$$Type} from "top.theillusivec4.curios.api.SlotContext"
 import {$AttributeModifier, $AttributeModifier$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeModifier"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Multimap, $Multimap$$Type} from "com.google.common.collect.Multimap"
 import {$Event, $Event$$Type} from "net.neoforged.bus.api.Event"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
@@ -1346,20 +1346,20 @@ export class $CurioAttributeModifierEvent extends $Event {
 
 constructor(arg0: $ItemStack$$Type, arg1: $SlotContext$$Type, arg2: $ResourceLocation$$Type, arg3: $Multimap$$Type<($Holder$$Type<($Attribute$$Type)>), ($AttributeModifier$$Type)>)
 
+public "removeAttribute"(arg0: $Holder$$Type<($Attribute)>): $Collection<($AttributeModifier)>
 public "getModifiers"(): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
 public "getId"(): $ResourceLocation
-public "removeAttribute"(arg0: $Holder$$Type<($Attribute)>): $Collection<($AttributeModifier)>
 public "getItemStack"(): $ItemStack
+public "removeModifier"(arg0: $Holder$$Type<($Attribute)>, arg1: $AttributeModifier$$Type): boolean
+public "getSlotContext"(): $SlotContext
 public "addModifier"(arg0: $Holder$$Type<($Attribute)>, arg1: $AttributeModifier$$Type): boolean
 public "clearModifiers"(): void
-public "removeModifier"(arg0: $Holder$$Type<($Attribute)>, arg1: $AttributeModifier$$Type): boolean
 public "getOriginalModifiers"(): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
-public "getSlotContext"(): $SlotContext
 get "modifiers"(): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
 get "id"(): $ResourceLocation
 get "itemStack"(): $ItemStack
-get "originalModifiers"(): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
 get "slotContext"(): $SlotContext
+get "originalModifiers"(): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1383,20 +1383,20 @@ import {$Record, $Record$$Type} from "java.lang.Record"
 export class $SlotPredicate extends $Record {
 static readonly "CODEC": $Codec<($SlotPredicate)>
 
-constructor(slots: $List$$Type<(string)>, index: $MinMaxBounds$Ints$$Type)
+constructor(slots: $List$$Type<(StringJS)>, index: $MinMaxBounds$Ints$$Type)
 
+public "slots"(): $List<(StringJS)>
 public "index"(): $MinMaxBounds$Ints
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "matches"(arg0: $SlotContext$$Type): boolean
-public "slots"(): $List<(string)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $SlotPredicate$$Type = ({"slots"?: $List$$Type<(string)>, "index"?: $MinMaxBounds$Ints$$Type}) | ([slots?: $List$$Type<(string)>, index?: $MinMaxBounds$Ints$$Type]);
+export type $SlotPredicate$$Type = ({"slots"?: $List$$Type<(StringJS)>, "index"?: $MinMaxBounds$Ints$$Type}) | ([slots?: $List$$Type<(StringJS)>, index?: $MinMaxBounds$Ints$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1411,16 +1411,16 @@ import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.Liv
 
 export class $CurioChangeEvent extends $LivingEvent {
 
-constructor(arg0: $LivingEntity$$Type, arg1: string, arg2: integer, arg3: $ItemStack$$Type, arg4: $ItemStack$$Type)
+constructor(arg0: $LivingEntity$$Type, arg1: StringJS, arg2: integer, arg3: $ItemStack$$Type, arg4: $ItemStack$$Type)
 
-public "getIdentifier"(): string
+public "getIdentifier"(): StringJS
 public "getFrom"(): $ItemStack
-public "getSlotIndex"(): integer
 public "getTo"(): $ItemStack
-get "identifier"(): string
+public "getSlotIndex"(): integer
+get "identifier"(): StringJS
 get "from"(): $ItemStack
-get "slotIndex"(): integer
 get "to"(): $ItemStack
+get "slotIndex"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1438,9 +1438,9 @@ declare module "top.theillusivec4.curios.api.type.util.ICuriosHelper" {
 import {$ImmutableTriple, $ImmutableTriple$$Type} from "org.apache.commons.lang3.tuple.ImmutableTriple"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
+import {$List, $List$$Type} from "java.util.List"
 import {$ICurio, $ICurio$$Type} from "top.theillusivec4.curios.api.type.capability.ICurio"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
-import {$List, $List$$Type} from "java.util.List"
 import {$SlotResult, $SlotResult$$Type} from "top.theillusivec4.curios.api.SlotResult"
 import {$TriConsumer, $TriConsumer$$Type} from "org.apache.logging.log4j.util.TriConsumer"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
@@ -1448,8 +1448,8 @@ import {$SlotContext, $SlotContext$$Type} from "top.theillusivec4.curios.api.Slo
 import {$ICuriosItemHandler, $ICuriosItemHandler$$Type} from "top.theillusivec4.curios.api.type.capability.ICuriosItemHandler"
 import {$IItemHandlerModifiable, $IItemHandlerModifiable$$Type} from "net.neoforged.neoforge.items.IItemHandlerModifiable"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Set, $Set$$Type} from "java.util.Set"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 
 /**
  * 
@@ -1476,17 +1476,12 @@ export interface $ICuriosHelper {
  * 
  * @deprecated
  */
- "findCurios"(arg0: $LivingEntity$$Type, ...arg1: (string)[]): $List<($SlotResult)>
+ "findCurios"(arg0: $LivingEntity$$Type, ...arg1: (StringJS)[]): $List<($SlotResult)>
 /**
  * 
  * @deprecated
  */
- "findCurio"(arg0: $LivingEntity$$Type, arg1: string, arg2: integer): $Optional<($SlotResult)>
-/**
- * 
- * @deprecated
- */
- "findFirstCurio"(arg0: $LivingEntity$$Type, arg1: $Predicate$$Type<($ItemStack)>): $Optional<($SlotResult)>
+ "findCurio"(arg0: $LivingEntity$$Type, arg1: StringJS, arg2: integer): $Optional<($SlotResult)>
 /**
  * 
  * @deprecated
@@ -1496,42 +1491,7 @@ export interface $ICuriosHelper {
  * 
  * @deprecated
  */
- "getCuriosHandler"(arg0: $LivingEntity$$Type): $Optional<($ICuriosItemHandler)>
-/**
- * 
- * @deprecated
- */
- "findEquippedCurio"(arg0: $Item$$Type, arg1: $LivingEntity$$Type): $Optional<($ImmutableTriple<(string), (integer), ($ItemStack)>)>
-/**
- * 
- * @deprecated
- */
- "findEquippedCurio"(arg0: $Predicate$$Type<($ItemStack)>, arg1: $LivingEntity$$Type): $Optional<($ImmutableTriple<(string), (integer), ($ItemStack)>)>
-/**
- * 
- * @deprecated
- */
- "setBrokenCurioConsumer"(arg0: $Consumer$$Type<($SlotContext)>): void
-/**
- * 
- * @deprecated
- */
- "setBrokenCurioConsumer"(arg0: $TriConsumer$$Type<(string), (integer), ($LivingEntity$$Type)>): void
-/**
- * 
- * @deprecated
- */
- "setEquippedCurio"(arg0: $LivingEntity$$Type, arg1: string, arg2: integer, arg3: $ItemStack$$Type): void
-/**
- * 
- * @deprecated
- */
- "getEquippedCurios"(arg0: $LivingEntity$$Type): $Optional<($IItemHandlerModifiable)>
-/**
- * 
- * @deprecated
- */
- "getCurioTags"(arg0: $Item$$Type): $Set<(string)>
+ "findFirstCurio"(arg0: $LivingEntity$$Type, arg1: $Predicate$$Type<($ItemStack)>): $Optional<($SlotResult)>
 /**
  * 
  * @deprecated
@@ -1541,14 +1501,54 @@ export interface $ICuriosHelper {
  * 
  * @deprecated
  */
- "onBrokenCurio"(arg0: string, arg1: integer, arg2: $LivingEntity$$Type): void
+ "onBrokenCurio"(arg0: $SlotContext$$Type): void
 /**
  * 
  * @deprecated
  */
- "onBrokenCurio"(arg0: $SlotContext$$Type): void
+ "onBrokenCurio"(arg0: StringJS, arg1: integer, arg2: $LivingEntity$$Type): void
+/**
+ * 
+ * @deprecated
+ */
+ "getCurioTags"(arg0: $Item$$Type): $Set<(StringJS)>
+/**
+ * 
+ * @deprecated
+ */
+ "getEquippedCurios"(arg0: $LivingEntity$$Type): $Optional<($IItemHandlerModifiable)>
+/**
+ * 
+ * @deprecated
+ */
+ "setEquippedCurio"(arg0: $LivingEntity$$Type, arg1: StringJS, arg2: integer, arg3: $ItemStack$$Type): void
+/**
+ * 
+ * @deprecated
+ */
+ "getCuriosHandler"(arg0: $LivingEntity$$Type): $Optional<($ICuriosItemHandler)>
+/**
+ * 
+ * @deprecated
+ */
+ "findEquippedCurio"(arg0: $Item$$Type, arg1: $LivingEntity$$Type): $Optional<($ImmutableTriple<(StringJS), (integer), ($ItemStack)>)>
+/**
+ * 
+ * @deprecated
+ */
+ "findEquippedCurio"(arg0: $Predicate$$Type<($ItemStack)>, arg1: $LivingEntity$$Type): $Optional<($ImmutableTriple<(StringJS), (integer), ($ItemStack)>)>
+/**
+ * 
+ * @deprecated
+ */
+ "setBrokenCurioConsumer"(arg0: $Consumer$$Type<($SlotContext)>): void
+/**
+ * 
+ * @deprecated
+ */
+ "setBrokenCurioConsumer"(arg0: $TriConsumer$$Type<(StringJS), (integer), ($LivingEntity$$Type)>): void
 set "brokenCurioConsumer"(value: $Consumer$$Type<($SlotContext)>)
-set "brokenCurioConsumer"(value: $TriConsumer$$Type<(string), (integer), ($LivingEntity$$Type)>)
+set "brokenCurioConsumer"(value: $TriConsumer$$Type<(StringJS), (integer), ($LivingEntity$$Type)>)
 }
 
 export namespace $ICuriosHelper {
@@ -1576,17 +1576,12 @@ export class $ICuriosHelper$$Static implements $ICuriosHelper {
  * 
  * @deprecated
  */
- "findCurios"(arg0: $LivingEntity$$Type, ...arg1: (string)[]): $List<($SlotResult)>
+ "findCurios"(arg0: $LivingEntity$$Type, ...arg1: (StringJS)[]): $List<($SlotResult)>
 /**
  * 
  * @deprecated
  */
- "findCurio"(arg0: $LivingEntity$$Type, arg1: string, arg2: integer): $Optional<($SlotResult)>
-/**
- * 
- * @deprecated
- */
- "findFirstCurio"(arg0: $LivingEntity$$Type, arg1: $Predicate$$Type<($ItemStack)>): $Optional<($SlotResult)>
+ "findCurio"(arg0: $LivingEntity$$Type, arg1: StringJS, arg2: integer): $Optional<($SlotResult)>
 /**
  * 
  * @deprecated
@@ -1596,42 +1591,7 @@ export class $ICuriosHelper$$Static implements $ICuriosHelper {
  * 
  * @deprecated
  */
- "getCuriosHandler"(arg0: $LivingEntity$$Type): $Optional<($ICuriosItemHandler)>
-/**
- * 
- * @deprecated
- */
- "findEquippedCurio"(arg0: $Item$$Type, arg1: $LivingEntity$$Type): $Optional<($ImmutableTriple<(string), (integer), ($ItemStack)>)>
-/**
- * 
- * @deprecated
- */
- "findEquippedCurio"(arg0: $Predicate$$Type<($ItemStack)>, arg1: $LivingEntity$$Type): $Optional<($ImmutableTriple<(string), (integer), ($ItemStack)>)>
-/**
- * 
- * @deprecated
- */
- "setBrokenCurioConsumer"(arg0: $Consumer$$Type<($SlotContext)>): void
-/**
- * 
- * @deprecated
- */
- "setBrokenCurioConsumer"(arg0: $TriConsumer$$Type<(string), (integer), ($LivingEntity$$Type)>): void
-/**
- * 
- * @deprecated
- */
- "setEquippedCurio"(arg0: $LivingEntity$$Type, arg1: string, arg2: integer, arg3: $ItemStack$$Type): void
-/**
- * 
- * @deprecated
- */
- "getEquippedCurios"(arg0: $LivingEntity$$Type): $Optional<($IItemHandlerModifiable)>
-/**
- * 
- * @deprecated
- */
- "getCurioTags"(arg0: $Item$$Type): $Set<(string)>
+ "findFirstCurio"(arg0: $LivingEntity$$Type, arg1: $Predicate$$Type<($ItemStack)>): $Optional<($SlotResult)>
 /**
  * 
  * @deprecated
@@ -1641,12 +1601,52 @@ export class $ICuriosHelper$$Static implements $ICuriosHelper {
  * 
  * @deprecated
  */
- "onBrokenCurio"(arg0: string, arg1: integer, arg2: $LivingEntity$$Type): void
+ "onBrokenCurio"(arg0: $SlotContext$$Type): void
 /**
  * 
  * @deprecated
  */
- "onBrokenCurio"(arg0: $SlotContext$$Type): void
+ "onBrokenCurio"(arg0: StringJS, arg1: integer, arg2: $LivingEntity$$Type): void
+/**
+ * 
+ * @deprecated
+ */
+ "getCurioTags"(arg0: $Item$$Type): $Set<(StringJS)>
+/**
+ * 
+ * @deprecated
+ */
+ "getEquippedCurios"(arg0: $LivingEntity$$Type): $Optional<($IItemHandlerModifiable)>
+/**
+ * 
+ * @deprecated
+ */
+ "setEquippedCurio"(arg0: $LivingEntity$$Type, arg1: StringJS, arg2: integer, arg3: $ItemStack$$Type): void
+/**
+ * 
+ * @deprecated
+ */
+ "getCuriosHandler"(arg0: $LivingEntity$$Type): $Optional<($ICuriosItemHandler)>
+/**
+ * 
+ * @deprecated
+ */
+ "findEquippedCurio"(arg0: $Item$$Type, arg1: $LivingEntity$$Type): $Optional<($ImmutableTriple<(StringJS), (integer), ($ItemStack)>)>
+/**
+ * 
+ * @deprecated
+ */
+ "findEquippedCurio"(arg0: $Predicate$$Type<($ItemStack)>, arg1: $LivingEntity$$Type): $Optional<($ImmutableTriple<(StringJS), (integer), ($ItemStack)>)>
+/**
+ * 
+ * @deprecated
+ */
+ "setBrokenCurioConsumer"(arg0: $Consumer$$Type<($SlotContext)>): void
+/**
+ * 
+ * @deprecated
+ */
+ "setBrokenCurioConsumer"(arg0: $TriConsumer$$Type<(StringJS), (integer), ($LivingEntity$$Type)>): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1693,10 +1693,10 @@ export type $AccessorEntity_ = $AccessorEntity$$Type;
 declare module "top.theillusivec4.curios.api.client.ICurioRenderer" {
 import {$HumanoidModel, $HumanoidModel$$Type} from "net.minecraft.client.model.HumanoidModel"
 import {$SlotContext, $SlotContext$$Type} from "top.theillusivec4.curios.api.SlotContext"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$MultiBufferSource, $MultiBufferSource$$Type} from "net.minecraft.client.renderer.MultiBufferSource"
-import {$PoseStack, $PoseStack$$Type} from "com.mojang.blaze3d.vertex.PoseStack"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$RenderLayerParent, $RenderLayerParent$$Type} from "net.minecraft.client.renderer.entity.RenderLayerParent"
+import {$PoseStack, $PoseStack$$Type} from "com.mojang.blaze3d.vertex.PoseStack"
 import {$EntityModel, $EntityModel$$Type} from "net.minecraft.client.model.EntityModel"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$ModelPart, $ModelPart$$Type} from "net.minecraft.client.model.geom.ModelPart"
@@ -1718,11 +1718,11 @@ const probejs$$marker: never
 export class $ICurioRenderer$$Static implements $ICurioRenderer {
 
 
+ "render"<T extends $LivingEntity, M extends $EntityModel<(T)>>(arg0: $ItemStack$$Type, arg1: $SlotContext$$Type, arg2: $PoseStack$$Type, arg3: $RenderLayerParent$$Type<(T), (M)>, arg4: $MultiBufferSource$$Type, arg5: integer, arg6: float, arg7: float, arg8: float, arg9: float, arg10: float, arg11: float): void
 static "translateIfSneaking"(arg0: $PoseStack$$Type, arg1: $LivingEntity$$Type): void
 static "rotateIfSneaking"(arg0: $PoseStack$$Type, arg1: $LivingEntity$$Type): void
 static "followHeadRotations"(arg0: $LivingEntity$$Type, ...arg1: ($ModelPart$$Type)[]): void
 static "followBodyRotations"(arg0: $LivingEntity$$Type, ...arg1: ($HumanoidModel$$Type<($LivingEntity$$Type)>)[]): void
- "render"<T extends $LivingEntity, M extends $EntityModel<(T)>>(arg0: $ItemStack$$Type, arg1: $SlotContext$$Type, arg2: $PoseStack$$Type, arg3: $RenderLayerParent$$Type<(T), (M)>, arg4: $MultiBufferSource$$Type, arg5: integer, arg6: float, arg7: float, arg8: float, arg9: float, arg10: float, arg11: float): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1739,9 +1739,9 @@ export type $ICurioRenderer_ = $ICurioRenderer$$Type;
 declare module "top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler" {
 import {$AttributeModifier, $AttributeModifier$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeModifier"
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
-import {$IDynamicStackHandler, $IDynamicStackHandler$$Type} from "top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$IDynamicStackHandler, $IDynamicStackHandler$$Type} from "top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$AttributeModifier$Operation, $AttributeModifier$Operation$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation"
 import {$ICurio$DropRule, $ICurio$DropRule$$Type} from "top.theillusivec4.curios.api.type.capability.ICurio$DropRule"
@@ -1750,7 +1750,12 @@ import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 
 export interface $ICurioStacksHandler {
 
- "getIdentifier"(): string
+/**
+ * 
+ * @deprecated
+ */
+ "grow"(arg0: integer): void
+ "getIdentifier"(): StringJS
  "getStacks"(): $IDynamicStackHandler
  "getModifiers"(): $Map<($ResourceLocation), ($AttributeModifier)>
  "update"(): void
@@ -1758,26 +1763,14 @@ export interface $ICurioStacksHandler {
  * 
  * @deprecated
  */
- "grow"(arg0: integer): void
- "updateActiveState"(arg0: integer): void
- "canToggleRendering"(): boolean
- "clearModifiers"(): void
- "removeModifier"(arg0: $ResourceLocation$$Type): void
- "isVisible"(): boolean
+ "shrink"(arg0: integer): void
  "deserializeNBT"(arg0: $CompoundTag$$Type): void
  "serializeNBT"(): $CompoundTag
  "getRenders"(): $NonNullList<(boolean)>
+ "removeModifier"(arg0: $ResourceLocation$$Type): void
+ "isVisible"(): boolean
  "getSlots"(): integer
-/**
- * 
- * @deprecated
- */
- "shrink"(arg0: integer): void
- "getActiveStates"(): $NonNullList<(boolean)>
- "getCosmeticStacks"(): $IDynamicStackHandler
- "addTransientModifier"(arg0: $AttributeModifier$$Type): void
- "addPermanentModifier"(arg0: $AttributeModifier$$Type): void
- "getDropRule"(): $ICurio$DropRule
+ "hasCosmetic"(): boolean
  "copyModifiers"(arg0: $ICurioStacksHandler$$Type): void
  "getSyncTag"(): $CompoundTag
  "applySyncTag"(arg0: $CompoundTag$$Type): void
@@ -1786,22 +1779,29 @@ export interface $ICurioStacksHandler {
  * @deprecated
  */
  "getSizeShift"(): integer
- "hasCosmetic"(): boolean
- "getModifiersByOperation"(arg0: $AttributeModifier$Operation$$Type): $Collection<($AttributeModifier)>
+ "getDropRule"(): $ICurio$DropRule
+ "clearModifiers"(): void
+ "addPermanentModifier"(arg0: $AttributeModifier$$Type): void
+ "addTransientModifier"(arg0: $AttributeModifier$$Type): void
+ "getCosmeticStacks"(): $IDynamicStackHandler
+ "getActiveStates"(): $NonNullList<(boolean)>
+ "updateActiveState"(arg0: integer): void
+ "canToggleRendering"(): boolean
  "getPermanentModifiers"(): $Set<($AttributeModifier)>
  "getCachedModifiers"(): $Set<($AttributeModifier)>
  "clearCachedModifiers"(): void
-get "identifier"(): string
+ "getModifiersByOperation"(arg0: $AttributeModifier$Operation$$Type): $Collection<($AttributeModifier)>
+get "identifier"(): StringJS
 get "stacks"(): $IDynamicStackHandler
 get "modifiers"(): $Map<($ResourceLocation), ($AttributeModifier)>
-get "visible"(): boolean
 get "renders"(): $NonNullList<(boolean)>
+get "visible"(): boolean
 get "slots"(): integer
-get "activeStates"(): $NonNullList<(boolean)>
-get "cosmeticStacks"(): $IDynamicStackHandler
-get "dropRule"(): $ICurio$DropRule
 get "syncTag"(): $CompoundTag
 get "sizeShift"(): integer
+get "dropRule"(): $ICurio$DropRule
+get "cosmeticStacks"(): $IDynamicStackHandler
+get "activeStates"(): $NonNullList<(boolean)>
 get "permanentModifiers"(): $Set<($AttributeModifier)>
 get "cachedModifiers"(): $Set<($AttributeModifier)>
 }
@@ -1812,7 +1812,12 @@ const probejs$$marker: never
 export class $ICurioStacksHandler$$Static implements $ICurioStacksHandler {
 
 
- "getIdentifier"(): string
+/**
+ * 
+ * @deprecated
+ */
+ "grow"(arg0: integer): void
+ "getIdentifier"(): StringJS
  "getStacks"(): $IDynamicStackHandler
  "getModifiers"(): $Map<($ResourceLocation), ($AttributeModifier)>
  "update"(): void
@@ -1820,26 +1825,14 @@ export class $ICurioStacksHandler$$Static implements $ICurioStacksHandler {
  * 
  * @deprecated
  */
- "grow"(arg0: integer): void
- "updateActiveState"(arg0: integer): void
- "canToggleRendering"(): boolean
- "clearModifiers"(): void
- "removeModifier"(arg0: $ResourceLocation$$Type): void
- "isVisible"(): boolean
+ "shrink"(arg0: integer): void
  "deserializeNBT"(arg0: $CompoundTag$$Type): void
  "serializeNBT"(): $CompoundTag
  "getRenders"(): $NonNullList<(boolean)>
+ "removeModifier"(arg0: $ResourceLocation$$Type): void
+ "isVisible"(): boolean
  "getSlots"(): integer
-/**
- * 
- * @deprecated
- */
- "shrink"(arg0: integer): void
- "getActiveStates"(): $NonNullList<(boolean)>
- "getCosmeticStacks"(): $IDynamicStackHandler
- "addTransientModifier"(arg0: $AttributeModifier$$Type): void
- "addPermanentModifier"(arg0: $AttributeModifier$$Type): void
- "getDropRule"(): $ICurio$DropRule
+ "hasCosmetic"(): boolean
  "copyModifiers"(arg0: $ICurioStacksHandler$$Type): void
  "getSyncTag"(): $CompoundTag
  "applySyncTag"(arg0: $CompoundTag$$Type): void
@@ -1848,11 +1841,18 @@ export class $ICurioStacksHandler$$Static implements $ICurioStacksHandler {
  * @deprecated
  */
  "getSizeShift"(): integer
- "hasCosmetic"(): boolean
- "getModifiersByOperation"(arg0: $AttributeModifier$Operation$$Type): $Collection<($AttributeModifier)>
+ "getDropRule"(): $ICurio$DropRule
+ "clearModifiers"(): void
+ "addPermanentModifier"(arg0: $AttributeModifier$$Type): void
+ "addTransientModifier"(arg0: $AttributeModifier$$Type): void
+ "getCosmeticStacks"(): $IDynamicStackHandler
+ "getActiveStates"(): $NonNullList<(boolean)>
+ "updateActiveState"(arg0: integer): void
+ "canToggleRendering"(): boolean
  "getPermanentModifiers"(): $Set<($AttributeModifier)>
  "getCachedModifiers"(): $Set<($AttributeModifier)>
  "clearCachedModifiers"(): void
+ "getModifiersByOperation"(arg0: $AttributeModifier$Operation$$Type): $Collection<($AttributeModifier)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1904,8 +1904,8 @@ export class $RegisterCuriosExtensionsEvent extends $Event implements $IModBusEv
 
 constructor()
 
-public "isSlotExtensionRegistered"(arg0: string): boolean
-public "registerSlotExtension"(arg0: $ICurioSlotExtension$$Type, ...arg1: (string)[]): void
+public "registerSlotExtension"(arg0: $ICurioSlotExtension$$Type, ...arg1: (StringJS)[]): void
+public "isSlotExtensionRegistered"(arg0: StringJS): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1928,41 +1928,41 @@ import {$Set, $Set$$Type} from "java.util.Set"
 
 export interface $ISlotType extends $Comparable<($ISlotType)> {
 
- "getIdentifier"(): string
- "getOrder"(): integer
-/**
- * 
- * @deprecated
- */
- "getPriority"(): integer
- "getSize"(): integer
 /**
  * 
  * @deprecated
  */
  "isLocked"(): boolean
- "canToggleRendering"(): boolean
- "writeNbt"(): $CompoundTag
+ "getIdentifier"(): StringJS
+ "getOrder"(): integer
+ "getSize"(): integer
+/**
+ * 
+ * @deprecated
+ */
+ "getPriority"(): integer
 /**
  * 
  * @deprecated
  */
  "isVisible"(): boolean
+ "writeNbt"(): $CompoundTag
  "getIcon"(): $ResourceLocation
- "getDropRule"(): $ICurio$DropRule
  "useNativeGui"(): boolean
- "hasCosmetic"(): boolean
  "getValidators"(): $Set<($ResourceLocation)>
+ "hasCosmetic"(): boolean
+ "getDropRule"(): $ICurio$DropRule
+ "canToggleRendering"(): boolean
  "compareTo"(arg0: $ISlotType$$Type): integer
-get "identifier"(): string
-get "order"(): integer
-get "priority"(): integer
-get "size"(): integer
 get "locked"(): boolean
+get "identifier"(): StringJS
+get "order"(): integer
+get "size"(): integer
+get "priority"(): integer
 get "visible"(): boolean
 get "icon"(): $ResourceLocation
-get "dropRule"(): $ICurio$DropRule
 get "validators"(): $Set<($ResourceLocation)>
+get "dropRule"(): $ICurio$DropRule
 }
 
 export namespace $ISlotType {
@@ -1971,31 +1971,31 @@ const probejs$$marker: never
 export class $ISlotType$$Static implements $ISlotType {
 
 
- "getIdentifier"(): string
- "getOrder"(): integer
-/**
- * 
- * @deprecated
- */
- "getPriority"(): integer
- "getSize"(): integer
 /**
  * 
  * @deprecated
  */
  "isLocked"(): boolean
- "canToggleRendering"(): boolean
- "writeNbt"(): $CompoundTag
+ "getIdentifier"(): StringJS
+ "getOrder"(): integer
+ "getSize"(): integer
+/**
+ * 
+ * @deprecated
+ */
+ "getPriority"(): integer
 /**
  * 
  * @deprecated
  */
  "isVisible"(): boolean
+ "writeNbt"(): $CompoundTag
  "getIcon"(): $ResourceLocation
- "getDropRule"(): $ICurio$DropRule
  "useNativeGui"(): boolean
- "hasCosmetic"(): boolean
  "getValidators"(): $Set<($ResourceLocation)>
+ "hasCosmetic"(): boolean
+ "getDropRule"(): $ICurio$DropRule
+ "canToggleRendering"(): boolean
  "compareTo"(arg0: $ISlotType$$Type): integer
 }
 /**
@@ -2021,7 +2021,7 @@ static readonly "DEFAULT": $ICurio$DropRule
 
 
 public static "values"(): ($ICurio$DropRule)[]
-public static "valueOf"(arg0: string): $ICurio$DropRule
+public static "valueOf"(arg0: StringJS): $ICurio$DropRule
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

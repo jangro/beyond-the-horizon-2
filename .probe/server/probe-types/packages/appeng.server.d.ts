@@ -1,7 +1,7 @@
 declare module "appeng.server.testplots.KitOutPlayerEvent" {
 import {$PlayerEvent, $PlayerEvent$$Type} from "net.neoforged.neoforge.event.entity.player.PlayerEvent"
-import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
+import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 
 export class $KitOutPlayerEvent extends $PlayerEvent {
 
@@ -35,11 +35,11 @@ export class $SpawnExtraGridTestTools extends $Event {
 constructor(arg0: $ResourceLocation$$Type, arg1: $InternalInventory$$Type, arg2: $IGrid$$Type)
 
 public "getInventory"(): $InternalInventory
-public "getGrid"(): $IGrid
 public "getPlotId"(): $ResourceLocation
+public "getGrid"(): $IGrid
 get "inventory"(): $InternalInventory
-get "grid"(): $IGrid
 get "plotId"(): $ResourceLocation
+get "grid"(): $IGrid
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

@@ -7,9 +7,9 @@ export {} // Mark the file as a module, do not remove unless there are other imp
  */
 export interface $TypeDescriptor {
 
- "descriptorString"(): string
+ "descriptorString"(): StringJS
 
-(): string
+(): StringJS
 }
 
 export namespace $TypeDescriptor {
@@ -18,13 +18,13 @@ const probejs$$marker: never
 export class $TypeDescriptor$$Static implements $TypeDescriptor {
 
 
- "descriptorString"(): string
+ "descriptorString"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $TypeDescriptor$$Type = (() => string);
+export type $TypeDescriptor$$Type = (() => StringJS);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -43,7 +43,7 @@ import {$Class, $Class$$Type} from "java.lang.Class"
 export interface $Annotation {
 
  "equals"(arg0: any): boolean
- "toString"(): string
+ "toString"(): StringJS
  "hashCode"(): integer
  "annotationType"(): $Class<($Annotation)>
 }
@@ -55,7 +55,7 @@ export class $Annotation$$Static implements $Annotation {
 
 
  "equals"(arg0: any): boolean
- "toString"(): string
+ "toString"(): StringJS
  "hashCode"(): integer
  "annotationType"(): $Class<($Annotation)>
 }
@@ -75,8 +75,8 @@ declare module "java.lang.constant.DirectMethodHandleDesc" {
 import {$MethodHandles$Lookup, $MethodHandles$Lookup$$Type} from "java.lang.invoke.MethodHandles$Lookup"
 import {$DirectMethodHandleDesc$Kind, $DirectMethodHandleDesc$Kind$$Type} from "java.lang.constant.DirectMethodHandleDesc$Kind"
 import {$MethodHandleDesc, $MethodHandleDesc$$Type} from "java.lang.constant.MethodHandleDesc"
-import {$MethodTypeDesc, $MethodTypeDesc$$Type} from "java.lang.constant.MethodTypeDesc"
 import {$ClassDesc, $ClassDesc$$Type} from "java.lang.constant.ClassDesc"
+import {$MethodTypeDesc, $MethodTypeDesc$$Type} from "java.lang.constant.MethodTypeDesc"
 
 /**
  * This class is not allowed By KubeJS!
@@ -85,43 +85,43 @@ import {$ClassDesc, $ClassDesc$$Type} from "java.lang.constant.ClassDesc"
  */
 export interface $DirectMethodHandleDesc extends $MethodHandleDesc {
 
- "lookupDescriptor"(): string
- "isOwnerInterface"(): boolean
- "methodName"(): string
+ "refKind"(): integer
+ "methodName"(): StringJS
  "kind"(): $DirectMethodHandleDesc$Kind
  "owner"(): $ClassDesc
- "refKind"(): integer
+ "lookupDescriptor"(): StringJS
+ "isOwnerInterface"(): boolean
+ "invocationType"(): $MethodTypeDesc
+ "asType"(arg0: $MethodTypeDesc$$Type): $MethodHandleDesc
  "equals"(arg0: any): boolean
  "resolveConstantDesc"(arg0: $MethodHandles$Lookup$$Type): any
- "asType"(arg0: $MethodTypeDesc$$Type): $MethodHandleDesc
- "invocationType"(): $MethodTypeDesc
 get "ownerInterface"(): boolean
 }
 
 export namespace $DirectMethodHandleDesc {
+function ofField(arg0: $DirectMethodHandleDesc$Kind$$Type, arg1: $ClassDesc$$Type, arg2: StringJS, arg3: $ClassDesc$$Type): $DirectMethodHandleDesc
+function ofMethod(arg0: $DirectMethodHandleDesc$Kind$$Type, arg1: $ClassDesc$$Type, arg2: StringJS, arg3: $MethodTypeDesc$$Type): $DirectMethodHandleDesc
+function of(arg0: $DirectMethodHandleDesc$Kind$$Type, arg1: $ClassDesc$$Type, arg2: StringJS, arg3: StringJS): $DirectMethodHandleDesc
 function ofConstructor(arg0: $ClassDesc$$Type, ...arg1: ($ClassDesc$$Type)[]): $DirectMethodHandleDesc
-function of(arg0: $DirectMethodHandleDesc$Kind$$Type, arg1: $ClassDesc$$Type, arg2: string, arg3: string): $DirectMethodHandleDesc
-function ofField(arg0: $DirectMethodHandleDesc$Kind$$Type, arg1: $ClassDesc$$Type, arg2: string, arg3: $ClassDesc$$Type): $DirectMethodHandleDesc
-function ofMethod(arg0: $DirectMethodHandleDesc$Kind$$Type, arg1: $ClassDesc$$Type, arg2: string, arg3: $MethodTypeDesc$$Type): $DirectMethodHandleDesc
 const probejs$$marker: never
 }
 export class $DirectMethodHandleDesc$$Static implements $DirectMethodHandleDesc {
 
 
- "lookupDescriptor"(): string
- "isOwnerInterface"(): boolean
- "methodName"(): string
+ "refKind"(): integer
+ "methodName"(): StringJS
  "kind"(): $DirectMethodHandleDesc$Kind
  "owner"(): $ClassDesc
- "refKind"(): integer
-static "ofConstructor"(arg0: $ClassDesc$$Type, ...arg1: ($ClassDesc$$Type)[]): $DirectMethodHandleDesc
- "equals"(arg0: any): boolean
-static "of"(arg0: $DirectMethodHandleDesc$Kind$$Type, arg1: $ClassDesc$$Type, arg2: string, arg3: string): $DirectMethodHandleDesc
- "resolveConstantDesc"(arg0: $MethodHandles$Lookup$$Type): any
- "asType"(arg0: $MethodTypeDesc$$Type): $MethodHandleDesc
-static "ofField"(arg0: $DirectMethodHandleDesc$Kind$$Type, arg1: $ClassDesc$$Type, arg2: string, arg3: $ClassDesc$$Type): $DirectMethodHandleDesc
-static "ofMethod"(arg0: $DirectMethodHandleDesc$Kind$$Type, arg1: $ClassDesc$$Type, arg2: string, arg3: $MethodTypeDesc$$Type): $DirectMethodHandleDesc
+ "lookupDescriptor"(): StringJS
+ "isOwnerInterface"(): boolean
  "invocationType"(): $MethodTypeDesc
+ "asType"(arg0: $MethodTypeDesc$$Type): $MethodHandleDesc
+static "ofField"(arg0: $DirectMethodHandleDesc$Kind$$Type, arg1: $ClassDesc$$Type, arg2: StringJS, arg3: $ClassDesc$$Type): $DirectMethodHandleDesc
+static "ofMethod"(arg0: $DirectMethodHandleDesc$Kind$$Type, arg1: $ClassDesc$$Type, arg2: StringJS, arg3: $MethodTypeDesc$$Type): $DirectMethodHandleDesc
+ "equals"(arg0: any): boolean
+static "of"(arg0: $DirectMethodHandleDesc$Kind$$Type, arg1: $ClassDesc$$Type, arg2: StringJS, arg3: StringJS): $DirectMethodHandleDesc
+ "resolveConstantDesc"(arg0: $MethodHandles$Lookup$$Type): any
+static "ofConstructor"(arg0: $ClassDesc$$Type, ...arg1: ($ClassDesc$$Type)[]): $DirectMethodHandleDesc
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -151,15 +151,15 @@ import {$Set, $Set$$Type} from "java.util.Set"
 export class $Configuration {
 
 
-public "toString"(): string
+public "resolveAndBind"(arg0: $ModuleFinder$$Type, arg1: $ModuleFinder$$Type, arg2: $Collection$$Type<(StringJS)>): $Configuration
+public static "resolveAndBind"(arg0: $ModuleFinder$$Type, arg1: $List$$Type<($Configuration$$Type)>, arg2: $ModuleFinder$$Type, arg3: $Collection$$Type<(StringJS)>): $Configuration
+public "toString"(): StringJS
 public static "empty"(): $Configuration
-public "resolve"(arg0: $ModuleFinder$$Type, arg1: $ModuleFinder$$Type, arg2: $Collection$$Type<(string)>): $Configuration
-public static "resolve"(arg0: $ModuleFinder$$Type, arg1: $List$$Type<($Configuration$$Type)>, arg2: $ModuleFinder$$Type, arg3: $Collection$$Type<(string)>): $Configuration
+public "resolve"(arg0: $ModuleFinder$$Type, arg1: $ModuleFinder$$Type, arg2: $Collection$$Type<(StringJS)>): $Configuration
+public static "resolve"(arg0: $ModuleFinder$$Type, arg1: $List$$Type<($Configuration$$Type)>, arg2: $ModuleFinder$$Type, arg3: $Collection$$Type<(StringJS)>): $Configuration
 public "modules"(): $Set<($ResolvedModule)>
 public "parents"(): $List<($Configuration)>
-public "findModule"(arg0: string): $Optional<($ResolvedModule)>
-public static "resolveAndBind"(arg0: $ModuleFinder$$Type, arg1: $List$$Type<($Configuration$$Type)>, arg2: $ModuleFinder$$Type, arg3: $Collection$$Type<(string)>): $Configuration
-public "resolveAndBind"(arg0: $ModuleFinder$$Type, arg1: $ModuleFinder$$Type, arg2: $Collection$$Type<(string)>): $Configuration
+public "findModule"(arg0: StringJS): $Optional<($ResolvedModule)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -189,17 +189,24 @@ import {$Class, $Class$$Type} from "java.lang.Class"
 export class $Method extends $Executable {
 
 
+public "getGenericExceptionTypes"(): ($Type)[]
+public "isDefault"(): boolean
+public "getGenericReturnType"(): $Type
+public "getExceptionTypes"(): ($Class<(any)>)[]
+public "isBridge"(): boolean
+public "getDefaultValue"(): any
+public "getAnnotatedReturnType"(): $AnnotatedType
 public "invoke"(arg0: any, ...arg1: (any)[]): any
-public "getName"(): string
+public "getName"(): StringJS
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "getModifiers"(): integer
 public "getTypeParameters"(): ($TypeVariable<($Method)>)[]
 public "getReturnType"(): $Class<(any)>
 public "getParameterTypes"(): ($Class<(any)>)[]
 public "isSynthetic"(): boolean
-public "toGenericString"(): string
+public "toGenericString"(): StringJS
 public "getDeclaringClass"(): $Class<(any)>
 public "getAnnotation"<T extends $Annotation>(arg0: $Class$$Type<(T)>): T
 public "getDeclaredAnnotations"(): ($Annotation)[]
@@ -208,14 +215,14 @@ public "isVarArgs"(): boolean
 public "getParameterCount"(): integer
 public "getParameterAnnotations"(): (($Annotation)[])[]
 public "getGenericParameterTypes"(): ($Type)[]
-public "getGenericExceptionTypes"(): ($Type)[]
-public "isDefault"(): boolean
-public "getGenericReturnType"(): $Type
-public "getExceptionTypes"(): ($Class<(any)>)[]
-public "isBridge"(): boolean
-public "getDefaultValue"(): any
-public "getAnnotatedReturnType"(): $AnnotatedType
-get "name"(): string
+get "genericExceptionTypes"(): ($Type)[]
+get "default"(): boolean
+get "genericReturnType"(): $Type
+get "exceptionTypes"(): ($Class<(any)>)[]
+get "bridge"(): boolean
+get "defaultValue"(): any
+get "annotatedReturnType"(): $AnnotatedType
+get "name"(): StringJS
 get "modifiers"(): integer
 get "typeParameters"(): ($TypeVariable<($Method)>)[]
 get "returnType"(): $Class<(any)>
@@ -228,13 +235,6 @@ get "varArgs"(): boolean
 get "parameterCount"(): integer
 get "parameterAnnotations"(): (($Annotation)[])[]
 get "genericParameterTypes"(): ($Type)[]
-get "genericExceptionTypes"(): ($Type)[]
-get "default"(): boolean
-get "genericReturnType"(): $Type
-get "exceptionTypes"(): ($Class<(any)>)[]
-get "bridge"(): boolean
-get "defaultValue"(): any
-get "annotatedReturnType"(): $AnnotatedType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -267,43 +267,43 @@ import {$TypeDescriptor$OfMethod, $TypeDescriptor$OfMethod$$Type} from "java.lan
 export class $MethodType implements $Constable, $TypeDescriptor$OfMethod<($Class<(any)>), ($MethodType)>, $Serializable {
 
 
-public "returnType"(): $Class<(any)>
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "wrap"(): $MethodType
-public "describeConstable"(): $Optional<($MethodTypeDesc)>
-public "descriptorString"(): string
-public "parameterType"(arg0: integer): $Class<(any)>
+public "parameterList"(): $List<($Class<(any)>)>
+public "erase"(): $MethodType
+public "toMethodDescriptorString"(): StringJS
+public "hasPrimitives"(): boolean
+public "unwrap"(): $MethodType
+public "parameterArray"(): ($TypeDescriptor$OfField<(any)>)[]
+public "changeParameterType"(arg0: integer, arg1: $TypeDescriptor$OfField$$Type<(any)>): $TypeDescriptor$OfMethod<(any), (any)>
+public "changeParameterType"(arg0: integer, arg1: $Class$$Type<(any)>): $MethodType
+public "hasWrappers"(): boolean
+public "generic"(): $MethodType
+public static "fromMethodDescriptorString"(arg0: StringJS, arg1: $ClassLoader$$Type): $MethodType
 public "insertParameterTypes"(arg0: integer, arg1: $List$$Type<($Class$$Type<(any)>)>): $MethodType
 public "insertParameterTypes"(arg0: integer, arg1: ($TypeDescriptor$OfField$$Type<(any)>)[]): $TypeDescriptor$OfMethod<(any), (any)>
 public "insertParameterTypes"(arg0: integer, ...arg1: ($Class$$Type<(any)>)[]): $MethodType
-public "changeReturnType"(arg0: $TypeDescriptor$OfField$$Type<(any)>): $TypeDescriptor$OfMethod<(any), (any)>
 public "changeReturnType"(arg0: $Class$$Type<(any)>): $MethodType
+public "changeReturnType"(arg0: $TypeDescriptor$OfField$$Type<(any)>): $TypeDescriptor$OfMethod<(any), (any)>
+public static "methodType"(arg0: $Class$$Type<(any)>): $MethodType
+public static "methodType"(arg0: $Class$$Type<(any)>, arg1: $List$$Type<($Class$$Type<(any)>)>): $MethodType
 public static "methodType"(arg0: $Class$$Type<(any)>, arg1: $Class$$Type<(any)>, ...arg2: ($Class$$Type<(any)>)[]): $MethodType
 public static "methodType"(arg0: $Class$$Type<(any)>, arg1: $Class$$Type<(any)>): $MethodType
-public static "methodType"(arg0: $Class$$Type<(any)>): $MethodType
-public static "methodType"(arg0: $Class$$Type<(any)>, arg1: ($Class$$Type<(any)>)[]): $MethodType
-public static "methodType"(arg0: $Class$$Type<(any)>, arg1: $List$$Type<($Class$$Type<(any)>)>): $MethodType
 public static "methodType"(arg0: $Class$$Type<(any)>, arg1: $MethodType$$Type): $MethodType
-public "dropParameterTypes"(arg0: integer, arg1: integer): $TypeDescriptor$OfMethod<(any), (any)>
+public static "methodType"(arg0: $Class$$Type<(any)>, arg1: ($Class$$Type<(any)>)[]): $MethodType
+public "dropParameterTypes"(arg0: integer, arg1: integer): $MethodType
 public "appendParameterTypes"(arg0: $List$$Type<($Class$$Type<(any)>)>): $MethodType
 public "appendParameterTypes"(...arg0: ($Class$$Type<(any)>)[]): $MethodType
 public "parameterCount"(): integer
-public static "genericMethodType"(arg0: integer): $MethodType
 public static "genericMethodType"(arg0: integer, arg1: boolean): $MethodType
+public static "genericMethodType"(arg0: integer): $MethodType
 public "lastParameterType"(): $Class<(any)>
-public "parameterList"(): $List<($Class<(any)>)>
-public "erase"(): $MethodType
-public "toMethodDescriptorString"(): string
-public "hasPrimitives"(): boolean
-public "unwrap"(): $MethodType
-public "parameterArray"(): ($Class<(any)>)[]
-public "changeParameterType"(arg0: integer, arg1: $Class$$Type<(any)>): $MethodType
-public "changeParameterType"(arg0: integer, arg1: $TypeDescriptor$OfField$$Type<(any)>): $TypeDescriptor$OfMethod<(any), (any)>
-public "hasWrappers"(): boolean
-public "generic"(): $MethodType
-public static "fromMethodDescriptorString"(arg0: string, arg1: $ClassLoader$$Type): $MethodType
+public "parameterType"(arg0: integer): $TypeDescriptor$OfField<(any)>
+public "returnType"(): $Class<(any)>
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+public "wrap"(): $MethodType
+public "describeConstable"(): $Optional<($MethodTypeDesc)>
+public "descriptorString"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -329,13 +329,13 @@ import {$List, $List$$Type} from "java.util.List"
 export class $ModuleDescriptor$Provides implements $Comparable<($ModuleDescriptor$Provides)> {
 
 
+public "providers"(): $List<(StringJS)>
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "compareTo"(arg0: any): integer
 public "compareTo"(arg0: $ModuleDescriptor$Provides$$Type): integer
-public "service"(): string
-public "providers"(): $List<(string)>
+public "service"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -365,16 +365,16 @@ import {$AccessFlag, $AccessFlag$$Type} from "java.lang.reflect.AccessFlag"
 export class $ModuleDescriptor$Requires implements $Comparable<($ModuleDescriptor$Requires)> {
 
 
+public "compiledVersion"(): $Optional<($ModuleDescriptor$Version)>
+public "rawCompiledVersion"(): $Optional<(StringJS)>
 public "modifiers"(): $Set<($ModuleDescriptor$Requires$Modifier)>
-public "name"(): string
+public "name"(): StringJS
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "compareTo"(arg0: $ModuleDescriptor$Requires$$Type): integer
 public "compareTo"(arg0: any): integer
 public "accessFlags"(): $Set<($AccessFlag)>
-public "rawCompiledVersion"(): $Optional<(string)>
-public "compiledVersion"(): $Optional<($ModuleDescriptor$Version)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -401,64 +401,10 @@ static readonly "PI": double
 static readonly "TAU": double
 
 
-public static "abs"(arg0: double): double
-public static "abs"(arg0: float): float
-public static "abs"(arg0: long): long
-public static "abs"(arg0: integer): integer
-public static "sin"(arg0: double): double
-public static "cos"(arg0: double): double
-public static "tan"(arg0: double): double
-public static "atan2"(arg0: double, arg1: double): double
-public static "sqrt"(arg0: double): double
-public static "log"(arg0: double): double
-public static "log10"(arg0: double): double
-public static "pow"(arg0: double, arg1: double): double
-public static "exp"(arg0: double): double
-public static "min"(arg0: double, arg1: double): double
-public static "min"(arg0: float, arg1: float): float
-public static "min"(arg0: long, arg1: long): long
-public static "min"(arg0: integer, arg1: integer): integer
-public static "max"(arg0: double, arg1: double): double
-public static "max"(arg0: float, arg1: float): float
-public static "max"(arg0: long, arg1: long): long
-public static "max"(arg0: integer, arg1: integer): integer
-public static "floor"(arg0: double): double
-public static "ceil"(arg0: double): double
-public static "rint"(arg0: double): double
-public static "round"(arg0: float): integer
-public static "round"(arg0: double): long
-public static "addExact"(arg0: long, arg1: long): long
-public static "addExact"(arg0: integer, arg1: integer): integer
-public static "decrementExact"(arg0: integer): integer
-public static "decrementExact"(arg0: long): long
-public static "incrementExact"(arg0: long): long
-public static "incrementExact"(arg0: integer): integer
-public static "multiplyExact"(arg0: long, arg1: long): long
-public static "multiplyExact"(arg0: long, arg1: integer): long
-public static "multiplyExact"(arg0: integer, arg1: integer): integer
-public static "multiplyHigh"(arg0: long, arg1: long): long
-public static "unsignedMultiplyHigh"(arg0: long, arg1: long): long
-public static "negateExact"(arg0: integer): integer
-public static "negateExact"(arg0: long): long
-public static "subtractExact"(arg0: long, arg1: long): long
-public static "subtractExact"(arg0: integer, arg1: integer): integer
-public static "fma"(arg0: double, arg1: double, arg2: double): double
-public static "fma"(arg0: float, arg1: float, arg2: float): float
-public static "copySign"(arg0: double, arg1: double): double
-public static "copySign"(arg0: float, arg1: float): float
-public static "signum"(arg0: double): double
-public static "signum"(arg0: float): float
-public static "clamp"(arg0: float, arg1: float, arg2: float): float
-public static "clamp"(arg0: long, arg1: long, arg2: long): long
-public static "clamp"(arg0: double, arg1: double, arg2: double): double
-public static "clamp"(arg0: long, arg1: integer, arg2: integer): integer
-public static "scalb"(arg0: float, arg1: integer): float
 public static "scalb"(arg0: double, arg1: integer): double
+public static "scalb"(arg0: float, arg1: integer): float
 public static "getExponent"(arg0: double): integer
 public static "getExponent"(arg0: float): integer
-public static "floorMod"(arg0: integer, arg1: integer): integer
-public static "floorMod"(arg0: long, arg1: integer): integer
-public static "floorMod"(arg0: long, arg1: long): long
 public static "asin"(arg0: double): double
 public static "acos"(arg0: double): double
 public static "atan"(arg0: double): double
@@ -470,8 +416,8 @@ public static "floorDiv"(arg0: integer, arg1: integer): integer
 public static "ceilDiv"(arg0: long, arg1: long): long
 public static "ceilDiv"(arg0: long, arg1: integer): long
 public static "ceilDiv"(arg0: integer, arg1: integer): integer
-public static "ceilMod"(arg0: long, arg1: long): long
 public static "ceilMod"(arg0: long, arg1: integer): integer
+public static "ceilMod"(arg0: long, arg1: long): long
 public static "ceilMod"(arg0: integer, arg1: integer): integer
 public static "sinh"(arg0: double): double
 public static "cosh"(arg0: double): double
@@ -482,12 +428,12 @@ public static "log1p"(arg0: double): double
 public static "toRadians"(arg0: double): double
 public static "toDegrees"(arg0: double): double
 public static "random"(): double
-public static "divideExact"(arg0: integer, arg1: integer): integer
 public static "divideExact"(arg0: long, arg1: long): long
-public static "floorDivExact"(arg0: long, arg1: long): long
+public static "divideExact"(arg0: integer, arg1: integer): integer
 public static "floorDivExact"(arg0: integer, arg1: integer): integer
-public static "ceilDivExact"(arg0: long, arg1: long): long
+public static "floorDivExact"(arg0: long, arg1: long): long
 public static "ceilDivExact"(arg0: integer, arg1: integer): integer
+public static "ceilDivExact"(arg0: long, arg1: long): long
 public static "toIntExact"(arg0: long): integer
 public static "multiplyFull"(arg0: integer, arg1: integer): long
 public static "absExact"(arg0: long): long
@@ -500,6 +446,60 @@ public static "nextUp"(arg0: double): double
 public static "nextUp"(arg0: float): float
 public static "nextDown"(arg0: double): double
 public static "nextDown"(arg0: float): float
+public static "floorMod"(arg0: long, arg1: integer): integer
+public static "floorMod"(arg0: integer, arg1: integer): integer
+public static "floorMod"(arg0: long, arg1: long): long
+public static "abs"(arg0: integer): integer
+public static "abs"(arg0: long): long
+public static "abs"(arg0: float): float
+public static "abs"(arg0: double): double
+public static "sin"(arg0: double): double
+public static "cos"(arg0: double): double
+public static "tan"(arg0: double): double
+public static "atan2"(arg0: double, arg1: double): double
+public static "sqrt"(arg0: double): double
+public static "log"(arg0: double): double
+public static "log10"(arg0: double): double
+public static "pow"(arg0: double, arg1: double): double
+public static "exp"(arg0: double): double
+public static "min"(arg0: integer, arg1: integer): integer
+public static "min"(arg0: long, arg1: long): long
+public static "min"(arg0: float, arg1: float): float
+public static "min"(arg0: double, arg1: double): double
+public static "max"(arg0: integer, arg1: integer): integer
+public static "max"(arg0: long, arg1: long): long
+public static "max"(arg0: float, arg1: float): float
+public static "max"(arg0: double, arg1: double): double
+public static "floor"(arg0: double): double
+public static "ceil"(arg0: double): double
+public static "rint"(arg0: double): double
+public static "round"(arg0: double): long
+public static "round"(arg0: float): integer
+public static "addExact"(arg0: long, arg1: long): long
+public static "addExact"(arg0: integer, arg1: integer): integer
+public static "decrementExact"(arg0: integer): integer
+public static "decrementExact"(arg0: long): long
+public static "incrementExact"(arg0: long): long
+public static "incrementExact"(arg0: integer): integer
+public static "multiplyExact"(arg0: long, arg1: long): long
+public static "multiplyExact"(arg0: long, arg1: integer): long
+public static "multiplyExact"(arg0: integer, arg1: integer): integer
+public static "multiplyHigh"(arg0: long, arg1: long): long
+public static "unsignedMultiplyHigh"(arg0: long, arg1: long): long
+public static "negateExact"(arg0: long): long
+public static "negateExact"(arg0: integer): integer
+public static "subtractExact"(arg0: long, arg1: long): long
+public static "subtractExact"(arg0: integer, arg1: integer): integer
+public static "fma"(arg0: float, arg1: float, arg2: float): float
+public static "fma"(arg0: double, arg1: double, arg2: double): double
+public static "copySign"(arg0: float, arg1: float): float
+public static "copySign"(arg0: double, arg1: double): double
+public static "signum"(arg0: double): double
+public static "signum"(arg0: float): float
+public static "clamp"(arg0: long, arg1: long, arg2: long): long
+public static "clamp"(arg0: float, arg1: float, arg2: float): float
+public static "clamp"(arg0: long, arg1: integer, arg2: integer): integer
+public static "clamp"(arg0: double, arg1: double, arg2: double): double
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -526,19 +526,19 @@ import {$MethodType, $MethodType$$Type} from "java.lang.invoke.MethodType"
  */
 export interface $MethodHandleInfo {
 
- "getName"(): string
+ "reflectAs"<T extends $Member>(arg0: $Class$$Type<(T)>, arg1: $MethodHandles$Lookup$$Type): T
+ "getReferenceKind"(): integer
+ "getMethodType"(): $MethodType
+ "getName"(): StringJS
  "getModifiers"(): integer
  "getDeclaringClass"(): $Class<(any)>
  "isVarArgs"(): boolean
- "getReferenceKind"(): integer
- "getMethodType"(): $MethodType
- "reflectAs"<T extends $Member>(arg0: $Class$$Type<(T)>, arg1: $MethodHandles$Lookup$$Type): T
-get "name"(): string
+get "referenceKind"(): integer
+get "methodType"(): $MethodType
+get "name"(): StringJS
 get "modifiers"(): integer
 get "declaringClass"(): $Class<(any)>
 get "varArgs"(): boolean
-get "referenceKind"(): integer
-get "methodType"(): $MethodType
 }
 
 export namespace $MethodHandleInfo {
@@ -551,8 +551,8 @@ const REF_invokeVirtual: integer
 const REF_invokeSpecial: integer
 const REF_invokeStatic: integer
 const REF_invokeInterface: integer
-function toString(arg0: integer, arg1: $Class$$Type<(any)>, arg2: string, arg3: $MethodType$$Type): string
-function referenceKindToString(arg0: integer): string
+function referenceKindToString(arg0: integer): StringJS
+function toString(arg0: integer, arg1: $Class$$Type<(any)>, arg2: StringJS, arg3: $MethodType$$Type): StringJS
 const probejs$$marker: never
 }
 export class $MethodHandleInfo$$Static implements $MethodHandleInfo {
@@ -567,15 +567,15 @@ static readonly "REF_invokeStatic": integer
 static readonly "REF_invokeInterface": integer
 
 
- "getName"(): string
-static "toString"(arg0: integer, arg1: $Class$$Type<(any)>, arg2: string, arg3: $MethodType$$Type): string
+ "reflectAs"<T extends $Member>(arg0: $Class$$Type<(T)>, arg1: $MethodHandles$Lookup$$Type): T
+static "referenceKindToString"(arg0: integer): StringJS
+ "getReferenceKind"(): integer
+ "getMethodType"(): $MethodType
+ "getName"(): StringJS
+static "toString"(arg0: integer, arg1: $Class$$Type<(any)>, arg2: StringJS, arg3: $MethodType$$Type): StringJS
  "getModifiers"(): integer
  "getDeclaringClass"(): $Class<(any)>
  "isVarArgs"(): boolean
- "getReferenceKind"(): integer
- "getMethodType"(): $MethodType
- "reflectAs"<T extends $Member>(arg0: $Class$$Type<(T)>, arg1: $MethodHandles$Lookup$$Type): T
-static "referenceKindToString"(arg0: integer): string
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -633,8 +633,8 @@ import {$PaddingLayout, $PaddingLayout$$Type} from "java.lang.foreign.PaddingLay
 import {$UnionLayout, $UnionLayout$$Type} from "java.lang.foreign.UnionLayout"
 import {$MemoryLayout, $MemoryLayout$$Type} from "java.lang.foreign.MemoryLayout"
 import {$SequenceLayout, $SequenceLayout$$Type} from "java.lang.foreign.SequenceLayout"
-import {$ValueLayout, $ValueLayout$$Type} from "java.lang.foreign.ValueLayout"
 import {$MemoryLayout$PathElement, $MemoryLayout$PathElement$$Type} from "java.lang.foreign.MemoryLayout$PathElement"
+import {$ValueLayout, $ValueLayout$$Type} from "java.lang.foreign.ValueLayout"
 import {$VarHandle, $VarHandle$$Type} from "java.lang.invoke.VarHandle"
 import {$Class, $Class$$Type} from "java.lang.Class"
 
@@ -648,20 +648,20 @@ export interface $ValueLayout$OfFloat extends $ValueLayout {
  "withByteAlignment"(arg0: long): $MemoryLayout
  "withoutName"(): $MemoryLayout
  "withOrder"(arg0: $ByteOrder$$Type): $ValueLayout
- "withName"(arg0: string): $MemoryLayout
- "carrier"(): $Class<(any)>
+ "withName"(arg0: StringJS): $MemoryLayout
  "order"(): $ByteOrder
  "arrayElementVarHandle"(...arg0: (integer)[]): $VarHandle
+ "carrier"(): $Class<(any)>
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
  "varHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $VarHandle
  "sliceHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 
@@ -679,10 +679,17 @@ export class $ValueLayout$OfFloat$$Static implements $ValueLayout$OfFloat {
  "withByteAlignment"(arg0: long): $MemoryLayout
  "withoutName"(): $MemoryLayout
  "withOrder"(arg0: $ByteOrder$$Type): $ValueLayout
- "withName"(arg0: string): $MemoryLayout
- "carrier"(): $Class<(any)>
+ "withName"(arg0: StringJS): $MemoryLayout
  "order"(): $ByteOrder
  "arrayElementVarHandle"(...arg0: (integer)[]): $VarHandle
+ "carrier"(): $Class<(any)>
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
 static "sequenceLayout"(arg0: long, arg1: $MemoryLayout$$Type): $SequenceLayout
 static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
@@ -691,13 +698,6 @@ static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
 static "paddingLayout"(arg0: long): $PaddingLayout
 static "structLayout"(...arg0: ($MemoryLayout$$Type)[]): $StructLayout
 static "unionLayout"(...arg0: ($MemoryLayout$$Type)[]): $UnionLayout
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 /**
@@ -716,8 +716,8 @@ declare module "java.lang.ModuleLayer" {
 import {$Configuration, $Configuration$$Type} from "java.lang.module.Configuration"
 import {$ModuleLayer$Controller, $ModuleLayer$Controller$$Type} from "java.lang.ModuleLayer$Controller"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$List, $List$$Type} from "java.util.List"
 import {$Function, $Function$$Type} from "java.util.function.Function"
+import {$List, $List$$Type} from "java.util.List"
 import {$Set, $Set$$Type} from "java.util.Set"
 import {$ClassLoader, $ClassLoader$$Type} from "java.lang.ClassLoader"
 import {$Module, $Module$$Type} from "java.lang.Module"
@@ -730,20 +730,20 @@ import {$Module, $Module$$Type} from "java.lang.Module"
 export class $ModuleLayer {
 
 
-public "toString"(): string
+public static "defineModulesWithOneLoader"(arg0: $Configuration$$Type, arg1: $List$$Type<($ModuleLayer$$Type)>, arg2: $ClassLoader$$Type): $ModuleLayer$Controller
+public "defineModulesWithOneLoader"(arg0: $Configuration$$Type, arg1: $ClassLoader$$Type): $ModuleLayer
+public static "defineModulesWithManyLoaders"(arg0: $Configuration$$Type, arg1: $List$$Type<($ModuleLayer$$Type)>, arg2: $ClassLoader$$Type): $ModuleLayer$Controller
+public "defineModulesWithManyLoaders"(arg0: $Configuration$$Type, arg1: $ClassLoader$$Type): $ModuleLayer
+public "findLoader"(arg0: StringJS): $ClassLoader
+public "toString"(): StringJS
 public static "empty"(): $ModuleLayer
 public static "boot"(): $ModuleLayer
 public "modules"(): $Set<($Module)>
 public "configuration"(): $Configuration
 public "parents"(): $List<($ModuleLayer)>
-public "findModule"(arg0: string): $Optional<($Module)>
-public "defineModules"(arg0: $Configuration$$Type, arg1: $Function$$Type<(string), ($ClassLoader$$Type)>): $ModuleLayer
-public static "defineModules"(arg0: $Configuration$$Type, arg1: $List$$Type<($ModuleLayer$$Type)>, arg2: $Function$$Type<(string), ($ClassLoader$$Type)>): $ModuleLayer$Controller
-public static "defineModulesWithOneLoader"(arg0: $Configuration$$Type, arg1: $List$$Type<($ModuleLayer$$Type)>, arg2: $ClassLoader$$Type): $ModuleLayer$Controller
-public "defineModulesWithOneLoader"(arg0: $Configuration$$Type, arg1: $ClassLoader$$Type): $ModuleLayer
-public static "defineModulesWithManyLoaders"(arg0: $Configuration$$Type, arg1: $List$$Type<($ModuleLayer$$Type)>, arg2: $ClassLoader$$Type): $ModuleLayer$Controller
-public "defineModulesWithManyLoaders"(arg0: $Configuration$$Type, arg1: $ClassLoader$$Type): $ModuleLayer
-public "findLoader"(arg0: string): $ClassLoader
+public "findModule"(arg0: StringJS): $Optional<($Module)>
+public static "defineModules"(arg0: $Configuration$$Type, arg1: $List$$Type<($ModuleLayer$$Type)>, arg2: $Function$$Type<(StringJS), ($ClassLoader$$Type)>): $ModuleLayer$Controller
+public "defineModules"(arg0: $Configuration$$Type, arg1: $Function$$Type<(StringJS), ($ClassLoader$$Type)>): $ModuleLayer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -761,8 +761,8 @@ declare module "java.lang.reflect.Field" {
 import {$Member, $Member$$Type} from "java.lang.reflect.Member"
 import {$Annotation, $Annotation$$Type} from "java.lang.annotation.Annotation"
 import {$AnnotatedType, $AnnotatedType$$Type} from "java.lang.reflect.AnnotatedType"
-import {$Type, $Type$$Type} from "java.lang.reflect.Type"
 import {$AccessibleObject, $AccessibleObject$$Type} from "java.lang.reflect.AccessibleObject"
+import {$Type, $Type$$Type} from "java.lang.reflect.Type"
 import {$Set, $Set$$Type} from "java.util.Set"
 import {$Class, $Class$$Type} from "java.lang.Class"
 import {$AccessFlag, $AccessFlag$$Type} from "java.lang.reflect.AccessFlag"
@@ -775,10 +775,10 @@ import {$AccessFlag, $AccessFlag$$Type} from "java.lang.reflect.AccessFlag"
 export class $Field extends $AccessibleObject implements $Member {
 
 
-public "getName"(): string
+public "getName"(): StringJS
 public "get"(arg0: any): any
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "getModifiers"(): integer
 public "getBoolean"(arg0: any): boolean
@@ -790,7 +790,7 @@ public "getLong"(arg0: any): long
 public "getFloat"(arg0: any): float
 public "getDouble"(arg0: any): double
 public "isSynthetic"(): boolean
-public "toGenericString"(): string
+public "toGenericString"(): StringJS
 public "accessFlags"(): $Set<($AccessFlag)>
 public "getDeclaringClass"(): $Class<(any)>
 public "getAnnotation"<T extends $Annotation>(arg0: $Class$$Type<(T)>): T
@@ -810,7 +810,7 @@ public "setFloat"(arg0: any, arg1: float): void
 public "setDouble"(arg0: any, arg1: double): void
 public "isEnumConstant"(): boolean
 public "getAnnotatedType"(): $AnnotatedType
-get "name"(): string
+get "name"(): StringJS
 get "modifiers"(): integer
 get "synthetic"(): boolean
 get "declaringClass"(): $Class<(any)>
@@ -846,8 +846,8 @@ export class $ModuleLayer$Controller {
 
 
 public "addReads"(arg0: $Module$$Type, arg1: $Module$$Type): $ModuleLayer$Controller
-public "addExports"(arg0: $Module$$Type, arg1: string, arg2: $Module$$Type): $ModuleLayer$Controller
-public "addOpens"(arg0: $Module$$Type, arg1: string, arg2: $Module$$Type): $ModuleLayer$Controller
+public "addExports"(arg0: $Module$$Type, arg1: StringJS, arg2: $Module$$Type): $ModuleLayer$Controller
+public "addOpens"(arg0: $Module$$Type, arg1: StringJS, arg2: $Module$$Type): $ModuleLayer$Controller
 public "layer"(): $ModuleLayer
 public "enableNativeAccess"(arg0: $Module$$Type): $ModuleLayer$Controller
 }
@@ -879,54 +879,54 @@ import {$TypeDescriptor$OfMethod, $TypeDescriptor$OfMethod$$Type} from "java.lan
  */
 export interface $MethodTypeDesc extends $ConstantDesc, $TypeDescriptor$OfMethod<($ClassDesc), ($MethodTypeDesc)> {
 
- "displayDescriptor"(): string
- "returnType"(): $TypeDescriptor$OfField<(any)>
- "equals"(arg0: any): boolean
- "resolveConstantDesc"(arg0: $MethodHandles$Lookup$$Type): $MethodType
- "descriptorString"(): string
- "parameterType"(arg0: integer): $TypeDescriptor$OfField<(any)>
- "insertParameterTypes"(arg0: integer, ...arg1: ($ClassDesc$$Type)[]): $MethodTypeDesc
- "insertParameterTypes"(arg0: integer, arg1: ($TypeDescriptor$OfField$$Type<(any)>)[]): $TypeDescriptor$OfMethod<(any), (any)>
- "changeReturnType"(arg0: $ClassDesc$$Type): $MethodTypeDesc
- "changeReturnType"(arg0: $TypeDescriptor$OfField$$Type<(any)>): $TypeDescriptor$OfMethod<(any), (any)>
- "dropParameterTypes"(arg0: integer, arg1: integer): $TypeDescriptor$OfMethod<(any), (any)>
- "parameterCount"(): integer
  "parameterList"(): $List<($ClassDesc)>
  "parameterArray"(): ($ClassDesc)[]
  "changeParameterType"(arg0: integer, arg1: $TypeDescriptor$OfField$$Type<(any)>): $TypeDescriptor$OfMethod<(any), (any)>
  "changeParameterType"(arg0: integer, arg1: $ClassDesc$$Type): $MethodTypeDesc
+ "insertParameterTypes"(arg0: integer, arg1: ($TypeDescriptor$OfField$$Type<(any)>)[]): $TypeDescriptor$OfMethod<(any), (any)>
+ "insertParameterTypes"(arg0: integer, ...arg1: ($ClassDesc$$Type)[]): $MethodTypeDesc
+ "changeReturnType"(arg0: $ClassDesc$$Type): $MethodTypeDesc
+ "changeReturnType"(arg0: $TypeDescriptor$OfField$$Type<(any)>): $TypeDescriptor$OfMethod<(any), (any)>
+ "dropParameterTypes"(arg0: integer, arg1: integer): $MethodTypeDesc
+ "parameterCount"(): integer
+ "parameterType"(arg0: integer): $TypeDescriptor$OfField<(any)>
+ "returnType"(): $ClassDesc
+ "equals"(arg0: any): boolean
+ "resolveConstantDesc"(arg0: $MethodHandles$Lookup$$Type): $MethodType
+ "descriptorString"(): StringJS
+ "displayDescriptor"(): StringJS
 }
 
 export namespace $MethodTypeDesc {
 function of(arg0: $ClassDesc$$Type, ...arg1: ($ClassDesc$$Type)[]): $MethodTypeDesc
 function of(arg0: $ClassDesc$$Type): $MethodTypeDesc
 function of(arg0: $ClassDesc$$Type, arg1: $List$$Type<($ClassDesc$$Type)>): $MethodTypeDesc
-function ofDescriptor(arg0: string): $MethodTypeDesc
+function ofDescriptor(arg0: StringJS): $MethodTypeDesc
 const probejs$$marker: never
 }
 export class $MethodTypeDesc$$Static implements $MethodTypeDesc {
 
 
- "displayDescriptor"(): string
- "returnType"(): $TypeDescriptor$OfField<(any)>
+ "parameterList"(): $List<($ClassDesc)>
+ "parameterArray"(): ($ClassDesc)[]
+ "changeParameterType"(arg0: integer, arg1: $TypeDescriptor$OfField$$Type<(any)>): $TypeDescriptor$OfMethod<(any), (any)>
+ "changeParameterType"(arg0: integer, arg1: $ClassDesc$$Type): $MethodTypeDesc
+ "insertParameterTypes"(arg0: integer, arg1: ($TypeDescriptor$OfField$$Type<(any)>)[]): $TypeDescriptor$OfMethod<(any), (any)>
+ "insertParameterTypes"(arg0: integer, ...arg1: ($ClassDesc$$Type)[]): $MethodTypeDesc
+ "changeReturnType"(arg0: $ClassDesc$$Type): $MethodTypeDesc
+ "changeReturnType"(arg0: $TypeDescriptor$OfField$$Type<(any)>): $TypeDescriptor$OfMethod<(any), (any)>
+ "dropParameterTypes"(arg0: integer, arg1: integer): $MethodTypeDesc
+ "parameterCount"(): integer
+ "parameterType"(arg0: integer): $TypeDescriptor$OfField<(any)>
+ "returnType"(): $ClassDesc
  "equals"(arg0: any): boolean
 static "of"(arg0: $ClassDesc$$Type, ...arg1: ($ClassDesc$$Type)[]): $MethodTypeDesc
 static "of"(arg0: $ClassDesc$$Type): $MethodTypeDesc
 static "of"(arg0: $ClassDesc$$Type, arg1: $List$$Type<($ClassDesc$$Type)>): $MethodTypeDesc
  "resolveConstantDesc"(arg0: $MethodHandles$Lookup$$Type): $MethodType
- "descriptorString"(): string
-static "ofDescriptor"(arg0: string): $MethodTypeDesc
- "parameterType"(arg0: integer): $TypeDescriptor$OfField<(any)>
- "insertParameterTypes"(arg0: integer, ...arg1: ($ClassDesc$$Type)[]): $MethodTypeDesc
- "insertParameterTypes"(arg0: integer, arg1: ($TypeDescriptor$OfField$$Type<(any)>)[]): $TypeDescriptor$OfMethod<(any), (any)>
- "changeReturnType"(arg0: $ClassDesc$$Type): $MethodTypeDesc
- "changeReturnType"(arg0: $TypeDescriptor$OfField$$Type<(any)>): $TypeDescriptor$OfMethod<(any), (any)>
- "dropParameterTypes"(arg0: integer, arg1: integer): $TypeDescriptor$OfMethod<(any), (any)>
- "parameterCount"(): integer
- "parameterList"(): $List<($ClassDesc)>
- "parameterArray"(): ($ClassDesc)[]
- "changeParameterType"(arg0: integer, arg1: $TypeDescriptor$OfField$$Type<(any)>): $TypeDescriptor$OfMethod<(any), (any)>
- "changeParameterType"(arg0: integer, arg1: $ClassDesc$$Type): $MethodTypeDesc
+ "descriptorString"(): StringJS
+static "ofDescriptor"(arg0: StringJS): $MethodTypeDesc
+ "displayDescriptor"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1017,7 +1017,7 @@ static readonly "MANDATED": $ModuleDescriptor$Opens$Modifier
 
 
 public static "values"(): ($ModuleDescriptor$Opens$Modifier)[]
-public static "valueOf"(arg0: string): $ModuleDescriptor$Opens$Modifier
+public static "valueOf"(arg0: StringJS): $ModuleDescriptor$Opens$Modifier
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1030,6 +1030,66 @@ export type $ModuleDescriptor$Opens$Modifier$$Type = (("synthetic") | ("mandated
  */
 declare global {
 export type $ModuleDescriptor$Opens$Modifier_ = $ModuleDescriptor$Opens$Modifier$$Type;
+}}
+declare module "java.lang.Process" {
+import {$ProcessHandle, $ProcessHandle$$Type} from "java.lang.ProcessHandle"
+import {$BufferedWriter, $BufferedWriter$$Type} from "java.io.BufferedWriter"
+import {$ProcessHandle$Info, $ProcessHandle$Info$$Type} from "java.lang.ProcessHandle$Info"
+import {$CompletableFuture, $CompletableFuture$$Type} from "java.util.concurrent.CompletableFuture"
+import {$Charset, $Charset$$Type} from "java.nio.charset.Charset"
+import {$BufferedReader, $BufferedReader$$Type} from "java.io.BufferedReader"
+import {$OutputStream, $OutputStream$$Type} from "java.io.OutputStream"
+import {$InputStream, $InputStream$$Type} from "java.io.InputStream"
+import {$Stream, $Stream$$Type} from "java.util.stream.Stream"
+import {$TimeUnit, $TimeUnit$$Type} from "java.util.concurrent.TimeUnit"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $Process {
+
+constructor()
+
+public "getInputStream"(): $InputStream
+public "pid"(): long
+public "getErrorStream"(): $InputStream
+public "waitFor"(arg0: long, arg1: $TimeUnit$$Type): boolean
+public "waitFor"(): integer
+public "getOutputStream"(): $OutputStream
+public "children"(): $Stream<($ProcessHandle)>
+public "exitValue"(): integer
+public "toHandle"(): $ProcessHandle
+public "supportsNormalTermination"(): boolean
+public "destroyForcibly"(): $Process
+public "inputReader"(): $BufferedReader
+public "inputReader"(arg0: $Charset$$Type): $BufferedReader
+public "errorReader"(arg0: $Charset$$Type): $BufferedReader
+public "errorReader"(): $BufferedReader
+public "outputWriter"(arg0: $Charset$$Type): $BufferedWriter
+public "outputWriter"(): $BufferedWriter
+public "descendants"(): $Stream<($ProcessHandle)>
+public "info"(): $ProcessHandle$Info
+public "onExit"(): $CompletableFuture<($Process)>
+public "isAlive"(): boolean
+public "destroy"(): void
+get "inputStream"(): $InputStream
+get "errorStream"(): $InputStream
+get "outputStream"(): $OutputStream
+get "alive"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Process$$Type = ($Process);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Process_ = $Process$$Type;
 }}
 declare module "java.lang.constant.Constable" {
 import {$ConstantDesc, $ConstantDesc$$Type} from "java.lang.constant.ConstantDesc"
@@ -1083,16 +1143,16 @@ import {$Enum$EnumDesc, $Enum$EnumDesc$$Type} from "java.lang.Enum$EnumDesc"
 export class $Enum<E extends $Enum<(E)>> implements $Constable, $Comparable<(E)>, $Serializable {
 
 
-public "name"(): string
+public "ordinal"(): integer
+public "name"(): StringJS
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "compareTo"(arg0: any): integer
 public "compareTo"(arg0: E): integer
-public static "valueOf"<T extends $Enum<(T)>>(arg0: $Class$$Type<(T)>, arg1: string): T
+public "compareTo"(arg0: any): integer
+public static "valueOf"<T extends $Enum<(T)>>(arg0: $Class$$Type<(T)>, arg1: StringJS): T
 public "describeConstable"(): $Optional<($Enum$EnumDesc<(E)>)>
 public "getDeclaringClass"(): $Class<(E)>
-public "ordinal"(): integer
 get "declaringClass"(): $Class<(E)>
 }
 /**
@@ -1125,7 +1185,7 @@ static readonly "TIMED_WAITING": $Thread$State
 
 
 public static "values"(): ($Thread$State)[]
-public static "valueOf"(arg0: string): $Thread$State
+public static "valueOf"(arg0: StringJS): $Thread$State
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1155,10 +1215,10 @@ import {$Class, $Class$$Type} from "java.lang.Class"
 export interface $TypeVariable<D extends $GenericDeclaration> extends $Type, $AnnotatedElement {
 
  "getAnnotatedBounds"(): ($AnnotatedType)[]
- "getName"(): string
+ "getName"(): StringJS
  "getBounds"(): ($Type)[]
  "getGenericDeclaration"(): D
- "getTypeName"(): string
+ "getTypeName"(): StringJS
  "isAnnotationPresent"(arg0: $Class$$Type<($Annotation$$Type)>): boolean
  "getAnnotation"<T extends $Annotation>(arg0: $Class$$Type<(T)>): T
  "getAnnotationsByType"<T extends $Annotation>(arg0: $Class$$Type<(T)>): (T)[]
@@ -1167,10 +1227,10 @@ export interface $TypeVariable<D extends $GenericDeclaration> extends $Type, $An
  "getDeclaredAnnotationsByType"<T extends $Annotation>(arg0: $Class$$Type<(T)>): (T)[]
  "getDeclaredAnnotations"(): ($Annotation)[]
 get "annotatedBounds"(): ($AnnotatedType)[]
-get "name"(): string
+get "name"(): StringJS
 get "bounds"(): ($Type)[]
 get "genericDeclaration"(): D
-get "typeName"(): string
+get "typeName"(): StringJS
 get "annotations"(): ($Annotation)[]
 get "declaredAnnotations"(): ($Annotation)[]
 }
@@ -1182,10 +1242,10 @@ export class $TypeVariable$$Static<D extends $GenericDeclaration> implements $Ty
 
 
  "getAnnotatedBounds"(): ($AnnotatedType)[]
- "getName"(): string
+ "getName"(): StringJS
  "getBounds"(): ($Type)[]
  "getGenericDeclaration"(): D
- "getTypeName"(): string
+ "getTypeName"(): StringJS
  "isAnnotationPresent"(arg0: $Class$$Type<($Annotation$$Type)>): boolean
  "getAnnotation"<T extends $Annotation>(arg0: $Class$$Type<(T)>): T
  "getAnnotationsByType"<T extends $Annotation>(arg0: $Class$$Type<(T)>): (T)[]
@@ -1215,8 +1275,8 @@ import {$PaddingLayout, $PaddingLayout$$Type} from "java.lang.foreign.PaddingLay
 import {$UnionLayout, $UnionLayout$$Type} from "java.lang.foreign.UnionLayout"
 import {$MemoryLayout, $MemoryLayout$$Type} from "java.lang.foreign.MemoryLayout"
 import {$SequenceLayout, $SequenceLayout$$Type} from "java.lang.foreign.SequenceLayout"
-import {$ValueLayout, $ValueLayout$$Type} from "java.lang.foreign.ValueLayout"
 import {$MemoryLayout$PathElement, $MemoryLayout$PathElement$$Type} from "java.lang.foreign.MemoryLayout$PathElement"
+import {$ValueLayout, $ValueLayout$$Type} from "java.lang.foreign.ValueLayout"
 import {$VarHandle, $VarHandle$$Type} from "java.lang.invoke.VarHandle"
 import {$Class, $Class$$Type} from "java.lang.Class"
 
@@ -1227,26 +1287,26 @@ import {$Class, $Class$$Type} from "java.lang.Class"
  */
 export interface $AddressLayout extends $ValueLayout {
 
- "withByteAlignment"(arg0: long): $MemoryLayout
- "withoutName"(): $ValueLayout
- "withOrder"(arg0: $ByteOrder$$Type): $ValueLayout
  "withTargetLayout"(arg0: $MemoryLayout$$Type): $AddressLayout
  "targetLayout"(): $Optional<($MemoryLayout)>
  "withoutTargetLayout"(): $AddressLayout
- "withName"(arg0: string): $MemoryLayout
- "carrier"(): $Class<(any)>
+ "withByteAlignment"(arg0: long): $MemoryLayout
+ "withoutName"(): $ValueLayout
+ "withOrder"(arg0: $ByteOrder$$Type): $AddressLayout
+ "withName"(arg0: StringJS): $MemoryLayout
  "order"(): $ByteOrder
  "arrayElementVarHandle"(...arg0: (integer)[]): $VarHandle
+ "carrier"(): $Class<(any)>
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
  "varHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $VarHandle
  "sliceHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 
@@ -1261,16 +1321,23 @@ const probejs$$marker: never
 export class $AddressLayout$$Static implements $AddressLayout {
 
 
- "withByteAlignment"(arg0: long): $MemoryLayout
- "withoutName"(): $ValueLayout
- "withOrder"(arg0: $ByteOrder$$Type): $ValueLayout
  "withTargetLayout"(arg0: $MemoryLayout$$Type): $AddressLayout
  "targetLayout"(): $Optional<($MemoryLayout)>
  "withoutTargetLayout"(): $AddressLayout
- "withName"(arg0: string): $MemoryLayout
- "carrier"(): $Class<(any)>
+ "withByteAlignment"(arg0: long): $MemoryLayout
+ "withoutName"(): $ValueLayout
+ "withOrder"(arg0: $ByteOrder$$Type): $AddressLayout
+ "withName"(arg0: StringJS): $MemoryLayout
  "order"(): $ByteOrder
  "arrayElementVarHandle"(...arg0: (integer)[]): $VarHandle
+ "carrier"(): $Class<(any)>
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
 static "sequenceLayout"(arg0: long, arg1: $MemoryLayout$$Type): $SequenceLayout
 static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
@@ -1279,13 +1346,6 @@ static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
 static "paddingLayout"(arg0: long): $PaddingLayout
 static "structLayout"(...arg0: ($MemoryLayout$$Type)[]): $StructLayout
 static "unionLayout"(...arg0: ($MemoryLayout$$Type)[]): $UnionLayout
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 /**
@@ -1318,39 +1378,39 @@ import {$ClassLoader, $ClassLoader$$Type} from "java.lang.ClassLoader"
 export class $Module implements $AnnotatedElement {
 
 
-public "getName"(): string
-public "toString"(): string
+public "getName"(): StringJS
+public "toString"(): StringJS
 public "addReads"(arg0: $Module$$Type): $Module
-public "addExports"(arg0: string, arg1: $Module$$Type): $Module
-public "addOpens"(arg0: string, arg1: $Module$$Type): $Module
+public "addExports"(arg0: StringJS, arg1: $Module$$Type): $Module
+public "addOpens"(arg0: StringJS, arg1: $Module$$Type): $Module
 public "addUses"(arg0: $Class$$Type<(any)>): $Module
 public "getClassLoader"(): $ClassLoader
 public "getDescriptor"(): $ModuleDescriptor
 public "isNamed"(): boolean
-public "getResourceAsStream"(arg0: string): $InputStream
-public "isOpen"(arg0: string): boolean
-public "isOpen"(arg0: string, arg1: $Module$$Type): boolean
+public "getResourceAsStream"(arg0: StringJS): $InputStream
+public "isOpen"(arg0: StringJS): boolean
+public "isOpen"(arg0: StringJS, arg1: $Module$$Type): boolean
 public "getAnnotation"<T extends $Annotation>(arg0: $Class$$Type<(T)>): T
 public "getAnnotations"(): ($Annotation)[]
 public "getDeclaredAnnotations"(): ($Annotation)[]
-public "getPackages"(): $Set<(string)>
+public "getPackages"(): $Set<(StringJS)>
 public "isNativeAccessEnabled"(): boolean
 public "canRead"(arg0: $Module$$Type): boolean
 public "canUse"(arg0: $Class$$Type<(any)>): boolean
 public "getLayer"(): $ModuleLayer
-public "isExported"(arg0: string): boolean
-public "isExported"(arg0: string, arg1: $Module$$Type): boolean
+public "isExported"(arg0: StringJS): boolean
+public "isExported"(arg0: StringJS, arg1: $Module$$Type): boolean
 public "isAnnotationPresent"(arg0: $Class$$Type<($Annotation$$Type)>): boolean
 public "getAnnotationsByType"<T extends $Annotation>(arg0: $Class$$Type<(T)>): (T)[]
 public "getDeclaredAnnotation"<T extends $Annotation>(arg0: $Class$$Type<(T)>): T
 public "getDeclaredAnnotationsByType"<T extends $Annotation>(arg0: $Class$$Type<(T)>): (T)[]
-get "name"(): string
+get "name"(): StringJS
 get "classLoader"(): $ClassLoader
 get "descriptor"(): $ModuleDescriptor
 get "named"(): boolean
 get "annotations"(): ($Annotation)[]
 get "declaredAnnotations"(): ($Annotation)[]
-get "packages"(): $Set<(string)>
+get "packages"(): $Set<(StringJS)>
 get "nativeAccessEnabled"(): boolean
 get "layer"(): $ModuleLayer
 }
@@ -1368,8 +1428,8 @@ export type $Module_ = $Module$$Type;
 }}
 declare module "java.lang.Thread" {
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$StackTraceElement, $StackTraceElement$$Type} from "java.lang.StackTraceElement"
 import {$Thread$State, $Thread$State$$Type} from "java.lang.Thread$State"
+import {$StackTraceElement, $StackTraceElement$$Type} from "java.lang.StackTraceElement"
 import {$Thread$Builder$OfVirtual, $Thread$Builder$OfVirtual$$Type} from "java.lang.Thread$Builder$OfVirtual"
 import {$ThreadGroup, $ThreadGroup$$Type} from "java.lang.ThreadGroup"
 import {$Thread$Builder$OfPlatform, $Thread$Builder$OfPlatform$$Type} from "java.lang.Thread$Builder$OfPlatform"
@@ -1390,19 +1450,19 @@ static readonly "NORM_PRIORITY": integer
 
 constructor()
 constructor(arg0: $Runnable$$Type)
-constructor(arg0: $ThreadGroup$$Type, arg1: $Runnable$$Type, arg2: string, arg3: long, arg4: boolean)
-constructor(arg0: $ThreadGroup$$Type, arg1: $Runnable$$Type, arg2: string, arg3: long)
-constructor(arg0: $ThreadGroup$$Type, arg1: $Runnable$$Type, arg2: string)
-constructor(arg0: $Runnable$$Type, arg1: string)
+constructor(arg0: $ThreadGroup$$Type, arg1: $Runnable$$Type, arg2: StringJS, arg3: long, arg4: boolean)
+constructor(arg0: $ThreadGroup$$Type, arg1: $Runnable$$Type, arg2: StringJS, arg3: long)
+constructor(arg0: $ThreadGroup$$Type, arg1: $Runnable$$Type, arg2: StringJS)
+constructor(arg0: $Runnable$$Type, arg1: StringJS)
 constructor(arg0: $ThreadGroup$$Type, arg1: $Runnable$$Type)
-constructor(arg0: string)
-constructor(arg0: $ThreadGroup$$Type, arg1: string)
+constructor(arg0: StringJS)
+constructor(arg0: $ThreadGroup$$Type, arg1: StringJS)
 
-public "getName"(): string
+public "getName"(): StringJS
 public "getStackTrace"(): ($StackTraceElement)[]
 public "run"(): void
 public "interrupt"(): void
-public "toString"(): string
+public "toString"(): StringJS
 public static "currentThread"(): $Thread
 public static "onSpinWait"(): void
 public "isVirtual"(): boolean
@@ -1454,7 +1514,7 @@ public "suspend"(): void
  * @deprecated
  */
 public "resume"(): void
-public "setName"(arg0: string): void
+public "setName"(arg0: StringJS): void
 /**
  * 
  * @deprecated
@@ -1470,7 +1530,7 @@ public "getId"(): long
 public "getState"(): $Thread$State
 public static "getDefaultUncaughtExceptionHandler"(): $Thread$UncaughtExceptionHandler
 public "setUncaughtExceptionHandler"(arg0: $Thread$UncaughtExceptionHandler$$Type): void
-get "name"(): string
+get "name"(): StringJS
 get "stackTrace"(): ($StackTraceElement)[]
 get "virtual"(): boolean
 set "contextClassLoader"(value: $ClassLoader$$Type)
@@ -1482,7 +1542,7 @@ get "priority"(): integer
 get "daemon"(): boolean
 get "alive"(): boolean
 get "uncaughtExceptionHandler"(): $Thread$UncaughtExceptionHandler
-set "name"(value: string)
+set "name"(value: StringJS)
 get "id"(): long
 get "state"(): $Thread$State
 set "uncaughtExceptionHandler"(value: $Thread$UncaughtExceptionHandler$$Type)
@@ -1500,8 +1560,8 @@ declare global {
 export type $Thread_ = $Thread$$Type;
 }}
 declare module "java.lang.AbstractStringBuilder" {
-import {$Appendable, $Appendable$$Type} from "java.lang.Appendable"
 import {$IntStream, $IntStream$$Type} from "java.util.stream.IntStream"
+import {$Appendable, $Appendable$$Type} from "java.lang.Appendable"
 
 /**
  * This class is not allowed By KubeJS!
@@ -1515,7 +1575,7 @@ public "append"(arg0: charseq): $Appendable
 public "append"(arg0: charseq, arg1: integer, arg2: integer): $Appendable
 public "append"(arg0: character): $Appendable
 public "length"(): integer
-public "toString"(): string
+public "toString"(): StringJS
 public static "compare"(arg0: charseq, arg1: charseq): integer
 public "charAt"(arg0: integer): character
 public "isEmpty"(): boolean
@@ -1561,8 +1621,8 @@ static readonly "VIRTUAL": $DirectMethodHandleDesc$Kind
 
 
 public static "values"(): ($DirectMethodHandleDesc$Kind)[]
+public static "valueOf"(arg0: StringJS): $DirectMethodHandleDesc$Kind
 public static "valueOf"(arg0: integer, arg1: boolean): $DirectMethodHandleDesc$Kind
-public static "valueOf"(arg0: string): $DirectMethodHandleDesc$Kind
 public static "valueOf"(arg0: integer): $DirectMethodHandleDesc$Kind
 }
 /**
@@ -1578,8 +1638,8 @@ declare global {
 export type $DirectMethodHandleDesc$Kind_ = $DirectMethodHandleDesc$Kind$$Type;
 }}
 declare module "java.lang.StringBuilder" {
-import {$Appendable, $Appendable$$Type} from "java.lang.Appendable"
 import {$Serializable, $Serializable$$Type} from "java.io.Serializable"
+import {$Appendable, $Appendable$$Type} from "java.lang.Appendable"
 import {$IntStream, $IntStream$$Type} from "java.util.stream.IntStream"
 import {$Comparable, $Comparable$$Type} from "java.lang.Comparable"
 import {$StringBuffer, $StringBuffer$$Type} from "java.lang.StringBuffer"
@@ -1587,67 +1647,67 @@ import {$AbstractStringBuilder, $AbstractStringBuilder$$Type} from "java.lang.Ab
 
 export class $StringBuilder extends $AbstractStringBuilder implements $Appendable, $Serializable, $Comparable<($StringBuilder)>, charseq {
 
-constructor(arg0: charseq)
-constructor(arg0: string)
-constructor(arg0: integer)
 constructor()
+constructor(arg0: integer)
+constructor(arg0: StringJS)
+constructor(arg0: charseq)
 
+public "capacity"(): integer
+public "ensureCapacity"(arg0: integer): void
+public "trimToSize"(): void
+public "setCharAt"(arg0: integer, arg1: character): void
+public "appendCodePoint"(arg0: integer): $StringBuilder
+public "deleteCharAt"(arg0: integer): $StringBuilder
 public "length"(): integer
-public "toString"(): string
-public "append"(arg0: $StringBuffer$$Type): $AbstractStringBuilder
-public "append"(arg0: charseq): $AbstractStringBuilder
+public "toString"(): StringJS
 public "append"(arg0: charseq, arg1: integer, arg2: integer): $AbstractStringBuilder
 public "append"(arg0: (character)[]): $AbstractStringBuilder
-public "append"(arg0: string): $AbstractStringBuilder
-public "append"(arg0: any): $AbstractStringBuilder
-public "append"(arg0: character): $Appendable
-public "append"(arg0: integer): $AbstractStringBuilder
-public "append"(arg0: long): $AbstractStringBuilder
+public "append"(arg0: (character)[], arg1: integer, arg2: integer): $AbstractStringBuilder
+public "append"(arg0: boolean): $AbstractStringBuilder
+public "append"(arg0: charseq): $AbstractStringBuilder
+public "append"(arg0: $StringBuffer$$Type): $AbstractStringBuilder
+public "append"(arg0: StringJS): $AbstractStringBuilder
 public "append"(arg0: float): $AbstractStringBuilder
 public "append"(arg0: double): $AbstractStringBuilder
-public "append"(arg0: boolean): $AbstractStringBuilder
-public "append"(arg0: (character)[], arg1: integer, arg2: integer): $AbstractStringBuilder
-public "reverse"(): $StringBuilder
+public "append"(arg0: any): $StringBuilder
+public "append"(arg0: long): $AbstractStringBuilder
+public "append"(arg0: integer): $AbstractStringBuilder
+public "append"(arg0: character): $AbstractStringBuilder
+public "reverse"(): $AbstractStringBuilder
 public "getChars"(arg0: integer, arg1: integer, arg2: (character)[], arg3: integer): void
 public "compareTo"(arg0: any): integer
 public "compareTo"(arg0: $StringBuilder$$Type): integer
-public "indexOf"(arg0: string, arg1: integer): integer
-public "indexOf"(arg0: string): integer
-public "insert"(arg0: integer, arg1: charseq): $StringBuilder
-public "insert"(arg0: integer, arg1: string): $StringBuilder
-public "insert"(arg0: integer, arg1: (character)[]): $StringBuilder
-public "insert"(arg0: integer, arg1: any): $AbstractStringBuilder
-public "insert"(arg0: integer, arg1: (character)[], arg2: integer, arg3: integer): $AbstractStringBuilder
+public "indexOf"(arg0: StringJS, arg1: integer): integer
+public "indexOf"(arg0: StringJS): integer
 public "insert"(arg0: integer, arg1: integer): $StringBuilder
+public "insert"(arg0: integer, arg1: charseq): $StringBuilder
+public "insert"(arg0: integer, arg1: character): $StringBuilder
+public "insert"(arg0: integer, arg1: (character)[]): $StringBuilder
+public "insert"(arg0: integer, arg1: (character)[], arg2: integer, arg3: integer): $AbstractStringBuilder
 public "insert"(arg0: integer, arg1: double): $StringBuilder
 public "insert"(arg0: integer, arg1: float): $StringBuilder
 public "insert"(arg0: integer, arg1: long): $StringBuilder
-public "insert"(arg0: integer, arg1: character): $StringBuilder
 public "insert"(arg0: integer, arg1: boolean): $StringBuilder
 public "insert"(arg0: integer, arg1: charseq, arg2: integer, arg3: integer): $StringBuilder
+public "insert"(arg0: integer, arg1: any): $StringBuilder
+public "insert"(arg0: integer, arg1: StringJS): $StringBuilder
 public "charAt"(arg0: integer): character
 public "codePointAt"(arg0: integer): integer
 public "codePointBefore"(arg0: integer): integer
 public "codePointCount"(arg0: integer, arg1: integer): integer
 public "offsetByCodePoints"(arg0: integer, arg1: integer): integer
-public "lastIndexOf"(arg0: string, arg1: integer): integer
-public "lastIndexOf"(arg0: string): integer
-public "substring"(arg0: integer): string
-public "substring"(arg0: integer, arg1: integer): string
-public "replace"(arg0: integer, arg1: integer, arg2: string): $StringBuilder
-public "repeat"(arg0: charseq, arg1: integer): $StringBuilder
+public "lastIndexOf"(arg0: StringJS): integer
+public "lastIndexOf"(arg0: StringJS, arg1: integer): integer
+public "substring"(arg0: integer, arg1: integer): StringJS
+public "substring"(arg0: integer): StringJS
+public "replace"(arg0: integer, arg1: integer, arg2: StringJS): $AbstractStringBuilder
+public "repeat"(arg0: charseq, arg1: integer): $AbstractStringBuilder
 public "repeat"(arg0: integer, arg1: integer): $AbstractStringBuilder
 public "codePoints"(): $IntStream
 public "subSequence"(arg0: integer, arg1: integer): charseq
 public "chars"(): $IntStream
 public "delete"(arg0: integer, arg1: integer): $StringBuilder
 public "setLength"(arg0: integer): void
-public "capacity"(): integer
-public "ensureCapacity"(arg0: integer): void
-public "trimToSize"(): void
-public "setCharAt"(arg0: integer, arg1: character): void
-public "appendCodePoint"(arg0: integer): $AbstractStringBuilder
-public "deleteCharAt"(arg0: integer): $StringBuilder
 public static "compare"(arg0: charseq, arg1: charseq): integer
 }
 /**
@@ -1674,8 +1734,8 @@ import {$RuntimeException, $RuntimeException$$Type} from "java.lang.RuntimeExcep
 export class $IllegalArgumentException extends $RuntimeException {
 
 constructor(arg0: $Throwable$$Type)
-constructor(arg0: string, arg1: $Throwable$$Type)
-constructor(arg0: string)
+constructor(arg0: StringJS, arg1: $Throwable$$Type)
+constructor(arg0: StringJS)
 constructor()
 
 }
@@ -1704,20 +1764,10 @@ import {$List, $List$$Type} from "java.util.List"
 export class $Runtime$Version implements $Comparable<($Runtime$Version)> {
 
 
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "version"(): $List<(integer)>
-public "hashCode"(): integer
-public "compareTo"(arg0: $Runtime$Version$$Type): integer
-public "compareTo"(arg0: any): integer
-public "update"(): integer
-public "feature"(): integer
-/**
- * 
- * @deprecated
- */
-public "security"(): integer
-public static "parse"(arg0: string): $Runtime$Version
+public "interim"(): integer
+public "equalsIgnoreOptional"(arg0: any): boolean
+public "patch"(): integer
+public "compareToIgnoreOptional"(arg0: $Runtime$Version$$Type): integer
 /**
  * 
  * @deprecated
@@ -1728,13 +1778,23 @@ public "major"(): integer
  * @deprecated
  */
 public "minor"(): integer
-public "pre"(): $Optional<(string)>
+public "pre"(): $Optional<(StringJS)>
 public "build"(): $Optional<(integer)>
-public "optional"(): $Optional<(string)>
-public "interim"(): integer
-public "equalsIgnoreOptional"(arg0: any): boolean
-public "patch"(): integer
-public "compareToIgnoreOptional"(arg0: $Runtime$Version$$Type): integer
+public "optional"(): $Optional<(StringJS)>
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "version"(): $List<(integer)>
+public "hashCode"(): integer
+public "compareTo"(arg0: any): integer
+public "compareTo"(arg0: $Runtime$Version$$Type): integer
+public "update"(): integer
+public "feature"(): integer
+/**
+ * 
+ * @deprecated
+ */
+public "security"(): integer
+public static "parse"(arg0: StringJS): $Runtime$Version
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1760,10 +1820,10 @@ export class $ThreadLocal<T> {
 
 constructor()
 
+public static "withInitial"<S>(arg0: $Supplier$$Type<(S)>): $ThreadLocal<(S)>
 public "remove"(): void
 public "get"(): T
 public "set"(arg0: T): void
-public static "withInitial"<S>(arg0: $Supplier$$Type<(S)>): $ThreadLocal<(S)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1779,8 +1839,8 @@ export type $ThreadLocal_<T> = $ThreadLocal$$Type<(T)>;
 }}
 declare module "java.lang.foreign.SegmentAllocator" {
 import {$ValueLayout$OfByte, $ValueLayout$OfByte$$Type} from "java.lang.foreign.ValueLayout$OfByte"
-import {$ValueLayout$OfLong, $ValueLayout$OfLong$$Type} from "java.lang.foreign.ValueLayout$OfLong"
 import {$MemorySegment, $MemorySegment$$Type} from "java.lang.foreign.MemorySegment"
+import {$ValueLayout$OfLong, $ValueLayout$OfLong$$Type} from "java.lang.foreign.ValueLayout$OfLong"
 import {$ValueLayout$OfDouble, $ValueLayout$OfDouble$$Type} from "java.lang.foreign.ValueLayout$OfDouble"
 import {$AddressLayout, $AddressLayout$$Type} from "java.lang.foreign.AddressLayout"
 import {$MemoryLayout, $MemoryLayout$$Type} from "java.lang.foreign.MemoryLayout"
@@ -1796,26 +1856,26 @@ import {$ValueLayout$OfChar, $ValueLayout$OfChar$$Type} from "java.lang.foreign.
  */
 export interface $SegmentAllocator {
 
- "allocateUtf8String"(arg0: string): $MemorySegment
- "allocate"(arg0: $ValueLayout$OfByte$$Type, arg1: byte): $MemorySegment
- "allocate"(arg0: $ValueLayout$OfShort$$Type, arg1: short): $MemorySegment
+ "allocate"(arg0: $ValueLayout$OfFloat$$Type, arg1: float): $MemorySegment
+ "allocate"(arg0: $MemoryLayout$$Type): $MemorySegment
+ "allocate"(arg0: $ValueLayout$OfDouble$$Type, arg1: double): $MemorySegment
+ "allocate"(arg0: $AddressLayout$$Type, arg1: $MemorySegment$$Type): $MemorySegment
  "allocate"(arg0: long, arg1: long): $MemorySegment
  "allocate"(arg0: long): $MemorySegment
- "allocate"(arg0: $MemoryLayout$$Type): $MemorySegment
- "allocate"(arg0: $ValueLayout$OfChar$$Type, arg1: character): $MemorySegment
- "allocate"(arg0: $ValueLayout$OfFloat$$Type, arg1: float): $MemorySegment
- "allocate"(arg0: $ValueLayout$OfInt$$Type, arg1: integer): $MemorySegment
- "allocate"(arg0: $ValueLayout$OfDouble$$Type, arg1: double): $MemorySegment
  "allocate"(arg0: $ValueLayout$OfLong$$Type, arg1: long): $MemorySegment
- "allocate"(arg0: $AddressLayout$$Type, arg1: $MemorySegment$$Type): $MemorySegment
- "allocateArray"(arg0: $MemoryLayout$$Type, arg1: long): $MemorySegment
- "allocateArray"(arg0: $ValueLayout$OfChar$$Type, ...arg1: (character)[]): $MemorySegment
- "allocateArray"(arg0: $ValueLayout$OfByte$$Type, ...arg1: (byte)[]): $MemorySegment
+ "allocate"(arg0: $ValueLayout$OfByte$$Type, arg1: byte): $MemorySegment
+ "allocate"(arg0: $ValueLayout$OfChar$$Type, arg1: character): $MemorySegment
+ "allocate"(arg0: $ValueLayout$OfShort$$Type, arg1: short): $MemorySegment
+ "allocate"(arg0: $ValueLayout$OfInt$$Type, arg1: integer): $MemorySegment
+ "allocateUtf8String"(arg0: StringJS): $MemorySegment
  "allocateArray"(arg0: $ValueLayout$OfShort$$Type, ...arg1: (short)[]): $MemorySegment
- "allocateArray"(arg0: $ValueLayout$OfInt$$Type, ...arg1: (integer)[]): $MemorySegment
+ "allocateArray"(arg0: $MemoryLayout$$Type, arg1: long): $MemorySegment
+ "allocateArray"(arg0: $ValueLayout$OfByte$$Type, ...arg1: (byte)[]): $MemorySegment
+ "allocateArray"(arg0: $ValueLayout$OfChar$$Type, ...arg1: (character)[]): $MemorySegment
  "allocateArray"(arg0: $ValueLayout$OfFloat$$Type, ...arg1: (float)[]): $MemorySegment
  "allocateArray"(arg0: $ValueLayout$OfLong$$Type, ...arg1: (long)[]): $MemorySegment
  "allocateArray"(arg0: $ValueLayout$OfDouble$$Type, ...arg1: (double)[]): $MemorySegment
+ "allocateArray"(arg0: $ValueLayout$OfInt$$Type, ...arg1: (integer)[]): $MemorySegment
 
 (arg0: long, arg1: long): $MemorySegment$$Type
 }
@@ -1828,28 +1888,28 @@ const probejs$$marker: never
 export class $SegmentAllocator$$Static implements $SegmentAllocator {
 
 
-static "prefixAllocator"(arg0: $MemorySegment$$Type): $SegmentAllocator
-static "slicingAllocator"(arg0: $MemorySegment$$Type): $SegmentAllocator
- "allocateUtf8String"(arg0: string): $MemorySegment
- "allocate"(arg0: $ValueLayout$OfByte$$Type, arg1: byte): $MemorySegment
- "allocate"(arg0: $ValueLayout$OfShort$$Type, arg1: short): $MemorySegment
+ "allocate"(arg0: $ValueLayout$OfFloat$$Type, arg1: float): $MemorySegment
+ "allocate"(arg0: $MemoryLayout$$Type): $MemorySegment
+ "allocate"(arg0: $ValueLayout$OfDouble$$Type, arg1: double): $MemorySegment
+ "allocate"(arg0: $AddressLayout$$Type, arg1: $MemorySegment$$Type): $MemorySegment
  "allocate"(arg0: long, arg1: long): $MemorySegment
  "allocate"(arg0: long): $MemorySegment
- "allocate"(arg0: $MemoryLayout$$Type): $MemorySegment
- "allocate"(arg0: $ValueLayout$OfChar$$Type, arg1: character): $MemorySegment
- "allocate"(arg0: $ValueLayout$OfFloat$$Type, arg1: float): $MemorySegment
- "allocate"(arg0: $ValueLayout$OfInt$$Type, arg1: integer): $MemorySegment
- "allocate"(arg0: $ValueLayout$OfDouble$$Type, arg1: double): $MemorySegment
  "allocate"(arg0: $ValueLayout$OfLong$$Type, arg1: long): $MemorySegment
- "allocate"(arg0: $AddressLayout$$Type, arg1: $MemorySegment$$Type): $MemorySegment
- "allocateArray"(arg0: $MemoryLayout$$Type, arg1: long): $MemorySegment
- "allocateArray"(arg0: $ValueLayout$OfChar$$Type, ...arg1: (character)[]): $MemorySegment
- "allocateArray"(arg0: $ValueLayout$OfByte$$Type, ...arg1: (byte)[]): $MemorySegment
+ "allocate"(arg0: $ValueLayout$OfByte$$Type, arg1: byte): $MemorySegment
+ "allocate"(arg0: $ValueLayout$OfChar$$Type, arg1: character): $MemorySegment
+ "allocate"(arg0: $ValueLayout$OfShort$$Type, arg1: short): $MemorySegment
+ "allocate"(arg0: $ValueLayout$OfInt$$Type, arg1: integer): $MemorySegment
+static "prefixAllocator"(arg0: $MemorySegment$$Type): $SegmentAllocator
+ "allocateUtf8String"(arg0: StringJS): $MemorySegment
+static "slicingAllocator"(arg0: $MemorySegment$$Type): $SegmentAllocator
  "allocateArray"(arg0: $ValueLayout$OfShort$$Type, ...arg1: (short)[]): $MemorySegment
- "allocateArray"(arg0: $ValueLayout$OfInt$$Type, ...arg1: (integer)[]): $MemorySegment
+ "allocateArray"(arg0: $MemoryLayout$$Type, arg1: long): $MemorySegment
+ "allocateArray"(arg0: $ValueLayout$OfByte$$Type, ...arg1: (byte)[]): $MemorySegment
+ "allocateArray"(arg0: $ValueLayout$OfChar$$Type, ...arg1: (character)[]): $MemorySegment
  "allocateArray"(arg0: $ValueLayout$OfFloat$$Type, ...arg1: (float)[]): $MemorySegment
  "allocateArray"(arg0: $ValueLayout$OfLong$$Type, ...arg1: (long)[]): $MemorySegment
  "allocateArray"(arg0: $ValueLayout$OfDouble$$Type, ...arg1: (double)[]): $MemorySegment
+ "allocateArray"(arg0: $ValueLayout$OfInt$$Type, ...arg1: (integer)[]): $MemorySegment
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1905,10 +1965,10 @@ static readonly "GET_AND_BITWISE_XOR_RELEASE": $VarHandle$AccessMode
 static readonly "GET_OPAQUE": $VarHandle$AccessMode
 
 
+public static "valueFromMethodName"(arg0: StringJS): $VarHandle$AccessMode
 public static "values"(): ($VarHandle$AccessMode)[]
-public "methodName"(): string
-public static "valueOf"(arg0: string): $VarHandle$AccessMode
-public static "valueFromMethodName"(arg0: string): $VarHandle$AccessMode
+public "methodName"(): StringJS
+public static "valueOf"(arg0: StringJS): $VarHandle$AccessMode
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1924,13 +1984,13 @@ export type $VarHandle$AccessMode_ = $VarHandle$AccessMode$$Type;
 }}
 declare module "java.lang.invoke.MethodHandles$Lookup" {
 import {$MethodHandleInfo, $MethodHandleInfo$$Type} from "java.lang.invoke.MethodHandleInfo"
-import {$MethodHandle, $MethodHandle$$Type} from "java.lang.invoke.MethodHandle"
 import {$VarHandle, $VarHandle$$Type} from "java.lang.invoke.VarHandle"
+import {$MethodHandle, $MethodHandle$$Type} from "java.lang.invoke.MethodHandle"
 import {$MethodHandles$Lookup$ClassOption, $MethodHandles$Lookup$ClassOption$$Type} from "java.lang.invoke.MethodHandles$Lookup$ClassOption"
 import {$Class, $Class$$Type} from "java.lang.Class"
-import {$Field, $Field$$Type} from "java.lang.reflect.Field"
 import {$Constructor, $Constructor$$Type} from "java.lang.reflect.Constructor"
 import {$MethodType, $MethodType$$Type} from "java.lang.invoke.MethodType"
+import {$Field, $Field$$Type} from "java.lang.reflect.Field"
 import {$Method, $Method$$Type} from "java.lang.reflect.Method"
 
 /**
@@ -1948,32 +2008,28 @@ static readonly "PROTECTED": integer
 static readonly "PRIVATE": integer
 
 
-public "toString"(): string
-public "findClass"(arg0: string): $Class<(any)>
-public "defineClass"(arg0: (byte)[]): $Class<(any)>
-public "in"(arg0: $Class$$Type<(any)>): $MethodHandles$Lookup
-public "ensureInitialized"<T>(arg0: $Class$$Type<(T)>): $Class<(T)>
-public "revealDirect"(arg0: $MethodHandle$$Type): $MethodHandleInfo
 public "lookupClass"(): $Class<(any)>
 public "previousLookupClass"(): $Class<(any)>
-public "findVirtual"(arg0: $Class$$Type<(any)>, arg1: string, arg2: $MethodType$$Type): $MethodHandle
-public "findStatic"(arg0: $Class$$Type<(any)>, arg1: string, arg2: $MethodType$$Type): $MethodHandle
+public "findVirtual"(arg0: $Class$$Type<(any)>, arg1: StringJS, arg2: $MethodType$$Type): $MethodHandle
+public "findStatic"(arg0: $Class$$Type<(any)>, arg1: StringJS, arg2: $MethodType$$Type): $MethodHandle
 public "unreflect"(arg0: $Method$$Type): $MethodHandle
 public "lookupModes"(): integer
+public "ensureInitialized"<T>(arg0: $Class$$Type<(T)>): $Class<(T)>
+public "revealDirect"(arg0: $MethodHandle$$Type): $MethodHandleInfo
 public "hasFullPrivilegeAccess"(): boolean
 public "accessClass"<T>(arg0: $Class$$Type<(T)>): $Class<(T)>
 public "dropLookupMode"(arg0: integer): $MethodHandles$Lookup
 public "defineHiddenClass"(arg0: (byte)[], arg1: boolean, ...arg2: ($MethodHandles$Lookup$ClassOption$$Type)[]): $MethodHandles$Lookup
 public "defineHiddenClassWithClassData"(arg0: (byte)[], arg1: any, arg2: boolean, ...arg3: ($MethodHandles$Lookup$ClassOption$$Type)[]): $MethodHandles$Lookup
 public "findConstructor"(arg0: $Class$$Type<(any)>, arg1: $MethodType$$Type): $MethodHandle
-public "findSpecial"(arg0: $Class$$Type<(any)>, arg1: string, arg2: $MethodType$$Type, arg3: $Class$$Type<(any)>): $MethodHandle
-public "findGetter"(arg0: $Class$$Type<(any)>, arg1: string, arg2: $Class$$Type<(any)>): $MethodHandle
-public "findSetter"(arg0: $Class$$Type<(any)>, arg1: string, arg2: $Class$$Type<(any)>): $MethodHandle
-public "findVarHandle"(arg0: $Class$$Type<(any)>, arg1: string, arg2: $Class$$Type<(any)>): $VarHandle
-public "findStaticGetter"(arg0: $Class$$Type<(any)>, arg1: string, arg2: $Class$$Type<(any)>): $MethodHandle
-public "findStaticSetter"(arg0: $Class$$Type<(any)>, arg1: string, arg2: $Class$$Type<(any)>): $MethodHandle
-public "findStaticVarHandle"(arg0: $Class$$Type<(any)>, arg1: string, arg2: $Class$$Type<(any)>): $VarHandle
-public "bind"(arg0: any, arg1: string, arg2: $MethodType$$Type): $MethodHandle
+public "findSpecial"(arg0: $Class$$Type<(any)>, arg1: StringJS, arg2: $MethodType$$Type, arg3: $Class$$Type<(any)>): $MethodHandle
+public "findGetter"(arg0: $Class$$Type<(any)>, arg1: StringJS, arg2: $Class$$Type<(any)>): $MethodHandle
+public "findSetter"(arg0: $Class$$Type<(any)>, arg1: StringJS, arg2: $Class$$Type<(any)>): $MethodHandle
+public "findVarHandle"(arg0: $Class$$Type<(any)>, arg1: StringJS, arg2: $Class$$Type<(any)>): $VarHandle
+public "findStaticGetter"(arg0: $Class$$Type<(any)>, arg1: StringJS, arg2: $Class$$Type<(any)>): $MethodHandle
+public "findStaticSetter"(arg0: $Class$$Type<(any)>, arg1: StringJS, arg2: $Class$$Type<(any)>): $MethodHandle
+public "findStaticVarHandle"(arg0: $Class$$Type<(any)>, arg1: StringJS, arg2: $Class$$Type<(any)>): $VarHandle
+public "bind"(arg0: any, arg1: StringJS, arg2: $MethodType$$Type): $MethodHandle
 public "unreflectSpecial"(arg0: $Method$$Type, arg1: $Class$$Type<(any)>): $MethodHandle
 public "unreflectConstructor"(arg0: $Constructor$$Type<(any)>): $MethodHandle
 public "unreflectGetter"(arg0: $Field$$Type): $MethodHandle
@@ -1984,6 +2040,10 @@ public "unreflectVarHandle"(arg0: $Field$$Type): $VarHandle
  * @deprecated
  */
 public "hasPrivateAccess"(): boolean
+public "toString"(): StringJS
+public "findClass"(arg0: StringJS): $Class<(any)>
+public "defineClass"(arg0: (byte)[]): $Class<(any)>
+public "in"(arg0: $Class$$Type<(any)>): $MethodHandles$Lookup
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2010,13 +2070,13 @@ import {$Thread$UncaughtExceptionHandler, $Thread$UncaughtExceptionHandler$$Type
  */
 export interface $Thread$Builder {
 
- "unstarted"(arg0: $Runnable$$Type): $Thread
- "name"(arg0: string): $Thread$Builder
- "name"(arg0: string, arg1: long): $Thread$Builder
+ "name"(arg0: StringJS): $Thread$Builder
+ "name"(arg0: StringJS, arg1: long): $Thread$Builder
  "factory"(): $ThreadFactory
  "start"(arg0: $Runnable$$Type): $Thread
  "uncaughtExceptionHandler"(arg0: $Thread$UncaughtExceptionHandler$$Type): $Thread$Builder
  "inheritInheritableThreadLocals"(arg0: boolean): $Thread$Builder
+ "unstarted"(arg0: $Runnable$$Type): $Thread
 }
 
 export namespace $Thread$Builder {
@@ -2025,13 +2085,13 @@ const probejs$$marker: never
 export class $Thread$Builder$$Static implements $Thread$Builder {
 
 
- "unstarted"(arg0: $Runnable$$Type): $Thread
- "name"(arg0: string): $Thread$Builder
- "name"(arg0: string, arg1: long): $Thread$Builder
+ "name"(arg0: StringJS): $Thread$Builder
+ "name"(arg0: StringJS, arg1: long): $Thread$Builder
  "factory"(): $ThreadFactory
  "start"(arg0: $Runnable$$Type): $Thread
  "uncaughtExceptionHandler"(arg0: $Thread$UncaughtExceptionHandler$$Type): $Thread$Builder
  "inheritInheritableThreadLocals"(arg0: boolean): $Thread$Builder
+ "unstarted"(arg0: $Runnable$$Type): $Thread
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2054,8 +2114,8 @@ import {$PaddingLayout, $PaddingLayout$$Type} from "java.lang.foreign.PaddingLay
 import {$UnionLayout, $UnionLayout$$Type} from "java.lang.foreign.UnionLayout"
 import {$MemoryLayout, $MemoryLayout$$Type} from "java.lang.foreign.MemoryLayout"
 import {$SequenceLayout, $SequenceLayout$$Type} from "java.lang.foreign.SequenceLayout"
-import {$ValueLayout, $ValueLayout$$Type} from "java.lang.foreign.ValueLayout"
 import {$MemoryLayout$PathElement, $MemoryLayout$PathElement$$Type} from "java.lang.foreign.MemoryLayout$PathElement"
+import {$ValueLayout, $ValueLayout$$Type} from "java.lang.foreign.ValueLayout"
 import {$VarHandle, $VarHandle$$Type} from "java.lang.invoke.VarHandle"
 import {$Class, $Class$$Type} from "java.lang.Class"
 
@@ -2069,20 +2129,20 @@ export interface $ValueLayout$OfBoolean extends $ValueLayout {
  "withByteAlignment"(arg0: long): $MemoryLayout
  "withoutName"(): $MemoryLayout
  "withOrder"(arg0: $ByteOrder$$Type): $ValueLayout
- "withName"(arg0: string): $MemoryLayout
- "carrier"(): $Class<(any)>
+ "withName"(arg0: StringJS): $MemoryLayout
  "order"(): $ByteOrder
  "arrayElementVarHandle"(...arg0: (integer)[]): $VarHandle
+ "carrier"(): $Class<(any)>
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
  "varHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $VarHandle
  "sliceHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 
@@ -2100,10 +2160,17 @@ export class $ValueLayout$OfBoolean$$Static implements $ValueLayout$OfBoolean {
  "withByteAlignment"(arg0: long): $MemoryLayout
  "withoutName"(): $MemoryLayout
  "withOrder"(arg0: $ByteOrder$$Type): $ValueLayout
- "withName"(arg0: string): $MemoryLayout
- "carrier"(): $Class<(any)>
+ "withName"(arg0: StringJS): $MemoryLayout
  "order"(): $ByteOrder
  "arrayElementVarHandle"(...arg0: (integer)[]): $VarHandle
+ "carrier"(): $Class<(any)>
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
 static "sequenceLayout"(arg0: long, arg1: $MemoryLayout$$Type): $SequenceLayout
 static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
@@ -2112,13 +2179,6 @@ static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
 static "paddingLayout"(arg0: long): $PaddingLayout
 static "structLayout"(...arg0: ($MemoryLayout$$Type)[]): $StructLayout
 static "unionLayout"(...arg0: ($MemoryLayout$$Type)[]): $UnionLayout
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 /**
@@ -2149,14 +2209,14 @@ export class $ModuleDescriptor$Exports implements $Comparable<($ModuleDescriptor
 
 public "modifiers"(): $Set<($ModuleDescriptor$Exports$Modifier)>
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "compareTo"(arg0: $ModuleDescriptor$Exports$$Type): integer
 public "compareTo"(arg0: any): integer
 public "accessFlags"(): $Set<($AccessFlag)>
-public "source"(): string
+public "source"(): StringJS
 public "isQualified"(): boolean
-public "targets"(): $Set<(string)>
+public "targets"(): $Set<(StringJS)>
 get "qualified"(): boolean
 }
 /**
@@ -2175,11 +2235,11 @@ declare module "java.lang.foreign.UnionLayout" {
 import {$StructLayout, $StructLayout$$Type} from "java.lang.foreign.StructLayout"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$MemoryLayout, $MemoryLayout$$Type} from "java.lang.foreign.MemoryLayout"
-import {$SequenceLayout, $SequenceLayout$$Type} from "java.lang.foreign.SequenceLayout"
 import {$List, $List$$Type} from "java.util.List"
+import {$SequenceLayout, $SequenceLayout$$Type} from "java.lang.foreign.SequenceLayout"
 import {$MemoryLayout$PathElement, $MemoryLayout$PathElement$$Type} from "java.lang.foreign.MemoryLayout$PathElement"
-import {$MethodHandle, $MethodHandle$$Type} from "java.lang.invoke.MethodHandle"
 import {$VarHandle, $VarHandle$$Type} from "java.lang.invoke.VarHandle"
+import {$MethodHandle, $MethodHandle$$Type} from "java.lang.invoke.MethodHandle"
 import {$GroupLayout, $GroupLayout$$Type} from "java.lang.foreign.GroupLayout"
 import {$PaddingLayout, $PaddingLayout$$Type} from "java.lang.foreign.PaddingLayout"
 
@@ -2192,18 +2252,18 @@ export interface $UnionLayout extends $GroupLayout {
 
  "withByteAlignment"(arg0: long): $MemoryLayout
  "withoutName"(): $MemoryLayout
- "withName"(arg0: string): $MemoryLayout
+ "withName"(arg0: StringJS): $MemoryLayout
  "memberLayouts"(): $List<($MemoryLayout)>
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
  "varHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $VarHandle
  "sliceHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 
@@ -2220,8 +2280,15 @@ export class $UnionLayout$$Static implements $UnionLayout {
 
  "withByteAlignment"(arg0: long): $MemoryLayout
  "withoutName"(): $MemoryLayout
- "withName"(arg0: string): $MemoryLayout
+ "withName"(arg0: StringJS): $MemoryLayout
  "memberLayouts"(): $List<($MemoryLayout)>
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
 static "sequenceLayout"(arg0: long, arg1: $MemoryLayout$$Type): $SequenceLayout
 static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
@@ -2230,13 +2297,6 @@ static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
 static "paddingLayout"(arg0: long): $PaddingLayout
 static "structLayout"(...arg0: ($MemoryLayout$$Type)[]): $StructLayout
 static "unionLayout"(...arg0: ($MemoryLayout$$Type)[]): $UnionLayout
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 /**
@@ -2262,8 +2322,8 @@ import {$Throwable, $Throwable$$Type} from "java.lang.Throwable"
 export class $Exception extends $Throwable {
 
 constructor(arg0: $Throwable$$Type)
-constructor(arg0: string, arg1: $Throwable$$Type)
-constructor(arg0: string)
+constructor(arg0: StringJS, arg1: $Throwable$$Type)
+constructor(arg0: StringJS)
 constructor()
 
 }
@@ -2288,8 +2348,8 @@ import {$PaddingLayout, $PaddingLayout$$Type} from "java.lang.foreign.PaddingLay
 import {$UnionLayout, $UnionLayout$$Type} from "java.lang.foreign.UnionLayout"
 import {$MemoryLayout, $MemoryLayout$$Type} from "java.lang.foreign.MemoryLayout"
 import {$SequenceLayout, $SequenceLayout$$Type} from "java.lang.foreign.SequenceLayout"
-import {$ValueLayout, $ValueLayout$$Type} from "java.lang.foreign.ValueLayout"
 import {$MemoryLayout$PathElement, $MemoryLayout$PathElement$$Type} from "java.lang.foreign.MemoryLayout$PathElement"
+import {$ValueLayout, $ValueLayout$$Type} from "java.lang.foreign.ValueLayout"
 import {$VarHandle, $VarHandle$$Type} from "java.lang.invoke.VarHandle"
 import {$Class, $Class$$Type} from "java.lang.Class"
 
@@ -2303,20 +2363,20 @@ export interface $ValueLayout$OfShort extends $ValueLayout {
  "withByteAlignment"(arg0: long): $MemoryLayout
  "withoutName"(): $MemoryLayout
  "withOrder"(arg0: $ByteOrder$$Type): $ValueLayout
- "withName"(arg0: string): $MemoryLayout
- "carrier"(): $Class<(any)>
+ "withName"(arg0: StringJS): $MemoryLayout
  "order"(): $ByteOrder
  "arrayElementVarHandle"(...arg0: (integer)[]): $VarHandle
+ "carrier"(): $Class<(any)>
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
  "varHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $VarHandle
  "sliceHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 
@@ -2334,10 +2394,17 @@ export class $ValueLayout$OfShort$$Static implements $ValueLayout$OfShort {
  "withByteAlignment"(arg0: long): $MemoryLayout
  "withoutName"(): $MemoryLayout
  "withOrder"(arg0: $ByteOrder$$Type): $ValueLayout
- "withName"(arg0: string): $MemoryLayout
- "carrier"(): $Class<(any)>
+ "withName"(arg0: StringJS): $MemoryLayout
  "order"(): $ByteOrder
  "arrayElementVarHandle"(...arg0: (integer)[]): $VarHandle
+ "carrier"(): $Class<(any)>
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
 static "sequenceLayout"(arg0: long, arg1: $MemoryLayout$$Type): $SequenceLayout
 static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
@@ -2346,13 +2413,6 @@ static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
 static "paddingLayout"(arg0: long): $PaddingLayout
 static "structLayout"(...arg0: ($MemoryLayout$$Type)[]): $StructLayout
 static "unionLayout"(...arg0: ($MemoryLayout$$Type)[]): $UnionLayout
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 /**
@@ -2412,7 +2472,7 @@ static readonly "STATIC": $ModuleDescriptor$Requires$Modifier
 
 
 public static "values"(): ($ModuleDescriptor$Requires$Modifier)[]
-public static "valueOf"(arg0: string): $ModuleDescriptor$Requires$Modifier
+public static "valueOf"(arg0: StringJS): $ModuleDescriptor$Requires$Modifier
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2439,24 +2499,24 @@ import {$ModuleReference, $ModuleReference$$Type} from "java.lang.module.ModuleR
  */
 export interface $ModuleFinder {
 
- "find"(arg0: string): $Optional<($ModuleReference)>
  "findAll"(): $Set<($ModuleReference)>
+ "find"(arg0: StringJS): $Optional<($ModuleReference)>
 }
 
 export namespace $ModuleFinder {
-function of(...arg0: ($Path$$Type)[]): $ModuleFinder
-function compose(...arg0: ($ModuleFinder$$Type)[]): $ModuleFinder
 function ofSystem(): $ModuleFinder
+function compose(...arg0: ($ModuleFinder$$Type)[]): $ModuleFinder
+function of(...arg0: ($Path$$Type)[]): $ModuleFinder
 const probejs$$marker: never
 }
 export class $ModuleFinder$$Static implements $ModuleFinder {
 
 
-static "of"(...arg0: ($Path$$Type)[]): $ModuleFinder
- "find"(arg0: string): $Optional<($ModuleReference)>
-static "compose"(...arg0: ($ModuleFinder$$Type)[]): $ModuleFinder
 static "ofSystem"(): $ModuleFinder
  "findAll"(): $Set<($ModuleReference)>
+static "compose"(...arg0: ($ModuleFinder$$Type)[]): $ModuleFinder
+static "of"(...arg0: ($Path$$Type)[]): $ModuleFinder
+ "find"(arg0: StringJS): $Optional<($ModuleReference)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2492,33 +2552,33 @@ import {$ValueLayout$OfChar, $ValueLayout$OfChar$$Type} from "java.lang.foreign.
  */
 export interface $Arena extends $SegmentAllocator, $AutoCloseable {
 
+ "allocate"(arg0: long, arg1: long): $MemorySegment
  "scope"(): $MemorySegment$Scope
  "close"(): void
- "allocate"(arg0: long, arg1: long): $MemorySegment
- "allocateUtf8String"(arg0: string): $MemorySegment
- "allocate"(arg0: $ValueLayout$OfByte$$Type, arg1: byte): $MemorySegment
- "allocate"(arg0: $ValueLayout$OfShort$$Type, arg1: short): $MemorySegment
- "allocate"(arg0: long): $MemorySegment
- "allocate"(arg0: $MemoryLayout$$Type): $MemorySegment
- "allocate"(arg0: $ValueLayout$OfChar$$Type, arg1: character): $MemorySegment
  "allocate"(arg0: $ValueLayout$OfFloat$$Type, arg1: float): $MemorySegment
- "allocate"(arg0: $ValueLayout$OfInt$$Type, arg1: integer): $MemorySegment
+ "allocate"(arg0: $MemoryLayout$$Type): $MemorySegment
  "allocate"(arg0: $ValueLayout$OfDouble$$Type, arg1: double): $MemorySegment
- "allocate"(arg0: $ValueLayout$OfLong$$Type, arg1: long): $MemorySegment
  "allocate"(arg0: $AddressLayout$$Type, arg1: $MemorySegment$$Type): $MemorySegment
- "allocateArray"(arg0: $MemoryLayout$$Type, arg1: long): $MemorySegment
- "allocateArray"(arg0: $ValueLayout$OfChar$$Type, ...arg1: (character)[]): $MemorySegment
- "allocateArray"(arg0: $ValueLayout$OfByte$$Type, ...arg1: (byte)[]): $MemorySegment
+ "allocate"(arg0: long): $MemorySegment
+ "allocate"(arg0: $ValueLayout$OfLong$$Type, arg1: long): $MemorySegment
+ "allocate"(arg0: $ValueLayout$OfByte$$Type, arg1: byte): $MemorySegment
+ "allocate"(arg0: $ValueLayout$OfChar$$Type, arg1: character): $MemorySegment
+ "allocate"(arg0: $ValueLayout$OfShort$$Type, arg1: short): $MemorySegment
+ "allocate"(arg0: $ValueLayout$OfInt$$Type, arg1: integer): $MemorySegment
+ "allocateUtf8String"(arg0: StringJS): $MemorySegment
  "allocateArray"(arg0: $ValueLayout$OfShort$$Type, ...arg1: (short)[]): $MemorySegment
- "allocateArray"(arg0: $ValueLayout$OfInt$$Type, ...arg1: (integer)[]): $MemorySegment
+ "allocateArray"(arg0: $MemoryLayout$$Type, arg1: long): $MemorySegment
+ "allocateArray"(arg0: $ValueLayout$OfByte$$Type, ...arg1: (byte)[]): $MemorySegment
+ "allocateArray"(arg0: $ValueLayout$OfChar$$Type, ...arg1: (character)[]): $MemorySegment
  "allocateArray"(arg0: $ValueLayout$OfFloat$$Type, ...arg1: (float)[]): $MemorySegment
  "allocateArray"(arg0: $ValueLayout$OfLong$$Type, ...arg1: (long)[]): $MemorySegment
  "allocateArray"(arg0: $ValueLayout$OfDouble$$Type, ...arg1: (double)[]): $MemorySegment
+ "allocateArray"(arg0: $ValueLayout$OfInt$$Type, ...arg1: (integer)[]): $MemorySegment
 }
 
 export namespace $Arena {
-function ofAuto(): $Arena
 function global(): $Arena
+function ofAuto(): $Arena
 function ofConfined(): $Arena
 function ofShared(): $Arena
 function prefixAllocator(arg0: $MemorySegment$$Type): $SegmentAllocator
@@ -2528,34 +2588,34 @@ const probejs$$marker: never
 export class $Arena$$Static implements $Arena {
 
 
+ "allocate"(arg0: long, arg1: long): $MemorySegment
+static "global"(): $Arena
 static "ofAuto"(): $Arena
  "scope"(): $MemorySegment$Scope
  "close"(): void
- "allocate"(arg0: long, arg1: long): $MemorySegment
-static "global"(): $Arena
 static "ofConfined"(): $Arena
 static "ofShared"(): $Arena
-static "prefixAllocator"(arg0: $MemorySegment$$Type): $SegmentAllocator
-static "slicingAllocator"(arg0: $MemorySegment$$Type): $SegmentAllocator
- "allocateUtf8String"(arg0: string): $MemorySegment
- "allocate"(arg0: $ValueLayout$OfByte$$Type, arg1: byte): $MemorySegment
- "allocate"(arg0: $ValueLayout$OfShort$$Type, arg1: short): $MemorySegment
- "allocate"(arg0: long): $MemorySegment
- "allocate"(arg0: $MemoryLayout$$Type): $MemorySegment
- "allocate"(arg0: $ValueLayout$OfChar$$Type, arg1: character): $MemorySegment
  "allocate"(arg0: $ValueLayout$OfFloat$$Type, arg1: float): $MemorySegment
- "allocate"(arg0: $ValueLayout$OfInt$$Type, arg1: integer): $MemorySegment
+ "allocate"(arg0: $MemoryLayout$$Type): $MemorySegment
  "allocate"(arg0: $ValueLayout$OfDouble$$Type, arg1: double): $MemorySegment
- "allocate"(arg0: $ValueLayout$OfLong$$Type, arg1: long): $MemorySegment
  "allocate"(arg0: $AddressLayout$$Type, arg1: $MemorySegment$$Type): $MemorySegment
- "allocateArray"(arg0: $MemoryLayout$$Type, arg1: long): $MemorySegment
- "allocateArray"(arg0: $ValueLayout$OfChar$$Type, ...arg1: (character)[]): $MemorySegment
- "allocateArray"(arg0: $ValueLayout$OfByte$$Type, ...arg1: (byte)[]): $MemorySegment
+ "allocate"(arg0: long): $MemorySegment
+ "allocate"(arg0: $ValueLayout$OfLong$$Type, arg1: long): $MemorySegment
+ "allocate"(arg0: $ValueLayout$OfByte$$Type, arg1: byte): $MemorySegment
+ "allocate"(arg0: $ValueLayout$OfChar$$Type, arg1: character): $MemorySegment
+ "allocate"(arg0: $ValueLayout$OfShort$$Type, arg1: short): $MemorySegment
+ "allocate"(arg0: $ValueLayout$OfInt$$Type, arg1: integer): $MemorySegment
+static "prefixAllocator"(arg0: $MemorySegment$$Type): $SegmentAllocator
+ "allocateUtf8String"(arg0: StringJS): $MemorySegment
+static "slicingAllocator"(arg0: $MemorySegment$$Type): $SegmentAllocator
  "allocateArray"(arg0: $ValueLayout$OfShort$$Type, ...arg1: (short)[]): $MemorySegment
- "allocateArray"(arg0: $ValueLayout$OfInt$$Type, ...arg1: (integer)[]): $MemorySegment
+ "allocateArray"(arg0: $MemoryLayout$$Type, arg1: long): $MemorySegment
+ "allocateArray"(arg0: $ValueLayout$OfByte$$Type, ...arg1: (byte)[]): $MemorySegment
+ "allocateArray"(arg0: $ValueLayout$OfChar$$Type, ...arg1: (character)[]): $MemorySegment
  "allocateArray"(arg0: $ValueLayout$OfFloat$$Type, ...arg1: (float)[]): $MemorySegment
  "allocateArray"(arg0: $ValueLayout$OfLong$$Type, ...arg1: (long)[]): $MemorySegment
  "allocateArray"(arg0: $ValueLayout$OfDouble$$Type, ...arg1: (double)[]): $MemorySegment
+ "allocateArray"(arg0: $ValueLayout$OfInt$$Type, ...arg1: (integer)[]): $MemorySegment
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2578,8 +2638,8 @@ import {$PaddingLayout, $PaddingLayout$$Type} from "java.lang.foreign.PaddingLay
 import {$UnionLayout, $UnionLayout$$Type} from "java.lang.foreign.UnionLayout"
 import {$MemoryLayout, $MemoryLayout$$Type} from "java.lang.foreign.MemoryLayout"
 import {$SequenceLayout, $SequenceLayout$$Type} from "java.lang.foreign.SequenceLayout"
-import {$ValueLayout, $ValueLayout$$Type} from "java.lang.foreign.ValueLayout"
 import {$MemoryLayout$PathElement, $MemoryLayout$PathElement$$Type} from "java.lang.foreign.MemoryLayout$PathElement"
+import {$ValueLayout, $ValueLayout$$Type} from "java.lang.foreign.ValueLayout"
 import {$VarHandle, $VarHandle$$Type} from "java.lang.invoke.VarHandle"
 import {$Class, $Class$$Type} from "java.lang.Class"
 
@@ -2593,20 +2653,20 @@ export interface $ValueLayout$OfChar extends $ValueLayout {
  "withByteAlignment"(arg0: long): $MemoryLayout
  "withoutName"(): $MemoryLayout
  "withOrder"(arg0: $ByteOrder$$Type): $ValueLayout
- "withName"(arg0: string): $MemoryLayout
- "carrier"(): $Class<(any)>
+ "withName"(arg0: StringJS): $MemoryLayout
  "order"(): $ByteOrder
  "arrayElementVarHandle"(...arg0: (integer)[]): $VarHandle
+ "carrier"(): $Class<(any)>
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
  "varHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $VarHandle
  "sliceHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 
@@ -2624,10 +2684,17 @@ export class $ValueLayout$OfChar$$Static implements $ValueLayout$OfChar {
  "withByteAlignment"(arg0: long): $MemoryLayout
  "withoutName"(): $MemoryLayout
  "withOrder"(arg0: $ByteOrder$$Type): $ValueLayout
- "withName"(arg0: string): $MemoryLayout
- "carrier"(): $Class<(any)>
+ "withName"(arg0: StringJS): $MemoryLayout
  "order"(): $ByteOrder
  "arrayElementVarHandle"(...arg0: (integer)[]): $VarHandle
+ "carrier"(): $Class<(any)>
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
 static "sequenceLayout"(arg0: long, arg1: $MemoryLayout$$Type): $SequenceLayout
 static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
@@ -2636,13 +2703,6 @@ static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
 static "paddingLayout"(arg0: long): $PaddingLayout
 static "structLayout"(...arg0: ($MemoryLayout$$Type)[]): $StructLayout
 static "unionLayout"(...arg0: ($MemoryLayout$$Type)[]): $UnionLayout
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 /**
@@ -2691,13 +2751,13 @@ static readonly "RELEASE_0": $ClassFileFormatVersion
 static readonly "RELEASE_19": $ClassFileFormatVersion
 
 
-public static "values"(): ($ClassFileFormatVersion)[]
-public static "valueOf"(arg0: string): $ClassFileFormatVersion
-public static "valueOf"(arg0: $Runtime$Version$$Type): $ClassFileFormatVersion
-public "major"(): integer
 public static "latest"(): $ClassFileFormatVersion
 public "runtimeVersion"(): $Runtime$Version
 public static "fromMajor"(arg0: integer): $ClassFileFormatVersion
+public "major"(): integer
+public static "values"(): ($ClassFileFormatVersion)[]
+public static "valueOf"(arg0: StringJS): $ClassFileFormatVersion
+public static "valueOf"(arg0: $Runtime$Version$$Type): $ClassFileFormatVersion
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2766,8 +2826,8 @@ export type $GenericDeclaration_ = $GenericDeclaration$$Type;
 }}
 declare module "java.lang.Throwable" {
 import {$StackTraceElement, $StackTraceElement$$Type} from "java.lang.StackTraceElement"
-import {$PrintStream, $PrintStream$$Type} from "java.io.PrintStream"
 import {$Serializable, $Serializable$$Type} from "java.io.Serializable"
+import {$PrintStream, $PrintStream$$Type} from "java.io.PrintStream"
 import {$PrintWriter, $PrintWriter$$Type} from "java.io.PrintWriter"
 
 /**
@@ -2778,8 +2838,8 @@ import {$PrintWriter, $PrintWriter$$Type} from "java.io.PrintWriter"
 export class $Throwable implements $Serializable {
 
 constructor(arg0: $Throwable$$Type)
-constructor(arg0: string, arg1: $Throwable$$Type)
-constructor(arg0: string)
+constructor(arg0: StringJS, arg1: $Throwable$$Type)
+constructor(arg0: StringJS)
 constructor()
 
 public "printStackTrace"(arg0: $PrintWriter$$Type): void
@@ -2789,17 +2849,17 @@ public "getStackTrace"(): ($StackTraceElement)[]
 public "fillInStackTrace"(): $Throwable
 public "getCause"(): $Throwable
 public "initCause"(arg0: $Throwable$$Type): $Throwable
-public "toString"(): string
-public "getMessage"(): string
+public "toString"(): StringJS
+public "getMessage"(): StringJS
 public "getSuppressed"(): ($Throwable)[]
-public "getLocalizedMessage"(): string
+public "getLocalizedMessage"(): StringJS
 public "setStackTrace"(arg0: ($StackTraceElement$$Type)[]): void
 public "addSuppressed"(arg0: $Throwable$$Type): void
 get "stackTrace"(): ($StackTraceElement)[]
 get "cause"(): $Throwable
-get "message"(): string
+get "message"(): StringJS
 get "suppressed"(): ($Throwable)[]
-get "localizedMessage"(): string
+get "localizedMessage"(): StringJS
 set "stackTrace"(value: ($StackTraceElement$$Type)[])
 }
 /**
@@ -2835,7 +2895,7 @@ static readonly "INNER_CLASS": $AccessFlag$Location
 
 
 public static "values"(): ($AccessFlag$Location)[]
-public static "valueOf"(arg0: string): $AccessFlag$Location
+public static "valueOf"(arg0: StringJS): $AccessFlag$Location
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2853,8 +2913,8 @@ declare module "java.lang.constant.MethodHandleDesc" {
 import {$ConstantDesc, $ConstantDesc$$Type} from "java.lang.constant.ConstantDesc"
 import {$MethodHandles$Lookup, $MethodHandles$Lookup$$Type} from "java.lang.invoke.MethodHandles$Lookup"
 import {$DirectMethodHandleDesc$Kind, $DirectMethodHandleDesc$Kind$$Type} from "java.lang.constant.DirectMethodHandleDesc$Kind"
-import {$MethodTypeDesc, $MethodTypeDesc$$Type} from "java.lang.constant.MethodTypeDesc"
 import {$ClassDesc, $ClassDesc$$Type} from "java.lang.constant.ClassDesc"
+import {$MethodTypeDesc, $MethodTypeDesc$$Type} from "java.lang.constant.MethodTypeDesc"
 import {$DirectMethodHandleDesc, $DirectMethodHandleDesc$$Type} from "java.lang.constant.DirectMethodHandleDesc"
 
 /**
@@ -2864,30 +2924,30 @@ import {$DirectMethodHandleDesc, $DirectMethodHandleDesc$$Type} from "java.lang.
  */
 export interface $MethodHandleDesc extends $ConstantDesc {
 
+ "invocationType"(): $MethodTypeDesc
+ "asType"(arg0: $MethodTypeDesc$$Type): $MethodHandleDesc
  "equals"(arg0: any): boolean
  "resolveConstantDesc"(arg0: $MethodHandles$Lookup$$Type): any
- "asType"(arg0: $MethodTypeDesc$$Type): $MethodHandleDesc
- "invocationType"(): $MethodTypeDesc
 }
 
 export namespace $MethodHandleDesc {
+function ofField(arg0: $DirectMethodHandleDesc$Kind$$Type, arg1: $ClassDesc$$Type, arg2: StringJS, arg3: $ClassDesc$$Type): $DirectMethodHandleDesc
+function ofMethod(arg0: $DirectMethodHandleDesc$Kind$$Type, arg1: $ClassDesc$$Type, arg2: StringJS, arg3: $MethodTypeDesc$$Type): $DirectMethodHandleDesc
+function of(arg0: $DirectMethodHandleDesc$Kind$$Type, arg1: $ClassDesc$$Type, arg2: StringJS, arg3: StringJS): $DirectMethodHandleDesc
 function ofConstructor(arg0: $ClassDesc$$Type, ...arg1: ($ClassDesc$$Type)[]): $DirectMethodHandleDesc
-function of(arg0: $DirectMethodHandleDesc$Kind$$Type, arg1: $ClassDesc$$Type, arg2: string, arg3: string): $DirectMethodHandleDesc
-function ofField(arg0: $DirectMethodHandleDesc$Kind$$Type, arg1: $ClassDesc$$Type, arg2: string, arg3: $ClassDesc$$Type): $DirectMethodHandleDesc
-function ofMethod(arg0: $DirectMethodHandleDesc$Kind$$Type, arg1: $ClassDesc$$Type, arg2: string, arg3: $MethodTypeDesc$$Type): $DirectMethodHandleDesc
 const probejs$$marker: never
 }
 export class $MethodHandleDesc$$Static implements $MethodHandleDesc {
 
 
-static "ofConstructor"(arg0: $ClassDesc$$Type, ...arg1: ($ClassDesc$$Type)[]): $DirectMethodHandleDesc
- "equals"(arg0: any): boolean
-static "of"(arg0: $DirectMethodHandleDesc$Kind$$Type, arg1: $ClassDesc$$Type, arg2: string, arg3: string): $DirectMethodHandleDesc
- "resolveConstantDesc"(arg0: $MethodHandles$Lookup$$Type): any
- "asType"(arg0: $MethodTypeDesc$$Type): $MethodHandleDesc
-static "ofField"(arg0: $DirectMethodHandleDesc$Kind$$Type, arg1: $ClassDesc$$Type, arg2: string, arg3: $ClassDesc$$Type): $DirectMethodHandleDesc
-static "ofMethod"(arg0: $DirectMethodHandleDesc$Kind$$Type, arg1: $ClassDesc$$Type, arg2: string, arg3: $MethodTypeDesc$$Type): $DirectMethodHandleDesc
  "invocationType"(): $MethodTypeDesc
+ "asType"(arg0: $MethodTypeDesc$$Type): $MethodHandleDesc
+static "ofField"(arg0: $DirectMethodHandleDesc$Kind$$Type, arg1: $ClassDesc$$Type, arg2: StringJS, arg3: $ClassDesc$$Type): $DirectMethodHandleDesc
+static "ofMethod"(arg0: $DirectMethodHandleDesc$Kind$$Type, arg1: $ClassDesc$$Type, arg2: StringJS, arg3: $MethodTypeDesc$$Type): $DirectMethodHandleDesc
+ "equals"(arg0: any): boolean
+static "of"(arg0: $DirectMethodHandleDesc$Kind$$Type, arg1: $ClassDesc$$Type, arg2: StringJS, arg3: StringJS): $DirectMethodHandleDesc
+ "resolveConstantDesc"(arg0: $MethodHandles$Lookup$$Type): any
+static "ofConstructor"(arg0: $ClassDesc$$Type, ...arg1: ($ClassDesc$$Type)[]): $DirectMethodHandleDesc
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2913,12 +2973,12 @@ import {$Thread$UncaughtExceptionHandler, $Thread$UncaughtExceptionHandler$$Type
  */
 export class $ThreadGroup implements $Thread$UncaughtExceptionHandler {
 
-constructor(arg0: string)
-constructor(arg0: $ThreadGroup$$Type, arg1: string)
+constructor(arg0: StringJS)
+constructor(arg0: $ThreadGroup$$Type, arg1: StringJS)
 
-public "getName"(): string
+public "getName"(): StringJS
 public "interrupt"(): void
-public "toString"(): string
+public "toString"(): StringJS
 public "list"(): void
 public "getParent"(): $ThreadGroup
 /**
@@ -2971,7 +3031,7 @@ public "isDestroyed"(): boolean
  * @deprecated
  */
 public "destroy"(): void
-get "name"(): string
+get "name"(): StringJS
 get "parent"(): $ThreadGroup
 set "daemon"(value: boolean)
 get "maxPriority"(): integer
@@ -3007,30 +3067,30 @@ import {$Method, $Method$$Type} from "java.lang.reflect.Method"
 export class $RecordComponent implements $AnnotatedElement {
 
 
-public "getName"(): string
-public "toString"(): string
+public "getDeclaringRecord"(): $Class<(any)>
+public "getAccessor"(): $Method
+public "getName"(): StringJS
+public "toString"(): StringJS
 public "getAnnotation"<T extends $Annotation>(arg0: $Class$$Type<(T)>): T
 public "getAnnotations"(): ($Annotation)[]
 public "getDeclaredAnnotations"(): ($Annotation)[]
-public "getGenericSignature"(): string
+public "getGenericSignature"(): StringJS
 public "getGenericType"(): $Type
 public "getType"(): $Class<(any)>
 public "getAnnotatedType"(): $AnnotatedType
-public "getDeclaringRecord"(): $Class<(any)>
-public "getAccessor"(): $Method
 public "isAnnotationPresent"(arg0: $Class$$Type<($Annotation$$Type)>): boolean
 public "getAnnotationsByType"<T extends $Annotation>(arg0: $Class$$Type<(T)>): (T)[]
 public "getDeclaredAnnotation"<T extends $Annotation>(arg0: $Class$$Type<(T)>): T
 public "getDeclaredAnnotationsByType"<T extends $Annotation>(arg0: $Class$$Type<(T)>): (T)[]
-get "name"(): string
+get "declaringRecord"(): $Class<(any)>
+get "accessor"(): $Method
+get "name"(): StringJS
 get "annotations"(): ($Annotation)[]
 get "declaredAnnotations"(): ($Annotation)[]
-get "genericSignature"(): string
+get "genericSignature"(): StringJS
 get "genericType"(): $Type
 get "type"(): $Class<(any)>
 get "annotatedType"(): $AnnotatedType
-get "declaringRecord"(): $Class<(any)>
-get "accessor"(): $Method
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3092,13 +3152,13 @@ import {$Thread$UncaughtExceptionHandler, $Thread$UncaughtExceptionHandler$$Type
  */
 export interface $Thread$Builder$OfVirtual extends $Thread$Builder {
 
- "name"(arg0: string, arg1: long): $Thread$Builder
- "name"(arg0: string): $Thread$Builder
+ "name"(arg0: StringJS, arg1: long): $Thread$Builder
+ "name"(arg0: StringJS): $Thread$Builder
  "uncaughtExceptionHandler"(arg0: $Thread$UncaughtExceptionHandler$$Type): $Thread$Builder
  "inheritInheritableThreadLocals"(arg0: boolean): $Thread$Builder$OfVirtual
- "unstarted"(arg0: $Runnable$$Type): $Thread
  "factory"(): $ThreadFactory
  "start"(arg0: $Runnable$$Type): $Thread
+ "unstarted"(arg0: $Runnable$$Type): $Thread
 }
 
 export namespace $Thread$Builder$OfVirtual {
@@ -3107,13 +3167,13 @@ const probejs$$marker: never
 export class $Thread$Builder$OfVirtual$$Static implements $Thread$Builder$OfVirtual {
 
 
- "name"(arg0: string, arg1: long): $Thread$Builder
- "name"(arg0: string): $Thread$Builder
+ "name"(arg0: StringJS, arg1: long): $Thread$Builder
+ "name"(arg0: StringJS): $Thread$Builder
  "uncaughtExceptionHandler"(arg0: $Thread$UncaughtExceptionHandler$$Type): $Thread$Builder
  "inheritInheritableThreadLocals"(arg0: boolean): $Thread$Builder$OfVirtual
- "unstarted"(arg0: $Runnable$$Type): $Thread
  "factory"(): $ThreadFactory
  "start"(arg0: $Runnable$$Type): $Thread
+ "unstarted"(arg0: $Runnable$$Type): $Thread
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3141,7 +3201,7 @@ static readonly "STRONG": $MethodHandles$Lookup$ClassOption
 
 
 public static "values"(): ($MethodHandles$Lookup$ClassOption)[]
-public static "valueOf"(arg0: string): $MethodHandles$Lookup$ClassOption
+public static "valueOf"(arg0: StringJS): $MethodHandles$Lookup$ClassOption
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3171,23 +3231,23 @@ import {$MethodType, $MethodType$$Type} from "java.lang.invoke.MethodType"
 export class $MethodHandle implements $Constable {
 
 
-public "invoke"(...arg0: (any)[]): any
-public "invokeExact"(...arg0: (any)[]): any
-public "asFixedArity"(): $MethodHandle
-public "type"(): $MethodType
-public "toString"(): string
-public "describeConstable"(): $Optional<($MethodHandleDesc)>
+public "bindTo"(arg0: any): $MethodHandle
 public "asType"(arg0: $MethodType$$Type): $MethodHandle
-public "invokeWithArguments"(arg0: $List$$Type<(any)>): any
 public "invokeWithArguments"(...arg0: (any)[]): any
+public "invokeWithArguments"(arg0: $List$$Type<(any)>): any
 public "asSpreader"(arg0: $Class$$Type<(any)>, arg1: integer): $MethodHandle
 public "asSpreader"(arg0: integer, arg1: $Class$$Type<(any)>, arg2: integer): $MethodHandle
 public "isVarargsCollector"(): boolean
 public "asVarargsCollector"(arg0: $Class$$Type<(any)>): $MethodHandle
-public "asCollector"(arg0: integer, arg1: $Class$$Type<(any)>, arg2: integer): $MethodHandle
 public "asCollector"(arg0: $Class$$Type<(any)>, arg1: integer): $MethodHandle
+public "asCollector"(arg0: integer, arg1: $Class$$Type<(any)>, arg2: integer): $MethodHandle
 public "withVarargs"(arg0: boolean): $MethodHandle
-public "bindTo"(arg0: any): $MethodHandle
+public "invoke"(...arg0: (any)[]): any
+public "invokeExact"(...arg0: (any)[]): any
+public "asFixedArity"(): $MethodHandle
+public "type"(): $MethodType
+public "toString"(): StringJS
+public "describeConstable"(): $Optional<($MethodHandleDesc)>
 get "varargsCollector"(): boolean
 }
 /**
@@ -3212,28 +3272,28 @@ import {$Serializable, $Serializable$$Type} from "java.io.Serializable"
  */
 export class $StackTraceElement implements $Serializable {
 
-constructor(arg0: string, arg1: string, arg2: string, arg3: string, arg4: string, arg5: string, arg6: integer)
-constructor(arg0: string, arg1: string, arg2: string, arg3: integer)
+constructor(arg0: StringJS, arg1: StringJS, arg2: StringJS, arg3: integer)
+constructor(arg0: StringJS, arg1: StringJS, arg2: StringJS, arg3: StringJS, arg4: StringJS, arg5: StringJS, arg6: integer)
 
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "getClassName"(): string
+public "getClassName"(): StringJS
 public "isNativeMethod"(): boolean
-public "getFileName"(): string
+public "getFileName"(): StringJS
 public "getLineNumber"(): integer
-public "getModuleName"(): string
-public "getModuleVersion"(): string
-public "getClassLoaderName"(): string
-public "getMethodName"(): string
-get "className"(): string
+public "getModuleName"(): StringJS
+public "getModuleVersion"(): StringJS
+public "getClassLoaderName"(): StringJS
+public "getMethodName"(): StringJS
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+get "className"(): StringJS
 get "nativeMethod"(): boolean
-get "fileName"(): string
+get "fileName"(): StringJS
 get "lineNumber"(): integer
-get "moduleName"(): string
-get "moduleVersion"(): string
-get "classLoaderName"(): string
-get "methodName"(): string
+get "moduleName"(): StringJS
+get "moduleVersion"(): StringJS
+get "classLoaderName"(): StringJS
+get "methodName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3254,8 +3314,8 @@ import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$Spliterator, $Spliterator$$Type} from "java.util.Spliterator"
 import {$ValueLayout$OfInt, $ValueLayout$OfInt$$Type} from "java.lang.foreign.ValueLayout$OfInt"
 import {$Arena, $Arena$$Type} from "java.lang.foreign.Arena"
-import {$ValueLayout$OfBoolean, $ValueLayout$OfBoolean$$Type} from "java.lang.foreign.ValueLayout$OfBoolean"
 import {$Thread, $Thread$$Type} from "java.lang.Thread"
+import {$ValueLayout$OfBoolean, $ValueLayout$OfBoolean$$Type} from "java.lang.foreign.ValueLayout$OfBoolean"
 import {$Buffer, $Buffer$$Type} from "java.nio.Buffer"
 import {$ValueLayout$OfShort, $ValueLayout$OfShort$$Type} from "java.lang.foreign.ValueLayout$OfShort"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
@@ -3276,98 +3336,98 @@ import {$ValueLayout$OfChar, $ValueLayout$OfChar$$Type} from "java.lang.foreign.
  */
 export interface $MemorySegment {
 
+ "isNative"(): boolean
+ "address"(): long
+ "isReadOnly"(): boolean
+ "copyFrom"(arg0: $MemorySegment$$Type): $MemorySegment
+ "byteSize"(): long
+ "isAccessibleBy"(arg0: $Thread$$Type): boolean
+ "asSlice"(arg0: long, arg1: $MemoryLayout$$Type): $MemorySegment
+ "asSlice"(arg0: long, arg1: long, arg2: long): $MemorySegment
+ "asSlice"(arg0: long): $MemorySegment
+ "asSlice"(arg0: long, arg1: long): $MemorySegment
  "heapBase"(): $Optional<(any)>
+ "reinterpret"(arg0: long, arg1: $Arena$$Type, arg2: $Consumer$$Type<($MemorySegment)>): $MemorySegment
  "reinterpret"(arg0: $Arena$$Type, arg1: $Consumer$$Type<($MemorySegment)>): $MemorySegment
  "reinterpret"(arg0: long): $MemorySegment
- "reinterpret"(arg0: long, arg1: $Arena$$Type, arg2: $Consumer$$Type<($MemorySegment)>): $MemorySegment
  "asReadOnly"(): $MemorySegment
  "isMapped"(): boolean
  "asOverlappingSlice"(arg0: $MemorySegment$$Type): $Optional<($MemorySegment)>
  "segmentOffset"(arg0: $MemorySegment$$Type): long
  "asByteBuffer"(): $ByteBuffer
- "getUtf8String"(arg0: long): string
- "setUtf8String"(arg0: long, arg1: string): void
+ "getUtf8String"(arg0: long): StringJS
+ "setUtf8String"(arg0: long, arg1: StringJS): void
+ "getAtIndex"(arg0: $ValueLayout$OfLong$$Type, arg1: long): long
+ "getAtIndex"(arg0: $ValueLayout$OfBoolean$$Type, arg1: long): boolean
+ "getAtIndex"(arg0: $ValueLayout$OfByte$$Type, arg1: long): byte
  "getAtIndex"(arg0: $ValueLayout$OfInt$$Type, arg1: long): integer
  "getAtIndex"(arg0: $ValueLayout$OfShort$$Type, arg1: long): short
  "getAtIndex"(arg0: $ValueLayout$OfChar$$Type, arg1: long): character
- "getAtIndex"(arg0: $ValueLayout$OfFloat$$Type, arg1: long): float
- "getAtIndex"(arg0: $ValueLayout$OfByte$$Type, arg1: long): byte
- "getAtIndex"(arg0: $AddressLayout$$Type, arg1: long): $MemorySegment
- "getAtIndex"(arg0: $ValueLayout$OfLong$$Type, arg1: long): long
- "getAtIndex"(arg0: $ValueLayout$OfBoolean$$Type, arg1: long): boolean
  "getAtIndex"(arg0: $ValueLayout$OfDouble$$Type, arg1: long): double
- "setAtIndex"(arg0: $ValueLayout$OfFloat$$Type, arg1: long, arg2: float): void
- "setAtIndex"(arg0: $AddressLayout$$Type, arg1: long, arg2: $MemorySegment$$Type): void
- "setAtIndex"(arg0: $ValueLayout$OfLong$$Type, arg1: long, arg2: long): void
- "setAtIndex"(arg0: $ValueLayout$OfDouble$$Type, arg1: long, arg2: double): void
- "setAtIndex"(arg0: $ValueLayout$OfBoolean$$Type, arg1: long, arg2: boolean): void
+ "getAtIndex"(arg0: $ValueLayout$OfFloat$$Type, arg1: long): float
+ "getAtIndex"(arg0: $AddressLayout$$Type, arg1: long): $MemorySegment
  "setAtIndex"(arg0: $ValueLayout$OfShort$$Type, arg1: long, arg2: short): void
+ "setAtIndex"(arg0: $ValueLayout$OfBoolean$$Type, arg1: long, arg2: boolean): void
+ "setAtIndex"(arg0: $ValueLayout$OfLong$$Type, arg1: long, arg2: long): void
  "setAtIndex"(arg0: $ValueLayout$OfByte$$Type, arg1: long, arg2: byte): void
+ "setAtIndex"(arg0: $AddressLayout$$Type, arg1: long, arg2: $MemorySegment$$Type): void
  "setAtIndex"(arg0: $ValueLayout$OfChar$$Type, arg1: long, arg2: character): void
+ "setAtIndex"(arg0: $ValueLayout$OfFloat$$Type, arg1: long, arg2: float): void
  "setAtIndex"(arg0: $ValueLayout$OfInt$$Type, arg1: long, arg2: integer): void
- "byteSize"(): long
- "isAccessibleBy"(arg0: $Thread$$Type): boolean
- "asSlice"(arg0: long, arg1: $MemoryLayout$$Type): $MemorySegment
- "asSlice"(arg0: long): $MemorySegment
- "asSlice"(arg0: long, arg1: long, arg2: long): $MemorySegment
- "asSlice"(arg0: long, arg1: long): $MemorySegment
+ "setAtIndex"(arg0: $ValueLayout$OfDouble$$Type, arg1: long, arg2: double): void
+ "isLoaded"(): boolean
+ "unload"(): void
+ "force"(): void
  "scope"(): $MemorySegment$Scope
  "get"(arg0: $ValueLayout$OfFloat$$Type, arg1: long): float
  "get"(arg0: $ValueLayout$OfLong$$Type, arg1: long): long
- "get"(arg0: $ValueLayout$OfChar$$Type, arg1: long): character
- "get"(arg0: $ValueLayout$OfShort$$Type, arg1: long): short
- "get"(arg0: $AddressLayout$$Type, arg1: long): $MemorySegment
- "get"(arg0: $ValueLayout$OfInt$$Type, arg1: long): integer
  "get"(arg0: $ValueLayout$OfDouble$$Type, arg1: long): double
+ "get"(arg0: $AddressLayout$$Type, arg1: long): $MemorySegment
  "get"(arg0: $ValueLayout$OfByte$$Type, arg1: long): byte
  "get"(arg0: $ValueLayout$OfBoolean$$Type, arg1: long): boolean
+ "get"(arg0: $ValueLayout$OfShort$$Type, arg1: long): short
+ "get"(arg0: $ValueLayout$OfChar$$Type, arg1: long): character
+ "get"(arg0: $ValueLayout$OfInt$$Type, arg1: long): integer
  "equals"(arg0: any): boolean
  "hashCode"(): integer
  "load"(): void
  "mismatch"(arg0: $MemorySegment$$Type): long
- "toArray"(arg0: $ValueLayout$OfLong$$Type): (long)[]
- "toArray"(arg0: $ValueLayout$OfFloat$$Type): (float)[]
  "toArray"(arg0: $ValueLayout$OfByte$$Type): (byte)[]
  "toArray"(arg0: $ValueLayout$OfShort$$Type): (short)[]
- "toArray"(arg0: $ValueLayout$OfChar$$Type): (character)[]
  "toArray"(arg0: $ValueLayout$OfInt$$Type): (integer)[]
+ "toArray"(arg0: $ValueLayout$OfFloat$$Type): (float)[]
+ "toArray"(arg0: $ValueLayout$OfLong$$Type): (long)[]
+ "toArray"(arg0: $ValueLayout$OfChar$$Type): (character)[]
  "toArray"(arg0: $ValueLayout$OfDouble$$Type): (double)[]
  "fill"(arg0: byte): $MemorySegment
  "elements"(arg0: $MemoryLayout$$Type): $Stream<($MemorySegment)>
  "spliterator"(arg0: $MemoryLayout$$Type): $Spliterator<($MemorySegment)>
+ "set"(arg0: $ValueLayout$OfLong$$Type, arg1: long, arg2: long): void
+ "set"(arg0: $ValueLayout$OfDouble$$Type, arg1: long, arg2: double): void
  "set"(arg0: $ValueLayout$OfChar$$Type, arg1: long, arg2: character): void
+ "set"(arg0: $ValueLayout$OfShort$$Type, arg1: long, arg2: short): void
+ "set"(arg0: $ValueLayout$OfFloat$$Type, arg1: long, arg2: float): void
+ "set"(arg0: $ValueLayout$OfInt$$Type, arg1: long, arg2: integer): void
+ "set"(arg0: $ValueLayout$OfByte$$Type, arg1: long, arg2: byte): void
  "set"(arg0: $ValueLayout$OfBoolean$$Type, arg1: long, arg2: boolean): void
  "set"(arg0: $AddressLayout$$Type, arg1: long, arg2: $MemorySegment$$Type): void
- "set"(arg0: $ValueLayout$OfByte$$Type, arg1: long, arg2: byte): void
- "set"(arg0: $ValueLayout$OfInt$$Type, arg1: long, arg2: integer): void
- "set"(arg0: $ValueLayout$OfLong$$Type, arg1: long, arg2: long): void
- "set"(arg0: $ValueLayout$OfShort$$Type, arg1: long, arg2: short): void
- "set"(arg0: $ValueLayout$OfDouble$$Type, arg1: long, arg2: double): void
- "set"(arg0: $ValueLayout$OfFloat$$Type, arg1: long, arg2: float): void
- "isNative"(): boolean
- "address"(): long
- "isReadOnly"(): boolean
- "isLoaded"(): boolean
- "unload"(): void
- "force"(): void
- "copyFrom"(arg0: $MemorySegment$$Type): $MemorySegment
-get "mapped"(): boolean
 get "native"(): boolean
 get "readOnly"(): boolean
+get "mapped"(): boolean
 get "loaded"(): boolean
 }
 
 export namespace $MemorySegment {
 const NULL: $MemorySegment
-function ofArray(arg0: (double)[]): $MemorySegment
-function ofArray(arg0: (integer)[]): $MemorySegment
-function ofArray(arg0: (float)[]): $MemorySegment
-function ofArray(arg0: (long)[]): $MemorySegment
+function ofBuffer(arg0: $Buffer$$Type): $MemorySegment
 function ofArray(arg0: (byte)[]): $MemorySegment
 function ofArray(arg0: (character)[]): $MemorySegment
+function ofArray(arg0: (long)[]): $MemorySegment
+function ofArray(arg0: (float)[]): $MemorySegment
+function ofArray(arg0: (double)[]): $MemorySegment
+function ofArray(arg0: (integer)[]): $MemorySegment
 function ofArray(arg0: (short)[]): $MemorySegment
 function ofAddress(arg0: long): $MemorySegment
-function ofBuffer(arg0: $Buffer$$Type): $MemorySegment
 function mismatch(arg0: $MemorySegment$$Type, arg1: long, arg2: long, arg3: $MemorySegment$$Type, arg4: long, arg5: long): long
 function copy(arg0: $MemorySegment$$Type, arg1: long, arg2: $MemorySegment$$Type, arg3: long, arg4: long): void
 function copy(arg0: $MemorySegment$$Type, arg1: $ValueLayout$$Type, arg2: long, arg3: $MemorySegment$$Type, arg4: $ValueLayout$$Type, arg5: long, arg6: long): void
@@ -3379,95 +3439,95 @@ export class $MemorySegment$$Static implements $MemorySegment {
 static readonly "NULL": $MemorySegment
 
 
+ "isNative"(): boolean
+ "address"(): long
+ "isReadOnly"(): boolean
+ "copyFrom"(arg0: $MemorySegment$$Type): $MemorySegment
+ "byteSize"(): long
+ "isAccessibleBy"(arg0: $Thread$$Type): boolean
+ "asSlice"(arg0: long, arg1: $MemoryLayout$$Type): $MemorySegment
+ "asSlice"(arg0: long, arg1: long, arg2: long): $MemorySegment
+ "asSlice"(arg0: long): $MemorySegment
+ "asSlice"(arg0: long, arg1: long): $MemorySegment
+static "ofBuffer"(arg0: $Buffer$$Type): $MemorySegment
  "heapBase"(): $Optional<(any)>
+ "reinterpret"(arg0: long, arg1: $Arena$$Type, arg2: $Consumer$$Type<($MemorySegment)>): $MemorySegment
  "reinterpret"(arg0: $Arena$$Type, arg1: $Consumer$$Type<($MemorySegment)>): $MemorySegment
  "reinterpret"(arg0: long): $MemorySegment
- "reinterpret"(arg0: long, arg1: $Arena$$Type, arg2: $Consumer$$Type<($MemorySegment)>): $MemorySegment
  "asReadOnly"(): $MemorySegment
  "isMapped"(): boolean
  "asOverlappingSlice"(arg0: $MemorySegment$$Type): $Optional<($MemorySegment)>
  "segmentOffset"(arg0: $MemorySegment$$Type): long
  "asByteBuffer"(): $ByteBuffer
- "getUtf8String"(arg0: long): string
- "setUtf8String"(arg0: long, arg1: string): void
-static "ofArray"(arg0: (double)[]): $MemorySegment
-static "ofArray"(arg0: (integer)[]): $MemorySegment
-static "ofArray"(arg0: (float)[]): $MemorySegment
-static "ofArray"(arg0: (long)[]): $MemorySegment
+ "getUtf8String"(arg0: long): StringJS
+ "setUtf8String"(arg0: long, arg1: StringJS): void
 static "ofArray"(arg0: (byte)[]): $MemorySegment
 static "ofArray"(arg0: (character)[]): $MemorySegment
+static "ofArray"(arg0: (long)[]): $MemorySegment
+static "ofArray"(arg0: (float)[]): $MemorySegment
+static "ofArray"(arg0: (double)[]): $MemorySegment
+static "ofArray"(arg0: (integer)[]): $MemorySegment
 static "ofArray"(arg0: (short)[]): $MemorySegment
 static "ofAddress"(arg0: long): $MemorySegment
+ "getAtIndex"(arg0: $ValueLayout$OfLong$$Type, arg1: long): long
+ "getAtIndex"(arg0: $ValueLayout$OfBoolean$$Type, arg1: long): boolean
+ "getAtIndex"(arg0: $ValueLayout$OfByte$$Type, arg1: long): byte
  "getAtIndex"(arg0: $ValueLayout$OfInt$$Type, arg1: long): integer
  "getAtIndex"(arg0: $ValueLayout$OfShort$$Type, arg1: long): short
  "getAtIndex"(arg0: $ValueLayout$OfChar$$Type, arg1: long): character
- "getAtIndex"(arg0: $ValueLayout$OfFloat$$Type, arg1: long): float
- "getAtIndex"(arg0: $ValueLayout$OfByte$$Type, arg1: long): byte
- "getAtIndex"(arg0: $AddressLayout$$Type, arg1: long): $MemorySegment
- "getAtIndex"(arg0: $ValueLayout$OfLong$$Type, arg1: long): long
- "getAtIndex"(arg0: $ValueLayout$OfBoolean$$Type, arg1: long): boolean
  "getAtIndex"(arg0: $ValueLayout$OfDouble$$Type, arg1: long): double
- "setAtIndex"(arg0: $ValueLayout$OfFloat$$Type, arg1: long, arg2: float): void
- "setAtIndex"(arg0: $AddressLayout$$Type, arg1: long, arg2: $MemorySegment$$Type): void
- "setAtIndex"(arg0: $ValueLayout$OfLong$$Type, arg1: long, arg2: long): void
- "setAtIndex"(arg0: $ValueLayout$OfDouble$$Type, arg1: long, arg2: double): void
- "setAtIndex"(arg0: $ValueLayout$OfBoolean$$Type, arg1: long, arg2: boolean): void
+ "getAtIndex"(arg0: $ValueLayout$OfFloat$$Type, arg1: long): float
+ "getAtIndex"(arg0: $AddressLayout$$Type, arg1: long): $MemorySegment
  "setAtIndex"(arg0: $ValueLayout$OfShort$$Type, arg1: long, arg2: short): void
+ "setAtIndex"(arg0: $ValueLayout$OfBoolean$$Type, arg1: long, arg2: boolean): void
+ "setAtIndex"(arg0: $ValueLayout$OfLong$$Type, arg1: long, arg2: long): void
  "setAtIndex"(arg0: $ValueLayout$OfByte$$Type, arg1: long, arg2: byte): void
+ "setAtIndex"(arg0: $AddressLayout$$Type, arg1: long, arg2: $MemorySegment$$Type): void
  "setAtIndex"(arg0: $ValueLayout$OfChar$$Type, arg1: long, arg2: character): void
+ "setAtIndex"(arg0: $ValueLayout$OfFloat$$Type, arg1: long, arg2: float): void
  "setAtIndex"(arg0: $ValueLayout$OfInt$$Type, arg1: long, arg2: integer): void
- "byteSize"(): long
- "isAccessibleBy"(arg0: $Thread$$Type): boolean
- "asSlice"(arg0: long, arg1: $MemoryLayout$$Type): $MemorySegment
- "asSlice"(arg0: long): $MemorySegment
- "asSlice"(arg0: long, arg1: long, arg2: long): $MemorySegment
- "asSlice"(arg0: long, arg1: long): $MemorySegment
-static "ofBuffer"(arg0: $Buffer$$Type): $MemorySegment
+ "setAtIndex"(arg0: $ValueLayout$OfDouble$$Type, arg1: long, arg2: double): void
+ "isLoaded"(): boolean
+ "unload"(): void
+ "force"(): void
  "scope"(): $MemorySegment$Scope
  "get"(arg0: $ValueLayout$OfFloat$$Type, arg1: long): float
  "get"(arg0: $ValueLayout$OfLong$$Type, arg1: long): long
- "get"(arg0: $ValueLayout$OfChar$$Type, arg1: long): character
- "get"(arg0: $ValueLayout$OfShort$$Type, arg1: long): short
- "get"(arg0: $AddressLayout$$Type, arg1: long): $MemorySegment
- "get"(arg0: $ValueLayout$OfInt$$Type, arg1: long): integer
  "get"(arg0: $ValueLayout$OfDouble$$Type, arg1: long): double
+ "get"(arg0: $AddressLayout$$Type, arg1: long): $MemorySegment
  "get"(arg0: $ValueLayout$OfByte$$Type, arg1: long): byte
  "get"(arg0: $ValueLayout$OfBoolean$$Type, arg1: long): boolean
+ "get"(arg0: $ValueLayout$OfShort$$Type, arg1: long): short
+ "get"(arg0: $ValueLayout$OfChar$$Type, arg1: long): character
+ "get"(arg0: $ValueLayout$OfInt$$Type, arg1: long): integer
  "equals"(arg0: any): boolean
  "hashCode"(): integer
  "load"(): void
  "mismatch"(arg0: $MemorySegment$$Type): long
 static "mismatch"(arg0: $MemorySegment$$Type, arg1: long, arg2: long, arg3: $MemorySegment$$Type, arg4: long, arg5: long): long
- "toArray"(arg0: $ValueLayout$OfLong$$Type): (long)[]
- "toArray"(arg0: $ValueLayout$OfFloat$$Type): (float)[]
  "toArray"(arg0: $ValueLayout$OfByte$$Type): (byte)[]
  "toArray"(arg0: $ValueLayout$OfShort$$Type): (short)[]
- "toArray"(arg0: $ValueLayout$OfChar$$Type): (character)[]
  "toArray"(arg0: $ValueLayout$OfInt$$Type): (integer)[]
+ "toArray"(arg0: $ValueLayout$OfFloat$$Type): (float)[]
+ "toArray"(arg0: $ValueLayout$OfLong$$Type): (long)[]
+ "toArray"(arg0: $ValueLayout$OfChar$$Type): (character)[]
  "toArray"(arg0: $ValueLayout$OfDouble$$Type): (double)[]
  "fill"(arg0: byte): $MemorySegment
  "elements"(arg0: $MemoryLayout$$Type): $Stream<($MemorySegment)>
  "spliterator"(arg0: $MemoryLayout$$Type): $Spliterator<($MemorySegment)>
+ "set"(arg0: $ValueLayout$OfLong$$Type, arg1: long, arg2: long): void
+ "set"(arg0: $ValueLayout$OfDouble$$Type, arg1: long, arg2: double): void
  "set"(arg0: $ValueLayout$OfChar$$Type, arg1: long, arg2: character): void
+ "set"(arg0: $ValueLayout$OfShort$$Type, arg1: long, arg2: short): void
+ "set"(arg0: $ValueLayout$OfFloat$$Type, arg1: long, arg2: float): void
+ "set"(arg0: $ValueLayout$OfInt$$Type, arg1: long, arg2: integer): void
+ "set"(arg0: $ValueLayout$OfByte$$Type, arg1: long, arg2: byte): void
  "set"(arg0: $ValueLayout$OfBoolean$$Type, arg1: long, arg2: boolean): void
  "set"(arg0: $AddressLayout$$Type, arg1: long, arg2: $MemorySegment$$Type): void
- "set"(arg0: $ValueLayout$OfByte$$Type, arg1: long, arg2: byte): void
- "set"(arg0: $ValueLayout$OfInt$$Type, arg1: long, arg2: integer): void
- "set"(arg0: $ValueLayout$OfLong$$Type, arg1: long, arg2: long): void
- "set"(arg0: $ValueLayout$OfShort$$Type, arg1: long, arg2: short): void
- "set"(arg0: $ValueLayout$OfDouble$$Type, arg1: long, arg2: double): void
- "set"(arg0: $ValueLayout$OfFloat$$Type, arg1: long, arg2: float): void
 static "copy"(arg0: $MemorySegment$$Type, arg1: long, arg2: $MemorySegment$$Type, arg3: long, arg4: long): void
 static "copy"(arg0: $MemorySegment$$Type, arg1: $ValueLayout$$Type, arg2: long, arg3: $MemorySegment$$Type, arg4: $ValueLayout$$Type, arg5: long, arg6: long): void
 static "copy"(arg0: any, arg1: integer, arg2: $MemorySegment$$Type, arg3: $ValueLayout$$Type, arg4: long, arg5: integer): void
 static "copy"(arg0: $MemorySegment$$Type, arg1: $ValueLayout$$Type, arg2: long, arg3: any, arg4: integer, arg5: integer): void
- "isNative"(): boolean
- "address"(): long
- "isReadOnly"(): boolean
- "isLoaded"(): boolean
- "unload"(): void
- "force"(): void
- "copyFrom"(arg0: $MemorySegment$$Type): $MemorySegment
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3487,9 +3547,9 @@ import {$ModuleDescriptor$Opens, $ModuleDescriptor$Opens$$Type} from "java.lang.
 import {$ModuleDescriptor$Requires$Modifier, $ModuleDescriptor$Requires$Modifier$$Type} from "java.lang.module.ModuleDescriptor$Requires$Modifier"
 import {$ModuleDescriptor$Provides, $ModuleDescriptor$Provides$$Type} from "java.lang.module.ModuleDescriptor$Provides"
 import {$List, $List$$Type} from "java.util.List"
-import {$Set, $Set$$Type} from "java.util.Set"
-import {$ModuleDescriptor$Version, $ModuleDescriptor$Version$$Type} from "java.lang.module.ModuleDescriptor$Version"
 import {$ModuleDescriptor$Opens$Modifier, $ModuleDescriptor$Opens$Modifier$$Type} from "java.lang.module.ModuleDescriptor$Opens$Modifier"
+import {$ModuleDescriptor$Version, $ModuleDescriptor$Version$$Type} from "java.lang.module.ModuleDescriptor$Version"
+import {$Set, $Set$$Type} from "java.util.Set"
 import {$ModuleDescriptor$Exports, $ModuleDescriptor$Exports$$Type} from "java.lang.module.ModuleDescriptor$Exports"
 import {$ModuleDescriptor$Requires, $ModuleDescriptor$Requires$$Type} from "java.lang.module.ModuleDescriptor$Requires"
 import {$ModuleDescriptor$Exports$Modifier, $ModuleDescriptor$Exports$Modifier$$Type} from "java.lang.module.ModuleDescriptor$Exports$Modifier"
@@ -3502,28 +3562,28 @@ import {$ModuleDescriptor$Exports$Modifier, $ModuleDescriptor$Exports$Modifier$$
 export class $ModuleDescriptor$Builder {
 
 
-public "version"(arg0: string): $ModuleDescriptor$Builder
-public "version"(arg0: $ModuleDescriptor$Version$$Type): $ModuleDescriptor$Builder
-public "packages"(arg0: $Set$$Type<(string)>): $ModuleDescriptor$Builder
-public "exports"(arg0: string): $ModuleDescriptor$Builder
-public "exports"(arg0: $Set$$Type<($ModuleDescriptor$Exports$Modifier$$Type)>, arg1: string, arg2: $Set$$Type<(string)>): $ModuleDescriptor$Builder
-public "exports"(arg0: string, arg1: $Set$$Type<(string)>): $ModuleDescriptor$Builder
-public "exports"(arg0: $Set$$Type<($ModuleDescriptor$Exports$Modifier$$Type)>, arg1: string): $ModuleDescriptor$Builder
-public "exports"(arg0: $ModuleDescriptor$Exports$$Type): $ModuleDescriptor$Builder
-public "opens"(arg0: string): $ModuleDescriptor$Builder
-public "opens"(arg0: $Set$$Type<($ModuleDescriptor$Opens$Modifier$$Type)>, arg1: string, arg2: $Set$$Type<(string)>): $ModuleDescriptor$Builder
-public "opens"(arg0: string, arg1: $Set$$Type<(string)>): $ModuleDescriptor$Builder
-public "opens"(arg0: $ModuleDescriptor$Opens$$Type): $ModuleDescriptor$Builder
-public "opens"(arg0: $Set$$Type<($ModuleDescriptor$Opens$Modifier$$Type)>, arg1: string): $ModuleDescriptor$Builder
-public "uses"(arg0: string): $ModuleDescriptor$Builder
-public "provides"(arg0: $ModuleDescriptor$Provides$$Type): $ModuleDescriptor$Builder
-public "provides"(arg0: string, arg1: $List$$Type<(string)>): $ModuleDescriptor$Builder
-public "build"(): $ModuleDescriptor
+public "requires"(arg0: StringJS): $ModuleDescriptor$Builder
+public "requires"(arg0: $Set$$Type<($ModuleDescriptor$Requires$Modifier$$Type)>, arg1: StringJS, arg2: $ModuleDescriptor$Version$$Type): $ModuleDescriptor$Builder
 public "requires"(arg0: $ModuleDescriptor$Requires$$Type): $ModuleDescriptor$Builder
-public "requires"(arg0: $Set$$Type<($ModuleDescriptor$Requires$Modifier$$Type)>, arg1: string, arg2: $ModuleDescriptor$Version$$Type): $ModuleDescriptor$Builder
-public "requires"(arg0: string): $ModuleDescriptor$Builder
-public "requires"(arg0: $Set$$Type<($ModuleDescriptor$Requires$Modifier$$Type)>, arg1: string): $ModuleDescriptor$Builder
-public "mainClass"(arg0: string): $ModuleDescriptor$Builder
+public "requires"(arg0: $Set$$Type<($ModuleDescriptor$Requires$Modifier$$Type)>, arg1: StringJS): $ModuleDescriptor$Builder
+public "mainClass"(arg0: StringJS): $ModuleDescriptor$Builder
+public "build"(): $ModuleDescriptor
+public "version"(arg0: $ModuleDescriptor$Version$$Type): $ModuleDescriptor$Builder
+public "version"(arg0: StringJS): $ModuleDescriptor$Builder
+public "packages"(arg0: $Set$$Type<(StringJS)>): $ModuleDescriptor$Builder
+public "exports"(arg0: StringJS, arg1: $Set$$Type<(StringJS)>): $ModuleDescriptor$Builder
+public "exports"(arg0: $Set$$Type<($ModuleDescriptor$Exports$Modifier$$Type)>, arg1: StringJS, arg2: $Set$$Type<(StringJS)>): $ModuleDescriptor$Builder
+public "exports"(arg0: $ModuleDescriptor$Exports$$Type): $ModuleDescriptor$Builder
+public "exports"(arg0: $Set$$Type<($ModuleDescriptor$Exports$Modifier$$Type)>, arg1: StringJS): $ModuleDescriptor$Builder
+public "exports"(arg0: StringJS): $ModuleDescriptor$Builder
+public "opens"(arg0: $ModuleDescriptor$Opens$$Type): $ModuleDescriptor$Builder
+public "opens"(arg0: $Set$$Type<($ModuleDescriptor$Opens$Modifier$$Type)>, arg1: StringJS): $ModuleDescriptor$Builder
+public "opens"(arg0: StringJS): $ModuleDescriptor$Builder
+public "opens"(arg0: StringJS, arg1: $Set$$Type<(StringJS)>): $ModuleDescriptor$Builder
+public "opens"(arg0: $Set$$Type<($ModuleDescriptor$Opens$Modifier$$Type)>, arg1: StringJS, arg2: $Set$$Type<(StringJS)>): $ModuleDescriptor$Builder
+public "uses"(arg0: StringJS): $ModuleDescriptor$Builder
+public "provides"(arg0: $ModuleDescriptor$Provides$$Type): $ModuleDescriptor$Builder
+public "provides"(arg0: StringJS, arg1: $List$$Type<(StringJS)>): $ModuleDescriptor$Builder
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3555,12 +3615,6 @@ import {$VarHandle$AccessMode, $VarHandle$AccessMode$$Type} from "java.lang.invo
 export class $VarHandle implements $Constable {
 
 
-public "get"(...arg0: (any)[]): any
-public "toString"(): string
-public static "storeStoreFence"(): void
-public static "fullFence"(): void
-public "describeConstable"(): $Optional<($VarHandle$VarHandleDesc)>
-public "set"(...arg0: (any)[]): void
 public "varType"(): $Class<(any)>
 public "coordinateTypes"(): $List<($Class<(any)>)>
 public "accessModeType"(arg0: $VarHandle$AccessMode$$Type): $MethodType
@@ -3601,6 +3655,12 @@ public "withInvokeBehavior"(): $VarHandle
 public "toMethodHandle"(arg0: $VarHandle$AccessMode$$Type): $MethodHandle
 public static "acquireFence"(): void
 public static "releaseFence"(): void
+public "get"(...arg0: (any)[]): any
+public "toString"(): StringJS
+public static "storeStoreFence"(): void
+public static "fullFence"(): void
+public "describeConstable"(): $Optional<($VarHandle$VarHandleDesc)>
+public "set"(...arg0: (any)[]): void
 set "volatile"(value: (any)[])
 set "opaque"(value: (any)[])
 set "release"(value: (any)[])
@@ -3632,8 +3692,8 @@ import {$Thread$UncaughtExceptionHandler, $Thread$UncaughtExceptionHandler$$Type
  */
 export interface $Thread$Builder$OfPlatform extends $Thread$Builder {
 
- "name"(arg0: string, arg1: long): $Thread$Builder
- "name"(arg0: string): $Thread$Builder
+ "name"(arg0: StringJS, arg1: long): $Thread$Builder
+ "name"(arg0: StringJS): $Thread$Builder
  "priority"(arg0: integer): $Thread$Builder$OfPlatform
  "group"(arg0: $ThreadGroup$$Type): $Thread$Builder$OfPlatform
  "daemon"(): $Thread$Builder$OfPlatform
@@ -3641,9 +3701,9 @@ export interface $Thread$Builder$OfPlatform extends $Thread$Builder {
  "uncaughtExceptionHandler"(arg0: $Thread$UncaughtExceptionHandler$$Type): $Thread$Builder$OfPlatform
  "stackSize"(arg0: long): $Thread$Builder$OfPlatform
  "inheritInheritableThreadLocals"(arg0: boolean): $Thread$Builder$OfPlatform
- "unstarted"(arg0: $Runnable$$Type): $Thread
  "factory"(): $ThreadFactory
  "start"(arg0: $Runnable$$Type): $Thread
+ "unstarted"(arg0: $Runnable$$Type): $Thread
 }
 
 export namespace $Thread$Builder$OfPlatform {
@@ -3652,8 +3712,8 @@ const probejs$$marker: never
 export class $Thread$Builder$OfPlatform$$Static implements $Thread$Builder$OfPlatform {
 
 
- "name"(arg0: string, arg1: long): $Thread$Builder
- "name"(arg0: string): $Thread$Builder
+ "name"(arg0: StringJS, arg1: long): $Thread$Builder
+ "name"(arg0: StringJS): $Thread$Builder
  "priority"(arg0: integer): $Thread$Builder$OfPlatform
  "group"(arg0: $ThreadGroup$$Type): $Thread$Builder$OfPlatform
  "daemon"(): $Thread$Builder$OfPlatform
@@ -3661,9 +3721,9 @@ export class $Thread$Builder$OfPlatform$$Static implements $Thread$Builder$OfPla
  "uncaughtExceptionHandler"(arg0: $Thread$UncaughtExceptionHandler$$Type): $Thread$Builder$OfPlatform
  "stackSize"(arg0: long): $Thread$Builder$OfPlatform
  "inheritInheritableThreadLocals"(arg0: boolean): $Thread$Builder$OfPlatform
- "unstarted"(arg0: $Runnable$$Type): $Thread
  "factory"(): $ThreadFactory
  "start"(arg0: $Runnable$$Type): $Thread
+ "unstarted"(arg0: $Runnable$$Type): $Thread
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3680,11 +3740,11 @@ export type $Thread$Builder$OfPlatform_ = $Thread$Builder$OfPlatform$$Type;
 declare module "java.lang.foreign.StructLayout" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$MemoryLayout, $MemoryLayout$$Type} from "java.lang.foreign.MemoryLayout"
-import {$SequenceLayout, $SequenceLayout$$Type} from "java.lang.foreign.SequenceLayout"
 import {$List, $List$$Type} from "java.util.List"
+import {$SequenceLayout, $SequenceLayout$$Type} from "java.lang.foreign.SequenceLayout"
 import {$MemoryLayout$PathElement, $MemoryLayout$PathElement$$Type} from "java.lang.foreign.MemoryLayout$PathElement"
-import {$MethodHandle, $MethodHandle$$Type} from "java.lang.invoke.MethodHandle"
 import {$VarHandle, $VarHandle$$Type} from "java.lang.invoke.VarHandle"
+import {$MethodHandle, $MethodHandle$$Type} from "java.lang.invoke.MethodHandle"
 import {$GroupLayout, $GroupLayout$$Type} from "java.lang.foreign.GroupLayout"
 import {$PaddingLayout, $PaddingLayout$$Type} from "java.lang.foreign.PaddingLayout"
 import {$UnionLayout, $UnionLayout$$Type} from "java.lang.foreign.UnionLayout"
@@ -3698,18 +3758,18 @@ export interface $StructLayout extends $GroupLayout {
 
  "withByteAlignment"(arg0: long): $MemoryLayout
  "withoutName"(): $MemoryLayout
- "withName"(arg0: string): $MemoryLayout
+ "withName"(arg0: StringJS): $MemoryLayout
  "memberLayouts"(): $List<($MemoryLayout)>
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
  "varHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $VarHandle
  "sliceHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 
@@ -3726,8 +3786,15 @@ export class $StructLayout$$Static implements $StructLayout {
 
  "withByteAlignment"(arg0: long): $MemoryLayout
  "withoutName"(): $MemoryLayout
- "withName"(arg0: string): $MemoryLayout
+ "withName"(arg0: StringJS): $MemoryLayout
  "memberLayouts"(): $List<($MemoryLayout)>
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
 static "sequenceLayout"(arg0: long, arg1: $MemoryLayout$$Type): $SequenceLayout
 static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
@@ -3736,13 +3803,6 @@ static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
 static "paddingLayout"(arg0: long): $PaddingLayout
 static "structLayout"(...arg0: ($MemoryLayout$$Type)[]): $StructLayout
 static "unionLayout"(...arg0: ($MemoryLayout$$Type)[]): $UnionLayout
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 /**
@@ -3764,8 +3824,8 @@ import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$ClassDesc, $ClassDesc$$Type} from "java.lang.constant.ClassDesc"
 import {$TypeDescriptor$OfField, $TypeDescriptor$OfField$$Type} from "java.lang.invoke.TypeDescriptor$OfField"
 import {$Field, $Field$$Type} from "java.lang.reflect.Field"
-import {$Method, $Method$$Type} from "java.lang.reflect.Method"
 import {$AccessFlag, $AccessFlag$$Type} from "java.lang.reflect.AccessFlag"
+import {$Method, $Method$$Type} from "java.lang.reflect.Method"
 import {$TypeVariable, $TypeVariable$$Type} from "java.lang.reflect.TypeVariable"
 import {$GenericDeclaration, $GenericDeclaration$$Type} from "java.lang.reflect.GenericDeclaration"
 import {$AnnotatedElement, $AnnotatedElement$$Type} from "java.lang.reflect.AnnotatedElement"
@@ -3790,11 +3850,11 @@ import {$Module, $Module$$Type} from "java.lang.Module"
 export class $Class<T> implements $Serializable, $GenericDeclaration, $Type, $AnnotatedElement, $TypeDescriptor$OfField<($Class<(any)>)>, $Constable {
 
 
-public "getName"(): string
-public static "forName"(arg0: string, arg1: boolean, arg2: $ClassLoader$$Type): $Class<(any)>
-public static "forName"(arg0: $Module$$Type, arg1: string): $Class<(any)>
-public static "forName"(arg0: string): $Class<(any)>
-public "toString"(): string
+public "getName"(): StringJS
+public static "forName"(arg0: StringJS, arg1: boolean, arg2: $ClassLoader$$Type): $Class<(any)>
+public static "forName"(arg0: $Module$$Type, arg1: StringJS): $Class<(any)>
+public static "forName"(arg0: StringJS): $Class<(any)>
+public "toString"(): StringJS
 public "getModule"(): $Module
 public "getProtectionDomain"(): $ProtectionDomain
 public "isAssignableFrom"(arg0: $Class$$Type<(any)>): boolean
@@ -3825,20 +3885,20 @@ public "isLocalClass"(): boolean
 public "isAnonymousClass"(): boolean
 public "getEnclosingClass"(): $Class<(any)>
 public "isUnnamedClass"(): boolean
-public "getSimpleName"(): string
-public "getCanonicalName"(): string
+public "getSimpleName"(): StringJS
+public "getCanonicalName"(): StringJS
 public "isSynthetic"(): boolean
-public "getResourceAsStream"(arg0: string): $InputStream
-public "getResource"(arg0: string): $URL
-public "getPackageName"(): string
+public "getResourceAsStream"(arg0: StringJS): $InputStream
+public "getResource"(arg0: StringJS): $URL
+public "getPackageName"(): StringJS
 public "desiredAssertionStatus"(): boolean
-public "getMethod"(arg0: string, ...arg1: ($Class$$Type<(any)>)[]): $Method
+public "getMethod"(arg0: StringJS, ...arg1: ($Class$$Type<(any)>)[]): $Method
 public "isAnnotationPresent"(arg0: $Class$$Type<($Annotation$$Type)>): boolean
 public "getNestHost"(): $Class<(any)>
-public "descriptorString"(): string
+public "descriptorString"(): StringJS
 public "getPermittedSubclasses"(): ($Class<(any)>)[]
 public "arrayType"(): $Class<(any)>
-public "toGenericString"(): string
+public "toGenericString"(): StringJS
 public "getGenericSuperclass"(): $Type
 public "getPackage"(): $Package
 public "getGenericInterfaces"(): ($Type)[]
@@ -3847,20 +3907,20 @@ public "getSigners"(): (any)[]
 public "getEnclosingMethod"(): $Method
 public "getEnclosingConstructor"(): $Constructor<(any)>
 public "getDeclaringClass"(): $Class<(any)>
-public "getTypeName"(): string
+public "getTypeName"(): StringJS
 public "getClasses"(): ($Class<(any)>)[]
 public "getFields"(): ($Field)[]
 public "getMethods"(): ($Method)[]
 public "getConstructors"(): ($Constructor<(any)>)[]
-public "getField"(arg0: string): $Field
+public "getField"(arg0: StringJS): $Field
 public "getConstructor"(...arg0: ($Class$$Type<(any)>)[]): $Constructor<(T)>
 public "getDeclaredClasses"(): ($Class<(any)>)[]
 public "getDeclaredFields"(): ($Field)[]
 public "getRecordComponents"(): ($RecordComponent)[]
 public "getDeclaredMethods"(): ($Method)[]
 public "getDeclaredConstructors"(): ($Constructor<(any)>)[]
-public "getDeclaredField"(arg0: string): $Field
-public "getDeclaredMethod"(arg0: string, ...arg1: ($Class$$Type<(any)>)[]): $Method
+public "getDeclaredField"(arg0: StringJS): $Field
+public "getDeclaredMethod"(arg0: StringJS, ...arg1: ($Class$$Type<(any)>)[]): $Method
 public "getDeclaredConstructor"(...arg0: ($Class$$Type<(any)>)[]): $Constructor<(T)>
 public "getEnumConstants"(): (T)[]
 public "asSubclass"<U>(arg0: $Class$$Type<(U)>): $Class<(U)>
@@ -3875,7 +3935,7 @@ public "getAnnotatedInterfaces"(): ($AnnotatedType)[]
 public "isNestmateOf"(arg0: $Class$$Type<(any)>): boolean
 public "getNestMembers"(): ($Class<(any)>)[]
 public "isSealed"(): boolean
-get "name"(): string
+get "name"(): StringJS
 get "module"(): $Module
 get "protectionDomain"(): $ProtectionDomain
 get "modifiers"(): integer
@@ -3895,10 +3955,10 @@ get "localClass"(): boolean
 get "anonymousClass"(): boolean
 get "enclosingClass"(): $Class<(any)>
 get "unnamedClass"(): boolean
-get "simpleName"(): string
-get "canonicalName"(): string
+get "simpleName"(): StringJS
+get "canonicalName"(): StringJS
 get "synthetic"(): boolean
-get "packageName"(): string
+get "packageName"(): StringJS
 get "nestHost"(): $Class<(any)>
 get "permittedSubclasses"(): ($Class<(any)>)[]
 get "genericSuperclass"(): $Type
@@ -3908,7 +3968,7 @@ get "signers"(): (any)[]
 get "enclosingMethod"(): $Method
 get "enclosingConstructor"(): $Constructor<(any)>
 get "declaringClass"(): $Class<(any)>
-get "typeName"(): string
+get "typeName"(): StringJS
 get "classes"(): ($Class<(any)>)[]
 get "fields"(): ($Field)[]
 get "methods"(): ($Method)[]
@@ -3950,12 +4010,12 @@ import {$AccessFlag, $AccessFlag$$Type} from "java.lang.reflect.AccessFlag"
  */
 export interface $Member {
 
- "getName"(): string
+ "getName"(): StringJS
  "getModifiers"(): integer
  "isSynthetic"(): boolean
  "accessFlags"(): $Set<($AccessFlag)>
  "getDeclaringClass"(): $Class<(any)>
-get "name"(): string
+get "name"(): StringJS
 get "modifiers"(): integer
 get "synthetic"(): boolean
 get "declaringClass"(): $Class<(any)>
@@ -3971,7 +4031,7 @@ static readonly "PUBLIC": integer
 static readonly "DECLARED": integer
 
 
- "getName"(): string
+ "getName"(): StringJS
  "getModifiers"(): integer
  "isSynthetic"(): boolean
  "accessFlags"(): $Set<($AccessFlag)>
@@ -4040,12 +4100,12 @@ import {$DynamicConstantDesc, $DynamicConstantDesc$$Type} from "java.lang.consta
 export class $VarHandle$VarHandleDesc extends $DynamicConstantDesc<($VarHandle)> {
 
 
-public static "ofArray"(arg0: $ClassDesc$$Type): $VarHandle$VarHandleDesc
-public static "ofStaticField"(arg0: $ClassDesc$$Type, arg1: string, arg2: $ClassDesc$$Type): $VarHandle$VarHandleDesc
-public "toString"(): string
-public "resolveConstantDesc"(arg0: $MethodHandles$Lookup$$Type): $VarHandle
-public static "ofField"(arg0: $ClassDesc$$Type, arg1: string, arg2: $ClassDesc$$Type): $VarHandle$VarHandleDesc
 public "varType"(): $ClassDesc
+public static "ofField"(arg0: $ClassDesc$$Type, arg1: StringJS, arg2: $ClassDesc$$Type): $VarHandle$VarHandleDesc
+public static "ofArray"(arg0: $ClassDesc$$Type): $VarHandle$VarHandleDesc
+public "toString"(): StringJS
+public "resolveConstantDesc"(arg0: $MethodHandles$Lookup$$Type): any
+public static "ofStaticField"(arg0: $ClassDesc$$Type, arg1: StringJS, arg2: $ClassDesc$$Type): $VarHandle$VarHandleDesc
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4071,11 +4131,11 @@ export class $ModuleDescriptor$Version implements $Comparable<($ModuleDescriptor
 
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "compareTo"(arg0: $ModuleDescriptor$Version$$Type): integer
 public "compareTo"(arg0: any): integer
-public static "parse"(arg0: string): $ModuleDescriptor$Version
+public "compareTo"(arg0: $ModuleDescriptor$Version$$Type): integer
+public static "parse"(arg0: StringJS): $ModuleDescriptor$Version
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4098,8 +4158,8 @@ export {} // Mark the file as a module, do not remove unless there are other imp
  */
 export interface $Type {
 
- "getTypeName"(): string
-get "typeName"(): string
+ "getTypeName"(): StringJS
+get "typeName"(): StringJS
 }
 
 export namespace $Type {
@@ -4108,7 +4168,7 @@ const probejs$$marker: never
 export class $Type$$Static implements $Type {
 
 
- "getTypeName"(): string
+ "getTypeName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4122,6 +4182,43 @@ export type $Type$$Type = ($Type);
 declare global {
 export type $Type_ = $Type$$Type;
 }}
+declare module "java.lang.reflect.InvocationHandler" {
+import {$Method, $Method$$Type} from "java.lang.reflect.Method"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export interface $InvocationHandler {
+
+ "invoke"(arg0: any, arg1: $Method$$Type, arg2: (any)[]): any
+
+(arg0: any, arg1: $Method, arg2: (any)[]): any
+}
+
+export namespace $InvocationHandler {
+function invokeDefault(arg0: any, arg1: $Method$$Type, ...arg2: (any)[]): any
+const probejs$$marker: never
+}
+export class $InvocationHandler$$Static implements $InvocationHandler {
+
+
+static "invokeDefault"(arg0: any, arg1: $Method$$Type, ...arg2: (any)[]): any
+ "invoke"(arg0: any, arg1: $Method$$Type, arg2: (any)[]): any
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $InvocationHandler$$Type = ((arg0: any, arg1: $Method, arg2: (any)[]) => any);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $InvocationHandler_ = $InvocationHandler$$Type;
+}}
 declare module "java.lang.foreign.ValueLayout$OfByte" {
 import {$StructLayout, $StructLayout$$Type} from "java.lang.foreign.StructLayout"
 import {$ByteOrder, $ByteOrder$$Type} from "java.nio.ByteOrder"
@@ -4131,8 +4228,8 @@ import {$PaddingLayout, $PaddingLayout$$Type} from "java.lang.foreign.PaddingLay
 import {$UnionLayout, $UnionLayout$$Type} from "java.lang.foreign.UnionLayout"
 import {$MemoryLayout, $MemoryLayout$$Type} from "java.lang.foreign.MemoryLayout"
 import {$SequenceLayout, $SequenceLayout$$Type} from "java.lang.foreign.SequenceLayout"
-import {$ValueLayout, $ValueLayout$$Type} from "java.lang.foreign.ValueLayout"
 import {$MemoryLayout$PathElement, $MemoryLayout$PathElement$$Type} from "java.lang.foreign.MemoryLayout$PathElement"
+import {$ValueLayout, $ValueLayout$$Type} from "java.lang.foreign.ValueLayout"
 import {$VarHandle, $VarHandle$$Type} from "java.lang.invoke.VarHandle"
 import {$Class, $Class$$Type} from "java.lang.Class"
 
@@ -4146,20 +4243,20 @@ export interface $ValueLayout$OfByte extends $ValueLayout {
  "withByteAlignment"(arg0: long): $MemoryLayout
  "withoutName"(): $MemoryLayout
  "withOrder"(arg0: $ByteOrder$$Type): $ValueLayout
- "withName"(arg0: string): $MemoryLayout
- "carrier"(): $Class<(any)>
+ "withName"(arg0: StringJS): $MemoryLayout
  "order"(): $ByteOrder
  "arrayElementVarHandle"(...arg0: (integer)[]): $VarHandle
+ "carrier"(): $Class<(any)>
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
  "varHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $VarHandle
  "sliceHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 
@@ -4177,10 +4274,17 @@ export class $ValueLayout$OfByte$$Static implements $ValueLayout$OfByte {
  "withByteAlignment"(arg0: long): $MemoryLayout
  "withoutName"(): $MemoryLayout
  "withOrder"(arg0: $ByteOrder$$Type): $ValueLayout
- "withName"(arg0: string): $MemoryLayout
- "carrier"(): $Class<(any)>
+ "withName"(arg0: StringJS): $MemoryLayout
  "order"(): $ByteOrder
  "arrayElementVarHandle"(...arg0: (integer)[]): $VarHandle
+ "carrier"(): $Class<(any)>
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
 static "sequenceLayout"(arg0: long, arg1: $MemoryLayout$$Type): $SequenceLayout
 static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
@@ -4189,13 +4293,6 @@ static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
 static "paddingLayout"(arg0: long): $PaddingLayout
 static "structLayout"(...arg0: ($MemoryLayout$$Type)[]): $StructLayout
 static "unionLayout"(...arg0: ($MemoryLayout$$Type)[]): $UnionLayout
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 /**
@@ -4224,7 +4321,7 @@ static readonly "MANDATED": $ModuleDescriptor$Exports$Modifier
 
 
 public static "values"(): ($ModuleDescriptor$Exports$Modifier)[]
-public static "valueOf"(arg0: string): $ModuleDescriptor$Exports$Modifier
+public static "valueOf"(arg0: StringJS): $ModuleDescriptor$Exports$Modifier
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4247,8 +4344,8 @@ import {$PaddingLayout, $PaddingLayout$$Type} from "java.lang.foreign.PaddingLay
 import {$UnionLayout, $UnionLayout$$Type} from "java.lang.foreign.UnionLayout"
 import {$MemoryLayout, $MemoryLayout$$Type} from "java.lang.foreign.MemoryLayout"
 import {$SequenceLayout, $SequenceLayout$$Type} from "java.lang.foreign.SequenceLayout"
-import {$ValueLayout, $ValueLayout$$Type} from "java.lang.foreign.ValueLayout"
 import {$MemoryLayout$PathElement, $MemoryLayout$PathElement$$Type} from "java.lang.foreign.MemoryLayout$PathElement"
+import {$ValueLayout, $ValueLayout$$Type} from "java.lang.foreign.ValueLayout"
 import {$VarHandle, $VarHandle$$Type} from "java.lang.invoke.VarHandle"
 import {$Class, $Class$$Type} from "java.lang.Class"
 
@@ -4262,20 +4359,20 @@ export interface $ValueLayout$OfInt extends $ValueLayout {
  "withByteAlignment"(arg0: long): $MemoryLayout
  "withoutName"(): $MemoryLayout
  "withOrder"(arg0: $ByteOrder$$Type): $ValueLayout
- "withName"(arg0: string): $MemoryLayout
- "carrier"(): $Class<(any)>
+ "withName"(arg0: StringJS): $MemoryLayout
  "order"(): $ByteOrder
  "arrayElementVarHandle"(...arg0: (integer)[]): $VarHandle
+ "carrier"(): $Class<(any)>
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
  "varHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $VarHandle
  "sliceHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 
@@ -4293,10 +4390,17 @@ export class $ValueLayout$OfInt$$Static implements $ValueLayout$OfInt {
  "withByteAlignment"(arg0: long): $MemoryLayout
  "withoutName"(): $MemoryLayout
  "withOrder"(arg0: $ByteOrder$$Type): $ValueLayout
- "withName"(arg0: string): $MemoryLayout
- "carrier"(): $Class<(any)>
+ "withName"(arg0: StringJS): $MemoryLayout
  "order"(): $ByteOrder
  "arrayElementVarHandle"(...arg0: (integer)[]): $VarHandle
+ "carrier"(): $Class<(any)>
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
 static "sequenceLayout"(arg0: long, arg1: $MemoryLayout$$Type): $SequenceLayout
 static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
@@ -4305,13 +4409,6 @@ static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
 static "paddingLayout"(arg0: long): $PaddingLayout
 static "structLayout"(...arg0: ($MemoryLayout$$Type)[]): $StructLayout
 static "unionLayout"(...arg0: ($MemoryLayout$$Type)[]): $UnionLayout
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 /**
@@ -4344,9 +4441,9 @@ import {$AccessFlag, $AccessFlag$$Type} from "java.lang.reflect.AccessFlag"
 export class $Parameter implements $AnnotatedElement {
 
 
-public "getName"(): string
+public "getName"(): StringJS
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "getModifiers"(): integer
 public "isSynthetic"(): boolean
@@ -4365,7 +4462,7 @@ public "isNamePresent"(): boolean
 public "getDeclaringExecutable"(): $Executable
 public "isImplicit"(): boolean
 public "isAnnotationPresent"(arg0: $Class$$Type<($Annotation$$Type)>): boolean
-get "name"(): string
+get "name"(): StringJS
 get "modifiers"(): integer
 get "synthetic"(): boolean
 get "annotations"(): ($Annotation)[]
@@ -4407,27 +4504,27 @@ import {$Module, $Module$$Type} from "java.lang.Module"
 export class $ClassLoader {
 
 
-public "getName"(): string
-public "loadClass"(arg0: string): $Class<(any)>
+public "getName"(): StringJS
+public "loadClass"(arg0: StringJS): $Class<(any)>
 public static "getPlatformClassLoader"(): $ClassLoader
 public static "getSystemClassLoader"(): $ClassLoader
-public static "getSystemResourceAsStream"(arg0: string): $InputStream
-public "getResourceAsStream"(arg0: string): $InputStream
-public static "getSystemResource"(arg0: string): $URL
-public "getResource"(arg0: string): $URL
-public "getResources"(arg0: string): $Enumeration<($URL)>
-public "getDefinedPackage"(arg0: string): $Package
-public "resources"(arg0: string): $Stream<($URL)>
+public static "getSystemResourceAsStream"(arg0: StringJS): $InputStream
+public "getResourceAsStream"(arg0: StringJS): $InputStream
+public static "getSystemResource"(arg0: StringJS): $URL
+public "getResource"(arg0: StringJS): $URL
+public "getResources"(arg0: StringJS): $Enumeration<($URL)>
+public "getDefinedPackage"(arg0: StringJS): $Package
+public "resources"(arg0: StringJS): $Stream<($URL)>
 public "isRegisteredAsParallelCapable"(): boolean
-public static "getSystemResources"(arg0: string): $Enumeration<($URL)>
+public static "getSystemResources"(arg0: StringJS): $Enumeration<($URL)>
 public "getParent"(): $ClassLoader
 public "getUnnamedModule"(): $Module
 public "getDefinedPackages"(): ($Package)[]
 public "setDefaultAssertionStatus"(arg0: boolean): void
-public "setPackageAssertionStatus"(arg0: string, arg1: boolean): void
-public "setClassAssertionStatus"(arg0: string, arg1: boolean): void
+public "setPackageAssertionStatus"(arg0: StringJS, arg1: boolean): void
+public "setClassAssertionStatus"(arg0: StringJS, arg1: boolean): void
 public "clearAssertionStatus"(): void
-get "name"(): string
+get "name"(): StringJS
 get "registeredAsParallelCapable"(): boolean
 get "parent"(): $ClassLoader
 get "unnamedModule"(): $Module
@@ -4462,16 +4559,20 @@ import {$Class, $Class$$Type} from "java.lang.Class"
 export class $Constructor<T> extends $Executable {
 
 
-public "getName"(): string
+public "getGenericExceptionTypes"(): ($Type)[]
+public "getExceptionTypes"(): ($Class<(any)>)[]
+public "getAnnotatedReturnType"(): $AnnotatedType
+public "getAnnotatedReceiverType"(): $AnnotatedType
+public "getName"(): StringJS
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "getModifiers"(): integer
 public "getTypeParameters"(): ($TypeVariable<($Constructor<(T)>)>)[]
 public "newInstance"(...arg0: (any)[]): T
 public "getParameterTypes"(): ($Class<(any)>)[]
 public "isSynthetic"(): boolean
-public "toGenericString"(): string
+public "toGenericString"(): StringJS
 public "getDeclaringClass"(): $Class<(T)>
 public "getAnnotation"<T extends $Annotation>(arg0: $Class$$Type<(T)>): T
 public "getDeclaredAnnotations"(): ($Annotation)[]
@@ -4480,11 +4581,11 @@ public "isVarArgs"(): boolean
 public "getParameterCount"(): integer
 public "getParameterAnnotations"(): (($Annotation)[])[]
 public "getGenericParameterTypes"(): ($Type)[]
-public "getGenericExceptionTypes"(): ($Type)[]
-public "getExceptionTypes"(): ($Class<(any)>)[]
-public "getAnnotatedReturnType"(): $AnnotatedType
-public "getAnnotatedReceiverType"(): $AnnotatedType
-get "name"(): string
+get "genericExceptionTypes"(): ($Type)[]
+get "exceptionTypes"(): ($Class<(any)>)[]
+get "annotatedReturnType"(): $AnnotatedType
+get "annotatedReceiverType"(): $AnnotatedType
+get "name"(): StringJS
 get "modifiers"(): integer
 get "typeParameters"(): ($TypeVariable<($Constructor<(T)>)>)[]
 get "parameterTypes"(): ($Class<(any)>)[]
@@ -4496,10 +4597,6 @@ get "varArgs"(): boolean
 get "parameterCount"(): integer
 get "parameterAnnotations"(): (($Annotation)[])[]
 get "genericParameterTypes"(): ($Type)[]
-get "genericExceptionTypes"(): ($Type)[]
-get "exceptionTypes"(): ($Class<(any)>)[]
-get "annotatedReturnType"(): $AnnotatedType
-get "annotatedReceiverType"(): $AnnotatedType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4553,8 +4650,8 @@ import {$PaddingLayout, $PaddingLayout$$Type} from "java.lang.foreign.PaddingLay
 import {$UnionLayout, $UnionLayout$$Type} from "java.lang.foreign.UnionLayout"
 import {$MemoryLayout, $MemoryLayout$$Type} from "java.lang.foreign.MemoryLayout"
 import {$SequenceLayout, $SequenceLayout$$Type} from "java.lang.foreign.SequenceLayout"
-import {$ValueLayout, $ValueLayout$$Type} from "java.lang.foreign.ValueLayout"
 import {$MemoryLayout$PathElement, $MemoryLayout$PathElement$$Type} from "java.lang.foreign.MemoryLayout$PathElement"
+import {$ValueLayout, $ValueLayout$$Type} from "java.lang.foreign.ValueLayout"
 import {$VarHandle, $VarHandle$$Type} from "java.lang.invoke.VarHandle"
 import {$Class, $Class$$Type} from "java.lang.Class"
 
@@ -4568,20 +4665,20 @@ export interface $ValueLayout$OfDouble extends $ValueLayout {
  "withByteAlignment"(arg0: long): $MemoryLayout
  "withoutName"(): $MemoryLayout
  "withOrder"(arg0: $ByteOrder$$Type): $ValueLayout
- "withName"(arg0: string): $MemoryLayout
- "carrier"(): $Class<(any)>
+ "withName"(arg0: StringJS): $MemoryLayout
  "order"(): $ByteOrder
  "arrayElementVarHandle"(...arg0: (integer)[]): $VarHandle
+ "carrier"(): $Class<(any)>
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
  "varHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $VarHandle
  "sliceHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 
@@ -4599,10 +4696,17 @@ export class $ValueLayout$OfDouble$$Static implements $ValueLayout$OfDouble {
  "withByteAlignment"(arg0: long): $MemoryLayout
  "withoutName"(): $MemoryLayout
  "withOrder"(arg0: $ByteOrder$$Type): $ValueLayout
- "withName"(arg0: string): $MemoryLayout
- "carrier"(): $Class<(any)>
+ "withName"(arg0: StringJS): $MemoryLayout
  "order"(): $ByteOrder
  "arrayElementVarHandle"(...arg0: (integer)[]): $VarHandle
+ "carrier"(): $Class<(any)>
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
 static "sequenceLayout"(arg0: long, arg1: $MemoryLayout$$Type): $SequenceLayout
 static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
@@ -4611,13 +4715,6 @@ static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
 static "paddingLayout"(arg0: long): $PaddingLayout
 static "structLayout"(...arg0: ($MemoryLayout$$Type)[]): $StructLayout
 static "unionLayout"(...arg0: ($MemoryLayout$$Type)[]): $UnionLayout
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 /**
@@ -4646,8 +4743,8 @@ import {$DynamicConstantDesc, $DynamicConstantDesc$$Type} from "java.lang.consta
 export class $Enum$EnumDesc<E extends $Enum<(E)>> extends $DynamicConstantDesc<(E)> {
 
 
-public "toString"(): string
-public static "of"<E extends $Enum<(E)>>(arg0: $ClassDesc$$Type, arg1: string): $Enum$EnumDesc<(E)>
+public "toString"(): StringJS
+public static "of"<E extends $Enum<(E)>>(arg0: $ClassDesc$$Type, arg1: StringJS): $Enum$EnumDesc<(E)>
 public "resolveConstantDesc"(arg0: $MethodHandles$Lookup$$Type): any
 }
 /**
@@ -4663,9 +4760,9 @@ declare global {
 export type $Enum$EnumDesc_<E> = $Enum$EnumDesc$$Type<(E)>;
 }}
 declare module "java.lang.StringBuffer" {
-import {$Appendable, $Appendable$$Type} from "java.lang.Appendable"
 import {$Serializable, $Serializable$$Type} from "java.io.Serializable"
 import {$IntStream, $IntStream$$Type} from "java.util.stream.IntStream"
+import {$Appendable, $Appendable$$Type} from "java.lang.Appendable"
 import {$Comparable, $Comparable$$Type} from "java.lang.Comparable"
 import {$AbstractStringBuilder, $AbstractStringBuilder$$Type} from "java.lang.AbstractStringBuilder"
 
@@ -4676,67 +4773,67 @@ import {$AbstractStringBuilder, $AbstractStringBuilder$$Type} from "java.lang.Ab
  */
 export class $StringBuffer extends $AbstractStringBuilder implements $Appendable, $Serializable, $Comparable<($StringBuffer)>, charseq {
 
-constructor(arg0: charseq)
-constructor(arg0: string)
-constructor(arg0: integer)
 constructor()
+constructor(arg0: charseq)
+constructor(arg0: integer)
+constructor(arg0: StringJS)
 
+public "capacity"(): integer
+public "ensureCapacity"(arg0: integer): void
+public "trimToSize"(): void
+public "setCharAt"(arg0: integer, arg1: character): void
+public "appendCodePoint"(arg0: integer): $AbstractStringBuilder
+public "deleteCharAt"(arg0: integer): $StringBuffer
 public "length"(): integer
-public "toString"(): string
-public "append"(arg0: (character)[]): $AbstractStringBuilder
-public "append"(arg0: integer): $StringBuffer
-public "append"(arg0: long): $StringBuffer
-public "append"(arg0: float): $StringBuffer
-public "append"(arg0: (character)[], arg1: integer, arg2: integer): $StringBuffer
-public "append"(arg0: boolean): $StringBuffer
-public "append"(arg0: character): $StringBuffer
-public "append"(arg0: double): $AbstractStringBuilder
-public "append"(arg0: string): $AbstractStringBuilder
+public "toString"(): StringJS
 public "append"(arg0: $StringBuffer$$Type): $AbstractStringBuilder
 public "append"(arg0: charseq): $AbstractStringBuilder
-public "append"(arg0: charseq, arg1: integer, arg2: integer): $Appendable
+public "append"(arg0: charseq, arg1: integer, arg2: integer): $AbstractStringBuilder
+public "append"(arg0: double): $StringBuffer
+public "append"(arg0: character): $Appendable
 public "append"(arg0: any): $AbstractStringBuilder
-public "reverse"(): $StringBuffer
+public "append"(arg0: StringJS): $AbstractStringBuilder
+public "append"(arg0: integer): $AbstractStringBuilder
+public "append"(arg0: long): $AbstractStringBuilder
+public "append"(arg0: float): $AbstractStringBuilder
+public "append"(arg0: (character)[]): $AbstractStringBuilder
+public "append"(arg0: (character)[], arg1: integer, arg2: integer): $AbstractStringBuilder
+public "append"(arg0: boolean): $AbstractStringBuilder
+public "reverse"(): $AbstractStringBuilder
 public "getChars"(arg0: integer, arg1: integer, arg2: (character)[], arg3: integer): void
 public "compareTo"(arg0: $StringBuffer$$Type): integer
 public "compareTo"(arg0: any): integer
-public "indexOf"(arg0: string, arg1: integer): integer
-public "indexOf"(arg0: string): integer
-public "insert"(arg0: integer, arg1: long): $AbstractStringBuilder
+public "indexOf"(arg0: StringJS): integer
+public "indexOf"(arg0: StringJS, arg1: integer): integer
 public "insert"(arg0: integer, arg1: integer): $AbstractStringBuilder
 public "insert"(arg0: integer, arg1: character): $AbstractStringBuilder
+public "insert"(arg0: integer, arg1: charseq, arg2: integer, arg3: integer): $AbstractStringBuilder
 public "insert"(arg0: integer, arg1: boolean): $AbstractStringBuilder
+public "insert"(arg0: integer, arg1: long): $AbstractStringBuilder
 public "insert"(arg0: integer, arg1: float): $AbstractStringBuilder
 public "insert"(arg0: integer, arg1: double): $AbstractStringBuilder
-public "insert"(arg0: integer, arg1: any): $StringBuffer
-public "insert"(arg0: integer, arg1: string): $AbstractStringBuilder
 public "insert"(arg0: integer, arg1: (character)[], arg2: integer, arg3: integer): $AbstractStringBuilder
+public "insert"(arg0: integer, arg1: StringJS): $AbstractStringBuilder
 public "insert"(arg0: integer, arg1: (character)[]): $AbstractStringBuilder
 public "insert"(arg0: integer, arg1: charseq): $AbstractStringBuilder
-public "insert"(arg0: integer, arg1: charseq, arg2: integer, arg3: integer): $AbstractStringBuilder
+public "insert"(arg0: integer, arg1: any): $StringBuffer
 public "charAt"(arg0: integer): character
 public "codePointAt"(arg0: integer): integer
 public "codePointBefore"(arg0: integer): integer
 public "codePointCount"(arg0: integer, arg1: integer): integer
 public "offsetByCodePoints"(arg0: integer, arg1: integer): integer
-public "lastIndexOf"(arg0: string, arg1: integer): integer
-public "lastIndexOf"(arg0: string): integer
-public "substring"(arg0: integer): string
-public "substring"(arg0: integer, arg1: integer): string
-public "replace"(arg0: integer, arg1: integer, arg2: string): $StringBuffer
+public "lastIndexOf"(arg0: StringJS): integer
+public "lastIndexOf"(arg0: StringJS, arg1: integer): integer
+public "substring"(arg0: integer, arg1: integer): StringJS
+public "substring"(arg0: integer): StringJS
+public "replace"(arg0: integer, arg1: integer, arg2: StringJS): $AbstractStringBuilder
+public "repeat"(arg0: integer, arg1: integer): $StringBuffer
 public "repeat"(arg0: charseq, arg1: integer): $AbstractStringBuilder
-public "repeat"(arg0: integer, arg1: integer): $AbstractStringBuilder
 public "codePoints"(): $IntStream
 public "subSequence"(arg0: integer, arg1: integer): charseq
 public "chars"(): $IntStream
 public "delete"(arg0: integer, arg1: integer): $AbstractStringBuilder
 public "setLength"(arg0: integer): void
-public "capacity"(): integer
-public "ensureCapacity"(arg0: integer): void
-public "trimToSize"(): void
-public "setCharAt"(arg0: integer, arg1: character): void
-public "appendCodePoint"(arg0: integer): $StringBuffer
-public "deleteCharAt"(arg0: integer): $StringBuffer
 public static "compare"(arg0: charseq, arg1: charseq): integer
 }
 /**
@@ -4751,6 +4848,41 @@ export type $StringBuffer$$Type = ($StringBuffer);
 declare global {
 export type $StringBuffer_ = $StringBuffer$$Type;
 }}
+declare module "java.lang.reflect.Proxy" {
+import {$Serializable, $Serializable$$Type} from "java.io.Serializable"
+import {$InvocationHandler, $InvocationHandler$$Type} from "java.lang.reflect.InvocationHandler"
+import {$Class, $Class$$Type} from "java.lang.Class"
+import {$ClassLoader, $ClassLoader$$Type} from "java.lang.ClassLoader"
+
+/**
+ * This class is not allowed By KubeJS!
+ * You should not load the class, or KubeJS will throw an error.
+ * Loading the class using require() will not throw an error, but the class will be undefined.
+ */
+export class $Proxy implements $Serializable {
+
+
+public static "getInvocationHandler"(arg0: any): $InvocationHandler
+/**
+ * 
+ * @deprecated
+ */
+public static "getProxyClass"(arg0: $ClassLoader$$Type, ...arg1: ($Class$$Type<(any)>)[]): $Class<(any)>
+public static "newProxyInstance"(arg0: $ClassLoader$$Type, arg1: ($Class$$Type<(any)>)[], arg2: $InvocationHandler$$Type): any
+public static "isProxyClass"(arg0: $Class$$Type<(any)>): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Proxy$$Type = ($Proxy);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Proxy_ = $Proxy$$Type;
+}}
 declare module "java.lang.Package" {
 import {$NamedPackage, $NamedPackage$$Type} from "java.lang.NamedPackage"
 import {$AnnotatedElement, $AnnotatedElement$$Type} from "java.lang.reflect.AnnotatedElement"
@@ -4761,41 +4893,41 @@ import {$Class, $Class$$Type} from "java.lang.Class"
 export class $Package extends $NamedPackage implements $AnnotatedElement {
 
 
-public "getName"(): string
-public "toString"(): string
+public "getSpecificationTitle"(): StringJS
+public "getSpecificationVersion"(): StringJS
+public "getSpecificationVendor"(): StringJS
+public "getImplementationTitle"(): StringJS
+public "getImplementationVersion"(): StringJS
+public "getImplementationVendor"(): StringJS
+public "isCompatibleWith"(arg0: StringJS): boolean
+public "getName"(): StringJS
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "isAnnotationPresent"(arg0: $Class$$Type<($Annotation$$Type)>): boolean
 /**
  * 
  * @deprecated
  */
-public static "getPackage"(arg0: string): $Package
+public static "getPackage"(arg0: StringJS): $Package
 public "getAnnotation"<A extends $Annotation>(arg0: $Class$$Type<(A)>): A
 public "getAnnotationsByType"<A extends $Annotation>(arg0: $Class$$Type<(A)>): (A)[]
 public "getAnnotations"(): ($Annotation)[]
 public "getDeclaredAnnotation"<A extends $Annotation>(arg0: $Class$$Type<(A)>): A
 public "getDeclaredAnnotationsByType"<A extends $Annotation>(arg0: $Class$$Type<(A)>): (A)[]
 public "getDeclaredAnnotations"(): ($Annotation)[]
-public "isSealed"(arg0: $URL$$Type): boolean
 public "isSealed"(): boolean
+public "isSealed"(arg0: $URL$$Type): boolean
 public static "getPackages"(): ($Package)[]
-public "getSpecificationTitle"(): string
-public "getSpecificationVersion"(): string
-public "getSpecificationVendor"(): string
-public "getImplementationTitle"(): string
-public "getImplementationVersion"(): string
-public "getImplementationVendor"(): string
-public "isCompatibleWith"(arg0: string): boolean
-get "name"(): string
+get "specificationTitle"(): StringJS
+get "specificationVersion"(): StringJS
+get "specificationVendor"(): StringJS
+get "implementationTitle"(): StringJS
+get "implementationVersion"(): StringJS
+get "implementationVendor"(): StringJS
+get "name"(): StringJS
 get "annotations"(): ($Annotation)[]
 get "declaredAnnotations"(): ($Annotation)[]
 get "sealed"(): boolean
-get "specificationTitle"(): string
-get "specificationVersion"(): string
-get "specificationVendor"(): string
-get "implementationTitle"(): string
-get "implementationVersion"(): string
-get "implementationVendor"(): string
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4825,7 +4957,7 @@ static readonly "OPEN": $ModuleDescriptor$Modifier
 
 
 public static "values"(): ($ModuleDescriptor$Modifier)[]
-public static "valueOf"(arg0: string): $ModuleDescriptor$Modifier
+public static "valueOf"(arg0: StringJS): $ModuleDescriptor$Modifier
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4897,8 +5029,8 @@ import {$RuntimeException, $RuntimeException$$Type} from "java.lang.RuntimeExcep
 export class $IllegalStateException extends $RuntimeException {
 
 constructor(arg0: $Throwable$$Type)
-constructor(arg0: string, arg1: $Throwable$$Type)
-constructor(arg0: string)
+constructor(arg0: StringJS, arg1: $Throwable$$Type)
+constructor(arg0: StringJS)
 constructor()
 
 }
@@ -4979,8 +5111,8 @@ import {$GenericDeclaration, $GenericDeclaration$$Type} from "java.lang.reflect.
 import {$Member, $Member$$Type} from "java.lang.reflect.Member"
 import {$Annotation, $Annotation$$Type} from "java.lang.annotation.Annotation"
 import {$AnnotatedType, $AnnotatedType$$Type} from "java.lang.reflect.AnnotatedType"
-import {$Type, $Type$$Type} from "java.lang.reflect.Type"
 import {$AccessibleObject, $AccessibleObject$$Type} from "java.lang.reflect.AccessibleObject"
+import {$Type, $Type$$Type} from "java.lang.reflect.Type"
 import {$Set, $Set$$Type} from "java.util.Set"
 import {$Class, $Class$$Type} from "java.lang.Class"
 import {$Parameter, $Parameter$$Type} from "java.lang.reflect.Parameter"
@@ -4994,12 +5126,18 @@ import {$AccessFlag, $AccessFlag$$Type} from "java.lang.reflect.AccessFlag"
 export class $Executable extends $AccessibleObject implements $Member, $GenericDeclaration {
 
 
-public "getName"(): string
+public "getGenericExceptionTypes"(): ($Type)[]
+public "getExceptionTypes"(): ($Class<(any)>)[]
+public "getAnnotatedReturnType"(): $AnnotatedType
+public "getParameters"(): ($Parameter)[]
+public "getAnnotatedReceiverType"(): $AnnotatedType
+public "getAnnotatedExceptionTypes"(): ($AnnotatedType)[]
+public "getName"(): StringJS
 public "getModifiers"(): integer
 public "getTypeParameters"(): ($TypeVariable<(any)>)[]
 public "getParameterTypes"(): ($Class<(any)>)[]
 public "isSynthetic"(): boolean
-public "toGenericString"(): string
+public "toGenericString"(): StringJS
 public "accessFlags"(): $Set<($AccessFlag)>
 public "getDeclaringClass"(): $Class<(any)>
 public "getAnnotation"<T extends $Annotation>(arg0: $Class$$Type<(T)>): T
@@ -5010,13 +5148,13 @@ public "getAnnotatedParameterTypes"(): ($AnnotatedType)[]
 public "getParameterCount"(): integer
 public "getParameterAnnotations"(): (($Annotation)[])[]
 public "getGenericParameterTypes"(): ($Type)[]
-public "getGenericExceptionTypes"(): ($Type)[]
-public "getExceptionTypes"(): ($Class<(any)>)[]
-public "getAnnotatedReturnType"(): $AnnotatedType
-public "getParameters"(): ($Parameter)[]
-public "getAnnotatedReceiverType"(): $AnnotatedType
-public "getAnnotatedExceptionTypes"(): ($AnnotatedType)[]
-get "name"(): string
+get "genericExceptionTypes"(): ($Type)[]
+get "exceptionTypes"(): ($Class<(any)>)[]
+get "annotatedReturnType"(): $AnnotatedType
+get "parameters"(): ($Parameter)[]
+get "annotatedReceiverType"(): $AnnotatedType
+get "annotatedExceptionTypes"(): ($AnnotatedType)[]
+get "name"(): StringJS
 get "modifiers"(): integer
 get "typeParameters"(): ($TypeVariable<(any)>)[]
 get "parameterTypes"(): ($Class<(any)>)[]
@@ -5028,12 +5166,6 @@ get "annotatedParameterTypes"(): ($AnnotatedType)[]
 get "parameterCount"(): integer
 get "parameterAnnotations"(): (($Annotation)[])[]
 get "genericParameterTypes"(): ($Type)[]
-get "genericExceptionTypes"(): ($Type)[]
-get "exceptionTypes"(): ($Class<(any)>)[]
-get "annotatedReturnType"(): $AnnotatedType
-get "parameters"(): ($Parameter)[]
-get "annotatedReceiverType"(): $AnnotatedType
-get "annotatedExceptionTypes"(): ($AnnotatedType)[]
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5061,7 +5193,7 @@ export interface $TypeDescriptor$OfField<F extends $TypeDescriptor$OfField<(F)>>
  "isPrimitive"(): boolean
  "componentType"(): F
  "arrayType"(): F
- "descriptorString"(): string
+ "descriptorString"(): StringJS
 get "array"(): boolean
 get "primitive"(): boolean
 }
@@ -5076,7 +5208,7 @@ export class $TypeDescriptor$OfField$$Static<F extends $TypeDescriptor$OfField<(
  "isPrimitive"(): boolean
  "componentType"(): F
  "arrayType"(): F
- "descriptorString"(): string
+ "descriptorString"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5094,6 +5226,7 @@ declare module "java.lang.constant.ClassDesc" {
 import {$ConstantDesc, $ConstantDesc$$Type} from "java.lang.constant.ConstantDesc"
 import {$MethodHandles$Lookup, $MethodHandles$Lookup$$Type} from "java.lang.invoke.MethodHandles$Lookup"
 import {$TypeDescriptor$OfField, $TypeDescriptor$OfField$$Type} from "java.lang.invoke.TypeDescriptor$OfField"
+import {$Class, $Class$$Type} from "java.lang.Class"
 
 /**
  * This class is not allowed By KubeJS!
@@ -5103,50 +5236,50 @@ import {$TypeDescriptor$OfField, $TypeDescriptor$OfField$$Type} from "java.lang.
 export interface $ClassDesc extends $ConstantDesc, $TypeDescriptor$OfField<($ClassDesc)> {
 
  "isClassOrInterface"(): boolean
+ "displayName"(): StringJS
  "equals"(arg0: any): boolean
  "isArray"(): boolean
  "isPrimitive"(): boolean
  "componentType"(): $TypeDescriptor$OfField<(any)>
- "resolveConstantDesc"(arg0: $MethodHandles$Lookup$$Type): any
- "packageName"(): string
- "descriptorString"(): string
- "arrayType"(): $ClassDesc
+ "resolveConstantDesc"(arg0: $MethodHandles$Lookup$$Type): $Class<(any)>
+ "packageName"(): StringJS
+ "descriptorString"(): StringJS
+ "arrayType"(): $TypeDescriptor$OfField<(any)>
  "arrayType"(arg0: integer): $ClassDesc
- "displayName"(): string
- "nested"(arg0: string): $ClassDesc
- "nested"(arg0: string, ...arg1: (string)[]): $ClassDesc
+ "nested"(arg0: StringJS, ...arg1: (StringJS)[]): $ClassDesc
+ "nested"(arg0: StringJS): $ClassDesc
 get "classOrInterface"(): boolean
 get "array"(): boolean
 get "primitive"(): boolean
 }
 
 export namespace $ClassDesc {
-function ofInternalName(arg0: string): $ClassDesc
-function of(arg0: string, arg1: string): $ClassDesc
-function of(arg0: string): $ClassDesc
-function ofDescriptor(arg0: string): $ClassDesc
+function ofInternalName(arg0: StringJS): $ClassDesc
+function of(arg0: StringJS): $ClassDesc
+function of(arg0: StringJS, arg1: StringJS): $ClassDesc
+function ofDescriptor(arg0: StringJS): $ClassDesc
 const probejs$$marker: never
 }
 export class $ClassDesc$$Static implements $ClassDesc {
 
 
  "isClassOrInterface"(): boolean
-static "ofInternalName"(arg0: string): $ClassDesc
+static "ofInternalName"(arg0: StringJS): $ClassDesc
+ "displayName"(): StringJS
  "equals"(arg0: any): boolean
  "isArray"(): boolean
  "isPrimitive"(): boolean
  "componentType"(): $TypeDescriptor$OfField<(any)>
-static "of"(arg0: string, arg1: string): $ClassDesc
-static "of"(arg0: string): $ClassDesc
- "resolveConstantDesc"(arg0: $MethodHandles$Lookup$$Type): any
- "packageName"(): string
- "descriptorString"(): string
-static "ofDescriptor"(arg0: string): $ClassDesc
- "arrayType"(): $ClassDesc
+static "of"(arg0: StringJS): $ClassDesc
+static "of"(arg0: StringJS, arg1: StringJS): $ClassDesc
+ "resolveConstantDesc"(arg0: $MethodHandles$Lookup$$Type): $Class<(any)>
+ "packageName"(): StringJS
+ "descriptorString"(): StringJS
+static "ofDescriptor"(arg0: StringJS): $ClassDesc
+ "arrayType"(): $TypeDescriptor$OfField<(any)>
  "arrayType"(arg0: integer): $ClassDesc
- "displayName"(): string
- "nested"(arg0: string): $ClassDesc
- "nested"(arg0: string, ...arg1: (string)[]): $ClassDesc
+ "nested"(arg0: StringJS, ...arg1: (StringJS)[]): $ClassDesc
+ "nested"(arg0: StringJS): $ClassDesc
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5165,8 +5298,8 @@ import {$StructLayout, $StructLayout$$Type} from "java.lang.foreign.StructLayout
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$SequenceLayout, $SequenceLayout$$Type} from "java.lang.foreign.SequenceLayout"
 import {$MemoryLayout$PathElement, $MemoryLayout$PathElement$$Type} from "java.lang.foreign.MemoryLayout$PathElement"
-import {$MethodHandle, $MethodHandle$$Type} from "java.lang.invoke.MethodHandle"
 import {$VarHandle, $VarHandle$$Type} from "java.lang.invoke.VarHandle"
+import {$MethodHandle, $MethodHandle$$Type} from "java.lang.invoke.MethodHandle"
 import {$PaddingLayout, $PaddingLayout$$Type} from "java.lang.foreign.PaddingLayout"
 import {$UnionLayout, $UnionLayout$$Type} from "java.lang.foreign.UnionLayout"
 
@@ -5177,20 +5310,20 @@ import {$UnionLayout, $UnionLayout$$Type} from "java.lang.foreign.UnionLayout"
  */
 export interface $MemoryLayout {
 
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
  "withByteAlignment"(arg0: long): $MemoryLayout
  "withoutName"(): $MemoryLayout
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
  "varHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $VarHandle
  "sliceHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
- "withName"(arg0: string): $MemoryLayout
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
+ "withName"(arg0: StringJS): $MemoryLayout
 }
 
 export namespace $MemoryLayout {
@@ -5204,6 +5337,13 @@ const probejs$$marker: never
 export class $MemoryLayout$$Static implements $MemoryLayout {
 
 
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
  "withByteAlignment"(arg0: long): $MemoryLayout
  "withoutName"(): $MemoryLayout
 static "sequenceLayout"(arg0: long, arg1: $MemoryLayout$$Type): $SequenceLayout
@@ -5214,15 +5354,8 @@ static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
 static "paddingLayout"(arg0: long): $PaddingLayout
 static "structLayout"(...arg0: ($MemoryLayout$$Type)[]): $StructLayout
 static "unionLayout"(...arg0: ($MemoryLayout$$Type)[]): $UnionLayout
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
- "withName"(arg0: string): $MemoryLayout
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
+ "withName"(arg0: StringJS): $MemoryLayout
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5239,8 +5372,8 @@ export type $MemoryLayout_ = $MemoryLayout$$Type;
 declare module "java.lang.constant.DynamicConstantDesc" {
 import {$ConstantDesc, $ConstantDesc$$Type} from "java.lang.constant.ConstantDesc"
 import {$MethodHandles$Lookup, $MethodHandles$Lookup$$Type} from "java.lang.invoke.MethodHandles$Lookup"
-import {$ClassDesc, $ClassDesc$$Type} from "java.lang.constant.ClassDesc"
 import {$List, $List$$Type} from "java.util.List"
+import {$ClassDesc, $ClassDesc$$Type} from "java.lang.constant.ClassDesc"
 import {$DirectMethodHandleDesc, $DirectMethodHandleDesc$$Type} from "java.lang.constant.DirectMethodHandleDesc"
 
 /**
@@ -5251,18 +5384,18 @@ import {$DirectMethodHandleDesc, $DirectMethodHandleDesc$$Type} from "java.lang.
 export class $DynamicConstantDesc<T> implements $ConstantDesc {
 
 
-public "constantName"(): string
-public "bootstrapArgs"(): ($ConstantDesc)[]
-public static "ofCanonical"<T>(arg0: $DirectMethodHandleDesc$$Type, arg1: string, arg2: $ClassDesc$$Type, arg3: ($ConstantDesc$$Type)[]): $ConstantDesc
-public "bootstrapArgsList"(): $List<($ConstantDesc)>
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public static "of"<T>(arg0: $DirectMethodHandleDesc$$Type): $DynamicConstantDesc<(T)>
-public static "of"<T>(arg0: $DirectMethodHandleDesc$$Type, ...arg1: ($ConstantDesc$$Type)[]): $DynamicConstantDesc<(T)>
-public "resolveConstantDesc"(arg0: $MethodHandles$Lookup$$Type): T
 public "bootstrapMethod"(): $DirectMethodHandleDesc
-public static "ofNamed"<T>(arg0: $DirectMethodHandleDesc$$Type, arg1: string, arg2: $ClassDesc$$Type, ...arg3: ($ConstantDesc$$Type)[]): $DynamicConstantDesc<(T)>
+public static "ofNamed"<T>(arg0: $DirectMethodHandleDesc$$Type, arg1: StringJS, arg2: $ClassDesc$$Type, ...arg3: ($ConstantDesc$$Type)[]): $DynamicConstantDesc<(T)>
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+public static "of"<T>(arg0: $DirectMethodHandleDesc$$Type, ...arg1: ($ConstantDesc$$Type)[]): $DynamicConstantDesc<(T)>
+public static "of"<T>(arg0: $DirectMethodHandleDesc$$Type): $DynamicConstantDesc<(T)>
+public "resolveConstantDesc"(arg0: $MethodHandles$Lookup$$Type): T
+public "constantName"(): StringJS
+public "bootstrapArgs"(): ($ConstantDesc)[]
+public static "ofCanonical"<T>(arg0: $DirectMethodHandleDesc$$Type, arg1: StringJS, arg2: $ClassDesc$$Type, arg3: ($ConstantDesc$$Type)[]): $ConstantDesc
+public "bootstrapArgsList"(): $List<($ConstantDesc)>
 public "constantType"(): $ClassDesc
 }
 /**
@@ -5289,8 +5422,8 @@ import {$Throwable, $Throwable$$Type} from "java.lang.Throwable"
 export class $RuntimeException extends $Exception {
 
 constructor(arg0: $Throwable$$Type)
-constructor(arg0: string, arg1: $Throwable$$Type)
-constructor(arg0: string)
+constructor(arg0: StringJS, arg1: $Throwable$$Type)
+constructor(arg0: StringJS)
 constructor()
 
 }
@@ -5317,7 +5450,7 @@ export class $Record {
 
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 }
 /**
@@ -5524,7 +5657,7 @@ static readonly "PARAMETER": $ElementType
 
 
 public static "values"(): ($ElementType)[]
-public static "valueOf"(arg0: string): $ElementType
+public static "valueOf"(arg0: StringJS): $ElementType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5550,9 +5683,9 @@ export class $ReferenceQueue<T> {
 
 constructor()
 
+public "poll"(): $Reference<(T)>
 public "remove"(): $Reference<(T)>
 public "remove"(arg0: long): $Reference<(T)>
-public "poll"(): $Reference<(T)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5572,8 +5705,8 @@ import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$MemoryLayout, $MemoryLayout$$Type} from "java.lang.foreign.MemoryLayout"
 import {$SequenceLayout, $SequenceLayout$$Type} from "java.lang.foreign.SequenceLayout"
 import {$MemoryLayout$PathElement, $MemoryLayout$PathElement$$Type} from "java.lang.foreign.MemoryLayout$PathElement"
-import {$MethodHandle, $MethodHandle$$Type} from "java.lang.invoke.MethodHandle"
 import {$VarHandle, $VarHandle$$Type} from "java.lang.invoke.VarHandle"
+import {$MethodHandle, $MethodHandle$$Type} from "java.lang.invoke.MethodHandle"
 import {$UnionLayout, $UnionLayout$$Type} from "java.lang.foreign.UnionLayout"
 
 /**
@@ -5585,17 +5718,17 @@ export interface $PaddingLayout extends $MemoryLayout {
 
  "withByteAlignment"(arg0: long): $PaddingLayout
  "withoutName"(): $MemoryLayout
- "withName"(arg0: string): $MemoryLayout
+ "withName"(arg0: StringJS): $MemoryLayout
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
  "varHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $VarHandle
  "sliceHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 
@@ -5612,7 +5745,14 @@ export class $PaddingLayout$$Static implements $PaddingLayout {
 
  "withByteAlignment"(arg0: long): $PaddingLayout
  "withoutName"(): $MemoryLayout
- "withName"(arg0: string): $MemoryLayout
+ "withName"(arg0: StringJS): $MemoryLayout
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
 static "sequenceLayout"(arg0: long, arg1: $MemoryLayout$$Type): $SequenceLayout
 static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
@@ -5621,13 +5761,6 @@ static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
 static "paddingLayout"(arg0: long): $PaddingLayout
 static "structLayout"(...arg0: ($MemoryLayout$$Type)[]): $StructLayout
 static "unionLayout"(...arg0: ($MemoryLayout$$Type)[]): $UnionLayout
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 /**
@@ -5696,34 +5829,34 @@ import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 export class $ModuleDescriptor implements $Comparable<($ModuleDescriptor)> {
 
 
+public "requires"(): $Set<($ModuleDescriptor$Requires)>
+public "mainClass"(): $Optional<(StringJS)>
+public "toNameAndVersion"(): StringJS
+public "rawVersion"(): $Optional<(StringJS)>
+public static "newModule"(arg0: StringJS): $ModuleDescriptor$Builder
+public static "newModule"(arg0: StringJS, arg1: $Set$$Type<($ModuleDescriptor$Modifier$$Type)>): $ModuleDescriptor$Builder
+public static "newOpenModule"(arg0: StringJS): $ModuleDescriptor$Builder
+public static "newAutomaticModule"(arg0: StringJS): $ModuleDescriptor$Builder
 public "modifiers"(): $Set<($ModuleDescriptor$Modifier)>
-public "name"(): string
+public "name"(): StringJS
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "version"(): $Optional<($ModuleDescriptor$Version)>
 public "hashCode"(): integer
-public "compareTo"(arg0: $ModuleDescriptor$$Type): integer
 public "compareTo"(arg0: any): integer
-public "packages"(): $Set<(string)>
+public "compareTo"(arg0: $ModuleDescriptor$$Type): integer
+public "packages"(): $Set<(StringJS)>
 public "isOpen"(): boolean
 public "accessFlags"(): $Set<($AccessFlag)>
-public static "read"(arg0: $InputStream$$Type, arg1: $Supplier$$Type<($Set$$Type<(string)>)>): $ModuleDescriptor
 public static "read"(arg0: $InputStream$$Type): $ModuleDescriptor
-public static "read"(arg0: $ByteBuffer$$Type, arg1: $Supplier$$Type<($Set$$Type<(string)>)>): $ModuleDescriptor
 public static "read"(arg0: $ByteBuffer$$Type): $ModuleDescriptor
+public static "read"(arg0: $ByteBuffer$$Type, arg1: $Supplier$$Type<($Set$$Type<(StringJS)>)>): $ModuleDescriptor
+public static "read"(arg0: $InputStream$$Type, arg1: $Supplier$$Type<($Set$$Type<(StringJS)>)>): $ModuleDescriptor
 public "exports"(): $Set<($ModuleDescriptor$Exports)>
 public "opens"(): $Set<($ModuleDescriptor$Opens)>
 public "isAutomatic"(): boolean
-public "uses"(): $Set<(string)>
+public "uses"(): $Set<(StringJS)>
 public "provides"(): $Set<($ModuleDescriptor$Provides)>
-public "requires"(): $Set<($ModuleDescriptor$Requires)>
-public "mainClass"(): $Optional<(string)>
-public "toNameAndVersion"(): string
-public "rawVersion"(): $Optional<(string)>
-public static "newModule"(arg0: string, arg1: $Set$$Type<($ModuleDescriptor$Modifier$$Type)>): $ModuleDescriptor$Builder
-public static "newModule"(arg0: string): $ModuleDescriptor$Builder
-public static "newOpenModule"(arg0: string): $ModuleDescriptor$Builder
-public static "newAutomaticModule"(arg0: string): $ModuleDescriptor$Builder
 get "open"(): boolean
 get "automatic"(): boolean
 }
@@ -5792,14 +5925,14 @@ export class $ModuleDescriptor$Opens implements $Comparable<($ModuleDescriptor$O
 
 public "modifiers"(): $Set<($ModuleDescriptor$Opens$Modifier)>
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "compareTo"(arg0: $ModuleDescriptor$Opens$$Type): integer
 public "compareTo"(arg0: any): integer
 public "accessFlags"(): $Set<($AccessFlag)>
-public "source"(): string
+public "source"(): StringJS
 public "isQualified"(): boolean
-public "targets"(): $Set<(string)>
+public "targets"(): $Set<(StringJS)>
 get "qualified"(): boolean
 }
 /**
@@ -5829,7 +5962,7 @@ export namespace $MemoryLayout$PathElement {
 function sequenceElement(arg0: long): $MemoryLayout$PathElement
 function sequenceElement(): $MemoryLayout$PathElement
 function sequenceElement(arg0: long, arg1: long): $MemoryLayout$PathElement
-function groupElement(arg0: string): $MemoryLayout$PathElement
+function groupElement(arg0: StringJS): $MemoryLayout$PathElement
 function groupElement(arg0: long): $MemoryLayout$PathElement
 function dereferenceElement(): $MemoryLayout$PathElement
 const probejs$$marker: never
@@ -5840,7 +5973,7 @@ export class $MemoryLayout$PathElement$$Static implements $MemoryLayout$PathElem
 static "sequenceElement"(arg0: long): $MemoryLayout$PathElement
 static "sequenceElement"(): $MemoryLayout$PathElement
 static "sequenceElement"(arg0: long, arg1: long): $MemoryLayout$PathElement
-static "groupElement"(arg0: string): $MemoryLayout$PathElement
+static "groupElement"(arg0: StringJS): $MemoryLayout$PathElement
 static "groupElement"(arg0: long): $MemoryLayout$PathElement
 static "dereferenceElement"(): $MemoryLayout$PathElement
 }
@@ -5865,8 +5998,8 @@ import {$PaddingLayout, $PaddingLayout$$Type} from "java.lang.foreign.PaddingLay
 import {$UnionLayout, $UnionLayout$$Type} from "java.lang.foreign.UnionLayout"
 import {$MemoryLayout, $MemoryLayout$$Type} from "java.lang.foreign.MemoryLayout"
 import {$SequenceLayout, $SequenceLayout$$Type} from "java.lang.foreign.SequenceLayout"
-import {$ValueLayout, $ValueLayout$$Type} from "java.lang.foreign.ValueLayout"
 import {$MemoryLayout$PathElement, $MemoryLayout$PathElement$$Type} from "java.lang.foreign.MemoryLayout$PathElement"
+import {$ValueLayout, $ValueLayout$$Type} from "java.lang.foreign.ValueLayout"
 import {$VarHandle, $VarHandle$$Type} from "java.lang.invoke.VarHandle"
 import {$Class, $Class$$Type} from "java.lang.Class"
 
@@ -5880,20 +6013,20 @@ export interface $ValueLayout$OfLong extends $ValueLayout {
  "withByteAlignment"(arg0: long): $MemoryLayout
  "withoutName"(): $MemoryLayout
  "withOrder"(arg0: $ByteOrder$$Type): $ValueLayout
- "withName"(arg0: string): $MemoryLayout
- "carrier"(): $Class<(any)>
+ "withName"(arg0: StringJS): $MemoryLayout
  "order"(): $ByteOrder
  "arrayElementVarHandle"(...arg0: (integer)[]): $VarHandle
+ "carrier"(): $Class<(any)>
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
  "varHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $VarHandle
  "sliceHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 
@@ -5911,10 +6044,17 @@ export class $ValueLayout$OfLong$$Static implements $ValueLayout$OfLong {
  "withByteAlignment"(arg0: long): $MemoryLayout
  "withoutName"(): $MemoryLayout
  "withOrder"(arg0: $ByteOrder$$Type): $ValueLayout
- "withName"(arg0: string): $MemoryLayout
- "carrier"(): $Class<(any)>
+ "withName"(arg0: StringJS): $MemoryLayout
  "order"(): $ByteOrder
  "arrayElementVarHandle"(...arg0: (integer)[]): $VarHandle
+ "carrier"(): $Class<(any)>
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
 static "sequenceLayout"(arg0: long, arg1: $MemoryLayout$$Type): $SequenceLayout
 static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
@@ -5923,13 +6063,6 @@ static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
 static "paddingLayout"(arg0: long): $PaddingLayout
 static "structLayout"(...arg0: ($MemoryLayout$$Type)[]): $StructLayout
 static "unionLayout"(...arg0: ($MemoryLayout$$Type)[]): $UnionLayout
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 /**
@@ -6002,7 +6135,7 @@ import {$IntStream, $IntStream$$Type} from "java.util.stream.IntStream"
 export interface $CharSequence {
 
  "length"(): integer
- "toString"(): string
+ "toString"(): StringJS
  "charAt"(arg0: integer): character
  "isEmpty"(): boolean
  "codePoints"(): $IntStream
@@ -6019,7 +6152,7 @@ export class $CharSequence$$Static implements $CharSequence {
 
 
  "length"(): integer
- "toString"(): string
+ "toString"(): StringJS
 static "compare"(arg0: charseq, arg1: charseq): integer
  "charAt"(arg0: integer): character
  "isEmpty"(): boolean
@@ -6040,14 +6173,14 @@ declare global {
 export type $CharSequence_ = $CharSequence$$Type;
 }}
 declare module "java.lang.foreign.ValueLayout" {
-import {$ValueLayout$OfLong, $ValueLayout$OfLong$$Type} from "java.lang.foreign.ValueLayout$OfLong"
 import {$StructLayout, $StructLayout$$Type} from "java.lang.foreign.StructLayout"
+import {$ValueLayout$OfLong, $ValueLayout$OfLong$$Type} from "java.lang.foreign.ValueLayout$OfLong"
 import {$ValueLayout$OfDouble, $ValueLayout$OfDouble$$Type} from "java.lang.foreign.ValueLayout$OfDouble"
 import {$ByteOrder, $ByteOrder$$Type} from "java.nio.ByteOrder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$ValueLayout$OfInt, $ValueLayout$OfInt$$Type} from "java.lang.foreign.ValueLayout$OfInt"
-import {$MethodHandle, $MethodHandle$$Type} from "java.lang.invoke.MethodHandle"
 import {$ValueLayout$OfBoolean, $ValueLayout$OfBoolean$$Type} from "java.lang.foreign.ValueLayout$OfBoolean"
+import {$MethodHandle, $MethodHandle$$Type} from "java.lang.invoke.MethodHandle"
 import {$ValueLayout$OfShort, $ValueLayout$OfShort$$Type} from "java.lang.foreign.ValueLayout$OfShort"
 import {$PaddingLayout, $PaddingLayout$$Type} from "java.lang.foreign.PaddingLayout"
 import {$UnionLayout, $UnionLayout$$Type} from "java.lang.foreign.UnionLayout"
@@ -6068,23 +6201,23 @@ import {$ValueLayout$OfChar, $ValueLayout$OfChar$$Type} from "java.lang.foreign.
  */
 export interface $ValueLayout extends $MemoryLayout {
 
- "withByteAlignment"(arg0: long): $ValueLayout
- "withoutName"(): $MemoryLayout
- "withOrder"(arg0: $ByteOrder$$Type): $ValueLayout
- "carrier"(): $Class<(any)>
  "order"(): $ByteOrder
  "arrayElementVarHandle"(...arg0: (integer)[]): $VarHandle
- "withName"(arg0: string): $ValueLayout
+ "carrier"(): $Class<(any)>
+ "withByteAlignment"(arg0: long): $ValueLayout
+ "withoutName"(): $ValueLayout
+ "withOrder"(arg0: $ByteOrder$$Type): $ValueLayout
+ "withName"(arg0: StringJS): $MemoryLayout
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
  "varHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $VarHandle
  "sliceHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 
@@ -6131,13 +6264,20 @@ static readonly "JAVA_SHORT_UNALIGNED": $ValueLayout$OfShort
 static readonly "JAVA_INT": $ValueLayout$OfInt
 
 
- "withByteAlignment"(arg0: long): $ValueLayout
- "withoutName"(): $MemoryLayout
- "withOrder"(arg0: $ByteOrder$$Type): $ValueLayout
- "carrier"(): $Class<(any)>
  "order"(): $ByteOrder
  "arrayElementVarHandle"(...arg0: (integer)[]): $VarHandle
- "withName"(arg0: string): $ValueLayout
+ "carrier"(): $Class<(any)>
+ "withByteAlignment"(arg0: long): $ValueLayout
+ "withoutName"(): $ValueLayout
+ "withOrder"(arg0: $ByteOrder$$Type): $ValueLayout
+ "withName"(arg0: StringJS): $MemoryLayout
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
 static "sequenceLayout"(arg0: long, arg1: $MemoryLayout$$Type): $SequenceLayout
 static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
@@ -6146,13 +6286,6 @@ static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
 static "paddingLayout"(arg0: long): $PaddingLayout
 static "structLayout"(...arg0: ($MemoryLayout$$Type)[]): $StructLayout
 static "unionLayout"(...arg0: ($MemoryLayout$$Type)[]): $UnionLayout
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 /**
@@ -6172,8 +6305,8 @@ import {$StructLayout, $StructLayout$$Type} from "java.lang.foreign.StructLayout
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$MemoryLayout, $MemoryLayout$$Type} from "java.lang.foreign.MemoryLayout"
 import {$MemoryLayout$PathElement, $MemoryLayout$PathElement$$Type} from "java.lang.foreign.MemoryLayout$PathElement"
-import {$MethodHandle, $MethodHandle$$Type} from "java.lang.invoke.MethodHandle"
 import {$VarHandle, $VarHandle$$Type} from "java.lang.invoke.VarHandle"
+import {$MethodHandle, $MethodHandle$$Type} from "java.lang.invoke.MethodHandle"
 import {$PaddingLayout, $PaddingLayout$$Type} from "java.lang.foreign.PaddingLayout"
 import {$UnionLayout, $UnionLayout$$Type} from "java.lang.foreign.UnionLayout"
 
@@ -6185,23 +6318,23 @@ import {$UnionLayout, $UnionLayout$$Type} from "java.lang.foreign.UnionLayout"
 export interface $SequenceLayout extends $MemoryLayout {
 
  "withElementCount"(arg0: long): $SequenceLayout
- "withByteAlignment"(arg0: long): $MemoryLayout
+ "elementCount"(): long
+ "flatten"(): $SequenceLayout
+ "withByteAlignment"(arg0: long): $SequenceLayout
  "withoutName"(): $MemoryLayout
  "elementLayout"(): $MemoryLayout
- "elementCount"(): long
  "reshape"(...arg0: (long)[]): $SequenceLayout
- "flatten"(): $SequenceLayout
- "withName"(arg0: string): $MemoryLayout
+ "withName"(arg0: StringJS): $MemoryLayout
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
  "varHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $VarHandle
  "sliceHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 
@@ -6217,13 +6350,20 @@ export class $SequenceLayout$$Static implements $SequenceLayout {
 
 
  "withElementCount"(arg0: long): $SequenceLayout
- "withByteAlignment"(arg0: long): $MemoryLayout
+ "elementCount"(): long
+ "flatten"(): $SequenceLayout
+ "withByteAlignment"(arg0: long): $SequenceLayout
  "withoutName"(): $MemoryLayout
  "elementLayout"(): $MemoryLayout
- "elementCount"(): long
  "reshape"(...arg0: (long)[]): $SequenceLayout
- "flatten"(): $SequenceLayout
- "withName"(arg0: string): $MemoryLayout
+ "withName"(arg0: StringJS): $MemoryLayout
+ "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
+ "byteSize"(): long
+ "byteAlignment"(): long
+ "name"(): $Optional<(StringJS)>
+ "equals"(arg0: any): boolean
+ "toString"(): StringJS
+ "hashCode"(): integer
 static "sequenceLayout"(arg0: long, arg1: $MemoryLayout$$Type): $SequenceLayout
 static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
  "byteOffsetHandle"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MethodHandle
@@ -6232,13 +6372,6 @@ static "sequenceLayout"(arg0: $MemoryLayout$$Type): $SequenceLayout
 static "paddingLayout"(arg0: long): $PaddingLayout
 static "structLayout"(...arg0: ($MemoryLayout$$Type)[]): $StructLayout
 static "unionLayout"(...arg0: ($MemoryLayout$$Type)[]): $UnionLayout
- "byteSize"(): long
- "byteAlignment"(): long
- "name"(): $Optional<(string)>
- "equals"(arg0: any): boolean
- "toString"(): string
- "hashCode"(): integer
- "byteOffset"(...arg0: ($MemoryLayout$PathElement$$Type)[]): long
  "select"(...arg0: ($MemoryLayout$PathElement$$Type)[]): $MemoryLayout
 }
 /**
@@ -6290,13 +6423,13 @@ static readonly "PROTECTED": $AccessFlag
 static readonly "TRANSIENT": $AccessFlag
 
 
-public static "values"(): ($AccessFlag)[]
-public static "valueOf"(arg0: string): $AccessFlag
-public static "maskToAccessFlags"(arg0: integer, arg1: $AccessFlag$Location$$Type): $Set<($AccessFlag)>
-public "mask"(): integer
 public "sourceModifier"(): boolean
-public "locations"(): $Set<($AccessFlag$Location)>
 public "locations"(arg0: $ClassFileFormatVersion$$Type): $Set<($AccessFlag$Location)>
+public "locations"(): $Set<($AccessFlag$Location)>
+public "mask"(): integer
+public static "values"(): ($AccessFlag)[]
+public static "valueOf"(arg0: StringJS): $AccessFlag
+public static "maskToAccessFlags"(arg0: integer, arg1: $AccessFlag$Location$$Type): $Set<($AccessFlag)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6322,16 +6455,16 @@ import {$TypeDescriptor$OfField, $TypeDescriptor$OfField$$Type} from "java.lang.
  */
 export interface $TypeDescriptor$OfMethod<F extends $TypeDescriptor$OfField<(F)>, M extends $TypeDescriptor$OfMethod<(F), (M)>> extends $TypeDescriptor {
 
- "returnType"(): F
- "parameterType"(arg0: integer): F
+ "parameterList"(): $List<(F)>
+ "parameterArray"(): (F)[]
+ "changeParameterType"(arg0: integer, arg1: F): M
  "insertParameterTypes"(arg0: integer, ...arg1: (F)[]): M
  "changeReturnType"(arg0: F): M
  "dropParameterTypes"(arg0: integer, arg1: integer): M
  "parameterCount"(): integer
- "parameterList"(): $List<(F)>
- "parameterArray"(): (F)[]
- "changeParameterType"(arg0: integer, arg1: F): M
- "descriptorString"(): string
+ "parameterType"(arg0: integer): F
+ "returnType"(): F
+ "descriptorString"(): StringJS
 }
 
 export namespace $TypeDescriptor$OfMethod {
@@ -6340,16 +6473,16 @@ const probejs$$marker: never
 export class $TypeDescriptor$OfMethod$$Static<F extends $TypeDescriptor$OfField<(F)>, M extends $TypeDescriptor$OfMethod<(F), (M)>> implements $TypeDescriptor$OfMethod {
 
 
- "returnType"(): F
- "parameterType"(arg0: integer): F
+ "parameterList"(): $List<(F)>
+ "parameterArray"(): (F)[]
+ "changeParameterType"(arg0: integer, arg1: F): M
  "insertParameterTypes"(arg0: integer, ...arg1: (F)[]): M
  "changeReturnType"(arg0: F): M
  "dropParameterTypes"(arg0: integer, arg1: integer): M
  "parameterCount"(): integer
- "parameterList"(): $List<(F)>
- "parameterArray"(): (F)[]
- "changeParameterType"(arg0: integer, arg1: F): M
- "descriptorString"(): string
+ "parameterType"(arg0: integer): F
+ "returnType"(): F
+ "descriptorString"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6376,9 +6509,9 @@ import {$ModuleReference, $ModuleReference$$Type} from "java.lang.module.ModuleR
 export class $ResolvedModule {
 
 
-public "name"(): string
+public "name"(): StringJS
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "reads"(): $Set<($ResolvedModule)>
 public "reference"(): $ModuleReference

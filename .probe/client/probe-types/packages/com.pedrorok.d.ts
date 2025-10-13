@@ -8,14 +8,14 @@ import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$SimpleWaterloggedBlock, $SimpleWaterloggedBlock$$Type} from "net.minecraft.world.level.block.SimpleWaterloggedBlock"
-import {$ITubeConnection, $ITubeConnection$$Type} from "com.pedrorok.hypertube.core.connection.interfaces.ITubeConnection"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
+import {$ITubeConnection, $ITubeConnection$$Type} from "com.pedrorok.hypertube.core.connection.interfaces.ITubeConnection"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -23,8 +23,8 @@ import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from
 import {$RenderShape, $RenderShape$$Type} from "net.minecraft.world.level.block.RenderShape"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$HitResult, $HitResult$$Type} from "net.minecraft.world.phys.HitResult"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Direction$Axis, $Direction$Axis$$Type} from "net.minecraft.core.Direction$Axis"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
@@ -48,7 +48,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -58,20 +58,20 @@ static readonly "UPDATE_CLIENTS": integer
 
 constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "getShape"(arg0: $BlockState$$Type): $VoxelShape
-public "getShape"(arg0: $BlockState$$Type, arg1: $CollisionContext$$Type): $VoxelShape
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
+public "getShape"(arg0: $BlockState$$Type, arg1: $CollisionContext$$Type): $VoxelShape
+public "getShape"(arg0: $BlockState$$Type): $VoxelShape
 public "getItem"(): $Item
 public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
+public "canTravelConnect"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $Direction$$Type): boolean
 public "onSneakWrenched"(arg0: $BlockState$$Type, arg1: $UseOnContext$$Type): $InteractionResult
+public "getRotationAxis"(arg0: $BlockState$$Type): $Direction$Axis
 public "getInteractionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): $VoxelShape
 public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
 public "getBlockSupportShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): $VoxelShape
-public "getRotationAxis"(arg0: $BlockState$$Type): $Direction$Axis
-public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
-public "getCloneItemStack"(arg0: $LevelReader$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): $ItemStack
 public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "canTravelConnect"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $Direction$$Type): boolean
+public "getCloneItemStack"(arg0: $LevelReader$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): $ItemStack
+public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
 public "isConnected"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $Direction$$Type): boolean
 public "getConnectedFaces"(arg0: $BlockState$$Type): $List<($Direction)>
 public "getPickupSound"(): $Optional<($SoundEvent)>
@@ -110,9 +110,9 @@ export class $TravelPathMover {
 constructor(arg0: $Vec3$$Type, arg1: $List$$Type<($Vec3$$Type)>, arg2: $Set$$Type<($BlockPos$$Type)>, arg3: float, arg4: $Vec3$$Type, arg5: $BlockPos$$Type, arg6: $BiConsumer$$Type<($LivingEntity), (boolean)>)
 
 public "tickEntity"(arg0: $LivingEntity$$Type): void
-public "handleActionPoint"(arg0: $BlockPos$$Type): void
 public "getTravelSpeed"(): float
 public "setTravelSpeed"(arg0: float): void
+public "handleActionPoint"(arg0: $BlockPos$$Type): void
 public "getLastPos"(): $BlockPos
 public "getLastDir"(): $Vec3
 public "setClientFinish"(): void
@@ -143,8 +143,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
@@ -155,16 +155,16 @@ import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$TubeBlock, $TubeBlock$$Type} from "com.pedrorok.hypertube.blocks.TubeBlock"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $HypertubeBlock extends $TubeBlock implements $EntityBlock {
 static readonly "SHAPE_UP_DOWN": $VoxelShape
@@ -176,7 +176,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UP_DOWN": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -197,17 +197,17 @@ static readonly "UPDATE_CLIENTS": integer
 
 constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "getState"(arg0: $BlockState$$Type, arg1: $Collection$$Type<($Direction$$Type)>, arg2: boolean): $BlockState
 public "getShape"(arg0: $BlockState$$Type, arg1: $CollisionContext$$Type): $VoxelShape
 public "getItem"(): $Item
+public "getState"(arg0: $BlockState$$Type, arg1: $Collection$$Type<($Direction$$Type)>, arg2: boolean): $BlockState
 public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
-public "propagatesSkylightDown"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): boolean
-public "updateBlockState"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): void
-public "getConnectedFaces"(arg0: $BlockState$$Type): $List<($Direction)>
 public "onWrenched"(arg0: $BlockState$$Type, arg1: $UseOnContext$$Type): $InteractionResult
+public "getConnectedFaces"(arg0: $BlockState$$Type): $List<($Direction)>
+public "updateBlockState"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): void
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
+public "propagatesSkylightDown"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): boolean
 public "updateBlockStateFromEntity"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type): void
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
@@ -272,8 +272,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
@@ -293,8 +293,8 @@ import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.leve
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $HyperEntranceBlock extends $TubeBlock implements $EntityBlock, $ICogWheel {
@@ -304,7 +304,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "IN_FRONT": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -328,21 +328,18 @@ constructor(arg0: $BlockBehaviour$Properties$$Type)
 public "rotate"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $BlockState
 public "getShape"(arg0: $BlockState$$Type, arg1: $CollisionContext$$Type): $VoxelShape
 public "getItem"(): $Item
+public "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
-public "onNeighborChange"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $BlockPos$$Type): void
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
-public "getRotationAxis"(arg0: $BlockState$$Type): $Direction$Axis
-public "canTravelConnect"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $Direction$$Type): boolean
-public "getConnectedFaces"(arg0: $BlockState$$Type): $List<($Direction)>
-public "updateInFrontProperty"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): void
 public "isSmallCog"(): boolean
 public "onWrenched"(arg0: $BlockState$$Type, arg1: $UseOnContext$$Type): $InteractionResult
+public "getConnectedFaces"(arg0: $BlockState$$Type): $List<($Direction)>
+public "canTravelConnect"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $Direction$$Type): boolean
+public "updateInFrontProperty"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): void
+public "getRotationAxis"(arg0: $BlockState$$Type): $Direction$Axis
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "onNeighborChange"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $BlockPos$$Type): void
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
-public "isDedicatedCogWheel"(): boolean
-public static "isDedicatedCogWheel"(arg0: $Block$$Type): boolean
-public static "isDedicatedCogItem"(arg0: $ItemStack$$Type): boolean
 public static "isSmallCog"(arg0: $Block$$Type): boolean
 public static "isSmallCog"(arg0: $BlockState$$Type): boolean
 public "isLargeCog"(): boolean
@@ -350,14 +347,17 @@ public static "isLargeCog"(arg0: $Block$$Type): boolean
 public static "isLargeCog"(arg0: $BlockState$$Type): boolean
 public static "isSmallCogItem"(arg0: $ItemStack$$Type): boolean
 public static "isLargeCogItem"(arg0: $ItemStack$$Type): boolean
+public static "isDedicatedCogItem"(arg0: $ItemStack$$Type): boolean
+public static "isDedicatedCogWheel"(arg0: $Block$$Type): boolean
+public "isDedicatedCogWheel"(): boolean
 public "hasShaftTowards"(arg0: $LevelReader$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Direction$$Type): boolean
 public static "playRotateSound"(arg0: $Level$$Type, arg1: $BlockPos$$Type): void
 public static "playRemoveSound"(arg0: $Level$$Type, arg1: $BlockPos$$Type): void
 public "asHolder"(): $Holder<(any)>
 get "item"(): $Item
 get "smallCog"(): boolean
-get "dedicatedCogWheel"(): boolean
 get "largeCog"(): boolean
+get "dedicatedCogWheel"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -407,17 +407,17 @@ import {$Record, $Record$$Type} from "java.lang.Record"
 
 export class $ResponseDTO extends $Record {
 
-constructor(valid: boolean, errorMessage: string)
+constructor(valid: boolean, errorMessage: StringJS)
 
-public static "get"(arg0: boolean, arg1: string): $ResponseDTO
+public "valid"(): boolean
+public static "invalid"(arg0: StringJS): $ResponseDTO
+public static "invalid"(): $ResponseDTO
+public static "get"(arg0: boolean, arg1: StringJS): $ResponseDTO
 public static "get"(arg0: boolean): $ResponseDTO
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "valid"(): boolean
-public static "invalid"(): $ResponseDTO
-public static "invalid"(arg0: string): $ResponseDTO
-public "errorMessage"(): string
+public "errorMessage"(): StringJS
 public "getMessageComponent"(): $MutableComponent
 get "messageComponent"(): $MutableComponent
 }
@@ -425,7 +425,7 @@ get "messageComponent"(): $MutableComponent
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ResponseDTO$$Type = ({"errorMessage"?: string, "valid"?: boolean}) | ([errorMessage?: string, valid?: boolean]);
+export type $ResponseDTO$$Type = ({"errorMessage"?: StringJS, "valid"?: boolean}) | ([errorMessage?: StringJS, valid?: boolean]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -434,26 +434,29 @@ declare global {
 export type $ResponseDTO_ = $ResponseDTO$$Type;
 }}
 declare module "com.pedrorok.hypertube.items.HypertubeItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ResponseDTO, $ResponseDTO$$Type} from "com.pedrorok.hypertube.core.placement.ResponseDTO"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 
 export class $HypertubeItem extends $BlockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -466,15 +469,16 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Block$$Type, arg1: $Item$Properties$$Type)
 
-public static "select"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $Direction$$Type, arg3: $ItemStack$$Type): $ResponseDTO
-public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
 public "isFoil"(arg0: $ItemStack$$Type): boolean
+public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public static "select"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $Direction$$Type, arg3: $ItemStack$$Type): $ResponseDTO
 public static "clearConnection"(arg0: $ItemStack$$Type): void
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
 public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -495,14 +499,14 @@ import {$Mirror, $Mirror$$Type} from "net.minecraft.world.level.block.Mirror"
 import {$List, $List$$Type} from "java.util.List"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$TravelPathMover, $TravelPathMover$$Type} from "com.pedrorok.hypertube.core.travel.TravelPathMover"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
+import {$TravelPathMover, $TravelPathMover$$Type} from "com.pedrorok.hypertube.core.travel.TravelPathMover"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
@@ -523,8 +527,8 @@ import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.leve
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $HyperAcceleratorBlock extends $TubeBlock implements $EntityBlock, $ICogWheel, $ITubeActionPoint {
@@ -535,7 +539,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -558,19 +562,16 @@ constructor(arg0: $BlockBehaviour$Properties$$Type)
 public "rotate"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $BlockState
 public "getShape"(arg0: $BlockState$$Type, arg1: $CollisionContext$$Type): $VoxelShape
 public "getItem"(): $Item
+public "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
-public "getRotationAxis"(arg0: $BlockState$$Type): $Direction$Axis
-public "handleTravelPath"(arg0: $LivingEntity$$Type, arg1: $TravelPathMover$$Type, arg2: $BlockPos$$Type): void
-public "getConnectedFaces"(arg0: $BlockState$$Type): $List<($Direction)>
 public "isSmallCog"(): boolean
 public "onWrenched"(arg0: $BlockState$$Type, arg1: $UseOnContext$$Type): $InteractionResult
+public "getConnectedFaces"(arg0: $BlockState$$Type): $List<($Direction)>
+public "handleTravelPath"(arg0: $LivingEntity$$Type, arg1: $TravelPathMover$$Type, arg2: $BlockPos$$Type): void
+public "getRotationAxis"(arg0: $BlockState$$Type): $Direction$Axis
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
-public "isDedicatedCogWheel"(): boolean
-public static "isDedicatedCogWheel"(arg0: $Block$$Type): boolean
-public static "isDedicatedCogItem"(arg0: $ItemStack$$Type): boolean
 public static "isSmallCog"(arg0: $Block$$Type): boolean
 public static "isSmallCog"(arg0: $BlockState$$Type): boolean
 public "isLargeCog"(): boolean
@@ -578,14 +579,17 @@ public static "isLargeCog"(arg0: $Block$$Type): boolean
 public static "isLargeCog"(arg0: $BlockState$$Type): boolean
 public static "isSmallCogItem"(arg0: $ItemStack$$Type): boolean
 public static "isLargeCogItem"(arg0: $ItemStack$$Type): boolean
+public static "isDedicatedCogItem"(arg0: $ItemStack$$Type): boolean
+public static "isDedicatedCogWheel"(arg0: $Block$$Type): boolean
+public "isDedicatedCogWheel"(): boolean
 public "hasShaftTowards"(arg0: $LevelReader$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Direction$$Type): boolean
 public static "playRotateSound"(arg0: $Level$$Type, arg1: $BlockPos$$Type): void
 public static "playRemoveSound"(arg0: $Level$$Type, arg1: $BlockPos$$Type): void
 public "asHolder"(): $Holder<(any)>
 get "item"(): $Item
 get "smallCog"(): boolean
-get "dedicatedCogWheel"(): boolean
 get "largeCog"(): boolean
+get "dedicatedCogWheel"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -609,8 +613,8 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 export interface $ITubeConnection {
 
  "isConnected"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $Direction$$Type): boolean
- "canTravelConnect"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $Direction$$Type): boolean
  "getConnectedFaces"(arg0: $BlockState$$Type): $List<($Direction)>
+ "canTravelConnect"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $Direction$$Type): boolean
 }
 
 export namespace $ITubeConnection {
@@ -620,8 +624,8 @@ export class $ITubeConnection$$Static implements $ITubeConnection {
 
 
  "isConnected"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $Direction$$Type): boolean
- "canTravelConnect"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $Direction$$Type): boolean
  "getConnectedFaces"(arg0: $BlockState$$Type): $List<($Direction)>
+ "canTravelConnect"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $Direction$$Type): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

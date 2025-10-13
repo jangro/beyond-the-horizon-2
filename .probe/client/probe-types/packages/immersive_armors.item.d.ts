@@ -1,6 +1,6 @@
 declare module "immersive_armors.item.ExtendedArmorMaterial" {
-import {$ArmorMaterial, $ArmorMaterial$$Type} from "net.minecraft.world.item.ArmorMaterial"
 import {$Piece, $Piece$$Type} from "immersive_armors.client.render.entity.piece.Piece"
+import {$ArmorMaterial, $ArmorMaterial$$Type} from "net.minecraft.world.item.ArmorMaterial"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$List, $List$$Type} from "java.util.List"
@@ -14,14 +14,42 @@ import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.A
 
 export class $ExtendedArmorMaterial {
 
-constructor(name: string)
+constructor(name: StringJS)
 
-public "getName"(): string
-public "full"(pieceSupplier: $Piece$$Type): $ExtendedArmorMaterial
 public "upper"(pieceSupplier: $Piece$$Type): $ExtendedArmorMaterial
 public "lower"(pieceSupplier: $Piece$$Type): $ExtendedArmorMaterial
-public "color"(color: integer): $ExtendedArmorMaterial
 public "head"(pieceSupplier: $Piece$$Type): $ExtendedArmorMaterial
+public "color"(color: integer): $ExtendedArmorMaterial
+public "getName"(): StringJS
+public "full"(pieceSupplier: $Piece$$Type): $ExtendedArmorMaterial
+public "feet"(pieceSupplier: $Piece$$Type): $ExtendedArmorMaterial
+public "legs"(pieceSupplier: $Piece$$Type): $ExtendedArmorMaterial
+public "chest"(pieceSupplier: $Piece$$Type): $ExtendedArmorMaterial
+public "effect"(effect: $ArmorEffect$$Type): $ExtendedArmorMaterial
+public "weight"(weight: float): $ExtendedArmorMaterial
+public "getToughness"(): float
+public "getEffects"(): $List<($ArmorEffect)>
+public "getMaterial"(): $ArmorMaterial
+public "getColor"(): integer
+public "getEquipSound"(): $Holder<($SoundEvent)>
+public "getWeight"(): float
+public "antiSkeleton"(): $ExtendedArmorMaterial
+public "hideCape"(): $ExtendedArmorMaterial
+public "waterMovement"(waterMovement: float): $ExtendedArmorMaterial
+public "shouldHideCape"(): boolean
+public "addLoot"(name: StringJS, chance: float): $ExtendedArmorMaterial
+public "enchantability"(enchantability: integer): $ExtendedArmorMaterial
+public "getLoot"(): $Map<(StringJS), (float)>
+public "getPieces"(slot: $EquipmentSlot$$Type): $List<($Piece)>
+public "getProtection"(slot: $ArmorItem$Type$$Type): integer
+public "getProtection"(): $EnumMap<($ArmorItem$Type), (integer)>
+public "isAntiSkeleton"(): boolean
+public "toughness"(toughness: float): $ExtendedArmorMaterial
+public "equipSound"(equipSound: $SoundEvent$$Type): $ExtendedArmorMaterial
+public "equipSound"(equipSound: $Holder$$Type<($SoundEvent)>): $ExtendedArmorMaterial
+public "getRepairIngredient"(): $Ingredient
+public "repairIngredient"(repairIngredient: $Supplier$$Type<($Ingredient$$Type)>): $ExtendedArmorMaterial
+public "shouldHideSecondLayer"(): (boolean)[]
 public "durabilityMultiplier"(durabilityMultiplier: integer): $ExtendedArmorMaterial
 public "protectionAmount"(helmet: integer, chestplate: integer, legging: integer, boots: integer): $ExtendedArmorMaterial
 public "knockbackReduction"(knockbackReduction: float): $ExtendedArmorMaterial
@@ -30,43 +58,15 @@ public "getKnockbackResistance"(): float
 public "getWaterMovement"(): float
 public "hidesSecondLayer"(head: boolean, chest: boolean, legs: boolean, feet: boolean): $ExtendedArmorMaterial
 public "getEnchantability"(): integer
-public "getColor"(): integer
-public "getEquipSound"(): $Holder<($SoundEvent)>
-public "getEffects"(): $List<($ArmorEffect)>
-public "getMaterial"(): $ArmorMaterial
-public "getToughness"(): float
-public "getWeight"(): float
-public "addLoot"(name: string, chance: float): $ExtendedArmorMaterial
-public "feet"(pieceSupplier: $Piece$$Type): $ExtendedArmorMaterial
-public "legs"(pieceSupplier: $Piece$$Type): $ExtendedArmorMaterial
-public "weight"(weight: float): $ExtendedArmorMaterial
-public "effect"(effect: $ArmorEffect$$Type): $ExtendedArmorMaterial
-public "chest"(pieceSupplier: $Piece$$Type): $ExtendedArmorMaterial
-public "shouldHideSecondLayer"(): (boolean)[]
-public "repairIngredient"(repairIngredient: $Supplier$$Type<($Ingredient$$Type)>): $ExtendedArmorMaterial
-public "getRepairIngredient"(): $Ingredient
-public "enchantability"(enchantability: integer): $ExtendedArmorMaterial
-public "toughness"(toughness: float): $ExtendedArmorMaterial
-public "equipSound"(equipSound: $Holder$$Type<($SoundEvent)>): $ExtendedArmorMaterial
-public "equipSound"(equipSound: $SoundEvent$$Type): $ExtendedArmorMaterial
-public "getProtection"(slot: $ArmorItem$Type$$Type): integer
-public "getProtection"(): $EnumMap<($ArmorItem$Type), (integer)>
-public "isAntiSkeleton"(): boolean
-public "getLoot"(): $Map<(string), (float)>
-public "getPieces"(slot: $EquipmentSlot$$Type): $List<($Piece)>
-public "antiSkeleton"(): $ExtendedArmorMaterial
-public "hideCape"(): $ExtendedArmorMaterial
-public "waterMovement"(waterMovement: float): $ExtendedArmorMaterial
-public "shouldHideCape"(): boolean
 public "registerVanillaMaterial"(): void
 public "getDurabilityMultiplier"(): integer
-get "name"(): string
-get "registryReference"(): $Holder<($ArmorMaterial)>
-get "knockbackResistance"(): float
+get "name"(): StringJS
 get "effects"(): $List<($ArmorEffect)>
 get "material"(): $ArmorMaterial
+get "loot"(): $Map<(StringJS), (float)>
 get "protection"(): $EnumMap<($ArmorItem$Type), (integer)>
-get "loot"(): $Map<(string), (float)>
+get "registryReference"(): $Holder<($ArmorMaterial)>
+get "knockbackResistance"(): float
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -81,32 +81,35 @@ declare global {
 export type $ExtendedArmorMaterial_ = $ExtendedArmorMaterial$$Type;
 }}
 declare module "immersive_armors.item.ExtendedArmorItem" {
-import {$Map, $Map$$Type} from "java.util.Map"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
-import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
-import {$DamageSource, $DamageSource$$Type} from "net.minecraft.world.damagesource.DamageSource"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$ArmorItem, $ArmorItem$$Type} from "net.minecraft.world.item.ArmorItem"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$ExtendedArmorMaterial, $ExtendedArmorMaterial$$Type} from "immersive_armors.item.ExtendedArmorMaterial"
 import {$DispenseItemBehavior, $DispenseItemBehavior$$Type} from "net.minecraft.core.dispenser.DispenseItemBehavior"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.ArmorItem$Type"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
+import {$DamageSource, $DamageSource$$Type} from "net.minecraft.world.damagesource.DamageSource"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+import {$ExtendedArmorMaterial, $ExtendedArmorMaterial$$Type} from "immersive_armors.item.ExtendedArmorMaterial"
 
 export class $ExtendedArmorItem extends $ArmorItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -116,20 +119,21 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(settings: $Item$Properties$$Type, slot: $ArmorItem$Type$$Type, material: $ExtendedArmorMaterial$$Type)
 
-public "refreshAttributes"(): void
-public "getDefaultAttributeModifiers"(): $ItemAttributeModifiers
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
 public "getDefense"(): integer
 public "getToughness"(): float
-public "applyArmorToDamage"(entity: $LivingEntity$$Type, source: $DamageSource$$Type, amount: float, armor: $ItemStack$$Type): float
-public "applyArmorToAttack"(target: $LivingEntity$$Type, source: $DamageSource$$Type, amount: float, armor: $ItemStack$$Type): float
 public "getExtendedMaterial"(): $ExtendedArmorMaterial
 public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public "getDefaultAttributeModifiers"(): $ItemAttributeModifiers
+public "applyArmorToDamage"(entity: $LivingEntity$$Type, source: $DamageSource$$Type, amount: float, armor: $ItemStack$$Type): float
+public "applyArmorToAttack"(target: $LivingEntity$$Type, source: $DamageSource$$Type, amount: float, armor: $ItemStack$$Type): float
+public "refreshAttributes"(): void
 public static "get"(arg0: $ItemStack$$Type): $Equipable
-get "defaultAttributeModifiers"(): $ItemAttributeModifiers
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "defense"(): integer
 get "toughness"(): float
 get "extendedMaterial"(): $ExtendedArmorMaterial
+get "defaultAttributeModifiers"(): $ItemAttributeModifiers
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -144,15 +148,19 @@ declare global {
 export type $ExtendedArmorItem_ = $ExtendedArmorItem$$Type;
 }}
 declare module "immersive_armors.item.DyeableExtendedArmorItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$ExtendedArmorItem, $ExtendedArmorItem$$Type} from "immersive_armors.item.ExtendedArmorItem"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
@@ -165,7 +173,7 @@ import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.A
 export class $DyeableExtendedArmorItem extends $ExtendedArmorItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -178,6 +186,7 @@ constructor(settings: $Item$Properties$$Type, slot: $ArmorItem$Type$$Type, mater
 public "getColor"(stack: $ItemStack$$Type): integer
 public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

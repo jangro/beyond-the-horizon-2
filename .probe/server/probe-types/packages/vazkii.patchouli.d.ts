@@ -14,20 +14,20 @@ static "CODEC": $Codec<($BookOpenTrigger$TriggerInstance)>
 constructor(player: $Optional$$Type<($ContextAwarePredicate$$Type)>, book: $ResourceLocation$$Type, entry: $Optional$$Type<($ResourceLocation$$Type)>, page: $MinMaxBounds$Ints$$Type)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "matches"(arg0: $ResourceLocation$$Type, arg1: $ResourceLocation$$Type, arg2: integer): boolean
 public "entry"(): $Optional<($ResourceLocation)>
 public "book"(): $ResourceLocation
-public "player"(): $Optional<($ContextAwarePredicate)>
 public "page"(): $MinMaxBounds$Ints
+public "player"(): $Optional<($ContextAwarePredicate)>
 public "validate"(arg0: $CriterionValidator$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $BookOpenTrigger$TriggerInstance$$Type = ({"page"?: $MinMaxBounds$Ints$$Type, "book"?: $ResourceLocation$$Type, "entry"?: ($ResourceLocation$$Type)?, "player"?: ($ContextAwarePredicate$$Type)?}) | ([page?: $MinMaxBounds$Ints$$Type, book?: $ResourceLocation$$Type, entry?: ($ResourceLocation$$Type)?, player?: ($ContextAwarePredicate$$Type)?]);
+export type $BookOpenTrigger$TriggerInstance$$Type = ({"entry"?: ($ResourceLocation$$Type)?, "player"?: ($ContextAwarePredicate$$Type)?, "page"?: $MinMaxBounds$Ints$$Type, "book"?: $ResourceLocation$$Type}) | ([entry?: ($ResourceLocation$$Type)?, player?: ($ContextAwarePredicate$$Type)?, page?: $MinMaxBounds$Ints$$Type, book?: $ResourceLocation$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -51,7 +51,7 @@ static readonly "NEUTRAL": $EntryDisplayState
 
 
 public static "values"(): ($EntryDisplayState)[]
-public static "valueOf"(arg0: string): $EntryDisplayState
+public static "valueOf"(arg0: StringJS): $EntryDisplayState
 public static "fromOrdinal"(arg0: integer): $EntryDisplayState
 }
 /**
@@ -75,13 +75,13 @@ export interface $AccessorKeyMapping {
 }
 
 export namespace $AccessorKeyMapping {
-function getAllKeyMappings(): $Map<(string), ($KeyMapping)>
+function getAllKeyMappings(): $Map<(StringJS), ($KeyMapping)>
 const probejs$$marker: never
 }
 export class $AccessorKeyMapping$$Static implements $AccessorKeyMapping {
 
 
-static "getAllKeyMappings"(): $Map<(string), ($KeyMapping)>
+static "getAllKeyMappings"(): $Map<(StringJS), ($KeyMapping)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -170,13 +170,13 @@ export interface $BookIcon {
 }
 
 export namespace $BookIcon {
-function from(arg0: string): $BookIcon
+function from(arg0: StringJS): $BookIcon
 const probejs$$marker: never
 }
 export class $BookIcon$$Static implements $BookIcon {
 
 
-static "from"(arg0: string): $BookIcon
+static "from"(arg0: StringJS): $BookIcon
  "render"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer): void
 }
 /**
@@ -202,17 +202,17 @@ export class $BookDrawScreenEvent extends $Event {
 constructor(arg0: $ResourceLocation$$Type, arg1: $Screen$$Type, arg2: integer, arg3: integer, arg4: float, arg5: $GuiGraphics$$Type)
 
 public "getGraphics"(): $GuiGraphics
-public "getBook"(): $ResourceLocation
 public "getScreen"(): $Screen
-public "getPartialTicks"(): float
 public "getMouseX"(): integer
 public "getMouseY"(): integer
+public "getBook"(): $ResourceLocation
+public "getPartialTicks"(): float
 get "graphics"(): $GuiGraphics
-get "book"(): $ResourceLocation
 get "screen"(): $Screen
-get "partialTicks"(): float
 get "mouseX"(): integer
 get "mouseY"(): integer
+get "book"(): $ResourceLocation
+get "partialTicks"(): float
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -277,33 +277,33 @@ export class $BookCategory extends $AbstractReadStateHolder implements $Comparab
 
 constructor(arg0: $JsonObject$$Type, arg1: $ResourceLocation$$Type, arg2: $Book$$Type)
 
-public "getDescription"(): string
+public "getEntries"(): $List<($BookEntry)>
+public "isLocked"(): boolean
+public "getDescription"(): StringJS
+public "build"(arg0: $BookContentsBuilder$$Type): void
 public "getName"(): $MutableComponent
 public "compareTo"(arg0: $BookCategory$$Type): integer
 public "compareTo"(arg0: any): integer
 public "getId"(): $ResourceLocation
 public "addEntry"(arg0: $BookEntry$$Type): void
-public "getEntries"(): $List<($BookEntry)>
-public "build"(arg0: $BookContentsBuilder$$Type): void
-public "isLocked"(): boolean
-public "getBook"(): $Book
 public "getIcon"(): $BookIcon
+public "isSecret"(): boolean
+public "shouldHide"(): boolean
+public "getBook"(): $Book
 public "canAdd"(): boolean
 public "updateLockStatus"(arg0: boolean): void
-public "shouldHide"(): boolean
-public "isSecret"(): boolean
 public "markReadStateDirty"(): void
 public "isRootCategory"(): boolean
-public "getParentCategory"(): $BookCategory
 public "addChildCategory"(arg0: $BookCategory$$Type): void
-get "description"(): string
-get "name"(): $MutableComponent
-get "id"(): $ResourceLocation
+public "getParentCategory"(): $BookCategory
 get "entries"(): $List<($BookEntry)>
 get "locked"(): boolean
-get "book"(): $Book
+get "description"(): StringJS
+get "name"(): $MutableComponent
+get "id"(): $ResourceLocation
 get "icon"(): $BookIcon
 get "secret"(): boolean
+get "book"(): $Book
 get "rootCategory"(): boolean
 get "parentCategory"(): $BookCategory
 }
@@ -321,8 +321,8 @@ export type $BookCategory_ = $BookCategory$$Type;
 }}
 declare module "vazkii.patchouli.client.book.BookContentsBuilder" {
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$ItemStackUtil$StackWrapper, $ItemStackUtil$StackWrapper$$Type} from "vazkii.patchouli.common.util.ItemStackUtil$StackWrapper"
 import {$BookContents, $BookContents$$Type} from "vazkii.patchouli.client.book.BookContents"
+import {$ItemStackUtil$StackWrapper, $ItemStackUtil$StackWrapper$$Type} from "vazkii.patchouli.common.util.ItemStackUtil$StackWrapper"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BookEntry, $BookEntry$$Type} from "vazkii.patchouli.client.book.BookEntry"
@@ -331,7 +331,7 @@ import {$Book, $Book$$Type} from "vazkii.patchouli.common.book.Book"
 import {$BookTemplate, $BookTemplate$$Type} from "vazkii.patchouli.client.book.template.BookTemplate"
 
 export class $BookContentsBuilder {
-static readonly "DEFAULT_LANG": string
+static readonly "DEFAULT_LANG": StringJS
 
 
 public "getEntry"(arg0: $ResourceLocation$$Type): $BookEntry
@@ -362,27 +362,27 @@ import {$BookPage, $BookPage$$Type} from "vazkii.patchouli.client.book.BookPage"
 import {$IVariable, $IVariable$$Type} from "vazkii.patchouli.api.IVariable"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$TemplateInclusion, $TemplateInclusion$$Type} from "vazkii.patchouli.client.book.template.TemplateInclusion"
-import {$IVariableProvider, $IVariableProvider$$Type} from "vazkii.patchouli.api.IVariableProvider"
 import {$GuiGraphics, $GuiGraphics$$Type} from "net.minecraft.client.gui.GuiGraphics"
+import {$IVariableProvider, $IVariableProvider$$Type} from "vazkii.patchouli.api.IVariableProvider"
 import {$GuiBookEntry, $GuiBookEntry$$Type} from "vazkii.patchouli.client.book.gui.GuiBookEntry"
 import {$BookEntry, $BookEntry$$Type} from "vazkii.patchouli.client.book.BookEntry"
 
 export class $TemplateComponent implements $IVariablesAvailableCallback {
- "flag": string
- "advancement": string
- "guard": string
+ "flag": StringJS
+ "advancement": StringJS
+ "guard": StringJS
  "x": integer
  "y": integer
- "group": string
+ "group": StringJS
 
 constructor()
 
-public "compile"(arg0: $Level$$Type, arg1: $IVariableProvider$$Type, arg2: $IComponentProcessor$$Type, arg3: $TemplateInclusion$$Type): void
 public "build"(arg0: $BookContentsBuilder$$Type, arg1: $BookPage$$Type, arg2: $BookEntry$$Type, arg3: integer): void
-public "mouseClicked"(arg0: $BookPage$$Type, arg1: double, arg2: double, arg3: integer): boolean
+public "compile"(arg0: $Level$$Type, arg1: $IVariableProvider$$Type, arg2: $IComponentProcessor$$Type, arg3: $TemplateInclusion$$Type): void
 public "render"(arg0: $GuiGraphics$$Type, arg1: $BookPage$$Type, arg2: integer, arg3: integer, arg4: float): void
-public "getVisibleStatus"(arg0: $IComponentProcessor$$Type): boolean
+public "mouseClicked"(arg0: $BookPage$$Type, arg1: double, arg2: double, arg3: integer): boolean
 public "onDisplayed"(arg0: $BookPage$$Type, arg1: $GuiBookEntry$$Type, arg2: integer, arg3: integer): void
+public "getVisibleStatus"(arg0: $IComponentProcessor$$Type): boolean
 public "onVariablesAvailable"(arg0: $UnaryOperator$$Type<($IVariable)>, arg1: $HolderLookup$Provider$$Type): void
 }
 /**
@@ -403,8 +403,8 @@ import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraf
 
 export interface $IVariableProvider {
 
- "get"(arg0: string, arg1: $HolderLookup$Provider$$Type): $IVariable
- "has"(arg0: string): boolean
+ "has"(arg0: StringJS): boolean
+ "get"(arg0: StringJS, arg1: $HolderLookup$Provider$$Type): $IVariable
 }
 
 export namespace $IVariableProvider {
@@ -413,8 +413,8 @@ const probejs$$marker: never
 export class $IVariableProvider$$Static implements $IVariableProvider {
 
 
- "get"(arg0: string, arg1: $HolderLookup$Provider$$Type): $IVariable
- "has"(arg0: string): boolean
+ "has"(arg0: StringJS): boolean
+ "get"(arg0: StringJS, arg1: $HolderLookup$Provider$$Type): $IVariable
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -446,40 +446,40 @@ import {$Book, $Book$$Type} from "vazkii.patchouli.common.book.Book"
 
 export class $BookEntry extends $AbstractReadStateHolder implements $Comparable<($BookEntry)> {
 
-constructor(arg0: $JsonObject$$Type, arg1: $ResourceLocation$$Type, arg2: $Book$$Type, arg3: string)
+constructor(arg0: $JsonObject$$Type, arg1: $ResourceLocation$$Type, arg2: $Book$$Type, arg3: StringJS)
 
+public "isLocked"(): boolean
+public "build"(arg0: $Level$$Type, arg1: $BookContentsBuilder$$Type): void
 public "getName"(): $MutableComponent
 public "compareTo"(arg0: $BookEntry$$Type): integer
 public "compareTo"(arg0: any): integer
 public "getId"(): $ResourceLocation
-public "build"(arg0: $Level$$Type, arg1: $BookContentsBuilder$$Type): void
-public "isLocked"(): boolean
-public "getBook"(): $Book
-public "getPages"(): $List<($BookPage)>
 public "isPriority"(): boolean
 public "getIcon"(): $BookIcon
 public "getCategory"(): $BookCategory
-public "canAdd"(): boolean
-public "updateLockStatus"(): void
-public "shouldHide"(): boolean
 public "isSecret"(): boolean
-public "getAddedBy"(): string
-public "markReadStateDirty"(): void
+public "shouldHide"(): boolean
+public "getBook"(): $Book
+public "getPages"(): $List<($BookPage)>
+public "canAdd"(): boolean
+public "getAddedBy"(): StringJS
+public "updateLockStatus"(): void
 public "addRelevantStack"(arg0: $BookContentsBuilder$$Type, arg1: $ItemStack$$Type, arg2: integer): void
-public "getEntryColor"(): integer
-public "isFoundByQuery"(arg0: string): boolean
+public "markReadStateDirty"(): void
 public "initCategory"(arg0: $ResourceLocation$$Type, arg1: $Function$$Type<($ResourceLocation), ($BookCategory$$Type)>): void
-public "getPageFromAnchor"(arg0: string): integer
+public "getEntryColor"(): integer
+public "isFoundByQuery"(arg0: StringJS): boolean
+public "getPageFromAnchor"(arg0: StringJS): integer
+get "locked"(): boolean
 get "name"(): $MutableComponent
 get "id"(): $ResourceLocation
-get "locked"(): boolean
-get "book"(): $Book
-get "pages"(): $List<($BookPage)>
 get "priority"(): boolean
 get "icon"(): $BookIcon
 get "category"(): $BookCategory
 get "secret"(): boolean
-get "addedBy"(): string
+get "book"(): $Book
+get "pages"(): $List<($BookPage)>
+get "addedBy"(): StringJS
 get "entryColor"(): integer
 }
 /**
@@ -504,7 +504,7 @@ static readonly "EMPTY_WRAPPER": $ItemStackUtil$StackWrapper
 constructor(arg0: $ItemStack$$Type)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 }
 /**
@@ -565,14 +565,14 @@ export class $BookPage {
 constructor()
 
 public "build"(arg0: $Level$$Type, arg1: $BookEntry$$Type, arg2: $BookContentsBuilder$$Type, arg3: integer): void
-public "mouseClicked"(arg0: double, arg1: double, arg2: integer): boolean
+public "i18n"(arg0: StringJS): StringJS
 public "render"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: float): void
+public "mouseClicked"(arg0: double, arg1: double, arg2: integer): boolean
 public "canAdd"(arg0: $Book$$Type): boolean
-public "i18n"(arg0: string): string
 public "onDisplayed"(arg0: $GuiBookEntry$$Type, arg1: integer, arg2: integer): void
 public "isPageUnlocked"(): boolean
 public "onHidden"(arg0: $GuiBookEntry$$Type): void
-public "i18nText"(arg0: string): $Component
+public "i18nText"(arg0: StringJS): $Component
 get "pageUnlocked"(): boolean
 }
 /**
@@ -596,9 +596,9 @@ import {$IVariable, $IVariable$$Type} from "vazkii.patchouli.api.IVariable"
 export interface $IComponentProcessor {
 
  "refresh"(arg0: $Screen$$Type, arg1: integer, arg2: integer): void
+ "process"(arg0: $Level$$Type, arg1: StringJS): $IVariable
  "setup"(arg0: $Level$$Type, arg1: $IVariableProvider$$Type): void
- "process"(arg0: $Level$$Type, arg1: string): $IVariable
- "allowRender"(arg0: string): boolean
+ "allowRender"(arg0: StringJS): boolean
 }
 
 export namespace $IComponentProcessor {
@@ -608,9 +608,9 @@ export class $IComponentProcessor$$Static implements $IComponentProcessor {
 
 
  "refresh"(arg0: $Screen$$Type, arg1: integer, arg2: integer): void
+ "process"(arg0: $Level$$Type, arg1: StringJS): $IVariable
  "setup"(arg0: $Level$$Type, arg1: $IVariableProvider$$Type): void
- "process"(arg0: $Level$$Type, arg1: string): $IVariable
- "allowRender"(arg0: string): boolean
+ "allowRender"(arg0: StringJS): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -634,7 +634,7 @@ static readonly "TRUNCATE": $PatchouliConfigAccess$TextOverflowMode
 
 
 public static "values"(): ($PatchouliConfigAccess$TextOverflowMode)[]
-public static "valueOf"(arg0: string): $PatchouliConfigAccess$TextOverflowMode
+public static "valueOf"(arg0: StringJS): $PatchouliConfigAccess$TextOverflowMode
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -654,12 +654,12 @@ import {$Path, $Path$$Type} from "java.nio.file.Path"
 
 export interface $XplatModContainer {
 
- "getName"(): string
- "getId"(): string
- "getPath"(arg0: string): $Path
+ "getPath"(arg0: StringJS): $Path
+ "getName"(): StringJS
+ "getId"(): StringJS
  "getRootPaths"(): $List<($Path)>
-get "name"(): string
-get "id"(): string
+get "name"(): StringJS
+get "id"(): StringJS
 get "rootPaths"(): $List<($Path)>
 }
 
@@ -669,9 +669,9 @@ const probejs$$marker: never
 export class $XplatModContainer$$Static implements $XplatModContainer {
 
 
- "getName"(): string
- "getId"(): string
- "getPath"(arg0: string): $Path
+ "getPath"(arg0: StringJS): $Path
+ "getName"(): StringJS
+ "getId"(): StringJS
  "getRootPaths"(): $List<($Path)>
 }
 /**
@@ -694,8 +694,8 @@ import {$Pair, $Pair$$Type} from "com.mojang.datafixers.util.Pair"
 import {$ImmutableMap, $ImmutableMap$$Type} from "com.google.common.collect.ImmutableMap"
 import {$BookCategory, $BookCategory$$Type} from "vazkii.patchouli.client.book.BookCategory"
 import {$GuiBook, $GuiBook$$Type} from "vazkii.patchouli.client.book.gui.GuiBook"
-import {$Exception, $Exception$$Type} from "java.lang.Exception"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Exception, $Exception$$Type} from "java.lang.Exception"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Deque, $Deque$$Type} from "java.util.Deque"
 import {$BookEntry, $BookEntry$$Type} from "vazkii.patchouli.client.book.BookEntry"
@@ -719,8 +719,8 @@ public "isErrored"(): boolean
 public "setTopEntry"(arg0: $ResourceLocation$$Type, arg1: integer): void
 public "getCurrentGui"(): $GuiBook
 public "openLexiconGui"(arg0: $GuiBook$$Type, arg1: boolean): void
-public "checkValidCurrentEntry"(): void
 public "getEntryForStack"(arg0: $ItemStack$$Type): $Pair<($BookEntry), (integer)>
+public "checkValidCurrentEntry"(): void
 get "exception"(): $Exception
 get "errored"(): boolean
 get "currentGui"(): $GuiBook
@@ -746,8 +746,8 @@ import {$IVariable, $IVariable$$Type} from "vazkii.patchouli.api.IVariable"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 
 export class $TemplateInclusion {
- "template": string
- "as": string
+ "template": StringJS
+ "as": StringJS
  "x": integer
  "y": integer
  "localBindings": $JsonObject
@@ -755,11 +755,11 @@ export class $TemplateInclusion {
 constructor()
 
 public "process"(arg0: $Level$$Type, arg1: $IComponentProcessor$$Type): void
+public "isUpreference"(arg0: $IVariable$$Type): boolean
+public "qualifyName"(arg0: StringJS): StringJS
 public "wrapProvider"(arg0: $IVariableProvider$$Type): $IVariableProvider
 public "upperMerge"(arg0: $TemplateInclusion$$Type): void
-public "isUpreference"(arg0: $IVariable$$Type): boolean
-public "qualifyName"(arg0: string): string
-public "attemptVariableLookup"(arg0: string, arg1: $HolderLookup$Provider$$Type): $IVariable
+public "attemptVariableLookup"(arg0: StringJS, arg1: $HolderLookup$Provider$$Type): $IVariable
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -774,15 +774,17 @@ declare global {
 export type $TemplateInclusion_ = $TemplateInclusion$$Type;
 }}
 declare module "vazkii.patchouli.common.item.ItemModBook" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
@@ -792,7 +794,7 @@ import {$Book, $Book$$Type} from "vazkii.patchouli.common.book.Book"
 export class $ItemModBook extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -800,14 +802,15 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "getName"(arg0: $ItemStack$$Type): $Component
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public static "getBook"(arg0: $ItemStack$$Type): $Book
-public "getCreatorModId"(arg0: $ItemStack$$Type): string
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "getName"(arg0: $ItemStack$$Type): $Component
 public static "getCompletion"(arg0: $ItemStack$$Type): float
 public static "forBook"(arg0: $ResourceLocation$$Type): $ItemStack
 public static "forBook"(arg0: $Book$$Type): $ItemStack
+public static "getBook"(arg0: $ItemStack$$Type): $Book
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "getCreatorModId"(arg0: $ItemStack$$Type): StringJS
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -859,11 +862,11 @@ import {$BookContentsBuilder, $BookContentsBuilder$$Type} from "vazkii.patchouli
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BookPage, $BookPage$$Type} from "vazkii.patchouli.client.book.BookPage"
 import {$TemplateComponent, $TemplateComponent$$Type} from "vazkii.patchouli.client.book.template.TemplateComponent"
-import {$HashMap, $HashMap$$Type} from "java.util.HashMap"
 import {$TemplateInclusion, $TemplateInclusion$$Type} from "vazkii.patchouli.client.book.template.TemplateInclusion"
+import {$HashMap, $HashMap$$Type} from "java.util.HashMap"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$IVariableProvider, $IVariableProvider$$Type} from "vazkii.patchouli.api.IVariableProvider"
 import {$GuiGraphics, $GuiGraphics$$Type} from "net.minecraft.client.gui.GuiGraphics"
+import {$IVariableProvider, $IVariableProvider$$Type} from "vazkii.patchouli.api.IVariableProvider"
 import {$GuiBookEntry, $GuiBookEntry$$Type} from "vazkii.patchouli.client.book.gui.GuiBookEntry"
 import {$Class, $Class$$Type} from "java.lang.Class"
 import {$BookEntry, $BookEntry$$Type} from "vazkii.patchouli.client.book.BookEntry"
@@ -874,13 +877,13 @@ static readonly "componentTypes": $HashMap<($ResourceLocation), ($Class<($Templa
 
 constructor()
 
-public "compile"(arg0: $Level$$Type, arg1: $BookContentsBuilder$$Type, arg2: $IVariableProvider$$Type): void
 public "build"(arg0: $BookContentsBuilder$$Type, arg1: $BookPage$$Type, arg2: $BookEntry$$Type, arg3: integer): void
-public "mouseClicked"(arg0: $BookPage$$Type, arg1: double, arg2: double, arg3: integer): boolean
+public "compile"(arg0: $Level$$Type, arg1: $BookContentsBuilder$$Type, arg2: $IVariableProvider$$Type): void
 public "render"(arg0: $GuiGraphics$$Type, arg1: $BookPage$$Type, arg2: integer, arg3: integer, arg4: float): void
+public "mouseClicked"(arg0: $BookPage$$Type, arg1: double, arg2: double, arg3: integer): boolean
 public static "registerComponent"(arg0: $ResourceLocation$$Type, arg1: $Class$$Type<($TemplateComponent$$Type)>): void
+public static "createTemplate"(arg0: $Book$$Type, arg1: $BookContentsBuilder$$Type, arg2: StringJS, arg3: $TemplateInclusion$$Type): $BookTemplate
 public "onDisplayed"(arg0: $BookPage$$Type, arg1: $GuiBookEntry$$Type, arg2: integer, arg3: integer): void
-public static "createTemplate"(arg0: $Book$$Type, arg1: $BookContentsBuilder$$Type, arg2: string, arg3: $TemplateInclusion$$Type): $BookTemplate
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -904,17 +907,17 @@ import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraf
 
 export interface $IVariable {
 
- "asList"(arg0: $HolderLookup$Provider$$Type): $List<($IVariable)>
  "unwrap"(): $JsonElement
  "as"<T>(arg0: $Class$$Type<(T)>): T
  "as"<T>(arg0: $Class$$Type<(T)>, arg1: T): T
- "asNumber"(): number
- "asNumber"(arg0: number): number
- "asBoolean"(arg0: boolean): boolean
- "asBoolean"(): boolean
+ "asList"(arg0: $HolderLookup$Provider$$Type): $List<($IVariable)>
  "asStream"(arg0: $HolderLookup$Provider$$Type): $Stream<($IVariable)>
- "asString"(): string
- "asString"(arg0: string): string
+ "asNumber"(arg0: number): number
+ "asNumber"(): number
+ "asBoolean"(): boolean
+ "asBoolean"(arg0: boolean): boolean
+ "asString"(arg0: StringJS): StringJS
+ "asString"(): StringJS
  "asStreamOrSingleton"(arg0: $HolderLookup$Provider$$Type): $Stream<($IVariable)>
  "asListOrSingleton"(arg0: $HolderLookup$Provider$$Type): $List<($IVariable)>
 }
@@ -924,8 +927,8 @@ function wrap(arg0: boolean): $IVariable
 function wrap(arg0: number, arg1: $HolderLookup$Provider$$Type): $IVariable
 function wrap(arg0: number): $IVariable
 function wrap(arg0: $JsonElement$$Type, arg1: $HolderLookup$Provider$$Type): $IVariable
-function wrap(arg0: string, arg1: $HolderLookup$Provider$$Type): $IVariable
-function wrap(arg0: string): $IVariable
+function wrap(arg0: StringJS, arg1: $HolderLookup$Provider$$Type): $IVariable
+function wrap(arg0: StringJS): $IVariable
 function wrap(arg0: boolean, arg1: $HolderLookup$Provider$$Type): $IVariable
 function from<T>(arg0: T, arg1: $HolderLookup$Provider$$Type): $IVariable
 function empty(): $IVariable
@@ -935,6 +938,10 @@ const probejs$$marker: never
 export class $IVariable$$Static implements $IVariable {
 
 
+ "unwrap"(): $JsonElement
+ "as"<T>(arg0: $Class$$Type<(T)>): T
+ "as"<T>(arg0: $Class$$Type<(T)>, arg1: T): T
+ "asList"(arg0: $HolderLookup$Provider$$Type): $List<($IVariable)>
 /**
  * 
  * @deprecated
@@ -947,27 +954,23 @@ static "wrap"(arg0: number, arg1: $HolderLookup$Provider$$Type): $IVariable
  */
 static "wrap"(arg0: number): $IVariable
 static "wrap"(arg0: $JsonElement$$Type, arg1: $HolderLookup$Provider$$Type): $IVariable
-static "wrap"(arg0: string, arg1: $HolderLookup$Provider$$Type): $IVariable
+static "wrap"(arg0: StringJS, arg1: $HolderLookup$Provider$$Type): $IVariable
 /**
  * 
  * @deprecated
  */
-static "wrap"(arg0: string): $IVariable
+static "wrap"(arg0: StringJS): $IVariable
 static "wrap"(arg0: boolean, arg1: $HolderLookup$Provider$$Type): $IVariable
 static "from"<T>(arg0: T, arg1: $HolderLookup$Provider$$Type): $IVariable
 static "empty"(): $IVariable
- "asList"(arg0: $HolderLookup$Provider$$Type): $List<($IVariable)>
- "unwrap"(): $JsonElement
- "as"<T>(arg0: $Class$$Type<(T)>): T
- "as"<T>(arg0: $Class$$Type<(T)>, arg1: T): T
- "asNumber"(): number
- "asNumber"(arg0: number): number
- "asBoolean"(arg0: boolean): boolean
- "asBoolean"(): boolean
- "asStream"(arg0: $HolderLookup$Provider$$Type): $Stream<($IVariable)>
 static "wrapList"(arg0: $Iterable$$Type<($IVariable$$Type)>, arg1: $HolderLookup$Provider$$Type): $IVariable
- "asString"(): string
- "asString"(arg0: string): string
+ "asStream"(arg0: $HolderLookup$Provider$$Type): $Stream<($IVariable)>
+ "asNumber"(arg0: number): number
+ "asNumber"(): number
+ "asBoolean"(): boolean
+ "asBoolean"(arg0: boolean): boolean
+ "asString"(arg0: StringJS): StringJS
+ "asString"(): StringJS
  "asStreamOrSingleton"(arg0: $HolderLookup$Provider$$Type): $Stream<($IVariable)>
  "asListOrSingleton"(arg0: $HolderLookup$Provider$$Type): $List<($IVariable)>
 }
@@ -1007,8 +1010,8 @@ declare global {
 export type $BookContentsReloadEvent_ = $BookContentsReloadEvent$$Type;
 }}
 declare module "vazkii.patchouli.api.IComponentRenderContext" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$GuiGraphics, $GuiGraphics$$Type} from "net.minecraft.client.gui.GuiGraphics"
 import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$Screen, $Screen$$Type} from "net.minecraft.client.gui.screens.Screen"
@@ -1021,36 +1024,36 @@ import {$Button, $Button$$Type} from "net.minecraft.client.gui.components.Button
 
 export interface $IComponentRenderContext {
 
- "getTextColor"(): integer
- "getFont"(): $Style
  "addWidget"(arg0: $AbstractWidget$$Type, arg1: integer): void
+ "getFont"(): $Style
  "getGui"(): $Screen
- "renderItemStack"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: $ItemStack$$Type): void
 /**
  * 
  * @deprecated
  */
  "registerButton"(arg0: $Button$$Type, arg1: integer, arg2: $Runnable$$Type): void
+ "getTextColor"(): integer
+ "renderItemStack"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: $ItemStack$$Type): void
  "renderIngredient"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: $Ingredient$$Type): void
- "getTicksInBook"(): integer
  "isAreaHovered"(arg0: integer, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer): boolean
  "getBookTexture"(): $ResourceLocation
  "getHeaderColor"(): integer
+ "getTicksInBook"(): integer
 /**
  * 
  * @deprecated
  */
- "setHoverTooltip"(arg0: $List$$Type<(string)>): void
+ "setHoverTooltip"(arg0: $List$$Type<(StringJS)>): void
  "navigateToEntry"(arg0: $ResourceLocation$$Type, arg1: integer, arg2: boolean): boolean
  "getCraftingTexture"(): $ResourceLocation
  "setHoverTooltipComponents"(arg0: $List$$Type<($Component$$Type)>): void
-get "textColor"(): integer
 get "font"(): $Style
 get "gui"(): $Screen
-get "ticksInBook"(): integer
+get "textColor"(): integer
 get "bookTexture"(): $ResourceLocation
 get "headerColor"(): integer
-set "hoverTooltip"(value: $List$$Type<(string)>)
+get "ticksInBook"(): integer
+set "hoverTooltip"(value: $List$$Type<(StringJS)>)
 get "craftingTexture"(): $ResourceLocation
 set "hoverTooltipComponents"(value: $List$$Type<($Component$$Type)>)
 }
@@ -1061,26 +1064,26 @@ const probejs$$marker: never
 export class $IComponentRenderContext$$Static implements $IComponentRenderContext {
 
 
- "getTextColor"(): integer
- "getFont"(): $Style
  "addWidget"(arg0: $AbstractWidget$$Type, arg1: integer): void
+ "getFont"(): $Style
  "getGui"(): $Screen
- "renderItemStack"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: $ItemStack$$Type): void
 /**
  * 
  * @deprecated
  */
  "registerButton"(arg0: $Button$$Type, arg1: integer, arg2: $Runnable$$Type): void
+ "getTextColor"(): integer
+ "renderItemStack"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: $ItemStack$$Type): void
  "renderIngredient"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: $Ingredient$$Type): void
- "getTicksInBook"(): integer
  "isAreaHovered"(arg0: integer, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer): boolean
  "getBookTexture"(): $ResourceLocation
  "getHeaderColor"(): integer
+ "getTicksInBook"(): integer
 /**
  * 
  * @deprecated
  */
- "setHoverTooltip"(arg0: $List$$Type<(string)>): void
+ "setHoverTooltip"(arg0: $List$$Type<(StringJS)>): void
  "navigateToEntry"(arg0: $ResourceLocation$$Type, arg1: integer, arg2: boolean): boolean
  "getCraftingTexture"(): $ResourceLocation
  "setHoverTooltipComponents"(arg0: $List$$Type<($Component$$Type)>): void
@@ -1099,11 +1102,11 @@ export type $IComponentRenderContext_ = $IComponentRenderContext$$Type;
 }}
 declare module "vazkii.patchouli.client.book.gui.GuiBook" {
 import {$Collection, $Collection$$Type} from "java.util.Collection"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Screen$DeferredTooltipRendering, $Screen$DeferredTooltipRendering$$Type} from "net.minecraft.client.gui.screens.Screen$DeferredTooltipRendering"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Screen, $Screen$$Type} from "net.minecraft.client.gui.screens.Screen"
-import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$List, $List$$Type} from "java.util.List"
+import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$CubeMap, $CubeMap$$Type} from "net.minecraft.client.renderer.CubeMap"
 import {$Font, $Font$$Type} from "net.minecraft.client.gui.Font"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
@@ -1116,8 +1119,8 @@ import {$NarratableEntry, $NarratableEntry$$Type} from "net.minecraft.client.gui
 import {$Minecraft, $Minecraft$$Type} from "net.minecraft.client.Minecraft"
 import {$BookEntry, $BookEntry$$Type} from "vazkii.patchouli.client.book.BookEntry"
 import {$Renderable, $Renderable$$Type} from "net.minecraft.client.gui.components.Renderable"
-import {$Book, $Book$$Type} from "vazkii.patchouli.common.book.Book"
 import {$Button, $Button$$Type} from "net.minecraft.client.gui.components.Button"
+import {$Book, $Book$$Type} from "vazkii.patchouli.common.book.Book"
 import {$EntryDisplayState, $EntryDisplayState$$Type} from "vazkii.patchouli.client.book.EntryDisplayState"
 
 export class $GuiBook extends $Screen {
@@ -1151,36 +1154,36 @@ static readonly "FULL_WIDTH": integer
 
 constructor(arg0: $Book$$Type, arg1: $Component$$Type)
 
-public "init"(): void
 public "tick"(): void
-public "removeDrawablesIn"(arg0: $Collection$$Type<(any)>): void
-public "isPauseScreen"(): boolean
+public "init"(): void
+public "render"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: float): void
 public "getSpread"(): integer
+public static "openWebLink"(arg0: $Screen$$Type, arg1: StringJS): void
+public "isPauseScreen"(): boolean
 public "keyPressed"(arg0: integer, arg1: integer, arg2: integer): boolean
 public "mouseClicked"(arg0: double, arg1: double, arg2: integer): boolean
 public "mouseScrolled"(arg0: double, arg1: double, arg2: double, arg3: double): boolean
-public "setTooltip"(arg0: $List$$Type<($Component$$Type)>): void
 public "setTooltip"(...arg0: ($Component$$Type)[]): void
+public "setTooltip"(arg0: $List$$Type<($Component$$Type)>): void
 public "getMinecraft"(): $Minecraft
-public "render"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: float): void
-public "renderBackground"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: float): void
-public "addRenderableWidget"<T extends ($GuiEventListener) & ($Renderable) & ($NarratableEntry)>(arg0: T): T
-public "drawProgressBar"(arg0: $GuiGraphics$$Type, arg1: $Book$$Type, arg2: integer, arg3: integer, arg4: $Predicate$$Type<($BookEntry)>): void
+public "getRelativeX"(arg0: double): double
+public "getRelativeY"(arg0: double): double
 public "canBeOpened"(): boolean
-public "drawCenteredStringNoShadow"(arg0: $GuiGraphics$$Type, arg1: string, arg2: integer, arg3: integer, arg4: integer): void
-public "drawCenteredStringNoShadow"(arg0: $GuiGraphics$$Type, arg1: $FormattedCharSequence$$Type, arg2: integer, arg3: integer, arg4: integer): void
-public static "drawPageFiller"(arg0: $GuiGraphics$$Type, arg1: $Book$$Type): void
+public "renderBackground"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: float): void
+public "drawProgressBar"(arg0: $GuiGraphics$$Type, arg1: $Book$$Type, arg2: integer, arg3: integer, arg4: $Predicate$$Type<($BookEntry)>): void
+public "addRenderableWidget"<T extends ($GuiEventListener) & ($Renderable) & ($NarratableEntry)>(arg0: T): T
 public static "drawPageFiller"(arg0: $GuiGraphics$$Type, arg1: $Book$$Type, arg2: integer, arg3: integer): void
+public static "drawPageFiller"(arg0: $GuiGraphics$$Type, arg1: $Book$$Type): void
 public static "drawSeparator"(arg0: $GuiGraphics$$Type, arg1: $Book$$Type, arg2: integer, arg3: integer): void
-public static "openWebLink"(arg0: $Screen$$Type, arg1: string): void
+public "addBookmarkButtons"(): void
 public static "drawFromTexture"(arg0: $GuiGraphics$$Type, arg1: $Book$$Type, arg2: integer, arg3: integer, arg4: integer, arg5: integer, arg6: integer, arg7: integer): void
 public "handleButtonArrow"(arg0: $Button$$Type): void
 public "isMouseInRelativeRange"(arg0: double, arg1: double, arg2: integer, arg3: integer, arg4: integer, arg5: integer): boolean
-public "addBookmarkButtons"(): void
+public "removeDrawablesIn"(arg0: $Collection$$Type<(any)>): void
+public "drawCenteredStringNoShadow"(arg0: $GuiGraphics$$Type, arg1: $FormattedCharSequence$$Type, arg2: integer, arg3: integer, arg4: integer): void
+public "drawCenteredStringNoShadow"(arg0: $GuiGraphics$$Type, arg1: StringJS, arg2: integer, arg3: integer, arg4: integer): void
 public "onFirstOpened"(): void
 public "bookmarkThis"(): void
-public "getRelativeX"(arg0: double): double
-public "getRelativeY"(arg0: double): double
 public static "drawLock"(arg0: $GuiGraphics$$Type, arg1: $Book$$Type, arg2: integer, arg3: integer): void
 public static "drawMarking"(arg0: $GuiGraphics$$Type, arg1: $Book$$Type, arg2: integer, arg3: integer, arg4: integer, arg5: $EntryDisplayState$$Type): void
 public "removeDrawablesIf"(arg0: $Predicate$$Type<($Renderable)>): void
@@ -1195,12 +1198,12 @@ public static "cumulus$getCubeMap"(): $CubeMap
 public static "cumulus$setCubeMap"(arg0: $CubeMap$$Type): void
 public static "cumulus$getPanorama"(): $PanoramaRenderer
 public static "cumulus$setPanorama"(arg0: $PanoramaRenderer$$Type): void
-public static "owo$ROTATING_PANORAMA_RENDERER"(): $PanoramaRenderer
 public static "owo$PANORAMA_RENDERER"(): $CubeMap
-get "pauseScreen"(): boolean
+public static "owo$ROTATING_PANORAMA_RENDERER"(): $PanoramaRenderer
 get "spread"(): integer
-set "tooltip"(value: $List$$Type<($Component$$Type)>)
+get "pauseScreen"(): boolean
 set "tooltip"(value: ($Component$$Type)[])
+set "tooltip"(value: $List$$Type<($Component$$Type)>)
 get "minecraft"(): $Minecraft
 set "tooltipStack"(value: $ItemStack$$Type)
 }
@@ -1223,10 +1226,10 @@ import {$RenderType, $RenderType$$Type} from "net.minecraft.client.renderer.Rend
 
 export interface $AccessorMultiBufferSource {
 
- "getFallbackBuffer"(): $ByteBufferBuilder
  "getFixedBuffers"(): $SequencedMap<($RenderType), ($ByteBufferBuilder)>
-get "fallbackBuffer"(): $ByteBufferBuilder
+ "getFallbackBuffer"(): $ByteBufferBuilder
 get "fixedBuffers"(): $SequencedMap<($RenderType), ($ByteBufferBuilder)>
+get "fallbackBuffer"(): $ByteBufferBuilder
 }
 
 export namespace $AccessorMultiBufferSource {
@@ -1235,8 +1238,8 @@ const probejs$$marker: never
 export class $AccessorMultiBufferSource$$Static implements $AccessorMultiBufferSource {
 
 
- "getFallbackBuffer"(): $ByteBufferBuilder
  "getFixedBuffers"(): $SequencedMap<($RenderType), ($ByteBufferBuilder)>
+ "getFallbackBuffer"(): $ByteBufferBuilder
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1276,8 +1279,8 @@ declare global {
 export type $AbstractReadStateHolder_ = $AbstractReadStateHolder$$Type;
 }}
 declare module "vazkii.patchouli.client.book.gui.GuiBookEntry" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Screen$DeferredTooltipRendering, $Screen$DeferredTooltipRendering$$Type} from "net.minecraft.client.gui.screens.Screen$DeferredTooltipRendering"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$Screen, $Screen$$Type} from "net.minecraft.client.gui.screens.Screen"
 import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
@@ -1296,8 +1299,8 @@ import {$IComponentRenderContext, $IComponentRenderContext$$Type} from "vazkii.p
 import {$Minecraft, $Minecraft$$Type} from "net.minecraft.client.Minecraft"
 import {$BookEntry, $BookEntry$$Type} from "vazkii.patchouli.client.book.BookEntry"
 import {$Renderable, $Renderable$$Type} from "net.minecraft.client.gui.components.Renderable"
-import {$Book, $Book$$Type} from "vazkii.patchouli.common.book.Book"
 import {$Button, $Button$$Type} from "net.minecraft.client.gui.components.Button"
+import {$Book, $Book$$Type} from "vazkii.patchouli.common.book.Book"
 
 export class $GuiBookEntry extends $GuiBook implements $IComponentRenderContext {
 static readonly "MENU_BACKGROUND": $ResourceLocation
@@ -1331,28 +1334,28 @@ static readonly "FULL_WIDTH": integer
 constructor(arg0: $Book$$Type, arg1: $BookEntry$$Type)
 constructor(arg0: $Book$$Type, arg1: $BookEntry$$Type, arg2: integer)
 
+public "getEntry"(): $BookEntry
 public "equals"(arg0: any): boolean
 public "hashCode"(): integer
 public "init"(): void
-public "getEntry"(): $BookEntry
-public "getTextColor"(): integer
-public "getFont"(): $Style
 public "keyPressed"(arg0: integer, arg1: integer, arg2: integer): boolean
 public "addWidget"(arg0: $AbstractWidget$$Type, arg1: integer): void
+public "getFont"(): $Style
 public "getGui"(): $Screen
-public "renderItemStack"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: $ItemStack$$Type): void
-public "canBeOpened"(): boolean
 public "registerButton"(arg0: $Button$$Type, arg1: integer, arg2: $Runnable$$Type): void
-public static "displayOrBookmark"(arg0: $GuiBook$$Type, arg1: $BookEntry$$Type): void
+public "canBeOpened"(): boolean
+public "getTextColor"(): integer
+public "renderItemStack"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: $ItemStack$$Type): void
 public "renderIngredient"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: $Ingredient$$Type): void
-public "getTicksInBook"(): integer
-public "isAreaHovered"(arg0: integer, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer): boolean
+public static "displayOrBookmark"(arg0: $GuiBook$$Type, arg1: $BookEntry$$Type): void
 public "onFirstOpened"(): void
 public "bookmarkThis"(): void
+public "isAreaHovered"(arg0: integer, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer): boolean
 public "getBookTexture"(): $ResourceLocation
 public "getHeaderColor"(): integer
+public "getTicksInBook"(): integer
 public "mouseClickedScaled"(arg0: double, arg1: double, arg2: integer): boolean
-public "setHoverTooltip"(arg0: $List$$Type<(string)>): void
+public "setHoverTooltip"(arg0: $List$$Type<(StringJS)>): void
 public "navigateToEntry"(arg0: $ResourceLocation$$Type, arg1: integer, arg2: boolean): boolean
 public "getCraftingTexture"(): $ResourceLocation
 public "setHoverTooltipComponents"(arg0: $List$$Type<($Component$$Type)>): void
@@ -1360,16 +1363,16 @@ public static "cumulus$getCubeMap"(): $CubeMap
 public static "cumulus$setCubeMap"(arg0: $CubeMap$$Type): void
 public static "cumulus$getPanorama"(): $PanoramaRenderer
 public static "cumulus$setPanorama"(arg0: $PanoramaRenderer$$Type): void
-public static "owo$ROTATING_PANORAMA_RENDERER"(): $PanoramaRenderer
 public static "owo$PANORAMA_RENDERER"(): $CubeMap
+public static "owo$ROTATING_PANORAMA_RENDERER"(): $PanoramaRenderer
 get "entry"(): $BookEntry
-get "textColor"(): integer
 get "font"(): $Style
 get "gui"(): $Screen
-get "ticksInBook"(): integer
+get "textColor"(): integer
 get "bookTexture"(): $ResourceLocation
 get "headerColor"(): integer
-set "hoverTooltip"(value: $List$$Type<(string)>)
+get "ticksInBook"(): integer
+set "hoverTooltip"(value: $List$$Type<(StringJS)>)
 get "craftingTexture"(): $ResourceLocation
 set "hoverTooltipComponents"(value: $List$$Type<($Component$$Type)>)
 }
@@ -1388,8 +1391,8 @@ export type $GuiBookEntry_ = $GuiBookEntry$$Type;
 declare module "vazkii.patchouli.common.book.Book" {
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$XplatModContainer, $XplatModContainer$$Type} from "vazkii.patchouli.xplat.XplatModContainer"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$XplatModContainer, $XplatModContainer$$Type} from "vazkii.patchouli.xplat.XplatModContainer"
 import {$BookIcon, $BookIcon$$Type} from "vazkii.patchouli.client.book.BookIcon"
 import {$BookContents, $BookContents$$Type} from "vazkii.patchouli.client.book.BookContents"
 import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
@@ -1402,7 +1405,7 @@ export class $Book {
 readonly "isPamphlet": boolean
 readonly "creativeTab": $ResourceLocation
 readonly "showProgress": boolean
-readonly "landingText": string
+readonly "landingText": StringJS
 readonly "nameplateColor": integer
 readonly "fillerTexture": $ResourceLocation
 readonly "headerColor": integer
@@ -1413,7 +1416,7 @@ readonly "showToasts": boolean
 readonly "overflowMode": $PatchouliConfigAccess$TextOverflowMode
 readonly "owner": $XplatModContainer
 readonly "pauseGame": boolean
-readonly "macros": $Map<(string), (string)>
+readonly "macros": $Map<(StringJS), (StringJS)>
 readonly "isExternal": boolean
 readonly "openSound": $ResourceLocation
 readonly "useBlockyFont": boolean
@@ -1421,13 +1424,13 @@ readonly "advancementsTab": $ResourceLocation
 readonly "linkColor": integer
 readonly "progressBarColor": integer
 readonly "textColor": integer
-readonly "version": string
+readonly "version": StringJS
 readonly "i18n": boolean
 readonly "flipSound": $ResourceLocation
-readonly "subtitle": string
+readonly "subtitle": StringJS
 readonly "progressBarBackground": integer
-readonly "name": string
-readonly "indexIconRaw": string
+readonly "name": StringJS
+readonly "indexIconRaw": StringJS
 readonly "linkHoverColor": integer
 readonly "noBook": boolean
 readonly "craftingTexture": $ResourceLocation
@@ -1437,20 +1440,20 @@ constructor(arg0: $JsonObject$$Type, arg1: $XplatModContainer$$Type, arg2: $Reso
 public "getContents"(): $BookContents
 public "markUpdated"(): void
 public "getIcon"(): $BookIcon
-public "advancementsEnabled"(): boolean
-public "getSubtitle"(): $MutableComponent
-public "getOwnerName"(): string
 public "popUpdated"(): boolean
 public "getBookItem"(): $ItemStack
 public "reloadContents"(arg0: $Level$$Type, arg1: boolean): void
 public "reloadLocks"(arg0: boolean): void
 public "getFontStyle"(): $Style
+public "getOwnerName"(): StringJS
+public "getSubtitle"(): $MutableComponent
+public "advancementsEnabled"(): boolean
 get "contents"(): $BookContents
 get "icon"(): $BookIcon
-get "subtitle"(): $MutableComponent
-get "ownerName"(): string
 get "bookItem"(): $ItemStack
 get "fontStyle"(): $Style
+get "ownerName"(): StringJS
+get "subtitle"(): $MutableComponent
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1465,8 +1468,8 @@ declare global {
 export type $Book_ = $Book$$Type;
 }}
 declare module "vazkii.patchouli.mixin.client.AccessorScreen" {
-import {$NarratableEntry, $NarratableEntry$$Type} from "net.minecraft.client.gui.narration.NarratableEntry"
 import {$List, $List$$Type} from "java.util.List"
+import {$NarratableEntry, $NarratableEntry$$Type} from "net.minecraft.client.gui.narration.NarratableEntry"
 import {$Renderable, $Renderable$$Type} from "net.minecraft.client.gui.components.Renderable"
 
 export interface $AccessorScreen {

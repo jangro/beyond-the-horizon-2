@@ -37,12 +37,12 @@ import {$Record, $Record$$Type} from "java.lang.Record"
 export class $BetterStatus extends $Record {
 static "CODEC": $Codec<($BetterStatus)>
 
-constructor(name: string, version: string, isMetaData: boolean)
+constructor(name: StringJS, version: StringJS, isMetaData: boolean)
 
-public "name"(): string
+public "name"(): StringJS
 public "equals"(arg0: any): boolean
-public "toString"(): string
-public "version"(): string
+public "toString"(): StringJS
+public "version"(): StringJS
 public "hashCode"(): integer
 public "isMetaData"(): boolean
 get "metaData"(): boolean
@@ -51,7 +51,7 @@ get "metaData"(): boolean
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $BetterStatus$$Type = ({"isMetaData"?: boolean, "version"?: string, "name"?: string}) | ([isMetaData?: boolean, version?: string, name?: string]);
+export type $BetterStatus$$Type = ({"version"?: StringJS, "name"?: StringJS, "isMetaData"?: boolean}) | ([version?: StringJS, name?: StringJS, isMetaData?: boolean]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.

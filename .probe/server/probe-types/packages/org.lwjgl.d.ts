@@ -11,13 +11,13 @@ import {$NativeResource, $NativeResource$$Type} from "org.lwjgl.system.NativeRes
 export class $Callback implements $Pointer, $NativeResource {
 
 
+public "address"(): long
+public static "free"(arg0: long): void
+public "free"(): void
 public static "get"<T extends $CallbackI>(arg0: long): T
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "address"(): long
-public "free"(): void
-public static "free"(arg0: long): void
 public static "getSafe"<T extends $CallbackI>(arg0: long): T
 public "close"(): void
 }
@@ -41,8 +41,8 @@ import {$FFICIF, $FFICIF$$Type} from "org.lwjgl.system.libffi.FFICIF"
 export class $FT_Generic_Finalizer extends $Callback implements $FT_Generic_FinalizerI {
 
 
-public static "create"(arg0: long): $FT_Generic_Finalizer
 public static "create"(arg0: $FT_Generic_FinalizerI$$Type): $FT_Generic_Finalizer
+public static "create"(arg0: long): $FT_Generic_Finalizer
 public static "createSafe"(arg0: long): $FT_Generic_Finalizer
 public "callback"(arg0: long, arg1: long): void
 public "invoke"(arg0: long): void
@@ -68,8 +68,8 @@ import {$FT_ListNode, $FT_ListNode$$Type} from "org.lwjgl.util.freetype.FT_ListN
 
 export class $FT_ListNode$Buffer extends $StructBuffer<($FT_ListNode), ($FT_ListNode$Buffer)> {
 
-constructor(arg0: long, arg1: integer)
 constructor(arg0: $ByteBuffer$$Type)
+constructor(arg0: long, arg1: integer)
 
 public "next"(): $FT_ListNode
 public "data"(arg0: integer): $ByteBuffer
@@ -141,8 +141,8 @@ import {$FFICIF, $FFICIF$$Type} from "org.lwjgl.system.libffi.FFICIF"
 export class $FT_Realloc_Func extends $Callback implements $FT_Realloc_FuncI {
 
 
-public static "create"(arg0: long): $FT_Realloc_Func
 public static "create"(arg0: $FT_Realloc_FuncI$$Type): $FT_Realloc_Func
+public static "create"(arg0: long): $FT_Realloc_Func
 public static "createSafe"(arg0: long): $FT_Realloc_Func
 public "callback"(arg0: long, arg1: long): void
 public "invoke"(arg0: long, arg1: long, arg2: long, arg3: long): long
@@ -176,33 +176,33 @@ static readonly "Y": integer
 
 constructor(arg0: $ByteBuffer$$Type)
 
-public "x"(arg0: long): $FT_Vector
-public "x"(): long
-public "set"(arg0: $FT_Vector$$Type): $FT_Vector
-public "set"(arg0: long, arg1: long): $FT_Vector
+public "y"(arg0: long): $FT_Vector
+public "y"(): long
 public static "create"(): $FT_Vector
+public static "create"(arg0: integer): $FT_Vector$Buffer
 public static "create"(arg0: long): $FT_Vector
 public static "create"(arg0: long, arg1: integer): $FT_Vector$Buffer
-public static "create"(arg0: integer): $FT_Vector$Buffer
-public "y"(): long
-public "y"(arg0: long): $FT_Vector
-public static "createSafe"(arg0: long, arg1: integer): $FT_Vector$Buffer
-public static "createSafe"(arg0: long): $FT_Vector
-public static "nx"(arg0: long, arg1: long): void
-public static "nx"(arg0: long): long
-public static "ny"(arg0: long): long
-public static "ny"(arg0: long, arg1: long): void
+public "x"(arg0: long): $FT_Vector
+public "x"(): long
+public "set"(arg0: long, arg1: long): $FT_Vector
+public "set"(arg0: $FT_Vector$$Type): $FT_Vector
 public static "malloc"(arg0: integer, arg1: $MemoryStack$$Type): $FT_Vector$Buffer
 public static "malloc"(arg0: integer): $FT_Vector$Buffer
 public static "malloc"(): $FT_Vector
 public static "malloc"(arg0: $MemoryStack$$Type): $FT_Vector
 public "sizeof"(): integer
-public static "calloc"(arg0: integer): $FT_Vector$Buffer
 public static "calloc"(): $FT_Vector
 public static "calloc"(arg0: integer, arg1: $MemoryStack$$Type): $FT_Vector$Buffer
+public static "calloc"(arg0: integer): $FT_Vector$Buffer
 public static "calloc"(arg0: $MemoryStack$$Type): $FT_Vector
-public "close"(): void
+public static "nx"(arg0: long, arg1: long): void
+public static "nx"(arg0: long): long
+public static "ny"(arg0: long, arg1: long): void
+public static "ny"(arg0: long): long
+public static "createSafe"(arg0: long): $FT_Vector
+public static "createSafe"(arg0: long, arg1: integer): $FT_Vector$Buffer
 public "free"(): void
+public "close"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -223,8 +223,8 @@ import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 
 export class $FT_Size_Metrics$Buffer extends $StructBuffer<($FT_Size_Metrics), ($FT_Size_Metrics$Buffer)> {
 
-constructor(arg0: long, arg1: integer)
 constructor(arg0: $ByteBuffer$$Type)
+constructor(arg0: long, arg1: integer)
 
 public "height"(): long
 public "y_scale"(): long
@@ -249,14 +249,14 @@ export type $FT_Size_Metrics$Buffer_ = $FT_Size_Metrics$Buffer$$Type;
 }}
 declare module "org.lwjgl.util.freetype.FT_CharMap$Buffer" {
 import {$StructBuffer, $StructBuffer$$Type} from "org.lwjgl.system.StructBuffer"
-import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 import {$FT_CharMap, $FT_CharMap$$Type} from "org.lwjgl.util.freetype.FT_CharMap"
 import {$FT_Face, $FT_Face$$Type} from "org.lwjgl.util.freetype.FT_Face"
+import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 
 export class $FT_CharMap$Buffer extends $StructBuffer<($FT_CharMap), ($FT_CharMap$Buffer)> {
 
-constructor(arg0: long, arg1: integer)
 constructor(arg0: $ByteBuffer$$Type)
+constructor(arg0: long, arg1: integer)
 
 public "encoding"(): integer
 public "face"(): $FT_Face
@@ -280,26 +280,26 @@ import {$StructBuffer, $StructBuffer$$Type} from "org.lwjgl.system.StructBuffer"
 import {$FT_Glyph_Metrics, $FT_Glyph_Metrics$$Type} from "org.lwjgl.util.freetype.FT_Glyph_Metrics"
 import {$FT_Generic, $FT_Generic$$Type} from "org.lwjgl.util.freetype.FT_Generic"
 import {$FT_Vector, $FT_Vector$$Type} from "org.lwjgl.util.freetype.FT_Vector"
-import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 import {$FT_Outline, $FT_Outline$$Type} from "org.lwjgl.util.freetype.FT_Outline"
-import {$FT_Face, $FT_Face$$Type} from "org.lwjgl.util.freetype.FT_Face"
 import {$FT_GlyphSlot, $FT_GlyphSlot$$Type} from "org.lwjgl.util.freetype.FT_GlyphSlot"
+import {$FT_Face, $FT_Face$$Type} from "org.lwjgl.util.freetype.FT_Face"
+import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 import {$FT_Bitmap, $FT_Bitmap$$Type} from "org.lwjgl.util.freetype.FT_Bitmap"
 
 export class $FT_GlyphSlot$Buffer extends $StructBuffer<($FT_GlyphSlot), ($FT_GlyphSlot$Buffer)> {
 
-constructor(arg0: long, arg1: integer)
 constructor(arg0: $ByteBuffer$$Type)
+constructor(arg0: long, arg1: integer)
 
-public "next"(): $FT_GlyphSlot
-public "format"(): integer
 public "generic"(): $FT_Generic
 public "advance"(): $FT_Vector
 public "metrics"(): $FT_Glyph_Metrics
-public "glyph_index"(): integer
-public "library"(): long
-public "bitmap"(): $FT_Bitmap
+public "next"(): $FT_GlyphSlot
+public "format"(): integer
 public "face"(): $FT_Face
+public "bitmap"(): $FT_Bitmap
+public "library"(): long
+public "glyph_index"(): integer
 public "outline"(): $FT_Outline
 public "bitmap_left"(): integer
 public "bitmap_top"(): integer
@@ -335,32 +335,32 @@ static readonly "VALUE": integer
 
 constructor(arg0: $ByteBuffer$$Type)
 
-public "pointer"(): long
-public "pointer"(arg0: long): $FT_StreamDesc
-public "value"(): long
-public "value"(arg0: long): $FT_StreamDesc
-public "set"(arg0: $FT_StreamDesc$$Type): $FT_StreamDesc
-public static "create"(arg0: long): $FT_StreamDesc
 public static "create"(arg0: integer): $FT_StreamDesc$Buffer
 public static "create"(arg0: long, arg1: integer): $FT_StreamDesc$Buffer
 public static "create"(): $FT_StreamDesc
-public static "createSafe"(arg0: long, arg1: integer): $FT_StreamDesc$Buffer
-public static "createSafe"(arg0: long): $FT_StreamDesc
-public static "npointer"(arg0: long): long
-public static "npointer"(arg0: long, arg1: long): void
-public static "malloc"(arg0: integer): $FT_StreamDesc$Buffer
-public static "malloc"(arg0: integer, arg1: $MemoryStack$$Type): $FT_StreamDesc$Buffer
-public static "malloc"(): $FT_StreamDesc
+public static "create"(arg0: long): $FT_StreamDesc
+public "pointer"(arg0: long): $FT_StreamDesc
+public "pointer"(): long
+public "value"(arg0: long): $FT_StreamDesc
+public "value"(): long
+public "set"(arg0: $FT_StreamDesc$$Type): $FT_StreamDesc
 public static "malloc"(arg0: $MemoryStack$$Type): $FT_StreamDesc
+public static "malloc"(arg0: integer, arg1: $MemoryStack$$Type): $FT_StreamDesc$Buffer
+public static "malloc"(arg0: integer): $FT_StreamDesc$Buffer
+public static "malloc"(): $FT_StreamDesc
 public "sizeof"(): integer
-public static "calloc"(): $FT_StreamDesc
-public static "calloc"(arg0: integer): $FT_StreamDesc$Buffer
 public static "calloc"(arg0: integer, arg1: $MemoryStack$$Type): $FT_StreamDesc$Buffer
+public static "calloc"(): $FT_StreamDesc
 public static "calloc"(arg0: $MemoryStack$$Type): $FT_StreamDesc
-public static "nvalue"(arg0: long, arg1: long): void
+public static "calloc"(arg0: integer): $FT_StreamDesc$Buffer
+public static "createSafe"(arg0: long): $FT_StreamDesc
+public static "createSafe"(arg0: long, arg1: integer): $FT_StreamDesc$Buffer
+public static "npointer"(arg0: long, arg1: long): void
+public static "npointer"(arg0: long): long
 public static "nvalue"(arg0: long): long
-public "close"(): void
+public static "nvalue"(arg0: long, arg1: long): void
 public "free"(): void
+public "close"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -376,20 +376,20 @@ export type $FT_StreamDesc_ = $FT_StreamDesc$$Type;
 }}
 declare module "org.lwjgl.glfw.GLFWVidMode$Buffer" {
 import {$StructBuffer, $StructBuffer$$Type} from "org.lwjgl.system.StructBuffer"
-import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 import {$GLFWVidMode, $GLFWVidMode$$Type} from "org.lwjgl.glfw.GLFWVidMode"
+import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 
 export class $GLFWVidMode$Buffer extends $StructBuffer<($GLFWVidMode), ($GLFWVidMode$Buffer)> {
 
-constructor(arg0: long, arg1: integer)
 constructor(arg0: $ByteBuffer$$Type)
+constructor(arg0: long, arg1: integer)
 
 public "width"(): integer
-public "refreshRate"(): integer
-public "blueBits"(): integer
-public "greenBits"(): integer
-public "redBits"(): integer
 public "height"(): integer
+public "blueBits"(): integer
+public "redBits"(): integer
+public "greenBits"(): integer
+public "refreshRate"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -418,17 +418,17 @@ static readonly "AUTOHINT_MODE": integer
 
 constructor(arg0: $ByteBuffer$$Type)
 
-public static "create"(arg0: long): $FT_Size_Internal
 public static "create"(arg0: long, arg1: integer): $FT_Size_Internal$Buffer
-public static "createSafe"(arg0: long): $FT_Size_Internal
-public static "createSafe"(arg0: long, arg1: integer): $FT_Size_Internal$Buffer
+public static "create"(arg0: long): $FT_Size_Internal
 public "sizeof"(): integer
-public "autohint_mode"(): integer
-public static "nautohint_mode"(arg0: long): integer
+public static "createSafe"(arg0: long, arg1: integer): $FT_Size_Internal$Buffer
+public static "createSafe"(arg0: long): $FT_Size_Internal
 public static "nmodule_data"(arg0: long): long
+public "autohint_mode"(): integer
 public "module_data"(): long
-public static "nautohint_metrics"(arg0: long): $FT_Size_Metrics
+public static "nautohint_mode"(arg0: long): integer
 public "autohint_metrics"(): $FT_Size_Metrics
+public static "nautohint_metrics"(arg0: long): $FT_Size_Metrics
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -448,24 +448,24 @@ import {$FT_Size, $FT_Size$$Type} from "org.lwjgl.util.freetype.FT_Size"
 import {$FT_Size_Metrics, $FT_Size_Metrics$$Type} from "org.lwjgl.util.freetype.FT_Size_Metrics"
 import {$FT_Generic, $FT_Generic$$Type} from "org.lwjgl.util.freetype.FT_Generic"
 import {$NativeResource, $NativeResource$$Type} from "org.lwjgl.system.NativeResource"
-import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 import {$FT_Face, $FT_Face$$Type} from "org.lwjgl.util.freetype.FT_Face"
+import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 
 export class $FT_Size$Buffer extends $StructBuffer<($FT_Size), ($FT_Size$Buffer)> implements $NativeResource {
 
-constructor(arg0: long, arg1: integer)
 constructor(arg0: $ByteBuffer$$Type)
+constructor(arg0: long, arg1: integer)
 
-public "generic"(arg0: $Consumer$$Type<($FT_Generic)>): $FT_Size$Buffer
-public "generic"(): $FT_Generic
 public "generic"(arg0: $FT_Generic$$Type): $FT_Size$Buffer
-public "metrics"(arg0: $FT_Size_Metrics$$Type): $FT_Size$Buffer
+public "generic"(): $FT_Generic
+public "generic"(arg0: $Consumer$$Type<($FT_Generic)>): $FT_Size$Buffer
 public "metrics"(): $FT_Size_Metrics
-public "face"(): $FT_Face
+public "metrics"(arg0: $FT_Size_Metrics$$Type): $FT_Size$Buffer
 public "face"(arg0: $FT_Face$$Type): $FT_Size$Buffer
-public "close"(): void
+public "face"(): $FT_Face
 public "free"(): void
+public "close"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -496,31 +496,31 @@ static readonly "SIZEOF": integer
 
 constructor(arg0: $ByteBuffer$$Type)
 
-public "set"(arg0: $FT_BBox$$Type): $FT_BBox
-public "set"(arg0: long, arg1: long, arg2: long, arg3: long): $FT_BBox
 public static "create"(): $FT_BBox
 public static "create"(arg0: integer): $FT_BBox$Buffer
 public static "create"(arg0: long): $FT_BBox
 public static "create"(arg0: long, arg1: integer): $FT_BBox$Buffer
-public static "createSafe"(arg0: long): $FT_BBox
-public static "createSafe"(arg0: long, arg1: integer): $FT_BBox$Buffer
-public "xMin"(arg0: long): $FT_BBox
+public "set"(arg0: $FT_BBox$$Type): $FT_BBox
+public "set"(arg0: long, arg1: long, arg2: long, arg3: long): $FT_BBox
 public "xMin"(): long
+public "xMin"(arg0: long): $FT_BBox
+public "yMin"(): long
+public "yMin"(arg0: long): $FT_BBox
 public "xMax"(arg0: long): $FT_BBox
 public "xMax"(): long
 public "yMax"(): long
 public "yMax"(arg0: long): $FT_BBox
-public "yMin"(): long
-public "yMin"(arg0: long): $FT_BBox
 public static "malloc"(arg0: $MemoryStack$$Type): $FT_BBox
+public static "malloc"(arg0: integer): $FT_BBox$Buffer
 public static "malloc"(arg0: integer, arg1: $MemoryStack$$Type): $FT_BBox$Buffer
 public static "malloc"(): $FT_BBox
-public static "malloc"(arg0: integer): $FT_BBox$Buffer
 public "sizeof"(): integer
+public static "calloc"(arg0: $MemoryStack$$Type): $FT_BBox
+public static "calloc"(arg0: integer, arg1: $MemoryStack$$Type): $FT_BBox$Buffer
 public static "calloc"(): $FT_BBox
 public static "calloc"(arg0: integer): $FT_BBox$Buffer
-public static "calloc"(arg0: integer, arg1: $MemoryStack$$Type): $FT_BBox$Buffer
-public static "calloc"(arg0: $MemoryStack$$Type): $FT_BBox
+public static "createSafe"(arg0: long, arg1: integer): $FT_BBox$Buffer
+public static "createSafe"(arg0: long): $FT_BBox
 public static "nxMin"(arg0: long, arg1: long): void
 public static "nxMin"(arg0: long): long
 public static "nyMin"(arg0: long, arg1: long): void
@@ -529,8 +529,8 @@ public static "nxMax"(arg0: long): long
 public static "nxMax"(arg0: long, arg1: long): void
 public static "nyMax"(arg0: long): long
 public static "nyMax"(arg0: long, arg1: long): void
-public "close"(): void
 public "free"(): void
+public "close"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -561,23 +561,23 @@ static readonly "BLUEBITS": integer
 
 constructor(arg0: $ByteBuffer$$Type)
 
-public static "create"(arg0: long): $GLFWVidMode
 public static "create"(arg0: long, arg1: integer): $GLFWVidMode$Buffer
+public static "create"(arg0: long): $GLFWVidMode
+public "sizeof"(): integer
+public static "nwidth"(arg0: long): integer
 public "width"(): integer
+public "height"(): integer
+public "blueBits"(): integer
+public static "nredBits"(arg0: long): integer
+public static "nrefreshRate"(arg0: long): integer
+public "redBits"(): integer
+public static "ngreenBits"(arg0: long): integer
+public static "nblueBits"(arg0: long): integer
+public "greenBits"(): integer
+public "refreshRate"(): integer
 public static "createSafe"(arg0: long): $GLFWVidMode
 public static "createSafe"(arg0: long, arg1: integer): $GLFWVidMode$Buffer
 public static "nheight"(arg0: long): integer
-public "refreshRate"(): integer
-public "blueBits"(): integer
-public static "ngreenBits"(arg0: long): integer
-public "greenBits"(): integer
-public static "nredBits"(arg0: long): integer
-public "redBits"(): integer
-public static "nblueBits"(arg0: long): integer
-public static "nrefreshRate"(arg0: long): integer
-public "height"(): integer
-public "sizeof"(): integer
-public static "nwidth"(arg0: long): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -610,26 +610,26 @@ static readonly "HEIGHT": integer
 
 constructor(arg0: $ByteBuffer$$Type)
 
-public static "create"(arg0: long): $FT_Glyph_Metrics
 public static "create"(arg0: long, arg1: integer): $FT_Glyph_Metrics$Buffer
+public static "create"(arg0: long): $FT_Glyph_Metrics
+public "sizeof"(): integer
+public static "nwidth"(arg0: long): long
 public "width"(): long
+public "height"(): long
 public static "createSafe"(arg0: long): $FT_Glyph_Metrics
 public static "createSafe"(arg0: long, arg1: integer): $FT_Glyph_Metrics$Buffer
 public static "nheight"(arg0: long): long
-public "height"(): long
-public "sizeof"(): integer
-public static "nwidth"(arg0: long): long
-public "horiBearingX"(): long
-public "horiBearingY"(): long
-public "horiAdvance"(): long
-public "vertBearingX"(): long
-public "vertBearingY"(): long
 public "vertAdvance"(): long
-public static "nhoriBearingX"(arg0: long): long
-public static "nhoriBearingY"(arg0: long): long
-public static "nhoriAdvance"(arg0: long): long
+public "horiBearingY"(): long
 public static "nvertBearingX"(arg0: long): long
+public static "nhoriBearingX"(arg0: long): long
 public static "nvertBearingY"(arg0: long): long
+public static "nhoriAdvance"(arg0: long): long
+public static "nhoriBearingY"(arg0: long): long
+public "horiBearingX"(): long
+public "vertBearingX"(): long
+public "horiAdvance"(): long
+public "vertBearingY"(): long
 public static "nvertAdvance"(arg0: long): long
 }
 /**
@@ -651,24 +651,21 @@ import {$FT_BBox, $FT_BBox$$Type} from "org.lwjgl.util.freetype.FT_BBox"
 import {$FT_Generic, $FT_Generic$$Type} from "org.lwjgl.util.freetype.FT_Generic"
 import {$FT_Bitmap_Size$Buffer, $FT_Bitmap_Size$Buffer$$Type} from "org.lwjgl.util.freetype.FT_Bitmap_Size$Buffer"
 import {$PointerBuffer, $PointerBuffer$$Type} from "org.lwjgl.PointerBuffer"
-import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 import {$FT_CharMap, $FT_CharMap$$Type} from "org.lwjgl.util.freetype.FT_CharMap"
-import {$FT_Face, $FT_Face$$Type} from "org.lwjgl.util.freetype.FT_Face"
 import {$FT_GlyphSlot, $FT_GlyphSlot$$Type} from "org.lwjgl.util.freetype.FT_GlyphSlot"
+import {$FT_Face, $FT_Face$$Type} from "org.lwjgl.util.freetype.FT_Face"
+import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 
 export class $FT_Face$Buffer extends $StructBuffer<($FT_Face), ($FT_Face$Buffer)> {
 
-constructor(arg0: long, arg1: integer)
 constructor(arg0: $ByteBuffer$$Type)
+constructor(arg0: long, arg1: integer)
 
-public "size"(): $FT_Size
 public "generic"(): $FT_Generic
+public "size"(): $FT_Size
 public "glyph"(): $FT_GlyphSlot
 public "height"(): short
 public "bbox"(): $FT_BBox
-public "face_flags"(): long
-public "face_index"(): long
-public "charmap"(): $FT_CharMap
 public "num_faces"(): long
 public "style_flags"(): long
 public "num_glyphs"(): long
@@ -679,8 +676,11 @@ public "charmaps"(): $PointerBuffer
 public "units_per_EM"(): short
 public "ascender"(): short
 public "descender"(): short
-public "family_nameString"(): string
-public "style_nameString"(): string
+public "face_flags"(): long
+public "face_index"(): long
+public "charmap"(): $FT_CharMap
+public "family_nameString"(): StringJS
+public "style_nameString"(): StringJS
 public "num_fixed_sizes"(): integer
 public "available_sizes"(): $FT_Bitmap_Size$Buffer
 public "max_advance_width"(): short
@@ -717,20 +717,20 @@ static readonly "HEIGHT": integer
 constructor(arg0: $ByteBuffer$$Type)
 
 public static "nsize"(arg0: long): long
-public "size"(): long
-public static "create"(arg0: long, arg1: integer): $FT_Bitmap_Size$Buffer
 public static "create"(arg0: long): $FT_Bitmap_Size
+public static "create"(arg0: long, arg1: integer): $FT_Bitmap_Size$Buffer
+public "size"(): long
+public "sizeof"(): integer
+public static "nwidth"(arg0: long): short
 public "width"(): short
+public "height"(): short
 public static "createSafe"(arg0: long): $FT_Bitmap_Size
 public static "createSafe"(arg0: long, arg1: integer): $FT_Bitmap_Size$Buffer
 public static "nheight"(arg0: long): short
-public "height"(): short
-public "sizeof"(): integer
-public static "nwidth"(arg0: long): short
 public "x_ppem"(): long
 public "y_ppem"(): long
-public static "nx_ppem"(arg0: long): long
 public static "ny_ppem"(arg0: long): long
+public static "nx_ppem"(arg0: long): long
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -755,12 +755,12 @@ export class $FT_StreamDesc$Buffer extends $StructBuffer<($FT_StreamDesc), ($FT_
 constructor(arg0: $ByteBuffer$$Type)
 constructor(arg0: long, arg1: integer)
 
-public "pointer"(): long
 public "pointer"(arg0: long): $FT_StreamDesc$Buffer
-public "value"(arg0: long): $FT_StreamDesc$Buffer
+public "pointer"(): long
 public "value"(): long
-public "close"(): void
+public "value"(arg0: long): $FT_StreamDesc$Buffer
 public "free"(): void
+public "close"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -788,19 +788,19 @@ import {$FT_Free_FuncI, $FT_Free_FuncI$$Type} from "org.lwjgl.util.freetype.FT_F
 
 export class $FT_Memory$Buffer extends $StructBuffer<($FT_Memory), ($FT_Memory$Buffer)> implements $NativeResource {
 
-constructor(arg0: long, arg1: integer)
 constructor(arg0: $ByteBuffer$$Type)
+constructor(arg0: long, arg1: integer)
 
 public "user"(): long
 public "user"(arg0: long): $FT_Memory$Buffer
-public "realloc"(arg0: $FT_Realloc_FuncI$$Type): $FT_Memory$Buffer
-public "realloc"(): $FT_Realloc_Func
-public "alloc"(arg0: $FT_Alloc_FuncI$$Type): $FT_Memory$Buffer
 public "alloc"(): $FT_Alloc_Func
+public "alloc"(arg0: $FT_Alloc_FuncI$$Type): $FT_Memory$Buffer
+public "realloc"(): $FT_Realloc_Func
+public "realloc"(arg0: $FT_Realloc_FuncI$$Type): $FT_Memory$Buffer
 public "free$"(): $FT_Free_Func
 public "free$"(arg0: $FT_Free_FuncI$$Type): $FT_Memory$Buffer
-public "close"(): void
 public "free"(): void
+public "close"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -837,66 +837,91 @@ import {$Pointer$Default, $Pointer$Default$$Type} from "org.lwjgl.system.Pointer
 export class $MemoryStack extends $Pointer$Default implements $AutoCloseable {
 
 
-public "UTF16"(arg0: charseq, arg1: boolean): $ByteBuffer
-public "UTF16"(arg0: charseq): $ByteBuffer
-public "bytes"(arg0: byte, arg1: byte): $ByteBuffer
-public "bytes"(arg0: byte, arg1: byte, arg2: byte, arg3: byte): $ByteBuffer
-public "bytes"(...arg0: (byte)[]): $ByteBuffer
-public "bytes"(arg0: byte): $ByteBuffer
-public "bytes"(arg0: byte, arg1: byte, arg2: byte): $ByteBuffer
-public "close"(): void
-public "getSize"(): integer
-public static "create"(): $MemoryStack
-public static "create"(arg0: $ByteBuffer$$Type): $MemoryStack
-public static "create"(arg0: integer): $MemoryStack
-public "getAddress"(): long
-public "nbyte"(arg0: byte): long
-public "ASCII"(arg0: charseq): $ByteBuffer
-public "ASCII"(arg0: charseq, arg1: boolean): $ByteBuffer
-public "UTF8"(arg0: charseq): $ByteBuffer
-public "UTF8"(arg0: charseq, arg1: boolean): $ByteBuffer
 public "push"(): $MemoryStack
 public "pop"(): $MemoryStack
+public "getAddress"(): long
+public "nbyte"(arg0: byte): long
+public "longs"(arg0: long): $LongBuffer
+public "longs"(arg0: long, arg1: long, arg2: long, arg3: long): $LongBuffer
+public "longs"(arg0: long, arg1: long): $LongBuffer
+public "longs"(arg0: long, arg1: long, arg2: long): $LongBuffer
+public "longs"(...arg0: (long)[]): $LongBuffer
+public static "create"(arg0: $ByteBuffer$$Type): $MemoryStack
+public static "create"(arg0: integer): $MemoryStack
+public static "create"(): $MemoryStack
+public "ints"(arg0: integer, arg1: integer, arg2: integer, arg3: integer): $IntBuffer
 public "ints"(...arg0: (integer)[]): $IntBuffer
 public "ints"(arg0: integer, arg1: integer, arg2: integer): $IntBuffer
-public "ints"(arg0: integer): $IntBuffer
 public "ints"(arg0: integer, arg1: integer): $IntBuffer
-public "ints"(arg0: integer, arg1: integer, arg2: integer, arg3: integer): $IntBuffer
-public "longs"(arg0: long, arg1: long, arg2: long, arg3: long): $LongBuffer
-public "longs"(arg0: long, arg1: long, arg2: long): $LongBuffer
-public "longs"(arg0: long, arg1: long): $LongBuffer
-public "longs"(arg0: long): $LongBuffer
-public "longs"(...arg0: (long)[]): $LongBuffer
-public "doubles"(arg0: double, arg1: double, arg2: double): $DoubleBuffer
+public "ints"(arg0: integer): $IntBuffer
 public "doubles"(arg0: double, arg1: double, arg2: double, arg3: double): $DoubleBuffer
 public "doubles"(...arg0: (double)[]): $DoubleBuffer
 public "doubles"(arg0: double, arg1: double): $DoubleBuffer
 public "doubles"(arg0: double): $DoubleBuffer
-public static "stackPush"(): $MemoryStack
-public "mallocPointer"(arg0: integer): $PointerBuffer
+public "doubles"(arg0: double, arg1: double, arg2: double): $DoubleBuffer
+public "getSize"(): integer
+public "ASCII"(arg0: charseq, arg1: boolean): $ByteBuffer
+public "ASCII"(arg0: charseq): $ByteBuffer
+public "UTF8"(arg0: charseq, arg1: boolean): $ByteBuffer
+public "UTF8"(arg0: charseq): $ByteBuffer
+public "UTF16"(arg0: charseq, arg1: boolean): $ByteBuffer
+public "UTF16"(arg0: charseq): $ByteBuffer
+public "bytes"(arg0: byte, arg1: byte, arg2: byte, arg3: byte): $ByteBuffer
+public "bytes"(arg0: byte, arg1: byte): $ByteBuffer
+public "bytes"(...arg0: (byte)[]): $ByteBuffer
+public "bytes"(arg0: byte, arg1: byte, arg2: byte): $ByteBuffer
+public "bytes"(arg0: byte): $ByteBuffer
+public "close"(): void
+public "malloc"(arg0: integer): $ByteBuffer
+public "malloc"(arg0: integer, arg1: integer): $ByteBuffer
+public "calloc"(arg0: integer, arg1: integer): $ByteBuffer
+public "calloc"(arg0: integer): $ByteBuffer
+public "nshort"(arg0: short): long
+public "shorts"(arg0: short, arg1: short): $ShortBuffer
+public "shorts"(arg0: short): $ShortBuffer
+public "shorts"(...arg0: (short)[]): $ShortBuffer
+public "shorts"(arg0: short, arg1: short, arg2: short, arg3: short): $ShortBuffer
+public "shorts"(arg0: short, arg1: short, arg2: short): $ShortBuffer
+public "nint"(arg0: integer): long
+public "nlong"(arg0: long): long
+public "nclong"(arg0: long): long
+public "clongs"(arg0: long): $CLongBuffer
+public "clongs"(arg0: long, arg1: long, arg2: long, arg3: long): $CLongBuffer
+public "clongs"(...arg0: (long)[]): $CLongBuffer
+public "clongs"(arg0: long, arg1: long, arg2: long): $CLongBuffer
+public "clongs"(arg0: long, arg1: long): $CLongBuffer
+public "nfloat"(arg0: float): long
+public "floats"(arg0: float, arg1: float, arg2: float, arg3: float): $FloatBuffer
+public "floats"(arg0: float, arg1: float, arg2: float): $FloatBuffer
+public "floats"(...arg0: (float)[]): $FloatBuffer
+public "floats"(arg0: float, arg1: float): $FloatBuffer
+public "floats"(arg0: float): $FloatBuffer
+public "nUTF16"(arg0: charseq, arg1: boolean): integer
+public "nUTF8"(arg0: charseq, arg1: boolean): integer
+public "nASCII"(arg0: charseq, arg1: boolean): integer
+public "setPointer"(arg0: integer): void
+public "getPointer"(): integer
+public "callocInt"(arg0: integer): $IntBuffer
+public "pointers"(...arg0: (long)[]): $PointerBuffer
+public "pointers"(arg0: long, arg1: long, arg2: long, arg3: long): $PointerBuffer
+public "pointers"(arg0: long, arg1: long, arg2: long): $PointerBuffer
+public "pointers"(arg0: $Buffer$$Type, arg1: $Buffer$$Type, arg2: $Buffer$$Type): $PointerBuffer
+public "pointers"(arg0: long): $PointerBuffer
+public "pointers"(arg0: long, arg1: long): $PointerBuffer
+public "pointers"(...arg0: ($Pointer$$Type)[]): $PointerBuffer
+public "pointers"(arg0: $Pointer$$Type, arg1: $Pointer$$Type, arg2: $Pointer$$Type, arg3: $Pointer$$Type): $PointerBuffer
+public "pointers"(arg0: $Pointer$$Type, arg1: $Pointer$$Type, arg2: $Pointer$$Type): $PointerBuffer
+public "pointers"(arg0: $Pointer$$Type, arg1: $Pointer$$Type): $PointerBuffer
+public "pointers"(arg0: $Pointer$$Type): $PointerBuffer
+public "pointers"(arg0: $Buffer$$Type, arg1: $Buffer$$Type): $PointerBuffer
+public "pointers"(arg0: $Buffer$$Type): $PointerBuffer
+public "pointers"(...arg0: ($Buffer$$Type)[]): $PointerBuffer
+public "pointers"(arg0: $Buffer$$Type, arg1: $Buffer$$Type, arg2: $Buffer$$Type, arg3: $Buffer$$Type): $PointerBuffer
+public "mallocInt"(arg0: integer): $IntBuffer
 public static "stackGet"(): $MemoryStack
 public "nmalloc"(arg0: integer, arg1: integer): long
 public "nmalloc"(arg0: integer): long
 public "ncalloc"(arg0: integer, arg1: integer, arg2: integer): long
-public "getPointer"(): integer
-public "callocInt"(arg0: integer): $IntBuffer
-public "setPointer"(arg0: integer): void
-public "pointers"(...arg0: ($Buffer$$Type)[]): $PointerBuffer
-public "pointers"(arg0: $Buffer$$Type, arg1: $Buffer$$Type, arg2: $Buffer$$Type, arg3: $Buffer$$Type): $PointerBuffer
-public "pointers"(arg0: $Pointer$$Type, arg1: $Pointer$$Type): $PointerBuffer
-public "pointers"(arg0: $Pointer$$Type): $PointerBuffer
-public "pointers"(arg0: $Pointer$$Type, arg1: $Pointer$$Type, arg2: $Pointer$$Type, arg3: $Pointer$$Type): $PointerBuffer
-public "pointers"(arg0: $Pointer$$Type, arg1: $Pointer$$Type, arg2: $Pointer$$Type): $PointerBuffer
-public "pointers"(arg0: $Buffer$$Type): $PointerBuffer
-public "pointers"(arg0: $Buffer$$Type, arg1: $Buffer$$Type): $PointerBuffer
-public "pointers"(arg0: $Buffer$$Type, arg1: $Buffer$$Type, arg2: $Buffer$$Type): $PointerBuffer
-public "pointers"(arg0: long, arg1: long): $PointerBuffer
-public "pointers"(arg0: long, arg1: long, arg2: long): $PointerBuffer
-public "pointers"(arg0: long, arg1: long, arg2: long, arg3: long): $PointerBuffer
-public "pointers"(...arg0: (long)[]): $PointerBuffer
-public "pointers"(arg0: long): $PointerBuffer
-public "pointers"(...arg0: ($Pointer$$Type)[]): $PointerBuffer
-public "mallocInt"(arg0: integer): $IntBuffer
 public static "ncreate"(arg0: long, arg1: integer): $MemoryStack
 public "getFrameIndex"(): integer
 public "mallocShort"(arg0: integer): $ShortBuffer
@@ -911,111 +936,85 @@ public "mallocDouble"(arg0: integer): $DoubleBuffer
 public "callocDouble"(arg0: integer): $DoubleBuffer
 public "ndouble"(arg0: double): long
 public "callocPointer"(arg0: integer): $PointerBuffer
-public "npointer"(arg0: $Pointer$$Type): long
-public "npointer"(arg0: long): long
 public "npointer"(arg0: $Buffer$$Type): long
-public "ASCIISafe"(arg0: charseq): $ByteBuffer
+public "npointer"(arg0: long): long
+public "npointer"(arg0: $Pointer$$Type): long
 public "ASCIISafe"(arg0: charseq, arg1: boolean): $ByteBuffer
+public "ASCIISafe"(arg0: charseq): $ByteBuffer
 public "nASCIISafe"(arg0: charseq, arg1: boolean): integer
 public "UTF8Safe"(arg0: charseq, arg1: boolean): $ByteBuffer
 public "UTF8Safe"(arg0: charseq): $ByteBuffer
 public "nUTF8Safe"(arg0: charseq, arg1: boolean): integer
-public "UTF16Safe"(arg0: charseq): $ByteBuffer
 public "UTF16Safe"(arg0: charseq, arg1: boolean): $ByteBuffer
+public "UTF16Safe"(arg0: charseq): $ByteBuffer
 public "nUTF16Safe"(arg0: charseq, arg1: boolean): integer
 public static "stackPop"(): $MemoryStack
-public static "nstackMalloc"(arg0: integer, arg1: integer): long
 public static "nstackMalloc"(arg0: integer): long
+public static "nstackMalloc"(arg0: integer, arg1: integer): long
 public static "nstackCalloc"(arg0: integer, arg1: integer, arg2: integer): long
 public static "stackMalloc"(arg0: integer): $ByteBuffer
 public static "stackCalloc"(arg0: integer): $ByteBuffer
 public static "stackBytes"(arg0: byte, arg1: byte): $ByteBuffer
-public static "stackBytes"(arg0: byte, arg1: byte, arg2: byte, arg3: byte): $ByteBuffer
-public static "stackBytes"(arg0: byte): $ByteBuffer
 public static "stackBytes"(arg0: byte, arg1: byte, arg2: byte): $ByteBuffer
 public static "stackBytes"(...arg0: (byte)[]): $ByteBuffer
-public static "stackShorts"(arg0: short, arg1: short, arg2: short, arg3: short): $ShortBuffer
+public static "stackBytes"(arg0: byte, arg1: byte, arg2: byte, arg3: byte): $ByteBuffer
+public static "stackBytes"(arg0: byte): $ByteBuffer
+public static "stackShorts"(arg0: short): $ShortBuffer
 public static "stackShorts"(arg0: short, arg1: short, arg2: short): $ShortBuffer
+public static "stackShorts"(arg0: short, arg1: short, arg2: short, arg3: short): $ShortBuffer
 public static "stackShorts"(...arg0: (short)[]): $ShortBuffer
 public static "stackShorts"(arg0: short, arg1: short): $ShortBuffer
-public static "stackShorts"(arg0: short): $ShortBuffer
 public static "stackMallocInt"(arg0: integer): $IntBuffer
 public static "stackCallocInt"(arg0: integer): $IntBuffer
 public static "stackInts"(arg0: integer, arg1: integer, arg2: integer, arg3: integer): $IntBuffer
-public static "stackInts"(arg0: integer, arg1: integer, arg2: integer): $IntBuffer
-public static "stackInts"(arg0: integer, arg1: integer): $IntBuffer
 public static "stackInts"(arg0: integer): $IntBuffer
+public static "stackInts"(arg0: integer, arg1: integer): $IntBuffer
 public static "stackInts"(...arg0: (integer)[]): $IntBuffer
+public static "stackInts"(arg0: integer, arg1: integer, arg2: integer): $IntBuffer
+public static "stackLongs"(...arg0: (long)[]): $LongBuffer
 public static "stackLongs"(arg0: long, arg1: long): $LongBuffer
 public static "stackLongs"(arg0: long, arg1: long, arg2: long): $LongBuffer
-public static "stackLongs"(arg0: long): $LongBuffer
-public static "stackLongs"(...arg0: (long)[]): $LongBuffer
 public static "stackLongs"(arg0: long, arg1: long, arg2: long, arg3: long): $LongBuffer
+public static "stackLongs"(arg0: long): $LongBuffer
+public static "stackCLongs"(...arg0: (long)[]): $CLongBuffer
 public static "stackCLongs"(arg0: long, arg1: long, arg2: long, arg3: long): $CLongBuffer
 public static "stackCLongs"(arg0: long, arg1: long, arg2: long): $CLongBuffer
-public static "stackCLongs"(...arg0: (long)[]): $CLongBuffer
 public static "stackCLongs"(arg0: long, arg1: long): $CLongBuffer
 public static "stackCLongs"(arg0: long): $CLongBuffer
 public static "stackFloats"(arg0: float, arg1: float, arg2: float): $FloatBuffer
 public static "stackFloats"(arg0: float, arg1: float): $FloatBuffer
+public static "stackFloats"(arg0: float): $FloatBuffer
 public static "stackFloats"(...arg0: (float)[]): $FloatBuffer
 public static "stackFloats"(arg0: float, arg1: float, arg2: float, arg3: float): $FloatBuffer
-public static "stackFloats"(arg0: float): $FloatBuffer
 public static "stackDoubles"(arg0: double, arg1: double, arg2: double, arg3: double): $DoubleBuffer
 public static "stackDoubles"(arg0: double, arg1: double, arg2: double): $DoubleBuffer
+public static "stackDoubles"(...arg0: (double)[]): $DoubleBuffer
 public static "stackDoubles"(arg0: double, arg1: double): $DoubleBuffer
 public static "stackDoubles"(arg0: double): $DoubleBuffer
-public static "stackDoubles"(...arg0: (double)[]): $DoubleBuffer
 public static "stackPointers"(arg0: long, arg1: long, arg2: long): $PointerBuffer
-public static "stackPointers"(arg0: long, arg1: long): $PointerBuffer
-public static "stackPointers"(arg0: $Pointer$$Type, arg1: $Pointer$$Type, arg2: $Pointer$$Type): $PointerBuffer
-public static "stackPointers"(...arg0: ($Pointer$$Type)[]): $PointerBuffer
 public static "stackPointers"(arg0: $Pointer$$Type, arg1: $Pointer$$Type): $PointerBuffer
 public static "stackPointers"(arg0: $Pointer$$Type): $PointerBuffer
-public static "stackPointers"(arg0: $Pointer$$Type, arg1: $Pointer$$Type, arg2: $Pointer$$Type, arg3: $Pointer$$Type): $PointerBuffer
-public static "stackPointers"(...arg0: (long)[]): $PointerBuffer
 public static "stackPointers"(arg0: long, arg1: long, arg2: long, arg3: long): $PointerBuffer
+public static "stackPointers"(...arg0: (long)[]): $PointerBuffer
+public static "stackPointers"(arg0: $Pointer$$Type, arg1: $Pointer$$Type, arg2: $Pointer$$Type): $PointerBuffer
+public static "stackPointers"(...arg0: ($Pointer$$Type)[]): $PointerBuffer
+public static "stackPointers"(arg0: $Pointer$$Type, arg1: $Pointer$$Type, arg2: $Pointer$$Type, arg3: $Pointer$$Type): $PointerBuffer
 public static "stackPointers"(arg0: long): $PointerBuffer
+public static "stackPointers"(arg0: long, arg1: long): $PointerBuffer
 public static "stackASCII"(arg0: charseq, arg1: boolean): $ByteBuffer
 public static "stackASCII"(arg0: charseq): $ByteBuffer
 public static "stackUTF8"(arg0: charseq): $ByteBuffer
 public static "stackUTF8"(arg0: charseq, arg1: boolean): $ByteBuffer
-public static "stackUTF16"(arg0: charseq, arg1: boolean): $ByteBuffer
 public static "stackUTF16"(arg0: charseq): $ByteBuffer
-public static "stackASCIISafe"(arg0: charseq): $ByteBuffer
+public static "stackUTF16"(arg0: charseq, arg1: boolean): $ByteBuffer
 public static "stackASCIISafe"(arg0: charseq, arg1: boolean): $ByteBuffer
-public static "stackUTF8Safe"(arg0: charseq): $ByteBuffer
+public static "stackASCIISafe"(arg0: charseq): $ByteBuffer
 public static "stackUTF8Safe"(arg0: charseq, arg1: boolean): $ByteBuffer
-public static "stackUTF16Safe"(arg0: charseq): $ByteBuffer
+public static "stackUTF8Safe"(arg0: charseq): $ByteBuffer
 public static "stackUTF16Safe"(arg0: charseq, arg1: boolean): $ByteBuffer
-public "malloc"(arg0: integer): $ByteBuffer
-public "malloc"(arg0: integer, arg1: integer): $ByteBuffer
-public "nUTF8"(arg0: charseq, arg1: boolean): integer
-public "nASCII"(arg0: charseq, arg1: boolean): integer
-public "nshort"(arg0: short): long
-public "shorts"(...arg0: (short)[]): $ShortBuffer
-public "shorts"(arg0: short, arg1: short, arg2: short, arg3: short): $ShortBuffer
-public "shorts"(arg0: short, arg1: short): $ShortBuffer
-public "shorts"(arg0: short): $ShortBuffer
-public "shorts"(arg0: short, arg1: short, arg2: short): $ShortBuffer
-public "nint"(arg0: integer): long
-public "nlong"(arg0: long): long
-public "nclong"(arg0: long): long
-public "clongs"(arg0: long, arg1: long): $CLongBuffer
-public "clongs"(arg0: long): $CLongBuffer
-public "clongs"(...arg0: (long)[]): $CLongBuffer
-public "clongs"(arg0: long, arg1: long, arg2: long): $CLongBuffer
-public "clongs"(arg0: long, arg1: long, arg2: long, arg3: long): $CLongBuffer
-public "nfloat"(arg0: float): long
-public "floats"(...arg0: (float)[]): $FloatBuffer
-public "floats"(arg0: float, arg1: float): $FloatBuffer
-public "floats"(arg0: float, arg1: float, arg2: float): $FloatBuffer
-public "floats"(arg0: float): $FloatBuffer
-public "floats"(arg0: float, arg1: float, arg2: float, arg3: float): $FloatBuffer
-public "nUTF16"(arg0: charseq, arg1: boolean): integer
-public "calloc"(arg0: integer, arg1: integer): $ByteBuffer
-public "calloc"(arg0: integer): $ByteBuffer
-public "getPointerAddress"(): long
+public static "stackUTF16Safe"(arg0: charseq): $ByteBuffer
+public static "stackPush"(): $MemoryStack
+public "mallocPointer"(arg0: integer): $PointerBuffer
 public "pointersOfElements"(arg0: $CustomBuffer$$Type<(any)>): $PointerBuffer
 public static "stackMallocShort"(arg0: integer): $ShortBuffer
 public static "stackCallocShort"(arg0: integer): $ShortBuffer
@@ -1029,10 +1028,11 @@ public static "stackMallocDouble"(arg0: integer): $DoubleBuffer
 public static "stackCallocDouble"(arg0: integer): $DoubleBuffer
 public static "stackMallocPointer"(arg0: integer): $PointerBuffer
 public static "stackCallocPointer"(arg0: integer): $PointerBuffer
-get "size"(): integer
+public "getPointerAddress"(): long
 get "address"(): long
-get "pointer"(): integer
+get "size"(): integer
 set "pointer"(value: integer)
+get "pointer"(): integer
 get "frameIndex"(): integer
 get "pointerAddress"(): long
 }
@@ -1052,10 +1052,10 @@ declare module "org.lwjgl.util.freetype.FT_Memory" {
 import {$FT_Memory$Buffer, $FT_Memory$Buffer$$Type} from "org.lwjgl.util.freetype.FT_Memory$Buffer"
 import {$MemoryStack, $MemoryStack$$Type} from "org.lwjgl.system.MemoryStack"
 import {$FT_Alloc_Func, $FT_Alloc_Func$$Type} from "org.lwjgl.util.freetype.FT_Alloc_Func"
-import {$FT_Realloc_FuncI, $FT_Realloc_FuncI$$Type} from "org.lwjgl.util.freetype.FT_Realloc_FuncI"
 import {$FT_Free_Func, $FT_Free_Func$$Type} from "org.lwjgl.util.freetype.FT_Free_Func"
-import {$Struct, $Struct$$Type} from "org.lwjgl.system.Struct"
+import {$FT_Realloc_FuncI, $FT_Realloc_FuncI$$Type} from "org.lwjgl.util.freetype.FT_Realloc_FuncI"
 import {$FT_Alloc_FuncI, $FT_Alloc_FuncI$$Type} from "org.lwjgl.util.freetype.FT_Alloc_FuncI"
+import {$Struct, $Struct$$Type} from "org.lwjgl.system.Struct"
 import {$NativeResource, $NativeResource$$Type} from "org.lwjgl.system.NativeResource"
 import {$FT_Realloc_Func, $FT_Realloc_Func$$Type} from "org.lwjgl.util.freetype.FT_Realloc_Func"
 import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
@@ -1071,41 +1071,41 @@ static readonly "FREE": integer
 
 constructor(arg0: $ByteBuffer$$Type)
 
-public "set"(arg0: long, arg1: $FT_Alloc_FuncI$$Type, arg2: $FT_Free_FuncI$$Type, arg3: $FT_Realloc_FuncI$$Type): $FT_Memory
-public "set"(arg0: $FT_Memory$$Type): $FT_Memory
 public static "create"(): $FT_Memory
+public static "create"(arg0: integer): $FT_Memory$Buffer
 public static "create"(arg0: long): $FT_Memory
 public static "create"(arg0: long, arg1: integer): $FT_Memory$Buffer
-public static "create"(arg0: integer): $FT_Memory$Buffer
 public "user"(arg0: long): $FT_Memory
 public "user"(): long
-public static "createSafe"(arg0: long, arg1: integer): $FT_Memory$Buffer
-public static "createSafe"(arg0: long): $FT_Memory
-public "realloc"(): $FT_Realloc_Func
-public "realloc"(arg0: $FT_Realloc_FuncI$$Type): $FT_Memory
+public "set"(arg0: $FT_Memory$$Type): $FT_Memory
+public "set"(arg0: long, arg1: $FT_Alloc_FuncI$$Type, arg2: $FT_Free_FuncI$$Type, arg3: $FT_Realloc_FuncI$$Type): $FT_Memory
 public "alloc"(): $FT_Alloc_Func
 public "alloc"(arg0: $FT_Alloc_FuncI$$Type): $FT_Memory
-public static "malloc"(arg0: integer): $FT_Memory$Buffer
 public static "malloc"(arg0: integer, arg1: $MemoryStack$$Type): $FT_Memory$Buffer
-public static "malloc"(arg0: $MemoryStack$$Type): $FT_Memory
+public static "malloc"(arg0: integer): $FT_Memory$Buffer
 public static "malloc"(): $FT_Memory
+public static "malloc"(arg0: $MemoryStack$$Type): $FT_Memory
 public "sizeof"(): integer
-public static "calloc"(arg0: integer): $FT_Memory$Buffer
 public static "calloc"(arg0: integer, arg1: $MemoryStack$$Type): $FT_Memory$Buffer
-public static "calloc"(): $FT_Memory
 public static "calloc"(arg0: $MemoryStack$$Type): $FT_Memory
-public static "nuser"(arg0: long, arg1: long): void
-public static "nuser"(arg0: long): long
-public static "nalloc"(arg0: long, arg1: $FT_Alloc_FuncI$$Type): void
-public static "nalloc"(arg0: long): $FT_Alloc_Func
+public static "calloc"(): $FT_Memory
+public static "calloc"(arg0: integer): $FT_Memory$Buffer
+public "realloc"(arg0: $FT_Realloc_FuncI$$Type): $FT_Memory
+public "realloc"(): $FT_Realloc_Func
+public static "createSafe"(arg0: long, arg1: integer): $FT_Memory$Buffer
+public static "createSafe"(arg0: long): $FT_Memory
 public static "nfree$"(arg0: long, arg1: $FT_Free_FuncI$$Type): void
 public static "nfree$"(arg0: long): $FT_Free_Func
+public static "nalloc"(arg0: long, arg1: $FT_Alloc_FuncI$$Type): void
+public static "nalloc"(arg0: long): $FT_Alloc_Func
+public static "nuser"(arg0: long, arg1: long): void
+public static "nuser"(arg0: long): long
 public "free$"(): $FT_Free_Func
 public "free$"(arg0: $FT_Free_FuncI$$Type): $FT_Memory
-public static "nrealloc"(arg0: long): $FT_Realloc_Func
 public static "nrealloc"(arg0: long, arg1: $FT_Realloc_FuncI$$Type): void
-public "close"(): void
+public static "nrealloc"(arg0: long): $FT_Realloc_Func
 public "free"(): void
+public "close"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1122,11 +1122,11 @@ export type $FT_Memory_ = $FT_Memory$$Type;
 declare module "org.lwjgl.util.freetype.FT_Outline" {
 import {$MemoryStack, $MemoryStack$$Type} from "org.lwjgl.system.MemoryStack"
 import {$Struct, $Struct$$Type} from "org.lwjgl.system.Struct"
-import {$FT_Outline$Buffer, $FT_Outline$Buffer$$Type} from "org.lwjgl.util.freetype.FT_Outline$Buffer"
 import {$FT_Vector$Buffer, $FT_Vector$Buffer$$Type} from "org.lwjgl.util.freetype.FT_Vector$Buffer"
+import {$FT_Outline$Buffer, $FT_Outline$Buffer$$Type} from "org.lwjgl.util.freetype.FT_Outline$Buffer"
 import {$NativeResource, $NativeResource$$Type} from "org.lwjgl.system.NativeResource"
-import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 import {$ShortBuffer, $ShortBuffer$$Type} from "java.nio.ShortBuffer"
+import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 
 export class $FT_Outline extends $Struct<($FT_Outline)> implements $NativeResource {
 static readonly "CONTOURS": integer
@@ -1140,35 +1140,35 @@ static readonly "TAGS": integer
 
 constructor(arg0: $ByteBuffer$$Type)
 
-public "flags"(): integer
-public static "create"(arg0: long): $FT_Outline
-public static "create"(): $FT_Outline
 public static "create"(arg0: long, arg1: integer): $FT_Outline$Buffer
+public static "create"(): $FT_Outline
+public static "create"(arg0: long): $FT_Outline
 public static "create"(arg0: integer): $FT_Outline$Buffer
 public "tags"(): $ByteBuffer
-public static "createSafe"(arg0: long, arg1: integer): $FT_Outline$Buffer
-public static "createSafe"(arg0: long): $FT_Outline
+public "flags"(): integer
+public "points"(): $FT_Vector$Buffer
+public static "nflags"(arg0: long): integer
 public static "malloc"(arg0: integer): $FT_Outline$Buffer
-public static "malloc"(arg0: integer, arg1: $MemoryStack$$Type): $FT_Outline$Buffer
 public static "malloc"(arg0: $MemoryStack$$Type): $FT_Outline
+public static "malloc"(arg0: integer, arg1: $MemoryStack$$Type): $FT_Outline$Buffer
 public static "malloc"(): $FT_Outline
 public "sizeof"(): integer
-public static "calloc"(arg0: integer): $FT_Outline$Buffer
 public static "calloc"(arg0: integer, arg1: $MemoryStack$$Type): $FT_Outline$Buffer
 public static "calloc"(arg0: $MemoryStack$$Type): $FT_Outline
+public static "calloc"(arg0: integer): $FT_Outline$Buffer
 public static "calloc"(): $FT_Outline
-public static "nflags"(arg0: long): integer
+public static "createSafe"(arg0: long): $FT_Outline
+public static "createSafe"(arg0: long, arg1: integer): $FT_Outline$Buffer
 public static "ntags"(arg0: long): $ByteBuffer
-public "points"(): $FT_Vector$Buffer
-public "n_points"(): short
 public "n_contours"(): short
+public "n_points"(): short
 public "contours"(): $ShortBuffer
 public static "nn_contours"(arg0: long): short
 public static "nn_points"(arg0: long): short
 public static "npoints"(arg0: long): $FT_Vector$Buffer
 public static "ncontours"(arg0: long): $ShortBuffer
-public "close"(): void
 public "free"(): void
+public "close"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1235,14 +1235,14 @@ constructor(arg0: long, arg1: integer)
 
 public "rows"(): integer
 public "buffer"(arg0: integer): $ByteBuffer
+public "pitch"(): integer
 public "width"(): integer
 public "palette"(): long
-public "pitch"(): integer
+public "pixel_mode"(): byte
 public "num_grays"(): short
 public "palette_mode"(): byte
-public "pixel_mode"(): byte
-public "close"(): void
 public "free"(): void
+public "close"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1315,13 +1315,13 @@ static readonly "DESCENDER": integer
 
 constructor(arg0: $ByteBuffer$$Type)
 
-public static "create"(arg0: long): $FT_Size_Metrics
 public static "create"(arg0: long, arg1: integer): $FT_Size_Metrics$Buffer
+public static "create"(arg0: long): $FT_Size_Metrics
+public "sizeof"(): integer
+public "height"(): long
 public static "createSafe"(arg0: long): $FT_Size_Metrics
 public static "createSafe"(arg0: long, arg1: integer): $FT_Size_Metrics$Buffer
 public static "nheight"(arg0: long): long
-public "height"(): long
-public "sizeof"(): integer
 public "y_scale"(): long
 public "ascender"(): long
 public "descender"(): long
@@ -1330,12 +1330,12 @@ public static "ndescender"(arg0: long): long
 public "x_ppem"(): short
 public "y_ppem"(): short
 public "x_scale"(): long
-public "max_advance"(): long
-public static "nx_ppem"(arg0: long): short
-public static "ny_scale"(arg0: long): long
 public static "nx_scale"(arg0: long): long
 public static "nmax_advance"(arg0: long): long
 public static "ny_ppem"(arg0: long): short
+public static "ny_scale"(arg0: long): long
+public "max_advance"(): long
+public static "nx_ppem"(arg0: long): short
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1354,9 +1354,9 @@ import {$FT_Glyph_Metrics, $FT_Glyph_Metrics$$Type} from "org.lwjgl.util.freetyp
 import {$Struct, $Struct$$Type} from "org.lwjgl.system.Struct"
 import {$FT_Generic, $FT_Generic$$Type} from "org.lwjgl.util.freetype.FT_Generic"
 import {$FT_Vector, $FT_Vector$$Type} from "org.lwjgl.util.freetype.FT_Vector"
-import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 import {$FT_Outline, $FT_Outline$$Type} from "org.lwjgl.util.freetype.FT_Outline"
 import {$FT_Face, $FT_Face$$Type} from "org.lwjgl.util.freetype.FT_Face"
+import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 import {$FT_GlyphSlot$Buffer, $FT_GlyphSlot$Buffer$$Type} from "org.lwjgl.util.freetype.FT_GlyphSlot$Buffer"
 import {$FT_Bitmap, $FT_Bitmap$$Type} from "org.lwjgl.util.freetype.FT_Bitmap"
 
@@ -1388,45 +1388,45 @@ static readonly "FACE": integer
 
 constructor(arg0: $ByteBuffer$$Type)
 
-public "next"(): $FT_GlyphSlot
-public "format"(): integer
-public static "create"(arg0: long): $FT_GlyphSlot
-public static "create"(arg0: long, arg1: integer): $FT_GlyphSlot$Buffer
 public "generic"(): $FT_Generic
 public "advance"(): $FT_Vector
 public "metrics"(): $FT_Glyph_Metrics
-public static "nnext"(arg0: long): $FT_GlyphSlot
-public "glyph_index"(): integer
+public static "create"(arg0: long): $FT_GlyphSlot
+public static "create"(arg0: long, arg1: integer): $FT_GlyphSlot$Buffer
+public "next"(): $FT_GlyphSlot
+public "format"(): integer
+public "face"(): $FT_Face
+public "bitmap"(): $FT_Bitmap
+public "sizeof"(): integer
 public "library"(): long
+public "glyph_index"(): integer
 public static "createSafe"(arg0: long): $FT_GlyphSlot
 public static "createSafe"(arg0: long, arg1: integer): $FT_GlyphSlot$Buffer
-public "bitmap"(): $FT_Bitmap
-public "face"(): $FT_Face
-public "sizeof"(): integer
-public static "nface"(arg0: long): $FT_Face
-public static "nother"(arg0: long): long
 public "outline"(): $FT_Outline
+public static "nnext"(arg0: long): $FT_GlyphSlot
+public static "nother"(arg0: long): long
+public static "nface"(arg0: long): $FT_Face
 public static "ngeneric"(arg0: long): $FT_Generic
 public static "ninternal"(arg0: long): long
 public "bitmap_left"(): integer
 public "bitmap_top"(): integer
+public static "nadvance"(arg0: long): $FT_Vector
+public static "nlsb_delta"(arg0: long): long
 public "lsb_delta"(): long
 public "rsb_delta"(): long
-public static "nlibrary"(arg0: long): long
 public static "nglyph_index"(arg0: long): integer
 public static "nmetrics"(arg0: long): $FT_Glyph_Metrics
-public static "nadvance"(arg0: long): $FT_Vector
 public static "nformat"(arg0: long): integer
 public static "nbitmap"(arg0: long): $FT_Bitmap
-public static "nbitmap_left"(arg0: long): integer
 public static "nbitmap_top"(arg0: long): integer
 public static "noutline"(arg0: long): $FT_Outline
-public static "nnum_subglyphs"(arg0: long): integer
 public static "nsubglyphs"(arg0: long): long
 public static "ncontrol_data"(arg0: long): $ByteBuffer
-public static "ncontrol_len"(arg0: long): long
-public static "nlsb_delta"(arg0: long): long
 public static "nrsb_delta"(arg0: long): long
+public static "nbitmap_left"(arg0: long): integer
+public static "nnum_subglyphs"(arg0: long): integer
+public static "ncontrol_len"(arg0: long): long
+public static "nlibrary"(arg0: long): long
 public "linearHoriAdvance"(): long
 public "linearVertAdvance"(): long
 public static "nlinearHoriAdvance"(arg0: long): long
@@ -1492,15 +1492,15 @@ static readonly "SIZEOF": integer
 
 constructor(arg0: $ByteBuffer$$Type)
 
-public "tail"(): $FT_ListNode
-public static "create"(arg0: long): $FT_List
-public static "create"(arg0: long, arg1: integer): $FT_List$Buffer
 public "head"(): $FT_ListNode
+public static "create"(arg0: long, arg1: integer): $FT_List$Buffer
+public static "create"(arg0: long): $FT_List
+public "tail"(): $FT_ListNode
+public "sizeof"(): integer
+public static "createSafe"(arg0: long): $FT_List
+public static "createSafe"(arg0: long, arg1: integer): $FT_List$Buffer
 public static "nhead"(arg0: long): $FT_ListNode
 public static "ntail"(arg0: long): $FT_ListNode
-public static "createSafe"(arg0: long, arg1: integer): $FT_List$Buffer
-public static "createSafe"(arg0: long): $FT_List
-public "sizeof"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1521,8 +1521,8 @@ import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 
 export class $FT_Bitmap_Size$Buffer extends $StructBuffer<($FT_Bitmap_Size), ($FT_Bitmap_Size$Buffer)> {
 
-constructor(arg0: long, arg1: integer)
 constructor(arg0: $ByteBuffer$$Type)
+constructor(arg0: long, arg1: integer)
 
 public "size"(): long
 public "width"(): short
@@ -1563,39 +1563,39 @@ static readonly "NUM_GRAYS": integer
 
 constructor(arg0: $ByteBuffer$$Type)
 
-public "rows"(): integer
-public "buffer"(arg0: integer): $ByteBuffer
-public static "create"(arg0: integer): $FT_Bitmap$Buffer
 public static "create"(): $FT_Bitmap
+public static "create"(arg0: integer): $FT_Bitmap$Buffer
 public static "create"(arg0: long): $FT_Bitmap
 public static "create"(arg0: long, arg1: integer): $FT_Bitmap$Buffer
+public "rows"(): integer
+public "buffer"(arg0: integer): $ByteBuffer
+public "pitch"(): integer
+public static "malloc"(arg0: $MemoryStack$$Type): $FT_Bitmap
+public static "malloc"(arg0: integer, arg1: $MemoryStack$$Type): $FT_Bitmap$Buffer
+public static "malloc"(): $FT_Bitmap
+public static "malloc"(arg0: integer): $FT_Bitmap$Buffer
+public "sizeof"(): integer
+public static "calloc"(arg0: integer, arg1: $MemoryStack$$Type): $FT_Bitmap$Buffer
+public static "calloc"(arg0: integer): $FT_Bitmap$Buffer
+public static "calloc"(): $FT_Bitmap
+public static "calloc"(arg0: $MemoryStack$$Type): $FT_Bitmap
+public static "nwidth"(arg0: long): integer
 public "width"(): integer
 public "palette"(): long
 public static "createSafe"(arg0: long): $FT_Bitmap
 public static "createSafe"(arg0: long, arg1: integer): $FT_Bitmap$Buffer
-public static "malloc"(arg0: integer): $FT_Bitmap$Buffer
-public static "malloc"(): $FT_Bitmap
-public static "malloc"(arg0: $MemoryStack$$Type): $FT_Bitmap
-public static "malloc"(arg0: integer, arg1: $MemoryStack$$Type): $FT_Bitmap$Buffer
-public "sizeof"(): integer
-public static "calloc"(arg0: integer): $FT_Bitmap$Buffer
-public static "calloc"(arg0: integer, arg1: $MemoryStack$$Type): $FT_Bitmap$Buffer
-public static "calloc"(arg0: $MemoryStack$$Type): $FT_Bitmap
-public static "calloc"(): $FT_Bitmap
-public static "nwidth"(arg0: long): integer
+public "pixel_mode"(): byte
 public static "nrows"(arg0: long): integer
 public static "npitch"(arg0: long): integer
-public "pitch"(): integer
-public "num_grays"(): short
-public "palette_mode"(): byte
-public static "nbuffer"(arg0: long, arg1: integer): $ByteBuffer
+public static "npalette"(arg0: long): long
 public static "nnum_grays"(arg0: long): short
 public static "npixel_mode"(arg0: long): byte
-public static "npalette"(arg0: long): long
+public "num_grays"(): short
+public static "nbuffer"(arg0: long, arg1: integer): $ByteBuffer
+public "palette_mode"(): byte
 public static "npalette_mode"(arg0: long): byte
-public "pixel_mode"(): byte
-public "close"(): void
 public "free"(): void
+public "close"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1635,35 +1635,35 @@ static readonly "FLAGS": integer
 
 constructor(arg0: $ByteBuffer$$Type)
 
-public static "nbytes"(arg0: long): integer
-public "flags"(): integer
-public "bytes"(): integer
-public static "create"(arg0: long, arg1: integer): $FFICIF$Buffer
-public static "create"(): $FFICIF
-public static "create"(arg0: integer): $FFICIF$Buffer
-public static "create"(arg0: long): $FFICIF
-public "rtype"(): $FFIType
 public "nargs"(): integer
 public static "nrtype"(arg0: long): $FFIType
 public "abi"(): integer
-public static "createSafe"(arg0: long, arg1: integer): $FFICIF$Buffer
-public static "createSafe"(arg0: long): $FFICIF
-public static "narg_types"(arg0: long, arg1: integer): $PointerBuffer
-public "arg_types"(arg0: integer): $PointerBuffer
-public static "malloc"(arg0: integer, arg1: $MemoryStack$$Type): $FFICIF$Buffer
+public static "create"(arg0: long, arg1: integer): $FFICIF$Buffer
+public static "create"(arg0: integer): $FFICIF$Buffer
+public static "create"(arg0: long): $FFICIF
+public static "create"(): $FFICIF
+public "rtype"(): $FFIType
+public "flags"(): integer
+public "bytes"(): integer
+public static "nbytes"(arg0: long): integer
+public static "nnargs"(arg0: long): integer
+public static "nflags"(arg0: long): integer
+public static "nabi"(arg0: long): integer
 public static "malloc"(arg0: integer): $FFICIF$Buffer
-public static "malloc"(): $FFICIF
 public static "malloc"(arg0: $MemoryStack$$Type): $FFICIF
+public static "malloc"(): $FFICIF
+public static "malloc"(arg0: integer, arg1: $MemoryStack$$Type): $FFICIF$Buffer
 public "sizeof"(): integer
 public static "calloc"(): $FFICIF
+public static "calloc"(arg0: $MemoryStack$$Type): $FFICIF
 public static "calloc"(arg0: integer, arg1: $MemoryStack$$Type): $FFICIF$Buffer
 public static "calloc"(arg0: integer): $FFICIF$Buffer
-public static "calloc"(arg0: $MemoryStack$$Type): $FFICIF
-public static "nflags"(arg0: long): integer
-public static "nnargs"(arg0: long): integer
-public static "nabi"(arg0: long): integer
-public "close"(): void
+public "arg_types"(arg0: integer): $PointerBuffer
+public static "narg_types"(arg0: long, arg1: integer): $PointerBuffer
+public static "createSafe"(arg0: long, arg1: integer): $FFICIF$Buffer
+public static "createSafe"(arg0: long): $FFICIF
 public "free"(): void
+public "close"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1685,8 +1685,8 @@ import {$FFICIF, $FFICIF$$Type} from "org.lwjgl.system.libffi.FFICIF"
 export class $FT_Alloc_Func extends $Callback implements $FT_Alloc_FuncI {
 
 
-public static "create"(arg0: long): $FT_Alloc_Func
 public static "create"(arg0: $FT_Alloc_FuncI$$Type): $FT_Alloc_Func
+public static "create"(arg0: long): $FT_Alloc_Func
 public static "createSafe"(arg0: long): $FT_Alloc_Func
 public "callback"(arg0: long, arg1: long): void
 public "invoke"(arg0: long, arg1: long): long
@@ -1707,8 +1707,8 @@ export type $FT_Alloc_Func_ = $FT_Alloc_Func$$Type;
 }}
 declare module "org.lwjgl.util.freetype.FT_Stream" {
 import {$FT_StreamDesc, $FT_StreamDesc$$Type} from "org.lwjgl.util.freetype.FT_StreamDesc"
-import {$FT_Stream_CloseFuncI, $FT_Stream_CloseFuncI$$Type} from "org.lwjgl.util.freetype.FT_Stream_CloseFuncI"
 import {$FT_Stream_IoFunc, $FT_Stream_IoFunc$$Type} from "org.lwjgl.util.freetype.FT_Stream_IoFunc"
+import {$FT_Stream_CloseFuncI, $FT_Stream_CloseFuncI$$Type} from "org.lwjgl.util.freetype.FT_Stream_CloseFuncI"
 import {$NativeResource, $NativeResource$$Type} from "org.lwjgl.system.NativeResource"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$MemoryStack, $MemoryStack$$Type} from "org.lwjgl.system.MemoryStack"
@@ -1716,8 +1716,8 @@ import {$FT_Memory, $FT_Memory$$Type} from "org.lwjgl.util.freetype.FT_Memory"
 import {$Struct, $Struct$$Type} from "org.lwjgl.system.Struct"
 import {$FT_Stream$Buffer, $FT_Stream$Buffer$$Type} from "org.lwjgl.util.freetype.FT_Stream$Buffer"
 import {$FT_Stream_CloseFunc, $FT_Stream_CloseFunc$$Type} from "org.lwjgl.util.freetype.FT_Stream_CloseFunc"
-import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 import {$FT_Stream_IoFuncI, $FT_Stream_IoFuncI$$Type} from "org.lwjgl.util.freetype.FT_Stream_IoFuncI"
+import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 
 export class $FT_Stream extends $Struct<($FT_Stream)> implements $NativeResource {
 static readonly "READ": integer
@@ -1735,61 +1735,61 @@ static readonly "CURSOR": integer
 
 constructor(arg0: $ByteBuffer$$Type)
 
-public static "nsize"(arg0: long): long
+public "pathname"(): $FT_StreamDesc
+public "pathname"(arg0: $FT_StreamDesc$$Type): $FT_Stream
+public "pathname"(arg0: $Consumer$$Type<($FT_StreamDesc)>): $FT_Stream
 public static "nsize"(arg0: long, arg1: long): void
-public "base"(arg0: $ByteBuffer$$Type): $FT_Stream
-public "base"(): $ByteBuffer
-public "size"(arg0: long): $FT_Stream
-public "size"(): long
-public "set"(arg0: $ByteBuffer$$Type, arg1: long, arg2: long, arg3: $FT_StreamDesc$$Type, arg4: $FT_StreamDesc$$Type, arg5: $FT_Stream_IoFuncI$$Type, arg6: $FT_Stream_CloseFuncI$$Type): $FT_Stream
-public "set"(arg0: $FT_Stream$$Type): $FT_Stream
-public "read"(arg0: $FT_Stream_IoFuncI$$Type): $FT_Stream
-public "read"(): $FT_Stream_IoFunc
-public "descriptor"(): $FT_StreamDesc
-public "descriptor"(arg0: $Consumer$$Type<($FT_StreamDesc)>): $FT_Stream
-public "descriptor"(arg0: $FT_StreamDesc$$Type): $FT_Stream
-public static "create"(): $FT_Stream
-public static "create"(arg0: integer): $FT_Stream$Buffer
-public static "create"(arg0: long): $FT_Stream
-public static "create"(arg0: long, arg1: integer): $FT_Stream$Buffer
+public static "nsize"(arg0: long): long
 public "pos"(arg0: long): $FT_Stream
 public "pos"(): long
 public static "nread"(arg0: long, arg1: $FT_Stream_IoFuncI$$Type): void
 public static "nread"(arg0: long): $FT_Stream_IoFunc
-public "pathname"(arg0: $FT_StreamDesc$$Type): $FT_Stream
-public "pathname"(): $FT_StreamDesc
-public "pathname"(arg0: $Consumer$$Type<($FT_StreamDesc)>): $FT_Stream
-public static "createSafe"(arg0: long, arg1: integer): $FT_Stream$Buffer
-public static "createSafe"(arg0: long): $FT_Stream
+public static "create"(arg0: long): $FT_Stream
+public static "create"(): $FT_Stream
+public static "create"(arg0: integer): $FT_Stream$Buffer
+public static "create"(arg0: long, arg1: integer): $FT_Stream$Buffer
+public "base"(): $ByteBuffer
+public "base"(arg0: $ByteBuffer$$Type): $FT_Stream
+public "size"(): long
+public "size"(arg0: long): $FT_Stream
+public "set"(arg0: $ByteBuffer$$Type, arg1: long, arg2: long, arg3: $FT_StreamDesc$$Type, arg4: $FT_StreamDesc$$Type, arg5: $FT_Stream_IoFuncI$$Type, arg6: $FT_Stream_CloseFuncI$$Type): $FT_Stream
+public "set"(arg0: $FT_Stream$$Type): $FT_Stream
+public "read"(arg0: $FT_Stream_IoFuncI$$Type): $FT_Stream
+public "read"(): $FT_Stream_IoFunc
+public "descriptor"(arg0: $FT_StreamDesc$$Type): $FT_Stream
+public "descriptor"(arg0: $Consumer$$Type<($FT_StreamDesc)>): $FT_Stream
+public "descriptor"(): $FT_StreamDesc
 public static "malloc"(arg0: $MemoryStack$$Type): $FT_Stream
 public static "malloc"(arg0: integer, arg1: $MemoryStack$$Type): $FT_Stream$Buffer
-public static "malloc"(arg0: integer): $FT_Stream$Buffer
 public static "malloc"(): $FT_Stream
+public static "malloc"(arg0: integer): $FT_Stream$Buffer
 public "sizeof"(): integer
-public static "calloc"(arg0: integer): $FT_Stream$Buffer
-public static "calloc"(arg0: $MemoryStack$$Type): $FT_Stream
 public static "calloc"(arg0: integer, arg1: $MemoryStack$$Type): $FT_Stream$Buffer
 public static "calloc"(): $FT_Stream
-public static "npos"(arg0: long, arg1: long): void
+public static "calloc"(arg0: $MemoryStack$$Type): $FT_Stream
+public static "calloc"(arg0: integer): $FT_Stream$Buffer
+public static "createSafe"(arg0: long): $FT_Stream
+public static "createSafe"(arg0: long, arg1: integer): $FT_Stream$Buffer
 public static "npos"(arg0: long): long
-public static "nmemory"(arg0: long, arg1: $FT_Memory$$Type): void
-public static "nmemory"(arg0: long): $FT_Memory
-public "close$"(): $FT_Stream_CloseFunc
-public "close$"(arg0: $FT_Stream_CloseFuncI$$Type): $FT_Stream
-public static "nbase"(arg0: long, arg1: $ByteBuffer$$Type): void
-public static "nbase"(arg0: long): $ByteBuffer
+public static "npos"(arg0: long, arg1: long): void
+public static "ndescriptor"(arg0: long, arg1: $FT_StreamDesc$$Type): void
+public static "ndescriptor"(arg0: long): $FT_StreamDesc
+public static "nclose$"(arg0: long, arg1: $FT_Stream_CloseFuncI$$Type): void
+public static "nclose$"(arg0: long): $FT_Stream_CloseFunc
 public static "nlimit$"(arg0: long, arg1: $ByteBuffer$$Type): void
 public static "nlimit$"(arg0: long, arg1: integer): $ByteBuffer
 public static "ncursor"(arg0: long, arg1: $ByteBuffer$$Type): void
 public static "ncursor"(arg0: long, arg1: integer): $ByteBuffer
-public static "nclose$"(arg0: long, arg1: $FT_Stream_CloseFuncI$$Type): void
-public static "nclose$"(arg0: long): $FT_Stream_CloseFunc
 public static "npathname"(arg0: long): $FT_StreamDesc
 public static "npathname"(arg0: long, arg1: $FT_StreamDesc$$Type): void
-public static "ndescriptor"(arg0: long, arg1: $FT_StreamDesc$$Type): void
-public static "ndescriptor"(arg0: long): $FT_StreamDesc
-public "close"(): void
+public static "nmemory"(arg0: long, arg1: $FT_Memory$$Type): void
+public static "nmemory"(arg0: long): $FT_Memory
+public static "nbase"(arg0: long, arg1: $ByteBuffer$$Type): void
+public static "nbase"(arg0: long): $ByteBuffer
+public "close$"(arg0: $FT_Stream_CloseFuncI$$Type): $FT_Stream
+public "close$"(): $FT_Stream_CloseFunc
 public "free"(): void
+public "close"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1817,16 +1817,16 @@ static readonly "SIZEOF": integer
 
 constructor(arg0: $ByteBuffer$$Type)
 
+public static "create"(arg0: long, arg1: integer): $FT_ListNode$Buffer
+public static "create"(arg0: long): $FT_ListNode
 public "next"(): $FT_ListNode
 public "data"(arg0: integer): $ByteBuffer
 public "prev"(): $FT_ListNode
-public static "create"(arg0: long): $FT_ListNode
-public static "create"(arg0: long, arg1: integer): $FT_ListNode$Buffer
-public static "nnext"(arg0: long): $FT_ListNode
-public static "createSafe"(arg0: long, arg1: integer): $FT_ListNode$Buffer
-public static "createSafe"(arg0: long): $FT_ListNode
 public static "ndata"(arg0: long, arg1: integer): $ByteBuffer
 public "sizeof"(): integer
+public static "createSafe"(arg0: long, arg1: integer): $FT_ListNode$Buffer
+public static "createSafe"(arg0: long): $FT_ListNode
+public static "nnext"(arg0: long): $FT_ListNode
 public static "nprev"(arg0: long): $FT_ListNode
 }
 /**
@@ -1852,15 +1852,6 @@ import {$Pointer$Default, $Pointer$Default$$Type} from "org.lwjgl.system.Pointer
 export class $CustomBuffer<SELF extends $CustomBuffer<(SELF)>> extends $Pointer$Default {
 
 
-public "reset"(): SELF
-public "put"(arg0: SELF): SELF
-public "toString"(): string
-public "clear"(): SELF
-public "position"(): integer
-public "position"(arg0: integer): SELF
-public "limit"(): integer
-public "limit"(arg0: integer): SELF
-public "remaining"(): integer
 public "capacity"(): integer
 public "address"(): long
 public "address"(arg0: integer): long
@@ -1873,8 +1864,17 @@ public "slice"(arg0: integer, arg1: integer): SELF
 public "duplicate"(): SELF
 public "free"(): void
 public "compact"(): SELF
-public "address0"(): long
+public "reset"(): SELF
+public "put"(arg0: SELF): SELF
+public "toString"(): StringJS
+public "clear"(): SELF
+public "position"(): integer
+public "position"(arg0: integer): SELF
+public "limit"(): integer
+public "limit"(arg0: integer): SELF
+public "remaining"(): integer
 public "sizeof"(): integer
+public "address0"(): long
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1891,13 +1891,13 @@ export type $CustomBuffer_<SELF> = $CustomBuffer$$Type<(SELF)>;
 declare module "org.lwjgl.util.freetype.FT_Size" {
 import {$MemoryStack, $MemoryStack$$Type} from "org.lwjgl.system.MemoryStack"
 import {$Struct, $Struct$$Type} from "org.lwjgl.system.Struct"
-import {$FT_Size_Metrics, $FT_Size_Metrics$$Type} from "org.lwjgl.util.freetype.FT_Size_Metrics"
 import {$FT_Generic, $FT_Generic$$Type} from "org.lwjgl.util.freetype.FT_Generic"
+import {$FT_Size_Metrics, $FT_Size_Metrics$$Type} from "org.lwjgl.util.freetype.FT_Size_Metrics"
 import {$FT_Size_Internal, $FT_Size_Internal$$Type} from "org.lwjgl.util.freetype.FT_Size_Internal"
 import {$FT_Size$Buffer, $FT_Size$Buffer$$Type} from "org.lwjgl.util.freetype.FT_Size$Buffer"
 import {$NativeResource, $NativeResource$$Type} from "org.lwjgl.system.NativeResource"
-import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 import {$FT_Face, $FT_Face$$Type} from "org.lwjgl.util.freetype.FT_Face"
+import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 
 export class $FT_Size extends $Struct<($FT_Size)> implements $NativeResource {
@@ -1910,41 +1910,41 @@ static readonly "FACE": integer
 
 constructor(arg0: $ByteBuffer$$Type)
 
-public static "validate"(arg0: long): void
-public "set"(arg0: $FT_Size$$Type): $FT_Size
-public "set"(arg0: $FT_Face$$Type, arg1: $FT_Generic$$Type, arg2: $FT_Size_Metrics$$Type): $FT_Size
-public static "create"(arg0: long, arg1: integer): $FT_Size$Buffer
+public "generic"(arg0: $Consumer$$Type<($FT_Generic)>): $FT_Size
+public "generic"(): $FT_Generic
+public "generic"(arg0: $FT_Generic$$Type): $FT_Size
+public "metrics"(): $FT_Size_Metrics
+public "metrics"(arg0: $FT_Size_Metrics$$Type): $FT_Size
 public static "create"(): $FT_Size
 public static "create"(arg0: long): $FT_Size
 public static "create"(arg0: integer): $FT_Size$Buffer
-public "generic"(): $FT_Generic
-public "generic"(arg0: $FT_Generic$$Type): $FT_Size
-public "generic"(arg0: $Consumer$$Type<($FT_Generic)>): $FT_Size
-public "metrics"(): $FT_Size_Metrics
-public "metrics"(arg0: $FT_Size_Metrics$$Type): $FT_Size
-public static "createSafe"(arg0: long, arg1: integer): $FT_Size$Buffer
-public static "createSafe"(arg0: long): $FT_Size
-public "face"(arg0: $FT_Face$$Type): $FT_Size
+public static "create"(arg0: long, arg1: integer): $FT_Size$Buffer
+public static "validate"(arg0: long): void
+public "set"(arg0: $FT_Size$$Type): $FT_Size
+public "set"(arg0: $FT_Face$$Type, arg1: $FT_Generic$$Type, arg2: $FT_Size_Metrics$$Type): $FT_Size
 public "face"(): $FT_Face
-public static "malloc"(arg0: integer, arg1: $MemoryStack$$Type): $FT_Size$Buffer
+public "face"(arg0: $FT_Face$$Type): $FT_Size
 public static "malloc"(arg0: $MemoryStack$$Type): $FT_Size
-public static "malloc"(arg0: integer): $FT_Size$Buffer
+public static "malloc"(arg0: integer, arg1: $MemoryStack$$Type): $FT_Size$Buffer
 public static "malloc"(): $FT_Size
+public static "malloc"(arg0: integer): $FT_Size$Buffer
 public "sizeof"(): integer
-public static "calloc"(): $FT_Size
 public static "calloc"(arg0: integer): $FT_Size$Buffer
 public static "calloc"(arg0: integer, arg1: $MemoryStack$$Type): $FT_Size$Buffer
+public static "calloc"(): $FT_Size
 public static "calloc"(arg0: $MemoryStack$$Type): $FT_Size
+public static "createSafe"(arg0: long, arg1: integer): $FT_Size$Buffer
+public static "createSafe"(arg0: long): $FT_Size
 public static "nface"(arg0: long): $FT_Face
 public static "nface"(arg0: long, arg1: $FT_Face$$Type): void
-public static "ngeneric"(arg0: long): $FT_Generic
 public static "ngeneric"(arg0: long, arg1: $FT_Generic$$Type): void
+public static "ngeneric"(arg0: long): $FT_Generic
 public static "ninternal"(arg0: long): $FT_Size_Internal
 public static "ninternal"(arg0: long, arg1: $FT_Size_Internal$$Type): void
-public static "nmetrics"(arg0: long): $FT_Size_Metrics
 public static "nmetrics"(arg0: long, arg1: $FT_Size_Metrics$$Type): void
-public "close"(): void
+public static "nmetrics"(arg0: long): $FT_Size_Metrics
 public "free"(): void
+public "close"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1969,10 +1969,10 @@ import {$Pointer, $Pointer$$Type} from "org.lwjgl.system.Pointer"
 export class $Pointer$Default implements $Pointer {
 
 
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "address"(): long
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1994,8 +1994,8 @@ import {$FT_Stream_IoFuncI, $FT_Stream_IoFuncI$$Type} from "org.lwjgl.util.freet
 export class $FT_Stream_IoFunc extends $Callback implements $FT_Stream_IoFuncI {
 
 
-public static "create"(arg0: long): $FT_Stream_IoFunc
 public static "create"(arg0: $FT_Stream_IoFuncI$$Type): $FT_Stream_IoFunc
+public static "create"(arg0: long): $FT_Stream_IoFunc
 public static "createSafe"(arg0: long): $FT_Stream_IoFunc
 public "callback"(arg0: long, arg1: long): void
 public "invoke"(arg0: long, arg1: long, arg2: long, arg3: long): long
@@ -2022,11 +2022,11 @@ import {$FT_ListNode, $FT_ListNode$$Type} from "org.lwjgl.util.freetype.FT_ListN
 
 export class $FT_List$Buffer extends $StructBuffer<($FT_List), ($FT_List$Buffer)> {
 
-constructor(arg0: long, arg1: integer)
 constructor(arg0: $ByteBuffer$$Type)
+constructor(arg0: long, arg1: integer)
 
-public "tail"(): $FT_ListNode
 public "head"(): $FT_ListNode
+public "tail"(): $FT_ListNode
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2054,65 +2054,65 @@ import {$ShortBuffer, $ShortBuffer$$Type} from "java.nio.ShortBuffer"
 export class $PointerBuffer extends $CustomBuffer<($PointerBuffer)> implements $Comparable<($PointerBuffer)> {
 
 
-public "get"(arg0: (long)[], arg1: integer, arg2: integer): $PointerBuffer
-public static "get"(arg0: $ByteBuffer$$Type): long
+public "getByteBuffer"(arg0: integer): $ByteBuffer
+public "getByteBuffer"(arg0: integer, arg1: integer): $ByteBuffer
+public static "create"(arg0: $ByteBuffer$$Type): $PointerBuffer
+public static "create"(arg0: long, arg1: integer): $PointerBuffer
+public static "allocateDirect"(arg0: integer): $PointerBuffer
 public "get"(): long
+public "get"(arg0: (long)[], arg1: integer, arg2: integer): $PointerBuffer
+public "get"(arg0: (long)[]): $PointerBuffer
 public "get"(arg0: integer): long
 public static "get"(arg0: $ByteBuffer$$Type, arg1: integer): long
-public "get"(arg0: (long)[]): $PointerBuffer
-public "put"(arg0: $IntBuffer$$Type): $PointerBuffer
-public "put"(arg0: $ShortBuffer$$Type): $PointerBuffer
-public "put"(arg0: $FloatBuffer$$Type): $PointerBuffer
-public "put"(arg0: $DoubleBuffer$$Type): $PointerBuffer
-public "put"(arg0: $LongBuffer$$Type): $PointerBuffer
-public "put"(arg0: integer, arg1: $DoubleBuffer$$Type): $PointerBuffer
-public "put"(arg0: integer, arg1: $FloatBuffer$$Type): $PointerBuffer
+public static "get"(arg0: $ByteBuffer$$Type): long
 public "put"(arg0: integer, arg1: $LongBuffer$$Type): $PointerBuffer
+public "put"(arg0: integer, arg1: $FloatBuffer$$Type): $PointerBuffer
+public "put"(arg0: integer, arg1: $DoubleBuffer$$Type): $PointerBuffer
 public "put"(arg0: integer, arg1: $IntBuffer$$Type): $PointerBuffer
 public "put"(arg0: integer, arg1: $ShortBuffer$$Type): $PointerBuffer
-public "put"(arg0: integer, arg1: $ByteBuffer$$Type): $PointerBuffer
-public "put"(arg0: integer, arg1: long): $PointerBuffer
 public static "put"(arg0: $ByteBuffer$$Type, arg1: long): void
-public "put"(arg0: long): $PointerBuffer
 public "put"(arg0: (long)[]): $PointerBuffer
 public "put"(arg0: (long)[], arg1: integer, arg2: integer): $PointerBuffer
+public "put"(arg0: long): $PointerBuffer
 public "put"(arg0: $ByteBuffer$$Type): $PointerBuffer
+public "put"(arg0: $ShortBuffer$$Type): $PointerBuffer
+public "put"(arg0: integer, arg1: long): $PointerBuffer
+public "put"(arg0: $IntBuffer$$Type): $PointerBuffer
 public "put"(arg0: integer, arg1: $Pointer$$Type): $PointerBuffer
 public "put"(arg0: $Pointer$$Type): $PointerBuffer
 public static "put"(arg0: $ByteBuffer$$Type, arg1: integer, arg2: long): void
+public "put"(arg0: integer, arg1: $ByteBuffer$$Type): $PointerBuffer
+public "put"(arg0: $FloatBuffer$$Type): $PointerBuffer
+public "put"(arg0: $LongBuffer$$Type): $PointerBuffer
+public "put"(arg0: $DoubleBuffer$$Type): $PointerBuffer
 public "equals"(arg0: any): boolean
 public "hashCode"(): integer
 public "compareTo"(arg0: $PointerBuffer$$Type): integer
 public "compareTo"(arg0: any): integer
-public static "create"(arg0: $ByteBuffer$$Type): $PointerBuffer
-public static "create"(arg0: long, arg1: integer): $PointerBuffer
-public "getByteBuffer"(arg0: integer): $ByteBuffer
-public "getByteBuffer"(arg0: integer, arg1: integer): $ByteBuffer
-public static "allocateDirect"(arg0: integer): $PointerBuffer
-public "putAddressOf"(arg0: integer, arg1: $CustomBuffer$$Type<(any)>): $PointerBuffer
+public "sizeof"(): integer
 public "putAddressOf"(arg0: $CustomBuffer$$Type<(any)>): $PointerBuffer
+public "putAddressOf"(arg0: integer, arg1: $CustomBuffer$$Type<(any)>): $PointerBuffer
 public "getShortBuffer"(arg0: integer): $ShortBuffer
 public "getShortBuffer"(arg0: integer, arg1: integer): $ShortBuffer
-public "getIntBuffer"(arg0: integer, arg1: integer): $IntBuffer
 public "getIntBuffer"(arg0: integer): $IntBuffer
-public "getLongBuffer"(arg0: integer): $LongBuffer
+public "getIntBuffer"(arg0: integer, arg1: integer): $IntBuffer
 public "getLongBuffer"(arg0: integer, arg1: integer): $LongBuffer
-public "getFloatBuffer"(arg0: integer): $FloatBuffer
+public "getLongBuffer"(arg0: integer): $LongBuffer
 public "getFloatBuffer"(arg0: integer, arg1: integer): $FloatBuffer
-public "getStringASCII"(): string
-public "getStringASCII"(arg0: integer): string
-public "getStringUTF8"(): string
-public "getStringUTF8"(arg0: integer): string
-public "getStringUTF16"(arg0: integer): string
-public "getStringUTF16"(): string
-public "sizeof"(): integer
-public "getDoubleBuffer"(arg0: integer, arg1: integer): $DoubleBuffer
+public "getFloatBuffer"(arg0: integer): $FloatBuffer
+public "getStringASCII"(arg0: integer): StringJS
+public "getStringASCII"(): StringJS
+public "getStringUTF8"(arg0: integer): StringJS
+public "getStringUTF8"(): StringJS
+public "getStringUTF16"(): StringJS
+public "getStringUTF16"(arg0: integer): StringJS
 public "getDoubleBuffer"(arg0: integer): $DoubleBuffer
-public "getPointerBuffer"(arg0: integer): $PointerBuffer
+public "getDoubleBuffer"(arg0: integer, arg1: integer): $DoubleBuffer
 public "getPointerBuffer"(arg0: integer, arg1: integer): $PointerBuffer
-get "stringASCII"(): string
-get "stringUTF8"(): string
-get "stringUTF16"(): string
+public "getPointerBuffer"(arg0: integer): $PointerBuffer
+get "stringASCII"(): StringJS
+get "stringUTF8"(): StringJS
+get "stringUTF16"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2134,25 +2134,25 @@ import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 export class $CLongBuffer extends $CustomBuffer<($CLongBuffer)> implements $Comparable<($CLongBuffer)> {
 
 
-public "get"(arg0: integer): long
-public "get"(): long
-public static "get"(arg0: $ByteBuffer$$Type): long
-public static "get"(arg0: $ByteBuffer$$Type, arg1: integer): long
-public "get"(arg0: (long)[]): $CLongBuffer
-public "get"(arg0: (long)[], arg1: integer, arg2: integer): $CLongBuffer
-public "put"(arg0: (long)[], arg1: integer, arg2: integer): $CLongBuffer
-public static "put"(arg0: $ByteBuffer$$Type, arg1: integer, arg2: long): void
-public "put"(arg0: integer, arg1: long): $CLongBuffer
-public "put"(arg0: (long)[]): $CLongBuffer
-public static "put"(arg0: $ByteBuffer$$Type, arg1: long): void
-public "put"(arg0: long): $CLongBuffer
-public "equals"(arg0: any): boolean
-public "hashCode"(): integer
-public "compareTo"(arg0: $CLongBuffer$$Type): integer
-public "compareTo"(arg0: any): integer
 public static "create"(arg0: $ByteBuffer$$Type): $CLongBuffer
 public static "create"(arg0: long, arg1: integer): $CLongBuffer
 public static "allocateDirect"(arg0: integer): $CLongBuffer
+public "get"(arg0: integer): long
+public static "get"(arg0: $ByteBuffer$$Type, arg1: integer): long
+public "get"(arg0: (long)[]): $CLongBuffer
+public "get"(arg0: (long)[], arg1: integer, arg2: integer): $CLongBuffer
+public "get"(): long
+public static "get"(arg0: $ByteBuffer$$Type): long
+public "put"(arg0: (long)[], arg1: integer, arg2: integer): $CLongBuffer
+public "put"(arg0: (long)[]): $CLongBuffer
+public "put"(arg0: long): $CLongBuffer
+public static "put"(arg0: $ByteBuffer$$Type, arg1: long): void
+public "put"(arg0: integer, arg1: long): $CLongBuffer
+public static "put"(arg0: $ByteBuffer$$Type, arg1: integer, arg2: long): void
+public "equals"(arg0: any): boolean
+public "hashCode"(): integer
+public "compareTo"(arg0: any): integer
+public "compareTo"(arg0: $CLongBuffer$$Type): integer
 public "sizeof"(): integer
 }
 /**
@@ -2178,8 +2178,8 @@ import {$FFICIF, $FFICIF$$Type} from "org.lwjgl.system.libffi.FFICIF"
  */
 export interface $CallbackI extends $Pointer {
 
- "callback"(arg0: long, arg1: long): void
  "address"(): long
+ "callback"(arg0: long, arg1: long): void
  "getCallInterface"(): $FFICIF
 get "callInterface"(): $FFICIF
 }
@@ -2190,8 +2190,8 @@ const probejs$$marker: never
 export class $CallbackI$$Static implements $CallbackI {
 
 
- "callback"(arg0: long, arg1: long): void
  "address"(): long
+ "callback"(arg0: long, arg1: long): void
  "getCallInterface"(): $FFICIF
 }
 /**
@@ -2259,22 +2259,19 @@ static readonly "CHARMAP": integer
 constructor(arg0: $ByteBuffer$$Type)
 
 public static "nsize"(arg0: long): $FT_Size
-public "size"(): $FT_Size
+public "generic"(): $FT_Generic
 public static "create"(arg0: long, arg1: integer): $FT_Face$Buffer
 public static "create"(arg0: long): $FT_Face
-public "generic"(): $FT_Generic
+public "size"(): $FT_Size
+public "sizeof"(): integer
+public "glyph"(): $FT_GlyphSlot
+public "height"(): short
 public static "createSafe"(arg0: long, arg1: integer): $FT_Face$Buffer
 public static "createSafe"(arg0: long): $FT_Face
 public static "nheight"(arg0: long): short
-public "glyph"(): $FT_GlyphSlot
-public "height"(): short
-public "sizeof"(): integer
-public "bbox"(): $FT_BBox
 public static "nbbox"(arg0: long): $FT_BBox
 public static "nglyph"(arg0: long): $FT_GlyphSlot
-public "face_flags"(): long
-public "face_index"(): long
-public "charmap"(): $FT_CharMap
+public "bbox"(): $FT_BBox
 public "num_faces"(): long
 public "style_flags"(): long
 public "num_glyphs"(): long
@@ -2306,16 +2303,19 @@ public static "nsizes_list"(arg0: long): $FT_List
 public static "nautohint"(arg0: long): $FT_Generic
 public static "nextensions"(arg0: long): long
 public static "ninternal"(arg0: long): long
-public "family_nameString"(): string
-public "style_nameString"(): string
+public "face_flags"(): long
+public "face_index"(): long
+public "charmap"(): $FT_CharMap
+public "family_nameString"(): StringJS
+public "style_nameString"(): StringJS
 public "num_fixed_sizes"(): integer
 public "available_sizes"(): $FT_Bitmap_Size$Buffer
 public "max_advance_width"(): short
 public "max_advance_height"(): short
 public "underline_position"(): short
 public "underline_thickness"(): short
-public static "nfamily_nameString"(arg0: long): string
-public static "nstyle_nameString"(arg0: long): string
+public static "nfamily_nameString"(arg0: long): StringJS
+public static "nstyle_nameString"(arg0: long): StringJS
 public static "nnum_fixed_sizes"(arg0: long): integer
 public static "navailable_sizes"(arg0: long): $FT_Bitmap_Size$Buffer
 public static "nmax_advance_width"(arg0: long): short
@@ -2382,17 +2382,17 @@ import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 
 export class $FT_Glyph_Metrics$Buffer extends $StructBuffer<($FT_Glyph_Metrics), ($FT_Glyph_Metrics$Buffer)> {
 
-constructor(arg0: long, arg1: integer)
 constructor(arg0: $ByteBuffer$$Type)
+constructor(arg0: long, arg1: integer)
 
 public "width"(): long
 public "height"(): long
-public "horiBearingX"(): long
-public "horiBearingY"(): long
-public "horiAdvance"(): long
-public "vertBearingX"(): long
-public "vertBearingY"(): long
 public "vertAdvance"(): long
+public "horiBearingY"(): long
+public "horiBearingX"(): long
+public "vertBearingX"(): long
+public "horiAdvance"(): long
+public "vertBearingY"(): long
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2414,15 +2414,15 @@ import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 
 export class $FT_Vector$Buffer extends $StructBuffer<($FT_Vector), ($FT_Vector$Buffer)> implements $NativeResource {
 
-constructor(arg0: long, arg1: integer)
 constructor(arg0: $ByteBuffer$$Type)
+constructor(arg0: long, arg1: integer)
 
-public "x"(arg0: long): $FT_Vector$Buffer
-public "x"(): long
-public "y"(): long
 public "y"(arg0: long): $FT_Vector$Buffer
-public "close"(): void
+public "y"(): long
+public "x"(): long
+public "x"(arg0: long): $FT_Vector$Buffer
 public "free"(): void
+public "close"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2446,15 +2446,15 @@ import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 
 export class $FT_Generic$Buffer extends $StructBuffer<($FT_Generic), ($FT_Generic$Buffer)> implements $NativeResource {
 
-constructor(arg0: long, arg1: integer)
 constructor(arg0: $ByteBuffer$$Type)
+constructor(arg0: long, arg1: integer)
 
 public "data"(): long
 public "data"(arg0: long): $FT_Generic$Buffer
 public "finalizer"(): $FT_Generic_Finalizer
 public "finalizer"(arg0: $FT_Generic_FinalizerI$$Type): $FT_Generic$Buffer
-public "close"(): void
 public "free"(): void
+public "close"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2471,8 +2471,8 @@ export type $FT_Generic$Buffer_ = $FT_Generic$Buffer$$Type;
 declare module "org.lwjgl.util.freetype.FT_CharMap" {
 import {$Struct, $Struct$$Type} from "org.lwjgl.system.Struct"
 import {$FT_CharMap$Buffer, $FT_CharMap$Buffer$$Type} from "org.lwjgl.util.freetype.FT_CharMap$Buffer"
-import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 import {$FT_Face, $FT_Face$$Type} from "org.lwjgl.util.freetype.FT_Face"
+import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 
 export class $FT_CharMap extends $Struct<($FT_CharMap)> {
 static readonly "PLATFORM_ID": integer
@@ -2484,19 +2484,19 @@ static readonly "FACE": integer
 
 constructor(arg0: $ByteBuffer$$Type)
 
-public "encoding"(): integer
-public static "create"(arg0: long): $FT_CharMap
 public static "create"(arg0: long, arg1: integer): $FT_CharMap$Buffer
-public static "createSafe"(arg0: long): $FT_CharMap
-public static "createSafe"(arg0: long, arg1: integer): $FT_CharMap$Buffer
+public static "create"(arg0: long): $FT_CharMap
+public "encoding"(): integer
 public "face"(): $FT_Face
 public "sizeof"(): integer
+public static "createSafe"(arg0: long, arg1: integer): $FT_CharMap$Buffer
+public static "createSafe"(arg0: long): $FT_CharMap
 public static "nface"(arg0: long): $FT_Face
-public static "nencoding_id"(arg0: long): short
-public static "nplatform_id"(arg0: long): short
 public "encoding_id"(): short
-public "platform_id"(): short
+public static "nencoding_id"(arg0: long): short
 public static "nencoding"(arg0: long): integer
+public "platform_id"(): short
+public static "nplatform_id"(arg0: long): short
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2567,34 +2567,34 @@ static readonly "FINALIZER": integer
 
 constructor(arg0: $ByteBuffer$$Type)
 
+public static "create"(): $FT_Generic
+public static "create"(arg0: integer): $FT_Generic$Buffer
+public static "create"(arg0: long): $FT_Generic
+public static "create"(arg0: long, arg1: integer): $FT_Generic$Buffer
 public "data"(arg0: long): $FT_Generic
 public "data"(): long
 public static "validate"(arg0: long): void
-public "set"(arg0: long, arg1: $FT_Generic_FinalizerI$$Type): $FT_Generic
 public "set"(arg0: $FT_Generic$$Type): $FT_Generic
+public "set"(arg0: long, arg1: $FT_Generic_FinalizerI$$Type): $FT_Generic
 public "finalizer"(): $FT_Generic_Finalizer
 public "finalizer"(arg0: $FT_Generic_FinalizerI$$Type): $FT_Generic
-public static "create"(arg0: long): $FT_Generic
-public static "create"(arg0: long, arg1: integer): $FT_Generic$Buffer
-public static "create"(arg0: integer): $FT_Generic$Buffer
-public static "create"(): $FT_Generic
-public static "createSafe"(arg0: long, arg1: integer): $FT_Generic$Buffer
-public static "createSafe"(arg0: long): $FT_Generic
-public static "ndata"(arg0: long): long
 public static "ndata"(arg0: long, arg1: long): void
-public static "malloc"(arg0: integer, arg1: $MemoryStack$$Type): $FT_Generic$Buffer
-public static "malloc"(): $FT_Generic
+public static "ndata"(arg0: long): long
 public static "malloc"(arg0: $MemoryStack$$Type): $FT_Generic
+public static "malloc"(arg0: integer, arg1: $MemoryStack$$Type): $FT_Generic$Buffer
 public static "malloc"(arg0: integer): $FT_Generic$Buffer
+public static "malloc"(): $FT_Generic
 public "sizeof"(): integer
 public static "calloc"(arg0: $MemoryStack$$Type): $FT_Generic
 public static "calloc"(): $FT_Generic
 public static "calloc"(arg0: integer, arg1: $MemoryStack$$Type): $FT_Generic$Buffer
 public static "calloc"(arg0: integer): $FT_Generic$Buffer
+public static "createSafe"(arg0: long): $FT_Generic
+public static "createSafe"(arg0: long, arg1: integer): $FT_Generic$Buffer
 public static "nfinalizer"(arg0: long, arg1: $FT_Generic_FinalizerI$$Type): void
 public static "nfinalizer"(arg0: long): $FT_Generic_Finalizer
-public "close"(): void
 public "free"(): void
+public "close"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2616,19 +2616,19 @@ import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 
 export class $FT_BBox$Buffer extends $StructBuffer<($FT_BBox), ($FT_BBox$Buffer)> implements $NativeResource {
 
-constructor(arg0: long, arg1: integer)
 constructor(arg0: $ByteBuffer$$Type)
+constructor(arg0: long, arg1: integer)
 
-public "xMin"(arg0: long): $FT_BBox$Buffer
 public "xMin"(): long
+public "xMin"(arg0: long): $FT_BBox$Buffer
+public "yMin"(arg0: long): $FT_BBox$Buffer
+public "yMin"(): long
 public "xMax"(arg0: long): $FT_BBox$Buffer
 public "xMax"(): long
-public "yMax"(arg0: long): $FT_BBox$Buffer
 public "yMax"(): long
-public "yMin"(): long
-public "yMin"(arg0: long): $FT_BBox$Buffer
-public "close"(): void
+public "yMax"(arg0: long): $FT_BBox$Buffer
 public "free"(): void
+public "close"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2686,23 +2686,23 @@ declare module "org.lwjgl.util.freetype.FT_Outline$Buffer" {
 import {$StructBuffer, $StructBuffer$$Type} from "org.lwjgl.system.StructBuffer"
 import {$FT_Vector$Buffer, $FT_Vector$Buffer$$Type} from "org.lwjgl.util.freetype.FT_Vector$Buffer"
 import {$NativeResource, $NativeResource$$Type} from "org.lwjgl.system.NativeResource"
-import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 import {$ShortBuffer, $ShortBuffer$$Type} from "java.nio.ShortBuffer"
 import {$FT_Outline, $FT_Outline$$Type} from "org.lwjgl.util.freetype.FT_Outline"
+import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 
 export class $FT_Outline$Buffer extends $StructBuffer<($FT_Outline), ($FT_Outline$Buffer)> implements $NativeResource {
 
-constructor(arg0: long, arg1: integer)
 constructor(arg0: $ByteBuffer$$Type)
+constructor(arg0: long, arg1: integer)
 
-public "flags"(): integer
 public "tags"(): $ByteBuffer
+public "flags"(): integer
 public "points"(): $FT_Vector$Buffer
-public "n_points"(): short
 public "n_contours"(): short
+public "n_points"(): short
 public "contours"(): $ShortBuffer
-public "close"(): void
 public "free"(): void
+public "close"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2724,8 +2724,8 @@ import {$FT_Free_FuncI, $FT_Free_FuncI$$Type} from "org.lwjgl.util.freetype.FT_F
 export class $FT_Free_Func extends $Callback implements $FT_Free_FuncI {
 
 
-public static "create"(arg0: long): $FT_Free_Func
 public static "create"(arg0: $FT_Free_FuncI$$Type): $FT_Free_Func
+public static "create"(arg0: long): $FT_Free_Func
 public static "createSafe"(arg0: long): $FT_Free_Func
 public "callback"(arg0: long, arg1: long): void
 public "invoke"(arg0: long, arg1: long): void
@@ -2747,12 +2747,12 @@ export type $FT_Free_Func_ = $FT_Free_Func$$Type;
 declare module "org.lwjgl.util.freetype.FT_Stream$Buffer" {
 import {$FT_StreamDesc, $FT_StreamDesc$$Type} from "org.lwjgl.util.freetype.FT_StreamDesc"
 import {$StructBuffer, $StructBuffer$$Type} from "org.lwjgl.system.StructBuffer"
-import {$FT_Stream_CloseFuncI, $FT_Stream_CloseFuncI$$Type} from "org.lwjgl.util.freetype.FT_Stream_CloseFuncI"
 import {$FT_Stream_IoFunc, $FT_Stream_IoFunc$$Type} from "org.lwjgl.util.freetype.FT_Stream_IoFunc"
+import {$FT_Stream_CloseFuncI, $FT_Stream_CloseFuncI$$Type} from "org.lwjgl.util.freetype.FT_Stream_CloseFuncI"
 import {$FT_Stream_CloseFunc, $FT_Stream_CloseFunc$$Type} from "org.lwjgl.util.freetype.FT_Stream_CloseFunc"
 import {$NativeResource, $NativeResource$$Type} from "org.lwjgl.system.NativeResource"
-import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 import {$FT_Stream_IoFuncI, $FT_Stream_IoFuncI$$Type} from "org.lwjgl.util.freetype.FT_Stream_IoFuncI"
+import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 import {$FT_Stream, $FT_Stream$$Type} from "org.lwjgl.util.freetype.FT_Stream"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 
@@ -2761,24 +2761,24 @@ export class $FT_Stream$Buffer extends $StructBuffer<($FT_Stream), ($FT_Stream$B
 constructor(arg0: $ByteBuffer$$Type)
 constructor(arg0: long, arg1: integer)
 
-public "base"(arg0: $ByteBuffer$$Type): $FT_Stream$Buffer
-public "base"(): $ByteBuffer
-public "size"(arg0: long): $FT_Stream$Buffer
-public "size"(): long
-public "read"(): $FT_Stream_IoFunc
-public "read"(arg0: $FT_Stream_IoFuncI$$Type): $FT_Stream$Buffer
-public "descriptor"(arg0: $Consumer$$Type<($FT_StreamDesc)>): $FT_Stream$Buffer
-public "descriptor"(): $FT_StreamDesc
-public "descriptor"(arg0: $FT_StreamDesc$$Type): $FT_Stream$Buffer
-public "pos"(arg0: long): $FT_Stream$Buffer
-public "pos"(): long
+public "pathname"(arg0: $FT_StreamDesc$$Type): $FT_Stream$Buffer
 public "pathname"(arg0: $Consumer$$Type<($FT_StreamDesc)>): $FT_Stream$Buffer
 public "pathname"(): $FT_StreamDesc
-public "pathname"(arg0: $FT_StreamDesc$$Type): $FT_Stream$Buffer
+public "pos"(): long
+public "pos"(arg0: long): $FT_Stream$Buffer
+public "base"(arg0: $ByteBuffer$$Type): $FT_Stream$Buffer
+public "base"(): $ByteBuffer
+public "size"(): long
+public "size"(arg0: long): $FT_Stream$Buffer
+public "read"(arg0: $FT_Stream_IoFuncI$$Type): $FT_Stream$Buffer
+public "read"(): $FT_Stream_IoFunc
+public "descriptor"(): $FT_StreamDesc
+public "descriptor"(arg0: $FT_StreamDesc$$Type): $FT_Stream$Buffer
+public "descriptor"(arg0: $Consumer$$Type<($FT_StreamDesc)>): $FT_Stream$Buffer
 public "close$"(): $FT_Stream_CloseFunc
 public "close$"(arg0: $FT_Stream_CloseFuncI$$Type): $FT_Stream$Buffer
-public "close"(): void
 public "free"(): void
+public "close"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2802,8 +2802,8 @@ import {$AutoCloseable, $AutoCloseable$$Type} from "java.lang.AutoCloseable"
  */
 export interface $NativeResource extends $AutoCloseable {
 
- "close"(): void
  "free"(): void
+ "close"(): void
 
 (): void
 }
@@ -2814,8 +2814,8 @@ const probejs$$marker: never
 export class $NativeResource$$Static implements $NativeResource {
 
 
- "close"(): void
  "free"(): void
+ "close"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2837,8 +2837,8 @@ import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 
 export class $FT_Size_Internal$Buffer extends $StructBuffer<($FT_Size_Internal), ($FT_Size_Internal$Buffer)> {
 
-constructor(arg0: long, arg1: integer)
 constructor(arg0: $ByteBuffer$$Type)
+constructor(arg0: long, arg1: integer)
 
 public "autohint_mode"(): integer
 public "module_data"(): long
@@ -2904,8 +2904,8 @@ import {$FFICIF, $FFICIF$$Type} from "org.lwjgl.system.libffi.FFICIF"
 export class $FT_Stream_CloseFunc extends $Callback implements $FT_Stream_CloseFuncI {
 
 
-public static "create"(arg0: long): $FT_Stream_CloseFunc
 public static "create"(arg0: $FT_Stream_CloseFuncI$$Type): $FT_Stream_CloseFunc
+public static "create"(arg0: long): $FT_Stream_CloseFunc
 public static "createSafe"(arg0: long): $FT_Stream_CloseFunc
 public "callback"(arg0: long, arg1: long): void
 public "invoke"(arg0: long): void
@@ -2925,8 +2925,8 @@ declare global {
 export type $FT_Stream_CloseFunc_ = $FT_Stream_CloseFunc$$Type;
 }}
 declare module "org.lwjgl.system.Struct" {
-import {$Pointer$Default, $Pointer$Default$$Type} from "org.lwjgl.system.Pointer$Default"
 import {$Struct$StructValidation, $Struct$StructValidation$$Type} from "org.lwjgl.system.Struct$StructValidation"
+import {$Pointer$Default, $Pointer$Default$$Type} from "org.lwjgl.system.Pointer$Default"
 
 /**
  * This class is not allowed By KubeJS!
@@ -2936,10 +2936,10 @@ import {$Struct$StructValidation, $Struct$StructValidation$$Type} from "org.lwjg
 export class $Struct<SELF extends $Struct<(SELF)>> extends $Pointer$Default {
 
 
+public "free"(): void
+public "isNull"(arg0: integer): boolean
 public "clear"(): void
 public static "validate"(arg0: long, arg1: integer, arg2: integer, arg3: $Struct$StructValidation$$Type): void
-public "isNull"(arg0: integer): boolean
-public "free"(): void
 public "sizeof"(): integer
 }
 /**
@@ -2971,19 +2971,19 @@ import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 export class $StructBuffer<T extends $Struct<(T)>, SELF extends $StructBuffer<(T), (SELF)>> extends $CustomBuffer<(SELF)> implements $Iterable<(T)> {
 
 
+public "parallelStream"(): $Stream<(T)>
 public "get"(arg0: integer, arg1: T): SELF
-public "get"(arg0: T): SELF
 public "get"(arg0: integer): T
 public "get"(): T
-public "put"(arg0: integer, arg1: T): SELF
+public "get"(arg0: T): SELF
 public "put"(arg0: T): SELF
+public "put"(arg0: integer, arg1: T): SELF
 public "iterator"(): $Iterator<(T)>
-public "apply"(arg0: integer, arg1: $Consumer$$Type<(T)>): SELF
 public "apply"(arg0: $Consumer$$Type<(T)>): SELF
+public "apply"(arg0: integer, arg1: $Consumer$$Type<(T)>): SELF
 public "stream"(): $Stream<(T)>
 public "spliterator"(): $Spliterator<(T)>
 public "forEach"(arg0: $Consumer$$Type<(T)>): void
-public "parallelStream"(): $Stream<(T)>
 public "sizeof"(): integer
 [Symbol.iterator](): IterableIterator<T>;
 }

@@ -7,7 +7,7 @@ static readonly "NETHER": $RegionType
 
 
 public static "values"(): ($RegionType)[]
-public static "valueOf"(arg0: string): $RegionType
+public static "valueOf"(arg0: StringJS): $RegionType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -31,7 +31,7 @@ static readonly "END": $SurfaceRuleManager$RuleCategory
 
 
 public static "values"(): ($SurfaceRuleManager$RuleCategory)[]
-public static "valueOf"(arg0: string): $SurfaceRuleManager$RuleCategory
+public static "valueOf"(arg0: StringJS): $SurfaceRuleManager$RuleCategory
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

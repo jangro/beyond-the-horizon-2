@@ -86,45 +86,45 @@ import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockG
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
 import {$Container, $Container$$Type} from "net.minecraft.world.Container"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$Packet, $Packet$$Type} from "net.minecraft.network.protocol.Packet"
+import {$ClientboundBlockEntityDataPacket, $ClientboundBlockEntityDataPacket$$Type} from "net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 
 export class $CraftingTableBlockEntity extends $RandomizableContainerBlockEntity implements $TickingBlockEntity, $WorkbenchVisualsProvider {
 static readonly "COMPONENT_CRAFTING": $MutableComponent
  "name": $Component
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
  "lockKey": $LockCode
-static readonly "TAG_RESULT": string
+static readonly "TAG_RESULT": StringJS
 
 constructor(pos: $BlockPos$$Type, blockState: $BlockState$$Type)
 
-public "loadAdditional"(tag: $CompoundTag$$Type, registries: $HolderLookup$Provider$$Type): void
-public "canPlaceItem"(slot: integer, stack: $ItemStack$$Type): boolean
 public "getItems"(): $NonNullList<($ItemStack)>
-public "getUpdateTag"(registries: $HolderLookup$Provider$$Type): $CompoundTag
-public "clientTick"(): void
+public "canPlaceItem"(slot: integer, stack: $ItemStack$$Type): boolean
 public "canTakeItem"(target: $Container$$Type, slot: integer, stack: $ItemStack$$Type): boolean
-public "stillValid"(player: $Player$$Type): boolean
 public "setChanged"(): void
+public "stillValid"(player: $Player$$Type): boolean
+public "loadAdditional"(tag: $CompoundTag$$Type, registries: $HolderLookup$Provider$$Type): void
+public "clientTick"(): void
+public "getResultItems"(): $NonNullList<($ItemStack)>
+public "getUpdateTag"(registries: $HolderLookup$Provider$$Type): $CompoundTag
 public "getAnimationController"(): $CraftingTableAnimationController
 public "getContainerSize"(): integer
-public "getUpdatePacket"(): $Packet<(any)>
-public "getResultItems"(): $NonNullList<($ItemStack)>
+public "getUpdatePacket"(): $ClientboundBlockEntityDataPacket
 public "getCraftingResult"(): $ItemStack
 public "serverTick"(): void
 public "getLevel"(): $Level
-public static "setBlockEntityLootTable"(arg0: $BlockGetter$$Type, arg1: $RandomSource$$Type, arg2: $BlockPos$$Type, arg3: $ResourceKey$$Type<($LootTable)>): void
 public "getBlockPos"(): $BlockPos
-public static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type, arg2: float): boolean
+public static "setBlockEntityLootTable"(arg0: $BlockGetter$$Type, arg1: $RandomSource$$Type, arg2: $BlockPos$$Type, arg3: $ResourceKey$$Type<($LootTable)>): void
 public static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type): boolean
+public static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type, arg2: float): boolean
 public static "tryClear"(arg0: any): void
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "items"(): $NonNullList<($ItemStack)>
+get "resultItems"(): $NonNullList<($ItemStack)>
 get "animationController"(): $CraftingTableAnimationController
 get "containerSize"(): integer
-get "updatePacket"(): $Packet<(any)>
-get "resultItems"(): $NonNullList<($ItemStack)>
+get "updatePacket"(): $ClientboundBlockEntityDataPacket
 get "craftingResult"(): $ItemStack
 get "level"(): $Level
 get "blockPos"(): $BlockPos
@@ -175,7 +175,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -184,17 +184,17 @@ static readonly "UPDATE_CLIENTS": integer
 
 constructor(block: $Block$$Type)
 
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
 public "onRemove"(state: $BlockState$$Type, level: $Level$$Type, pos: $BlockPos$$Type, newState: $BlockState$$Type, movedByPiston: boolean): void
+public "getRenderShape"(state: $BlockState$$Type): $RenderShape
 public "getBlockEntityType"(): $BlockEntityType<($CraftingTableBlockEntity)>
 public "hasAnalogOutputSignal"(blockState: $BlockState$$Type): boolean
 public "getAnalogOutputSignal"(blockState: $BlockState$$Type, level: $Level$$Type, blockPos: $BlockPos$$Type): integer
-public "getDescriptionId"(): string
+public "getDescriptionId"(): StringJS
 public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
 public "getTicker"<BE extends $BlockEntity>(level: $Level$$Type, state: $BlockState$$Type, blockEntityType: $BlockEntityType$$Type<(BE)>): $BlockEntityTicker<(BE)>
 public "asHolder"(): $Holder<(any)>
 get "blockEntityType"(): $BlockEntityType<($CraftingTableBlockEntity)>
-get "descriptionId"(): string
+get "descriptionId"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

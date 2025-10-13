@@ -10,13 +10,13 @@ import {$Runnable, $Runnable$$Type} from "java.lang.Runnable"
 export class $ConfigInventory$Builder {
 
 
-public "changeListener"(arg0: $Runnable$$Type): $ConfigInventory$Builder
 public "build"(): $ConfigInventory
-public "allowOverstacking"(arg0: boolean): $ConfigInventory$Builder
+public "changeListener"(arg0: $Runnable$$Type): $ConfigInventory$Builder
 public "supportedTypes"(arg0: $Collection$$Type<($AEKeyType$$Type)>): $ConfigInventory$Builder
 public "supportedTypes"(arg0: $AEKeyType$$Type, ...arg1: ($AEKeyType$$Type)[]): $ConfigInventory$Builder
 public "slotFilter"(arg0: $Predicate$$Type<($AEKey)>): $ConfigInventory$Builder
 public "slotFilter"(arg0: $AEKeySlotFilter$$Type): $ConfigInventory$Builder
+public "allowOverstacking"(arg0: boolean): $ConfigInventory$Builder
 public "supportedType"(arg0: $AEKeyType$$Type): $ConfigInventory$Builder
 }
 /**
@@ -38,8 +38,8 @@ import {$Spliterator, $Spliterator$$Type} from "java.util.Spliterator"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$ItemTransfer, $ItemTransfer$$Type} from "appeng.api.inventories.ItemTransfer"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$FuzzyMode, $FuzzyMode$$Type} from "appeng.api.config.FuzzyMode"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$InternalInventory, $InternalInventory$$Type} from "appeng.api.inventories.InternalInventory"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
@@ -65,11 +65,6 @@ public "iterator"(): $Iterator<($ItemStack)>
 public static "empty"(): $InternalInventory
 public "insertItem"(arg0: integer, arg1: $ItemStack$$Type, arg2: boolean): $ItemStack
 public "extractItem"(arg0: integer, arg1: integer, arg2: boolean): $ItemStack
-public "getRedstoneSignal"(): integer
-public "getSubInventory"(arg0: integer, arg1: integer): $InternalInventory
-public "removeSimilarItems"(arg0: integer, arg1: $ItemStack$$Type, arg2: $FuzzyMode$$Type, arg3: $Predicate$$Type<($ItemStack)>): $ItemStack
-public "simulateSimilarRemove"(arg0: integer, arg1: $ItemStack$$Type, arg2: $FuzzyMode$$Type, arg3: $Predicate$$Type<($ItemStack)>): $ItemStack
-public "sendChangeNotification"(arg0: integer): void
 public static "wrapExternal"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $Direction$$Type): $ItemTransfer
 public "toItemHandler"(): $IItemHandler
 public "toContainer"(): $Container
@@ -77,8 +72,13 @@ public "getSlotInv"(arg0: integer): $InternalInventory
 public "simulateAdd"(arg0: $ItemStack$$Type): $ItemStack
 public "removeItems"(arg0: integer, arg1: $ItemStack$$Type, arg2: $Predicate$$Type<($ItemStack)>): $ItemStack
 public "simulateRemove"(arg0: integer, arg1: $ItemStack$$Type, arg2: $Predicate$$Type<($ItemStack)>): $ItemStack
-public "addItems"(arg0: $ItemStack$$Type, arg1: boolean): $ItemStack
 public "addItems"(arg0: $ItemStack$$Type): $ItemStack
+public "addItems"(arg0: $ItemStack$$Type, arg1: boolean): $ItemStack
+public "getRedstoneSignal"(): integer
+public "removeSimilarItems"(arg0: integer, arg1: $ItemStack$$Type, arg2: $FuzzyMode$$Type, arg3: $Predicate$$Type<($ItemStack)>): $ItemStack
+public "simulateSimilarRemove"(arg0: integer, arg1: $ItemStack$$Type, arg2: $FuzzyMode$$Type, arg3: $Predicate$$Type<($ItemStack)>): $ItemStack
+public "sendChangeNotification"(arg0: integer): void
+public "getSubInventory"(arg0: integer, arg1: integer): $InternalInventory
 public "spliterator"(): $Spliterator<($ItemStack)>
 public "forEach"(arg0: $Consumer$$Type<($ItemStack)>): void
 [Symbol.iterator](): IterableIterator<$ItemStack>;
@@ -180,7 +180,7 @@ static readonly "MEMORY_CARD": $SettingsFrom
 
 
 public static "values"(): ($SettingsFrom)[]
-public static "valueOf"(arg0: string): $SettingsFrom
+public static "valueOf"(arg0: StringJS): $SettingsFrom
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -258,8 +258,8 @@ declare module "appeng.util.inv.AppEngInternalInventory" {
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
-import {$InternalInventoryHost, $InternalInventoryHost$$Type} from "appeng.util.inv.InternalInventoryHost"
 import {$ItemTransfer, $ItemTransfer$$Type} from "appeng.api.inventories.ItemTransfer"
+import {$InternalInventoryHost, $InternalInventoryHost$$Type} from "appeng.util.inv.InternalInventoryHost"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$InternalInventory, $InternalInventory$$Type} from "appeng.api.inventories.InternalInventory"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
@@ -271,24 +271,24 @@ import {$ItemContainerContents, $ItemContainerContents$$Type} from "net.minecraf
 export class $AppEngInternalInventory extends $BaseInternalInventory {
 
 constructor(arg0: $InternalInventoryHost$$Type, arg1: integer)
-constructor(arg0: integer)
-constructor(arg0: $InternalInventoryHost$$Type, arg1: integer, arg2: integer)
 constructor(arg0: $InternalInventoryHost$$Type, arg1: integer, arg2: integer, arg3: $IAEItemFilter$$Type)
+constructor(arg0: $InternalInventoryHost$$Type, arg1: integer, arg2: integer)
+constructor(arg0: integer)
 
-public "size"(): integer
 public "getHost"(): $InternalInventoryHost
 public "setFilter"(arg0: $IAEItemFilter$$Type): void
+public "size"(): integer
 public "extractItem"(arg0: integer, arg1: integer, arg2: boolean): $ItemStack
 public "getSlotLimit"(arg0: integer): integer
 public "isItemValid"(arg0: integer, arg1: $ItemStack$$Type): boolean
 public "getStackInSlot"(arg0: integer): $ItemStack
-public "setEnableClientEvents"(arg0: boolean): void
-public "setMaxStackSize"(arg0: integer, arg1: integer): void
 public "setItemDirect"(arg0: integer, arg1: $ItemStack$$Type): void
-public "readFromNBT"(arg0: $CompoundTag$$Type, arg1: string, arg2: $HolderLookup$Provider$$Type): void
-public "writeToNBT"(arg0: $CompoundTag$$Type, arg1: string, arg2: $HolderLookup$Provider$$Type): void
-public "fromItemContainerContents"(arg0: $ItemContainerContents$$Type): void
+public "writeToNBT"(arg0: $CompoundTag$$Type, arg1: StringJS, arg2: $HolderLookup$Provider$$Type): void
+public "readFromNBT"(arg0: $CompoundTag$$Type, arg1: StringJS, arg2: $HolderLookup$Provider$$Type): void
+public "setMaxStackSize"(arg0: integer, arg1: integer): void
+public "setEnableClientEvents"(arg0: boolean): void
 public "toItemContainerContents"(): $ItemContainerContents
+public "fromItemContainerContents"(arg0: $ItemContainerContents$$Type): void
 public static "empty"(): $InternalInventory
 public static "wrapExternal"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $Direction$$Type): $ItemTransfer
 get "host"(): $InternalInventoryHost
@@ -373,9 +373,9 @@ import {$AEKey, $AEKey$$Type} from "appeng.api.stacks.AEKey"
 export class $IPartitionList$Builder {
 
 
+public "build"(): $IPartitionList
 public "add"(arg0: $AEKey$$Type): void
 public "addAll"(arg0: $Iterable$$Type<($AEKey$$Type)>): void
-public "build"(): $IPartitionList
 public "fuzzyMode"(arg0: $FuzzyMode$$Type): void
 }
 /**
@@ -405,19 +405,19 @@ import {$GenericStackInv, $GenericStackInv$$Type} from "appeng.helpers.externals
 export class $ConfigInventory extends $GenericStackInv {
 
 
+public "getStack"(arg0: integer): $GenericStack
 public "getKey"(arg0: integer): $AEKey
 public "keySet"(): $Set<($AEKey)>
-public "getStack"(arg0: integer): $GenericStack
-public "addFilter"(arg0: $Fluid$$Type): $ConfigInventory
 public "addFilter"(arg0: $AEKey$$Type): $ConfigInventory
 public "addFilter"(arg0: $ItemLike$$Type): $ConfigInventory
-public "setStack"(arg0: integer, arg1: $GenericStack$$Type): void
+public "addFilter"(arg0: $Fluid$$Type): $ConfigInventory
 public static "storage"(arg0: integer): $ConfigInventory$Builder
-public "createMenuWrapper"(): $ConfigMenuInventory
+public "setStack"(arg0: integer, arg1: $GenericStack$$Type): void
 public static "configTypes"(arg0: integer): $ConfigInventory$Builder
-public static "emptyTypes"(): $ConfigInventory
-public "getMaxAmount"(arg0: $AEKey$$Type): long
 public static "configStacks"(arg0: integer): $ConfigInventory$Builder
+public "getMaxAmount"(arg0: $AEKey$$Type): long
+public static "emptyTypes"(): $ConfigInventory
+public "createMenuWrapper"(): $ConfigMenuInventory
 public static "checkPreconditions"(arg0: $AEKey$$Type, arg1: long, arg2: $Actionable$$Type, arg3: $IActionSource$$Type): void
 }
 /**

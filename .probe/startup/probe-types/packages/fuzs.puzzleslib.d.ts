@@ -9,7 +9,7 @@ static readonly "ADDITIONS": $BiomeLoadingPhase
 
 
 public static "values"(): ($BiomeLoadingPhase)[]
-public static "valueOf"(name: string): $BiomeLoadingPhase
+public static "valueOf"(name: StringJS): $BiomeLoadingPhase
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -26,8 +26,8 @@ export type $BiomeLoadingPhase_ = $BiomeLoadingPhase$$Type;
 declare module "fuzs.puzzleslib.api.biome.v1.BiomeLoadingContext" {
 import {$LevelStem, $LevelStem$$Type} from "net.minecraft.world.level.dimension.LevelStem"
 import {$PlacedFeature, $PlacedFeature$$Type} from "net.minecraft.world.level.levelgen.placement.PlacedFeature"
-import {$Structure, $Structure$$Type} from "net.minecraft.world.level.levelgen.structure.Structure"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
+import {$Structure, $Structure$$Type} from "net.minecraft.world.level.levelgen.structure.Structure"
 import {$ConfiguredFeature, $ConfiguredFeature$$Type} from "net.minecraft.world.level.levelgen.feature.ConfiguredFeature"
 import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
 import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
@@ -36,22 +36,22 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export interface $BiomeLoadingContext {
 
- "hasFeature"(key: $ResourceKey$$Type<($ConfiguredFeature<(any), (any)>)>): boolean
- "holder"(): $Holder<($Biome)>
+ "is"(holder: $Holder$$Type<($Biome)>): boolean
  "is"(arg0: $TagKey$$Type<($Biome)>): boolean
  "is"(biome: $Biome$$Type): boolean
- "is"(holder: $Holder$$Type<($Biome)>): boolean
  "is"(resourceKey: $ResourceKey$$Type<($Biome)>): boolean
- "getBiome"(): $Biome
+ "holder"(): $Holder<($Biome)>
+ "hasFeature"(key: $ResourceKey$$Type<($ConfiguredFeature<(any), (any)>)>): boolean
  "getResourceKey"(): $ResourceKey<($Biome)>
+ "getBiome"(): $Biome
+ "getFeatureKey"(arg0: $ConfiguredFeature$$Type<(any), (any)>): $Optional<($ResourceKey<($ConfiguredFeature<(any), (any)>)>)>
+ "canGenerateIn"(arg0: $ResourceKey$$Type<($LevelStem)>): boolean
  "hasPlacedFeature"(key: $ResourceKey$$Type<($PlacedFeature)>): boolean
  "getPlacedFeatureKey"(arg0: $PlacedFeature$$Type): $Optional<($ResourceKey<($PlacedFeature)>)>
  "validForStructure"(arg0: $ResourceKey$$Type<($Structure)>): boolean
  "getStructureKey"(arg0: $Structure$$Type): $Optional<($ResourceKey<($Structure)>)>
- "getFeatureKey"(arg0: $ConfiguredFeature$$Type<(any), (any)>): $Optional<($ResourceKey<($ConfiguredFeature<(any), (any)>)>)>
- "canGenerateIn"(arg0: $ResourceKey$$Type<($LevelStem)>): boolean
-get "biome"(): $Biome
 get "resourceKey"(): $ResourceKey<($Biome)>
+get "biome"(): $Biome
 }
 
 export namespace $BiomeLoadingContext {
@@ -60,20 +60,20 @@ const probejs$$marker: never
 export class $BiomeLoadingContext$$Static implements $BiomeLoadingContext {
 
 
- "hasFeature"(key: $ResourceKey$$Type<($ConfiguredFeature<(any), (any)>)>): boolean
- "holder"(): $Holder<($Biome)>
+ "is"(holder: $Holder$$Type<($Biome)>): boolean
  "is"(arg0: $TagKey$$Type<($Biome)>): boolean
  "is"(biome: $Biome$$Type): boolean
- "is"(holder: $Holder$$Type<($Biome)>): boolean
  "is"(resourceKey: $ResourceKey$$Type<($Biome)>): boolean
- "getBiome"(): $Biome
+ "holder"(): $Holder<($Biome)>
+ "hasFeature"(key: $ResourceKey$$Type<($ConfiguredFeature<(any), (any)>)>): boolean
  "getResourceKey"(): $ResourceKey<($Biome)>
+ "getBiome"(): $Biome
+ "getFeatureKey"(arg0: $ConfiguredFeature$$Type<(any), (any)>): $Optional<($ResourceKey<($ConfiguredFeature<(any), (any)>)>)>
+ "canGenerateIn"(arg0: $ResourceKey$$Type<($LevelStem)>): boolean
  "hasPlacedFeature"(key: $ResourceKey$$Type<($PlacedFeature)>): boolean
  "getPlacedFeatureKey"(arg0: $PlacedFeature$$Type): $Optional<($ResourceKey<($PlacedFeature)>)>
  "validForStructure"(arg0: $ResourceKey$$Type<($Structure)>): boolean
  "getStructureKey"(arg0: $Structure$$Type): $Optional<($ResourceKey<($Structure)>)>
- "getFeatureKey"(arg0: $ConfiguredFeature$$Type<(any), (any)>): $Optional<($ResourceKey<($ConfiguredFeature<(any), (any)>)>)>
- "canGenerateIn"(arg0: $ResourceKey$$Type<($LevelStem)>): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -130,11 +130,11 @@ export class $NeoForgeBiomeLoadingHandler$BiomeModification extends $Record {
 
 constructor(selector: $Predicate$$Type<($BiomeLoadingContext)>, modifier: $Consumer$$Type<($BiomeModificationContext)>)
 
-public "equals"(o: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "modifier"(): $Consumer<($BiomeModificationContext)>
 public "selector"(): $Predicate<($BiomeLoadingContext)>
+public "equals"(o: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
 public "tryApply"(filter: $BiomeLoadingContext$$Type, context: $BiomeModificationContext$$Type): void
 }
 /**
@@ -161,16 +161,16 @@ export class $ComputeEnchantedLootBonusEvent extends $LivingEvent {
 
 constructor(entity: $LivingEntity$$Type, damageSource: $DamageSource$$Type, enchantment: $Holder$$Type<($Enchantment)>, enchantmentLevel: integer)
 
+public "getEnchantment"(): $Holder<($Enchantment)>
+public "setEnchantmentLevel"(enchantmentLevel: integer): void
+public "getDamageSource"(): $DamageSource
+public "getEnchantmentLevel"(): integer
 public static "onComputeEnchantedLootBonus"(enchantment: $Holder$$Type<($Enchantment)>, enchantmentLevel: integer, lootContext: $LootContext$$Type): integer
 public static "onComputeEnchantedLootBonus"(enchantment: $Holder$$Type<($Enchantment)>, enchantmentLevel: integer, livingEntity: $LivingEntity$$Type, damageSource: $DamageSource$$Type): integer
-public "setEnchantmentLevel"(enchantmentLevel: integer): void
-public "getEnchantmentLevel"(): integer
-public "getDamageSource"(): $DamageSource
-public "getEnchantment"(): $Holder<($Enchantment)>
-set "enchantmentLevel"(value: integer)
-get "enchantmentLevel"(): integer
-get "damageSource"(): $DamageSource
 get "enchantment"(): $Holder<($Enchantment)>
+set "enchantmentLevel"(value: integer)
+get "damageSource"(): $DamageSource
+get "enchantmentLevel"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -225,11 +225,11 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export interface $BiomeSpecialEffectsBuilderNeoForgeAccessor {
 
- "puzzleslib$setFoliageColorOverride"(arg0: $Optional$$Type<(integer)>): void
  "puzzleslib$setGrassColorOverride"(arg0: $Optional$$Type<(integer)>): void
  "puzzleslib$setAmbientLoopSoundEvent"(arg0: $Optional$$Type<($Holder$$Type<($SoundEvent$$Type)>)>): void
  "puzzleslib$setAmbientMoodSettings"(arg0: $Optional$$Type<($AmbientMoodSettings$$Type)>): void
  "puzzleslib$setAmbientAdditionsSettings"(arg0: $Optional$$Type<($AmbientAdditionsSettings$$Type)>): void
+ "puzzleslib$setFoliageColorOverride"(arg0: $Optional$$Type<(integer)>): void
  "puzzleslib$setAmbientParticle"(arg0: $Optional$$Type<($AmbientParticleSettings$$Type)>): void
  "puzzleslib$setBackgroundMusic"(arg0: $Optional$$Type<($Music$$Type)>): void
 }
@@ -240,11 +240,11 @@ const probejs$$marker: never
 export class $BiomeSpecialEffectsBuilderNeoForgeAccessor$$Static implements $BiomeSpecialEffectsBuilderNeoForgeAccessor {
 
 
- "puzzleslib$setFoliageColorOverride"(arg0: $Optional$$Type<(integer)>): void
  "puzzleslib$setGrassColorOverride"(arg0: $Optional$$Type<(integer)>): void
  "puzzleslib$setAmbientLoopSoundEvent"(arg0: $Optional$$Type<($Holder$$Type<($SoundEvent$$Type)>)>): void
  "puzzleslib$setAmbientMoodSettings"(arg0: $Optional$$Type<($AmbientMoodSettings$$Type)>): void
  "puzzleslib$setAmbientAdditionsSettings"(arg0: $Optional$$Type<($AmbientAdditionsSettings$$Type)>): void
+ "puzzleslib$setFoliageColorOverride"(arg0: $Optional$$Type<(integer)>): void
  "puzzleslib$setAmbientParticle"(arg0: $Optional$$Type<($AmbientParticleSettings$$Type)>): void
  "puzzleslib$setBackgroundMusic"(arg0: $Optional$$Type<($Music$$Type)>): void
 }
@@ -326,25 +326,45 @@ export type $NewRegistryEventNeoForgeAccessor_ = $NewRegistryEventNeoForgeAccess
 }}
 declare module "fuzs.puzzleslib.api.biome.v1.SpecialEffectsContext" {
 import {$AmbientMoodSettings, $AmbientMoodSettings$$Type} from "net.minecraft.world.level.biome.AmbientMoodSettings"
-import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$BiomeSpecialEffects$GrassColorModifier, $BiomeSpecialEffects$GrassColorModifier$$Type} from "net.minecraft.world.level.biome.BiomeSpecialEffects$GrassColorModifier"
+import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$AmbientParticleSettings, $AmbientParticleSettings$$Type} from "net.minecraft.world.level.biome.AmbientParticleSettings"
 import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$AmbientAdditionsSettings, $AmbientAdditionsSettings$$Type} from "net.minecraft.world.level.biome.AmbientAdditionsSettings"
-import {$Music, $Music$$Type} from "net.minecraft.sounds.Music"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$Music, $Music$$Type} from "net.minecraft.sounds.Music"
 
 export interface $SpecialEffectsContext {
 
- "setFoliageColorOverride"(foliageColorOverride: integer): void
+ "getSkyColor"(): integer
+ "setFogColor"(arg0: integer): void
+ "setWaterColor"(arg0: integer): void
+ "setSkyColor"(arg0: integer): void
+ "getWaterColor"(): integer
+ "getFogColor"(): integer
+ "setWaterFogColor"(arg0: integer): void
+ "setGrassColorOverride"(grassColorOverride: integer): void
+ "setGrassColorOverride"(arg0: $Optional$$Type<(integer)>): void
+ "setGrassColorModifier"(arg0: $BiomeSpecialEffects$GrassColorModifier$$Type): void
+ "setAmbientMoodSettings"(ambientMoodSettings: $AmbientMoodSettings$$Type): void
+ "setAmbientMoodSettings"(arg0: $Optional$$Type<($AmbientMoodSettings$$Type)>): void
+ "setBackgroundMusic"(arg0: $Optional$$Type<($Music$$Type)>): void
+ "setBackgroundMusic"(backgroundMusic: $Music$$Type): void
+ "clearBackgroundMusic"(): void
+ "getWaterFogColor"(): integer
+ "getAmbientMoodSettings"(): $Optional<($AmbientMoodSettings)>
+ "getGrassColorOverride"(): $Optional<(integer)>
+ "getGrassColorModifier"(): $BiomeSpecialEffects$GrassColorModifier
+ "getBackgroundMusic"(): $Optional<($Music)>
  "setFoliageColorOverride"(arg0: $Optional$$Type<(integer)>): void
+ "setFoliageColorOverride"(foliageColorOverride: integer): void
  "clearFoliageColorOverride"(): void
  "clearGrassColorOverride"(): void
  "setAmbientParticleSettings"(ambientParticleSettings: $AmbientParticleSettings$$Type): void
  "setAmbientParticleSettings"(arg0: $Optional$$Type<($AmbientParticleSettings$$Type)>): void
  "clearAmbientParticleSettings"(): void
- "setAmbientLoopSoundEvent"(arg0: $Optional$$Type<($Holder$$Type<($SoundEvent$$Type)>)>): void
  "setAmbientLoopSoundEvent"(ambientLoopSoundEvent: $Holder$$Type<($SoundEvent)>): void
+ "setAmbientLoopSoundEvent"(arg0: $Optional$$Type<($Holder$$Type<($SoundEvent$$Type)>)>): void
  "clearAmbientLoopSoundEvent"(): void
  "clearAmbientMoodSettings"(): void
  "setAmbientAdditionsSettings"(ambientAdditionsSettings: $AmbientAdditionsSettings$$Type): void
@@ -354,57 +374,37 @@ export interface $SpecialEffectsContext {
  "getAmbientLoopSoundEvent"(): $Optional<($Holder<($SoundEvent)>)>
  "getAmbientAdditionsSettings"(): $Optional<($AmbientAdditionsSettings)>
  "getFoliageColorOverride"(): $Optional<(integer)>
- "getWaterColor"(): integer
- "getFogColor"(): integer
- "getSkyColor"(): integer
- "getWaterFogColor"(): integer
- "getAmbientMoodSettings"(): $Optional<($AmbientMoodSettings)>
- "getGrassColorOverride"(): $Optional<(integer)>
- "getGrassColorModifier"(): $BiomeSpecialEffects$GrassColorModifier
- "getBackgroundMusic"(): $Optional<($Music)>
- "setWaterFogColor"(arg0: integer): void
- "setGrassColorOverride"(arg0: $Optional$$Type<(integer)>): void
- "setGrassColorOverride"(grassColorOverride: integer): void
- "setGrassColorModifier"(arg0: $BiomeSpecialEffects$GrassColorModifier$$Type): void
- "setAmbientMoodSettings"(arg0: $Optional$$Type<($AmbientMoodSettings$$Type)>): void
- "setAmbientMoodSettings"(ambientMoodSettings: $AmbientMoodSettings$$Type): void
- "setBackgroundMusic"(backgroundMusic: $Music$$Type): void
- "setBackgroundMusic"(arg0: $Optional$$Type<($Music$$Type)>): void
- "clearBackgroundMusic"(): void
- "setFogColor"(arg0: integer): void
- "setWaterColor"(arg0: integer): void
- "setSkyColor"(arg0: integer): void
-set "foliageColorOverride"(value: integer)
+get "skyColor"(): integer
+set "fogColor"(value: integer)
+set "waterColor"(value: integer)
+set "skyColor"(value: integer)
+get "waterColor"(): integer
+get "fogColor"(): integer
+set "waterFogColor"(value: integer)
+set "grassColorOverride"(value: integer)
+set "grassColorOverride"(value: $Optional$$Type<(integer)>)
+set "grassColorModifier"(value: $BiomeSpecialEffects$GrassColorModifier$$Type)
+set "ambientMoodSettings"(value: $AmbientMoodSettings$$Type)
+set "ambientMoodSettings"(value: $Optional$$Type<($AmbientMoodSettings$$Type)>)
+set "backgroundMusic"(value: $Optional$$Type<($Music$$Type)>)
+set "backgroundMusic"(value: $Music$$Type)
+get "waterFogColor"(): integer
+get "ambientMoodSettings"(): $Optional<($AmbientMoodSettings)>
+get "grassColorOverride"(): $Optional<(integer)>
+get "grassColorModifier"(): $BiomeSpecialEffects$GrassColorModifier
+get "backgroundMusic"(): $Optional<($Music)>
 set "foliageColorOverride"(value: $Optional$$Type<(integer)>)
+set "foliageColorOverride"(value: integer)
 set "ambientParticleSettings"(value: $AmbientParticleSettings$$Type)
 set "ambientParticleSettings"(value: $Optional$$Type<($AmbientParticleSettings$$Type)>)
-set "ambientLoopSoundEvent"(value: $Optional$$Type<($Holder$$Type<($SoundEvent$$Type)>)>)
 set "ambientLoopSoundEvent"(value: $Holder$$Type<($SoundEvent)>)
+set "ambientLoopSoundEvent"(value: $Optional$$Type<($Holder$$Type<($SoundEvent$$Type)>)>)
 set "ambientAdditionsSettings"(value: $AmbientAdditionsSettings$$Type)
 set "ambientAdditionsSettings"(value: $Optional$$Type<($AmbientAdditionsSettings$$Type)>)
 get "ambientParticleSettings"(): $Optional<($AmbientParticleSettings)>
 get "ambientLoopSoundEvent"(): $Optional<($Holder<($SoundEvent)>)>
 get "ambientAdditionsSettings"(): $Optional<($AmbientAdditionsSettings)>
 get "foliageColorOverride"(): $Optional<(integer)>
-get "waterColor"(): integer
-get "fogColor"(): integer
-get "skyColor"(): integer
-get "waterFogColor"(): integer
-get "ambientMoodSettings"(): $Optional<($AmbientMoodSettings)>
-get "grassColorOverride"(): $Optional<(integer)>
-get "grassColorModifier"(): $BiomeSpecialEffects$GrassColorModifier
-get "backgroundMusic"(): $Optional<($Music)>
-set "waterFogColor"(value: integer)
-set "grassColorOverride"(value: $Optional$$Type<(integer)>)
-set "grassColorOverride"(value: integer)
-set "grassColorModifier"(value: $BiomeSpecialEffects$GrassColorModifier$$Type)
-set "ambientMoodSettings"(value: $Optional$$Type<($AmbientMoodSettings$$Type)>)
-set "ambientMoodSettings"(value: $AmbientMoodSettings$$Type)
-set "backgroundMusic"(value: $Music$$Type)
-set "backgroundMusic"(value: $Optional$$Type<($Music$$Type)>)
-set "fogColor"(value: integer)
-set "waterColor"(value: integer)
-set "skyColor"(value: integer)
 }
 
 export namespace $SpecialEffectsContext {
@@ -413,15 +413,35 @@ const probejs$$marker: never
 export class $SpecialEffectsContext$$Static implements $SpecialEffectsContext {
 
 
- "setFoliageColorOverride"(foliageColorOverride: integer): void
+ "getSkyColor"(): integer
+ "setFogColor"(arg0: integer): void
+ "setWaterColor"(arg0: integer): void
+ "setSkyColor"(arg0: integer): void
+ "getWaterColor"(): integer
+ "getFogColor"(): integer
+ "setWaterFogColor"(arg0: integer): void
+ "setGrassColorOverride"(grassColorOverride: integer): void
+ "setGrassColorOverride"(arg0: $Optional$$Type<(integer)>): void
+ "setGrassColorModifier"(arg0: $BiomeSpecialEffects$GrassColorModifier$$Type): void
+ "setAmbientMoodSettings"(ambientMoodSettings: $AmbientMoodSettings$$Type): void
+ "setAmbientMoodSettings"(arg0: $Optional$$Type<($AmbientMoodSettings$$Type)>): void
+ "setBackgroundMusic"(arg0: $Optional$$Type<($Music$$Type)>): void
+ "setBackgroundMusic"(backgroundMusic: $Music$$Type): void
+ "clearBackgroundMusic"(): void
+ "getWaterFogColor"(): integer
+ "getAmbientMoodSettings"(): $Optional<($AmbientMoodSettings)>
+ "getGrassColorOverride"(): $Optional<(integer)>
+ "getGrassColorModifier"(): $BiomeSpecialEffects$GrassColorModifier
+ "getBackgroundMusic"(): $Optional<($Music)>
  "setFoliageColorOverride"(arg0: $Optional$$Type<(integer)>): void
+ "setFoliageColorOverride"(foliageColorOverride: integer): void
  "clearFoliageColorOverride"(): void
  "clearGrassColorOverride"(): void
  "setAmbientParticleSettings"(ambientParticleSettings: $AmbientParticleSettings$$Type): void
  "setAmbientParticleSettings"(arg0: $Optional$$Type<($AmbientParticleSettings$$Type)>): void
  "clearAmbientParticleSettings"(): void
- "setAmbientLoopSoundEvent"(arg0: $Optional$$Type<($Holder$$Type<($SoundEvent$$Type)>)>): void
  "setAmbientLoopSoundEvent"(ambientLoopSoundEvent: $Holder$$Type<($SoundEvent)>): void
+ "setAmbientLoopSoundEvent"(arg0: $Optional$$Type<($Holder$$Type<($SoundEvent$$Type)>)>): void
  "clearAmbientLoopSoundEvent"(): void
  "clearAmbientMoodSettings"(): void
  "setAmbientAdditionsSettings"(ambientAdditionsSettings: $AmbientAdditionsSettings$$Type): void
@@ -431,26 +451,6 @@ export class $SpecialEffectsContext$$Static implements $SpecialEffectsContext {
  "getAmbientLoopSoundEvent"(): $Optional<($Holder<($SoundEvent)>)>
  "getAmbientAdditionsSettings"(): $Optional<($AmbientAdditionsSettings)>
  "getFoliageColorOverride"(): $Optional<(integer)>
- "getWaterColor"(): integer
- "getFogColor"(): integer
- "getSkyColor"(): integer
- "getWaterFogColor"(): integer
- "getAmbientMoodSettings"(): $Optional<($AmbientMoodSettings)>
- "getGrassColorOverride"(): $Optional<(integer)>
- "getGrassColorModifier"(): $BiomeSpecialEffects$GrassColorModifier
- "getBackgroundMusic"(): $Optional<($Music)>
- "setWaterFogColor"(arg0: integer): void
- "setGrassColorOverride"(arg0: $Optional$$Type<(integer)>): void
- "setGrassColorOverride"(grassColorOverride: integer): void
- "setGrassColorModifier"(arg0: $BiomeSpecialEffects$GrassColorModifier$$Type): void
- "setAmbientMoodSettings"(arg0: $Optional$$Type<($AmbientMoodSettings$$Type)>): void
- "setAmbientMoodSettings"(ambientMoodSettings: $AmbientMoodSettings$$Type): void
- "setBackgroundMusic"(backgroundMusic: $Music$$Type): void
- "setBackgroundMusic"(arg0: $Optional$$Type<($Music$$Type)>): void
- "clearBackgroundMusic"(): void
- "setFogColor"(arg0: integer): void
- "setWaterColor"(arg0: integer): void
- "setSkyColor"(arg0: integer): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -466,10 +466,10 @@ export type $SpecialEffectsContext_ = $SpecialEffectsContext$$Type;
 }}
 declare module "fuzs.puzzleslib.neoforge.impl.core.NeoForgeBiomeLoadingHandler$BiomeModifierImpl" {
 import {$ModifiableBiomeInfo$BiomeInfo$Builder, $ModifiableBiomeInfo$BiomeInfo$Builder$$Type} from "net.neoforged.neoforge.common.world.ModifiableBiomeInfo$BiomeInfo$Builder"
-import {$NeoForgeBiomeLoadingHandler$BiomeModification, $NeoForgeBiomeLoadingHandler$BiomeModification$$Type} from "fuzs.puzzleslib.neoforge.impl.core.NeoForgeBiomeLoadingHandler$BiomeModification"
 import {$Multimap, $Multimap$$Type} from "com.google.common.collect.Multimap"
-import {$BiomeModifier, $BiomeModifier$$Type} from "net.neoforged.neoforge.common.world.BiomeModifier"
+import {$NeoForgeBiomeLoadingHandler$BiomeModification, $NeoForgeBiomeLoadingHandler$BiomeModification$$Type} from "fuzs.puzzleslib.neoforge.impl.core.NeoForgeBiomeLoadingHandler$BiomeModification"
 import {$Biome, $Biome$$Type} from "net.minecraft.world.level.biome.Biome"
+import {$BiomeModifier, $BiomeModifier$$Type} from "net.neoforged.neoforge.common.world.BiomeModifier"
 import {$BiomeModifier$Phase, $BiomeModifier$Phase$$Type} from "net.neoforged.neoforge.common.world.BiomeModifier$Phase"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
@@ -480,14 +480,14 @@ export class $NeoForgeBiomeLoadingHandler$BiomeModifierImpl extends $Record impl
 
 constructor(biomeModifications: $Multimap$$Type<($BiomeLoadingPhase$$Type), ($NeoForgeBiomeLoadingHandler$BiomeModification$$Type)>)
 
-public "modify"(arg0: $Holder$$Type<($Biome)>, arg1: $BiomeModifier$Phase$$Type, arg2: $ModifiableBiomeInfo$BiomeInfo$Builder$$Type): void
 public "codec"(): $MapCodec<($BiomeModifier)>
+public "modify"(arg0: $Holder$$Type<($Biome)>, arg1: $BiomeModifier$Phase$$Type, arg2: $ModifiableBiomeInfo$BiomeInfo$Builder$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $NeoForgeBiomeLoadingHandler$BiomeModifierImpl$$Type = ({"biomeModifications"?: $Multimap$$Type<($BiomeLoadingPhase$$Type), ($NeoForgeBiomeLoadingHandler$BiomeModification$$Type)>, "codec"?: $MapCodec$$Type<($BiomeModifier$$Type)>}) | ([biomeModifications?: $Multimap$$Type<($BiomeLoadingPhase$$Type), ($NeoForgeBiomeLoadingHandler$BiomeModification$$Type)>, codec?: $MapCodec$$Type<($BiomeModifier$$Type)>]);
+export type $NeoForgeBiomeLoadingHandler$BiomeModifierImpl$$Type = ({"codec"?: $MapCodec$$Type<($BiomeModifier$$Type)>, "biomeModifications"?: $Multimap$$Type<($BiomeLoadingPhase$$Type), ($NeoForgeBiomeLoadingHandler$BiomeModification$$Type)>}) | ([codec?: $MapCodec$$Type<($BiomeModifier$$Type)>, biomeModifications?: $Multimap$$Type<($BiomeLoadingPhase$$Type), ($NeoForgeBiomeLoadingHandler$BiomeModification$$Type)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -495,10 +495,164 @@ export type $NeoForgeBiomeLoadingHandler$BiomeModifierImpl$$Type = ({"biomeModif
 declare global {
 export type $NeoForgeBiomeLoadingHandler$BiomeModifierImpl_ = $NeoForgeBiomeLoadingHandler$BiomeModifierImpl$$Type;
 }}
+declare module "fuzs.puzzleslib.api.container.v1.ListBackedContainer" {
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$List, $List$$Type} from "java.util.List"
+import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$BlockContainerJS, $BlockContainerJS$$Type} from "dev.latvian.mods.kubejs.level.BlockContainerJS"
+import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$Container, $Container$$Type} from "net.minecraft.world.Container"
+import {$ItemPredicate, $ItemPredicate$$Type} from "dev.latvian.mods.kubejs.item.ItemPredicate"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Set, $Set$$Type} from "java.util.Set"
+import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
+
+export interface $ListBackedContainer extends $Container {
+
+ "removeItem"(slot: integer, count: integer): $ItemStack
+ "getItem"(slot: integer): $ItemStack
+ "isEmpty"(): boolean
+ "setItem"(slot: integer, stack: $ItemStack$$Type): void
+ "clearContent"(): void
+ "setChanged"(): void
+ "stillValid"(player: $Player$$Type): boolean
+ "getContainerSize"(): integer
+ "removeItemNoUpdate"(slot: integer): $ItemStack
+ "getContainerItems"(): $NonNullList<($ItemStack)>
+ "startOpen"(arg0: $Player$$Type): void
+ "stopOpen"(arg0: $Player$$Type): void
+ "canPlaceItem"(arg0: integer, arg1: $ItemStack$$Type): boolean
+ "countItem"(arg0: $Item$$Type): integer
+ "hasAnyOf"(arg0: $Set$$Type<($Item$$Type)>): boolean
+ "hasAnyMatching"(arg0: $Predicate$$Type<($ItemStack)>): boolean
+ "canTakeItem"(arg0: $Container$$Type, arg1: integer, arg2: $ItemStack$$Type): boolean
+ "getMaxStackSize"(): integer
+ "getMaxStackSize"(arg0: $ItemStack$$Type): integer
+ "setTransferCooldown"(arg0: long): void
+ "canReceiveTransferCooldown"(): boolean
+ "lithium$itemInsertionTestRequiresStackSize1"(): boolean
+ "getBlock"(arg0: $Level$$Type): $BlockContainerJS
+ "isMutable"(): boolean
+ "getSlots"(): integer
+ "insertItem"(arg0: integer, arg1: $ItemStack$$Type, arg2: boolean): $ItemStack
+ "clear"(): void
+ "getWidth"(): integer
+ "getHeight"(): integer
+ "setChanged"(): void
+ "self"(): $Container
+ "setStackInSlot"(arg0: integer, arg1: $ItemStack$$Type): void
+ "getStackInSlot"(arg0: integer): $ItemStack
+ "extractItem"(arg0: integer, arg1: integer, arg2: boolean): $ItemStack
+ "getSlotLimit"(arg0: integer): integer
+ "isItemValid"(arg0: integer, arg1: $ItemStack$$Type): boolean
+ "asContainer"(): $Container
+ "insertItem"(arg0: $ItemStack$$Type, arg1: boolean): $ItemStack
+ "clear"(arg0: $ItemPredicate$$Type): void
+ "find"(): integer
+ "find"(arg0: $ItemPredicate$$Type): integer
+ "count"(): integer
+ "count"(arg0: $ItemPredicate$$Type): integer
+ "isEmpty"(): boolean
+ "countNonEmpty"(arg0: $ItemPredicate$$Type): integer
+ "countNonEmpty"(): integer
+ "getAllItems"(): $List<($ItemStack)>
+
+(): $NonNullList$$Type<($ItemStack$$Type)>
+get "empty"(): boolean
+get "containerSize"(): integer
+get "containerItems"(): $NonNullList<($ItemStack)>
+get "maxStackSize"(): integer
+set "transferCooldown"(value: long)
+get "mutable"(): boolean
+get "slots"(): integer
+get "width"(): integer
+get "height"(): integer
+get "empty"(): boolean
+get "allItems"(): $List<($ItemStack)>
+}
+
+export namespace $ListBackedContainer {
+function of(items: $NonNullList$$Type<($ItemStack$$Type)>): $ListBackedContainer
+function of(size: integer): $ListBackedContainer
+function stillValidBlockEntity(arg0: $BlockEntity$$Type, arg1: $Player$$Type): boolean
+function stillValidBlockEntity(arg0: $BlockEntity$$Type, arg1: $Player$$Type, arg2: float): boolean
+function tryClear(arg0: any): void
+const probejs$$marker: never
+}
+export class $ListBackedContainer$$Static implements $ListBackedContainer {
+
+
+ "removeItem"(slot: integer, count: integer): $ItemStack
+ "getItem"(slot: integer): $ItemStack
+ "isEmpty"(): boolean
+static "of"(items: $NonNullList$$Type<($ItemStack$$Type)>): $ListBackedContainer
+static "of"(size: integer): $ListBackedContainer
+ "setItem"(slot: integer, stack: $ItemStack$$Type): void
+ "clearContent"(): void
+ "setChanged"(): void
+ "stillValid"(player: $Player$$Type): boolean
+ "getContainerSize"(): integer
+ "removeItemNoUpdate"(slot: integer): $ItemStack
+ "getContainerItems"(): $NonNullList<($ItemStack)>
+ "startOpen"(arg0: $Player$$Type): void
+ "stopOpen"(arg0: $Player$$Type): void
+ "canPlaceItem"(arg0: integer, arg1: $ItemStack$$Type): boolean
+ "countItem"(arg0: $Item$$Type): integer
+ "hasAnyOf"(arg0: $Set$$Type<($Item$$Type)>): boolean
+ "hasAnyMatching"(arg0: $Predicate$$Type<($ItemStack)>): boolean
+ "canTakeItem"(arg0: $Container$$Type, arg1: integer, arg2: $ItemStack$$Type): boolean
+static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type): boolean
+static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type, arg2: float): boolean
+ "getMaxStackSize"(): integer
+ "getMaxStackSize"(arg0: $ItemStack$$Type): integer
+static "tryClear"(arg0: any): void
+ "setTransferCooldown"(arg0: long): void
+ "canReceiveTransferCooldown"(): boolean
+ "lithium$itemInsertionTestRequiresStackSize1"(): boolean
+ "getBlock"(arg0: $Level$$Type): $BlockContainerJS
+ "isMutable"(): boolean
+ "getSlots"(): integer
+ "insertItem"(arg0: integer, arg1: $ItemStack$$Type, arg2: boolean): $ItemStack
+ "clear"(): void
+ "getWidth"(): integer
+ "getHeight"(): integer
+ "setChanged"(): void
+ "self"(): $Container
+ "setStackInSlot"(arg0: integer, arg1: $ItemStack$$Type): void
+ "getStackInSlot"(arg0: integer): $ItemStack
+ "extractItem"(arg0: integer, arg1: integer, arg2: boolean): $ItemStack
+ "getSlotLimit"(arg0: integer): integer
+ "isItemValid"(arg0: integer, arg1: $ItemStack$$Type): boolean
+ "asContainer"(): $Container
+ "insertItem"(arg0: $ItemStack$$Type, arg1: boolean): $ItemStack
+ "clear"(arg0: $ItemPredicate$$Type): void
+ "find"(): integer
+ "find"(arg0: $ItemPredicate$$Type): integer
+ "count"(): integer
+ "count"(arg0: $ItemPredicate$$Type): integer
+ "isEmpty"(): boolean
+ "countNonEmpty"(arg0: $ItemPredicate$$Type): integer
+ "countNonEmpty"(): integer
+ "getAllItems"(): $List<($ItemStack)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ListBackedContainer$$Type = (() => $NonNullList$$Type<($ItemStack$$Type)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ListBackedContainer_ = $ListBackedContainer$$Type;
+}}
 declare module "fuzs.puzzleslib.api.biome.v1.GenerationSettingsContext" {
 import {$Iterable, $Iterable$$Type} from "java.lang.Iterable"
-import {$GenerationStep$Decoration, $GenerationStep$Decoration$$Type} from "net.minecraft.world.level.levelgen.GenerationStep$Decoration"
 import {$GenerationStep$Carving, $GenerationStep$Carving$$Type} from "net.minecraft.world.level.levelgen.GenerationStep$Carving"
+import {$GenerationStep$Decoration, $GenerationStep$Decoration$$Type} from "net.minecraft.world.level.levelgen.GenerationStep$Decoration"
 import {$PlacedFeature, $PlacedFeature$$Type} from "net.minecraft.world.level.levelgen.placement.PlacedFeature"
 import {$ConfiguredWorldCarver, $ConfiguredWorldCarver$$Type} from "net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver"
 import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
@@ -506,14 +660,14 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export interface $GenerationSettingsContext {
 
- "getFeatures"(arg0: $GenerationStep$Decoration$$Type): $Iterable<($Holder<($PlacedFeature)>)>
  "removeFeature"(arg0: $GenerationStep$Decoration$$Type, arg1: $ResourceKey$$Type<($PlacedFeature)>): boolean
  "removeFeature"(featureKey: $ResourceKey$$Type<($PlacedFeature)>): boolean
  "addCarver"(arg0: $GenerationStep$Carving$$Type, arg1: $ResourceKey$$Type<($ConfiguredWorldCarver<(any)>)>): void
- "removeCarver"(carverKey: $ResourceKey$$Type<($ConfiguredWorldCarver<(any)>)>): boolean
  "removeCarver"(arg0: $GenerationStep$Carving$$Type, arg1: $ResourceKey$$Type<($ConfiguredWorldCarver<(any)>)>): boolean
- "getCarvers"(arg0: $GenerationStep$Carving$$Type): $Iterable<($Holder<($ConfiguredWorldCarver<(any)>)>)>
+ "removeCarver"(carverKey: $ResourceKey$$Type<($ConfiguredWorldCarver<(any)>)>): boolean
  "addFeature"(arg0: $GenerationStep$Decoration$$Type, arg1: $ResourceKey$$Type<($PlacedFeature)>): void
+ "getCarvers"(arg0: $GenerationStep$Carving$$Type): $Iterable<($Holder<($ConfiguredWorldCarver<(any)>)>)>
+ "getFeatures"(arg0: $GenerationStep$Decoration$$Type): $Iterable<($Holder<($PlacedFeature)>)>
 }
 
 export namespace $GenerationSettingsContext {
@@ -522,14 +676,14 @@ const probejs$$marker: never
 export class $GenerationSettingsContext$$Static implements $GenerationSettingsContext {
 
 
- "getFeatures"(arg0: $GenerationStep$Decoration$$Type): $Iterable<($Holder<($PlacedFeature)>)>
  "removeFeature"(arg0: $GenerationStep$Decoration$$Type, arg1: $ResourceKey$$Type<($PlacedFeature)>): boolean
  "removeFeature"(featureKey: $ResourceKey$$Type<($PlacedFeature)>): boolean
  "addCarver"(arg0: $GenerationStep$Carving$$Type, arg1: $ResourceKey$$Type<($ConfiguredWorldCarver<(any)>)>): void
- "removeCarver"(carverKey: $ResourceKey$$Type<($ConfiguredWorldCarver<(any)>)>): boolean
  "removeCarver"(arg0: $GenerationStep$Carving$$Type, arg1: $ResourceKey$$Type<($ConfiguredWorldCarver<(any)>)>): boolean
- "getCarvers"(arg0: $GenerationStep$Carving$$Type): $Iterable<($Holder<($ConfiguredWorldCarver<(any)>)>)>
+ "removeCarver"(carverKey: $ResourceKey$$Type<($ConfiguredWorldCarver<(any)>)>): boolean
  "addFeature"(arg0: $GenerationStep$Decoration$$Type, arg1: $ResourceKey$$Type<($PlacedFeature)>): void
+ "getCarvers"(arg0: $GenerationStep$Carving$$Type): $Iterable<($Holder<($ConfiguredWorldCarver<(any)>)>)>
+ "getFeatures"(arg0: $GenerationStep$Decoration$$Type): $Iterable<($Holder<($PlacedFeature)>)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -629,11 +783,6 @@ import {$EntityType, $EntityType$$Type} from "net.minecraft.world.entity.EntityT
 
 export interface $MobSpawnSettingsContext {
 
- "getCreatureGenerationProbability"(): float
- "setCreatureGenerationProbability"(arg0: float): void
- "removeSpawnsOfEntityType"(entityType: $EntityType$$Type<(any)>): boolean
- "getMobCategoriesWithSpawns"(): $Set<($MobCategory)>
- "getEntityTypesWithSpawnCost"(): $Set<($EntityType<(any)>)>
  "removeSpawns"(arg0: $BiPredicate$$Type<($MobCategory), ($MobSpawnSettings$SpawnerData)>): boolean
  "clearSpawns"(): void
  "clearSpawns"(group: $MobCategory$$Type): void
@@ -642,6 +791,11 @@ export interface $MobSpawnSettingsContext {
  "getSpawnerData"(arg0: $MobCategory$$Type): $List<($MobSpawnSettings$SpawnerData)>
  "getSpawnCost"(arg0: $EntityType$$Type<(any)>): $MobSpawnSettings$MobSpawnCost
  "addSpawn"(arg0: $MobCategory$$Type, arg1: $MobSpawnSettings$SpawnerData$$Type): void
+ "getCreatureGenerationProbability"(): float
+ "setCreatureGenerationProbability"(arg0: float): void
+ "removeSpawnsOfEntityType"(entityType: $EntityType$$Type<(any)>): boolean
+ "getMobCategoriesWithSpawns"(): $Set<($MobCategory)>
+ "getEntityTypesWithSpawnCost"(): $Set<($EntityType<(any)>)>
 get "creatureGenerationProbability"(): float
 set "creatureGenerationProbability"(value: float)
 get "mobCategoriesWithSpawns"(): $Set<($MobCategory)>
@@ -654,11 +808,6 @@ const probejs$$marker: never
 export class $MobSpawnSettingsContext$$Static implements $MobSpawnSettingsContext {
 
 
- "getCreatureGenerationProbability"(): float
- "setCreatureGenerationProbability"(arg0: float): void
- "removeSpawnsOfEntityType"(entityType: $EntityType$$Type<(any)>): boolean
- "getMobCategoriesWithSpawns"(): $Set<($MobCategory)>
- "getEntityTypesWithSpawnCost"(): $Set<($EntityType<(any)>)>
  "removeSpawns"(arg0: $BiPredicate$$Type<($MobCategory), ($MobSpawnSettings$SpawnerData)>): boolean
  "clearSpawns"(): void
  "clearSpawns"(group: $MobCategory$$Type): void
@@ -667,6 +816,11 @@ export class $MobSpawnSettingsContext$$Static implements $MobSpawnSettingsContex
  "getSpawnerData"(arg0: $MobCategory$$Type): $List<($MobSpawnSettings$SpawnerData)>
  "getSpawnCost"(arg0: $EntityType$$Type<(any)>): $MobSpawnSettings$MobSpawnCost
  "addSpawn"(arg0: $MobCategory$$Type, arg1: $MobSpawnSettings$SpawnerData$$Type): void
+ "getCreatureGenerationProbability"(): float
+ "setCreatureGenerationProbability"(arg0: float): void
+ "removeSpawnsOfEntityType"(entityType: $EntityType$$Type<(any)>): boolean
+ "getMobCategoriesWithSpawns"(): $Set<($MobCategory)>
+ "getEntityTypesWithSpawnCost"(): $Set<($EntityType<(any)>)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -686,15 +840,15 @@ import {$Biome$TemperatureModifier, $Biome$TemperatureModifier$$Type} from "net.
 export interface $ClimateSettingsContext {
 
  "getTemperature"(): float
- "hasPrecipitation"(arg0: boolean): void
- "hasPrecipitation"(): boolean
- "setTemperatureModifier"(arg0: $Biome$TemperatureModifier$$Type): void
  "setTemperature"(arg0: float): void
  "setDownfall"(arg0: float): void
+ "setTemperatureModifier"(arg0: $Biome$TemperatureModifier$$Type): void
+ "hasPrecipitation"(): boolean
+ "hasPrecipitation"(arg0: boolean): void
 get "temperature"(): float
-set "temperatureModifier"(value: $Biome$TemperatureModifier$$Type)
 set "temperature"(value: float)
 set "downfall"(value: float)
+set "temperatureModifier"(value: $Biome$TemperatureModifier$$Type)
 }
 
 export namespace $ClimateSettingsContext {
@@ -704,11 +858,11 @@ export class $ClimateSettingsContext$$Static implements $ClimateSettingsContext 
 
 
  "getTemperature"(): float
- "hasPrecipitation"(arg0: boolean): void
- "hasPrecipitation"(): boolean
- "setTemperatureModifier"(arg0: $Biome$TemperatureModifier$$Type): void
  "setTemperature"(arg0: float): void
  "setDownfall"(arg0: float): void
+ "setTemperatureModifier"(arg0: $Biome$TemperatureModifier$$Type): void
+ "hasPrecipitation"(): boolean
+ "hasPrecipitation"(arg0: boolean): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -734,7 +888,7 @@ export class $BiomeModificationContext extends $Record {
 constructor(climateSettings: $ClimateSettingsContext$$Type, specialEffects: $SpecialEffectsContext$$Type, generationSettings: $GenerationSettingsContext$$Type, mobSpawnSettings: $MobSpawnSettingsContext$$Type)
 
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "specialEffects"(): $SpecialEffectsContext
 public "generationSettings"(): $GenerationSettingsContext
@@ -745,7 +899,7 @@ public "climateSettings"(): $ClimateSettingsContext
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $BiomeModificationContext$$Type = ({"mobSpawnSettings"?: $MobSpawnSettingsContext$$Type, "climateSettings"?: $ClimateSettingsContext$$Type, "specialEffects"?: $SpecialEffectsContext$$Type, "generationSettings"?: $GenerationSettingsContext$$Type}) | ([mobSpawnSettings?: $MobSpawnSettingsContext$$Type, climateSettings?: $ClimateSettingsContext$$Type, specialEffects?: $SpecialEffectsContext$$Type, generationSettings?: $GenerationSettingsContext$$Type]);
+export type $BiomeModificationContext$$Type = ({"generationSettings"?: $GenerationSettingsContext$$Type, "mobSpawnSettings"?: $MobSpawnSettingsContext$$Type, "climateSettings"?: $ClimateSettingsContext$$Type, "specialEffects"?: $SpecialEffectsContext$$Type}) | ([generationSettings?: $GenerationSettingsContext$$Type, mobSpawnSettings?: $MobSpawnSettingsContext$$Type, climateSettings?: $ClimateSettingsContext$$Type, specialEffects?: $SpecialEffectsContext$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.

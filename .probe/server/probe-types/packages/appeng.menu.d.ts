@@ -1,15 +1,15 @@
 declare module "appeng.menu.me.common.IClientRepo" {
 import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
-import {$List, $List$$Type} from "java.util.List"
 import {$GridInventoryEntry, $GridInventoryEntry$$Type} from "appeng.menu.me.common.GridInventoryEntry"
+import {$List, $List$$Type} from "java.util.List"
 import {$Set, $Set$$Type} from "java.util.Set"
 
 export interface $IClientRepo {
 
- "getByIngredient"(arg0: $Ingredient$$Type): $Collection<($GridInventoryEntry)>
  "getAllEntries"(): $Set<($GridInventoryEntry)>
  "handleUpdate"(arg0: boolean, arg1: $List$$Type<($GridInventoryEntry$$Type)>): void
+ "getByIngredient"(arg0: $Ingredient$$Type): $Collection<($GridInventoryEntry)>
 get "allEntries"(): $Set<($GridInventoryEntry)>
 }
 
@@ -19,9 +19,9 @@ const probejs$$marker: never
 export class $IClientRepo$$Static implements $IClientRepo {
 
 
- "getByIngredient"(arg0: $Ingredient$$Type): $Collection<($GridInventoryEntry)>
  "getAllEntries"(): $Set<($GridInventoryEntry)>
  "handleUpdate"(arg0: boolean, arg1: $List$$Type<($GridInventoryEntry$$Type)>): void
+ "getByIngredient"(arg0: $Ingredient$$Type): $Collection<($GridInventoryEntry)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -43,15 +43,15 @@ export class $GridInventoryEntry {
 constructor(arg0: long, arg1: $AEKey$$Type, arg2: long, arg3: long, arg4: boolean)
 
 public "getSerial"(): long
-public "getStoredAmount"(): long
-public "isCraftable"(): boolean
 public "getWhat"(): $AEKey
+public "isCraftable"(): boolean
+public "getStoredAmount"(): long
 public "getRequestableAmount"(): long
 public "isMeaningful"(): boolean
 get "serial"(): long
-get "storedAmount"(): long
-get "craftable"(): boolean
 get "what"(): $AEKey
+get "craftable"(): boolean
+get "storedAmount"(): long
 get "requestableAmount"(): long
 get "meaningful"(): boolean
 }
@@ -108,10 +108,10 @@ import {$Logger, $Logger$$Type} from "org.slf4j.Logger"
 
 export interface $ItemMenuHostLocator extends $MenuHostLocator {
 
- "getPlayerInventorySlot"(): integer
- "hitResult"(): $BlockHitResult
  "locate"<T>(arg0: $Player$$Type, arg1: $Class$$Type<(T)>): T
+ "hitResult"(): $BlockHitResult
  "locateItem"(arg0: $Player$$Type): $ItemStack
+ "getPlayerInventorySlot"(): integer
 get "playerInventorySlot"(): integer
 }
 
@@ -123,10 +123,10 @@ export class $ItemMenuHostLocator$$Static implements $ItemMenuHostLocator {
 static readonly "LOG": $Logger
 
 
- "getPlayerInventorySlot"(): integer
- "hitResult"(): $BlockHitResult
  "locate"<T>(arg0: $Player$$Type, arg1: $Class$$Type<(T)>): T
+ "hitResult"(): $BlockHitResult
  "locateItem"(arg0: $Player$$Type): $ItemStack
+ "getPlayerInventorySlot"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -228,14 +228,6 @@ static readonly "QUICKCRAFT_TYPE_CHARITABLE": integer
 constructor(arg0: $MenuType$$Type<(any)>, arg1: integer, arg2: $Inventory$$Type, arg3: $ITerminalHost$$Type)
 
 public "getHost"(): $ITerminalHost
-public "onServerDataSync"(arg0: $ShortSet$$Type): void
-public "canConfigureTypeFilter"(): boolean
-public "getGridNode"(): $IGridNode
-public "setGui"(arg0: $Runnable$$Type): void
-public "broadcastChanges"(): void
-public "handleInteraction"(arg0: long, arg1: $InventoryAction$$Type): void
-public "getConfigManager"(): $IConfigManager
-public "getLinkStatus"(): $ILinkStatus
 public "isKeyVisible"(arg0: $AEKey$$Type): boolean
 public "getClientRepo"(): $IClientRepo
 public "getToolbox"(): $ToolboxMenu
@@ -243,19 +235,27 @@ public "getViewCells"(): $List<($ItemStack)>
 public "setClientRepo"(arg0: $IClientRepo$$Type): void
 public "hasIngredient"(arg0: $Ingredient$$Type, arg1: $Object2IntOpenHashMap$$Type<(any)>): boolean
 public "setLinkStatus"(arg0: $ILinkStatus$$Type): void
+public "getLinkStatus"(): $ILinkStatus
+public "getGridNode"(): $IGridNode
+public "handleInteraction"(arg0: long, arg1: $InventoryAction$$Type): void
+public "broadcastChanges"(): void
+public "getConfigManager"(): $IConfigManager
+public "setGui"(arg0: $Runnable$$Type): void
+public "canConfigureTypeFilter"(): boolean
+public "onServerDataSync"(arg0: $ShortSet$$Type): void
 public "getServerKeyTypeSelection"(): $KeyTypeSelection
 public "getClientKeyTypeSelection"(): $KeyTypeSelectionMenu$SyncedKeyTypes
 public "selectKeyType"(arg0: $AEKeyType$$Type, arg1: boolean): void
 get "host"(): $ITerminalHost
-get "gridNode"(): $IGridNode
-set "gui"(value: $Runnable$$Type)
-get "configManager"(): $IConfigManager
-get "linkStatus"(): $ILinkStatus
 get "clientRepo"(): $IClientRepo
 get "toolbox"(): $ToolboxMenu
 get "viewCells"(): $List<($ItemStack)>
 set "clientRepo"(value: $IClientRepo$$Type)
 set "linkStatus"(value: $ILinkStatus$$Type)
+get "linkStatus"(): $ILinkStatus
+get "gridNode"(): $IGridNode
+get "configManager"(): $IConfigManager
+set "gui"(value: $Runnable$$Type)
 get "serverKeyTypeSelection"(): $KeyTypeSelection
 get "clientKeyTypeSelection"(): $KeyTypeSelectionMenu$SyncedKeyTypes
 }
@@ -278,8 +278,8 @@ import {$List, $List$$Type} from "java.util.List"
 import {$IActionSource, $IActionSource$$Type} from "appeng.api.networking.security.IActionSource"
 import {$MenuHostLocator, $MenuHostLocator$$Type} from "appeng.menu.locator.MenuHostLocator"
 import {$InventoryAction, $InventoryAction$$Type} from "appeng.helpers.InventoryAction"
-import {$SlotSemantic, $SlotSemantic$$Type} from "appeng.menu.SlotSemantic"
 import {$Inventory, $Inventory$$Type} from "net.minecraft.world.entity.player.Inventory"
+import {$SlotSemantic, $SlotSemantic$$Type} from "appeng.menu.SlotSemantic"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$ShortSet, $ShortSet$$Type} from "it.unimi.dsi.fastutil.shorts.ShortSet"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
@@ -314,10 +314,28 @@ static readonly "QUICKCRAFT_TYPE_CHARITABLE": integer
 
 constructor(arg0: $MenuType$$Type<(any)>, arg1: integer, arg2: $Inventory$$Type, arg3: any)
 
-public "setLocator"(arg0: $MenuHostLocator$$Type): void
-public "getLocator"(): $MenuHostLocator
 public "getTarget"(): any
 public "setFilter"(arg0: integer, arg1: $ItemStack$$Type): void
+public "setLocator"(arg0: $MenuHostLocator$$Type): void
+public "getLocator"(): $MenuHostLocator
+public "getPlayer"(): $Player
+public "stillValid"(arg0: $Player$$Type): boolean
+public "canDragTo"(arg0: $Slot$$Type): boolean
+public "clicked"(arg0: integer, arg1: integer, arg2: $ClickType$$Type, arg3: $Player$$Type): void
+public "getBlockEntity"(): $BlockEntity
+public "isClientSide"(): boolean
+public "getSlots"(arg0: $SlotSemantic$$Type): $List<($Slot)>
+public "hideSlot"(arg0: StringJS): void
+public "isValidMenu"(): boolean
+public "setValidMenu"(arg0: boolean): void
+public "isValidForSlot"(arg0: $Slot$$Type, arg1: $ItemStack$$Type): boolean
+public "doAction"(arg0: $ServerPlayer$$Type, arg1: $InventoryAction$$Type, arg2: integer, arg3: long): void
+public "onSlotChange"(arg0: $Slot$$Type): void
+public "quickMoveStack"(arg0: $Player$$Type, arg1: integer): $ItemStack
+public "getPlayerInventory"(): $Inventory
+public "sendAllDataToRemote"(): void
+public "initializeContents"(arg0: integer, arg1: $List$$Type<($ItemStack$$Type)>, arg2: $ItemStack$$Type): void
+public "broadcastChanges"(): void
 public "addClientSideSlot"(arg0: $Slot$$Type, arg1: $SlotSemantic$$Type): $Slot
 public "removeClientSideSlot"(arg0: $Slot$$Type): void
 public "isClientSideSlot"(arg0: $Slot$$Type): boolean
@@ -326,41 +344,23 @@ public "isPlayerSideSlot"(arg0: $Slot$$Type): boolean
 public "swapSlotContents"(arg0: integer, arg1: integer): void
 public "onServerDataSync"(arg0: $ShortSet$$Type): void
 public "receiveServerSyncData"(arg0: $RegistryFriendlyByteBuf$$Type): void
-public "receiveClientAction"(arg0: string, arg1: string): void
-public "callSendClientAction"(arg0: string): void
-public "getPlayer"(): $Player
-public "quickMoveStack"(arg0: $Player$$Type, arg1: integer): $ItemStack
-public "getBlockEntity"(): $BlockEntity
-public "clicked"(arg0: integer, arg1: integer, arg2: $ClickType$$Type, arg3: $Player$$Type): void
-public "isClientSide"(): boolean
-public "stillValid"(arg0: $Player$$Type): boolean
-public "canDragTo"(arg0: $Slot$$Type): boolean
-public "getSlots"(arg0: $SlotSemantic$$Type): $List<($Slot)>
-public "broadcastChanges"(): void
-public "sendAllDataToRemote"(): void
-public "initializeContents"(arg0: integer, arg1: $List$$Type<($ItemStack$$Type)>, arg2: $ItemStack$$Type): void
+public "receiveClientAction"(arg0: StringJS, arg1: StringJS): void
+public "callSendClientAction"(arg0: StringJS): void
 public "getActionSource"(): $IActionSource
-public "getPlayerInventory"(): $Inventory
-public "doAction"(arg0: $ServerPlayer$$Type, arg1: $InventoryAction$$Type, arg2: integer, arg3: long): void
-public "onSlotChange"(arg0: $Slot$$Type): void
-public "hideSlot"(arg0: string): void
-public "isValidMenu"(): boolean
-public "setValidMenu"(arg0: boolean): void
-public "isValidForSlot"(arg0: $Slot$$Type, arg1: $ItemStack$$Type): boolean
 public "lockPlayerInventorySlot"(arg0: integer): void
 public "isPlayerInventorySlotLocked"(arg0: integer): boolean
 public "isReturnedFromSubScreen"(): boolean
 public "setReturnedFromSubScreen"(arg0: boolean): void
+get "target"(): any
 set "locator"(value: $MenuHostLocator$$Type)
 get "locator"(): $MenuHostLocator
-get "target"(): any
 get "player"(): $Player
 get "blockEntity"(): $BlockEntity
 get "clientSide"(): boolean
-get "actionSource"(): $IActionSource
-get "playerInventory"(): $Inventory
 get "validMenu"(): boolean
 set "validMenu"(value: boolean)
+get "playerInventory"(): $Inventory
+get "actionSource"(): $IActionSource
 get "returnedFromSubScreen"(): boolean
 set "returnedFromSubScreen"(value: boolean)
 }
@@ -379,8 +379,8 @@ export type $AEBaseMenu_ = $AEBaseMenu$$Type;
 declare module "appeng.menu.interfaces.KeyTypeSelectionMenu$SyncedKeyTypes" {
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
-import {$AEKeyType, $AEKeyType$$Type} from "appeng.api.stacks.AEKeyType"
 import {$List, $List$$Type} from "java.util.List"
+import {$AEKeyType, $AEKeyType$$Type} from "appeng.api.stacks.AEKeyType"
 import {$PacketWritable, $PacketWritable$$Type} from "appeng.menu.guisync.PacketWritable"
 import {$Record, $Record$$Type} from "java.lang.Record"
 
@@ -392,7 +392,7 @@ constructor(arg0: $RegistryFriendlyByteBuf$$Type)
 
 public "keyTypes"(): $Map<($AEKeyType), (boolean)>
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "enabledSet"(): $List<($AEKeyType)>
 public "writeToPacket"(arg0: $RegistryFriendlyByteBuf$$Type): void
@@ -414,20 +414,20 @@ import {$Record, $Record$$Type} from "java.lang.Record"
 
 export class $SlotSemantic extends $Record {
 
-constructor(id: string, playerSide: boolean, quickMovePriority: integer)
+constructor(id: StringJS, playerSide: boolean, quickMovePriority: integer)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "id"(): string
-public "quickMovePriority"(): integer
+public "id"(): StringJS
 public "playerSide"(): boolean
+public "quickMovePriority"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $SlotSemantic$$Type = ({"id"?: string, "playerSide"?: boolean, "quickMovePriority"?: integer}) | ([id?: string, playerSide?: boolean, quickMovePriority?: integer]);
+export type $SlotSemantic$$Type = ({"playerSide"?: boolean, "quickMovePriority"?: integer, "id"?: StringJS}) | ([playerSide?: boolean, quickMovePriority?: integer, id?: StringJS]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -443,9 +443,9 @@ export class $ToolboxMenu {
 
 constructor(arg0: $AEBaseMenu$$Type)
 
+public "tick"(): void
 public "getName"(): $Component
 public "isPresent"(): boolean
-public "tick"(): void
 get "name"(): $Component
 get "present"(): boolean
 }
@@ -467,10 +467,10 @@ import {$ISubMenuHost, $ISubMenuHost$$Type} from "appeng.api.storage.ISubMenuHos
 
 export interface $ISubMenu {
 
- "getLocator"(): $MenuHostLocator
  "getHost"(): $ISubMenuHost
-get "locator"(): $MenuHostLocator
+ "getLocator"(): $MenuHostLocator
 get "host"(): $ISubMenuHost
+get "locator"(): $MenuHostLocator
 }
 
 export namespace $ISubMenu {
@@ -479,8 +479,8 @@ const probejs$$marker: never
 export class $ISubMenu$$Static implements $ISubMenu {
 
 
- "getLocator"(): $MenuHostLocator
  "getHost"(): $ISubMenuHost
+ "getLocator"(): $MenuHostLocator
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

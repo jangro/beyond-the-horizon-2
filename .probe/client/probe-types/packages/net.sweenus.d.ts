@@ -1,12 +1,12 @@
 declare module "net.sweenus.simplyswords.power.powers.StoneskinPower" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$RunefusedGemPower, $RunefusedGemPower$$Type} from "net.sweenus.simplyswords.power.RunefusedGemPower"
+import {$List, $List$$Type} from "java.util.List"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$GemPower, $GemPower$$Type} from "net.sweenus.simplyswords.power.GemPower"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 
 export class $StoneskinPower extends $RunefusedGemPower {
 static "EMPTY": $GemPower
@@ -47,8 +47,8 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
-public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 public "applyEffectTick"(pLivingEntity: $LivingEntity$$Type, pAmplifier: integer): boolean
+public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -64,8 +64,8 @@ export type $OnslaughtEffect_ = $OnslaughtEffect$$Type;
 }}
 declare module "net.sweenus.simplyswords.recipe.RunicRerollRecipe" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
+import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$SmithingRecipeInput, $SmithingRecipeInput$$Type} from "net.minecraft.world.item.crafting.SmithingRecipeInput"
 import {$SmithingTransformRecipe, $SmithingTransformRecipe$$Type} from "net.minecraft.world.item.crafting.SmithingTransformRecipe"
 import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.item.crafting.RecipeSerializer"
@@ -79,9 +79,9 @@ readonly "addition": $Ingredient
 
 constructor(template: $Ingredient$$Type, base: $Ingredient$$Type, addition: $Ingredient$$Type, result: $ItemStack$$Type)
 
-public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "assemble"(smithingRecipeInput: $SmithingRecipeInput$$Type, wrapperLookup: $HolderLookup$Provider$$Type): $ItemStack
 public "getSerializer"(): $RecipeSerializer<(any)>
+public "assemble"(smithingRecipeInput: $SmithingRecipeInput$$Type, wrapperLookup: $HolderLookup$Provider$$Type): $ItemStack
+public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
 get "serializer"(): $RecipeSerializer<(any)>
 }
 /**
@@ -97,8 +97,8 @@ declare global {
 export type $RunicRerollRecipe_ = $RunicRerollRecipe$$Type;
 }}
 declare module "net.sweenus.simplyswords.power.PowerType" {
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$RegistrySupplier, $RegistrySupplier$$Type} from "dev.architectury.registry.registries.RegistrySupplier"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$List, $List$$Type} from "java.util.List"
 import {$GemPower, $GemPower$$Type} from "net.sweenus.simplyswords.power.GemPower"
 
@@ -108,9 +108,9 @@ static readonly "RUNIC": $PowerType
 static readonly "RUNEFUSED": $PowerType
 
 
-public static "values"(): ($PowerType)[]
-public static "valueOf"(name: string): $PowerType
 public "getEntries"(): $List<($RegistrySupplier<($GemPower)>)>
+public static "values"(): ($PowerType)[]
+public static "valueOf"(name: StringJS): $PowerType
 get "entries"(): $List<($RegistrySupplier<($GemPower)>)>
 }
 /**
@@ -126,15 +126,17 @@ declare global {
 export type $PowerType_ = $PowerType$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.ThunderbrandSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$UseAnim, $UseAnim$$Type} from "net.minecraft.world.item.UseAnim"
@@ -150,7 +152,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $ThunderbrandSwordItem extends $UniqueSwordItem implements $TwoHandedWeapon {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -160,13 +162,14 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "releaseUsing"(stack: $ItemStack$$Type, world: $Level$$Type, user: $LivingEntity$$Type, remainingUseTicks: integer): void
 public "onUseTick"(world: $Level$$Type, user: $LivingEntity$$Type, stack: $ItemStack$$Type, remainingUseTicks: integer): void
 public "getUseDuration"(stack: $ItemStack$$Type, user: $LivingEntity$$Type): integer
-public "releaseUsing"(stack: $ItemStack$$Type, world: $Level$$Type, user: $LivingEntity$$Type, remainingUseTicks: integer): void
 public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
-public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
-public "getUseAnimation"(stack: $ItemStack$$Type): $UseAnim
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public "getUseAnimation"(stack: $ItemStack$$Type): $UseAnim
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -181,15 +184,18 @@ declare global {
 export type $ThunderbrandSwordItem_ = $ThunderbrandSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.BrambleSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$UniqueSwordItem, $UniqueSwordItem$$Type} from "net.sweenus.simplyswords.item.UniqueSwordItem"
@@ -200,7 +206,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $BrambleSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -209,9 +215,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -233,10 +240,10 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AttributeMap, $AttributeMap$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeMap"
-import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$OrbitingEffect, $OrbitingEffect$$Type} from "net.sweenus.simplyswords.effect.OrbitingEffect"
+import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
 
 export class $FireVortexEffect extends $OrbitingEffect {
@@ -248,13 +255,13 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
-public "setAdditionalData"(data: integer): void
-public "setSourcePlayer"(livingEntity: $LivingEntity$$Type): void
+public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
 public "removeAttributeModifiers"(attributes: $AttributeMap$$Type): void
 public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
-public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
-set "additionalData"(value: integer)
+public "setSourcePlayer"(livingEntity: $LivingEntity$$Type): void
+public "setAdditionalData"(data: integer): void
 set "sourcePlayer"(value: $LivingEntity$$Type)
+set "additionalData"(value: integer)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -276,8 +283,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AttributeMap, $AttributeMap$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeMap"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$OrbitingEffect, $OrbitingEffect$$Type} from "net.sweenus.simplyswords.effect.OrbitingEffect"
 import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
@@ -289,9 +296,9 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
+public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
 public "removeAttributeModifiers"(attributes: $AttributeMap$$Type): void
 public "shouldApplyEffectTickThisTick"(duration: integer, amplifier: integer): boolean
-public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -313,10 +320,10 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AttributeMap, $AttributeMap$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeMap"
-import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$OrbitingEffect, $OrbitingEffect$$Type} from "net.sweenus.simplyswords.effect.OrbitingEffect"
+import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
 
 export class $VoidAssaultEffect extends $OrbitingEffect {
@@ -328,13 +335,13 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
-public "setAdditionalData"(data: integer): void
-public "setSourcePlayer"(livingEntity: $LivingEntity$$Type): void
+public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
 public "removeAttributeModifiers"(attributes: $AttributeMap$$Type): void
 public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
-public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
-set "additionalData"(value: integer)
+public "setSourcePlayer"(livingEntity: $LivingEntity$$Type): void
+public "setAdditionalData"(data: integer): void
 set "sourcePlayer"(value: $LivingEntity$$Type)
+set "additionalData"(value: integer)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -356,10 +363,10 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AttributeMap, $AttributeMap$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeMap"
-import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$OrbitingEffect, $OrbitingEffect$$Type} from "net.sweenus.simplyswords.effect.OrbitingEffect"
+import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
 
 export class $FlameSeedEffect extends $OrbitingEffect {
@@ -371,13 +378,13 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
-public "setAdditionalData"(data: integer): void
-public "setSourcePlayer"(livingEntity: $LivingEntity$$Type): void
+public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
 public "removeAttributeModifiers"(attributes: $AttributeMap$$Type): void
 public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
-public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
-set "additionalData"(value: integer)
+public "setSourcePlayer"(livingEntity: $LivingEntity$$Type): void
+public "setAdditionalData"(data: integer): void
 set "sourcePlayer"(value: $LivingEntity$$Type)
+set "additionalData"(value: integer)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -392,15 +399,17 @@ declare global {
 export type $FlameSeedEffect_ = $FlameSeedEffect$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.TaintedRelicSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -414,7 +423,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $TaintedRelicSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -424,9 +433,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -443,15 +453,15 @@ export type $TaintedRelicSwordItem_ = $TaintedRelicSwordItem$$Type;
 declare module "net.sweenus.simplyswords.power.powers.ThrowingPower" {
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$List, $List$$Type} from "java.util.List"
 import {$RunicGemPower, $RunicGemPower$$Type} from "net.sweenus.simplyswords.power.RunicGemPower"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$GemPower, $GemPower$$Type} from "net.sweenus.simplyswords.power.GemPower"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 
 export class $ThrowingPower extends $RunicGemPower {
 static "EMPTY": $GemPower
@@ -475,13 +485,13 @@ export type $ThrowingPower_ = $ThrowingPower$$Type;
 }}
 declare module "net.sweenus.simplyswords.power.powers.SwiftnessPower" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$RunefusedGemPower, $RunefusedGemPower$$Type} from "net.sweenus.simplyswords.power.RunefusedGemPower"
+import {$List, $List$$Type} from "java.util.List"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$GemPower, $GemPower$$Type} from "net.sweenus.simplyswords.power.GemPower"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 
 export class $SwiftnessPower extends $RunefusedGemPower {
 static "EMPTY": $GemPower
@@ -504,15 +514,17 @@ declare global {
 export type $SwiftnessPower_ = $SwiftnessPower$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.SoulPyreSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -527,7 +539,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $SoulPyreSwordItem extends $UniqueSwordItem implements $TwoHandedWeapon {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -537,9 +549,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -554,19 +567,21 @@ declare global {
 export type $SoulPyreSwordItem_ = $SoulPyreSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.UniqueSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$SlotAccess, $SlotAccess$$Type} from "net.minecraft.world.entity.SlotAccess"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$SwordItem, $SwordItem$$Type} from "net.minecraft.world.item.SwordItem"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
-import {$Slot, $Slot$$Type} from "net.minecraft.world.inventory.Slot"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$Slot, $Slot$$Type} from "net.minecraft.world.inventory.Slot"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$ClickAction, $ClickAction$$Type} from "net.minecraft.world.inventory.ClickAction"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
@@ -577,7 +592,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $UniqueSwordItem extends $SwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -587,11 +602,12 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "getName"(stack: $ItemStack$$Type): $Component
-public "overrideOtherStackedOnMe"(stack: $ItemStack$$Type, otherStack: $ItemStack$$Type, slot: $Slot$$Type, clickType: $ClickAction$$Type, player: $Player$$Type, cursorStackReference: $SlotAccess$$Type): boolean
+public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
 public "getUseDuration"(stack: $ItemStack$$Type, user: $LivingEntity$$Type): integer
 public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
-public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public "overrideOtherStackedOnMe"(stack: $ItemStack$$Type, otherStack: $ItemStack$$Type, slot: $Slot$$Type, clickType: $ClickAction$$Type, player: $Player$$Type, cursorStackReference: $SlotAccess$$Type): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -607,13 +623,13 @@ export type $UniqueSwordItem_ = $UniqueSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.power.powers.PincushionPower" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$RunefusedGemPower, $RunefusedGemPower$$Type} from "net.sweenus.simplyswords.power.RunefusedGemPower"
+import {$List, $List$$Type} from "java.util.List"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$GemPower, $GemPower$$Type} from "net.sweenus.simplyswords.power.GemPower"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 
 export class $PincushionPower extends $RunefusedGemPower {
 static "EMPTY": $GemPower
@@ -657,15 +673,17 @@ declare global {
 export type $RunefusedGemPower_ = $RunefusedGemPower$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.LivyatanSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -679,7 +697,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $LivyatanSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -689,9 +707,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -707,13 +726,13 @@ export type $LivyatanSwordItem_ = $LivyatanSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.power.powers.ShieldingPower" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$RunefusedGemPower, $RunefusedGemPower$$Type} from "net.sweenus.simplyswords.power.RunefusedGemPower"
+import {$List, $List$$Type} from "java.util.List"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$GemPower, $GemPower$$Type} from "net.sweenus.simplyswords.power.GemPower"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 
 export class $ShieldingPower extends $RunefusedGemPower {
 static "EMPTY": $GemPower
@@ -736,15 +755,17 @@ declare global {
 export type $ShieldingPower_ = $ShieldingPower$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.HarbingerSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -758,7 +779,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $HarbingerSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -768,9 +789,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -785,15 +807,18 @@ declare global {
 export type $HarbingerSwordItem_ = $HarbingerSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.WatcherSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$UniqueSwordItem, $UniqueSwordItem$$Type} from "net.sweenus.simplyswords.item.UniqueSwordItem"
@@ -804,7 +829,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $WatcherSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -813,9 +838,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -831,13 +857,13 @@ export type $WatcherSwordItem_ = $WatcherSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.power.powers.TrailblazePower" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$RunefusedGemPower, $RunefusedGemPower$$Type} from "net.sweenus.simplyswords.power.RunefusedGemPower"
+import {$List, $List$$Type} from "java.util.List"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$GemPower, $GemPower$$Type} from "net.sweenus.simplyswords.power.GemPower"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 
 export class $TrailblazePower extends $RunefusedGemPower {
 static "EMPTY": $GemPower
@@ -860,15 +886,17 @@ declare global {
 export type $TrailblazePower_ = $TrailblazePower$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.IcewhisperSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$UseAnim, $UseAnim$$Type} from "net.minecraft.world.item.UseAnim"
@@ -884,7 +912,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $IcewhisperSwordItem extends $UniqueSwordItem implements $TwoHandedWeapon {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -894,13 +922,14 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "releaseUsing"(stack: $ItemStack$$Type, world: $Level$$Type, user: $LivingEntity$$Type, remainingUseTicks: integer): void
 public "onUseTick"(world: $Level$$Type, user: $LivingEntity$$Type, stack: $ItemStack$$Type, remainingUseTicks: integer): void
 public "getUseDuration"(stack: $ItemStack$$Type, user: $LivingEntity$$Type): integer
-public "releaseUsing"(stack: $ItemStack$$Type, world: $Level$$Type, user: $LivingEntity$$Type, remainingUseTicks: integer): void
 public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
-public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
-public "getUseAnimation"(stack: $ItemStack$$Type): $UseAnim
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public "getUseAnimation"(stack: $ItemStack$$Type): $UseAnim
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -915,15 +944,17 @@ declare global {
 export type $IcewhisperSwordItem_ = $IcewhisperSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.MagibladeSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$UseAnim, $UseAnim$$Type} from "net.minecraft.world.item.UseAnim"
@@ -938,7 +969,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $MagibladeSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -948,13 +979,14 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "releaseUsing"(stack: $ItemStack$$Type, world: $Level$$Type, user: $LivingEntity$$Type, remainingUseTicks: integer): void
 public "onUseTick"(world: $Level$$Type, user: $LivingEntity$$Type, stack: $ItemStack$$Type, remainingUseTicks: integer): void
 public "getUseDuration"(stack: $ItemStack$$Type, user: $LivingEntity$$Type): integer
-public "releaseUsing"(stack: $ItemStack$$Type, world: $Level$$Type, user: $LivingEntity$$Type, remainingUseTicks: integer): void
 public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
-public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
-public "getUseAnimation"(stack: $ItemStack$$Type): $UseAnim
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public "getUseAnimation"(stack: $ItemStack$$Type): $UseAnim
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -970,14 +1002,14 @@ export type $MagibladeSwordItem_ = $MagibladeSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.power.powers.UnstablePower" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$RunefusedGemPower, $RunefusedGemPower$$Type} from "net.sweenus.simplyswords.power.RunefusedGemPower"
+import {$List, $List$$Type} from "java.util.List"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$GemPower, $GemPower$$Type} from "net.sweenus.simplyswords.power.GemPower"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 
 export class $UnstablePower extends $RunefusedGemPower {
 static "EMPTY": $GemPower
@@ -1000,15 +1032,17 @@ declare global {
 export type $UnstablePower_ = $UnstablePower$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.DormantRelicSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -1022,7 +1056,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $DormantRelicSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -1032,9 +1066,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1049,15 +1084,17 @@ declare global {
 export type $DormantRelicSwordItem_ = $DormantRelicSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.ArcanethystSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$UseAnim, $UseAnim$$Type} from "net.minecraft.world.item.UseAnim"
@@ -1073,7 +1110,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $ArcanethystSwordItem extends $UniqueSwordItem implements $TwoHandedWeapon {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -1083,13 +1120,14 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "releaseUsing"(stack: $ItemStack$$Type, world: $Level$$Type, user: $LivingEntity$$Type, remainingUseTicks: integer): void
 public "onUseTick"(world: $Level$$Type, user: $LivingEntity$$Type, stack: $ItemStack$$Type, remainingUseTicks: integer): void
 public "getUseDuration"(stack: $ItemStack$$Type, user: $LivingEntity$$Type): integer
-public "releaseUsing"(stack: $ItemStack$$Type, world: $Level$$Type, user: $LivingEntity$$Type, remainingUseTicks: integer): void
 public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
-public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
-public "getUseAnimation"(stack: $ItemStack$$Type): $UseAnim
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public "getUseAnimation"(stack: $ItemStack$$Type): $UseAnim
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1104,15 +1142,17 @@ declare global {
 export type $ArcanethystSwordItem_ = $ArcanethystSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.TempestSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -1126,7 +1166,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $TempestSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -1136,9 +1176,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1171,8 +1212,8 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
-public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 public "applyEffectTick"(pLivingEntity: $LivingEntity$$Type, pAmplifier: integer): boolean
+public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1206,8 +1247,8 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
-public "shouldApplyEffectTickThisTick"(duration: integer, amplifier: integer): boolean
 public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
+public "shouldApplyEffectTickThisTick"(duration: integer, amplifier: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1222,15 +1263,17 @@ declare global {
 export type $MagistormEffect_ = $MagistormEffect$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.StealSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -1244,7 +1287,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $StealSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -1254,9 +1297,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1289,8 +1333,8 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
-public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
+public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1305,15 +1349,17 @@ declare global {
 export type $SmoulderingEffect_ = $SmoulderingEffect$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.SoulkeeperSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -1328,7 +1374,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $SoulkeeperSwordItem extends $UniqueSwordItem implements $TwoHandedWeapon {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -1338,9 +1384,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1355,33 +1402,35 @@ declare global {
 export type $SoulkeeperSwordItem_ = $SoulkeeperSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.RunicSwordItem" {
-import {$Map, $Map$$Type} from "java.util.Map"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$List, $List$$Type} from "java.util.List"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$SlotAccess, $SlotAccess$$Type} from "net.minecraft.world.entity.SlotAccess"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$SwordItem, $SwordItem$$Type} from "net.minecraft.world.item.SwordItem"
-import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
-import {$Slot, $Slot$$Type} from "net.minecraft.world.inventory.Slot"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
-import {$UseAnim, $UseAnim$$Type} from "net.minecraft.world.item.UseAnim"
+import {$Slot, $Slot$$Type} from "net.minecraft.world.inventory.Slot"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$ClickAction, $ClickAction$$Type} from "net.minecraft.world.inventory.ClickAction"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$SlotAccess, $SlotAccess$$Type} from "net.minecraft.world.entity.SlotAccess"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$UseAnim, $UseAnim$$Type} from "net.minecraft.world.item.UseAnim"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 
 export class $RunicSwordItem extends $SwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -1390,17 +1439,18 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
-public "getName"(stack: $ItemStack$$Type): $Component
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "overrideOtherStackedOnMe"(stack: $ItemStack$$Type, otherStack: $ItemStack$$Type, slot: $Slot$$Type, clickType: $ClickAction$$Type, player: $Player$$Type, cursorStackReference: $SlotAccess$$Type): boolean
+public "getName"(stack: $ItemStack$$Type): $Component
+public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "releaseUsing"(stack: $ItemStack$$Type, world: $Level$$Type, user: $LivingEntity$$Type, remainingUseTicks: integer): void
 public "onUseTick"(world: $Level$$Type, user: $LivingEntity$$Type, stack: $ItemStack$$Type, remainingUseTicks: integer): void
 public "getUseDuration"(stack: $ItemStack$$Type, user: $LivingEntity$$Type): integer
-public "releaseUsing"(stack: $ItemStack$$Type, world: $Level$$Type, user: $LivingEntity$$Type, remainingUseTicks: integer): void
 public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
-public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
-public "getUseAnimation"(stack: $ItemStack$$Type): $UseAnim
-public "onCraftedPostProcess"(stack: $ItemStack$$Type, world: $Level$$Type): void
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public "onCraftedPostProcess"(stack: $ItemStack$$Type, world: $Level$$Type): void
+public "getUseAnimation"(stack: $ItemStack$$Type): $UseAnim
+public "overrideOtherStackedOnMe"(stack: $ItemStack$$Type, otherStack: $ItemStack$$Type, slot: $Slot$$Type, clickType: $ClickAction$$Type, player: $Player$$Type, cursorStackReference: $SlotAccess$$Type): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1433,8 +1483,8 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
-public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 public "applyEffectTick"(pLivingEntity: $LivingEntity$$Type, pAmplifier: integer): boolean
+public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1449,15 +1499,17 @@ declare global {
 export type $FreezeEffect_ = $FreezeEffect$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.TwistedBladeItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -1472,7 +1524,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $TwistedBladeItem extends $UniqueSwordItem implements $TwoHandedWeapon {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -1482,9 +1534,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1499,15 +1552,17 @@ declare global {
 export type $TwistedBladeItem_ = $TwistedBladeItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.CaelestisSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -1521,7 +1576,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $CaelestisSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -1531,9 +1586,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1550,12 +1606,12 @@ export type $CaelestisSwordItem_ = $CaelestisSwordItem$$Type;
 declare module "net.sweenus.simplyswords.power.GemPowerComponent" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$BiFunction, $BiFunction$$Type} from "java.util.function.BiFunction"
@@ -1573,38 +1629,38 @@ static readonly "DEFAULT": $GemPowerComponent
 
 constructor(hasRunicPower: boolean, hasNetherPower: boolean, runicPower: $Holder$$Type<($GemPower)>, netherPower: $Holder$$Type<($GemPower)>)
 
+public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public static "create"(runic: $Holder$$Type<($GemPower)>, nether: $Holder$$Type<($GemPower)>): $GemPowerComponent
+public static "createEmpty"(hasRunic: boolean, hasNether: boolean): $GemPowerComponent
 public "equals"(componentObject: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "isEmpty"(): boolean
 public "fill"(runicFiller: $BiFunction$$Type<(boolean), ($Holder<($GemPower)>), ($Holder$$Type<($GemPower$$Type)>)>, netherFiller: $BiFunction$$Type<(boolean), ($Holder<($GemPower)>), ($Holder$$Type<($GemPower$$Type)>)>): $GemPowerComponent
-public static "create"(runic: $Holder$$Type<($GemPower)>, nether: $Holder$$Type<($GemPower)>): $GemPowerComponent
-public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public static "createEmpty"(hasRunic: boolean, hasNether: boolean): $GemPowerComponent
+public static "nether"(power: $Holder$$Type<($GemPower)>): $GemPowerComponent
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, user: $LivingEntity$$Type, slot: integer, selected: boolean): void
 public static "runic"(power: $Holder$$Type<($GemPower)>): $GemPowerComponent
-public static "nether"(power: $Holder$$Type<($GemPower)>): $GemPowerComponent
-public "appendTooltip"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
-public "appendTooltip"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type, isRunic: boolean): void
-public "postHit"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): void
-public "usageTick"(world: $Level$$Type, user: $LivingEntity$$Type, stack: $ItemStack$$Type, remainingUseTicks: integer): void
-public "onStoppedUsing"(stack: $ItemStack$$Type, world: $Level$$Type, user: $LivingEntity$$Type, remainingUseTicks: integer): void
-public "getMaxUseTime"(stack: $ItemStack$$Type): integer
-public "hasNetherPower"(): boolean
-public "netherPower"(): $Holder<($GemPower)>
-public "hasPower"(power: $Holder$$Type<($GemPower)>): boolean
 public "hasRunicPower"(): boolean
 public "runicPower"(): $Holder<($GemPower)>
 public "hasNether"(power: $Holder$$Type<($GemPower)>): boolean
 public "hasRunic"(power: $Holder$$Type<($GemPower)>): boolean
+public "hasNetherPower"(): boolean
+public "netherPower"(): $Holder<($GemPower)>
 public "canBeFilled"(): boolean
+public "appendTooltip"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type, isRunic: boolean): void
+public "appendTooltip"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public "postHit"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): void
+public "usageTick"(world: $Level$$Type, user: $LivingEntity$$Type, stack: $ItemStack$$Type, remainingUseTicks: integer): void
+public "onStoppedUsing"(stack: $ItemStack$$Type, world: $Level$$Type, user: $LivingEntity$$Type, remainingUseTicks: integer): void
+public "getMaxUseTime"(stack: $ItemStack$$Type): integer
+public "hasPower"(power: $Holder$$Type<($GemPower)>): boolean
 get "empty"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $GemPowerComponent$$Type = ({"netherPower"?: $Holder$$Type<($GemPower)>, "runicPower"?: $Holder$$Type<($GemPower)>, "hasRunicPower"?: boolean, "hasNetherPower"?: boolean}) | ([netherPower?: $Holder$$Type<($GemPower)>, runicPower?: $Holder$$Type<($GemPower)>, hasRunicPower?: boolean, hasNetherPower?: boolean]);
+export type $GemPowerComponent$$Type = ({"hasRunicPower"?: boolean, "hasNetherPower"?: boolean, "netherPower"?: $Holder$$Type<($GemPower)>, "runicPower"?: $Holder$$Type<($GemPower)>}) | ([hasRunicPower?: boolean, hasNetherPower?: boolean, netherPower?: $Holder$$Type<($GemPower)>, runicPower?: $Holder$$Type<($GemPower)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1620,8 +1676,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AttributeMap, $AttributeMap$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeMap"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$OrbitingEffect, $OrbitingEffect$$Type} from "net.sweenus.simplyswords.effect.OrbitingEffect"
 import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
@@ -1633,9 +1689,9 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
+public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
 public "removeAttributeModifiers"(attributes: $AttributeMap$$Type): void
 public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
-public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1650,11 +1706,13 @@ declare global {
 export type $RibboncleaveEffect_ = $RibboncleaveEffect$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.SimplySwordsThrowableItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -1666,16 +1724,17 @@ import {$SimplySwordsSwordItem, $SimplySwordsSwordItem$$Type} from "net.sweenus.
 export class $SimplySwordsThrowableItem extends $SimplySwordsSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type, ...repairIngredient: (string)[])
+constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type, ...repairIngredient: (StringJS)[])
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1690,15 +1749,17 @@ declare global {
 export type $SimplySwordsThrowableItem_ = $SimplySwordsThrowableItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.WickpiercerSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -1712,7 +1773,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $WickpiercerSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -1722,9 +1783,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1739,19 +1801,23 @@ declare global {
 export type $WickpiercerSwordItem_ = $WickpiercerSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.WatcherClaymoreItem" {
-import {$WatcherSwordItem, $WatcherSwordItem$$Type} from "net.sweenus.simplyswords.item.custom.WatcherSwordItem"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$WatcherSwordItem, $WatcherSwordItem$$Type} from "net.sweenus.simplyswords.item.custom.WatcherSwordItem"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$TwoHandedWeapon, $TwoHandedWeapon$$Type} from "net.sweenus.simplyswords.item.TwoHandedWeapon"
-import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 
 export class $WatcherClaymoreItem extends $WatcherSwordItem implements $TwoHandedWeapon {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -1760,6 +1826,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1774,14 +1841,14 @@ declare global {
 export type $WatcherClaymoreItem_ = $WatcherClaymoreItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.power.powers.NullificationPower" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NetherGemPower, $NetherGemPower$$Type} from "net.sweenus.simplyswords.power.NetherGemPower"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$GemPower, $GemPower$$Type} from "net.sweenus.simplyswords.power.GemPower"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 
 export class $NullificationPower extends $NetherGemPower {
 static "EMPTY": $GemPower
@@ -1805,13 +1872,13 @@ export type $NullificationPower_ = $NullificationPower$$Type;
 }}
 declare module "net.sweenus.simplyswords.power.powers.FloatPower" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$RunefusedGemPower, $RunefusedGemPower$$Type} from "net.sweenus.simplyswords.power.RunefusedGemPower"
+import {$List, $List$$Type} from "java.util.List"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$GemPower, $GemPower$$Type} from "net.sweenus.simplyswords.power.GemPower"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 
 export class $FloatPower extends $RunefusedGemPower {
 static "EMPTY": $GemPower
@@ -1835,14 +1902,14 @@ export type $FloatPower_ = $FloatPower$$Type;
 }}
 declare module "net.sweenus.simplyswords.power.powers.ActiveDefencePower" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$RunefusedGemPower, $RunefusedGemPower$$Type} from "net.sweenus.simplyswords.power.RunefusedGemPower"
+import {$List, $List$$Type} from "java.util.List"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$GemPower, $GemPower$$Type} from "net.sweenus.simplyswords.power.GemPower"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 
 export class $ActiveDefencePower extends $RunefusedGemPower {
 static "EMPTY": $GemPower
@@ -1865,14 +1932,14 @@ declare global {
 export type $ActiveDefencePower_ = $ActiveDefencePower$$Type;
 }}
 declare module "net.sweenus.simplyswords.power.powers.EchoPower" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NetherGemPower, $NetherGemPower$$Type} from "net.sweenus.simplyswords.power.NetherGemPower"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$GemPower, $GemPower$$Type} from "net.sweenus.simplyswords.power.GemPower"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 
 export class $EchoPower extends $NetherGemPower {
 static "EMPTY": $GemPower
@@ -1908,9 +1975,9 @@ static readonly "PACKET_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Upgra
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($UpgradeUniqueRecipe)>
 public "codec"(): $MapCodec<($UpgradeUniqueRecipe)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($UpgradeUniqueRecipe)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1943,8 +2010,8 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
-public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
+public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1977,8 +2044,8 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
-public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
+public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1993,15 +2060,17 @@ declare global {
 export type $WardEffect_ = $WardEffect$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.FlamewindSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -2015,7 +2084,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $FlamewindSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -2025,9 +2094,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2042,15 +2112,17 @@ declare global {
 export type $FlamewindSwordItem_ = $FlamewindSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.StormbringerSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$UseAnim, $UseAnim$$Type} from "net.minecraft.world.item.UseAnim"
@@ -2065,7 +2137,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $StormbringerSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static "scalesWithSpellPower": boolean
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
@@ -2076,13 +2148,14 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "releaseUsing"(stack: $ItemStack$$Type, world: $Level$$Type, user: $LivingEntity$$Type, remainingUseTicks: integer): void
 public "onUseTick"(world: $Level$$Type, user: $LivingEntity$$Type, stack: $ItemStack$$Type, remainingUseTicks: integer): void
 public "getUseDuration"(stack: $ItemStack$$Type, user: $LivingEntity$$Type): integer
-public "releaseUsing"(stack: $ItemStack$$Type, world: $Level$$Type, user: $LivingEntity$$Type, remainingUseTicks: integer): void
 public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
-public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
-public "getUseAnimation"(stack: $ItemStack$$Type): $UseAnim
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public "getUseAnimation"(stack: $ItemStack$$Type): $UseAnim
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2149,6 +2222,56 @@ export type $GemPowerFiller$$Type = ((arg0: $ItemStack, arg1: $GemPowerComponent
 declare global {
 export type $GemPowerFiller_ = $GemPowerFiller$$Type;
 }}
+declare module "net.sweenus.simplyswords.item.custom.ChompolotlSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
+import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$UniqueSwordItem, $UniqueSwordItem$$Type} from "net.sweenus.simplyswords.item.UniqueSwordItem"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+
+export class $ChompolotlSwordItem extends $UniqueSwordItem {
+static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
+static readonly "DEFAULT_MAX_STACK_SIZE": integer
+ "descriptionId": StringJS
+ "tier": $Tier
+static readonly "MAX_BAR_WIDTH": integer
+static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
+static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
+static readonly "BY_BLOCK": $Map<($Block), ($Item)>
+
+constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
+
+public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
+public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ChompolotlSwordItem$$Type = ($ChompolotlSwordItem);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ChompolotlSwordItem_ = $ChompolotlSwordItem$$Type;
+}}
 declare module "net.sweenus.simplyswords.effect.SporeSwarmEffect" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
 import {$Map, $Map$$Type} from "java.util.Map"
@@ -2169,8 +2292,8 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
-public "shouldApplyEffectTickThisTick"(duration: integer, amplifier: integer): boolean
 public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
+public "shouldApplyEffectTickThisTick"(duration: integer, amplifier: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2203,8 +2326,8 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
-public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
+public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2229,19 +2352,19 @@ import {$Record, $Record$$Type} from "java.lang.Record"
 export class $RawUpgradableRecipe$Data extends $Record {
 static readonly "CODEC": $MapCodec<($RawUpgradableRecipe$Data)>
 
-constructor(key: $Map$$Type<(character), ($Pair$$Type<($Ingredient$$Type), (boolean)>)>, pattern: $List$$Type<(string)>)
+constructor(key: $Map$$Type<(character), ($Pair$$Type<($Ingredient$$Type), (boolean)>)>, pattern: $List$$Type<(StringJS)>)
 
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "pattern"(): $List<(string)>
+public "pattern"(): $List<(StringJS)>
 public "key"(): $Map<(character), ($Pair<($Ingredient), (boolean)>)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $RawUpgradableRecipe$Data$$Type = ({"key"?: $Map$$Type<(character), ($Pair$$Type<($Ingredient$$Type), (boolean)>)>, "pattern"?: $List$$Type<(string)>}) | ([key?: $Map$$Type<(character), ($Pair$$Type<($Ingredient$$Type), (boolean)>)>, pattern?: $List$$Type<(string)>]);
+export type $RawUpgradableRecipe$Data$$Type = ({"key"?: $Map$$Type<(character), ($Pair$$Type<($Ingredient$$Type), (boolean)>)>, "pattern"?: $List$$Type<(StringJS)>}) | ([key?: $Map$$Type<(character), ($Pair$$Type<($Ingredient$$Type), (boolean)>)>, pattern?: $List$$Type<(StringJS)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -2250,15 +2373,17 @@ declare global {
 export type $RawUpgradableRecipe$Data_ = $RawUpgradableRecipe$Data$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.EmberIreSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$UseAnim, $UseAnim$$Type} from "net.minecraft.world.item.UseAnim"
@@ -2273,7 +2398,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $EmberIreSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -2283,13 +2408,14 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "releaseUsing"(stack: $ItemStack$$Type, world: $Level$$Type, user: $LivingEntity$$Type, remainingUseTicks: integer): void
 public "onUseTick"(world: $Level$$Type, user: $LivingEntity$$Type, stack: $ItemStack$$Type, remainingUseTicks: integer): void
 public "getUseDuration"(stack: $ItemStack$$Type, user: $LivingEntity$$Type): integer
-public "releaseUsing"(stack: $ItemStack$$Type, world: $Level$$Type, user: $LivingEntity$$Type, remainingUseTicks: integer): void
 public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
-public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
-public "getUseAnimation"(stack: $ItemStack$$Type): $UseAnim
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public "getUseAnimation"(stack: $ItemStack$$Type): $UseAnim
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2311,10 +2437,10 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AttributeMap, $AttributeMap$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeMap"
-import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$OrbitingEffect, $OrbitingEffect$$Type} from "net.sweenus.simplyswords.effect.OrbitingEffect"
+import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
 
 export class $FrostVortexEffect extends $OrbitingEffect {
@@ -2326,13 +2452,13 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
-public "setAdditionalData"(data: integer): void
-public "setSourcePlayer"(livingEntity: $LivingEntity$$Type): void
+public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
 public "removeAttributeModifiers"(attributes: $AttributeMap$$Type): void
 public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
-public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
-set "additionalData"(value: integer)
+public "setSourcePlayer"(livingEntity: $LivingEntity$$Type): void
+public "setAdditionalData"(data: integer): void
 set "sourcePlayer"(value: $LivingEntity$$Type)
+set "additionalData"(value: integer)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2347,15 +2473,17 @@ declare global {
 export type $FrostVortexEffect_ = $FrostVortexEffect$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.RighteousRelicSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -2369,7 +2497,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $RighteousRelicSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -2379,9 +2507,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2397,18 +2526,20 @@ export type $RighteousRelicSwordItem_ = $RighteousRelicSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.NetherfusedGemItem" {
 import {$ValidationResult, $ValidationResult$$Type} from "me.fzzyhmstrs.fzzy_config.util.ValidationResult"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$GemPowerFiller, $GemPowerFiller$$Type} from "net.sweenus.simplyswords.power.GemPowerFiller"
 import {$List, $List$$Type} from "java.util.List"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$SlotAccess, $SlotAccess$$Type} from "net.minecraft.world.entity.SlotAccess"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
-import {$Slot, $Slot$$Type} from "net.minecraft.world.inventory.Slot"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$Slot, $Slot$$Type} from "net.minecraft.world.inventory.Slot"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$ClickAction, $ClickAction$$Type} from "net.minecraft.world.inventory.ClickAction"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
@@ -2417,7 +2548,7 @@ import {$GemPowerComponent, $GemPowerComponent$$Type} from "net.sweenus.simplysw
 export class $NetherfusedGemItem extends $Item implements $GemPowerFiller {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -2427,9 +2558,10 @@ constructor()
 
 public "getName"(stack: $ItemStack$$Type): $Component
 public "fill"(stack: $ItemStack$$Type, component: $GemPowerComponent$$Type): $ValidationResult<($GemPowerComponent)>
-public "overrideOtherStackedOnMe"(stack: $ItemStack$$Type, otherStack: $ItemStack$$Type, slot: $Slot$$Type, clickType: $ClickAction$$Type, player: $Player$$Type, cursorStackReference: $SlotAccess$$Type): boolean
-public "onCraftedPostProcess"(stack: $ItemStack$$Type, world: $Level$$Type): void
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public "onCraftedPostProcess"(stack: $ItemStack$$Type, world: $Level$$Type): void
+public "overrideOtherStackedOnMe"(stack: $ItemStack$$Type, otherStack: $ItemStack$$Type, slot: $Slot$$Type, clickType: $ClickAction$$Type, player: $Player$$Type, cursorStackReference: $SlotAccess$$Type): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2462,8 +2594,8 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
-public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 public "applyEffectTick"(pLivingEntity: $LivingEntity$$Type, pAmplifier: integer): boolean
+public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2478,14 +2610,14 @@ declare global {
 export type $WildfireEffect_ = $WildfireEffect$$Type;
 }}
 declare module "net.sweenus.simplyswords.power.powers.OnslaughtPower" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NetherGemPower, $NetherGemPower$$Type} from "net.sweenus.simplyswords.power.NetherGemPower"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$GemPower, $GemPower$$Type} from "net.sweenus.simplyswords.power.GemPower"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 
 export class $OnslaughtPower extends $NetherGemPower {
 static "EMPTY": $GemPower
@@ -2513,8 +2645,8 @@ import {$Map, $Map$$Type} from "java.util.Map"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AttributeMap, $AttributeMap$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeMap"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect, $MobEffect$$Type} from "net.minecraft.world.effect.MobEffect"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
@@ -2532,13 +2664,13 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
-public "setAdditionalData"(data: integer): void
-public "setSourcePlayer"(livingEntity: $LivingEntity$$Type): void
+public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
 public "removeAttributeModifiers"(attributeContainer: $AttributeMap$$Type): void
 public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
-public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
-set "additionalData"(value: integer)
+public "setSourcePlayer"(livingEntity: $LivingEntity$$Type): void
+public "setAdditionalData"(data: integer): void
 set "sourcePlayer"(value: $LivingEntity$$Type)
+set "additionalData"(value: integer)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2554,18 +2686,20 @@ export type $SoulTetherEffect_ = $SoulTetherEffect$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.RunefusedGemItem" {
 import {$ValidationResult, $ValidationResult$$Type} from "me.fzzyhmstrs.fzzy_config.util.ValidationResult"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$GemPowerFiller, $GemPowerFiller$$Type} from "net.sweenus.simplyswords.power.GemPowerFiller"
 import {$List, $List$$Type} from "java.util.List"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$SlotAccess, $SlotAccess$$Type} from "net.minecraft.world.entity.SlotAccess"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
-import {$Slot, $Slot$$Type} from "net.minecraft.world.inventory.Slot"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$Slot, $Slot$$Type} from "net.minecraft.world.inventory.Slot"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$ClickAction, $ClickAction$$Type} from "net.minecraft.world.inventory.ClickAction"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
@@ -2574,7 +2708,7 @@ import {$GemPowerComponent, $GemPowerComponent$$Type} from "net.sweenus.simplysw
 export class $RunefusedGemItem extends $Item implements $GemPowerFiller {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -2584,9 +2718,10 @@ constructor()
 
 public "getName"(stack: $ItemStack$$Type): $Component
 public "fill"(stack: $ItemStack$$Type, component: $GemPowerComponent$$Type): $ValidationResult<($GemPowerComponent)>
-public "overrideOtherStackedOnMe"(stack: $ItemStack$$Type, otherStack: $ItemStack$$Type, slot: $Slot$$Type, clickType: $ClickAction$$Type, player: $Player$$Type, cursorStackReference: $SlotAccess$$Type): boolean
-public "onCraftedPostProcess"(stack: $ItemStack$$Type, world: $Level$$Type): void
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public "onCraftedPostProcess"(stack: $ItemStack$$Type, world: $Level$$Type): void
+public "overrideOtherStackedOnMe"(stack: $ItemStack$$Type, otherStack: $ItemStack$$Type, slot: $Slot$$Type, clickType: $ClickAction$$Type, player: $Player$$Type, cursorStackReference: $SlotAccess$$Type): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2613,9 +2748,9 @@ static readonly "PACKET_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Runic
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($RunicRerollRecipe)>
 public "codec"(): $MapCodec<($RunicRerollRecipe)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($RunicRerollRecipe)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2630,15 +2765,17 @@ declare global {
 export type $RunicRerollRecipe$Serializer_ = $RunicRerollRecipe$Serializer$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.HearthflameSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$UseAnim, $UseAnim$$Type} from "net.minecraft.world.item.UseAnim"
@@ -2654,7 +2791,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $HearthflameSwordItem extends $UniqueSwordItem implements $TwoHandedWeapon {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -2664,13 +2801,14 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "releaseUsing"(stack: $ItemStack$$Type, world: $Level$$Type, user: $LivingEntity$$Type, remainingUseTicks: integer): void
 public "onUseTick"(world: $Level$$Type, user: $LivingEntity$$Type, stack: $ItemStack$$Type, remainingUseTicks: integer): void
 public "getUseDuration"(stack: $ItemStack$$Type, user: $LivingEntity$$Type): integer
-public "releaseUsing"(stack: $ItemStack$$Type, world: $Level$$Type, user: $LivingEntity$$Type, remainingUseTicks: integer): void
 public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
-public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
-public "getUseAnimation"(stack: $ItemStack$$Type): $UseAnim
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public "getUseAnimation"(stack: $ItemStack$$Type): $UseAnim
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2686,13 +2824,13 @@ export type $HearthflameSwordItem_ = $HearthflameSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.power.powers.WildfirePower" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$RunefusedGemPower, $RunefusedGemPower$$Type} from "net.sweenus.simplyswords.power.RunefusedGemPower"
+import {$List, $List$$Type} from "java.util.List"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$GemPower, $GemPower$$Type} from "net.sweenus.simplyswords.power.GemPower"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 
 export class $WildfirePower extends $RunefusedGemPower {
 static "EMPTY": $GemPower
@@ -2715,15 +2853,17 @@ declare global {
 export type $WildfirePower_ = $WildfirePower$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.SoulrenderSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -2738,7 +2878,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $SoulrenderSwordItem extends $UniqueSwordItem implements $TwoHandedWeapon {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -2748,9 +2888,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2765,15 +2906,18 @@ declare global {
 export type $SoulrenderSwordItem_ = $SoulrenderSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.PlagueSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$UniqueSwordItem, $UniqueSwordItem$$Type} from "net.sweenus.simplyswords.item.UniqueSwordItem"
@@ -2784,7 +2928,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $PlagueSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -2793,9 +2937,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2810,15 +2955,17 @@ declare global {
 export type $PlagueSwordItem_ = $PlagueSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.StormSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$UseAnim, $UseAnim$$Type} from "net.minecraft.world.item.UseAnim"
@@ -2833,7 +2980,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $StormSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -2843,12 +2990,13 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
 public "onUseTick"(world: $Level$$Type, user: $LivingEntity$$Type, stack: $ItemStack$$Type, remainingUseTicks: integer): void
 public "getUseDuration"(stack: $ItemStack$$Type, user: $LivingEntity$$Type): integer
 public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
-public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
-public "getUseAnimation"(stack: $ItemStack$$Type): $UseAnim
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public "getUseAnimation"(stack: $ItemStack$$Type): $UseAnim
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2863,15 +3011,17 @@ declare global {
 export type $StormSwordItem_ = $StormSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.FrostfallSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -2885,7 +3035,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $FrostfallSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -2895,9 +3045,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2912,15 +3063,17 @@ declare global {
 export type $FrostfallSwordItem_ = $FrostfallSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.EmberlashSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -2934,7 +3087,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $EmberlashSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -2945,9 +3098,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2980,8 +3134,8 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
-public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 public "applyEffectTick"(entity: $LivingEntity$$Type, amplifier: integer): boolean
+public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3016,12 +3170,12 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
-public "setAdditionalData"(data: integer): void
-public "setSourcePlayer"(livingEntity: $LivingEntity$$Type): void
-public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
-set "additionalData"(value: integer)
+public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
+public "setSourcePlayer"(livingEntity: $LivingEntity$$Type): void
+public "setAdditionalData"(data: integer): void
 set "sourcePlayer"(value: $LivingEntity$$Type)
+set "additionalData"(value: integer)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3043,8 +3197,8 @@ import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$TooltipProvider, $TooltipProvider$$Type} from "net.minecraft.world.item.component.TooltipProvider"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 
 export class $GemPower implements $TooltipProvider {
@@ -3053,12 +3207,12 @@ static "EMPTY": $GemPower
 constructor(isGreater: boolean, ...applicableTypes: ($PowerType$$Type)[])
 
 public "isEmpty"(): boolean
-public "addToTooltip"(context: $Item$TooltipContext$$Type, tooltip: $Consumer$$Type<($Component)>, type: $TooltipFlag$$Type): void
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, user: $LivingEntity$$Type, slot: integer, selected: boolean): void
-public "applicableTypes"(): $List<($PowerType)>
 public "isGreater"(): boolean
 public "appendTooltip"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type, isRunic: boolean): void
 public "postHit"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): void
+public "addToTooltip"(context: $Item$TooltipContext$$Type, tooltip: $Consumer$$Type<($Component)>, type: $TooltipFlag$$Type): void
+public "applicableTypes"(): $List<($PowerType)>
 get "empty"(): boolean
 get "greater"(): boolean
 /**
@@ -3102,9 +3256,9 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
-public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
-public "applyEffectTick"(user: $LivingEntity$$Type, amplifier: integer): boolean
 public static "performDash"(user: $LivingEntity$$Type, world: $Level$$Type, radius: integer): void
+public "applyEffectTick"(user: $LivingEntity$$Type, amplifier: integer): boolean
+public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3121,10 +3275,10 @@ export type $FatalFlickerEffect_ = $FatalFlickerEffect$$Type;
 declare module "net.sweenus.simplyswords.recipe.RawUpgradableRecipe" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
 import {$CraftingInput, $CraftingInput$$Type} from "net.minecraft.world.item.crafting.CraftingInput"
-import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$RawUpgradableRecipe$Data, $RawUpgradableRecipe$Data$$Type} from "net.sweenus.simplyswords.recipe.RawUpgradableRecipe$Data"
-import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
+import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
+import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 
@@ -3134,15 +3288,15 @@ static readonly "PACKET_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($RawUp
 
 constructor(width: integer, height: integer, upgradableItemSlot: integer, ingredients: $NonNullList$$Type<($Ingredient$$Type)>, data: $Optional$$Type<($RawUpgradableRecipe$Data$$Type)>)
 
+public "isMirrored"(): boolean
 public "getWidth"(): integer
 public "getHeight"(): integer
 public "matches"(input: $CraftingInput$$Type): boolean
-public "isMirrored"(): boolean
 public "getIngredients"(): $NonNullList<($Ingredient)>
 public "getUpgradableItemSlot"(): integer
+get "mirrored"(): boolean
 get "width"(): integer
 get "height"(): integer
-get "mirrored"(): boolean
 get "ingredients"(): $NonNullList<($Ingredient)>
 get "upgradableItemSlot"(): integer
 }
@@ -3158,16 +3312,52 @@ export type $RawUpgradableRecipe$$Type = ($RawUpgradableRecipe);
 declare global {
 export type $RawUpgradableRecipe_ = $RawUpgradableRecipe$$Type;
 }}
+declare module "net.sweenus.simplyswords.mixin.client.LivingEntityRendererAccessor" {
+import {$RenderLayer, $RenderLayer$$Type} from "net.minecraft.client.renderer.entity.layers.RenderLayer"
+import {$EntityModel, $EntityModel$$Type} from "net.minecraft.client.model.EntityModel"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+
+export interface $LivingEntityRendererAccessor {
+
+ "invokeAddFeature"<T extends $LivingEntity, M extends $EntityModel<(T)>>(arg0: $RenderLayer$$Type<(T), (M)>): boolean
+
+(arg0: $RenderLayer<(T), (M)>): boolean
+}
+
+export namespace $LivingEntityRendererAccessor {
+const probejs$$marker: never
+}
+export class $LivingEntityRendererAccessor$$Static implements $LivingEntityRendererAccessor {
+
+
+ "invokeAddFeature"<T extends $LivingEntity, M extends $EntityModel<(T)>>(arg0: $RenderLayer$$Type<(T), (M)>): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $LivingEntityRendererAccessor$$Type = ((arg0: $RenderLayer<(T), (M)>) => boolean);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $LivingEntityRendererAccessor_ = $LivingEntityRendererAccessor$$Type;
+}}
 declare module "net.sweenus.simplyswords.item.SimplySwordsNetheriteSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$SwordItem, $SwordItem$$Type} from "net.minecraft.world.item.SwordItem"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
@@ -3176,18 +3366,19 @@ import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.Liv
 export class $SimplySwordsNetheriteSwordItem extends $SwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type, ...repairIngredient: (string)[])
+constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type, ...repairIngredient: (StringJS)[])
 
 public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
-public "isValidRepairItem"(stack: $ItemStack$$Type, ingredient: $ItemStack$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public "isValidRepairItem"(stack: $ItemStack$$Type, ingredient: $ItemStack$$Type): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3220,8 +3411,8 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
-public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 public "applyEffectTick"(pLivingEntity: $LivingEntity$$Type, pAmplifier: integer): boolean
+public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3243,8 +3434,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AttributeMap, $AttributeMap$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeMap"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$OrbitingEffect, $OrbitingEffect$$Type} from "net.sweenus.simplyswords.effect.OrbitingEffect"
 import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
@@ -3256,9 +3447,9 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
+public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
 public "removeAttributeModifiers"(attributes: $AttributeMap$$Type): void
 public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
-public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3273,15 +3464,17 @@ declare global {
 export type $FrenzyEffect_ = $FrenzyEffect$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.MagispearSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -3295,7 +3488,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $MagispearSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -3305,9 +3498,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3322,15 +3516,17 @@ declare global {
 export type $MagispearSwordItem_ = $MagispearSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.EnigmaSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -3344,7 +3540,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $EnigmaSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -3354,9 +3550,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3389,8 +3586,8 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
-public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 public "applyEffectTick"(pLivingEntity: $LivingEntity$$Type, pAmplifier: integer): boolean
+public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3406,13 +3603,13 @@ export type $ResilienceEffect_ = $ResilienceEffect$$Type;
 }}
 declare module "net.sweenus.simplyswords.power.powers.SlowPower" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$RunefusedGemPower, $RunefusedGemPower$$Type} from "net.sweenus.simplyswords.power.RunefusedGemPower"
+import {$List, $List$$Type} from "java.util.List"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$GemPower, $GemPower$$Type} from "net.sweenus.simplyswords.power.GemPower"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 
 export class $SlowPower extends $RunefusedGemPower {
 static "EMPTY": $GemPower
@@ -3435,15 +3632,17 @@ declare global {
 export type $SlowPower_ = $SlowPower$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.StarsEdgeSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -3457,7 +3656,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $StarsEdgeSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -3467,9 +3666,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3486,15 +3686,15 @@ export type $StarsEdgeSwordItem_ = $StarsEdgeSwordItem$$Type;
 declare module "net.sweenus.simplyswords.power.powers.WardPower" {
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$List, $List$$Type} from "java.util.List"
 import {$RunicGemPower, $RunicGemPower$$Type} from "net.sweenus.simplyswords.power.RunicGemPower"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$GemPower, $GemPower$$Type} from "net.sweenus.simplyswords.power.GemPower"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 
 export class $WardPower extends $RunicGemPower {
 static "EMPTY": $GemPower
@@ -3519,13 +3719,13 @@ export type $WardPower_ = $WardPower$$Type;
 }}
 declare module "net.sweenus.simplyswords.power.powers.ImbuedPower" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$RunefusedGemPower, $RunefusedGemPower$$Type} from "net.sweenus.simplyswords.power.RunefusedGemPower"
+import {$List, $List$$Type} from "java.util.List"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$GemPower, $GemPower$$Type} from "net.sweenus.simplyswords.power.GemPower"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 
 export class $ImbuedPower extends $RunefusedGemPower {
 static "EMPTY": $GemPower
@@ -3548,15 +3748,17 @@ declare global {
 export type $ImbuedPower_ = $ImbuedPower$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.LichbladeSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$UseAnim, $UseAnim$$Type} from "net.minecraft.world.item.UseAnim"
@@ -3572,7 +3774,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $LichbladeSwordItem extends $UniqueSwordItem implements $TwoHandedWeapon {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -3582,13 +3784,14 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, user: $Entity$$Type, slot: integer, selected: boolean): void
+public "releaseUsing"(stack: $ItemStack$$Type, world: $Level$$Type, user: $LivingEntity$$Type, remainingUseTicks: integer): void
 public "onUseTick"(world: $Level$$Type, user: $LivingEntity$$Type, stack: $ItemStack$$Type, remainingUseTicks: integer): void
 public "getUseDuration"(stack: $ItemStack$$Type, user: $LivingEntity$$Type): integer
-public "releaseUsing"(stack: $ItemStack$$Type, world: $Level$$Type, user: $LivingEntity$$Type, remainingUseTicks: integer): void
 public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
-public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, user: $Entity$$Type, slot: integer, selected: boolean): void
-public "getUseAnimation"(stack: $ItemStack$$Type): $UseAnim
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public "getUseAnimation"(stack: $ItemStack$$Type): $UseAnim
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3603,20 +3806,24 @@ declare global {
 export type $LichbladeSwordItem_ = $LichbladeSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.EmpoweredRemnantItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export class $EmpoweredRemnantItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3626,6 +3833,7 @@ constructor()
 
 public "getName"(stack: $ItemStack$$Type): $Component
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3658,8 +3866,8 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
-public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
+public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3674,15 +3882,17 @@ declare global {
 export type $WideOrbitingEffect_ = $WideOrbitingEffect$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.ShadowstingSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -3696,7 +3906,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $ShadowstingSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -3706,9 +3916,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3723,15 +3934,17 @@ declare global {
 export type $ShadowstingSwordItem_ = $ShadowstingSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.WraithfangSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -3745,7 +3958,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $WraithfangSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -3755,9 +3968,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3803,18 +4017,22 @@ declare global {
 export type $RunicGemPower_ = $RunicGemPower$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.WatchingWarglaiveItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$WatcherSwordItem, $WatcherSwordItem$$Type} from "net.sweenus.simplyswords.item.custom.WatcherSwordItem"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 
 export class $WatchingWarglaiveItem extends $WatcherSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -3823,6 +4041,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3837,15 +4056,19 @@ declare global {
 export type $WatchingWarglaiveItem_ = $WatchingWarglaiveItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.SimplySwordsSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$SwordItem, $SwordItem$$Type} from "net.minecraft.world.item.SwordItem"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
@@ -3854,19 +4077,20 @@ import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.Liv
 export class $SimplySwordsSwordItem extends $SwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type, ...repairIngredient: (string)[])
+constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type, ...repairIngredient: (StringJS)[])
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
-public "isValidRepairItem"(stack: $ItemStack$$Type, ingredient: $ItemStack$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public "isValidRepairItem"(stack: $ItemStack$$Type, ingredient: $ItemStack$$Type): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3881,15 +4105,18 @@ declare global {
 export type $SimplySwordsSwordItem_ = $SimplySwordsSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.BrimstoneClaymoreItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$UniqueSwordItem, $UniqueSwordItem$$Type} from "net.sweenus.simplyswords.item.UniqueSwordItem"
@@ -3901,7 +4128,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $BrimstoneClaymoreItem extends $UniqueSwordItem implements $TwoHandedWeapon {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -3910,9 +4137,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3928,14 +4156,14 @@ export type $BrimstoneClaymoreItem_ = $BrimstoneClaymoreItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.power.powers.FrostWardPower" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$RunefusedGemPower, $RunefusedGemPower$$Type} from "net.sweenus.simplyswords.power.RunefusedGemPower"
+import {$List, $List$$Type} from "java.util.List"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$GemPower, $GemPower$$Type} from "net.sweenus.simplyswords.power.GemPower"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 
 export class $FrostWardPower extends $RunefusedGemPower {
 static "EMPTY": $GemPower
@@ -3958,15 +4186,17 @@ declare global {
 export type $FrostWardPower_ = $FrostWardPower$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.StormsEdgeSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$UseAnim, $UseAnim$$Type} from "net.minecraft.world.item.UseAnim"
@@ -3981,7 +4211,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $StormsEdgeSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -3991,13 +4221,14 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "releaseUsing"(stack: $ItemStack$$Type, world: $Level$$Type, user: $LivingEntity$$Type, remainingUseTicks: integer): void
 public "onUseTick"(world: $Level$$Type, user: $LivingEntity$$Type, stack: $ItemStack$$Type, remainingUseTicks: integer): void
 public "getUseDuration"(stack: $ItemStack$$Type, user: $LivingEntity$$Type): integer
-public "releaseUsing"(stack: $ItemStack$$Type, world: $Level$$Type, user: $LivingEntity$$Type, remainingUseTicks: integer): void
 public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
-public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
-public "getUseAnimation"(stack: $ItemStack$$Type): $UseAnim
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public "getUseAnimation"(stack: $ItemStack$$Type): $UseAnim
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4037,15 +4268,17 @@ declare global {
 export type $TwoHandedWeapon_ = $TwoHandedWeapon$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.HiveheartSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -4059,7 +4292,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $HiveheartSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -4069,9 +4302,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4086,14 +4320,14 @@ declare global {
 export type $HiveheartSwordItem_ = $HiveheartSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.power.powers.BerserkPower" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NetherGemPower, $NetherGemPower$$Type} from "net.sweenus.simplyswords.power.NetherGemPower"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$GemPower, $GemPower$$Type} from "net.sweenus.simplyswords.power.GemPower"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 
 export class $BerserkPower extends $NetherGemPower {
 static "EMPTY": $GemPower
@@ -4123,10 +4357,10 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AttributeMap, $AttributeMap$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeMap"
-import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$OrbitingEffect, $OrbitingEffect$$Type} from "net.sweenus.simplyswords.effect.OrbitingEffect"
+import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
 
 export class $ElementalVortexEffect extends $OrbitingEffect {
@@ -4138,13 +4372,13 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
-public "setAdditionalData"(data: integer): void
-public "setSourcePlayer"(livingEntity: $LivingEntity$$Type): void
+public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
 public "removeAttributeModifiers"(attributes: $AttributeMap$$Type): void
 public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
-public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
-set "additionalData"(value: integer)
+public "setSourcePlayer"(livingEntity: $LivingEntity$$Type): void
+public "setAdditionalData"(data: integer): void
 set "sourcePlayer"(value: $LivingEntity$$Type)
+set "additionalData"(value: integer)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4159,15 +4393,17 @@ declare global {
 export type $ElementalVortexEffect_ = $ElementalVortexEffect$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.MoltenEdgeSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -4181,7 +4417,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $MoltenEdgeSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -4191,9 +4427,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4210,15 +4447,15 @@ export type $MoltenEdgeSwordItem_ = $MoltenEdgeSwordItem$$Type;
 declare module "net.sweenus.simplyswords.power.powers.ImmolationPower" {
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$List, $List$$Type} from "java.util.List"
 import {$RunicGemPower, $RunicGemPower$$Type} from "net.sweenus.simplyswords.power.RunicGemPower"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$GemPower, $GemPower$$Type} from "net.sweenus.simplyswords.power.GemPower"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 
 export class $ImmolationPower extends $RunicGemPower {
 static "EMPTY": $GemPower
@@ -4270,8 +4507,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AttributeMap, $AttributeMap$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeMap"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$OrbitingEffect, $OrbitingEffect$$Type} from "net.sweenus.simplyswords.effect.OrbitingEffect"
 import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
@@ -4283,9 +4520,9 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
+public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
 public "removeAttributeModifiers"(attributes: $AttributeMap$$Type): void
 public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
-public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4301,12 +4538,12 @@ export type $VoidcloakEffect_ = $VoidcloakEffect$$Type;
 }}
 declare module "net.sweenus.simplyswords.power.powers.MomentumPower" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
 import {$RunicGemPower, $RunicGemPower$$Type} from "net.sweenus.simplyswords.power.RunicGemPower"
@@ -4337,15 +4574,17 @@ declare global {
 export type $MomentumPower_ = $MomentumPower$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.SunfireSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -4359,7 +4598,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $SunfireSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -4369,9 +4608,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4387,13 +4627,13 @@ export type $SunfireSwordItem_ = $SunfireSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.power.powers.FreezePower" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$RunefusedGemPower, $RunefusedGemPower$$Type} from "net.sweenus.simplyswords.power.RunefusedGemPower"
+import {$List, $List$$Type} from "java.util.List"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$GemPower, $GemPower$$Type} from "net.sweenus.simplyswords.power.GemPower"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 
 export class $FreezePower extends $RunefusedGemPower {
 static "EMPTY": $GemPower
@@ -4416,15 +4656,17 @@ declare global {
 export type $FreezePower_ = $FreezePower$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.RibboncleaverSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -4438,7 +4680,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $RibboncleaverSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -4448,9 +4690,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4470,8 +4713,8 @@ import {$Map, $Map$$Type} from "java.util.Map"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AttributeMap, $AttributeMap$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeMap"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect, $MobEffect$$Type} from "net.minecraft.world.effect.MobEffect"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
@@ -4484,10 +4727,10 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
+public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
+public "onEffectStarted"(entity: $LivingEntity$$Type, amplifier: integer): void
 public "removeAttributeModifiers"(attributes: $AttributeMap$$Type): void
 public "shouldApplyEffectTickThisTick"(duration: integer, amplifier: integer): boolean
-public "onEffectStarted"(entity: $LivingEntity$$Type, amplifier: integer): void
-public "applyEffectTick"(livingEntity: $LivingEntity$$Type, amplifier: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4502,14 +4745,14 @@ declare global {
 export type $OrbitingEffect_ = $OrbitingEffect$$Type;
 }}
 declare module "net.sweenus.simplyswords.power.powers.RadiancePower" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NetherGemPower, $NetherGemPower$$Type} from "net.sweenus.simplyswords.power.NetherGemPower"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$GemPower, $GemPower$$Type} from "net.sweenus.simplyswords.power.GemPower"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 
 export class $RadiancePower extends $NetherGemPower {
 static "EMPTY": $GemPower
@@ -4533,13 +4776,13 @@ export type $RadiancePower_ = $RadiancePower$$Type;
 }}
 declare module "net.sweenus.simplyswords.power.powers.ZephyrPower" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$RunefusedGemPower, $RunefusedGemPower$$Type} from "net.sweenus.simplyswords.power.RunefusedGemPower"
+import {$List, $List$$Type} from "java.util.List"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$GemPower, $GemPower$$Type} from "net.sweenus.simplyswords.power.GemPower"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 
 export class $ZephyrPower extends $RunefusedGemPower {
 static "EMPTY": $GemPower
@@ -4562,20 +4805,27 @@ declare global {
 export type $ZephyrPower_ = $ZephyrPower$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.ContainedRemnantItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
+import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 
 export class $ContainedRemnantItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4584,7 +4834,11 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "getName"(stack: $ItemStack$$Type): $Component
+public "useOn"(context: $UseOnContext$$Type): $InteractionResult
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "checkNearbyBlocks"(player: $ServerPlayer$$Type): void
+public static "addTransformation"(block: $Block$$Type, identifier: $ResourceLocation$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4607,8 +4861,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AttributeMap, $AttributeMap$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeMap"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
 
@@ -4619,9 +4873,9 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
+public "applyEffectTick"(pLivingEntity: $LivingEntity$$Type, pAmplifier: integer): boolean
 public "removeAttributeModifiers"(attributes: $AttributeMap$$Type): void
 public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
-public "applyEffectTick"(pLivingEntity: $LivingEntity$$Type, pAmplifier: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4636,15 +4890,17 @@ declare global {
 export type $ImmolationEffect_ = $ImmolationEffect$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.WaxweaverSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -4658,7 +4914,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $WaxweaverSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -4668,9 +4924,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4685,15 +4942,17 @@ declare global {
 export type $WaxweaverSwordItem_ = $WaxweaverSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.MagiscytheSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -4707,7 +4966,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $MagiscytheSwordItem extends $UniqueSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -4717,9 +4976,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4737,8 +4997,8 @@ declare module "net.sweenus.simplyswords.recipe.UpgradeUniqueRecipe" {
 import {$CraftingInput, $CraftingInput$$Type} from "net.minecraft.world.item.crafting.CraftingInput"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CraftingBookCategory, $CraftingBookCategory$$Type} from "net.minecraft.world.item.crafting.CraftingBookCategory"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$ShapedRecipePattern, $ShapedRecipePattern$$Type} from "net.minecraft.world.item.crafting.ShapedRecipePattern"
@@ -4751,16 +5011,16 @@ export class $UpgradeUniqueRecipe extends $ShapedRecipe {
  "result": $ItemStack
 readonly "pattern": $ShapedRecipePattern
 
-constructor(group: string, category: $CraftingBookCategory$$Type, raw: $RawUpgradableRecipe$$Type, result: $ItemStack$$Type, showNotification: boolean)
+constructor(group: StringJS, category: $CraftingBookCategory$$Type, raw: $RawUpgradableRecipe$$Type, result: $ItemStack$$Type, showNotification: boolean)
 
 public "getWidth"(): integer
 public "getHeight"(): integer
 public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "matches"(craftingRecipeInput: $CraftingInput$$Type, world: $Level$$Type): boolean
 public "getIngredients"(): $NonNullList<($Ingredient)>
+public "getSerializer"(): $RecipeSerializer<(any)>
 public "assemble"(craftingRecipeInput: $CraftingInput$$Type, wrapperLookup: $HolderLookup$Provider$$Type): $ItemStack
 public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "getSerializer"(): $RecipeSerializer<(any)>
 public "canCraftInDimensions"(width: integer, height: integer): boolean
 get "width"(): integer
 get "height"(): integer
@@ -4780,20 +5040,24 @@ declare global {
 export type $UpgradeUniqueRecipe_ = $UpgradeUniqueRecipe$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.RunicTabletItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export class $RunicTabletItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4803,6 +5067,7 @@ constructor()
 
 public "getName"(stack: $ItemStack$$Type): $Component
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4817,15 +5082,17 @@ declare global {
 export type $RunicTabletItem_ = $RunicTabletItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.item.custom.WhisperwindSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -4840,7 +5107,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $WhisperwindSwordItem extends $UniqueSwordItem implements $TwoHandedWeapon {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -4850,9 +5117,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
+public "hurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): boolean
 public "appendHoverText"(itemStack: $ItemStack$$Type, tooltipContext: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4868,13 +5136,13 @@ export type $WhisperwindSwordItem_ = $WhisperwindSwordItem$$Type;
 }}
 declare module "net.sweenus.simplyswords.power.powers.WeakenPower" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$RunefusedGemPower, $RunefusedGemPower$$Type} from "net.sweenus.simplyswords.power.RunefusedGemPower"
+import {$List, $List$$Type} from "java.util.List"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$GemPower, $GemPower$$Type} from "net.sweenus.simplyswords.power.GemPower"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 
 export class $WeakenPower extends $RunefusedGemPower {
 static "EMPTY": $GemPower
@@ -4915,8 +5183,8 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(statusEffectCategory: $MobEffectCategory$$Type, color: integer)
 
-public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 public "applyEffectTick"(pLivingEntity: $LivingEntity$$Type, pAmplifier: integer): boolean
+public "shouldApplyEffectTickThisTick"(pDuration: integer, pAmplifier: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

@@ -186,6 +186,10 @@ file = "config/horseman-server.toml"
 hash = "b87d823cbffc4e4900624c32ceb98b2d9b1003512f0b626296eb228a9ad4b12f"
 
 [[files]]
+file = "config/immersiveengineering-server.toml"
+hash = "b46c4f20577baecf40fa5da3a720eda7a54737a02e84b94cdcb832b9f2950fca"
+
+[[files]]
 file = "config/integrateddynamics-common.toml"
 hash = "d2910e4975e0a16a6903f1e947a9bde58f3644b3055b2f847ff88df96ef7d4db"
 
@@ -286,6 +290,10 @@ file = "kubejs/assets/bth/textures/item/coconut_maul.png"
 hash = "eccd2ca27b2d3a0c9af775ee1826846ec26a4f3dab0d6566a5ddafbbc0a051ad"
 
 [[files]]
+file = "kubejs/assets/bth/textures/item/spectre_snare.png"
+hash = "96753a8dcd7c57912806d10a5faea4bcf04aaa1cc56cce49ff251f06cc8c9d22"
+
+[[files]]
 file = "kubejs/assets/bth/textures/item/spell_book_models/adventurers_spell_book.png"
 hash = "d0412ed150c71720e106ac009a43fd1f011cbd914023d985641ddb84292b7c5d"
 
@@ -296,10 +304,6 @@ hash = "aadee2369bf21188b17c00d0c3c3820f64091fb0fc534502ae7199f239aa270a"
 [[files]]
 file = "kubejs/assets/compactmachines/lang/en_us.json"
 hash = "d9a2b06b58bfe9593a92935cc19805be2d812b5c37dc0c449a8cb11205ee1cd2"
-
-[[files]]
-file = "kubejs/client_scripts/main.js"
-hash = "3df46f0add819bf2602642215b5c62f0581ffdaaf97e77c80a8c4d966e05adcf"
 
 [[files]]
 file = "kubejs/config/client.json"
@@ -495,7 +499,7 @@ hash = "9cb8440b069440391aa2860ba45dc813ac1b2dc9dae478a7892dcef8fdbe0c9f"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/nether.json"
-hash = "bcd6004426e2382701d717b417e83798f82ccc069a130c014f768132855cbc80"
+hash = "0c152eda47200834b1f71d9273deaaebb46a614793c2eabf889c780e4c71529f"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/overworld.json"
@@ -688,6 +692,10 @@ hash = "ba015439b284ed9fb6e2a1c729f251303498f1d3a39ae5702550890b5ccda02d"
 [[files]]
 file = "kubejs/data/ctov/lithostitched/worldgen_modifier/ctov/village.json"
 hash = "b4f75f8777e3027dcc81b9656896ea3643f2c43cc822dcc145dac60213b49a63"
+
+[[files]]
+file = "kubejs/data/curios/curios/slots/belt.json"
+hash = "5a82e161c844aec48cbbc102dde5f9bea82fe3b3a01504fb084f8cfb8342323b"
 
 [[files]]
 file = "kubejs/data/deep_aether/neoforge/biome_modifier/sterling_aercloud.json"
@@ -1227,7 +1235,7 @@ hash = "945b24f462fd56196c77de7590a7f8a7388f8011ff839c0616d3e46d4bbb3239"
 
 [[files]]
 file = "kubejs/server_scripts/constants.js"
-hash = "1a3b49d86bfaabcf5961fb31832ab9054960a1e54a733acf19c7dc1ec31106d3"
+hash = "9ccd3724a7a02691bad49503a579e3f4b4e27d338d707f833f50e10e057e6de7"
 
 [[files]]
 file = "kubejs/server_scripts/functions.js"
@@ -1235,7 +1243,11 @@ hash = "c1428ab0f3bfdfdb20343e639e4e5d757577ae55f40bfe63e28b5bfab5ef804d"
 
 [[files]]
 file = "kubejs/server_scripts/item_events.js"
-hash = "068ba67e3720f7069539716132ffe2d82bb3e7954ed13153a57670fa303a8c4f"
+hash = "80d3d75840d56b90628ebd93235a13465507d775bee3571131e8d939c4ea95e9"
+
+[[files]]
+file = "kubejs/server_scripts/item_tooltip.js"
+hash = "cfa64c523758726296224baaab77d7431d1029468be1380d357e5da9e6156d9f"
 
 [[files]]
 file = "kubejs/server_scripts/loot_tables/chests.js"
@@ -1243,7 +1255,7 @@ hash = "5e1ecb791e22400c9df69063cb7f859fa6f3b824c62fc1500ed9a7bdca7f57c7"
 
 [[files]]
 file = "kubejs/server_scripts/loot_tables/coins.js"
-hash = "7ea2b03a64395d961bd7b1b0bbf474c725f34ac72dad4a612ef4707f68b822dd"
+hash = "6065c80de0e0f6eb28d5e95f68a9c7b1f3f71e31f8a90e480b768be90c5db328"
 
 [[files]]
 file = "kubejs/server_scripts/loot_tables/constants.js"
@@ -1251,19 +1263,55 @@ hash = "43fad3040e531d80cf7ed73b22787c2c2e22807cdff89c6143ea1d62f0e30f00"
 
 [[files]]
 file = "kubejs/server_scripts/player_events.js"
-hash = "dcec7586ea1e9f1b7628e1e389184e174ff20c0d529e3a81edbbf2831eacffa0"
+hash = "57cb3b3319a3c18071c0cb7cce5e8b97b4f248541e7254e57556746ffc161e6a"
+
+[[files]]
+file = "kubejs/server_scripts/recipe_viewer/add_information.js"
+hash = "4827f654df359ec3fc2738fe9f101c5471593eeced49371e9314bc8e27bc7439"
+
+[[files]]
+file = "kubejs/server_scripts/recipe_viewer/add_item.js"
+hash = "f8fe3bafebbdaa3250686120b3dfaacfe8bf40a9fe5b8e041111bacacfa1e91f"
+
+[[files]]
+file = "kubejs/server_scripts/recipe_viewer/remove_item.js"
+hash = "74a22f29fc41a0eb99cfe8c0fea696be8095a444f6033ca166e29131c48eb154"
+
+[[files]]
+file = "kubejs/server_scripts/recipes/arsnouveau.js"
+hash = "6a389cf0e99087bce150d612691132e687f6feb43e3c44ec45d659173043cdbd"
+
+[[files]]
+file = "kubejs/server_scripts/recipes/enderio.js"
+hash = "09ccd00198177765d0de61ae75305e8516985e95e593092b3a2955fbdce91437"
+
+[[files]]
+file = "kubejs/server_scripts/recipes/exposure.js"
+hash = "257aefb5b72471cf2181593e198fd92763d316cb016ecacb21458c9a45a46fe7"
+
+[[files]]
+file = "kubejs/server_scripts/recipes/integrateddynamics.js"
+hash = "ad93be1dd67d5c618084af09c223e0531160221ee21a30944e125fadd7b8c2b2"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/pneumaticcraft.js"
-hash = "e00437a6f2560572d5506bfdf291a1e429e01658b902dc74d7f61bb5b096e07c"
+hash = "b31110a0c45fbe4b1d7f5bbe8f79bf8031ea1dd2eddc7bfcb2093a530f712b02"
+
+[[files]]
+file = "kubejs/server_scripts/recipes/remove.js"
+hash = "feb027a82565fcea439fd9535220bc0d35dda12c3c3414d905c2aaa25de6f945"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/replace.js"
-hash = "4e37ebc686118a4dad59c94251f7ebf02a73c1a0f4058c74ddeecb82452402b7"
+hash = "4fe88cecf5366a32a99fa22be1191821b30e19205d84ae530615b96368847512"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/shaped.js"
-hash = "8eac212a039a04be1aba8720e3b13dcb9e7f0a83b0485f4e19ea9ecc9fbc33fd"
+hash = "2ed7db9d51ea6e72ced9b77785b2773dae67a2f74bd41b6bbde24ea79e44c8f4"
+
+[[files]]
+file = "kubejs/server_scripts/recipes/shapeless.js"
+hash = "9b018f29873d7597481b774b909f01aaead42dd0b17861fbcb858d3afa1d68d7"
 
 [[files]]
 file = "kubejs/server_scripts/tags/biome.js"
@@ -1278,8 +1326,12 @@ file = "kubejs/server_scripts/tags/item.js"
 hash = "14d6e4e89dbdbf65c403ed9353054e88111e19f7d0acb69a95a2d3b1a45c36d0"
 
 [[files]]
+file = "kubejs/startup_scripts/fluid.js"
+hash = "2d958392c551fab08f53058de8a4e5e0ff6231fa8fc70bd74f251f224de885eb"
+
+[[files]]
 file = "kubejs/startup_scripts/item.js"
-hash = "8790a63a61745e8c98e18fc1e333ec99a61ba1529af86c7f9a133c6fcfb4bd3f"
+hash = "face30b4480012e846f10f3e961a5093e02f0ea1d86376688e1eb86a68f8b4ed"
 
 [[files]]
 file = "kubejs/startup_scripts/main.js"
@@ -1519,6 +1571,11 @@ metafile = true
 [[files]]
 file = "mods/chefs-delight-forge.pw.toml"
 hash = "ab4369feacbd745c55a57f455c13cf5a6f94a0463026587de220d277b3a031c9"
+metafile = true
+
+[[files]]
+file = "mods/chimes.pw.toml"
+hash = "5f0d87ae88243df2390d5d8a2b0fdf312382ccae83084c9a1ba807c08fbcc013"
 metafile = true
 
 [[files]]
@@ -2182,6 +2239,11 @@ hash = "7fbe3225c134e823a07f3aecedace39fe866f327671ecca928f134399b94008d"
 metafile = true
 
 [[files]]
+file = "mods/kubejs-ars-nouveau.pw.toml"
+hash = "397cb8ac6ad5e1324a87350199fb70047770ebd8c2fc7043ac0baeaa8245324b"
+metafile = true
+
+[[files]]
 file = "mods/kubejs-curios.pw.toml"
 hash = "f5758164cc32ca8301640b289f7f5ad9d3ed9104a51ca61da6303af0e202999b"
 metafile = true
@@ -2484,6 +2546,11 @@ metafile = true
 [[files]]
 file = "mods/prickle.pw.toml"
 hash = "eab2f56ff9135b3b7253ea5a73deae2f887e2876f5f0432936044a6e926937b4"
+metafile = true
+
+[[files]]
+file = "mods/probejs.pw.toml"
+hash = "2a8dd9366ed60e7040e90c1b87722b14729ffe080e693ef43151dea10d25ed38"
 metafile = true
 
 [[files]]
@@ -2921,7 +2988,7 @@ hash = "8def83100904cc2f616de07458e96774da75fd95f23a28313a9943cfcf725d65"
 
 [[files]]
 file = "scripts/structures.yml"
-hash = "51bad61da56c448415839c0b3246d953d4574de2bfa5fdc064a0aeb39e605ba7"
+hash = "d952d76bc607728cca573472d2d50e4cbb9e87f7b7954417c751d88865a179cb"
 
 [[files]]
 file = "shaderpacks/ComplementaryUnbound_r5.5.1 + EuphoriaPatches_1.6.5.txt"

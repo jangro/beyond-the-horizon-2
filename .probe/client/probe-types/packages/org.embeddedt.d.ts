@@ -63,9 +63,9 @@ declare module "org.embeddedt.modernfix.duck.IProfilingServerFunctionManager" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $IProfilingServerFunctionManager {
 
- "mfix$getProfilingResults"(): string
+ "mfix$getProfilingResults"(): StringJS
 
-(): string
+(): StringJS
 }
 
 export namespace $IProfilingServerFunctionManager {
@@ -74,13 +74,13 @@ const probejs$$marker: never
 export class $IProfilingServerFunctionManager$$Static implements $IProfilingServerFunctionManager {
 
 
- "mfix$getProfilingResults"(): string
+ "mfix$getProfilingResults"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $IProfilingServerFunctionManager$$Type = (() => string);
+export type $IProfilingServerFunctionManager$$Type = (() => StringJS);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -94,8 +94,8 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 
 export interface $BlockBehaviourInvoker {
 
- "invokeIsRandomlyTicking"(arg0: $BlockState$$Type): boolean
  "invokeGetFluidState"(arg0: $BlockState$$Type): $FluidState
+ "invokeIsRandomlyTicking"(arg0: $BlockState$$Type): boolean
 }
 
 export namespace $BlockBehaviourInvoker {
@@ -104,8 +104,8 @@ const probejs$$marker: never
 export class $BlockBehaviourInvoker$$Static implements $BlockBehaviourInvoker {
 
 
- "invokeIsRandomlyTicking"(arg0: $BlockState$$Type): boolean
  "invokeGetFluidState"(arg0: $BlockState$$Type): $FluidState
+ "invokeIsRandomlyTicking"(arg0: $BlockState$$Type): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

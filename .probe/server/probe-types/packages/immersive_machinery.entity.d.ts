@@ -7,7 +7,7 @@ static readonly "FIRST": $BambooBee$Configuration$Order
 
 
 public static "values"(): ($BambooBee$Configuration$Order)[]
-public static "valueOf"(name: string): $BambooBee$Configuration$Order
+public static "valueOf"(name: StringJS): $BambooBee$Configuration$Order
 public "next"(): $BambooBee$Configuration$Order
 }
 /**
@@ -30,13 +30,13 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 export class $ContainerPosition {
 static "CODEC": $Codec<($ContainerPosition)>
 
-constructor(pos: $BlockPos$$Type, name: string, input: boolean)
+constructor(pos: $BlockPos$$Type, name: StringJS, input: boolean)
 constructor(tag: $CompoundTag$$Type)
 
-public "name"(): string
 public "pos"(): $BlockPos
 public "input"(): boolean
 public "setInput"(input: boolean): void
+public "name"(): StringJS
 public "toTag"(): $CompoundTag
 public "getPos"(): long
 }
@@ -67,11 +67,11 @@ static "CODEC": $Codec<($BambooBee$Configuration)>
 constructor()
 constructor(tag: $CompoundTag$$Type)
 
+public "isDirty"(): boolean
 public "decode"(b: $FriendlyByteBuf$$Type): void
 public "encode"(b: $FriendlyByteBuf$$Type): void
-public "isDirty"(): boolean
-public "setDirty"(): void
 public "toTag"(): $CompoundTag
+public "setDirty"(): void
 get "dirty"(): boolean
 }
 /**

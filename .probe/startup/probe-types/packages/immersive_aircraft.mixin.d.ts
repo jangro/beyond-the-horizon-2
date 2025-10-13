@@ -3,11 +3,11 @@ import {$ContainerSynchronizer, $ContainerSynchronizer$$Type} from "net.minecraf
 
 export interface $ServerPlayerEntityMixin {
 
+ "getContainerCounter"(): integer
  "getContainerSynchronizer"(): $ContainerSynchronizer
  "ic$nextContainerCounter"(): void
- "getContainerCounter"(): integer
-get "containerSynchronizer"(): $ContainerSynchronizer
 get "containerCounter"(): integer
+get "containerSynchronizer"(): $ContainerSynchronizer
 }
 
 export namespace $ServerPlayerEntityMixin {
@@ -16,9 +16,9 @@ const probejs$$marker: never
 export class $ServerPlayerEntityMixin$$Static implements $ServerPlayerEntityMixin {
 
 
+ "getContainerCounter"(): integer
  "getContainerSynchronizer"(): $ContainerSynchronizer
  "ic$nextContainerCounter"(): void
- "getContainerCounter"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

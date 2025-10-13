@@ -42,10 +42,10 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
@@ -53,17 +53,17 @@ import {$RenderShape, $RenderShape$$Type} from "net.minecraft.world.level.block.
 import {$PathComputationType, $PathComputationType$$Type} from "net.minecraft.world.level.pathfinder.PathComputationType"
 import {$TickingEntityBlock, $TickingEntityBlock$$Type} from "fuzs.puzzleslib.api.block.v1.entity.TickingEntityBlock"
 import {$TradingPostBlockEntity, $TradingPostBlockEntity$$Type} from "fuzs.tradingpost.world.level.block.entity.TradingPostBlockEntity"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
-import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
+import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $TradingPostBlock extends $BaseEntityBlock implements $SimpleWaterloggedBlock, $TickingEntityBlock<($TradingPostBlockEntity)> {
 static readonly "UPDATE_IMMEDIATE": integer
@@ -80,7 +80,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -91,14 +91,14 @@ static readonly "UPDATE_CLIENTS": integer
 constructor(blockProperties: $BlockBehaviour$Properties$$Type)
 
 public "getShape"(state: $BlockState$$Type, blockReader: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public "useShapeForLightOcclusion"(state: $BlockState$$Type): boolean
-public "updateShape"(state: $BlockState$$Type, direction: $Direction$$Type, oldState: $BlockState$$Type, level: $LevelAccessor$$Type, newPos: $BlockPos$$Type, oldPos: $BlockPos$$Type): $BlockState
 public "isPathfindable"(state: $BlockState$$Type, pathType: $PathComputationType$$Type): boolean
 public "useWithoutItem"(state: $BlockState$$Type, level: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hitResult: $BlockHitResult$$Type): $InteractionResult
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
+public "updateShape"(state: $BlockState$$Type, direction: $Direction$$Type, oldState: $BlockState$$Type, level: $LevelAccessor$$Type, newPos: $BlockPos$$Type, oldPos: $BlockPos$$Type): $BlockState
 public "getFluidState"(blockState: $BlockState$$Type): $FluidState
+public "getRenderShape"(state: $BlockState$$Type): $RenderShape
 public "getBlockEntityType"(): $BlockEntityType<($TradingPostBlockEntity)>
 public "getStateForPlacement"(context: $BlockPlaceContext$$Type): $BlockState
+public "useShapeForLightOcclusion"(state: $BlockState$$Type): boolean
 public static "isAllowedToTrade"(entity: $Entity$$Type): boolean
 public "getPickupSound"(): $Optional<($SoundEvent)>
 public "canPlaceLiquid"(arg0: $Player$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $Fluid$$Type): boolean
@@ -156,8 +156,8 @@ export type $ButtonAccessor_ = $ButtonAccessor$$Type;
 declare module "fuzs.tradingpost.world.level.block.entity.TradingPostBlockEntity" {
 import {$TickingBlockEntity, $TickingBlockEntity$$Type} from "fuzs.puzzleslib.api.block.v1.entity.TickingBlockEntity"
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
-import {$TradingPostAnimationController, $TradingPostAnimationController$$Type} from "fuzs.tradingpost.world.level.block.entity.TradingPostAnimationController"
 import {$TrackedData, $TrackedData$$Type} from "dev.corgitaco.dataanchor.data.TrackedData"
+import {$TradingPostAnimationController, $TradingPostAnimationController$$Type} from "fuzs.tradingpost.world.level.block.entity.TradingPostAnimationController"
 import {$TrackedDataContainer, $TrackedDataContainer$$Type} from "dev.corgitaco.dataanchor.data.TrackedDataContainer"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.dataanchor.data.registry.TrackedDataRegistry"
@@ -168,24 +168,24 @@ import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $TradingPostBlockEntity extends $BlockEntity implements $Nameable, $TickingBlockEntity {
-static readonly "TAG_CUSTOM_NAME": string
+static readonly "TAG_CUSTOM_NAME": StringJS
 static readonly "CONTAINER_COMPONENT": $Component
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 constructor(blockPos: $BlockPos$$Type, blockState: $BlockState$$Type)
 
 public "getName"(): $Component
-public "removeComponentsFromTag"(tag: $CompoundTag$$Type): void
-public "loadAdditional"(compoundTag: $CompoundTag$$Type, registries: $HolderLookup$Provider$$Type): void
-public "clientTick"(): void
 public "getCustomName"(): $Component
 public "setCustomName"(component: $Component$$Type): void
+public "loadAdditional"(compoundTag: $CompoundTag$$Type, registries: $HolderLookup$Provider$$Type): void
+public "clientTick"(): void
 public "getAnimationController"(): $TradingPostAnimationController
+public "removeComponentsFromTag"(tag: $CompoundTag$$Type): void
 public "getDisplayName"(): $Component
 public "hasCustomName"(): boolean
 public "serverTick"(): void
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "name"(): $Component
 get "customName"(): $Component
 set "customName"(value: $Component$$Type)
@@ -210,8 +210,8 @@ import {$MerchantContainer, $MerchantContainer$$Type} from "net.minecraft.world.
 
 export interface $MerchantMenuAccessor {
 
- "tradingpost$setTradeContainer"(arg0: $MerchantContainer$$Type): void
  "tradingpost$setTrader"(arg0: $Merchant$$Type): void
+ "tradingpost$setTradeContainer"(arg0: $MerchantContainer$$Type): void
 }
 
 export namespace $MerchantMenuAccessor {
@@ -220,8 +220,8 @@ const probejs$$marker: never
 export class $MerchantMenuAccessor$$Static implements $MerchantMenuAccessor {
 
 
- "tradingpost$setTradeContainer"(arg0: $MerchantContainer$$Type): void
  "tradingpost$setTrader"(arg0: $Merchant$$Type): void
+ "tradingpost$setTradeContainer"(arg0: $MerchantContainer$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

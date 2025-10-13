@@ -7,11 +7,11 @@ export class $ASTNode {
 constructor(arg0: $Token$$Type, ...arg1: ($ASTNode$$Type)[])
 
 public "getToken"(): $Token
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "getParameters"(): $List<($ASTNode)>
-public "toJSON"(): string
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+public "toJSON"(): StringJS
 get "token"(): $Token
 get "parameters"(): $List<($ASTNode)>
 }
@@ -32,27 +32,27 @@ import {$ParsedProtoTag, $ParsedProtoTag$$Type} from "snownee.kiwi.customization
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$List, $List$$Type} from "java.util.List"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
-import {$Record, $Record$$Type} from "java.lang.Record"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
+import {$Record, $Record$$Type} from "java.lang.Record"
 
 export class $PlaceChoices$Limit extends $Record {
 static readonly "CODEC": $Codec<($PlaceChoices$Limit)>
 
-constructor(type: string, tags: $List$$Type<($ParsedProtoTag$$Type)>)
+constructor(type: StringJS, tags: $List$$Type<($ParsedProtoTag$$Type)>)
 
-public "type"(): string
+public "tags"(): $List<($ParsedProtoTag)>
+public "type"(): StringJS
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "test"(arg0: $BlockState$$Type, arg1: $BlockState$$Type): boolean
-public "tags"(): $List<($ParsedProtoTag)>
 public "testFace"(arg0: $BlockState$$Type, arg1: $Direction$$Type): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $PlaceChoices$Limit$$Type = ({"tags"?: $List$$Type<($ParsedProtoTag$$Type)>, "type"?: string}) | ([tags?: $List$$Type<($ParsedProtoTag$$Type)>, type?: string]);
+export type $PlaceChoices$Limit$$Type = ({"tags"?: $List$$Type<($ParsedProtoTag$$Type)>, "type"?: StringJS}) | ([tags?: $List$$Type<($ParsedProtoTag$$Type)>, type?: StringJS]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -74,11 +74,11 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($KiwiS
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($KiwiShapelessRecipe)>
 public "codec"(): $MapCodec<($KiwiShapelessRecipe)>
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($KiwiShapelessRecipe)>
 public static "fromNetwork"(arg0: $RegistryFriendlyByteBuf$$Type): $KiwiShapelessRecipe
 public static "toNetwork"(arg0: $RegistryFriendlyByteBuf$$Type, arg1: $KiwiShapelessRecipe$$Type): void
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -99,8 +99,8 @@ import {$Stream, $Stream$$Type} from "java.util.stream.Stream"
 
 export interface $UnbakedShape {
 
- "dependencies"(): $Stream<($UnbakedShape)>
  "bake"(arg0: $BakingContext$$Type): $ShapeGenerator
+ "dependencies"(): $Stream<($UnbakedShape)>
 }
 
 export namespace $UnbakedShape {
@@ -109,8 +109,8 @@ const probejs$$marker: never
 export class $UnbakedShape$$Static implements $UnbakedShape {
 
 
- "dependencies"(): $Stream<($UnbakedShape)>
  "bake"(arg0: $BakingContext$$Type): $ShapeGenerator
+ "dependencies"(): $Stream<($UnbakedShape)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -131,9 +131,9 @@ export class $OneTimeLoader$Context {
 
 constructor()
 
-public "addDisabledNamespace"(arg0: string): void
-public "isNamespaceDisabled"(arg0: string): boolean
-public "getExpression"(arg0: string): $Expression
+public "getExpression"(arg0: StringJS): $Expression
+public "addDisabledNamespace"(arg0: StringJS): void
+public "isNamespaceDisabled"(arg0: StringJS): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -160,20 +160,20 @@ static readonly "MAP_CODEC": $MapCodec<($ItemDefinitionProperties$PartialVanilla
 
 constructor(maxStackSize: $Optional$$Type<(integer)>, maxDamage: $Optional$$Type<(integer)>, craftingRemainingItem: $Optional$$Type<($ResourceKey$$Type<($Item$$Type)>)>, components: $Optional$$Type<($DataComponentMap$$Type)>)
 
+public "maxStackSize"(): $Optional<(integer)>
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "merge"(arg0: $ItemDefinitionProperties$PartialVanillaProperties$$Type): $ItemDefinitionProperties$PartialVanillaProperties
-public "maxStackSize"(): $Optional<(integer)>
-public "maxDamage"(): $Optional<(integer)>
 public "components"(): $Optional<($DataComponentMap)>
+public "maxDamage"(): $Optional<(integer)>
 public "craftingRemainingItem"(): $Optional<($ResourceKey<($Item)>)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ItemDefinitionProperties$PartialVanillaProperties$$Type = ({"maxStackSize"?: (integer)?, "components"?: ($DataComponentMap$$Type)?, "craftingRemainingItem"?: ($ResourceKey$$Type<($Item$$Type)>)?, "maxDamage"?: (integer)?}) | ([maxStackSize?: (integer)?, components?: ($DataComponentMap$$Type)?, craftingRemainingItem?: ($ResourceKey$$Type<($Item$$Type)>)?, maxDamage?: (integer)?]);
+export type $ItemDefinitionProperties$PartialVanillaProperties$$Type = ({"maxDamage"?: (integer)?, "maxStackSize"?: (integer)?, "components"?: ($DataComponentMap$$Type)?, "craftingRemainingItem"?: ($ResourceKey$$Type<($Item$$Type)>)?}) | ([maxDamage?: (integer)?, maxStackSize?: (integer)?, components?: ($DataComponentMap$$Type)?, craftingRemainingItem?: ($ResourceKey$$Type<($Item$$Type)>)?]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -193,7 +193,7 @@ export class $KBlockTemplate$Type<T extends $KBlockTemplate> extends $Record {
 constructor(codec: $Function$$Type<($BlockFundamentals$CodecCreationContext), ($MapCodec$$Type<(T)>)>)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "codec"(): $Function<($BlockFundamentals$CodecCreationContext), ($MapCodec<(T)>)>
 /**
@@ -251,31 +251,31 @@ declare module "snownee.kiwi.customization.block.KBlockSettings$Builder" {
 import {$ToIntFunction, $ToIntFunction$$Type} from "java.util.function.ToIntFunction"
 import {$KBlockComponent$Type, $KBlockComponent$Type$$Type} from "snownee.kiwi.customization.block.component.KBlockComponent$Type"
 import {$KBlockComponent, $KBlockComponent$$Type} from "snownee.kiwi.customization.block.component.KBlockComponent"
-import {$BlockShapeType, $BlockShapeType$$Type} from "snownee.kiwi.customization.shape.BlockShapeType"
 import {$ShapeGenerator, $ShapeGenerator$$Type} from "snownee.kiwi.customization.shape.ShapeGenerator"
+import {$BlockShapeType, $BlockShapeType$$Type} from "snownee.kiwi.customization.shape.BlockShapeType"
 import {$CanSurviveHandler, $CanSurviveHandler$$Type} from "snownee.kiwi.customization.block.behavior.CanSurviveHandler"
 import {$GlassType, $GlassType$$Type} from "snownee.kiwi.customization.block.GlassType"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
-import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
+import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 
 export class $KBlockSettings$Builder {
 
 
-public "get"(): $BlockBehaviour$Properties
-public "component"(arg0: $KBlockComponent$$Type): $KBlockSettings$Builder
 public "shape"(arg0: $BlockShapeType$$Type, arg1: $ShapeGenerator$$Type): $KBlockSettings$Builder
 public "configure"(arg0: $Consumer$$Type<($BlockBehaviour$Properties)>): $KBlockSettings$Builder
+public "get"(): $BlockBehaviour$Properties
+public "component"(arg0: $KBlockComponent$$Type): $KBlockSettings$Builder
 public "glassType"(arg0: $GlassType$$Type): $KBlockSettings$Builder
 public "noOcclusion"(): $KBlockSettings$Builder
 public "hasComponent"(arg0: $KBlockComponent$Type$$Type<(any)>): boolean
 public "noCollision"(): $KBlockSettings$Builder
 public "horizontal"(): $KBlockSettings$Builder
+public "directional"(): $KBlockSettings$Builder
 public "removeComponent"(arg0: $KBlockComponent$Type$$Type<(any)>): $KBlockSettings$Builder
+public "customPlacement"(): $KBlockSettings$Builder
 public "canSurviveHandler"(arg0: $CanSurviveHandler$$Type): $KBlockSettings$Builder
 public "getAnalogOutputSignal"(): $ToIntFunction<($BlockState)>
-public "customPlacement"(): $KBlockSettings$Builder
-public "directional"(): $KBlockSettings$Builder
 public "waterLoggable"(): $KBlockSettings$Builder
 get "analogOutputSignal"(): $ToIntFunction<($BlockState)>
 }
@@ -301,35 +301,35 @@ import {$OperatorDictionaryIfc, $OperatorDictionaryIfc$$Type} from "snownee.kiwi
 import {$ZoneId, $ZoneId$$Type} from "java.time.ZoneId"
 import {$EvaluationValue, $EvaluationValue$$Type} from "snownee.kiwi.shadowed.com.ezylang.evalex.data.EvaluationValue"
 import {$DateTimeFormatter, $DateTimeFormatter$$Type} from "java.time.format.DateTimeFormatter"
-import {$DataAccessorIfc, $DataAccessorIfc$$Type} from "snownee.kiwi.shadowed.com.ezylang.evalex.data.DataAccessorIfc"
-import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$ExpressionConfiguration, $ExpressionConfiguration$$Type} from "snownee.kiwi.shadowed.com.ezylang.evalex.config.ExpressionConfiguration"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
+import {$DataAccessorIfc, $DataAccessorIfc$$Type} from "snownee.kiwi.shadowed.com.ezylang.evalex.data.DataAccessorIfc"
 import {$EvaluationValueConverterIfc, $EvaluationValueConverterIfc$$Type} from "snownee.kiwi.shadowed.com.ezylang.evalex.data.conversion.EvaluationValueConverterIfc"
 
 export class $ExpressionConfiguration$ExpressionConfigurationBuilder {
 
 
-public "stripTrailingZeros"(arg0: boolean): $ExpressionConfiguration$ExpressionConfigurationBuilder
-public "toString"(): string
-public "locale"(arg0: $Locale$$Type): $ExpressionConfiguration$ExpressionConfigurationBuilder
-public "build"(): $ExpressionConfiguration
 public "zoneId"(arg0: $ZoneId$$Type): $ExpressionConfiguration$ExpressionConfigurationBuilder
+public "build"(): $ExpressionConfiguration
+public "stripTrailingZeros"(arg0: boolean): $ExpressionConfiguration$ExpressionConfigurationBuilder
+public "toString"(): StringJS
+public "locale"(arg0: $Locale$$Type): $ExpressionConfiguration$ExpressionConfigurationBuilder
 public "mathContext"(arg0: $MathContext$$Type): $ExpressionConfiguration$ExpressionConfigurationBuilder
-public "arraysAllowed"(arg0: boolean): $ExpressionConfiguration$ExpressionConfigurationBuilder
 public "binaryAllowed"(arg0: boolean): $ExpressionConfiguration$ExpressionConfigurationBuilder
-public "defaultConstants"(arg0: $Map$$Type<(string), ($EvaluationValue$$Type)>): $ExpressionConfiguration$ExpressionConfigurationBuilder
-public "dataAccessorSupplier"(arg0: $Supplier$$Type<($DataAccessorIfc$$Type)>): $ExpressionConfiguration$ExpressionConfigurationBuilder
+public "arraysAllowed"(arg0: boolean): $ExpressionConfiguration$ExpressionConfigurationBuilder
 public "operatorDictionary"(arg0: $OperatorDictionaryIfc$$Type): $ExpressionConfiguration$ExpressionConfigurationBuilder
 public "functionDictionary"(arg0: $FunctionDictionaryIfc$$Type): $ExpressionConfiguration$ExpressionConfigurationBuilder
+public "dataAccessorSupplier"(arg0: $Supplier$$Type<($DataAccessorIfc$$Type)>): $ExpressionConfiguration$ExpressionConfigurationBuilder
+public "defaultConstants"(arg0: $Map$$Type<(StringJS), ($EvaluationValue$$Type)>): $ExpressionConfiguration$ExpressionConfigurationBuilder
 public "structuresAllowed"(arg0: boolean): $ExpressionConfiguration$ExpressionConfigurationBuilder
 public "powerOfPrecedence"(arg0: integer): $ExpressionConfiguration$ExpressionConfigurationBuilder
 public "decimalPlacesResult"(arg0: integer): $ExpressionConfiguration$ExpressionConfigurationBuilder
 public "decimalPlacesRounding"(arg0: integer): $ExpressionConfiguration$ExpressionConfigurationBuilder
 public "dateTimeFormatters"(arg0: $List$$Type<($DateTimeFormatter$$Type)>): $ExpressionConfiguration$ExpressionConfigurationBuilder
+public "singleQuoteStringLiteralsAllowed"(arg0: boolean): $ExpressionConfiguration$ExpressionConfigurationBuilder
 public "implicitMultiplicationAllowed"(arg0: boolean): $ExpressionConfiguration$ExpressionConfigurationBuilder
 public "allowOverwriteConstants"(arg0: boolean): $ExpressionConfiguration$ExpressionConfigurationBuilder
 public "evaluationValueConverter"(arg0: $EvaluationValueConverterIfc$$Type): $ExpressionConfiguration$ExpressionConfigurationBuilder
-public "singleQuoteStringLiteralsAllowed"(arg0: boolean): $ExpressionConfiguration$ExpressionConfigurationBuilder
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -409,8 +409,8 @@ declare module "snownee.kiwi.customization.block.component.KBlockComponent" {
 import {$KBlockComponent$Type, $KBlockComponent$Type$$Type} from "snownee.kiwi.customization.block.component.KBlockComponent$Type"
 import {$Mirror, $Mirror$$Type} from "net.minecraft.world.level.block.Mirror"
 import {$BlockBehaviorRegistry, $BlockBehaviorRegistry$$Type} from "snownee.kiwi.customization.block.behavior.BlockBehaviorRegistry"
-import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$StateDefinition$Builder, $StateDefinition$Builder$$Type} from "net.minecraft.world.level.block.state.StateDefinition$Builder"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$Rotation, $Rotation$$Type} from "net.minecraft.world.level.block.Rotation"
@@ -422,19 +422,19 @@ import {$KBlockSettings, $KBlockSettings$$Type} from "snownee.kiwi.customization
 
 export interface $KBlockComponent {
 
- "type"(): $KBlockComponent$Type<(any)>
  "rotate"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $BlockState
- "useShapeForLightOcclusion"(arg0: $BlockState$$Type): boolean
+ "type"(): $KBlockComponent$Type<(any)>
+ "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
  "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
  "canBeReplaced"(arg0: $BlockState$$Type, arg1: $BlockPlaceContext$$Type): boolean
- "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
- "getHorizontalFacing"(arg0: $BlockState$$Type): $Direction
- "hasAnalogOutputSignal"(): boolean
- "getStateForPlacement"(arg0: $KBlockSettings$$Type, arg1: $BlockState$$Type, arg2: $BlockPlaceContext$$Type): $BlockState
- "registerDefaultState"(arg0: $BlockState$$Type): $BlockState
- "getAnalogOutputSignal"(arg0: $BlockState$$Type): integer
- "injectProperties"(arg0: $Block$$Type, arg1: $StateDefinition$Builder$$Type<($Block$$Type), ($BlockState$$Type)>): void
  "addBehaviors"(arg0: $BlockBehaviorRegistry$$Type): void
+ "injectProperties"(arg0: $Block$$Type, arg1: $StateDefinition$Builder$$Type<($Block$$Type), ($BlockState$$Type)>): void
+ "getStateForPlacement"(arg0: $KBlockSettings$$Type, arg1: $BlockState$$Type, arg2: $BlockPlaceContext$$Type): $BlockState
+ "hasAnalogOutputSignal"(): boolean
+ "getAnalogOutputSignal"(arg0: $BlockState$$Type): integer
+ "registerDefaultState"(arg0: $BlockState$$Type): $BlockState
+ "getHorizontalFacing"(arg0: $BlockState$$Type): $Direction
+ "useShapeForLightOcclusion"(arg0: $BlockState$$Type): boolean
 }
 
 export namespace $KBlockComponent {
@@ -445,19 +445,19 @@ export class $KBlockComponent$$Static implements $KBlockComponent {
 static readonly "CODEC": $Codec<($KBlockComponent)>
 
 
- "type"(): $KBlockComponent$Type<(any)>
  "rotate"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $BlockState
- "useShapeForLightOcclusion"(arg0: $BlockState$$Type): boolean
+ "type"(): $KBlockComponent$Type<(any)>
+ "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
  "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
  "canBeReplaced"(arg0: $BlockState$$Type, arg1: $BlockPlaceContext$$Type): boolean
- "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
- "getHorizontalFacing"(arg0: $BlockState$$Type): $Direction
- "hasAnalogOutputSignal"(): boolean
- "getStateForPlacement"(arg0: $KBlockSettings$$Type, arg1: $BlockState$$Type, arg2: $BlockPlaceContext$$Type): $BlockState
- "registerDefaultState"(arg0: $BlockState$$Type): $BlockState
- "getAnalogOutputSignal"(arg0: $BlockState$$Type): integer
- "injectProperties"(arg0: $Block$$Type, arg1: $StateDefinition$Builder$$Type<($Block$$Type), ($BlockState$$Type)>): void
  "addBehaviors"(arg0: $BlockBehaviorRegistry$$Type): void
+ "injectProperties"(arg0: $Block$$Type, arg1: $StateDefinition$Builder$$Type<($Block$$Type), ($BlockState$$Type)>): void
+ "getStateForPlacement"(arg0: $KBlockSettings$$Type, arg1: $BlockState$$Type, arg2: $BlockPlaceContext$$Type): $BlockState
+ "hasAnalogOutputSignal"(): boolean
+ "getAnalogOutputSignal"(arg0: $BlockState$$Type): integer
+ "registerDefaultState"(arg0: $BlockState$$Type): $BlockState
+ "getHorizontalFacing"(arg0: $BlockState$$Type): $Direction
+ "useShapeForLightOcclusion"(arg0: $BlockState$$Type): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -476,8 +476,8 @@ import {$EvaluationValue, $EvaluationValue$$Type} from "snownee.kiwi.shadowed.co
 
 export interface $DataAccessorIfc {
 
- "setData"(arg0: string, arg1: $EvaluationValue$$Type): void
- "getData"(arg0: string): $EvaluationValue
+ "getData"(arg0: StringJS): $EvaluationValue
+ "setData"(arg0: StringJS, arg1: $EvaluationValue$$Type): void
 }
 
 export namespace $DataAccessorIfc {
@@ -486,8 +486,8 @@ const probejs$$marker: never
 export class $DataAccessorIfc$$Static implements $DataAccessorIfc {
 
 
- "setData"(arg0: string, arg1: $EvaluationValue$$Type): void
- "getData"(arg0: string): $EvaluationValue
+ "getData"(arg0: StringJS): $EvaluationValue
+ "setData"(arg0: StringJS, arg1: $EvaluationValue$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -506,8 +506,8 @@ import {$BlockFundamentals$CodecCreationContext, $BlockFundamentals$CodecCreatio
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
-import {$BlockDefinitionProperties, $BlockDefinitionProperties$$Type} from "snownee.kiwi.customization.block.loader.BlockDefinitionProperties"
 import {$KBlockTemplate$Type, $KBlockTemplate$Type$$Type} from "snownee.kiwi.customization.block.loader.KBlockTemplate$Type"
+import {$BlockDefinitionProperties, $BlockDefinitionProperties$$Type} from "snownee.kiwi.customization.block.loader.BlockDefinitionProperties"
 import {$OneTimeLoader$Context, $OneTimeLoader$Context$$Type} from "snownee.kiwi.util.resource.OneTimeLoader$Context"
 
 export class $KBlockTemplate {
@@ -543,36 +543,36 @@ import {$KHolder, $KHolder$$Type} from "snownee.kiwi.util.KHolder"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$PlaceChoices$Alter, $PlaceChoices$Alter$$Type} from "snownee.kiwi.customization.placement.PlaceChoices$Alter"
 import {$PlaceChoices$BlockFaceType, $PlaceChoices$BlockFaceType$$Type} from "snownee.kiwi.customization.placement.PlaceChoices$BlockFaceType"
-import {$PlaceChoices$Interests, $PlaceChoices$Interests$$Type} from "snownee.kiwi.customization.placement.PlaceChoices$Interests"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$PlaceChoices$Interests, $PlaceChoices$Interests$$Type} from "snownee.kiwi.customization.placement.PlaceChoices$Interests"
 import {$Record, $Record$$Type} from "java.lang.Record"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $PlaceChoices extends $Record {
 static readonly "CODEC": $Codec<($PlaceChoices)>
-static readonly "BLOCK_FACE_TYPES": $BiMap<(string), ($PlaceChoices$BlockFaceType)>
+static readonly "BLOCK_FACE_TYPES": $BiMap<(StringJS), ($PlaceChoices$BlockFaceType)>
 
-constructor(target: $List$$Type<($PlaceTarget$$Type)>, transformWith: $Optional$$Type<(string)>, flow: $List$$Type<($PlaceChoices$Flow$$Type)>, alter: $List$$Type<($PlaceChoices$Alter$$Type)>, limit: $List$$Type<($PlaceChoices$Limit$$Type)>, interests: $List$$Type<($PlaceChoices$Interests$$Type)>, skippable: boolean)
+constructor(target: $List$$Type<($PlaceTarget$$Type)>, transformWith: $Optional$$Type<(StringJS)>, flow: $List$$Type<($PlaceChoices$Flow$$Type)>, alter: $List$$Type<($PlaceChoices$Alter$$Type)>, limit: $List$$Type<($PlaceChoices$Limit$$Type)>, interests: $List$$Type<($PlaceChoices$Interests$$Type)>, skippable: boolean)
 
 public "equals"(arg0: any): boolean
 public "target"(): $List<($PlaceTarget)>
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "test"(arg0: $BlockState$$Type, arg1: $BlockState$$Type): integer
 public "limit"(): $List<($PlaceChoices$Limit)>
-public "skippable"(): boolean
-public "alter"(): $List<($PlaceChoices$Alter)>
 public "flow"(): $List<($PlaceChoices$Flow)>
 public static "setTo"(arg0: $Block$$Type, arg1: $KHolder$$Type<($PlaceChoices$$Type)>): void
-public "getStateForPlacement"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): $BlockState
+public "alter"(): $List<($PlaceChoices$Alter)>
+public "skippable"(): boolean
+public "transformWith"(): $Optional<(StringJS)>
 public "interests"(): $List<($PlaceChoices$Interests)>
-public "transformWith"(): $Optional<(string)>
+public "getStateForPlacement"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): $BlockState
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $PlaceChoices$$Type = ({"transformWith"?: (string)?, "skippable"?: boolean, "alter"?: $List$$Type<($PlaceChoices$Alter$$Type)>, "interests"?: $List$$Type<($PlaceChoices$Interests$$Type)>, "limit"?: $List$$Type<($PlaceChoices$Limit$$Type)>, "target"?: $List$$Type<($PlaceTarget$$Type)>, "flow"?: $List$$Type<($PlaceChoices$Flow$$Type)>}) | ([transformWith?: (string)?, skippable?: boolean, alter?: $List$$Type<($PlaceChoices$Alter$$Type)>, interests?: $List$$Type<($PlaceChoices$Interests$$Type)>, limit?: $List$$Type<($PlaceChoices$Limit$$Type)>, target?: $List$$Type<($PlaceTarget$$Type)>, flow?: $List$$Type<($PlaceChoices$Flow$$Type)>]);
+export type $PlaceChoices$$Type = ({"limit"?: $List$$Type<($PlaceChoices$Limit$$Type)>, "target"?: $List$$Type<($PlaceTarget$$Type)>, "flow"?: $List$$Type<($PlaceChoices$Flow$$Type)>, "transformWith"?: (StringJS)?, "skippable"?: boolean, "alter"?: $List$$Type<($PlaceChoices$Alter$$Type)>, "interests"?: $List$$Type<($PlaceChoices$Interests$$Type)>}) | ([limit?: $List$$Type<($PlaceChoices$Limit$$Type)>, target?: $List$$Type<($PlaceTarget$$Type)>, flow?: $List$$Type<($PlaceChoices$Flow$$Type)>, transformWith?: (StringJS)?, skippable?: boolean, alter?: $List$$Type<($PlaceChoices$Alter$$Type)>, interests?: $List$$Type<($PlaceChoices$Interests$$Type)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -582,12 +582,12 @@ export type $PlaceChoices_ = $PlaceChoices$$Type;
 }}
 declare module "snownee.kiwi.customization.shape.BlockShapeType" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
+import {$List, $List$$Type} from "java.util.List"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
-import {$List, $List$$Type} from "java.util.List"
 import {$StringRepresentable, $StringRepresentable$$Type} from "net.minecraft.util.StringRepresentable"
 
 export class $BlockShapeType extends $Enum<($BlockShapeType)> implements $StringRepresentable {
@@ -598,16 +598,16 @@ static readonly "INTERACTION": $BlockShapeType
 
 
 public static "values"(): ($BlockShapeType)[]
-public static "valueOf"(arg0: string): $BlockShapeType
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $BlockShapeType
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -632,7 +632,7 @@ static readonly "CUTOUT_MIPPED": $RenderLayerEnum
 
 
 public static "values"(): ($RenderLayerEnum)[]
-public static "valueOf"(arg0: string): $RenderLayerEnum
+public static "valueOf"(arg0: StringJS): $RenderLayerEnum
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -663,7 +663,7 @@ static readonly "DURATION": $EvaluationValue$DataType
 
 
 public static "values"(): ($EvaluationValue$DataType)[]
-public static "valueOf"(arg0: string): $EvaluationValue$DataType
+public static "valueOf"(arg0: StringJS): $EvaluationValue$DataType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -681,8 +681,8 @@ declare module "snownee.kiwi.customization.builder.BuilderRule" {
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
-import {$List, $List$$Type} from "java.util.List"
 import {$BuilderRule$Type, $BuilderRule$Type$$Type} from "snownee.kiwi.customization.builder.BuilderRule$Type"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -738,7 +738,7 @@ export class $BlockFundamentals$CodecCreationContext extends $Record {
 constructor(materialCodec: $MapCodec$$Type<($Optional$$Type<($KMaterial$$Type)>)>, glassTypeCodec: $MapCodec$$Type<($Optional$$Type<($GlassType$$Type)>)>)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "materialCodec"(): $MapCodec<($Optional<($KMaterial)>)>
 public "glassTypeCodec"(): $MapCodec<($Optional<($GlassType)>)>
@@ -773,9 +773,9 @@ export interface $CanSurviveHandler {
 export namespace $CanSurviveHandler {
 function all(arg0: $List$$Type<($CanSurviveHandler$$Type)>): $CanSurviveHandler$Compound
 function any(arg0: $List$$Type<($CanSurviveHandler$$Type)>): $CanSurviveHandler$Compound
-function checkCeiling(): $CanSurviveHandler
-function checkFloor(): $CanSurviveHandler
 function checkFace(arg0: $DirectionProperty$$Type): $CanSurviveHandler
+function checkFloor(): $CanSurviveHandler
+function checkCeiling(): $CanSurviveHandler
 const probejs$$marker: never
 }
 export class $CanSurviveHandler$$Static implements $CanSurviveHandler {
@@ -784,10 +784,10 @@ export class $CanSurviveHandler$$Static implements $CanSurviveHandler {
 static "all"(arg0: $List$$Type<($CanSurviveHandler$$Type)>): $CanSurviveHandler$Compound
 static "any"(arg0: $List$$Type<($CanSurviveHandler$$Type)>): $CanSurviveHandler$Compound
  "canSurvive"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type): boolean
- "isSensitiveSide"(arg0: $BlockState$$Type, arg1: $Direction$$Type): boolean
-static "checkCeiling"(): $CanSurviveHandler
-static "checkFloor"(): $CanSurviveHandler
 static "checkFace"(arg0: $DirectionProperty$$Type): $CanSurviveHandler
+static "checkFloor"(): $CanSurviveHandler
+static "checkCeiling"(): $CanSurviveHandler
+ "isSensitiveSide"(arg0: $BlockState$$Type, arg1: $Direction$$Type): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -811,7 +811,7 @@ export class $KBlockComponent$Type<T extends $KBlockComponent> extends $Record {
 constructor(codec: $MapCodec$$Type<(T)>)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "codec"(): $MapCodec<(T)>
 /**
@@ -840,8 +840,8 @@ import {$MapColor, $MapColor$$Type} from "net.minecraft.world.level.material.Map
 import {$KBlockComponent$Type, $KBlockComponent$Type$$Type} from "snownee.kiwi.customization.block.component.KBlockComponent$Type"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$KBlockComponent, $KBlockComponent$$Type} from "snownee.kiwi.customization.block.component.KBlockComponent"
-import {$BlockShapeType, $BlockShapeType$$Type} from "snownee.kiwi.customization.shape.BlockShapeType"
 import {$Mirror, $Mirror$$Type} from "net.minecraft.world.level.block.Mirror"
+import {$BlockShapeType, $BlockShapeType$$Type} from "snownee.kiwi.customization.shape.BlockShapeType"
 import {$KBlockSettings$Builder, $KBlockSettings$Builder$$Type} from "snownee.kiwi.customization.block.KBlockSettings$Builder"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
@@ -850,8 +850,8 @@ import {$StateDefinition$Builder, $StateDefinition$Builder$$Type} from "net.mine
 import {$ToIntFunction, $ToIntFunction$$Type} from "java.util.function.ToIntFunction"
 import {$ShapeGenerator, $ShapeGenerator$$Type} from "snownee.kiwi.customization.shape.ShapeGenerator"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$Rotation, $Rotation$$Type} from "net.minecraft.world.level.block.Rotation"
 import {$CanSurviveHandler, $CanSurviveHandler$$Type} from "snownee.kiwi.customization.block.behavior.CanSurviveHandler"
+import {$Rotation, $Rotation$$Type} from "net.minecraft.world.level.block.Rotation"
 import {$GlassType, $GlassType$$Type} from "snownee.kiwi.customization.block.GlassType"
 import {$PlaceChoices, $PlaceChoices$$Type} from "snownee.kiwi.customization.placement.PlaceChoices"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -868,24 +868,24 @@ readonly "canSurviveHandler": $CanSurviveHandler
 readonly "analogOutputSignal": $ToIntFunction<($BlockState)>
 
 
+public "rotate"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $BlockState
+public "getShape"(arg0: $BlockShapeType$$Type): $ShapeGenerator
 public static "of"(arg0: any): $KBlockSettings
 public static "builder"(): $KBlockSettings$Builder
 public static "empty"(): $KBlockSettings
-public "rotate"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $BlockState
-public "getShape"(arg0: $BlockShapeType$$Type): $ShapeGenerator
-public "useShapeForLightOcclusion"(arg0: $BlockState$$Type): boolean
+public "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
 public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
 public "hasComponent"(arg0: $KBlockComponent$Type$$Type<(any)>): boolean
 public "canBeReplaced"(arg0: $BlockState$$Type, arg1: $BlockPlaceContext$$Type): boolean
 public "getComponent"<T extends $KBlockComponent>(arg0: $KBlockComponent$Type$$Type<(T)>): T
-public static "copyProperties"(arg0: $Block$$Type): $KBlockSettings$Builder
 public static "copyProperties"(arg0: $Block$$Type, arg1: $MapColor$$Type): $KBlockSettings$Builder
-public "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
-public "getStateForPlacement"(arg0: $BlockState$$Type, arg1: $BlockPlaceContext$$Type): $BlockState
-public "registerDefaultState"(arg0: $BlockState$$Type): $BlockState
+public static "copyProperties"(arg0: $Block$$Type): $KBlockSettings$Builder
 public "injectProperties"(arg0: $Block$$Type, arg1: $StateDefinition$Builder$$Type<($Block$$Type), ($BlockState$$Type)>): void
 public static "getGlassFaceShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type): $VoxelShape
 public "removeIfPossible"(arg0: $BlockShapeType$$Type): $ConfiguringShape
+public "getStateForPlacement"(arg0: $BlockState$$Type, arg1: $BlockPlaceContext$$Type): $BlockState
+public "registerDefaultState"(arg0: $BlockState$$Type): $BlockState
+public "useShapeForLightOcclusion"(arg0: $BlockState$$Type): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -904,13 +904,13 @@ import {$OperatorIfc, $OperatorIfc$$Type} from "snownee.kiwi.shadowed.com.ezylan
 
 export interface $OperatorDictionaryIfc {
 
- "addOperator"(arg0: string, arg1: $OperatorIfc$$Type): void
- "getPrefixOperator"(arg0: string): $OperatorIfc
- "getPostfixOperator"(arg0: string): $OperatorIfc
- "getInfixOperator"(arg0: string): $OperatorIfc
- "hasPrefixOperator"(arg0: string): boolean
- "hasPostfixOperator"(arg0: string): boolean
- "hasInfixOperator"(arg0: string): boolean
+ "addOperator"(arg0: StringJS, arg1: $OperatorIfc$$Type): void
+ "hasPrefixOperator"(arg0: StringJS): boolean
+ "getPrefixOperator"(arg0: StringJS): $OperatorIfc
+ "hasPostfixOperator"(arg0: StringJS): boolean
+ "getPostfixOperator"(arg0: StringJS): $OperatorIfc
+ "hasInfixOperator"(arg0: StringJS): boolean
+ "getInfixOperator"(arg0: StringJS): $OperatorIfc
 }
 
 export namespace $OperatorDictionaryIfc {
@@ -919,13 +919,13 @@ const probejs$$marker: never
 export class $OperatorDictionaryIfc$$Static implements $OperatorDictionaryIfc {
 
 
- "addOperator"(arg0: string, arg1: $OperatorIfc$$Type): void
- "getPrefixOperator"(arg0: string): $OperatorIfc
- "getPostfixOperator"(arg0: string): $OperatorIfc
- "getInfixOperator"(arg0: string): $OperatorIfc
- "hasPrefixOperator"(arg0: string): boolean
- "hasPostfixOperator"(arg0: string): boolean
- "hasInfixOperator"(arg0: string): boolean
+ "addOperator"(arg0: StringJS, arg1: $OperatorIfc$$Type): void
+ "hasPrefixOperator"(arg0: StringJS): boolean
+ "getPrefixOperator"(arg0: StringJS): $OperatorIfc
+ "hasPostfixOperator"(arg0: StringJS): boolean
+ "getPostfixOperator"(arg0: StringJS): $OperatorIfc
+ "hasInfixOperator"(arg0: StringJS): boolean
+ "getInfixOperator"(arg0: StringJS): $OperatorIfc
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -943,13 +943,13 @@ declare module "snownee.kiwi.customization.placement.PlaceTarget$Type" {
 import {$Enum, $Enum$$Type} from "java.lang.Enum"
 
 export class $PlaceTarget$Type extends $Enum<($PlaceTarget$Type)> {
-readonly "prefix": string
+readonly "prefix": StringJS
 static readonly "BLOCK": $PlaceTarget$Type
 static readonly "TEMPLATE": $PlaceTarget$Type
 
 
 public static "values"(): ($PlaceTarget$Type)[]
-public static "valueOf"(arg0: string): $PlaceTarget$Type
+public static "valueOf"(arg0: StringJS): $PlaceTarget$Type
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -965,40 +965,44 @@ export type $PlaceTarget$Type_ = $PlaceTarget$Type$$Type;
 }}
 declare module "snownee.kiwi.customization.block.loader.BlockDefinitionProperties$PartialVanillaProperties" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$BlockBehaviour$OffsetType, $BlockBehaviour$OffsetType$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$OffsetType"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BlockBehaviour$StateArgumentPredicate, $BlockBehaviour$StateArgumentPredicate$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$StateArgumentPredicate"
+import {$BlockBehaviour$OffsetType, $BlockBehaviour$OffsetType$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$OffsetType"
+import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$PushReaction, $PushReaction$$Type} from "net.minecraft.world.level.material.PushReaction"
 import {$BlockBehaviour$StatePredicate, $BlockBehaviour$StatePredicate$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$StatePredicate"
-import {$EntityType, $EntityType$$Type} from "net.minecraft.world.entity.EntityType"
 import {$Record, $Record$$Type} from "java.lang.Record"
+import {$EntityType, $EntityType$$Type} from "net.minecraft.world.entity.EntityType"
 
 export class $BlockDefinitionProperties$PartialVanillaProperties extends $Record {
 static readonly "MAP_CODEC": $MapCodec<($BlockDefinitionProperties$PartialVanillaProperties)>
 
-constructor(noCollision: $Optional$$Type<(boolean)>, isRandomlyTicking: $Optional$$Type<(boolean)>, lightEmission: $Optional$$Type<(integer)>, dynamicShape: $Optional$$Type<(boolean)>, noOcclusion: $Optional$$Type<(boolean)>, pushReaction: $Optional$$Type<($PushReaction$$Type)>, offsetType: $Optional$$Type<($BlockBehaviour$OffsetType$$Type)>, replaceable: $Optional$$Type<(boolean)>, isValidSpawn: $Optional$$Type<($BlockBehaviour$StateArgumentPredicate$$Type<($EntityType$$Type<(any)>)>)>, isRedstoneConductor: $Optional$$Type<($BlockBehaviour$StatePredicate$$Type)>, isSuffocating: $Optional$$Type<($BlockBehaviour$StatePredicate$$Type)>, isViewBlocking: $Optional$$Type<($BlockBehaviour$StatePredicate$$Type)>, hasPostProcess: $Optional$$Type<($BlockBehaviour$StatePredicate$$Type)>, emissiveRendering: $Optional$$Type<($BlockBehaviour$StatePredicate$$Type)>)
+constructor(copy: $Optional$$Type<($ResourceKey$$Type<($Block$$Type)>)>, noCollision: $Optional$$Type<(boolean)>, isRandomlyTicking: $Optional$$Type<(boolean)>, lightEmission: $Optional$$Type<(integer)>, dynamicShape: $Optional$$Type<(boolean)>, noOcclusion: $Optional$$Type<(boolean)>, legacySolid: $Optional$$Type<(boolean)>, pushReaction: $Optional$$Type<($PushReaction$$Type)>, offsetType: $Optional$$Type<($BlockBehaviour$OffsetType$$Type)>, replaceable: $Optional$$Type<(boolean)>, isValidSpawn: $Optional$$Type<($BlockBehaviour$StateArgumentPredicate$$Type<($EntityType$$Type<(any)>)>)>, isRedstoneConductor: $Optional$$Type<($BlockBehaviour$StatePredicate$$Type)>, isSuffocating: $Optional$$Type<($BlockBehaviour$StatePredicate$$Type)>, isViewBlocking: $Optional$$Type<($BlockBehaviour$StatePredicate$$Type)>, hasPostProcess: $Optional$$Type<($BlockBehaviour$StatePredicate$$Type)>, emissiveRendering: $Optional$$Type<($BlockBehaviour$StatePredicate$$Type)>)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "merge"(arg0: $BlockDefinitionProperties$PartialVanillaProperties$$Type): $BlockDefinitionProperties$PartialVanillaProperties
+public "copy"(): $Optional<($ResourceKey<($Block)>)>
 public "dynamicShape"(): $Optional<(boolean)>
 public "noOcclusion"(): $Optional<(boolean)>
 public "offsetType"(): $Optional<($BlockBehaviour$OffsetType)>
 public "noCollision"(): $Optional<(boolean)>
 public "isSuffocating"(): $Optional<($BlockBehaviour$StatePredicate)>
-public "pushReaction"(): $Optional<($PushReaction)>
-public "isValidSpawn"(): $Optional<($BlockBehaviour$StateArgumentPredicate<($EntityType<(any)>)>)>
-public "hasPostProcess"(): $Optional<($BlockBehaviour$StatePredicate)>
 public "lightEmission"(): $Optional<(integer)>
-public "replaceable"(): $Optional<(boolean)>
+public "legacySolid"(): $Optional<(boolean)>
+public "pushReaction"(): $Optional<($PushReaction)>
 public "isViewBlocking"(): $Optional<($BlockBehaviour$StatePredicate)>
+public "hasPostProcess"(): $Optional<($BlockBehaviour$StatePredicate)>
+public "replaceable"(): $Optional<(boolean)>
+public "isValidSpawn"(): $Optional<($BlockBehaviour$StateArgumentPredicate<($EntityType<(any)>)>)>
 public "emissiveRendering"(): $Optional<($BlockBehaviour$StatePredicate)>
 public "isRedstoneConductor"(): $Optional<($BlockBehaviour$StatePredicate)>
 public "isRandomlyTicking"(): $Optional<(boolean)>
 get "suffocating"(): boolean
-get "validSpawn"(): boolean
 get "viewBlocking"(): boolean
+get "validSpawn"(): boolean
 get "redstoneConductor"(): boolean
 get "randomlyTicking"(): boolean
 }
@@ -1006,7 +1010,7 @@ get "randomlyTicking"(): boolean
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $BlockDefinitionProperties$PartialVanillaProperties$$Type = ({"replaceable"?: (boolean)?, "pushReaction"?: ($PushReaction$$Type)?, "emissiveRendering"?: ($BlockBehaviour$StatePredicate$$Type)?, "lightEmission"?: (integer)?, "isViewBlocking"?: ($BlockBehaviour$StatePredicate$$Type)?, "isValidSpawn"?: ($BlockBehaviour$StateArgumentPredicate$$Type<($EntityType$$Type<(never)>)>)?, "offsetType"?: ($BlockBehaviour$OffsetType$$Type)?, "isRandomlyTicking"?: (boolean)?, "noOcclusion"?: (boolean)?, "dynamicShape"?: (boolean)?, "hasPostProcess"?: ($BlockBehaviour$StatePredicate$$Type)?, "noCollision"?: (boolean)?, "isRedstoneConductor"?: ($BlockBehaviour$StatePredicate$$Type)?, "isSuffocating"?: ($BlockBehaviour$StatePredicate$$Type)?}) | ([replaceable?: (boolean)?, pushReaction?: ($PushReaction$$Type)?, emissiveRendering?: ($BlockBehaviour$StatePredicate$$Type)?, lightEmission?: (integer)?, isViewBlocking?: ($BlockBehaviour$StatePredicate$$Type)?, isValidSpawn?: ($BlockBehaviour$StateArgumentPredicate$$Type<($EntityType$$Type<(never)>)>)?, offsetType?: ($BlockBehaviour$OffsetType$$Type)?, isRandomlyTicking?: (boolean)?, noOcclusion?: (boolean)?, dynamicShape?: (boolean)?, hasPostProcess?: ($BlockBehaviour$StatePredicate$$Type)?, noCollision?: (boolean)?, isRedstoneConductor?: ($BlockBehaviour$StatePredicate$$Type)?, isSuffocating?: ($BlockBehaviour$StatePredicate$$Type)?]);
+export type $BlockDefinitionProperties$PartialVanillaProperties$$Type = ({"isValidSpawn"?: ($BlockBehaviour$StateArgumentPredicate$$Type<($EntityType$$Type<(never)>)>)?, "isRedstoneConductor"?: ($BlockBehaviour$StatePredicate$$Type)?, "isRandomlyTicking"?: (boolean)?, "noOcclusion"?: (boolean)?, "offsetType"?: ($BlockBehaviour$OffsetType$$Type)?, "replaceable"?: (boolean)?, "isSuffocating"?: ($BlockBehaviour$StatePredicate$$Type)?, "noCollision"?: (boolean)?, "emissiveRendering"?: ($BlockBehaviour$StatePredicate$$Type)?, "copy"?: ($ResourceKey$$Type<($Block$$Type)>)?, "hasPostProcess"?: ($BlockBehaviour$StatePredicate$$Type)?, "lightEmission"?: (integer)?, "dynamicShape"?: (boolean)?, "pushReaction"?: ($PushReaction$$Type)?, "isViewBlocking"?: ($BlockBehaviour$StatePredicate$$Type)?, "legacySolid"?: (boolean)?}) | ([isValidSpawn?: ($BlockBehaviour$StateArgumentPredicate$$Type<($EntityType$$Type<(never)>)>)?, isRedstoneConductor?: ($BlockBehaviour$StatePredicate$$Type)?, isRandomlyTicking?: (boolean)?, noOcclusion?: (boolean)?, offsetType?: ($BlockBehaviour$OffsetType$$Type)?, replaceable?: (boolean)?, isSuffocating?: ($BlockBehaviour$StatePredicate$$Type)?, noCollision?: (boolean)?, emissiveRendering?: ($BlockBehaviour$StatePredicate$$Type)?, copy?: ($ResourceKey$$Type<($Block$$Type)>)?, hasPostProcess?: ($BlockBehaviour$StatePredicate$$Type)?, lightEmission?: (integer)?, dynamicShape?: (boolean)?, pushReaction?: ($PushReaction$$Type)?, isViewBlocking?: ($BlockBehaviour$StatePredicate$$Type)?, legacySolid?: (boolean)?]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1021,10 +1025,10 @@ import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.conte
 
 export interface $PlaceChoices$BlockFaceType extends $BiPredicate<($UseOnContext), ($Direction)> {
 
- "test"(arg0: $UseOnContext$$Type, arg1: $Direction$$Type): boolean
  "or"(arg0: $BiPredicate$$Type<($UseOnContext), ($Direction)>): $BiPredicate<($UseOnContext), ($Direction)>
  "negate"(): $BiPredicate<($UseOnContext), ($Direction)>
  "and"(arg0: $BiPredicate$$Type<($UseOnContext), ($Direction)>): $BiPredicate<($UseOnContext), ($Direction)>
+ "test"(arg0: $UseOnContext$$Type, arg1: $Direction$$Type): boolean
 
 (arg0: $UseOnContext, arg1: $Direction): boolean
 }
@@ -1041,10 +1045,10 @@ static readonly "HORIZONTAL": $PlaceChoices$BlockFaceType
 static readonly "ANY": $PlaceChoices$BlockFaceType
 
 
- "test"(arg0: $UseOnContext$$Type, arg1: $Direction$$Type): boolean
  "or"(arg0: $BiPredicate$$Type<($UseOnContext), ($Direction)>): $BiPredicate<($UseOnContext), ($Direction)>
  "negate"(): $BiPredicate<($UseOnContext), ($Direction)>
  "and"(arg0: $BiPredicate$$Type<($UseOnContext), ($Direction)>): $BiPredicate<($UseOnContext), ($Direction)>
+ "test"(arg0: $UseOnContext$$Type, arg1: $Direction$$Type): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1060,8 +1064,8 @@ export type $PlaceChoices$BlockFaceType_ = $PlaceChoices$BlockFaceType$$Type;
 }}
 declare module "snownee.kiwi.customization.shape.ShapeStorage" {
 import {$UnaryOperator, $UnaryOperator$$Type} from "java.util.function.UnaryOperator"
-import {$Supplier, $Supplier$$Type} from "com.google.common.base.Supplier"
 import {$UnbakedShape, $UnbakedShape$$Type} from "snownee.kiwi.customization.shape.UnbakedShape"
+import {$Supplier, $Supplier$$Type} from "com.google.common.base.Supplier"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ShapeGenerator, $ShapeGenerator$$Type} from "snownee.kiwi.customization.shape.ShapeGenerator"
@@ -1071,10 +1075,10 @@ export class $ShapeStorage {
 
 constructor(arg0: $Map$$Type<($ResourceLocation$$Type), ($ShapeGenerator$$Type)>)
 
+public static "reload"(arg0: $Supplier$$Type<($Map$$Type<($ResourceLocation$$Type), ($UnbakedShape$$Type)>)>): $ShapeStorage
 public "get"(arg0: $ResourceLocation$$Type): $ShapeGenerator
 public "transform"(arg0: $ShapeGenerator$$Type, arg1: any, arg2: $UnaryOperator$$Type<($ShapeGenerator)>): $ShapeGenerator
 public "forEach"(arg0: $BiConsumer$$Type<($ResourceLocation), ($ShapeGenerator)>): void
-public static "reload"(arg0: $Supplier$$Type<($Map$$Type<($ResourceLocation$$Type), ($UnbakedShape$$Type)>)>): $ShapeStorage
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1100,20 +1104,20 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 export class $PlaceChoices$Alter extends $Record {
 static readonly "CODEC": $Codec<($PlaceChoices$Alter)>
 
-constructor(when: $List$$Type<($PlaceChoices$AlterCondition$$Type)>, use: string)
+constructor(when: $List$$Type<($PlaceChoices$AlterCondition$$Type)>, use: StringJS)
 
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "use"(): string
+public "use"(): StringJS
 public "when"(): $List<($PlaceChoices$AlterCondition)>
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
 public "alter"(arg0: $BlockItem$$Type, arg1: $BlockPlaceContext$$Type): $BlockState
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $PlaceChoices$Alter$$Type = ({"use"?: string, "when"?: $List$$Type<($PlaceChoices$AlterCondition$$Type)>}) | ([use?: string, when?: $List$$Type<($PlaceChoices$AlterCondition$$Type)>]);
+export type $PlaceChoices$Alter$$Type = ({"when"?: $List$$Type<($PlaceChoices$AlterCondition$$Type)>, "use"?: StringJS}) | ([when?: $List$$Type<($PlaceChoices$AlterCondition$$Type)>, use?: StringJS]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1134,8 +1138,8 @@ export class $BlockBehaviorRegistry {
 
 
 public static "getInstance"(): $BlockBehaviorRegistry
-public "setContext"(arg0: $Block$$Type): void
 public "onUseBlock"(arg0: $Player$$Type, arg1: $Level$$Type, arg2: $InteractionHand$$Type, arg3: $BlockHitResult$$Type): $InteractionResult
+public "setContext"(arg0: $Block$$Type): void
 public "addUseHandler"(arg0: $UseHandler$$Type): void
 set "context"(value: $Block$$Type)
 }
@@ -1165,12 +1169,12 @@ export class $NoContainersShapedRecipe extends $ShapedRecipe {
  "result": $ItemStack
 readonly "pattern": $ShapedRecipePattern
 
-constructor(arg0: string, arg1: $CraftingBookCategory$$Type, arg2: $ShapedRecipePattern$$Type, arg3: $ItemStack$$Type, arg4: boolean, arg5: boolean)
+constructor(arg0: StringJS, arg1: $CraftingBookCategory$$Type, arg2: $ShapedRecipePattern$$Type, arg3: $ItemStack$$Type, arg4: boolean, arg5: boolean)
 
+public "noContainers"(): boolean
 public "getSerializer"(): $RecipeSerializer<(any)>
 public "getRemainingItems"(arg0: $CraftingInput$$Type): $NonNullList<($ItemStack)>
 public "getRemainingItems"(arg0: $RecipeInput$$Type): $NonNullList<(any)>
-public "noContainers"(): boolean
 get "serializer"(): $RecipeSerializer<(any)>
 }
 /**
@@ -1190,26 +1194,26 @@ import {$CraftingInput, $CraftingInput$$Type} from "net.minecraft.world.item.cra
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CraftingBookCategory, $CraftingBookCategory$$Type} from "net.minecraft.world.item.crafting.CraftingBookCategory"
 import {$ShapelessRecipe, $ShapelessRecipe$$Type} from "net.minecraft.world.item.crafting.ShapelessRecipe"
-import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.item.crafting.RecipeSerializer"
+import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 
 export class $KiwiShapelessRecipe extends $ShapelessRecipe {
 readonly "result": $ItemStack
 readonly "ingredients": $NonNullList<($Ingredient)>
-readonly "group": string
+readonly "group": StringJS
 
-constructor(arg0: string, arg1: $CraftingBookCategory$$Type, arg2: $ItemStack$$Type, arg3: $NonNullList$$Type<($Ingredient$$Type)>, arg4: boolean)
+constructor(arg0: StringJS, arg1: $CraftingBookCategory$$Type, arg2: $ItemStack$$Type, arg3: $NonNullList$$Type<($Ingredient$$Type)>, arg4: boolean)
 constructor(arg0: $ShapelessRecipe$$Type, arg1: boolean)
 
 public "matches"(arg0: $CraftingInput$$Type, arg1: $Level$$Type): boolean
 public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "getSerializer"(): $RecipeSerializer<(any)>
 public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
-public "getRemainingItems"(arg0: $CraftingInput$$Type): $NonNullList<($ItemStack)>
 public "getRemainingItems"(arg0: $RecipeInput$$Type): $NonNullList<(any)>
+public "getRemainingItems"(arg0: $CraftingInput$$Type): $NonNullList<($ItemStack)>
 get "serializer"(): $RecipeSerializer<(any)>
 }
 /**
@@ -1234,17 +1238,17 @@ export interface $OperatorIfc {
 
  "isPrefix"(): boolean
  "evaluate"(arg0: $Expression$$Type, arg1: $Token$$Type, ...arg2: ($EvaluationValue$$Type)[]): $EvaluationValue
- "isPostfix"(): boolean
  "getPrecedence"(arg0: $ExpressionConfiguration$$Type): integer
  "getPrecedence"(): integer
- "isLeftAssociative"(): boolean
+ "isPostfix"(): boolean
  "isInfix"(): boolean
+ "isLeftAssociative"(): boolean
  "isOperandLazy"(): boolean
 get "prefix"(): boolean
-get "postfix"(): boolean
 get "precedence"(): integer
-get "leftAssociative"(): boolean
+get "postfix"(): boolean
 get "infix"(): boolean
+get "leftAssociative"(): boolean
 get "operandLazy"(): boolean
 }
 
@@ -1274,11 +1278,11 @@ static readonly "OPERATOR_PRECEDENCE_OR": integer
 
  "isPrefix"(): boolean
  "evaluate"(arg0: $Expression$$Type, arg1: $Token$$Type, ...arg2: ($EvaluationValue$$Type)[]): $EvaluationValue
- "isPostfix"(): boolean
  "getPrecedence"(arg0: $ExpressionConfiguration$$Type): integer
  "getPrecedence"(): integer
- "isLeftAssociative"(): boolean
+ "isPostfix"(): boolean
  "isInfix"(): boolean
+ "isLeftAssociative"(): boolean
  "isOperandLazy"(): boolean
 }
 /**
@@ -1303,7 +1307,7 @@ constructor(key: $ResourceLocation$$Type, value: T)
 
 public "value"(): T
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "key"(): $ResourceLocation
 }
@@ -1311,7 +1315,7 @@ public "key"(): $ResourceLocation
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $KHolder$$Type<T> = ({"key"?: $ResourceLocation$$Type, "value"?: any}) | ([key?: $ResourceLocation$$Type, value?: any]);
+export type $KHolder$$Type<T> = ({"value"?: any, "key"?: $ResourceLocation$$Type}) | ([value?: any, key?: $ResourceLocation$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1320,8 +1324,8 @@ declare global {
 export type $KHolder_<T> = $KHolder$$Type<(T)>;
 }}
 declare module "snownee.kiwi.customization.placement.StatePropertiesPredicate" {
-import {$StatePropertiesPredicate$PropertyMatcher, $StatePropertiesPredicate$PropertyMatcher$$Type} from "snownee.kiwi.customization.placement.StatePropertiesPredicate$PropertyMatcher"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$StatePropertiesPredicate$PropertyMatcher, $StatePropertiesPredicate$PropertyMatcher$$Type} from "snownee.kiwi.customization.placement.StatePropertiesPredicate$PropertyMatcher"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$List, $List$$Type} from "java.util.List"
 import {$Record, $Record$$Type} from "java.lang.Record"
@@ -1333,16 +1337,16 @@ static readonly "CODEC": $Codec<($StatePropertiesPredicate)>
 constructor(properties: $List$$Type<($StatePropertiesPredicate$PropertyMatcher$$Type)>)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "test"(arg0: $BlockState$$Type): boolean
 public "test"(arg0: any): boolean
 public "properties"(): $List<($StatePropertiesPredicate$PropertyMatcher)>
 public "smartTest"(arg0: $BlockState$$Type, arg1: $BlockState$$Type): boolean
 public "or"(arg0: $Predicate$$Type<($BlockState)>): $Predicate<($BlockState)>
+public static "not"<T>(arg0: $Predicate$$Type<($BlockState)>): $Predicate<($BlockState)>
 public "negate"(): $Predicate<($BlockState)>
 public "and"(arg0: $Predicate$$Type<($BlockState)>): $Predicate<($BlockState)>
-public static "not"<T>(arg0: $Predicate$$Type<($BlockState)>): $Predicate<($BlockState)>
 public static "isEqual"<T>(arg0: any): $Predicate<($BlockState)>
 }
 /**
@@ -1360,32 +1364,32 @@ export type $StatePropertiesPredicate_ = $StatePropertiesPredicate$$Type;
 declare module "snownee.kiwi.customization.placement.ParsedProtoTag" {
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$Rotation, $Rotation$$Type} from "net.minecraft.world.level.block.Rotation"
-import {$Record, $Record$$Type} from "java.lang.Record"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
+import {$Record, $Record$$Type} from "java.lang.Record"
 
 export class $ParsedProtoTag extends $Record {
 static readonly "CODEC": $Codec<($ParsedProtoTag)>
 
-constructor(prefix: string, key: string, value: string)
+constructor(prefix: StringJS, key: StringJS, value: StringJS)
 
-public "value"(): string
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public static "of"(arg0: string): $ParsedProtoTag
-public "prefix"(): string
-public "resolve"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $ParsedProtoTag
-public "resolve"(arg0: $BlockState$$Type): $ParsedProtoTag
-public "key"(): string
 public "isResolved"(): boolean
-public "prefixedKey"(): string
+public "value"(): StringJS
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+public static "of"(arg0: StringJS): $ParsedProtoTag
+public "prefix"(): StringJS
+public "resolve"(arg0: $BlockState$$Type): $ParsedProtoTag
+public "resolve"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $ParsedProtoTag
+public "key"(): StringJS
+public "prefixedKey"(): StringJS
 get "resolved"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ParsedProtoTag$$Type = ({"key"?: string, "value"?: string, "prefix"?: string}) | ([key?: string, value?: string, prefix?: string]);
+export type $ParsedProtoTag$$Type = ({"prefix"?: StringJS, "key"?: StringJS, "value"?: StringJS}) | ([prefix?: StringJS, key?: StringJS, value?: StringJS]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1400,31 +1404,31 @@ import {$List, $List$$Type} from "java.util.List"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
-import {$Record, $Record$$Type} from "java.lang.Record"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
+import {$Record, $Record$$Type} from "java.lang.Record"
 
 export class $CanSurviveHandler$Compound extends $Record implements $CanSurviveHandler {
 
 constructor(any: boolean, handlers: $List$$Type<($CanSurviveHandler$$Type)>)
 
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "handlers"(): $List<($CanSurviveHandler)>
 public "any"(): boolean
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
 public "canSurvive"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type): boolean
 public "isSensitiveSide"(arg0: $BlockState$$Type, arg1: $Direction$$Type): boolean
 public static "all"(arg0: $List$$Type<($CanSurviveHandler$$Type)>): $CanSurviveHandler$Compound
 public static "any"(arg0: $List$$Type<($CanSurviveHandler$$Type)>): $CanSurviveHandler$Compound
-public static "checkCeiling"(): $CanSurviveHandler
-public static "checkFloor"(): $CanSurviveHandler
 public static "checkFace"(arg0: $DirectionProperty$$Type): $CanSurviveHandler
+public static "checkFloor"(): $CanSurviveHandler
+public static "checkCeiling"(): $CanSurviveHandler
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $CanSurviveHandler$Compound$$Type = ({"any"?: boolean, "handlers"?: $List$$Type<($CanSurviveHandler$$Type)>}) | ([any?: boolean, handlers?: $List$$Type<($CanSurviveHandler$$Type)>]);
+export type $CanSurviveHandler$Compound$$Type = ({"handlers"?: $List$$Type<($CanSurviveHandler$$Type)>, "any"?: boolean}) | ([handlers?: $List$$Type<($CanSurviveHandler$$Type)>, any?: boolean]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1435,8 +1439,8 @@ export type $CanSurviveHandler$Compound_ = $CanSurviveHandler$Compound$$Type;
 declare module "snownee.kiwi.customization.shape.ConfiguringShape" {
 import {$UnaryOperator, $UnaryOperator$$Type} from "java.util.function.UnaryOperator"
 import {$UnbakedShape, $UnbakedShape$$Type} from "snownee.kiwi.customization.shape.UnbakedShape"
-import {$BlockShapeType, $BlockShapeType$$Type} from "snownee.kiwi.customization.shape.BlockShapeType"
 import {$ShapeGenerator, $ShapeGenerator$$Type} from "snownee.kiwi.customization.shape.ShapeGenerator"
+import {$BlockShapeType, $BlockShapeType$$Type} from "snownee.kiwi.customization.shape.BlockShapeType"
 import {$BakingContext, $BakingContext$$Type} from "snownee.kiwi.customization.shape.BakingContext"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
@@ -1447,11 +1451,11 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 
 export interface $ConfiguringShape extends $ShapeGenerator, $UnbakedShape {
 
- "replaceAll"(arg0: $Block$$Type, arg1: $BlockShapeType$$Type, arg2: $UnaryOperator$$Type<($VoxelShape)>): void
  "getShape"(arg0: $BlockState$$Type, arg1: $CollisionContext$$Type): $VoxelShape
  "configure"(arg0: $Block$$Type, arg1: $BlockShapeType$$Type, arg2: $ShapeStorage$$Type): void
- "dependencies"(): $Stream<($UnbakedShape)>
+ "replaceAll"(arg0: $Block$$Type, arg1: $BlockShapeType$$Type, arg2: $UnaryOperator$$Type<($VoxelShape)>): void
  "bake"(arg0: $BakingContext$$Type): $ShapeGenerator
+ "dependencies"(): $Stream<($UnbakedShape)>
 }
 
 export namespace $ConfiguringShape {
@@ -1461,11 +1465,11 @@ const probejs$$marker: never
 export class $ConfiguringShape$$Static implements $ConfiguringShape {
 
 
- "replaceAll"(arg0: $Block$$Type, arg1: $BlockShapeType$$Type, arg2: $UnaryOperator$$Type<($VoxelShape)>): void
  "getShape"(arg0: $BlockState$$Type, arg1: $CollisionContext$$Type): $VoxelShape
  "configure"(arg0: $Block$$Type, arg1: $BlockShapeType$$Type, arg2: $ShapeStorage$$Type): void
- "dependencies"(): $Stream<($UnbakedShape)>
+ "replaceAll"(arg0: $Block$$Type, arg1: $BlockShapeType$$Type, arg2: $UnaryOperator$$Type<($VoxelShape)>): void
  "bake"(arg0: $BakingContext$$Type): $ShapeGenerator
+ "dependencies"(): $Stream<($UnbakedShape)>
 static "unit"(arg0: $VoxelShape$$Type): $ShapeGenerator
 }
 /**
@@ -1485,9 +1489,9 @@ import {$FunctionIfc, $FunctionIfc$$Type} from "snownee.kiwi.shadowed.com.ezylan
 
 export interface $FunctionDictionaryIfc {
 
- "getFunction"(arg0: string): $FunctionIfc
- "hasFunction"(arg0: string): boolean
- "addFunction"(arg0: string, arg1: $FunctionIfc$$Type): void
+ "getFunction"(arg0: StringJS): $FunctionIfc
+ "hasFunction"(arg0: StringJS): boolean
+ "addFunction"(arg0: StringJS, arg1: $FunctionIfc$$Type): void
 }
 
 export namespace $FunctionDictionaryIfc {
@@ -1496,9 +1500,9 @@ const probejs$$marker: never
 export class $FunctionDictionaryIfc$$Static implements $FunctionDictionaryIfc {
 
 
- "getFunction"(arg0: string): $FunctionIfc
- "hasFunction"(arg0: string): boolean
- "addFunction"(arg0: string, arg1: $FunctionIfc$$Type): void
+ "getFunction"(arg0: StringJS): $FunctionIfc
+ "hasFunction"(arg0: StringJS): boolean
+ "addFunction"(arg0: StringJS, arg1: $FunctionIfc$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1512,6 +1516,36 @@ export type $FunctionDictionaryIfc$$Type = ($FunctionDictionaryIfc);
 declare global {
 export type $FunctionDictionaryIfc_ = $FunctionDictionaryIfc$$Type;
 }}
+declare module "snownee.kiwi.mixin.customization.sit.EntityAccess" {
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
+
+export interface $EntityAccess {
+
+ "callCanRide"(arg0: $Entity$$Type): boolean
+
+(arg0: $Entity): boolean
+}
+
+export namespace $EntityAccess {
+const probejs$$marker: never
+}
+export class $EntityAccess$$Static implements $EntityAccess {
+
+
+ "callCanRide"(arg0: $Entity$$Type): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $EntityAccess$$Type = ((arg0: $Entity) => boolean);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $EntityAccess_ = $EntityAccess$$Type;
+}}
 declare module "snownee.kiwi.customization.placement.PlaceChoices$Interests" {
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$StatePropertiesPredicate, $StatePropertiesPredicate$$Type} from "snownee.kiwi.customization.placement.StatePropertiesPredicate"
@@ -1522,17 +1556,17 @@ static readonly "CODEC": $Codec<($PlaceChoices$Interests)>
 
 constructor(when: $StatePropertiesPredicate$$Type, bonus: integer)
 
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "when"(): $StatePropertiesPredicate
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
 public "bonus"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $PlaceChoices$Interests$$Type = ({"bonus"?: integer, "when"?: $StatePropertiesPredicate$$Type}) | ([bonus?: integer, when?: $StatePropertiesPredicate$$Type]);
+export type $PlaceChoices$Interests$$Type = ({"when"?: $StatePropertiesPredicate$$Type, "bonus"?: integer}) | ([when?: $StatePropertiesPredicate$$Type, bonus?: integer]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1553,20 +1587,20 @@ export class $SlotLink$ResultAction extends $Record {
 static readonly "CODEC": $Codec<($SlotLink$ResultAction)>
 static readonly "MAP_CODEC": $MapCodec<($SlotLink$ResultAction)>
 
-constructor(setProperties: $Map$$Type<(string), (string)>, reflow: boolean)
+constructor(setProperties: $Map$$Type<(StringJS), (StringJS)>, reflow: boolean)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "apply"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): $BlockState
-public "setProperties"(): $Map<(string), (string)>
+public "setProperties"(): $Map<(StringJS), (StringJS)>
 public "reflow"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $SlotLink$ResultAction$$Type = ({"reflow"?: boolean, "setProperties"?: $Map$$Type<(string), (string)>}) | ([reflow?: boolean, setProperties?: $Map$$Type<(string), (string)>]);
+export type $SlotLink$ResultAction$$Type = ({"reflow"?: boolean, "setProperties"?: $Map$$Type<(StringJS), (StringJS)>}) | ([reflow?: boolean, setProperties?: $Map$$Type<(StringJS), (StringJS)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1581,24 +1615,24 @@ import {$OperatorIfc, $OperatorIfc$$Type} from "snownee.kiwi.shadowed.com.ezylan
 
 export class $Token {
 
-constructor(arg0: integer, arg1: string, arg2: $Token$TokenType$$Type, arg3: $FunctionIfc$$Type, arg4: $OperatorIfc$$Type)
-constructor(arg0: integer, arg1: string, arg2: $Token$TokenType$$Type, arg3: $OperatorIfc$$Type)
-constructor(arg0: integer, arg1: string, arg2: $Token$TokenType$$Type, arg3: $FunctionIfc$$Type)
-constructor(arg0: integer, arg1: string, arg2: $Token$TokenType$$Type)
+constructor(arg0: integer, arg1: StringJS, arg2: $Token$TokenType$$Type, arg3: $FunctionIfc$$Type, arg4: $OperatorIfc$$Type)
+constructor(arg0: integer, arg1: StringJS, arg2: $Token$TokenType$$Type, arg3: $OperatorIfc$$Type)
+constructor(arg0: integer, arg1: StringJS, arg2: $Token$TokenType$$Type, arg3: $FunctionIfc$$Type)
+constructor(arg0: integer, arg1: StringJS, arg2: $Token$TokenType$$Type)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "getValue"(): string
+public "getValue"(): StringJS
 public "getType"(): $Token$TokenType
 public "getStartPosition"(): integer
-public "getOperatorDefinition"(): $OperatorIfc
 public "getFunctionDefinition"(): $FunctionIfc
-get "value"(): string
+public "getOperatorDefinition"(): $OperatorIfc
+get "value"(): StringJS
 get "type"(): $Token$TokenType
 get "startPosition"(): integer
-get "operatorDefinition"(): $OperatorIfc
 get "functionDefinition"(): $FunctionIfc
+get "operatorDefinition"(): $OperatorIfc
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1657,22 +1691,22 @@ import {$Record, $Record$$Type} from "java.lang.Record"
 export class $PlaceChoices$AlterCondition extends $Record {
 static readonly "CODEC": $Codec<($PlaceChoices$AlterCondition)>
 
-constructor(target: string, faces: $PlaceChoices$BlockFaceType$$Type, block: $BlockPredicate$$Type, tags: $List$$Type<($ParsedProtoTag$$Type)>)
+constructor(target: StringJS, faces: $PlaceChoices$BlockFaceType$$Type, block: $BlockPredicate$$Type, tags: $List$$Type<($ParsedProtoTag$$Type)>)
 
-public "equals"(arg0: any): boolean
-public "target"(): string
-public "toString"(): string
-public "hashCode"(): integer
-public "test"(arg0: $BlockPlaceContext$$Type): boolean
 public "block"(): $BlockPredicate
 public "tags"(): $List<($ParsedProtoTag)>
+public "equals"(arg0: any): boolean
+public "target"(): StringJS
+public "toString"(): StringJS
+public "hashCode"(): integer
+public "test"(arg0: $BlockPlaceContext$$Type): boolean
 public "faces"(): $PlaceChoices$BlockFaceType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $PlaceChoices$AlterCondition$$Type = ({"block"?: $BlockPredicate$$Type, "faces"?: $PlaceChoices$BlockFaceType$$Type, "target"?: string, "tags"?: $List$$Type<($ParsedProtoTag$$Type)>}) | ([block?: $BlockPredicate$$Type, faces?: $PlaceChoices$BlockFaceType$$Type, target?: string, tags?: $List$$Type<($ParsedProtoTag$$Type)>]);
+export type $PlaceChoices$AlterCondition$$Type = ({"tags"?: $List$$Type<($ParsedProtoTag$$Type)>, "block"?: $BlockPredicate$$Type, "faces"?: $PlaceChoices$BlockFaceType$$Type, "target"?: StringJS}) | ([tags?: $List$$Type<($ParsedProtoTag$$Type)>, block?: $BlockPredicate$$Type, faces?: $PlaceChoices$BlockFaceType$$Type, target?: StringJS]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1693,16 +1727,16 @@ constructor(type: $PlaceTarget$Type$$Type, id: $ResourceLocation$$Type)
 
 public "type"(): $PlaceTarget$Type
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public static "of"(arg0: string): $PlaceTarget
+public static "of"(arg0: StringJS): $PlaceTarget
 public "id"(): $ResourceLocation
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $PlaceTarget$$Type = ({"id"?: $ResourceLocation$$Type, "type"?: $PlaceTarget$Type$$Type}) | ([id?: $ResourceLocation$$Type, type?: $PlaceTarget$Type$$Type]);
+export type $PlaceTarget$$Type = ({"type"?: $PlaceTarget$Type$$Type, "id"?: $ResourceLocation$$Type}) | ([type?: $PlaceTarget$Type$$Type, id?: $ResourceLocation$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1765,53 +1799,53 @@ import {$EvaluationValueConverterIfc, $EvaluationValueConverterIfc$$Type} from "
 
 export class $ExpressionConfiguration {
 static readonly "DEFAULT_MATH_CONTEXT": $MathContext
-static readonly "StandardConstants": $Map<(string), ($EvaluationValue)>
+static readonly "StandardConstants": $Map<(StringJS), ($EvaluationValue)>
 static readonly "DECIMAL_PLACES_ROUNDING_UNLIMITED": integer
 
 
-public static "builder"(): $ExpressionConfiguration$ExpressionConfigurationBuilder
 public "getLocale"(): $Locale
+public static "builder"(): $ExpressionConfiguration$ExpressionConfigurationBuilder
 public "toBuilder"(): $ExpressionConfiguration$ExpressionConfigurationBuilder
-public "getZoneId"(): $ZoneId
 public "getMathContext"(): $MathContext
-public "getFunctionDictionary"(): $FunctionDictionaryIfc
-public "getOperatorDictionary"(): $OperatorDictionaryIfc
+public "getZoneId"(): $ZoneId
 public static "defaultConfiguration"(): $ExpressionConfiguration
-public "getDefaultConstants"(): $Map<(string), ($EvaluationValue)>
+public "getDefaultConstants"(): $Map<(StringJS), ($EvaluationValue)>
+public "getDecimalPlacesResult"(): integer
+public "isStripTrailingZeros"(): boolean
+public "getOperatorDictionary"(): $OperatorDictionaryIfc
+public "getFunctionDictionary"(): $FunctionDictionaryIfc
 public "isArraysAllowed"(): boolean
 public "isStructuresAllowed"(): boolean
 public "isBinaryAllowed"(): boolean
 public "getPowerOfPrecedence"(): integer
-public "getDecimalPlacesResult"(): integer
-public "isStripTrailingZeros"(): boolean
 public "getDateTimeFormatters"(): $List<($DateTimeFormatter)>
-public "withAdditionalOperators"(...arg0: ($Map$Entry$$Type<(string), ($OperatorIfc$$Type)>)[]): $ExpressionConfiguration
-public "withAdditionalFunctions"(...arg0: ($Map$Entry$$Type<(string), ($FunctionIfc$$Type)>)[]): $ExpressionConfiguration
+public "isImplicitMultiplicationAllowed"(): boolean
+public "isSingleQuoteStringLiteralsAllowed"(): boolean
 public "getDataAccessorSupplier"(): $Supplier<($DataAccessorIfc)>
 public "getDecimalPlacesRounding"(): integer
 public "isAllowOverwriteConstants"(): boolean
+public "withAdditionalOperators"(...arg0: ($Map$Entry$$Type<(StringJS), ($OperatorIfc$$Type)>)[]): $ExpressionConfiguration
+public "withAdditionalFunctions"(...arg0: ($Map$Entry$$Type<(StringJS), ($FunctionIfc$$Type)>)[]): $ExpressionConfiguration
 public "getEvaluationValueConverter"(): $EvaluationValueConverterIfc
-public "isImplicitMultiplicationAllowed"(): boolean
-public "isSingleQuoteStringLiteralsAllowed"(): boolean
 get "locale"(): $Locale
-get "zoneId"(): $ZoneId
 get "mathContext"(): $MathContext
-get "functionDictionary"(): $FunctionDictionaryIfc
+get "zoneId"(): $ZoneId
+get "defaultConstants"(): $Map<(StringJS), ($EvaluationValue)>
+get "decimalPlacesResult"(): integer
+get "stripTrailingZeros"(): boolean
 get "operatorDictionary"(): $OperatorDictionaryIfc
-get "defaultConstants"(): $Map<(string), ($EvaluationValue)>
+get "functionDictionary"(): $FunctionDictionaryIfc
 get "arraysAllowed"(): boolean
 get "structuresAllowed"(): boolean
 get "binaryAllowed"(): boolean
 get "powerOfPrecedence"(): integer
-get "decimalPlacesResult"(): integer
-get "stripTrailingZeros"(): boolean
 get "dateTimeFormatters"(): $List<($DateTimeFormatter)>
+get "implicitMultiplicationAllowed"(): boolean
+get "singleQuoteStringLiteralsAllowed"(): boolean
 get "dataAccessorSupplier"(): $Supplier<($DataAccessorIfc)>
 get "decimalPlacesRounding"(): integer
 get "allowOverwriteConstants"(): boolean
 get "evaluationValueConverter"(): $EvaluationValueConverterIfc
-get "implicitMultiplicationAllowed"(): boolean
-get "singleQuoteStringLiteralsAllowed"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1838,18 +1872,18 @@ static readonly "CODEC": $Codec<($PlaceChoices$Flow)>
 
 constructor(when: $Map$$Type<($Direction$$Type), ($PlaceChoices$Limit$$Type)>, action: $SlotLink$ResultAction$$Type, end: boolean)
 
+public "when"(): $Map<($Direction), ($PlaceChoices$Limit)>
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "end"(): boolean
 public "action"(): $SlotLink$ResultAction
-public "when"(): $Map<($Direction), ($PlaceChoices$Limit)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $PlaceChoices$Flow$$Type = ({"action"?: $SlotLink$ResultAction$$Type, "end"?: boolean, "when"?: $Map$$Type<($Direction$$Type), ($PlaceChoices$Limit$$Type)>}) | ([action?: $SlotLink$ResultAction$$Type, end?: boolean, when?: $Map$$Type<($Direction$$Type), ($PlaceChoices$Limit$$Type)>]);
+export type $PlaceChoices$Flow$$Type = ({"when"?: $Map$$Type<($Direction$$Type), ($PlaceChoices$Limit$$Type)>, "action"?: $SlotLink$ResultAction$$Type, "end"?: boolean}) | ([when?: $Map$$Type<($Direction$$Type), ($PlaceChoices$Limit$$Type)>, action?: $SlotLink$ResultAction$$Type, end?: boolean]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1861,9 +1895,9 @@ declare module "snownee.kiwi.customization.duck.KPlayer" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $KPlayer {
 
- "kiwi$incrementPlaceCount"(): void
  "kiwi$setPlaceCount"(arg0: integer): void
  "kiwi$getPlaceCount"(): integer
+ "kiwi$incrementPlaceCount"(): void
 }
 
 export namespace $KPlayer {
@@ -1872,9 +1906,9 @@ const probejs$$marker: never
 export class $KPlayer$$Static implements $KPlayer {
 
 
- "kiwi$incrementPlaceCount"(): void
  "kiwi$setPlaceCount"(arg0: integer): void
  "kiwi$getPlaceCount"(): integer
+ "kiwi$incrementPlaceCount"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1898,7 +1932,7 @@ export class $BuilderRule$Type<T extends $BuilderRule> extends $Record {
 constructor(codec: $MapCodec$$Type<(T)>)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "codec"(): $MapCodec<(T)>
 /**
@@ -1933,7 +1967,7 @@ export class $KItemTemplate$Type<T extends $KItemTemplate> extends $Record {
 constructor(codec: $Supplier$$Type<($MapCodec$$Type<(T)>)>)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "codec"(): $Supplier<($MapCodec<(T)>)>
 /**
@@ -1968,7 +2002,7 @@ static readonly "DIRECT_CODEC": $Codec<($GlassType)>
 constructor(skipRendering: boolean, shadeBrightness: float, renderType: $RenderLayerEnum$$Type)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "skipRendering"(): boolean
 public "renderType"(): $RenderLayerEnum
@@ -1997,12 +2031,12 @@ export interface $FunctionIfc {
 
  "evaluate"(arg0: $Expression$$Type, arg1: $Token$$Type, ...arg2: ($EvaluationValue$$Type)[]): $EvaluationValue
  "hasVarArgs"(): boolean
- "validatePreEvaluation"(arg0: $Token$$Type, ...arg1: ($EvaluationValue$$Type)[]): void
  "isParameterLazy"(arg0: integer): boolean
- "getCountOfNonVarArgParameters"(): integer
+ "validatePreEvaluation"(arg0: $Token$$Type, ...arg1: ($EvaluationValue$$Type)[]): void
  "getFunctionParameterDefinitions"(): $List<($FunctionParameterDefinition)>
-get "countOfNonVarArgParameters"(): integer
+ "getCountOfNonVarArgParameters"(): integer
 get "functionParameterDefinitions"(): $List<($FunctionParameterDefinition)>
+get "countOfNonVarArgParameters"(): integer
 }
 
 export namespace $FunctionIfc {
@@ -2013,10 +2047,10 @@ export class $FunctionIfc$$Static implements $FunctionIfc {
 
  "evaluate"(arg0: $Expression$$Type, arg1: $Token$$Type, ...arg2: ($EvaluationValue$$Type)[]): $EvaluationValue
  "hasVarArgs"(): boolean
- "validatePreEvaluation"(arg0: $Token$$Type, ...arg1: ($EvaluationValue$$Type)[]): void
  "isParameterLazy"(arg0: integer): boolean
- "getCountOfNonVarArgParameters"(): integer
+ "validatePreEvaluation"(arg0: $Token$$Type, ...arg1: ($EvaluationValue$$Type)[]): void
  "getFunctionParameterDefinitions"(): $List<($FunctionParameterDefinition)>
+ "getCountOfNonVarArgParameters"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2044,11 +2078,11 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($NoCon
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($NoContainersShapedRecipe)>
 public "codec"(): $MapCodec<($NoContainersShapedRecipe)>
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($NoContainersShapedRecipe)>
 public static "fromNetwork"(arg0: $RegistryFriendlyByteBuf$$Type): $NoContainersShapedRecipe
 public static "toNetwork"(arg0: $RegistryFriendlyByteBuf$$Type, arg1: $NoContainersShapedRecipe$$Type): void
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2065,8 +2099,8 @@ export type $NoContainersShapedRecipe$Serializer_ = $NoContainersShapedRecipe$Se
 declare module "snownee.kiwi.customization.item.loader.ItemDefinitionProperties" {
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$ItemDefinitionProperties$PartialVanillaProperties, $ItemDefinitionProperties$PartialVanillaProperties$$Type} from "snownee.kiwi.customization.item.loader.ItemDefinitionProperties$PartialVanillaProperties"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$Record, $Record$$Type} from "java.lang.Record"
 
 export class $ItemDefinitionProperties extends $Record {
@@ -2074,20 +2108,20 @@ export class $ItemDefinitionProperties extends $Record {
 constructor(colorProvider: $Optional$$Type<($ResourceLocation$$Type)>, vanillaProperties: $ItemDefinitionProperties$PartialVanillaProperties$$Type)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "merge"(arg0: $ItemDefinitionProperties$$Type): $ItemDefinitionProperties
 public static "empty"(): $ItemDefinitionProperties
-public "vanillaProperties"(): $ItemDefinitionProperties$PartialVanillaProperties
 public static "mapCodecField"(): $MapCodec<($Optional<($ItemDefinitionProperties)>)>
 public static "mapCodec"(): $MapCodec<($ItemDefinitionProperties)>
 public "colorProvider"(): $Optional<($ResourceLocation)>
+public "vanillaProperties"(): $ItemDefinitionProperties$PartialVanillaProperties
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ItemDefinitionProperties$$Type = ({"colorProvider"?: ($ResourceLocation$$Type)?, "vanillaProperties"?: $ItemDefinitionProperties$PartialVanillaProperties$$Type}) | ([colorProvider?: ($ResourceLocation$$Type)?, vanillaProperties?: $ItemDefinitionProperties$PartialVanillaProperties$$Type]);
+export type $ItemDefinitionProperties$$Type = ({"vanillaProperties"?: $ItemDefinitionProperties$PartialVanillaProperties$$Type, "colorProvider"?: ($ResourceLocation$$Type)?}) | ([vanillaProperties?: $ItemDefinitionProperties$PartialVanillaProperties$$Type, colorProvider?: ($ResourceLocation$$Type)?]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -2099,8 +2133,8 @@ declare module "snownee.kiwi.shadowed.com.ezylang.evalex.data.EvaluationValue" {
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ASTNode, $ASTNode$$Type} from "snownee.kiwi.shadowed.com.ezylang.evalex.parser.ASTNode"
 import {$Comparable, $Comparable$$Type} from "java.lang.Comparable"
-import {$List, $List$$Type} from "java.util.List"
 import {$ExpressionConfiguration, $ExpressionConfiguration$$Type} from "snownee.kiwi.shadowed.com.ezylang.evalex.config.ExpressionConfiguration"
+import {$List, $List$$Type} from "java.util.List"
 import {$MathContext, $MathContext$$Type} from "java.math.MathContext"
 import {$EvaluationValue$DataType, $EvaluationValue$DataType$$Type} from "snownee.kiwi.shadowed.com.ezylang.evalex.data.EvaluationValue$DataType"
 import {$BigDecimal, $BigDecimal$$Type} from "java.math.BigDecimal"
@@ -2118,47 +2152,47 @@ static readonly "FALSE": $EvaluationValue
  */
 constructor(arg0: any, arg1: $ExpressionConfiguration$$Type)
 
+public static "stringValue"(arg0: StringJS): $EvaluationValue
+public static "numberValue"(arg0: $BigDecimal$$Type): $EvaluationValue
 public "getDataType"(): $EvaluationValue$DataType
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "compareTo"(arg0: $EvaluationValue$$Type): integer
 public "compareTo"(arg0: any): integer
+public "compareTo"(arg0: $EvaluationValue$$Type): integer
 public static "booleanValue"(arg0: boolean): $EvaluationValue
 public "getValue"(): any
 public static "of"(arg0: any, arg1: $ExpressionConfiguration$$Type): $EvaluationValue
-public static "stringValue"(arg0: string): $EvaluationValue
-public static "numberValue"(arg0: $BigDecimal$$Type): $EvaluationValue
 public "isArrayValue"(): boolean
-public "isStringValue"(): boolean
-public "isNumberValue"(): boolean
 public "isBooleanValue"(): boolean
-public "getStringValue"(): string
+public "isNumberValue"(): boolean
+public "isStringValue"(): boolean
 public "getNumberValue"(): $BigDecimal
 public static "arrayValue"(arg0: $List$$Type<(any)>): $EvaluationValue
+public "getStringValue"(): StringJS
 /**
  * 
  * @deprecated
  */
 public static "nullValue"(): $EvaluationValue
-public "getBooleanValue"(): boolean
-public static "binaryValue"(arg0: any): $EvaluationValue
 public "getArrayValue"(): $List<($EvaluationValue)>
+public static "binaryValue"(arg0: any): $EvaluationValue
+public "getBooleanValue"(): boolean
 public "isBinaryValue"(): boolean
 public "isNullValue"(): boolean
 public "isExpressionNode"(): boolean
-public static "dateTimeValue"(arg0: $Instant$$Type): $EvaluationValue
-public static "durationValue"(arg0: $Duration$$Type): $EvaluationValue
+public static "numberOfString"(arg0: StringJS, arg1: $MathContext$$Type): $EvaluationValue
 public static "structureValue"(arg0: $Map$$Type<(any), (any)>): $EvaluationValue
-public static "numberOfString"(arg0: string, arg1: $MathContext$$Type): $EvaluationValue
+public static "durationValue"(arg0: $Duration$$Type): $EvaluationValue
+public static "dateTimeValue"(arg0: $Instant$$Type): $EvaluationValue
+public "getExpressionNode"(): $ASTNode
+public "isStructureValue"(): boolean
+public "getStructureValue"(): $Map<(StringJS), ($EvaluationValue)>
 public static "expressionNodeValue"(arg0: $ASTNode$$Type): $EvaluationValue
 public "isDateTimeValue"(): boolean
 public "isDurationValue"(): boolean
-public "isStructureValue"(): boolean
 public "getDateTimeValue"(): $Instant
 public "getDurationValue"(): $Duration
-public "getStructureValue"(): $Map<(string), ($EvaluationValue)>
-public "getExpressionNode"(): $ASTNode
 get "dataType"(): $EvaluationValue$DataType
 get "value"(): any
 get "expressionNode"(): boolean
@@ -2217,23 +2251,23 @@ static readonly "DIRECT_CODEC": $Codec<($KMaterial)>
 constructor(destroyTime: float, explosionResistance: float, soundType: $SoundType$$Type, defaultMapColor: $MapColor$$Type, instrument: $NoteBlockInstrument$$Type, requiresCorrectToolForDrops: boolean, ignitedByLava: boolean, igniteOdds: integer, burnOdds: integer)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "requiresCorrectToolForDrops"(): boolean
 public "soundType"(): $SoundType
 public "destroyTime"(): float
+public "ignitedByLava"(): boolean
 public "igniteOdds"(): integer
 public "burnOdds"(): integer
 public "instrument"(): $NoteBlockInstrument
-public "ignitedByLava"(): boolean
 public "explosionResistance"(): float
 public "defaultMapColor"(): $MapColor
+public "requiresCorrectToolForDrops"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $KMaterial$$Type = ({"burnOdds"?: integer, "defaultMapColor"?: $MapColor$$Type, "instrument"?: $NoteBlockInstrument$$Type, "explosionResistance"?: float, "destroyTime"?: float, "ignitedByLava"?: boolean, "requiresCorrectToolForDrops"?: boolean, "igniteOdds"?: integer, "soundType"?: $SoundType$$Type}) | ([burnOdds?: integer, defaultMapColor?: $MapColor$$Type, instrument?: $NoteBlockInstrument$$Type, explosionResistance?: float, destroyTime?: float, ignitedByLava?: boolean, requiresCorrectToolForDrops?: boolean, igniteOdds?: integer, soundType?: $SoundType$$Type]);
+export type $KMaterial$$Type = ({"ignitedByLava"?: boolean, "requiresCorrectToolForDrops"?: boolean, "igniteOdds"?: integer, "soundType"?: $SoundType$$Type, "burnOdds"?: integer, "defaultMapColor"?: $MapColor$$Type, "instrument"?: $NoteBlockInstrument$$Type, "explosionResistance"?: float, "destroyTime"?: float}) | ([ignitedByLava?: boolean, requiresCorrectToolForDrops?: boolean, igniteOdds?: integer, soundType?: $SoundType$$Type, burnOdds?: integer, defaultMapColor?: $MapColor$$Type, instrument?: $NoteBlockInstrument$$Type, explosionResistance?: float, destroyTime?: float]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -2250,38 +2284,38 @@ import {$BlockDefinitionProperties$PartialVanillaProperties, $BlockDefinitionPro
 import {$BlockFundamentals$CodecCreationContext, $BlockFundamentals$CodecCreationContext$$Type} from "snownee.kiwi.customization.block.BlockFundamentals$CodecCreationContext"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$KMaterial, $KMaterial$$Type} from "snownee.kiwi.customization.block.loader.KMaterial"
-import {$CanSurviveHandler, $CanSurviveHandler$$Type} from "snownee.kiwi.customization.block.behavior.CanSurviveHandler"
 import {$Either, $Either$$Type} from "com.mojang.datafixers.util.Either"
+import {$CanSurviveHandler, $CanSurviveHandler$$Type} from "snownee.kiwi.customization.block.behavior.CanSurviveHandler"
 import {$GlassType, $GlassType$$Type} from "snownee.kiwi.customization.block.GlassType"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$Record, $Record$$Type} from "java.lang.Record"
 
 export class $BlockDefinitionProperties extends $Record {
 
-constructor(components: $List$$Type<($Either$$Type<($KBlockComponent$$Type), (string)>)>, material: $Optional$$Type<($KMaterial$$Type)>, glassType: $Optional$$Type<($GlassType$$Type)>, renderType: $Optional$$Type<($RenderLayerEnum$$Type)>, colorProvider: $Optional$$Type<($ResourceLocation$$Type)>, shape: $Optional$$Type<($ResourceLocation$$Type)>, collisionShape: $Optional$$Type<($ResourceLocation$$Type)>, interactionShape: $Optional$$Type<($ResourceLocation$$Type)>, canSurviveHandler: $Optional$$Type<($CanSurviveHandler$$Type)>, vanillaProperties: $BlockDefinitionProperties$PartialVanillaProperties$$Type)
+constructor(components: $List$$Type<($Either$$Type<($KBlockComponent$$Type), (StringJS)>)>, material: $Optional$$Type<($KMaterial$$Type)>, glassType: $Optional$$Type<($GlassType$$Type)>, renderType: $Optional$$Type<($RenderLayerEnum$$Type)>, colorProvider: $Optional$$Type<($ResourceLocation$$Type)>, shape: $Optional$$Type<($ResourceLocation$$Type)>, collisionShape: $Optional$$Type<($ResourceLocation$$Type)>, interactionShape: $Optional$$Type<($ResourceLocation$$Type)>, canSurviveHandler: $Optional$$Type<($CanSurviveHandler$$Type)>, vanillaProperties: $BlockDefinitionProperties$PartialVanillaProperties$$Type)
 
+public "shape"(): $Optional<($ResourceLocation)>
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "merge"(arg0: $BlockDefinitionProperties$$Type): $BlockDefinitionProperties
-public "shape"(): $Optional<($ResourceLocation)>
-public "interactionShape"(): $Optional<($ResourceLocation)>
-public "vanillaProperties"(): $BlockDefinitionProperties$PartialVanillaProperties
 public "glassType"(): $Optional<($GlassType)>
 public static "mapCodecField"(arg0: $BlockFundamentals$CodecCreationContext$$Type): $MapCodec<($Optional<($BlockDefinitionProperties)>)>
-public static "mapCodec"(arg0: $BlockFundamentals$CodecCreationContext$$Type): $MapCodec<($BlockDefinitionProperties)>
 public "collisionShape"(): $Optional<($ResourceLocation)>
 public "renderType"(): $Optional<($RenderLayerEnum)>
-public "components"(): $List<($Either<($KBlockComponent), (string)>)>
-public "canSurviveHandler"(): $Optional<($CanSurviveHandler)>
+public static "mapCodec"(arg0: $BlockFundamentals$CodecCreationContext$$Type): $MapCodec<($BlockDefinitionProperties)>
+public "components"(): $List<($Either<($KBlockComponent), (StringJS)>)>
 public "colorProvider"(): $Optional<($ResourceLocation)>
 public "material"(): $Optional<($KMaterial)>
+public "interactionShape"(): $Optional<($ResourceLocation)>
+public "canSurviveHandler"(): $Optional<($CanSurviveHandler)>
+public "vanillaProperties"(): $BlockDefinitionProperties$PartialVanillaProperties
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $BlockDefinitionProperties$$Type = ({"renderType"?: ($RenderLayerEnum$$Type)?, "interactionShape"?: ($ResourceLocation$$Type)?, "vanillaProperties"?: $BlockDefinitionProperties$PartialVanillaProperties$$Type, "collisionShape"?: ($ResourceLocation$$Type)?, "colorProvider"?: ($ResourceLocation$$Type)?, "canSurviveHandler"?: ($CanSurviveHandler$$Type)?, "material"?: ($KMaterial$$Type)?, "shape"?: ($ResourceLocation$$Type)?, "components"?: $List$$Type<($Either$$Type<($KBlockComponent$$Type), (string)>)>, "glassType"?: ($GlassType$$Type)?}) | ([renderType?: ($RenderLayerEnum$$Type)?, interactionShape?: ($ResourceLocation$$Type)?, vanillaProperties?: $BlockDefinitionProperties$PartialVanillaProperties$$Type, collisionShape?: ($ResourceLocation$$Type)?, colorProvider?: ($ResourceLocation$$Type)?, canSurviveHandler?: ($CanSurviveHandler$$Type)?, material?: ($KMaterial$$Type)?, shape?: ($ResourceLocation$$Type)?, components?: $List$$Type<($Either$$Type<($KBlockComponent$$Type), (string)>)>, glassType?: ($GlassType$$Type)?]);
+export type $BlockDefinitionProperties$$Type = ({"shape"?: ($ResourceLocation$$Type)?, "components"?: $List$$Type<($Either$$Type<($KBlockComponent$$Type), (StringJS)>)>, "glassType"?: ($GlassType$$Type)?, "renderType"?: ($RenderLayerEnum$$Type)?, "interactionShape"?: ($ResourceLocation$$Type)?, "vanillaProperties"?: $BlockDefinitionProperties$PartialVanillaProperties$$Type, "collisionShape"?: ($ResourceLocation$$Type)?, "colorProvider"?: ($ResourceLocation$$Type)?, "canSurviveHandler"?: ($CanSurviveHandler$$Type)?, "material"?: ($KMaterial$$Type)?}) | ([shape?: ($ResourceLocation$$Type)?, components?: $List$$Type<($Either$$Type<($KBlockComponent$$Type), (StringJS)>)>, glassType?: ($GlassType$$Type)?, renderType?: ($RenderLayerEnum$$Type)?, interactionShape?: ($ResourceLocation$$Type)?, vanillaProperties?: $BlockDefinitionProperties$PartialVanillaProperties$$Type, collisionShape?: ($ResourceLocation$$Type)?, colorProvider?: ($ResourceLocation$$Type)?, canSurviveHandler?: ($CanSurviveHandler$$Type)?, material?: ($KMaterial$$Type)?]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -2324,45 +2358,45 @@ export type $BlockColorsAccess_ = $BlockColorsAccess$$Type;
 }}
 declare module "snownee.kiwi.shadowed.com.ezylang.evalex.Expression" {
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$EvaluationValue, $EvaluationValue$$Type} from "snownee.kiwi.shadowed.com.ezylang.evalex.data.EvaluationValue"
 import {$ASTNode, $ASTNode$$Type} from "snownee.kiwi.shadowed.com.ezylang.evalex.parser.ASTNode"
+import {$EvaluationValue, $EvaluationValue$$Type} from "snownee.kiwi.shadowed.com.ezylang.evalex.data.EvaluationValue"
+import {$List, $List$$Type} from "java.util.List"
 import {$ExpressionConfiguration, $ExpressionConfiguration$$Type} from "snownee.kiwi.shadowed.com.ezylang.evalex.config.ExpressionConfiguration"
 import {$DataAccessorIfc, $DataAccessorIfc$$Type} from "snownee.kiwi.shadowed.com.ezylang.evalex.data.DataAccessorIfc"
-import {$List, $List$$Type} from "java.util.List"
 import {$Set, $Set$$Type} from "java.util.Set"
 
 export class $Expression {
 
-constructor(arg0: string)
+constructor(arg0: StringJS)
 constructor(arg0: $Expression$$Type)
-constructor(arg0: string, arg1: $ExpressionConfiguration$$Type)
+constructor(arg0: StringJS, arg1: $ExpressionConfiguration$$Type)
 
-public "validate"(): void
-public "with"(arg0: string, arg1: any): $Expression
-public "copy"(): $Expression
-public "and"(arg0: string, arg1: any): $Expression
+public "and"(arg0: StringJS, arg1: any): $Expression
 public "evaluate"(): $EvaluationValue
+public "validate"(): void
+public "with"(arg0: StringJS, arg1: any): $Expression
+public "copy"(): $Expression
 public "convertValue"(arg0: any): $EvaluationValue
-public "getExpressionString"(): string
-public "withValues"(arg0: $Map$$Type<(string), (any)>): $Expression
 public "getConfiguration"(): $ExpressionConfiguration
-public "getConstants"(): $Map<(string), ($EvaluationValue)>
+public "withValues"(arg0: $Map$$Type<(StringJS), (any)>): $Expression
+public "getExpressionString"(): StringJS
 public "getAllASTNodes"(): $List<($ASTNode)>
-public "convertDoubleValue"(arg0: double): $EvaluationValue
+public "getConstants"(): $Map<(StringJS), ($EvaluationValue)>
 public "getAbstractSyntaxTree"(): $ASTNode
 public "evaluateSubtree"(arg0: $ASTNode$$Type): $EvaluationValue
 public "getDataAccessor"(): $DataAccessorIfc
-public "createExpressionNode"(arg0: string): $ASTNode
-public "getUsedVariables"(): $Set<(string)>
-public "getUndefinedVariables"(): $Set<(string)>
-get "expressionString"(): string
+public "createExpressionNode"(arg0: StringJS): $ASTNode
+public "convertDoubleValue"(arg0: double): $EvaluationValue
+public "getUsedVariables"(): $Set<(StringJS)>
+public "getUndefinedVariables"(): $Set<(StringJS)>
 get "configuration"(): $ExpressionConfiguration
-get "constants"(): $Map<(string), ($EvaluationValue)>
+get "expressionString"(): StringJS
 get "allASTNodes"(): $List<($ASTNode)>
+get "constants"(): $Map<(StringJS), ($EvaluationValue)>
 get "abstractSyntaxTree"(): $ASTNode
 get "dataAccessor"(): $DataAccessorIfc
-get "usedVariables"(): $Set<(string)>
-get "undefinedVariables"(): $Set<(string)>
+get "usedVariables"(): $Set<(StringJS)>
+get "undefinedVariables"(): $Set<(StringJS)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

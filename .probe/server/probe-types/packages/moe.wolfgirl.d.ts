@@ -14,9 +14,9 @@ readonly "returnType": $BaseType
 
 constructor(params: $List$$Type<($ParamDecl$$Type)>, returnType: $BaseType$$Type)
 
-public "format"(declaration: $Declaration$$Type, input: $BaseType$FormatType$$Type): $List<(string)>
+public "format"(declaration: $Declaration$$Type, input: $BaseType$FormatType$$Type): $List<(StringJS)>
 public "getUsedImports"(): $Collection<($ImportInfo)>
-public "asMethod"(methodName: string): $MethodDecl
+public "asMethod"(methodName: StringJS): $MethodDecl
 get "usedImports"(): $Collection<($ImportInfo)>
 }
 /**
@@ -33,21 +33,21 @@ export type $JSLambdaType_ = $JSLambdaType$$Type;
 }}
 declare module "moe.wolfgirl.probejs.lang.typescript.code.member.CommentableCode" {
 import {$Code, $Code$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.Code"
-import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 import {$List, $List$$Type} from "java.util.List"
+import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 
 export class $CommentableCode extends $Code {
-readonly "comments": $List<(string)>
+readonly "comments": $List<(StringJS)>
 
 constructor()
 
-public "format"(declaration: $Declaration$$Type): $List<(string)>
-public "newline"(...comments: (string)[]): void
-public "addComment"(...comments: (string)[]): void
-public "formatRaw"(declaration: $Declaration$$Type): $List<(string)>
-public "formatComments"(): $List<(string)>
+public "format"(declaration: $Declaration$$Type): $List<(StringJS)>
+public "newline"(...comments: (StringJS)[]): void
+public "addComment"(...comments: (StringJS)[]): void
+public "formatRaw"(declaration: $Declaration$$Type): $List<(StringJS)>
+public "formatComments"(): $List<(StringJS)>
 public "linebreak"(): void
-public "addCommentAtStart"(...comments: (string)[]): void
+public "addCommentAtStart"(...comments: (StringJS)[]): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -134,9 +134,9 @@ export type $CraftingShaped_ = $CraftingShaped$$Type;
 }}
 declare module "moe.wolfgirl.probejs.lang.typescript.code.type.js.JSObjectType" {
 import {$Collection, $Collection$$Type} from "java.util.Collection"
-import {$JSMemberType, $JSMemberType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.js.JSMemberType"
-import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 import {$List, $List$$Type} from "java.util.List"
+import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
+import {$JSMemberType, $JSMemberType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.js.JSMemberType"
 import {$JSParam, $JSParam$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.js.JSParam"
 import {$BaseType$FormatType, $BaseType$FormatType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.BaseType$FormatType"
 
@@ -145,7 +145,7 @@ readonly "members": $Collection<($JSParam)>
 
 constructor(members: $Collection$$Type<($JSParam$$Type)>)
 
-public "format"(declaration: $Declaration$$Type, input: $BaseType$FormatType$$Type): $List<(string)>
+public "format"(declaration: $Declaration$$Type, input: $BaseType$FormatType$$Type): $List<(StringJS)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -167,36 +167,36 @@ import {$Record, $Record$$Type} from "java.lang.Record"
 
 export class $ClassPath extends $Record {
 
-constructor(className: string)
-constructor(parts: $List$$Type<(string)>)
+constructor(className: StringJS)
 constructor(clazz: $Class$$Type<(any)>)
+constructor(parts: $List$$Type<(StringJS)>)
 
-public "getName"(): string
+public "parts"(): $List<(StringJS)>
+public "getClassPath"(): StringJS
+public "getName"(): StringJS
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "getPackage"(): $List<(string)>
-public "parts"(): $List<(string)>
-public "getClassPath"(): string
-public "getConcatenated"(sep: string): string
-public "getClassPathJava"(): string
-public "getConcatenatedPackage"(sep: string): string
-public "getTypeScriptPath"(): string
+public "getPackage"(): $List<(StringJS)>
 public "getDirPath"(base: $Path$$Type): $Path
-public "getGenerics"(): $List<(string)>
+public "getGenerics"(): $List<(StringJS)>
 public "makePath"(base: $Path$$Type): $Path
-get "name"(): string
-get "package"(): $List<(string)>
-get "classPath"(): string
-get "classPathJava"(): string
-get "typeScriptPath"(): string
-get "generics"(): $List<(string)>
+public "getConcatenated"(sep: StringJS): StringJS
+public "getClassPathJava"(): StringJS
+public "getConcatenatedPackage"(sep: StringJS): StringJS
+public "getTypeScriptPath"(): StringJS
+get "classPath"(): StringJS
+get "name"(): StringJS
+get "package"(): $List<(StringJS)>
+get "generics"(): $List<(StringJS)>
+get "classPathJava"(): StringJS
+get "typeScriptPath"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ClassPath$$Type = ({"parts"?: $List$$Type<(string)>}) | ([parts?: $List$$Type<(string)>]);
+export type $ClassPath$$Type = ({"parts"?: $List$$Type<(StringJS)>}) | ([parts?: $List$$Type<(StringJS)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -211,8 +211,8 @@ import {$Clazz$ClassAttribute, $Clazz$ClassAttribute$$Type} from "moe.wolfgirl.p
 import {$FieldInfo, $FieldInfo$$Type} from "moe.wolfgirl.probejs.lang.java.clazz.members.FieldInfo"
 import {$VariableType, $VariableType$$Type} from "moe.wolfgirl.probejs.lang.java.type.impl.VariableType"
 import {$List, $List$$Type} from "java.util.List"
-import {$Class, $Class$$Type} from "java.lang.Class"
 import {$TypeDescriptor, $TypeDescriptor$$Type} from "moe.wolfgirl.probejs.lang.java.type.TypeDescriptor"
+import {$Class, $Class$$Type} from "java.lang.Class"
 import {$ClassPath, $ClassPath$$Type} from "moe.wolfgirl.probejs.lang.java.clazz.ClassPath"
 import {$MethodInfo, $MethodInfo$$Type} from "moe.wolfgirl.probejs.lang.java.clazz.members.MethodInfo"
 
@@ -248,8 +248,8 @@ declare module "moe.wolfgirl.probejs.lang.typescript.TypeScriptFile" {
 import {$Code, $Code$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.Code"
 import {$BufferedWriter, $BufferedWriter$$Type} from "java.io.BufferedWriter"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 import {$List, $List$$Type} from "java.util.List"
+import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 import {$Class, $Class$$Type} from "java.lang.Class"
 import {$ClassPath, $ClassPath$$Type} from "moe.wolfgirl.probejs.lang.java.clazz.ClassPath"
 import {$Path, $Path$$Type} from "java.nio.file.Path"
@@ -261,14 +261,14 @@ readonly "declaration": $Declaration
 
 constructor(self: $ClassPath$$Type)
 
-public "format"(): string
+public "format"(): StringJS
 public "write"(writeTo: $Path$$Type): void
 public "write"(writer: $BufferedWriter$$Type): void
 public "addCode"(code: $Code$$Type): void
 public "findCode"<T extends $Code>(type: $Class$$Type<(T)>): $Optional<(T)>
-public "writeAsModule"(writer: $BufferedWriter$$Type): void
-public "excludeSymbol"(name: string): void
 public "refreshImports"(): void
+public "writeAsModule"(writer: $BufferedWriter$$Type): void
+public "excludeSymbol"(name: StringJS): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -285,8 +285,8 @@ export type $TypeScriptFile_ = $TypeScriptFile$$Type;
 declare module "moe.wolfgirl.probejs.lang.typescript.code.type.TSClassType" {
 import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$ImportInfo, $ImportInfo$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.ImportInfo"
-import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 import {$List, $List$$Type} from "java.util.List"
+import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 import {$ClassPath, $ClassPath$$Type} from "moe.wolfgirl.probejs.lang.java.clazz.ClassPath"
 import {$BaseType, $BaseType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.BaseType"
 import {$BaseType$FormatType, $BaseType$FormatType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.BaseType$FormatType"
@@ -296,7 +296,7 @@ export class $TSClassType extends $BaseType {
 
 constructor(classPath: $ClassPath$$Type)
 
-public "format"(declaration: $Declaration$$Type, input: $BaseType$FormatType$$Type): $List<(string)>
+public "format"(declaration: $Declaration$$Type, input: $BaseType$FormatType$$Type): $List<(StringJS)>
 public "getUsedImports"(): $Collection<($ImportInfo)>
 get "usedImports"(): $Collection<($ImportInfo)>
 }
@@ -315,8 +315,8 @@ export type $TSClassType_ = $TSClassType$$Type;
 declare module "moe.wolfgirl.probejs.lang.typescript.code.Code" {
 import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$ImportInfo, $ImportInfo$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.ImportInfo"
-import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 import {$List, $List$$Type} from "java.util.List"
+import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 import {$Class, $Class$$Type} from "java.lang.Class"
 import {$ImportInfo$Type, $ImportInfo$Type$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.ImportInfo$Type"
 
@@ -324,11 +324,11 @@ export class $Code {
 
 constructor()
 
-public "format"(declaration: $Declaration$$Type): $List<(string)>
-public "line"(declaration: $Declaration$$Type): string
+public "format"(declaration: $Declaration$$Type): $List<(StringJS)>
+public "line"(declaration: $Declaration$$Type): StringJS
 public "getClasses"(): $Collection<($Class<(any)>)>
-public "getUsedImportsAs"(type: $ImportInfo$Type$$Type): $Collection<($ImportInfo)>
 public "getUsedImports"(): $Collection<($ImportInfo)>
+public "getUsedImportsAs"(type: $ImportInfo$Type$$Type): $Collection<($ImportInfo)>
 get "classes"(): $Collection<($Class<(any)>)>
 get "usedImports"(): $Collection<($ImportInfo)>
 }
@@ -407,31 +407,7 @@ export class $SnippetGenerationEventJS implements $KubeEvent {
 
 constructor(dump: $SnippetDump$$Type)
 
-public "create"(name: string, handler: $Consumer$$Type<($Snippet)>): void
-/**
- * Stops the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(arg1: any): any
-/**
- * Stops the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(): any
-/**
- * Cancels the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(arg1: any): any
-/**
- * Cancels the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(): any
+public "create"(name: StringJS, handler: $Consumer$$Type<($Snippet)>): void
 /**
  * Stops the event with default exit value. Execution will be stopped **immediately**.
  * 
@@ -444,6 +420,30 @@ public "success"(): any
  * `success` denotes a `true` outcome.
  */
 public "success"(arg1: any): any
+/**
+ * Stops the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(): any
+/**
+ * Stops the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(arg1: any): any
+/**
+ * Cancels the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(arg1: any): any
+/**
+ * Cancels the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(): any
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -457,6 +457,54 @@ export type $SnippetGenerationEventJS$$Type = ($SnippetGenerationEventJS);
 declare global {
 export type $SnippetGenerationEventJS_ = $SnippetGenerationEventJS$$Type;
 }}
+declare module "moe.wolfgirl.probejs.generated.schema.irons_spellbooks.AlchemistCauldronFill" {
+import {$KubeRecipe, $KubeRecipe$$Type} from "dev.latvian.mods.kubejs.recipe.KubeRecipe"
+
+/**
+ * This is a class generated by ProbeJS, you shall not load/require this class for your usages
+ * because it doesn't exist in the JVM. The class exist only for type hinting purpose.
+ * Loading the class will not throw an error, but instead the class loaded will be undefined.
+ */
+export class $AlchemistCauldronFill extends $KubeRecipe {
+
+
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AlchemistCauldronFill$$Type = ($AlchemistCauldronFill);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AlchemistCauldronFill_ = $AlchemistCauldronFill$$Type;
+}}
+declare module "moe.wolfgirl.probejs.generated.schema.enderio.Tank" {
+import {$TankKubeRecipe, $TankKubeRecipe$$Type} from "com.almostreliable.kubeio.recipe.TankKubeRecipe"
+
+/**
+ * This is a class generated by ProbeJS, you shall not load/require this class for your usages
+ * because it doesn't exist in the JVM. The class exist only for type hinting purpose.
+ * Loading the class will not throw an error, but instead the class loaded will be undefined.
+ */
+export class $Tank extends $TankKubeRecipe {
+
+
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Tank$$Type = ($Tank);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Tank_ = $Tank$$Type;
+}}
 declare module "moe.wolfgirl.probejs.lang.typescript.code.type.js.JSLambdaType$Builder" {
 import {$ParamDecl, $ParamDecl$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.member.ParamDecl"
 import {$JSLambdaType, $JSLambdaType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.js.JSLambdaType"
@@ -469,12 +517,12 @@ readonly "params": $List<($ParamDecl)>
 
 constructor()
 
+public "param"(symbol: StringJS, type: $BaseType$$Type): $JSLambdaType$Builder
+public "param"(symbol: StringJS, type: $BaseType$$Type, isOptional: boolean, isVarArg: boolean): $JSLambdaType$Builder
+public "param"(symbol: StringJS, type: $BaseType$$Type, isOptional: boolean): $JSLambdaType$Builder
+public "build"(): $JSLambdaType
 public "returnType"(type: $BaseType$$Type): $JSLambdaType$Builder
 public "method"(): $JSLambdaType$Builder
-public "param"(symbol: string, type: $BaseType$$Type, isOptional: boolean, isVarArg: boolean): $JSLambdaType$Builder
-public "param"(symbol: string, type: $BaseType$$Type, isOptional: boolean): $JSLambdaType$Builder
-public "param"(symbol: string, type: $BaseType$$Type): $JSLambdaType$Builder
-public "build"(): $JSLambdaType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -490,9 +538,9 @@ export type $JSLambdaType$Builder_ = $JSLambdaType$Builder$$Type;
 }}
 declare module "moe.wolfgirl.probejs.lang.typescript.code.type.js.JSArrayType" {
 import {$Collection, $Collection$$Type} from "java.util.Collection"
-import {$JSMemberType, $JSMemberType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.js.JSMemberType"
-import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 import {$List, $List$$Type} from "java.util.List"
+import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
+import {$JSMemberType, $JSMemberType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.js.JSMemberType"
 import {$JSParam, $JSParam$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.js.JSParam"
 import {$BaseType$FormatType, $BaseType$FormatType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.BaseType$FormatType"
 
@@ -501,7 +549,7 @@ readonly "members": $Collection<($JSParam)>
 
 constructor(members: $Collection$$Type<($JSParam$$Type)>)
 
-public "format"(declaration: $Declaration$$Type, input: $BaseType$FormatType$$Type): $List<(string)>
+public "format"(declaration: $Declaration$$Type, input: $BaseType$FormatType$$Type): $List<(StringJS)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -552,17 +600,29 @@ constructor(dump: $ScriptDump$$Type)
 public "getTypeConverter"(): $TypeConverter
 public "getScriptType"(): $ScriptType
 /**
+ * Stops the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `success` denotes a `true` outcome.
+ */
+public "success"(): any
+/**
  * Stops the event with the given exit value. Execution will be stopped **immediately**.
  * 
- * `exit` denotes a `default` outcome.
+ * `success` denotes a `true` outcome.
  */
-public "exit"(arg1: any): any
+public "success"(arg1: any): any
 /**
  * Stops the event with default exit value. Execution will be stopped **immediately**.
  * 
  * `exit` denotes a `default` outcome.
  */
 public "exit"(): any
+/**
+ * Stops the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(arg1: any): any
 /**
  * Cancels the event with the given exit value. Execution will be stopped **immediately**.
  * 
@@ -575,18 +635,6 @@ public "cancel"(arg1: any): any
  * `cancel` denotes a `false` outcome.
  */
 public "cancel"(): any
-/**
- * Stops the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `success` denotes a `true` outcome.
- */
-public "success"(): any
-/**
- * Stops the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `success` denotes a `true` outcome.
- */
-public "success"(arg1: any): any
 get "typeConverter"(): $TypeConverter
 get "scriptType"(): $ScriptType
 }
@@ -613,7 +661,7 @@ export class $SnippetDump {
 constructor()
 
 public "writeTo"(path: $Path$$Type): void
-public "snippet"(name: string): $Snippet
+public "snippet"(name: StringJS): $Snippet
 public "fromDocs"(): void
 }
 /**
@@ -628,6 +676,30 @@ export type $SnippetDump$$Type = ($SnippetDump);
 declare global {
 export type $SnippetDump_ = $SnippetDump$$Type;
 }}
+declare module "moe.wolfgirl.probejs.generated.schema.enderio.SagMilling" {
+import {$KubeRecipe, $KubeRecipe$$Type} from "dev.latvian.mods.kubejs.recipe.KubeRecipe"
+
+/**
+ * This is a class generated by ProbeJS, you shall not load/require this class for your usages
+ * because it doesn't exist in the JVM. The class exist only for type hinting purpose.
+ * Loading the class will not throw an error, but instead the class loaded will be undefined.
+ */
+export class $SagMilling extends $KubeRecipe {
+
+
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SagMilling$$Type = ($SagMilling);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SagMilling_ = $SagMilling$$Type;
+}}
 declare module "moe.wolfgirl.probejs.lang.typescript.code.type.Types" {
 import {$JSPrimitiveType, $JSPrimitiveType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.js.JSPrimitiveType"
 import {$TSOptionalType, $TSOptionalType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.TSOptionalType"
@@ -640,8 +712,8 @@ import {$JSTypeOfType, $JSTypeOfType$$Type} from "moe.wolfgirl.probejs.lang.type
 import {$BaseType$FormatType, $BaseType$FormatType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.BaseType$FormatType"
 import {$BiFunction, $BiFunction$$Type} from "java.util.function.BiFunction"
 import {$TSParamType, $TSParamType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.TSParamType"
-import {$JSJoinedType$Intersection, $JSJoinedType$Intersection$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.js.JSJoinedType$Intersection"
 import {$TSVariableType, $TSVariableType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.TSVariableType"
+import {$JSJoinedType$Intersection, $JSJoinedType$Intersection$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.js.JSJoinedType$Intersection"
 import {$JSArrayType, $JSArrayType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.js.JSArrayType"
 import {$ImportInfo, $ImportInfo$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.ImportInfo"
 import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
@@ -666,27 +738,27 @@ const ANY: $JSPrimitiveType
 const VOID: $JSPrimitiveType
 const OBJECT: $JSPrimitiveType
 const BOOLEAN: $JSPrimitiveType
+function literal(content: any): $JSPrimitiveType
+function or(...types: ($BaseType$$Type)[]): $BaseType
+function generic(symbol: StringJS, extendOn: $BaseType$$Type): $TSVariableType
+function generic(symbol: StringJS): $TSVariableType
+function lambda(): $JSLambdaType$Builder
+function and(...types: ($BaseType$$Type)[]): $JSJoinedType$Intersection
+function object(): $JSObjectType$Builder
+function optional(type: $BaseType$$Type): $TSOptionalType
 function type(classPath: $ClassPath$$Type): $TSClassType
 function type(clazz: $Class$$Type<(any)>): $TSClassType
 function filter(type: $BaseType$$Type, typePredicate: $Predicate$$Type<($BaseType)>): $BaseType
-function generic(symbol: string): $TSVariableType
-function generic(symbol: string, extendOn: $BaseType$$Type): $TSVariableType
-function lambda(): $JSLambdaType$Builder
-function optional(type: $BaseType$$Type): $TSOptionalType
-function literal(content: any): $JSPrimitiveType
-function or(...types: ($BaseType$$Type)[]): $BaseType
-function object(): $JSObjectType$Builder
-function and(...types: ($BaseType$$Type)[]): $JSJoinedType$Intersection
-function typeMaybeGeneric(clazz: $Class$$Type<(any)>): $BaseType
-function arrayOf(): $JSArrayType$Builder
-function primitive(type: string): $JSPrimitiveType
+function custom(formatter: $BiFunction$$Type<($Declaration), ($BaseType$FormatType), (StringJS)>, ...imports: ($ImportInfo$$Type)[]): $BaseType
+function primitive(type: StringJS): $JSPrimitiveType
 function parameterized(base: $BaseType$$Type, ...params: ($BaseType$$Type)[]): $TSParamType
-function custom(formatter: $BiFunction$$Type<($Declaration), ($BaseType$FormatType), (string)>, ...imports: ($ImportInfo$$Type)[]): $BaseType
+function arrayOf(): $JSArrayType$Builder
 function typeOf(classType: $BaseType$$Type): $JSTypeOfType
-function typeOf(classPath: $ClassPath$$Type): $JSTypeOfType
 function typeOf(clazz: $Class$$Type<(any)>): $JSTypeOfType
+function typeOf(classPath: $ClassPath$$Type): $JSTypeOfType
 function ignoreContext(type: $BaseType$$Type, formatType: $BaseType$FormatType$$Type): $BaseType
 function ignoreImport(type: $BaseType$$Type, importType: $ImportInfo$Type$$Type): $BaseType
+function typeMaybeGeneric(clazz: $Class$$Type<(any)>): $BaseType
 const probejs$$marker: never
 }
 export class $Types$$Static implements $Types {
@@ -703,27 +775,27 @@ static readonly "OBJECT": $JSPrimitiveType
 static readonly "BOOLEAN": $JSPrimitiveType
 
 
+static "literal"(content: any): $JSPrimitiveType
+static "or"(...types: ($BaseType$$Type)[]): $BaseType
+static "generic"(symbol: StringJS, extendOn: $BaseType$$Type): $TSVariableType
+static "generic"(symbol: StringJS): $TSVariableType
+static "lambda"(): $JSLambdaType$Builder
+static "and"(...types: ($BaseType$$Type)[]): $JSJoinedType$Intersection
+static "object"(): $JSObjectType$Builder
+static "optional"(type: $BaseType$$Type): $TSOptionalType
 static "type"(classPath: $ClassPath$$Type): $TSClassType
 static "type"(clazz: $Class$$Type<(any)>): $TSClassType
 static "filter"(type: $BaseType$$Type, typePredicate: $Predicate$$Type<($BaseType)>): $BaseType
-static "generic"(symbol: string): $TSVariableType
-static "generic"(symbol: string, extendOn: $BaseType$$Type): $TSVariableType
-static "lambda"(): $JSLambdaType$Builder
-static "optional"(type: $BaseType$$Type): $TSOptionalType
-static "literal"(content: any): $JSPrimitiveType
-static "or"(...types: ($BaseType$$Type)[]): $BaseType
-static "object"(): $JSObjectType$Builder
-static "and"(...types: ($BaseType$$Type)[]): $JSJoinedType$Intersection
-static "typeMaybeGeneric"(clazz: $Class$$Type<(any)>): $BaseType
-static "arrayOf"(): $JSArrayType$Builder
-static "primitive"(type: string): $JSPrimitiveType
+static "custom"(formatter: $BiFunction$$Type<($Declaration), ($BaseType$FormatType), (StringJS)>, ...imports: ($ImportInfo$$Type)[]): $BaseType
+static "primitive"(type: StringJS): $JSPrimitiveType
 static "parameterized"(base: $BaseType$$Type, ...params: ($BaseType$$Type)[]): $TSParamType
-static "custom"(formatter: $BiFunction$$Type<($Declaration), ($BaseType$FormatType), (string)>, ...imports: ($ImportInfo$$Type)[]): $BaseType
+static "arrayOf"(): $JSArrayType$Builder
 static "typeOf"(classType: $BaseType$$Type): $JSTypeOfType
-static "typeOf"(classPath: $ClassPath$$Type): $JSTypeOfType
 static "typeOf"(clazz: $Class$$Type<(any)>): $JSTypeOfType
+static "typeOf"(classPath: $ClassPath$$Type): $JSTypeOfType
 static "ignoreContext"(type: $BaseType$$Type, formatType: $BaseType$FormatType$$Type): $BaseType
 static "ignoreImport"(type: $BaseType$$Type, importType: $ImportInfo$Type$$Type): $BaseType
+static "typeMaybeGeneric"(clazz: $Class$$Type<(any)>): $BaseType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -737,6 +809,30 @@ export type $Types$$Type = ($Types);
 declare global {
 export type $Types_ = $Types$$Type;
 }}
+declare module "moe.wolfgirl.probejs.generated.schema.irons_spellbooks.AlchemistCauldronBrew" {
+import {$KubeRecipe, $KubeRecipe$$Type} from "dev.latvian.mods.kubejs.recipe.KubeRecipe"
+
+/**
+ * This is a class generated by ProbeJS, you shall not load/require this class for your usages
+ * because it doesn't exist in the JVM. The class exist only for type hinting purpose.
+ * Loading the class will not throw an error, but instead the class loaded will be undefined.
+ */
+export class $AlchemistCauldronBrew extends $KubeRecipe {
+
+
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AlchemistCauldronBrew$$Type = ($AlchemistCauldronBrew);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AlchemistCauldronBrew_ = $AlchemistCauldronBrew$$Type;
+}}
 declare module "moe.wolfgirl.probejs.events.TypeAssignmentEventJS" {
 import {$ScriptDump, $ScriptDump$$Type} from "moe.wolfgirl.probejs.lang.typescript.ScriptDump"
 import {$KubeEvent, $KubeEvent$$Type} from "dev.latvian.mods.kubejs.event.KubeEvent"
@@ -749,17 +845,29 @@ constructor(scriptDump: $ScriptDump$$Type)
 
 public "assignType"(clazz: $Class$$Type<(any)>, baseType: $BaseType$$Type): void
 /**
+ * Stops the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `success` denotes a `true` outcome.
+ */
+public "success"(): any
+/**
  * Stops the event with the given exit value. Execution will be stopped **immediately**.
  * 
- * `exit` denotes a `default` outcome.
+ * `success` denotes a `true` outcome.
  */
-public "exit"(arg1: any): any
+public "success"(arg1: any): any
 /**
  * Stops the event with default exit value. Execution will be stopped **immediately**.
  * 
  * `exit` denotes a `default` outcome.
  */
 public "exit"(): any
+/**
+ * Stops the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(arg1: any): any
 /**
  * Cancels the event with the given exit value. Execution will be stopped **immediately**.
  * 
@@ -772,18 +880,6 @@ public "cancel"(arg1: any): any
  * `cancel` denotes a `false` outcome.
  */
 public "cancel"(): any
-/**
- * Stops the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `success` denotes a `true` outcome.
- */
-public "success"(): any
-/**
- * Stops the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `success` denotes a `true` outcome.
- */
-public "success"(arg1: any): any
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -797,11 +893,35 @@ export type $TypeAssignmentEventJS$$Type = ($TypeAssignmentEventJS);
 declare global {
 export type $TypeAssignmentEventJS_ = $TypeAssignmentEventJS$$Type;
 }}
+declare module "moe.wolfgirl.probejs.generated.schema.enderio.AlloySmelting" {
+import {$AlloySmelterKubeRecipe, $AlloySmelterKubeRecipe$$Type} from "com.almostreliable.kubeio.recipe.AlloySmelterKubeRecipe"
+
+/**
+ * This is a class generated by ProbeJS, you shall not load/require this class for your usages
+ * because it doesn't exist in the JVM. The class exist only for type hinting purpose.
+ * Loading the class will not throw an error, but instead the class loaded will be undefined.
+ */
+export class $AlloySmelting extends $AlloySmelterKubeRecipe {
+
+
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AlloySmelting$$Type = ($AlloySmelting);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AlloySmelting_ = $AlloySmelting$$Type;
+}}
 declare module "moe.wolfgirl.probejs.lang.transpiler.TypeConverter" {
 import {$TypeInfo, $TypeInfo$$Type} from "dev.latvian.mods.rhino.type.TypeInfo"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$TypeDescriptor, $TypeDescriptor$$Type} from "moe.wolfgirl.probejs.lang.java.type.TypeDescriptor"
 import {$Class, $Class$$Type} from "java.lang.Class"
+import {$TypeDescriptor, $TypeDescriptor$$Type} from "moe.wolfgirl.probejs.lang.java.type.TypeDescriptor"
 import {$ClassPath, $ClassPath$$Type} from "moe.wolfgirl.probejs.lang.java.clazz.ClassPath"
 import {$BaseType, $BaseType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.BaseType"
 import {$ScriptManager, $ScriptManager$$Type} from "dev.latvian.mods.kubejs.script.ScriptManager"
@@ -813,8 +933,8 @@ readonly "predefinedTypes": $Map<($ClassPath), ($BaseType)>
 constructor(manager: $ScriptManager$$Type)
 
 public "convertType"(typeInfo: $TypeInfo$$Type, baseType: boolean): $BaseType
-public "convertType"(typeInfo: $TypeInfo$$Type): $BaseType
 public "convertType"(descriptor: $TypeDescriptor$$Type): $BaseType
+public "convertType"(typeInfo: $TypeInfo$$Type): $BaseType
 public "addType"(clazz: $Class$$Type<(any)>, type: $BaseType$$Type): void
 }
 /**
@@ -828,6 +948,30 @@ export type $TypeConverter$$Type = ($TypeConverter);
  */
 declare global {
 export type $TypeConverter_ = $TypeConverter$$Type;
+}}
+declare module "moe.wolfgirl.probejs.generated.schema.irons_spellbooks.AlchemistCauldronEmpty" {
+import {$KubeRecipe, $KubeRecipe$$Type} from "dev.latvian.mods.kubejs.recipe.KubeRecipe"
+
+/**
+ * This is a class generated by ProbeJS, you shall not load/require this class for your usages
+ * because it doesn't exist in the JVM. The class exist only for type hinting purpose.
+ * Loading the class will not throw an error, but instead the class loaded will be undefined.
+ */
+export class $AlchemistCauldronEmpty extends $KubeRecipe {
+
+
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AlchemistCauldronEmpty$$Type = ($AlchemistCauldronEmpty);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AlchemistCauldronEmpty_ = $AlchemistCauldronEmpty$$Type;
 }}
 declare module "moe.wolfgirl.probejs.lang.java.clazz.members.ConstructorInfo" {
 import {$TypeVariableHolder, $TypeVariableHolder$$Type} from "moe.wolfgirl.probejs.lang.java.base.TypeVariableHolder"
@@ -913,20 +1057,20 @@ import {$ClassPath, $ClassPath$$Type} from "moe.wolfgirl.probejs.lang.java.clazz
 import {$Record, $Record$$Type} from "java.lang.Record"
 
 export class $ImportInfo extends $Record {
-static readonly "INPUT_TEMPLATE": string
-static readonly "STATIC_TEMPLATE": string
-static readonly "ORIGINAL": $UnaryOperator<(string)>
+static readonly "INPUT_TEMPLATE": StringJS
+static readonly "STATIC_TEMPLATE": StringJS
+static readonly "ORIGINAL": $UnaryOperator<(StringJS)>
 
 constructor(classPath: $ClassPath$$Type, type: $ImportInfo$Type$$Type)
 
+public "classPath"(): $ClassPath
+public "asType"(type: $ImportInfo$Type$$Type): $ImportInfo
 public static "type"(path: $ClassPath$$Type): $ImportInfo
 public "type"(): $ImportInfo$Type
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public static "original"(path: $ClassPath$$Type): $ImportInfo
-public "asType"(type: $ImportInfo$Type$$Type): $ImportInfo
-public "classPath"(): $ClassPath
 public static "importStatic"(path: $ClassPath$$Type): $ImportInfo
 }
 /**
@@ -1007,7 +1151,7 @@ export class $TSParamType extends $BaseType {
 
 constructor(baseType: $BaseType$$Type, params: $List$$Type<($BaseType$$Type)>)
 
-public "format"(declaration: $Declaration$$Type, input: $BaseType$FormatType$$Type): $List<(string)>
+public "format"(declaration: $Declaration$$Type, input: $BaseType$FormatType$$Type): $List<(StringJS)>
 public "getUsedImports"(): $Collection<($ImportInfo)>
 get "usedImports"(): $Collection<($ImportInfo)>
 }
@@ -1107,6 +1251,30 @@ export type $Blasting$$Type = ($Blasting);
 declare global {
 export type $Blasting_ = $Blasting$$Type;
 }}
+declare module "moe.wolfgirl.probejs.generated.schema.enderio.VatFermenting" {
+import {$KubeRecipe, $KubeRecipe$$Type} from "dev.latvian.mods.kubejs.recipe.KubeRecipe"
+
+/**
+ * This is a class generated by ProbeJS, you shall not load/require this class for your usages
+ * because it doesn't exist in the JVM. The class exist only for type hinting purpose.
+ * Loading the class will not throw an error, but instead the class loaded will be undefined.
+ */
+export class $VatFermenting extends $KubeRecipe {
+
+
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $VatFermenting$$Type = ($VatFermenting);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $VatFermenting_ = $VatFermenting$$Type;
+}}
 declare module "moe.wolfgirl.probejs.generated.schema.minecraft.CraftingShapeless" {
 import {$ShapelessKubeRecipe, $ShapelessKubeRecipe$$Type} from "dev.latvian.mods.kubejs.recipe.schema.minecraft.ShapelessKubeRecipe"
 
@@ -1155,6 +1323,30 @@ export type $JSArrayType$Builder$$Type = ($JSArrayType$Builder);
  */
 declare global {
 export type $JSArrayType$Builder_ = $JSArrayType$Builder$$Type;
+}}
+declare module "moe.wolfgirl.probejs.generated.schema.enderio.Slicing" {
+import {$SlicerKubeRecipe, $SlicerKubeRecipe$$Type} from "com.almostreliable.kubeio.recipe.SlicerKubeRecipe"
+
+/**
+ * This is a class generated by ProbeJS, you shall not load/require this class for your usages
+ * because it doesn't exist in the JVM. The class exist only for type hinting purpose.
+ * Loading the class will not throw an error, but instead the class loaded will be undefined.
+ */
+export class $Slicing extends $SlicerKubeRecipe {
+
+
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Slicing$$Type = ($Slicing);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Slicing_ = $Slicing$$Type;
 }}
 declare module "moe.wolfgirl.probejs.lang.java.type.TypeDescriptor" {
 import {$AnnotationHolder, $AnnotationHolder$$Type} from "moe.wolfgirl.probejs.lang.java.base.AnnotationHolder"
@@ -1212,6 +1404,30 @@ export type $TypeVariableHolder$$Type = ($TypeVariableHolder);
 declare global {
 export type $TypeVariableHolder_ = $TypeVariableHolder$$Type;
 }}
+declare module "moe.wolfgirl.probejs.generated.schema.forbidden_arcanus.Ritual" {
+import {$RitualRecipeJS, $RitualRecipeJS$$Type} from "com.chen1335.forbiddenAndArcanusJS.kubejs.recipe.ritual.RitualRecipeJS"
+
+/**
+ * This is a class generated by ProbeJS, you shall not load/require this class for your usages
+ * because it doesn't exist in the JVM. The class exist only for type hinting purpose.
+ * Loading the class will not throw an error, but instead the class loaded will be undefined.
+ */
+export class $Ritual extends $RitualRecipeJS {
+
+
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Ritual$$Type = ($Ritual);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Ritual_ = $Ritual$$Type;
+}}
 declare module "moe.wolfgirl.probejs.lang.typescript.code.type.js.JSMemberType$Builder" {
 import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$JSParam, $JSParam$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.js.JSParam"
@@ -1222,8 +1438,8 @@ readonly "members": $Collection<($JSParam)>
 
 constructor()
 
-public "member"(name: string, optional: boolean, type: $BaseType$$Type): T
-public "member"(name: string, type: $BaseType$$Type): T
+public "member"(name: StringJS, optional: boolean, type: $BaseType$$Type): T
+public "member"(name: StringJS, type: $BaseType$$Type): T
 public "build"(): O
 }
 /**
@@ -1266,29 +1482,29 @@ declare global {
 export type $CampfireCooking_ = $CampfireCooking$$Type;
 }}
 declare module "moe.wolfgirl.probejs.lang.typescript.code.type.js.JSParam" {
-import {$Function, $Function$$Type} from "java.util.function.Function"
 import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
+import {$Function, $Function$$Type} from "java.util.function.Function"
 import {$BaseType, $BaseType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.BaseType"
 import {$Record, $Record$$Type} from "java.lang.Record"
 import {$BaseType$FormatType, $BaseType$FormatType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.BaseType$FormatType"
 
 export class $JSParam extends $Record {
 
-constructor(name: string, optional: boolean, type: $BaseType$$Type)
+constructor(name: StringJS, optional: boolean, type: $BaseType$$Type)
 
-public "name"(): string
+public "optional"(): boolean
+public "name"(): StringJS
 public "type"(): $BaseType
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "format"(declaration: $Declaration$$Type, formatType: $BaseType$FormatType$$Type, nameGetter: $Function$$Type<(string), (string)>): string
-public "optional"(): boolean
+public "format"(declaration: $Declaration$$Type, formatType: $BaseType$FormatType$$Type, nameGetter: $Function$$Type<(StringJS), (StringJS)>): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $JSParam$$Type = ({"optional"?: boolean, "type"?: $BaseType$$Type, "name"?: string}) | ([optional?: boolean, type?: $BaseType$$Type, name?: string]);
+export type $JSParam$$Type = ({"name"?: StringJS, "optional"?: boolean, "type"?: $BaseType$$Type}) | ([name?: StringJS, optional?: boolean, type?: $BaseType$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1299,17 +1515,17 @@ export type $JSParam_ = $JSParam$$Type;
 declare module "moe.wolfgirl.probejs.lang.typescript.code.type.js.JSJoinedType" {
 import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$ImportInfo, $ImportInfo$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.ImportInfo"
-import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 import {$List, $List$$Type} from "java.util.List"
+import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 import {$BaseType, $BaseType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.BaseType"
 import {$BaseType$FormatType, $BaseType$FormatType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.BaseType$FormatType"
 
 export class $JSJoinedType extends $BaseType {
 readonly "types": $List<($BaseType)>
-readonly "delimiter": string
+readonly "delimiter": StringJS
 
 
-public "format"(declaration: $Declaration$$Type, input: $BaseType$FormatType$$Type): $List<(string)>
+public "format"(declaration: $Declaration$$Type, input: $BaseType$FormatType$$Type): $List<(StringJS)>
 public "getUsedImports"(): $Collection<($ImportInfo)>
 get "usedImports"(): $Collection<($ImportInfo)>
 }
@@ -1328,16 +1544,16 @@ export type $JSJoinedType_ = $JSJoinedType$$Type;
 declare module "moe.wolfgirl.probejs.lang.typescript.code.ts.Wrapped$Global" {
 import {$Code, $Code$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.Code"
 import {$Wrapped, $Wrapped$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.ts.Wrapped"
-import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 import {$List, $List$$Type} from "java.util.List"
+import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 
 export class $Wrapped$Global extends $Wrapped {
 readonly "codes": $List<($Code)>
-readonly "comments": $List<(string)>
+readonly "comments": $List<(StringJS)>
 
 constructor()
 
-public "formatRaw"(declaration: $Declaration$$Type): $List<(string)>
+public "formatRaw"(declaration: $Declaration$$Type): $List<(StringJS)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1352,24 +1568,50 @@ declare global {
 export type $Wrapped$Global_ = $Wrapped$Global$$Type;
 }}
 declare module "moe.wolfgirl.probejs.generated.DocumentedRecipes" {
+import {$SoulBinding, $SoulBinding$$Type} from "moe.wolfgirl.probejs.generated.schema.enderio.SoulBinding"
+import {$AlchemistCauldronEmpty, $AlchemistCauldronEmpty$$Type} from "moe.wolfgirl.probejs.generated.schema.irons_spellbooks.AlchemistCauldronEmpty"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$List, $List$$Type} from "java.util.List"
+import {$AlchemistCauldronBrew, $AlchemistCauldronBrew$$Type} from "moe.wolfgirl.probejs.generated.schema.irons_spellbooks.AlchemistCauldronBrew"
+import {$Shaped, $Shaped$$Type} from "moe.wolfgirl.probejs.generated.schema.kubejs.Shaped"
+import {$ClibanoFireType, $ClibanoFireType$$Type} from "com.stal111.forbidden_arcanus.common.block.entity.clibano.ClibanoFireType"
+import {$RitualResult, $RitualResult$$Type} from "com.stal111.forbidden_arcanus.common.block.entity.forge.ritual.result.RitualResult"
+import {$Stonecutting, $Stonecutting$$Type} from "moe.wolfgirl.probejs.generated.schema.minecraft.Stonecutting"
+import {$Enchanting, $Enchanting$$Type} from "moe.wolfgirl.probejs.generated.schema.enderio.Enchanting"
+import {$FluidStack, $FluidStack$$Type} from "net.neoforged.neoforge.fluids.FluidStack"
+import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
+import {$RitualInput, $RitualInput$$Type} from "com.stal111.forbidden_arcanus.common.block.entity.forge.ritual.RitualInput"
+import {$ClibanoCookingTimes, $ClibanoCookingTimes$$Type} from "com.stal111.forbidden_arcanus.common.block.entity.clibano.ClibanoCookingTimes"
+import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$CookingBookCategory, $CookingBookCategory$$Type} from "net.minecraft.world.item.crafting.CookingBookCategory"
+import {$ResidueChance, $ResidueChance$$Type} from "com.stal111.forbidden_arcanus.common.block.entity.clibano.residue.ResidueChance"
+import {$FireCrafting, $FireCrafting$$Type} from "moe.wolfgirl.probejs.generated.schema.enderio.FireCrafting"
+import {$Either, $Either$$Type} from "com.mojang.datafixers.util.Either"
+import {$SagMillingRecipe$BonusType, $SagMillingRecipe$BonusType$$Type} from "com.enderio.machines.common.blocks.sag_mill.SagMillingRecipe$BonusType"
+import {$TickDuration, $TickDuration$$Type} from "dev.latvian.mods.kubejs.util.TickDuration"
+import {$SmithingTransform, $SmithingTransform$$Type} from "moe.wolfgirl.probejs.generated.schema.minecraft.SmithingTransform"
+import {$Slicing, $Slicing$$Type} from "moe.wolfgirl.probejs.generated.schema.enderio.Slicing"
 import {$CraftingShaped, $CraftingShaped$$Type} from "moe.wolfgirl.probejs.generated.schema.minecraft.CraftingShaped"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
-import {$List, $List$$Type} from "java.util.List"
-import {$Shaped, $Shaped$$Type} from "moe.wolfgirl.probejs.generated.schema.kubejs.Shaped"
+import {$EssencesDefinition, $EssencesDefinition$$Type} from "com.stal111.forbidden_arcanus.common.block.entity.forge.essence.EssencesDefinition"
+import {$VatFermenting, $VatFermenting$$Type} from "moe.wolfgirl.probejs.generated.schema.enderio.VatFermenting"
 import {$Smelting, $Smelting$$Type} from "moe.wolfgirl.probejs.generated.schema.minecraft.Smelting"
 import {$Blasting, $Blasting$$Type} from "moe.wolfgirl.probejs.generated.schema.minecraft.Blasting"
-import {$Stonecutting, $Stonecutting$$Type} from "moe.wolfgirl.probejs.generated.schema.minecraft.Stonecutting"
 import {$CraftingBookCategory, $CraftingBookCategory$$Type} from "net.minecraft.world.item.crafting.CraftingBookCategory"
+import {$ClibanoCombustion, $ClibanoCombustion$$Type} from "moe.wolfgirl.probejs.generated.schema.forbidden_arcanus.ClibanoCombustion"
 import {$CampfireCooking, $CampfireCooking$$Type} from "moe.wolfgirl.probejs.generated.schema.minecraft.CampfireCooking"
 import {$Shapeless, $Shapeless$$Type} from "moe.wolfgirl.probejs.generated.schema.kubejs.Shapeless"
 import {$Smoking, $Smoking$$Type} from "moe.wolfgirl.probejs.generated.schema.minecraft.Smoking"
-import {$CookingBookCategory, $CookingBookCategory$$Type} from "net.minecraft.world.item.crafting.CookingBookCategory"
+import {$AlloySmelting, $AlloySmelting$$Type} from "moe.wolfgirl.probejs.generated.schema.enderio.AlloySmelting"
+import {$Painting, $Painting$$Type} from "moe.wolfgirl.probejs.generated.schema.enderio.Painting"
 import {$SmithingTrim, $SmithingTrim$$Type} from "moe.wolfgirl.probejs.generated.schema.minecraft.SmithingTrim"
+import {$Ritual, $Ritual$$Type} from "moe.wolfgirl.probejs.generated.schema.forbidden_arcanus.Ritual"
 import {$CraftingShapeless, $CraftingShapeless$$Type} from "moe.wolfgirl.probejs.generated.schema.minecraft.CraftingShapeless"
-import {$TickDuration, $TickDuration$$Type} from "dev.latvian.mods.kubejs.util.TickDuration"
-import {$SmithingTransform, $SmithingTransform$$Type} from "moe.wolfgirl.probejs.generated.schema.minecraft.SmithingTransform"
+import {$EnhancerDefinition, $EnhancerDefinition$$Type} from "com.stal111.forbidden_arcanus.common.item.enhancer.EnhancerDefinition"
+import {$AlchemistCauldronFill, $AlchemistCauldronFill$$Type} from "moe.wolfgirl.probejs.generated.schema.irons_spellbooks.AlchemistCauldronFill"
+import {$Tank, $Tank$$Type} from "moe.wolfgirl.probejs.generated.schema.enderio.Tank"
+import {$SagMilling, $SagMilling$$Type} from "moe.wolfgirl.probejs.generated.schema.enderio.SagMilling"
 
 /**
  * This is a class generated by ProbeJS, you shall not load/require this class for your usages
@@ -1379,54 +1621,67 @@ import {$SmithingTransform, $SmithingTransform$$Type} from "moe.wolfgirl.probejs
 export class $DocumentedRecipes {
  "hexerei": {}
  "kiwi": {}
- "kubejs": {"shapeless": (result: $ItemStack$$Type, ingredients: $List$$Type<($Ingredient$$Type)>, category?: $CraftingBookCategory$$Type) => $Shapeless, "shaped": (result: $ItemStack$$Type, pattern: $List$$Type<(string)>, key: $Map$$Type<(character), ($Ingredient$$Type)>, category?: $CraftingBookCategory$$Type) => $Shaped}
+ "kubejs": {"shapeless": (result: $ItemStack$$Type, ingredients: $List$$Type<($Ingredient$$Type)>, category?: $CraftingBookCategory$$Type) => $Shapeless, "shaped": (result: $ItemStack$$Type, pattern: $List$$Type<(StringJS)>, key: $Map$$Type<(character), ($Ingredient$$Type)>, category?: $CraftingBookCategory$$Type) => $Shaped}
  "unionlib": {}
  "ae2wtlib": {}
- "horseman": {}
  "alshanex_familiars": {}
+ "horseman": {}
  "dmr": {}
  "amendments": {}
  "redstonepen": {}
+ "sauce": {}
  "aether": {}
  "jei": {}
  "ae2": {}
  "extendedcrafting": {}
  "graveyard": {}
  "sophisticatedcore": {}
+ "etched": {}
  "create": {}
  "dankstorage": {}
  "lightmanscurrency": {}
- "pneumaticcraft": {}
  "oritech": {}
+ "pneumaticcraft": {}
  "sophisticatedbackpacks": {}
  "jeed": {}
+ "clayworks": {}
+ "starbunclemania": {}
  "ars_nouveau": {}
+ "eidolon_repraised": {}
  "exposure": {}
  "hauntedharvest": {}
  "supplementaries": {}
+ "chipped": {}
  "integratedcrafting": {}
+ "minecraft": {"smelting": (result: $ItemStack$$Type, ingredient: $Ingredient$$Type, xp?: float, cookingTime?: $TickDuration$$Type, category?: $CookingBookCategory$$Type) => $Smelting, "crafting_shaped": (result: $ItemStack$$Type, pattern: $List$$Type<(StringJS)>, key: $Map$$Type<(character), ($Ingredient$$Type)>, category?: $CraftingBookCategory$$Type) => $CraftingShaped, "crafting_shapeless": (result: $ItemStack$$Type, ingredients: $List$$Type<($Ingredient$$Type)>, category?: $CraftingBookCategory$$Type) => $CraftingShapeless, "stonecutting": (result: $ItemStack$$Type, ingredient: $Ingredient$$Type) => $Stonecutting, "blasting": (result: $ItemStack$$Type, ingredient: $Ingredient$$Type, xp?: float, cookingTime?: $TickDuration$$Type, category?: $CookingBookCategory$$Type) => $Blasting, "smithing_trim": (template: $Ingredient$$Type, base: $Ingredient$$Type, addition: $Ingredient$$Type) => $SmithingTrim, "campfire_cooking": (result: $ItemStack$$Type, ingredient: $Ingredient$$Type, xp?: float, cookingTime?: $TickDuration$$Type, category?: $CookingBookCategory$$Type) => $CampfireCooking, "smithing_transform": (result: $ItemStack$$Type, template: $Ingredient$$Type, base: $Ingredient$$Type, addition: $Ingredient$$Type) => $SmithingTransform, "smoking": (result: $ItemStack$$Type, ingredient: $Ingredient$$Type, xp?: float, cookingTime?: $TickDuration$$Type, category?: $CookingBookCategory$$Type) => $Smoking}
  "farmersdelight": {}
- "minecraft": {"smithing_trim": (template: $Ingredient$$Type, base: $Ingredient$$Type, addition: $Ingredient$$Type) => $SmithingTrim, "smelting": (result: $ItemStack$$Type, ingredient: $Ingredient$$Type, xp?: float, cookingTime?: $TickDuration$$Type, category?: $CookingBookCategory$$Type) => $Smelting, "blasting": (result: $ItemStack$$Type, ingredient: $Ingredient$$Type, xp?: float, cookingTime?: $TickDuration$$Type, category?: $CookingBookCategory$$Type) => $Blasting, "smithing_transform": (result: $ItemStack$$Type, template: $Ingredient$$Type, base: $Ingredient$$Type, addition: $Ingredient$$Type) => $SmithingTransform, "crafting_shaped": (result: $ItemStack$$Type, pattern: $List$$Type<(string)>, key: $Map$$Type<(character), ($Ingredient$$Type)>, category?: $CraftingBookCategory$$Type) => $CraftingShaped, "smoking": (result: $ItemStack$$Type, ingredient: $Ingredient$$Type, xp?: float, cookingTime?: $TickDuration$$Type, category?: $CookingBookCategory$$Type) => $Smoking, "crafting_shapeless": (result: $ItemStack$$Type, ingredients: $List$$Type<($Ingredient$$Type)>, category?: $CraftingBookCategory$$Type) => $CraftingShapeless, "stonecutting": (result: $ItemStack$$Type, ingredient: $Ingredient$$Type) => $Stonecutting, "campfire_cooking": (result: $ItemStack$$Type, ingredient: $Ingredient$$Type, xp?: float, cookingTime?: $TickDuration$$Type, category?: $CookingBookCategory$$Type) => $CampfireCooking}
  "simplyswords": {}
  "eccentrictome": {}
  "jearchaeology": {}
  "immersiveengineering": {}
  "valhelsia_structures": {}
+ "forbidden_arcanus": {"clibano_combustion": (result: $ItemStack$$Type, ingredients: $Either$$Type, group?: StringJS, category?: $CookingBookCategory$$Type, experience?: float, cooking_time?: $ClibanoCookingTimes$$Type, residue?: $ResidueChance$$Type, fire_type?: $ClibanoFireType$$Type, enhancer?: $Holder$$Type) => $ClibanoCombustion, "ritual": (result: $RitualResult$$Type, main_ingredient: $Ingredient$$Type, inputs?: $List$$Type<($RitualInput$$Type)>, essences?: $EssencesDefinition$$Type, forge_tier?: integer, match_tier_exact?: boolean, enhancers?: $List$$Type<($EnhancerDefinition$$Type)>, magic_circle?: $Holder$$Type, duration?: integer) => $Ritual}
  "supermartijn642corelib": {}
  "domum_ornamentum": {}
- "enderio": {}
+ "enderio": {"slicing": (energy?: integer) => $Slicing, "alloy_smelting": (energy?: integer, experience?: float) => $AlloySmelting, "soul_binding": (energy?: integer, experience?: float) => $SoulBinding, "sag_milling": (energy?: integer, bonus?: $SagMillingRecipe$BonusType$$Type) => $SagMilling, "enchanting": (costMultiplier?: integer) => $Enchanting, "tank": () => $Tank, "painting": () => $Painting, "vat_fermenting": (ticks?: integer) => $VatFermenting, "fire_crafting": () => $FireCrafting}
+ "suppsquared": {}
  "integrateddynamics": {}
  "malum": {}
  "woodworks": {}
  "storagedrawers": {}
- "irons_spellbooks": {}
+ "ars_elemental": {}
  "framedblocks": {}
+ "irons_spellbooks": {"alchemist_cauldron_brew": (results: $List$$Type<($FluidStack$$Type)>, input: $Ingredient$$Type, base_fluid: $FluidStack$$Type, byproduct?: $ItemStack$$Type) => $AlchemistCauldronBrew, "alchemist_cauldron_empty": (result: $ItemStack$$Type, input: $Ingredient$$Type, fluid: $FluidStack$$Type, sound?: (StringJS) | ($SoundEvent$$Type)) => $AlchemistCauldronEmpty, "alchemist_cauldron_fill": (fluid: $FluidStack$$Type, input: $Ingredient$$Type, result: $ItemStack$$Type, mustFitAll?: boolean, sound?: (StringJS) | ($SoundEvent$$Type)) => $AlchemistCauldronFill}
+ "ars_technica": {}
  "minecolonies": {}
  "computercraft": {}
+ "chimes": {}
+ "productivebees": {}
  "modularrouters": {}
+ "the_bumblezone": {}
  "lodestone": {}
- "justdirethings": {}
  "deep_aether": {}
+ "justdirethings": {}
  "sliceanddice": {}
  "createaddition": {}
 
@@ -1480,15 +1735,15 @@ import {$BaseType, $BaseType$$Type} from "moe.wolfgirl.probejs.lang.typescript.c
 
 export class $MethodDeclaration extends $CommentableCode {
 readonly "variableTypes": $List<($TSVariableType)>
-readonly "comments": $List<(string)>
- "name": string
+readonly "comments": $List<(StringJS)>
+ "name": StringJS
 readonly "params": $List<($ParamDecl)>
  "returnType": $BaseType
 
-constructor(name: string, variableTypes: $List$$Type<($TSVariableType$$Type)>, params: $List$$Type<($ParamDecl$$Type)>, returnType: $BaseType$$Type)
+constructor(name: StringJS, variableTypes: $List$$Type<($TSVariableType$$Type)>, params: $List$$Type<($ParamDecl$$Type)>, returnType: $BaseType$$Type)
 
 public "getUsedImports"(): $Collection<($ImportInfo)>
-public "formatRaw"(declaration: $Declaration$$Type): $List<(string)>
+public "formatRaw"(declaration: $Declaration$$Type): $List<(StringJS)>
 get "usedImports"(): $Collection<($ImportInfo)>
 }
 /**
@@ -1514,9 +1769,9 @@ readonly "references": $Map<($ClassPath), ($Reference)>
 
 constructor()
 
+public "getSymbol"(path: $ClassPath$$Type): StringJS
 public "addClass"(path: $ImportInfo$$Type): void
-public "getSymbol"(path: $ClassPath$$Type): string
-public "exclude"(name: string): void
+public "exclude"(name: StringJS): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1540,7 +1795,7 @@ static readonly "VARIABLE": $BaseType$FormatType
 
 
 public static "values"(): ($BaseType$FormatType)[]
-public static "valueOf"(name: string): $BaseType$FormatType
+public static "valueOf"(name: StringJS): $BaseType$FormatType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1565,7 +1820,7 @@ static readonly "CLASS": $Clazz$ClassType
 
 
 public static "values"(): ($Clazz$ClassType)[]
-public static "valueOf"(name: string): $Clazz$ClassType
+public static "valueOf"(name: StringJS): $Clazz$ClassType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1582,8 +1837,8 @@ export type $Clazz$ClassType_ = $Clazz$ClassType$$Type;
 declare module "moe.wolfgirl.probejs.lang.typescript.code.type.TSOptionalType" {
 import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$ImportInfo, $ImportInfo$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.ImportInfo"
-import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 import {$List, $List$$Type} from "java.util.List"
+import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 import {$BaseType, $BaseType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.BaseType"
 import {$BaseType$FormatType, $BaseType$FormatType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.BaseType$FormatType"
 
@@ -1592,7 +1847,7 @@ export class $TSOptionalType extends $BaseType {
 
 constructor(component: $BaseType$$Type)
 
-public "format"(declaration: $Declaration$$Type, input: $BaseType$FormatType$$Type): $List<(string)>
+public "format"(declaration: $Declaration$$Type, input: $BaseType$FormatType$$Type): $List<(StringJS)>
 public "getUsedImports"(): $Collection<($ImportInfo)>
 get "usedImports"(): $Collection<($ImportInfo)>
 }
@@ -1616,8 +1871,8 @@ import {$Clazz, $Clazz$$Type} from "moe.wolfgirl.probejs.lang.java.clazz.Clazz"
 import {$Set, $Set$$Type} from "java.util.Set"
 import {$Class, $Class$$Type} from "java.lang.Class"
 import {$ClassPath, $ClassPath$$Type} from "moe.wolfgirl.probejs.lang.java.clazz.ClassPath"
-import {$ScriptManager, $ScriptManager$$Type} from "dev.latvian.mods.kubejs.script.ScriptManager"
 import {$TypeScriptFile, $TypeScriptFile$$Type} from "moe.wolfgirl.probejs.lang.typescript.TypeScriptFile"
+import {$ScriptManager, $ScriptManager$$Type} from "dev.latvian.mods.kubejs.script.ScriptManager"
 
 export class $Transpiler {
 readonly "typeConverter": $TypeConverter
@@ -1626,8 +1881,8 @@ readonly "rejectedClasses": $Set<($ClassPath)>
 constructor(manager: $ScriptManager$$Type)
 
 public "reject"(clazz: $Class$$Type<(any)>): void
-public "init"(): void
 public "dump"(clazzes: $Collection$$Type<($Clazz$$Type)>): $Map<($ClassPath), ($TypeScriptFile)>
+public "init"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1654,7 +1909,7 @@ import {$PaintingVariantBuilder, $PaintingVariantBuilder$$Type} from "dev.latvia
 export class $PaintingVariant extends $RegistryKubeEvent<($PaintingVariant$0)> {
 
 
-public "create"(name: string): $PaintingVariantBuilder
+public "create"(name: StringJS): $PaintingVariantBuilder
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1671,11 +1926,11 @@ export type $PaintingVariant_ = $PaintingVariant$$Type;
 declare module "moe.wolfgirl.probejs.lang.java.clazz.members.FieldInfo" {
 import {$AnnotationHolder, $AnnotationHolder$$Type} from "moe.wolfgirl.probejs.lang.java.base.AnnotationHolder"
 import {$TypeDescriptor, $TypeDescriptor$$Type} from "moe.wolfgirl.probejs.lang.java.type.TypeDescriptor"
-import {$FieldInfo$FieldAttributes, $FieldInfo$FieldAttributes$$Type} from "moe.wolfgirl.probejs.lang.java.clazz.members.FieldInfo$FieldAttributes"
 import {$JavaMembers$FieldInfo, $JavaMembers$FieldInfo$$Type} from "dev.latvian.mods.rhino.JavaMembers$FieldInfo"
+import {$FieldInfo$FieldAttributes, $FieldInfo$FieldAttributes$$Type} from "moe.wolfgirl.probejs.lang.java.clazz.members.FieldInfo$FieldAttributes"
 
 export class $FieldInfo extends $AnnotationHolder {
-readonly "name": string
+readonly "name": StringJS
 readonly "attributes": $FieldInfo$FieldAttributes
 readonly "type": $TypeDescriptor
 
@@ -1708,8 +1963,8 @@ import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$ScriptType, $ScriptType$$Type} from "dev.latvian.mods.kubejs.script.ScriptType"
 import {$Set, $Set$$Type} from "java.util.Set"
 import {$Class, $Class$$Type} from "java.lang.Class"
-import {$Path, $Path$$Type} from "java.nio.file.Path"
 import {$BaseType, $BaseType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.BaseType"
+import {$Path, $Path$$Type} from "java.nio.file.Path"
 import {$ScriptManager, $ScriptManager$$Type} from "dev.latvian.mods.kubejs.script.ScriptManager"
 
 export class $ScriptDump {
@@ -1720,7 +1975,7 @@ readonly "transpiler": $Transpiler
 readonly "manager": $ScriptManager
 readonly "basePath": $Path
 readonly "scriptType": $ScriptType
-readonly "globals": $Map<(string), ($Pair<($Collection<(string)>), ($Wrapped$Global)>)>
+readonly "globals": $Map<(StringJS), ($Pair<($Collection<(StringJS)>), ($Wrapped$Global)>)>
 static readonly "SERVER_DUMP": $Supplier<($ScriptDump)>
 readonly "recordedClasses": $Set<($Clazz)>
  "dumped": integer
@@ -1732,22 +1987,22 @@ public "dump"(): void
 public "getSource"(): $Path
 public "getTest"(): $Path
 public "assignType"(classPath: $ClassPath$$Type, type: $BaseType$$Type): void
-public "assignType"(classPath: $ClassPath$$Type, name: string, type: $BaseType$$Type): void
 public "assignType"(classPath: $Class$$Type<(any)>, type: $BaseType$$Type): void
-public "assignType"(classPath: $Class$$Type<(any)>, name: string, type: $BaseType$$Type): void
-public "addGlobal"(identifier: string, ...content: ($Code$$Type)[]): void
-public "addGlobal"(identifier: string, excludedNames: $Collection$$Type<(string)>, ...content: ($Code$$Type)[]): void
-public "ensurePath"(path: string): $Path
-public "ensurePath"(path: string, script: boolean): $Path
+public "assignType"(classPath: $Class$$Type<(any)>, name: StringJS, type: $BaseType$$Type): void
+public "assignType"(classPath: $ClassPath$$Type, name: StringJS, type: $BaseType$$Type): void
 public "removeClasses"(): void
 public "acceptClasses"(classes: $Collection$$Type<($Clazz$$Type)>): void
+public "addGlobal"(identifier: StringJS, ...content: ($Code$$Type)[]): void
+public "addGlobal"(identifier: StringJS, excludedNames: $Collection$$Type<(StringJS)>, ...content: ($Code$$Type)[]): void
+public "ensurePath"(path: StringJS): $Path
+public "ensurePath"(path: StringJS, script: boolean): $Path
 public "getTypeFolder"(): $Path
 public "dumpClasses"(): void
 public "dumpGlobal"(): void
 public "dumpJSConfig"(): void
+public "retrieveClasses"(): $Set<($Class<(any)>)>
 public "getPackageFolder"(): $Path
 public "getGlobalFolder"(): $Path
-public "retrieveClasses"(): $Set<($Class<(any)>)>
 get "source"(): $Path
 get "test"(): $Path
 get "typeFolder"(): $Path
@@ -1775,24 +2030,24 @@ import {$JsonObject, $JsonObject$$Type} from "com.google.gson.JsonObject"
 import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
 
 export class $Snippet {
-readonly "name": string
+readonly "name": StringJS
 
-constructor(name: string)
+constructor(name: StringJS)
 
-public "getPrefixes"(): $List<(string)>
+public "literal"(content: StringJS): $Snippet
+public "getPrefixes"(): $List<(StringJS)>
 public "variable"(variable: $Variable$$Type): $Snippet
 public "compile"(): $JsonObject
-public "prefix"(prefix: string): $Snippet
-public "literal"(content: string): $Snippet
-public "description"(description: string): $Snippet
+public "prefix"(prefix: StringJS): $Snippet
 public "newline"(): $Snippet
+public "description"(description: StringJS): $Snippet
 public "registry"<T>(registry: $ResourceKey$$Type<($Registry<(T)>)>): $Snippet
-public "choices"(enumeration: integer, choices: $Collection$$Type<(string)>): $Snippet
-public "choices"(choices: $Collection$$Type<(string)>): $Snippet
+public "choices"(enumeration: integer, choices: $Collection$$Type<(StringJS)>): $Snippet
+public "choices"(choices: $Collection$$Type<(StringJS)>): $Snippet
 public "tabStop"(enumeration: integer): $Snippet
 public "tabStop"(): $Snippet
-public "tabStop"(enumeration: integer, defaultValue: string): $Snippet
-get "prefixes"(): $List<(string)>
+public "tabStop"(enumeration: integer, defaultValue: StringJS): $Snippet
+get "prefixes"(): $List<(StringJS)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1809,18 +2064,18 @@ export type $Snippet_ = $Snippet$$Type;
 declare module "moe.wolfgirl.probejs.lang.typescript.code.type.TSVariableType" {
 import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$ImportInfo, $ImportInfo$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.ImportInfo"
-import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 import {$List, $List$$Type} from "java.util.List"
+import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 import {$BaseType, $BaseType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.BaseType"
 import {$BaseType$FormatType, $BaseType$FormatType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.BaseType$FormatType"
 
 export class $TSVariableType extends $BaseType {
-readonly "symbol": string
+readonly "symbol": StringJS
  "extendsType": $BaseType
 
-constructor(symbol: string, extendsType: $BaseType$$Type)
+constructor(symbol: StringJS, extendsType: $BaseType$$Type)
 
-public "format"(declaration: $Declaration$$Type, input: $BaseType$FormatType$$Type): $List<(string)>
+public "format"(declaration: $Declaration$$Type, input: $BaseType$FormatType$$Type): $List<(StringJS)>
 public "getUsedImports"(): $Collection<($ImportInfo)>
 get "usedImports"(): $Collection<($ImportInfo)>
 }
@@ -1843,7 +2098,7 @@ import {$BaseType, $BaseType$$Type} from "moe.wolfgirl.probejs.lang.typescript.c
 
 export class $JSJoinedType$Intersection extends $JSJoinedType {
 readonly "types": $List<($BaseType)>
-readonly "delimiter": string
+readonly "delimiter": StringJS
 
 constructor(types: $List$$Type<($BaseType$$Type)>)
 
@@ -1860,25 +2115,49 @@ export type $JSJoinedType$Intersection$$Type = ($JSJoinedType$Intersection);
 declare global {
 export type $JSJoinedType$Intersection_ = $JSJoinedType$Intersection$$Type;
 }}
+declare module "moe.wolfgirl.probejs.generated.schema.forbidden_arcanus.ClibanoCombustion" {
+import {$ClibanoRecipeJS, $ClibanoRecipeJS$$Type} from "com.chen1335.forbiddenAndArcanusJS.kubejs.recipe.clibanoCombustion.ClibanoRecipeJS"
+
+/**
+ * This is a class generated by ProbeJS, you shall not load/require this class for your usages
+ * because it doesn't exist in the JVM. The class exist only for type hinting purpose.
+ * Loading the class will not throw an error, but instead the class loaded will be undefined.
+ */
+export class $ClibanoCombustion extends $ClibanoRecipeJS {
+
+
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ClibanoCombustion$$Type = ($ClibanoCombustion);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ClibanoCombustion_ = $ClibanoCombustion$$Type;
+}}
 declare module "moe.wolfgirl.probejs.lang.typescript.code.member.ParamDecl" {
-import {$List, $List$$Type} from "java.util.List"
 import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
+import {$List, $List$$Type} from "java.util.List"
 import {$BaseType, $BaseType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.BaseType"
 import {$BaseType$FormatType, $BaseType$FormatType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.BaseType$FormatType"
 
 export class $ParamDecl {
- "name": string
+ "name": StringJS
  "varArg": boolean
  "optional": boolean
  "type": $BaseType
 
-constructor(name: string, type: $BaseType$$Type, varArg: boolean, optional: boolean)
+constructor(name: StringJS, type: $BaseType$$Type, varArg: boolean, optional: boolean)
 
 public "equals"(obj: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "format"(index: integer, declaration: $Declaration$$Type, formatType: $BaseType$FormatType$$Type): string
-public static "formatParams"(params: $List$$Type<($ParamDecl$$Type)>, declaration: $Declaration$$Type, formatType: $BaseType$FormatType$$Type): string
+public "format"(index: integer, declaration: $Declaration$$Type, formatType: $BaseType$FormatType$$Type): StringJS
+public static "formatParams"(params: $List$$Type<($ParamDecl$$Type)>, declaration: $Declaration$$Type, formatType: $BaseType$FormatType$$Type): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1896,17 +2175,17 @@ declare module "moe.wolfgirl.probejs.lang.java.clazz.members.MethodInfo" {
 import {$TypeVariable, $TypeVariable$$Type} from "java.lang.reflect.TypeVariable"
 import {$TypeVariableHolder, $TypeVariableHolder$$Type} from "moe.wolfgirl.probejs.lang.java.base.TypeVariableHolder"
 import {$JavaMembers$MethodInfo, $JavaMembers$MethodInfo$$Type} from "dev.latvian.mods.rhino.JavaMembers$MethodInfo"
-import {$Map, $Map$$Type} from "java.util.Map"
 import {$VariableType, $VariableType$$Type} from "moe.wolfgirl.probejs.lang.java.type.impl.VariableType"
-import {$Type, $Type$$Type} from "java.lang.reflect.Type"
+import {$Map, $Map$$Type} from "java.util.Map"
 import {$List, $List$$Type} from "java.util.List"
+import {$Type, $Type$$Type} from "java.lang.reflect.Type"
 import {$TypeDescriptor, $TypeDescriptor$$Type} from "moe.wolfgirl.probejs.lang.java.type.TypeDescriptor"
 import {$ParamInfo, $ParamInfo$$Type} from "moe.wolfgirl.probejs.lang.java.clazz.members.ParamInfo"
 import {$MethodInfo$MethodAttributes, $MethodInfo$MethodAttributes$$Type} from "moe.wolfgirl.probejs.lang.java.clazz.members.MethodInfo$MethodAttributes"
 
 export class $MethodInfo extends $TypeVariableHolder {
 readonly "variableTypes": $List<($VariableType)>
-readonly "name": string
+readonly "name": StringJS
 readonly "attributes": $MethodInfo$MethodAttributes
 readonly "params": $List<($ParamInfo)>
  "returnType": $TypeDescriptor
@@ -1929,8 +2208,8 @@ export type $MethodInfo_ = $MethodInfo$$Type;
 declare module "moe.wolfgirl.probejs.lang.typescript.code.type.js.JSTypeOfType" {
 import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$ImportInfo, $ImportInfo$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.ImportInfo"
-import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 import {$List, $List$$Type} from "java.util.List"
+import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 import {$BaseType, $BaseType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.BaseType"
 import {$BaseType$FormatType, $BaseType$FormatType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.BaseType$FormatType"
 
@@ -1939,7 +2218,7 @@ readonly "inner": $BaseType
 
 constructor(inner: $BaseType$$Type)
 
-public "format"(declaration: $Declaration$$Type, input: $BaseType$FormatType$$Type): $List<(string)>
+public "format"(declaration: $Declaration$$Type, input: $BaseType$FormatType$$Type): $List<(StringJS)>
 public "getUsedImports"(): $Collection<($ImportInfo)>
 get "usedImports"(): $Collection<($ImportInfo)>
 }
@@ -1961,27 +2240,27 @@ import {$ParamDecl, $ParamDecl$$Type} from "moe.wolfgirl.probejs.lang.typescript
 import {$TSVariableType, $TSVariableType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.TSVariableType"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$ImportInfo, $ImportInfo$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.ImportInfo"
-import {$List, $List$$Type} from "java.util.List"
 import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
+import {$List, $List$$Type} from "java.util.List"
 import {$MethodDeclaration, $MethodDeclaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.ts.MethodDeclaration"
 import {$BaseType, $BaseType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.BaseType"
 
 export class $MethodDecl extends $CommentableCode {
  "isStatic": boolean
  "variableTypes": $List<($TSVariableType)>
-readonly "comments": $List<(string)>
- "name": string
+readonly "comments": $List<(StringJS)>
+ "name": StringJS
  "params": $List<($ParamDecl)>
  "isAbstract": boolean
  "isInterface": boolean
  "returnType": $BaseType
- "content": string
+ "content": StringJS
 
-constructor(name: string, variableTypes: $List$$Type<($TSVariableType$$Type)>, params: $List$$Type<($ParamDecl$$Type)>, returnType: $BaseType$$Type)
+constructor(name: StringJS, variableTypes: $List$$Type<($TSVariableType$$Type)>, params: $List$$Type<($ParamDecl$$Type)>, returnType: $BaseType$$Type)
 
 public "getUsedImports"(): $Collection<($ImportInfo)>
-public "formatRaw"(declaration: $Declaration$$Type): $List<(string)>
 public "asDeclaration"(): $MethodDeclaration
+public "formatRaw"(declaration: $Declaration$$Type): $List<(StringJS)>
 get "usedImports"(): $Collection<($ImportInfo)>
 }
 /**
@@ -2004,18 +2283,18 @@ import {$TypeDescriptor, $TypeDescriptor$$Type} from "moe.wolfgirl.probejs.lang.
 import {$Stream, $Stream$$Type} from "java.util.stream.Stream"
 
 export class $VariableType extends $TypeDescriptor {
- "symbol": string
+ "symbol": StringJS
  "descriptors": $List<($TypeDescriptor)>
 
 constructor(typeVariable: $TypeVariable$$Type<(any)>, checkBounds: boolean)
+constructor(typeVariable: $AnnotatedTypeVariable$$Type)
 constructor(typeVariable: $AnnotatedTypeVariable$$Type, checkBounds: boolean)
 constructor(typeVariable: $TypeVariable$$Type<(any)>)
-constructor(typeVariable: $AnnotatedTypeVariable$$Type)
 
+public "getSymbol"(): StringJS
 public "stream"(): $Stream<($TypeDescriptor)>
-public "getSymbol"(): string
 public "getDescriptors"(): $List<($TypeDescriptor)>
-get "symbol"(): string
+get "symbol"(): StringJS
 get "descriptors"(): $List<($TypeDescriptor)>
 }
 /**
@@ -2029,6 +2308,59 @@ export type $VariableType$$Type = ($VariableType);
  */
 declare global {
 export type $VariableType_ = $VariableType$$Type;
+}}
+declare module "moe.wolfgirl.probejs.generated.schema.enderio.SoulBinding" {
+import {$MobCategory, $MobCategory$$Type} from "net.minecraft.world.entity.MobCategory"
+import {$KubeRecipe, $KubeRecipe$$Type} from "dev.latvian.mods.kubejs.recipe.KubeRecipe"
+import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
+
+/**
+ * This is a class generated by ProbeJS, you shall not load/require this class for your usages
+ * because it doesn't exist in the JVM. The class exist only for type hinting purpose.
+ * Loading the class will not throw an error, but instead the class loaded will be undefined.
+ */
+export class $SoulBinding extends $KubeRecipe {
+
+
+public "entityType"(entityType: $TagKey$$Type): this
+public "mobCategory"(mobCategory: $MobCategory$$Type): this
+public "soulData"(soulData: StringJS): this
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SoulBinding$$Type = ($SoulBinding);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SoulBinding_ = $SoulBinding$$Type;
+}}
+declare module "moe.wolfgirl.probejs.generated.schema.enderio.Painting" {
+import {$KubeRecipe, $KubeRecipe$$Type} from "dev.latvian.mods.kubejs.recipe.KubeRecipe"
+
+/**
+ * This is a class generated by ProbeJS, you shall not load/require this class for your usages
+ * because it doesn't exist in the JVM. The class exist only for type hinting purpose.
+ * Loading the class will not throw an error, but instead the class loaded will be undefined.
+ */
+export class $Painting extends $KubeRecipe {
+
+
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Painting$$Type = ($Painting);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Painting_ = $Painting$$Type;
 }}
 declare module "moe.wolfgirl.probejs.lang.typescript.code.type.js.JSObjectType$Builder" {
 import {$JSObjectType, $JSObjectType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.js.JSObjectType"
@@ -2083,6 +2415,32 @@ export type $AnnotationHolder$$Type = ($AnnotationHolder);
  */
 declare global {
 export type $AnnotationHolder_ = $AnnotationHolder$$Type;
+}}
+declare module "moe.wolfgirl.probejs.generated.schema.enderio.FireCrafting" {
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$FireCraftingKubeRecipe, $FireCraftingKubeRecipe$$Type} from "com.almostreliable.kubeio.recipe.FireCraftingKubeRecipe"
+
+/**
+ * This is a class generated by ProbeJS, you shall not load/require this class for your usages
+ * because it doesn't exist in the JVM. The class exist only for type hinting purpose.
+ * Loading the class will not throw an error, but instead the class loaded will be undefined.
+ */
+export class $FireCrafting extends $FireCraftingKubeRecipe {
+
+
+public "blockAfterBurning"(blockAfterBurning: $Block$$Type): this
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $FireCrafting$$Type = ($FireCrafting);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $FireCrafting_ = $FireCrafting$$Type;
 }}
 declare module "moe.wolfgirl.probejs.generated.schema.kubejs.Shaped" {
 import {$ShapedKubeRecipe, $ShapedKubeRecipe$$Type} from "dev.latvian.mods.kubejs.recipe.schema.minecraft.ShapedKubeRecipe"
@@ -2150,8 +2508,8 @@ static readonly "CURRENT_DATE": $Variable
 
 
 public static "values"(): ($Variable)[]
-public static "valueOf"(name: string): $Variable
-public "format"(): string
+public static "valueOf"(name: StringJS): $Variable
+public "format"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2202,8 +2560,8 @@ static readonly "STATIC": $ImportInfo$Type
 
 
 public static "values"(): ($ImportInfo$Type)[]
-public static "valueOf"(name: string): $ImportInfo$Type
-public "applyTemplate"(name: string): string
+public static "valueOf"(name: StringJS): $ImportInfo$Type
+public "applyTemplate"(name: StringJS): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2220,18 +2578,18 @@ export type $ImportInfo$Type_ = $ImportInfo$Type$$Type;
 declare module "moe.wolfgirl.probejs.lang.typescript.code.type.BaseType" {
 import {$Code, $Code$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.Code"
 import {$TSArrayType, $TSArrayType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.TSArrayType"
-import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 import {$List, $List$$Type} from "java.util.List"
+import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 import {$BaseType$FormatType, $BaseType$FormatType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.BaseType$FormatType"
 
 export class $BaseType extends $Code {
 
 constructor()
 
-public "format"(declaration: $Declaration$$Type, input: $BaseType$FormatType$$Type): $List<(string)>
-public "format"(declaration: $Declaration$$Type): $List<(string)>
-public "line"(declaration: $Declaration$$Type, input: $BaseType$FormatType$$Type): string
 public "asArray"(): $TSArrayType
+public "format"(declaration: $Declaration$$Type): $List<(StringJS)>
+public "format"(declaration: $Declaration$$Type, input: $BaseType$FormatType$$Type): $List<(StringJS)>
+public "line"(declaration: $Declaration$$Type, input: $BaseType$FormatType$$Type): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2249,9 +2607,9 @@ declare module "moe.wolfgirl.probejs.lang.snippet.parts.SnippetPart" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $SnippetPart {
 
- "format"(): string
+ "format"(): StringJS
 
-(): string
+(): StringJS
 }
 
 export namespace $SnippetPart {
@@ -2260,13 +2618,13 @@ const probejs$$marker: never
 export class $SnippetPart$$Static implements $SnippetPart {
 
 
- "format"(): string
+ "format"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $SnippetPart$$Type = (() => string);
+export type $SnippetPart$$Type = (() => StringJS);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -2274,22 +2632,47 @@ export type $SnippetPart$$Type = (() => string);
 declare global {
 export type $SnippetPart_ = $SnippetPart$$Type;
 }}
+declare module "moe.wolfgirl.probejs.generated.schema.enderio.Enchanting" {
+import {$KubeRecipe, $KubeRecipe$$Type} from "dev.latvian.mods.kubejs.recipe.KubeRecipe"
+
+/**
+ * This is a class generated by ProbeJS, you shall not load/require this class for your usages
+ * because it doesn't exist in the JVM. The class exist only for type hinting purpose.
+ * Loading the class will not throw an error, but instead the class loaded will be undefined.
+ */
+export class $Enchanting extends $KubeRecipe {
+
+
+public "costMultiplier"(costMultiplier: integer): this
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Enchanting$$Type = ($Enchanting);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Enchanting_ = $Enchanting$$Type;
+}}
 declare module "moe.wolfgirl.probejs.lang.typescript.code.type.js.JSPrimitiveType" {
 import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$ImportInfo, $ImportInfo$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.ImportInfo"
-import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 import {$List, $List$$Type} from "java.util.List"
+import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 import {$BaseType, $BaseType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.BaseType"
 import {$BaseType$FormatType, $BaseType$FormatType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.BaseType$FormatType"
 
 export class $JSPrimitiveType extends $BaseType {
-readonly "content": string
+readonly "content": StringJS
 
-constructor(content: string)
+constructor(content: StringJS)
 
 public "equals"(o: any): boolean
 public "hashCode"(): integer
-public "format"(declaration: $Declaration$$Type, input: $BaseType$FormatType$$Type): $List<(string)>
+public "format"(declaration: $Declaration$$Type, input: $BaseType$FormatType$$Type): $List<(StringJS)>
 public "getUsedImports"(): $Collection<($ImportInfo)>
 get "usedImports"(): $Collection<($ImportInfo)>
 }
@@ -2308,8 +2691,8 @@ export type $JSPrimitiveType_ = $JSPrimitiveType$$Type;
 declare module "moe.wolfgirl.probejs.lang.typescript.code.type.TSArrayType" {
 import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$ImportInfo, $ImportInfo$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.ImportInfo"
-import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 import {$List, $List$$Type} from "java.util.List"
+import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 import {$BaseType, $BaseType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.BaseType"
 import {$BaseType$FormatType, $BaseType$FormatType$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.type.BaseType$FormatType"
 
@@ -2318,7 +2701,7 @@ export class $TSArrayType extends $BaseType {
 
 constructor(component: $BaseType$$Type)
 
-public "format"(declaration: $Declaration$$Type, input: $BaseType$FormatType$$Type): $List<(string)>
+public "format"(declaration: $Declaration$$Type, input: $BaseType$FormatType$$Type): $List<(StringJS)>
 public "getUsedImports"(): $Collection<($ImportInfo)>
 get "usedImports"(): $Collection<($ImportInfo)>
 }
@@ -2372,7 +2755,7 @@ import {$TypeDescriptor, $TypeDescriptor$$Type} from "moe.wolfgirl.probejs.lang.
 import {$Parameter, $Parameter$$Type} from "java.lang.reflect.Parameter"
 
 export class $ParamInfo extends $AnnotationHolder {
- "name": string
+ "name": StringJS
  "type": $TypeDescriptor
 readonly "varArgs": boolean
 
@@ -2423,22 +2806,22 @@ import {$Record, $Record$$Type} from "java.lang.Record"
 
 export class $Reference extends $Record {
 
-constructor(classPath: $ClassPath$$Type, symbol: string, types: $EnumSet$$Type<($ImportInfo$Type$$Type)>)
+constructor(classPath: $ClassPath$$Type, symbol: StringJS, types: $EnumSet$$Type<($ImportInfo$Type$$Type)>)
 
-public "equals"(o: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "types"(): $EnumSet<($ImportInfo$Type)>
 public "classPath"(): $ClassPath
-public "symbol"(): string
-public "getImport"(): string
-get "import"(): string
+public "symbol"(): StringJS
+public "equals"(o: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+public "getImport"(): StringJS
+get "import"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $Reference$$Type = ({"symbol"?: string, "classPath"?: $ClassPath$$Type, "types"?: $EnumSet$$Type<($ImportInfo$Type$$Type)>}) | ([symbol?: string, classPath?: $ClassPath$$Type, types?: $EnumSet$$Type<($ImportInfo$Type$$Type)>]);
+export type $Reference$$Type = ({"symbol"?: StringJS, "classPath"?: $ClassPath$$Type, "types"?: $EnumSet$$Type<($ImportInfo$Type$$Type)>}) | ([symbol?: StringJS, classPath?: $ClassPath$$Type, types?: $EnumSet$$Type<($ImportInfo$Type$$Type)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -2451,12 +2834,12 @@ import {$CommentableCode, $CommentableCode$$Type} from "moe.wolfgirl.probejs.lan
 import {$Code, $Code$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.Code"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$ImportInfo, $ImportInfo$$Type} from "moe.wolfgirl.probejs.lang.typescript.code.ImportInfo"
-import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 import {$List, $List$$Type} from "java.util.List"
+import {$Declaration, $Declaration$$Type} from "moe.wolfgirl.probejs.lang.typescript.Declaration"
 
 export class $Wrapped extends $CommentableCode {
 readonly "codes": $List<($Code)>
-readonly "comments": $List<(string)>
+readonly "comments": $List<(StringJS)>
 
 constructor()
 
@@ -2464,7 +2847,7 @@ public "isEmpty"(): boolean
 public "merge"(other: $Wrapped$$Type): void
 public "addCode"(inner: $Code$$Type): void
 public "getUsedImports"(): $Collection<($ImportInfo)>
-public "formatRaw"(declaration: $Declaration$$Type): $List<(string)>
+public "formatRaw"(declaration: $Declaration$$Type): $List<(StringJS)>
 get "empty"(): boolean
 get "usedImports"(): $Collection<($ImportInfo)>
 }
@@ -2493,7 +2876,7 @@ import {$JukeboxSongBuilder, $JukeboxSongBuilder$$Type} from "dev.latvian.mods.k
 export class $JukeboxSong extends $RegistryKubeEvent<($JukeboxSong$0)> {
 
 
-public "create"(name: string): $JukeboxSongBuilder
+public "create"(name: StringJS): $JukeboxSongBuilder
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

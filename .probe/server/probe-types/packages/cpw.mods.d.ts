@@ -9,7 +9,7 @@ static readonly "VERIFIED": $SecureJar$Status
 
 
 public static "values"(): ($SecureJar$Status)[]
-public static "valueOf"(arg0: string): $SecureJar$Status
+public static "valueOf"(arg0: StringJS): $SecureJar$Status
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -34,45 +34,45 @@ import {$CodeSigner, $CodeSigner$$Type} from "java.security.CodeSigner"
 
 export interface $SecureJar {
 
- "name"(): string
+ "getPath"(arg0: StringJS, ...arg1: (StringJS)[]): $Path
+ "name"(): StringJS
  "close"(): void
- "getPath"(arg0: string, ...arg1: (string)[]): $Path
- "getTrustedManifestEntries"(arg0: string): $Attributes
  "getPrimaryPath"(): $Path
- "getFileStatus"(arg0: string): $SecureJar$Status
- "verifyPath"(arg0: $Path$$Type): $SecureJar$Status
  "getRootPath"(): $Path
+ "getFileStatus"(arg0: StringJS): $SecureJar$Status
+ "verifyPath"(arg0: $Path$$Type): $SecureJar$Status
  "moduleDataProvider"(): $SecureJar$ModuleDataProvider
  "hasSecurityData"(): boolean
  "getManifestSigners"(): ($CodeSigner)[]
+ "getTrustedManifestEntries"(arg0: StringJS): $Attributes
 get "primaryPath"(): $Path
 get "rootPath"(): $Path
 get "manifestSigners"(): ($CodeSigner)[]
 }
 
 export namespace $SecureJar {
+function from(...arg0: ($Path$$Type)[]): $SecureJar
 function from(arg0: $JarContents$$Type, arg1: $JarMetadata$$Type): $SecureJar
 function from(arg0: $JarContents$$Type): $SecureJar
-function from(...arg0: ($Path$$Type)[]): $SecureJar
 const probejs$$marker: never
 }
 export class $SecureJar$$Static implements $SecureJar {
 
 
- "name"(): string
+ "getPath"(arg0: StringJS, ...arg1: (StringJS)[]): $Path
+ "name"(): StringJS
+static "from"(...arg0: ($Path$$Type)[]): $SecureJar
 static "from"(arg0: $JarContents$$Type, arg1: $JarMetadata$$Type): $SecureJar
 static "from"(arg0: $JarContents$$Type): $SecureJar
-static "from"(...arg0: ($Path$$Type)[]): $SecureJar
  "close"(): void
- "getPath"(arg0: string, ...arg1: (string)[]): $Path
- "getTrustedManifestEntries"(arg0: string): $Attributes
  "getPrimaryPath"(): $Path
- "getFileStatus"(arg0: string): $SecureJar$Status
- "verifyPath"(arg0: $Path$$Type): $SecureJar$Status
  "getRootPath"(): $Path
+ "getFileStatus"(arg0: StringJS): $SecureJar$Status
+ "verifyPath"(arg0: $Path$$Type): $SecureJar$Status
  "moduleDataProvider"(): $SecureJar$ModuleDataProvider
  "hasSecurityData"(): boolean
  "getManifestSigners"(): ($CodeSigner)[]
+ "getTrustedManifestEntries"(arg0: StringJS): $Attributes
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

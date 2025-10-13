@@ -33,10 +33,10 @@ declare module "ru.fewizz.crawl.client.mixininterface.CrawlingState" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $CrawlingState {
 
- "setCrawling"(arg0: boolean): void
  "isCrawling"(): boolean
-set "crawling"(value: boolean)
+ "setCrawling"(arg0: boolean): void
 get "crawling"(): boolean
+set "crawling"(value: boolean)
 }
 
 export namespace $CrawlingState {
@@ -45,8 +45,8 @@ const probejs$$marker: never
 export class $CrawlingState$$Static implements $CrawlingState {
 
 
- "setCrawling"(arg0: boolean): void
  "isCrawling"(): boolean
+ "setCrawling"(arg0: boolean): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

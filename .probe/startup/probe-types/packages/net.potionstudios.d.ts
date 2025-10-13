@@ -1,10 +1,10 @@
 declare module "net.potionstudios.biomeswevegone.world.entity.decoration.Wreath$Type" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
-import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$WreathItem, $WreathItem$$Type} from "net.potionstudios.biomeswevegone.world.item.custom.WreathItem"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
 import {$StringRepresentable, $StringRepresentable$$Type} from "net.minecraft.util.StringRepresentable"
 
@@ -19,21 +19,21 @@ static readonly "WINTER_ROSY": $Wreath$Type
 static readonly "DEFAULT": $Wreath$Type
 
 
-public static "values"(): ($Wreath$Type)[]
-public static "valueOf"(name: string): $Wreath$Type
 public "getItem"(): $WreathItem
-public static "byName"(name: string): $Wreath$Type
+public static "values"(): ($Wreath$Type)[]
+public static "valueOf"(name: StringJS): $Wreath$Type
 public static "byId"(id: integer): $Wreath$Type
-public "getSerializedName"(): string
+public static "byName"(name: StringJS): $Wreath$Type
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
 get "item"(): $WreathItem
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -63,8 +63,8 @@ import {$BonemealableBlock, $BonemealableBlock$$Type} from "net.minecraft.world.
 import {$BWGFruitBlock, $BWGFruitBlock$$Type} from "net.potionstudios.biomeswevegone.world.level.block.plants.tree.fruit.BWGFruitBlock"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -86,7 +86,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "DECAY_DISTANCE": integer
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -128,8 +128,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -150,7 +150,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -185,8 +185,8 @@ import {$ReplaceSphereConfiguration, $ReplaceSphereConfiguration$$Type} from "ne
 import {$BlockStateConfiguration, $BlockStateConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration"
 import {$BlockPileConfiguration, $BlockPileConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration"
 import {$NoneFeatureConfiguration, $NoneFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration"
-import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$EndGatewayConfiguration, $EndGatewayConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration"
+import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$LakeFeature$Configuration, $LakeFeature$Configuration$$Type} from "net.minecraft.world.level.levelgen.feature.LakeFeature$Configuration"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RootSystemConfiguration, $RootSystemConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration"
@@ -314,10 +314,10 @@ import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelR
 import {$BonemealableBlock, $BonemealableBlock$$Type} from "net.minecraft.world.level.block.BonemealableBlock"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$GrassBlock, $GrassBlock$$Type} from "net.minecraft.world.level.block.GrassBlock"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
+import {$GrassBlock, $GrassBlock$$Type} from "net.minecraft.world.level.block.GrassBlock"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -337,7 +337,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -408,7 +408,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "DECAY_DISTANCE": integer
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -421,10 +421,10 @@ constructor(properties: $BlockBehaviour$Properties$$Type, next: $Supplier$$Type<
 constructor(properties: $BlockBehaviour$Properties$$Type, next: $Supplier$$Type<($LeavesBlock$$Type)>, chance: float)
 
 public "randomTick"(state: $BlockState$$Type, serverLevel: $ServerLevel$$Type, pos: $BlockPos$$Type, randomSource: $RandomSource$$Type): void
-public "isRandomlyTicking"(blockState: $BlockState$$Type): boolean
 public "isValidBonemealTarget"(level: $LevelReader$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type): boolean
 public "isBonemealSuccess"(level: $Level$$Type, randomSource: $RandomSource$$Type, blockPos: $BlockPos$$Type, blockState: $BlockState$$Type): boolean
 public "performBonemeal"(level: $ServerLevel$$Type, randomSource: $RandomSource$$Type, blockPos: $BlockPos$$Type, blockState: $BlockState$$Type): void
+public "isRandomlyTicking"(blockState: $BlockState$$Type): boolean
 public "getType"(): $BonemealableBlock$Type
 public "getParticlePos"(arg0: $BlockPos$$Type): $BlockPos
 public "asHolder"(): $Holder<(any)>
@@ -455,8 +455,8 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -474,7 +474,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -512,7 +512,7 @@ static readonly "CODEC": $Codec<($CheckedBlockPlacement)>
 constructor(blockPlacement: $List$$Type<($Pair$$Type<($BlockPredicate$$Type), ($BlockStateProvider$$Type)>)>)
 
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "blockPlacement"(): $List<($Pair<($BlockPredicate), ($BlockStateProvider)>)>
 }
@@ -535,8 +535,8 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$BushBlock, $BushBlock$$Type} from "net.minecraft.world.level.block.BushBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
@@ -560,16 +560,16 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
+constructor(properties: $BlockBehaviour$Properties$$Type, shape: $VoxelShape$$Type, validGround: $TagKey$$Type<($Block)>)
 constructor(properties: $BlockBehaviour$Properties$$Type)
 constructor(properties: $BlockBehaviour$Properties$$Type, validGround: $TagKey$$Type<($Block)>)
-constructor(properties: $BlockBehaviour$Properties$$Type, shape: $VoxelShape$$Type, validGround: $TagKey$$Type<($Block)>)
 
 public "getShape"(state: $BlockState$$Type, level: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
 public "asHolder"(): $Holder<(any)>
@@ -596,8 +596,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -611,7 +611,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "PLANK_NORTHSOUTH": $VoxelShape
@@ -657,11 +657,11 @@ import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$VineBlock, $VineBlock$$Type} from "net.minecraft.world.level.block.VineBlock"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -673,7 +673,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -723,10 +723,10 @@ static readonly "CODEC": $Codec<($ArchConfig$GenerationConfig)>
 
 constructor(thickness: $IntProvider$$Type, noiseFreq: $FloatProvider$$Type)
 
-public "equals"(o: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "generate"(seed: long, stepOrigin: $BlockPos$$Type, box: $BoundingBox$$Type, action: $Consumer$$Type<($BlockPos)>): void
+public "equals"(o: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
 public "thickness"(): $IntProvider
 public "noiseFreq"(): $FloatProvider
 }
@@ -734,7 +734,7 @@ public "noiseFreq"(): $FloatProvider
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ArchConfig$GenerationConfig$$Type = ({"thickness"?: $IntProvider$$Type, "noiseFreq"?: $FloatProvider$$Type}) | ([thickness?: $IntProvider$$Type, noiseFreq?: $FloatProvider$$Type]);
+export type $ArchConfig$GenerationConfig$$Type = ({"noiseFreq"?: $FloatProvider$$Type, "thickness"?: $IntProvider$$Type}) | ([noiseFreq?: $FloatProvider$$Type, thickness?: $IntProvider$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -755,8 +755,8 @@ import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSourc
 import {$DoublePlantBlock, $DoublePlantBlock$$Type} from "net.minecraft.world.level.block.DoublePlantBlock"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -777,7 +777,7 @@ static readonly "HALF": $EnumProperty<($DoubleBlockHalf)>
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "COLOR": $EnumProperty<($ColorProperty)>
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -836,7 +836,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -867,8 +867,8 @@ export type $HydrangeaHedgeBlock_ = $HydrangeaHedgeBlock$$Type;
 }}
 declare module "net.potionstudios.biomeswevegone.world.level.block.plants.vegetation.cattail.ColorProperty" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -883,16 +883,16 @@ static readonly "GREEN": $ColorProperty
 
 
 public static "values"(): ($ColorProperty)[]
-public static "valueOf"(name: string): $ColorProperty
-public "getSerializedName"(): string
+public static "valueOf"(name: StringJS): $ColorProperty
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -918,8 +918,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
-import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$TreeGrower, $TreeGrower$$Type} from "net.minecraft.world.level.block.grower.TreeGrower"
+import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
@@ -944,7 +944,7 @@ static readonly "HALF": $EnumProperty<($DoubleBlockHalf)>
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -981,8 +981,8 @@ import {$ReplaceSphereConfiguration, $ReplaceSphereConfiguration$$Type} from "ne
 import {$BlockStateConfiguration, $BlockStateConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration"
 import {$BlockPileConfiguration, $BlockPileConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration"
 import {$NoneFeatureConfiguration, $NoneFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration"
-import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$EndGatewayConfiguration, $EndGatewayConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration"
+import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$LakeFeature$Configuration, $LakeFeature$Configuration$$Type} from "net.minecraft.world.level.levelgen.feature.LakeFeature$Configuration"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RootSystemConfiguration, $RootSystemConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration"
@@ -1122,7 +1122,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1158,8 +1158,8 @@ import {$ReplaceSphereConfiguration, $ReplaceSphereConfiguration$$Type} from "ne
 import {$BlockStateConfiguration, $BlockStateConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration"
 import {$BlockPileConfiguration, $BlockPileConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration"
 import {$NoneFeatureConfiguration, $NoneFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration"
-import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$EndGatewayConfiguration, $EndGatewayConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration"
+import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$LakeFeature$Configuration, $LakeFeature$Configuration$$Type} from "net.minecraft.world.level.levelgen.feature.LakeFeature$Configuration"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RootSystemConfiguration, $RootSystemConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration"
@@ -1282,8 +1282,8 @@ import {$FloatProvider, $FloatProvider$$Type} from "net.minecraft.util.valueprov
 import {$Stream, $Stream$$Type} from "java.util.stream.Stream"
 import {$SimpleWeightedRandomList, $SimpleWeightedRandomList$$Type} from "net.minecraft.util.random.SimpleWeightedRandomList"
 import {$FeatureConfiguration, $FeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration"
-import {$PillarFeature$DistanceTestType, $PillarFeature$DistanceTestType$$Type} from "net.potionstudios.biomeswevegone.world.level.levelgen.feature.PillarFeature$DistanceTestType"
 import {$Record, $Record$$Type} from "java.lang.Record"
+import {$PillarFeature$DistanceTestType, $PillarFeature$DistanceTestType$$Type} from "net.potionstudios.biomeswevegone.world.level.levelgen.feature.PillarFeature$DistanceTestType"
 
 export class $PillarFeature$Config extends $Record implements $FeatureConfiguration {
 static readonly "CODEC": $Codec<($PillarFeature$Config)>
@@ -1291,14 +1291,14 @@ static readonly "CODEC": $Codec<($PillarFeature$Config)>
 constructor(checkedBlockPlacement: $CheckedBlockPlacement$$Type, height: $IntProvider$$Type, radius: $IntProvider$$Type, noisefreq: $FloatProvider$$Type, minRadiusScale: $FloatProvider$$Type, distanceTestType: $SimpleWeightedRandomList$$Type<($PillarFeature$DistanceTestType$$Type)>)
 
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "distanceTestType"(): $SimpleWeightedRandomList<($PillarFeature$DistanceTestType)>
-public "checkedBlockPlacement"(): $CheckedBlockPlacement
-public "height"(): $IntProvider
 public "radius"(): $IntProvider
+public "height"(): $IntProvider
 public "noisefreq"(): $FloatProvider
 public "minRadiusScale"(): $FloatProvider
+public "checkedBlockPlacement"(): $CheckedBlockPlacement
+public "distanceTestType"(): $SimpleWeightedRandomList<($PillarFeature$DistanceTestType)>
 public "getFeatures"(): $Stream<($ConfiguredFeature<(any), (any)>)>
 get "features"(): $Stream<($ConfiguredFeature<(any), (any)>)>
 }
@@ -1306,7 +1306,7 @@ get "features"(): $Stream<($ConfiguredFeature<(any), (any)>)>
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $PillarFeature$Config$$Type = ({"minRadiusScale"?: $FloatProvider$$Type, "checkedBlockPlacement"?: $CheckedBlockPlacement$$Type, "noisefreq"?: $FloatProvider$$Type, "distanceTestType"?: $SimpleWeightedRandomList$$Type<($PillarFeature$DistanceTestType$$Type)>, "radius"?: $IntProvider$$Type, "height"?: $IntProvider$$Type}) | ([minRadiusScale?: $FloatProvider$$Type, checkedBlockPlacement?: $CheckedBlockPlacement$$Type, noisefreq?: $FloatProvider$$Type, distanceTestType?: $SimpleWeightedRandomList$$Type<($PillarFeature$DistanceTestType$$Type)>, radius?: $IntProvider$$Type, height?: $IntProvider$$Type]);
+export type $PillarFeature$Config$$Type = ({"height"?: $IntProvider$$Type, "minRadiusScale"?: $FloatProvider$$Type, "checkedBlockPlacement"?: $CheckedBlockPlacement$$Type, "noisefreq"?: $FloatProvider$$Type, "distanceTestType"?: $SimpleWeightedRandomList$$Type<($PillarFeature$DistanceTestType$$Type)>, "radius"?: $IntProvider$$Type}) | ([height?: $IntProvider$$Type, minRadiusScale?: $FloatProvider$$Type, checkedBlockPlacement?: $CheckedBlockPlacement$$Type, noisefreq?: $FloatProvider$$Type, distanceTestType?: $SimpleWeightedRandomList$$Type<($PillarFeature$DistanceTestType$$Type)>, radius?: $IntProvider$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1347,7 +1347,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1357,10 +1357,10 @@ static readonly "UPDATE_CLIENTS": integer
 constructor()
 
 public "randomTick"(state: $BlockState$$Type, level: $ServerLevel$$Type, pos: $BlockPos$$Type, random: $RandomSource$$Type): void
-public "isRandomlyTicking"(state: $BlockState$$Type): boolean
 public "isValidBonemealTarget"(level: $LevelReader$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type): boolean
 public "isBonemealSuccess"(level: $Level$$Type, random: $RandomSource$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type): boolean
 public "performBonemeal"(level: $ServerLevel$$Type, random: $RandomSource$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type): void
+public "isRandomlyTicking"(state: $BlockState$$Type): boolean
 public "getType"(): $BonemealableBlock$Type
 public "getParticlePos"(arg0: $BlockPos$$Type): $BlockPos
 public "asHolder"(): $Holder<(any)>
@@ -1413,7 +1413,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1451,8 +1451,8 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
-import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$TreeGrower, $TreeGrower$$Type} from "net.minecraft.world.level.block.grower.TreeGrower"
+import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$SaplingBlock, $SaplingBlock$$Type} from "net.minecraft.world.level.block.SaplingBlock"
@@ -1474,7 +1474,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1528,7 +1528,7 @@ static readonly "HALF": $EnumProperty<($DoubleBlockHalf)>
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1556,17 +1556,17 @@ declare module "net.potionstudios.biomeswevegone.world.level.block.custom.Pumpki
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$BaseEntityBlock, $BaseEntityBlock$$Type} from "net.minecraft.world.level.block.BaseEntityBlock"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
@@ -1588,7 +1588,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "OCCUPIED": $BooleanProperty
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -1647,7 +1647,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1672,19 +1672,23 @@ declare global {
 export type $BWGCraftingTable_ = $BWGCraftingTable$$Type;
 }}
 declare module "net.potionstudios.biomeswevegone.world.item.custom.WreathItem" {
-import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Wreath$Type, $Wreath$Type$$Type} from "net.potionstudios.biomeswevegone.world.entity.decoration.Wreath$Type"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
-import {$Wreath$Type, $Wreath$Type$$Type} from "net.potionstudios.biomeswevegone.world.entity.decoration.Wreath$Type"
 
 export class $WreathItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1694,6 +1698,7 @@ constructor(properties: $Item$Properties$$Type, type: $Wreath$Type$$Type)
 
 public "getType"(): $Wreath$Type
 public "useOn"(context: $UseOnContext$$Type): $InteractionResult
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "type"(): $Wreath$Type
 }
 /**
@@ -1716,18 +1721,18 @@ import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$ArchConfig$GenerationConfig, $ArchConfig$GenerationConfig$$Type} from "net.potionstudios.biomeswevegone.world.level.levelgen.structure.arch.ArchConfig$GenerationConfig"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$SimpleWeightedRandomList, $SimpleWeightedRandomList$$Type} from "net.minecraft.util.random.SimpleWeightedRandomList"
-import {$Record, $Record$$Type} from "java.lang.Record"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
+import {$Record, $Record$$Type} from "java.lang.Record"
 
 export class $ArchConfig$ArchGeneratorConfig extends $Record {
 static readonly "CODEC": $Codec<($ArchConfig$ArchGeneratorConfig)>
 
 constructor(xzStepDistance: integer, xyzStepDistance: integer, generationConfigs: $SimpleWeightedRandomList$$Type<($ArchConfig$GenerationConfig$$Type)>, blendFunction: $SimpleWeightedRandomList$$Type<($BlendingFunction$$Type)>)
 
-public "equals"(o: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "generate"(seed: long, height: integer, start: $Vec3$$Type, origin: $Vec3$$Type, end: $Vec3$$Type, box: $BoundingBox$$Type, action: $Consumer$$Type<($BlockPos)>): void
+public "equals"(o: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
 public "blendFunction"(): $SimpleWeightedRandomList<($BlendingFunction)>
 public "xzStepDistance"(): integer
 public "xyzStepDistance"(): integer
@@ -1737,7 +1742,7 @@ public "generationConfigs"(): $SimpleWeightedRandomList<($ArchConfig$GenerationC
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ArchConfig$ArchGeneratorConfig$$Type = ({"blendFunction"?: $SimpleWeightedRandomList$$Type<($BlendingFunction$$Type)>, "xyzStepDistance"?: integer, "xzStepDistance"?: integer, "generationConfigs"?: $SimpleWeightedRandomList$$Type<($ArchConfig$GenerationConfig$$Type)>}) | ([blendFunction?: $SimpleWeightedRandomList$$Type<($BlendingFunction$$Type)>, xyzStepDistance?: integer, xzStepDistance?: integer, generationConfigs?: $SimpleWeightedRandomList$$Type<($ArchConfig$GenerationConfig$$Type)>]);
+export type $ArchConfig$ArchGeneratorConfig$$Type = ({"xyzStepDistance"?: integer, "xzStepDistance"?: integer, "generationConfigs"?: $SimpleWeightedRandomList$$Type<($ArchConfig$GenerationConfig$$Type)>, "blendFunction"?: $SimpleWeightedRandomList$$Type<($BlendingFunction$$Type)>}) | ([xyzStepDistance?: integer, xzStepDistance?: integer, generationConfigs?: $SimpleWeightedRandomList$$Type<($ArchConfig$GenerationConfig$$Type)>, blendFunction?: $SimpleWeightedRandomList$$Type<($BlendingFunction$$Type)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1762,14 +1767,14 @@ import {$SugarCaneBlock, $SugarCaneBlock$$Type} from "net.minecraft.world.level.
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $GlowCaneBlock extends $SugarCaneBlock implements $SimpleWaterloggedBlock {
 static readonly "UPDATE_IMMEDIATE": integer
@@ -1785,7 +1790,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -1821,15 +1826,15 @@ export type $GlowCaneBlock_ = $GlowCaneBlock$$Type;
 declare module "net.potionstudios.biomeswevegone.neoforge.world.level.block.BWGNeoForgeFarmLandBlock" {
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
-import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BWGFarmLandBlock, $BWGFarmLandBlock$$Type} from "net.potionstudios.biomeswevegone.world.level.block.custom.BWGFarmLandBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
-import {$IBlockExtension, $IBlockExtension$$Type} from "net.neoforged.neoforge.common.extensions.IBlockExtension"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
+import {$IBlockExtension, $IBlockExtension$$Type} from "net.neoforged.neoforge.common.extensions.IBlockExtension"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -1854,7 +1859,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1888,8 +1893,8 @@ import {$ReplaceSphereConfiguration, $ReplaceSphereConfiguration$$Type} from "ne
 import {$BlockStateConfiguration, $BlockStateConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration"
 import {$BlockPileConfiguration, $BlockPileConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration"
 import {$NoneFeatureConfiguration, $NoneFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration"
-import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$EndGatewayConfiguration, $EndGatewayConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration"
+import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$LakeFeature$Configuration, $LakeFeature$Configuration$$Type} from "net.minecraft.world.level.levelgen.feature.LakeFeature$Configuration"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RootSystemConfiguration, $RootSystemConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration"
@@ -2008,8 +2013,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BWGBerryBush, $BWGBerryBush$$Type} from "net.potionstudios.biomeswevegone.world.level.block.plants.bush.BWGBerryBush"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
@@ -2037,7 +2042,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2065,8 +2070,8 @@ declare global {
 export type $WhitePuffballBlock_ = $WhitePuffballBlock$$Type;
 }}
 declare module "net.potionstudios.biomeswevegone.world.level.levelgen.structure.lake.LargeLakeStructure" {
-import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$Structure, $Structure$$Type} from "net.minecraft.world.level.levelgen.structure.Structure"
+import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$StructureType, $StructureType$$Type} from "net.minecraft.world.level.levelgen.structure.StructureType"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$Structure$StructureSettings, $Structure$StructureSettings$$Type} from "net.minecraft.world.level.levelgen.structure.Structure$StructureSettings"
@@ -2103,9 +2108,9 @@ import {$BonemealableBlock$Type, $BonemealableBlock$Type$$Type} from "net.minecr
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
+import {$TreeGrower, $TreeGrower$$Type} from "net.minecraft.world.level.block.grower.TreeGrower"
 import {$BonemealableBlock, $BonemealableBlock$$Type} from "net.minecraft.world.level.block.BonemealableBlock"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$TreeGrower, $TreeGrower$$Type} from "net.minecraft.world.level.block.grower.TreeGrower"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
@@ -2128,7 +2133,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2161,8 +2166,8 @@ export type $ShrubBlock_ = $ShrubBlock$$Type;
 declare module "net.potionstudios.biomeswevegone.world.level.levelgen.structure.sharpenedrock.SharpenedRockStructure" {
 import {$BiPredicate, $BiPredicate$$Type} from "java.util.function.BiPredicate"
 import {$SharpenedRockConfig, $SharpenedRockConfig$$Type} from "net.potionstudios.biomeswevegone.world.level.levelgen.structure.sharpenedrock.SharpenedRockConfig"
-import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$Structure, $Structure$$Type} from "net.minecraft.world.level.levelgen.structure.Structure"
+import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$ImprovedNoise, $ImprovedNoise$$Type} from "net.minecraft.world.level.levelgen.synth.ImprovedNoise"
 import {$Quaterniond, $Quaterniond$$Type} from "org.joml.Quaterniond"
 import {$StructureType, $StructureType$$Type} from "net.minecraft.world.level.levelgen.structure.StructureType"
@@ -2178,8 +2183,8 @@ static readonly "DIRECT_CODEC": $Codec<($Structure)>
 constructor(structureSettings: $Structure$StructureSettings$$Type, config: $SharpenedRockConfig$$Type)
 
 public "type"(): $StructureType<(any)>
-public static "createHeightCache"(radius: integer, origin: $BlockPos$$Type): (integer)[]
 public static "generateFromCache"(radius: integer, heights: (integer)[], origin: $BlockPos$$Type, quaternion: $Quaterniond$$Type, reverse: boolean, action: $BiPredicate$$Type<($BlockPos), ($BlockPos)>): void
+public static "createHeightCache"(radius: integer, origin: $BlockPos$$Type): (integer)[]
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2202,16 +2207,16 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BaseCoralPlantTypeBlock, $BaseCoralPlantTypeBlock$$Type} from "net.minecraft.world.level.block.BaseCoralPlantTypeBlock"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BonemealableBlock$Type, $BonemealableBlock$Type$$Type} from "net.minecraft.world.level.block.BonemealableBlock$Type"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
 import {$BonemealableBlock, $BonemealableBlock$$Type} from "net.minecraft.world.level.block.BonemealableBlock"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
@@ -2219,8 +2224,8 @@ import {$Rotation, $Rotation$$Type} from "net.minecraft.world.level.block.Rotati
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $TreeBranchBlock extends $BaseCoralPlantTypeBlock implements $BonemealableBlock {
@@ -2237,7 +2242,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -2246,18 +2251,18 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor()
 constructor(properties: $BlockBehaviour$Properties$$Type)
+constructor()
 
 public "rotate"(state: $BlockState$$Type, rotation: $Rotation$$Type): $BlockState
 public "getShape"(state: $BlockState$$Type, level: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
+public "mirror"(state: $BlockState$$Type, mirror: $Mirror$$Type): $BlockState
 public "updateShape"(state: $BlockState$$Type, direction: $Direction$$Type, neighborState: $BlockState$$Type, level: $LevelAccessor$$Type, pos: $BlockPos$$Type, neighborPos: $BlockPos$$Type): $BlockState
 public "canSurvive"(state: $BlockState$$Type, level: $LevelReader$$Type, pos: $BlockPos$$Type): boolean
-public "mirror"(state: $BlockState$$Type, mirror: $Mirror$$Type): $BlockState
-public "getStateForPlacement"(context: $BlockPlaceContext$$Type): $BlockState
 public "isValidBonemealTarget"(level: $LevelReader$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type): boolean
 public "isBonemealSuccess"(level: $Level$$Type, random: $RandomSource$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type): boolean
 public "performBonemeal"(level: $ServerLevel$$Type, random: $RandomSource$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type): void
+public "getStateForPlacement"(context: $BlockPlaceContext$$Type): $BlockState
 public "getType"(): $BonemealableBlock$Type
 public "getParticlePos"(arg0: $BlockPos$$Type): $BlockPos
 public "asHolder"(): $Holder<(any)>
@@ -2316,7 +2321,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2359,8 +2364,8 @@ import {$ReplaceSphereConfiguration, $ReplaceSphereConfiguration$$Type} from "ne
 import {$BlockStateConfiguration, $BlockStateConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration"
 import {$BlockPileConfiguration, $BlockPileConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration"
 import {$NoneFeatureConfiguration, $NoneFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration"
-import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$EndGatewayConfiguration, $EndGatewayConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration"
+import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$LakeFeature$Configuration, $LakeFeature$Configuration$$Type} from "net.minecraft.world.level.levelgen.feature.LakeFeature$Configuration"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RootSystemConfiguration, $RootSystemConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration"
@@ -2483,8 +2488,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -2505,7 +2510,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -2541,8 +2546,8 @@ import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSourc
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$DirtPathBlock, $DirtPathBlock$$Type} from "net.minecraft.world.level.block.DirtPathBlock"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
+import {$DirtPathBlock, $DirtPathBlock$$Type} from "net.minecraft.world.level.block.DirtPathBlock"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -2562,7 +2567,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2588,22 +2593,24 @@ declare global {
 export type $BWGDirtPathBlock_ = $BWGDirtPathBlock$$Type;
 }}
 declare module "net.potionstudios.biomeswevegone.world.item.boat.BWGBoatItem" {
-import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
-import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
+import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BWGBoatEntity$Type, $BWGBoatEntity$Type$$Type} from "net.potionstudios.biomeswevegone.world.entity.boats.BWGBoatEntity$Type"
 
 export class $BWGBoatItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -2613,6 +2620,7 @@ constructor(hasChest: boolean, type: $BWGBoatEntity$Type$$Type, properties: $Ite
 
 public "use"(level: $Level$$Type, player: $Player$$Type, usedHand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
 public "hasChest"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2644,13 +2652,13 @@ static readonly "CODEC": $Codec<($RoundedRockConfig)>
 constructor(radius: $IntProvider$$Type, height: $IntProvider$$Type, noiseFrequency: $FloatProvider$$Type, checkedBlockPlacement: $CheckedBlockPlacement$$Type, blendFunction: $SimpleWeightedRandomList$$Type<($BlendingFunction$$Type)>)
 
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "checkedBlockPlacement"(): $CheckedBlockPlacement
-public "height"(): $IntProvider
 public "radius"(): $IntProvider
+public "height"(): $IntProvider
 public "noiseFrequency"(): $FloatProvider
 public "blendFunction"(): $SimpleWeightedRandomList<($BlendingFunction)>
+public "checkedBlockPlacement"(): $CheckedBlockPlacement
 public "getFeatures"(): $Stream<($ConfiguredFeature<(any), (any)>)>
 get "features"(): $Stream<($ConfiguredFeature<(any), (any)>)>
 }
@@ -2658,7 +2666,7 @@ get "features"(): $Stream<($ConfiguredFeature<(any), (any)>)>
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $RoundedRockConfig$$Type = ({"height"?: $IntProvider$$Type, "blendFunction"?: $SimpleWeightedRandomList$$Type<($BlendingFunction$$Type)>, "checkedBlockPlacement"?: $CheckedBlockPlacement$$Type, "noiseFrequency"?: $FloatProvider$$Type, "radius"?: $IntProvider$$Type}) | ([height?: $IntProvider$$Type, blendFunction?: $SimpleWeightedRandomList$$Type<($BlendingFunction$$Type)>, checkedBlockPlacement?: $CheckedBlockPlacement$$Type, noiseFrequency?: $FloatProvider$$Type, radius?: $IntProvider$$Type]);
+export type $RoundedRockConfig$$Type = ({"radius"?: $IntProvider$$Type, "height"?: $IntProvider$$Type, "blendFunction"?: $SimpleWeightedRandomList$$Type<($BlendingFunction$$Type)>, "checkedBlockPlacement"?: $CheckedBlockPlacement$$Type, "noiseFrequency"?: $FloatProvider$$Type}) | ([radius?: $IntProvider$$Type, height?: $IntProvider$$Type, blendFunction?: $SimpleWeightedRandomList$$Type<($BlendingFunction$$Type)>, checkedBlockPlacement?: $CheckedBlockPlacement$$Type, noiseFrequency?: $FloatProvider$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -2687,8 +2695,8 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$DoublePlantBlock, $DoublePlantBlock$$Type} from "net.minecraft.world.level.block.DoublePlantBlock"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -2712,7 +2720,7 @@ static readonly "HALF": $EnumProperty<($DoubleBlockHalf)>
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -2726,9 +2734,9 @@ constructor(sprout: $Supplier$$Type<($Supplier$$Type<($Item$$Type)>)>)
 public "updateShape"(state: $BlockState$$Type, direction: $Direction$$Type, neighborState: $BlockState$$Type, level: $LevelAccessor$$Type, pos: $BlockPos$$Type, neighborPos: $BlockPos$$Type): $BlockState
 public "canSurvive"(state: $BlockState$$Type, level: $LevelReader$$Type, pos: $BlockPos$$Type): boolean
 public "getFluidState"(state: $BlockState$$Type): $FluidState
+public "getSprout"(): $BlockItem
 public "neighborChanged"(state: $BlockState$$Type, level: $Level$$Type, pos: $BlockPos$$Type, neighborBlock: $Block$$Type, neighborPos: $BlockPos$$Type, movedByPiston: boolean): void
 public "getCloneItemStack"(level: $LevelReader$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type): $ItemStack
-public "getSprout"(): $BlockItem
 public "getPickupSound"(): $Optional<($SoundEvent)>
 public "canPlaceLiquid"(arg0: $Player$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $Fluid$$Type): boolean
 public "placeLiquid"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $FluidState$$Type): boolean
@@ -2764,7 +2772,7 @@ static readonly "CODEC": $Codec<($ConfigurableFreezeTopLayer$Config)>
 constructor(ice: $BlockStateProvider$$Type, snow: $BlockStateProvider$$Type)
 
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "snow"(): $BlockStateProvider
 public "ice"(): $BlockStateProvider
@@ -2796,8 +2804,8 @@ import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelR
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$SweetBerryBushBlock, $SweetBerryBushBlock$$Type} from "net.minecraft.world.level.block.SweetBerryBushBlock"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -2817,7 +2825,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2862,21 +2870,21 @@ static readonly "CODEC": $KeyDispatchDataCodec<($BandsRuleSource)>
 
 constructor(bandStates: $SimpleWeightedRandomList$$Type<($BlockState$$Type)>, bandSizeProvider: $IntProvider$$Type, bandsCountProvider: $IntProvider$$Type, frequency: float, noiseScale: integer)
 
-public "equals"(o: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "apply"(arg0: any): any
-public "apply"(context: $SurfaceRules$Context$$Type): $SurfaceRules$SurfaceRule
 public "frequency"(): float
+public "equals"(o: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+public "apply"(context: $SurfaceRules$Context$$Type): $SurfaceRules$SurfaceRule
+public "apply"(arg0: any): any
+public "codec"(): $KeyDispatchDataCodec<($SurfaceRules$RuleSource)>
+public "bandStates"(): $SimpleWeightedRandomList<($BlockState)>
+public "noiseScale"(): integer
 public "bandSizeProvider"(): $IntProvider
 public "bandsCountProvider"(): $IntProvider
-public "codec"(): $KeyDispatchDataCodec<($SurfaceRules$RuleSource)>
-public "noiseScale"(): integer
-public "bandStates"(): $SimpleWeightedRandomList<($BlockState)>
 public static "bootstrap"(arg0: $Registry$$Type<($MapCodec$$Type<($SurfaceRules$RuleSource$$Type)>)>): $MapCodec<($SurfaceRules$RuleSource)>
-public static "identity"<T>(): $Function<($SurfaceRules$Context), ($SurfaceRules$Context)>
 public "compose"<V>(arg0: $Function$$Type<(V), ($SurfaceRules$Context$$Type)>): $Function<(V), ($SurfaceRules$SurfaceRule)>
 public "andThen"<V>(arg0: $Function$$Type<($SurfaceRules$SurfaceRule), (V)>): $Function<($SurfaceRules$Context), (V)>
+public static "identity"<T>(): $Function<($SurfaceRules$Context), ($SurfaceRules$Context)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2898,8 +2906,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -2920,7 +2928,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2973,7 +2981,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3006,8 +3014,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -3030,7 +3038,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -3056,24 +3064,27 @@ declare global {
 export type $BWGCeilingHangingSignBlock_ = $BWGCeilingHangingSignBlock$$Type;
 }}
 declare module "net.potionstudios.biomeswevegone.world.item.custom.CampfireExplodingBlockItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $CampfireExplodingBlockItem extends $BlockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3092,6 +3103,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3141,7 +3153,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3176,8 +3188,8 @@ import {$LiquidType, $LiquidType$$Type} from "net.potionstudios.biomeswevegone.w
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
@@ -3206,7 +3218,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3244,8 +3256,8 @@ import {$ReplaceSphereConfiguration, $ReplaceSphereConfiguration$$Type} from "ne
 import {$BlockStateConfiguration, $BlockStateConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration"
 import {$BlockPileConfiguration, $BlockPileConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration"
 import {$NoneFeatureConfiguration, $NoneFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration"
-import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$EndGatewayConfiguration, $EndGatewayConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration"
+import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$LakeFeature$Configuration, $LakeFeature$Configuration$$Type} from "net.minecraft.world.level.levelgen.feature.LakeFeature$Configuration"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RootSystemConfiguration, $RootSystemConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration"
@@ -3372,8 +3384,8 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$SimpleParticleType, $SimpleParticleType$$Type} from "net.minecraft.core.particles.SimpleParticleType"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -3395,7 +3407,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "DECAY_DISTANCE": integer
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -3437,8 +3449,8 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -3462,7 +3474,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3474,9 +3486,9 @@ constructor()
 
 public "randomTick"(state: $BlockState$$Type, level: $ServerLevel$$Type, pos: $BlockPos$$Type, random: $RandomSource$$Type): void
 public "animateTick"(state: $BlockState$$Type, level: $Level$$Type, pos: $BlockPos$$Type, random: $RandomSource$$Type): void
-public "isRandomlyTicking"(state: $BlockState$$Type): boolean
 public "isValidBonemealTarget"(level: $LevelReader$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type): boolean
 public "performBonemeal"(level: $ServerLevel$$Type, random: $RandomSource$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type): void
+public "isRandomlyTicking"(state: $BlockState$$Type): boolean
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -3498,8 +3510,8 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$BushBlock, $BushBlock$$Type} from "net.minecraft.world.level.block.BushBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
@@ -3522,15 +3534,15 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(properties: $BlockBehaviour$Properties$$Type)
 constructor()
+constructor(properties: $BlockBehaviour$Properties$$Type)
 
 public "getShape"(state: $BlockState$$Type, level: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
 public "asHolder"(): $Holder<(any)>
@@ -3553,8 +3565,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
@@ -3577,7 +3589,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3616,10 +3628,10 @@ constructor(length: $IntProvider$$Type, height: $IntProvider$$Type, checkedBlock
 
 public "equals"(o: any): boolean
 public "length"(): $IntProvider
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "checkedBlockPlacement"(): $CheckedBlockPlacement
 public "height"(): $IntProvider
+public "checkedBlockPlacement"(): $CheckedBlockPlacement
 public "archGeneratorConfig"(): $ArchConfig$ArchGeneratorConfig
 }
 /**
@@ -3640,15 +3652,15 @@ import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$ColoredFallingBlock, $ColoredFallingBlock$$Type} from "net.minecraft.world.level.block.ColoredFallingBlock"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
+import {$ColoredFallingBlock, $ColoredFallingBlock$$Type} from "net.minecraft.world.level.block.ColoredFallingBlock"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -3666,7 +3678,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 readonly "dustColor": $ColorRGBA
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -3676,9 +3688,9 @@ static readonly "UPDATE_CLIENTS": integer
 
 constructor(dustColor: integer)
 
+public "fallOn"(level: $Level$$Type, state: $BlockState$$Type, pos: $BlockPos$$Type, entity: $Entity$$Type, fallDistance: float): void
 public "getVisualShape"(state: $BlockState$$Type, level: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
 public "entityInside"(state: $BlockState$$Type, level: $Level$$Type, pos: $BlockPos$$Type, entity: $Entity$$Type): void
-public "fallOn"(level: $Level$$Type, state: $BlockState$$Type, pos: $BlockPos$$Type, entity: $Entity$$Type, fallDistance: float): void
 public "getOcclusionShape"(state: $BlockState$$Type, level: $BlockGetter$$Type, pos: $BlockPos$$Type): $VoxelShape
 public "asHolder"(): $Holder<(any)>
 }
@@ -3725,7 +3737,7 @@ static readonly "HALF": $EnumProperty<($DoubleBlockHalf)>
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3811,7 +3823,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3846,16 +3858,16 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BonemealableBlock$Type, $BonemealableBlock$Type$$Type} from "net.minecraft.world.level.block.BonemealableBlock$Type"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
 import {$BonemealableBlock, $BonemealableBlock$$Type} from "net.minecraft.world.level.block.BonemealableBlock"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
@@ -3878,7 +3890,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3886,21 +3898,21 @@ static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 static readonly "AGE": $IntegerProperty
 
-constructor(fruit: $Supplier$$Type<($Supplier$$Type<($Item$$Type)>)>, leaves: string)
+constructor(fruit: $Supplier$$Type<($Supplier$$Type<($Item$$Type)>)>, leaves: StringJS)
+constructor(properties: $BlockBehaviour$Properties$$Type, fruit: $Supplier$$Type<($Supplier$$Type<($Item$$Type)>)>, leaves: StringJS)
 constructor(properties: $BlockBehaviour$Properties$$Type, fruit: $Supplier$$Type<($Supplier$$Type<($Item$$Type)>)>, leaves: $Supplier$$Type<($LeavesBlock$$Type)>)
-constructor(properties: $BlockBehaviour$Properties$$Type, fruit: $Supplier$$Type<($Supplier$$Type<($Item$$Type)>)>, leaves: string)
 
 public "getShape"(state: $BlockState$$Type, level: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public "updateShape"(state: $BlockState$$Type, direction: $Direction$$Type, neighborState: $BlockState$$Type, level: $LevelAccessor$$Type, pos: $BlockPos$$Type, neighborPos: $BlockPos$$Type): $BlockState
 public "randomTick"(state: $BlockState$$Type, level: $ServerLevel$$Type, pos: $BlockPos$$Type, random: $RandomSource$$Type): void
+public "updateShape"(state: $BlockState$$Type, direction: $Direction$$Type, neighborState: $BlockState$$Type, level: $LevelAccessor$$Type, pos: $BlockPos$$Type, neighborPos: $BlockPos$$Type): $BlockState
 public "canSurvive"(state: $BlockState$$Type, level: $LevelReader$$Type, pos: $BlockPos$$Type): boolean
-public "isRandomlyTicking"(state: $BlockState$$Type): boolean
+public "getFruit"(): $Item
+public "getLeaves"(): $LeavesBlock
 public "isValidBonemealTarget"(level: $LevelReader$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type): boolean
 public "isBonemealSuccess"(level: $Level$$Type, random: $RandomSource$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type): boolean
 public "performBonemeal"(level: $ServerLevel$$Type, random: $RandomSource$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type): void
+public "isRandomlyTicking"(state: $BlockState$$Type): boolean
 public "getCloneItemStack"(level: $LevelReader$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type): $ItemStack
-public "getFruit"(): $Item
-public "getLeaves"(): $LeavesBlock
 public "getType"(): $BonemealableBlock$Type
 public "getParticlePos"(arg0: $BlockPos$$Type): $BlockPos
 public "asHolder"(): $Holder<(any)>
@@ -3921,8 +3933,8 @@ declare global {
 export type $BWGFruitBlock_ = $BWGFruitBlock$$Type;
 }}
 declare module "net.potionstudios.biomeswevegone.world.level.levelgen.structure.plateau.GourPlateauStructure" {
-import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$Structure, $Structure$$Type} from "net.minecraft.world.level.levelgen.structure.Structure"
+import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$StructureType, $StructureType$$Type} from "net.minecraft.world.level.levelgen.structure.StructureType"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$Structure$StructureSettings, $Structure$StructureSettings$$Type} from "net.minecraft.world.level.levelgen.structure.Structure$StructureSettings"
@@ -3979,7 +3991,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -4014,8 +4026,8 @@ import {$ConfiguredFeature, $ConfiguredFeature$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$MushroomBlock, $MushroomBlock$$Type} from "net.minecraft.world.level.block.MushroomBlock"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
@@ -4041,7 +4053,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -4086,9 +4098,9 @@ static readonly "INFINITE": $BoundingBox
 
 constructor(settings: $Structure$StructureSettings$$Type, config: $ArchConfig$$Type)
 
-public "type"(): $StructureType<(any)>
 public static "between"(center: $Vec3$$Type, second: $Vec3$$Type, xzStepDistance: double, yOffset: integer, step3dDistance: double, blendingFunction: $BlendingFunction$$Type, stepAction: $Consumer$$Type<($BlockPos)>): void
 public static "generate"(seed: long, thickness: double, frequency: double, stepOrigin: $BlockPos$$Type, effectedArea: $BoundingBox$$Type, action: $Consumer$$Type<($BlockPos)>): void
+public "type"(): $StructureType<(any)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4116,7 +4128,7 @@ constructor(features: $HolderSet$$Type<($PlacedFeature)>, depth: $IntProvider$$T
 
 public "features"(): $HolderSet<($PlacedFeature)>
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "depth"(): $IntProvider
 public "lakeRadius"(): $IntProvider
@@ -4172,26 +4184,26 @@ static readonly "ASPEN": $BWGBoatEntity$Type
 static readonly "SAKURA": $BWGBoatEntity$Type
 
 
-public "getName"(): string
-public "toString"(): string
+public "getName"(): StringJS
+public "toString"(): StringJS
 public static "values"(): ($BWGBoatEntity$Type)[]
-public static "valueOf"(name: string): $BWGBoatEntity$Type
-public static "byName"(name: string): $BWGBoatEntity$Type
+public static "valueOf"(name: StringJS): $BWGBoatEntity$Type
 public static "byId"(id: integer): $BWGBoatEntity$Type
-public "getSerializedName"(): string
-public "getChestBoatItem"(): $Supplier<($Item)>
+public static "byName"(name: StringJS): $BWGBoatEntity$Type
 public "getBoatItem"(): $Supplier<($Item)>
+public "getSerializedName"(): StringJS
+public "getChestBoatItem"(): $Supplier<($Item)>
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "name"(): string
-get "serializedName"(): string
-get "chestBoatItem"(): $Supplier<($Item)>
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "name"(): StringJS
 get "boatItem"(): $Supplier<($Item)>
-get "remappedEnumConstantName"(): string
+get "serializedName"(): StringJS
+get "chestBoatItem"(): $Supplier<($Item)>
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4218,7 +4230,7 @@ static readonly "CHEBYSHEV": $PillarFeature$DistanceTestType
 
 
 public static "values"(): ($PillarFeature$DistanceTestType)[]
-public static "valueOf"(name: string): $PillarFeature$DistanceTestType
+public static "valueOf"(name: StringJS): $PillarFeature$DistanceTestType
 public "getDistanceTester"(): $PillarFeature$DistanceTester
 get "distanceTester"(): $PillarFeature$DistanceTester
 }
@@ -4244,8 +4256,8 @@ import {$ReplaceSphereConfiguration, $ReplaceSphereConfiguration$$Type} from "ne
 import {$BlockStateConfiguration, $BlockStateConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration"
 import {$BlockPileConfiguration, $BlockPileConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration"
 import {$NoneFeatureConfiguration, $NoneFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration"
-import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$EndGatewayConfiguration, $EndGatewayConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration"
+import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$LakeFeature$Configuration, $LakeFeature$Configuration$$Type} from "net.minecraft.world.level.levelgen.feature.LakeFeature$Configuration"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RootSystemConfiguration, $RootSystemConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration"
@@ -4396,7 +4408,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -4427,16 +4439,20 @@ declare global {
 export type $FlowerableBushBlock_ = $FlowerableBushBlock$$Type;
 }}
 declare module "net.potionstudios.biomeswevegone.world.item.custom.PowderItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ColorProperty, $ColorProperty$$Type} from "net.potionstudios.biomeswevegone.world.level.block.plants.vegetation.cattail.ColorProperty"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $PowderItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4445,6 +4461,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(colorProperty: $ColorProperty$$Type)
 
 public "getColor"(): $ColorProperty
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "color"(): $ColorProperty
 }
 /**
@@ -4472,8 +4489,8 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$FarmBlock, $FarmBlock$$Type} from "net.minecraft.world.level.block.FarmBlock"
@@ -4495,7 +4512,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -4505,8 +4522,8 @@ static readonly "UPDATE_CLIENTS": integer
 constructor(dirt: $Supplier$$Type<($Block$$Type)>)
 
 public "tick"(state: $BlockState$$Type, level: $ServerLevel$$Type, pos: $BlockPos$$Type, random: $RandomSource$$Type): void
-public "randomTick"(state: $BlockState$$Type, level: $ServerLevel$$Type, pos: $BlockPos$$Type, random: $RandomSource$$Type): void
 public "fallOn"(level: $Level$$Type, state: $BlockState$$Type, pos: $BlockPos$$Type, entity: $Entity$$Type, fallDistance: float): void
+public "randomTick"(state: $BlockState$$Type, level: $ServerLevel$$Type, pos: $BlockPos$$Type, random: $RandomSource$$Type): void
 public "getStateForPlacement"(context: $BlockPlaceContext$$Type): $BlockState
 public "asHolder"(): $Holder<(any)>
 }
@@ -4534,17 +4551,17 @@ static readonly "CODEC": $Codec<($SharpenedRockConfig)>
 constructor(radius: $IntProvider$$Type, pitch: $FloatProvider$$Type, yaw: $FloatProvider$$Type)
 
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "yaw"(): $FloatProvider
 public "pitch"(): $FloatProvider
+public "yaw"(): $FloatProvider
 public "radius"(): $IntProvider
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $SharpenedRockConfig$$Type = ({"yaw"?: $FloatProvider$$Type, "pitch"?: $FloatProvider$$Type, "radius"?: $IntProvider$$Type}) | ([yaw?: $FloatProvider$$Type, pitch?: $FloatProvider$$Type, radius?: $IntProvider$$Type]);
+export type $SharpenedRockConfig$$Type = ({"pitch"?: $FloatProvider$$Type, "radius"?: $IntProvider$$Type, "yaw"?: $FloatProvider$$Type}) | ([pitch?: $FloatProvider$$Type, radius?: $IntProvider$$Type, yaw?: $FloatProvider$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -4562,8 +4579,8 @@ import {$ReplaceSphereConfiguration, $ReplaceSphereConfiguration$$Type} from "ne
 import {$BlockStateConfiguration, $BlockStateConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration"
 import {$BlockPileConfiguration, $BlockPileConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration"
 import {$NoneFeatureConfiguration, $NoneFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration"
-import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$EndGatewayConfiguration, $EndGatewayConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration"
+import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$LakeFeature$Configuration, $LakeFeature$Configuration$$Type} from "net.minecraft.world.level.levelgen.feature.LakeFeature$Configuration"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RootSystemConfiguration, $RootSystemConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration"
@@ -4689,16 +4706,16 @@ import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$CattailPlantBlock, $CattailPlantBlock$$Type} from "net.potionstudios.biomeswevegone.world.level.block.plants.vegetation.cattail.CattailPlantBlock"
 import {$BonemealableBlock$Type, $BonemealableBlock$Type$$Type} from "net.minecraft.world.level.block.BonemealableBlock$Type"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$BonemealableBlock, $BonemealableBlock$$Type} from "net.minecraft.world.level.block.BonemealableBlock"
@@ -4707,8 +4724,8 @@ import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.leve
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $CattailSproutBlock extends $Block implements $SimpleWaterloggedBlock, $BonemealableBlock {
 static readonly "UPDATE_IMMEDIATE": integer
@@ -4724,7 +4741,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -4735,14 +4752,14 @@ static readonly "UPDATE_CLIENTS": integer
 constructor(cattailBlock: $Supplier$$Type<($CattailPlantBlock$$Type)>)
 
 public "getShape"(state: $BlockState$$Type, level: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public "updateShape"(state: $BlockState$$Type, direction: $Direction$$Type, neighborState: $BlockState$$Type, level: $LevelAccessor$$Type, pos: $BlockPos$$Type, neighborPos: $BlockPos$$Type): $BlockState
 public "randomTick"(state: $BlockState$$Type, level: $ServerLevel$$Type, pos: $BlockPos$$Type, random: $RandomSource$$Type): void
+public "updateShape"(state: $BlockState$$Type, direction: $Direction$$Type, neighborState: $BlockState$$Type, level: $LevelAccessor$$Type, pos: $BlockPos$$Type, neighborPos: $BlockPos$$Type): $BlockState
 public "canSurvive"(state: $BlockState$$Type, level: $LevelReader$$Type, pos: $BlockPos$$Type): boolean
 public "getFluidState"(state: $BlockState$$Type): $FluidState
-public "getStateForPlacement"(context: $BlockPlaceContext$$Type): $BlockState
 public "isValidBonemealTarget"(level: $LevelReader$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type): boolean
 public "isBonemealSuccess"(level: $Level$$Type, random: $RandomSource$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type): boolean
 public "performBonemeal"(level: $ServerLevel$$Type, random: $RandomSource$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type): void
+public "getStateForPlacement"(context: $BlockPlaceContext$$Type): $BlockState
 public "getPickupSound"(): $Optional<($SoundEvent)>
 public "canPlaceLiquid"(arg0: $Player$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $Fluid$$Type): boolean
 public "placeLiquid"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $FluidState$$Type): boolean
@@ -4791,7 +4808,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -4845,7 +4862,7 @@ static readonly "HALF": $EnumProperty<($DoubleBlockHalf)>
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -4903,7 +4920,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -4934,8 +4951,8 @@ declare global {
 export type $HydrangeaBushBlock_ = $HydrangeaBushBlock$$Type;
 }}
 declare module "net.potionstudios.biomeswevegone.world.level.levelgen.surfacerules.BandsContext" {
-import {$BandsRuleSource, $BandsRuleSource$$Type} from "net.potionstudios.biomeswevegone.world.level.levelgen.surfacerules.BandsRuleSource"
 import {$IntProvider, $IntProvider$$Type} from "net.minecraft.util.valueproviders.IntProvider"
+import {$BandsRuleSource, $BandsRuleSource$$Type} from "net.potionstudios.biomeswevegone.world.level.levelgen.surfacerules.BandsRuleSource"
 import {$SimpleWeightedRandomList, $SimpleWeightedRandomList$$Type} from "net.minecraft.util.random.SimpleWeightedRandomList"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -4968,8 +4985,8 @@ export type $BandsContext_ = $BandsContext$$Type;
 }}
 declare module "net.potionstudios.biomeswevegone.world.level.block.plants.cactus.LiquidType" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -4982,16 +4999,16 @@ static readonly "WATER": $LiquidType
 
 
 public static "values"(): ($LiquidType)[]
-public static "valueOf"(name: string): $LiquidType
-public "getSerializedName"(): string
+public static "valueOf"(name: StringJS): $LiquidType
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5013,13 +5030,13 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$SuspiciousEffectHolder, $SuspiciousEffectHolder$$Type} from "net.minecraft.world.level.block.SuspiciousEffectHolder"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
+import {$ItemLike, $ItemLike$$Type} from "net.minecraft.world.level.ItemLike"
 import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
 import {$FlowerBlock, $FlowerBlock$$Type} from "net.minecraft.world.level.block.FlowerBlock"
-import {$ItemLike, $ItemLike$$Type} from "net.minecraft.world.level.ItemLike"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -5040,7 +5057,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -5110,8 +5127,8 @@ import {$ReplaceSphereConfiguration, $ReplaceSphereConfiguration$$Type} from "ne
 import {$BlockStateConfiguration, $BlockStateConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration"
 import {$BlockPileConfiguration, $BlockPileConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration"
 import {$NoneFeatureConfiguration, $NoneFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration"
-import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$EndGatewayConfiguration, $EndGatewayConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration"
+import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$LakeFeature$Configuration, $LakeFeature$Configuration$$Type} from "net.minecraft.world.level.levelgen.feature.LakeFeature$Configuration"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RootSystemConfiguration, $RootSystemConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration"
@@ -5241,11 +5258,11 @@ static readonly "CODEC": $Codec<($NoiseSphereConfig)>
 constructor(radius: $IntProvider$$Type, noiseFrequency: $FloatProvider$$Type, checkedBlockPlacement: $CheckedBlockPlacement$$Type)
 
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "checkedBlockPlacement"(): $CheckedBlockPlacement
 public "radius"(): $IntProvider
 public "noiseFrequency"(): $FloatProvider
+public "checkedBlockPlacement"(): $CheckedBlockPlacement
 public "getFeatures"(): $Stream<($ConfiguredFeature<(any), (any)>)>
 get "features"(): $Stream<($ConfiguredFeature<(any), (any)>)>
 }
@@ -5253,7 +5270,7 @@ get "features"(): $Stream<($ConfiguredFeature<(any), (any)>)>
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $NoiseSphereConfig$$Type = ({"checkedBlockPlacement"?: $CheckedBlockPlacement$$Type, "noiseFrequency"?: $FloatProvider$$Type, "radius"?: $IntProvider$$Type}) | ([checkedBlockPlacement?: $CheckedBlockPlacement$$Type, noiseFrequency?: $FloatProvider$$Type, radius?: $IntProvider$$Type]);
+export type $NoiseSphereConfig$$Type = ({"noiseFrequency"?: $FloatProvider$$Type, "radius"?: $IntProvider$$Type, "checkedBlockPlacement"?: $CheckedBlockPlacement$$Type}) | ([noiseFrequency?: $FloatProvider$$Type, radius?: $IntProvider$$Type, checkedBlockPlacement?: $CheckedBlockPlacement$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -5270,8 +5287,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -5291,7 +5308,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "DECAY_DISTANCE": integer
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -5327,8 +5344,8 @@ import {$ReplaceSphereConfiguration, $ReplaceSphereConfiguration$$Type} from "ne
 import {$BlockStateConfiguration, $BlockStateConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration"
 import {$BlockPileConfiguration, $BlockPileConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration"
 import {$NoneFeatureConfiguration, $NoneFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration"
-import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$EndGatewayConfiguration, $EndGatewayConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration"
+import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$LakeFeature$Configuration, $LakeFeature$Configuration$$Type} from "net.minecraft.world.level.levelgen.feature.LakeFeature$Configuration"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RootSystemConfiguration, $RootSystemConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration"
@@ -5450,8 +5467,8 @@ import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CarvedPumpkinBlock, $CarvedPumpkinBlock$$Type} from "net.minecraft.world.level.block.CarvedPumpkinBlock"
 import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$PaleCarvedPumpkinBlock, $PaleCarvedPumpkinBlock$$Type} from "net.potionstudios.biomeswevegone.world.level.block.plants.vegetation.pumpkin.PaleCarvedPumpkinBlock"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
@@ -5476,7 +5493,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float

@@ -10,16 +10,16 @@ readonly "levelData": $ServerLevelData
 
 constructor(arg0: $LevelAccessor$$Type)
 
-public "weatherCycleEnabled"(): boolean
 public "tickBlockEntities"(): void
 public "wakeUpAllPlayers"(): void
+public "weatherCycleEnabled"(): boolean
 public "setRandomTickSpeed"(arg0: integer): void
-public "daylightRuleEnabled"(): boolean
 public static "isServerLevel"(arg0: $LevelAccessor$$Type): boolean
 public "stopWeather"(): void
 public "setSleepStatus"(arg0: $SleepStatus$$Type): void
 public static "isDerived"(arg0: $LevelAccessor$$Type): boolean
 public "weatherRuleEnabled"(): boolean
+public "daylightRuleEnabled"(): boolean
 set "randomTickSpeed"(value: integer)
 set "sleepStatus"(value: $SleepStatus$$Type)
 }

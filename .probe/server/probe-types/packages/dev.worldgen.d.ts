@@ -9,8 +9,8 @@ import {$ReplaceSphereConfiguration, $ReplaceSphereConfiguration$$Type} from "ne
 import {$BlockStateConfiguration, $BlockStateConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration"
 import {$BlockPileConfiguration, $BlockPileConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration"
 import {$NoneFeatureConfiguration, $NoneFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration"
-import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$EndGatewayConfiguration, $EndGatewayConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration"
+import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$LakeFeature$Configuration, $LakeFeature$Configuration$$Type} from "net.minecraft.world.level.levelgen.feature.LakeFeature$Configuration"
 import {$RootSystemConfiguration, $RootSystemConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration"
 import {$BonusChestFeature, $BonusChestFeature$$Type} from "net.minecraft.world.level.levelgen.feature.BonusChestFeature"
@@ -155,6 +155,29 @@ export type $PlacedFeatureAccessor$$Type = ((arg0: $Holder<($ConfiguredFeature<(
 declare global {
 export type $PlacedFeatureAccessor_ = $PlacedFeatureAccessor$$Type;
 }}
+declare module "dev.worldgen.lithostitched.util.weighted.WeightedList$Builder" {
+import {$WeightedList, $WeightedList$$Type} from "dev.worldgen.lithostitched.util.weighted.WeightedList"
+
+export class $WeightedList$Builder<E> {
+
+constructor()
+
+public "build"(): $WeightedList<(E)>
+public "add"(arg0: E): $WeightedList$Builder<(E)>
+public "add"(arg0: E, arg1: integer): $WeightedList$Builder<(E)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $WeightedList$Builder$$Type<E> = ($WeightedList$Builder<(E)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $WeightedList$Builder_<E> = $WeightedList$Builder$$Type<(E)>;
+}}
 declare module "dev.worldgen.lithostitched.mixin.common.StructureTemplatePoolAccessor" {
 import {$Pair, $Pair$$Type} from "com.mojang.datafixers.util.Pair"
 import {$List, $List$$Type} from "java.util.List"
@@ -206,8 +229,8 @@ import {$ReplaceSphereConfiguration, $ReplaceSphereConfiguration$$Type} from "ne
 import {$BlockStateConfiguration, $BlockStateConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration"
 import {$BlockPileConfiguration, $BlockPileConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration"
 import {$NoneFeatureConfiguration, $NoneFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration"
-import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$EndGatewayConfiguration, $EndGatewayConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration"
+import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$LakeFeature$Configuration, $LakeFeature$Configuration$$Type} from "net.minecraft.world.level.levelgen.feature.LakeFeature$Configuration"
 import {$RootSystemConfiguration, $RootSystemConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration"
 import {$BonusChestFeature, $BonusChestFeature$$Type} from "net.minecraft.world.level.levelgen.feature.BonusChestFeature"
@@ -330,11 +353,11 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export interface $SinglePoolElementAccessor {
 
- "getProcessors"(): $Holder<($StructureProcessorList)>
  "getTemplate"(): $Either<($ResourceLocation), ($StructureTemplate)>
+ "getProcessors"(): $Holder<($StructureProcessorList)>
  "setProcessors"(arg0: $Holder$$Type<($StructureProcessorList)>): void
-get "processors"(): $Holder<($StructureProcessorList)>
 get "template"(): $Either<($ResourceLocation), ($StructureTemplate)>
+get "processors"(): $Holder<($StructureProcessorList)>
 set "processors"(value: $Holder$$Type<($StructureProcessorList)>)
 }
 
@@ -344,8 +367,8 @@ const probejs$$marker: never
 export class $SinglePoolElementAccessor$$Static implements $SinglePoolElementAccessor {
 
 
- "getProcessors"(): $Holder<($StructureProcessorList)>
  "getTemplate"(): $Either<($ResourceLocation), ($StructureTemplate)>
+ "getProcessors"(): $Holder<($StructureProcessorList)>
  "setProcessors"(arg0: $Holder$$Type<($StructureProcessorList)>): void
 }
 /**
@@ -370,8 +393,8 @@ import {$ReplaceSphereConfiguration, $ReplaceSphereConfiguration$$Type} from "ne
 import {$BlockStateConfiguration, $BlockStateConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration"
 import {$BlockPileConfiguration, $BlockPileConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration"
 import {$NoneFeatureConfiguration, $NoneFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration"
-import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$EndGatewayConfiguration, $EndGatewayConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration"
+import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$LakeFeature$Configuration, $LakeFeature$Configuration$$Type} from "net.minecraft.world.level.levelgen.feature.LakeFeature$Configuration"
 import {$RootSystemConfiguration, $RootSystemConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration"
 import {$BonusChestFeature, $BonusChestFeature$$Type} from "net.minecraft.world.level.levelgen.feature.BonusChestFeature"
@@ -384,8 +407,8 @@ import {$RandomFeatureConfiguration, $RandomFeatureConfiguration$$Type} from "ne
 import {$HugeMushroomFeatureConfiguration, $HugeMushroomFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration"
 import {$SimpleBlockConfiguration, $SimpleBlockConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration"
 import {$DeltaFeatureConfiguration, $DeltaFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.DeltaFeatureConfiguration"
-import {$VinesConfig, $VinesConfig$$Type} from "dev.worldgen.lithostitched.worldgen.feature.config.VinesConfig"
 import {$MultifaceGrowthConfiguration, $MultifaceGrowthConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.MultifaceGrowthConfiguration"
+import {$VinesConfig, $VinesConfig$$Type} from "dev.worldgen.lithostitched.worldgen.feature.config.VinesConfig"
 import {$LayerConfiguration, $LayerConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.LayerConfiguration"
 import {$ReplaceBlockConfiguration, $ReplaceBlockConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.ReplaceBlockConfiguration"
 import {$ProbabilityFeatureConfiguration, $ProbabilityFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.ProbabilityFeatureConfiguration"
@@ -533,7 +556,7 @@ import {$PlacedFeature, $PlacedFeature$$Type} from "net.minecraft.world.level.le
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$ConfiguredFeature, $ConfiguredFeature$$Type} from "net.minecraft.world.level.levelgen.feature.ConfiguredFeature"
 import {$Stream, $Stream$$Type} from "java.util.stream.Stream"
-import {$SimpleWeightedRandomList, $SimpleWeightedRandomList$$Type} from "net.minecraft.util.random.SimpleWeightedRandomList"
+import {$WeightedList, $WeightedList$$Type} from "dev.worldgen.lithostitched.util.weighted.WeightedList"
 import {$FeatureConfiguration, $FeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Record, $Record$$Type} from "java.lang.Record"
@@ -541,11 +564,11 @@ import {$Record, $Record$$Type} from "java.lang.Record"
 export class $WeightedSelectorConfig extends $Record implements $FeatureConfiguration {
 static readonly "CODEC": $Codec<($WeightedSelectorConfig)>
 
-constructor(features: $SimpleWeightedRandomList$$Type<($Holder$$Type<($PlacedFeature$$Type)>)>)
+constructor(features: $WeightedList$$Type<($Holder$$Type<($PlacedFeature$$Type)>)>)
 
-public "features"(): $SimpleWeightedRandomList<($Holder<($PlacedFeature)>)>
+public "features"(): $WeightedList<($Holder<($PlacedFeature)>)>
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "getFeatures"(): $Stream<($ConfiguredFeature<(any), (any)>)>
 }
@@ -553,7 +576,7 @@ public "getFeatures"(): $Stream<($ConfiguredFeature<(any), (any)>)>
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $WeightedSelectorConfig$$Type = ({"features"?: $SimpleWeightedRandomList$$Type<($Holder$$Type<($PlacedFeature$$Type)>)>}) | ([features?: $SimpleWeightedRandomList$$Type<($Holder$$Type<($PlacedFeature$$Type)>)>]);
+export type $WeightedSelectorConfig$$Type = ({"features"?: $WeightedList$$Type<($Holder$$Type<($PlacedFeature$$Type)>)>}) | ([features?: $WeightedList$$Type<($Holder$$Type<($PlacedFeature$$Type)>)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -570,6 +593,7 @@ import {$DimensionPadding, $DimensionPadding$$Type} from "net.minecraft.world.le
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Heightmap$Types, $Heightmap$Types$$Type} from "net.minecraft.world.level.levelgen.Heightmap$Types"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$AlternateJigsawConfig$MaxDistance, $AlternateJigsawConfig$MaxDistance$$Type} from "dev.worldgen.lithostitched.worldgen.structure.AlternateJigsawConfig$MaxDistance"
 import {$StructureTemplatePool, $StructureTemplatePool$$Type} from "net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool"
 import {$PoolAliasBinding, $PoolAliasBinding$$Type} from "net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasBinding"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -579,28 +603,29 @@ import {$Record, $Record$$Type} from "java.lang.Record"
 export class $AlternateJigsawConfig extends $Record {
 static readonly "CODEC": $MapCodec<($AlternateJigsawConfig)>
 
-constructor(startPool: $Holder$$Type<($StructureTemplatePool)>, startJigsawName: $Optional$$Type<($ResourceLocation$$Type)>, size: $IntProvider$$Type, startHeight: $HeightProvider$$Type, useExpansionHack: boolean, projectStartToHeightmap: $Optional$$Type<($Heightmap$Types$$Type)>, maxDistanceFromCenter: integer, poolAliases: $List$$Type<($PoolAliasBinding$$Type)>, dimensionPadding: $DimensionPadding$$Type, liquidSettings: $LiquidSettings$$Type)
+constructor(startPool: $Holder$$Type<($StructureTemplatePool)>, startJigsawName: $Optional$$Type<($ResourceLocation$$Type)>, size: $IntProvider$$Type, fixedRotation: boolean, startHeight: $HeightProvider$$Type, useExpansionHack: boolean, projectStartToHeightmap: $Optional$$Type<($Heightmap$Types$$Type)>, maxDistanceFromCenter: $AlternateJigsawConfig$MaxDistance$$Type, poolAliases: $List$$Type<($PoolAliasBinding$$Type)>, dimensionPadding: $DimensionPadding$$Type, liquidSettings: $LiquidSettings$$Type)
 
 public "size"(): $IntProvider
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "projectStartToHeightmap"(): $Optional<($Heightmap$Types)>
-public "startJigsawName"(): $Optional<($ResourceLocation)>
-public "useExpansionHack"(): boolean
-public "maxDistanceFromCenter"(): integer
-public "dimensionPadding"(): $DimensionPadding
+public "fixedRotation"(): boolean
 public "startPool"(): $Holder<($StructureTemplatePool)>
 public "startHeight"(): $HeightProvider
 public "poolAliases"(): $List<($PoolAliasBinding)>
 public "setPoolAliases"(arg0: $List$$Type<($PoolAliasBinding$$Type)>, arg1: boolean): $AlternateJigsawConfig
 public "liquidSettings"(): $LiquidSettings
+public "startJigsawName"(): $Optional<($ResourceLocation)>
+public "useExpansionHack"(): boolean
+public "maxDistanceFromCenter"(): $AlternateJigsawConfig$MaxDistance
+public "dimensionPadding"(): $DimensionPadding
+public "projectStartToHeightmap"(): $Optional<($Heightmap$Types)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $AlternateJigsawConfig$$Type = ({"size"?: $IntProvider$$Type, "dimensionPadding"?: $DimensionPadding$$Type, "useExpansionHack"?: boolean, "projectStartToHeightmap"?: ($Heightmap$Types$$Type)?, "startPool"?: $Holder$$Type<($StructureTemplatePool)>, "maxDistanceFromCenter"?: integer, "startHeight"?: $HeightProvider$$Type, "poolAliases"?: $List$$Type<($PoolAliasBinding$$Type)>, "liquidSettings"?: $LiquidSettings$$Type, "startJigsawName"?: ($ResourceLocation$$Type)?}) | ([size?: $IntProvider$$Type, dimensionPadding?: $DimensionPadding$$Type, useExpansionHack?: boolean, projectStartToHeightmap?: ($Heightmap$Types$$Type)?, startPool?: $Holder$$Type<($StructureTemplatePool)>, maxDistanceFromCenter?: integer, startHeight?: $HeightProvider$$Type, poolAliases?: $List$$Type<($PoolAliasBinding$$Type)>, liquidSettings?: $LiquidSettings$$Type, startJigsawName?: ($ResourceLocation$$Type)?]);
+export type $AlternateJigsawConfig$$Type = ({"poolAliases"?: $List$$Type<($PoolAliasBinding$$Type)>, "useExpansionHack"?: boolean, "projectStartToHeightmap"?: ($Heightmap$Types$$Type)?, "startJigsawName"?: ($ResourceLocation$$Type)?, "maxDistanceFromCenter"?: $AlternateJigsawConfig$MaxDistance$$Type, "fixedRotation"?: boolean, "liquidSettings"?: $LiquidSettings$$Type, "size"?: $IntProvider$$Type, "startPool"?: $Holder$$Type<($StructureTemplatePool)>, "dimensionPadding"?: $DimensionPadding$$Type, "startHeight"?: $HeightProvider$$Type}) | ([poolAliases?: $List$$Type<($PoolAliasBinding$$Type)>, useExpansionHack?: boolean, projectStartToHeightmap?: ($Heightmap$Types$$Type)?, startJigsawName?: ($ResourceLocation$$Type)?, maxDistanceFromCenter?: $AlternateJigsawConfig$MaxDistance$$Type, fixedRotation?: boolean, liquidSettings?: $LiquidSettings$$Type, size?: $IntProvider$$Type, startPool?: $Holder$$Type<($StructureTemplatePool)>, dimensionPadding?: $DimensionPadding$$Type, startHeight?: $HeightProvider$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -619,8 +644,8 @@ import {$ReplaceSphereConfiguration, $ReplaceSphereConfiguration$$Type} from "ne
 import {$BlockStateConfiguration, $BlockStateConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration"
 import {$BlockPileConfiguration, $BlockPileConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration"
 import {$NoneFeatureConfiguration, $NoneFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration"
-import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$EndGatewayConfiguration, $EndGatewayConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration"
+import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$LakeFeature$Configuration, $LakeFeature$Configuration$$Type} from "net.minecraft.world.level.levelgen.feature.LakeFeature$Configuration"
 import {$RootSystemConfiguration, $RootSystemConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration"
 import {$BonusChestFeature, $BonusChestFeature$$Type} from "net.minecraft.world.level.levelgen.feature.BonusChestFeature"
@@ -744,17 +769,17 @@ static readonly "CODEC": $Codec<($OreConfig$Target)>
 
 constructor(predicate: $BlockPredicate$$Type, stateProvider: $BlockStateProvider$$Type)
 
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "predicate"(): $BlockPredicate
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
 public "stateProvider"(): $BlockStateProvider
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $OreConfig$Target$$Type = ({"predicate"?: $BlockPredicate$$Type, "stateProvider"?: $BlockStateProvider$$Type}) | ([predicate?: $BlockPredicate$$Type, stateProvider?: $BlockStateProvider$$Type]);
+export type $OreConfig$Target$$Type = ({"stateProvider"?: $BlockStateProvider$$Type, "predicate"?: $BlockPredicate$$Type}) | ([stateProvider?: $BlockStateProvider$$Type, predicate?: $BlockPredicate$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -763,44 +788,36 @@ declare global {
 export type $OreConfig$Target_ = $OreConfig$Target$$Type;
 }}
 declare module "dev.worldgen.lithostitched.worldgen.modifier.SetStructureSpawnConditionModifier" {
-import {$List, $List$$Type} from "java.util.List"
-import {$Modifier, $Modifier$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.Modifier"
 import {$Structure, $Structure$$Type} from "net.minecraft.world.level.levelgen.structure.Structure"
 import {$HolderSet, $HolderSet$$Type} from "net.minecraft.core.HolderSet"
-import {$Holder$Reference, $Holder$Reference$$Type} from "net.minecraft.core.Holder$Reference"
+import {$Modifier, $Modifier$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.Modifier"
 import {$PlacementCondition, $PlacementCondition$$Type} from "dev.worldgen.lithostitched.worldgen.placementcondition.PlacementCondition"
-import {$PriorityBasedModifier, $PriorityBasedModifier$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.PriorityBasedModifier"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
-import {$MinecraftServer, $MinecraftServer$$Type} from "net.minecraft.server.MinecraftServer"
 import {$Record, $Record$$Type} from "java.lang.Record"
 import {$RegistryAccess, $RegistryAccess$$Type} from "net.minecraft.core.RegistryAccess"
-import {$Modifier$ModifierPhase, $Modifier$ModifierPhase$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.Modifier$ModifierPhase"
 
 export class $SetStructureSpawnConditionModifier extends $Record implements $Modifier {
 static readonly "CODEC": $MapCodec<($SetStructureSpawnConditionModifier)>
 
-constructor(structures: $HolderSet$$Type<($Structure)>, spawnCondition: $PlacementCondition$$Type, append: boolean)
+constructor(priority: integer, structures: $HolderSet$$Type<($Structure)>, spawnCondition: $PlacementCondition$$Type, append: boolean)
 
+public "priority"(): integer
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "append"(): boolean
 public "hashCode"(): integer
-public "structures"(): $HolderSet<($Structure)>
-public "getPhase"(): $Modifier$ModifierPhase
-public "applyModifier"(arg0: $RegistryAccess$$Type): void
-public "applyModifier"(): void
 public "codec"(): $MapCodec<($Modifier)>
+public "structures"(): $HolderSet<($Structure)>
+public "applyModifier"(): void
+public "applyModifier"(arg0: $RegistryAccess$$Type): void
 public "spawnCondition"(): $PlacementCondition
 public "internal$modifiesFabricFeatures"(): boolean
-public static "sortByPriority"(arg0: $List$$Type<($Holder$Reference$$Type<($PriorityBasedModifier$$Type)>)>): $List<($Holder$Reference<($PriorityBasedModifier)>)>
-public static "applyModifiers"(arg0: $MinecraftServer$$Type): void
-get "phase"(): $Modifier$ModifierPhase
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $SetStructureSpawnConditionModifier$$Type = ({"structures"?: $HolderSet$$Type<($Structure)>, "spawnCondition"?: $PlacementCondition$$Type, "append"?: boolean}) | ([structures?: $HolderSet$$Type<($Structure)>, spawnCondition?: $PlacementCondition$$Type, append?: boolean]);
+export type $SetStructureSpawnConditionModifier$$Type = ({"append"?: boolean, "priority"?: integer, "structures"?: $HolderSet$$Type<($Structure)>, "spawnCondition"?: $PlacementCondition$$Type}) | ([append?: boolean, priority?: integer, structures?: $HolderSet$$Type<($Structure)>, spawnCondition?: $PlacementCondition$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -819,8 +836,8 @@ import {$BlockStateConfiguration, $BlockStateConfiguration$$Type} from "net.mine
 import {$BlockPileConfiguration, $BlockPileConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration"
 import {$NoneFeatureConfiguration, $NoneFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration"
 import {$WellConfig, $WellConfig$$Type} from "dev.worldgen.lithostitched.worldgen.feature.config.WellConfig"
-import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$EndGatewayConfiguration, $EndGatewayConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration"
+import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$LakeFeature$Configuration, $LakeFeature$Configuration$$Type} from "net.minecraft.world.level.levelgen.feature.LakeFeature$Configuration"
 import {$RootSystemConfiguration, $RootSystemConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration"
 import {$BonusChestFeature, $BonusChestFeature$$Type} from "net.minecraft.world.level.levelgen.feature.BonusChestFeature"
@@ -933,6 +950,45 @@ export type $WellFeature$$Type = ($WellFeature);
 declare global {
 export type $WellFeature_ = $WellFeature$$Type;
 }}
+declare module "dev.worldgen.lithostitched.worldgen.modifier.template.TemplateList" {
+import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$List, $List$$Type} from "java.util.List"
+import {$Record, $Record$$Type} from "java.lang.Record"
+
+export class $TemplateList extends $Record {
+static readonly "CODEC": $Codec<($TemplateList)>
+
+constructor(templates: $List$$Type<($ResourceLocation$$Type)>)
+
+public "getRandom"(arg0: $RandomSource$$Type): $ResourceLocation
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+public "addAll"(arg0: $List$$Type<($ResourceLocation$$Type)>): void
+public "templates"(): $List<($ResourceLocation)>
+/**
+ * This field is a type stub generated by ProbeJS and shall not be used in any sense.
+ */
+ "probejsInternal$$Literal": Special.LithostitchedTemplateList
+/**
+ * This field is a type stub generated by ProbeJS and shall not be used in any sense.
+ */
+ "probejsInternal$$Tag": Special.LithostitchedTemplateListTag
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $TemplateList$$Type = (Special.LithostitchedTemplateList) | ({"templates"?: $List$$Type<($ResourceLocation$$Type)>}) | ([templates?: $List$$Type<($ResourceLocation$$Type)>]);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $TemplateList_ = $TemplateList$$Type;
+}}
 declare module "dev.worldgen.tectonic.worldgen.ConfigConstant" {
 import {$DensityFunction$Visitor, $DensityFunction$Visitor$$Type} from "net.minecraft.world.level.levelgen.DensityFunction$Visitor"
 import {$DensityFunction$ContextProvider, $DensityFunction$ContextProvider$$Type} from "net.minecraft.world.level.levelgen.DensityFunction$ContextProvider"
@@ -946,25 +1002,25 @@ export class $ConfigConstant extends $Record implements $DensityFunction {
 static "CODEC_HOLDER": $KeyDispatchDataCodec<($ConfigConstant)>
 static "DATA_CODEC": $MapCodec<($ConfigConstant)>
 
-constructor(arg0: string)
 constructor(value: double)
+constructor(arg0: StringJS)
 
+public "maxValue"(): double
 public "value"(): double
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "compute"(arg0: $DensityFunction$FunctionContext$$Type): double
-public "maxValue"(): double
+public "mapAll"(arg0: $DensityFunction$Visitor$$Type): $DensityFunction
+public "codec"(): $KeyDispatchDataCodec<($DensityFunction)>
 public "fillArray"(arg0: (double)[], arg1: $DensityFunction$ContextProvider$$Type): void
 public "minValue"(): double
-public "codec"(): $KeyDispatchDataCodec<($DensityFunction)>
-public "mapAll"(arg0: $DensityFunction$Visitor$$Type): $DensityFunction
+public "square"(): $DensityFunction
 public "abs"(): $DensityFunction
 public "clamp"(arg0: double, arg1: double): $DensityFunction
-public "square"(): $DensityFunction
+public "cube"(): $DensityFunction
 public "halfNegative"(): $DensityFunction
 public "squeeze"(): $DensityFunction
-public "cube"(): $DensityFunction
 public "quarterNegative"(): $DensityFunction
 }
 /**
@@ -978,43 +1034,6 @@ export type $ConfigConstant$$Type = ({"value"?: double}) | ([value?: double]);
  */
 declare global {
 export type $ConfigConstant_ = $ConfigConstant$$Type;
-}}
-declare module "dev.worldgen.lithostitched.worldgen.modifier.AddFeaturesModifier" {
-import {$GenerationStep$Decoration, $GenerationStep$Decoration$$Type} from "net.minecraft.world.level.levelgen.GenerationStep$Decoration"
-import {$PlacedFeature, $PlacedFeature$$Type} from "net.minecraft.world.level.levelgen.placement.PlacedFeature"
-import {$List, $List$$Type} from "java.util.List"
-import {$HolderSet, $HolderSet$$Type} from "net.minecraft.core.HolderSet"
-import {$Holder$Reference, $Holder$Reference$$Type} from "net.minecraft.core.Holder$Reference"
-import {$Modifier, $Modifier$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.Modifier"
-import {$Biome, $Biome$$Type} from "net.minecraft.world.level.biome.Biome"
-import {$PriorityBasedModifier, $PriorityBasedModifier$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.PriorityBasedModifier"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
-import {$MinecraftServer, $MinecraftServer$$Type} from "net.minecraft.server.MinecraftServer"
-import {$AbstractBiomeModifier, $AbstractBiomeModifier$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.AbstractBiomeModifier"
-
-export class $AddFeaturesModifier extends $AbstractBiomeModifier {
-static readonly "CODEC": $MapCodec<($AddFeaturesModifier)>
-
-constructor(arg0: $HolderSet$$Type<($Biome)>, arg1: $HolderSet$$Type<($PlacedFeature)>, arg2: $GenerationStep$Decoration$$Type)
-
-public "features"(): $HolderSet<($PlacedFeature)>
-public "step"(): $GenerationStep$Decoration
-public "codec"(): $MapCodec<($Modifier)>
-public "biomes"(): $HolderSet<($Biome)>
-public static "sortByPriority"(arg0: $List$$Type<($Holder$Reference$$Type<($PriorityBasedModifier$$Type)>)>): $List<($Holder$Reference<($PriorityBasedModifier)>)>
-public static "applyModifiers"(arg0: $MinecraftServer$$Type): void
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AddFeaturesModifier$$Type = ($AddFeaturesModifier);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AddFeaturesModifier_ = $AddFeaturesModifier$$Type;
 }}
 declare module "dev.worldgen.lithostitched.worldgen.feature.config.StructureTemplateConfig" {
 import {$StructureProcessorList, $StructureProcessorList$$Type} from "net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList"
@@ -1035,13 +1054,13 @@ static readonly "CODEC": $Codec<($StructureTemplateConfig)>
 constructor(template: $ResourceLocation$$Type, processors: $Holder$$Type<($StructureProcessorList)>, rotation: $Optional$$Type<($Rotation$$Type)>, liquidSettings: $LiquidSettings$$Type, startJigsawName: $Optional$$Type<($ResourceLocation$$Type)>)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "rotation"(): $Optional<($Rotation)>
 public "processors"(): $Holder<($StructureProcessorList)>
 public "template"(): $ResourceLocation
-public "startJigsawName"(): $Optional<($ResourceLocation)>
 public "liquidSettings"(): $LiquidSettings
+public "startJigsawName"(): $Optional<($ResourceLocation)>
 public "getFeatures"(): $Stream<($ConfiguredFeature<(any), (any)>)>
 get "features"(): $Stream<($ConfiguredFeature<(any), (any)>)>
 }
@@ -1049,7 +1068,7 @@ get "features"(): $Stream<($ConfiguredFeature<(any), (any)>)>
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $StructureTemplateConfig$$Type = ({"rotation"?: ($Rotation$$Type)?, "liquidSettings"?: $LiquidSettings$$Type, "template"?: $ResourceLocation$$Type, "startJigsawName"?: ($ResourceLocation$$Type)?, "processors"?: $Holder$$Type<($StructureProcessorList)>}) | ([rotation?: ($Rotation$$Type)?, liquidSettings?: $LiquidSettings$$Type, template?: $ResourceLocation$$Type, startJigsawName?: ($ResourceLocation$$Type)?, processors?: $Holder$$Type<($StructureProcessorList)>]);
+export type $StructureTemplateConfig$$Type = ({"processors"?: $Holder$$Type<($StructureProcessorList)>, "rotation"?: ($Rotation$$Type)?, "liquidSettings"?: $LiquidSettings$$Type, "template"?: $ResourceLocation$$Type, "startJigsawName"?: ($ResourceLocation$$Type)?}) | ([processors?: $Holder$$Type<($StructureProcessorList)>, rotation?: ($Rotation$$Type)?, liquidSettings?: $LiquidSettings$$Type, template?: $ResourceLocation$$Type, startJigsawName?: ($ResourceLocation$$Type)?]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1073,7 +1092,7 @@ constructor(size: integer, targets: $List$$Type<($OreConfig$Target$$Type)>)
 
 public "size"(): integer
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "targets"(): $List<($OreConfig$Target)>
 public "getFeatures"(): $Stream<($ConfiguredFeature<(any), (any)>)>
@@ -1092,32 +1111,24 @@ declare global {
 export type $OreConfig_ = $OreConfig$$Type;
 }}
 declare module "dev.worldgen.lithostitched.worldgen.modifier.internal.CompileRawTemplatesModifier" {
-import {$List, $List$$Type} from "java.util.List"
-import {$Holder$Reference, $Holder$Reference$$Type} from "net.minecraft.core.Holder$Reference"
 import {$Modifier, $Modifier$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.Modifier"
-import {$PriorityBasedModifier, $PriorityBasedModifier$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.PriorityBasedModifier"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
-import {$MinecraftServer, $MinecraftServer$$Type} from "net.minecraft.server.MinecraftServer"
 import {$Record, $Record$$Type} from "java.lang.Record"
 import {$RegistryAccess, $RegistryAccess$$Type} from "net.minecraft.core.RegistryAccess"
-import {$Modifier$ModifierPhase, $Modifier$ModifierPhase$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.Modifier$ModifierPhase"
 
 export class $CompileRawTemplatesModifier extends $Record implements $Modifier {
 static readonly "CODEC": $MapCodec<($CompileRawTemplatesModifier)>
 
 constructor()
 
+public "priority"(): integer
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "getPhase"(): $Modifier$ModifierPhase
+public "codec"(): $MapCodec<($Modifier)>
 public "applyModifier"(arg0: $RegistryAccess$$Type): void
 public "applyModifier"(): void
-public "codec"(): $MapCodec<($Modifier)>
 public "internal$modifiesFabricFeatures"(): boolean
-public static "sortByPriority"(arg0: $List$$Type<($Holder$Reference$$Type<($PriorityBasedModifier$$Type)>)>): $List<($Holder$Reference<($PriorityBasedModifier)>)>
-public static "applyModifiers"(arg0: $MinecraftServer$$Type): void
-get "phase"(): $Modifier$ModifierPhase
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1141,8 +1152,8 @@ import {$ReplaceSphereConfiguration, $ReplaceSphereConfiguration$$Type} from "ne
 import {$BlockStateConfiguration, $BlockStateConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration"
 import {$BlockPileConfiguration, $BlockPileConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration"
 import {$NoneFeatureConfiguration, $NoneFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration"
-import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$EndGatewayConfiguration, $EndGatewayConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration"
+import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$DungeonConfig, $DungeonConfig$$Type} from "dev.worldgen.lithostitched.worldgen.feature.config.DungeonConfig"
 import {$LakeFeature$Configuration, $LakeFeature$Configuration$$Type} from "net.minecraft.world.level.levelgen.feature.LakeFeature$Configuration"
 import {$RootSystemConfiguration, $RootSystemConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration"
@@ -1266,8 +1277,8 @@ import {$ReplaceSphereConfiguration, $ReplaceSphereConfiguration$$Type} from "ne
 import {$BlockStateConfiguration, $BlockStateConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration"
 import {$BlockPileConfiguration, $BlockPileConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration"
 import {$NoneFeatureConfiguration, $NoneFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration"
-import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$EndGatewayConfiguration, $EndGatewayConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration"
+import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$LakeFeature$Configuration, $LakeFeature$Configuration$$Type} from "net.minecraft.world.level.levelgen.feature.LakeFeature$Configuration"
 import {$LargeDripstoneConfig, $LargeDripstoneConfig$$Type} from "dev.worldgen.lithostitched.worldgen.feature.config.LargeDripstoneConfig"
 import {$RootSystemConfiguration, $RootSystemConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration"
@@ -1413,6 +1424,44 @@ export type $StructureProcessorListAccessor$$Type = ((arg0: $List<($StructurePro
 declare global {
 export type $StructureProcessorListAccessor_ = $StructureProcessorListAccessor$$Type;
 }}
+declare module "dev.worldgen.lithostitched.worldgen.bandlands.Bandlands" {
+import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
+import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$List, $List$$Type} from "java.util.List"
+import {$Band, $Band$$Type} from "dev.worldgen.lithostitched.worldgen.bandlands.band.Band"
+import {$SurfaceSystem, $SurfaceSystem$$Type} from "net.minecraft.world.level.levelgen.SurfaceSystem"
+import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
+
+export class $Bandlands {
+static readonly "CODEC": $Codec<($Bandlands)>
+
+constructor(arg0: $BlockState$$Type, arg1: $List$$Type<($Band$$Type)>)
+
+public "base"(): $BlockState
+public "bands"(): $List<($Band)>
+public "fillBands"(arg0: $RandomSource$$Type): void
+public "getBand"(arg0: $SurfaceSystem$$Type, arg1: integer, arg2: integer, arg3: integer): $BlockState
+/**
+ * This field is a type stub generated by ProbeJS and shall not be used in any sense.
+ */
+ "probejsInternal$$Literal": Special.LithostitchedBandlands
+/**
+ * This field is a type stub generated by ProbeJS and shall not be used in any sense.
+ */
+ "probejsInternal$$Tag": Special.LithostitchedBandlandsTag
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Bandlands$$Type = (Special.LithostitchedBandlands);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Bandlands_ = $Bandlands$$Type;
+}}
 declare module "dev.worldgen.lithostitched.mixin.common.ChunkGeneratorAccessor" {
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -1488,42 +1537,35 @@ export type $HolderReferenceAccessor_<T> = $HolderReferenceAccessor$$Type<(T)>;
 declare module "dev.worldgen.lithostitched.worldgen.modifier.AddTemplatePoolElementsModifier" {
 import {$Pair, $Pair$$Type} from "com.mojang.datafixers.util.Pair"
 import {$List, $List$$Type} from "java.util.List"
-import {$Modifier, $Modifier$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.Modifier"
-import {$StructurePoolElement, $StructurePoolElement$$Type} from "net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement"
 import {$StructureTemplatePool, $StructureTemplatePool$$Type} from "net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool"
 import {$HolderSet, $HolderSet$$Type} from "net.minecraft.core.HolderSet"
-import {$Holder$Reference, $Holder$Reference$$Type} from "net.minecraft.core.Holder$Reference"
-import {$PriorityBasedModifier, $PriorityBasedModifier$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.PriorityBasedModifier"
+import {$Modifier, $Modifier$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.Modifier"
+import {$StructurePoolElement, $StructurePoolElement$$Type} from "net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
-import {$MinecraftServer, $MinecraftServer$$Type} from "net.minecraft.server.MinecraftServer"
 import {$Record, $Record$$Type} from "java.lang.Record"
 import {$RegistryAccess, $RegistryAccess$$Type} from "net.minecraft.core.RegistryAccess"
-import {$Modifier$ModifierPhase, $Modifier$ModifierPhase$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.Modifier$ModifierPhase"
 
 export class $AddTemplatePoolElementsModifier extends $Record implements $Modifier {
 static readonly "CODEC": $MapCodec<($AddTemplatePoolElementsModifier)>
 
-constructor(templatePools: $HolderSet$$Type<($StructureTemplatePool)>, elements: $List$$Type<($Pair$$Type<($StructurePoolElement$$Type), (integer)>)>)
+constructor(priority: integer, templatePools: $HolderSet$$Type<($StructureTemplatePool)>, elements: $List$$Type<($Pair$$Type<($StructurePoolElement$$Type), (integer)>)>)
 
+public "priority"(): integer
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "elements"(): $List<($Pair<($StructurePoolElement), (integer)>)>
-public "getPhase"(): $Modifier$ModifierPhase
-public "applyModifier"(): void
 public "codec"(): $MapCodec<($Modifier)>
+public "applyModifier"(): void
 public "templatePools"(): $HolderSet<($StructureTemplatePool)>
-public "internal$modifiesFabricFeatures"(): boolean
 public "applyModifier"(arg0: $RegistryAccess$$Type): void
-public static "sortByPriority"(arg0: $List$$Type<($Holder$Reference$$Type<($PriorityBasedModifier$$Type)>)>): $List<($Holder$Reference<($PriorityBasedModifier)>)>
-public static "applyModifiers"(arg0: $MinecraftServer$$Type): void
-get "phase"(): $Modifier$ModifierPhase
+public "internal$modifiesFabricFeatures"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $AddTemplatePoolElementsModifier$$Type = ({"elements"?: $List$$Type<($Pair$$Type<($StructurePoolElement$$Type), (integer)>)>, "templatePools"?: $HolderSet$$Type<($StructureTemplatePool)>}) | ([elements?: $List$$Type<($Pair$$Type<($StructurePoolElement$$Type), (integer)>)>, templatePools?: $HolderSet$$Type<($StructureTemplatePool)>]);
+export type $AddTemplatePoolElementsModifier$$Type = ({"elements"?: $List$$Type<($Pair$$Type<($StructurePoolElement$$Type), (integer)>)>, "priority"?: integer, "templatePools"?: $HolderSet$$Type<($StructureTemplatePool)>}) | ([elements?: $List$$Type<($Pair$$Type<($StructurePoolElement$$Type), (integer)>)>, priority?: integer, templatePools?: $HolderSet$$Type<($StructureTemplatePool)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1533,8 +1575,8 @@ export type $AddTemplatePoolElementsModifier_ = $AddTemplatePoolElementsModifier
 }}
 declare module "dev.worldgen.lithostitched.worldgen.feature.config.CompositeConfig$Type" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -1548,17 +1590,17 @@ static readonly "CANCEL_ON_SUCCESS": $CompositeConfig$Type
 
 
 public static "values"(): ($CompositeConfig$Type)[]
-public static "valueOf"(arg0: string): $CompositeConfig$Type
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $CompositeConfig$Type
 public "shouldContinue"(arg0: boolean): boolean
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1573,50 +1615,157 @@ declare global {
 export type $CompositeConfig$Type_ = $CompositeConfig$Type$$Type;
 }}
 declare module "dev.worldgen.lithostitched.worldgen.modifier.SetPoolAliasesModifier" {
-import {$List, $List$$Type} from "java.util.List"
-import {$Modifier, $Modifier$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.Modifier"
 import {$Structure, $Structure$$Type} from "net.minecraft.world.level.levelgen.structure.Structure"
+import {$List, $List$$Type} from "java.util.List"
 import {$HolderSet, $HolderSet$$Type} from "net.minecraft.core.HolderSet"
-import {$Holder$Reference, $Holder$Reference$$Type} from "net.minecraft.core.Holder$Reference"
+import {$Modifier, $Modifier$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.Modifier"
 import {$PoolAliasBinding, $PoolAliasBinding$$Type} from "net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasBinding"
-import {$PriorityBasedModifier, $PriorityBasedModifier$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.PriorityBasedModifier"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
-import {$MinecraftServer, $MinecraftServer$$Type} from "net.minecraft.server.MinecraftServer"
 import {$Record, $Record$$Type} from "java.lang.Record"
 import {$RegistryAccess, $RegistryAccess$$Type} from "net.minecraft.core.RegistryAccess"
-import {$Modifier$ModifierPhase, $Modifier$ModifierPhase$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.Modifier$ModifierPhase"
 
 export class $SetPoolAliasesModifier extends $Record implements $Modifier {
 static readonly "CODEC": $MapCodec<($SetPoolAliasesModifier)>
 
-constructor(structures: $HolderSet$$Type<($Structure)>, poolAliases: $List$$Type<($PoolAliasBinding$$Type)>, append: boolean)
+constructor(priority: integer, structures: $HolderSet$$Type<($Structure)>, poolAliases: $List$$Type<($PoolAliasBinding$$Type)>, append: boolean)
 
+public "priority"(): integer
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "append"(): boolean
 public "hashCode"(): integer
-public "structures"(): $HolderSet<($Structure)>
-public "getPhase"(): $Modifier$ModifierPhase
-public "applyModifier"(): void
 public "codec"(): $MapCodec<($Modifier)>
+public "structures"(): $HolderSet<($Structure)>
+public "applyModifier"(): void
 public "poolAliases"(): $List<($PoolAliasBinding)>
-public "internal$modifiesFabricFeatures"(): boolean
 public "applyModifier"(arg0: $RegistryAccess$$Type): void
-public static "sortByPriority"(arg0: $List$$Type<($Holder$Reference$$Type<($PriorityBasedModifier$$Type)>)>): $List<($Holder$Reference<($PriorityBasedModifier)>)>
-public static "applyModifiers"(arg0: $MinecraftServer$$Type): void
-get "phase"(): $Modifier$ModifierPhase
+public "internal$modifiesFabricFeatures"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $SetPoolAliasesModifier$$Type = ({"structures"?: $HolderSet$$Type<($Structure)>, "append"?: boolean, "poolAliases"?: $List$$Type<($PoolAliasBinding$$Type)>}) | ([structures?: $HolderSet$$Type<($Structure)>, append?: boolean, poolAliases?: $List$$Type<($PoolAliasBinding$$Type)>]);
+export type $SetPoolAliasesModifier$$Type = ({"poolAliases"?: $List$$Type<($PoolAliasBinding$$Type)>, "append"?: boolean, "priority"?: integer, "structures"?: $HolderSet$$Type<($Structure)>}) | ([poolAliases?: $List$$Type<($PoolAliasBinding$$Type)>, append?: boolean, priority?: integer, structures?: $HolderSet$$Type<($Structure)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
  */
 declare global {
 export type $SetPoolAliasesModifier_ = $SetPoolAliasesModifier$$Type;
+}}
+declare module "dev.worldgen.lithostitched.duck.StructurePoolAccess" {
+import {$LithostitchedTemplates, $LithostitchedTemplates$$Type} from "dev.worldgen.lithostitched.worldgen.structure.LithostitchedTemplates"
+
+export interface $StructurePoolAccess {
+
+ "compileRawTemplates"(): void
+ "getLithostitchedTemplates"(): $LithostitchedTemplates
+get "lithostitchedTemplates"(): $LithostitchedTemplates
+}
+
+export namespace $StructurePoolAccess {
+const probejs$$marker: never
+}
+export class $StructurePoolAccess$$Static implements $StructurePoolAccess {
+
+
+ "compileRawTemplates"(): void
+ "getLithostitchedTemplates"(): $LithostitchedTemplates
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $StructurePoolAccess$$Type = ($StructurePoolAccess);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $StructurePoolAccess_ = $StructurePoolAccess$$Type;
+}}
+declare module "dev.worldgen.lithostitched.duck.SurfaceSystemAccessor" {
+import {$NormalNoise, $NormalNoise$$Type} from "net.minecraft.world.level.levelgen.synth.NormalNoise"
+import {$PositionalRandomFactory, $PositionalRandomFactory$$Type} from "net.minecraft.world.level.levelgen.PositionalRandomFactory"
+
+export interface $SurfaceSystemAccessor {
+
+ "getNoiseRandom"(): $PositionalRandomFactory
+ "getBandOffsetNoise"(): $NormalNoise
+get "noiseRandom"(): $PositionalRandomFactory
+get "bandOffsetNoise"(): $NormalNoise
+}
+
+export namespace $SurfaceSystemAccessor {
+const probejs$$marker: never
+}
+export class $SurfaceSystemAccessor$$Static implements $SurfaceSystemAccessor {
+
+
+ "getNoiseRandom"(): $PositionalRandomFactory
+ "getBandOffsetNoise"(): $NormalNoise
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SurfaceSystemAccessor$$Type = ($SurfaceSystemAccessor);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SurfaceSystemAccessor_ = $SurfaceSystemAccessor$$Type;
+}}
+declare module "dev.worldgen.lithostitched.duck.ContextAccessor" {
+import {$ChunkAccess, $ChunkAccess$$Type} from "net.minecraft.world.level.chunk.ChunkAccess"
+import {$Biome, $Biome$$Type} from "net.minecraft.world.level.biome.Biome"
+import {$SurfaceSystem, $SurfaceSystem$$Type} from "net.minecraft.world.level.levelgen.SurfaceSystem"
+import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+
+export interface $ContextAccessor {
+
+ "getY"(): integer
+ "getX"(): integer
+ "getZ"(): integer
+ "getChunk"(): $ChunkAccess
+ "getSystem"(): $SurfaceSystem
+ "getBiome"(): $Holder<($Biome)>
+ "getStoneDepthBelow"(): integer
+get "y"(): integer
+get "x"(): integer
+get "z"(): integer
+get "chunk"(): $ChunkAccess
+get "system"(): $SurfaceSystem
+get "biome"(): $Holder<($Biome)>
+get "stoneDepthBelow"(): integer
+}
+
+export namespace $ContextAccessor {
+const probejs$$marker: never
+}
+export class $ContextAccessor$$Static implements $ContextAccessor {
+
+
+ "getY"(): integer
+ "getX"(): integer
+ "getZ"(): integer
+ "getChunk"(): $ChunkAccess
+ "getSystem"(): $SurfaceSystem
+ "getBiome"(): $Holder<($Biome)>
+ "getStoneDepthBelow"(): integer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ContextAccessor$$Type = ($ContextAccessor);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ContextAccessor_ = $ContextAccessor$$Type;
 }}
 declare module "dev.worldgen.tectonic.worldgen.ConfigNoise" {
 import {$DensityFunction$Visitor, $DensityFunction$Visitor$$Type} from "net.minecraft.world.level.levelgen.DensityFunction$Visitor"
@@ -1632,35 +1781,35 @@ export class $ConfigNoise extends $Record implements $DensityFunction {
 static "CODEC_HOLDER": $KeyDispatchDataCodec<($ConfigNoise)>
 static "DATA_CODEC": $MapCodec<($ConfigNoise)>
 
-constructor(arg0: string, arg1: $DensityFunction$NoiseHolder$$Type, arg2: $DensityFunction$$Type, arg3: $DensityFunction$$Type)
 constructor(noise: $DensityFunction$NoiseHolder$$Type, shiftX: $DensityFunction$$Type, shiftZ: $DensityFunction$$Type, scale: double)
+constructor(arg0: StringJS, arg1: $DensityFunction$NoiseHolder$$Type, arg2: $DensityFunction$$Type, arg3: $DensityFunction$$Type)
 
+public "maxValue"(): double
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "scale"(): double
 public "compute"(arg0: $DensityFunction$FunctionContext$$Type): double
-public "maxValue"(): double
-public "fillArray"(arg0: (double)[], arg1: $DensityFunction$ContextProvider$$Type): void
-public "minValue"(): double
 public "shiftX"(): $DensityFunction
 public "shiftZ"(): $DensityFunction
+public "mapAll"(arg0: $DensityFunction$Visitor$$Type): $DensityFunction
 public "codec"(): $KeyDispatchDataCodec<($DensityFunction)>
 public "noise"(): $DensityFunction$NoiseHolder
-public "mapAll"(arg0: $DensityFunction$Visitor$$Type): $DensityFunction
+public "fillArray"(arg0: (double)[], arg1: $DensityFunction$ContextProvider$$Type): void
+public "minValue"(): double
+public "square"(): $DensityFunction
 public "abs"(): $DensityFunction
 public "clamp"(arg0: double, arg1: double): $DensityFunction
-public "square"(): $DensityFunction
+public "cube"(): $DensityFunction
 public "halfNegative"(): $DensityFunction
 public "squeeze"(): $DensityFunction
-public "cube"(): $DensityFunction
 public "quarterNegative"(): $DensityFunction
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ConfigNoise$$Type = ({"shiftX"?: $DensityFunction$$Type, "shiftZ"?: $DensityFunction$$Type, "noise"?: $DensityFunction$NoiseHolder$$Type, "scale"?: double}) | ([shiftX?: $DensityFunction$$Type, shiftZ?: $DensityFunction$$Type, noise?: $DensityFunction$NoiseHolder$$Type, scale?: double]);
+export type $ConfigNoise$$Type = ({"noise"?: $DensityFunction$NoiseHolder$$Type, "scale"?: double, "shiftX"?: $DensityFunction$$Type, "shiftZ"?: $DensityFunction$$Type}) | ([noise?: $DensityFunction$NoiseHolder$$Type, scale?: double, shiftX?: $DensityFunction$$Type, shiftZ?: $DensityFunction$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1668,67 +1817,18 @@ export type $ConfigNoise$$Type = ({"shiftX"?: $DensityFunction$$Type, "shiftZ"?:
 declare global {
 export type $ConfigNoise_ = $ConfigNoise$$Type;
 }}
-declare module "dev.worldgen.lithostitched.worldgen.modifier.Modifier$ModifierPhase" {
-import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
-import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
-import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
-import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
-import {$Function, $Function$$Type} from "java.util.function.Function"
-import {$StringRepresentable, $StringRepresentable$$Type} from "net.minecraft.util.StringRepresentable"
-
-export class $Modifier$ModifierPhase extends $Enum<($Modifier$ModifierPhase)> implements $StringRepresentable {
-static readonly "ADD": $Modifier$ModifierPhase
-static readonly "BEFORE_ALL": $Modifier$ModifierPhase
-static readonly "MODIFY": $Modifier$ModifierPhase
-static readonly "AFTER_ALL": $Modifier$ModifierPhase
-static readonly "REMOVE": $Modifier$ModifierPhase
-static readonly "NONE": $Modifier$ModifierPhase
-static readonly "REPLACE": $Modifier$ModifierPhase
-
-
-public static "values"(): ($Modifier$ModifierPhase)[]
-public static "valueOf"(arg0: string): $Modifier$ModifierPhase
-public "getSerializedName"(): string
-public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
-public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $Modifier$ModifierPhase$$Type = (("none") | ("before_all") | ("replace") | ("add") | ("remove") | ("modify") | ("after_all"));
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $Modifier$ModifierPhase_ = $Modifier$ModifierPhase$$Type;
-}}
 declare module "dev.worldgen.lithostitched.worldgen.modifier.Modifier" {
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
-import {$List, $List$$Type} from "java.util.List"
-import {$Holder$Reference, $Holder$Reference$$Type} from "net.minecraft.core.Holder$Reference"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
-import {$PriorityBasedModifier, $PriorityBasedModifier$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.PriorityBasedModifier"
-import {$MinecraftServer, $MinecraftServer$$Type} from "net.minecraft.server.MinecraftServer"
 import {$RegistryAccess, $RegistryAccess$$Type} from "net.minecraft.core.RegistryAccess"
-import {$Modifier$ModifierPhase, $Modifier$ModifierPhase$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.Modifier$ModifierPhase"
 
 export interface $Modifier {
 
- "internal$modifiesFabricFeatures"(): boolean
- "getPhase"(): $Modifier$ModifierPhase
+ "priority"(): integer
+ "codec"(): $MapCodec<($Modifier)>
  "applyModifier"(): void
  "applyModifier"(arg0: $RegistryAccess$$Type): void
- "codec"(): $MapCodec<($Modifier)>
-get "phase"(): $Modifier$ModifierPhase
+ "internal$modifiesFabricFeatures"(): boolean
 /**
  * This field is a type stub generated by ProbeJS and shall not be used in any sense.
  */
@@ -1741,21 +1841,21 @@ get "phase"(): $Modifier$ModifierPhase
 
 export namespace $Modifier {
 const CODEC: $Codec<($Modifier)>
-function sortByPriority(arg0: $List$$Type<($Holder$Reference$$Type<($PriorityBasedModifier$$Type)>)>): $List<($Holder$Reference<($PriorityBasedModifier)>)>
-function applyModifiers(arg0: $MinecraftServer$$Type): void
+const PRIORITY_REMOVE: $MapCodec<(integer)>
+const PRIORITY_DEFAULT: $MapCodec<(integer)>
 const probejs$$marker: never
 }
 export class $Modifier$$Static implements $Modifier {
 static readonly "CODEC": $Codec<($Modifier)>
+static readonly "PRIORITY_REMOVE": $MapCodec<(integer)>
+static readonly "PRIORITY_DEFAULT": $MapCodec<(integer)>
 
 
- "internal$modifiesFabricFeatures"(): boolean
- "getPhase"(): $Modifier$ModifierPhase
+ "priority"(): integer
+ "codec"(): $MapCodec<($Modifier)>
  "applyModifier"(): void
  "applyModifier"(arg0: $RegistryAccess$$Type): void
- "codec"(): $MapCodec<($Modifier)>
-static "sortByPriority"(arg0: $List$$Type<($Holder$Reference$$Type<($PriorityBasedModifier$$Type)>)>): $List<($Holder$Reference<($PriorityBasedModifier)>)>
-static "applyModifiers"(arg0: $MinecraftServer$$Type): void
+ "internal$modifiesFabricFeatures"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1769,6 +1869,83 @@ export type $Modifier$$Type = (Special.LithostitchedWorldgenModifier);
 declare global {
 export type $Modifier_ = $Modifier$$Type;
 }}
+declare module "dev.worldgen.lithostitched.util.weighted.Weighted" {
+import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Function, $Function$$Type} from "java.util.function.Function"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$Record, $Record$$Type} from "java.lang.Record"
+
+export class $Weighted<T> extends $Record {
+
+constructor(value: T, weight: integer)
+
+public "value"(): T
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+public "map"<U>(arg0: $Function$$Type<(T), (U)>): $Weighted<(U)>
+public static "codec"<E>(arg0: $MapCodec$$Type<(E)>): $Codec<($Weighted<(E)>)>
+public static "codec"<E>(arg0: $Codec$$Type<(E)>): $Codec<($Weighted<(E)>)>
+public "weight"(): integer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Weighted$$Type<T> = ({"value"?: any, "weight"?: integer}) | ([value?: any, weight?: integer]);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Weighted_<T> = $Weighted$$Type<(T)>;
+}}
+declare module "dev.worldgen.lithostitched.util.weighted.WeightedList" {
+import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
+import {$ToIntFunction, $ToIntFunction$$Type} from "java.util.function.ToIntFunction"
+import {$Optional, $Optional$$Type} from "java.util.Optional"
+import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Function, $Function$$Type} from "java.util.function.Function"
+import {$List, $List$$Type} from "java.util.List"
+import {$Weighted, $Weighted$$Type} from "dev.worldgen.lithostitched.util.weighted.Weighted"
+import {$WeightedList$Builder, $WeightedList$Builder$$Type} from "dev.worldgen.lithostitched.util.weighted.WeightedList$Builder"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+
+export class $WeightedList<E> {
+
+
+public "getRandom"(arg0: $RandomSource$$Type): $Optional<(E)>
+public "unwrap"(): $List<($Weighted<(E)>)>
+public "equals"(arg0: any): boolean
+public "hashCode"(): integer
+public "isEmpty"(): boolean
+public "map"<T>(arg0: $Function$$Type<(E), (T)>): $WeightedList<(T)>
+public static "of"<E>(): $WeightedList<(E)>
+public static "of"<E>(...arg0: ($Weighted$$Type<(E)>)[]): $WeightedList<(E)>
+public static "of"<E>(arg0: E): $WeightedList<(E)>
+public static "of"<E>(arg0: $List$$Type<($Weighted$$Type<(E)>)>): $WeightedList<(E)>
+public static "builder"<E>(): $WeightedList$Builder<(E)>
+public "contains"(arg0: E): boolean
+public static "codec"<E>(arg0: $Codec$$Type<(E)>): $Codec<($WeightedList<(E)>)>
+public static "codec"<E>(arg0: $MapCodec$$Type<(E)>): $Codec<($WeightedList<(E)>)>
+public static "nonEmptyCodec"<E>(arg0: $MapCodec$$Type<(E)>): $Codec<($WeightedList<(E)>)>
+public static "nonEmptyCodec"<E>(arg0: $Codec$$Type<(E)>): $Codec<($WeightedList<(E)>)>
+public static "getTotalWeight"<T>(arg0: $List$$Type<(T)>, arg1: $ToIntFunction$$Type<(T)>): integer
+public "getRandomOrThrow"(arg0: $RandomSource$$Type): E
+get "empty"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $WeightedList$$Type<E> = ($WeightedList<(E)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $WeightedList_<E> = $WeightedList$$Type<(E)>;
+}}
 declare module "dev.worldgen.lithostitched.worldgen.feature.config.VinesConfig" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
@@ -1777,7 +1954,7 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$HolderSet, $HolderSet$$Type} from "net.minecraft.core.HolderSet"
 import {$IntProvider, $IntProvider$$Type} from "net.minecraft.util.valueproviders.IntProvider"
 import {$Stream, $Stream$$Type} from "java.util.stream.Stream"
-import {$SimpleWeightedRandomList, $SimpleWeightedRandomList$$Type} from "net.minecraft.util.random.SimpleWeightedRandomList"
+import {$WeightedList, $WeightedList$$Type} from "dev.worldgen.lithostitched.util.weighted.WeightedList"
 import {$FeatureConfiguration, $FeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Record, $Record$$Type} from "java.lang.Record"
@@ -1785,13 +1962,13 @@ import {$Record, $Record$$Type} from "java.lang.Record"
 export class $VinesConfig extends $Record implements $FeatureConfiguration {
 static readonly "CODEC": $Codec<($VinesConfig)>
 
-constructor(blocks: $SimpleWeightedRandomList$$Type<($Block$$Type)>, canPlaceOn: $Optional$$Type<($HolderSet$$Type<($Block$$Type)>)>, maxLength: $IntProvider$$Type)
+constructor(blocks: $WeightedList$$Type<($Block$$Type)>, canPlaceOn: $Optional$$Type<($HolderSet$$Type<($Block$$Type)>)>, maxLength: $IntProvider$$Type)
 
-public "blocks"(): $SimpleWeightedRandomList<($Block)>
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "maxLength"(): $IntProvider
+public "blocks"(): $WeightedList<($Block)>
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
 public "canPlaceOn"(arg0: $BlockState$$Type): boolean
 public "canPlaceOn"(): $Optional<($HolderSet<($Block)>)>
 public "getFeatures"(): $Stream<($ConfiguredFeature<(any), (any)>)>
@@ -1801,44 +1978,13 @@ get "features"(): $Stream<($ConfiguredFeature<(any), (any)>)>
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $VinesConfig$$Type = ({"blocks"?: $SimpleWeightedRandomList$$Type<($Block$$Type)>, "maxLength"?: $IntProvider$$Type, "canPlaceOn"?: ($HolderSet$$Type<($Block$$Type)>)?}) | ([blocks?: $SimpleWeightedRandomList$$Type<($Block$$Type)>, maxLength?: $IntProvider$$Type, canPlaceOn?: ($HolderSet$$Type<($Block$$Type)>)?]);
+export type $VinesConfig$$Type = ({"canPlaceOn"?: ($HolderSet$$Type<($Block$$Type)>)?, "blocks"?: $WeightedList$$Type<($Block$$Type)>, "maxLength"?: $IntProvider$$Type}) | ([canPlaceOn?: ($HolderSet$$Type<($Block$$Type)>)?, blocks?: $WeightedList$$Type<($Block$$Type)>, maxLength?: $IntProvider$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
  */
 declare global {
 export type $VinesConfig_ = $VinesConfig$$Type;
-}}
-declare module "dev.worldgen.lithostitched.access.StructurePoolAccess" {
-import {$LithostitchedTemplates, $LithostitchedTemplates$$Type} from "dev.worldgen.lithostitched.worldgen.structure.LithostitchedTemplates"
-
-export interface $StructurePoolAccess {
-
- "getLithostitchedTemplates"(): $LithostitchedTemplates
- "compileRawTemplates"(): void
-get "lithostitchedTemplates"(): $LithostitchedTemplates
-}
-
-export namespace $StructurePoolAccess {
-const probejs$$marker: never
-}
-export class $StructurePoolAccess$$Static implements $StructurePoolAccess {
-
-
- "getLithostitchedTemplates"(): $LithostitchedTemplates
- "compileRawTemplates"(): void
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $StructurePoolAccess$$Type = ($StructurePoolAccess);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $StructurePoolAccess_ = $StructurePoolAccess$$Type;
 }}
 declare module "dev.worldgen.lithostitched.mixin.common.StructureSetAccessor" {
 import {$StructureSet$StructureSelectionEntry, $StructureSet$StructureSelectionEntry$$Type} from "net.minecraft.world.level.levelgen.structure.StructureSet$StructureSelectionEntry"
@@ -1876,41 +2022,34 @@ declare module "dev.worldgen.lithostitched.worldgen.modifier.AddStructureSetEntr
 import {$StructureSet, $StructureSet$$Type} from "net.minecraft.world.level.levelgen.structure.StructureSet"
 import {$StructureSet$StructureSelectionEntry, $StructureSet$StructureSelectionEntry$$Type} from "net.minecraft.world.level.levelgen.structure.StructureSet$StructureSelectionEntry"
 import {$List, $List$$Type} from "java.util.List"
-import {$Modifier, $Modifier$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.Modifier"
 import {$HolderSet, $HolderSet$$Type} from "net.minecraft.core.HolderSet"
-import {$Holder$Reference, $Holder$Reference$$Type} from "net.minecraft.core.Holder$Reference"
-import {$PriorityBasedModifier, $PriorityBasedModifier$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.PriorityBasedModifier"
+import {$Modifier, $Modifier$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.Modifier"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
-import {$MinecraftServer, $MinecraftServer$$Type} from "net.minecraft.server.MinecraftServer"
 import {$Record, $Record$$Type} from "java.lang.Record"
 import {$RegistryAccess, $RegistryAccess$$Type} from "net.minecraft.core.RegistryAccess"
-import {$Modifier$ModifierPhase, $Modifier$ModifierPhase$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.Modifier$ModifierPhase"
 
 export class $AddStructureSetEntriesModifier extends $Record implements $Modifier {
 static readonly "CODEC": $MapCodec<($AddStructureSetEntriesModifier)>
 
-constructor(structureSets: $HolderSet$$Type<($StructureSet)>, entries: $List$$Type<($StructureSet$StructureSelectionEntry$$Type)>)
+constructor(priority: integer, structureSets: $HolderSet$$Type<($StructureSet)>, entries: $List$$Type<($StructureSet$StructureSelectionEntry$$Type)>)
 
+public "priority"(): integer
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "entries"(): $List<($StructureSet$StructureSelectionEntry)>
-public "getPhase"(): $Modifier$ModifierPhase
-public "structureSets"(): $HolderSet<($StructureSet)>
-public "applyModifier"(): void
-public "applyModifier"(arg0: $StructureSet$$Type): void
 public "codec"(): $MapCodec<($Modifier)>
-public "internal$modifiesFabricFeatures"(): boolean
+public "applyModifier"(arg0: $StructureSet$$Type): void
+public "applyModifier"(): void
+public "structureSets"(): $HolderSet<($StructureSet)>
 public "applyModifier"(arg0: $RegistryAccess$$Type): void
-public static "sortByPriority"(arg0: $List$$Type<($Holder$Reference$$Type<($PriorityBasedModifier$$Type)>)>): $List<($Holder$Reference<($PriorityBasedModifier)>)>
-public static "applyModifiers"(arg0: $MinecraftServer$$Type): void
-get "phase"(): $Modifier$ModifierPhase
+public "internal$modifiesFabricFeatures"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $AddStructureSetEntriesModifier$$Type = ({"entries"?: $List$$Type<($StructureSet$StructureSelectionEntry$$Type)>, "structureSets"?: $HolderSet$$Type<($StructureSet)>}) | ([entries?: $List$$Type<($StructureSet$StructureSelectionEntry$$Type)>, structureSets?: $HolderSet$$Type<($StructureSet)>]);
+export type $AddStructureSetEntriesModifier$$Type = ({"entries"?: $List$$Type<($StructureSet$StructureSelectionEntry$$Type)>, "structureSets"?: $HolderSet$$Type<($StructureSet)>, "priority"?: integer}) | ([entries?: $List$$Type<($StructureSet$StructureSelectionEntry$$Type)>, structureSets?: $HolderSet$$Type<($StructureSet)>, priority?: integer]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1920,15 +2059,17 @@ export type $AddStructureSetEntriesModifier_ = $AddStructureSetEntriesModifier$$
 }}
 declare module "dev.worldgen.lithostitched.worldgen.structure.AlternateJigsawStructure" {
 import {$Structure$GenerationContext, $Structure$GenerationContext$$Type} from "net.minecraft.world.level.levelgen.structure.Structure$GenerationContext"
-import {$Structure$GenerationStub, $Structure$GenerationStub$$Type} from "net.minecraft.world.level.levelgen.structure.Structure$GenerationStub"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
-import {$Structure, $Structure$$Type} from "net.minecraft.world.level.levelgen.structure.Structure"
-import {$AlternateJigsawConfig, $AlternateJigsawConfig$$Type} from "dev.worldgen.lithostitched.worldgen.structure.AlternateJigsawConfig"
 import {$List, $List$$Type} from "java.util.List"
 import {$StructureType, $StructureType$$Type} from "net.minecraft.world.level.levelgen.structure.StructureType"
+import {$Structure$GenerationStub, $Structure$GenerationStub$$Type} from "net.minecraft.world.level.levelgen.structure.Structure$GenerationStub"
+import {$Structure, $Structure$$Type} from "net.minecraft.world.level.levelgen.structure.Structure"
+import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$AlternateJigsawConfig, $AlternateJigsawConfig$$Type} from "dev.worldgen.lithostitched.worldgen.structure.AlternateJigsawConfig"
+import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$PoolAliasBinding, $PoolAliasBinding$$Type} from "net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasBinding"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$PoolAliasLookup, $PoolAliasLookup$$Type} from "net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasLookup"
 
 export class $AlternateJigsawStructure extends $Structure {
 static readonly "CODEC": $MapCodec<($AlternateJigsawStructure)>
@@ -1936,10 +2077,11 @@ static readonly "DIRECT_CODEC": $Codec<($Structure)>
 static readonly "TYPE": $StructureType<($AlternateJigsawStructure)>
 
 
-public "type"(): $StructureType<(any)>
+public static "generate"(arg0: $Structure$GenerationContext$$Type, arg1: $AlternateJigsawConfig$$Type, arg2: boolean, arg3: integer, arg4: $BlockPos$$Type, arg5: $PoolAliasLookup$$Type): $Optional<($Structure$GenerationStub)>
 public "config"(): $AlternateJigsawConfig
-public "findGenerationPoint"(arg0: $Structure$GenerationContext$$Type): $Optional<($Structure$GenerationStub)>
+public "type"(): $StructureType<(any)>
 public "setPoolAliases"(arg0: $List$$Type<($PoolAliasBinding$$Type)>, arg1: boolean): void
+public "findGenerationPoint"(arg0: $Structure$GenerationContext$$Type): $Optional<($Structure$GenerationStub)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1965,8 +2107,8 @@ static readonly "CODEC": $MapCodec<($DelegatingConfig)>
 constructor(arg0: $Holder$$Type<($Structure)>, arg1: $PlacementCondition$$Type)
 
 public "delegate"(): $Holder<($Structure)>
-public "setSpawnCondition"(arg0: $PlacementCondition$$Type, arg1: boolean): void
 public "spawnCondition"(): $PlacementCondition
+public "setSpawnCondition"(arg0: $PlacementCondition$$Type, arg1: boolean): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2013,81 +2155,56 @@ export type $JigsawStructureAccessor$$Type = ($JigsawStructureAccessor);
 declare global {
 export type $JigsawStructureAccessor_ = $JigsawStructureAccessor$$Type;
 }}
-declare module "dev.worldgen.lithostitched.worldgen.modifier.PriorityBasedModifier" {
-import {$List, $List$$Type} from "java.util.List"
-import {$Holder$Reference, $Holder$Reference$$Type} from "net.minecraft.core.Holder$Reference"
-import {$Modifier, $Modifier$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.Modifier"
+declare module "dev.worldgen.lithostitched.worldgen.bandlands.band.Band" {
+import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
+import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
-import {$MinecraftServer, $MinecraftServer$$Type} from "net.minecraft.server.MinecraftServer"
-import {$RegistryAccess, $RegistryAccess$$Type} from "net.minecraft.core.RegistryAccess"
-import {$Modifier$ModifierPhase, $Modifier$ModifierPhase$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.Modifier$ModifierPhase"
+import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
-export interface $PriorityBasedModifier extends $Modifier {
+export interface $Band {
 
- "getPriority"(): integer
- "internal$modifiesFabricFeatures"(): boolean
- "getPhase"(): $Modifier$ModifierPhase
- "applyModifier"(): void
- "applyModifier"(arg0: $RegistryAccess$$Type): void
- "codec"(): $MapCodec<($Modifier)>
-get "priority"(): integer
-get "phase"(): $Modifier$ModifierPhase
+ "fill"(arg0: ($BlockState$$Type)[], arg1: $RandomSource$$Type): void
+ "codec"(): $MapCodec<($Band)>
 }
 
-export namespace $PriorityBasedModifier {
-const PRIORITY_CODEC: $MapCodec<(integer)>
-function sortByPriority(arg0: $List$$Type<($Holder$Reference$$Type<($PriorityBasedModifier$$Type)>)>): $List<($Holder$Reference<($PriorityBasedModifier)>)>
-function applyModifiers(arg0: $MinecraftServer$$Type): void
+export namespace $Band {
+const CODEC: $Codec<($Band)>
 const probejs$$marker: never
 }
-export class $PriorityBasedModifier$$Static implements $PriorityBasedModifier {
-static readonly "PRIORITY_CODEC": $MapCodec<(integer)>
+export class $Band$$Static implements $Band {
+static readonly "CODEC": $Codec<($Band)>
 
 
- "getPriority"(): integer
- "internal$modifiesFabricFeatures"(): boolean
- "getPhase"(): $Modifier$ModifierPhase
- "applyModifier"(): void
- "applyModifier"(arg0: $RegistryAccess$$Type): void
- "codec"(): $MapCodec<($Modifier)>
-static "sortByPriority"(arg0: $List$$Type<($Holder$Reference$$Type<($PriorityBasedModifier$$Type)>)>): $List<($Holder$Reference<($PriorityBasedModifier)>)>
-static "applyModifiers"(arg0: $MinecraftServer$$Type): void
+ "fill"(arg0: ($BlockState$$Type)[], arg1: $RandomSource$$Type): void
+ "codec"(): $MapCodec<($Band)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $PriorityBasedModifier$$Type = ($PriorityBasedModifier);
+export type $Band$$Type = ($Band);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
  */
 declare global {
-export type $PriorityBasedModifier_ = $PriorityBasedModifier$$Type;
+export type $Band_ = $Band$$Type;
 }}
 declare module "dev.worldgen.lithostitched.worldgen.modifier.AbstractBiomeModifier" {
-import {$List, $List$$Type} from "java.util.List"
-import {$Holder$Reference, $Holder$Reference$$Type} from "net.minecraft.core.Holder$Reference"
 import {$Modifier, $Modifier$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.Modifier"
 import {$BiomeModifier, $BiomeModifier$$Type} from "net.neoforged.neoforge.common.world.BiomeModifier"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
-import {$PriorityBasedModifier, $PriorityBasedModifier$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.PriorityBasedModifier"
-import {$MinecraftServer, $MinecraftServer$$Type} from "net.minecraft.server.MinecraftServer"
 import {$RegistryAccess, $RegistryAccess$$Type} from "net.minecraft.core.RegistryAccess"
-import {$Modifier$ModifierPhase, $Modifier$ModifierPhase$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.Modifier$ModifierPhase"
 
 export class $AbstractBiomeModifier implements $Modifier {
 
 
-public "getPhase"(): $Modifier$ModifierPhase
+public "priority"(): integer
 public "applyModifier"(): void
 public "neoforgeBiomeModifier"(): $BiomeModifier
-public "internal$modifiesFabricFeatures"(): boolean
-public "applyModifier"(arg0: $RegistryAccess$$Type): void
 public "codec"(): $MapCodec<($Modifier)>
-public static "sortByPriority"(arg0: $List$$Type<($Holder$Reference$$Type<($PriorityBasedModifier$$Type)>)>): $List<($Holder$Reference<($PriorityBasedModifier)>)>
-public static "applyModifiers"(arg0: $MinecraftServer$$Type): void
-get "phase"(): $Modifier$ModifierPhase
+public "applyModifier"(arg0: $RegistryAccess$$Type): void
+public "internal$modifiesFabricFeatures"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2125,11 +2242,11 @@ static readonly "TYPE": $StructureType<($DelegatingStructure)>
 
 constructor(arg0: $DelegatingConfig$$Type)
 
-public "type"(): $StructureType<(any)>
 public "config"(): $DelegatingConfig
 public "delegate"(): $Structure
-public "findValidGenerationPoint"(arg0: $Structure$GenerationContext$$Type): $Optional<($Structure$GenerationStub)>
+public "type"(): $StructureType<(any)>
 public "afterPlace"(arg0: $WorldGenLevel$$Type, arg1: $StructureManager$$Type, arg2: $ChunkGenerator$$Type, arg3: $RandomSource$$Type, arg4: $BoundingBox$$Type, arg5: $ChunkPos$$Type, arg6: $PiecesContainer$$Type): void
+public "findValidGenerationPoint"(arg0: $Structure$GenerationContext$$Type): $Optional<($Structure$GenerationStub)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2145,14 +2262,10 @@ export type $DelegatingStructure_ = $DelegatingStructure$$Type;
 }}
 declare module "dev.worldgen.lithostitched.worldgen.modifier.ReplaceClimateModifier" {
 import {$Biome$ClimateSettings, $Biome$ClimateSettings$$Type} from "net.minecraft.world.level.biome.Biome$ClimateSettings"
-import {$List, $List$$Type} from "java.util.List"
 import {$HolderSet, $HolderSet$$Type} from "net.minecraft.core.HolderSet"
-import {$Holder$Reference, $Holder$Reference$$Type} from "net.minecraft.core.Holder$Reference"
 import {$Modifier, $Modifier$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.Modifier"
 import {$Biome, $Biome$$Type} from "net.minecraft.world.level.biome.Biome"
-import {$PriorityBasedModifier, $PriorityBasedModifier$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.PriorityBasedModifier"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
-import {$MinecraftServer, $MinecraftServer$$Type} from "net.minecraft.server.MinecraftServer"
 import {$AbstractBiomeModifier, $AbstractBiomeModifier$$Type} from "dev.worldgen.lithostitched.worldgen.modifier.AbstractBiomeModifier"
 
 export class $ReplaceClimateModifier extends $AbstractBiomeModifier {
@@ -2163,8 +2276,6 @@ constructor(arg0: $HolderSet$$Type<($Biome)>, arg1: $Biome$ClimateSettings$$Type
 public "codec"(): $MapCodec<($Modifier)>
 public "biomes"(): $HolderSet<($Biome)>
 public "climateSettings"(): $Biome$ClimateSettings
-public static "sortByPriority"(arg0: $List$$Type<($Holder$Reference$$Type<($PriorityBasedModifier$$Type)>)>): $List<($Holder$Reference<($PriorityBasedModifier)>)>
-public static "applyModifiers"(arg0: $MinecraftServer$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2179,37 +2290,38 @@ declare global {
 export type $ReplaceClimateModifier_ = $ReplaceClimateModifier$$Type;
 }}
 declare module "dev.worldgen.lithostitched.worldgen.feature.config.DungeonConfig" {
+import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$ConfiguredFeature, $ConfiguredFeature$$Type} from "net.minecraft.world.level.levelgen.feature.ConfiguredFeature"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$IntProvider, $IntProvider$$Type} from "net.minecraft.util.valueproviders.IntProvider"
 import {$LootTable, $LootTable$$Type} from "net.minecraft.world.level.storage.loot.LootTable"
-import {$SimpleWeightedRandomList, $SimpleWeightedRandomList$$Type} from "net.minecraft.util.random.SimpleWeightedRandomList"
+import {$WeightedList, $WeightedList$$Type} from "dev.worldgen.lithostitched.util.weighted.WeightedList"
 import {$FeatureConfiguration, $FeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
-import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
-import {$BlockStateProvider, $BlockStateProvider$$Type} from "net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider"
+import {$HolderSet, $HolderSet$$Type} from "net.minecraft.core.HolderSet"
 import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
+import {$BlockStateProvider, $BlockStateProvider$$Type} from "net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider"
 import {$Stream, $Stream$$Type} from "java.util.stream.Stream"
-import {$EntityType, $EntityType$$Type} from "net.minecraft.world.entity.EntityType"
 import {$Record, $Record$$Type} from "java.lang.Record"
+import {$EntityType, $EntityType$$Type} from "net.minecraft.world.entity.EntityType"
 
 export class $DungeonConfig extends $Record implements $FeatureConfiguration {
 static readonly "CODEC": $Codec<($DungeonConfig)>
 
-constructor(minOpenings: integer, maxOpenings: integer, radius: $IntProvider$$Type, maxChests: integer, spawnerMobs: $SimpleWeightedRandomList$$Type<($EntityType$$Type<(any)>)>, floorProvider: $BlockStateProvider$$Type, wallProvider: $BlockStateProvider$$Type, dungeonInvalidBlocks: $TagKey$$Type<($Block)>, lootTable: $ResourceKey$$Type<($LootTable)>)
+constructor(minOpenings: integer, maxOpenings: integer, radius: $IntProvider$$Type, maxChests: integer, spawnerMobs: $WeightedList$$Type<($EntityType$$Type<(any)>)>, floorProvider: $BlockStateProvider$$Type, wallProvider: $BlockStateProvider$$Type, dungeonInvalidBlocks: $Optional$$Type<($HolderSet$$Type<($Block$$Type)>)>, lootTable: $ResourceKey$$Type<($LootTable)>)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "dungeonInvalidBlocks"(): $TagKey<($Block)>
-public "lootTable"(): $ResourceKey<($LootTable)>
 public "radius"(): $IntProvider
+public "lootTable"(): $ResourceKey<($LootTable)>
 public "minOpenings"(): integer
 public "maxOpenings"(): integer
 public "floorProvider"(): $BlockStateProvider
 public "wallProvider"(): $BlockStateProvider
 public "maxChests"(): integer
-public "spawnerMobs"(): $SimpleWeightedRandomList<($EntityType<(any)>)>
+public "spawnerMobs"(): $WeightedList<($EntityType<(any)>)>
+public "dungeonInvalidBlocks"(): $Optional<($HolderSet<($Block)>)>
 public "getFeatures"(): $Stream<($ConfiguredFeature<(any), (any)>)>
 get "features"(): $Stream<($ConfiguredFeature<(any), (any)>)>
 }
@@ -2217,7 +2329,7 @@ get "features"(): $Stream<($ConfiguredFeature<(any), (any)>)>
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $DungeonConfig$$Type = ({"radius"?: $IntProvider$$Type, "maxChests"?: integer, "lootTable"?: $ResourceKey$$Type<($LootTable)>, "wallProvider"?: $BlockStateProvider$$Type, "dungeonInvalidBlocks"?: $TagKey$$Type<($Block)>, "minOpenings"?: integer, "floorProvider"?: $BlockStateProvider$$Type, "maxOpenings"?: integer, "spawnerMobs"?: $SimpleWeightedRandomList$$Type<($EntityType$$Type<(never)>)>}) | ([radius?: $IntProvider$$Type, maxChests?: integer, lootTable?: $ResourceKey$$Type<($LootTable)>, wallProvider?: $BlockStateProvider$$Type, dungeonInvalidBlocks?: $TagKey$$Type<($Block)>, minOpenings?: integer, floorProvider?: $BlockStateProvider$$Type, maxOpenings?: integer, spawnerMobs?: $SimpleWeightedRandomList$$Type<($EntityType$$Type<(never)>)>]);
+export type $DungeonConfig$$Type = ({"dungeonInvalidBlocks"?: ($HolderSet$$Type<($Block$$Type)>)?, "minOpenings"?: integer, "floorProvider"?: $BlockStateProvider$$Type, "maxOpenings"?: integer, "spawnerMobs"?: $WeightedList$$Type<($EntityType$$Type<(never)>)>, "radius"?: $IntProvider$$Type, "maxChests"?: integer, "lootTable"?: $ResourceKey$$Type<($LootTable)>, "wallProvider"?: $BlockStateProvider$$Type}) | ([dungeonInvalidBlocks?: ($HolderSet$$Type<($Block$$Type)>)?, minOpenings?: integer, floorProvider?: $BlockStateProvider$$Type, maxOpenings?: integer, spawnerMobs?: $WeightedList$$Type<($EntityType$$Type<(never)>)>, radius?: $IntProvider$$Type, maxChests?: integer, lootTable?: $ResourceKey$$Type<($LootTable)>, wallProvider?: $BlockStateProvider$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -2245,7 +2357,7 @@ constructor(features: $List$$Type<($Pair$$Type<($BlockPredicate$$Type), ($Holder
 
 public "features"(): $List<($Pair<($BlockPredicate), ($Holder<($PlacedFeature)>)>)>
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "getFeatures"(): $Stream<($ConfiguredFeature<(any), (any)>)>
 }
@@ -2266,18 +2378,18 @@ import {$LevelHeightAccessor, $LevelHeightAccessor$$Type} from "net.minecraft.wo
 import {$ChunkGenerator, $ChunkGenerator$$Type} from "net.minecraft.world.level.chunk.ChunkGenerator"
 import {$RandomState, $RandomState$$Type} from "net.minecraft.world.level.levelgen.RandomState"
 import {$Record, $Record$$Type} from "java.lang.Record"
-import {$BiomeSource, $BiomeSource$$Type} from "net.minecraft.world.level.biome.BiomeSource"
 import {$RegistryAccess, $RegistryAccess$$Type} from "net.minecraft.core.RegistryAccess"
+import {$BiomeSource, $BiomeSource$$Type} from "net.minecraft.world.level.biome.BiomeSource"
 
 export class $PlacementCondition$Context extends $Record {
 
 constructor(registries: $RegistryAccess$$Type, generator: $ChunkGenerator$$Type, heightAccessor: $LevelHeightAccessor$$Type, randomState: $RandomState$$Type, biomeSource: $BiomeSource$$Type, seed: long)
 
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "generator"(): $ChunkGenerator
 public "seed"(): long
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
 public "randomState"(): $RandomState
 public "registries"(): $RegistryAccess
 public "heightAccessor"(): $LevelHeightAccessor
@@ -2287,7 +2399,7 @@ public "biomeSource"(): $BiomeSource
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $PlacementCondition$Context$$Type = ({"seed"?: long, "randomState"?: $RandomState$$Type, "biomeSource"?: $BiomeSource$$Type, "registries"?: $RegistryAccess$$Type, "generator"?: $ChunkGenerator$$Type, "heightAccessor"?: $LevelHeightAccessor$$Type}) | ([seed?: long, randomState?: $RandomState$$Type, biomeSource?: $BiomeSource$$Type, registries?: $RegistryAccess$$Type, generator?: $ChunkGenerator$$Type, heightAccessor?: $LevelHeightAccessor$$Type]);
+export type $PlacementCondition$Context$$Type = ({"generator"?: $ChunkGenerator$$Type, "heightAccessor"?: $LevelHeightAccessor$$Type, "seed"?: long, "randomState"?: $RandomState$$Type, "biomeSource"?: $BiomeSource$$Type, "registries"?: $RegistryAccess$$Type}) | ([generator?: $ChunkGenerator$$Type, heightAccessor?: $LevelHeightAccessor$$Type, seed?: long, randomState?: $RandomState$$Type, biomeSource?: $BiomeSource$$Type, registries?: $RegistryAccess$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -2295,14 +2407,42 @@ export type $PlacementCondition$Context$$Type = ({"seed"?: long, "randomState"?:
 declare global {
 export type $PlacementCondition$Context_ = $PlacementCondition$Context$$Type;
 }}
+declare module "dev.worldgen.lithostitched.worldgen.structure.AlternateJigsawConfig$MaxDistance" {
+import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Record, $Record$$Type} from "java.lang.Record"
+
+export class $AlternateJigsawConfig$MaxDistance extends $Record {
+static readonly "CODEC": $Codec<($AlternateJigsawConfig$MaxDistance)>
+
+constructor(arg0: integer)
+constructor(horizontal: integer, vertical: integer)
+
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+public "vertical"(): integer
+public "horizontal"(): integer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AlternateJigsawConfig$MaxDistance$$Type = ({"vertical"?: integer, "horizontal"?: integer}) | ([vertical?: integer, horizontal?: integer]);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AlternateJigsawConfig$MaxDistance_ = $AlternateJigsawConfig$MaxDistance$$Type;
+}}
 declare module "dev.worldgen.lithostitched.worldgen.feature.config.WellConfig" {
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$ConfiguredFeature, $ConfiguredFeature$$Type} from "net.minecraft.world.level.levelgen.feature.ConfiguredFeature"
-import {$BlockStateProvider, $BlockStateProvider$$Type} from "net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider"
 import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
 import {$IntProvider, $IntProvider$$Type} from "net.minecraft.util.valueproviders.IntProvider"
-import {$LootTable, $LootTable$$Type} from "net.minecraft.world.level.storage.loot.LootTable"
+import {$BlockStateProvider, $BlockStateProvider$$Type} from "net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider"
 import {$Stream, $Stream$$Type} from "java.util.stream.Stream"
+import {$LootTable, $LootTable$$Type} from "net.minecraft.world.level.storage.loot.LootTable"
 import {$FeatureConfiguration, $FeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration"
 import {$Record, $Record$$Type} from "java.lang.Record"
 
@@ -2311,10 +2451,10 @@ static readonly "CODEC": $Codec<($WellConfig)>
 
 constructor(groundProvider: $BlockStateProvider$$Type, suspiciousProvider: $BlockStateProvider$$Type, standardProvider: $BlockStateProvider$$Type, slabProvider: $BlockStateProvider$$Type, fluidProvider: $BlockStateProvider$$Type, suspiciousPlacements: $IntProvider$$Type, suspiciousLootTable: $ResourceKey$$Type<($LootTable)>)
 
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "standardProvider"(): $BlockStateProvider
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
 public "groundProvider"(): $BlockStateProvider
 public "fluidProvider"(): $BlockStateProvider
 public "slabProvider"(): $BlockStateProvider
@@ -2328,7 +2468,7 @@ get "features"(): $Stream<($ConfiguredFeature<(any), (any)>)>
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $WellConfig$$Type = ({"standardProvider"?: $BlockStateProvider$$Type, "fluidProvider"?: $BlockStateProvider$$Type, "groundProvider"?: $BlockStateProvider$$Type, "suspiciousLootTable"?: $ResourceKey$$Type<($LootTable)>, "suspiciousPlacements"?: $IntProvider$$Type, "suspiciousProvider"?: $BlockStateProvider$$Type, "slabProvider"?: $BlockStateProvider$$Type}) | ([standardProvider?: $BlockStateProvider$$Type, fluidProvider?: $BlockStateProvider$$Type, groundProvider?: $BlockStateProvider$$Type, suspiciousLootTable?: $ResourceKey$$Type<($LootTable)>, suspiciousPlacements?: $IntProvider$$Type, suspiciousProvider?: $BlockStateProvider$$Type, slabProvider?: $BlockStateProvider$$Type]);
+export type $WellConfig$$Type = ({"slabProvider"?: $BlockStateProvider$$Type, "standardProvider"?: $BlockStateProvider$$Type, "fluidProvider"?: $BlockStateProvider$$Type, "groundProvider"?: $BlockStateProvider$$Type, "suspiciousLootTable"?: $ResourceKey$$Type<($LootTable)>, "suspiciousPlacements"?: $IntProvider$$Type, "suspiciousProvider"?: $BlockStateProvider$$Type}) | ([slabProvider?: $BlockStateProvider$$Type, standardProvider?: $BlockStateProvider$$Type, fluidProvider?: $BlockStateProvider$$Type, groundProvider?: $BlockStateProvider$$Type, suspiciousLootTable?: $ResourceKey$$Type<($LootTable)>, suspiciousPlacements?: $IntProvider$$Type, suspiciousProvider?: $BlockStateProvider$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -2346,8 +2486,8 @@ import {$ReplaceSphereConfiguration, $ReplaceSphereConfiguration$$Type} from "ne
 import {$BlockStateConfiguration, $BlockStateConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration"
 import {$BlockPileConfiguration, $BlockPileConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration"
 import {$NoneFeatureConfiguration, $NoneFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration"
-import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$EndGatewayConfiguration, $EndGatewayConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration"
+import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$LakeFeature$Configuration, $LakeFeature$Configuration$$Type} from "net.minecraft.world.level.levelgen.feature.LakeFeature$Configuration"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RootSystemConfiguration, $RootSystemConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration"
@@ -2472,8 +2612,8 @@ import {$ReplaceSphereConfiguration, $ReplaceSphereConfiguration$$Type} from "ne
 import {$BlockStateConfiguration, $BlockStateConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration"
 import {$BlockPileConfiguration, $BlockPileConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration"
 import {$NoneFeatureConfiguration, $NoneFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration"
-import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$EndGatewayConfiguration, $EndGatewayConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration"
+import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$LakeFeature$Configuration, $LakeFeature$Configuration$$Type} from "net.minecraft.world.level.levelgen.feature.LakeFeature$Configuration"
 import {$RootSystemConfiguration, $RootSystemConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration"
 import {$StructureTemplateConfig, $StructureTemplateConfig$$Type} from "dev.worldgen.lithostitched.worldgen.feature.config.StructureTemplateConfig"
@@ -2601,10 +2741,10 @@ export class $LithostitchedTemplates implements $Iterable<($StructurePoolElement
 
 constructor()
 
+public "shuffle"(arg0: $RandomSource$$Type): $List<($StructurePoolElement)>
 public "add"(arg0: $StructurePoolElement$$Type, arg1: integer): $LithostitchedTemplates
 public "iterator"(): $Iterator<($StructurePoolElement)>
 public "stream"(): $Stream<($StructurePoolElement)>
-public "shuffle"(arg0: $RandomSource$$Type): $List<($StructurePoolElement)>
 public "spliterator"(): $Spliterator<($StructurePoolElement)>
 public "forEach"(arg0: $Consumer$$Type<($StructurePoolElement)>): void
 [Symbol.iterator](): IterableIterator<$StructurePoolElement>;
@@ -2657,8 +2797,8 @@ import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$ConfiguredFeature, $ConfiguredFeature$$Type} from "net.minecraft.world.level.levelgen.feature.ConfiguredFeature"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$HolderSet, $HolderSet$$Type} from "net.minecraft.core.HolderSet"
-import {$BlockStateProvider, $BlockStateProvider$$Type} from "net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider"
 import {$IntProvider, $IntProvider$$Type} from "net.minecraft.util.valueproviders.IntProvider"
+import {$BlockStateProvider, $BlockStateProvider$$Type} from "net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider"
 import {$FloatProvider, $FloatProvider$$Type} from "net.minecraft.util.valueproviders.FloatProvider"
 import {$Stream, $Stream$$Type} from "java.util.stream.Stream"
 import {$FeatureConfiguration, $FeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration"
@@ -2670,19 +2810,19 @@ static readonly "CODEC": $Codec<($LargeDripstoneConfig)>
 constructor(stateProvider: $BlockStateProvider$$Type, replaceableBlocks: $HolderSet$$Type<($Block)>, floorToCeilingSearchRange: integer, columnRadius: $IntProvider$$Type, heightScale: $FloatProvider$$Type, maxColumnRadiusToCaveHeightRatio: float, stalactiteBluntness: $FloatProvider$$Type, stalagmiteBluntness: $FloatProvider$$Type, windSpeed: $FloatProvider$$Type, minRadiusForWind: integer, minBluntnessForWind: float)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "maxColumnRadiusToCaveHeightRatio"(): float
-public "floorToCeilingSearchRange"(): integer
-public "minRadiusForWind"(): integer
-public "minBluntnessForWind"(): float
-public "stalactiteBluntness"(): $FloatProvider
-public "stalagmiteBluntness"(): $FloatProvider
-public "replaceableBlocks"(): $HolderSet<($Block)>
 public "stateProvider"(): $BlockStateProvider
 public "columnRadius"(): $IntProvider
 public "heightScale"(): $FloatProvider
 public "windSpeed"(): $FloatProvider
+public "stalactiteBluntness"(): $FloatProvider
+public "stalagmiteBluntness"(): $FloatProvider
+public "minRadiusForWind"(): integer
+public "minBluntnessForWind"(): float
+public "replaceableBlocks"(): $HolderSet<($Block)>
+public "maxColumnRadiusToCaveHeightRatio"(): float
+public "floorToCeilingSearchRange"(): integer
 public "getFeatures"(): $Stream<($ConfiguredFeature<(any), (any)>)>
 get "features"(): $Stream<($ConfiguredFeature<(any), (any)>)>
 }
@@ -2690,7 +2830,7 @@ get "features"(): $Stream<($ConfiguredFeature<(any), (any)>)>
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $LargeDripstoneConfig$$Type = ({"stalagmiteBluntness"?: $FloatProvider$$Type, "maxColumnRadiusToCaveHeightRatio"?: float, "floorToCeilingSearchRange"?: integer, "stateProvider"?: $BlockStateProvider$$Type, "columnRadius"?: $IntProvider$$Type, "minRadiusForWind"?: integer, "heightScale"?: $FloatProvider$$Type, "windSpeed"?: $FloatProvider$$Type, "minBluntnessForWind"?: float, "replaceableBlocks"?: $HolderSet$$Type<($Block)>, "stalactiteBluntness"?: $FloatProvider$$Type}) | ([stalagmiteBluntness?: $FloatProvider$$Type, maxColumnRadiusToCaveHeightRatio?: float, floorToCeilingSearchRange?: integer, stateProvider?: $BlockStateProvider$$Type, columnRadius?: $IntProvider$$Type, minRadiusForWind?: integer, heightScale?: $FloatProvider$$Type, windSpeed?: $FloatProvider$$Type, minBluntnessForWind?: float, replaceableBlocks?: $HolderSet$$Type<($Block)>, stalactiteBluntness?: $FloatProvider$$Type]);
+export type $LargeDripstoneConfig$$Type = ({"minBluntnessForWind"?: float, "replaceableBlocks"?: $HolderSet$$Type<($Block)>, "stalactiteBluntness"?: $FloatProvider$$Type, "stalagmiteBluntness"?: $FloatProvider$$Type, "maxColumnRadiusToCaveHeightRatio"?: float, "floorToCeilingSearchRange"?: integer, "stateProvider"?: $BlockStateProvider$$Type, "columnRadius"?: $IntProvider$$Type, "minRadiusForWind"?: integer, "heightScale"?: $FloatProvider$$Type, "windSpeed"?: $FloatProvider$$Type}) | ([minBluntnessForWind?: float, replaceableBlocks?: $HolderSet$$Type<($Block)>, stalactiteBluntness?: $FloatProvider$$Type, stalagmiteBluntness?: $FloatProvider$$Type, maxColumnRadiusToCaveHeightRatio?: float, floorToCeilingSearchRange?: integer, stateProvider?: $BlockStateProvider$$Type, columnRadius?: $IntProvider$$Type, minRadiusForWind?: integer, heightScale?: $FloatProvider$$Type, windSpeed?: $FloatProvider$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -2715,7 +2855,7 @@ constructor(features: $HolderSet$$Type<($PlacedFeature)>, placementType: $Compos
 
 public "features"(): $HolderSet<($PlacedFeature)>
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "placementType"(): $CompositeConfig$Type
 public "getFeatures"(): $Stream<($ConfiguredFeature<(any), (any)>)>
@@ -2724,7 +2864,7 @@ public "getFeatures"(): $Stream<($ConfiguredFeature<(any), (any)>)>
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $CompositeConfig$$Type = ({"placementType"?: $CompositeConfig$Type$$Type, "features"?: $HolderSet$$Type<($PlacedFeature)>}) | ([placementType?: $CompositeConfig$Type$$Type, features?: $HolderSet$$Type<($PlacedFeature)>]);
+export type $CompositeConfig$$Type = ({"features"?: $HolderSet$$Type<($PlacedFeature)>, "placementType"?: $CompositeConfig$Type$$Type}) | ([features?: $HolderSet$$Type<($PlacedFeature)>, placementType?: $CompositeConfig$Type$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.

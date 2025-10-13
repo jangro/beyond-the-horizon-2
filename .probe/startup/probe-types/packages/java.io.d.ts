@@ -9,28 +9,28 @@ import {$DataInput, $DataInput$$Type} from "java.io.DataInput"
  */
 export interface $ObjectInput extends $DataInput, $AutoCloseable {
 
+ "skip"(arg0: long): long
+ "available"(): integer
  "readObject"(): any
  "read"(arg0: (byte)[], arg1: integer, arg2: integer): integer
  "read"(arg0: (byte)[]): integer
  "read"(): integer
  "close"(): void
- "skip"(arg0: long): long
- "available"(): integer
- "readLine"(): string
- "readInt"(): integer
- "readUTF"(): string
- "readChar"(): character
- "readFloat"(): float
+ "readUTF"(): StringJS
  "readFully"(arg0: (byte)[]): void
  "readFully"(arg0: (byte)[], arg1: integer, arg2: integer): void
+ "readUnsignedByte"(): integer
+ "readUnsignedShort"(): integer
  "skipBytes"(arg0: integer): integer
  "readBoolean"(): boolean
  "readByte"(): byte
- "readUnsignedByte"(): integer
  "readShort"(): short
- "readUnsignedShort"(): integer
  "readLong"(): long
  "readDouble"(): double
+ "readChar"(): character
+ "readFloat"(): float
+ "readLine"(): StringJS
+ "readInt"(): integer
 }
 
 export namespace $ObjectInput {
@@ -39,28 +39,28 @@ const probejs$$marker: never
 export class $ObjectInput$$Static implements $ObjectInput {
 
 
+ "skip"(arg0: long): long
+ "available"(): integer
  "readObject"(): any
  "read"(arg0: (byte)[], arg1: integer, arg2: integer): integer
  "read"(arg0: (byte)[]): integer
  "read"(): integer
  "close"(): void
- "skip"(arg0: long): long
- "available"(): integer
- "readLine"(): string
- "readInt"(): integer
- "readUTF"(): string
- "readChar"(): character
- "readFloat"(): float
+ "readUTF"(): StringJS
  "readFully"(arg0: (byte)[]): void
  "readFully"(arg0: (byte)[], arg1: integer, arg2: integer): void
+ "readUnsignedByte"(): integer
+ "readUnsignedShort"(): integer
  "skipBytes"(arg0: integer): integer
  "readBoolean"(): boolean
  "readByte"(): byte
- "readUnsignedByte"(): integer
  "readShort"(): short
- "readUnsignedShort"(): integer
  "readLong"(): long
  "readDouble"(): double
+ "readChar"(): character
+ "readFloat"(): float
+ "readLine"(): StringJS
+ "readInt"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -122,16 +122,16 @@ export class $BufferedReader extends $Reader {
 constructor(arg0: $Reader$$Type, arg1: integer)
 constructor(arg0: $Reader$$Type)
 
-public "ready"(): boolean
-public "reset"(): void
-public "lines"(): $Stream<(string)>
-public "read"(arg0: (character)[], arg1: integer, arg2: integer): integer
-public "read"(): integer
-public "readLine"(): string
-public "close"(): void
 public "mark"(arg0: integer): void
 public "skip"(arg0: long): long
 public "markSupported"(): boolean
+public "ready"(): boolean
+public "reset"(): void
+public "lines"(): $Stream<(StringJS)>
+public "read"(arg0: (character)[], arg1: integer, arg2: integer): integer
+public "read"(): integer
+public "readLine"(): StringJS
+public "close"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -158,17 +158,17 @@ import {$Flushable, $Flushable$$Type} from "java.io.Flushable"
 export class $Writer implements $Appendable, $Closeable, $Flushable {
 
 
-public "append"(arg0: character): $Writer
-public "append"(arg0: charseq, arg1: integer, arg2: integer): $Writer
+public static "nullWriter"(): $Writer
 public "append"(arg0: charseq): $Writer
+public "append"(arg0: charseq, arg1: integer, arg2: integer): $Writer
+public "append"(arg0: character): $Appendable
 public "flush"(): void
+public "write"(arg0: StringJS, arg1: integer, arg2: integer): void
+public "write"(arg0: (character)[]): void
 public "write"(arg0: integer): void
 public "write"(arg0: (character)[], arg1: integer, arg2: integer): void
-public "write"(arg0: string): void
-public "write"(arg0: string, arg1: integer, arg2: integer): void
-public "write"(arg0: (character)[]): void
+public "write"(arg0: StringJS): void
 public "close"(): void
-public static "nullWriter"(): $Writer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -246,21 +246,21 @@ export {} // Mark the file as a module, do not remove unless there are other imp
  */
 export interface $DataInput {
 
- "readLine"(): string
- "readInt"(): integer
- "readUTF"(): string
- "readChar"(): character
- "readFloat"(): float
+ "readUTF"(): StringJS
  "readFully"(arg0: (byte)[]): void
  "readFully"(arg0: (byte)[], arg1: integer, arg2: integer): void
+ "readUnsignedByte"(): integer
+ "readUnsignedShort"(): integer
  "skipBytes"(arg0: integer): integer
  "readBoolean"(): boolean
  "readByte"(): byte
- "readUnsignedByte"(): integer
  "readShort"(): short
- "readUnsignedShort"(): integer
  "readLong"(): long
  "readDouble"(): double
+ "readChar"(): character
+ "readFloat"(): float
+ "readLine"(): StringJS
+ "readInt"(): integer
 }
 
 export namespace $DataInput {
@@ -269,21 +269,21 @@ const probejs$$marker: never
 export class $DataInput$$Static implements $DataInput {
 
 
- "readLine"(): string
- "readInt"(): integer
- "readUTF"(): string
- "readChar"(): character
- "readFloat"(): float
+ "readUTF"(): StringJS
  "readFully"(arg0: (byte)[]): void
  "readFully"(arg0: (byte)[], arg1: integer, arg2: integer): void
+ "readUnsignedByte"(): integer
+ "readUnsignedShort"(): integer
  "skipBytes"(arg0: integer): integer
  "readBoolean"(): boolean
  "readByte"(): byte
- "readUnsignedByte"(): integer
  "readShort"(): short
- "readUnsignedShort"(): integer
  "readLong"(): long
  "readDouble"(): double
+ "readChar"(): character
+ "readFloat"(): float
+ "readLine"(): StringJS
+ "readInt"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -307,9 +307,9 @@ import {$File, $File$$Type} from "java.io.File"
  */
 export interface $FilenameFilter {
 
- "accept"(arg0: $File$$Type, arg1: string): boolean
+ "accept"(arg0: $File$$Type, arg1: StringJS): boolean
 
-(arg0: $File, arg1: string): boolean
+(arg0: $File, arg1: StringJS): boolean
 }
 
 export namespace $FilenameFilter {
@@ -318,13 +318,13 @@ const probejs$$marker: never
 export class $FilenameFilter$$Static implements $FilenameFilter {
 
 
- "accept"(arg0: $File$$Type, arg1: string): boolean
+ "accept"(arg0: $File$$Type, arg1: StringJS): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $FilenameFilter$$Type = ((arg0: $File, arg1: string) => boolean);
+export type $FilenameFilter$$Type = ((arg0: $File, arg1: StringJS) => boolean);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -347,80 +347,74 @@ import {$Path, $Path$$Type} from "java.nio.file.Path"
  * Loading the class using require() will not throw an error, but the class will be undefined.
  */
 export class $File implements $Serializable, $Comparable<($File)> {
-static readonly "pathSeparator": string
+static readonly "pathSeparator": StringJS
 static readonly "pathSeparatorChar": character
 static readonly "separatorChar": character
-static readonly "separator": string
+static readonly "separator": StringJS
 
-constructor(arg0: string)
-constructor(arg0: string, arg1: string)
 constructor(arg0: $URI$$Type)
-constructor(arg0: $File$$Type, arg1: string)
+constructor(arg0: StringJS, arg1: StringJS)
+constructor(arg0: $File$$Type, arg1: StringJS)
+constructor(arg0: StringJS)
 
-public "getName"(): string
-public "equals"(arg0: any): boolean
-public "length"(): long
-public "toString"(): string
-public "hashCode"(): integer
-public "isHidden"(): boolean
-public "compareTo"(arg0: $File$$Type): integer
-public "compareTo"(arg0: any): integer
-public "list"(): (string)[]
-public "list"(arg0: $FilenameFilter$$Type): (string)[]
-public "isAbsolute"(): boolean
-public "getParent"(): string
-public "delete"(): boolean
-public "setReadOnly"(): boolean
-public "canRead"(): boolean
-public "getPath"(): string
+public "getPath"(): StringJS
 public "toURI"(): $URI
 /**
  * 
  * @deprecated
  */
 public "toURL"(): $URL
-public "getAbsolutePath"(): string
+public "getAbsolutePath"(): StringJS
 public "exists"(): boolean
 public "createNewFile"(): boolean
 public "renameTo"(arg0: $File$$Type): boolean
 public "isDirectory"(): boolean
-public "getCanonicalPath"(): string
-public "getAbsoluteFile"(): $File
 public "mkdir"(): boolean
 public "getCanonicalFile"(): $File
 public "getParentFile"(): $File
 public "mkdirs"(): boolean
 public "setWritable"(arg0: boolean): boolean
 public "setWritable"(arg0: boolean, arg1: boolean): boolean
-public "setReadable"(arg0: boolean, arg1: boolean): boolean
 public "setReadable"(arg0: boolean): boolean
+public "setReadable"(arg0: boolean, arg1: boolean): boolean
 public "setExecutable"(arg0: boolean, arg1: boolean): boolean
 public "setExecutable"(arg0: boolean): boolean
 public static "listRoots"(): ($File)[]
-public static "createTempFile"(arg0: string, arg1: string): $File
-public static "createTempFile"(arg0: string, arg1: string, arg2: $File$$Type): $File
+public static "createTempFile"(arg0: StringJS, arg1: StringJS, arg2: $File$$Type): $File
+public static "createTempFile"(arg0: StringJS, arg1: StringJS): $File
 public "canWrite"(): boolean
 public "isFile"(): boolean
 public "lastModified"(): long
 public "deleteOnExit"(): void
+public "listFiles"(): ($File)[]
 public "listFiles"(arg0: $FileFilter$$Type): ($File)[]
 public "listFiles"(arg0: $FilenameFilter$$Type): ($File)[]
-public "listFiles"(): ($File)[]
 public "setLastModified"(arg0: long): boolean
 public "canExecute"(): boolean
 public "getTotalSpace"(): long
 public "getFreeSpace"(): long
 public "getUsableSpace"(): long
 public "toPath"(): $Path
-get "name"(): string
-get "hidden"(): boolean
-get "absolute"(): boolean
-get "parent"(): string
-get "path"(): string
-get "absolutePath"(): string
+public "getCanonicalPath"(): StringJS
+public "getAbsoluteFile"(): $File
+public "getName"(): StringJS
+public "equals"(arg0: any): boolean
+public "length"(): long
+public "toString"(): StringJS
+public "hashCode"(): integer
+public "isHidden"(): boolean
+public "compareTo"(arg0: $File$$Type): integer
+public "compareTo"(arg0: any): integer
+public "list"(arg0: $FilenameFilter$$Type): (StringJS)[]
+public "list"(): (StringJS)[]
+public "isAbsolute"(): boolean
+public "getParent"(): StringJS
+public "delete"(): boolean
+public "setReadOnly"(): boolean
+public "canRead"(): boolean
+get "path"(): StringJS
+get "absolutePath"(): StringJS
 get "directory"(): boolean
-get "canonicalPath"(): string
-get "absoluteFile"(): $File
 get "canonicalFile"(): $File
 get "parentFile"(): $File
 set "writable"(value: boolean)
@@ -430,6 +424,12 @@ get "file"(): boolean
 get "totalSpace"(): long
 get "freeSpace"(): long
 get "usableSpace"(): long
+get "canonicalPath"(): StringJS
+get "absoluteFile"(): $File
+get "name"(): StringJS
+get "hidden"(): boolean
+get "absolute"(): boolean
+get "parent"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -472,32 +472,6 @@ export type $FilterOutputStream$$Type = ($FilterOutputStream);
  */
 declare global {
 export type $FilterOutputStream_ = $FilterOutputStream$$Type;
-}}
-declare module "java.io.FileNotFoundException" {
-import {$IOException, $IOException$$Type} from "java.io.IOException"
-
-/**
- * This class is not allowed By KubeJS!
- * You should not load the class, or KubeJS will throw an error.
- * Loading the class using require() will not throw an error, but the class will be undefined.
- */
-export class $FileNotFoundException extends $IOException {
-
-constructor()
-constructor(arg0: string)
-
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $FileNotFoundException$$Type = ($FileNotFoundException);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $FileNotFoundException_ = $FileNotFoundException$$Type;
 }}
 declare module "java.io.FileFilter" {
 import {$File, $File$$Type} from "java.io.File"
@@ -548,21 +522,21 @@ export class $DataOutputStream extends $FilterOutputStream implements $DataOutpu
 
 constructor(arg0: $OutputStream$$Type)
 
-public "size"(): integer
-public "flush"(): void
-public "write"(arg0: (byte)[], arg1: integer, arg2: integer): void
-public "write"(arg0: integer): void
-public "writeInt"(arg0: integer): void
-public "writeUTF"(arg0: string): void
-public "writeBytes"(arg0: string): void
-public "writeChar"(arg0: integer): void
-public "writeFloat"(arg0: float): void
+public "writeUTF"(arg0: StringJS): void
+public "writeBytes"(arg0: StringJS): void
+public "writeShort"(arg0: integer): void
 public "writeBoolean"(arg0: boolean): void
 public "writeByte"(arg0: integer): void
-public "writeShort"(arg0: integer): void
 public "writeLong"(arg0: long): void
 public "writeDouble"(arg0: double): void
-public "writeChars"(arg0: string): void
+public "writeChars"(arg0: StringJS): void
+public "writeChar"(arg0: integer): void
+public "writeFloat"(arg0: float): void
+public "size"(): integer
+public "flush"(): void
+public "write"(arg0: integer): void
+public "write"(arg0: (byte)[], arg1: integer, arg2: integer): void
+public "writeInt"(arg0: integer): void
 public "write"(arg0: (byte)[]): void
 }
 /**
@@ -578,8 +552,8 @@ declare global {
 export type $DataOutputStream_ = $DataOutputStream$$Type;
 }}
 declare module "java.io.Reader" {
-import {$CharBuffer, $CharBuffer$$Type} from "java.nio.CharBuffer"
 import {$Writer, $Writer$$Type} from "java.io.Writer"
+import {$CharBuffer, $CharBuffer$$Type} from "java.nio.CharBuffer"
 import {$Readable, $Readable$$Type} from "java.lang.Readable"
 import {$Closeable, $Closeable$$Type} from "java.io.Closeable"
 
@@ -591,18 +565,18 @@ import {$Closeable, $Closeable$$Type} from "java.io.Closeable"
 export class $Reader implements $Readable, $Closeable {
 
 
-public static "nullReader"(): $Reader
-public "ready"(): boolean
-public "reset"(): void
-public "read"(arg0: (character)[], arg1: integer, arg2: integer): integer
-public "read"(arg0: $CharBuffer$$Type): integer
-public "read"(): integer
-public "read"(arg0: (character)[]): integer
-public "close"(): void
 public "mark"(arg0: integer): void
 public "transferTo"(arg0: $Writer$$Type): long
 public "skip"(arg0: long): long
 public "markSupported"(): boolean
+public static "nullReader"(): $Reader
+public "ready"(): boolean
+public "reset"(): void
+public "read"(arg0: (character)[]): integer
+public "read"(arg0: (character)[], arg1: integer, arg2: integer): integer
+public "read"(): integer
+public "read"(arg0: $CharBuffer$$Type): integer
+public "close"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -618,9 +592,8 @@ export type $Reader_ = $Reader$$Type;
 }}
 declare module "java.io.PrintWriter" {
 import {$Writer, $Writer$$Type} from "java.io.Writer"
-import {$Charset, $Charset$$Type} from "java.nio.charset.Charset"
 import {$File, $File$$Type} from "java.io.File"
-import {$Appendable, $Appendable$$Type} from "java.lang.Appendable"
+import {$Charset, $Charset$$Type} from "java.nio.charset.Charset"
 import {$OutputStream, $OutputStream$$Type} from "java.io.OutputStream"
 import {$Locale, $Locale$$Type} from "java.util.Locale"
 
@@ -631,52 +604,52 @@ import {$Locale, $Locale$$Type} from "java.util.Locale"
  */
 export class $PrintWriter extends $Writer {
 
-constructor(arg0: string, arg1: string)
-constructor(arg0: string)
-constructor(arg0: string, arg1: $Charset$$Type)
+constructor(arg0: $OutputStream$$Type, arg1: boolean)
+constructor(arg0: $OutputStream$$Type)
 constructor(arg0: $File$$Type, arg1: $Charset$$Type)
-constructor(arg0: $File$$Type, arg1: string)
-constructor(arg0: $File$$Type)
 constructor(arg0: $Writer$$Type)
 constructor(arg0: $Writer$$Type, arg1: boolean)
-constructor(arg0: $OutputStream$$Type)
-constructor(arg0: $OutputStream$$Type, arg1: boolean)
+constructor(arg0: StringJS, arg1: StringJS)
+constructor(arg0: $File$$Type, arg1: StringJS)
+constructor(arg0: $File$$Type)
+constructor(arg0: StringJS, arg1: $Charset$$Type)
 constructor(arg0: $OutputStream$$Type, arg1: boolean, arg2: $Charset$$Type)
+constructor(arg0: StringJS)
 
-public "println"(arg0: (character)[]): void
-public "println"(arg0: double): void
-public "println"(arg0: float): void
-public "println"(arg0: string): void
-public "println"(arg0: any): void
-public "println"(): void
-public "println"(arg0: character): void
+public "checkError"(): boolean
 public "println"(arg0: integer): void
-public "println"(arg0: long): void
+public "println"(arg0: character): void
 public "println"(arg0: boolean): void
+public "println"(): void
+public "println"(arg0: any): void
+public "println"(arg0: StringJS): void
+public "println"(arg0: (character)[]): void
+public "println"(arg0: float): void
+public "println"(arg0: long): void
+public "println"(arg0: double): void
+public "append"(arg0: charseq): $Writer
 public "append"(arg0: charseq, arg1: integer, arg2: integer): $Writer
 public "append"(arg0: character): $Writer
-public "append"(arg0: charseq): $Appendable
 public "flush"(): void
-public "format"(arg0: $Locale$$Type, arg1: string, ...arg2: (any)[]): $PrintWriter
-public "format"(arg0: string, ...arg1: (any)[]): $PrintWriter
-public "printf"(arg0: string, ...arg1: (any)[]): $PrintWriter
-public "printf"(arg0: $Locale$$Type, arg1: string, ...arg2: (any)[]): $PrintWriter
+public "format"(arg0: StringJS, ...arg1: (any)[]): $PrintWriter
+public "format"(arg0: $Locale$$Type, arg1: StringJS, ...arg2: (any)[]): $PrintWriter
+public "printf"(arg0: $Locale$$Type, arg1: StringJS, ...arg2: (any)[]): $PrintWriter
+public "printf"(arg0: StringJS, ...arg1: (any)[]): $PrintWriter
 public "write"(arg0: integer): void
 public "write"(arg0: (character)[], arg1: integer, arg2: integer): void
+public "write"(arg0: StringJS): void
 public "write"(arg0: (character)[]): void
-public "write"(arg0: string, arg1: integer, arg2: integer): void
-public "write"(arg0: string): void
-public "print"(arg0: float): void
-public "print"(arg0: long): void
+public "write"(arg0: StringJS, arg1: integer, arg2: integer): void
 public "print"(arg0: integer): void
-public "print"(arg0: character): void
 public "print"(arg0: boolean): void
+public "print"(arg0: character): void
+public "print"(arg0: StringJS): void
 public "print"(arg0: any): void
-public "print"(arg0: string): void
 public "print"(arg0: (character)[]): void
 public "print"(arg0: double): void
+public "print"(arg0: float): void
+public "print"(arg0: long): void
 public "close"(): void
-public "checkError"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -692,6 +665,7 @@ export type $PrintWriter_ = $PrintWriter$$Type;
 }}
 declare module "java.io.BufferedWriter" {
 import {$Writer, $Writer$$Type} from "java.io.Writer"
+import {$Appendable, $Appendable$$Type} from "java.lang.Appendable"
 
 /**
  * This class is not allowed By KubeJS!
@@ -700,15 +674,16 @@ import {$Writer, $Writer$$Type} from "java.io.Writer"
  */
 export class $BufferedWriter extends $Writer {
 
-constructor(arg0: $Writer$$Type)
 constructor(arg0: $Writer$$Type, arg1: integer)
+constructor(arg0: $Writer$$Type)
 
 public "flush"(): void
-public "write"(arg0: integer): void
-public "write"(arg0: string, arg1: integer, arg2: integer): void
 public "write"(arg0: (character)[], arg1: integer, arg2: integer): void
+public "write"(arg0: integer): void
+public "write"(arg0: StringJS, arg1: integer, arg2: integer): void
 public "newLine"(): void
 public "close"(): void
+public "append"(arg0: character): $Appendable
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -773,28 +748,28 @@ export class $DataInputStream extends $FilterInputStream implements $DataInput {
 
 constructor(arg0: $InputStream$$Type)
 
-public "read"(arg0: (byte)[]): integer
+public "readUTF"(): StringJS
+public static "readUTF"(arg0: $DataInput$$Type): StringJS
+public "readFully"(arg0: (byte)[]): void
+public "readFully"(arg0: (byte)[], arg1: integer, arg2: integer): void
+public "readUnsignedByte"(): integer
+public "readUnsignedShort"(): integer
+public "skipBytes"(arg0: integer): integer
+public "readBoolean"(): boolean
+public "readByte"(): byte
+public "readShort"(): short
+public "readLong"(): long
+public "readDouble"(): double
+public "readChar"(): character
+public "readFloat"(): float
 public "read"(arg0: (byte)[], arg1: integer, arg2: integer): integer
+public "read"(arg0: (byte)[]): integer
 /**
  * 
  * @deprecated
  */
-public "readLine"(): string
+public "readLine"(): StringJS
 public "readInt"(): integer
-public "readUTF"(): string
-public static "readUTF"(arg0: $DataInput$$Type): string
-public "readChar"(): character
-public "readFloat"(): float
-public "readFully"(arg0: (byte)[]): void
-public "readFully"(arg0: (byte)[], arg1: integer, arg2: integer): void
-public "skipBytes"(arg0: integer): integer
-public "readBoolean"(): boolean
-public "readByte"(): byte
-public "readUnsignedByte"(): integer
-public "readShort"(): short
-public "readUnsignedShort"(): integer
-public "readLong"(): long
-public "readDouble"(): double
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -810,8 +785,8 @@ export type $DataInputStream_ = $DataInputStream$$Type;
 }}
 declare module "java.io.PrintStream" {
 import {$FilterOutputStream, $FilterOutputStream$$Type} from "java.io.FilterOutputStream"
-import {$Charset, $Charset$$Type} from "java.nio.charset.Charset"
 import {$File, $File$$Type} from "java.io.File"
+import {$Charset, $Charset$$Type} from "java.nio.charset.Charset"
 import {$Appendable, $Appendable$$Type} from "java.lang.Appendable"
 import {$Closeable, $Closeable$$Type} from "java.io.Closeable"
 import {$OutputStream, $OutputStream$$Type} from "java.io.OutputStream"
@@ -824,51 +799,51 @@ import {$Locale, $Locale$$Type} from "java.util.Locale"
  */
 export class $PrintStream extends $FilterOutputStream implements $Appendable, $Closeable {
 
-constructor(arg0: $OutputStream$$Type, arg1: boolean, arg2: string)
-constructor(arg0: $OutputStream$$Type, arg1: boolean, arg2: $Charset$$Type)
-constructor(arg0: string)
-constructor(arg0: string, arg1: string)
-constructor(arg0: string, arg1: $Charset$$Type)
-constructor(arg0: $File$$Type, arg1: string)
-constructor(arg0: $File$$Type)
-constructor(arg0: $File$$Type, arg1: $Charset$$Type)
+constructor(arg0: $OutputStream$$Type, arg1: boolean, arg2: StringJS)
 constructor(arg0: $OutputStream$$Type)
 constructor(arg0: $OutputStream$$Type, arg1: boolean)
+constructor(arg0: StringJS)
+constructor(arg0: $File$$Type, arg1: $Charset$$Type)
+constructor(arg0: StringJS, arg1: $Charset$$Type)
+constructor(arg0: $File$$Type)
+constructor(arg0: StringJS, arg1: StringJS)
+constructor(arg0: $OutputStream$$Type, arg1: boolean, arg2: $Charset$$Type)
+constructor(arg0: $File$$Type, arg1: StringJS)
 
-public "println"(arg0: string): void
-public "println"(arg0: any): void
+public "writeBytes"(arg0: (byte)[]): void
+public "checkError"(): boolean
 public "println"(arg0: float): void
-public "println"(arg0: (character)[]): void
 public "println"(arg0: double): void
-public "println"(): void
+public "println"(arg0: (character)[]): void
+public "println"(arg0: StringJS): void
 public "println"(arg0: boolean): void
+public "println"(): void
 public "println"(arg0: character): void
 public "println"(arg0: integer): void
 public "println"(arg0: long): void
+public "println"(arg0: any): void
 public "append"(arg0: charseq): $Appendable
-public "append"(arg0: charseq, arg1: integer, arg2: integer): $Appendable
 public "append"(arg0: character): $Appendable
+public "append"(arg0: charseq, arg1: integer, arg2: integer): $Appendable
 public "flush"(): void
-public "format"(arg0: $Locale$$Type, arg1: string, ...arg2: (any)[]): $PrintStream
-public "format"(arg0: string, ...arg1: (any)[]): $PrintStream
+public "format"(arg0: $Locale$$Type, arg1: StringJS, ...arg2: (any)[]): $PrintStream
+public "format"(arg0: StringJS, ...arg1: (any)[]): $PrintStream
 public "charset"(): $Charset
-public "printf"(arg0: $Locale$$Type, arg1: string, ...arg2: (any)[]): $PrintStream
-public "printf"(arg0: string, ...arg1: (any)[]): $PrintStream
+public "printf"(arg0: StringJS, ...arg1: (any)[]): $PrintStream
+public "printf"(arg0: $Locale$$Type, arg1: StringJS, ...arg2: (any)[]): $PrintStream
 public "write"(arg0: (byte)[]): void
 public "write"(arg0: (byte)[], arg1: integer, arg2: integer): void
 public "write"(arg0: integer): void
-public "print"(arg0: string): void
-public "print"(arg0: (character)[]): void
-public "print"(arg0: any): void
 public "print"(arg0: boolean): void
-public "print"(arg0: character): void
-public "print"(arg0: integer): void
-public "print"(arg0: double): void
 public "print"(arg0: float): void
+public "print"(arg0: double): void
+public "print"(arg0: (character)[]): void
+public "print"(arg0: StringJS): void
+public "print"(arg0: any): void
+public "print"(arg0: integer): void
 public "print"(arg0: long): void
+public "print"(arg0: character): void
 public "close"(): void
-public "writeBytes"(arg0: (byte)[]): void
-public "checkError"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -894,8 +869,8 @@ import {$Throwable, $Throwable$$Type} from "java.lang.Throwable"
 export class $IOException extends $Exception {
 
 constructor(arg0: $Throwable$$Type)
-constructor(arg0: string, arg1: $Throwable$$Type)
-constructor(arg0: string)
+constructor(arg0: StringJS, arg1: $Throwable$$Type)
+constructor(arg0: StringJS)
 constructor()
 
 }
@@ -924,12 +899,12 @@ export class $OutputStream implements $Closeable, $Flushable {
 
 constructor()
 
+public static "nullOutputStream"(): $OutputStream
 public "flush"(): void
-public "write"(arg0: (byte)[]): void
 public "write"(arg0: (byte)[], arg1: integer, arg2: integer): void
+public "write"(arg0: (byte)[]): void
 public "write"(arg0: integer): void
 public "close"(): void
-public static "nullOutputStream"(): $OutputStream
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -952,20 +927,20 @@ export {} // Mark the file as a module, do not remove unless there are other imp
  */
 export interface $DataOutput {
 
- "write"(arg0: (byte)[], arg1: integer, arg2: integer): void
- "write"(arg0: (byte)[]): void
- "write"(arg0: integer): void
- "writeInt"(arg0: integer): void
- "writeUTF"(arg0: string): void
- "writeBytes"(arg0: string): void
- "writeChar"(arg0: integer): void
- "writeFloat"(arg0: float): void
+ "writeUTF"(arg0: StringJS): void
+ "writeBytes"(arg0: StringJS): void
+ "writeShort"(arg0: integer): void
  "writeBoolean"(arg0: boolean): void
  "writeByte"(arg0: integer): void
- "writeShort"(arg0: integer): void
  "writeLong"(arg0: long): void
  "writeDouble"(arg0: double): void
- "writeChars"(arg0: string): void
+ "writeChars"(arg0: StringJS): void
+ "writeChar"(arg0: integer): void
+ "writeFloat"(arg0: float): void
+ "write"(arg0: (byte)[]): void
+ "write"(arg0: (byte)[], arg1: integer, arg2: integer): void
+ "write"(arg0: integer): void
+ "writeInt"(arg0: integer): void
 }
 
 export namespace $DataOutput {
@@ -974,20 +949,20 @@ const probejs$$marker: never
 export class $DataOutput$$Static implements $DataOutput {
 
 
- "write"(arg0: (byte)[], arg1: integer, arg2: integer): void
- "write"(arg0: (byte)[]): void
- "write"(arg0: integer): void
- "writeInt"(arg0: integer): void
- "writeUTF"(arg0: string): void
- "writeBytes"(arg0: string): void
- "writeChar"(arg0: integer): void
- "writeFloat"(arg0: float): void
+ "writeUTF"(arg0: StringJS): void
+ "writeBytes"(arg0: StringJS): void
+ "writeShort"(arg0: integer): void
  "writeBoolean"(arg0: boolean): void
  "writeByte"(arg0: integer): void
- "writeShort"(arg0: integer): void
  "writeLong"(arg0: long): void
  "writeDouble"(arg0: double): void
- "writeChars"(arg0: string): void
+ "writeChars"(arg0: StringJS): void
+ "writeChar"(arg0: integer): void
+ "writeFloat"(arg0: float): void
+ "write"(arg0: (byte)[]): void
+ "write"(arg0: (byte)[], arg1: integer, arg2: integer): void
+ "write"(arg0: integer): void
+ "writeInt"(arg0: integer): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1018,17 +993,17 @@ export interface $ObjectOutput extends $DataOutput, $AutoCloseable {
  "write"(arg0: integer): void
  "writeObject"(arg0: any): void
  "close"(): void
- "writeInt"(arg0: integer): void
- "writeUTF"(arg0: string): void
- "writeBytes"(arg0: string): void
- "writeChar"(arg0: integer): void
- "writeFloat"(arg0: float): void
+ "writeUTF"(arg0: StringJS): void
+ "writeBytes"(arg0: StringJS): void
+ "writeShort"(arg0: integer): void
  "writeBoolean"(arg0: boolean): void
  "writeByte"(arg0: integer): void
- "writeShort"(arg0: integer): void
  "writeLong"(arg0: long): void
  "writeDouble"(arg0: double): void
- "writeChars"(arg0: string): void
+ "writeChars"(arg0: StringJS): void
+ "writeChar"(arg0: integer): void
+ "writeFloat"(arg0: float): void
+ "writeInt"(arg0: integer): void
 }
 
 export namespace $ObjectOutput {
@@ -1043,17 +1018,17 @@ export class $ObjectOutput$$Static implements $ObjectOutput {
  "write"(arg0: integer): void
  "writeObject"(arg0: any): void
  "close"(): void
- "writeInt"(arg0: integer): void
- "writeUTF"(arg0: string): void
- "writeBytes"(arg0: string): void
- "writeChar"(arg0: integer): void
- "writeFloat"(arg0: float): void
+ "writeUTF"(arg0: StringJS): void
+ "writeBytes"(arg0: StringJS): void
+ "writeShort"(arg0: integer): void
  "writeBoolean"(arg0: boolean): void
  "writeByte"(arg0: integer): void
- "writeShort"(arg0: integer): void
  "writeLong"(arg0: long): void
  "writeDouble"(arg0: double): void
- "writeChars"(arg0: string): void
+ "writeChars"(arg0: StringJS): void
+ "writeChar"(arg0: integer): void
+ "writeFloat"(arg0: float): void
+ "writeInt"(arg0: integer): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1080,21 +1055,21 @@ export class $InputStream implements $Closeable {
 
 constructor()
 
-public "reset"(): void
-public "read"(arg0: (byte)[]): integer
-public "read"(arg0: (byte)[], arg1: integer, arg2: integer): integer
-public "read"(): integer
-public "close"(): void
-public "readAllBytes"(): (byte)[]
 public "mark"(arg0: integer): void
-public "readNBytes"(arg0: (byte)[], arg1: integer, arg2: integer): integer
 public "readNBytes"(arg0: integer): (byte)[]
+public "readNBytes"(arg0: (byte)[], arg1: integer, arg2: integer): integer
 public "transferTo"(arg0: $OutputStream$$Type): long
 public "skip"(arg0: long): long
 public "available"(): integer
 public "markSupported"(): boolean
 public static "nullInputStream"(): $InputStream
 public "skipNBytes"(arg0: long): void
+public "reset"(): void
+public "read"(arg0: (byte)[], arg1: integer, arg2: integer): integer
+public "read"(): integer
+public "read"(arg0: (byte)[]): integer
+public "close"(): void
+public "readAllBytes"(): (byte)[]
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

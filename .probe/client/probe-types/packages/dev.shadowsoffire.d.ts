@@ -1,8 +1,8 @@
 declare module "dev.shadowsoffire.hostilenetworks.data.ModelAttunement" {
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$EntityPredicate, $EntityPredicate$$Type} from "net.minecraft.advancements.critereon.EntityPredicate"
-import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
+import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 import {$Record, $Record$$Type} from "java.lang.Record"
 
 export class $ModelAttunement extends $Record {
@@ -10,11 +10,11 @@ static "CODEC": $Codec<($ModelAttunement)>
 
 constructor(attunable: boolean, predicate: $EntityPredicate$$Type)
 
+public "predicate"(): $EntityPredicate
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "matches"(arg0: $ServerPlayer$$Type, arg1: $Entity$$Type): boolean
-public "predicate"(): $EntityPredicate
 public "attunable"(): boolean
 }
 /**
@@ -49,9 +49,9 @@ import {$BannerBlockEntity, $BannerBlockEntity$$Type} from "net.minecraft.world.
 import {$TrappedChestBlockEntity, $TrappedChestBlockEntity$$Type} from "net.minecraft.world.level.block.entity.TrappedChestBlockEntity"
 import {$Set, $Set$$Type} from "java.util.Set"
 import {$EntityType, $EntityType$$Type} from "net.minecraft.world.entity.EntityType"
+import {$BlockEntityRenderPredicate, $BlockEntityRenderPredicate$$Type} from "net.caffeinemc.mods.sodium.api.blockentity.BlockEntityRenderPredicate"
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
 import {$BeaconBlockEntity, $BeaconBlockEntity$$Type} from "net.minecraft.world.level.block.entity.BeaconBlockEntity"
-import {$BlockEntityRenderPredicate, $BlockEntityRenderPredicate$$Type} from "net.caffeinemc.mods.sodium.api.blockentity.BlockEntityRenderPredicate"
 import {$TheEndGatewayBlockEntity, $TheEndGatewayBlockEntity$$Type} from "net.minecraft.world.level.block.entity.TheEndGatewayBlockEntity"
 import {$CalibratedSculkSensorBlockEntity, $CalibratedSculkSensorBlockEntity$$Type} from "net.minecraft.world.level.block.entity.CalibratedSculkSensorBlockEntity"
 import {$TrialSpawnerBlockEntity, $TrialSpawnerBlockEntity$$Type} from "net.minecraft.world.level.block.entity.TrialSpawnerBlockEntity"
@@ -67,9 +67,9 @@ import {$DropperBlockEntity, $DropperBlockEntity$$Type} from "net.minecraft.worl
 import {$TheEndPortalBlockEntity, $TheEndPortalBlockEntity$$Type} from "net.minecraft.world.level.block.entity.TheEndPortalBlockEntity"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$EnchantingTableBlockEntity, $EnchantingTableBlockEntity$$Type} from "net.minecraft.world.level.block.entity.EnchantingTableBlockEntity"
+import {$SculkCatalystBlockEntity, $SculkCatalystBlockEntity$$Type} from "net.minecraft.world.level.block.entity.SculkCatalystBlockEntity"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
-import {$SculkCatalystBlockEntity, $SculkCatalystBlockEntity$$Type} from "net.minecraft.world.level.block.entity.SculkCatalystBlockEntity"
 import {$CampfireBlockEntity, $CampfireBlockEntity$$Type} from "net.minecraft.world.level.block.entity.CampfireBlockEntity"
 import {$BellBlockEntity, $BellBlockEntity$$Type} from "net.minecraft.world.level.block.entity.BellBlockEntity"
 import {$LecternBlockEntity, $LecternBlockEntity$$Type} from "net.minecraft.world.level.block.entity.LecternBlockEntity"
@@ -169,19 +169,19 @@ static readonly "DEFAULT": $DataModel$DisplayData
 constructor(nbt: $CompoundTag$$Type, scale: float, xOffset: float, yOffset: float, zOffset: float)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "scale"(): float
+public "nbt"(): $CompoundTag
+public "yOffset"(): float
 public "xOffset"(): float
 public "zOffset"(): float
-public "yOffset"(): float
-public "nbt"(): $CompoundTag
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $DataModel$DisplayData$$Type = ({"yOffset"?: float, "scale"?: float, "zOffset"?: float, "nbt"?: $CompoundTag$$Type, "xOffset"?: float}) | ([yOffset?: float, scale?: float, zOffset?: float, nbt?: $CompoundTag$$Type, xOffset?: float]);
+export type $DataModel$DisplayData$$Type = ({"nbt"?: $CompoundTag$$Type, "xOffset"?: float, "yOffset"?: float, "scale"?: float, "zOffset"?: float}) | ([nbt?: $CompoundTag$$Type, xOffset?: float, yOffset?: float, scale?: float, zOffset?: float]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -200,16 +200,16 @@ export class $AnvilLandEvent extends $Event {
 
 constructor(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $BlockState$$Type, arg4: $FallingBlockEntity$$Type)
 
-public "getEntity"(): $FallingBlockEntity
 public "getLevel"(): $Level
+public "getEntity"(): $FallingBlockEntity
+public "getPos"(): $BlockPos
 public "getNewState"(): $BlockState
 public "getOldState"(): $BlockState
-public "getPos"(): $BlockPos
-get "entity"(): $FallingBlockEntity
 get "level"(): $Level
+get "entity"(): $FallingBlockEntity
+get "pos"(): $BlockPos
 get "newState"(): $BlockState
 get "oldState"(): $BlockState
-get "pos"(): $BlockPos
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -224,23 +224,27 @@ declare global {
 export type $AnvilLandEvent_ = $AnvilLandEvent$$Type;
 }}
 declare module "dev.shadowsoffire.hostilenetworks.item.MobPredictionItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$BuildCreativeModeTabContentsEvent, $BuildCreativeModeTabContentsEvent$$Type} from "net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ITabFiller, $ITabFiller$$Type} from "dev.shadowsoffire.placebo.tabs.ITabFiller"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$CreativeModeTab, $CreativeModeTab$$Type} from "net.minecraft.world.item.CreativeModeTab"
-import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$ItemLike, $ItemLike$$Type} from "net.minecraft.world.level.ItemLike"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export class $MobPredictionItem extends $Item implements $ITabFiller {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -252,6 +256,7 @@ public "getName"(arg0: $ItemStack$$Type): $Component
 public "fillItemCategory"(arg0: $CreativeModeTab$$Type, arg1: $BuildCreativeModeTabContentsEvent$$Type): void
 public static "simple"(arg0: $ItemLike$$Type): $ITabFiller
 public static "delegating"(arg0: $Supplier$$Type<($ItemLike$$Type)>): $ITabFiller
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -278,31 +283,31 @@ static readonly "CODEC": $Codec<($ModelTier)>
 
 constructor(requiredData: integer, dataPerKill: integer, color: $TextColor$$Type, accuracy: float, canSim: boolean)
 
-public "name"(): string
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "color"(): $TextColor
+public "name"(): StringJS
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
 public "getCodec"(): $Codec<($ModelTier)>
 public "getComponent"(): $Component
-public "isMin"(): boolean
-public "isMax"(): boolean
 public "canSim"(): boolean
-public "dataPerKill"(): integer
+public "isMax"(): boolean
+public "isMin"(): boolean
 public "requiredData"(): integer
-public "asHolder"(): $DynamicHolder<($ModelTier)>
+public "dataPerKill"(): integer
 public "colorValue"(): integer
+public "asHolder"(): $DynamicHolder<($ModelTier)>
 public "accuracy"(): float
 get "codec"(): $Codec<($ModelTier)>
 get "component"(): $Component
-get "min"(): boolean
 get "max"(): boolean
+get "min"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ModelTier$$Type = ({"requiredData"?: integer, "dataPerKill"?: integer, "canSim"?: boolean, "color"?: $TextColor$$Type, "accuracy"?: float}) | ([requiredData?: integer, dataPerKill?: integer, canSim?: boolean, color?: $TextColor$$Type, accuracy?: float]);
+export type $ModelTier$$Type = ({"color"?: $TextColor$$Type, "accuracy"?: float, "requiredData"?: integer, "dataPerKill"?: integer, "canSim"?: boolean}) | ([color?: $TextColor$$Type, accuracy?: float, requiredData?: integer, dataPerKill?: integer, canSim?: boolean]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -345,7 +350,7 @@ static readonly "CLIENT": $TickingBlockEntityType$TickSide
 
 
 public static "values"(): ($TickingBlockEntityType$TickSide)[]
-public static "valueOf"(arg0: string): $TickingBlockEntityType$TickSide
+public static "valueOf"(arg0: StringJS): $TickingBlockEntityType$TickSide
 public "ticksOnClient"(): boolean
 public "ticksOnServer"(): boolean
 }
@@ -362,15 +367,17 @@ declare global {
 export type $TickingBlockEntityType$TickSide_ = $TickingBlockEntityType$TickSide$$Type;
 }}
 declare module "dev.shadowsoffire.hostilenetworks.item.DeepLearnerItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$ComponentItemHandler, $ComponentItemHandler$$Type} from "net.neoforged.neoforge.items.ComponentItemHandler"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
@@ -383,7 +390,7 @@ import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.conte
 export class $DeepLearnerItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -392,10 +399,11 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type)
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public static "getItemHandler"(arg0: $ItemStack$$Type): $ComponentItemHandler
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -498,7 +506,7 @@ constructor(overrides: $Reference2IntOpenHashMap$$Type<($DynamicHolder$$Type<($M
 
 public "overrides"(): $Reference2IntOpenHashMap<($DynamicHolder<($ModelTier)>)>
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "getDataPerKill"(arg0: $ModelTier$$Type): integer
 }
@@ -528,12 +536,12 @@ static "EMPTY": $DataModel$RequiredData
 
 constructor(overrides: $Reference2IntOpenHashMap$$Type<($DynamicHolder$$Type<($ModelTier$$Type)>)>)
 
-public "getRequiredData"(arg0: $ModelTier$$Type): integer
 public "overrides"(): $Reference2IntOpenHashMap<($DynamicHolder<($ModelTier)>)>
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public static "validate"(arg0: $DataModel$RequiredData$$Type): $DataResult<($DataModel$RequiredData)>
+public "getRequiredData"(arg0: $ModelTier$$Type): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -548,16 +556,18 @@ declare global {
 export type $DataModel$RequiredData_ = $DataModel$RequiredData$$Type;
 }}
 declare module "dev.shadowsoffire.hostilenetworks.item.FabDirectiveItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$SpecialTooltipItem, $SpecialTooltipItem$$Type} from "dev.shadowsoffire.placebo.util.SpecialTooltipItem"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -569,7 +579,7 @@ import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.conte
 export class $FabDirectiveItem extends $Item implements $SpecialTooltipItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -580,6 +590,7 @@ constructor(arg0: $Item$Properties$$Type)
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -611,8 +622,8 @@ import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.Serve
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -630,7 +641,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -681,8 +692,8 @@ import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.Serve
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -700,7 +711,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -757,21 +768,25 @@ export type $ResourceReloadEvent_ = $ResourceReloadEvent$$Type;
 }}
 declare module "dev.shadowsoffire.hostilenetworks.item.DataModelItem" {
 import {$BuildCreativeModeTabContentsEvent, $BuildCreativeModeTabContentsEvent$$Type} from "net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ITabFiller, $ITabFiller$$Type} from "dev.shadowsoffire.placebo.tabs.ITabFiller"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$DataModel, $DataModel$$Type} from "dev.shadowsoffire.hostilenetworks.data.DataModel"
-import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IClientItemExtensions, $IClientItemExtensions$$Type} from "net.neoforged.neoforge.client.extensions.common.IClientItemExtensions"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$CreativeModeTab, $CreativeModeTab$$Type} from "net.minecraft.world.item.CreativeModeTab"
-import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$ItemLike, $ItemLike$$Type} from "net.minecraft.world.level.ItemLike"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$DynamicHolder, $DynamicHolder$$Type} from "dev.shadowsoffire.placebo.reload.DynamicHolder"
@@ -779,7 +794,7 @@ import {$DynamicHolder, $DynamicHolder$$Type} from "dev.shadowsoffire.placebo.re
 export class $DataModelItem extends $Item implements $ITabFiller {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -787,20 +802,21 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Item$Properties$$Type)
 
+public static "getData"(arg0: $ItemStack$$Type): integer
 public static "setData"(arg0: $ItemStack$$Type, arg1: integer): void
 public "getName"(arg0: $ItemStack$$Type): $Component
-public static "getData"(arg0: $ItemStack$$Type): integer
-public "initializeClient"(arg0: $Consumer$$Type<($IClientItemExtensions)>): void
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-public static "matchesModelInput"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
-public "fillItemCategory"(arg0: $CreativeModeTab$$Type, arg1: $BuildCreativeModeTabContentsEvent$$Type): void
 public static "getStoredModel"(arg0: $ItemStack$$Type): $DynamicHolder<($DataModel)>
-public static "setStoredModel"(arg0: $ItemStack$$Type, arg1: $DynamicHolder$$Type<($DataModel$$Type)>): void
-public static "setStoredModel"(arg0: $ItemStack$$Type, arg1: $DataModel$$Type): void
 public static "getIters"(arg0: $ItemStack$$Type): integer
 public static "setIters"(arg0: $ItemStack$$Type, arg1: integer): void
+public static "setStoredModel"(arg0: $ItemStack$$Type, arg1: $DynamicHolder$$Type<($DataModel$$Type)>): void
+public static "setStoredModel"(arg0: $ItemStack$$Type, arg1: $DataModel$$Type): void
+public static "matchesModelInput"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
+public "fillItemCategory"(arg0: $CreativeModeTab$$Type, arg1: $BuildCreativeModeTabContentsEvent$$Type): void
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "initializeClient"(arg0: $Consumer$$Type<($IClientItemExtensions)>): void
 public static "simple"(arg0: $ItemLike$$Type): $ITabFiller
 public static "delegating"(arg0: $Supplier$$Type<($ItemLike$$Type)>): $ITabFiller
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -815,21 +831,25 @@ declare global {
 export type $DataModelItem_ = $DataModelItem$$Type;
 }}
 declare module "dev.shadowsoffire.hostilenetworks.item.BlankDataModelItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
-import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 
 export class $BlankDataModelItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -838,6 +858,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type)
 
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -926,9 +947,9 @@ import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component
 
 export interface $DrawsOnLeft {
 
+ "__ths"(): $AbstractContainerScreen<(any)>
  "drawOnLeft"(arg0: $GuiGraphics$$Type, arg1: $List$$Type<($FormattedText$$Type)>, arg2: integer): void
  "drawOnLeft"(arg0: $GuiGraphics$$Type, arg1: $List$$Type<($FormattedText$$Type)>, arg2: integer, arg3: integer): void
- "__ths"(): $AbstractContainerScreen<(any)>
 }
 
 export namespace $DrawsOnLeft {
@@ -938,10 +959,10 @@ const probejs$$marker: never
 export class $DrawsOnLeft$$Static implements $DrawsOnLeft {
 
 
+ "__ths"(): $AbstractContainerScreen<(any)>
+static "draw"(arg0: $AbstractContainerScreen$$Type<(any)>, arg1: $GuiGraphics$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: integer): void
  "drawOnLeft"(arg0: $GuiGraphics$$Type, arg1: $List$$Type<($FormattedText$$Type)>, arg2: integer): void
  "drawOnLeft"(arg0: $GuiGraphics$$Type, arg1: $List$$Type<($FormattedText$$Type)>, arg2: integer, arg3: integer): void
-static "draw"(arg0: $AbstractContainerScreen$$Type<(any)>, arg1: $GuiGraphics$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: integer): void
- "__ths"(): $AbstractContainerScreen<(any)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -958,8 +979,8 @@ export type $DrawsOnLeft_ = $DrawsOnLeft$$Type;
 declare module "dev.shadowsoffire.placebo.tabs.ITabFiller" {
 import {$BuildCreativeModeTabContentsEvent, $BuildCreativeModeTabContentsEvent$$Type} from "net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent"
 import {$CreativeModeTab, $CreativeModeTab$$Type} from "net.minecraft.world.item.CreativeModeTab"
-import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$ItemLike, $ItemLike$$Type} from "net.minecraft.world.level.ItemLike"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 
 export interface $ITabFiller {
 
@@ -977,8 +998,8 @@ export class $ITabFiller$$Static implements $ITabFiller {
 
 
 static "simple"(arg0: $ItemLike$$Type): $ITabFiller
- "fillItemCategory"(arg0: $CreativeModeTab$$Type, arg1: $BuildCreativeModeTabContentsEvent$$Type): void
 static "delegating"(arg0: $Supplier$$Type<($ItemLike$$Type)>): $ITabFiller
+ "fillItemCategory"(arg0: $CreativeModeTab$$Type, arg1: $BuildCreativeModeTabContentsEvent$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -999,14 +1020,14 @@ import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$CodecProvider, $CodecProvider$$Type} from "dev.shadowsoffire.placebo.codec.CodecProvider"
 import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
-import {$DataResult, $DataResult$$Type} from "com.mojang.serialization.DataResult"
 import {$List, $List$$Type} from "java.util.List"
-import {$DataModel$RequiredData, $DataModel$RequiredData$$Type} from "dev.shadowsoffire.hostilenetworks.data.DataModel$RequiredData"
+import {$DataResult, $DataResult$$Type} from "com.mojang.serialization.DataResult"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$DataModel$RequiredData, $DataModel$RequiredData$$Type} from "dev.shadowsoffire.hostilenetworks.data.DataModel$RequiredData"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$DataModel$DisplayData, $DataModel$DisplayData$$Type} from "dev.shadowsoffire.hostilenetworks.data.DataModel$DisplayData"
-import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
+import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 import {$Stream, $Stream$$Type} from "java.util.stream.Stream"
 import {$ModelAttunement, $ModelAttunement$$Type} from "dev.shadowsoffire.hostilenetworks.data.ModelAttunement"
 import {$Record, $Record$$Type} from "java.lang.Record"
@@ -1016,41 +1037,41 @@ export class $DataModel extends $Record implements $CodecProvider<($DataModel)> 
 static readonly "CODEC": $Codec<($DataModel)>
 
 constructor(arg0: $DataModel$$Type, arg1: $List$$Type<($ItemStack$$Type)>)
-constructor(entity: $EntityType$$Type<(any)>, variants: $List$$Type<($EntityType$$Type<(any)>)>, name: $Component$$Type, display: $DataModel$DisplayData$$Type, simCost: integer, input: $Ingredient$$Type, baseDrop: $ItemStack$$Type, triviaKey: string, fabDrops: $List$$Type<($ItemStack$$Type)>, requiredData: $DataModel$RequiredData$$Type, dataPerKill: $DataModel$DataPerKill$$Type, attunement: $Optional$$Type<($ModelAttunement$$Type)>)
+constructor(entity: $EntityType$$Type<(any)>, variants: $List$$Type<($EntityType$$Type<(any)>)>, name: $Component$$Type, display: $DataModel$DisplayData$$Type, simCost: integer, input: $Ingredient$$Type, baseDrop: $ItemStack$$Type, triviaKey: StringJS, fabDrops: $List$$Type<($ItemStack$$Type)>, requiredData: $DataModel$RequiredData$$Type, dataPerKill: $DataModel$DataPerKill$$Type, attunement: $Optional$$Type<($ModelAttunement$$Type)>)
 
-public "getRequiredData"(arg0: $ModelTier$$Type): integer
 public "entity"(): $EntityType<(any)>
-public "name"(): $Component
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public static "validate"(arg0: $DataModel$$Type): $DataResult<($DataModel)>
 public "input"(): $Ingredient
 public "display"(): $DataModel$DisplayData
 public "variants"(): $List<($EntityType<(any)>)>
+public "name"(): $Component
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+public static "validate"(arg0: $DataModel$$Type): $DataResult<($DataModel)>
+public "getRequiredData"(arg0: $ModelTier$$Type): integer
 public "getCodec"(): $Codec<($DataModel)>
-public "getPredictionDrop"(): $ItemStack
-public "entityAndVariants"(): $Stream<($EntityType<(any)>)>
 public "fabDrops"(): $List<($ItemStack)>
-public "getDataPerKill"(arg0: $ModelTier$$Type): integer
-public "dataPerKill"(): $DataModel$DataPerKill
-public "triviaKey"(): string
+public "triviaKey"(): StringJS
 public "requiredData"(): $DataModel$RequiredData
 public "attunement"(): $Optional<($ModelAttunement)>
 public "getNameColor"(): integer
 public "attunesTo"(arg0: $ServerPlayer$$Type, arg1: $Entity$$Type): boolean
 public "baseDrop"(): $ItemStack
 public "simCost"(): integer
+public "getDataPerKill"(arg0: $ModelTier$$Type): integer
+public "dataPerKill"(): $DataModel$DataPerKill
 public "hasAttunement"(): boolean
+public "getPredictionDrop"(): $ItemStack
+public "entityAndVariants"(): $Stream<($EntityType<(any)>)>
 get "codec"(): $Codec<($DataModel)>
-get "predictionDrop"(): $ItemStack
 get "nameColor"(): integer
+get "predictionDrop"(): $ItemStack
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $DataModel$$Type = ({"variants"?: $List$$Type<($EntityType$$Type<(never)>)>, "dataPerKill"?: $DataModel$DataPerKill$$Type, "requiredData"?: $DataModel$RequiredData$$Type, "attunement"?: ($ModelAttunement$$Type)?, "input"?: $Ingredient$$Type, "display"?: $DataModel$DisplayData$$Type, "name"?: $Component$$Type, "fabDrops"?: $List$$Type<($ItemStack$$Type)>, "baseDrop"?: $ItemStack$$Type, "entity"?: $EntityType$$Type<(never)>, "triviaKey"?: string, "simCost"?: integer}) | ([variants?: $List$$Type<($EntityType$$Type<(never)>)>, dataPerKill?: $DataModel$DataPerKill$$Type, requiredData?: $DataModel$RequiredData$$Type, attunement?: ($ModelAttunement$$Type)?, input?: $Ingredient$$Type, display?: $DataModel$DisplayData$$Type, name?: $Component$$Type, fabDrops?: $List$$Type<($ItemStack$$Type)>, baseDrop?: $ItemStack$$Type, entity?: $EntityType$$Type<(never)>, triviaKey?: string, simCost?: integer]);
+export type $DataModel$$Type = ({"fabDrops"?: $List$$Type<($ItemStack$$Type)>, "baseDrop"?: $ItemStack$$Type, "entity"?: $EntityType$$Type<(never)>, "triviaKey"?: StringJS, "simCost"?: integer, "variants"?: $List$$Type<($EntityType$$Type<(never)>)>, "dataPerKill"?: $DataModel$DataPerKill$$Type, "requiredData"?: $DataModel$RequiredData$$Type, "attunement"?: ($ModelAttunement$$Type)?, "input"?: $Ingredient$$Type, "display"?: $DataModel$DisplayData$$Type, "name"?: $Component$$Type}) | ([fabDrops?: $List$$Type<($ItemStack$$Type)>, baseDrop?: $ItemStack$$Type, entity?: $EntityType$$Type<(never)>, triviaKey?: StringJS, simCost?: integer, variants?: $List$$Type<($EntityType$$Type<(never)>)>, dataPerKill?: $DataModel$DataPerKill$$Type, requiredData?: $DataModel$RequiredData$$Type, attunement?: ($ModelAttunement$$Type)?, input?: $Ingredient$$Type, display?: $DataModel$DisplayData$$Type, name?: $Component$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.

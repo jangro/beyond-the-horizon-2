@@ -37,8 +37,8 @@ declare module "com.illusivesoulworks.polymorph.api.common.base.IRecipeContext" 
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $IRecipeContext {
 
- "polymorph$setContext"(arg0: any): void
  "polymorph$getContext"(): any
+ "polymorph$setContext"(arg0: any): void
 }
 
 export namespace $IRecipeContext {
@@ -47,8 +47,8 @@ const probejs$$marker: never
 export class $IRecipeContext$$Static implements $IRecipeContext {
 
 
- "polymorph$setContext"(arg0: any): void
  "polymorph$getContext"(): any
+ "polymorph$setContext"(arg0: any): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -70,11 +70,11 @@ import {$ResultContainer, $ResultContainer$$Type} from "net.minecraft.world.inve
 export interface $AccessorInventoryMenu {
 
  "getOwner"(): $Player
- "getResultSlots"(): $ResultContainer
  "getCraftSlots"(): $CraftingContainer
+ "getResultSlots"(): $ResultContainer
 get "owner"(): $Player
-get "resultSlots"(): $ResultContainer
 get "craftSlots"(): $CraftingContainer
+get "resultSlots"(): $ResultContainer
 }
 
 export namespace $AccessorInventoryMenu {
@@ -84,8 +84,8 @@ export class $AccessorInventoryMenu$$Static implements $AccessorInventoryMenu {
 
 
  "getOwner"(): $Player
- "getResultSlots"(): $ResultContainer
  "getCraftSlots"(): $CraftingContainer
+ "getResultSlots"(): $ResultContainer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -168,11 +168,11 @@ import {$ResultContainer, $ResultContainer$$Type} from "net.minecraft.world.inve
 export interface $AccessorCraftingMenu {
 
  "getPlayer"(): $Player
- "getResultSlots"(): $ResultContainer
  "getCraftSlots"(): $CraftingContainer
+ "getResultSlots"(): $ResultContainer
 get "player"(): $Player
-get "resultSlots"(): $ResultContainer
 get "craftSlots"(): $CraftingContainer
+get "resultSlots"(): $ResultContainer
 }
 
 export namespace $AccessorCraftingMenu {
@@ -182,8 +182,8 @@ export class $AccessorCraftingMenu$$Static implements $AccessorCraftingMenu {
 
 
  "getPlayer"(): $Player
- "getResultSlots"(): $ResultContainer
  "getCraftSlots"(): $CraftingContainer
+ "getResultSlots"(): $ResultContainer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

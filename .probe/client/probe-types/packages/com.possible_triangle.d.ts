@@ -10,8 +10,8 @@ import {$SequencedAssemblySubCategory, $SequencedAssemblySubCategory$$Type} from
 import {$ProcessingRecipe, $ProcessingRecipe$$Type} from "com.simibubi.create.content.processing.recipe.ProcessingRecipe"
 import {$FluidIngredient, $FluidIngredient$$Type} from "com.simibubi.create.foundation.fluid.FluidIngredient"
 import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
-import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$ItemLike, $ItemLike$$Type} from "net.minecraft.world.level.ItemLike"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Set, $Set$$Type} from "java.util.Set"
 
 export class $CuttingProcessingRecipe extends $ProcessingRecipe<($RecipeInput), ($CuttingProcessingRecipe$Params)> implements $IAssemblyRecipe {
@@ -20,22 +20,22 @@ static readonly "Companion": $CuttingProcessingRecipe$Companion
 constructor(arg0: $CuttingProcessingRecipe$Params$$Type)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
-public "validate"(): $List<(string)>
+public "validate"(): $List<(StringJS)>
 public "copy"(arg0: $CuttingProcessingRecipe$Params$$Type): $CuttingProcessingRecipe
-public "addAssemblyIngredients"(arg0: $List$$Type<($Ingredient$$Type)>): void
-public "addRequiredMachines"(arg0: $Set$$Type<($ItemLike$$Type)>): void
-public "getJEISubCategory"(): $Supplier<($Supplier<($SequencedAssemblySubCategory)>)>
 public "component1"(): $CuttingProcessingRecipe$Params
 public "getParams"(): $CuttingProcessingRecipe$Params
 public static "copy$default"(arg0: $CuttingProcessingRecipe$$Type, arg1: $CuttingProcessingRecipe$Params$$Type, arg2: integer, arg3: any): $CuttingProcessingRecipe
+public "addAssemblyIngredients"(arg0: $List$$Type<($Ingredient$$Type)>): void
+public "addRequiredMachines"(arg0: $Set$$Type<($ItemLike$$Type)>): void
+public "getJEISubCategory"(): $Supplier<($Supplier<($SequencedAssemblySubCategory)>)>
 public "getDescriptionForAssembly"(): $Component
 public "supportsAssembly"(): boolean
 public "addAssemblyFluidIngredients"(arg0: $List$$Type<($FluidIngredient$$Type)>): void
-get "jEISubCategory"(): $Supplier<($Supplier<($SequencedAssemblySubCategory)>)>
 get "params"(): $CuttingProcessingRecipe$Params
+get "jEISubCategory"(): $Supplier<($Supplier<($SequencedAssemblySubCategory)>)>
 get "descriptionForAssembly"(): $Component
 }
 /**
@@ -61,10 +61,10 @@ export class $CuttingProcessingRecipe$Params$Companion {
 
 constructor(arg0: $DefaultConstructorMarker$$Type)
 
-public "getSTREAM_CODEC"(): $StreamCodec<($RegistryFriendlyByteBuf), ($CuttingProcessingRecipe$Params)>
 public "getCODEC"(): $MapCodec<($CuttingProcessingRecipe$Params)>
-get "sTREAM_CODEC"(): $StreamCodec<($RegistryFriendlyByteBuf), ($CuttingProcessingRecipe$Params)>
+public "getSTREAM_CODEC"(): $StreamCodec<($RegistryFriendlyByteBuf), ($CuttingProcessingRecipe$Params)>
 get "cODEC"(): $MapCodec<($CuttingProcessingRecipe$Params)>
+get "sTREAM_CODEC"(): $StreamCodec<($RegistryFriendlyByteBuf), ($CuttingProcessingRecipe$Params)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -81,8 +81,8 @@ export type $CuttingProcessingRecipe$Params$Companion_ = $CuttingProcessingRecip
 declare module "com.possible_triangle.sliceanddice.block.slicer.SlicerItemHandler" {
 import {$Container, $Container$$Type} from "net.minecraft.world.Container"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ItemPredicate, $ItemPredicate$$Type} from "dev.latvian.mods.kubejs.item.ItemPredicate"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemPredicate, $ItemPredicate$$Type} from "dev.latvian.mods.kubejs.item.ItemPredicate"
 import {$IItemHandlerModifiable, $IItemHandlerModifiable$$Type} from "net.neoforged.neoforge.items.IItemHandlerModifiable"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockContainerJS, $BlockContainerJS$$Type} from "dev.latvian.mods.kubejs.level.BlockContainerJS"
@@ -100,27 +100,27 @@ public "isItemValid"(arg0: integer, arg1: $ItemStack$$Type): boolean
 public "setStackInSlot"(arg0: integer, arg1: $ItemStack$$Type): void
 public "getStackInSlot"(arg0: integer): $ItemStack
 public "getSlots"(): integer
-public "kjs$self"(): $IItemHandler
 public "getBlock"(arg0: $Level$$Type): $BlockContainerJS
 public "isMutable"(): boolean
 public "getSlots"(): integer
 public "insertItem"(arg0: integer, arg1: $ItemStack$$Type, arg2: boolean): $ItemStack
+public "kjs$self"(): $IItemHandler
 public "setStackInSlot"(arg0: integer, arg1: $ItemStack$$Type): void
 public "getStackInSlot"(arg0: integer): $ItemStack
 public "extractItem"(arg0: integer, arg1: integer, arg2: boolean): $ItemStack
 public "getSlotLimit"(arg0: integer): integer
 public "isItemValid"(arg0: integer, arg1: $ItemStack$$Type): boolean
-public "isEmpty"(): boolean
 public "insertItem"(arg0: $ItemStack$$Type, arg1: boolean): $ItemStack
-public "clear"(arg0: $ItemPredicate$$Type): void
 public "clear"(): void
-public "find"(arg0: $ItemPredicate$$Type): integer
+public "clear"(arg0: $ItemPredicate$$Type): void
 public "find"(): integer
+public "find"(arg0: $ItemPredicate$$Type): integer
 public "count"(): integer
 public "count"(arg0: $ItemPredicate$$Type): integer
 public "getWidth"(): integer
 public "getHeight"(): integer
 public "setChanged"(): void
+public "isEmpty"(): boolean
 public "countNonEmpty"(arg0: $ItemPredicate$$Type): integer
 public "countNonEmpty"(): integer
 public "getAllItems"(): $List<($ItemStack)>
@@ -128,9 +128,9 @@ public "asContainer"(): $Container
 get "slots"(): integer
 get "mutable"(): boolean
 get "slots"(): integer
-get "empty"(): boolean
 get "width"(): integer
 get "height"(): integer
+get "empty"(): boolean
 get "allItems"(): $List<($ItemStack)>
 }
 /**
@@ -169,8 +169,8 @@ import {$SprinklerBlock$Companion, $SprinklerBlock$Companion$$Type} from "com.po
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ItemInteractionResult, $ItemInteractionResult$$Type} from "net.minecraft.world.ItemInteractionResult"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
@@ -193,7 +193,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -205,16 +205,16 @@ constructor(arg0: $BlockBehaviour$Properties$$Type)
 public "getBlockEntityClass"(): $Class<($SprinklerBlockEntity)>
 public "getBlockEntityType"(): $BlockEntityType<($SprinklerBlockEntity)>
 public static "access$getSHAPE$cp"(): $VoxelShape
+public "onWrenched"(arg0: $BlockState$$Type, arg1: $UseOnContext$$Type): $InteractionResult
 public "updateAfterWrenched"(arg0: $BlockState$$Type, arg1: $UseOnContext$$Type): $BlockState
 public static "playRotateSound"(arg0: $Level$$Type, arg1: $BlockPos$$Type): void
 public static "playRemoveSound"(arg0: $Level$$Type, arg1: $BlockPos$$Type): void
 public "onSneakWrenched"(arg0: $BlockState$$Type, arg1: $UseOnContext$$Type): $InteractionResult
 public "getRotatedBlockState"(arg0: $BlockState$$Type, arg1: $Direction$$Type): $BlockState
-public "onWrenched"(arg0: $BlockState$$Type, arg1: $UseOnContext$$Type): $InteractionResult
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "getBlockEntity"(arg0: $BlockGetter$$Type, arg1: $BlockPos$$Type): $SprinklerBlockEntity
 public static "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type): void
 public "getTicker"<S extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(S)>): $BlockEntityTicker<(S)>
+public "getBlockEntity"(arg0: $BlockGetter$$Type, arg1: $BlockPos$$Type): $SprinklerBlockEntity
 public "getBlockEntityOptional"(arg0: $BlockGetter$$Type, arg1: $BlockPos$$Type): $Optional<($SprinklerBlockEntity)>
 public "onBlockEntityUse"(arg0: $BlockGetter$$Type, arg1: $BlockPos$$Type, arg2: $Function$$Type<($SprinklerBlockEntity), ($InteractionResult$$Type)>): $InteractionResult
 public "onBlockEntityUseItemOn"(arg0: $BlockGetter$$Type, arg1: $BlockPos$$Type, arg2: $Function$$Type<($SprinklerBlockEntity), ($ItemInteractionResult$$Type)>): $ItemInteractionResult
@@ -284,8 +284,8 @@ export type $WetAir$Companion_ = $WetAir$Companion$$Type;
 }}
 declare module "com.possible_triangle.sliceanddice.recipe.CuttingProcessingRecipe$Params" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
-import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
+import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$CuttingProcessingRecipe$Params$Companion, $CuttingProcessingRecipe$Params$Companion$$Type} from "com.possible_triangle.sliceanddice.recipe.CuttingProcessingRecipe$Params$Companion"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$ProcessingRecipeParams, $ProcessingRecipeParams$$Type} from "com.simibubi.create.content.processing.recipe.ProcessingRecipeParams"
@@ -297,16 +297,16 @@ static "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($ProcessingReci
 
 constructor()
 
+public "setConverted"(arg0: boolean): void
+public "setTool"(arg0: $Ingredient$$Type): void
+public "getConverted"(): boolean
 public "getTool"(): $Ingredient
 public static "access$getCODEC$cp"(): $MapCodec<(any)>
-public "getConverted"(): boolean
-public "setTool"(arg0: $Ingredient$$Type): void
-public "setConverted"(arg0: boolean): void
 public static "access$getSTREAM_CODEC$cp"(): $StreamCodec<(any), (any)>
-get "tool"(): $Ingredient
-get "converted"(): boolean
-set "tool"(value: $Ingredient$$Type)
 set "converted"(value: boolean)
+set "tool"(value: $Ingredient$$Type)
+get "converted"(): boolean
+get "tool"(): $Ingredient
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -392,9 +392,9 @@ export class $CuttingProcessingRecipe$Serializer implements $RecipeSerializer<($
 static readonly "INSTANCE": $CuttingProcessingRecipe$Serializer
 
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($CuttingProcessingRecipe)>
 public "codec"(): $MapCodec<($CuttingProcessingRecipe)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($CuttingProcessingRecipe)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -460,7 +460,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -555,7 +555,7 @@ static readonly "Companion": $SlicerBlockEntity$Companion
  "basinRemoved": boolean
  "networkDirty": boolean
  "updateSpeed": boolean
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
  "source": $BlockPos
  "basinChecker": $DeferralBehaviour
  "preventSpeedUpdate": integer
@@ -563,10 +563,12 @@ static readonly "ATTACHMENTS_NBT_KEY": string
 
 constructor(arg0: $BlockEntityType$$Type<(any)>, arg1: $BlockPos$$Type, arg2: $BlockState$$Type)
 
-public "continueWithPreviousRecipe"(): boolean
-public "getRenderedHeadRotationSpeed"(): float
-public "addToTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: boolean): boolean
 public "playSound"(arg0: $Level$$Type, arg1: $BlockPos$$Type): void
+public "getCanProcess"(): boolean
+public "addBehaviours"(arg0: $List$$Type<($BlockEntityBehaviour$$Type)>): void
+public "setHeldItem"(arg0: $ItemStack$$Type): void
+public "getHeldItem"(): $ItemStack
+public "addToTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: boolean): boolean
 public "getParticleAmount"(): integer
 public "getCorrectDirection"(): boolean
 public "getCuttingBehaviour"(): $PressingBehaviour
@@ -579,21 +581,19 @@ public "startProcessingBasin"(): void
 public "onPressingCompleted"(): void
 public "getKineticSpeed"(): float
 public static "access$getInventory$p"(arg0: $SlicerBlockEntity$$Type): $SlicerItemHandler
-public "setHeldItem"(arg0: $ItemStack$$Type): void
-public "getCanProcess"(): boolean
-public "addBehaviours"(arg0: $List$$Type<($BlockEntityBehaviour$$Type)>): void
-public "getHeldItem"(): $ItemStack
+public "continueWithPreviousRecipe"(): boolean
+public "getRenderedHeadRotationSpeed"(): float
 public "getUpdatePacket"(): $Packet<(any)>
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
-get "renderedHeadRotationSpeed"(): float
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+get "canProcess"(): boolean
+set "heldItem"(value: $ItemStack$$Type)
+get "heldItem"(): $ItemStack
 get "particleAmount"(): integer
 get "correctDirection"(): boolean
 get "cuttingBehaviour"(): $PressingBehaviour
 get "kineticSpeed"(): float
-set "heldItem"(value: $ItemStack$$Type)
-get "canProcess"(): boolean
-get "heldItem"(): $ItemStack
+get "renderedHeadRotationSpeed"(): float
 get "updatePacket"(): $Packet<(any)>
 }
 /**
@@ -645,27 +645,27 @@ import {$SprinklerBlockEntity$Companion, $SprinklerBlockEntity$Companion$$Type} 
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$IHaveGoggleInformation, $IHaveGoggleInformation$$Type} from "com.simibubi.create.api.equipment.goggles.IHaveGoggleInformation"
 import {$BlockEntityBehaviour, $BlockEntityBehaviour$$Type} from "com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour"
-import {$Packet, $Packet$$Type} from "net.minecraft.network.protocol.Packet"
 import {$IFluidHandler, $IFluidHandler$$Type} from "net.neoforged.neoforge.fluids.capability.IFluidHandler"
+import {$Packet, $Packet$$Type} from "net.minecraft.network.protocol.Packet"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $SprinklerBlockEntity extends $SmartBlockEntity implements $IHaveGoggleInformation {
 static readonly "Companion": $SprinklerBlockEntity$Companion
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 constructor(arg0: $BlockEntityType$$Type<(any)>, arg1: $BlockPos$$Type, arg2: $BlockState$$Type)
 
 public "tick"(): void
+public "addBehaviours"(arg0: $List$$Type<($BlockEntityBehaviour$$Type)>): void
+public "writeSafe"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
 public "addToGoggleTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: boolean): boolean
 public static "access$getTank$p"(arg0: $SprinklerBlockEntity$$Type): $SmartFluidTankBehaviour
-public "writeSafe"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "addBehaviours"(arg0: $List$$Type<($BlockEntityBehaviour$$Type)>): void
 public "containedFluidTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: boolean, arg2: $IFluidHandler$$Type): boolean
 public "getIcon"(arg0: boolean): $ItemStack
 public "getUpdatePacket"(): $Packet<(any)>
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "updatePacket"(): $Packet<(any)>
 }
 /**
@@ -706,8 +706,8 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$ICogWheel, $ICogWheel$$Type} from "com.simibubi.create.content.kinetics.simpleRelays.ICogWheel"
 import {$SlicerBlockEntity, $SlicerBlockEntity$$Type} from "com.possible_triangle.sliceanddice.block.slicer.SlicerBlockEntity"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Direction$Axis, $Direction$Axis$$Type} from "net.minecraft.core.Direction$Axis"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ItemInteractionResult, $ItemInteractionResult$$Type} from "net.minecraft.world.ItemInteractionResult"
@@ -729,7 +729,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -738,25 +738,22 @@ static readonly "UPDATE_CLIENTS": integer
 
 constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "getParticleTargetRadius"(): float
-public "getParticleInitialRadius"(): float
-public "getMinimumRequiredSpeedLevel"(): $IRotate$SpeedLevel
 public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
+public "hasShaftTowards"(arg0: $LevelReader$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Direction$$Type): boolean
 public "getBlockEntityClass"(): $Class<($SlicerBlockEntity)>
 public "getBlockEntityType"(): $BlockEntityType<($SlicerBlockEntity)>
 public "getRotationAxis"(arg0: $BlockState$$Type): $Direction$Axis
-public "hasShaftTowards"(arg0: $LevelReader$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Direction$$Type): boolean
+public "getParticleTargetRadius"(): float
+public "getParticleInitialRadius"(): float
+public "getMinimumRequiredSpeedLevel"(): $IRotate$SpeedLevel
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "getBlockEntity"(arg0: $BlockGetter$$Type, arg1: $BlockPos$$Type): $SlicerBlockEntity
 public static "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type): void
 public "getTicker"<S extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(S)>): $BlockEntityTicker<(S)>
+public "getBlockEntity"(arg0: $BlockGetter$$Type, arg1: $BlockPos$$Type): $SlicerBlockEntity
 public "getBlockEntityOptional"(arg0: $BlockGetter$$Type, arg1: $BlockPos$$Type): $Optional<($SlicerBlockEntity)>
 public "onBlockEntityUse"(arg0: $BlockGetter$$Type, arg1: $BlockPos$$Type, arg2: $Function$$Type<($SlicerBlockEntity), ($InteractionResult$$Type)>): $InteractionResult
 public "onBlockEntityUseItemOn"(arg0: $BlockGetter$$Type, arg1: $BlockPos$$Type, arg2: $Function$$Type<($SlicerBlockEntity), ($ItemInteractionResult$$Type)>): $ItemInteractionResult
 public "withBlockEntityDo"(arg0: $BlockGetter$$Type, arg1: $BlockPos$$Type, arg2: $Consumer$$Type<($SlicerBlockEntity)>): void
-public "isDedicatedCogWheel"(): boolean
-public static "isDedicatedCogWheel"(arg0: $Block$$Type): boolean
-public static "isDedicatedCogItem"(arg0: $ItemStack$$Type): boolean
 public "isSmallCog"(): boolean
 public static "isSmallCog"(arg0: $Block$$Type): boolean
 public static "isSmallCog"(arg0: $BlockState$$Type): boolean
@@ -765,18 +762,21 @@ public static "isLargeCog"(arg0: $Block$$Type): boolean
 public static "isLargeCog"(arg0: $BlockState$$Type): boolean
 public static "isSmallCogItem"(arg0: $ItemStack$$Type): boolean
 public static "isLargeCogItem"(arg0: $ItemStack$$Type): boolean
+public static "isDedicatedCogItem"(arg0: $ItemStack$$Type): boolean
+public static "isDedicatedCogWheel"(arg0: $Block$$Type): boolean
+public "isDedicatedCogWheel"(): boolean
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 public static "playRotateSound"(arg0: $Level$$Type, arg1: $BlockPos$$Type): void
 public static "playRemoveSound"(arg0: $Level$$Type, arg1: $BlockPos$$Type): void
+get "blockEntityClass"(): $Class<($SlicerBlockEntity)>
+get "blockEntityType"(): $BlockEntityType<($SlicerBlockEntity)>
 get "particleTargetRadius"(): float
 get "particleInitialRadius"(): float
 get "minimumRequiredSpeedLevel"(): $IRotate$SpeedLevel
-get "blockEntityClass"(): $Class<($SlicerBlockEntity)>
-get "blockEntityType"(): $BlockEntityType<($SlicerBlockEntity)>
-get "dedicatedCogWheel"(): boolean
 get "smallCog"(): boolean
 get "largeCog"(): boolean
+get "dedicatedCogWheel"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

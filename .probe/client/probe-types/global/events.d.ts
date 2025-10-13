@@ -10,8 +10,8 @@ import {$InventoryKubeEvent, $InventoryKubeEvent$$Type} from "dev.latvian.mods.k
 import {$SimpleLevelKubeEvent, $SimpleLevelKubeEvent$$Type} from "dev.latvian.mods.kubejs.level.SimpleLevelKubeEvent"
 import {$ItemSmeltedKubeEvent, $ItemSmeltedKubeEvent$$Type} from "dev.latvian.mods.kubejs.item.ItemSmeltedKubeEvent"
 import {$AddEntriesKubeEvent, $AddEntriesKubeEvent$$Type} from "dev.latvian.mods.kubejs.recipe.viewer.AddEntriesKubeEvent"
-import {$BlockLeftClickedKubeEvent, $BlockLeftClickedKubeEvent$$Type} from "dev.latvian.mods.kubejs.block.BlockLeftClickedKubeEvent"
 import {$AfterLivingEntityHurtKubeEvent, $AfterLivingEntityHurtKubeEvent$$Type} from "dev.latvian.mods.kubejs.entity.AfterLivingEntityHurtKubeEvent"
+import {$BlockLeftClickedKubeEvent, $BlockLeftClickedKubeEvent$$Type} from "dev.latvian.mods.kubejs.block.BlockLeftClickedKubeEvent"
 import {$LivingEntityDeathKubeEvent, $LivingEntityDeathKubeEvent$$Type} from "dev.latvian.mods.kubejs.entity.LivingEntityDeathKubeEvent"
 import {$EntityType, $EntityType$$Type} from "net.minecraft.world.entity.EntityType"
 import {$RemoveEntriesKubeEvent, $RemoveEntriesKubeEvent$$Type} from "dev.latvian.mods.kubejs.recipe.viewer.RemoveEntriesKubeEvent"
@@ -97,7 +97,7 @@ function dropped(extra: $ResourceKey$$Type<($Item)>, handler: (event: $ItemDropp
  * Invoked when a player drops an item.
  */
 function dropped(handler: (event: $ItemDroppedKubeEvent) => void): void
-function dynamicTooltips(extra: string, handler: (event: $DynamicItemTooltipsKubeEvent) => void): void
+function dynamicTooltips(extra: StringJS, handler: (event: $DynamicItemTooltipsKubeEvent) => void): void
 /**
  * Invoked when a player right clicks with an item **without targeting anything**.
  * 
@@ -201,17 +201,17 @@ export namespace NetworkEvents {
  * 
  * In `client_scripts`, this event is invoked on the client side when a packet is received from the server.
  */
-function dataReceived(extra: string, handler: (event: $NetworkKubeEvent) => void): void
+function dataReceived(extra: StringJS, handler: (event: $NetworkKubeEvent) => void): void
 }
 export namespace RecipeViewerEvents {
-function addEntries(extra: string, handler: (event: $AddEntriesKubeEvent) => void): void
-function removeEntriesCompletely(extra: string, handler: (event: $RemoveEntriesKubeEvent) => void): void
-function addInformation(extra: string, handler: (event: $AddInformationKubeEvent) => void): void
+function addEntries(extra: StringJS, handler: (event: $AddEntriesKubeEvent) => void): void
+function removeEntriesCompletely(extra: StringJS, handler: (event: $RemoveEntriesKubeEvent) => void): void
+function addInformation(extra: StringJS, handler: (event: $AddInformationKubeEvent) => void): void
 function removeRecipes(handler: (event: $RemoveRecipesKubeEvent) => void): void
-function removeEntries(extra: string, handler: (event: $RemoveEntriesKubeEvent) => void): void
+function removeEntries(extra: StringJS, handler: (event: $RemoveEntriesKubeEvent) => void): void
 function removeCategories(handler: (event: $RemoveCategoriesKubeEvent) => void): void
-function registerSubtypes(extra: string, handler: (event: $RegisterSubtypesKubeEvent) => void): void
-function groupEntries(extra: string, handler: (event: $GroupEntriesKubeEvent) => void): void
+function registerSubtypes(extra: StringJS, handler: (event: $RegisterSubtypesKubeEvent) => void): void
+function groupEntries(extra: StringJS, handler: (event: $GroupEntriesKubeEvent) => void): void
 }
 export namespace MoreJS {
 function enchantmentTableTooltip(handler: (event: $EnchantmentTableTooltipEventJS) => void): void
@@ -294,7 +294,7 @@ function atlasSpriteRegistry(extra: $ResourceLocation$$Type, handler: (event: $A
 function loggedOut(handler: (event: $ClientPlayerKubeEvent) => void): void
 function generateAssets(extra: $GeneratedDataStage$$Type, handler: (event: $KubeAssetGenerator) => void): void
 function tick(handler: (event: $ClientPlayerKubeEvent) => void): void
-function lang(extra: string, handler: (event: $LangKubeEvent) => void): void
+function lang(extra: StringJS, handler: (event: $LangKubeEvent) => void): void
 }
 export namespace BlockEvents {
 /**
@@ -342,7 +342,7 @@ function startedFalling(handler: (event: $BlockStartedFallingKubeEvent) => void)
  * 
  * `Powered`/`Unpowered` event will be fired when the detector block is powered/unpowered.
  */
-function detectorPowered(extra: string, handler: (event: $DetectorBlockKubeEvent) => void): void
+function detectorPowered(extra: StringJS, handler: (event: $DetectorBlockKubeEvent) => void): void
 /**
  * Invoked when a detector block registered in KubeJS receives a block update.
  * 
@@ -370,7 +370,7 @@ function stoppedFalling(handler: (event: $BlockStoppedFallingKubeEvent) => void)
  * 
  * `Powered`/`Unpowered` event will be fired when the detector block is powered/unpowered.
  */
-function detectorUnpowered(extra: string, handler: (event: $DetectorBlockKubeEvent) => void): void
+function detectorUnpowered(extra: StringJS, handler: (event: $DetectorBlockKubeEvent) => void): void
 /**
  * Invoked when a detector block registered in KubeJS receives a block update.
  * 
@@ -382,7 +382,7 @@ function detectorUnpowered(handler: (event: $DetectorBlockKubeEvent) => void): v
  * 
  * `Powered`/`Unpowered` event will be fired when the detector block is powered/unpowered.
  */
-function detectorChanged(extra: string, handler: (event: $DetectorBlockKubeEvent) => void): void
+function detectorChanged(extra: StringJS, handler: (event: $DetectorBlockKubeEvent) => void): void
 /**
  * Invoked when a detector block registered in KubeJS receives a block update.
  * 
@@ -405,9 +405,9 @@ function chestOpened(extra: $ResourceKey$$Type<($MenuType<(object)>)>, handler: 
  */
 function chestOpened(handler: (event: $ChestKubeEvent) => void): void
 function tick(handler: (event: $SimplePlayerKubeEvent) => void): void
-function stageRemoved(extra: string, handler: (event: $StageChangedEvent) => void): void
+function stageRemoved(extra: StringJS, handler: (event: $StageChangedEvent) => void): void
 function stageRemoved(handler: (event: $StageChangedEvent) => void): void
-function stageAdded(extra: string, handler: (event: $StageChangedEvent) => void): void
+function stageAdded(extra: StringJS, handler: (event: $StageChangedEvent) => void): void
 function stageAdded(handler: (event: $StageChangedEvent) => void): void
 /**
  * Invoked when a player opens a chest.

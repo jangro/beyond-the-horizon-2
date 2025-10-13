@@ -6,22 +6,22 @@ import {$Marker, $Marker$$Type} from "org.slf4j.Marker"
 export interface $LoggingEventBuilder {
 
  "log"(): void
- "log"(arg0: string): void
- "log"(arg0: string, arg1: any): void
- "log"(arg0: $Supplier$$Type<(string)>): void
- "log"(arg0: string, ...arg1: (any)[]): void
- "log"(arg0: string, arg1: any, arg2: any): void
+ "log"(arg0: StringJS): void
+ "log"(arg0: StringJS, arg1: any): void
+ "log"(arg0: $Supplier$$Type<(StringJS)>): void
+ "log"(arg0: StringJS, ...arg1: (any)[]): void
+ "log"(arg0: StringJS, arg1: any, arg2: any): void
  "setCause"(arg0: $Throwable$$Type): $LoggingEventBuilder
- "setMessage"(arg0: $Supplier$$Type<(string)>): $LoggingEventBuilder
- "setMessage"(arg0: string): $LoggingEventBuilder
  "addMarker"(arg0: $Marker$$Type): $LoggingEventBuilder
- "addArgument"(arg0: $Supplier$$Type<(any)>): $LoggingEventBuilder
  "addArgument"(arg0: any): $LoggingEventBuilder
- "addKeyValue"(arg0: string, arg1: any): $LoggingEventBuilder
- "addKeyValue"(arg0: string, arg1: $Supplier$$Type<(any)>): $LoggingEventBuilder
+ "addArgument"(arg0: $Supplier$$Type<(any)>): $LoggingEventBuilder
+ "addKeyValue"(arg0: StringJS, arg1: any): $LoggingEventBuilder
+ "addKeyValue"(arg0: StringJS, arg1: $Supplier$$Type<(any)>): $LoggingEventBuilder
+ "setMessage"(arg0: $Supplier$$Type<(StringJS)>): $LoggingEventBuilder
+ "setMessage"(arg0: StringJS): $LoggingEventBuilder
 set "cause"(value: $Throwable$$Type)
-set "message"(value: $Supplier$$Type<(string)>)
-set "message"(value: string)
+set "message"(value: $Supplier$$Type<(StringJS)>)
+set "message"(value: StringJS)
 }
 
 export namespace $LoggingEventBuilder {
@@ -31,19 +31,19 @@ export class $LoggingEventBuilder$$Static implements $LoggingEventBuilder {
 
 
  "log"(): void
- "log"(arg0: string): void
- "log"(arg0: string, arg1: any): void
- "log"(arg0: $Supplier$$Type<(string)>): void
- "log"(arg0: string, ...arg1: (any)[]): void
- "log"(arg0: string, arg1: any, arg2: any): void
+ "log"(arg0: StringJS): void
+ "log"(arg0: StringJS, arg1: any): void
+ "log"(arg0: $Supplier$$Type<(StringJS)>): void
+ "log"(arg0: StringJS, ...arg1: (any)[]): void
+ "log"(arg0: StringJS, arg1: any, arg2: any): void
  "setCause"(arg0: $Throwable$$Type): $LoggingEventBuilder
- "setMessage"(arg0: $Supplier$$Type<(string)>): $LoggingEventBuilder
- "setMessage"(arg0: string): $LoggingEventBuilder
  "addMarker"(arg0: $Marker$$Type): $LoggingEventBuilder
- "addArgument"(arg0: $Supplier$$Type<(any)>): $LoggingEventBuilder
  "addArgument"(arg0: any): $LoggingEventBuilder
- "addKeyValue"(arg0: string, arg1: any): $LoggingEventBuilder
- "addKeyValue"(arg0: string, arg1: $Supplier$$Type<(any)>): $LoggingEventBuilder
+ "addArgument"(arg0: $Supplier$$Type<(any)>): $LoggingEventBuilder
+ "addKeyValue"(arg0: StringJS, arg1: any): $LoggingEventBuilder
+ "addKeyValue"(arg0: StringJS, arg1: $Supplier$$Type<(any)>): $LoggingEventBuilder
+ "setMessage"(arg0: $Supplier$$Type<(StringJS)>): $LoggingEventBuilder
+ "setMessage"(arg0: StringJS): $LoggingEventBuilder
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -68,11 +68,11 @@ static readonly "DEBUG": $Level
 static readonly "WARN": $Level
 
 
-public "toString"(): string
+public "toString"(): StringJS
 public static "values"(): ($Level)[]
-public static "valueOf"(arg0: string): $Level
-public static "intToLevel"(arg0: integer): $Level
+public static "valueOf"(arg0: StringJS): $Level
 public "toInt"(): integer
+public static "intToLevel"(arg0: integer): $Level
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -94,76 +94,76 @@ import {$Marker, $Marker$$Type} from "org.slf4j.Marker"
 
 export interface $Logger {
 
- "getName"(): string
- "info"(arg0: string, arg1: any, arg2: any): void
- "info"(arg0: string, ...arg1: (any)[]): void
- "info"(arg0: string, arg1: $Throwable$$Type): void
- "info"(arg0: string, arg1: any): void
- "info"(arg0: string): void
- "info"(arg0: $Marker$$Type, arg1: string, arg2: $Throwable$$Type): void
- "info"(arg0: $Marker$$Type, arg1: string, ...arg2: (any)[]): void
- "info"(arg0: $Marker$$Type, arg1: string, arg2: any, arg3: any): void
- "info"(arg0: $Marker$$Type, arg1: string, arg2: any): void
- "info"(arg0: $Marker$$Type, arg1: string): void
- "trace"(arg0: $Marker$$Type, arg1: string, arg2: $Throwable$$Type): void
- "trace"(arg0: string, arg1: any): void
- "trace"(arg0: string, arg1: any, arg2: any): void
- "trace"(arg0: string, ...arg1: (any)[]): void
- "trace"(arg0: string, arg1: $Throwable$$Type): void
- "trace"(arg0: string): void
- "trace"(arg0: $Marker$$Type, arg1: string): void
- "trace"(arg0: $Marker$$Type, arg1: string, arg2: any): void
- "trace"(arg0: $Marker$$Type, arg1: string, arg2: any, arg3: any): void
- "trace"(arg0: $Marker$$Type, arg1: string, ...arg2: (any)[]): void
- "debug"(arg0: $Marker$$Type, arg1: string, arg2: any, arg3: any): void
- "debug"(arg0: $Marker$$Type, arg1: string, arg2: any): void
- "debug"(arg0: $Marker$$Type, arg1: string, ...arg2: (any)[]): void
- "debug"(arg0: $Marker$$Type, arg1: string, arg2: $Throwable$$Type): void
- "debug"(arg0: string, ...arg1: (any)[]): void
- "debug"(arg0: string, arg1: any, arg2: any): void
- "debug"(arg0: string, arg1: any): void
- "debug"(arg0: string): void
- "debug"(arg0: string, arg1: $Throwable$$Type): void
- "debug"(arg0: $Marker$$Type, arg1: string): void
- "error"(arg0: $Marker$$Type, arg1: string, arg2: any, arg3: any): void
- "error"(arg0: string, arg1: $Throwable$$Type): void
- "error"(arg0: $Marker$$Type, arg1: string, arg2: any): void
- "error"(arg0: $Marker$$Type, arg1: string, ...arg2: (any)[]): void
- "error"(arg0: $Marker$$Type, arg1: string, arg2: $Throwable$$Type): void
- "error"(arg0: string, arg1: any): void
- "error"(arg0: string): void
- "error"(arg0: string, ...arg1: (any)[]): void
- "error"(arg0: string, arg1: any, arg2: any): void
- "error"(arg0: $Marker$$Type, arg1: string): void
- "warn"(arg0: string, arg1: $Throwable$$Type): void
- "warn"(arg0: string, ...arg1: (any)[]): void
- "warn"(arg0: string, arg1: any, arg2: any): void
- "warn"(arg0: $Marker$$Type, arg1: string, ...arg2: (any)[]): void
- "warn"(arg0: $Marker$$Type, arg1: string): void
- "warn"(arg0: $Marker$$Type, arg1: string, arg2: any): void
- "warn"(arg0: $Marker$$Type, arg1: string, arg2: any, arg3: any): void
- "warn"(arg0: $Marker$$Type, arg1: string, arg2: $Throwable$$Type): void
- "warn"(arg0: string): void
- "warn"(arg0: string, arg1: any): void
- "makeLoggingEventBuilder"(arg0: $Level$$Type): $LoggingEventBuilder
- "isDebugEnabled"(arg0: $Marker$$Type): boolean
+ "warn"(arg0: $Marker$$Type, arg1: StringJS, arg2: any): void
+ "warn"(arg0: $Marker$$Type, arg1: StringJS, arg2: any, arg3: any): void
+ "warn"(arg0: $Marker$$Type, arg1: StringJS, ...arg2: (any)[]): void
+ "warn"(arg0: $Marker$$Type, arg1: StringJS, arg2: $Throwable$$Type): void
+ "warn"(arg0: StringJS, arg1: any): void
+ "warn"(arg0: StringJS, ...arg1: (any)[]): void
+ "warn"(arg0: StringJS, arg1: any, arg2: any): void
+ "warn"(arg0: StringJS, arg1: $Throwable$$Type): void
+ "warn"(arg0: StringJS): void
+ "warn"(arg0: $Marker$$Type, arg1: StringJS): void
+ "error"(arg0: $Marker$$Type, arg1: StringJS, ...arg2: (any)[]): void
+ "error"(arg0: $Marker$$Type, arg1: StringJS, arg2: any, arg3: any): void
+ "error"(arg0: $Marker$$Type, arg1: StringJS, arg2: any): void
+ "error"(arg0: $Marker$$Type, arg1: StringJS, arg2: $Throwable$$Type): void
+ "error"(arg0: StringJS): void
+ "error"(arg0: StringJS, arg1: any): void
+ "error"(arg0: StringJS, arg1: any, arg2: any): void
+ "error"(arg0: StringJS, ...arg1: (any)[]): void
+ "error"(arg0: StringJS, arg1: $Throwable$$Type): void
+ "error"(arg0: $Marker$$Type, arg1: StringJS): void
+ "getName"(): StringJS
+ "info"(arg0: StringJS, arg1: any, arg2: any): void
+ "info"(arg0: StringJS, ...arg1: (any)[]): void
+ "info"(arg0: StringJS, arg1: $Throwable$$Type): void
+ "info"(arg0: StringJS, arg1: any): void
+ "info"(arg0: StringJS): void
+ "info"(arg0: $Marker$$Type, arg1: StringJS, arg2: $Throwable$$Type): void
+ "info"(arg0: $Marker$$Type, arg1: StringJS, ...arg2: (any)[]): void
+ "info"(arg0: $Marker$$Type, arg1: StringJS, arg2: any, arg3: any): void
+ "info"(arg0: $Marker$$Type, arg1: StringJS, arg2: any): void
+ "info"(arg0: $Marker$$Type, arg1: StringJS): void
+ "trace"(arg0: $Marker$$Type, arg1: StringJS, arg2: any, arg3: any): void
+ "trace"(arg0: StringJS, ...arg1: (any)[]): void
+ "trace"(arg0: StringJS, arg1: any, arg2: any): void
+ "trace"(arg0: $Marker$$Type, arg1: StringJS, arg2: $Throwable$$Type): void
+ "trace"(arg0: StringJS, arg1: any): void
+ "trace"(arg0: $Marker$$Type, arg1: StringJS, ...arg2: (any)[]): void
+ "trace"(arg0: StringJS): void
+ "trace"(arg0: StringJS, arg1: $Throwable$$Type): void
+ "trace"(arg0: $Marker$$Type, arg1: StringJS): void
+ "trace"(arg0: $Marker$$Type, arg1: StringJS, arg2: any): void
+ "debug"(arg0: StringJS, arg1: any, arg2: any): void
+ "debug"(arg0: StringJS): void
+ "debug"(arg0: StringJS, arg1: any): void
+ "debug"(arg0: $Marker$$Type, arg1: StringJS, arg2: $Throwable$$Type): void
+ "debug"(arg0: $Marker$$Type, arg1: StringJS, ...arg2: (any)[]): void
+ "debug"(arg0: $Marker$$Type, arg1: StringJS): void
+ "debug"(arg0: $Marker$$Type, arg1: StringJS, arg2: any, arg3: any): void
+ "debug"(arg0: StringJS, arg1: $Throwable$$Type): void
+ "debug"(arg0: StringJS, ...arg1: (any)[]): void
+ "debug"(arg0: $Marker$$Type, arg1: StringJS, arg2: any): void
+ "atInfo"(): $LoggingEventBuilder
+ "atWarn"(): $LoggingEventBuilder
  "isDebugEnabled"(): boolean
+ "isDebugEnabled"(arg0: $Marker$$Type): boolean
  "isErrorEnabled"(): boolean
  "isErrorEnabled"(arg0: $Marker$$Type): boolean
- "isInfoEnabled"(): boolean
  "isInfoEnabled"(arg0: $Marker$$Type): boolean
+ "isInfoEnabled"(): boolean
  "isTraceEnabled"(): boolean
  "isTraceEnabled"(arg0: $Marker$$Type): boolean
- "isWarnEnabled"(): boolean
  "isWarnEnabled"(arg0: $Marker$$Type): boolean
+ "isWarnEnabled"(): boolean
  "atTrace"(): $LoggingEventBuilder
  "atDebug"(): $LoggingEventBuilder
  "atError"(): $LoggingEventBuilder
  "atLevel"(arg0: $Level$$Type): $LoggingEventBuilder
- "atInfo"(): $LoggingEventBuilder
- "atWarn"(): $LoggingEventBuilder
  "isEnabledForLevel"(arg0: $Level$$Type): boolean
-get "name"(): string
+ "makeLoggingEventBuilder"(arg0: $Level$$Type): $LoggingEventBuilder
+get "name"(): StringJS
 get "debugEnabled"(): boolean
 get "errorEnabled"(): boolean
 get "infoEnabled"(): boolean
@@ -172,82 +172,82 @@ get "warnEnabled"(): boolean
 }
 
 export namespace $Logger {
-const ROOT_LOGGER_NAME: string
+const ROOT_LOGGER_NAME: StringJS
 const probejs$$marker: never
 }
 export class $Logger$$Static implements $Logger {
-static readonly "ROOT_LOGGER_NAME": string
+static readonly "ROOT_LOGGER_NAME": StringJS
 
 
- "getName"(): string
- "info"(arg0: string, arg1: any, arg2: any): void
- "info"(arg0: string, ...arg1: (any)[]): void
- "info"(arg0: string, arg1: $Throwable$$Type): void
- "info"(arg0: string, arg1: any): void
- "info"(arg0: string): void
- "info"(arg0: $Marker$$Type, arg1: string, arg2: $Throwable$$Type): void
- "info"(arg0: $Marker$$Type, arg1: string, ...arg2: (any)[]): void
- "info"(arg0: $Marker$$Type, arg1: string, arg2: any, arg3: any): void
- "info"(arg0: $Marker$$Type, arg1: string, arg2: any): void
- "info"(arg0: $Marker$$Type, arg1: string): void
- "trace"(arg0: $Marker$$Type, arg1: string, arg2: $Throwable$$Type): void
- "trace"(arg0: string, arg1: any): void
- "trace"(arg0: string, arg1: any, arg2: any): void
- "trace"(arg0: string, ...arg1: (any)[]): void
- "trace"(arg0: string, arg1: $Throwable$$Type): void
- "trace"(arg0: string): void
- "trace"(arg0: $Marker$$Type, arg1: string): void
- "trace"(arg0: $Marker$$Type, arg1: string, arg2: any): void
- "trace"(arg0: $Marker$$Type, arg1: string, arg2: any, arg3: any): void
- "trace"(arg0: $Marker$$Type, arg1: string, ...arg2: (any)[]): void
- "debug"(arg0: $Marker$$Type, arg1: string, arg2: any, arg3: any): void
- "debug"(arg0: $Marker$$Type, arg1: string, arg2: any): void
- "debug"(arg0: $Marker$$Type, arg1: string, ...arg2: (any)[]): void
- "debug"(arg0: $Marker$$Type, arg1: string, arg2: $Throwable$$Type): void
- "debug"(arg0: string, ...arg1: (any)[]): void
- "debug"(arg0: string, arg1: any, arg2: any): void
- "debug"(arg0: string, arg1: any): void
- "debug"(arg0: string): void
- "debug"(arg0: string, arg1: $Throwable$$Type): void
- "debug"(arg0: $Marker$$Type, arg1: string): void
- "error"(arg0: $Marker$$Type, arg1: string, arg2: any, arg3: any): void
- "error"(arg0: string, arg1: $Throwable$$Type): void
- "error"(arg0: $Marker$$Type, arg1: string, arg2: any): void
- "error"(arg0: $Marker$$Type, arg1: string, ...arg2: (any)[]): void
- "error"(arg0: $Marker$$Type, arg1: string, arg2: $Throwable$$Type): void
- "error"(arg0: string, arg1: any): void
- "error"(arg0: string): void
- "error"(arg0: string, ...arg1: (any)[]): void
- "error"(arg0: string, arg1: any, arg2: any): void
- "error"(arg0: $Marker$$Type, arg1: string): void
- "warn"(arg0: string, arg1: $Throwable$$Type): void
- "warn"(arg0: string, ...arg1: (any)[]): void
- "warn"(arg0: string, arg1: any, arg2: any): void
- "warn"(arg0: $Marker$$Type, arg1: string, ...arg2: (any)[]): void
- "warn"(arg0: $Marker$$Type, arg1: string): void
- "warn"(arg0: $Marker$$Type, arg1: string, arg2: any): void
- "warn"(arg0: $Marker$$Type, arg1: string, arg2: any, arg3: any): void
- "warn"(arg0: $Marker$$Type, arg1: string, arg2: $Throwable$$Type): void
- "warn"(arg0: string): void
- "warn"(arg0: string, arg1: any): void
- "makeLoggingEventBuilder"(arg0: $Level$$Type): $LoggingEventBuilder
- "isDebugEnabled"(arg0: $Marker$$Type): boolean
+ "warn"(arg0: $Marker$$Type, arg1: StringJS, arg2: any): void
+ "warn"(arg0: $Marker$$Type, arg1: StringJS, arg2: any, arg3: any): void
+ "warn"(arg0: $Marker$$Type, arg1: StringJS, ...arg2: (any)[]): void
+ "warn"(arg0: $Marker$$Type, arg1: StringJS, arg2: $Throwable$$Type): void
+ "warn"(arg0: StringJS, arg1: any): void
+ "warn"(arg0: StringJS, ...arg1: (any)[]): void
+ "warn"(arg0: StringJS, arg1: any, arg2: any): void
+ "warn"(arg0: StringJS, arg1: $Throwable$$Type): void
+ "warn"(arg0: StringJS): void
+ "warn"(arg0: $Marker$$Type, arg1: StringJS): void
+ "error"(arg0: $Marker$$Type, arg1: StringJS, ...arg2: (any)[]): void
+ "error"(arg0: $Marker$$Type, arg1: StringJS, arg2: any, arg3: any): void
+ "error"(arg0: $Marker$$Type, arg1: StringJS, arg2: any): void
+ "error"(arg0: $Marker$$Type, arg1: StringJS, arg2: $Throwable$$Type): void
+ "error"(arg0: StringJS): void
+ "error"(arg0: StringJS, arg1: any): void
+ "error"(arg0: StringJS, arg1: any, arg2: any): void
+ "error"(arg0: StringJS, ...arg1: (any)[]): void
+ "error"(arg0: StringJS, arg1: $Throwable$$Type): void
+ "error"(arg0: $Marker$$Type, arg1: StringJS): void
+ "getName"(): StringJS
+ "info"(arg0: StringJS, arg1: any, arg2: any): void
+ "info"(arg0: StringJS, ...arg1: (any)[]): void
+ "info"(arg0: StringJS, arg1: $Throwable$$Type): void
+ "info"(arg0: StringJS, arg1: any): void
+ "info"(arg0: StringJS): void
+ "info"(arg0: $Marker$$Type, arg1: StringJS, arg2: $Throwable$$Type): void
+ "info"(arg0: $Marker$$Type, arg1: StringJS, ...arg2: (any)[]): void
+ "info"(arg0: $Marker$$Type, arg1: StringJS, arg2: any, arg3: any): void
+ "info"(arg0: $Marker$$Type, arg1: StringJS, arg2: any): void
+ "info"(arg0: $Marker$$Type, arg1: StringJS): void
+ "trace"(arg0: $Marker$$Type, arg1: StringJS, arg2: any, arg3: any): void
+ "trace"(arg0: StringJS, ...arg1: (any)[]): void
+ "trace"(arg0: StringJS, arg1: any, arg2: any): void
+ "trace"(arg0: $Marker$$Type, arg1: StringJS, arg2: $Throwable$$Type): void
+ "trace"(arg0: StringJS, arg1: any): void
+ "trace"(arg0: $Marker$$Type, arg1: StringJS, ...arg2: (any)[]): void
+ "trace"(arg0: StringJS): void
+ "trace"(arg0: StringJS, arg1: $Throwable$$Type): void
+ "trace"(arg0: $Marker$$Type, arg1: StringJS): void
+ "trace"(arg0: $Marker$$Type, arg1: StringJS, arg2: any): void
+ "debug"(arg0: StringJS, arg1: any, arg2: any): void
+ "debug"(arg0: StringJS): void
+ "debug"(arg0: StringJS, arg1: any): void
+ "debug"(arg0: $Marker$$Type, arg1: StringJS, arg2: $Throwable$$Type): void
+ "debug"(arg0: $Marker$$Type, arg1: StringJS, ...arg2: (any)[]): void
+ "debug"(arg0: $Marker$$Type, arg1: StringJS): void
+ "debug"(arg0: $Marker$$Type, arg1: StringJS, arg2: any, arg3: any): void
+ "debug"(arg0: StringJS, arg1: $Throwable$$Type): void
+ "debug"(arg0: StringJS, ...arg1: (any)[]): void
+ "debug"(arg0: $Marker$$Type, arg1: StringJS, arg2: any): void
+ "atInfo"(): $LoggingEventBuilder
+ "atWarn"(): $LoggingEventBuilder
  "isDebugEnabled"(): boolean
+ "isDebugEnabled"(arg0: $Marker$$Type): boolean
  "isErrorEnabled"(): boolean
  "isErrorEnabled"(arg0: $Marker$$Type): boolean
- "isInfoEnabled"(): boolean
  "isInfoEnabled"(arg0: $Marker$$Type): boolean
+ "isInfoEnabled"(): boolean
  "isTraceEnabled"(): boolean
  "isTraceEnabled"(arg0: $Marker$$Type): boolean
- "isWarnEnabled"(): boolean
  "isWarnEnabled"(arg0: $Marker$$Type): boolean
+ "isWarnEnabled"(): boolean
  "atTrace"(): $LoggingEventBuilder
  "atDebug"(): $LoggingEventBuilder
  "atError"(): $LoggingEventBuilder
  "atLevel"(arg0: $Level$$Type): $LoggingEventBuilder
- "atInfo"(): $LoggingEventBuilder
- "atWarn"(): $LoggingEventBuilder
  "isEnabledForLevel"(arg0: $Level$$Type): boolean
+ "makeLoggingEventBuilder"(arg0: $Level$$Type): $LoggingEventBuilder
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -267,13 +267,13 @@ import {$Serializable, $Serializable$$Type} from "java.io.Serializable"
 
 export interface $Marker extends $Serializable {
 
- "getName"(): string
+ "getName"(): StringJS
  "remove"(arg0: $Marker$$Type): boolean
  "equals"(arg0: any): boolean
  "hashCode"(): integer
  "add"(arg0: $Marker$$Type): void
  "iterator"(): $Iterator<($Marker)>
- "contains"(arg0: string): boolean
+ "contains"(arg0: StringJS): boolean
  "contains"(arg0: $Marker$$Type): boolean
 /**
  * 
@@ -281,26 +281,26 @@ export interface $Marker extends $Serializable {
  */
  "hasChildren"(): boolean
  "hasReferences"(): boolean
-get "name"(): string
+get "name"(): StringJS
 }
 
 export namespace $Marker {
-const ANY_MARKER: string
-const ANY_NON_NULL_MARKER: string
+const ANY_MARKER: StringJS
+const ANY_NON_NULL_MARKER: StringJS
 const probejs$$marker: never
 }
 export class $Marker$$Static implements $Marker {
-static readonly "ANY_MARKER": string
-static readonly "ANY_NON_NULL_MARKER": string
+static readonly "ANY_MARKER": StringJS
+static readonly "ANY_NON_NULL_MARKER": StringJS
 
 
- "getName"(): string
+ "getName"(): StringJS
  "remove"(arg0: $Marker$$Type): boolean
  "equals"(arg0: any): boolean
  "hashCode"(): integer
  "add"(arg0: $Marker$$Type): void
  "iterator"(): $Iterator<($Marker)>
- "contains"(arg0: string): boolean
+ "contains"(arg0: StringJS): boolean
  "contains"(arg0: $Marker$$Type): boolean
 /**
  * 

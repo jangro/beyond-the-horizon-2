@@ -1,15 +1,15 @@
 declare module "appeng.recipes.quartzcutting.QuartzCuttingRecipe" {
-import {$CraftingInput, $CraftingInput$$Type} from "net.minecraft.world.item.crafting.CraftingInput"
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
+import {$CraftingInput, $CraftingInput$$Type} from "net.minecraft.world.item.crafting.CraftingInput"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$RecipeType, $RecipeType$$Type} from "net.minecraft.world.item.crafting.RecipeType"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CraftingBookCategory, $CraftingBookCategory$$Type} from "net.minecraft.world.item.crafting.CraftingBookCategory"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
-import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
+import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
 import {$CraftingRecipe, $CraftingRecipe$$Type} from "net.minecraft.world.item.crafting.CraftingRecipe"
 import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.item.crafting.RecipeSerializer"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -20,27 +20,27 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Quart
 
 constructor(arg0: $ItemStack$$Type, arg1: $NonNullList$$Type<($Ingredient$$Type)>)
 
+public "category"(): $CraftingBookCategory
 public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "matches"(arg0: $CraftingInput$$Type, arg1: $Level$$Type): boolean
-public "category"(): $CraftingBookCategory
 public "getIngredients"(): $NonNullList<($Ingredient)>
-public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
 public "getSerializer"(): $RecipeSerializer<(any)>
+public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
 public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "getRemainingItems"(arg0: $RecipeInput$$Type): $NonNullList<(any)>
 public "getRemainingItems"(arg0: $CraftingInput$$Type): $NonNullList<($ItemStack)>
-public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
 public "getType"(): $RecipeType<(any)>
-public "getGroup"(): string
+public "getGroup"(): StringJS
 public "isSpecial"(): boolean
-public "showNotification"(): boolean
 public "isIncomplete"(): boolean
 public "getToastSymbol"(): $ItemStack
+public "showNotification"(): boolean
 get "ingredients"(): $NonNullList<($Ingredient)>
 get "serializer"(): $RecipeSerializer<(any)>
 get "type"(): $RecipeType<(any)>
-get "group"(): string
+get "group"(): StringJS
 get "special"(): boolean
 get "incomplete"(): boolean
 get "toastSymbol"(): $ItemStack
@@ -65,8 +65,8 @@ import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$List, $List$$Type} from "java.util.List"
 import {$EntropyRecipe$FluidOutput, $EntropyRecipe$FluidOutput$$Type} from "appeng.recipes.entropy.EntropyRecipe$FluidOutput"
-import {$EntropyRecipe$BlockOutput, $EntropyRecipe$BlockOutput$$Type} from "appeng.recipes.entropy.EntropyRecipe$BlockOutput"
 import {$Record, $Record$$Type} from "java.lang.Record"
+import {$EntropyRecipe$BlockOutput, $EntropyRecipe$BlockOutput$$Type} from "appeng.recipes.entropy.EntropyRecipe$BlockOutput"
 
 export class $EntropyRecipe$Output extends $Record {
 static "CODEC": $Codec<($EntropyRecipe$Output)>
@@ -74,10 +74,10 @@ static "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($EntropyRecipe$
 
 constructor(block: $Optional$$Type<($EntropyRecipe$BlockOutput$$Type)>, fluid: $Optional$$Type<($EntropyRecipe$FluidOutput$$Type)>, drops: $List$$Type<($ItemStack$$Type)>)
 
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "block"(): $Optional<($EntropyRecipe$BlockOutput)>
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
 public "drops"(): $List<($ItemStack)>
 public "fluid"(): $Optional<($EntropyRecipe$FluidOutput)>
 }
@@ -106,9 +106,9 @@ static readonly "INSTANCE": $ChargerRecipeSerializer
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($ChargerRecipe)>
 public "codec"(): $MapCodec<($ChargerRecipe)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($ChargerRecipe)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -135,19 +135,19 @@ export class $EntropyRecipe$BlockInput extends $Record {
 static "CODEC": $Codec<($EntropyRecipe$BlockInput)>
 static "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($EntropyRecipe$BlockInput)>
 
-constructor(block: $Block$$Type, properties: $Map$$Type<(string), ($PropertyValueMatcher$$Type)>)
+constructor(block: $Block$$Type, properties: $Map$$Type<(StringJS), ($PropertyValueMatcher$$Type)>)
 
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "properties"(): $Map<(string), ($PropertyValueMatcher)>
 public "block"(): $Block
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+public "properties"(): $Map<(StringJS), ($PropertyValueMatcher)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $EntropyRecipe$BlockInput$$Type = ({"properties"?: $Map$$Type<(string), ($PropertyValueMatcher$$Type)>, "block"?: $Block$$Type}) | ([properties?: $Map$$Type<(string), ($PropertyValueMatcher$$Type)>, block?: $Block$$Type]);
+export type $EntropyRecipe$BlockInput$$Type = ({"block"?: $Block$$Type, "properties"?: $Map$$Type<(StringJS), ($PropertyValueMatcher$$Type)>}) | ([block?: $Block$$Type, properties?: $Map$$Type<(StringJS), ($PropertyValueMatcher$$Type)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -170,17 +170,17 @@ static readonly "CODEC": $Codec<($TransformCircumstance)>
 static readonly "EXPLOSION": $TransformCircumstance
 static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($TransformCircumstance)>
 
-constructor(arg0: string)
+constructor(arg0: StringJS)
 
 public "equals"(arg0: any): boolean
 public "hashCode"(): integer
+public static "fluid"(arg0: $TagKey$$Type<($Fluid)>): $TransformCircumstance
+public "toJson"(): $JsonObject
 public "isExplosion"(): boolean
-public "isFluid"(): boolean
 public "isFluid"(arg0: $FluidState$$Type): boolean
+public "isFluid"(): boolean
 public "isFluid"(arg0: $Fluid$$Type): boolean
 public static "explosion"(): $TransformCircumstance
-public "toJson"(): $JsonObject
-public static "fluid"(arg0: $TagKey$$Type<($Fluid)>): $TransformCircumstance
 public "isFluidTag"(arg0: $TagKey$$Type<($Fluid)>): boolean
 public "getFluidsForRendering"(): $List<($Fluid)>
 get "fluidsForRendering"(): $List<($Fluid)>
@@ -209,9 +209,9 @@ export class $StorageCellDisassemblyRecipeSerializer implements $RecipeSerialize
 static readonly "INSTANCE": $StorageCellDisassemblyRecipeSerializer
 
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($StorageCellDisassemblyRecipe)>
 public "codec"(): $MapCodec<($StorageCellDisassemblyRecipe)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($StorageCellDisassemblyRecipe)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -242,11 +242,11 @@ static "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($EntropyRecipe$
 
 constructor(block: $Optional$$Type<($EntropyRecipe$BlockInput$$Type)>, fluid: $Optional$$Type<($EntropyRecipe$FluidInput$$Type)>)
 
+public "block"(): $Optional<($EntropyRecipe$BlockInput)>
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "matches"(arg0: $BlockState$$Type, arg1: $FluidState$$Type): boolean
-public "block"(): $Optional<($EntropyRecipe$BlockInput)>
 public "fluid"(): $Optional<($EntropyRecipe$FluidInput)>
 }
 /**
@@ -263,10 +263,10 @@ export type $EntropyRecipe$Input_ = $EntropyRecipe$Input$$Type;
 }}
 declare module "appeng.recipes.entropy.EntropyRecipe$FluidOutput" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
-import {$Map, $Map$$Type} from "java.util.Map"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
-import {$FriendlyByteBuf, $FriendlyByteBuf$$Type} from "net.minecraft.network.FriendlyByteBuf"
+import {$Map, $Map$$Type} from "java.util.Map"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$FriendlyByteBuf, $FriendlyByteBuf$$Type} from "net.minecraft.network.FriendlyByteBuf"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
 import {$Record, $Record$$Type} from "java.lang.Record"
@@ -275,13 +275,13 @@ export class $EntropyRecipe$FluidOutput extends $Record {
 static "CODEC": $Codec<($EntropyRecipe$FluidOutput)>
 static "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($EntropyRecipe$FluidOutput)>
 
-constructor(fluid: $Fluid$$Type, keepProperties: boolean, properties: $Map$$Type<(string), (string)>)
+constructor(fluid: $Fluid$$Type, keepProperties: boolean, properties: $Map$$Type<(StringJS), (StringJS)>)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "apply"(arg0: $FluidState$$Type): $FluidState
-public "properties"(): $Map<(string), (string)>
+public "properties"(): $Map<(StringJS), (StringJS)>
 public "fluid"(): $Fluid
 public static "fromNetwork"(arg0: $FriendlyByteBuf$$Type): $EntropyRecipe$FluidOutput
 public static "toNetwork"(arg0: $FriendlyByteBuf$$Type, arg1: $EntropyRecipe$FluidOutput$$Type): void
@@ -291,7 +291,7 @@ public "keepProperties"(): boolean
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $EntropyRecipe$FluidOutput$$Type = ({"keepProperties"?: boolean, "fluid"?: $Fluid$$Type, "properties"?: $Map$$Type<(string), (string)>}) | ([keepProperties?: boolean, fluid?: $Fluid$$Type, properties?: $Map$$Type<(string), (string)>]);
+export type $EntropyRecipe$FluidOutput$$Type = ({"keepProperties"?: boolean, "fluid"?: $Fluid$$Type, "properties"?: $Map$$Type<(StringJS), (StringJS)>}) | ([keepProperties?: boolean, fluid?: $Fluid$$Type, properties?: $Map$$Type<(StringJS), (StringJS)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -311,9 +311,9 @@ export class $InscriberRecipeSerializer implements $RecipeSerializer<($Inscriber
 static readonly "INSTANCE": $InscriberRecipeSerializer
 
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($InscriberRecipe)>
 public "codec"(): $MapCodec<($InscriberRecipe)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($InscriberRecipe)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -328,16 +328,16 @@ declare global {
 export type $InscriberRecipeSerializer_ = $InscriberRecipeSerializer$$Type;
 }}
 declare module "appeng.recipes.game.StorageCellUpgradeRecipe" {
-import {$CraftingInput, $CraftingInput$$Type} from "net.minecraft.world.item.crafting.CraftingInput"
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
+import {$CraftingInput, $CraftingInput$$Type} from "net.minecraft.world.item.crafting.CraftingInput"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
+import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
 import {$CustomRecipe, $CustomRecipe$$Type} from "net.minecraft.world.item.crafting.CustomRecipe"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.item.crafting.RecipeSerializer"
@@ -350,16 +350,16 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Stora
 
 constructor(arg0: $Item$$Type, arg1: $Item$$Type, arg2: $Item$$Type, arg3: $Item$$Type)
 
-public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "matches"(arg0: $CraftingInput$$Type, arg1: $Level$$Type): boolean
+public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "getIngredients"(): $NonNullList<($Ingredient)>
+public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
+public "getSerializer"(): $RecipeSerializer<(any)>
 public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
 public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "getSerializer"(): $RecipeSerializer<(any)>
 public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
-public "getRemainingItems"(arg0: $RecipeInput$$Type): $NonNullList<(any)>
 public "getRemainingItems"(arg0: $CraftingInput$$Type): $NonNullList<($ItemStack)>
-public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
+public "getRemainingItems"(arg0: $RecipeInput$$Type): $NonNullList<(any)>
 public "getInputCell"(): $Item
 public "getResultCell"(): $Item
 public "getInputComponent"(): $Item
@@ -384,15 +384,15 @@ declare global {
 export type $StorageCellUpgradeRecipe_ = $StorageCellUpgradeRecipe$$Type;
 }}
 declare module "appeng.recipes.game.CraftingUnitTransformRecipe" {
-import {$CraftingInput, $CraftingInput$$Type} from "net.minecraft.world.item.crafting.CraftingInput"
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
+import {$CraftingInput, $CraftingInput$$Type} from "net.minecraft.world.item.crafting.CraftingInput"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$RecipeType, $RecipeType$$Type} from "net.minecraft.world.item.crafting.RecipeType"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
-import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
+import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
 import {$CustomRecipe, $CustomRecipe$$Type} from "net.minecraft.world.item.crafting.CustomRecipe"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.item.crafting.RecipeSerializer"
@@ -404,22 +404,22 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Craft
 
 constructor(arg0: $Block$$Type, arg1: $Item$$Type)
 
-public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "matches"(arg0: $CraftingInput$$Type, arg1: $Level$$Type): boolean
+public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "getType"(): $RecipeType<(any)>
+public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
+public "getUpgradeItem"(): $Item
+public "getSerializer"(): $RecipeSerializer<(any)>
+public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "getUpgradedBlock"(): $Block
 public static "getUpgradedBlock"(arg0: $Level$$Type, arg1: $ItemStack$$Type): $Block
 public static "getRemovedUpgrade"(arg0: $Level$$Type, arg1: $Block$$Type): $ItemStack
-public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "getSerializer"(): $RecipeSerializer<(any)>
-public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
-public "getUpgradeItem"(): $Item
-public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
 get "type"(): $RecipeType<(any)>
-get "upgradedBlock"(): $Block
-get "serializer"(): $RecipeSerializer<(any)>
 get "upgradeItem"(): $Item
+get "serializer"(): $RecipeSerializer<(any)>
+get "upgradedBlock"(): $Block
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -445,9 +445,9 @@ export class $TransformRecipeSerializer implements $RecipeSerializer<($Transform
 static readonly "INSTANCE": $TransformRecipeSerializer
 
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($TransformRecipe)>
 public "codec"(): $MapCodec<($TransformRecipe)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($TransformRecipe)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -474,9 +474,9 @@ static readonly "INSTANCE": $RemoveItemUpgradeRecipeSerializer
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($RemoveItemUpgradeRecipe)>
 public "codec"(): $MapCodec<($RemoveItemUpgradeRecipe)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($RemoveItemUpgradeRecipe)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -503,9 +503,9 @@ static readonly "INSTANCE": $StorageCellUpgradeRecipeSerializer
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($StorageCellUpgradeRecipe)>
 public "codec"(): $MapCodec<($StorageCellUpgradeRecipe)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($StorageCellUpgradeRecipe)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -556,25 +556,25 @@ constructor(arg0: $Ingredient$$Type, arg1: $ItemStack$$Type)
 public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "getType"(): $RecipeType<(any)>
 public "getIngredients"(): $NonNullList<($Ingredient)>
-public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "getSerializer"(): $RecipeSerializer<(any)>
-public "isSpecial"(): boolean
-public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
-public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
 public "getResultItem"(): $ItemStack
+public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
+public "isSpecial"(): boolean
 public "getIngredient"(): $Ingredient
-public "getGroup"(): string
-public "showNotification"(): boolean
-public "getRemainingItems"(arg0: $RecipeInput$$Type): $NonNullList<($ItemStack)>
+public "getSerializer"(): $RecipeSerializer<(any)>
+public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
+public "getGroup"(): StringJS
 public "isIncomplete"(): boolean
 public "getToastSymbol"(): $ItemStack
+public "showNotification"(): boolean
+public "getRemainingItems"(arg0: $RecipeInput$$Type): $NonNullList<($ItemStack)>
 get "type"(): $RecipeType<(any)>
 get "ingredients"(): $NonNullList<($Ingredient)>
-get "serializer"(): $RecipeSerializer<(any)>
-get "special"(): boolean
 get "resultItem"(): $ItemStack
+get "special"(): boolean
 get "ingredient"(): $Ingredient
-get "group"(): string
+get "serializer"(): $RecipeSerializer<(any)>
+get "group"(): StringJS
 get "incomplete"(): boolean
 get "toastSymbol"(): $ItemStack
 }
@@ -599,7 +599,7 @@ static readonly "PRESS": $InscriberProcessType
 
 
 public static "values"(): ($InscriberProcessType)[]
-public static "valueOf"(arg0: string): $InscriberProcessType
+public static "valueOf"(arg0: StringJS): $InscriberProcessType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -614,16 +614,16 @@ declare global {
 export type $InscriberProcessType_ = $InscriberProcessType$$Type;
 }}
 declare module "appeng.recipes.game.AddItemUpgradeRecipe" {
-import {$CraftingInput, $CraftingInput$$Type} from "net.minecraft.world.item.crafting.CraftingInput"
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
+import {$CraftingInput, $CraftingInput$$Type} from "net.minecraft.world.item.crafting.CraftingInput"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
+import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
 import {$CustomRecipe, $CustomRecipe$$Type} from "net.minecraft.world.item.crafting.CustomRecipe"
 import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.item.crafting.RecipeSerializer"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -638,11 +638,11 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($AddIt
 public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "matches"(arg0: $CraftingInput$$Type, arg1: $Level$$Type): boolean
 public "getIngredients"(): $NonNullList<($Ingredient)>
+public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
+public "getSerializer"(): $RecipeSerializer<(any)>
 public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
 public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "getSerializer"(): $RecipeSerializer<(any)>
 public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
-public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
 get "ingredients"(): $NonNullList<($Ingredient)>
 get "serializer"(): $RecipeSerializer<(any)>
 }
@@ -671,9 +671,9 @@ static readonly "INSTANCE": $AddItemUpgradeRecipeSerializer
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($AddItemUpgradeRecipe)>
 public "codec"(): $MapCodec<($AddItemUpgradeRecipe)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($AddItemUpgradeRecipe)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -699,9 +699,9 @@ export class $CraftingUnitTransformRecipeSerializer implements $RecipeSerializer
 static readonly "INSTANCE": $CraftingUnitTransformRecipeSerializer
 
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($CraftingUnitTransformRecipe)>
 public "codec"(): $MapCodec<($CraftingUnitTransformRecipe)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($CraftingUnitTransformRecipe)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -717,8 +717,8 @@ export type $CraftingUnitTransformRecipeSerializer_ = $CraftingUnitTransformReci
 }}
 declare module "appeng.recipes.entropy.EntropyMode" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -731,16 +731,16 @@ static readonly "COOL": $EntropyMode
 
 
 public static "values"(): ($EntropyMode)[]
-public static "valueOf"(arg0: string): $EntropyMode
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $EntropyMode
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -770,8 +770,8 @@ import {$Recipe, $Recipe$$Type} from "net.minecraft.world.item.crafting.Recipe"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.item.crafting.RecipeSerializer"
 import {$EntropyRecipe$Output, $EntropyRecipe$Output$$Type} from "appeng.recipes.entropy.EntropyRecipe$Output"
+import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.item.crafting.RecipeSerializer"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -790,34 +790,34 @@ static readonly "TYPE": $RecipeType<($EntropyRecipe)>
 static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($EntropyRecipe)>
 
 
-public "getMode"(): $EntropyMode
 public "getInput"(): $EntropyRecipe$Input
-public "getOutput"(): $EntropyRecipe$Output
+public "getMode"(): $EntropyMode
 public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "matches"(arg0: $EntropyMode$$Type, arg1: $BlockState$$Type, arg2: $FluidState$$Type): boolean
 public "getType"(): $RecipeType<(any)>
+public "getOutput"(): $EntropyRecipe$Output
 public "getDrops"(): $List<($ItemStack)>
 public "getIngredients"(): $NonNullList<($Ingredient)>
-public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
 public "getSerializer"(): $RecipeSerializer<(any)>
+public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
 public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "getOutputBlockState"(arg0: $BlockState$$Type): $BlockState
 public "getOutputFluidState"(arg0: $FluidState$$Type): $FluidState
-public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
-public "getGroup"(): string
+public "getGroup"(): StringJS
 public "isSpecial"(): boolean
-public "showNotification"(): boolean
-public "getRemainingItems"(arg0: $RecipeInput$$Type): $NonNullList<($ItemStack)>
 public "isIncomplete"(): boolean
 public "getToastSymbol"(): $ItemStack
-get "mode"(): $EntropyMode
+public "showNotification"(): boolean
+public "getRemainingItems"(arg0: $RecipeInput$$Type): $NonNullList<($ItemStack)>
 get "input"(): $EntropyRecipe$Input
-get "output"(): $EntropyRecipe$Output
+get "mode"(): $EntropyMode
 get "type"(): $RecipeType<(any)>
+get "output"(): $EntropyRecipe$Output
 get "drops"(): $List<($ItemStack)>
 get "ingredients"(): $NonNullList<($Ingredient)>
 get "serializer"(): $RecipeSerializer<(any)>
-get "group"(): string
+get "group"(): StringJS
 get "special"(): boolean
 get "incomplete"(): boolean
 get "toastSymbol"(): $ItemStack
@@ -835,16 +835,16 @@ declare global {
 export type $EntropyRecipe_ = $EntropyRecipe$$Type;
 }}
 declare module "appeng.recipes.game.RemoveItemUpgradeRecipe" {
-import {$CraftingInput, $CraftingInput$$Type} from "net.minecraft.world.item.crafting.CraftingInput"
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
+import {$CraftingInput, $CraftingInput$$Type} from "net.minecraft.world.item.crafting.CraftingInput"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
+import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
 import {$CustomRecipe, $CustomRecipe$$Type} from "net.minecraft.world.item.crafting.CustomRecipe"
 import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.item.crafting.RecipeSerializer"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -856,16 +856,16 @@ static readonly "SERIALIZER_ID": $ResourceLocation
 static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($RemoveItemUpgradeRecipe)>
 
 
-public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "matches"(arg0: $CraftingInput$$Type, arg1: $Level$$Type): boolean
+public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "getIngredients"(): $NonNullList<($Ingredient)>
-public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
 public "getSerializer"(): $RecipeSerializer<(any)>
+public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
 public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "getRemainingItems"(arg0: $RecipeInput$$Type): $NonNullList<(any)>
 public "getRemainingItems"(arg0: $CraftingInput$$Type): $NonNullList<($ItemStack)>
-public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
 get "ingredients"(): $NonNullList<($Ingredient)>
 get "serializer"(): $RecipeSerializer<(any)>
 }
@@ -891,9 +891,9 @@ import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
 import {$Recipe, $Recipe$$Type} from "net.minecraft.world.item.crafting.Recipe"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
+import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
 import {$TransformCircumstance, $TransformCircumstance$$Type} from "appeng.recipes.transform.TransformCircumstance"
 import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.item.crafting.RecipeSerializer"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -917,30 +917,30 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Trans
 
 constructor(arg0: $NonNullList$$Type<($Ingredient$$Type)>, arg1: $ItemStack$$Type, arg2: $TransformCircumstance$$Type)
 
-public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "matches"(arg0: $TransformRecipeInput$$Type, arg1: $Level$$Type): boolean
+public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "getType"(): $RecipeType<(any)>
 public "getIngredients"(): $NonNullList<($Ingredient)>
-public "assemble"(arg0: $TransformRecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "getSerializer"(): $RecipeSerializer<(any)>
-public "isSpecial"(): boolean
-public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
 public "getResultItem"(): $ItemStack
+public "isSpecial"(): boolean
+public "getSerializer"(): $RecipeSerializer<(any)>
+public "assemble"(arg0: $TransformRecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "getCircumstance"(): $TransformCircumstance
-public "getGroup"(): string
-public "showNotification"(): boolean
-public "getRemainingItems"(arg0: $TransformRecipeInput$$Type): $NonNullList<($ItemStack)>
+public "getGroup"(): StringJS
 public "isIncomplete"(): boolean
 public "getToastSymbol"(): $ItemStack
+public "showNotification"(): boolean
+public "getRemainingItems"(arg0: $TransformRecipeInput$$Type): $NonNullList<($ItemStack)>
 get "type"(): $RecipeType<(any)>
 get "ingredients"(): $NonNullList<($Ingredient)>
-get "serializer"(): $RecipeSerializer<(any)>
-get "special"(): boolean
 get "resultItem"(): $ItemStack
+get "special"(): boolean
+get "serializer"(): $RecipeSerializer<(any)>
 get "circumstance"(): $TransformCircumstance
-get "group"(): string
+get "group"(): StringJS
 get "incomplete"(): boolean
 get "toastSymbol"(): $ItemStack
 }
@@ -968,9 +968,9 @@ export class $MatterCannonAmmoSerializer implements $RecipeSerializer<($MatterCa
 static readonly "INSTANCE": $MatterCannonAmmoSerializer
 
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($MatterCannonAmmo)>
 public "codec"(): $MapCodec<($MatterCannonAmmo)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($MatterCannonAmmo)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -996,9 +996,9 @@ export class $EntropyRecipeSerializer implements $RecipeSerializer<($EntropyReci
 static readonly "INSTANCE": $EntropyRecipeSerializer
 
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($EntropyRecipe)>
 public "codec"(): $MapCodec<($EntropyRecipe)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($EntropyRecipe)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1013,15 +1013,15 @@ declare global {
 export type $EntropyRecipeSerializer_ = $EntropyRecipeSerializer$$Type;
 }}
 declare module "appeng.recipes.game.StorageCellDisassemblyRecipe" {
-import {$CraftingInput, $CraftingInput$$Type} from "net.minecraft.world.item.crafting.CraftingInput"
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
+import {$CraftingInput, $CraftingInput$$Type} from "net.minecraft.world.item.crafting.CraftingInput"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$RecipeType, $RecipeType$$Type} from "net.minecraft.world.item.crafting.RecipeType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
-import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
+import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
 import {$CustomRecipe, $CustomRecipe$$Type} from "net.minecraft.world.item.crafting.CustomRecipe"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.item.crafting.RecipeSerializer"
@@ -1033,17 +1033,17 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Stora
 
 constructor(arg0: $Item$$Type, arg1: $List$$Type<($ItemStack$$Type)>)
 
-public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "matches"(arg0: $CraftingInput$$Type, arg1: $Level$$Type): boolean
+public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "getType"(): $RecipeType<(any)>
-public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "getSerializer"(): $RecipeSerializer<(any)>
-public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
-public static "getDisassemblyResult"(arg0: $Level$$Type, arg1: $Item$$Type): $List<($ItemStack)>
 public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
 public "canDisassemble"(): boolean
+public "getSerializer"(): $RecipeSerializer<(any)>
+public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "getStorageCell"(): $Item
+public static "getDisassemblyResult"(arg0: $Level$$Type, arg1: $Item$$Type): $List<($ItemStack)>
 public "getCellDisassemblyItems"(): $List<($ItemStack)>
 get "type"(): $RecipeType<(any)>
 get "serializer"(): $RecipeSerializer<(any)>
@@ -1074,8 +1074,8 @@ import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resource
 import {$Recipe, $Recipe$$Type} from "net.minecraft.world.item.crafting.Recipe"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
-import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.item.crafting.RecipeSerializer"
 import {$InscriberProcessType, $InscriberProcessType$$Type} from "appeng.recipes.handlers.InscriberProcessType"
+import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.item.crafting.RecipeSerializer"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 
 export class $InscriberRecipe implements $Recipe<($RecipeInput)> {
@@ -1097,31 +1097,31 @@ constructor(arg0: $Ingredient$$Type, arg1: $ItemStack$$Type, arg2: $Ingredient$$
 public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "getType"(): $RecipeType<(any)>
 public "getIngredients"(): $NonNullList<($Ingredient)>
-public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "getSerializer"(): $RecipeSerializer<(any)>
-public "isSpecial"(): boolean
-public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
-public "getResultItem"(): $ItemStack
 public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
+public "getResultItem"(): $ItemStack
+public "isSpecial"(): boolean
 public "getProcessType"(): $InscriberProcessType
+public "getSerializer"(): $RecipeSerializer<(any)>
+public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "getMiddleInput"(): $Ingredient
 public "getTopOptional"(): $Ingredient
 public "getBottomOptional"(): $Ingredient
-public "getGroup"(): string
-public "showNotification"(): boolean
-public "getRemainingItems"(arg0: $RecipeInput$$Type): $NonNullList<($ItemStack)>
+public "getGroup"(): StringJS
 public "isIncomplete"(): boolean
 public "getToastSymbol"(): $ItemStack
+public "showNotification"(): boolean
+public "getRemainingItems"(arg0: $RecipeInput$$Type): $NonNullList<($ItemStack)>
 get "type"(): $RecipeType<(any)>
 get "ingredients"(): $NonNullList<($Ingredient)>
-get "serializer"(): $RecipeSerializer<(any)>
-get "special"(): boolean
 get "resultItem"(): $ItemStack
+get "special"(): boolean
 get "processType"(): $InscriberProcessType
+get "serializer"(): $RecipeSerializer<(any)>
 get "middleInput"(): $Ingredient
 get "topOptional"(): $Ingredient
 get "bottomOptional"(): $Ingredient
-get "group"(): string
+get "group"(): StringJS
 get "incomplete"(): boolean
 get "toastSymbol"(): $ItemStack
 }
@@ -1150,8 +1150,8 @@ import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resource
 import {$Recipe, $Recipe$$Type} from "net.minecraft.world.item.crafting.Recipe"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
-import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
 import {$ItemLike, $ItemLike$$Type} from "net.minecraft.world.level.ItemLike"
+import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.item.crafting.RecipeSerializer"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -1174,27 +1174,27 @@ constructor(arg0: $Ingredient$$Type, arg1: float)
 
 public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "getType"(): $RecipeType<(any)>
-public "getIngredients"(): $NonNullList<($Ingredient)>
-public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "getSerializer"(): $RecipeSerializer<(any)>
-public "getWeight"(): float
 public static "ammo"(arg0: $RecipeOutput$$Type, arg1: $ResourceLocation$$Type, arg2: $TagKey$$Type<($Item)>, arg3: float): void
-public static "ammo"(arg0: $RecipeOutput$$Type, arg1: $ResourceLocation$$Type, arg2: $ItemLike$$Type, arg3: float): void
 public static "ammo"(arg0: $RecipeOutput$$Type, arg1: $ResourceLocation$$Type, arg2: $Ingredient$$Type, arg3: float): void
-public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
-public "getAmmo"(): $Ingredient
+public static "ammo"(arg0: $RecipeOutput$$Type, arg1: $ResourceLocation$$Type, arg2: $ItemLike$$Type, arg3: float): void
+public "getIngredients"(): $NonNullList<($Ingredient)>
 public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
-public "getGroup"(): string
+public "getWeight"(): float
+public "getSerializer"(): $RecipeSerializer<(any)>
+public "getAmmo"(): $Ingredient
+public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
+public "getGroup"(): StringJS
 public "isSpecial"(): boolean
-public "showNotification"(): boolean
-public "getRemainingItems"(arg0: $RecipeInput$$Type): $NonNullList<($ItemStack)>
 public "isIncomplete"(): boolean
 public "getToastSymbol"(): $ItemStack
+public "showNotification"(): boolean
+public "getRemainingItems"(arg0: $RecipeInput$$Type): $NonNullList<($ItemStack)>
 get "type"(): $RecipeType<(any)>
 get "ingredients"(): $NonNullList<($Ingredient)>
-get "serializer"(): $RecipeSerializer<(any)>
 get "weight"(): float
-get "group"(): string
+get "serializer"(): $RecipeSerializer<(any)>
+get "group"(): StringJS
 get "special"(): boolean
 get "incomplete"(): boolean
 get "toastSymbol"(): $ItemStack
@@ -1224,9 +1224,9 @@ static readonly "INSTANCE": $QuartzCuttingRecipeSerializer
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($QuartzCuttingRecipe)>
 public "codec"(): $MapCodec<($QuartzCuttingRecipe)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($QuartzCuttingRecipe)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1252,17 +1252,17 @@ export class $TransformRecipeInput extends $Record implements $RecipeInput {
 constructor(items: $List$$Type<($ItemStack$$Type)>)
 
 public "items"(): $List<($ItemStack)>
+public "getItem"(arg0: integer): $ItemStack
 public "size"(): integer
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "getItem"(arg0: integer): $ItemStack
 public "isEmpty"(): boolean
 public "find"(arg0: $SlotFilter$$Type): $ItemStack
 public "find"(arg0: $SlotFilter$$Type, arg1: integer): $ItemStack
-public "findAll"(): $List<($ItemStack)>
-public "findAll"(arg0: $SlotFilter$$Type): $List<($ItemStack)>
 public "self"(): $RecipeInput
+public "findAll"(arg0: $SlotFilter$$Type): $List<($ItemStack)>
+public "findAll"(): $List<($ItemStack)>
 get "empty"(): boolean
 }
 /**
@@ -1279,8 +1279,8 @@ export type $TransformRecipeInput_ = $TransformRecipeInput$$Type;
 }}
 declare module "appeng.recipes.entropy.EntropyRecipe$FluidInput" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
-import {$Map, $Map$$Type} from "java.util.Map"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
+import {$Map, $Map$$Type} from "java.util.Map"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$PropertyValueMatcher, $PropertyValueMatcher$$Type} from "appeng.recipes.entropy.PropertyValueMatcher"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
@@ -1290,19 +1290,19 @@ export class $EntropyRecipe$FluidInput extends $Record {
 static "CODEC": $Codec<($EntropyRecipe$FluidInput)>
 static "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($EntropyRecipe$FluidInput)>
 
-constructor(fluid: $Fluid$$Type, properties: $Map$$Type<(string), ($PropertyValueMatcher$$Type)>)
+constructor(fluid: $Fluid$$Type, properties: $Map$$Type<(StringJS), ($PropertyValueMatcher$$Type)>)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "properties"(): $Map<(string), ($PropertyValueMatcher)>
+public "properties"(): $Map<(StringJS), ($PropertyValueMatcher)>
 public "fluid"(): $Fluid
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $EntropyRecipe$FluidInput$$Type = ({"properties"?: $Map$$Type<(string), ($PropertyValueMatcher$$Type)>, "fluid"?: $Fluid$$Type}) | ([properties?: $Map$$Type<(string), ($PropertyValueMatcher$$Type)>, fluid?: $Fluid$$Type]);
+export type $EntropyRecipe$FluidInput$$Type = ({"fluid"?: $Fluid$$Type, "properties"?: $Map$$Type<(StringJS), ($PropertyValueMatcher$$Type)>}) | ([fluid?: $Fluid$$Type, properties?: $Map$$Type<(StringJS), ($PropertyValueMatcher$$Type)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1328,13 +1328,13 @@ export interface $PropertyValueMatcher {
 
 export namespace $PropertyValueMatcher {
 const CODEC: $Codec<($PropertyValueMatcher)>
-const MAP_CODEC: $Codec<($Map<(string), ($PropertyValueMatcher)>)>
+const MAP_CODEC: $Codec<($Map<(StringJS), ($PropertyValueMatcher)>)>
 const STREAM_CODEC: $StreamCodec<($FriendlyByteBuf), ($PropertyValueMatcher)>
 const probejs$$marker: never
 }
 export class $PropertyValueMatcher$$Static implements $PropertyValueMatcher {
 static readonly "CODEC": $Codec<($PropertyValueMatcher)>
-static readonly "MAP_CODEC": $Codec<($Map<(string), ($PropertyValueMatcher)>)>
+static readonly "MAP_CODEC": $Codec<($Map<(StringJS), ($PropertyValueMatcher)>)>
 static readonly "STREAM_CODEC": $StreamCodec<($FriendlyByteBuf), ($PropertyValueMatcher)>
 
 
@@ -1367,21 +1367,21 @@ export class $EntropyRecipe$BlockOutput extends $Record {
 static "CODEC": $Codec<($EntropyRecipe$BlockOutput)>
 static "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($EntropyRecipe$BlockOutput)>
 
-constructor(block: $Block$$Type, keepProperties: boolean, properties: $Map$$Type<(string), (string)>)
+constructor(block: $Block$$Type, keepProperties: boolean, properties: $Map$$Type<(StringJS), (StringJS)>)
 
+public "block"(): $Block
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "apply"(arg0: $BlockState$$Type): $BlockState
-public "properties"(): $Map<(string), (string)>
-public "block"(): $Block
+public "properties"(): $Map<(StringJS), (StringJS)>
 public "keepProperties"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $EntropyRecipe$BlockOutput$$Type = ({"keepProperties"?: boolean, "properties"?: $Map$$Type<(string), (string)>, "block"?: $Block$$Type}) | ([keepProperties?: boolean, properties?: $Map$$Type<(string), (string)>, block?: $Block$$Type]);
+export type $EntropyRecipe$BlockOutput$$Type = ({"keepProperties"?: boolean, "properties"?: $Map$$Type<(StringJS), (StringJS)>, "block"?: $Block$$Type}) | ([keepProperties?: boolean, properties?: $Map$$Type<(StringJS), (StringJS)>, block?: $Block$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.

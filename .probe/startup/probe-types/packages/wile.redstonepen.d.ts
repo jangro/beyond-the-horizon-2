@@ -13,7 +13,7 @@ readonly "neighbour_positions": $List<($BlockPos)>
 constructor(arg0: $List$$Type<($BlockPos$$Type)>, arg1: $List$$Type<($Direction$$Type)>, arg2: $List$$Type<($Direction$$Type)>, arg3: $List$$Type<($Direction$$Type)>)
 constructor(arg0: $List$$Type<($BlockPos$$Type)>, arg1: $List$$Type<($Direction$$Type)>, arg2: $List$$Type<($Direction$$Type)>, arg3: $List$$Type<($Direction$$Type)>, arg4: integer)
 
-public "toString"(): string
+public "toString"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -35,17 +35,17 @@ export class $BasicButton$BasicButtonBlock$Config extends $Record {
 constructor(sound_pitch_unpowered: float, sound_pitch_powered: float, active_time: integer)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
+public "active_time"(): integer
 public "sound_pitch_powered"(): float
 public "sound_pitch_unpowered"(): float
-public "active_time"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $BasicButton$BasicButtonBlock$Config$$Type = ({"sound_pitch_unpowered"?: float, "sound_pitch_powered"?: float, "active_time"?: integer}) | ([sound_pitch_unpowered?: float, sound_pitch_powered?: float, active_time?: integer]);
+export type $BasicButton$BasicButtonBlock$Config$$Type = ({"active_time"?: integer, "sound_pitch_unpowered"?: float, "sound_pitch_powered"?: float}) | ([active_time?: integer, sound_pitch_unpowered?: float, sound_pitch_powered?: float]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -56,24 +56,24 @@ export type $BasicButton$BasicButtonBlock$Config_ = $BasicButton$BasicButtonBloc
 declare module "wile.redstonepen.blocks.CircuitComponents$BistableRelayBlock" {
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
-import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$StandardBlocks$IStandardBlock$RenderTypeHint, $StandardBlocks$IStandardBlock$RenderTypeHint$$Type} from "wile.redstonepen.libmc.StandardBlocks$IStandardBlock$RenderTypeHint"
+import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CircuitComponents$RelayBlock, $CircuitComponents$RelayBlock$$Type} from "wile.redstonepen.blocks.CircuitComponents$RelayBlock"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$AABB, $AABB$$Type} from "net.minecraft.world.phys.AABB"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -86,7 +86,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -105,8 +105,8 @@ static readonly "FACING": $DirectionProperty
 
 constructor(arg0: long, arg1: $BlockBehaviour$Properties$$Type, arg2: $AABB$$Type)
 
-public "update"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockPos$$Type): $BlockState
 public "tick"(arg0: $BlockState$$Type, arg1: $ServerLevel$$Type, arg2: $BlockPos$$Type, arg3: $RandomSource$$Type): void
+public "update"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockPos$$Type): $BlockState
 public "getSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
 public "config"(): long
 public "getRenderTypeHint"(): $StandardBlocks$IStandardBlock$RenderTypeHint
@@ -126,22 +126,25 @@ declare global {
 export type $CircuitComponents$BistableRelayBlock_ = $CircuitComponents$BistableRelayBlock$$Type;
 }}
 declare module "wile.redstonepen.blocks.CircuitComponents$DirectedComponentBlockItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
-import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 
 export class $CircuitComponents$DirectedComponentBlockItem extends $BlockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -160,6 +163,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -176,22 +180,22 @@ export type $CircuitComponents$DirectedComponentBlockItem_ = $CircuitComponents$
 declare module "wile.redstonepen.blocks.CircuitComponents$BridgeRelayBlock" {
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
-import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$StandardBlocks$IStandardBlock$RenderTypeHint, $StandardBlocks$IStandardBlock$RenderTypeHint$$Type} from "wile.redstonepen.libmc.StandardBlocks$IStandardBlock$RenderTypeHint"
+import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CircuitComponents$RelayBlock, $CircuitComponents$RelayBlock$$Type} from "wile.redstonepen.blocks.CircuitComponents$RelayBlock"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$AABB, $AABB$$Type} from "net.minecraft.world.phys.AABB"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -204,7 +208,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -244,9 +248,12 @@ declare global {
 export type $CircuitComponents$BridgeRelayBlock_ = $CircuitComponents$BridgeRelayBlock$$Type;
 }}
 declare module "wile.redstonepen.libmc.StandardItems$BaseItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
@@ -260,7 +267,7 @@ import {$StandardItems$IStandardItem, $StandardItems$IStandardItem$$Type} from "
 export class $StandardItems$BaseItem extends $Item implements $StandardItems$IStandardItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -268,10 +275,11 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Item$Properties$$Type)
 
-public "onItemUseFirst"(arg0: $ItemStack$$Type, arg1: $UseOnContext$$Type): $InteractionResult
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public "onItemUseFirst"(arg0: $ItemStack$$Type, arg1: $UseOnContext$$Type): $InteractionResult
 public "doesSneakBypassUse"(arg0: $ItemStack$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): boolean
 public "onBlockStartBreak"(arg0: $ItemStack$$Type, arg1: $BlockPos$$Type, arg2: $Player$$Type): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -321,7 +329,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "UPDATE_IMMEDIATE": integer
@@ -369,10 +377,10 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 export interface $StandardBlocks$IStandardBlock {
 
  "config"(): long
- "hasDynamicDropList"(): boolean
+ "dropList"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockEntity$$Type, arg3: boolean): $List<($ItemStack)>
  "getRenderTypeHint"(): $StandardBlocks$IStandardBlock$RenderTypeHint
  "getRenderTypeHint"(arg0: long): $StandardBlocks$IStandardBlock$RenderTypeHint
- "dropList"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockEntity$$Type, arg3: boolean): $List<($ItemStack)>
+ "hasDynamicDropList"(): boolean
 get "renderTypeHint"(): $StandardBlocks$IStandardBlock$RenderTypeHint
 }
 
@@ -383,10 +391,10 @@ export class $StandardBlocks$IStandardBlock$$Static implements $StandardBlocks$I
 
 
  "config"(): long
- "hasDynamicDropList"(): boolean
+ "dropList"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockEntity$$Type, arg3: boolean): $List<($ItemStack)>
  "getRenderTypeHint"(): $StandardBlocks$IStandardBlock$RenderTypeHint
  "getRenderTypeHint"(arg0: long): $StandardBlocks$IStandardBlock$RenderTypeHint
- "dropList"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockEntity$$Type, arg3: boolean): $List<($ItemStack)>
+ "hasDynamicDropList"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -407,8 +415,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$List, $List$$Type} from "java.util.List"
-import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$StandardBlocks$IStandardBlock$RenderTypeHint, $StandardBlocks$IStandardBlock$RenderTypeHint$$Type} from "wile.redstonepen.libmc.StandardBlocks$IStandardBlock$RenderTypeHint"
+import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
@@ -416,8 +424,8 @@ import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -428,8 +436,8 @@ import {$RenderShape, $RenderShape$$Type} from "net.minecraft.world.level.block.
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PathComputationType, $PathComputationType$$Type} from "net.minecraft.world.level.pathfinder.PathComputationType"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$RedstoneTrack$TrackBlockEntity, $RedstoneTrack$TrackBlockEntity$$Type} from "wile.redstonepen.blocks.RedstoneTrack$TrackBlockEntity"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
@@ -438,8 +446,8 @@ import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.leve
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $RedstoneTrack$RedstoneTrackBlock extends $StandardBlocks$WaterLoggable implements $EntityBlock {
 static readonly "UPDATE_IMMEDIATE": integer
@@ -455,7 +463,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -467,20 +475,24 @@ constructor(arg0: long, arg1: $BlockBehaviour$Properties$$Type)
 
 public "tick"(arg0: $BlockState$$Type, arg1: $ServerLevel$$Type, arg2: $BlockPos$$Type, arg3: $RandomSource$$Type): void
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "useShapeForLightOcclusion"(arg0: $BlockState$$Type): boolean
-public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
+public "asItem"(): $Item
+public static "tile"(arg0: $BlockGetter$$Type, arg1: $BlockPos$$Type): $Optional<($RedstoneTrack$TrackBlockEntity)>
 public "isPathfindable"(arg0: $BlockState$$Type, arg1: $PathComputationType$$Type): boolean
+public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
-public "animateTick"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $RandomSource$$Type): void
 public "canSurvive"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type): boolean
 public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
 public "isSignalSource"(arg0: $BlockState$$Type): boolean
 public "getSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
-public static "tile"(arg0: $BlockGetter$$Type, arg1: $BlockPos$$Type): $Optional<($RedstoneTrack$TrackBlockEntity)>
-public "asItem"(): $Item
-public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
+public "animateTick"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $RandomSource$$Type): void
+public "dropList"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockEntity$$Type, arg3: boolean): $List<($ItemStack)>
+public "notifyAdjacent"(arg0: $Level$$Type, arg1: $BlockPos$$Type): void
+public "modifySegments"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $ItemStack$$Type, arg5: $InteractionHand$$Type, arg6: $BlockHitResult$$Type, arg7: boolean, arg8: boolean): $InteractionResult
 public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
+public "getDirectSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
+public "shouldCheckWeakPower"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): boolean
 /**
  * 
  * @deprecated
@@ -488,13 +500,9 @@ public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "canConnectRedstone"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): boolean
 public "propagatesSkylightDown"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): boolean
 public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "shouldCheckWeakPower"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): boolean
-public "getDirectSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
+public "useShapeForLightOcclusion"(arg0: $BlockState$$Type): boolean
 public "hasDynamicDropList"(): boolean
 public static "canBePlacedOnFace"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): boolean
-public "notifyAdjacent"(arg0: $Level$$Type, arg1: $BlockPos$$Type): void
-public "modifySegments"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $ItemStack$$Type, arg5: $InteractionHand$$Type, arg6: $BlockHitResult$$Type, arg7: boolean, arg8: boolean): $InteractionResult
-public "dropList"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockEntity$$Type, arg3: boolean): $List<($ItemStack)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "config"(): long
@@ -540,15 +548,17 @@ declare global {
 export type $StandardItems$IStandardItem_ = $StandardItems$IStandardItem$$Type;
 }}
 declare module "wile.redstonepen.items.RedstonePenItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$StandardItems$BaseItem, $StandardItems$BaseItem$$Type} from "wile.redstonepen.libmc.StandardItems$BaseItem"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
@@ -557,14 +567,14 @@ import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resource
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $RedstonePenItem extends $StandardItems$BaseItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -572,23 +582,24 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Item$Properties$$Type)
 
+public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
+public "canAttackBlock"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): boolean
 public "isBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getBarWidth"(arg0: $ItemStack$$Type): integer
 public "getBarColor"(arg0: $ItemStack$$Type): integer
-public "canAttackBlock"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): boolean
-public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
 public static "isPen"(arg0: $ItemStack$$Type): boolean
-public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public static "isFullRedstone"(arg0: $ItemStack$$Type): boolean
+public static "pushRedstone"(arg0: $ItemStack$$Type, arg1: integer, arg2: $Player$$Type): void
+public static "popRedstone"(arg0: $ItemStack$$Type, arg1: integer, arg2: $Player$$Type, arg3: $InteractionHand$$Type): integer
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getEnchantmentValue"(): integer
 public "isValidRepairItem"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
 public "doesSneakBypassUse"(arg0: $ItemStack$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): boolean
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getDestroySpeed"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type): float
-public "onBlockStartBreak"(arg0: $ItemStack$$Type, arg1: $BlockPos$$Type, arg2: $Player$$Type): boolean
 public static "hasEnoughRedstone"(arg0: $ItemStack$$Type, arg1: integer, arg2: $Player$$Type): boolean
-public static "pushRedstone"(arg0: $ItemStack$$Type, arg1: integer, arg2: $Player$$Type): void
-public static "popRedstone"(arg0: $ItemStack$$Type, arg1: integer, arg2: $Player$$Type, arg3: $InteractionHand$$Type): integer
-public static "isFullRedstone"(arg0: $ItemStack$$Type): boolean
+public "onBlockStartBreak"(arg0: $ItemStack$$Type, arg1: $BlockPos$$Type, arg2: $Player$$Type): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "enchantmentValue"(): integer
 }
 /**
@@ -622,8 +633,8 @@ export interface $StandardEntityBlocks$IStandardEntityBlock<ET extends $Standard
  "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
  "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
  "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
- "isBlockEntityTicking"(arg0: $Level$$Type, arg1: $BlockState$$Type): boolean
  "useOpenGui"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): $InteractionResult
+ "isBlockEntityTicking"(arg0: $Level$$Type, arg1: $BlockState$$Type): boolean
 }
 
 export namespace $StandardEntityBlocks$IStandardEntityBlock {
@@ -635,8 +646,8 @@ export class $StandardEntityBlocks$IStandardEntityBlock$$Static<ET extends $Stan
  "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
  "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
  "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
- "isBlockEntityTicking"(arg0: $Level$$Type, arg1: $BlockState$$Type): boolean
  "useOpenGui"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): $InteractionResult
+ "isBlockEntityTicking"(arg0: $Level$$Type, arg1: $BlockState$$Type): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -662,17 +673,17 @@ import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraf
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $StandardEntityBlocks$StandardBlockEntity extends $BlockEntity {
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 constructor(arg0: $BlockEntityType$$Type<(any)>, arg1: $BlockPos$$Type, arg2: $BlockState$$Type)
 
 public "tick"(): void
-public "getUpdateTag"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
-public "writenbt"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type, arg2: boolean): $CompoundTag
 public "writenbt"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): $CompoundTag
+public "writenbt"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type, arg2: boolean): $CompoundTag
 public "readnbt"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): $CompoundTag
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+public "getUpdateTag"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -698,7 +709,7 @@ static readonly "SOLID": $StandardBlocks$IStandardBlock$RenderTypeHint
 
 
 public static "values"(): ($StandardBlocks$IStandardBlock$RenderTypeHint)[]
-public static "valueOf"(arg0: string): $StandardBlocks$IStandardBlock$RenderTypeHint
+public static "valueOf"(arg0: StringJS): $StandardBlocks$IStandardBlock$RenderTypeHint
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -718,8 +729,8 @@ import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$RecipeType, $RecipeType$$Type} from "net.minecraft.world.item.crafting.RecipeType"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CraftingBookCategory, $CraftingBookCategory$$Type} from "net.minecraft.world.item.crafting.CraftingBookCategory"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$ExtendedShapelessRecipe$Serializer, $ExtendedShapelessRecipe$Serializer$$Type} from "wile.redstonepen.libmc.ExtendedShapelessRecipe$Serializer"
@@ -730,31 +741,31 @@ import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.it
 export class $ExtendedShapelessRecipe implements $CraftingRecipe {
 static readonly "SERIALIZER": $ExtendedShapelessRecipe$Serializer
 
-constructor(arg0: string, arg1: $CraftingBookCategory$$Type, arg2: $ItemStack$$Type, arg3: $NonNullList$$Type<($Ingredient$$Type)>, arg4: $CompoundTag$$Type)
+constructor(arg0: StringJS, arg1: $CraftingBookCategory$$Type, arg2: $ItemStack$$Type, arg3: $NonNullList$$Type<($Ingredient$$Type)>, arg4: $CompoundTag$$Type)
 
+public "category"(): $CraftingBookCategory
 public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "matches"(arg0: $CraftingInput$$Type, arg1: $Level$$Type): boolean
-public "category"(): $CraftingBookCategory
 public "getIngredients"(): $NonNullList<($Ingredient)>
-public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "getSerializer"(): $RecipeSerializer<(any)>
-public "getGroup"(): string
+public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
+public "getGroup"(): StringJS
 public "isSpecial"(): boolean
+public "getAspects"(): $CompoundTag
+public "getSerializer"(): $RecipeSerializer<(any)>
+public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
 public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "getRemainingItems"(arg0: $CraftingInput$$Type): $NonNullList<($ItemStack)>
 public "getRemainingItems"(arg0: $RecipeInput$$Type): $NonNullList<(any)>
-public "getAspects"(): $CompoundTag
-public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
 public "getType"(): $RecipeType<(any)>
-public "showNotification"(): boolean
 public "isIncomplete"(): boolean
 public "getToastSymbol"(): $ItemStack
+public "showNotification"(): boolean
 get "ingredients"(): $NonNullList<($Ingredient)>
-get "serializer"(): $RecipeSerializer<(any)>
-get "group"(): string
+get "group"(): StringJS
 get "special"(): boolean
 get "aspects"(): $CompoundTag
+get "serializer"(): $RecipeSerializer<(any)>
 get "type"(): $RecipeType<(any)>
 get "incomplete"(): boolean
 get "toastSymbol"(): $ItemStack
@@ -774,24 +785,24 @@ export type $ExtendedShapelessRecipe_ = $ExtendedShapelessRecipe$$Type;
 declare module "wile.redstonepen.blocks.CircuitComponents$InvertedRelayBlock" {
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
-import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$StandardBlocks$IStandardBlock$RenderTypeHint, $StandardBlocks$IStandardBlock$RenderTypeHint$$Type} from "wile.redstonepen.libmc.StandardBlocks$IStandardBlock$RenderTypeHint"
+import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CircuitComponents$RelayBlock, $CircuitComponents$RelayBlock$$Type} from "wile.redstonepen.blocks.CircuitComponents$RelayBlock"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$AABB, $AABB$$Type} from "net.minecraft.world.phys.AABB"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -804,7 +815,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -823,8 +834,8 @@ static readonly "FACING": $DirectionProperty
 
 constructor(arg0: long, arg1: $BlockBehaviour$Properties$$Type, arg2: $AABB$$Type)
 
-public "update"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockPos$$Type): $BlockState
 public "tick"(arg0: $BlockState$$Type, arg1: $ServerLevel$$Type, arg2: $BlockPos$$Type, arg3: $RandomSource$$Type): void
+public "update"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockPos$$Type): $BlockState
 public "getSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
 public "config"(): long
 public "getRenderTypeHint"(): $StandardBlocks$IStandardBlock$RenderTypeHint
@@ -865,42 +876,42 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 
 export class $ControlBox$ControlBoxBlockEntity extends $StandardEntityBlocks$StandardBlockEntity implements $MenuProvider, $Nameable, $Networking$IPacketTileNotifyReceiver {
 static readonly "TICK_INTERVAL": integer
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 constructor(arg0: $BlockPos$$Type, arg1: $BlockState$$Type)
 
-public "getName"(): $Component
-public "getDisplayName"(): $Component
 public "tick"(): void
+public "getDisplayName"(): $Component
+public "getName"(): $Component
 public "createMenu"(arg0: integer, arg1: $Inventory$$Type, arg2: $Player$$Type): $AbstractContainerMenu
-public "hasCustomName"(): boolean
 public "getCustomName"(): $Component
 public "setCustomName"(arg0: $Component$$Type): void
+public "hasCustomName"(): boolean
 public "setEnabled"(arg0: boolean): void
-public "setCode"(arg0: string): void
-public "getCode"(): string
-public "onServerPacketReceived"(arg0: $CompoundTag$$Type): void
-public "setRcaPlayerUUID"(arg0: $UUID$$Type): void
+public "setCode"(arg0: StringJS): void
+public "getCode"(): StringJS
 public "writenbt"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type, arg2: boolean): $CompoundTag
 public "readnbt"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): $CompoundTag
 public "toggle_trace"(arg0: $Player$$Type): void
 public "signal_update"(arg0: $Direction$$Type, arg1: $Direction$$Type): void
 public "trace_enabled"(): boolean
 public "getEnabled"(): boolean
+public "onServerPacketReceived"(arg0: $CompoundTag$$Type): void
+public "setRcaPlayerUUID"(arg0: $UUID$$Type): void
 public "onClientPacketReceived"(arg0: $Player$$Type, arg1: $CompoundTag$$Type): void
-public "shouldTriggerClientSideContainerClosingOnOpen"(): boolean
 public "writeClientSideData"(arg0: $AbstractContainerMenu$$Type, arg1: $RegistryFriendlyByteBuf$$Type): void
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+public "shouldTriggerClientSideContainerClosingOnOpen"(): boolean
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
-get "name"(): $Component
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "displayName"(): $Component
+get "name"(): $Component
 get "customName"(): $Component
 set "customName"(value: $Component$$Type)
 set "enabled"(value: boolean)
-set "code"(value: string)
-get "code"(): string
-set "rcaPlayerUUID"(value: $UUID$$Type)
+set "code"(value: StringJS)
+get "code"(): StringJS
 get "enabled"(): boolean
+set "rcaPlayerUUID"(value: $UUID$$Type)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -987,7 +998,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1016,15 +1027,17 @@ declare global {
 export type $BasicLever$BasicLeverBlock_ = $BasicLever$BasicLeverBlock$$Type;
 }}
 declare module "wile.redstonepen.items.RemoteItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$StandardItems$BaseItem, $StandardItems$BaseItem$$Type} from "wile.redstonepen.libmc.StandardItems$BaseItem"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
@@ -1040,7 +1053,7 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 export class $RemoteItem extends $StandardItems$BaseItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1050,12 +1063,13 @@ constructor(arg0: $Item$Properties$$Type)
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
 public "onItemUseFirst"(arg0: $ItemStack$$Type, arg1: $UseOnContext$$Type): $InteractionResult
-public "isBarVisible"(arg0: $ItemStack$$Type): boolean
 public "canAttackBlock"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): boolean
-public "doesSneakBypassUse"(arg0: $ItemStack$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): boolean
+public "isBarVisible"(arg0: $ItemStack$$Type): boolean
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "doesSneakBypassUse"(arg0: $ItemStack$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): boolean
 public "getDestroySpeed"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type): float
 public "onBlockStartBreak"(arg0: $ItemStack$$Type, arg1: $BlockPos$$Type, arg2: $Player$$Type): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1072,24 +1086,24 @@ export type $RemoteItem_ = $RemoteItem$$Type;
 declare module "wile.redstonepen.blocks.CircuitComponents$PulseRelayBlock" {
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
-import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$StandardBlocks$IStandardBlock$RenderTypeHint, $StandardBlocks$IStandardBlock$RenderTypeHint$$Type} from "wile.redstonepen.libmc.StandardBlocks$IStandardBlock$RenderTypeHint"
+import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CircuitComponents$RelayBlock, $CircuitComponents$RelayBlock$$Type} from "wile.redstonepen.blocks.CircuitComponents$RelayBlock"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$AABB, $AABB$$Type} from "net.minecraft.world.phys.AABB"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -1102,7 +1116,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -1121,8 +1135,8 @@ static readonly "FACING": $DirectionProperty
 
 constructor(arg0: long, arg1: $BlockBehaviour$Properties$$Type, arg2: $AABB$$Type)
 
-public "update"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockPos$$Type): $BlockState
 public "tick"(arg0: $BlockState$$Type, arg1: $ServerLevel$$Type, arg2: $BlockPos$$Type, arg3: $RandomSource$$Type): void
+public "update"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockPos$$Type): $BlockState
 public "getSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
 public "config"(): long
 public "getRenderTypeHint"(): $StandardBlocks$IStandardBlock$RenderTypeHint
@@ -1145,24 +1159,24 @@ declare module "wile.redstonepen.libmc.StandardBlocks$Cutout" {
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$StandardBlocks$IStandardBlock$RenderTypeHint, $StandardBlocks$IStandardBlock$RenderTypeHint$$Type} from "wile.redstonepen.libmc.StandardBlocks$IStandardBlock$RenderTypeHint"
+import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$StandardBlocks$IStandardBlock, $StandardBlocks$IStandardBlock$$Type} from "wile.redstonepen.libmc.StandardBlocks$IStandardBlock"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$AABB, $AABB$$Type} from "net.minecraft.world.phys.AABB"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$StandardBlocks$BaseBlock, $StandardBlocks$BaseBlock$$Type} from "wile.redstonepen.libmc.StandardBlocks$BaseBlock"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -1180,7 +1194,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -1188,18 +1202,18 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(arg0: long, arg1: $BlockBehaviour$Properties$$Type, arg2: $VoxelShape$$Type)
-constructor(arg0: long, arg1: $BlockBehaviour$Properties$$Type, arg2: ($AABB$$Type)[])
-constructor(arg0: long, arg1: $BlockBehaviour$Properties$$Type, arg2: $AABB$$Type)
 constructor(arg0: long, arg1: $BlockBehaviour$Properties$$Type)
+constructor(arg0: long, arg1: $BlockBehaviour$Properties$$Type, arg2: $VoxelShape$$Type)
+constructor(arg0: long, arg1: $BlockBehaviour$Properties$$Type, arg2: $AABB$$Type)
+constructor(arg0: long, arg1: $BlockBehaviour$Properties$$Type, arg2: ($AABB$$Type)[])
 
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "isPossibleToRespawnInThis"(arg0: $BlockState$$Type): boolean
 public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
 public "getFluidState"(arg0: $BlockState$$Type): $FluidState
 public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "propagatesSkylightDown"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): boolean
 public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
+public "isPossibleToRespawnInThis"(arg0: $BlockState$$Type): boolean
 public "config"(): long
 public "getRenderTypeHint"(): $StandardBlocks$IStandardBlock$RenderTypeHint
 public "asHolder"(): $Holder<(any)>
@@ -1225,7 +1239,7 @@ export class $BasicLever$BasicLeverBlock$Config extends $Record {
 constructor(sound_pitch_unpowered: float, sound_pitch_powered: float)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "sound_pitch_powered"(): float
 public "sound_pitch_unpowered"(): float
@@ -1234,7 +1248,7 @@ public "sound_pitch_unpowered"(): float
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $BasicLever$BasicLeverBlock$Config$$Type = ({"sound_pitch_unpowered"?: float, "sound_pitch_powered"?: float}) | ([sound_pitch_unpowered?: float, sound_pitch_powered?: float]);
+export type $BasicLever$BasicLeverBlock$Config$$Type = ({"sound_pitch_powered"?: float, "sound_pitch_unpowered"?: float}) | ([sound_pitch_powered?: float, sound_pitch_unpowered?: float]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1247,23 +1261,23 @@ import {$StandardBlocks$WaterLoggable, $StandardBlocks$WaterLoggable$$Type} from
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
-import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$StandardBlocks$IStandardBlock$RenderTypeHint, $StandardBlocks$IStandardBlock$RenderTypeHint$$Type} from "wile.redstonepen.libmc.StandardBlocks$IStandardBlock$RenderTypeHint"
+import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PathComputationType, $PathComputationType$$Type} from "net.minecraft.world.level.pathfinder.PathComputationType"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
 import {$SignalGetter, $SignalGetter$$Type} from "net.minecraft.world.level.SignalGetter"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
@@ -1271,9 +1285,9 @@ import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.leve
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$AABB, $AABB$$Type} from "net.minecraft.world.phys.AABB"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $CircuitComponents$DirectedComponentBlock extends $StandardBlocks$WaterLoggable {
@@ -1285,7 +1299,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -1302,32 +1316,32 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(arg0: long, arg1: $BlockBehaviour$Properties$$Type, arg2: $AABB$$Type)
 constructor(arg0: long, arg1: $BlockBehaviour$Properties$$Type, arg2: ($AABB$$Type)[])
+constructor(arg0: long, arg1: $BlockBehaviour$Properties$$Type, arg2: $AABB$$Type)
 
-public "update"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockPos$$Type): $BlockState
 public "tick"(arg0: $BlockState$$Type, arg1: $ServerLevel$$Type, arg2: $BlockPos$$Type, arg3: $RandomSource$$Type): void
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
+public "update"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockPos$$Type): $BlockState
 public "isPathfindable"(arg0: $BlockState$$Type, arg1: $PathComputationType$$Type): boolean
 public "onPlace"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
-public "animateTick"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $RandomSource$$Type): void
+public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
 public "canSurvive"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type): boolean
 public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
 public "isSignalSource"(arg0: $BlockState$$Type): boolean
 public "getSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
+public "animateTick"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $RandomSource$$Type): void
+public "dropList"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockEntity$$Type, arg3: boolean): $List<($ItemStack)>
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "hasAnalogOutputSignal"(arg0: $BlockState$$Type): boolean
 public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "getAnalogOutputSignal"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type): integer
+public "getDirectSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
+public "shouldCheckWeakPower"(arg0: $BlockState$$Type, arg1: $SignalGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): boolean
 public "canConnectRedstone"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): boolean
 public "getOcclusionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): $VoxelShape
 public "propagatesSkylightDown"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): boolean
-public "getAnalogOutputSignal"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type): integer
 public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "shouldCheckWeakPower"(arg0: $BlockState$$Type, arg1: $SignalGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): boolean
-public "getDirectSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
 public "hasDynamicDropList"(): boolean
-public "dropList"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockEntity$$Type, arg3: boolean): $List<($ItemStack)>
 public "config"(): long
 public "getRenderTypeHint"(): $StandardBlocks$IStandardBlock$RenderTypeHint
 public "asHolder"(): $Holder<(any)>
@@ -1358,9 +1372,9 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Exten
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($ExtendedShapelessRecipe)>
 public "codec"(): $MapCodec<($ExtendedShapelessRecipe)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($ExtendedShapelessRecipe)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1378,12 +1392,12 @@ declare module "wile.redstonepen.blocks.ControlBox$ControlBoxBlock" {
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
-import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$StandardBlocks$IStandardBlock$RenderTypeHint, $StandardBlocks$IStandardBlock$RenderTypeHint$$Type} from "wile.redstonepen.libmc.StandardBlocks$IStandardBlock$RenderTypeHint"
+import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$StandardEntityBlocks$IStandardEntityBlock, $StandardEntityBlocks$IStandardEntityBlock$$Type} from "wile.redstonepen.libmc.StandardEntityBlocks$IStandardEntityBlock"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
+import {$StandardEntityBlocks$IStandardEntityBlock, $StandardEntityBlocks$IStandardEntityBlock$$Type} from "wile.redstonepen.libmc.StandardEntityBlocks$IStandardEntityBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
@@ -1400,15 +1414,15 @@ import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.leve
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$AABB, $AABB$$Type} from "net.minecraft.world.phys.AABB"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $ControlBox$ControlBoxBlock extends $CircuitComponents$DirectedComponentBlock implements $StandardEntityBlocks$IStandardEntityBlock<($ControlBox$ControlBoxBlockEntity)> {
@@ -1420,7 +1434,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -1442,10 +1456,10 @@ constructor(arg0: long, arg1: $BlockBehaviour$Properties$$Type, arg2: ($AABB$$Ty
 public "update"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockPos$$Type): $BlockState
 public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
 public "getSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-public "getDirectSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
-public "isBlockEntityTicking"(arg0: $Level$$Type, arg1: $BlockState$$Type): boolean
 public "dropList"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockEntity$$Type, arg3: boolean): $List<($ItemStack)>
+public "getDirectSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "isBlockEntityTicking"(arg0: $Level$$Type, arg1: $BlockState$$Type): boolean
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
@@ -1471,23 +1485,23 @@ declare module "wile.redstonepen.blocks.CircuitComponents$RelayBlock" {
 import {$CircuitComponents$DirectedComponentBlock, $CircuitComponents$DirectedComponentBlock$$Type} from "wile.redstonepen.blocks.CircuitComponents$DirectedComponentBlock"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
-import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$StandardBlocks$IStandardBlock$RenderTypeHint, $StandardBlocks$IStandardBlock$RenderTypeHint$$Type} from "wile.redstonepen.libmc.StandardBlocks$IStandardBlock$RenderTypeHint"
+import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$AABB, $AABB$$Type} from "net.minecraft.world.phys.AABB"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -1500,7 +1514,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -1519,8 +1533,8 @@ static readonly "FACING": $DirectionProperty
 
 constructor(arg0: long, arg1: $BlockBehaviour$Properties$$Type, arg2: $AABB$$Type)
 
-public "update"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockPos$$Type): $BlockState
 public "tick"(arg0: $BlockState$$Type, arg1: $ServerLevel$$Type, arg2: $BlockPos$$Type, arg3: $RandomSource$$Type): void
+public "update"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockPos$$Type): $BlockState
 public "getSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
 public "getDirectSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
 public "config"(): long
@@ -1543,20 +1557,20 @@ export type $CircuitComponents$RelayBlock_ = $CircuitComponents$RelayBlock$$Type
 declare module "wile.redstonepen.blocks.BasicGauge$BasicGaugeBlock" {
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
-import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$StandardBlocks$IStandardBlock$RenderTypeHint, $StandardBlocks$IStandardBlock$RenderTypeHint$$Type} from "wile.redstonepen.libmc.StandardBlocks$IStandardBlock$RenderTypeHint"
+import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$StandardBlocks$Cutout, $StandardBlocks$Cutout$$Type} from "wile.redstonepen.libmc.StandardBlocks$Cutout"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
@@ -1579,7 +1593,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -1592,9 +1606,9 @@ constructor(arg0: long, arg1: $BlockBehaviour$Properties$$Type)
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
 public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "shouldCheckWeakPower"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): boolean
 public "canConnectRedstone"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): boolean
 public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "shouldCheckWeakPower"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): boolean
 public "config"(): long
 public "getRenderTypeHint"(): $StandardBlocks$IStandardBlock$RenderTypeHint
 public "asHolder"(): $Holder<(any)>
@@ -1623,11 +1637,11 @@ import {$StandardBlocks$IStandardBlock, $StandardBlocks$IStandardBlock$$Type} fr
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$StandardBlocks$Cutout, $StandardBlocks$Cutout$$Type} from "wile.redstonepen.libmc.StandardBlocks$Cutout"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$AABB, $AABB$$Type} from "net.minecraft.world.phys.AABB"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $StandardBlocks$WaterLoggable extends $StandardBlocks$Cutout implements $StandardBlocks$IStandardBlock {
@@ -1644,7 +1658,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -1680,8 +1694,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$List, $List$$Type} from "java.util.List"
-import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$StandardBlocks$IStandardBlock$RenderTypeHint, $StandardBlocks$IStandardBlock$RenderTypeHint$$Type} from "wile.redstonepen.libmc.StandardBlocks$IStandardBlock$RenderTypeHint"
+import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
@@ -1700,8 +1714,8 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PathComputationType, $PathComputationType$$Type} from "net.minecraft.world.level.pathfinder.PathComputationType"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
@@ -1723,7 +1737,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -1734,22 +1748,22 @@ static readonly "UPDATE_CLIENTS": integer
 constructor(arg0: long, arg1: $BlockBehaviour$Properties$$Type)
 
 public "config"(): long
-public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
-public "getDrops"(arg0: $BlockState$$Type, arg1: $LootParams$Builder$$Type): $List<($ItemStack)>
 public "isPathfindable"(arg0: $BlockState$$Type, arg1: $PathComputationType$$Type): boolean
 public "getPickupSound"(): $Optional<($SoundEvent)>
+public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
+public "getDrops"(arg0: $BlockState$$Type, arg1: $LootParams$Builder$$Type): $List<($ItemStack)>
 public "canPlaceLiquid"(arg0: $Player$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $Fluid$$Type): boolean
 public "placeLiquid"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $FluidState$$Type): boolean
 public "pickupBlock"(arg0: $Player$$Type, arg1: $LevelAccessor$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type): $ItemStack
 public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
 public "getFluidState"(arg0: $BlockState$$Type): $FluidState
+public "getRenderTypeHint"(): $StandardBlocks$IStandardBlock$RenderTypeHint
+public "shouldCheckWeakPower"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): boolean
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "propagatesSkylightDown"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): boolean
-public "shouldCheckWeakPower"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): boolean
-public "getRenderTypeHint"(): $StandardBlocks$IStandardBlock$RenderTypeHint
-public "hasDynamicDropList"(): boolean
-public "getRenderTypeHint"(arg0: long): $StandardBlocks$IStandardBlock$RenderTypeHint
 public "dropList"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockEntity$$Type, arg3: boolean): $List<($ItemStack)>
+public "getRenderTypeHint"(arg0: long): $StandardBlocks$IStandardBlock$RenderTypeHint
+public "hasDynamicDropList"(): boolean
 public "asHolder"(): $Holder<(any)>
 public "getPickupSound"(arg0: $BlockState$$Type): $Optional<($SoundEvent)>
 get "pickupSound"(): $Optional<($SoundEvent)>
@@ -1783,43 +1797,43 @@ import {$Networking$IPacketTileNotifyReceiver, $Networking$IPacketTileNotifyRece
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $RedstoneTrack$TrackBlockEntity extends $StandardEntityBlocks$StandardBlockEntity implements $Networking$IPacketTileNotifyReceiver {
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 constructor(arg0: $BlockPos$$Type, arg1: $BlockState$$Type)
 
 public "sync"(arg0: boolean): boolean
-public "handleNeighborChanged"(arg0: $BlockPos$$Type): $Map<($BlockPos), ($BlockPos)>
-public "getViewDistance"(): double
-public "getWireFlagCount"(): integer
-public "getConnectionFlags"(): integer
-public "onServerPacketReceived"(arg0: $CompoundTag$$Type): void
-public "onClientPacketReceived"(arg0: $Player$$Type, arg1: $CompoundTag$$Type): void
-public "getConnectionFlag"(arg0: integer): boolean
-public "getConnectionFlagCount"(): integer
-public "getRedstoneDustCount"(): integer
-public "handleShapeUpdate"(arg0: $Direction$$Type, arg1: $BlockState$$Type, arg2: $BlockPos$$Type, arg3: boolean): boolean
-public "getRedstonePower"(arg0: $Direction$$Type, arg1: boolean): integer
-public "getStateFlags"(): long
-public "getSidePower"(arg0: $Direction$$Type): integer
-public "getWireFlags"(): integer
 public "writenbt"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type, arg2: boolean): $CompoundTag
 public "readnbt"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): $CompoundTag
 public "toggle_trace"(arg0: $Player$$Type): void
 public "setSidePower"(arg0: $Direction$$Type, arg1: integer): void
 public "addWireFlags"(arg0: long): integer
 public "getWireFlag"(arg0: integer): boolean
-public "hasVanillaRedstoneConnection"(arg0: $Direction$$Type): boolean
-public "handleNetNeighborChanged"(arg0: $RedstoneTrack$TrackBlockEntity$TrackNet$$Type, arg1: $BlockPos$$Type, arg2: $RedstoneTrack$TrackBlockEntity$TrackNet$$Type, arg3: $Map$$Type<($BlockPos$$Type), ($BlockPos$$Type)>): void
+public "getStateFlags"(): long
+public "getSidePower"(arg0: $Direction$$Type): integer
+public "getWireFlags"(): integer
+public "handleNeighborChanged"(arg0: $BlockPos$$Type): $Map<($BlockPos), ($BlockPos)>
+public "getViewDistance"(): double
+public "getRedstoneDustCount"(): integer
+public "handleShapeUpdate"(arg0: $Direction$$Type, arg1: $BlockState$$Type, arg2: $BlockPos$$Type, arg3: boolean): boolean
+public "getRedstonePower"(arg0: $Direction$$Type, arg1: boolean): integer
+public "getWireFlagCount"(): integer
+public "getConnectionFlags"(): integer
+public "onServerPacketReceived"(arg0: $CompoundTag$$Type): void
+public "onClientPacketReceived"(arg0: $Player$$Type, arg1: $CompoundTag$$Type): void
+public "getConnectionFlag"(arg0: integer): boolean
+public "getConnectionFlagCount"(): integer
 public "updateAllPowerValuesFromAdjacent"(): $Map<($BlockPos), ($BlockPos)>
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+public "handleNetNeighborChanged"(arg0: $RedstoneTrack$TrackBlockEntity$TrackNet$$Type, arg1: $BlockPos$$Type, arg2: $RedstoneTrack$TrackBlockEntity$TrackNet$$Type, arg3: $Map$$Type<($BlockPos$$Type), ($BlockPos$$Type)>): void
+public "hasVanillaRedstoneConnection"(arg0: $Direction$$Type): boolean
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+get "stateFlags"(): long
+get "wireFlags"(): integer
 get "viewDistance"(): double
+get "redstoneDustCount"(): integer
 get "wireFlagCount"(): integer
 get "connectionFlags"(): integer
 get "connectionFlagCount"(): integer
-get "redstoneDustCount"(): integer
-get "stateFlags"(): long
-get "wireFlags"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

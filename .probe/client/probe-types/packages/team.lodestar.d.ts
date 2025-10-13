@@ -39,7 +39,7 @@ static readonly "RANDOM_SPRITE": $SimpleParticleOptions$ParticleSpritePicker
 
 
 public static "values"(): ($SimpleParticleOptions$ParticleSpritePicker)[]
-public static "valueOf"(arg0: string): $SimpleParticleOptions$ParticleSpritePicker
+public static "valueOf"(arg0: StringJS): $SimpleParticleOptions$ParticleSpritePicker
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -64,8 +64,8 @@ readonly "particles": $Map<($LodestoneScreenParticleRenderType), ($ArrayList<($S
 
 constructor()
 
-public "isEmpty"(): boolean
 public "tick"(): void
+public "isEmpty"(): boolean
 public "addFrom"(arg0: $ScreenParticleHolder$$Type): void
 get "empty"(): boolean
 }
@@ -107,8 +107,8 @@ declare global {
 export type $NetworkedParticleEffectExtraData_ = $NetworkedParticleEffectExtraData$$Type;
 }}
 declare module "team.lodestar.lodestone.systems.worldevent.WorldEventInstance" {
-import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$WorldEventType, $WorldEventType$$Type} from "team.lodestar.lodestone.systems.worldevent.WorldEventType"
+import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$UUID, $UUID$$Type} from "java.util.UUID"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
@@ -123,14 +123,14 @@ export class $WorldEventInstance {
 
 constructor(arg0: $WorldEventType$$Type)
 
+public "tick"(arg0: $Level$$Type): void
+public "isFrozen"(): boolean
+public static "sync"<T extends $WorldEventInstance>(arg0: T): void
+public "sync"(arg0: $Level$$Type): void
+public static "sync"<T extends $WorldEventInstance>(arg0: T, arg1: $ServerPlayer$$Type): void
+public "getLevel"(): $Level
 public "end"(arg0: $Level$$Type): void
 public "start"(arg0: $Level$$Type): void
-public "isFrozen"(): boolean
-public "sync"(arg0: $Level$$Type): void
-public static "sync"<T extends $WorldEventInstance>(arg0: T): void
-public static "sync"<T extends $WorldEventInstance>(arg0: T, arg1: $ServerPlayer$$Type): void
-public "tick"(arg0: $Level$$Type): void
-public "getLevel"(): $Level
 public "deserializeNBT"(arg0: $CompoundTag$$Type): $WorldEventInstance
 public "serializeNBT"(): $CompoundTag
 public "setDirty"(): void
@@ -151,17 +151,21 @@ declare global {
 export type $WorldEventInstance_ = $WorldEventInstance$$Type;
 }}
 declare module "team.lodestar.lodestone.systems.item.tools.LodestoneHoeItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$LodestoneItemProperties, $LodestoneItemProperties$$Type} from "team.lodestar.lodestone.systems.item.LodestoneItemProperties"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Pair, $Pair$$Type} from "com.mojang.datafixers.util.Pair"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$HoeItem, $HoeItem$$Type} from "net.minecraft.world.item.HoeItem"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
 
 export class $LodestoneHoeItem extends $HoeItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
@@ -171,7 +175,7 @@ static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
  */
 static "TILLABLES": $Map<($Block), ($Pair<($Predicate<($UseOnContext)>), ($Consumer<($UseOnContext)>)>)>
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -181,6 +185,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Tier$$Type, arg1: float, arg2: float, arg3: $LodestoneItemProperties$$Type)
 
 public static "aether$getTillables"(): $Map<($Block), ($Pair<($Predicate<($UseOnContext)>), ($Consumer<($UseOnContext)>)>)>
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -199,32 +204,32 @@ import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.Stre
 import {$PacketFlow, $PacketFlow$$Type} from "net.minecraft.network.protocol.PacketFlow"
 import {$FriendlyByteBuf, $FriendlyByteBuf$$Type} from "net.minecraft.network.FriendlyByteBuf"
 import {$NetworkedParticleEffectColorData, $NetworkedParticleEffectColorData$$Type} from "team.lodestar.lodestone.systems.network.particle.NetworkedParticleEffectColorData"
-import {$List, $List$$Type} from "java.util.List"
 import {$NetworkedParticleEffectPositionData, $NetworkedParticleEffectPositionData$$Type} from "team.lodestar.lodestone.systems.network.particle.NetworkedParticleEffectPositionData"
+import {$List, $List$$Type} from "java.util.List"
 import {$NetworkedParticleEffectExtraData, $NetworkedParticleEffectExtraData$$Type} from "team.lodestar.lodestone.systems.network.particle.NetworkedParticleEffectExtraData"
 import {$CustomPacketPayload$Type, $CustomPacketPayload$Type$$Type} from "net.minecraft.network.protocol.common.custom.CustomPacketPayload$Type"
 import {$StreamDecoder, $StreamDecoder$$Type} from "net.minecraft.network.codec.StreamDecoder"
-import {$IPayloadContext, $IPayloadContext$$Type} from "net.neoforged.neoforge.network.handling.IPayloadContext"
 import {$CustomPacketPayload, $CustomPacketPayload$$Type} from "net.minecraft.network.protocol.common.custom.CustomPacketPayload"
+import {$IPayloadContext, $IPayloadContext$$Type} from "net.neoforged.neoforge.network.handling.IPayloadContext"
 import {$StreamMemberEncoder, $StreamMemberEncoder$$Type} from "net.minecraft.network.codec.StreamMemberEncoder"
 import {$ByteBuf, $ByteBuf$$Type} from "io.netty.buffer.ByteBuf"
 import {$ConnectionProtocol, $ConnectionProtocol$$Type} from "net.minecraft.network.ConnectionProtocol"
 import {$CustomPacketPayload$TypeAndCodec, $CustomPacketPayload$TypeAndCodec$$Type} from "net.minecraft.network.protocol.common.custom.CustomPacketPayload$TypeAndCodec"
 import {$OneSidedPayloadData, $OneSidedPayloadData$$Type} from "team.lodestar.lodestone.systems.network.OneSidedPayloadData"
-import {$NetworkedParticleEffectType, $NetworkedParticleEffectType$$Type} from "team.lodestar.lodestone.systems.network.particle.NetworkedParticleEffectType"
 import {$CustomPacketPayload$FallbackProvider, $CustomPacketPayload$FallbackProvider$$Type} from "net.minecraft.network.protocol.common.custom.CustomPacketPayload$FallbackProvider"
+import {$NetworkedParticleEffectType, $NetworkedParticleEffectType$$Type} from "team.lodestar.lodestone.systems.network.particle.NetworkedParticleEffectType"
 
 export class $NetworkedParticleEffectPayload extends $OneSidedPayloadData {
 
-constructor(arg0: $NetworkedParticleEffectType$$Type<(any)>, arg1: $NetworkedParticleEffectPositionData$$Type, arg2: $NetworkedParticleEffectColorData$$Type, arg3: $NetworkedParticleEffectExtraData$$Type)
 constructor(arg0: $FriendlyByteBuf$$Type)
+constructor(arg0: $NetworkedParticleEffectType$$Type<(any)>, arg1: $NetworkedParticleEffectPositionData$$Type, arg2: $NetworkedParticleEffectColorData$$Type, arg3: $NetworkedParticleEffectExtraData$$Type)
 
 public "handle"(arg0: $IPayloadContext$$Type): void
 public "serialize"(arg0: $FriendlyByteBuf$$Type): void
-public "getEffectType"(arg0: string): $NetworkedParticleEffectType<(any)>
-public static "createType"<T extends $CustomPacketPayload>(arg0: string): $CustomPacketPayload$Type<(T)>
+public "getEffectType"(arg0: StringJS): $NetworkedParticleEffectType<(any)>
 public static "codec"<B extends $FriendlyByteBuf>(arg0: $CustomPacketPayload$FallbackProvider$$Type<(B)>, arg1: $List$$Type<($CustomPacketPayload$TypeAndCodec$$Type<(B), (any)>)>, arg2: $ConnectionProtocol$$Type, arg3: $PacketFlow$$Type): $StreamCodec<(B), ($CustomPacketPayload)>
 public static "codec"<B extends $ByteBuf, T extends $CustomPacketPayload>(arg0: $StreamMemberEncoder$$Type<(B), (T)>, arg1: $StreamDecoder$$Type<(B), (T)>): $StreamCodec<(B), (T)>
+public static "createType"<T extends $CustomPacketPayload>(arg0: StringJS): $CustomPacketPayload$Type<(T)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -261,7 +266,7 @@ static readonly "BACK_IN_OUT": $Easing$Back
 static readonly "SINE_IN_OUT": $Easing
 static readonly "CODEC": $Codec<($Easing)>
 static readonly "CIRC_IN_OUT": $Easing
-static readonly "EASINGS": $HashMap<(string), ($Easing)>
+static readonly "EASINGS": $HashMap<(StringJS), ($Easing)>
 static readonly "QUAD_IN_OUT": $Easing
 static readonly "BACK_IN": $Easing$Back
 static readonly "ELASTIC_OUT": $Easing$Elastic
@@ -274,15 +279,15 @@ static readonly "BOUNCE_OUT": $Easing
 static readonly "SINE_IN": $Easing
 static readonly "DEFAULT_OVERSHOOT": float
 static readonly "QUARTIC_IN": $Easing
-readonly "name": string
+readonly "name": StringJS
 static readonly "EXPO_IN_OUT": $Easing
 static readonly "CIRC_IN": $Easing
 static readonly "LINEAR": $Easing
 static readonly "CUBIC_IN": $Easing
 static readonly "EXPO_OUT": $Easing
 
-constructor(arg0: string)
-constructor(arg0: string, arg1: float)
+constructor(arg0: StringJS)
+constructor(arg0: StringJS, arg1: float)
 
 public "setOvershoot"(arg0: float): void
 public "getOvershoot"(): float
@@ -336,8 +341,8 @@ import {$List, $List$$Type} from "java.util.List"
 import {$LodestoneNetworkPayloadData, $LodestoneNetworkPayloadData$$Type} from "team.lodestar.lodestone.systems.network.LodestoneNetworkPayloadData"
 import {$CustomPacketPayload$Type, $CustomPacketPayload$Type$$Type} from "net.minecraft.network.protocol.common.custom.CustomPacketPayload$Type"
 import {$StreamDecoder, $StreamDecoder$$Type} from "net.minecraft.network.codec.StreamDecoder"
-import {$IPayloadContext, $IPayloadContext$$Type} from "net.neoforged.neoforge.network.handling.IPayloadContext"
 import {$CustomPacketPayload, $CustomPacketPayload$$Type} from "net.minecraft.network.protocol.common.custom.CustomPacketPayload"
+import {$IPayloadContext, $IPayloadContext$$Type} from "net.neoforged.neoforge.network.handling.IPayloadContext"
 import {$StreamMemberEncoder, $StreamMemberEncoder$$Type} from "net.minecraft.network.codec.StreamMemberEncoder"
 import {$ByteBuf, $ByteBuf$$Type} from "io.netty.buffer.ByteBuf"
 import {$ConnectionProtocol, $ConnectionProtocol$$Type} from "net.minecraft.network.ConnectionProtocol"
@@ -349,9 +354,9 @@ export class $OneSidedPayloadData extends $LodestoneNetworkPayloadData {
 constructor()
 
 public "handle"(arg0: $IPayloadContext$$Type): void
-public static "createType"<T extends $CustomPacketPayload>(arg0: string): $CustomPacketPayload$Type<(T)>
 public static "codec"<B extends $FriendlyByteBuf>(arg0: $CustomPacketPayload$FallbackProvider$$Type<(B)>, arg1: $List$$Type<($CustomPacketPayload$TypeAndCodec$$Type<(B), (any)>)>, arg2: $ConnectionProtocol$$Type, arg3: $PacketFlow$$Type): $StreamCodec<(B), ($CustomPacketPayload)>
 public static "codec"<B extends $ByteBuf, T extends $CustomPacketPayload>(arg0: $StreamMemberEncoder$$Type<(B), (T)>, arg1: $StreamDecoder$$Type<(B), (T)>): $StreamCodec<(B), (T)>
+public static "createType"<T extends $CustomPacketPayload>(arg0: StringJS): $CustomPacketPayload$Type<(T)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -371,15 +376,15 @@ import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$LivingDamageEvent$Pre, $LivingDamageEvent$Pre$$Type} from "net.neoforged.neoforge.event.entity.living.LivingDamageEvent$Pre"
 import {$LivingIncomingDamageEvent, $LivingIncomingDamageEvent$$Type} from "net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$LivingDamageEvent$Post, $LivingDamageEvent$Post$$Type} from "net.neoforged.neoforge.event.entity.living.LivingDamageEvent$Post"
 import {$AddAttributeTooltipsEvent, $AddAttributeTooltipsEvent$$Type} from "net.neoforged.neoforge.client.event.AddAttributeTooltipsEvent"
+import {$LivingDamageEvent$Post, $LivingDamageEvent$Post$$Type} from "net.neoforged.neoforge.event.entity.living.LivingDamageEvent$Post"
 
 export interface $ItemEventHandler$IEventResponder {
 
- "outgoingDamageEvent"(arg0: $LivingIncomingDamageEvent$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type, arg3: $ItemStack$$Type): void
- "outgoingDamageEvent"(arg0: $LivingDamageEvent$Pre$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type, arg3: $ItemStack$$Type): void
  "incomingDamageEvent"(arg0: $LivingDamageEvent$Pre$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type, arg3: $ItemStack$$Type): void
  "incomingDamageEvent"(arg0: $LivingIncomingDamageEvent$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type, arg3: $ItemStack$$Type): void
+ "outgoingDamageEvent"(arg0: $LivingIncomingDamageEvent$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type, arg3: $ItemStack$$Type): void
+ "outgoingDamageEvent"(arg0: $LivingDamageEvent$Pre$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type, arg3: $ItemStack$$Type): void
  "incomingDeathEvent"(arg0: $LivingDeathEvent$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type, arg3: $ItemStack$$Type): void
  "outgoingDeathEvent"(arg0: $LivingDeathEvent$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type, arg3: $ItemStack$$Type): void
  "modifyAttributeTooltipEvent"(arg0: $AddAttributeTooltipsEvent$$Type): void
@@ -393,10 +398,10 @@ const probejs$$marker: never
 export class $ItemEventHandler$IEventResponder$$Static implements $ItemEventHandler$IEventResponder {
 
 
- "outgoingDamageEvent"(arg0: $LivingIncomingDamageEvent$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type, arg3: $ItemStack$$Type): void
- "outgoingDamageEvent"(arg0: $LivingDamageEvent$Pre$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type, arg3: $ItemStack$$Type): void
  "incomingDamageEvent"(arg0: $LivingDamageEvent$Pre$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type, arg3: $ItemStack$$Type): void
  "incomingDamageEvent"(arg0: $LivingIncomingDamageEvent$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type, arg3: $ItemStack$$Type): void
+ "outgoingDamageEvent"(arg0: $LivingIncomingDamageEvent$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type, arg3: $ItemStack$$Type): void
+ "outgoingDamageEvent"(arg0: $LivingDamageEvent$Pre$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type, arg3: $ItemStack$$Type): void
  "incomingDeathEvent"(arg0: $LivingDeathEvent$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type, arg3: $ItemStack$$Type): void
  "outgoingDeathEvent"(arg0: $LivingDeathEvent$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type, arg3: $ItemStack$$Type): void
  "modifyAttributeTooltipEvent"(arg0: $AddAttributeTooltipsEvent$$Type): void
@@ -416,18 +421,22 @@ declare global {
 export type $ItemEventHandler$IEventResponder_ = $ItemEventHandler$IEventResponder$$Type;
 }}
 declare module "team.lodestar.lodestone.systems.item.tools.LodestonePickaxeItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$LodestoneItemProperties, $LodestoneItemProperties$$Type} from "team.lodestar.lodestone.systems.item.LodestoneItemProperties"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$PickaxeItem, $PickaxeItem$$Type} from "net.minecraft.world.item.PickaxeItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 
 export class $LodestonePickaxeItem extends $PickaxeItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -436,6 +445,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Tier$$Type, arg1: float, arg2: float, arg3: $LodestoneItemProperties$$Type)
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -457,9 +467,8 @@ import {$Map, $Map$$Type} from "java.util.Map"
 import {$List, $List$$Type} from "java.util.List"
 import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Rarity, $Rarity$$Type} from "net.minecraft.world.item.Rarity"
-import {$JukeboxSong, $JukeboxSong$$Type} from "net.minecraft.world.item.JukeboxSong"
-import {$DataComponentType, $DataComponentType$$Type} from "net.minecraft.core.component.DataComponentType"
 import {$DataComponentMap$Builder, $DataComponentMap$Builder$$Type} from "net.minecraft.core.component.DataComponentMap$Builder"
+import {$DataComponentType, $DataComponentType$$Type} from "net.minecraft.core.component.DataComponentType"
 import {$DeferredHolder, $DeferredHolder$$Type} from "net.neoforged.neoforge.registries.DeferredHolder"
 import {$FoodProperties, $FoodProperties$$Type} from "net.minecraft.world.food.FoodProperties"
 import {$Interner, $Interner$$Type} from "com.google.common.collect.Interner"
@@ -474,24 +483,24 @@ export class $LodestoneItemProperties extends $Item$Properties {
 static readonly "TAB_SORTING": $Map<($ResourceKey<($CreativeModeTab)>), ($List<($ResourceLocation)>)>
 static readonly "COMPONENT_INTERNER": $Interner<($DataComponentMap)>
 
-constructor()
-constructor(arg0: $ResourceKey$$Type<($CreativeModeTab)>)
 constructor(arg0: $DeferredHolder$$Type<($CreativeModeTab$$Type), ($CreativeModeTab$$Type)>)
+constructor(arg0: $ResourceKey$$Type<($CreativeModeTab)>)
+constructor()
 
-public "component"<T>(arg0: $DataComponentType$$Type<(T)>, arg1: T): $LodestoneItemProperties
 public "attributes"(arg0: $ItemAttributeModifiers$$Type): $LodestoneItemProperties
-public "durability"(arg0: integer): $LodestoneItemProperties
-public "craftRemainder"(arg0: $Item$$Type): $LodestoneItemProperties
-public "stacksTo"(arg0: integer): $LodestoneItemProperties
-public "fireResistant"(): $Item$Properties
+public "component"(arg0: $DataComponentType$$Type<(any)>, arg1: any): $Item$Properties
 public "rarity"(arg0: $Rarity$$Type): $LodestoneItemProperties
-public "food"(arg0: $FoodProperties$$Type): $Item$Properties
-public "jukeboxPlayable"(arg0: $ResourceKey$$Type<($JukeboxSong)>): $LodestoneItemProperties
-public "requiredFeatures"(...arg0: ($FeatureFlag$$Type)[]): $LodestoneItemProperties
-public static "addToTabSorting"(arg0: $ResourceLocation$$Type, arg1: $Item$Properties$$Type): void
+public "food"(arg0: $FoodProperties$$Type): $LodestoneItemProperties
+public "craftRemainder"(arg0: $Item$$Type): $Item$Properties
+public "stacksTo"(arg0: integer): $Item$Properties
+public "durability"(arg0: integer): $LodestoneItemProperties
+public "fireResistant"(): $Item$Properties
+public "setNoRepair"(): $LodestoneItemProperties
 public "mergeAttributes"(arg0: $ItemAttributeModifiers$$Type): $LodestoneItemProperties
 public static "populateItemGroups"(arg0: $BuildCreativeModeTabContentsEvent$$Type): void
-public "setNoRepair"(): $Item$Properties
+public static "addToTabSorting"(arg0: $ResourceLocation$$Type, arg1: $Item$Properties$$Type): void
+public "jukeboxPlayable"(arg0: $ResourceKey$$Type<(any)>): $Item$Properties
+public "requiredFeatures"(...arg0: ($FeatureFlag$$Type)[]): $LodestoneItemProperties
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -535,7 +544,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -576,11 +585,11 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($NBTCa
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($NBTCarryRecipe)>
 public "codec"(): $MapCodec<($NBTCarryRecipe)>
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($NBTCarryRecipe)>
 public static "fromNetwork"(arg0: $RegistryFriendlyByteBuf$$Type): $NBTCarryRecipe
 public static "toNetwork"(arg0: $RegistryFriendlyByteBuf$$Type, arg1: $NBTCarryRecipe$$Type): void
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -612,16 +621,16 @@ readonly "middleToEndEasing": $Easing
 readonly "startingValue": float
 
 
-public "copy"(): $GenericParticleData
-public static "create"(arg0: float, arg1: float): $SpinParticleDataBuilder
 public static "create"(arg0: float): $SpinParticleDataBuilder
+public static "create"(arg0: float, arg1: float): $SpinParticleDataBuilder
 public static "create"(arg0: float, arg1: float, arg2: float): $SpinParticleDataBuilder
-public "immutable"(): $SpinParticleData
+public "copy"(): $GenericParticleData
 public "bake"(): $SpinParticleData
-public static "createRandomDirection"(arg0: $RandomSource$$Type, arg1: float): $SpinParticleDataBuilder
+public "immutable"(): $GenericParticleData
 public static "createRandomDirection"(arg0: $RandomSource$$Type, arg1: float, arg2: float, arg3: float): $SpinParticleDataBuilder
+public static "createRandomDirection"(arg0: $RandomSource$$Type, arg1: float): $SpinParticleDataBuilder
 public static "createRandomDirection"(arg0: $RandomSource$$Type, arg1: float, arg2: float): $SpinParticleDataBuilder
-public "overrideCoefficientMultiplier"(arg0: float): $GenericParticleData
+public "overrideCoefficientMultiplier"(arg0: float): $SpinParticleData
 public "overrideValueMultiplier"(arg0: float): $SpinParticleData
 }
 /**
@@ -647,9 +656,9 @@ export class $LodestoneRecipeSerializer<T extends $Recipe<(any)>> implements $Re
 
 constructor(arg0: $MapCodec$$Type<(T)>)
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
 public "codec"(): $MapCodec<(T)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -665,8 +674,8 @@ export type $LodestoneRecipeSerializer_<T> = $LodestoneRecipeSerializer$$Type<(T
 }}
 declare module "team.lodestar.lodestone.systems.rendering.trail.TrailPointBuilder" {
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
-import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$List, $List$$Type} from "java.util.List"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Vector4f, $Vector4f$$Type} from "org.joml.Vector4f"
 import {$TrailPoint, $TrailPoint$$Type} from "team.lodestar.lodestone.systems.rendering.trail.TrailPoint"
 import {$Matrix4f, $Matrix4f$$Type} from "org.joml.Matrix4f"
@@ -677,17 +686,17 @@ readonly "trailLength": $Supplier<(integer)>
 
 constructor(arg0: $Supplier$$Type<(integer)>)
 
-public "getOrigin"(): $Vec3
-public "run"(arg0: $Consumer$$Type<($TrailPoint)>): $TrailPointBuilder
 public static "create"(arg0: $Supplier$$Type<(integer)>): $TrailPointBuilder
 public static "create"(arg0: integer): $TrailPointBuilder
-public "build"(arg0: $Matrix4f$$Type, arg1: float): $List<($Vector4f)>
 public "build"(arg0: $Matrix4f$$Type): $List<($Vector4f)>
-public "tickTrailPoints"(): $TrailPointBuilder
-public "addTrailPoint"(arg0: $TrailPoint$$Type): $TrailPointBuilder
-public "addTrailPoint"(arg0: $Vec3$$Type): $TrailPointBuilder
+public "build"(arg0: $Matrix4f$$Type, arg1: float): $List<($Vector4f)>
+public "getOrigin"(): $Vec3
+public "run"(arg0: $Consumer$$Type<($TrailPoint)>): $TrailPointBuilder
 public "getTrailPoints"(): $List<($TrailPoint)>
 public "setOrigin"(arg0: $Vec3$$Type): $TrailPointBuilder
+public "addTrailPoint"(arg0: $TrailPoint$$Type): $TrailPointBuilder
+public "addTrailPoint"(arg0: $Vec3$$Type): $TrailPointBuilder
+public "tickTrailPoints"(): $TrailPointBuilder
 get "origin"(): $Vec3
 get "trailPoints"(): $List<($TrailPoint)>
 set "origin"(value: $Vec3$$Type)
@@ -707,10 +716,10 @@ export type $TrailPointBuilder_ = $TrailPointBuilder$$Type;
 declare module "team.lodestar.lodestone.systems.recipe.LodestoneRecipeType" {
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
-import {$Recipe, $Recipe$$Type} from "net.minecraft.world.item.crafting.Recipe"
 import {$RecipeHolder, $RecipeHolder$$Type} from "net.minecraft.world.item.crafting.RecipeHolder"
-import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
+import {$Recipe, $Recipe$$Type} from "net.minecraft.world.item.crafting.Recipe"
 import {$List, $List$$Type} from "java.util.List"
+import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$RecipeType, $RecipeType$$Type} from "net.minecraft.world.item.crafting.RecipeType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 
@@ -719,12 +728,12 @@ readonly "id": $ResourceLocation
 
 constructor(arg0: $ResourceLocation$$Type)
 
-public "toString"(): string
-public static "getRecipeHolders"<T extends $RecipeInput, K extends $Recipe<(T)>>(arg0: $Level$$Type, arg1: $RecipeType$$Type<(K)>): $List<($RecipeHolder<(K)>)>
-public static "getRecipes"<T extends $RecipeInput, K extends $Recipe<(T)>>(arg0: $Level$$Type, arg1: $RecipeType$$Type<(K)>): $List<(K)>
+public "toString"(): StringJS
 public static "findRecipe"<T extends $RecipeInput, K extends $Recipe<(T)>>(arg0: $Level$$Type, arg1: $RecipeType$$Type<(K)>, arg2: $Predicate$$Type<(K)>): K
 public static "getRecipe"<T extends $RecipeInput, K extends $Recipe<(T)>>(arg0: $Level$$Type, arg1: $RecipeType$$Type<(K)>, arg2: T): K
-public static "register"<T extends $Recipe<(any)>>(arg0: string): $RecipeType<(T)>
+public static "getRecipes"<T extends $RecipeInput, K extends $Recipe<(T)>>(arg0: $Level$$Type, arg1: $RecipeType$$Type<(K)>): $List<(K)>
+public static "getRecipeHolders"<T extends $RecipeInput, K extends $Recipe<(T)>>(arg0: $Level$$Type, arg1: $RecipeType$$Type<(K)>): $List<($RecipeHolder<(K)>)>
+public static "register"<T extends $Recipe<(any)>>(arg0: StringJS): $RecipeType<(T)>
 public static "simple"<T extends $Recipe<(any)>>(arg0: $ResourceLocation$$Type): $RecipeType<(T)>
 }
 /**
@@ -742,37 +751,45 @@ export type $LodestoneRecipeType_<T> = $LodestoneRecipeType$$Type<(T)>;
 declare module "team.lodestar.lodestone.systems.entity.LodestoneBoatEntity" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$EntityDimensions, $EntityDimensions$$Type} from "net.minecraft.world.entity.EntityDimensions"
-import {$TrackedData, $TrackedData$$Type} from "dev.corgitaco.dataanchor.data.TrackedData"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$TrackedData, $TrackedData$$Type} from "dev.corgitaco.dataanchor.data.TrackedData"
 import {$TrackedDataContainer, $TrackedDataContainer$$Type} from "dev.corgitaco.dataanchor.data.TrackedDataContainer"
 import {$Boat$Status, $Boat$Status$$Type} from "net.minecraft.world.entity.vehicle.Boat$Status"
-import {$Entity$RemovalReason, $Entity$RemovalReason$$Type} from "net.minecraft.world.entity.Entity$RemovalReason"
 import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.dataanchor.data.registry.TrackedDataRegistry"
+import {$Entity$RemovalReason, $Entity$RemovalReason$$Type} from "net.minecraft.world.entity.Entity$RemovalReason"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$Leashable, $Leashable$$Type} from "net.minecraft.world.entity.Leashable"
+import {$EntityDataAccessor, $EntityDataAccessor$$Type} from "net.minecraft.network.syncher.EntityDataAccessor"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
+import {$Leashable$LeashData, $Leashable$LeashData$$Type} from "net.minecraft.world.entity.Leashable$LeashData"
 import {$ScoreHolder, $ScoreHolder$$Type} from "net.minecraft.world.scores.ScoreHolder"
 import {$Stack, $Stack$$Type} from "java.util.Stack"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$Tag, $Tag$$Type} from "net.minecraft.nbt.Tag"
 import {$GameProfile, $GameProfile$$Type} from "com.mojang.authlib.GameProfile"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$PortalProcessor, $PortalProcessor$$Type} from "net.minecraft.world.entity.PortalProcessor"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$Boat, $Boat$$Type} from "net.minecraft.world.entity.vehicle.Boat"
 import {$EntityType, $EntityType$$Type} from "net.minecraft.world.entity.EntityType"
 
 export class $LodestoneBoatEntity extends $Boat {
+ "inputUp": boolean
+static readonly "TIME_TO_EJECT": integer
+ "lerpYRot": double
  "xRot": float
  "hasImpulse": boolean
 static readonly "PADDLE_RIGHT": integer
  "ars_Nouveau$motions": $Stack<(any)>
  "tickCount": integer
  "an_isRewinding": boolean
+static readonly "DATA_ID_TYPE": $EntityDataAccessor<(integer)>
  "noPhysics": boolean
  "yo": double
+ "inputRight": boolean
  "lastYd": double
  "bubbleColumnDirectionIsDown": boolean
+static readonly "DATA_ID_PADDLE_RIGHT": $EntityDataAccessor<(boolean)>
 static readonly "BOARDING_COOLDOWN": integer
  "removalReason": $Entity$RemovalReason
  "yRotO": float
@@ -781,49 +798,68 @@ static readonly "BUBBLE_TIME": integer
  "level": $Level
  "yRot": float
  "moveDist": float
-static readonly "ID_TAG": string
+static readonly "ID_TAG": StringJS
 static readonly "PADDLE_SOUND_TIME": double
  "outOfControlTicks": float
  "mainSupportingBlockPos": $Optional<($BlockPos)>
 static readonly "PADDLE_LEFT": integer
+ "leashData": $Leashable$LeashData
 static readonly "DELTA_AFFECTED_BY_BLOCKS_BELOW_1_0": double
  "xRotO": float
+ "oldStatus": $Boat$Status
  "zo": double
  "walkDist": float
  "xOld": double
  "noCulling": boolean
  "wasInPowderSnow": boolean
  "isAboveBubbleColumn": boolean
+ "inputDown": boolean
  "hurtMarked": boolean
+ "deltaRotation": float
  "status": $Boat$Status
  "invulnerableTime": integer
-static readonly "UUID_TAG": string
+static readonly "UUID_TAG": StringJS
+static readonly "DATA_ID_PADDLE_LEFT": $EntityDataAccessor<(boolean)>
 static readonly "BASE_TICKS_REQUIRED_TO_FREEZE": integer
  "fallDistance": float
  "portalProcess": $PortalProcessor
+ "inputLeft": boolean
  "verticalCollision": boolean
 static readonly "DELTA_AFFECTED_BY_BLOCKS_BELOW_0_5": double
+static readonly "DATA_ID_BUBBLE_TIME": $EntityDataAccessor<(integer)>
 static readonly "MAX_ENTITY_TAG_COUNT": integer
 static readonly "DELTA_AFFECTED_BY_BLOCKS_BELOW_0_2": float
  "verticalCollisionBelow": boolean
+ "lerpSteps": integer
  "yOld": double
+ "landFriction": float
 static readonly "DEFAULT_BB_WIDTH": float
  "eyeHeight": float
  "minorHorizontalCollision": boolean
+ "bubbleAngleO": float
+ "invFriction": float
 static readonly "DEFAULT_BB_HEIGHT": float
+ "lerpX": double
 readonly "paddlePositions": (float)[]
+ "lerpZ": double
+ "lerpY": double
+ "bubbleAngle": float
+ "lerpXRot": double
  "walkDistO": float
 static readonly "FREEZE_HURT_FREQUENCY": integer
  "flyDist": float
  "isInPowderSnow": boolean
-static readonly "ATTACHMENTS_NBT_KEY": string
-static readonly "PASSENGERS_TAG": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
+static readonly "PADDLE_SPEED": float
+static readonly "PASSENGERS_TAG": StringJS
  "blocksBuilding": boolean
  "wasOnFire": boolean
  "zOld": double
 static readonly "TOTAL_AIR_SUPPLY": integer
  "xo": double
+ "waterLevel": double
 static readonly "BASE_SAFE_FALL_DISTANCE": integer
+ "bubbleMultiplier": float
  "wasTouchingWater": boolean
  "horizontalCollision": boolean
  "dimensions": $EntityDimensions
@@ -837,15 +873,15 @@ constructor(arg0: $EntityType$$Type<($LodestoneBoatEntity$$Type)>, arg1: $Level$
 
 public "getDropItem"(): $Item
 public static "tickLeash"<E extends ($Entity) & ($Leashable)>(arg0: E): void
-public static "forNameOnly"(arg0: string): $ScoreHolder
+public static "forNameOnly"(arg0: StringJS): $ScoreHolder
 public static "fromGameProfile"(arg0: $GameProfile$$Type): $ScoreHolder
 /**
  * 
  * @deprecated
  */
 public "serializeNBT"(arg0: $HolderLookup$Provider$$Type): $Tag
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "dropItem"(): $Item
 }
 /**
@@ -861,12 +897,14 @@ declare global {
 export type $LodestoneBoatEntity_ = $LodestoneBoatEntity$$Type;
 }}
 declare module "team.lodestar.lodestone.systems.item.LodestoneBoatItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$LodestoneBoatEntity, $LodestoneBoatEntity$$Type} from "team.lodestar.lodestone.systems.entity.LodestoneBoatEntity"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
@@ -878,7 +916,7 @@ import {$EntityType, $EntityType$$Type} from "net.minecraft.world.entity.EntityT
 export class $LodestoneBoatItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -887,6 +925,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type, arg1: $Supplier$$Type<($EntityType$$Type<($LodestoneBoatEntity$$Type)>)>)
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -935,11 +974,11 @@ export class $SpinParticleDataBuilder extends $GenericParticleDataBuilder {
 
 
 public "build"(): $GenericParticleData
-public "randomSpinOffset"(arg0: $RandomSource$$Type): $SpinParticleDataBuilder
-public "setEasing"(arg0: $Easing$$Type): $GenericParticleDataBuilder
 public "setEasing"(arg0: $Easing$$Type, arg1: $Easing$$Type): $GenericParticleDataBuilder
+public "setEasing"(arg0: $Easing$$Type): $GenericParticleDataBuilder
 public "setSpinOffset"(arg0: float): $SpinParticleDataBuilder
 public "setCoefficient"(arg0: float): $GenericParticleDataBuilder
+public "randomSpinOffset"(arg0: $RandomSource$$Type): $SpinParticleDataBuilder
 set "easing"(value: $Easing$$Type)
 set "spinOffset"(value: float)
 set "coefficient"(value: float)
@@ -1061,8 +1100,8 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
@@ -1070,8 +1109,8 @@ import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$HitResult, $HitResult$$Type} from "net.minecraft.world.phys.HitResult"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$LodestoneBlockEntity, $LodestoneBlockEntity$$Type} from "team.lodestar.lodestone.systems.blockentity.LodestoneBlockEntity"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
@@ -1092,7 +1131,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1104,14 +1143,14 @@ constructor(arg0: $BlockBehaviour$Properties$$Type)
 public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "entityInside"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): void
-public "getTicker"<Y extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(Y)>): $BlockEntityTicker<(Y)>
 public "setBlockEntity"(arg0: $Supplier$$Type<($BlockEntityType$$Type<(T)>)>): $LodestoneEntityBlock<(T)>
+public "getTicker"<Y extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(Y)>): $BlockEntityTicker<(Y)>
+public "onBlockBroken"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): void
+public "hasTileEntity"(arg0: $BlockState$$Type): boolean
 public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
 public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
 public "onBlockExploded"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): void
 public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
-public "hasTileEntity"(arg0: $BlockState$$Type): boolean
-public "onBlockBroken"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): void
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 set "blockEntity"(value: $Supplier$$Type<($BlockEntityType$$Type<(T)>)>)
@@ -1183,8 +1222,8 @@ import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$SimpleParticleOptions$ParticleSpritePicker, $SimpleParticleOptions$ParticleSpritePicker$$Type} from "team.lodestar.lodestone.systems.particle.SimpleParticleOptions$ParticleSpritePicker"
 import {$RenderHandler$LodestoneRenderLayer, $RenderHandler$LodestoneRenderLayer$$Type} from "team.lodestar.lodestone.handlers.RenderHandler$LodestoneRenderLayer"
 import {$VertexConsumer, $VertexConsumer$$Type} from "com.mojang.blaze3d.vertex.VertexConsumer"
-import {$WorldParticleOptions, $WorldParticleOptions$$Type} from "team.lodestar.lodestone.systems.particle.world.options.WorldParticleOptions"
 import {$Camera, $Camera$$Type} from "net.minecraft.client.Camera"
+import {$WorldParticleOptions, $WorldParticleOptions$$Type} from "team.lodestar.lodestone.systems.particle.world.options.WorldParticleOptions"
 import {$ParticleEngine$MutableSpriteSet, $ParticleEngine$MutableSpriteSet$$Type} from "net.minecraft.client.particle.ParticleEngine$MutableSpriteSet"
 import {$SpriteSet, $SpriteSet$$Type} from "net.minecraft.client.particle.SpriteSet"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
@@ -1217,32 +1256,22 @@ readonly "scaleData": $GenericParticleData
 
 constructor(arg0: $ClientLevel$$Type, arg1: $WorldParticleOptions$$Type, arg2: $ParticleEngine$MutableSpriteSet$$Type, arg3: double, arg4: double, arg5: double, arg6: double, arg7: double, arg8: double)
 
+public "tick"(): void
+public "tick"(arg0: integer): void
 public "getRandom"(): $RandomSource
 public "getY"(): double
-public "tick"(arg0: integer): void
-public "tick"(): void
-public "getParticleSpeed"(): $Vec3
-public "getGreen"(): float
-public "getBlue"(): float
-public "getRenderType"(): $ParticleRenderType
-public "getAlpha"(): float
+public "getX"(): double
+public "getZ"(): double
 public "getRed"(): float
-public "getAge"(): integer
-public "render"(arg0: $VertexConsumer$$Type, arg1: $Camera$$Type, arg2: float): void
 public "getU0"(): float
 public "getU1"(): float
 public "getV0"(): float
 public "getV1"(): float
-public "getX"(): double
-public "getZ"(): double
-public "setParticleSpeed"(arg0: $Vec3$$Type): void
-public "getParticlePosition"(): $Vec3
-public "getRoll"(): float
+public "getAge"(): integer
+public "render"(arg0: $VertexConsumer$$Type, arg1: $Camera$$Type, arg2: float): void
 public "getLightColor"(arg0: float): integer
-public "getLifetime"(): integer
-public "pickSprite"(arg0: integer): void
-public "getQuadLength"(arg0: float): float
-public "pickColor"(arg0: float): void
+public "getAlpha"(): float
+public "getRenderType"(): $ParticleRenderType
 public "getXMotion"(): double
 public "getYMotion"(): double
 public "getZMotion"(): double
@@ -1250,29 +1279,32 @@ public "getORoll"(): float
 public "getXOld"(): double
 public "getYOld"(): double
 public "getZOld"(): double
-public "setSpriteFromInverseAge"(arg0: $SpriteSet$$Type): void
+public "getQuadLength"(arg0: float): float
+public "pickColor"(arg0: float): void
+public "pickSprite"(arg0: integer): void
+public "getLifetime"(): integer
+public "getRoll"(): float
+public "getGreen"(): float
+public "getBlue"(): float
+public "setParticleSpeed"(arg0: $Vec3$$Type): void
+public "getVertexConsumer"(arg0: $VertexConsumer$$Type): $VertexConsumer
 public "getSpritePicker"(): $SimpleParticleOptions$ParticleSpritePicker
 public "setParticlePosition"(arg0: $Vec3$$Type): void
-public "getVertexConsumer"(arg0: $VertexConsumer$$Type): $VertexConsumer
+public "getParticleSpeed"(): $Vec3
+public "getParticlePosition"(): $Vec3
+public "setSpriteFromInverseAge"(arg0: $SpriteSet$$Type): void
 get "random"(): $RandomSource
 get "y"(): double
-get "particleSpeed"(): $Vec3
-get "green"(): float
-get "blue"(): float
-get "renderType"(): $ParticleRenderType
-get "alpha"(): float
+get "x"(): double
+get "z"(): double
 get "red"(): float
-get "age"(): integer
 get "u0"(): float
 get "u1"(): float
 get "v0"(): float
 get "v1"(): float
-get "x"(): double
-get "z"(): double
-set "particleSpeed"(value: $Vec3$$Type)
-get "particlePosition"(): $Vec3
-get "roll"(): float
-get "lifetime"(): integer
+get "age"(): integer
+get "alpha"(): float
+get "renderType"(): $ParticleRenderType
 get "xMotion"(): double
 get "yMotion"(): double
 get "zMotion"(): double
@@ -1280,9 +1312,16 @@ get "oRoll"(): float
 get "xOld"(): double
 get "yOld"(): double
 get "zOld"(): double
-set "spriteFromInverseAge"(value: $SpriteSet$$Type)
+get "lifetime"(): integer
+get "roll"(): float
+get "green"(): float
+get "blue"(): float
+set "particleSpeed"(value: $Vec3$$Type)
 get "spritePicker"(): $SimpleParticleOptions$ParticleSpritePicker
 set "particlePosition"(value: $Vec3$$Type)
+get "particleSpeed"(): $Vec3
+get "particlePosition"(): $Vec3
+set "spriteFromInverseAge"(value: $SpriteSet$$Type)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1318,8 +1357,8 @@ declare global {
 export type $LodestoneWorldParticleType_ = $LodestoneWorldParticleType$$Type;
 }}
 declare module "team.lodestar.lodestone.systems.particle.data.color.ColorParticleDataBuilder" {
-import {$Easing, $Easing$$Type} from "team.lodestar.lodestone.systems.easing.Easing"
 import {$ColorParticleData, $ColorParticleData$$Type} from "team.lodestar.lodestone.systems.particle.data.color.ColorParticleData"
+import {$Easing, $Easing$$Type} from "team.lodestar.lodestone.systems.easing.Easing"
 
 export class $ColorParticleDataBuilder {
 
@@ -1352,9 +1391,9 @@ import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 
 export interface $IVertexBuffer {
 
- "drawWithShaderInstanced"(arg0: $Matrix4f$$Type, arg1: $Matrix4f$$Type, arg2: $ShaderInstance$$Type, arg3: integer): void
- "addAttributeVBO"(arg0: integer, arg1: $FloatBuffer$$Type, arg2: $VertexBuffer$Usage$$Type, arg3: $Consumer$$Type<(integer)>): void
  "drawInstanced"(arg0: integer): void
+ "addAttributeVBO"(arg0: integer, arg1: $FloatBuffer$$Type, arg2: $VertexBuffer$Usage$$Type, arg3: $Consumer$$Type<(integer)>): void
+ "drawWithShaderInstanced"(arg0: $Matrix4f$$Type, arg1: $Matrix4f$$Type, arg2: $ShaderInstance$$Type, arg3: integer): void
 }
 
 export namespace $IVertexBuffer {
@@ -1365,9 +1404,9 @@ export class $IVertexBuffer$$Static implements $IVertexBuffer {
 
 
 static "cast"(arg0: $VertexBuffer$$Type): $IVertexBuffer
- "drawWithShaderInstanced"(arg0: $Matrix4f$$Type, arg1: $Matrix4f$$Type, arg2: $ShaderInstance$$Type, arg3: integer): void
- "addAttributeVBO"(arg0: integer, arg1: $FloatBuffer$$Type, arg2: $VertexBuffer$Usage$$Type, arg3: $Consumer$$Type<(integer)>): void
  "drawInstanced"(arg0: integer): void
+ "addAttributeVBO"(arg0: integer, arg1: $FloatBuffer$$Type, arg2: $VertexBuffer$Usage$$Type, arg3: $Consumer$$Type<(integer)>): void
+ "drawWithShaderInstanced"(arg0: $Matrix4f$$Type, arg1: $Matrix4f$$Type, arg2: $ShaderInstance$$Type, arg3: integer): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1392,8 +1431,8 @@ export class $AbstractLodestoneParticleType<T extends $WorldParticleOptions> ext
 
 
 public "getType"(): $AbstractLodestoneParticleType<(T)>
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
 public "codec"(): $MapCodec<(T)>
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
 get "type"(): $AbstractLodestoneParticleType<(T)>
 }
 /**
@@ -1450,14 +1489,14 @@ export class $WorldEventRenderEvent extends $WorldEventInstanceEvent {
 
 constructor(arg0: $WorldEventInstance$$Type, arg1: $WorldEventRenderer$$Type<($WorldEventInstance$$Type)>, arg2: $PoseStack$$Type, arg3: $MultiBufferSource$$Type, arg4: float)
 
-public "getPartialTicks"(): float
-public "getMultiBufferSource"(): $MultiBufferSource
-public "getPoseStack"(): $PoseStack
 public "getRenderer"(): $WorldEventRenderer<($WorldEventInstance)>
-get "partialTicks"(): float
-get "multiBufferSource"(): $MultiBufferSource
-get "poseStack"(): $PoseStack
+public "getPoseStack"(): $PoseStack
+public "getMultiBufferSource"(): $MultiBufferSource
+public "getPartialTicks"(): float
 get "renderer"(): $WorldEventRenderer<($WorldEventInstance)>
+get "poseStack"(): $PoseStack
+get "multiBufferSource"(): $MultiBufferSource
+get "partialTicks"(): float
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1472,17 +1511,21 @@ declare global {
 export type $WorldEventRenderEvent_ = $WorldEventRenderEvent$$Type;
 }}
 declare module "team.lodestar.lodestone.systems.item.tools.magic.MagicHoeItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$LodestoneItemProperties, $LodestoneItemProperties$$Type} from "team.lodestar.lodestone.systems.item.LodestoneItemProperties"
 import {$LodestoneHoeItem, $LodestoneHoeItem$$Type} from "team.lodestar.lodestone.systems.item.tools.LodestoneHoeItem"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Pair, $Pair$$Type} from "com.mojang.datafixers.util.Pair"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
 
 export class $MagicHoeItem extends $LodestoneHoeItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
@@ -1492,7 +1535,7 @@ static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
  */
 static "TILLABLES": $Map<($Block), ($Pair<($Predicate<($UseOnContext)>), ($Consumer<($UseOnContext)>)>)>
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -1502,6 +1545,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Tier$$Type, arg1: float, arg2: float, arg3: float, arg4: $LodestoneItemProperties$$Type)
 
 public static "aether$getTillables"(): $Map<($Block), ($Pair<($Predicate<($UseOnContext)>), ($Consumer<($UseOnContext)>)>)>
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1559,12 +1603,13 @@ import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.
 import {$ItemInteractionResult, $ItemInteractionResult$$Type} from "net.minecraft.world.ItemInteractionResult"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$LodestoneBlockEntity, $LodestoneBlockEntity$$Type} from "team.lodestar.lodestone.systems.blockentity.LodestoneBlockEntity"
+import {$Packet, $Packet$$Type} from "net.minecraft.network.protocol.Packet"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$IItemHandlerSupplier, $IItemHandlerSupplier$$Type} from "team.lodestar.lodestone.systems.blockentity.IItemHandlerSupplier"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $MultiBlockComponentEntity extends $LodestoneBlockEntity implements $IItemHandlerSupplier {
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
  "corePos": $BlockPos
 
 constructor(arg0: $BlockEntityType$$Type<(any)>, arg1: $BlockPos$$Type, arg2: $BlockState$$Type)
@@ -1572,11 +1617,13 @@ constructor(arg0: $BlockPos$$Type, arg1: $BlockState$$Type)
 
 public "getInventory"(arg0: $Direction$$Type): $IItemHandler
 public "onUse"(arg0: $Player$$Type, arg1: $InteractionHand$$Type): $ItemInteractionResult
-public "onUseWithoutItem"(arg0: $Player$$Type): $InteractionResult
 public "onUseWithItem"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: $InteractionHand$$Type): $ItemInteractionResult
 public "onBreak"(arg0: $Player$$Type): void
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+public "onUseWithoutItem"(arg0: $Player$$Type): $InteractionResult
+public "getUpdatePacket"(): $Packet<(any)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+get "updatePacket"(): $Packet<(any)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1629,12 +1676,13 @@ import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ItemInteractionResult, $ItemInteractionResult$$Type} from "net.minecraft.world.ItemInteractionResult"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$LodestoneBlockEntity, $LodestoneBlockEntity$$Type} from "team.lodestar.lodestone.systems.blockentity.LodestoneBlockEntity"
+import {$Packet, $Packet$$Type} from "net.minecraft.network.protocol.Packet"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$IItemHandlerSupplier, $IItemHandlerSupplier$$Type} from "team.lodestar.lodestone.systems.blockentity.IItemHandlerSupplier"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $ItemHolderBlockEntity extends $LodestoneBlockEntity implements $IItemHandlerSupplier {
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
  "inventory": $LodestoneBlockEntityInventory
 
 constructor(arg0: $BlockEntityType$$Type<(any)>, arg1: $BlockPos$$Type, arg2: $BlockState$$Type)
@@ -1642,8 +1690,10 @@ constructor(arg0: $BlockEntityType$$Type<(any)>, arg1: $BlockPos$$Type, arg2: $B
 public "getInventory"(arg0: $Direction$$Type): $IItemHandler
 public "onUseWithItem"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: $InteractionHand$$Type): $ItemInteractionResult
 public "onBreak"(arg0: $Player$$Type): void
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+public "getUpdatePacket"(): $Packet<(any)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+get "updatePacket"(): $Packet<(any)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1658,18 +1708,22 @@ declare global {
 export type $ItemHolderBlockEntity_ = $ItemHolderBlockEntity$$Type;
 }}
 declare module "team.lodestar.lodestone.systems.item.tools.magic.MagicPickaxeItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$LodestoneItemProperties, $LodestoneItemProperties$$Type} from "team.lodestar.lodestone.systems.item.LodestoneItemProperties"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$LodestonePickaxeItem, $LodestonePickaxeItem$$Type} from "team.lodestar.lodestone.systems.item.tools.LodestonePickaxeItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 
 export class $MagicPickaxeItem extends $LodestonePickaxeItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -1678,6 +1732,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Tier$$Type, arg1: float, arg2: float, arg3: float, arg4: $LodestoneItemProperties$$Type)
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1694,8 +1749,8 @@ export type $MagicPickaxeItem_ = $MagicPickaxeItem$$Type;
 declare module "team.lodestar.lodestone.systems.attribute.LodestoneRangedAttribute" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$AttributeModifier$Operation, $AttributeModifier$Operation$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$AttributeModifier$Operation, $AttributeModifier$Operation$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$LodestoneAttributeBuilder, $LodestoneAttributeBuilder$$Type} from "team.lodestar.lodestone.systems.attribute.LodestoneAttributeBuilder"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
@@ -1742,8 +1797,8 @@ import {$GenericParticleData, $GenericParticleData$$Type} from "team.lodestar.lo
 import {$LodestoneParticleBehavior, $LodestoneParticleBehavior$$Type} from "team.lodestar.lodestone.systems.particle.world.behaviors.LodestoneParticleBehavior"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$LodestoneWorldParticle, $LodestoneWorldParticle$$Type} from "team.lodestar.lodestone.systems.particle.world.LodestoneWorldParticle"
-import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$ColorParticleData, $ColorParticleData$$Type} from "team.lodestar.lodestone.systems.particle.data.color.ColorParticleData"
+import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $LodestoneTerrainParticleOptions extends $WorldParticleOptions {
 readonly "spawnActors": $Collection<($Consumer<($LodestoneWorldParticle)>)>
@@ -1791,18 +1846,22 @@ declare global {
 export type $LodestoneTerrainParticleOptions_ = $LodestoneTerrainParticleOptions$$Type;
 }}
 declare module "team.lodestar.lodestone.systems.item.LodestoneFuelItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$RecipeType, $RecipeType$$Type} from "net.minecraft.world.item.crafting.RecipeType"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $LodestoneFuelItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 readonly "fuel": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -1812,6 +1871,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type, arg1: integer)
 
 public "getBurnTime"(arg0: $ItemStack$$Type, arg1: $RecipeType$$Type<(any)>): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1850,11 +1910,13 @@ declare global {
 export type $WorldEventRenderer_<T> = $WorldEventRenderer$$Type<(T)>;
 }}
 declare module "team.lodestar.lodestone.systems.item.LodestoneCombatItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$LodestoneItemProperties, $LodestoneItemProperties$$Type} from "team.lodestar.lodestone.systems.item.LodestoneItemProperties"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ItemAbility, $ItemAbility$$Type} from "net.neoforged.neoforge.common.ItemAbility"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
@@ -1868,7 +1930,7 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 export class $LodestoneCombatItem extends $TieredItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -1881,6 +1943,7 @@ public "hurtEnemy"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: $Liv
 public "postHurtEnemy"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type): void
 public "canAttackBlock"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): boolean
 public "canPerformAction"(arg0: $ItemStack$$Type, arg1: $ItemAbility$$Type): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1895,19 +1958,23 @@ declare global {
 export type $LodestoneCombatItem_ = $LodestoneCombatItem$$Type;
 }}
 declare module "team.lodestar.lodestone.systems.item.tools.LodestoneShovelItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$LodestoneItemProperties, $LodestoneItemProperties$$Type} from "team.lodestar.lodestone.systems.item.LodestoneItemProperties"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$ShovelItem, $ShovelItem$$Type} from "net.minecraft.world.item.ShovelItem"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $LodestoneShovelItem extends $ShovelItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static "FLATTENABLES": $Map<($Block), ($BlockState)>
 static readonly "MAX_BAR_WIDTH": integer
@@ -1917,6 +1984,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Tier$$Type, arg1: float, arg2: float, arg3: $LodestoneItemProperties$$Type)
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1962,18 +2030,18 @@ readonly "random": $RandomSource
 
 constructor(arg0: $ClientLevel$$Type, arg1: double, arg2: double, arg3: double, arg4: double)
 
+public "tick"(): void
+public "setSize"(arg0: float): $ScreenParticle
+public "setColor"(arg0: float, arg1: float, arg2: float): void
 public "remove"(): void
 public "isAlive"(): boolean
-public "tick"(): void
-public "setColor"(arg0: float, arg1: float, arg2: float): void
-public "setSize"(arg0: float): $ScreenParticle
-public "getRenderType"(): $LodestoneScreenParticleRenderType
 public "render"(arg0: $BufferBuilder$$Type): void
-public "setParticleSpeed"(arg0: double, arg1: double): void
+public "getRenderType"(): $LodestoneScreenParticleRenderType
 public "setLifetime"(arg0: integer): void
 public "getLifetime"(): integer
-get "alive"(): boolean
+public "setParticleSpeed"(arg0: double, arg1: double): void
 set "size"(value: float)
+get "alive"(): boolean
 get "renderType"(): $LodestoneScreenParticleRenderType
 set "lifetime"(value: integer)
 get "lifetime"(): integer
@@ -2011,8 +2079,8 @@ constructor(arg0: $ResourceLocation$$Type, arg1: double, arg2: double, arg3: dou
 public "build"(): $Attribute
 public "setSyncable"(arg0: boolean): $LodestoneAttributeBuilder
 public "setSentiment"(arg0: $Attribute$Sentiment$$Type): $LodestoneAttributeBuilder
-public "forcePercentageDisplay"(): $LodestoneAttributeBuilder
 public "setAsBaseAttribute"(): $LodestoneAttributeBuilder
+public "forcePercentageDisplay"(): $LodestoneAttributeBuilder
 set "syncable"(value: boolean)
 set "sentiment"(value: $Attribute$Sentiment$$Type)
 }
@@ -2070,37 +2138,38 @@ import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockG
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ItemInteractionResult, $ItemInteractionResult$$Type} from "net.minecraft.world.ItemInteractionResult"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+import {$Packet, $Packet$$Type} from "net.minecraft.network.protocol.Packet"
 import {$ClientboundBlockEntityDataPacket, $ClientboundBlockEntityDataPacket$$Type} from "net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
-import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$Connection, $Connection$$Type} from "net.minecraft.network.Connection"
+import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $LodestoneBlockEntity extends $BlockEntity {
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 constructor(arg0: $BlockEntityType$$Type<(any)>, arg1: $BlockPos$$Type, arg2: $BlockState$$Type)
 
-public "update"(arg0: $Level$$Type): void
 public "tick"(): void
+public "update"(arg0: $Level$$Type): void
 public "onPlace"(arg0: $LivingEntity$$Type, arg1: $ItemStack$$Type): void
-public "getUpdateTag"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
-public "onDataPacket"(arg0: $Connection$$Type, arg1: $ClientboundBlockEntityDataPacket$$Type, arg2: $HolderLookup$Provider$$Type): void
 public "onUse"(arg0: $Player$$Type, arg1: $InteractionHand$$Type): $ItemInteractionResult
-public "getUpdatePacket"(): $ClientboundBlockEntityDataPacket
-public "onUseWithoutItem"(arg0: $Player$$Type): $InteractionResult
-public "triggerLevelConsumers"(): void
-public "onNeighborUpdate"(arg0: $BlockState$$Type, arg1: $BlockPos$$Type, arg2: $BlockPos$$Type): void
+public "loadWithLevel"(arg0: $Consumer$$Type<($Level)>): void
 public "onEntityInside"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): void
 public "onUseWithItem"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: $InteractionHand$$Type): $ItemInteractionResult
 public "onClone"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
 public "onBreak"(arg0: $Player$$Type): void
-public "loadWithLevel"(arg0: $Consumer$$Type<($Level)>): void
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+public "getUpdateTag"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
+public "onDataPacket"(arg0: $Connection$$Type, arg1: $ClientboundBlockEntityDataPacket$$Type, arg2: $HolderLookup$Provider$$Type): void
+public "onNeighborUpdate"(arg0: $BlockState$$Type, arg1: $BlockPos$$Type, arg2: $BlockPos$$Type): void
+public "getUpdatePacket"(): $Packet<(any)>
+public "triggerLevelConsumers"(): void
+public "onUseWithoutItem"(arg0: $Player$$Type): $InteractionResult
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
-get "updatePacket"(): $ClientboundBlockEntityDataPacket
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+get "updatePacket"(): $Packet<(any)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2155,8 +2224,8 @@ declare module "team.lodestar.lodestone.recipe.NBTCarryRecipe" {
 import {$CraftingInput, $CraftingInput$$Type} from "net.minecraft.world.item.crafting.CraftingInput"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ShapedRecipePattern, $ShapedRecipePattern$$Type} from "net.minecraft.world.item.crafting.ShapedRecipePattern"
-import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
+import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$ShapedRecipe, $ShapedRecipe$$Type} from "net.minecraft.world.item.crafting.ShapedRecipe"
 import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.item.crafting.RecipeSerializer"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
@@ -2165,13 +2234,13 @@ export class $NBTCarryRecipe extends $ShapedRecipe {
  "result": $ItemStack
 readonly "pattern": $ShapedRecipePattern
 readonly "copyFrom": $Ingredient
-static readonly "NAME": string
+static readonly "NAME": StringJS
 
 constructor(arg0: $ShapedRecipe$$Type, arg1: $Ingredient$$Type)
 
-public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
 public "getSerializer"(): $RecipeSerializer<(any)>
+public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
 get "serializer"(): $RecipeSerializer<(any)>
 }
 /**
@@ -2187,18 +2256,22 @@ declare global {
 export type $NBTCarryRecipe_ = $NBTCarryRecipe$$Type;
 }}
 declare module "team.lodestar.lodestone.systems.item.tools.magic.MagicAxeItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$LodestoneItemProperties, $LodestoneItemProperties$$Type} from "team.lodestar.lodestone.systems.item.LodestoneItemProperties"
 import {$LodestoneAxeItem, $LodestoneAxeItem$$Type} from "team.lodestar.lodestone.systems.item.tools.LodestoneAxeItem"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 
 export class $MagicAxeItem extends $LodestoneAxeItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -2210,6 +2283,7 @@ constructor(arg0: $Tier$$Type, arg1: float, arg2: float, arg3: float, arg4: $Lod
 
 public static "getStrippables"(): $Map<($Block), ($Block)>
 public static "setStrippables"(strippedBlocks: $Map$$Type<($Block$$Type), ($Block$$Type)>): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2236,8 +2310,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -2258,7 +2332,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -2330,7 +2404,7 @@ static readonly "BACK_IN_OUT": $Easing$Back
 static readonly "SINE_IN_OUT": $Easing
 static readonly "CODEC": $Codec<($Easing)>
 static readonly "CIRC_IN_OUT": $Easing
-static readonly "EASINGS": $HashMap<(string), ($Easing)>
+static readonly "EASINGS": $HashMap<(StringJS), ($Easing)>
 static readonly "QUAD_IN_OUT": $Easing
 static readonly "BACK_IN": $Easing$Back
 static readonly "ELASTIC_OUT": $Easing$Elastic
@@ -2342,24 +2416,24 @@ static readonly "BACK_OUT": $Easing$Back
 static readonly "BOUNCE_OUT": $Easing
 static readonly "SINE_IN": $Easing
 static readonly "QUARTIC_IN": $Easing
-readonly "name": string
+readonly "name": StringJS
 static readonly "EXPO_IN_OUT": $Easing
 static readonly "CIRC_IN": $Easing
 static readonly "LINEAR": $Easing
 static readonly "CUBIC_IN": $Easing
 static readonly "EXPO_OUT": $Easing
 
-constructor(arg0: string)
+constructor(arg0: StringJS)
 
-public static "valueOf"(arg0: string): $Easing
-public "clamped"(arg0: double, arg1: double, arg2: double): float
+public static "valueOf"(arg0: StringJS): $Easing
 public "clamped"(arg0: float, arg1: float, arg2: float, arg3: float): float
 public "clamped"(arg0: float, arg1: float, arg2: float): float
+public "clamped"(arg0: double, arg1: double, arg2: double): float
 public "clamped"(arg0: double, arg1: double, arg2: double, arg3: double): float
-public "ease"(arg0: float, arg1: float, arg2: float, arg3: float): float
 public "ease"(arg0: double, arg1: double, arg2: double, arg3: double): float
 public "ease"(arg0: float, arg1: float, arg2: float): float
 public "ease"(arg0: double, arg1: double, arg2: double): float
+public "ease"(arg0: float, arg1: float, arg2: float, arg3: float): float
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2390,16 +2464,16 @@ constructor(arg0: $Vec3$$Type)
 constructor(arg0: $Entity$$Type)
 constructor(arg0: $BlockPos$$Type)
 
+public "getAsVector"(): $Vec3
+public "getAsBlockPos"(): $BlockPos
 public "getPosZ"(): double
 public "getPosX"(): double
 public "getPosY"(): double
-public "getAsBlockPos"(): $BlockPos
-public "getAsVector"(): $Vec3
+get "asVector"(): $Vec3
+get "asBlockPos"(): $BlockPos
 get "posZ"(): double
 get "posX"(): double
 get "posY"(): double
-get "asBlockPos"(): $BlockPos
-get "asVector"(): $Vec3
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2472,21 +2546,21 @@ import {$Matrix4f, $Matrix4f$$Type} from "org.joml.Matrix4f"
 
 export class $TrailPoint {
 
-constructor(arg0: $Vec3$$Type, arg1: integer)
 constructor(arg0: $Vec3$$Type)
+constructor(arg0: $Vec3$$Type, arg1: integer)
 
-public "getPosition"(): $Vec3
-public "move"(arg0: $Vec3$$Type): void
 public "tick"(): void
-public "setPosition"(arg0: $Vec3$$Type): void
+public "move"(arg0: $Vec3$$Type): void
+public "getPosition"(): $Vec3
 public "getAge"(): integer
+public "setPosition"(arg0: $Vec3$$Type): void
+public "getMatrixPosition"(arg0: $Matrix4f$$Type): $Vector4f
+public static "getMatrixPosition"(arg0: $Vec3$$Type, arg1: $Matrix4f$$Type): $Vector4f
 public "getInterpolatedPosition"(arg0: float): $Vec3
 public "getInterpolatedMatrixPosition"(arg0: $Matrix4f$$Type, arg1: float): $Vector4f
-public static "getMatrixPosition"(arg0: $Vec3$$Type, arg1: $Matrix4f$$Type): $Vector4f
-public "getMatrixPosition"(arg0: $Matrix4f$$Type): $Vector4f
 get "position"(): $Vec3
-set "position"(value: $Vec3$$Type)
 get "age"(): integer
+set "position"(value: $Vec3$$Type)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2538,8 +2612,8 @@ import {$RotatedPillarBlock, $RotatedPillarBlock$$Type} from "net.minecraft.worl
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$ItemAbility, $ItemAbility$$Type} from "net.neoforged.neoforge.common.ItemAbility"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
+import {$ItemAbility, $ItemAbility$$Type} from "net.neoforged.neoforge.common.ItemAbility"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Direction$Axis, $Direction$Axis$$Type} from "net.minecraft.core.Direction$Axis"
@@ -2566,7 +2640,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2593,18 +2667,22 @@ declare global {
 export type $LodestoneLogBlock_ = $LodestoneLogBlock$$Type;
 }}
 declare module "team.lodestar.lodestone.systems.item.tools.magic.MagicSwordItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$LodestoneItemProperties, $LodestoneItemProperties$$Type} from "team.lodestar.lodestone.systems.item.LodestoneItemProperties"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$LodestoneSwordItem, $LodestoneSwordItem$$Type} from "team.lodestar.lodestone.systems.item.tools.LodestoneSwordItem"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 
 export class $MagicSwordItem extends $LodestoneSwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -2613,6 +2691,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Tier$$Type, arg1: float, arg2: float, arg3: float, arg4: $LodestoneItemProperties$$Type)
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2627,8 +2706,8 @@ declare global {
 export type $MagicSwordItem_ = $MagicSwordItem$$Type;
 }}
 declare module "team.lodestar.lodestone.systems.multiblock.IMultiBlockCore" {
-import {$MultiBlockStructure, $MultiBlockStructure$$Type} from "team.lodestar.lodestone.systems.multiblock.MultiBlockStructure"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$MultiBlockStructure, $MultiBlockStructure$$Type} from "team.lodestar.lodestone.systems.multiblock.MultiBlockStructure"
 import {$ArrayList, $ArrayList$$Type} from "java.util.ArrayList"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -2671,19 +2750,23 @@ declare global {
 export type $IMultiBlockCore_ = $IMultiBlockCore$$Type;
 }}
 declare module "team.lodestar.lodestone.systems.item.tools.magic.MagicShovelItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$LodestoneItemProperties, $LodestoneItemProperties$$Type} from "team.lodestar.lodestone.systems.item.LodestoneItemProperties"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
-import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$LodestoneShovelItem, $LodestoneShovelItem$$Type} from "team.lodestar.lodestone.systems.item.tools.LodestoneShovelItem"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $MagicShovelItem extends $LodestoneShovelItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static "FLATTENABLES": $Map<($Block), ($BlockState)>
 static readonly "MAX_BAR_WIDTH": integer
@@ -2693,6 +2776,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Tier$$Type, arg1: float, arg2: float, arg3: float, arg4: $LodestoneItemProperties$$Type)
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2707,8 +2791,8 @@ declare global {
 export type $MagicShovelItem_ = $MagicShovelItem$$Type;
 }}
 declare module "team.lodestar.lodestone.systems.particle.world.type.LodestoneItemCrumbsParticleType" {
-import {$LodestoneItemCrumbsParticleOptions, $LodestoneItemCrumbsParticleOptions$$Type} from "team.lodestar.lodestone.systems.particle.world.options.LodestoneItemCrumbsParticleOptions"
 import {$AbstractLodestoneParticleType, $AbstractLodestoneParticleType$$Type} from "team.lodestar.lodestone.systems.particle.world.type.AbstractLodestoneParticleType"
+import {$LodestoneItemCrumbsParticleOptions, $LodestoneItemCrumbsParticleOptions$$Type} from "team.lodestar.lodestone.systems.particle.world.options.LodestoneItemCrumbsParticleOptions"
 
 export class $LodestoneItemCrumbsParticleType extends $AbstractLodestoneParticleType<($LodestoneItemCrumbsParticleOptions)> {
 
@@ -2768,15 +2852,15 @@ export type $LodestoneScreenParticleRenderType_ = $LodestoneScreenParticleRender
 declare module "team.lodestar.lodestone.systems.network.particle.NetworkedParticleEffectType$ParticleEffectBuilder" {
 import {$Color, $Color$$Type} from "java.awt.Color"
 import {$NetworkedParticleEffectColorData, $NetworkedParticleEffectColorData$$Type} from "team.lodestar.lodestone.systems.network.particle.NetworkedParticleEffectColorData"
-import {$List, $List$$Type} from "java.util.List"
 import {$NetworkedParticleEffectPositionData, $NetworkedParticleEffectPositionData$$Type} from "team.lodestar.lodestone.systems.network.particle.NetworkedParticleEffectPositionData"
+import {$List, $List$$Type} from "java.util.List"
 import {$NetworkedParticleEffectExtraData, $NetworkedParticleEffectExtraData$$Type} from "team.lodestar.lodestone.systems.network.particle.NetworkedParticleEffectExtraData"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$NetworkedParticleEffectPayload, $NetworkedParticleEffectPayload$$Type} from "team.lodestar.lodestone.systems.network.particle.NetworkedParticleEffectPayload"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$NetworkedParticleEffectType, $NetworkedParticleEffectType$$Type} from "team.lodestar.lodestone.systems.network.particle.NetworkedParticleEffectType"
 import {$ColorParticleData, $ColorParticleData$$Type} from "team.lodestar.lodestone.systems.particle.data.color.ColorParticleData"
 
@@ -2784,14 +2868,14 @@ export class $NetworkedParticleEffectType$ParticleEffectBuilder<T extends $Netwo
 
 constructor(arg0: $NetworkedParticleEffectType$$Type<(T)>)
 
-public "at"(arg0: $NetworkedParticleEffectPositionData$$Type): $NetworkedParticleEffectType$ParticleEffectBuilder<(T)>
 public "at"(arg0: $Entity$$Type): $NetworkedParticleEffectType$ParticleEffectBuilder<(T)>
 public "at"(arg0: $Vec3$$Type): $NetworkedParticleEffectType$ParticleEffectBuilder<(T)>
 public "at"(arg0: $BlockPos$$Type): $NetworkedParticleEffectType$ParticleEffectBuilder<(T)>
-public "color"(arg0: $List$$Type<($ColorParticleData$$Type)>): $NetworkedParticleEffectType$ParticleEffectBuilder<(T)>
-public "color"(arg0: $NetworkedParticleEffectColorData$$Type): $NetworkedParticleEffectType$ParticleEffectBuilder<(T)>
+public "at"(arg0: $NetworkedParticleEffectPositionData$$Type): $NetworkedParticleEffectType$ParticleEffectBuilder<(T)>
 public "color"(arg0: $ColorParticleData$$Type): $NetworkedParticleEffectType$ParticleEffectBuilder<(T)>
+public "color"(arg0: $NetworkedParticleEffectColorData$$Type): $NetworkedParticleEffectType$ParticleEffectBuilder<(T)>
 public "color"(arg0: $Color$$Type): $NetworkedParticleEffectType$ParticleEffectBuilder<(T)>
+public "color"(arg0: $List$$Type<($ColorParticleData$$Type)>): $NetworkedParticleEffectType$ParticleEffectBuilder<(T)>
 public "spawn"(arg0: $Consumer$$Type<($NetworkedParticleEffectPayload)>): $NetworkedParticleEffectType$ParticleEffectBuilder<(T)>
 public "spawn"(arg0: $ServerLevel$$Type): $NetworkedParticleEffectType$ParticleEffectBuilder<(T)>
 public "customData"(arg0: T): $NetworkedParticleEffectType$ParticleEffectBuilder<(T)>
@@ -2819,12 +2903,12 @@ export class $LodestoneBlockFiller$BlockStateEntryBuilder {
 constructor(arg0: $BlockState$$Type)
 
 public "build"(): $LodestoneBlockFiller$BlockStateEntry
-public "setDiscardPredicate"(arg0: $LodestoneBlockFiller$EntryDiscardPredicate$$Type): $LodestoneBlockFiller$BlockStateEntryBuilder
 public "setForcePlace"(): $LodestoneBlockFiller$BlockStateEntryBuilder
 public "setForcePlace"(arg0: boolean): $LodestoneBlockFiller$BlockStateEntryBuilder
+public "setDiscardPredicate"(arg0: $LodestoneBlockFiller$EntryDiscardPredicate$$Type): $LodestoneBlockFiller$BlockStateEntryBuilder
 public "setPlacementPredicate"(arg0: $LodestoneBlockFiller$EntryPlacementPredicate$$Type): $LodestoneBlockFiller$BlockStateEntryBuilder
-set "discardPredicate"(value: $LodestoneBlockFiller$EntryDiscardPredicate$$Type)
 set "forcePlace"(value: boolean)
+set "discardPredicate"(value: $LodestoneBlockFiller$EntryDiscardPredicate$$Type)
 set "placementPredicate"(value: $LodestoneBlockFiller$EntryPlacementPredicate$$Type)
 }
 /**
@@ -2859,18 +2943,18 @@ readonly "b1": float
 readonly "colorCurveEasing": $Easing
 
 
-public "copy"(): $ColorParticleDataBuilder
 public static "create"(arg0: $Color$$Type, arg1: $Color$$Type): $ColorParticleDataBuilder
-public static "create"(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float): $ColorParticleDataBuilder
 public static "create"(arg0: float, arg1: float, arg2: float): $ColorParticleDataBuilder
+public static "create"(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float): $ColorParticleDataBuilder
 public static "create"(arg0: $Color$$Type): $ColorParticleDataBuilder
-public "multiplyCoefficient"(arg0: float): $ColorParticleData
-public "getProgress"(arg0: float, arg1: float): float
+public "copy"(): $ColorParticleDataBuilder
 public "invert"(): $ColorParticleDataBuilder
+public "getProgress"(arg0: float, arg1: float): float
 public "getEndingColor"(): $Color
-public static "createGrayParticleColor"(arg0: $RandomSource$$Type): $ColorParticleData
-public "overrideCoefficientMultiplier"(arg0: float): $ColorParticleData
 public "getStartingColor"(): $Color
+public "multiplyCoefficient"(arg0: float): $ColorParticleData
+public "overrideCoefficientMultiplier"(arg0: float): $ColorParticleData
+public static "createGrayParticleColor"(arg0: $RandomSource$$Type): $ColorParticleData
 get "endingColor"(): $Color
 get "startingColor"(): $Color
 }
@@ -2919,9 +3003,9 @@ declare global {
 export type $ParticleEmitterHandler$ItemParticleSupplier_ = $ParticleEmitterHandler$ItemParticleSupplier$$Type;
 }}
 declare module "team.lodestar.lodestone.systems.particle.world.options.LodestoneItemCrumbsParticleOptions" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ParticleRenderType, $ParticleRenderType$$Type} from "net.minecraft.client.particle.ParticleRenderType"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$LodestoneItemCrumbsParticleType, $LodestoneItemCrumbsParticleType$$Type} from "team.lodestar.lodestone.systems.particle.world.type.LodestoneItemCrumbsParticleType"
 import {$SimpleParticleOptions$ParticleSpritePicker, $SimpleParticleOptions$ParticleSpritePicker$$Type} from "team.lodestar.lodestone.systems.particle.SimpleParticleOptions$ParticleSpritePicker"
 import {$RenderHandler$LodestoneRenderLayer, $RenderHandler$LodestoneRenderLayer$$Type} from "team.lodestar.lodestone.handlers.RenderHandler$LodestoneRenderLayer"
@@ -3011,29 +3095,29 @@ import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSourc
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$NetworkedParticleEffectType$ParticleEffectBuilder, $NetworkedParticleEffectType$ParticleEffectBuilder$$Type} from "team.lodestar.lodestone.systems.network.particle.NetworkedParticleEffectType$ParticleEffectBuilder"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 
 export class $NetworkedParticleEffectType<T extends $NetworkedParticleEffectExtraData> {
 static readonly "CODEC": $Codec<($NetworkedParticleEffectType<(any)>)>
-static readonly "EFFECT_TYPES": $Map<(string), ($NetworkedParticleEffectType<(any)>)>
+static readonly "EFFECT_TYPES": $Map<(StringJS), ($NetworkedParticleEffectType<(any)>)>
 
-constructor(arg0: string)
+constructor(arg0: StringJS)
 
-public "getId"(): string
-public "getDefaultExtraData"(): $Optional<($NetworkedParticleEffectExtraData)>
+public "getId"(): StringJS
 public "act"(arg0: $Level$$Type, arg1: $RandomSource$$Type, arg2: $NetworkedParticleEffectPositionData$$Type, arg3: $NetworkedParticleEffectColorData$$Type, arg4: T): void
-public "getPositionCodec"(): $Optional<($StreamCodec<($ByteBuf), ($NetworkedParticleEffectPositionData)>)>
+public "getExtraCodec"(): $Optional<($StreamCodec<($ByteBuf), ($NetworkedParticleEffectExtraData)>)>
+public "getColorCodec"(): $Optional<($StreamCodec<($ByteBuf), ($NetworkedParticleEffectColorData)>)>
 public "createEffect"(arg0: $BlockPos$$Type): $NetworkedParticleEffectType$ParticleEffectBuilder<(T)>
 public "createEffect"(arg0: $Vec3$$Type): $NetworkedParticleEffectType$ParticleEffectBuilder<(T)>
 public "createEffect"(arg0: $Entity$$Type): $NetworkedParticleEffectType$ParticleEffectBuilder<(T)>
-public "getExtraCodec"(): $Optional<($StreamCodec<($ByteBuf), ($NetworkedParticleEffectExtraData)>)>
-public "getColorCodec"(): $Optional<($StreamCodec<($ByteBuf), ($NetworkedParticleEffectColorData)>)>
-get "id"(): string
-get "defaultExtraData"(): $Optional<($NetworkedParticleEffectExtraData)>
-get "positionCodec"(): $Optional<($StreamCodec<($ByteBuf), ($NetworkedParticleEffectPositionData)>)>
+public "getPositionCodec"(): $Optional<($StreamCodec<($ByteBuf), ($NetworkedParticleEffectPositionData)>)>
+public "getDefaultExtraData"(): $Optional<($NetworkedParticleEffectExtraData)>
+get "id"(): StringJS
 get "extraCodec"(): $Optional<($StreamCodec<($ByteBuf), ($NetworkedParticleEffectExtraData)>)>
 get "colorCodec"(): $Optional<($StreamCodec<($ByteBuf), ($NetworkedParticleEffectColorData)>)>
+get "positionCodec"(): $Optional<($StreamCodec<($ByteBuf), ($NetworkedParticleEffectPositionData)>)>
+get "defaultExtraData"(): $Optional<($NetworkedParticleEffectExtraData)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3048,14 +3132,18 @@ declare global {
 export type $NetworkedParticleEffectType_<T> = $NetworkedParticleEffectType$$Type<(T)>;
 }}
 declare module "team.lodestar.lodestone.systems.item.LodestoneArmorItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ArmorMaterial, $ArmorMaterial$$Type} from "net.minecraft.world.item.ArmorMaterial"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ItemAttributeModifiers$Entry, $ItemAttributeModifiers$Entry$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers$Entry"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
@@ -3068,7 +3156,7 @@ import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.A
 export class $LodestoneArmorItem extends $ArmorItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3081,6 +3169,7 @@ constructor(arg0: $Holder$$Type<($ArmorMaterial)>, arg1: $ArmorItem$Type$$Type, 
 public "getDefaultAttributeModifiers"(arg0: $ItemStack$$Type): $ItemAttributeModifiers
 public "createExtraAttributes"(): $List<($ItemAttributeModifiers$Entry)>
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3117,7 +3206,7 @@ static readonly "BACK_IN_OUT": $Easing$Back
 static readonly "SINE_IN_OUT": $Easing
 static readonly "CODEC": $Codec<($Easing)>
 static readonly "CIRC_IN_OUT": $Easing
-static readonly "EASINGS": $HashMap<(string), ($Easing)>
+static readonly "EASINGS": $HashMap<(StringJS), ($Easing)>
 static readonly "QUAD_IN_OUT": $Easing
 static readonly "BACK_IN": $Easing$Back
 static readonly "ELASTIC_OUT": $Easing$Elastic
@@ -3129,24 +3218,24 @@ static readonly "BACK_OUT": $Easing$Back
 static readonly "BOUNCE_OUT": $Easing
 static readonly "SINE_IN": $Easing
 static readonly "QUARTIC_IN": $Easing
-readonly "name": string
+readonly "name": StringJS
 static readonly "EXPO_IN_OUT": $Easing
 static readonly "CIRC_IN": $Easing
 static readonly "LINEAR": $Easing
 static readonly "CUBIC_IN": $Easing
 static readonly "EXPO_OUT": $Easing
 
-constructor(arg0: string, arg1: float, arg2: float)
-constructor(arg0: string)
+constructor(arg0: StringJS, arg1: float, arg2: float)
+constructor(arg0: StringJS)
 
-public "getPeriod"(): float
-public "setPeriod"(arg0: float): void
 public "getAmplitude"(): float
 public "setAmplitude"(arg0: float): void
-get "period"(): float
-set "period"(value: float)
+public "setPeriod"(arg0: float): void
+public "getPeriod"(): float
 get "amplitude"(): float
 set "amplitude"(value: float)
+set "period"(value: float)
+get "period"(): float
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3163,7 +3252,6 @@ export type $Easing$Elastic_ = $Easing$Elastic$$Type;
 declare module "team.lodestar.lodestone.systems.worldgen.LodestoneBlockFiller" {
 import {$ArrayList, $ArrayList$$Type} from "java.util.ArrayList"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
-import {$SequencedCollection, $SequencedCollection$$Type} from "java.util.SequencedCollection"
 import {$List, $List$$Type} from "java.util.List"
 import {$LodestoneBlockFiller$LodestoneLayerToken, $LodestoneBlockFiller$LodestoneLayerToken$$Type} from "team.lodestar.lodestone.systems.worldgen.LodestoneBlockFiller$LodestoneLayerToken"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
@@ -3178,27 +3266,26 @@ constructor(arg0: $Collection$$Type<($LodestoneBlockFiller$LodestoneBlockFillerL
 constructor(...arg0: ($LodestoneBlockFiller$LodestoneBlockFillerLayer$$Type)[])
 constructor()
 
+public static "create"(arg0: $BlockState$$Type): $LodestoneBlockFiller$BlockStateEntryBuilder
 public "fill"(arg0: $LevelAccessor$$Type): $LodestoneBlockFiller$LodestoneBlockFillerLayer
 public "getLayer"(arg0: $LodestoneBlockFiller$LodestoneLayerToken$$Type): $LodestoneBlockFiller$LodestoneBlockFillerLayer
-public static "create"(arg0: $BlockState$$Type): $LodestoneBlockFiller$BlockStateEntryBuilder
-public "addLayers"(...arg0: ($LodestoneBlockFiller$LodestoneBlockFillerLayer$$Type)[]): $LodestoneBlockFiller
 public "addLayers"(...arg0: ($LodestoneBlockFiller$LodestoneLayerToken$$Type)[]): $LodestoneBlockFiller
+public "addLayers"(...arg0: ($LodestoneBlockFiller$LodestoneBlockFillerLayer$$Type)[]): $LodestoneBlockFiller
 public "getMainLayer"(): $LodestoneBlockFiller$LodestoneBlockFillerLayer
+public "containsAll"(arg0: $Collection$$Type<(any)>): boolean
 public static "copyOf"<E>(arg0: $Collection$$Type<(E)>): $List<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E): $List<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E): $List<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E): $List<(E)>
 public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E): $List<(E)>
 public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E): $List<(E)>
 public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E, arg8: E, arg9: E): $List<(E)>
 public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E, arg8: E): $List<(E)>
+public static "of"<E>(...arg0: (E)[]): $List<(E)>
+public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E): $List<(E)>
 public static "of"<E>(): $List<(E)>
 public static "of"<E>(arg0: E): $List<(E)>
 public static "of"<E>(arg0: E, arg1: E): $List<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E): $List<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E): $List<(E)>
-public static "of"<E>(...arg0: (E)[]): $List<(E)>
-public static "of"<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E): $List<(E)>
-public "reversed"(): $SequencedCollection<(any)>
-public "containsAll"(arg0: $Collection$$Type<(any)>): boolean
+public static "of"<E>(arg0: E, arg1: E, arg2: E): $List<(E)>
 get "mainLayer"(): $LodestoneBlockFiller$LodestoneBlockFillerLayer
 }
 /**
@@ -3277,18 +3364,22 @@ declare global {
 export type $LodestoneBlockFiller$EntryDiscardPredicate_ = $LodestoneBlockFiller$EntryDiscardPredicate$$Type;
 }}
 declare module "team.lodestar.lodestone.systems.item.tools.LodestoneAxeItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$LodestoneItemProperties, $LodestoneItemProperties$$Type} from "team.lodestar.lodestone.systems.item.LodestoneItemProperties"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$AxeItem, $AxeItem$$Type} from "net.minecraft.world.item.AxeItem"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 
 export class $LodestoneAxeItem extends $AxeItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -3300,6 +3391,7 @@ constructor(arg0: $Tier$$Type, arg1: float, arg2: float, arg3: $LodestoneItemPro
 
 public static "getStrippables"(): $Map<($Block), ($Block)>
 public static "setStrippables"(strippedBlocks: $Map$$Type<($Block$$Type), ($Block$$Type)>): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3314,18 +3406,22 @@ declare global {
 export type $LodestoneAxeItem_ = $LodestoneAxeItem$$Type;
 }}
 declare module "team.lodestar.lodestone.systems.item.tools.LodestoneSwordItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$LodestoneItemProperties, $LodestoneItemProperties$$Type} from "team.lodestar.lodestone.systems.item.LodestoneItemProperties"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$SwordItem, $SwordItem$$Type} from "net.minecraft.world.item.SwordItem"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 
 export class $LodestoneSwordItem extends $SwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -3334,6 +3430,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Tier$$Type, arg1: float, arg2: float, arg3: $LodestoneItemProperties$$Type)
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3385,8 +3482,8 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
-import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$LodestoneEntityBlock, $LodestoneEntityBlock$$Type} from "team.lodestar.lodestone.systems.block.LodestoneEntityBlock"
+import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $MultiblockComponentBlock extends $LodestoneEntityBlock<($MultiBlockComponentEntity)> implements $ILodestoneMultiblockComponent {
 static readonly "UPDATE_IMMEDIATE": integer
@@ -3402,7 +3499,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3468,15 +3565,15 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$LodestoneBlockEntity, $LodestoneBlockEntity$$Type} from "team.lodestar.lodestone.systems.blockentity.LodestoneBlockEntity"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$LodestoneEntityBlock, $LodestoneEntityBlock$$Type} from "team.lodestar.lodestone.systems.block.LodestoneEntityBlock"
 
 export class $WaterLoggedEntityBlock<T extends $LodestoneBlockEntity> extends $LodestoneEntityBlock<(T)> implements $SimpleWaterloggedBlock {
@@ -3493,7 +3590,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -3530,8 +3627,8 @@ declare module "team.lodestar.lodestone.systems.blockentity.LodestoneBlockEntity
 import {$ArrayList, $ArrayList$$Type} from "java.util.ArrayList"
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Runnable, $Runnable$$Type} from "java.lang.Runnable"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
@@ -3556,42 +3653,42 @@ readonly "slotCount": integer
 constructor(arg0: $LodestoneBlockEntity$$Type, arg1: integer, arg2: integer)
 
 public "getStacks"(): $NonNullList<($ItemStack)>
-public "load"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type, arg2: string): void
 public "load"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): void
+public "load"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type, arg2: StringJS): void
 public "clear"(): void
 public "isEmpty"(): boolean
+public "save"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type, arg2: StringJS): void
 public "save"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): void
-public "save"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type, arg2: string): void
-public "getNonEmptyStacks"(): $ArrayList<($ItemStack)>
-public "interact"(arg0: $ServerLevel$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $ItemStack
-public "insertItem"(arg0: $ItemStack$$Type): $ItemStack
 public "insertItem"(arg0: $ItemStack$$Type, arg1: boolean): $ItemStack
+public "insertItem"(arg0: $ItemStack$$Type): $ItemStack
 public "extractItem"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): $ItemStack
 public "getSlotLimit"(arg0: integer): integer
 public "isItemValid"(arg0: integer, arg1: $ItemStack$$Type): boolean
+public "interact"(arg0: $ServerLevel$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $ItemStack
 public "getSlots"(): integer
-public "giveItemToPlayer"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: integer): void
+public "dumpItems"(arg0: $Level$$Type, arg1: $BlockPos$$Type): void
+public "dumpItems"(arg0: $Level$$Type, arg1: $Vec3$$Type): void
+public "hasEmptySlots"(): boolean
 public "onContentsChanged"(arg0: $Runnable$$Type): $LodestoneBlockEntityInventory
 public "onContentsChanged"(arg0: integer): void
-public "hasEmptySlots"(): boolean
-public "dumpItems"(arg0: $Level$$Type, arg1: $Vec3$$Type): void
-public "dumpItems"(arg0: $Level$$Type, arg1: $BlockPos$$Type): void
-public "triggerBlockEntityUpdate"(): $LodestoneBlockEntityInventory
-public "getFilledSlotCount"(): integer
-public "updateInventoryCaches"(): void
+public "giveItemToPlayer"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: integer): void
 public "takeItemFromPlayer"(arg0: $Player$$Type, arg1: $ItemStack$$Type): $ItemStack
 public "setInputPredicate"(arg0: $Predicate$$Type<($ItemStack)>): $LodestoneBlockEntityInventory
 public "getEmptySlotCount"(): integer
 public "getFirstEmptyItemIndex"(): integer
+public "getFilledSlotCount"(): integer
+public "updateInventoryCaches"(): void
+public "getNonEmptyStacks"(): $ArrayList<($ItemStack)>
+public "triggerBlockEntityUpdate"(): $LodestoneBlockEntityInventory
 public "serializeNBT"(arg0: $HolderLookup$Provider$$Type): $Tag
 get "stacks"(): $NonNullList<($ItemStack)>
 get "empty"(): boolean
-get "nonEmptyStacks"(): $ArrayList<($ItemStack)>
 get "slots"(): integer
-get "filledSlotCount"(): integer
 set "inputPredicate"(value: $Predicate$$Type<($ItemStack)>)
 get "emptySlotCount"(): integer
 get "firstEmptyItemIndex"(): integer
+get "filledSlotCount"(): integer
+get "nonEmptyStacks"(): $ArrayList<($ItemStack)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3620,16 +3717,16 @@ readonly "middleToEndEasing": $Easing
 readonly "startingValue": float
 
 
+public static "create"(arg0: float, arg1: float): $GenericParticleDataBuilder
+public static "create"(arg0: float): $GenericParticleDataBuilder
+public static "create"(arg0: float, arg1: float, arg2: float): $GenericParticleDataBuilder
 public "getValue"(arg0: float, arg1: float): float
 public "copy"(): $GenericParticleData
-public static "create"(arg0: float): $GenericParticleDataBuilder
-public static "create"(arg0: float, arg1: float): $GenericParticleDataBuilder
-public static "create"(arg0: float, arg1: float, arg2: float): $GenericParticleDataBuilder
-public "multiplyCoefficient"(arg0: float): $GenericParticleData
+public "bake"(): $GenericParticleData
 public "getProgress"(arg0: float, arg1: float): float
 public "immutable"(): $GenericParticleData
-public "bake"(): $GenericParticleData
 public "multiplyValue"(arg0: float): $GenericParticleData
+public "multiplyCoefficient"(arg0: float): $GenericParticleData
 public "overrideCoefficientMultiplier"(arg0: float): $GenericParticleData
 public "isTrinary"(): boolean
 public "getCoefficient"(): float
@@ -3663,11 +3760,12 @@ import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$IMultiBlockCore, $IMultiBlockCore$$Type} from "team.lodestar.lodestone.systems.multiblock.IMultiBlockCore"
 import {$LodestoneBlockEntity, $LodestoneBlockEntity$$Type} from "team.lodestar.lodestone.systems.blockentity.LodestoneBlockEntity"
+import {$Packet, $Packet$$Type} from "net.minecraft.network.protocol.Packet"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $MultiBlockCoreEntity extends $LodestoneBlockEntity implements $IMultiBlockCore {
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 readonly "structure": $MultiBlockStructure
 
 constructor(arg0: $BlockEntityType$$Type<(any)>, arg1: $MultiBlockStructure$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type)
@@ -3678,12 +3776,14 @@ public "getComponentPositions"(): $ArrayList<($BlockPos)>
 public "isModular"(): boolean
 public "setupMultiblock"(arg0: $BlockPos$$Type): void
 public "destroyMultiblock"(arg0: $Player$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type): void
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+public "getUpdatePacket"(): $Packet<(any)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "structure"(): $MultiBlockStructure
 get "componentPositions"(): $ArrayList<($BlockPos)>
 get "modular"(): boolean
 set "upMultiblock"(value: $BlockPos$$Type)
+get "updatePacket"(): $Packet<(any)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3699,22 +3799,25 @@ export type $MultiBlockCoreEntity_ = $MultiBlockCoreEntity$$Type;
 }}
 declare module "team.lodestar.lodestone.systems.multiblock.MultiBlockItem" {
 import {$MultiBlockStructure, $MultiBlockStructure$$Type} from "team.lodestar.lodestone.systems.multiblock.MultiBlockStructure"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $MultiBlockItem extends $BlockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3733,6 +3836,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3748,8 +3852,8 @@ export type $MultiBlockItem_ = $MultiBlockItem$$Type;
 }}
 declare module "team.lodestar.lodestone.systems.particle.world.behaviors.LodestoneParticleBehavior" {
 import {$VertexConsumer, $VertexConsumer$$Type} from "com.mojang.blaze3d.vertex.VertexConsumer"
-import {$LodestoneWorldParticle, $LodestoneWorldParticle$$Type} from "team.lodestar.lodestone.systems.particle.world.LodestoneWorldParticle"
 import {$Camera, $Camera$$Type} from "net.minecraft.client.Camera"
+import {$LodestoneWorldParticle, $LodestoneWorldParticle$$Type} from "team.lodestar.lodestone.systems.particle.world.LodestoneWorldParticle"
 
 export interface $LodestoneParticleBehavior {
 
@@ -3794,8 +3898,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -3816,7 +3920,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -3843,22 +3947,25 @@ declare global {
 export type $LodestoneStandingSignBlock_ = $LodestoneStandingSignBlock$$Type;
 }}
 declare module "team.lodestar.lodestone.systems.item.LodestoneFuelBlockItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$RecipeType, $RecipeType$$Type} from "net.minecraft.world.item.crafting.RecipeType"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $LodestoneFuelBlockItem extends $BlockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 readonly "fuel": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -3878,6 +3985,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3909,22 +4017,22 @@ constructor(arg0: $RecipeSerializer$$Type<(any)>, arg1: $RecipeType$$Type<(any)>
 constructor(arg0: $RecipeSerializer$$Type<(any)>, arg1: $RecipeType$$Type<(any)>)
 
 public "getType"(): $RecipeType<(any)>
-public "assemble"(arg0: T, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "getSerializer"(): $RecipeSerializer<(any)>
-public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
+public "getSerializer"(): $RecipeSerializer<(any)>
+public "assemble"(arg0: T, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "matches"(arg0: T, arg1: $Level$$Type): boolean
 public "getIngredients"(): $NonNullList<($Ingredient)>
-public "getGroup"(): string
+public "getGroup"(): StringJS
 public "isSpecial"(): boolean
-public "showNotification"(): boolean
-public "getRemainingItems"(arg0: T): $NonNullList<($ItemStack)>
 public "isIncomplete"(): boolean
 public "getToastSymbol"(): $ItemStack
+public "showNotification"(): boolean
+public "getRemainingItems"(arg0: T): $NonNullList<($ItemStack)>
 get "type"(): $RecipeType<(any)>
 get "serializer"(): $RecipeSerializer<(any)>
 get "ingredients"(): $NonNullList<($Ingredient)>
-get "group"(): string
+get "group"(): StringJS
 get "special"(): boolean
 get "incomplete"(): boolean
 get "toastSymbol"(): $ItemStack

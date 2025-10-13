@@ -4,11 +4,11 @@ import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resource
 export interface $TagEntryAccessor {
 
  "getId"(): $ResourceLocation
- "isRequired"(): boolean
  "isTag"(): boolean
+ "isRequired"(): boolean
 get "id"(): $ResourceLocation
-get "required"(): boolean
 get "tag"(): boolean
+get "required"(): boolean
 }
 
 export namespace $TagEntryAccessor {
@@ -18,8 +18,8 @@ export class $TagEntryAccessor$$Static implements $TagEntryAccessor {
 
 
  "getId"(): $ResourceLocation
- "isRequired"(): boolean
  "isTag"(): boolean
+ "isRequired"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

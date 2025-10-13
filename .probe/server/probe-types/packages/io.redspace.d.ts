@@ -1,14 +1,14 @@
 declare module "io.redspace.ironsspellbooks.spells.holy.SunbeamSpell" {
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
+import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $SunbeamSpell extends $AbstractSpell {
@@ -16,12 +16,12 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
-public "getDefaultConfig"(): $DefaultConfig
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -42,8 +42,8 @@ declare module "io.redspace.ironsspellbooks.item.armor.UpgradeOrbType" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$AttributeModifier$Operation, $AttributeModifier$Operation$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$AttributeModifier$Operation, $AttributeModifier$Operation$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
@@ -57,11 +57,11 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Upgra
 constructor(arg0: $Holder$$Type<($Attribute)>, arg1: double, arg2: $AttributeModifier$Operation$$Type, arg3: $Holder$$Type<($Item)>)
 constructor(attribute: $Holder$$Type<($Attribute)>, amount: double, operation: $AttributeModifier$Operation$$Type, containerItem: $Optional$$Type<($ItemStack$$Type)>)
 
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "attribute"(): $Holder<($Attribute)>
 public "amount"(): double
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
 public "operation"(): $AttributeModifier$Operation
 public "containerItem"(): $Optional<($ItemStack)>
 /**
@@ -77,7 +77,7 @@ public "containerItem"(): $Optional<($ItemStack)>
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $UpgradeOrbType$$Type = (Special.IronsSpellbooksUpgradeOrbType) | ({"containerItem"?: ($ItemStack$$Type)?, "operation"?: $AttributeModifier$Operation$$Type, "amount"?: double, "attribute"?: $Holder$$Type<($Attribute)>}) | ([containerItem?: ($ItemStack$$Type)?, operation?: $AttributeModifier$Operation$$Type, amount?: double, attribute?: $Holder$$Type<($Attribute)>]);
+export type $UpgradeOrbType$$Type = (Special.IronsSpellbooksUpgradeOrbType) | ({"attribute"?: $Holder$$Type<($Attribute)>, "containerItem"?: ($ItemStack$$Type)?, "operation"?: $AttributeModifier$Operation$$Type, "amount"?: double}) | ([attribute?: $Holder$$Type<($Attribute)>, containerItem?: ($ItemStack$$Type)?, operation?: $AttributeModifier$Operation$$Type, amount?: double]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -86,31 +86,35 @@ declare global {
 export type $UpgradeOrbType_ = $UpgradeOrbType$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.SpellBook" {
-import {$IPresetSpellContainer, $IPresetSpellContainer$$Type} from "io.redspace.ironsspellbooks.api.spells.IPresetSpellContainer"
-import {$Map, $Map$$Type} from "java.util.Map"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$CurioBaseItem, $CurioBaseItem$$Type} from "io.redspace.ironsspellbooks.item.curios.CurioBaseItem"
-import {$List, $List$$Type} from "java.util.List"
 import {$PoseStack, $PoseStack$$Type} from "com.mojang.blaze3d.vertex.PoseStack"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$List, $List$$Type} from "java.util.List"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
-import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$SlotContext, $SlotContext$$Type} from "top.theillusivec4.curios.api.SlotContext"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$ISpellbook, $ISpellbook$$Type} from "io.redspace.ironsspellbooks.api.item.ISpellbook"
-import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
-import {$ILecternPlaceable, $ILecternPlaceable$$Type} from "io.redspace.ironsspellbooks.item.ILecternPlaceable"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$ILecternPlaceable, $ILecternPlaceable$$Type} from "io.redspace.ironsspellbooks.item.ILecternPlaceable"
+import {$IPresetSpellContainer, $IPresetSpellContainer$$Type} from "io.redspace.ironsspellbooks.api.spells.IPresetSpellContainer"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$CurioBaseItem, $CurioBaseItem$$Type} from "io.redspace.ironsspellbooks.item.curios.CurioBaseItem"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$ICurio$SoundInfo, $ICurio$SoundInfo$$Type} from "top.theillusivec4.curios.api.type.capability.ICurio$SoundInfo"
 
 export class $SpellBook extends $CurioBaseItem implements $ISpellbook, $IPresetSpellContainer, $ILecternPlaceable {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -120,18 +124,19 @@ constructor(arg0: integer, arg1: $Item$Properties$$Type)
 constructor(arg0: integer)
 constructor()
 
-public "getMaxSpellSlots"(): integer
-public "initializeSpellContainer"(arg0: $ItemStack$$Type): void
-public "getPages"(arg0: $ItemStack$$Type): $List<($Component)>
 public "isUnique"(): boolean
 public "getEquipSound"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): $ICurio$SoundInfo
+public "withAttribute"(arg0: $Holder$$Type<($Attribute)>, arg1: double): $SpellBook
+public "getPages"(arg0: $ItemStack$$Type): $List<($Component)>
 public "canEquipFromUse"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-public "withAttribute"(arg0: $Holder$$Type<($Attribute)>, arg1: double): $SpellBook
+public "getMaxSpellSlots"(): integer
+public "initializeSpellContainer"(arg0: $ItemStack$$Type): void
 public "simpleTextureOverride"(arg0: $ItemStack$$Type): $Optional<($ResourceLocation)>
 public "handleCustomLecternPosing"(arg0: $PoseStack$$Type): void
-get "maxSpellSlots"(): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "unique"(): boolean
+get "maxSpellSlots"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -170,9 +175,9 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(arg0: $MobEffectCategory$$Type, arg1: integer)
 
-public "getDescriptionLine"(arg0: $MobEffectInstance$$Type): $Component
-public static "getReductionAmount"(arg0: integer): float
 public static "reduceDamage"(arg0: $LivingIncomingDamageEvent$$Type): void
+public static "getReductionAmount"(arg0: integer): float
+public "getDescriptionLine"(arg0: $MobEffectInstance$$Type): $Component
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -189,8 +194,8 @@ export type $OakskinEffect_ = $OakskinEffect$$Type;
 declare module "io.redspace.ironsspellbooks.spells.nature.OakskinSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -198,8 +203,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $OakskinSpell extends $AbstractSpell {
@@ -207,19 +212,19 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public "getCastStartAnimation"(): $AnimationHolder
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
+public "getCastStartAnimation"(): $AnimationHolder
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 }
 /**
@@ -272,7 +277,7 @@ export class $IExtendedNoiseChunk$AquifierNuke extends $Record {
 constructor(boundingBoxes: ($BoundingBox$$Type)[])
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "boundingBoxes"(): ($BoundingBox)[]
 }
@@ -290,8 +295,8 @@ export type $IExtendedNoiseChunk$AquifierNuke_ = $IExtendedNoiseChunk$AquifierNu
 }}
 declare module "io.redspace.ironsspellbooks.spells.ice.RayOfFrostSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -299,8 +304,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $RayOfFrostSpell extends $AbstractSpell {
@@ -309,18 +314,18 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 constructor()
 
 public static "getRange"(arg0: integer, arg1: $LivingEntity$$Type): float
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -366,19 +371,75 @@ export type $InscribeSpellEvent$$Type = ($InscribeSpellEvent);
 declare global {
 export type $InscribeSpellEvent_ = $InscribeSpellEvent$$Type;
 }}
-declare module "io.redspace.ironsspellbooks.item.weapons.StaffItem" {
-import {$CastingItem, $CastingItem$$Type} from "io.redspace.ironsspellbooks.item.CastingItem"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+declare module "io.redspace.ironsspellbooks.item.weapons.TwilightGaleItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$Enchantment, $Enchantment$$Type} from "net.minecraft.world.item.enchantment.Enchantment"
+import {$UseAnim, $UseAnim$$Type} from "net.minecraft.world.item.UseAnim"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
+import {$MagicSwordItem, $MagicSwordItem$$Type} from "io.redspace.ironsspellbooks.api.item.weapons.MagicSwordItem"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$SpellDataRegistryHolder, $SpellDataRegistryHolder$$Type} from "io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+
+export class $TwilightGaleItem extends $MagicSwordItem {
+static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
+static readonly "DEFAULT_MAX_STACK_SIZE": integer
+ "descriptionId": StringJS
+ "tier": $Tier
+static readonly "MAX_BAR_WIDTH": integer
+static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
+static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
+static readonly "BY_BLOCK": $Map<($Block), ($Item)>
+
+constructor(arg0: $Tier$$Type, arg1: $Item$Properties$$Type, arg2: ($SpellDataRegistryHolder$$Type)[])
+
+public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "releaseUsing"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $LivingEntity$$Type, arg3: integer): void
+public "getUseDuration"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): integer
+public "supportsEnchantment"(arg0: $ItemStack$$Type, arg1: $Holder$$Type<($Enchantment)>): boolean
+public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $TwilightGaleItem$$Type = ($TwilightGaleItem);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $TwilightGaleItem_ = $TwilightGaleItem$$Type;
+}}
+declare module "io.redspace.ironsspellbooks.item.weapons.StaffItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$CastingItem, $CastingItem$$Type} from "io.redspace.ironsspellbooks.item.CastingItem"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $StaffItem extends $CastingItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -386,9 +447,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Item$Properties$$Type)
 
-public "hasCustomRendering"(): boolean
 public "isEnchantable"(arg0: $ItemStack$$Type): boolean
 public "getEnchantmentValue"(arg0: $ItemStack$$Type): integer
+public "hasCustomRendering"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -405,8 +467,8 @@ export type $StaffItem_ = $StaffItem$$Type;
 declare module "io.redspace.ironsspellbooks.spells.evocation.SummonVexSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$RecastInstance, $RecastInstance$$Type} from "io.redspace.ironsspellbooks.capabilities.magic.RecastInstance"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -415,8 +477,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 import {$ICastDataSerializable, $ICastDataSerializable$$Type} from "io.redspace.ironsspellbooks.api.spells.ICastDataSerializable"
@@ -426,23 +488,23 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public "getEmptyCastData"(): $ICastDataSerializable
-public "onRecastFinished"(arg0: $ServerPlayer$$Type, arg1: $RecastInstance$$Type, arg2: $RecastResult$$Type, arg3: $ICastDataSerializable$$Type): void
+public "getCastType"(): $CastType
 public "getRecastCount"(arg0: integer, arg1: $LivingEntity$$Type): integer
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getSummonCount"(arg0: integer, arg1: $LivingEntity$$Type): integer
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getEmptyCastData"(): $ICastDataSerializable
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
+public "onRecastFinished"(arg0: $ServerPlayer$$Type, arg1: $RecastInstance$$Type, arg2: $RecastResult$$Type, arg3: $ICastDataSerializable$$Type): void
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
 get "emptyCastData"(): $ICastDataSerializable
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -457,28 +519,30 @@ declare global {
 export type $SummonVexSpell_ = $SummonVexSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.consumables.DrinkableItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$UseAnim, $UseAnim$$Type} from "net.minecraft.world.item.UseAnim"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
-import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$BiConsumer, $BiConsumer$$Type} from "java.util.function.BiConsumer"
+import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 
 export class $DrinkableItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -489,9 +553,10 @@ constructor(arg0: $Item$Properties$$Type, arg1: $BiConsumer$$Type<($ItemStack), 
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
 public "getUseDuration"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): integer
-public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
-public "finishUsingItem"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $LivingEntity$$Type): $ItemStack
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "finishUsingItem"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $LivingEntity$$Type): $ItemStack
+public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -522,18 +587,18 @@ constructor(arg0: $Consumer$$Type<($DefaultConfig)>)
 constructor()
 
 public "build"(): $DefaultConfig
+public "setMinRarity"(arg0: $SpellRarity$$Type): $DefaultConfig
+public "setMaxLevel"(arg0: integer): $DefaultConfig
+public "setDeprecated"(arg0: boolean): $DefaultConfig
 public "setSchoolResource"(arg0: $ResourceLocation$$Type): $DefaultConfig
 public "setCooldownSeconds"(arg0: double): $DefaultConfig
 public "setAllowCrafting"(arg0: boolean): $DefaultConfig
-public "setDeprecated"(arg0: boolean): $DefaultConfig
-public "setMinRarity"(arg0: $SpellRarity$$Type): $DefaultConfig
-public "setMaxLevel"(arg0: integer): $DefaultConfig
+set "minRarity"(value: $SpellRarity$$Type)
+set "maxLevel"(value: integer)
+set "deprecated"(value: boolean)
 set "schoolResource"(value: $ResourceLocation$$Type)
 set "cooldownSeconds"(value: double)
 set "allowCrafting"(value: boolean)
-set "deprecated"(value: boolean)
-set "minRarity"(value: $SpellRarity$$Type)
-set "maxLevel"(value: integer)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -548,21 +613,25 @@ declare global {
 export type $DefaultConfig_ = $DefaultConfig$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.NecronomiconSpellBook" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$UniqueSpellBook, $UniqueSpellBook$$Type} from "io.redspace.ironsspellbooks.item.UniqueSpellBook"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$UniqueSpellBook, $UniqueSpellBook$$Type} from "io.redspace.ironsspellbooks.item.UniqueSpellBook"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export class $NecronomiconSpellBook extends $UniqueSpellBook {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -570,8 +639,9 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "initializeSpellContainer"(arg0: $ItemStack$$Type): void
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "initializeSpellContainer"(arg0: $ItemStack$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -585,12 +655,58 @@ export type $NecronomiconSpellBook$$Type = ($NecronomiconSpellBook);
 declare global {
 export type $NecronomiconSpellBook_ = $NecronomiconSpellBook$$Type;
 }}
+declare module "io.redspace.ironsspellbooks.effect.ImmolateEffect" {
+import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
+import {$MobEffectInstance, $MobEffectInstance$$Type} from "net.minecraft.world.effect.MobEffectInstance"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$ISyncedMobEffect, $ISyncedMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.ISyncedMobEffect"
+import {$MobEffect, $MobEffect$$Type} from "net.minecraft.world.effect.MobEffect"
+import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
+import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
+import {$MagicMobEffect, $MagicMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.MagicMobEffect"
+import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
+import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
+
+export class $ImmolateEffect extends $MagicMobEffect implements $ISyncedMobEffect {
+static readonly "STACKS_REQUIRED_AMPLIFIER": integer
+static readonly "CODEC": $Codec<($Holder<($MobEffect)>)>
+readonly "attributeModifiers": $Map<($Holder<($Attribute)>), ($MobEffect$AttributeTemplate)>
+static readonly "STACKS_REQUIRED": integer
+static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holder<($MobEffect)>)>
+
+constructor(arg0: $MobEffectCategory$$Type, arg1: integer)
+
+public "clientTick"(arg0: $LivingEntity$$Type, arg1: $MobEffectInstance$$Type): void
+public static "damageFor"(arg0: $Entity$$Type): double
+public "applyEffectTick"(arg0: $LivingEntity$$Type, arg1: integer): boolean
+public "shouldApplyEffectTickThisTick"(arg0: integer, arg1: integer): boolean
+public static "addImmolateStack"(arg0: $LivingEntity$$Type, arg1: $Entity$$Type): $MobEffectInstance
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ImmolateEffect$$Type = ($ImmolateEffect);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ImmolateEffect_ = $ImmolateEffect$$Type;
+}}
 declare module "io.redspace.ironsspellbooks.item.armor.PumpkinArmorItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$GeoArmorRenderer, $GeoArmorRenderer$$Type} from "software.bernie.geckolib.renderer.GeoArmorRenderer"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$EnderMan, $EnderMan$$Type} from "net.minecraft.world.entity.monster.EnderMan"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -607,7 +723,7 @@ import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.A
 export class $PumpkinArmorItem extends $ExtendedArmorItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -623,6 +739,7 @@ public static "getId"(arg0: $ItemStack$$Type): long
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -637,8 +754,8 @@ declare global {
 export type $PumpkinArmorItem_ = $PumpkinArmorItem$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.recipe_types.alchemist_cauldron.EmptyAlchemistCauldronRecipe$Serializer" {
-import {$EmptyAlchemistCauldronRecipe, $EmptyAlchemistCauldronRecipe$$Type} from "io.redspace.ironsspellbooks.recipe_types.alchemist_cauldron.EmptyAlchemistCauldronRecipe"
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
+import {$EmptyAlchemistCauldronRecipe, $EmptyAlchemistCauldronRecipe$$Type} from "io.redspace.ironsspellbooks.recipe_types.alchemist_cauldron.EmptyAlchemistCauldronRecipe"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Recipe, $Recipe$$Type} from "net.minecraft.world.item.crafting.Recipe"
 import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.item.crafting.RecipeSerializer"
@@ -650,9 +767,9 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Empty
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($EmptyAlchemistCauldronRecipe)>
 public "codec"(): $MapCodec<($EmptyAlchemistCauldronRecipe)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($EmptyAlchemistCauldronRecipe)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -673,10 +790,10 @@ import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.sp
 export class $SpellSelectionManager$SelectionOption {
  "globalIndex": integer
  "spellData": $SpellData
- "slot": string
+ "slot": StringJS
  "slotIndex": integer
 
-constructor(arg0: $SpellData$$Type, arg1: string, arg2: integer, arg3: integer)
+constructor(arg0: $SpellData$$Type, arg1: StringJS, arg2: integer, arg3: integer)
 
 public "getCastSource"(): $CastSource
 get "castSource"(): $CastSource
@@ -720,16 +837,16 @@ export type $IMagicAttribute_ = $IMagicAttribute$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.nature.GluttonySpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $GluttonySpell extends $AbstractSpell {
@@ -737,12 +854,12 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
 public "getCastStartAnimation"(): $AnimationHolder
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -761,22 +878,24 @@ declare global {
 export type $GluttonySpell_ = $GluttonySpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.FurledMapItem" {
-import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
-import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
-import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
+import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
 
 export class $FurledMapItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -784,10 +903,11 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public static "of"(arg0: $ResourceLocation$$Type, arg1: $MutableComponent$$Type): $ItemStack
+public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
 public static "of"(arg0: $ResourceLocation$$Type, arg1: $ResourceKey$$Type<($Level)>, arg2: $MutableComponent$$Type): $ItemStack
 public static "of"(arg0: $ResourceLocation$$Type, arg1: $ResourceKey$$Type<($Level)>, arg2: $MutableComponent$$Type, arg3: boolean): $ItemStack
-public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public static "of"(arg0: $ResourceLocation$$Type, arg1: $MutableComponent$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -803,8 +923,8 @@ export type $FurledMapItem_ = $FurledMapItem$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.blood.HeartstopSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -812,8 +932,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $HeartstopSpell extends $AbstractSpell {
@@ -821,18 +941,18 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -848,8 +968,8 @@ export type $HeartstopSpell_ = $HeartstopSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.evocation.FangStrikeSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$Mob, $Mob$$Type} from "net.minecraft.world.entity.Mob"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
@@ -858,8 +978,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $FangStrikeSpell extends $AbstractSpell {
@@ -867,17 +987,17 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public "shouldAIStopCasting"(arg0: integer, arg1: $Mob$$Type, arg2: $LivingEntity$$Type): boolean
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "shouldAIStopCasting"(arg0: integer, arg1: $Mob$$Type, arg2: $LivingEntity$$Type): boolean
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -921,17 +1041,21 @@ declare global {
 export type $LivingEntityAccessor_ = $LivingEntityAccessor$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.RuinedBookItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$PoseStack, $PoseStack$$Type} from "com.mojang.blaze3d.vertex.PoseStack"
 import {$List, $List$$Type} from "java.util.List"
+import {$PoseStack, $PoseStack$$Type} from "com.mojang.blaze3d.vertex.PoseStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$ILecternPlaceable, $ILecternPlaceable$$Type} from "io.redspace.ironsspellbooks.item.ILecternPlaceable"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 
 export class $RuinedBookItem extends $Item implements $ILecternPlaceable {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
@@ -942,16 +1066,17 @@ static "PAGE2": $Component
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
 static "PAGE": $Component
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static "DARKNESS": $Component
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Item$Properties$$Type)
 
-public "simpleTextureOverride"(arg0: $ItemStack$$Type): $Optional<($ResourceLocation)>
 public "getPages"(arg0: $ItemStack$$Type): $List<($Component)>
+public "simpleTextureOverride"(arg0: $ItemStack$$Type): $Optional<($ResourceLocation)>
 public "handleCustomLecternPosing"(arg0: $PoseStack$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -967,8 +1092,8 @@ export type $RuinedBookItem_ = $RuinedBookItem$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.evocation.ShieldSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -976,8 +1101,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $ShieldSpell extends $AbstractSpell {
@@ -985,18 +1110,18 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1011,17 +1136,21 @@ declare global {
 export type $ShieldSpell_ = $ShieldSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.curios.BetrayerSignetRingItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$PassiveAbilityCurio, $PassiveAbilityCurio$$Type} from "io.redspace.ironsspellbooks.item.curios.PassiveAbilityCurio"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$LivingIncomingDamageEvent, $LivingIncomingDamageEvent$$Type} from "net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $BetrayerSignetRingItem extends $PassiveAbilityCurio {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1031,6 +1160,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public static "handleAbility"(arg0: $LivingIncomingDamageEvent$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1045,11 +1175,15 @@ declare global {
 export type $BetrayerSignetRingItem_ = $BetrayerSignetRingItem$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.armor.NetheriteMageArmorItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$GeoArmorRenderer, $GeoArmorRenderer$$Type} from "software.bernie.geckolib.renderer.GeoArmorRenderer"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$GeoAnimatable, $GeoAnimatable$$Type} from "software.bernie.geckolib.animatable.GeoAnimatable"
@@ -1064,7 +1198,7 @@ import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.A
 export class $NetheriteMageArmorItem extends $ImbuableChestplateArmorItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1079,6 +1213,7 @@ public static "getId"(arg0: $ItemStack$$Type): long
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1094,16 +1229,16 @@ export type $NetheriteMageArmorItem_ = $NetheriteMageArmorItem$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.holy.HealSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $HealSpell extends $AbstractSpell {
@@ -1111,12 +1246,12 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
 public "getCastStartAnimation"(): $AnimationHolder
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -1137,8 +1272,8 @@ export type $HealSpell_ = $HealSpell$$Type;
 declare module "io.redspace.ironsspellbooks.spells.holy.CleanseSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -1146,8 +1281,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $CleanseSpell extends $AbstractSpell {
@@ -1155,19 +1290,19 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
+public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 public "getCastStartAnimation"(): $AnimationHolder
 public "getCastFinishAnimation"(): $AnimationHolder
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 get "castFinishAnimation"(): $AnimationHolder
 }
@@ -1186,8 +1321,8 @@ export type $CleanseSpell_ = $CleanseSpell$$Type;
 declare module "io.redspace.ironsspellbooks.spells.nature.StompSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$Mob, $Mob$$Type} from "net.minecraft.world.entity.Mob"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
@@ -1197,8 +1332,8 @@ import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $StompSpell extends $AbstractSpell {
@@ -1206,21 +1341,21 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getEffectiveCastTime"(arg0: integer, arg1: $LivingEntity$$Type): integer
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
+public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 public "getCastStartAnimation"(): $AnimationHolder
 public "getCastFinishAnimation"(): $AnimationHolder
 public "shouldAIStopCasting"(arg0: integer, arg1: $Mob$$Type, arg2: $LivingEntity$$Type): boolean
 public "canBeInterrupted"(arg0: $Player$$Type): boolean
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 get "castFinishAnimation"(): $AnimationHolder
 }
@@ -1236,6 +1371,32 @@ export type $StompSpell$$Type = ($StompSpell);
 declare global {
 export type $StompSpell_ = $StompSpell$$Type;
 }}
+declare module "io.redspace.ironsspellbooks.entity.mobs.goals.WispAttackGoal" {
+import {$PathfinderMob, $PathfinderMob$$Type} from "net.minecraft.world.entity.PathfinderMob"
+import {$Goal, $Goal$$Type} from "net.minecraft.world.entity.ai.goal.Goal"
+
+export class $WispAttackGoal extends $Goal {
+
+constructor(arg0: $PathfinderMob$$Type, arg1: double)
+
+public "tick"(): void
+public "stop"(): void
+public "canUse"(): boolean
+public "canContinueToUse"(): boolean
+public "requiresUpdateEveryTick"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $WispAttackGoal$$Type = ($WispAttackGoal);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $WispAttackGoal_ = $WispAttackGoal$$Type;
+}}
 declare module "io.redspace.ironsspellbooks.effect.ChilledEffect" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
 import {$Map, $Map$$Type} from "java.util.Map"
@@ -1243,8 +1404,8 @@ import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MagicMobEffect, $MagicMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.MagicMobEffect"
+import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect, $MobEffect$$Type} from "net.minecraft.world.effect.MobEffect"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
@@ -1256,8 +1417,8 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(arg0: $MobEffectCategory$$Type, arg1: integer)
 
-public "shouldApplyEffectTickThisTick"(arg0: integer, arg1: integer): boolean
 public "applyEffectTick"(arg0: $LivingEntity$$Type, arg1: integer): boolean
+public "shouldApplyEffectTickThisTick"(arg0: integer, arg1: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1274,8 +1435,8 @@ export type $ChilledEffect_ = $ChilledEffect$$Type;
 declare module "io.redspace.ironsspellbooks.spells.ice.FrostStepSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -1284,8 +1445,8 @@ import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $FrostStepSpell extends $AbstractSpell {
@@ -1293,20 +1454,20 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public "getCastStartAnimation"(): $AnimationHolder
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public static "particleCloud"(arg0: $Level$$Type, arg1: $Vec3$$Type): void
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
+public "getCastStartAnimation"(): $AnimationHolder
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 }
 /**
@@ -1329,8 +1490,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$ChiseledBookShelfBlock, $ChiseledBookShelfBlock$$Type} from "net.minecraft.world.level.block.ChiseledBookShelfBlock"
@@ -1352,7 +1513,7 @@ static readonly "BOOKS_PER_ROW": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1380,8 +1541,8 @@ export type $WisewoodChiseledBookshelfBlock_ = $WisewoodChiseledBookshelfBlock$$
 declare module "io.redspace.ironsspellbooks.spells.fire.MagmaBombSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -1389,8 +1550,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $MagmaBombSpell extends $AbstractSpell {
@@ -1398,22 +1559,22 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getRadius"(arg0: integer, arg1: $LivingEntity$$Type): float
-public "getCastType"(): $CastType
-public "getDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public "getCastStartAnimation"(): $AnimationHolder
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
+public "getCastType"(): $CastType
 public "getAoeDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getRadius"(arg0: integer, arg1: $LivingEntity$$Type): float
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
+public "getCastStartAnimation"(): $AnimationHolder
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 }
 /**
@@ -1430,8 +1591,8 @@ export type $MagmaBombSpell_ = $MagmaBombSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.lightning.ThunderstormSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -1439,8 +1600,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $ThunderstormSpell extends $AbstractSpell {
@@ -1448,17 +1609,17 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getDurationTicks"(arg0: integer, arg1: $LivingEntity$$Type): integer
 public "getSpellResource"(): $ResourceLocation
-public "getCastStartSound"(): $Optional<($SoundEvent)>
 public "getDefaultConfig"(): $DefaultConfig
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getCastStartSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1482,8 +1643,8 @@ import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MagicMobEffect, $MagicMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.MagicMobEffect"
+import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
 
 export class $FrostbiteEffect extends $MagicMobEffect {
@@ -1511,8 +1672,8 @@ export type $FrostbiteEffect_ = $FrostbiteEffect$$Type;
 declare module "io.redspace.ironsspellbooks.spells.eldritch.SonicBoomSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -1520,8 +1681,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
@@ -1531,20 +1692,20 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 constructor()
 
 public static "getRange"(arg0: integer, arg1: $LivingEntity$$Type): float
-public "getCastType"(): $CastType
-public "playSound"(arg0: $Optional$$Type<($SoundEvent$$Type)>, arg1: $Entity$$Type): void
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public "getCastStartAnimation"(): $AnimationHolder
+public "playSound"(arg0: $Optional$$Type<($SoundEvent$$Type)>, arg1: $Entity$$Type): void
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
+public "getCastStartAnimation"(): $AnimationHolder
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 }
 /**
@@ -1560,8 +1721,8 @@ declare global {
 export type $SonicBoomSpell_ = $SonicBoomSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.blood.DevourSpell" {
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -1569,8 +1730,8 @@ import {$SpellDamageSource, $SpellDamageSource$$Type} from "io.redspace.ironsspe
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
@@ -1579,15 +1740,15 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
-public "getDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
+public "getCastType"(): $CastType
+public "getHpBonus"(arg0: integer, arg1: $LivingEntity$$Type): integer
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
 public "getDamageSource"(arg0: $Entity$$Type, arg1: $Entity$$Type): $SpellDamageSource
 public "getSpellResource"(): $ResourceLocation
-public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
 public "getDefaultConfig"(): $DefaultConfig
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
-public "getHpBonus"(arg0: integer, arg1: $LivingEntity$$Type): integer
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -1607,9 +1768,9 @@ export type $DevourSpell_ = $DevourSpell$$Type;
 declare module "io.redspace.ironsspellbooks.spells.blood.BloodStepSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -1617,8 +1778,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $BloodStepSpell extends $AbstractSpell {
@@ -1626,20 +1787,20 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public "getCastStartAnimation"(): $AnimationHolder
-public "onClientPreCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $InteractionHand$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "onClientPreCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $InteractionHand$$Type, arg4: $MagicData$$Type): void
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
+public "getCastStartAnimation"(): $AnimationHolder
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 }
 /**
@@ -1654,12 +1815,65 @@ export type $BloodStepSpell$$Type = ($BloodStepSpell);
 declare global {
 export type $BloodStepSpell_ = $BloodStepSpell$$Type;
 }}
+declare module "io.redspace.ironsspellbooks.util.ParticleHelper" {
+import {$ParticleOptions, $ParticleOptions$$Type} from "net.minecraft.core.particles.ParticleOptions"
+
+export class $ParticleHelper {
+static readonly "SUNBEAM": $ParticleOptions
+static readonly "BLOOD_GROUND": $ParticleOptions
+static readonly "ROOT_FOG": $ParticleOptions
+static readonly "SNOW_DUST": $ParticleOptions
+static readonly "WISP": $ParticleOptions
+static readonly "FOG_CAMPFIRE_SMOKE": $ParticleOptions
+static readonly "PORTAL_FRAME": $ParticleOptions
+static readonly "UNSTABLE_ENDER": $ParticleOptions
+static readonly "ICY_FOG": $ParticleOptions
+static readonly "FIERY_SMOKE": $ParticleOptions
+static readonly "POISON_CLOUD": $ParticleOptions
+static readonly "FIRE": $ParticleOptions
+static readonly "CLEANSE_PARTICLE": $ParticleOptions
+static readonly "BLOOD": $ParticleOptions
+static readonly "FOG": $ParticleOptions
+static readonly "COMET_FOG": $ParticleOptions
+static readonly "SIPHON": $ParticleOptions
+static readonly "ACID": $ParticleOptions
+static readonly "FOG_THUNDER_DARK": $ParticleOptions
+static readonly "FIERY_SPARKS": $ParticleOptions
+static readonly "FIRE_EMITTER": $ParticleOptions
+static readonly "ACID_BUBBLE": $ParticleOptions
+static readonly "VOID_TENTACLE_FOG": $ParticleOptions
+static readonly "FOG_THUNDER_LIGHT": $ParticleOptions
+static readonly "FIREFLY": $ParticleOptions
+static readonly "EMBERS": $ParticleOptions
+static readonly "SNOWFLAKE": $ParticleOptions
+static readonly "ELECTRICITY": $ParticleOptions
+static readonly "ELECTRIC_SPARKS": $ParticleOptions
+
+constructor()
+
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ParticleHelper$$Type = ($ParticleHelper);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ParticleHelper_ = $ParticleHelper$$Type;
+}}
 declare module "io.redspace.ironsspellbooks.item.armor.CultistArmorItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$GeoArmorRenderer, $GeoArmorRenderer$$Type} from "software.bernie.geckolib.renderer.GeoArmorRenderer"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$GeoAnimatable, $GeoAnimatable$$Type} from "software.bernie.geckolib.animatable.GeoAnimatable"
@@ -1674,7 +1888,7 @@ import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.A
 export class $CultistArmorItem extends $ImbuableChestplateArmorItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1689,6 +1903,7 @@ public static "getId"(arg0: $ItemStack$$Type): long
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1711,10 +1926,10 @@ import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$FluidStack, $FluidStack$$Type} from "net.neoforged.neoforge.fluids.FluidStack"
 import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
-import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
+import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$Recipe, $Recipe$$Type} from "net.minecraft.world.item.crafting.Recipe"
+import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
 import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.item.crafting.RecipeSerializer"
 import {$Record, $Record$$Type} from "java.lang.Record"
 
@@ -1722,33 +1937,33 @@ export class $EmptyAlchemistCauldronRecipe extends $Record implements $Recipe<($
 
 constructor(input: $Ingredient$$Type, result: $ItemStack$$Type, fluid: $FluidStack$$Type, emptySound: $Holder$$Type<($SoundEvent)>)
 
+public "input"(): $Ingredient
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "matches"(arg0: $EmptyAlchemistCauldronRecipe$Input$$Type, arg1: $Level$$Type): boolean
 public "result"(): $ItemStack
 public "getType"(): $RecipeType<(any)>
-public "input"(): $Ingredient
+public "fluid"(): $FluidStack
+public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
+public "isSpecial"(): boolean
+public "getSerializer"(): $RecipeSerializer<(any)>
 public "assemble"(arg0: $EmptyAlchemistCauldronRecipe$Input$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
 public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "getSerializer"(): $RecipeSerializer<(any)>
-public "isSpecial"(): boolean
-public "fluid"(): $FluidStack
-public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "emptySound"(): $Holder<($SoundEvent)>
-public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
+public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "getIngredients"(): $NonNullList<($Ingredient)>
-public "getGroup"(): string
-public "showNotification"(): boolean
-public "getRemainingItems"(arg0: $EmptyAlchemistCauldronRecipe$Input$$Type): $NonNullList<($ItemStack)>
+public "getGroup"(): StringJS
 public "isIncomplete"(): boolean
 public "getToastSymbol"(): $ItemStack
+public "showNotification"(): boolean
+public "getRemainingItems"(arg0: $EmptyAlchemistCauldronRecipe$Input$$Type): $NonNullList<($ItemStack)>
 get "type"(): $RecipeType<(any)>
-get "serializer"(): $RecipeSerializer<(any)>
 get "special"(): boolean
+get "serializer"(): $RecipeSerializer<(any)>
 get "ingredients"(): $NonNullList<($Ingredient)>
-get "group"(): string
+get "group"(): StringJS
 get "incomplete"(): boolean
 get "toastSymbol"(): $ItemStack
 }
@@ -1756,7 +1971,7 @@ get "toastSymbol"(): $ItemStack
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $EmptyAlchemistCauldronRecipe$$Type = ({"result"?: $ItemStack$$Type, "input"?: $Ingredient$$Type, "emptySound"?: $Holder$$Type<($SoundEvent)>, "fluid"?: $FluidStack$$Type}) | ([result?: $ItemStack$$Type, input?: $Ingredient$$Type, emptySound?: $Holder$$Type<($SoundEvent)>, fluid?: $FluidStack$$Type]);
+export type $EmptyAlchemistCauldronRecipe$$Type = ({"input"?: $Ingredient$$Type, "emptySound"?: $Holder$$Type<($SoundEvent)>, "fluid"?: $FluidStack$$Type, "result"?: $ItemStack$$Type}) | ([input?: $Ingredient$$Type, emptySound?: $Holder$$Type<($SoundEvent)>, fluid?: $FluidStack$$Type, result?: $ItemStack$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1768,8 +1983,8 @@ declare module "io.redspace.ironsspellbooks.capabilities.magic.RecastInstance" {
 import {$ISerializable, $ISerializable$$Type} from "io.redspace.ironsspellbooks.api.network.ISerializable"
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$FriendlyByteBuf, $FriendlyByteBuf$$Type} from "net.minecraft.network.FriendlyByteBuf"
-import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
 import {$Tag, $Tag$$Type} from "net.minecraft.nbt.Tag"
+import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
 import {$INBTSerializable, $INBTSerializable$$Type} from "net.neoforged.neoforge.common.util.INBTSerializable"
 import {$ICastDataSerializable, $ICastDataSerializable$$Type} from "io.redspace.ironsspellbooks.api.spells.ICastDataSerializable"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
@@ -1777,29 +1992,29 @@ import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraf
 export class $RecastInstance implements $ISerializable, $INBTSerializable<($CompoundTag)> {
 
 constructor()
-constructor(arg0: string, arg1: integer, arg2: integer, arg3: integer, arg4: $CastSource$$Type, arg5: $ICastDataSerializable$$Type)
+constructor(arg0: StringJS, arg1: integer, arg2: integer, arg3: integer, arg4: $CastSource$$Type, arg5: $ICastDataSerializable$$Type)
 
-public "getTotalRecasts"(): integer
-public "getTicksRemaining"(): integer
 public "deserializeNBT"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): void
 public "deserializeNBT"(arg0: $HolderLookup$Provider$$Type, arg1: $Tag$$Type): void
 public "serializeNBT"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
-public "getRemainingRecasts"(): integer
+public "getTicksToLive"(): integer
 public "getSpellLevel"(): integer
-public "getSpellId"(): string
 public "getCastSource"(): $CastSource
+public "getSpellId"(): StringJS
 public "getCastData"(): $ICastDataSerializable
 public "writeToBuffer"(arg0: $FriendlyByteBuf$$Type): void
 public "readFromBuffer"(arg0: $FriendlyByteBuf$$Type): void
-public "getTicksToLive"(): integer
+public "getRemainingRecasts"(): integer
+public "getTotalRecasts"(): integer
+public "getTicksRemaining"(): integer
+get "ticksToLive"(): integer
+get "spellLevel"(): integer
+get "castSource"(): $CastSource
+get "spellId"(): StringJS
+get "castData"(): $ICastDataSerializable
+get "remainingRecasts"(): integer
 get "totalRecasts"(): integer
 get "ticksRemaining"(): integer
-get "remainingRecasts"(): integer
-get "spellLevel"(): integer
-get "spellId"(): string
-get "castSource"(): $CastSource
-get "castData"(): $ICastDataSerializable
-get "ticksToLive"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1842,8 +2057,8 @@ export type $CastResult_ = $CastResult$$Type;
 declare module "io.redspace.ironsspellbooks.spells.evocation.GustSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$Mob, $Mob$$Type} from "net.minecraft.world.entity.Mob"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
@@ -1852,8 +2067,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $GustSpell extends $AbstractSpell {
@@ -1862,23 +2077,23 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 constructor()
 
 public "getRange"(arg0: integer, arg1: $LivingEntity$$Type): float
-public "getCastType"(): $CastType
-public "getStrength"(arg0: integer, arg1: $LivingEntity$$Type): float
-public "getDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
+public "getStrength"(arg0: integer, arg1: $LivingEntity$$Type): float
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
 public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 public "getCastStartAnimation"(): $AnimationHolder
 public "getCastFinishAnimation"(): $AnimationHolder
 public "shouldAIStopCasting"(arg0: integer, arg1: $Mob$$Type, arg2: $LivingEntity$$Type): boolean
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 get "castFinishAnimation"(): $AnimationHolder
 }
@@ -1897,8 +2112,8 @@ export type $GustSpell_ = $GustSpell$$Type;
 declare module "io.redspace.ironsspellbooks.spells.lightning.LightningLanceSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -1906,8 +2121,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $LightningLanceSpell extends $AbstractSpell {
@@ -1915,19 +2130,19 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public "getCastStartAnimation"(): $AnimationHolder
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
+public "getCastStartAnimation"(): $AnimationHolder
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 }
 /**
@@ -1943,18 +2158,21 @@ declare global {
 export type $LightningLanceSpell_ = $LightningLanceSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.DragonskinItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 
 export class $DragonskinItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1964,6 +2182,7 @@ constructor()
 
 public "createEntity"(arg0: $Level$$Type, arg1: $Entity$$Type, arg2: $ItemStack$$Type): $Entity
 public "hasCustomEntity"(arg0: $ItemStack$$Type): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1987,8 +2206,8 @@ import {$ReplaceSphereConfiguration, $ReplaceSphereConfiguration$$Type} from "ne
 import {$BlockStateConfiguration, $BlockStateConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration"
 import {$BlockPileConfiguration, $BlockPileConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration"
 import {$NoneFeatureConfiguration, $NoneFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration"
-import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$EndGatewayConfiguration, $EndGatewayConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration"
+import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$LakeFeature$Configuration, $LakeFeature$Configuration$$Type} from "net.minecraft.world.level.levelgen.feature.LakeFeature$Configuration"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RootSystemConfiguration, $RootSystemConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration"
@@ -2104,8 +2323,8 @@ export type $ExposedAirFeature_ = $ExposedAirFeature$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.evocation.InvisibilitySpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -2113,8 +2332,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $InvisibilitySpell extends $AbstractSpell {
@@ -2122,16 +2341,16 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2211,8 +2430,8 @@ export type $WallOfFireSpell$FireWallData_ = $WallOfFireSpell$FireWallData$$Type
 }}
 declare module "io.redspace.ironsspellbooks.spells.evocation.ChainCreeperSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -2221,8 +2440,8 @@ import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $ChainCreeperSpell extends $AbstractSpell {
@@ -2230,20 +2449,20 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public static "summonCreeperRing"(arg0: $Level$$Type, arg1: $LivingEntity$$Type, arg2: $Vec3$$Type, arg3: float, arg4: integer): void
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
+public static "summonCreeperRing"(arg0: $Level$$Type, arg1: $LivingEntity$$Type, arg2: $Vec3$$Type, arg3: float, arg4: integer): void
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2258,8 +2477,8 @@ declare global {
 export type $ChainCreeperSpell_ = $ChainCreeperSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.blood.BloodNeedlesSpell" {
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -2267,8 +2486,8 @@ import {$SpellDamageSource, $SpellDamageSource$$Type} from "io.redspace.ironsspe
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
@@ -2277,12 +2496,12 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getDamageSource"(arg0: $Entity$$Type, arg1: $Entity$$Type): $SpellDamageSource
 public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -2301,8 +2520,8 @@ export type $BloodNeedlesSpell_ = $BloodNeedlesSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.lightning.ElectrocuteSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$Mob, $Mob$$Type} from "net.minecraft.world.entity.Mob"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
@@ -2311,8 +2530,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $ElectrocuteSpell extends $AbstractSpell {
@@ -2320,20 +2539,20 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
-public "getDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public "shouldAIStopCasting"(arg0: integer, arg1: $Mob$$Type, arg2: $LivingEntity$$Type): boolean
+public "getDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
+public "shouldAIStopCasting"(arg0: integer, arg1: $Mob$$Type, arg2: $LivingEntity$$Type): boolean
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2357,23 +2576,23 @@ import {$SimpleWaterloggedBlock, $SimpleWaterloggedBlock$$Type} from "net.minecr
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$RenderShape, $RenderShape$$Type} from "net.minecraft.world.level.block.RenderShape"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$Rotation, $Rotation$$Type} from "net.minecraft.world.level.block.Rotation"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $ArmorPileBlock extends $Block implements $SimpleWaterloggedBlock {
@@ -2390,7 +2609,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2400,11 +2619,11 @@ static readonly "FACING": $DirectionProperty
 
 constructor()
 
-public "destroy"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): void
 public "rotate"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $BlockState
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
+public "destroy"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): void
 public "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
 public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "spawnAfterBreak"(arg0: $BlockState$$Type, arg1: $ServerLevel$$Type, arg2: $BlockPos$$Type, arg3: $ItemStack$$Type, arg4: boolean): void
 public "getPickupSound"(): $Optional<($SoundEvent)>
@@ -2427,17 +2646,47 @@ export type $ArmorPileBlock$$Type = ($ArmorPileBlock);
 declare global {
 export type $ArmorPileBlock_ = $ArmorPileBlock$$Type;
 }}
+declare module "io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible" {
+import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
+
+export interface $AntiMagicSusceptible {
+
+ "onAntiMagic"(arg0: $MagicData$$Type): void
+
+(arg0: $MagicData): void
+}
+
+export namespace $AntiMagicSusceptible {
+const probejs$$marker: never
+}
+export class $AntiMagicSusceptible$$Static implements $AntiMagicSusceptible {
+
+
+ "onAntiMagic"(arg0: $MagicData$$Type): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AntiMagicSusceptible$$Type = ((arg0: $MagicData) => void);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AntiMagicSusceptible_ = $AntiMagicSusceptible$$Type;
+}}
 declare module "io.redspace.ironsspellbooks.spells.lightning.BallLightningSpell" {
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
+import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $BallLightningSpell extends $AbstractSpell {
@@ -2445,11 +2694,11 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -2466,10 +2715,63 @@ export type $BallLightningSpell$$Type = ($BallLightningSpell);
 declare global {
 export type $BallLightningSpell_ = $BallLightningSpell$$Type;
 }}
+declare module "io.redspace.ironsspellbooks.api.registry.SchoolRegistry" {
+import {$IEventBus, $IEventBus$$Type} from "net.neoforged.bus.api.IEventBus"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$Registry, $Registry$$Type} from "net.minecraft.core.Registry"
+import {$List, $List$$Type} from "java.util.List"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
+import {$SchoolType, $SchoolType$$Type} from "io.redspace.ironsspellbooks.api.spells.SchoolType"
+import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
+import {$NewRegistryEvent, $NewRegistryEvent$$Type} from "net.neoforged.neoforge.registries.NewRegistryEvent"
+
+export class $SchoolRegistry {
+static readonly "ENDER_RESOURCE": $ResourceLocation
+static readonly "BLOOD_RESOURCE": $ResourceLocation
+static readonly "ELDRITCH_RESOURCE": $ResourceLocation
+static readonly "EVOCATION": $Supplier<($SchoolType)>
+static readonly "LIGHTNING_RESOURCE": $ResourceLocation
+static readonly "ICE_RESOURCE": $ResourceLocation
+static readonly "FIRE_RESOURCE": $ResourceLocation
+static readonly "LIGHTNING": $Supplier<($SchoolType)>
+static readonly "HOLY_RESOURCE": $ResourceLocation
+static readonly "ICE": $Supplier<($SchoolType)>
+static readonly "EVOCATION_RESOURCE": $ResourceLocation
+static readonly "NATURE_RESOURCE": $ResourceLocation
+static readonly "NATURE": $Supplier<($SchoolType)>
+static readonly "SCHOOL_REGISTRY_KEY": $ResourceKey<($Registry<($SchoolType)>)>
+static readonly "HOLY": $Supplier<($SchoolType)>
+static readonly "FIRE": $Supplier<($SchoolType)>
+static readonly "ENDER": $Supplier<($SchoolType)>
+static readonly "REGISTRY": $Registry<($SchoolType)>
+static readonly "BLOOD": $Supplier<($SchoolType)>
+static readonly "ELDRITCH": $Supplier<($SchoolType)>
+
+constructor()
+
+public static "register"(arg0: $IEventBus$$Type): void
+public static "getSchool"(arg0: $ResourceLocation$$Type): $SchoolType
+public static "getSchoolFromFocus"(arg0: $ItemStack$$Type): $SchoolType
+public static "getSchoolsFromFocus"(arg0: $ItemStack$$Type): $List<($SchoolType)>
+public static "registerRegistry"(arg0: $NewRegistryEvent$$Type): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SchoolRegistry$$Type = ($SchoolRegistry);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SchoolRegistry_ = $SchoolRegistry$$Type;
+}}
 declare module "io.redspace.ironsspellbooks.spells.nature.BlightSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -2477,8 +2779,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $BlightSpell extends $AbstractSpell {
@@ -2487,20 +2789,20 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 constructor()
 
 public "getDuration"(arg0: integer, arg1: $LivingEntity$$Type): integer
+public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
 public "getCastType"(): $CastType
 public "getAmplifier"(arg0: integer, arg1: $LivingEntity$$Type): integer
-public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2519,13 +2821,13 @@ import {$AlchemistCauldronTile, $AlchemistCauldronTile$$Type} from "io.redspace.
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$IFluidHandler$FluidAction, $IFluidHandler$FluidAction$$Type} from "net.neoforged.neoforge.fluids.capability.IFluidHandler$FluidAction"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
-import {$IFluidTank, $IFluidTank$$Type} from "net.neoforged.neoforge.fluids.IFluidTank"
 import {$List, $List$$Type} from "java.util.List"
 import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
+import {$IFluidTank, $IFluidTank$$Type} from "net.neoforged.neoforge.fluids.IFluidTank"
 import {$IFluidHandler, $IFluidHandler$$Type} from "net.neoforged.neoforge.fluids.capability.IFluidHandler"
 import {$FluidStack, $FluidStack$$Type} from "net.neoforged.neoforge.fluids.FluidStack"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
+import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $AlchemistCauldronTile$AlchemistCauldronFluidHandler implements $IFluidHandler {
 
@@ -2533,21 +2835,21 @@ constructor(arg0: $AlchemistCauldronTile$$Type)
 
 public "drain"(arg0: $FluidStack$$Type, arg1: $IFluidHandler$FluidAction$$Type): $FluidStack
 public "drain"(arg0: integer, arg1: $IFluidHandler$FluidAction$$Type): $FluidStack
-public "load"(arg0: string, arg1: $CompoundTag$$Type, arg2: $HolderLookup$Provider$$Type): void
+public "load"(arg0: StringJS, arg1: $CompoundTag$$Type, arg2: $HolderLookup$Provider$$Type): void
 public "clear"(): void
 public "fill"(arg0: $FluidStack$$Type, arg1: $IFluidHandler$FluidAction$$Type): integer
+public "contains"(arg0: $Holder$$Type<($Fluid)>, arg1: integer): boolean
 public "contains"(arg0: $FluidStack$$Type, arg1: integer): boolean
 public "contains"(arg0: $TagKey$$Type<($Fluid)>, arg1: integer): boolean
-public "contains"(arg0: $Holder$$Type<($Fluid)>, arg1: integer): boolean
-public "save"(arg0: string, arg1: $CompoundTag$$Type, arg2: $HolderLookup$Provider$$Type): void
+public "save"(arg0: StringJS, arg1: $CompoundTag$$Type, arg2: $HolderLookup$Provider$$Type): void
 public "fluids"(): $List<($FluidStack)>
 public "canFit"(arg0: integer): boolean
-public "getTankCapacity"(arg0: integer): integer
-public "onContentsChanged"(): void
 public "getTanks"(): integer
 public "getFluidInTank"(arg0: integer): $FluidStack
 public "isFluidValid"(arg0: integer, arg1: $FluidStack$$Type): boolean
 public "fluidAmount"(): integer
+public "onContentsChanged"(): void
+public "getTankCapacity"(arg0: integer): integer
 public "isTankCompatible"(arg0: $IFluidTank$$Type, arg1: $FluidStack$$Type): boolean
 get "tanks"(): integer
 }
@@ -2577,17 +2879,17 @@ static readonly "COMMON": $SpellRarity
 static readonly "LEGENDARY": $SpellRarity
 
 
-public static "values"(): ($SpellRarity)[]
-public static "valueOf"(arg0: string): $SpellRarity
-public "getValue"(): integer
 public "getDisplayName"(): $MutableComponent
+public static "values"(): ($SpellRarity)[]
+public static "valueOf"(arg0: StringJS): $SpellRarity
+public "getValue"(): integer
+public "compareRarity"(arg0: $SpellRarity$$Type): integer
+public static "rarityTest"(): void
 public static "getRawRarityConfig"(): $List<(double)>
 public static "getRarityConfig"(): $List<(double)>
 public "getChatFormatting"(): $ChatFormatting
-public "compareRarity"(arg0: $SpellRarity$$Type): integer
-public static "rarityTest"(): void
-get "value"(): integer
 get "displayName"(): $MutableComponent
+get "value"(): integer
 get "chatFormatting"(): $ChatFormatting
 }
 /**
@@ -2604,10 +2906,10 @@ export type $SpellRarity_ = $SpellRarity$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.recipe_types.NoAdditionSmithingTransformRecipe" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
-import {$SmithingRecipeInput, $SmithingRecipeInput$$Type} from "net.minecraft.world.item.crafting.SmithingRecipeInput"
+import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$RecipeType, $RecipeType$$Type} from "net.minecraft.world.item.crafting.RecipeType"
+import {$SmithingRecipeInput, $SmithingRecipeInput$$Type} from "net.minecraft.world.item.crafting.SmithingRecipeInput"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$SmithingRecipe, $SmithingRecipe$$Type} from "net.minecraft.world.item.crafting.SmithingRecipe"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
@@ -2618,36 +2920,36 @@ export class $NoAdditionSmithingTransformRecipe implements $SmithingRecipe {
 
 constructor(arg0: $Ingredient$$Type, arg1: $Ingredient$$Type, arg2: $ItemStack$$Type)
 
+public "getResult"(): $Ingredient
+public "getBase"(): $Ingredient
 public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "matches"(arg0: $SmithingRecipeInput$$Type, arg1: $Level$$Type): boolean
-public "getBase"(): $Ingredient
-public "getResult"(): $Ingredient
+public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
+public "getTemplate"(): $Ingredient
+public "getSerializer"(): $RecipeSerializer<(any)>
+public "isIncomplete"(): boolean
 public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
 public "assemble"(arg0: $SmithingRecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "getSerializer"(): $RecipeSerializer<(any)>
-public "getTemplate"(): $Ingredient
 public "isTemplateIngredient"(arg0: $ItemStack$$Type): boolean
 public "isBaseIngredient"(arg0: $ItemStack$$Type): boolean
 public "isAdditionIngredient"(arg0: $ItemStack$$Type): boolean
-public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
-public "isIncomplete"(): boolean
 public "getType"(): $RecipeType<(any)>
-public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "getToastSymbol"(): $ItemStack
+public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "getIngredients"(): $NonNullList<($Ingredient)>
-public "getGroup"(): string
+public "getGroup"(): StringJS
 public "isSpecial"(): boolean
 public "showNotification"(): boolean
 public "getRemainingItems"(arg0: $SmithingRecipeInput$$Type): $NonNullList<($ItemStack)>
-get "base"(): $Ingredient
 get "result"(): $Ingredient
-get "serializer"(): $RecipeSerializer<(any)>
+get "base"(): $Ingredient
 get "template"(): $Ingredient
+get "serializer"(): $RecipeSerializer<(any)>
 get "incomplete"(): boolean
 get "type"(): $RecipeType<(any)>
 get "toastSymbol"(): $ItemStack
 get "ingredients"(): $NonNullList<($Ingredient)>
-get "group"(): string
+get "group"(): StringJS
 get "special"(): boolean
 }
 /**
@@ -2739,14 +3041,14 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -2766,7 +3068,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2793,8 +3095,8 @@ export type $IceSpiderEggBlock_ = $IceSpiderEggBlock$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.nature.FireflySwarmSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -2802,8 +3104,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $FireflySwarmSpell extends $AbstractSpell {
@@ -2811,17 +3113,17 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2838,14 +3140,14 @@ export type $FireflySwarmSpell_ = $FireflySwarmSpell$$Type;
 declare module "io.redspace.ironsspellbooks.spells.evocation.FirecrackerSpell" {
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
+import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $FirecrackerSpell extends $AbstractSpell {
@@ -2853,11 +3155,11 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -2875,8 +3177,8 @@ declare global {
 export type $FirecrackerSpell_ = $FirecrackerSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.ice.IcicleSpell" {
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -2884,8 +3186,8 @@ import {$SpellDamageSource, $SpellDamageSource$$Type} from "io.redspace.ironsspe
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
@@ -2894,12 +3196,12 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getDamageSource"(arg0: $Entity$$Type, arg1: $Entity$$Type): $SpellDamageSource
 public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -2917,20 +3219,24 @@ declare global {
 export type $IcicleSpell_ = $IcicleSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.ShrivingStoneItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export class $ShrivingStoneItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -2939,6 +3245,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2953,14 +3260,18 @@ declare global {
 export type $ShrivingStoneItem_ = $ShrivingStoneItem$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.armor.ImbuableChestplateArmorItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$IPresetSpellContainer, $IPresetSpellContainer$$Type} from "io.redspace.ironsspellbooks.api.spells.IPresetSpellContainer"
 import {$ArmorMaterial, $ArmorMaterial$$Type} from "net.minecraft.world.item.ArmorMaterial"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$AttributeContainer, $AttributeContainer$$Type} from "io.redspace.ironsspellbooks.item.weapons.AttributeContainer"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$GeoAnimatable, $GeoAnimatable$$Type} from "software.bernie.geckolib.animatable.GeoAnimatable"
@@ -2975,7 +3286,7 @@ import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.A
 export class $ImbuableChestplateArmorItem extends $ExtendedArmorItem implements $IPresetSpellContainer {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -2990,6 +3301,7 @@ public static "getId"(arg0: $ItemStack$$Type): long
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3002,6 +3314,49 @@ export type $ImbuableChestplateArmorItem$$Type = ($ImbuableChestplateArmorItem);
  */
 declare global {
 export type $ImbuableChestplateArmorItem_ = $ImbuableChestplateArmorItem$$Type;
+}}
+declare module "io.redspace.ironsspellbooks.entity.mobs.goals.WizardAttackGoal" {
+import {$List, $List$$Type} from "java.util.List"
+import {$IMagicEntity, $IMagicEntity$$Type} from "io.redspace.ironsspellbooks.api.entity.IMagicEntity"
+import {$Goal, $Goal$$Type} from "net.minecraft.world.entity.ai.goal.Goal"
+import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
+
+export class $WizardAttackGoal extends $Goal {
+
+constructor(arg0: $IMagicEntity$$Type, arg1: double, arg2: integer)
+constructor(arg0: $IMagicEntity$$Type, arg1: double, arg2: integer, arg3: integer)
+
+public "tick"(): void
+public "start"(): void
+public "stop"(): void
+public "canUse"(): boolean
+public "setIsFlying"(): $WizardAttackGoal
+public "setSpells"(arg0: $List$$Type<($AbstractSpell$$Type)>, arg1: $List$$Type<($AbstractSpell$$Type)>, arg2: $List$$Type<($AbstractSpell$$Type)>, arg3: $List$$Type<($AbstractSpell$$Type)>): $WizardAttackGoal
+public "isActing"(): boolean
+public "canContinueToUse"(): boolean
+public "isInterruptable"(): boolean
+public "setSingleUseSpell"(arg0: $AbstractSpell$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer): $WizardAttackGoal
+public "setSpellQuality"(arg0: float, arg1: float): $WizardAttackGoal
+public "getStrafeMultiplier"(): float
+public "setDrinksPotions"(): $WizardAttackGoal
+public "setAllowFleeing"(arg0: boolean): $WizardAttackGoal
+public "requiresUpdateEveryTick"(): boolean
+get "acting"(): boolean
+get "interruptable"(): boolean
+get "strafeMultiplier"(): float
+set "allowFleeing"(value: boolean)
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $WizardAttackGoal$$Type = ($WizardAttackGoal);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $WizardAttackGoal_ = $WizardAttackGoal$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.block.scroll_forge.ScrollForgeBlock" {
 import {$BaseEntityBlock, $BaseEntityBlock$$Type} from "net.minecraft.world.level.block.BaseEntityBlock"
@@ -3016,22 +3371,22 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$MenuProvider, $MenuProvider$$Type} from "net.minecraft.world.MenuProvider"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$RenderShape, $RenderShape$$Type} from "net.minecraft.world.level.block.RenderShape"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$Rotation, $Rotation$$Type} from "net.minecraft.world.level.block.Rotation"
-import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
+import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $ScrollForgeBlock extends $BaseEntityBlock implements $SimpleWaterloggedBlock {
@@ -3042,7 +3397,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "UPDATE_IMMEDIATE": integer
@@ -3064,10 +3419,10 @@ constructor()
 
 public "rotate"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $BlockState
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
-public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
 public "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
 public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "getMenuProvider"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type): $MenuProvider
 public "getPickupSound"(): $Optional<($SoundEvent)>
@@ -3091,6 +3446,7 @@ declare global {
 export type $ScrollForgeBlock_ = $ScrollForgeBlock$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.ReadableLoreItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
@@ -3099,6 +3455,7 @@ import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.Inte
 import {$PoseStack, $PoseStack$$Type} from "com.mojang.blaze3d.vertex.PoseStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -3110,7 +3467,7 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 export class $ReadableLoreItem extends $Item implements $ILecternPlaceable {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3119,9 +3476,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $ResourceLocation$$Type, arg1: $Item$Properties$$Type)
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "simpleTextureOverride"(arg0: $ItemStack$$Type): $Optional<($ResourceLocation)>
 public "getPages"(arg0: $ItemStack$$Type): $List<($Component)>
+public "simpleTextureOverride"(arg0: $ItemStack$$Type): $Optional<($ResourceLocation)>
 public "handleCustomLecternPosing"(arg0: $PoseStack$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3138,8 +3496,8 @@ export type $ReadableLoreItem_ = $ReadableLoreItem$$Type;
 declare module "io.redspace.ironsspellbooks.spells.nature.AcidOrbSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$Mob, $Mob$$Type} from "net.minecraft.world.entity.Mob"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
@@ -3148,8 +3506,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $AcidOrbSpell extends $AbstractSpell {
@@ -3157,24 +3515,24 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getRadius"(arg0: integer, arg1: $LivingEntity$$Type): float
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getRadius"(arg0: integer, arg1: $LivingEntity$$Type): float
 public "getRendAmplifier"(arg0: integer, arg1: $LivingEntity$$Type): integer
 public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
 public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 public "getCastStartAnimation"(): $AnimationHolder
 public "getCastFinishAnimation"(): $AnimationHolder
 public "shouldAIStopCasting"(arg0: integer, arg1: $Mob$$Type, arg2: $LivingEntity$$Type): boolean
 public "getRendDuration"(arg0: integer, arg1: $LivingEntity$$Type): integer
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 get "castFinishAnimation"(): $AnimationHolder
 }
@@ -3198,15 +3556,15 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$RenderShape, $RenderShape$$Type} from "net.minecraft.world.level.block.RenderShape"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -3225,7 +3583,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3236,10 +3594,10 @@ constructor()
 
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
 public "entityInside"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): void
 public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -3256,8 +3614,8 @@ export type $AlchemistCauldronBlock_ = $AlchemistCauldronBlock$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.lightning.LightningBoltSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -3265,8 +3623,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $LightningBoltSpell extends $AbstractSpell {
@@ -3274,16 +3632,16 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3299,8 +3657,8 @@ export type $LightningBoltSpell_ = $LightningBoltSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.ice.IceBlockSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -3309,8 +3667,8 @@ import {$SpellDamageSource, $SpellDamageSource$$Type} from "io.redspace.ironsspe
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
@@ -3319,18 +3677,18 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
 public "getDamageSource"(arg0: $Entity$$Type, arg1: $Entity$$Type): $SpellDamageSource
 public "getSpellResource"(): $ResourceLocation
-public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
-public "getCastStartSound"(): $Optional<($SoundEvent)>
 public "getDefaultConfig"(): $DefaultConfig
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getCastStartSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3353,13 +3711,13 @@ export class $AnimationHolder {
 readonly "animatesLegs": boolean
 readonly "isPass": boolean
 
-constructor(arg0: string, arg1: boolean)
-constructor(arg0: $ResourceLocation$$Type, arg1: boolean, arg2: boolean)
 /**
  * 
  * @deprecated
  */
-constructor(arg0: string, arg1: boolean, arg2: boolean)
+constructor(arg0: StringJS, arg1: boolean, arg2: boolean)
+constructor(arg0: StringJS, arg1: boolean)
+constructor(arg0: $ResourceLocation$$Type, arg1: boolean, arg2: boolean)
 
 public static "pass"(): $AnimationHolder
 public static "none"(): $AnimationHolder
@@ -3382,18 +3740,22 @@ export type $AnimationHolder_ = $AnimationHolder$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.UpgradeOrbItem" {
 import {$UpgradeType, $UpgradeType$$Type} from "io.redspace.ironsspellbooks.item.armor.UpgradeType"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 
 export class $UpgradeOrbItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "TOOLTIP_HEADER": $Component
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -3408,6 +3770,7 @@ constructor(arg0: $UpgradeType$$Type, arg1: $Item$Properties$$Type)
 constructor(arg0: $Item$Properties$$Type)
 
 public "getName"(arg0: $ItemStack$$Type): $Component
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3421,59 +3784,11 @@ export type $UpgradeOrbItem$$Type = ($UpgradeOrbItem);
 declare global {
 export type $UpgradeOrbItem_ = $UpgradeOrbItem$$Type;
 }}
-declare module "io.redspace.ironsspellbooks.item.armor.PaladinArmorItem" {
-import {$GeoArmorRenderer, $GeoArmorRenderer$$Type} from "software.bernie.geckolib.renderer.GeoArmorRenderer"
-import {$Map, $Map$$Type} from "java.util.Map"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
-import {$GeoAnimatable, $GeoAnimatable$$Type} from "software.bernie.geckolib.animatable.GeoAnimatable"
-import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
-import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$ImbuableChestplateArmorItem, $ImbuableChestplateArmorItem$$Type} from "io.redspace.ironsspellbooks.item.armor.ImbuableChestplateArmorItem"
-import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
-import {$DispenseItemBehavior, $DispenseItemBehavior$$Type} from "net.minecraft.core.dispenser.DispenseItemBehavior"
-import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.ArmorItem$Type"
-
-export class $PaladinArmorItem extends $ImbuableChestplateArmorItem {
-static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
-static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
-static readonly "MAX_BAR_WIDTH": integer
-static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
-static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
-static readonly "DISPENSE_ITEM_BEHAVIOR": $DispenseItemBehavior
- "defaultModifiers": $Supplier<($ItemAttributeModifiers)>
-static readonly "BY_BLOCK": $Map<($Block), ($Item)>
-
-constructor(arg0: $ArmorItem$Type$$Type, arg1: $Item$Properties$$Type)
-
-public "supplyRenderer"(): $GeoArmorRenderer<(any)>
-public static "getId"(arg0: $ItemStack$$Type): long
-public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
-public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
-public static "get"(arg0: $ItemStack$$Type): $Equipable
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $PaladinArmorItem$$Type = ($PaladinArmorItem);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $PaladinArmorItem_ = $PaladinArmorItem$$Type;
-}}
 declare module "io.redspace.ironsspellbooks.spells.fire.FlamingStrikeSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -3483,8 +3798,8 @@ import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
@@ -3493,23 +3808,23 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getEffectiveCastTime"(arg0: integer, arg1: $LivingEntity$$Type): integer
 public "getDamageSource"(arg0: $Entity$$Type, arg1: $Entity$$Type): $SpellDamageSource
 public "getSpellResource"(): $ResourceLocation
-public "getEffectiveCastTime"(arg0: integer, arg1: $LivingEntity$$Type): integer
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
 public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 public "getCastStartAnimation"(): $AnimationHolder
 public "getCastFinishAnimation"(): $AnimationHolder
 public "canBeInterrupted"(arg0: $Player$$Type): boolean
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 get "castFinishAnimation"(): $AnimationHolder
 }
@@ -3525,20 +3840,77 @@ export type $FlamingStrikeSpell$$Type = ($FlamingStrikeSpell);
 declare global {
 export type $FlamingStrikeSpell_ = $FlamingStrikeSpell$$Type;
 }}
+declare module "io.redspace.ironsspellbooks.item.armor.PaladinArmorItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
+import {$GeoArmorRenderer, $GeoArmorRenderer$$Type} from "software.bernie.geckolib.renderer.GeoArmorRenderer"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
+import {$GeoAnimatable, $GeoAnimatable$$Type} from "software.bernie.geckolib.animatable.GeoAnimatable"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
+import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$ImbuableChestplateArmorItem, $ImbuableChestplateArmorItem$$Type} from "io.redspace.ironsspellbooks.item.armor.ImbuableChestplateArmorItem"
+import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
+import {$DispenseItemBehavior, $DispenseItemBehavior$$Type} from "net.minecraft.core.dispenser.DispenseItemBehavior"
+import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.ArmorItem$Type"
+
+export class $PaladinArmorItem extends $ImbuableChestplateArmorItem {
+static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
+static readonly "DEFAULT_MAX_STACK_SIZE": integer
+ "descriptionId": StringJS
+static readonly "MAX_BAR_WIDTH": integer
+static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
+static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
+static readonly "DISPENSE_ITEM_BEHAVIOR": $DispenseItemBehavior
+ "defaultModifiers": $Supplier<($ItemAttributeModifiers)>
+static readonly "BY_BLOCK": $Map<($Block), ($Item)>
+
+constructor(arg0: $ArmorItem$Type$$Type, arg1: $Item$Properties$$Type)
+
+public "supplyRenderer"(): $GeoArmorRenderer<(any)>
+public static "getId"(arg0: $ItemStack$$Type): long
+public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
+public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
+public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $PaladinArmorItem$$Type = ($PaladinArmorItem);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $PaladinArmorItem_ = $PaladinArmorItem$$Type;
+}}
 declare module "io.redspace.ironsspellbooks.item.curios.ExpulsionRing" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$PassiveAbilityCurio, $PassiveAbilityCurio$$Type} from "io.redspace.ironsspellbooks.item.curios.PassiveAbilityCurio"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$LivingIncomingDamageEvent, $LivingIncomingDamageEvent$$Type} from "net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $ExpulsionRing extends $PassiveAbilityCurio {
 static readonly "RADIUS_SQR": integer
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "RADIUS": integer
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3548,6 +3920,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public static "handleAbility"(arg0: $LivingIncomingDamageEvent$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3563,8 +3936,8 @@ export type $ExpulsionRing_ = $ExpulsionRing$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.blood.BloodSlashSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -3572,8 +3945,8 @@ import {$SpellDamageSource, $SpellDamageSource$$Type} from "io.redspace.ironsspe
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
@@ -3582,13 +3955,13 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getDamageSource"(arg0: $Entity$$Type, arg1: $Entity$$Type): $SpellDamageSource
 public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
 public "getCastStartAnimation"(): $AnimationHolder
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -3608,26 +3981,27 @@ export type $BloodSlashSpell_ = $BloodSlashSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.effect.AngelWingsEffect" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
+import {$MobEffectInstance, $MobEffectInstance$$Type} from "net.minecraft.world.effect.MobEffectInstance"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ISyncedMobEffect, $ISyncedMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.ISyncedMobEffect"
+import {$MobEffect, $MobEffect$$Type} from "net.minecraft.world.effect.MobEffect"
+import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MagicMobEffect, $MagicMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.MagicMobEffect"
-import {$MobEffect, $MobEffect$$Type} from "net.minecraft.world.effect.MobEffect"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
 
-export class $AngelWingsEffect extends $MagicMobEffect {
+export class $AngelWingsEffect extends $MagicMobEffect implements $ISyncedMobEffect {
 static readonly "CODEC": $Codec<($Holder<($MobEffect)>)>
 readonly "attributeModifiers": $Map<($Holder<($Attribute)>), ($MobEffect$AttributeTemplate)>
 static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holder<($MobEffect)>)>
 
 constructor(arg0: $MobEffectCategory$$Type, arg1: integer)
 
-public "onEffectAdded"(arg0: $LivingEntity$$Type, arg1: integer): void
-public "onEffectRemoved"(arg0: $LivingEntity$$Type, arg1: integer): void
+public "clientTick"(arg0: $LivingEntity$$Type, arg1: $MobEffectInstance$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3642,14 +4016,18 @@ declare global {
 export type $AngelWingsEffect_ = $AngelWingsEffect$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.consumables.SimpleElixir" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$MobEffectInstance, $MobEffectInstance$$Type} from "net.minecraft.world.effect.MobEffectInstance"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$DrinkableItem, $DrinkableItem$$Type} from "io.redspace.ironsspellbooks.item.consumables.DrinkableItem"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
@@ -3659,7 +4037,7 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 export class $SimpleElixir extends $DrinkableItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3669,8 +4047,9 @@ constructor(arg0: $Item$Properties$$Type, arg1: $Supplier$$Type<($MobEffectInsta
 constructor(arg0: $Item$Properties$$Type, arg1: $Supplier$$Type<($MobEffectInstance$$Type)>, arg2: boolean)
 
 public "isFoil"(arg0: $ItemStack$$Type): boolean
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getMobEffect"(): $MobEffectInstance
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "mobEffect"(): $MobEffectInstance
 }
 /**
@@ -3686,22 +4065,26 @@ declare global {
 export type $SimpleElixir_ = $SimpleElixir$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.curios.AffinityRing" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$CurioBaseItem, $CurioBaseItem$$Type} from "io.redspace.ironsspellbooks.item.curios.CurioBaseItem"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
-import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 
 export class $AffinityRing extends $CurioBaseItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3711,6 +4094,7 @@ constructor(arg0: $Item$Properties$$Type)
 
 public "getName"(arg0: $ItemStack$$Type): $Component
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3728,11 +4112,11 @@ declare module "io.redspace.ironsspellbooks.spells.ender.CounterspellSpell" {
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
+import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $CounterspellSpell extends $AbstractSpell {
@@ -3740,8 +4124,8 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
 public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
 get "castType"(): $CastType
@@ -3773,7 +4157,7 @@ static readonly "USED_ALL_RECASTS": $RecastResult
 
 
 public static "values"(): ($RecastResult)[]
-public static "valueOf"(arg0: string): $RecastResult
+public static "valueOf"(arg0: StringJS): $RecastResult
 public "isSuccess"(): boolean
 public "isFailure"(): boolean
 get "success"(): boolean
@@ -3803,8 +4187,8 @@ export class $SpellSelectionManager$SpellSelectionEvent extends $PlayerEvent {
 constructor(arg0: $Player$$Type, arg1: $SpellSelectionManager$$Type)
 
 public "getManager"(): $SpellSelectionManager
-public "addSelectionOption"(arg0: $SpellData$$Type, arg1: string, arg2: integer): void
-public "addSelectionOption"(arg0: $SpellData$$Type, arg1: string, arg2: integer, arg3: integer): void
+public "addSelectionOption"(arg0: $SpellData$$Type, arg1: StringJS, arg2: integer): void
+public "addSelectionOption"(arg0: $SpellData$$Type, arg1: StringJS, arg2: integer, arg3: integer): void
 public "getEntity"(): $Entity
 get "manager"(): $SpellSelectionManager
 get "entity"(): $Entity
@@ -3850,18 +4234,18 @@ import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from
 import {$PortalFrameBlock, $PortalFrameBlock$$Type} from "io.redspace.ironsspellbooks.block.portal_frame.PortalFrameBlock"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$DoubleBlockHalf, $DoubleBlockHalf$$Type} from "net.minecraft.world.level.block.state.properties.DoubleBlockHalf"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$DoubleBlockHalf, $DoubleBlockHalf$$Type} from "net.minecraft.world.level.block.state.properties.DoubleBlockHalf"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ItemInteractionResult, $ItemInteractionResult$$Type} from "net.minecraft.world.ItemInteractionResult"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -3881,7 +4265,7 @@ static readonly "HALF": $EnumProperty<($DoubleBlockHalf)>
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3909,8 +4293,8 @@ export type $PocketDimensionPortalFrameBlock_ = $PocketDimensionPortalFrameBlock
 }}
 declare module "io.redspace.ironsspellbooks.spells.ender.DragonBreathSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$Mob, $Mob$$Type} from "net.minecraft.world.entity.Mob"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
@@ -3919,8 +4303,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $DragonBreathSpell extends $AbstractSpell {
@@ -3928,20 +4312,20 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
-public "getDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public "shouldAIStopCasting"(arg0: integer, arg1: $Mob$$Type, arg2: $LivingEntity$$Type): boolean
+public "getDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
+public "shouldAIStopCasting"(arg0: integer, arg1: $Mob$$Type, arg2: $LivingEntity$$Type): boolean
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3958,14 +4342,14 @@ export type $DragonBreathSpell_ = $DragonBreathSpell$$Type;
 declare module "io.redspace.ironsspellbooks.spells.lightning.VoltStrikeSpell" {
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
+import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $VoltStrikeSpell extends $AbstractSpell {
@@ -3973,11 +4357,11 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -4005,27 +4389,27 @@ export class $SpellDamageSource extends $DamageSource {
 
 
 public "get"(): $DamageSource
-public static "source"(arg0: $Entity$$Type, arg1: $Entity$$Type, arg2: $AbstractSpell$$Type): $SpellDamageSource
 public static "source"(arg0: $Entity$$Type, arg1: $AbstractSpell$$Type): $SpellDamageSource
-public "getLocalizedDeathMessage"(arg0: $LivingEntity$$Type): $Component
-public "getFireTime"(): integer
+public static "source"(arg0: $Entity$$Type, arg1: $Entity$$Type, arg2: $AbstractSpell$$Type): $SpellDamageSource
 public "spell"(): $AbstractSpell
-public "setLifestealPercent"(arg0: float): $SpellDamageSource
-public "getLifestealPercent"(): float
-public "hasPostHitEffects"(): boolean
-public "setIFrames"(arg0: integer): $SpellDamageSource
+public "getFireTime"(): integer
 public "setFireTicks"(arg0: integer): $SpellDamageSource
+public "setIFrames"(arg0: integer): $SpellDamageSource
 public "setFreezeTicks"(arg0: integer): $SpellDamageSource
 public "getFreezeTicks"(): integer
 public "getIFrames"(): integer
+public "setLifestealPercent"(arg0: float): $SpellDamageSource
+public "getLifestealPercent"(): float
+public "hasPostHitEffects"(): boolean
+public "getLocalizedDeathMessage"(arg0: $LivingEntity$$Type): $Component
 get "fireTime"(): integer
-set "lifestealPercent"(value: float)
-get "lifestealPercent"(): float
-set "iFrames"(value: integer)
 set "fireTicks"(value: integer)
+set "iFrames"(value: integer)
 set "freezeTicks"(value: integer)
 get "freezeTicks"(): integer
 get "iFrames"(): integer
+set "lifestealPercent"(value: float)
+get "lifestealPercent"(): float
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4049,13 +4433,13 @@ export class $SpellSummonEvent<K extends $LivingEntity> extends $LivingEvent {
 constructor(arg0: $LivingEntity$$Type, arg1: K, arg2: $ResourceLocation$$Type, arg3: integer)
 
 public "getSpellLevel"(): integer
-public "getSpellId"(): $ResourceLocation
 public "getCreature"(): K
+public "getSpellId"(): $ResourceLocation
 public "setCreature"(arg0: K): void
 public "getCaster"(): $LivingEntity
 get "spellLevel"(): integer
-get "spellId"(): $ResourceLocation
 get "creature"(): K
+get "spellId"(): $ResourceLocation
 set "creature"(value: K)
 get "caster"(): $LivingEntity
 }
@@ -4083,26 +4467,26 @@ export class $EmptyAlchemistCauldronRecipe$Input extends $Record implements $Rec
 
 constructor(item: $ItemStack$$Type, fluid: $FluidStack$$Type)
 
-public "size"(): integer
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "item"(): $ItemStack
 public "getItem"(arg0: integer): $ItemStack
+public "size"(): integer
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
 public "fluid"(): $FluidStack
 public "isEmpty"(): boolean
 public "find"(arg0: $SlotFilter$$Type): $ItemStack
 public "find"(arg0: $SlotFilter$$Type, arg1: integer): $ItemStack
-public "findAll"(): $List<($ItemStack)>
-public "findAll"(arg0: $SlotFilter$$Type): $List<($ItemStack)>
 public "self"(): $RecipeInput
+public "findAll"(arg0: $SlotFilter$$Type): $List<($ItemStack)>
+public "findAll"(): $List<($ItemStack)>
 get "empty"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $EmptyAlchemistCauldronRecipe$Input$$Type = ({"item"?: $ItemStack$$Type, "fluid"?: $FluidStack$$Type}) | ([item?: $ItemStack$$Type, fluid?: $FluidStack$$Type]);
+export type $EmptyAlchemistCauldronRecipe$Input$$Type = ({"fluid"?: $FluidStack$$Type, "item"?: $ItemStack$$Type}) | ([fluid?: $FluidStack$$Type, item?: $ItemStack$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -4111,20 +4495,24 @@ declare global {
 export type $EmptyAlchemistCauldronRecipe$Input_ = $EmptyAlchemistCauldronRecipe$Input$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.api.item.weapons.ExtendedSwordItem" {
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$SwordItem, $SwordItem$$Type} from "net.minecraft.world.item.SwordItem"
+import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$IronsWeaponTier, $IronsWeaponTier$$Type} from "io.redspace.ironsspellbooks.item.weapons.IronsWeaponTier"
-import {$SwordItem, $SwordItem$$Type} from "net.minecraft.world.item.SwordItem"
-import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 
 export class $ExtendedSwordItem extends $SwordItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -4134,6 +4522,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Tier$$Type, arg1: $Item$Properties$$Type)
 
 public static "createAttributes"(arg0: $IronsWeaponTier$$Type): $ItemAttributeModifiers
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4150,8 +4539,8 @@ export type $ExtendedSwordItem_ = $ExtendedSwordItem$$Type;
 declare module "io.redspace.ironsspellbooks.spells.ice.SummonPolarBearSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$RecastInstance, $RecastInstance$$Type} from "io.redspace.ironsspellbooks.capabilities.magic.RecastInstance"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -4160,8 +4549,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 import {$ICastDataSerializable, $ICastDataSerializable$$Type} from "io.redspace.ironsspellbooks.api.spells.ICastDataSerializable"
@@ -4171,20 +4560,20 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public "getEmptyCastData"(): $ICastDataSerializable
-public "onRecastFinished"(arg0: $ServerPlayer$$Type, arg1: $RecastInstance$$Type, arg2: $RecastResult$$Type, arg3: $ICastDataSerializable$$Type): void
+public "getCastType"(): $CastType
 public "getRecastCount"(arg0: integer, arg1: $LivingEntity$$Type): integer
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getEmptyCastData"(): $ICastDataSerializable
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "onRecastFinished"(arg0: $ServerPlayer$$Type, arg1: $RecastInstance$$Type, arg2: $RecastResult$$Type, arg3: $ICastDataSerializable$$Type): void
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
 get "emptyCastData"(): $ICastDataSerializable
+get "castStartSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4201,14 +4590,14 @@ export type $SummonPolarBearSpell_ = $SummonPolarBearSpell$$Type;
 declare module "io.redspace.ironsspellbooks.spells.holy.GreaterHealSpell" {
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
+import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $GreaterHealSpell extends $AbstractSpell {
@@ -4216,11 +4605,11 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -4239,8 +4628,8 @@ export type $GreaterHealSpell_ = $GreaterHealSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.nature.RootSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -4248,8 +4637,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $RootSpell extends $AbstractSpell {
@@ -4258,19 +4647,19 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 constructor()
 
 public "getDuration"(arg0: integer, arg1: $LivingEntity$$Type): integer
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4304,8 +4693,8 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(arg0: $MobEffectCategory$$Type, arg1: integer)
 
-public "shouldApplyEffectTickThisTick"(arg0: integer, arg1: integer): boolean
 public "applyEffectTick"(arg0: $LivingEntity$$Type, arg1: integer): boolean
+public "shouldApplyEffectTickThisTick"(arg0: integer, arg1: integer): boolean
 public static "getDamageFromLevel"(arg0: integer): float
 }
 /**
@@ -4328,12 +4717,12 @@ import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CauldronInteraction$InteractionMap, $CauldronInteraction$InteractionMap$$Type} from "net.minecraft.core.cauldron.CauldronInteraction$InteractionMap"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
-import {$LayeredCauldronBlock, $LayeredCauldronBlock$$Type} from "net.minecraft.world.level.block.LayeredCauldronBlock"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
+import {$LayeredCauldronBlock, $LayeredCauldronBlock$$Type} from "net.minecraft.world.level.block.LayeredCauldronBlock"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BloodCauldronBlock$CookExecution, $BloodCauldronBlock$CookExecution$$Type} from "io.redspace.ironsspellbooks.block.BloodCauldronBlock$CookExecution"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -4354,7 +4743,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -4364,8 +4753,8 @@ static readonly "MIN_FILL_LEVEL": integer
 
 constructor()
 
-public static "getInteractionMap"(): $CauldronInteraction$InteractionMap
 public "entityInside"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): void
+public static "getInteractionMap"(): $CauldronInteraction$InteractionMap
 public static "attemptCookEntity"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type, arg4: $BloodCauldronBlock$CookExecution$$Type): void
 public "asHolder"(): $Holder<(any)>
 }
@@ -4384,21 +4773,21 @@ export type $BloodCauldronBlock_ = $BloodCauldronBlock$$Type;
 declare module "io.redspace.ironsspellbooks.item.armor.UpgradeType" {
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$AttributeModifier$Operation, $AttributeModifier$Operation$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
+import {$AttributeModifier$Operation, $AttributeModifier$Operation$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export interface $UpgradeType {
 
- "getId"(): $ResourceLocation
  "getAttribute"(): $Holder<($Attribute)>
+ "getId"(): $ResourceLocation
  "getOperation"(): $AttributeModifier$Operation
  "getAmountPerUpgrade"(): float
  "getContainerItem"(): $Optional<($Holder<($Item)>)>
-get "id"(): $ResourceLocation
 get "attribute"(): $Holder<($Attribute)>
+get "id"(): $ResourceLocation
 get "operation"(): $AttributeModifier$Operation
 get "amountPerUpgrade"(): float
 get "containerItem"(): $Optional<($Holder<($Item)>)>
@@ -4406,19 +4795,19 @@ get "containerItem"(): $Optional<($Holder<($Item)>)>
 
 export namespace $UpgradeType {
 const UPGRADE_REGISTRY: $Map<($ResourceLocation), ($UpgradeType)>
-function registerUpgrade(arg0: $UpgradeType$$Type): void
 function getUpgrade(arg0: $ResourceLocation$$Type): $Optional<($UpgradeType)>
+function registerUpgrade(arg0: $UpgradeType$$Type): void
 const probejs$$marker: never
 }
 export class $UpgradeType$$Static implements $UpgradeType {
 static readonly "UPGRADE_REGISTRY": $Map<($ResourceLocation), ($UpgradeType)>
 
 
- "getId"(): $ResourceLocation
  "getAttribute"(): $Holder<($Attribute)>
+ "getId"(): $ResourceLocation
  "getOperation"(): $AttributeModifier$Operation
-static "registerUpgrade"(arg0: $UpgradeType$$Type): void
 static "getUpgrade"(arg0: $ResourceLocation$$Type): $Optional<($UpgradeType)>
+static "registerUpgrade"(arg0: $UpgradeType$$Type): void
  "getAmountPerUpgrade"(): float
  "getContainerItem"(): $Optional<($Holder<($Item)>)>
 }
@@ -4436,28 +4825,29 @@ export type $UpgradeType_ = $UpgradeType$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.effect.PlanarSightEffect" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
+import {$MobEffectInstance, $MobEffectInstance$$Type} from "net.minecraft.world.effect.MobEffectInstance"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ISyncedMobEffect, $ISyncedMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.ISyncedMobEffect"
+import {$MobEffect, $MobEffect$$Type} from "net.minecraft.world.effect.MobEffect"
+import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MagicMobEffect, $MagicMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.MagicMobEffect"
-import {$MobEffect, $MobEffect$$Type} from "net.minecraft.world.effect.MobEffect"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
 
-export class $PlanarSightEffect extends $MagicMobEffect {
+export class $PlanarSightEffect extends $MagicMobEffect implements $ISyncedMobEffect {
 static readonly "CODEC": $Codec<($Holder<($MobEffect)>)>
 readonly "attributeModifiers": $Map<($Holder<($Attribute)>), ($MobEffect$AttributeTemplate)>
 static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holder<($MobEffect)>)>
 
 constructor(arg0: $MobEffectCategory$$Type, arg1: integer)
 
-public "shouldApplyEffectTickThisTick"(arg0: integer, arg1: integer): boolean
-public "onEffectAdded"(arg0: $LivingEntity$$Type, arg1: integer): void
-public "onEffectRemoved"(arg0: $LivingEntity$$Type, arg1: integer): void
 public "applyEffectTick"(arg0: $LivingEntity$$Type, arg1: integer): boolean
+public "shouldApplyEffectTickThisTick"(arg0: integer, arg1: integer): boolean
+public "clientTick"(arg0: $LivingEntity$$Type, arg1: $MobEffectInstance$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4472,11 +4862,13 @@ declare global {
 export type $PlanarSightEffect_ = $PlanarSightEffect$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.CinderousSoulcallerItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -4488,7 +4880,7 @@ import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.Serve
 export class $CinderousSoulcallerItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4498,6 +4890,7 @@ constructor(arg0: $Item$Properties$$Type)
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
 public "tollEffects"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type, arg2: boolean): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4512,17 +4905,21 @@ declare global {
 export type $CinderousSoulcallerItem_ = $CinderousSoulcallerItem$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.armor.WizardArmorItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$GeoArmorRenderer, $GeoArmorRenderer$$Type} from "software.bernie.geckolib.renderer.GeoArmorRenderer"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$IDisableJacket, $IDisableJacket$$Type} from "io.redspace.ironsspellbooks.item.armor.IDisableJacket"
 import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$GeoAnimatable, $GeoAnimatable$$Type} from "software.bernie.geckolib.animatable.GeoAnimatable"
-import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$EquipmentSlot, $EquipmentSlot$$Type} from "net.minecraft.world.entity.EquipmentSlot"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ImbuableChestplateArmorItem, $ImbuableChestplateArmorItem$$Type} from "io.redspace.ironsspellbooks.item.armor.ImbuableChestplateArmorItem"
@@ -4533,7 +4930,7 @@ import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.A
 export class $WizardArmorItem extends $ImbuableChestplateArmorItem implements $IDisableJacket {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4543,13 +4940,14 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $ArmorItem$Type$$Type, arg1: $Item$Properties$$Type)
 
-public "getDescriptionId"(arg0: $ItemStack$$Type): string
 public "supplyRenderer"(): $GeoArmorRenderer<(any)>
+public "getDescriptionId"(arg0: $ItemStack$$Type): StringJS
 public "disableForSlot"(arg0: $EquipmentSlot$$Type): boolean
 public static "getId"(arg0: $ItemStack$$Type): long
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4566,8 +4964,8 @@ export type $WizardArmorItem_ = $WizardArmorItem$$Type;
 declare module "io.redspace.ironsspellbooks.spells.fire.FireArrowSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -4575,8 +4973,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $FireArrowSpell extends $AbstractSpell {
@@ -4584,22 +4982,22 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getRadius"(arg0: integer, arg1: $LivingEntity$$Type): float
-public "getCastType"(): $CastType
-public "getDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getRadius"(arg0: integer, arg1: $LivingEntity$$Type): float
 public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
 public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 public "getCastStartAnimation"(): $AnimationHolder
 public "getCastFinishAnimation"(): $AnimationHolder
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 get "castFinishAnimation"(): $AnimationHolder
 }
@@ -4622,35 +5020,35 @@ import {$CraftingBookCategory, $CraftingBookCategory$$Type} from "net.minecraft.
 import {$FluidStack, $FluidStack$$Type} from "net.neoforged.neoforge.fluids.FluidStack"
 import {$RecipeBuilder, $RecipeBuilder$$Type} from "net.minecraft.data.recipes.RecipeBuilder"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$Criterion, $Criterion$$Type} from "net.minecraft.advancements.Criterion"
 import {$RecipeOutput, $RecipeOutput$$Type} from "net.minecraft.data.recipes.RecipeOutput"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Criterion, $Criterion$$Type} from "net.minecraft.advancements.Criterion"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
-import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$ItemLike, $ItemLike$$Type} from "net.minecraft.world.level.ItemLike"
+import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export class $BrewAlchemistCauldronRecipe$Builder implements $RecipeBuilder {
 
 constructor()
 
-public "group"(arg0: string): $RecipeBuilder
-public "save"(arg0: $RecipeOutput$$Type): void
-public "save"(arg0: $RecipeOutput$$Type, arg1: $ResourceLocation$$Type): void
-public "withResult"(arg0: $Holder$$Type<($Fluid)>, arg1: integer): $BrewAlchemistCauldronRecipe$Builder
 public "withResult"(arg0: $FluidStack$$Type): $BrewAlchemistCauldronRecipe$Builder
+public "withResult"(arg0: $Holder$$Type<($Fluid)>, arg1: integer): $BrewAlchemistCauldronRecipe$Builder
 public "getResult"(): $Item
-public "unlockedBy"(arg0: string, arg1: $Criterion$$Type<(any)>): $RecipeBuilder
+public "group"(arg0: StringJS): $RecipeBuilder
+public "save"(arg0: $RecipeOutput$$Type, arg1: $ResourceLocation$$Type): void
+public "save"(arg0: $RecipeOutput$$Type): void
+public "unlockedBy"(arg0: StringJS, arg1: $Criterion$$Type<(any)>): $RecipeBuilder
 public "withInput"(arg0: $FluidStack$$Type): $BrewAlchemistCauldronRecipe$Builder
 public "withInput"(arg0: $Holder$$Type<($Fluid)>, arg1: integer): $BrewAlchemistCauldronRecipe$Builder
 public "saveSoak"(arg0: $RecipeOutput$$Type): void
-public "withByproduct"(arg0: $ItemStack$$Type): $BrewAlchemistCauldronRecipe$Builder
-public "withByproduct"(arg0: $Holder$$Type<($Item)>): $BrewAlchemistCauldronRecipe$Builder
-public "withByproduct"(arg0: $Item$$Type): $BrewAlchemistCauldronRecipe$Builder
+public "withReagent"(arg0: $ItemStack$$Type): $BrewAlchemistCauldronRecipe$Builder
 public "withReagent"(arg0: $Item$$Type): $BrewAlchemistCauldronRecipe$Builder
 public "withReagent"(arg0: $TagKey$$Type<($Item)>): $BrewAlchemistCauldronRecipe$Builder
-public "withReagent"(arg0: $ItemStack$$Type): $BrewAlchemistCauldronRecipe$Builder
-public "save"(arg0: $RecipeOutput$$Type, arg1: string): void
+public "withByproduct"(arg0: $ItemStack$$Type): $BrewAlchemistCauldronRecipe$Builder
+public "withByproduct"(arg0: $Item$$Type): $BrewAlchemistCauldronRecipe$Builder
+public "withByproduct"(arg0: $Holder$$Type<($Item)>): $BrewAlchemistCauldronRecipe$Builder
+public "save"(arg0: $RecipeOutput$$Type, arg1: StringJS): void
 public static "getDefaultRecipeId"(arg0: $ItemLike$$Type): $ResourceLocation
 public static "determineBookCategory"(arg0: $RecipeCategory$$Type): $CraftingBookCategory
 get "result"(): $Item
@@ -4668,17 +5066,21 @@ declare global {
 export type $BrewAlchemistCauldronRecipe$Builder_ = $BrewAlchemistCauldronRecipe$Builder$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.CastingItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $CastingItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4687,6 +5089,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type)
 
 public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4712,23 +5115,23 @@ import {$SimpleWaterloggedBlock, $SimpleWaterloggedBlock$$Type} from "net.minecr
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$RenderShape, $RenderShape$$Type} from "net.minecraft.world.level.block.RenderShape"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ItemInteractionResult, $ItemInteractionResult$$Type} from "net.minecraft.world.ItemInteractionResult"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
+import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $PedestalBlock extends $BaseEntityBlock implements $SimpleWaterloggedBlock {
 static readonly "SHAPE_TOP": $VoxelShape
@@ -4747,7 +5150,7 @@ static readonly "SHAPE": $VoxelShape
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -4759,9 +5162,9 @@ constructor()
 
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
 public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
 public "useItemOn"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type, arg2: $Level$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type, arg5: $InteractionHand$$Type, arg6: $BlockHitResult$$Type): $ItemInteractionResult
-public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
 public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "getPickupSound"(): $Optional<($SoundEvent)>
 public "canPlaceLiquid"(arg0: $Player$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $Fluid$$Type): boolean
@@ -4784,15 +5187,17 @@ declare global {
 export type $PedestalBlock_ = $PedestalBlock$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.Scroll" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IScroll, $IScroll$$Type} from "io.redspace.ironsspellbooks.api.item.IScroll"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -4803,7 +5208,7 @@ import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.Ser
 export class $Scroll extends $Item implements $IScroll {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4811,11 +5216,12 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "getName"(arg0: $ItemStack$$Type): $Component
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "getCreatorModId"(arg0: $ItemStack$$Type): string
+public "getName"(arg0: $ItemStack$$Type): $Component
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "getCreatorModId"(arg0: $ItemStack$$Type): StringJS
 public static "attemptRemoveScrollAfterCast"(arg0: $ServerPlayer$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4836,8 +5242,8 @@ import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MagicMobEffect, $MagicMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.MagicMobEffect"
+import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect, $MobEffect$$Type} from "net.minecraft.world.effect.MobEffect"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
@@ -4864,21 +5270,25 @@ declare global {
 export type $FortifyEffect_ = $FortifyEffect$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.SimpleDescriptiveItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
-import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 
 export class $SimpleDescriptiveItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4887,6 +5297,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type)
 
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4901,17 +5312,21 @@ declare global {
 export type $SimpleDescriptiveItem_ = $SimpleDescriptiveItem$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.weapons.pyrium_staff.PyriumStaffItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$StaffItem, $StaffItem$$Type} from "io.redspace.ironsspellbooks.item.weapons.StaffItem"
 
 export class $PyriumStaffItem extends $StaffItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4920,6 +5335,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type)
 
 public "hasCustomRendering"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4935,16 +5351,16 @@ export type $PyriumStaffItem_ = $PyriumStaffItem$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.ice.FrostbiteSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $FrostbiteSpell extends $AbstractSpell {
@@ -4952,12 +5368,12 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
 public "getCastStartAnimation"(): $AnimationHolder
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -4977,8 +5393,8 @@ export type $FrostbiteSpell_ = $FrostbiteSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.evocation.LobCreeperSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -4987,8 +5403,8 @@ import {$SpellDamageSource, $SpellDamageSource$$Type} from "io.redspace.ironsspe
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
@@ -4997,19 +5413,19 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getDamageSource"(arg0: $Entity$$Type, arg1: $Entity$$Type): $SpellDamageSource
 public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
 public "getDefaultConfig"(): $DefaultConfig
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5055,8 +5471,8 @@ export type $IExtendedNoiseChunk_ = $IExtendedNoiseChunk$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.api.attribute.MagicPercentAttribute" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
-import {$AttributeModifier$Operation, $AttributeModifier$Operation$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$AttributeModifier$Operation, $AttributeModifier$Operation$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$PercentageAttribute, $PercentageAttribute$$Type} from "net.neoforged.neoforge.common.PercentageAttribute"
@@ -5067,7 +5483,7 @@ export class $MagicPercentAttribute extends $PercentageAttribute implements $IMa
 static readonly "CODEC": $Codec<($Holder<($Attribute)>)>
 static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holder<($Attribute)>)>
 
-constructor(arg0: string, arg1: double, arg2: double, arg3: double)
+constructor(arg0: StringJS, arg1: double, arg2: double, arg3: double)
 
 public static "isNullOrAddition"(arg0: $AttributeModifier$Operation$$Type): boolean
 }
@@ -5086,8 +5502,8 @@ export type $MagicPercentAttribute_ = $MagicPercentAttribute$$Type;
 declare module "io.redspace.ironsspellbooks.spells.fire.ScorchSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -5096,8 +5512,8 @@ import {$SpellDamageSource, $SpellDamageSource$$Type} from "io.redspace.ironsspe
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
@@ -5106,20 +5522,20 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
 public "getDamageSource"(arg0: $Entity$$Type, arg1: $Entity$$Type): $SpellDamageSource
 public "getSpellResource"(): $ResourceLocation
-public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
-public "getCastStartSound"(): $Optional<($SoundEvent)>
 public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
 public "getCastStartAnimation"(): $AnimationHolder
 public "getCastFinishAnimation"(): $AnimationHolder
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 get "castFinishAnimation"(): $AnimationHolder
 }
@@ -5136,11 +5552,15 @@ declare global {
 export type $ScorchSpell_ = $ScorchSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.armor.CryomancerArmorItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$GeoArmorRenderer, $GeoArmorRenderer$$Type} from "software.bernie.geckolib.renderer.GeoArmorRenderer"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$GeoAnimatable, $GeoAnimatable$$Type} from "software.bernie.geckolib.animatable.GeoAnimatable"
@@ -5155,7 +5575,7 @@ import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.A
 export class $CryomancerArmorItem extends $ImbuableChestplateArmorItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -5170,6 +5590,7 @@ public static "getId"(arg0: $ItemStack$$Type): long
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5184,20 +5605,24 @@ declare global {
 export type $CryomancerArmorItem_ = $CryomancerArmorItem$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.SpellSlotUpgradeItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export class $SpellSlotUpgradeItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -5207,6 +5632,7 @@ constructor(arg0: integer)
 
 public "maxSlots"(): integer
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5223,8 +5649,8 @@ export type $SpellSlotUpgradeItem_ = $SpellSlotUpgradeItem$$Type;
 declare module "io.redspace.ironsspellbooks.spells.ender.MagicArrowSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -5232,8 +5658,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $MagicArrowSpell extends $AbstractSpell {
@@ -5241,20 +5667,20 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
 public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 public "getCastStartAnimation"(): $AnimationHolder
 public "getCastFinishAnimation"(): $AnimationHolder
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 get "castFinishAnimation"(): $AnimationHolder
 }
@@ -5273,8 +5699,8 @@ export type $MagicArrowSpell_ = $MagicArrowSpell$$Type;
 declare module "io.redspace.ironsspellbooks.spells.eldritch.AbyssalShroudSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -5282,8 +5708,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $AbyssalShroudSpell extends $AbstractSpell {
@@ -5291,19 +5717,19 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public "getCastStartAnimation"(): $AnimationHolder
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
+public "getCastStartAnimation"(): $AnimationHolder
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 }
 /**
@@ -5320,8 +5746,8 @@ export type $AbyssalShroudSpell_ = $AbyssalShroudSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.blood.RayOfSiphoningSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$Mob, $Mob$$Type} from "net.minecraft.world.entity.Mob"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
@@ -5331,8 +5757,8 @@ import {$SpellDamageSource, $SpellDamageSource$$Type} from "io.redspace.ironsspe
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 import {$ICastDataSerializable, $ICastDataSerializable$$Type} from "io.redspace.ironsspellbooks.api.spells.ICastDataSerializable"
@@ -5343,23 +5769,23 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 constructor()
 
 public static "getRange"(arg0: integer): float
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getDamageSource"(arg0: $Entity$$Type, arg1: $Entity$$Type): $SpellDamageSource
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "onServerCastTick"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): void
+public "getDamageSource"(arg0: $Entity$$Type, arg1: $Entity$$Type): $SpellDamageSource
 public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
 public "getDefaultConfig"(): $DefaultConfig
 public "getEmptyCastData"(): $ICastDataSerializable
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 public "shouldAIStopCasting"(arg0: integer, arg1: $Mob$$Type, arg2: $LivingEntity$$Type): boolean
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
 get "emptyCastData"(): $ICastDataSerializable
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5372,6 +5798,31 @@ export type $RayOfSiphoningSpell$$Type = ($RayOfSiphoningSpell);
  */
 declare global {
 export type $RayOfSiphoningSpell_ = $RayOfSiphoningSpell$$Type;
+}}
+declare module "io.redspace.ironsspellbooks.entity.mobs.goals.GustDefenseGoal" {
+import {$IMagicEntity, $IMagicEntity$$Type} from "io.redspace.ironsspellbooks.api.entity.IMagicEntity"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+import {$Goal, $Goal$$Type} from "net.minecraft.world.entity.ai.goal.Goal"
+
+export class $GustDefenseGoal extends $Goal {
+
+constructor(arg0: $IMagicEntity$$Type)
+
+public "start"(): void
+public "canUse"(): boolean
+public "shouldAreaAttack"(arg0: $LivingEntity$$Type): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $GustDefenseGoal$$Type = ($GustDefenseGoal);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $GustDefenseGoal_ = $GustDefenseGoal$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.fluids.PotionFluidType" {
 import {$FluidType$Properties, $FluidType$Properties$$Type} from "net.neoforged.neoforge.fluids.FluidType$Properties"
@@ -5387,7 +5838,7 @@ static readonly "BUCKET_VOLUME": integer
 constructor(arg0: $FluidType$Properties$$Type)
 
 public "getDescription"(arg0: $FluidStack$$Type): $Component
-public "getDescriptionId"(arg0: $FluidStack$$Type): string
+public "getDescriptionId"(arg0: $FluidStack$$Type): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5402,14 +5853,18 @@ declare global {
 export type $PotionFluidType_ = $PotionFluidType$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.ArchevokerLogbookItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$ReadableLoreItem, $ReadableLoreItem$$Type} from "io.redspace.ironsspellbooks.item.ReadableLoreItem"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$WrittenBookContent, $WrittenBookContent$$Type} from "net.minecraft.world.item.component.WrittenBookContent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
@@ -5420,7 +5875,7 @@ static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static "TRANSLATED_CONTENTS": $WrittenBookContent
 static "UNTRANSLATED_CONTENTS": $WrittenBookContent
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -5429,6 +5884,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: boolean, arg1: $Item$Properties$$Type)
 
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5489,8 +5945,8 @@ import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MagicMobEffect, $MagicMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.MagicMobEffect"
+import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$ParticleOptions, $ParticleOptions$$Type} from "net.minecraft.core.particles.ParticleOptions"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
 
@@ -5517,16 +5973,94 @@ export type $GuidingBoltEffect$$Type = ($GuidingBoltEffect);
 declare global {
 export type $GuidingBoltEffect_ = $GuidingBoltEffect$$Type;
 }}
-declare module "io.redspace.ironsspellbooks.item.weapons.HitherThitherWand" {
-import {$IPresetSpellContainer, $IPresetSpellContainer$$Type} from "io.redspace.ironsspellbooks.api.spells.IPresetSpellContainer"
+declare module "io.redspace.ironsspellbooks.api.entity.IMagicEntity" {
+import {$SyncedSpellData, $SyncedSpellData$$Type} from "io.redspace.ironsspellbooks.capabilities.magic.SyncedSpellData"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
+import {$EquipmentSlot, $EquipmentSlot$$Type} from "net.minecraft.world.entity.EquipmentSlot"
+import {$Projectile, $Projectile$$Type} from "net.minecraft.world.entity.projectile.Projectile"
+import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
+
+export interface $IMagicEntity {
+
+/**
+ * 
+ * @deprecated
+ */
+ "getItemBySlot"(arg0: $EquipmentSlot$$Type): $ItemStack
+ "getMagicData"(): $MagicData
+ "isCasting"(): boolean
+ "cancelCast"(): void
+ "castComplete"(): void
+ "isDrinkingPotion"(): boolean
+ "startDrinkingPotion"(): void
+ "setSyncedSpellData"(arg0: $SyncedSpellData$$Type): void
+ "initiateCastSpell"(arg0: $AbstractSpell$$Type, arg1: integer): void
+ "getHasUsedSingleAttack"(): boolean
+ "setHasUsedSingleAttack"(arg0: boolean): void
+ "setTeleportLocationBehindTarget"(arg0: integer): boolean
+ "setBurningDashDirectionData"(): void
+ "notifyDangerousProjectile"(arg0: $Projectile$$Type): void
+get "magicData"(): $MagicData
+get "casting"(): boolean
+get "drinkingPotion"(): boolean
+set "syncedSpellData"(value: $SyncedSpellData$$Type)
+get "hasUsedSingleAttack"(): boolean
+set "hasUsedSingleAttack"(value: boolean)
+set "teleportLocationBehindTarget"(value: integer)
+}
+
+export namespace $IMagicEntity {
+const probejs$$marker: never
+}
+export class $IMagicEntity$$Static implements $IMagicEntity {
+
+
+/**
+ * 
+ * @deprecated
+ */
+ "getItemBySlot"(arg0: $EquipmentSlot$$Type): $ItemStack
+ "getMagicData"(): $MagicData
+ "isCasting"(): boolean
+ "cancelCast"(): void
+ "castComplete"(): void
+ "isDrinkingPotion"(): boolean
+ "startDrinkingPotion"(): void
+ "setSyncedSpellData"(arg0: $SyncedSpellData$$Type): void
+ "initiateCastSpell"(arg0: $AbstractSpell$$Type, arg1: integer): void
+ "getHasUsedSingleAttack"(): boolean
+ "setHasUsedSingleAttack"(arg0: boolean): void
+ "setTeleportLocationBehindTarget"(arg0: integer): boolean
+ "setBurningDashDirectionData"(): void
+ "notifyDangerousProjectile"(arg0: $Projectile$$Type): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $IMagicEntity$$Type = ($IMagicEntity);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $IMagicEntity_ = $IMagicEntity$$Type;
+}}
+declare module "io.redspace.ironsspellbooks.item.weapons.HitherThitherWand" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
+import {$IPresetSpellContainer, $IPresetSpellContainer$$Type} from "io.redspace.ironsspellbooks.api.spells.IPresetSpellContainer"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$UniqueItem, $UniqueItem$$Type} from "io.redspace.ironsspellbooks.item.UniqueItem"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
@@ -5534,7 +6068,7 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 export class $HitherThitherWand extends $Item implements $IPresetSpellContainer, $UniqueItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -5542,8 +6076,9 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Item$Properties$$Type)
 
-public "initializeSpellContainer"(arg0: $ItemStack$$Type): void
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "initializeSpellContainer"(arg0: $ItemStack$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5559,8 +6094,8 @@ export type $HitherThitherWand_ = $HitherThitherWand$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.nature.EarthquakeSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -5568,8 +6103,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $EarthquakeSpell extends $AbstractSpell {
@@ -5577,19 +6112,19 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5604,17 +6139,17 @@ declare global {
 export type $EarthquakeSpell_ = $EarthquakeSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.ice.IceSpikesSpell" {
-import {$Mob, $Mob$$Type} from "net.minecraft.world.entity.Mob"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
+import {$Mob, $Mob$$Type} from "net.minecraft.world.entity.Mob"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $IceSpikesSpell extends $AbstractSpell {
@@ -5622,13 +6157,13 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
+public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
 public "shouldAIStopCasting"(arg0: integer, arg1: $Mob$$Type, arg2: $LivingEntity$$Type): boolean
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -5647,8 +6182,8 @@ export type $IceSpikesSpell_ = $IceSpikesSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.nature.TouchDigSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -5656,8 +6191,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $TouchDigSpell extends $AbstractSpell {
@@ -5665,17 +6200,17 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5692,8 +6227,8 @@ export type $TouchDigSpell_ = $TouchDigSpell$$Type;
 declare module "io.redspace.ironsspellbooks.spells.ender.PortalSpell" {
 import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$RecastInstance, $RecastInstance$$Type} from "io.redspace.ironsspellbooks.capabilities.magic.RecastInstance"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -5702,8 +6237,8 @@ import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 import {$ICastDataSerializable, $ICastDataSerializable$$Type} from "io.redspace.ironsspellbooks.api.spells.ICastDataSerializable"
@@ -5714,18 +6249,18 @@ static readonly "PORTAL_RECAST_COUNT": integer
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getRecastDuration"(arg0: integer, arg1: $LivingEntity$$Type): integer
-public "getPortalDuration"(arg0: integer, arg1: $LivingEntity$$Type): integer
-public "getSpellResource"(): $ResourceLocation
+public "getCastType"(): $CastType
+public static "getTargetBlock"(arg0: $Level$$Type, arg1: $LivingEntity$$Type, arg2: $ClipContext$Fluid$$Type, arg3: double): $BlockHitResult
+public "getRecastCount"(arg0: integer, arg1: $LivingEntity$$Type): integer
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
+public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
 public "getEmptyCastData"(): $ICastDataSerializable
 public "onRecastFinished"(arg0: $ServerPlayer$$Type, arg1: $RecastInstance$$Type, arg2: $RecastResult$$Type, arg3: $ICastDataSerializable$$Type): void
-public "getRecastCount"(arg0: integer, arg1: $LivingEntity$$Type): integer
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
-public static "getTargetBlock"(arg0: $Level$$Type, arg1: $LivingEntity$$Type, arg2: $ClipContext$Fluid$$Type, arg3: double): $BlockHitResult
+public "getRecastDuration"(arg0: integer, arg1: $LivingEntity$$Type): integer
+public "getPortalDuration"(arg0: integer, arg1: $LivingEntity$$Type): integer
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -5745,8 +6280,8 @@ export type $PortalSpell_ = $PortalSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.holy.FortifySpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -5754,8 +6289,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $FortifySpell extends $AbstractSpell {
@@ -5764,17 +6299,17 @@ static readonly "radius": float
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "onServerPreCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): void
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "onServerPreCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): void
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5789,16 +6324,20 @@ declare global {
 export type $FortifySpell_ = $FortifySpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.curios.FirewardRing" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$SimpleDescriptiveCurio, $SimpleDescriptiveCurio$$Type} from "io.redspace.ironsspellbooks.item.curios.SimpleDescriptiveCurio"
 
 export class $FirewardRing extends $SimpleDescriptiveCurio {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -5806,6 +6345,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5845,32 +6385,37 @@ declare global {
 export type $ISpellbook_ = $ISpellbook$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.curios.SimpleDescriptiveCurio" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$CurioBaseItem, $CurioBaseItem$$Type} from "io.redspace.ironsspellbooks.item.curios.CurioBaseItem"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export class $SimpleDescriptiveCurio extends $CurioBaseItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(arg0: $Item$Properties$$Type, arg1: string)
+constructor(arg0: $Item$Properties$$Type, arg1: StringJS)
 constructor(arg0: $Item$Properties$$Type)
 
 public "getDescription"(arg0: $ItemStack$$Type): $Component
-public "getDescriptionLines"(arg0: $ItemStack$$Type): $List<($Component)>
 public "getAttributesTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $Item$TooltipContext$$Type, arg2: $ItemStack$$Type): $List<($Component)>
+public "getDescriptionLines"(arg0: $ItemStack$$Type): $List<($Component)>
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5885,18 +6430,22 @@ declare global {
 export type $SimpleDescriptiveCurio_ = $SimpleDescriptiveCurio$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.curios.VisibilityRing" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$SlotContext, $SlotContext$$Type} from "top.theillusivec4.curios.api.SlotContext"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$SimpleDescriptiveCurio, $SimpleDescriptiveCurio$$Type} from "io.redspace.ironsspellbooks.item.curios.SimpleDescriptiveCurio"
 
 export class $VisibilityRing extends $SimpleDescriptiveCurio {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -5905,6 +6454,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "curioTick"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5920,8 +6470,8 @@ export type $VisibilityRing_ = $VisibilityRing$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.nature.PoisonSplashSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -5929,8 +6479,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $PoisonSplashSpell extends $AbstractSpell {
@@ -5938,19 +6488,19 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5987,9 +6537,9 @@ constructor(arg0: $MobEffectCategory$$Type, arg1: integer)
 constructor(arg0: $MobEffectCategory$$Type, arg1: integer, arg2: $ParticleOptions$$Type)
 
 public "onEffectAdded"(arg0: $LivingEntity$$Type, arg1: integer): void
+public "applyEffectTick"(arg0: $LivingEntity$$Type, arg1: integer): boolean
 public "onEffectRemoved"(arg0: $LivingEntity$$Type, arg1: integer): void
 public "onEffectStarted"(arg0: $LivingEntity$$Type, arg1: integer): void
-public "applyEffectTick"(arg0: $LivingEntity$$Type, arg1: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6002,6 +6552,39 @@ export type $MagicMobEffect$$Type = ($MagicMobEffect);
  */
 declare global {
 export type $MagicMobEffect_ = $MagicMobEffect$$Type;
+}}
+declare module "io.redspace.ironsspellbooks.item.weapons.StaffTier" {
+import {$IronsWeaponTier, $IronsWeaponTier$$Type} from "io.redspace.ironsspellbooks.item.weapons.IronsWeaponTier"
+import {$AttributeContainer, $AttributeContainer$$Type} from "io.redspace.ironsspellbooks.item.weapons.AttributeContainer"
+
+export class $StaffTier implements $IronsWeaponTier {
+static "BLOOD_STAFF": $StaffTier
+static "PYRIUM_STAFF": $StaffTier
+static "ICE_STAFF": $StaffTier
+static "LIGHTNING_ROD": $StaffTier
+static "GRAYBEARD": $StaffTier
+static "ARTIFICER": $StaffTier
+
+constructor(arg0: float, arg1: float, ...arg2: ($AttributeContainer$$Type)[])
+
+public "getSpeed"(): float
+public "getAttackDamageBonus"(): float
+public "getAdditionalAttributes"(): ($AttributeContainer)[]
+get "speed"(): float
+get "attackDamageBonus"(): float
+get "additionalAttributes"(): ($AttributeContainer)[]
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $StaffTier$$Type = ($StaffTier);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $StaffTier_ = $StaffTier$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.api.network.ISerializable" {
 import {$FriendlyByteBuf, $FriendlyByteBuf$$Type} from "net.minecraft.network.FriendlyByteBuf"
@@ -6043,8 +6626,8 @@ import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MagicMobEffect, $MagicMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.MagicMobEffect"
+import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
 
 export class $EchoingStrikesEffect extends $MagicMobEffect {
@@ -6054,8 +6637,8 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(arg0: $MobEffectCategory$$Type, arg1: integer)
 
-public static "getDamageModifier"(arg0: integer, arg1: $LivingEntity$$Type): float
 public static "createEcho"(arg0: $LivingDamageEvent$Post$$Type): void
+public static "getDamageModifier"(arg0: integer, arg1: $LivingEntity$$Type): float
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6073,12 +6656,11 @@ declare module "io.redspace.ironsspellbooks.fluids.NoopFluid" {
 import {$ReplacementMatch, $ReplacementMatch$$Type} from "dev.latvian.mods.kubejs.recipe.match.ReplacementMatch"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
 import {$BaseFlowingFluid, $BaseFlowingFluid$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $NoopFluid extends $BaseFlowingFluid {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -6087,10 +6669,9 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor(arg0: $BaseFlowingFluid$Properties$$Type)
 
-public "isSource"(arg0: $FluidState$$Type): boolean
 public "getAmount"(arg0: $FluidState$$Type): integer
+public "isSource"(arg0: $FluidState$$Type): boolean
 public "getBucket"(): $Item
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 get "bucket"(): $Item
 }
@@ -6108,8 +6689,8 @@ export type $NoopFluid_ = $NoopFluid$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.evocation.FangWardSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$Mob, $Mob$$Type} from "net.minecraft.world.entity.Mob"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
@@ -6118,8 +6699,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $FangWardSpell extends $AbstractSpell {
@@ -6127,17 +6708,17 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public "shouldAIStopCasting"(arg0: integer, arg1: $Mob$$Type, arg2: $LivingEntity$$Type): boolean
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "shouldAIStopCasting"(arg0: integer, arg1: $Mob$$Type, arg2: $LivingEntity$$Type): boolean
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6150,6 +6731,37 @@ export type $FangWardSpell$$Type = ($FangWardSpell);
  */
 declare global {
 export type $FangWardSpell_ = $FangWardSpell$$Type;
+}}
+declare module "io.redspace.ironsspellbooks.registries.PotionRegistry" {
+import {$IEventBus, $IEventBus$$Type} from "net.neoforged.bus.api.IEventBus"
+import {$Potion, $Potion$$Type} from "net.minecraft.world.item.alchemy.Potion"
+import {$DeferredRegister, $DeferredRegister$$Type} from "net.neoforged.neoforge.registries.DeferredRegister"
+import {$RegisterBrewingRecipesEvent, $RegisterBrewingRecipesEvent$$Type} from "net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent"
+import {$DeferredHolder, $DeferredHolder$$Type} from "net.neoforged.neoforge.registries.DeferredHolder"
+
+export class $PotionRegistry {
+static readonly "POTIONS": $DeferredRegister<($Potion)>
+static readonly "INSTANT_MANA_ONE": $DeferredHolder<($Potion), ($Potion)>
+static readonly "INSTANT_MANA_TWO": $DeferredHolder<($Potion), ($Potion)>
+static readonly "INSTANT_MANA_FOUR": $DeferredHolder<($Potion), ($Potion)>
+static readonly "INSTANT_MANA_THREE": $DeferredHolder<($Potion), ($Potion)>
+
+constructor()
+
+public static "register"(arg0: $IEventBus$$Type): void
+public static "addRecipes"(arg0: $RegisterBrewingRecipesEvent$$Type): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $PotionRegistry$$Type = ($PotionRegistry);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $PotionRegistry_ = $PotionRegistry$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.api.spells.IPresetSpellContainer" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
@@ -6182,19 +6794,23 @@ declare global {
 export type $IPresetSpellContainer_ = $IPresetSpellContainer$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.curios.FrostwardRing" {
-import {$SlotContext, $SlotContext$$Type} from "top.theillusivec4.curios.api.SlotContext"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$SimpleDescriptiveCurio, $SimpleDescriptiveCurio$$Type} from "io.redspace.ironsspellbooks.item.curios.SimpleDescriptiveCurio"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$SlotContext, $SlotContext$$Type} from "top.theillusivec4.curios.api.SlotContext"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$SimpleDescriptiveCurio, $SimpleDescriptiveCurio$$Type} from "io.redspace.ironsspellbooks.item.curios.SimpleDescriptiveCurio"
 
 export class $FrostwardRing extends $SimpleDescriptiveCurio {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -6202,8 +6818,9 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "canWalkOnPowderedSnow"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): boolean
 public "curioTick"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): void
+public "canWalkOnPowderedSnow"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6219,8 +6836,8 @@ export type $FrostwardRing_ = $FrostwardRing$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.api.attribute.MagicRangedAttribute" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
-import {$AttributeModifier$Operation, $AttributeModifier$Operation$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$AttributeModifier$Operation, $AttributeModifier$Operation$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$IMagicAttribute, $IMagicAttribute$$Type} from "io.redspace.ironsspellbooks.api.attribute.IMagicAttribute"
@@ -6231,7 +6848,7 @@ export class $MagicRangedAttribute extends $RangedAttribute implements $IMagicAt
 static readonly "CODEC": $Codec<($Holder<($Attribute)>)>
 static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holder<($Attribute)>)>
 
-constructor(arg0: string, arg1: double, arg2: double, arg3: double)
+constructor(arg0: StringJS, arg1: double, arg2: double, arg3: double)
 
 public static "isNullOrAddition"(arg0: $AttributeModifier$Operation$$Type): boolean
 }
@@ -6256,23 +6873,23 @@ import {$INBTSerializable, $INBTSerializable$$Type} from "net.neoforged.neoforge
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 
 export class $SpellSelection implements $ISerializable, $INBTSerializable<($CompoundTag)> {
- "lastEquipmentSlot": string
- "equipmentSlot": string
+ "lastEquipmentSlot": StringJS
+ "equipmentSlot": StringJS
  "index": integer
  "lastIndex": integer
 
-constructor(arg0: string, arg1: integer, arg2: string, arg3: integer)
-constructor(arg0: string, arg1: integer)
+constructor(arg0: StringJS, arg1: integer, arg2: StringJS, arg3: integer)
+constructor(arg0: StringJS, arg1: integer)
 constructor()
 
-public "toString"(): string
+public "toString"(): StringJS
 public "isEmpty"(): boolean
 public "deserializeNBT"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): void
 public "deserializeNBT"(arg0: $HolderLookup$Provider$$Type, arg1: $Tag$$Type): void
 public "serializeNBT"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
+public "makeSelection"(arg0: StringJS, arg1: integer): void
 public "writeToBuffer"(arg0: $FriendlyByteBuf$$Type): void
 public "readFromBuffer"(arg0: $FriendlyByteBuf$$Type): void
-public "makeSelection"(arg0: string, arg1: integer): void
 get "empty"(): boolean
 }
 /**
@@ -6318,16 +6935,16 @@ export type $BloodCauldronBlock$CookExecution_ = $BloodCauldronBlock$CookExecuti
 }}
 declare module "io.redspace.ironsspellbooks.spells.ice.IceTombSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $IceTombSpell extends $AbstractSpell {
@@ -6336,13 +6953,13 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 constructor()
 
 public "getDuration"(arg0: integer, arg1: $LivingEntity$$Type): float
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getHealing"(arg0: integer, arg1: $LivingEntity$$Type): float
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
 public "getCastStartAnimation"(): $AnimationHolder
-public "getHealing"(arg0: integer, arg1: $LivingEntity$$Type): float
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -6361,25 +6978,28 @@ declare global {
 export type $IceTombSpell_ = $IceTombSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.SimpleDescriptiveBlockItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $SimpleDescriptiveBlockItem extends $BlockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -6398,6 +7018,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6414,8 +7035,8 @@ export type $SimpleDescriptiveBlockItem_ = $SimpleDescriptiveBlockItem$$Type;
 declare module "io.redspace.ironsspellbooks.spells.holy.DivineSmiteSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -6424,8 +7045,8 @@ import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $DivineSmiteSpell extends $AbstractSpell {
@@ -6433,22 +7054,22 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getEffectiveCastTime"(arg0: integer, arg1: $LivingEntity$$Type): integer
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 public "getCastStartAnimation"(): $AnimationHolder
 public "getCastFinishAnimation"(): $AnimationHolder
 public "canBeInterrupted"(arg0: $Player$$Type): boolean
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 get "castFinishAnimation"(): $AnimationHolder
 }
@@ -6466,8 +7087,8 @@ export type $DivineSmiteSpell_ = $DivineSmiteSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.fire.BlazeStormSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -6476,8 +7097,8 @@ import {$SpellDamageSource, $SpellDamageSource$$Type} from "io.redspace.ironsspe
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
@@ -6486,22 +7107,22 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getDamageSource"(arg0: $Entity$$Type, arg1: $Entity$$Type): $SpellDamageSource
-public "onServerCastTick"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public "shootBlazeFireball"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type): void
+public "getCastType"(): $CastType
 public "getCastTime"(arg0: integer): integer
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "onServerCastTick"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): void
+public "getDamageSource"(arg0: $Entity$$Type, arg1: $Entity$$Type): $SpellDamageSource
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
+public "shootBlazeFireball"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type): void
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6517,8 +7138,8 @@ export type $BlazeStormSpell_ = $BlazeStormSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.fire.FireBreathSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$Mob, $Mob$$Type} from "net.minecraft.world.entity.Mob"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
@@ -6528,8 +7149,8 @@ import {$SpellDamageSource, $SpellDamageSource$$Type} from "io.redspace.ironsspe
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
@@ -6538,19 +7159,19 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
-public "getDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getDamageSource"(arg0: $Entity$$Type, arg1: $Entity$$Type): $SpellDamageSource
 public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
 public "getDefaultConfig"(): $DefaultConfig
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 public "shouldAIStopCasting"(arg0: integer, arg1: $Mob$$Type, arg2: $LivingEntity$$Type): boolean
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6597,13 +7218,17 @@ declare global {
 export type $RendEffect_ = $RendEffect$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.api.item.weapons.MagicSwordItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$IPresetSpellContainer, $IPresetSpellContainer$$Type} from "io.redspace.ironsspellbooks.api.spells.IPresetSpellContainer"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$ExtendedSwordItem, $ExtendedSwordItem$$Type} from "io.redspace.ironsspellbooks.api.item.weapons.ExtendedSwordItem"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$SpellData, $SpellData$$Type} from "io.redspace.ironsspellbooks.api.spells.SpellData"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
@@ -6613,7 +7238,7 @@ import {$SpellDataRegistryHolder, $SpellDataRegistryHolder$$Type} from "io.redsp
 export class $MagicSwordItem extends $ExtendedSwordItem implements $IPresetSpellContainer {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -6622,8 +7247,9 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Tier$$Type, arg1: $Item$Properties$$Type, arg2: ($SpellDataRegistryHolder$$Type)[])
 
-public "initializeSpellContainer"(arg0: $ItemStack$$Type): void
 public "getSpells"(): $List<($SpellData)>
+public "initializeSpellContainer"(arg0: $ItemStack$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "spells"(): $List<($SpellData)>
 }
 /**
@@ -6638,11 +7264,53 @@ export type $MagicSwordItem$$Type = ($MagicSwordItem);
 declare global {
 export type $MagicSwordItem_ = $MagicSwordItem$$Type;
 }}
+declare module "io.redspace.ironsspellbooks.spells.NoneSpell" {
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Optional, $Optional$$Type} from "java.util.Optional"
+import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
+import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
+import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
+import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
+
+export class $NoneSpell extends $AbstractSpell {
+static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
+
+constructor()
+
+public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
+get "castType"(): $CastType
+get "spellResource"(): $ResourceLocation
+get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $NoneSpell$$Type = ($NoneSpell);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $NoneSpell_ = $NoneSpell$$Type;
+}}
 declare module "io.redspace.ironsspellbooks.spells.nature.PoisonArrowSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -6650,8 +7318,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $PoisonArrowSpell extends $AbstractSpell {
@@ -6659,22 +7327,22 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public "getCastStartAnimation"(): $AnimationHolder
-public "getCastFinishAnimation"(): $AnimationHolder
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getArrowDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
 public "getAOEDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
+public "getCastStartAnimation"(): $AnimationHolder
+public "getCastFinishAnimation"(): $AnimationHolder
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 get "castFinishAnimation"(): $AnimationHolder
 }
@@ -6690,13 +7358,76 @@ export type $PoisonArrowSpell$$Type = ($PoisonArrowSpell);
 declare global {
 export type $PoisonArrowSpell_ = $PoisonArrowSpell$$Type;
 }}
+declare module "io.redspace.ironsspellbooks.item.armor.InfernalSorcererArmorItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
+import {$GeoArmorRenderer, $GeoArmorRenderer$$Type} from "software.bernie.geckolib.renderer.GeoArmorRenderer"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
+import {$List, $List$$Type} from "java.util.List"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
+import {$GeoAnimatable, $GeoAnimatable$$Type} from "software.bernie.geckolib.animatable.GeoAnimatable"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
+import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$ImbuableChestplateArmorItem, $ImbuableChestplateArmorItem$$Type} from "io.redspace.ironsspellbooks.item.armor.ImbuableChestplateArmorItem"
+import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
+import {$DispenseItemBehavior, $DispenseItemBehavior$$Type} from "net.minecraft.core.dispenser.DispenseItemBehavior"
+import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.ArmorItem$Type"
+
+export class $InfernalSorcererArmorItem extends $ImbuableChestplateArmorItem {
+static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
+static readonly "DEFAULT_MAX_STACK_SIZE": integer
+ "descriptionId": StringJS
+static readonly "MAX_BAR_WIDTH": integer
+static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
+static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
+static readonly "DISPENSE_ITEM_BEHAVIOR": $DispenseItemBehavior
+static readonly "COOLDOWN_TICKS": integer
+ "defaultModifiers": $Supplier<($ItemAttributeModifiers)>
+static readonly "BY_BLOCK": $Map<($Block), ($Item)>
+
+constructor(arg0: $ArmorItem$Type$$Type, arg1: $Item$Properties$$Type)
+
+public "supplyRenderer"(): $GeoArmorRenderer<(any)>
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "getId"(arg0: $ItemStack$$Type): long
+public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
+public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
+public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $InfernalSorcererArmorItem$$Type = ($InfernalSorcererArmorItem);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $InfernalSorcererArmorItem_ = $InfernalSorcererArmorItem$$Type;
+}}
 declare module "io.redspace.ironsspellbooks.item.armor.PyromancerArmorItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$GeoArmorRenderer, $GeoArmorRenderer$$Type} from "software.bernie.geckolib.renderer.GeoArmorRenderer"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$IArmorCapeProvider, $IArmorCapeProvider$$Type} from "io.redspace.ironsspellbooks.item.armor.IArmorCapeProvider"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$GeoAnimatable, $GeoAnimatable$$Type} from "software.bernie.geckolib.animatable.GeoAnimatable"
@@ -6711,7 +7442,7 @@ import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.A
 export class $PyromancerArmorItem extends $ImbuableChestplateArmorItem implements $IArmorCapeProvider {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -6727,6 +7458,7 @@ public static "getId"(arg0: $ItemStack$$Type): long
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "capeResourceLocation"(): $ResourceLocation
 }
 /**
@@ -6743,8 +7475,8 @@ export type $PyromancerArmorItem_ = $PyromancerArmorItem$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.nature.PoisonBreathSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$Mob, $Mob$$Type} from "net.minecraft.world.entity.Mob"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
@@ -6753,8 +7485,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $PoisonBreathSpell extends $AbstractSpell {
@@ -6762,20 +7494,20 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
-public "getDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public "shouldAIStopCasting"(arg0: integer, arg1: $Mob$$Type, arg2: $LivingEntity$$Type): boolean
+public "getDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
+public "shouldAIStopCasting"(arg0: integer, arg1: $Mob$$Type, arg2: $LivingEntity$$Type): boolean
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6802,9 +7534,9 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($NoAdd
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($NoAdditionSmithingTransformRecipe)>
 public "codec"(): $MapCodec<($NoAdditionSmithingTransformRecipe)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($NoAdditionSmithingTransformRecipe)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6822,6 +7554,7 @@ declare module "io.redspace.ironsspellbooks.effect.EvasionEffect" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
 import {$MobEffectInstance, $MobEffectInstance$$Type} from "net.minecraft.world.effect.MobEffectInstance"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ISyncedMobEffect, $ISyncedMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.ISyncedMobEffect"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$CustomDescriptionMobEffect, $CustomDescriptionMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.CustomDescriptionMobEffect"
 import {$MobEffect, $MobEffect$$Type} from "net.minecraft.world.effect.MobEffect"
@@ -6834,17 +7567,17 @@ import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.Liv
 import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
 
-export class $EvasionEffect extends $CustomDescriptionMobEffect {
+export class $EvasionEffect extends $CustomDescriptionMobEffect implements $ISyncedMobEffect {
 static readonly "CODEC": $Codec<($Holder<($MobEffect)>)>
 readonly "attributeModifiers": $Map<($Holder<($Attribute)>), ($MobEffect$AttributeTemplate)>
 static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holder<($MobEffect)>)>
 
 constructor(arg0: $MobEffectCategory$$Type, arg1: integer)
 
-public "getDescriptionLine"(arg0: $MobEffectInstance$$Type): $Component
 public "onEffectAdded"(arg0: $LivingEntity$$Type, arg1: integer): void
-public "onEffectRemoved"(arg0: $LivingEntity$$Type, arg1: integer): void
 public static "doEffect"(arg0: $LivingEntity$$Type, arg1: $DamageSource$$Type): boolean
+public "getDescriptionLine"(arg0: $MobEffectInstance$$Type): $Component
+public "clientTick"(arg0: $LivingEntity$$Type, arg1: $MobEffectInstance$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6865,8 +7598,8 @@ import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MagicMobEffect, $MagicMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.MagicMobEffect"
+import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect, $MobEffect$$Type} from "net.minecraft.world.effect.MobEffect"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
@@ -6878,8 +7611,8 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(arg0: $MobEffectCategory$$Type, arg1: integer)
 
-public "shouldApplyEffectTickThisTick"(arg0: integer, arg1: integer): boolean
 public "applyEffectTick"(arg0: $LivingEntity$$Type, arg1: integer): boolean
+public "shouldApplyEffectTickThisTick"(arg0: integer, arg1: integer): boolean
 public static "getDamageFromAmplifier"(arg0: integer, arg1: $LivingEntity$$Type): float
 }
 /**
@@ -6896,8 +7629,8 @@ export type $ThunderstormEffect_ = $ThunderstormEffect$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.fire.FlamingBarrageSpell" {
 import {$RecastInstance, $RecastInstance$$Type} from "io.redspace.ironsspellbooks.capabilities.magic.RecastInstance"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -6905,8 +7638,8 @@ import {$RecastResult, $RecastResult$$Type} from "io.redspace.ironsspellbooks.ca
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 import {$ICastDataSerializable, $ICastDataSerializable$$Type} from "io.redspace.ironsspellbooks.api.spells.ICastDataSerializable"
@@ -6916,15 +7649,15 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
+public "getCastType"(): $CastType
+public "getRecastCount"(arg0: integer, arg1: $LivingEntity$$Type): integer
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
+public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
 public "getEmptyCastData"(): $ICastDataSerializable
 public "onRecastFinished"(arg0: $ServerPlayer$$Type, arg1: $RecastInstance$$Type, arg2: $RecastResult$$Type, arg3: $ICastDataSerializable$$Type): void
-public "getRecastCount"(arg0: integer, arg1: $LivingEntity$$Type): integer
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -6944,8 +7677,8 @@ export type $FlamingBarrageSpell_ = $FlamingBarrageSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.holy.GuidingBoltSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -6953,8 +7686,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $GuidingBoltSpell extends $AbstractSpell {
@@ -6962,18 +7695,18 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6990,8 +7723,8 @@ export type $GuidingBoltSpell_ = $GuidingBoltSpell$$Type;
 declare module "io.redspace.ironsspellbooks.spells.eldritch.TelekinesisSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -7000,8 +7733,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $TelekinesisSpell extends $AbstractSpell {
@@ -7009,25 +7742,25 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "onServerCastTick"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public "getCastStartAnimation"(): $AnimationHolder
-public "getTargetingColor"(): $Vector3f
+public "getCastType"(): $CastType
 public "getCastTime"(arg0: integer): integer
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getTargetingColor"(): $Vector3f
+public "onServerCastTick"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): void
+public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
+public "getCastStartAnimation"(): $AnimationHolder
 get "castType"(): $CastType
-get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
-get "defaultConfig"(): $DefaultConfig
-get "castStartAnimation"(): $AnimationHolder
 get "targetingColor"(): $Vector3f
+get "spellResource"(): $ResourceLocation
+get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
+get "castStartAnimation"(): $AnimationHolder
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7044,14 +7777,14 @@ export type $TelekinesisSpell_ = $TelekinesisSpell$$Type;
 declare module "io.redspace.ironsspellbooks.spells.ender.MagicMissileSpell" {
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
+import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $MagicMissileSpell extends $AbstractSpell {
@@ -7059,11 +7792,11 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -7083,14 +7816,14 @@ export type $MagicMissileSpell_ = $MagicMissileSpell$$Type;
 declare module "io.redspace.ironsspellbooks.spells.lightning.ChainLightningSpell" {
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
+import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $ChainLightningSpell extends $AbstractSpell {
@@ -7100,13 +7833,13 @@ constructor()
 
 public "getMaxConnections"(arg0: integer, arg1: $LivingEntity$$Type): integer
 public "getRange"(arg0: integer, arg1: $LivingEntity$$Type): float
-public "getCastType"(): $CastType
-public "getDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
-public "getDefaultConfig"(): $DefaultConfig
+public "getDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -7128,11 +7861,11 @@ import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbo
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
+import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $SummonEnderChestSpell extends $AbstractSpell {
@@ -7140,8 +7873,8 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
 public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
 public "getCastStartAnimation"(): $AnimationHolder
@@ -7178,18 +7911,18 @@ import {$IFluidHandler, $IFluidHandler$$Type} from "net.neoforged.neoforge.fluid
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
-import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$WorldlyContainer, $WorldlyContainer$$Type} from "net.minecraft.world.WorldlyContainer"
 import {$TrackedData, $TrackedData$$Type} from "dev.corgitaco.dataanchor.data.TrackedData"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.dataanchor.data.registry.TrackedDataRegistry"
 import {$InkItem, $InkItem$$Type} from "io.redspace.ironsspellbooks.item.InkItem"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
-import {$Container, $Container$$Type} from "net.minecraft.world.Container"
 import {$ItemInteractionResult, $ItemInteractionResult$$Type} from "net.minecraft.world.ItemInteractionResult"
-import {$ClientboundBlockEntityDataPacket, $ClientboundBlockEntityDataPacket$$Type} from "net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket"
+import {$Container, $Container$$Type} from "net.minecraft.world.Container"
 import {$Packet, $Packet$$Type} from "net.minecraft.network.protocol.Packet"
+import {$ClientboundBlockEntityDataPacket, $ClientboundBlockEntityDataPacket$$Type} from "net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket"
 import {$Connection, $Connection$$Type} from "net.minecraft.network.Connection"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 
@@ -7197,39 +7930,39 @@ export class $AlchemistCauldronTile extends $BlockEntity implements $WorldlyCont
 static "INPUT_SIZE": integer
 readonly "inputItems": $NonNullList<($ItemStack)>
  "fluidInventory": $AlchemistCauldronTile$AlchemistCauldronFluidHandler
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
  "fluidCapability": $IFluidHandler
 
 constructor(arg0: $BlockPos$$Type, arg1: $BlockState$$Type)
 
 public "removeItem"(arg0: integer, arg1: integer): $ItemStack
-public "isEmpty"(): boolean
 public "getItem"(arg0: integer): $ItemStack
-public "refreshCapabilities"(): void
-public static "getInkFromScroll"(arg0: $ItemStack$$Type): $InkItem
-public "canPlaceItemThroughFace"(arg0: integer, arg1: $ItemStack$$Type, arg2: $Direction$$Type): boolean
-public "tryExecuteRecipeInteractions"(arg0: $Level$$Type, arg1: $ItemStack$$Type): $ItemStack
-public "setItem"(arg0: integer, arg1: $ItemStack$$Type): void
+public "isEmpty"(): boolean
+public "drops"(): void
 public static "serverTick"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $AlchemistCauldronTile$$Type): void
-public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "setItem"(arg0: integer, arg1: $ItemStack$$Type): void
 public "clearContent"(): void
+public "setChanged"(): void
+public "stillValid"(arg0: $Player$$Type): boolean
+public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "isBoiling"(arg0: $BlockState$$Type): boolean
+public "tryMeltInput"(arg0: $ItemStack$$Type): void
+public "isValidInput"(arg0: $ItemStack$$Type): boolean
+public "getFluidAmount"(): integer
+public "isBrewable"(arg0: $ItemStack$$Type): boolean
 public "getUpdateTag"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
 public "onDataPacket"(arg0: $Connection$$Type, arg1: $ClientboundBlockEntityDataPacket$$Type, arg2: $HolderLookup$Provider$$Type): void
 public "handleUse"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $InteractionHand$$Type): $ItemInteractionResult
-public "isBrewable"(arg0: $ItemStack$$Type): boolean
-public "stillValid"(arg0: $Player$$Type): boolean
-public "setChanged"(): void
-public "drops"(): void
+public "handleUpdateTag"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "getSlotsForFace"(arg0: $Direction$$Type): (integer)[]
+public "canTakeItemThroughFace"(arg0: integer, arg1: $ItemStack$$Type, arg2: $Direction$$Type): boolean
 public "getContainerSize"(): integer
 public "removeItemNoUpdate"(arg0: integer): $ItemStack
 public "getUpdatePacket"(): $Packet<(any)>
-public "getSlotsForFace"(arg0: $Direction$$Type): (integer)[]
-public "canTakeItemThroughFace"(arg0: integer, arg1: $ItemStack$$Type, arg2: $Direction$$Type): boolean
-public "handleUpdateTag"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "isValidInput"(arg0: $ItemStack$$Type): boolean
-public "getFluidAmount"(): integer
-public "isBoiling"(arg0: $BlockState$$Type): boolean
-public "tryMeltInput"(arg0: $ItemStack$$Type): void
+public "tryExecuteRecipeInteractions"(arg0: $Level$$Type, arg1: $ItemStack$$Type): $ItemStack
+public "refreshCapabilities"(): void
+public static "getInkFromScroll"(arg0: $ItemStack$$Type): $InkItem
+public "canPlaceItemThroughFace"(arg0: integer, arg1: $ItemStack$$Type, arg2: $Direction$$Type): boolean
 public "startOpen"(arg0: $Player$$Type): void
 public "stopOpen"(arg0: $Player$$Type): void
 public "canPlaceItem"(arg0: integer, arg1: $ItemStack$$Type): boolean
@@ -7237,17 +7970,16 @@ public "countItem"(arg0: $Item$$Type): integer
 public "hasAnyOf"(arg0: $Set$$Type<($Item$$Type)>): boolean
 public "hasAnyMatching"(arg0: $Predicate$$Type<($ItemStack)>): boolean
 public "canTakeItem"(arg0: $Container$$Type, arg1: integer, arg2: $ItemStack$$Type): boolean
-public static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type, arg2: float): boolean
 public static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type): boolean
-public "getMaxStackSize"(arg0: $ItemStack$$Type): integer
+public static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type, arg2: float): boolean
 public "getMaxStackSize"(): integer
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+public "getMaxStackSize"(arg0: $ItemStack$$Type): integer
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "tryClear"(arg0: any): void
-public "canReceiveTransferCooldown"(): boolean
 public "setTransferCooldown"(arg0: long): void
+public "canReceiveTransferCooldown"(): boolean
 public "lithium$itemInsertionTestRequiresStackSize1"(): boolean
-public "self"(): $Container
 public "getBlock"(arg0: $Level$$Type): $BlockContainerJS
 public "isMutable"(): boolean
 public "getSlots"(): integer
@@ -7256,26 +7988,27 @@ public "clear"(): void
 public "getWidth"(): integer
 public "getHeight"(): integer
 public "setChanged"(): void
+public "self"(): $Container
 public "setStackInSlot"(arg0: integer, arg1: $ItemStack$$Type): void
 public "getStackInSlot"(arg0: integer): $ItemStack
 public "extractItem"(arg0: integer, arg1: integer, arg2: boolean): $ItemStack
 public "getSlotLimit"(arg0: integer): integer
 public "isItemValid"(arg0: integer, arg1: $ItemStack$$Type): boolean
 public "asContainer"(): $Container
-public "isEmpty"(): boolean
 public "insertItem"(arg0: $ItemStack$$Type, arg1: boolean): $ItemStack
 public "clear"(arg0: $ItemPredicate$$Type): void
-public "find"(arg0: $ItemPredicate$$Type): integer
 public "find"(): integer
+public "find"(arg0: $ItemPredicate$$Type): integer
 public "count"(): integer
 public "count"(arg0: $ItemPredicate$$Type): integer
+public "isEmpty"(): boolean
 public "countNonEmpty"(arg0: $ItemPredicate$$Type): integer
 public "countNonEmpty"(): integer
 public "getAllItems"(): $List<($ItemStack)>
 get "empty"(): boolean
+get "fluidAmount"(): integer
 get "containerSize"(): integer
 get "updatePacket"(): $Packet<(any)>
-get "fluidAmount"(): integer
 get "maxStackSize"(): integer
 set "transferCooldown"(value: long)
 get "mutable"(): boolean
@@ -7308,8 +8041,8 @@ import {$RecastResult, $RecastResult$$Type} from "io.redspace.ironsspellbooks.ca
 import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 import {$ICastDataSerializable, $ICastDataSerializable$$Type} from "io.redspace.ironsspellbooks.api.spells.ICastDataSerializable"
@@ -7319,21 +8052,21 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getRecastCount"(arg0: integer, arg1: $LivingEntity$$Type): integer
 public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
 public "getDefaultConfig"(): $DefaultConfig
 public "getEmptyCastData"(): $ICastDataSerializable
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 public "onRecastFinished"(arg0: $ServerPlayer$$Type, arg1: $RecastInstance$$Type, arg2: $RecastResult$$Type, arg3: $ICastDataSerializable$$Type): void
-public "getRecastCount"(arg0: integer, arg1: $LivingEntity$$Type): integer
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
 get "emptyCastData"(): $ICastDataSerializable
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7348,11 +8081,15 @@ declare global {
 export type $SummonHorseSpell_ = $SummonHorseSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.armor.GoldCrownArmorItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$GeoArmorRenderer, $GeoArmorRenderer$$Type} from "software.bernie.geckolib.renderer.GeoArmorRenderer"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$GeoAnimatable, $GeoAnimatable$$Type} from "software.bernie.geckolib.animatable.GeoAnimatable"
@@ -7367,7 +8104,7 @@ import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.A
 export class $GoldCrownArmorItem extends $ExtendedArmorItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -7382,6 +8119,7 @@ public static "getId"(arg0: $ItemStack$$Type): long
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7396,15 +8134,17 @@ declare global {
 export type $GoldCrownArmorItem_ = $GoldCrownArmorItem$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.WaywardCompass" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$GlobalPos, $GlobalPos$$Type} from "net.minecraft.core.GlobalPos"
@@ -7415,7 +8155,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $WaywardCompass extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -7424,10 +8164,11 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public static "getCatacombsLocation"(arg0: $Entity$$Type, arg1: $ItemStack$$Type): $GlobalPos
 public "onCraftedBy"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Player$$Type): void
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "missingWarning"(arg0: $ItemStack$$Type): boolean
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "getCatacombsLocation"(arg0: $Entity$$Type, arg1: $ItemStack$$Type): $GlobalPos
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7442,21 +8183,25 @@ declare global {
 export type $WaywardCompass_ = $WaywardCompass$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.CursedDollSpellbookItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$SpellBook, $SpellBook$$Type} from "io.redspace.ironsspellbooks.item.SpellBook"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export class $CursedDollSpellbookItem extends $SpellBook {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -7464,8 +8209,9 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "initializeSpellContainer"(arg0: $ItemStack$$Type): void
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "initializeSpellContainer"(arg0: $ItemStack$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7482,8 +8228,8 @@ export type $CursedDollSpellbookItem_ = $CursedDollSpellbookItem$$Type;
 declare module "io.redspace.ironsspellbooks.spells.ender.BlackHoleSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -7491,8 +8237,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $BlackHoleSpell extends $AbstractSpell {
@@ -7500,21 +8246,21 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
 public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 public "getCastStartAnimation"(): $AnimationHolder
 public "getCastFinishAnimation"(): $AnimationHolder
 public "stopSoundOnCancel"(): boolean
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 get "castFinishAnimation"(): $AnimationHolder
 }
@@ -7541,23 +8287,23 @@ import {$ItemAbility, $ItemAbility$$Type} from "net.neoforged.neoforge.common.It
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $BrazierBlock extends $Block implements $SimpleWaterloggedBlock {
 static readonly "RENDER_SHAPE": $VoxelShape
@@ -7576,7 +8322,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -7613,8 +8359,8 @@ export type $BrazierBlock_ = $BrazierBlock$$Type;
 declare module "io.redspace.ironsspellbooks.spells.ice.FrostwaveSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -7622,8 +8368,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $FrostwaveSpell extends $AbstractSpell {
@@ -7632,19 +8378,19 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 constructor()
 
 public "getDuration"(arg0: integer, arg1: $LivingEntity$$Type): integer
-public "getRadius"(arg0: integer, arg1: $LivingEntity$$Type): float
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getRadius"(arg0: integer, arg1: $LivingEntity$$Type): float
 public "getSpellResource"(): $ResourceLocation
-public "getCastStartSound"(): $Optional<($SoundEvent)>
 public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
 public "getCastStartAnimation"(): $AnimationHolder
 public "getCastFinishAnimation"(): $AnimationHolder
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 get "castFinishAnimation"(): $AnimationHolder
 }
@@ -7661,32 +8407,36 @@ declare global {
 export type $FrostwaveSpell_ = $FrostwaveSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.curios.PassiveAbilityCurio" {
-import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$SimpleDescriptiveCurio, $SimpleDescriptiveCurio$$Type} from "io.redspace.ironsspellbooks.item.curios.SimpleDescriptiveCurio"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$SimpleDescriptiveCurio, $SimpleDescriptiveCurio$$Type} from "io.redspace.ironsspellbooks.item.curios.SimpleDescriptiveCurio"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 
 export class $PassiveAbilityCurio extends $SimpleDescriptiveCurio {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(arg0: $Item$Properties$$Type, arg1: string)
+constructor(arg0: $Item$Properties$$Type, arg1: StringJS)
 
 public "getDescriptionLines"(arg0: $ItemStack$$Type): $List<($Component)>
 public "tryProcCooldown"(arg0: $Player$$Type): boolean
 public "getCooldownTicks"(arg0: $LivingEntity$$Type): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7703,33 +8453,33 @@ export type $PassiveAbilityCurio_ = $PassiveAbilityCurio$$Type;
 declare module "io.redspace.ironsspellbooks.api.events.SpellOnCastEvent" {
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$SchoolType, $SchoolType$$Type} from "io.redspace.ironsspellbooks.api.spells.SchoolType"
-import {$PlayerEvent, $PlayerEvent$$Type} from "net.neoforged.neoforge.event.entity.player.PlayerEvent"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
+import {$PlayerEvent, $PlayerEvent$$Type} from "net.neoforged.neoforge.event.entity.player.PlayerEvent"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 
 export class $SpellOnCastEvent extends $PlayerEvent {
 
-constructor(arg0: $Player$$Type, arg1: string, arg2: integer, arg3: integer, arg4: $SchoolType$$Type, arg5: $CastSource$$Type)
+constructor(arg0: $Player$$Type, arg1: StringJS, arg2: integer, arg3: integer, arg4: $SchoolType$$Type, arg5: $CastSource$$Type)
 
-public "getOriginalSpellLevel"(): integer
-public "getOriginalManaCost"(): integer
-public "getManaCost"(): integer
 public "getSchoolType"(): $SchoolType
 public "getSpellLevel"(): integer
-public "getSpellId"(): string
 public "getCastSource"(): $CastSource
+public "getManaCost"(): integer
 public "setSpellLevel"(arg0: integer): void
 public "setManaCost"(arg0: integer): void
+public "getSpellId"(): StringJS
+public "getOriginalSpellLevel"(): integer
+public "getOriginalManaCost"(): integer
 public "getEntity"(): $Entity
-get "originalSpellLevel"(): integer
-get "originalManaCost"(): integer
-get "manaCost"(): integer
 get "schoolType"(): $SchoolType
 get "spellLevel"(): integer
-get "spellId"(): string
 get "castSource"(): $CastSource
+get "manaCost"(): integer
 set "spellLevel"(value: integer)
 set "manaCost"(value: integer)
+get "spellId"(): StringJS
+get "originalSpellLevel"(): integer
+get "originalManaCost"(): integer
 get "entity"(): $Entity
 }
 /**
@@ -7745,13 +8495,16 @@ declare global {
 export type $SpellOnCastEvent_ = $SpellOnCastEvent$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.curios.CurioBaseItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$UUID, $UUID$$Type} from "java.util.UUID"
 import {$ICurio$DropRule, $ICurio$DropRule$$Type} from "top.theillusivec4.curios.api.type.capability.ICurio$DropRule"
 import {$List, $List$$Type} from "java.util.List"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$AttributeContainer, $AttributeContainer$$Type} from "io.redspace.ironsspellbooks.item.weapons.AttributeContainer"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$SlotContext, $SlotContext$$Type} from "top.theillusivec4.curios.api.SlotContext"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$ICurioItem, $ICurioItem$$Type} from "top.theillusivec4.curios.api.type.capability.ICurioItem"
@@ -7763,6 +8516,7 @@ import {$LootContext, $LootContext$$Type} from "net.minecraft.world.level.storag
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Multimap, $Multimap$$Type} from "com.google.common.collect.Multimap"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$EnderMan, $EnderMan$$Type} from "net.minecraft.world.entity.monster.EnderMan"
 import {$DamageSource, $DamageSource$$Type} from "net.minecraft.world.damagesource.DamageSource"
@@ -7773,7 +8527,7 @@ import {$ICurio$SoundInfo, $ICurio$SoundInfo$$Type} from "top.theillusivec4.curi
 export class $CurioBaseItem extends $Item implements $ICurioItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -7781,36 +8535,13 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Item$Properties$$Type)
 
-public "withAttributes"(arg0: string, ...arg1: ($AttributeContainer$$Type)[]): $CurioBaseItem
-public "getEquipSound"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): $ICurio$SoundInfo
 public "isEquippedBy"(arg0: $LivingEntity$$Type): boolean
+public "getEquipSound"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): $ICurio$SoundInfo
+public "withAttributes"(arg0: StringJS, ...arg1: ($AttributeContainer$$Type)[]): $CurioBaseItem
 public "getAttributeModifiers"(arg0: $SlotContext$$Type, arg1: $ResourceLocation$$Type, arg2: $ItemStack$$Type): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
 public "withSpellbookAttributes"(...arg0: ($AttributeContainer$$Type)[]): $CurioBaseItem
 public "canEquip"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
 public "isEnderMask"(arg0: $SlotContext$$Type, arg1: $EnderMan$$Type, arg2: $ItemStack$$Type): boolean
-public "canEquipFromUse"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
-/**
- * 
- * @deprecated
- */
-public "getAttributesTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $ItemStack$$Type): $List<($Component)>
-public "getAttributesTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $Item$TooltipContext$$Type, arg2: $ItemStack$$Type): $List<($Component)>
-public "hasCurioCapability"(arg0: $ItemStack$$Type): boolean
-public "getSlotsTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $Item$TooltipContext$$Type, arg2: $ItemStack$$Type): $List<($Component)>
-/**
- * 
- * @deprecated
- */
-public "getSlotsTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $ItemStack$$Type): $List<($Component)>
-/**
- * 
- * @deprecated
- */
-public "getAttributeModifiers"(arg0: $SlotContext$$Type, arg1: $UUID$$Type, arg2: $ItemStack$$Type): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
-public "getLootingLevel"(arg0: $SlotContext$$Type, arg1: $LootContext$$Type, arg2: $ItemStack$$Type): integer
-public "getFortuneLevel"(arg0: $SlotContext$$Type, arg1: $LootContext$$Type, arg2: $ItemStack$$Type): integer
-public "canWalkOnPowderedSnow"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
-public "makesPiglinsNeutral"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
 public "curioTick"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): void
 public "curioBreak"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): void
 public "canSync"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
@@ -7819,13 +8550,37 @@ public "readSyncData"(arg0: $SlotContext$$Type, arg1: $CompoundTag$$Type, arg2: 
 public "onEquip"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type, arg2: $ItemStack$$Type): void
 public "onUnequip"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type, arg2: $ItemStack$$Type): void
 public "canUnequip"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
+public "getDropRule"(arg0: $SlotContext$$Type, arg1: $DamageSource$$Type, arg2: boolean, arg3: $ItemStack$$Type): $ICurio$DropRule
 /**
  * 
  * @deprecated
  */
 public "getDropRule"(arg0: $SlotContext$$Type, arg1: $DamageSource$$Type, arg2: integer, arg3: boolean, arg4: $ItemStack$$Type): $ICurio$DropRule
-public "getDropRule"(arg0: $SlotContext$$Type, arg1: $DamageSource$$Type, arg2: boolean, arg3: $ItemStack$$Type): $ICurio$DropRule
 public "onEquipFromUse"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): void
+public "hasCurioCapability"(arg0: $ItemStack$$Type): boolean
+public "canEquipFromUse"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
+public "getAttributesTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $Item$TooltipContext$$Type, arg2: $ItemStack$$Type): $List<($Component)>
+/**
+ * 
+ * @deprecated
+ */
+public "getAttributesTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $ItemStack$$Type): $List<($Component)>
+public "getLootingLevel"(arg0: $SlotContext$$Type, arg1: $LootContext$$Type, arg2: $ItemStack$$Type): integer
+public "getFortuneLevel"(arg0: $SlotContext$$Type, arg1: $LootContext$$Type, arg2: $ItemStack$$Type): integer
+public "canWalkOnPowderedSnow"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
+public "makesPiglinsNeutral"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): boolean
+/**
+ * 
+ * @deprecated
+ */
+public "getAttributeModifiers"(arg0: $SlotContext$$Type, arg1: $UUID$$Type, arg2: $ItemStack$$Type): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
+/**
+ * 
+ * @deprecated
+ */
+public "getSlotsTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $ItemStack$$Type): $List<($Component)>
+public "getSlotsTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $Item$TooltipContext$$Type, arg2: $ItemStack$$Type): $List<($Component)>
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7841,8 +8596,8 @@ export type $CurioBaseItem_ = $CurioBaseItem$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.evocation.SlowSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -7851,8 +8606,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $SlowSpell extends $AbstractSpell {
@@ -7861,20 +8616,20 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 constructor()
 
 public "getDuration"(arg0: integer, arg1: $LivingEntity$$Type): integer
+public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
 public "getCastType"(): $CastType
 public "getAmplifier"(arg0: integer, arg1: $LivingEntity$$Type): integer
-public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public "getTargetingColor"(): $Vector3f
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getTargetingColor"(): $Vector3f
+public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
-get "spellResource"(): $ResourceLocation
-get "castStartSound"(): $Optional<($SoundEvent)>
-get "defaultConfig"(): $DefaultConfig
 get "targetingColor"(): $Vector3f
+get "spellResource"(): $ResourceLocation
+get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7890,35 +8645,35 @@ export type $SlowSpell_ = $SlowSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.api.magic.SpellSelectionManager" {
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
-import {$SpellSelectionManager$SelectionOption, $SpellSelectionManager$SelectionOption$$Type} from "io.redspace.ironsspellbooks.api.magic.SpellSelectionManager$SelectionOption"
 import {$SpellData, $SpellData$$Type} from "io.redspace.ironsspellbooks.api.spells.SpellData"
+import {$SpellSelectionManager$SelectionOption, $SpellSelectionManager$SelectionOption$$Type} from "io.redspace.ironsspellbooks.api.magic.SpellSelectionManager$SelectionOption"
 import {$List, $List$$Type} from "java.util.List"
 import {$SpellSelection, $SpellSelection$$Type} from "io.redspace.ironsspellbooks.gui.overlays.SpellSelection"
 
 export class $SpellSelectionManager {
-static readonly "OFFHAND": string
-static readonly "MAINHAND": string
+static readonly "OFFHAND": StringJS
+static readonly "MAINHAND": StringJS
 
 constructor(arg0: $Player$$Type)
 
-public "getCurrentSelection"(): $SpellSelection
-public "getSelectionIndex"(): integer
-public "getSelectedSpellData"(): $SpellData
-public "getSelection"(): $SpellSelectionManager$SelectionOption
-public "getSpellData"(arg0: integer): $SpellData
+public "getSpellSlot"(arg0: integer): $SpellSelectionManager$SelectionOption
 public "getSpellCount"(): integer
 public "getAllSpells"(): $List<($SpellSelectionManager$SelectionOption)>
 public "makeSelection"(arg0: integer): void
+public "getSpellData"(arg0: integer): $SpellData
+public "getSelection"(): $SpellSelectionManager$SelectionOption
+public "getCurrentSelection"(): $SpellSelection
+public "getSelectionIndex"(): integer
+public "getSelectedSpellData"(): $SpellData
+public "getSpellsForSlot"(arg0: StringJS): $List<($SpellSelectionManager$SelectionOption)>
 public "getGlobalSelectionIndex"(): integer
-public "getSpellsForSlot"(arg0: string): $List<($SpellSelectionManager$SelectionOption)>
-public "getSpellSlot"(arg0: integer): $SpellSelectionManager$SelectionOption
-public "getSpellForSlot"(arg0: string, arg1: integer): $SpellData
+public "getSpellForSlot"(arg0: StringJS, arg1: integer): $SpellData
+get "spellCount"(): integer
+get "allSpells"(): $List<($SpellSelectionManager$SelectionOption)>
+get "selection"(): $SpellSelectionManager$SelectionOption
 get "currentSelection"(): $SpellSelection
 get "selectionIndex"(): integer
 get "selectedSpellData"(): $SpellData
-get "selection"(): $SpellSelectionManager$SelectionOption
-get "spellCount"(): integer
-get "allSpells"(): $List<($SpellSelectionManager$SelectionOption)>
 get "globalSelectionIndex"(): integer
 }
 /**
@@ -7934,15 +8689,18 @@ declare global {
 export type $SpellSelectionManager_ = $SpellSelectionManager$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.consumables.NetherwardTinctureItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -7953,7 +8711,7 @@ import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.Liv
 export class $NetherwardTinctureItem extends $DrinkableItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -7961,9 +8719,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "getDrinkingSound"(): $SoundEvent
 public "interactLivingEntity"(arg0: $ItemStack$$Type, arg1: $Player$$Type, arg2: $LivingEntity$$Type, arg3: $InteractionHand$$Type): $InteractionResult
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "getDrinkingSound"(): $SoundEvent
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "drinkingSound"(): $SoundEvent
 }
 /**
@@ -7982,25 +8741,25 @@ declare module "io.redspace.ironsspellbooks.api.events.SpellPreCastEvent" {
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ICancellableEvent, $ICancellableEvent$$Type} from "net.neoforged.bus.api.ICancellableEvent"
 import {$SchoolType, $SchoolType$$Type} from "io.redspace.ironsspellbooks.api.spells.SchoolType"
-import {$PlayerEvent, $PlayerEvent$$Type} from "net.neoforged.neoforge.event.entity.player.PlayerEvent"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
+import {$PlayerEvent, $PlayerEvent$$Type} from "net.neoforged.neoforge.event.entity.player.PlayerEvent"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 
 export class $SpellPreCastEvent extends $PlayerEvent implements $ICancellableEvent {
 
-constructor(arg0: $Player$$Type, arg1: string, arg2: integer, arg3: $SchoolType$$Type, arg4: $CastSource$$Type)
+constructor(arg0: $Player$$Type, arg1: StringJS, arg2: integer, arg3: $SchoolType$$Type, arg4: $CastSource$$Type)
 
 public "getSchoolType"(): $SchoolType
 public "getSpellLevel"(): integer
-public "getSpellId"(): string
 public "getCastSource"(): $CastSource
+public "getSpellId"(): StringJS
 public "isCanceled"(): boolean
 public "setCanceled"(arg0: boolean): void
 public "getEntity"(): $Entity
 get "schoolType"(): $SchoolType
 get "spellLevel"(): integer
-get "spellId"(): string
 get "castSource"(): $CastSource
+get "spellId"(): StringJS
 get "canceled"(): boolean
 set "canceled"(value: boolean)
 get "entity"(): $Entity
@@ -8028,19 +8787,19 @@ export class $AttributeContainer extends $Record {
 
 constructor(attribute: $Holder$$Type<($Attribute)>, value: double, operation: $AttributeModifier$Operation$$Type)
 
+public "attribute"(): $Holder<($Attribute)>
 public "value"(): double
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "attribute"(): $Holder<($Attribute)>
 public "operation"(): $AttributeModifier$Operation
-public "createModifier"(arg0: string): $AttributeModifier
+public "createModifier"(arg0: StringJS): $AttributeModifier
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $AttributeContainer$$Type = ({"attribute"?: $Holder$$Type<($Attribute)>, "value"?: double, "operation"?: $AttributeModifier$Operation$$Type}) | ([attribute?: $Holder$$Type<($Attribute)>, value?: double, operation?: $AttributeModifier$Operation$$Type]);
+export type $AttributeContainer$$Type = ({"operation"?: $AttributeModifier$Operation$$Type, "attribute"?: $Holder$$Type<($Attribute)>, "value"?: double}) | ([operation?: $AttributeModifier$Operation$$Type, attribute?: $Holder$$Type<($Attribute)>, value?: double]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -8051,8 +8810,8 @@ export type $AttributeContainer_ = $AttributeContainer$$Type;
 declare module "io.redspace.ironsspellbooks.spells.ender.StarfallSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -8061,8 +8820,8 @@ import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 import {$ParticleOptions, $ParticleOptions$$Type} from "net.minecraft.core.particles.ParticleOptions"
 
@@ -8071,22 +8830,22 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "onServerCastTick"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public "getCastStartAnimation"(): $AnimationHolder
-public static "particleTrail"(arg0: $Level$$Type, arg1: $Vec3$$Type, arg2: $Vec3$$Type, arg3: $ParticleOptions$$Type): void
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "shootComet"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $Vec3$$Type, arg4: $Vec3$$Type): void
+public static "particleTrail"(arg0: $Level$$Type, arg1: $Vec3$$Type, arg2: $Vec3$$Type, arg3: $ParticleOptions$$Type): void
+public "onServerCastTick"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): void
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
+public "getCastStartAnimation"(): $AnimationHolder
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 }
 /**
@@ -8102,11 +8861,15 @@ declare global {
 export type $StarfallSpell_ = $StarfallSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.armor.WanderingMagicianArmorItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$GeoArmorRenderer, $GeoArmorRenderer$$Type} from "software.bernie.geckolib.renderer.GeoArmorRenderer"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$GeoAnimatable, $GeoAnimatable$$Type} from "software.bernie.geckolib.animatable.GeoAnimatable"
@@ -8121,7 +8884,7 @@ import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.A
 export class $WanderingMagicianArmorItem extends $ExtendedArmorItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -8136,6 +8899,7 @@ public static "getId"(arg0: $ItemStack$$Type): long
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8152,8 +8916,8 @@ export type $WanderingMagicianArmorItem_ = $WanderingMagicianArmorItem$$Type;
 declare module "io.redspace.ironsspellbooks.spells.lightning.ShockwaveSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -8161,8 +8925,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
@@ -8171,23 +8935,23 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getRadius"(arg0: integer, arg1: $LivingEntity$$Type): float
-public "getCastType"(): $CastType
-public "playSound"(arg0: $Optional$$Type<($SoundEvent$$Type)>, arg1: $Entity$$Type): void
-public "getDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
+public "playSound"(arg0: $Optional$$Type<($SoundEvent$$Type)>, arg1: $Entity$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getRadius"(arg0: integer, arg1: $LivingEntity$$Type): float
 public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
 public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 public "getCastStartAnimation"(): $AnimationHolder
 public "getCastFinishAnimation"(): $AnimationHolder
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 get "castFinishAnimation"(): $AnimationHolder
 }
@@ -8214,96 +8978,50 @@ import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraf
 import {$SpellSelection, $SpellSelection$$Type} from "io.redspace.ironsspellbooks.gui.overlays.SpellSelection"
 
 export class $SyncedSpellData {
-/**
- * 
- * @deprecated
- */
-static readonly "HEARTSTOP": long
-/**
- * 
- * @deprecated
- */
-static readonly "ABYSSAL_SHROUD": long
-/**
- * 
- * @deprecated
- */
-static readonly "TRUE_INVIS": long
-/**
- * 
- * @deprecated
- */
-static readonly "CHARGED": long
-/**
- * 
- * @deprecated
- */
-static readonly "ANGEL_WINGS": long
-/**
- * 
- * @deprecated
- */
-static readonly "PLANAR_SIGHT": long
-/**
- * 
- * @deprecated
- */
-static readonly "EVASION": long
-/**
- * 
- * @deprecated
- */
-static readonly "ASCENSION": long
 
 constructor(arg0: $LivingEntity$$Type)
 constructor(arg0: integer)
 
-public "toString"(): string
+public "toString"(): StringJS
 public static "write"(arg0: $FriendlyByteBuf$$Type, arg1: $SyncedSpellData$$Type): void
 public static "read"(arg0: $FriendlyByteBuf$$Type): $SyncedSpellData
-public "subtractEvasionHit"(): void
-public "addHeartstopDamage"(arg0: float): void
-public "getSpinAttackType"(): $SpinAttackType
-public "hasEffect"(arg0: long): boolean
 public "syncToPlayer"(arg0: $ServerPlayer$$Type): void
 public "doSync"(): void
-public "getPersistentData"(arg0: $ServerPlayer$$Type): $SyncedSpellData
-public "setSpinAttackType"(arg0: $SpinAttackType$$Type): void
-public "getCastingSpellId"(): string
-public "getCastingSpellLevel"(): integer
+public "setIsCasting"(arg0: boolean, arg1: StringJS, arg2: integer, arg3: StringJS): void
 public "isSpellLearned"(arg0: $AbstractSpell$$Type): boolean
 public "isCasting"(): boolean
-public "addLocalEffect"(arg0: long): void
-public "hasLocalEffect"(arg0: long): boolean
-public "learnSpell"(arg0: $AbstractSpell$$Type): void
 public "saveNBTData"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
 public "loadNBTData"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "addEffects"(arg0: long): void
-public "removeEffects"(arg0: long): void
-public "setIsCasting"(arg0: boolean, arg1: string, arg2: integer, arg3: string): void
-public "setEvasionHitsRemaining"(arg0: integer): void
-public "getEvasionHitsRemaining"(): integer
-public "getHeartstopAccumulatedDamage"(): float
-public "setHeartstopAccumulatedDamage"(arg0: float): void
-public "getCastingEquipmentSlot"(): string
+public "getCastingSpellLevel"(): integer
+public "getCastingSpellId"(): StringJS
+public "setSpinAttackType"(arg0: $SpinAttackType$$Type): void
+public "getPersistentData"(arg0: $ServerPlayer$$Type): $SyncedSpellData
+public "learnSpell"(arg0: $AbstractSpell$$Type): void
+public "addHeartstopDamage"(arg0: float): void
+public "getSpinAttackType"(): $SpinAttackType
+public "subtractEvasionHit"(): void
+public "getCastingEquipmentSlot"(): StringJS
 public "getServerPlayerId"(): integer
-public "removeLocalEffect"(arg0: long): void
 public "getSpellSelection"(): $SpellSelection
 public "setSpellSelection"(arg0: $SpellSelection$$Type): void
 public "forgetAllSpells"(): void
-get "spinAttackType"(): $SpinAttackType
-set "spinAttackType"(value: $SpinAttackType$$Type)
-get "castingSpellId"(): string
-get "castingSpellLevel"(): integer
+public "getHeartstopAccumulatedDamage"(): float
+public "setHeartstopAccumulatedDamage"(arg0: float): void
+public "setEvasionHitsRemaining"(arg0: integer): void
+public "getEvasionHitsRemaining"(): integer
 get "casting"(): boolean
-set "evasionHitsRemaining"(value: integer)
-get "evasionHitsRemaining"(): integer
-get "heartstopAccumulatedDamage"(): float
-set "heartstopAccumulatedDamage"(value: float)
-get "castingEquipmentSlot"(): string
+get "castingSpellLevel"(): integer
+get "castingSpellId"(): StringJS
+set "spinAttackType"(value: $SpinAttackType$$Type)
+get "spinAttackType"(): $SpinAttackType
+get "castingEquipmentSlot"(): StringJS
 get "serverPlayerId"(): integer
 get "spellSelection"(): $SpellSelection
 set "spellSelection"(value: $SpellSelection$$Type)
+get "heartstopAccumulatedDamage"(): float
+set "heartstopAccumulatedDamage"(value: float)
+set "evasionHitsRemaining"(value: integer)
+get "evasionHitsRemaining"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8327,7 +9045,7 @@ static readonly "LIGHTNING": $SpinAttackType
 
 
 public static "values"(): ($SpinAttackType)[]
-public static "valueOf"(arg0: string): $SpinAttackType
+public static "valueOf"(arg0: StringJS): $SpinAttackType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8351,8 +9069,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
-import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MagicMobEffect, $MagicMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.MagicMobEffect"
+import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
 
 export class $BlightEffect extends $MagicMobEffect {
@@ -8364,8 +9082,8 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(arg0: $MobEffectCategory$$Type, arg1: integer)
 
-public static "reduceDamageOutput"(arg0: $LivingIncomingDamageEvent$$Type): void
 public static "reduceHealing"(arg0: $LivingHealEvent$$Type): void
+public static "reduceDamageOutput"(arg0: $LivingIncomingDamageEvent$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8408,12 +9126,16 @@ declare global {
 export type $CounterSpellEvent_ = $CounterSpellEvent$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.armor.TarnishedCrownArmorItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$IPresetSpellContainer, $IPresetSpellContainer$$Type} from "io.redspace.ironsspellbooks.api.spells.IPresetSpellContainer"
 import {$GeoArmorRenderer, $GeoArmorRenderer$$Type} from "software.bernie.geckolib.renderer.GeoArmorRenderer"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$GeoAnimatable, $GeoAnimatable$$Type} from "software.bernie.geckolib.animatable.GeoAnimatable"
@@ -8428,7 +9150,7 @@ import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.A
 export class $TarnishedCrownArmorItem extends $ExtendedArmorItem implements $IPresetSpellContainer {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -8438,12 +9160,13 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $ArmorItem$Type$$Type, arg1: $Item$Properties$$Type)
 
-public "initializeSpellContainer"(arg0: $ItemStack$$Type): void
 public "supplyRenderer"(): $GeoArmorRenderer<(any)>
+public "initializeSpellContainer"(arg0: $ItemStack$$Type): void
 public static "getId"(arg0: $ItemStack$$Type): long
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8457,6 +9180,149 @@ export type $TarnishedCrownArmorItem$$Type = ($TarnishedCrownArmorItem);
 declare global {
 export type $TarnishedCrownArmorItem_ = $TarnishedCrownArmorItem$$Type;
 }}
+declare module "io.redspace.ironsspellbooks.api.registry.SpellRegistry" {
+import {$NoneSpell, $NoneSpell$$Type} from "io.redspace.ironsspellbooks.spells.NoneSpell"
+import {$IEventBus, $IEventBus$$Type} from "net.neoforged.bus.api.IEventBus"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Registry, $Registry$$Type} from "net.minecraft.core.Registry"
+import {$List, $List$$Type} from "java.util.List"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
+import {$SchoolType, $SchoolType$$Type} from "io.redspace.ironsspellbooks.api.spells.SchoolType"
+import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
+import {$NewRegistryEvent, $NewRegistryEvent$$Type} from "net.neoforged.neoforge.registries.NewRegistryEvent"
+import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
+
+export class $SpellRegistry {
+static readonly "MAGIC_ARROW_SPELL": $Supplier<($AbstractSpell)>
+static readonly "SHOCKWAVE_SPELL": $Supplier<($AbstractSpell)>
+static readonly "CLEANSE_SPELL": $Supplier<($AbstractSpell)>
+static readonly "HEARTSTOP_SPELL": $Supplier<($AbstractSpell)>
+static readonly "CHARGE_SPELL": $Supplier<($AbstractSpell)>
+static readonly "SUMMON_HORSE_SPELL": $Supplier<($AbstractSpell)>
+static readonly "MAGMA_BOMB_SPELL": $Supplier<($AbstractSpell)>
+static readonly "ICE_BLOCK_SPELL": $Supplier<($AbstractSpell)>
+static readonly "ABYSSAL_SHROUD_SPELL": $Supplier<($AbstractSpell)>
+static readonly "DEVOUR_SPELL": $Supplier<($AbstractSpell)>
+static readonly "GUIDING_BOLT_SPELL": $Supplier<($AbstractSpell)>
+static readonly "FANG_STRIKE_SPELL": $Supplier<($AbstractSpell)>
+static readonly "FLAMING_STRIKE_SPELL": $Supplier<($AbstractSpell)>
+static readonly "BURNING_DASH_SPELL": $Supplier<($AbstractSpell)>
+static readonly "FROSTWAVE_SPELL": $Supplier<($AbstractSpell)>
+static readonly "SACRIFICE_SPELL": $Supplier<($AbstractSpell)>
+static readonly "PORTAL_SPELL": $Supplier<($AbstractSpell)>
+static readonly "BLOOD_SLASH_SPELL": $Supplier<($AbstractSpell)>
+static readonly "ANGEL_WINGS_SPELL": $Supplier<($AbstractSpell)>
+static readonly "SUMMON_SWORDS": $Supplier<($AbstractSpell)>
+static readonly "SONIC_BOOM_SPELL": $Supplier<($AbstractSpell)>
+static readonly "ELDRITCH_BLAST_SPELL": $Supplier<($AbstractSpell)>
+static readonly "LOB_CREEPER_SPELL": $Supplier<($AbstractSpell)>
+static readonly "WOLOLO_SPELL": $Supplier<($AbstractSpell)>
+static readonly "BALL_LIGHTNING_SPELL": $Supplier<($AbstractSpell)>
+static readonly "BLOOD_STEP_SPELL": $Supplier<($AbstractSpell)>
+static readonly "SCULK_TENTACLES_SPELL": $Supplier<($AbstractSpell)>
+static readonly "ACID_ORB_SPELL": $Supplier<($AbstractSpell)>
+static readonly "WISP_SPELL": $Supplier<($AbstractSpell)>
+static readonly "DRAGON_BREATH_SPELL": $Supplier<($AbstractSpell)>
+static readonly "FANG_WARD_SPELL": $Supplier<($AbstractSpell)>
+static readonly "SNOWBALL_SPELL": $Supplier<($AbstractSpell)>
+static readonly "GREATER_HEAL_SPELL": $Supplier<($AbstractSpell)>
+static readonly "HEALING_CIRCLE_SPELL": $Supplier<($AbstractSpell)>
+static readonly "FIREBOLT_SPELL": $Supplier<($AbstractSpell)>
+static readonly "DIVINE_SMITE_SPELL": $Supplier<($AbstractSpell)>
+static readonly "THUNDERSTORM_SPELL": $Supplier<($AbstractSpell)>
+static readonly "SPELL_REGISTRY_KEY": $ResourceKey<($Registry<($AbstractSpell)>)>
+static readonly "ECHOING_STRIKES_SPELL": $Supplier<($AbstractSpell)>
+static readonly "SUMMON_VEX_SPELL": $Supplier<($AbstractSpell)>
+static readonly "ICICLE_SPELL": $Supplier<($AbstractSpell)>
+static readonly "SUNBEAM_SPELL": $Supplier<($AbstractSpell)>
+static readonly "POISON_ARROW_SPELL": $Supplier<($AbstractSpell)>
+static readonly "BLAZE_STORM_SPELL": $Supplier<($AbstractSpell)>
+static readonly "FIRE_ARROW_SPELL": $Supplier<($AbstractSpell)>
+static readonly "RAY_OF_SIPHONING_SPELL": $Supplier<($AbstractSpell)>
+static readonly "ICE_SPIKES_SPELL": $Supplier<($AbstractSpell)>
+static readonly "SCORCH_SPELL": $Supplier<($AbstractSpell)>
+static readonly "ELECTROCUTE_SPELL": $Supplier<($AbstractSpell)>
+static readonly "ACUPUNCTURE_SPELL": $Supplier<($AbstractSpell)>
+static readonly "RECALL_SPELL": $Supplier<($AbstractSpell)>
+static readonly "CHAIN_CREEPER_SPELL": $Supplier<($AbstractSpell)>
+static readonly "GLUTTONY_SPELL": $Supplier<($AbstractSpell)>
+static readonly "EVASION_SPELL": $Supplier<($AbstractSpell)>
+static readonly "ASCENSION_SPELL": $Supplier<($AbstractSpell)>
+static readonly "SUMMON_ENDER_CHEST_SPELL": $Supplier<($AbstractSpell)>
+static readonly "HEAL_SPELL": $Supplier<($AbstractSpell)>
+static readonly "ARROW_VOLLEY_SPELL": $Supplier<($AbstractSpell)>
+static readonly "INVISIBILITY_SPELL": $Supplier<($AbstractSpell)>
+static readonly "BLESSING_OF_LIFE_SPELL": $Supplier<($AbstractSpell)>
+static readonly "FORTIFY_SPELL": $Supplier<($AbstractSpell)>
+static readonly "SHIELD_SPELL": $Supplier<($AbstractSpell)>
+static readonly "WITHER_SKULL_SPELL": $Supplier<($AbstractSpell)>
+static readonly "SUMMON_POLAR_BEAR_SPELL": $Supplier<($AbstractSpell)>
+static readonly "FIREFLY_SWARM_SPELL": $Supplier<($AbstractSpell)>
+static readonly "TOUCH_DIG": $Supplier<($AbstractSpell)>
+static readonly "VOLT_STRIKE_SPELL": $Supplier<($AbstractSpell)>
+static readonly "POCKET_DIMENSION_SPELL": $Supplier<($AbstractSpell)>
+static readonly "FIREBALL_SPELL": $Supplier<($AbstractSpell)>
+static readonly "WALL_OF_FIRE_SPELL": $Supplier<($AbstractSpell)>
+static readonly "MAGIC_MISSILE_SPELL": $Supplier<($AbstractSpell)>
+static readonly "CHAIN_LIGHTNING_SPELL": $Supplier<($AbstractSpell)>
+static readonly "BLOOD_NEEDLES_SPELL": $Supplier<($AbstractSpell)>
+static readonly "RAY_OF_FROST_SPELL": $Supplier<($AbstractSpell)>
+static readonly "STOMP_SPELL": $Supplier<($AbstractSpell)>
+static readonly "STARFALL_SPELL": $Supplier<($AbstractSpell)>
+static readonly "SPECTRAL_HAMMER_SPELL": $Supplier<($AbstractSpell)>
+static readonly "FROST_STEP_SPELL": $Supplier<($AbstractSpell)>
+static readonly "OAKSKIN_SPELL": $Supplier<($AbstractSpell)>
+static readonly "BLIGHT_SPELL": $Supplier<($AbstractSpell)>
+static readonly "FLAMING_BARRAGE_SPELL": $Supplier<($AbstractSpell)>
+static readonly "CONE_OF_COLD_SPELL": $Supplier<($AbstractSpell)>
+static readonly "FIRE_BREATH_SPELL": $Supplier<($AbstractSpell)>
+static readonly "LIGHTNING_BOLT_SPELL": $Supplier<($AbstractSpell)>
+static readonly "CLOUD_OF_REGENERATION_SPELL": $Supplier<($AbstractSpell)>
+static readonly "POISON_SPLASH_SPELL": $Supplier<($AbstractSpell)>
+static readonly "SPIDER_ASPECT_SPELL": $Supplier<($AbstractSpell)>
+static readonly "REGISTRY": $Registry<($AbstractSpell)>
+static readonly "PLANAR_SIGHT_SPELL": $Supplier<($AbstractSpell)>
+static readonly "RAISE_DEAD_SPELL": $Supplier<($AbstractSpell)>
+static readonly "ICE_TOMB_SPELL": $Supplier<($AbstractSpell)>
+static readonly "COUNTERSPELL_SPELL": $Supplier<($AbstractSpell)>
+static readonly "RAISE_HELL_SPELL": $Supplier<($AbstractSpell)>
+static readonly "POISON_BREATH_SPELL": $Supplier<($AbstractSpell)>
+static readonly "HASTE_SPELL": $Supplier<($AbstractSpell)>
+static readonly "SLOW_SPELL": $Supplier<($AbstractSpell)>
+static readonly "HEAT_SURGE_SPELL": $Supplier<($AbstractSpell)>
+static readonly "EARTHQUAKE_SPELL": $Supplier<($AbstractSpell)>
+static readonly "ROOT_SPELL": $Supplier<($AbstractSpell)>
+static readonly "BLACK_HOLE_SPELL": $Supplier<($AbstractSpell)>
+static readonly "LIGHTNING_LANCE_SPELL": $Supplier<($AbstractSpell)>
+static readonly "GUST_SPELL": $Supplier<($AbstractSpell)>
+static readonly "FROSTBITE_SPELL": $Supplier<($AbstractSpell)>
+static readonly "FIRECRACKER_SPELL": $Supplier<($AbstractSpell)>
+static readonly "TELEKINESIS_SPELL": $Supplier<($AbstractSpell)>
+static readonly "TELEPORT_SPELL": $Supplier<($AbstractSpell)>
+
+constructor()
+
+public static "register"(arg0: $IEventBus$$Type): void
+public static "none"(): $NoneSpell
+public static "onConfigReload"(): void
+public static "getSpell"(arg0: StringJS): $AbstractSpell
+public static "getSpell"(arg0: $ResourceLocation$$Type): $AbstractSpell
+public static "registerRegistry"(arg0: $NewRegistryEvent$$Type): void
+public static "getEnabledSpells"(): $List<($AbstractSpell)>
+public static "getSpellsForSchool"(arg0: $SchoolType$$Type): $List<($AbstractSpell)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SpellRegistry$$Type = ($SpellRegistry);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SpellRegistry_ = $SpellRegistry$$Type;
+}}
 declare module "io.redspace.ironsspellbooks.api.events.SpellCooldownAddedEvent" {
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Event, $Event$$Type} from "net.neoforged.bus.api.Event"
@@ -8468,13 +9334,13 @@ export class $SpellCooldownAddedEvent extends $Event {
 constructor(arg0: integer, arg1: $AbstractSpell$$Type, arg2: $Player$$Type, arg3: $CastSource$$Type)
 
 public "getEntity"(): $Player
+public "getCastSource"(): $CastSource
 public "getSpell"(): $AbstractSpell
 public "getEffectiveCooldown"(): integer
-public "getCastSource"(): $CastSource
 get "entity"(): $Player
+get "castSource"(): $CastSource
 get "spell"(): $AbstractSpell
 get "effectiveCooldown"(): integer
-get "castSource"(): $CastSource
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8491,8 +9357,8 @@ export type $SpellCooldownAddedEvent_ = $SpellCooldownAddedEvent$$Type;
 declare module "io.redspace.ironsspellbooks.spells.fire.HeatSurgeSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -8500,8 +9366,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $HeatSurgeSpell extends $AbstractSpell {
@@ -8510,22 +9376,22 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 constructor()
 
 public "getDuration"(arg0: integer, arg1: $LivingEntity$$Type): integer
-public "getRadius"(arg0: integer, arg1: $LivingEntity$$Type): float
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getRadius"(arg0: integer, arg1: $LivingEntity$$Type): float
 public "onServerCastComplete"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type, arg4: boolean): void
 public "getRendAmplifier"(arg0: integer, arg1: $LivingEntity$$Type): integer
 public "getSpellResource"(): $ResourceLocation
-public "getCastStartSound"(): $Optional<($SoundEvent)>
 public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
 public "getCastStartAnimation"(): $AnimationHolder
 public "getCastFinishAnimation"(): $AnimationHolder
 public "stopSoundOnCancel"(): boolean
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 get "castFinishAnimation"(): $AnimationHolder
 }
@@ -8548,8 +9414,8 @@ import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$LivingIncomingDamageEvent, $LivingIncomingDamageEvent$$Type} from "net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent"
-import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MagicMobEffect, $MagicMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.MagicMobEffect"
+import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect, $MobEffect$$Type} from "net.minecraft.world.effect.MobEffect"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
@@ -8577,11 +9443,15 @@ declare global {
 export type $SpiderAspectEffect_ = $SpiderAspectEffect$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.armor.BootsOfSpeedArmorItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$GeoArmorRenderer, $GeoArmorRenderer$$Type} from "software.bernie.geckolib.renderer.GeoArmorRenderer"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$GeoAnimatable, $GeoAnimatable$$Type} from "software.bernie.geckolib.animatable.GeoAnimatable"
@@ -8596,7 +9466,7 @@ import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.A
 export class $BootsOfSpeedArmorItem extends $ImbuableChestplateArmorItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -8611,6 +9481,7 @@ public static "getId"(arg0: $ItemStack$$Type): long
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8626,8 +9497,8 @@ export type $BootsOfSpeedArmorItem_ = $BootsOfSpeedArmorItem$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.eldritch.SculkTentaclesSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -8635,8 +9506,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $SculkTentaclesSpell extends $AbstractSpell {
@@ -8644,19 +9515,19 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8673,14 +9544,14 @@ export type $SculkTentaclesSpell_ = $SculkTentaclesSpell$$Type;
 declare module "io.redspace.ironsspellbooks.spells.holy.AngelWingsSpell" {
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
+import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $AngelWingsSpell extends $AbstractSpell {
@@ -8688,11 +9559,11 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -8716,16 +9587,16 @@ import {$Mirror, $Mirror$$Type} from "net.minecraft.world.level.block.Mirror"
 import {$RenderShape, $RenderShape$$Type} from "net.minecraft.world.level.block.RenderShape"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$MenuProvider, $MenuProvider$$Type} from "net.minecraft.world.MenuProvider"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$Rotation, $Rotation$$Type} from "net.minecraft.world.level.block.Rotation"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$FallingBlockEntity, $FallingBlockEntity$$Type} from "net.minecraft.world.entity.item.FallingBlockEntity"
 import {$FallingBlock, $FallingBlock$$Type} from "net.minecraft.world.level.block.FallingBlock"
+import {$FallingBlockEntity, $FallingBlockEntity$$Type} from "net.minecraft.world.entity.item.FallingBlockEntity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -8746,7 +9617,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -8758,9 +9629,9 @@ constructor()
 
 public "rotate"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $BlockState
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
 public "onLand"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $BlockState$$Type, arg4: $FallingBlockEntity$$Type): void
 public "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
 public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "getMenuProvider"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type): $MenuProvider
 public "asHolder"(): $Holder<(any)>
@@ -8780,8 +9651,8 @@ export type $ArcaneAnvilBlock_ = $ArcaneAnvilBlock$$Type;
 declare module "io.redspace.ironsspellbooks.spells.ender.SummonSwordsSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$RecastInstance, $RecastInstance$$Type} from "io.redspace.ironsspellbooks.capabilities.magic.RecastInstance"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -8790,8 +9661,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 import {$ICastDataSerializable, $ICastDataSerializable$$Type} from "io.redspace.ironsspellbooks.api.spells.ICastDataSerializable"
@@ -8801,24 +9672,24 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public "getEmptyCastData"(): $ICastDataSerializable
-public "onRecastFinished"(arg0: $ServerPlayer$$Type, arg1: $RecastInstance$$Type, arg2: $RecastResult$$Type, arg3: $ICastDataSerializable$$Type): void
-public "getRecastCount"(arg0: integer, arg1: $LivingEntity$$Type): integer
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getCastType"(): $CastType
 public "getDamageBonus"(arg0: integer, arg1: $LivingEntity$$Type): double
 public "getHealthBonus"(arg0: integer, arg1: $LivingEntity$$Type): double
+public "getRecastCount"(arg0: integer, arg1: $LivingEntity$$Type): integer
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getEmptyCastData"(): $ICastDataSerializable
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
+public "onRecastFinished"(arg0: $ServerPlayer$$Type, arg1: $RecastInstance$$Type, arg2: $RecastResult$$Type, arg3: $ICastDataSerializable$$Type): void
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
 get "emptyCastData"(): $ICastDataSerializable
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8837,8 +9708,8 @@ import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
 import {$HorizontalDirectionalBlock, $HorizontalDirectionalBlock$$Type} from "net.minecraft.world.level.block.HorizontalDirectionalBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
@@ -8865,7 +9736,7 @@ static readonly "SHAPE": $VoxelShape
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -8876,8 +9747,8 @@ static readonly "FACING": $DirectionProperty
 constructor()
 
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "canSurvive"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type): boolean
 public "codec"(): $MapCodec<($BookStackBlock)>
+public "canSurvive"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type): boolean
 public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "asHolder"(): $Holder<(any)>
 }
@@ -8895,16 +9766,16 @@ export type $BookStackBlock_ = $BookStackBlock$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.lightning.ChargeSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $ChargeSpell extends $AbstractSpell {
@@ -8912,12 +9783,12 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
 public "getCastStartAnimation"(): $AnimationHolder
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -8950,12 +9821,12 @@ static readonly "CODEC": $Codec<($StructureFeatureConfiguration)>
 constructor(structureTemplateLocation: $ResourceLocation$$Type, xsize: integer, ysize: integer, zsize: integer, offset: $BlockPos$$Type)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "offset"(): $BlockPos
+public "xsize"(): integer
 public "ysize"(): integer
 public "zsize"(): integer
-public "xsize"(): integer
 public "structureTemplateLocation"(): $ResourceLocation
 public "getFeatures"(): $Stream<($ConfiguredFeature<(any), (any)>)>
 get "features"(): $Stream<($ConfiguredFeature<(any), (any)>)>
@@ -8964,7 +9835,7 @@ get "features"(): $Stream<($ConfiguredFeature<(any), (any)>)>
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $StructureFeatureConfiguration$$Type = ({"structureTemplateLocation"?: $ResourceLocation$$Type, "offset"?: $BlockPos$$Type, "xsize"?: integer, "ysize"?: integer, "zsize"?: integer}) | ([structureTemplateLocation?: $ResourceLocation$$Type, offset?: $BlockPos$$Type, xsize?: integer, ysize?: integer, zsize?: integer]);
+export type $StructureFeatureConfiguration$$Type = ({"xsize"?: integer, "ysize"?: integer, "zsize"?: integer, "structureTemplateLocation"?: $ResourceLocation$$Type, "offset"?: $BlockPos$$Type}) | ([xsize?: integer, ysize?: integer, zsize?: integer, structureTemplateLocation?: $ResourceLocation$$Type, offset?: $BlockPos$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -8972,11 +9843,43 @@ export type $StructureFeatureConfiguration$$Type = ({"structureTemplateLocation"
 declare global {
 export type $StructureFeatureConfiguration_ = $StructureFeatureConfiguration$$Type;
 }}
+declare module "io.redspace.ironsspellbooks.entity.mobs.SupportMob" {
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+
+export interface $SupportMob {
+
+ "setSupportTarget"(arg0: $LivingEntity$$Type): void
+ "getSupportTarget"(): $LivingEntity
+set "supportTarget"(value: $LivingEntity$$Type)
+get "supportTarget"(): $LivingEntity
+}
+
+export namespace $SupportMob {
+const probejs$$marker: never
+}
+export class $SupportMob$$Static implements $SupportMob {
+
+
+ "setSupportTarget"(arg0: $LivingEntity$$Type): void
+ "getSupportTarget"(): $LivingEntity
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SupportMob$$Type = ($SupportMob);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SupportMob_ = $SupportMob$$Type;
+}}
 declare module "io.redspace.ironsspellbooks.spells.ender.TeleportSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -8985,8 +9888,8 @@ import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
@@ -8995,22 +9898,22 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public static "findTeleportLocation"(arg0: $Level$$Type, arg1: $LivingEntity$$Type, arg2: float): $Vec3
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public "getCastStartAnimation"(): $AnimationHolder
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public static "particleCloud"(arg0: $Level$$Type, arg1: $Vec3$$Type): void
+public static "findTeleportLocation"(arg0: $Level$$Type, arg1: $LivingEntity$$Type, arg2: float): $Vec3
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
+public "getCastStartAnimation"(): $AnimationHolder
 public static "solveTeleportDestination"(arg0: $Level$$Type, arg1: $LivingEntity$$Type, arg2: $BlockPos$$Type, arg3: $Vec3$$Type): $Vec3
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 }
 /**
@@ -9036,7 +9939,7 @@ static readonly "LONG": $CastType
 
 
 public static "values"(): ($CastType)[]
-public static "valueOf"(arg0: string): $CastType
+public static "valueOf"(arg0: StringJS): $CastType
 public "getValue"(): integer
 public "immediatelySuppressRightClicks"(): boolean
 get "value"(): integer
@@ -9054,17 +9957,17 @@ declare global {
 export type $CastType_ = $CastType$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.ILecternPlaceable" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$PoseStack, $PoseStack$$Type} from "com.mojang.blaze3d.vertex.PoseStack"
 import {$List, $List$$Type} from "java.util.List"
+import {$PoseStack, $PoseStack$$Type} from "com.mojang.blaze3d.vertex.PoseStack"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 
 export interface $ILecternPlaceable {
 
- "simpleTextureOverride"(arg0: $ItemStack$$Type): $Optional<($ResourceLocation)>
  "getPages"(arg0: $ItemStack$$Type): $List<($Component)>
+ "simpleTextureOverride"(arg0: $ItemStack$$Type): $Optional<($ResourceLocation)>
  "handleCustomLecternPosing"(arg0: $PoseStack$$Type): void
 
 (arg0: $ItemStack): $List$$Type<($Component$$Type)>
@@ -9076,8 +9979,8 @@ const probejs$$marker: never
 export class $ILecternPlaceable$$Static implements $ILecternPlaceable {
 
 
- "simpleTextureOverride"(arg0: $ItemStack$$Type): $Optional<($ResourceLocation)>
  "getPages"(arg0: $ItemStack$$Type): $List<($Component)>
+ "simpleTextureOverride"(arg0: $ItemStack$$Type): $Optional<($ResourceLocation)>
  "handleCustomLecternPosing"(arg0: $PoseStack$$Type): void
 }
 /**
@@ -9093,17 +9996,21 @@ declare global {
 export type $ILecternPlaceable_ = $ILecternPlaceable$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.armor.ShadowwalkerArmorItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$GeoArmorRenderer, $GeoArmorRenderer$$Type} from "software.bernie.geckolib.renderer.GeoArmorRenderer"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$IDisableJacket, $IDisableJacket$$Type} from "io.redspace.ironsspellbooks.item.armor.IDisableJacket"
 import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$GeoAnimatable, $GeoAnimatable$$Type} from "software.bernie.geckolib.animatable.GeoAnimatable"
-import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$EquipmentSlot, $EquipmentSlot$$Type} from "net.minecraft.world.entity.EquipmentSlot"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ImbuableChestplateArmorItem, $ImbuableChestplateArmorItem$$Type} from "io.redspace.ironsspellbooks.item.armor.ImbuableChestplateArmorItem"
@@ -9114,7 +10021,7 @@ import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.A
 export class $ShadowwalkerArmorItem extends $ImbuableChestplateArmorItem implements $IDisableJacket {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -9130,6 +10037,7 @@ public static "getId"(arg0: $ItemStack$$Type): long
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9144,20 +10052,24 @@ declare global {
 export type $ShadowwalkerArmorItem_ = $ShadowwalkerArmorItem$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.curios.LurkerRing" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$PassiveAbilityCurio, $PassiveAbilityCurio$$Type} from "io.redspace.ironsspellbooks.item.curios.PassiveAbilityCurio"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$LivingIncomingDamageEvent, $LivingIncomingDamageEvent$$Type} from "net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$PassiveAbilityCurio, $PassiveAbilityCurio$$Type} from "io.redspace.ironsspellbooks.item.curios.PassiveAbilityCurio"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export class $LurkerRing extends $PassiveAbilityCurio {
 static readonly "MULTIPLIER": float
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -9168,6 +10080,7 @@ constructor()
 
 public "getDescription"(arg0: $ItemStack$$Type): $Component
 public static "handleAbility"(arg0: $LivingIncomingDamageEvent$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9206,11 +10119,11 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(arg0: $MobEffectCategory$$Type, arg1: integer)
 
-public "getDescriptionLine"(arg0: $MobEffectInstance$$Type): $Component
-public "applyInstantenousEffect"(arg0: $Entity$$Type, arg1: $Entity$$Type, arg2: $LivingEntity$$Type, arg3: integer, arg4: double): void
-public "shouldApplyEffectTickThisTick"(arg0: integer, arg1: integer): boolean
 public "isInstantenous"(): boolean
 public "applyEffectTick"(arg0: $LivingEntity$$Type, arg1: integer): boolean
+public "applyInstantenousEffect"(arg0: $Entity$$Type, arg1: $Entity$$Type, arg2: $LivingEntity$$Type, arg3: integer, arg4: double): void
+public "shouldApplyEffectTickThisTick"(arg0: integer, arg1: integer): boolean
+public "getDescriptionLine"(arg0: $MobEffectInstance$$Type): $Component
 get "instantenous"(): boolean
 }
 /**
@@ -9225,11 +10138,40 @@ export type $InstantManaEffect$$Type = ($InstantManaEffect);
 declare global {
 export type $InstantManaEffect_ = $InstantManaEffect$$Type;
 }}
+declare module "io.redspace.ironsspellbooks.capabilities.magic.TargetEntityCastData" {
+import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
+import {$UUID, $UUID$$Type} from "java.util.UUID"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
+import {$ICastData, $ICastData$$Type} from "io.redspace.ironsspellbooks.api.spells.ICastData"
+
+export class $TargetEntityCastData implements $ICastData {
+
+constructor(arg0: $LivingEntity$$Type)
+
+public "getTarget"(arg0: $ServerLevel$$Type): $LivingEntity
+public "reset"(): void
+public "getTargetUUID"(): $UUID
+public "getTargetPosition"(arg0: $ServerLevel$$Type): $Vec3
+get "targetUUID"(): $UUID
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $TargetEntityCastData$$Type = ($TargetEntityCastData);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $TargetEntityCastData_ = $TargetEntityCastData$$Type;
+}}
 declare module "io.redspace.ironsspellbooks.spells.nature.SpiderAspectSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -9237,8 +10179,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $SpiderAspectSpell extends $AbstractSpell {
@@ -9246,19 +10188,19 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public "getCastStartAnimation"(): $AnimationHolder
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
+public "getCastStartAnimation"(): $AnimationHolder
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 }
 /**
@@ -9284,8 +10226,8 @@ import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MagicMobEffect, $MagicMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.MagicMobEffect"
+import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
 
 export class $VoltStrikeEffect extends $MagicMobEffect implements $ISyncedMobEffect {
@@ -9295,11 +10237,11 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(arg0: $MobEffectCategory$$Type, arg1: integer)
 
-public "shouldApplyEffectTickThisTick"(arg0: integer, arg1: integer): boolean
 public "clientTick"(arg0: $LivingEntity$$Type, arg1: $MobEffectInstance$$Type): void
 public "onEffectAdded"(arg0: $LivingEntity$$Type, arg1: integer): void
-public "onEffectRemoved"(arg0: $LivingEntity$$Type, arg1: integer): void
 public "applyEffectTick"(arg0: $LivingEntity$$Type, arg1: integer): boolean
+public "onEffectRemoved"(arg0: $LivingEntity$$Type, arg1: integer): void
+public "shouldApplyEffectTickThisTick"(arg0: integer, arg1: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9314,12 +10256,16 @@ declare global {
 export type $VoltStrikeEffect_ = $VoltStrikeEffect$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.armor.ElectromancerArmorItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$GeoArmorRenderer, $GeoArmorRenderer$$Type} from "software.bernie.geckolib.renderer.GeoArmorRenderer"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$IArmorCapeProvider, $IArmorCapeProvider$$Type} from "io.redspace.ironsspellbooks.item.armor.IArmorCapeProvider"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$GeoAnimatable, $GeoAnimatable$$Type} from "software.bernie.geckolib.animatable.GeoAnimatable"
@@ -9334,7 +10280,7 @@ import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.A
 export class $ElectromancerArmorItem extends $ImbuableChestplateArmorItem implements $IArmorCapeProvider {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -9350,6 +10296,7 @@ public static "getId"(arg0: $ItemStack$$Type): long
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "capeResourceLocation"(): $ResourceLocation
 }
 /**
@@ -9367,8 +10314,8 @@ export type $ElectromancerArmorItem_ = $ElectromancerArmorItem$$Type;
 declare module "io.redspace.ironsspellbooks.spells.blood.RaiseDeadSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$RecastInstance, $RecastInstance$$Type} from "io.redspace.ironsspellbooks.capabilities.magic.RecastInstance"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -9377,8 +10324,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 import {$ICastDataSerializable, $ICastDataSerializable$$Type} from "io.redspace.ironsspellbooks.api.spells.ICastDataSerializable"
@@ -9388,23 +10335,23 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public "getEmptyCastData"(): $ICastDataSerializable
-public "onRecastFinished"(arg0: $ServerPlayer$$Type, arg1: $RecastInstance$$Type, arg2: $RecastResult$$Type, arg3: $ICastDataSerializable$$Type): void
+public "getCastType"(): $CastType
 public "getRecastCount"(arg0: integer, arg1: $LivingEntity$$Type): integer
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getSummonCount"(arg0: integer, arg1: $LivingEntity$$Type): integer
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getEmptyCastData"(): $ICastDataSerializable
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
+public "onRecastFinished"(arg0: $ServerPlayer$$Type, arg1: $RecastInstance$$Type, arg2: $RecastResult$$Type, arg3: $ICastDataSerializable$$Type): void
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
 get "emptyCastData"(): $ICastDataSerializable
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9420,8 +10367,8 @@ export type $RaiseDeadSpell_ = $RaiseDeadSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.holy.WispSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -9429,8 +10376,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $WispSpell extends $AbstractSpell {
@@ -9438,20 +10385,20 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public static "getImpactSound"(): $SoundEvent
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public static "getImpactSound"(): $SoundEvent
+public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9467,8 +10414,8 @@ export type $WispSpell_ = $WispSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.ice.ConeOfColdSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$Mob, $Mob$$Type} from "net.minecraft.world.entity.Mob"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
@@ -9478,8 +10425,8 @@ import {$SpellDamageSource, $SpellDamageSource$$Type} from "io.redspace.ironsspe
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
@@ -9488,21 +10435,21 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
-public "getDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getDamageSource"(arg0: $Entity$$Type, arg1: $Entity$$Type): $SpellDamageSource
 public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
 public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 public "shouldAIStopCasting"(arg0: integer, arg1: $Mob$$Type, arg2: $LivingEntity$$Type): boolean
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9517,17 +10464,21 @@ declare global {
 export type $ConeOfColdSpell_ = $ConeOfColdSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.consumables.FireAleItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$DrinkableItem, $DrinkableItem$$Type} from "io.redspace.ironsspellbooks.item.consumables.DrinkableItem"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $FireAleItem extends $DrinkableItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -9535,6 +10486,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Item$Properties$$Type)
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9580,8 +10532,8 @@ export type $SpellCooldownAddedEvent$Pre_ = $SpellCooldownAddedEvent$Pre$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.holy.HasteSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -9589,8 +10541,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $HasteSpell extends $AbstractSpell {
@@ -9599,18 +10551,18 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 constructor()
 
 public "getDuration"(arg0: integer, arg1: $LivingEntity$$Type): integer
+public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
 public "getCastType"(): $CastType
 public "getAmplifier"(arg0: integer, arg1: $LivingEntity$$Type): integer
-public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9635,17 +10587,17 @@ export class $ChangeManaEvent extends $PlayerEvent implements $ICancellableEvent
 
 constructor(arg0: $Player$$Type, arg1: $MagicData$$Type, arg2: float, arg3: float)
 
-public "getMagicData"(): $MagicData
 public "getOldMana"(): float
-public "setNewMana"(arg0: float): void
 public "getNewMana"(): float
+public "setNewMana"(arg0: float): void
+public "getMagicData"(): $MagicData
 public "isCanceled"(): boolean
 public "setCanceled"(arg0: boolean): void
 public "getEntity"(): $Entity
-get "magicData"(): $MagicData
 get "oldMana"(): float
-set "newMana"(value: float)
 get "newMana"(): float
+set "newMana"(value: float)
+get "magicData"(): $MagicData
 get "canceled"(): boolean
 set "canceled"(value: boolean)
 get "entity"(): $Entity
@@ -9731,14 +10683,14 @@ export class $SpellDamageEvent extends $LivingEvent implements $ICancellableEven
 
 constructor(arg0: $LivingEntity$$Type, arg1: float, arg2: $SpellDamageSource$$Type)
 
-public "setAmount"(arg0: float): void
 public "getAmount"(): float
+public "setAmount"(arg0: float): void
 public "getOriginalAmount"(): float
 public "getSpellDamageSource"(): $SpellDamageSource
 public "isCanceled"(): boolean
 public "setCanceled"(arg0: boolean): void
-set "amount"(value: float)
 get "amount"(): float
+set "amount"(value: float)
 get "originalAmount"(): float
 get "spellDamageSource"(): $SpellDamageSource
 get "canceled"(): boolean
@@ -9758,8 +10710,8 @@ export type $SpellDamageEvent_ = $SpellDamageEvent$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.eldritch.EldritchBlastSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -9768,8 +10720,8 @@ import {$SpellDamageSource, $SpellDamageSource$$Type} from "io.redspace.ironsspe
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
@@ -9779,20 +10731,20 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 constructor()
 
 public static "getRange"(arg0: integer, arg1: $LivingEntity$$Type): float
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getDamageSource"(arg0: $Entity$$Type, arg1: $Entity$$Type): $SpellDamageSource
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
+public "getCastType"(): $CastType
 public "getRecastCount"(arg0: integer, arg1: $LivingEntity$$Type): integer
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getDamageSource"(arg0: $Entity$$Type, arg1: $Entity$$Type): $SpellDamageSource
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9807,22 +10759,26 @@ declare global {
 export type $EldritchBlastSpell_ = $EldritchBlastSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.UniqueSpellBook" {
-import {$SpellData, $SpellData$$Type} from "io.redspace.ironsspellbooks.api.spells.SpellData"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$UniqueItem, $UniqueItem$$Type} from "io.redspace.ironsspellbooks.item.UniqueItem"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$SpellBook, $SpellBook$$Type} from "io.redspace.ironsspellbooks.item.SpellBook"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$SpellData, $SpellData$$Type} from "io.redspace.ironsspellbooks.api.spells.SpellData"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$SpellDataRegistryHolder, $SpellDataRegistryHolder$$Type} from "io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder"
-import {$SpellBook, $SpellBook$$Type} from "io.redspace.ironsspellbooks.item.SpellBook"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 
 export class $UniqueSpellBook extends $SpellBook implements $UniqueItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -9832,9 +10788,10 @@ constructor(arg0: ($SpellDataRegistryHolder$$Type)[])
 constructor(arg0: ($SpellDataRegistryHolder$$Type)[], arg1: integer)
 
 public "getName"(arg0: $ItemStack$$Type): $Component
-public "initializeSpellContainer"(arg0: $ItemStack$$Type): void
 public "isUnique"(): boolean
 public "getSpells"(): $List<($SpellData)>
+public "initializeSpellContainer"(arg0: $ItemStack$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "unique"(): boolean
 get "spells"(): $List<($SpellData)>
 }
@@ -9856,9 +10813,9 @@ import {$Map, $Map$$Type} from "java.util.Map"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
-import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MagicMobEffect, $MagicMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.MagicMobEffect"
 import {$LivingEntityUseItemEvent$Finish, $LivingEntityUseItemEvent$Finish$$Type} from "net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent$Finish"
+import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect, $MobEffect$$Type} from "net.minecraft.world.effect.MobEffect"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
@@ -9870,8 +10827,8 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(arg0: $MobEffectCategory$$Type, arg1: integer)
 
-public static "ratioForAmplifier"(arg0: integer): float
 public static "finishEating"(arg0: $LivingEntityUseItemEvent$Finish$$Type): void
+public static "ratioForAmplifier"(arg0: integer): float
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9886,11 +10843,15 @@ declare global {
 export type $GluttonyEffect_ = $GluttonyEffect$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.armor.ArchevokerArmorItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$GeoArmorRenderer, $GeoArmorRenderer$$Type} from "software.bernie.geckolib.renderer.GeoArmorRenderer"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$GeoAnimatable, $GeoAnimatable$$Type} from "software.bernie.geckolib.animatable.GeoAnimatable"
@@ -9905,7 +10866,7 @@ import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.A
 export class $ArchevokerArmorItem extends $ImbuableChestplateArmorItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -9920,6 +10881,7 @@ public static "getId"(arg0: $ItemStack$$Type): long
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9936,8 +10898,8 @@ export type $ArchevokerArmorItem_ = $ArchevokerArmorItem$$Type;
 declare module "io.redspace.ironsspellbooks.spells.eldritch.PlanarSightSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -9945,8 +10907,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $PlanarSightSpell extends $AbstractSpell {
@@ -9954,19 +10916,19 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public "getCastStartAnimation"(): $AnimationHolder
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
+public "getCastStartAnimation"(): $AnimationHolder
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 }
 /**
@@ -9982,18 +10944,22 @@ declare global {
 export type $PlanarSightSpell_ = $PlanarSightSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.curios.PoisonwardRing" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$SlotContext, $SlotContext$$Type} from "top.theillusivec4.curios.api.SlotContext"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$SimpleDescriptiveCurio, $SimpleDescriptiveCurio$$Type} from "io.redspace.ironsspellbooks.item.curios.SimpleDescriptiveCurio"
 
 export class $PoisonwardRing extends $SimpleDescriptiveCurio {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -10002,6 +10968,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "curioTick"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10014,6 +10981,40 @@ export type $PoisonwardRing$$Type = ($PoisonwardRing);
  */
 declare global {
 export type $PoisonwardRing_ = $PoisonwardRing$$Type;
+}}
+declare module "io.redspace.ironsspellbooks.entity.mobs.goals.WarlockAttackGoal" {
+import {$List, $List$$Type} from "java.util.List"
+import {$IMagicEntity, $IMagicEntity$$Type} from "io.redspace.ironsspellbooks.api.entity.IMagicEntity"
+import {$WizardAttackGoal, $WizardAttackGoal$$Type} from "io.redspace.ironsspellbooks.entity.mobs.goals.WizardAttackGoal"
+import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
+
+export class $WarlockAttackGoal extends $WizardAttackGoal {
+
+constructor(arg0: $IMagicEntity$$Type, arg1: double, arg2: integer, arg3: integer)
+
+public "tick"(): void
+public "stop"(): void
+public "meleeRange"(): float
+public "setIsFlying"(): $WarlockAttackGoal
+public "setMeleeBias"(arg0: float, arg1: float): $WarlockAttackGoal
+public "setSpells"(arg0: $List$$Type<($AbstractSpell$$Type)>, arg1: $List$$Type<($AbstractSpell$$Type)>, arg2: $List$$Type<($AbstractSpell$$Type)>, arg3: $List$$Type<($AbstractSpell$$Type)>): $WarlockAttackGoal
+public "setSingleUseSpell"(arg0: $AbstractSpell$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer): $WizardAttackGoal
+public "setSpellQuality"(arg0: float, arg1: float): $WizardAttackGoal
+public "setMeleeAttackInverval"(arg0: integer, arg1: integer): $WarlockAttackGoal
+public "setMeleeMovespeedModifier"(arg0: float): $WarlockAttackGoal
+set "meleeMovespeedModifier"(value: float)
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $WarlockAttackGoal$$Type = ($WarlockAttackGoal);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $WarlockAttackGoal_ = $WarlockAttackGoal$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.block.inscription_table.InscriptionTableBlock" {
 import {$ChestType, $ChestType$$Type} from "net.minecraft.world.level.block.state.properties.ChestType"
@@ -10028,23 +11029,23 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$MenuProvider, $MenuProvider$$Type} from "net.minecraft.world.MenuProvider"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$RenderShape, $RenderShape$$Type} from "net.minecraft.world.level.block.RenderShape"
 import {$HorizontalDirectionalBlock, $HorizontalDirectionalBlock$$Type} from "net.minecraft.world.level.block.HorizontalDirectionalBlock"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$PushReaction, $PushReaction$$Type} from "net.minecraft.world.level.material.PushReaction"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
@@ -10057,7 +11058,7 @@ static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "SHAPE_LEGS_EAST": $VoxelShape
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "PART": $EnumProperty<($ChestType)>
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "SHAPE_LEGS_WEST": $VoxelShape
@@ -10087,9 +11088,9 @@ public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $Bloc
 public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
 public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
 public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
-public "getPistonPushReaction"(arg0: $BlockState$$Type): $PushReaction
 public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "getMenuProvider"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type): $MenuProvider
+public "getPistonPushReaction"(arg0: $BlockState$$Type): $PushReaction
 public "getPickupSound"(): $Optional<($SoundEvent)>
 public "canPlaceLiquid"(arg0: $Player$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $Fluid$$Type): boolean
 public "placeLiquid"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $FluidState$$Type): boolean
@@ -10112,7 +11113,9 @@ export type $InscriptionTableBlock_ = $InscriptionTableBlock$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.effect.AscensionEffect" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
+import {$MobEffectInstance, $MobEffectInstance$$Type} from "net.minecraft.world.effect.MobEffectInstance"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ISyncedMobEffect, $ISyncedMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.ISyncedMobEffect"
 import {$MobEffect, $MobEffect$$Type} from "net.minecraft.world.effect.MobEffect"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ClientLevel, $ClientLevel$$Type} from "net.minecraft.client.multiplayer.ClientLevel"
@@ -10120,21 +11123,20 @@ import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MagicMobEffect, $MagicMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.MagicMobEffect"
+import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
 
-export class $AscensionEffect extends $MagicMobEffect {
+export class $AscensionEffect extends $MagicMobEffect implements $ISyncedMobEffect {
 static readonly "CODEC": $Codec<($Holder<($MobEffect)>)>
 readonly "attributeModifiers": $Map<($Holder<($Attribute)>), ($MobEffect$AttributeTemplate)>
 static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holder<($MobEffect)>)>
 
 constructor(arg0: $MobEffectCategory$$Type, arg1: integer)
 
-public "shouldApplyEffectTickThisTick"(arg0: integer, arg1: integer): boolean
-public "onEffectAdded"(arg0: $LivingEntity$$Type, arg1: integer): void
-public "onEffectRemoved"(arg0: $LivingEntity$$Type, arg1: integer): void
+public "clientTick"(arg0: $LivingEntity$$Type, arg1: $MobEffectInstance$$Type): void
 public "applyEffectTick"(arg0: $LivingEntity$$Type, arg1: integer): boolean
+public "shouldApplyEffectTickThisTick"(arg0: integer, arg1: integer): boolean
 public static "ambientParticles"(arg0: $ClientLevel$$Type, arg1: $LivingEntity$$Type): void
 }
 /**
@@ -10161,8 +11163,8 @@ import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MagicMobEffect, $MagicMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.MagicMobEffect"
+import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
 
 export class $AbyssalShroudEffect extends $MagicMobEffect implements $ISyncedMobEffect {
@@ -10188,22 +11190,26 @@ declare global {
 export type $AbyssalShroudEffect_ = $AbyssalShroudEffect$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.curios.TeleportationAmuletItem" {
-import {$SlotContext, $SlotContext$$Type} from "top.theillusivec4.curios.api.SlotContext"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$SimpleDescriptiveCurio, $SimpleDescriptiveCurio$$Type} from "io.redspace.ironsspellbooks.item.curios.SimpleDescriptiveCurio"
+import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$SlotContext, $SlotContext$$Type} from "top.theillusivec4.curios.api.SlotContext"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$SimpleDescriptiveCurio, $SimpleDescriptiveCurio$$Type} from "io.redspace.ironsspellbooks.item.curios.SimpleDescriptiveCurio"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 
 export class $TeleportationAmuletItem extends $SimpleDescriptiveCurio {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -10211,8 +11217,9 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Item$Properties$$Type)
 
-public "getAttributesTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $Item$TooltipContext$$Type, arg2: $ItemStack$$Type): $List<($Component)>
 public "curioTick"(arg0: $SlotContext$$Type, arg1: $ItemStack$$Type): void
+public "getAttributesTooltip"(arg0: $List$$Type<($Component$$Type)>, arg1: $Item$TooltipContext$$Type, arg2: $ItemStack$$Type): $List<($Component)>
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10257,8 +11264,8 @@ export type $ISyncedMobEffect_ = $ISyncedMobEffect$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.fire.WallOfFireSpell" {
 import {$RecastInstance, $RecastInstance$$Type} from "io.redspace.ironsspellbooks.capabilities.magic.RecastInstance"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -10268,8 +11275,8 @@ import {$WallOfFireSpell$FireWallData, $WallOfFireSpell$FireWallData$$Type} from
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
@@ -10280,16 +11287,16 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getRecastCount"(arg0: integer, arg1: $LivingEntity$$Type): integer
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "addAnchor"(arg0: $WallOfFireSpell$FireWallData$$Type, arg1: $Level$$Type, arg2: $LivingEntity$$Type, arg3: $RecastInstance$$Type): void
 public "getDamageSource"(arg0: $Entity$$Type, arg1: $Entity$$Type): $SpellDamageSource
 public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
 public "getEmptyCastData"(): $ICastDataSerializable
 public "onRecastFinished"(arg0: $ServerPlayer$$Type, arg1: $RecastInstance$$Type, arg2: $RecastResult$$Type, arg3: $ICastDataSerializable$$Type): void
-public "getRecastCount"(arg0: integer, arg1: $LivingEntity$$Type): integer
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
-public "addAnchor"(arg0: $WallOfFireSpell$FireWallData$$Type, arg1: $Level$$Type, arg2: $LivingEntity$$Type, arg3: $RecastInstance$$Type): void
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -10358,21 +11365,21 @@ import {$SimpleWaterloggedBlock, $SimpleWaterloggedBlock$$Type} from "net.minecr
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $FireflyJar extends $Block implements $SimpleWaterloggedBlock {
 static readonly "UPDATE_IMMEDIATE": integer
@@ -10389,7 +11396,7 @@ static readonly "SHAPE": $VoxelShape
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -10425,14 +11432,14 @@ declare module "io.redspace.ironsspellbooks.api.spells.AbstractSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Mob, $Mob$$Type} from "net.minecraft.world.entity.Mob"
 import {$List, $List$$Type} from "java.util.List"
+import {$Mob, $Mob$$Type} from "net.minecraft.world.entity.Mob"
 import {$SchoolType, $SchoolType$$Type} from "io.redspace.ironsspellbooks.api.spells.SchoolType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Vector3f, $Vector3f$$Type} from "org.joml.Vector3f"
 import {$RecastResult, $RecastResult$$Type} from "io.redspace.ironsspellbooks.capabilities.magic.RecastResult"
-import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
@@ -10457,86 +11464,86 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
+public "getDisplayName"(arg0: $Player$$Type): $MutableComponent
 public "equals"(arg0: any): boolean
 public "hashCode"(): integer
 public "isEnabled"(): boolean
-public "getDisplayName"(arg0: $Player$$Type): $MutableComponent
+public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "playSound"(arg0: $Optional$$Type<($SoundEvent$$Type)>, arg1: $Entity$$Type): void
 public "getRarity"(arg0: integer): $SpellRarity
 public "getCastType"(): $CastType
-public "playSound"(arg0: $Optional$$Type<($SoundEvent$$Type)>, arg1: $Entity$$Type): void
 public "getMinLevel"(): integer
 public "getMaxLevel"(): integer
-public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getDamageSource"(arg0: $Entity$$Type): $SpellDamageSource
-public "getDamageSource"(arg0: $Entity$$Type, arg1: $Entity$$Type): $SpellDamageSource
-public "getSpellCooldown"(): integer
+public "getSpellName"(): StringJS
+public "getSchoolType"(): $SchoolType
+public "getMinRarity"(): integer
+public "obfuscateStats"(arg0: $Player$$Type): boolean
+public "getComponentId"(): StringJS
+public "getLevelFor"(arg0: integer, arg1: $LivingEntity$$Type): integer
+public "getCastTime"(arg0: integer): integer
+public "getSpellPower"(arg0: integer, arg1: $Entity$$Type): float
+public "getRecastCount"(arg0: integer, arg1: $LivingEntity$$Type): integer
+public "canBeCastedBy"(arg0: integer, arg1: $CastSource$$Type, arg2: $MagicData$$Type, arg3: $Player$$Type): $CastResult
+public "onClientCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $ICastData$$Type): void
+public "isLearned"(arg0: $Player$$Type): boolean
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getMaxRarity"(): integer
+public "canBeCraftedBy"(arg0: $Player$$Type): boolean
+public "allowCrafting"(): boolean
+public "castSpell"(arg0: $Level$$Type, arg1: integer, arg2: $ServerPlayer$$Type, arg3: $CastSource$$Type, arg4: boolean): void
+public "getManaCost"(arg0: integer): integer
+public "getSpellId"(): StringJS
+public "allowLooting"(): boolean
+public "requiresLearning"(): boolean
+public "getTargetingColor"(): $Vector3f
 public "onServerCastComplete"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type, arg4: boolean): void
+public "onClientPreCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $InteractionHand$$Type, arg4: $MagicData$$Type): void
 public "onServerCastTick"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
 public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
 public "getEffectiveCastTime"(arg0: integer, arg1: $LivingEntity$$Type): integer
 public "onServerPreCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): void
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getDamageSource"(arg0: $Entity$$Type): $SpellDamageSource
+public "getDamageSource"(arg0: $Entity$$Type, arg1: $Entity$$Type): $SpellDamageSource
+public "getSpellCooldown"(): integer
+public "getSpellResource"(): $ResourceLocation
 public "getSpellIconResource"(): $ResourceLocation
 public "getLockedMessage"(): $Component
 public "getDefaultConfig"(): $DefaultConfig
 public "getEmptyCastData"(): $ICastDataSerializable
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 public "getCastStartAnimation"(): $AnimationHolder
 public "getCastFinishAnimation"(): $AnimationHolder
-public "attemptInitiateCast"(arg0: $ItemStack$$Type, arg1: integer, arg2: $Level$$Type, arg3: $Player$$Type, arg4: $CastSource$$Type, arg5: boolean, arg6: string): boolean
+public "attemptInitiateCast"(arg0: $ItemStack$$Type, arg1: integer, arg2: $Level$$Type, arg3: $Player$$Type, arg4: $CastSource$$Type, arg5: boolean, arg6: StringJS): boolean
 public "onRecastFinished"(arg0: $ServerPlayer$$Type, arg1: $RecastInstance$$Type, arg2: $RecastResult$$Type, arg3: $ICastDataSerializable$$Type): void
-public "onClientPreCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $InteractionHand$$Type, arg4: $MagicData$$Type): void
 public "shouldAIStopCasting"(arg0: integer, arg1: $Mob$$Type, arg2: $LivingEntity$$Type): boolean
-public "getDeathMessageId"(): string
+public "getDeathMessageId"(): StringJS
 public "getMinLevelForRarity"(arg0: $SpellRarity$$Type): integer
 public "canBeInterrupted"(arg0: $Player$$Type): boolean
 public "stopSoundOnCancel"(): boolean
-public "requiresLearning"(): boolean
-public "getTargetingColor"(): $Vector3f
-public "getManaCost"(arg0: integer): integer
-public "getComponentId"(): string
-public "getSchoolType"(): $SchoolType
-public "obfuscateStats"(arg0: $Player$$Type): boolean
-public "getCastTime"(arg0: integer): integer
-public "canBeCastedBy"(arg0: integer, arg1: $CastSource$$Type, arg2: $MagicData$$Type, arg3: $Player$$Type): $CastResult
-public "isLearned"(arg0: $Player$$Type): boolean
-public "getRecastCount"(arg0: integer, arg1: $LivingEntity$$Type): integer
-public "getMinRarity"(): integer
-public "getMaxRarity"(): integer
-public "allowCrafting"(): boolean
-public "getLevelFor"(arg0: integer, arg1: $LivingEntity$$Type): integer
-public "getSpellPower"(arg0: integer, arg1: $Entity$$Type): float
-public "onClientCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $ICastData$$Type): void
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
-public "canBeCraftedBy"(arg0: $Player$$Type): boolean
-public "getSpellId"(): string
-public "allowLooting"(): boolean
-public "getSpellName"(): string
-public "castSpell"(arg0: $Level$$Type, arg1: integer, arg2: $ServerPlayer$$Type, arg3: $CastSource$$Type, arg4: boolean): void
 public "getEntityPowerMultiplier"(arg0: $LivingEntity$$Type): float
 get "enabled"(): boolean
 get "castType"(): $CastType
 get "minLevel"(): integer
 get "maxLevel"(): integer
+get "spellName"(): StringJS
+get "schoolType"(): $SchoolType
+get "minRarity"(): integer
+get "componentId"(): StringJS
+get "maxRarity"(): integer
+get "spellId"(): StringJS
+get "targetingColor"(): $Vector3f
 get "spellCooldown"(): integer
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "spellIconResource"(): $ResourceLocation
 get "lockedMessage"(): $Component
 get "defaultConfig"(): $DefaultConfig
 get "emptyCastData"(): $ICastDataSerializable
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 get "castFinishAnimation"(): $AnimationHolder
-get "deathMessageId"(): string
-get "targetingColor"(): $Vector3f
-get "componentId"(): string
-get "schoolType"(): $SchoolType
-get "minRarity"(): integer
-get "maxRarity"(): integer
-get "spellId"(): string
-get "spellName"(): string
+get "deathMessageId"(): StringJS
 /**
  * This field is a type stub generated by ProbeJS and shall not be used in any sense.
  */
@@ -10559,8 +11566,8 @@ declare global {
 export type $AbstractSpell_ = $AbstractSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.fire.FireboltSpell" {
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -10568,8 +11575,8 @@ import {$SpellDamageSource, $SpellDamageSource$$Type} from "io.redspace.ironsspe
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
@@ -10578,12 +11585,12 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getDamageSource"(arg0: $Entity$$Type, arg1: $Entity$$Type): $SpellDamageSource
 public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -10614,9 +11621,9 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($BrewA
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($BrewAlchemistCauldronRecipe)>
 public "codec"(): $MapCodec<($BrewAlchemistCauldronRecipe)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($BrewAlchemistCauldronRecipe)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10629,6 +11636,139 @@ export type $BrewAlchemistCauldronRecipe$Serializer$$Type = ($BrewAlchemistCauld
  */
 declare global {
 export type $BrewAlchemistCauldronRecipe$Serializer_ = $BrewAlchemistCauldronRecipe$Serializer$$Type;
+}}
+declare module "io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile" {
+import {$Optional, $Optional$$Type} from "java.util.Optional"
+import {$AntiMagicSusceptible, $AntiMagicSusceptible$$Type} from "io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible"
+import {$UUID, $UUID$$Type} from "java.util.UUID"
+import {$EntityDimensions, $EntityDimensions$$Type} from "net.minecraft.world.entity.EntityDimensions"
+import {$Projectile, $Projectile$$Type} from "net.minecraft.world.entity.projectile.Projectile"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$TrackedData, $TrackedData$$Type} from "dev.corgitaco.dataanchor.data.TrackedData"
+import {$TrackedDataContainer, $TrackedDataContainer$$Type} from "dev.corgitaco.dataanchor.data.TrackedDataContainer"
+import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
+import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.dataanchor.data.registry.TrackedDataRegistry"
+import {$Entity$RemovalReason, $Entity$RemovalReason$$Type} from "net.minecraft.world.entity.Entity$RemovalReason"
+import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
+import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
+import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
+import {$ScoreHolder, $ScoreHolder$$Type} from "net.minecraft.world.scores.ScoreHolder"
+import {$Stack, $Stack$$Type} from "java.util.Stack"
+import {$Tag, $Tag$$Type} from "net.minecraft.nbt.Tag"
+import {$GameProfile, $GameProfile$$Type} from "com.mojang.authlib.GameProfile"
+import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$PortalProcessor, $PortalProcessor$$Type} from "net.minecraft.world.entity.PortalProcessor"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
+import {$EntityType, $EntityType$$Type} from "net.minecraft.world.entity.EntityType"
+
+export class $AbstractMagicProjectile extends $Projectile implements $AntiMagicSusceptible {
+ "xRot": float
+ "hasImpulse": boolean
+ "ars_Nouveau$motions": $Stack<(any)>
+ "tickCount": integer
+ "an_isRewinding": boolean
+ "noPhysics": boolean
+ "yo": double
+ "leftOwner": boolean
+static readonly "BOARDING_COOLDOWN": integer
+ "removalReason": $Entity$RemovalReason
+ "yRotO": float
+static readonly "CONTENTS_SLOT_INDEX": integer
+ "level": $Level
+ "yRot": float
+ "moveDist": float
+static readonly "ID_TAG": StringJS
+ "mainSupportingBlockPos": $Optional<($BlockPos)>
+static readonly "DELTA_AFFECTED_BY_BLOCKS_BELOW_1_0": double
+ "xRotO": float
+ "zo": double
+ "walkDist": float
+ "xOld": double
+ "noCulling": boolean
+ "wasInPowderSnow": boolean
+ "hurtMarked": boolean
+ "invulnerableTime": integer
+static readonly "UUID_TAG": StringJS
+static readonly "BASE_TICKS_REQUIRED_TO_FREEZE": integer
+ "fallDistance": float
+ "portalProcess": $PortalProcessor
+ "verticalCollision": boolean
+static readonly "DELTA_AFFECTED_BY_BLOCKS_BELOW_0_5": double
+static readonly "MAX_ENTITY_TAG_COUNT": integer
+static readonly "DELTA_AFFECTED_BY_BLOCKS_BELOW_0_2": float
+ "verticalCollisionBelow": boolean
+ "deltaMovementOld": $Vec3
+ "yOld": double
+static readonly "DEFAULT_BB_WIDTH": float
+ "eyeHeight": float
+ "minorHorizontalCollision": boolean
+static readonly "DEFAULT_BB_HEIGHT": float
+ "ownerUUID": $UUID
+ "walkDistO": float
+static readonly "FREEZE_HURT_FREQUENCY": integer
+ "flyDist": float
+ "isInPowderSnow": boolean
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
+ "hasBeenShot": boolean
+ "cachedOwner": $Entity
+static readonly "PASSENGERS_TAG": StringJS
+ "blocksBuilding": boolean
+ "wasOnFire": boolean
+ "zOld": double
+static readonly "TOTAL_AIR_SUPPLY": integer
+ "xo": double
+static readonly "BASE_SAFE_FALL_DISTANCE": integer
+ "wasTouchingWater": boolean
+ "horizontalCollision": boolean
+ "dimensions": $EntityDimensions
+
+constructor(arg0: $EntityType$$Type<($Projectile$$Type)>, arg1: $Level$$Type)
+
+public "tick"(): void
+public "shoot"(arg0: $Vec3$$Type): void
+public "travel"(): void
+public "setDamage"(arg0: float): void
+public "getDamage"(): float
+public "isOnFire"(): boolean
+public "getSpeed"(): float
+public "checkDespawn"(): void
+public "shouldBeSaved"(): boolean
+public "onAntiMagic"(arg0: $MagicData$$Type): void
+public "trailParticles"(): void
+public "getImpactSound"(): $Optional<($Holder<($SoundEvent)>)>
+public "setExplosionRadius"(arg0: float): void
+public "impactParticles"(arg0: double, arg1: double, arg2: double): void
+public "handleHitDetection"(): void
+public "getExplosionRadius"(): float
+public static "forNameOnly"(arg0: StringJS): $ScoreHolder
+public static "fromGameProfile"(arg0: $GameProfile$$Type): $ScoreHolder
+/**
+ * 
+ * @deprecated
+ */
+public "serializeNBT"(arg0: $HolderLookup$Provider$$Type): $Tag
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+set "damage"(value: float)
+get "damage"(): float
+get "onFire"(): boolean
+get "speed"(): float
+get "impactSound"(): $Optional<($Holder<($SoundEvent)>)>
+set "explosionRadius"(value: float)
+get "explosionRadius"(): float
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AbstractMagicProjectile$$Type = ($AbstractMagicProjectile);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AbstractMagicProjectile_ = $AbstractMagicProjectile$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.api.item.IScroll" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
@@ -10657,8 +11797,8 @@ export type $IScroll_ = $IScroll$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.blood.WitherSkullSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -10666,8 +11806,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $WitherSkullSpell extends $AbstractSpell {
@@ -10675,18 +11815,18 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10701,12 +11841,15 @@ declare global {
 export type $WitherSkullSpell_ = $WitherSkullSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.armor.ExtendedArmorItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ArmorMaterial, $ArmorMaterial$$Type} from "net.minecraft.world.item.ArmorMaterial"
 import {$GeoArmorRenderer, $GeoArmorRenderer$$Type} from "software.bernie.geckolib.renderer.GeoArmorRenderer"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$AttributeContainer, $AttributeContainer$$Type} from "io.redspace.ironsspellbooks.item.weapons.AttributeContainer"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$GeoAnimatable, $GeoAnimatable$$Type} from "software.bernie.geckolib.animatable.GeoAnimatable"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
@@ -10719,9 +11862,10 @@ import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.A
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$GeoRenderProvider, $GeoRenderProvider$$Type} from "software.bernie.geckolib.animatable.client.GeoRenderProvider"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$AnimatableInstanceCache, $AnimatableInstanceCache$$Type} from "software.bernie.geckolib.animatable.instance.AnimatableInstanceCache"
-import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$AnimatableManager$ControllerRegistrar, $AnimatableManager$ControllerRegistrar$$Type} from "software.bernie.geckolib.animation.AnimatableManager$ControllerRegistrar"
+import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$GeoItem, $GeoItem$$Type} from "software.bernie.geckolib.animatable.GeoItem"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
@@ -10731,7 +11875,7 @@ import {$SerializableDataTicket, $SerializableDataTicket$$Type} from "software.b
 export class $ExtendedArmorItem extends $ArmorItem implements $GeoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -10741,31 +11885,32 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Holder$$Type<($ArmorMaterial)>, arg1: $ArmorItem$Type$$Type, arg2: $Item$Properties$$Type, ...arg3: ($AttributeContainer$$Type)[])
 
-public static "withManaAttribute"(arg0: integer): ($AttributeContainer)[]
-public static "schoolAttributes"(arg0: $Holder$$Type<($Attribute)>): ($AttributeContainer)[]
-public "getDefaultAttributeModifiers"(): $ItemAttributeModifiers
-public "getAnimatableInstanceCache"(): $AnimatableInstanceCache
-public "registerControllers"(arg0: $AnimatableManager$ControllerRegistrar$$Type): void
-public "createGeoRenderer"(arg0: $Consumer$$Type<($GeoRenderProvider)>): void
 public "supplyRenderer"(): $GeoArmorRenderer<(any)>
+public "registerControllers"(arg0: $AnimatableManager$ControllerRegistrar$$Type): void
+public "getDefaultAttributeModifiers"(): $ItemAttributeModifiers
+public static "schoolAttributes"(arg0: $Holder$$Type<($Attribute)>): ($AttributeContainer)[]
+public static "withManaAttribute"(arg0: integer): ($AttributeContainer)[]
+public "createGeoRenderer"(arg0: $Consumer$$Type<($GeoRenderProvider)>): void
+public "getAnimatableInstanceCache"(): $AnimatableInstanceCache
 public static "withManaAndSpellPowerAttribute"(arg0: integer, arg1: double): ($AttributeContainer)[]
 public static "getId"(arg0: $ItemStack$$Type): long
-public "animatableCacheOverride"(): $AnimatableInstanceCache
-public "isPerspectiveAware"(): boolean
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public "getTick"(arg0: any): double
+public "isPerspectiveAware"(): boolean
+public "animatableCacheOverride"(): $AnimatableInstanceCache
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
+public "triggerAnim"<D>(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
 public "syncAnimData"<D>(arg0: long, arg1: $SerializableDataTicket$$Type<(D)>, arg2: D, arg3: $Entity$$Type): void
-public "stopTriggeredAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "triggerArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "stopTriggeredArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "getRenderProvider"(): any
-public "triggerAnim"<D>(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
 public "getAnimData"<D>(arg0: long, arg1: $SerializableDataTicket$$Type<(D)>): D
 public "setAnimData"<D>(arg0: $Entity$$Type, arg1: long, arg2: $SerializableDataTicket$$Type<(D)>, arg3: D): void
+public "stopTriggeredAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
+public "getRenderProvider"(): any
+public "triggerArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
+public "stopTriggeredArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
 public static "get"(arg0: $ItemStack$$Type): $Equipable
-public "shouldPlayAnimsWhileGamePaused"(): boolean
 public "getBoneResetTime"(): double
+public "shouldPlayAnimsWhileGamePaused"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "defaultAttributeModifiers"(): $ItemAttributeModifiers
 get "animatableInstanceCache"(): $AnimatableInstanceCache
 get "perspectiveAware"(): boolean
@@ -10785,16 +11930,16 @@ declare global {
 export type $ExtendedArmorItem_ = $ExtendedArmorItem$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.lightning.AscensionSpell" {
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$ICastData, $ICastData$$Type} from "io.redspace.ironsspellbooks.api.spells.ICastData"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 import {$ICastDataSerializable, $ICastDataSerializable$$Type} from "io.redspace.ironsspellbooks.api.spells.ICastDataSerializable"
@@ -10804,13 +11949,13 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "onClientCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $ICastData$$Type): void
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
 public "getEmptyCastData"(): $ICastDataSerializable
-public "onClientCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $ICastData$$Type): void
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -10830,28 +11975,30 @@ export type $AscensionSpell_ = $AscensionSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.effect.HeartstopEffect" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
+import {$MobEffectInstance, $MobEffectInstance$$Type} from "net.minecraft.world.effect.MobEffectInstance"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ISyncedMobEffect, $ISyncedMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.ISyncedMobEffect"
+import {$MobEffect, $MobEffect$$Type} from "net.minecraft.world.effect.MobEffect"
+import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MagicMobEffect, $MagicMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.MagicMobEffect"
-import {$MobEffect, $MobEffect$$Type} from "net.minecraft.world.effect.MobEffect"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
 
-export class $HeartstopEffect extends $MagicMobEffect {
+export class $HeartstopEffect extends $MagicMobEffect implements $ISyncedMobEffect {
 static readonly "CODEC": $Codec<($Holder<($MobEffect)>)>
 readonly "attributeModifiers": $Map<($Holder<($Attribute)>), ($MobEffect$AttributeTemplate)>
 static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holder<($MobEffect)>)>
 
 constructor(arg0: $MobEffectCategory$$Type, arg1: integer)
 
-public "shouldApplyEffectTickThisTick"(arg0: integer, arg1: integer): boolean
-public "onEffectAdded"(arg0: $LivingEntity$$Type, arg1: integer): void
-public "onEffectRemoved"(arg0: $LivingEntity$$Type, arg1: integer): void
 public "applyEffectTick"(arg0: $LivingEntity$$Type, arg1: integer): boolean
+public "onEffectRemoved"(arg0: $LivingEntity$$Type, arg1: integer): void
+public "shouldApplyEffectTickThisTick"(arg0: integer, arg1: integer): boolean
+public "clientTick"(arg0: $LivingEntity$$Type, arg1: $MobEffectInstance$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10867,8 +12014,8 @@ export type $HeartstopEffect_ = $HeartstopEffect$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.fire.FireballSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -10876,8 +12023,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $FireballSpell extends $AbstractSpell {
@@ -10885,18 +12032,18 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getRadius"(arg0: integer, arg1: $LivingEntity$$Type): integer
-public "getCastType"(): $CastType
-public "getDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
+public "getDamage"(arg0: integer, arg1: $LivingEntity$$Type): float
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getRadius"(arg0: integer, arg1: $LivingEntity$$Type): integer
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10922,8 +12069,8 @@ import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$FluidStack, $FluidStack$$Type} from "net.neoforged.neoforge.fluids.FluidStack"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
-import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
 import {$Recipe, $Recipe$$Type} from "net.minecraft.world.item.crafting.Recipe"
+import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
 import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.item.crafting.RecipeSerializer"
 import {$Record, $Record$$Type} from "java.lang.Record"
 
@@ -10931,33 +12078,33 @@ export class $BrewAlchemistCauldronRecipe extends $Record implements $Recipe<($B
 
 constructor(fluidIn: $FluidStack$$Type, reagent: $Ingredient$$Type, results: $List$$Type<($FluidStack$$Type)>, byproduct: $Optional$$Type<($ItemStack$$Type)>)
 
+public "results"(): $List<($FluidStack)>
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "matches"(arg0: $BrewAlchemistCauldronRecipe$Input$$Type, arg1: $Level$$Type): boolean
 public static "builder"(): $BrewAlchemistCauldronRecipe$Builder
 public "getType"(): $RecipeType<(any)>
-public "results"(): $List<($FluidStack)>
-public "assemble"(arg0: $BrewAlchemistCauldronRecipe$Input$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "getSerializer"(): $RecipeSerializer<(any)>
-public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
-public "reagent"(): $Ingredient
-public "fluidIn"(): $FluidStack
 public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
 public "byproduct"(): $Optional<($ItemStack)>
+public "reagent"(): $Ingredient
+public "fluidIn"(): $FluidStack
+public "getSerializer"(): $RecipeSerializer<(any)>
+public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "assemble"(arg0: $BrewAlchemistCauldronRecipe$Input$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "getIngredients"(): $NonNullList<($Ingredient)>
-public "getGroup"(): string
+public "getGroup"(): StringJS
 public "isSpecial"(): boolean
-public "showNotification"(): boolean
-public "getRemainingItems"(arg0: $BrewAlchemistCauldronRecipe$Input$$Type): $NonNullList<($ItemStack)>
 public "isIncomplete"(): boolean
 public "getToastSymbol"(): $ItemStack
+public "showNotification"(): boolean
+public "getRemainingItems"(arg0: $BrewAlchemistCauldronRecipe$Input$$Type): $NonNullList<($ItemStack)>
 get "type"(): $RecipeType<(any)>
 get "serializer"(): $RecipeSerializer<(any)>
 get "ingredients"(): $NonNullList<($Ingredient)>
-get "group"(): string
+get "group"(): StringJS
 get "special"(): boolean
 get "incomplete"(): boolean
 get "toastSymbol"(): $ItemStack
@@ -10966,7 +12113,7 @@ get "toastSymbol"(): $ItemStack
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $BrewAlchemistCauldronRecipe$$Type = ({"results"?: $List$$Type<($FluidStack$$Type)>, "fluidIn"?: $FluidStack$$Type, "byproduct"?: ($ItemStack$$Type)?, "reagent"?: $Ingredient$$Type}) | ([results?: $List$$Type<($FluidStack$$Type)>, fluidIn?: $FluidStack$$Type, byproduct?: ($ItemStack$$Type)?, reagent?: $Ingredient$$Type]);
+export type $BrewAlchemistCauldronRecipe$$Type = ({"reagent"?: $Ingredient$$Type, "results"?: $List$$Type<($FluidStack$$Type)>, "fluidIn"?: $FluidStack$$Type, "byproduct"?: ($ItemStack$$Type)?}) | ([reagent?: $Ingredient$$Type, results?: $List$$Type<($FluidStack$$Type)>, fluidIn?: $FluidStack$$Type, byproduct?: ($ItemStack$$Type)?]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -10975,18 +12122,20 @@ declare global {
 export type $BrewAlchemistCauldronRecipe_ = $BrewAlchemistCauldronRecipe$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.weapons.AutoloaderCrossbow" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
-import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$ItemEntity, $ItemEntity$$Type} from "net.minecraft.world.entity.item.ItemEntity"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
-import {$CrossbowItem, $CrossbowItem$$Type} from "net.minecraft.world.item.CrossbowItem"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$CrossbowItem, $CrossbowItem$$Type} from "net.minecraft.world.item.CrossbowItem"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
@@ -10996,16 +12145,16 @@ import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.Liv
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 
 export class $AutoloaderCrossbow extends $CrossbowItem {
-static readonly "LOADING": string
+static readonly "LOADING": StringJS
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_RANGE": integer
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
 static readonly "ARROW_OR_FIREWORK": $Predicate<($ItemStack)>
-static readonly "LOADING_TIMESTAMP": string
+static readonly "LOADING_TIMESTAMP": StringJS
 static readonly "ARROW_ONLY": $Predicate<($ItemStack)>
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "MOB_ARROW_POWER": float
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
@@ -11014,14 +12163,15 @@ constructor(arg0: $Item$Properties$$Type)
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
 public static "isLoading"(arg0: $ItemStack$$Type): boolean
-public static "setLoadingTicks"(arg0: $ItemStack$$Type, arg1: integer): void
-public static "getLoadingTicks"(arg0: $ItemStack$$Type): integer
 public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
-public "onEntityItemUpdate"(arg0: $ItemStack$$Type, arg1: $ItemEntity$$Type): boolean
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-public static "getChargeDuration"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): integer
 public static "startLoading"(arg0: $Player$$Type, arg1: $ItemStack$$Type): void
 public static "setLoading"(arg0: $ItemStack$$Type, arg1: boolean): void
+public static "getChargeDuration"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): integer
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "onEntityItemUpdate"(arg0: $ItemStack$$Type, arg1: $ItemEntity$$Type): boolean
+public static "setLoadingTicks"(arg0: $ItemStack$$Type, arg1: integer): void
+public static "getLoadingTicks"(arg0: $ItemStack$$Type): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11036,11 +12186,13 @@ declare global {
 export type $AutoloaderCrossbow_ = $AutoloaderCrossbow$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.weapons.StaffOfTheNines" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Vec2, $Vec2$$Type} from "net.minecraft.world.phys.Vec2"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
@@ -11052,7 +12204,7 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 export class $StaffOfTheNines extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -11060,8 +12212,9 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Item$Properties$$Type)
 
-public "getPosition"(arg0: $Vec3$$Type, arg1: float, arg2: float, arg3: float, arg4: $Vec2$$Type): $Vec3
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "getPosition"(arg0: $Vec3$$Type, arg1: float, arg2: float, arg3: float, arg4: $Vec2$$Type): $Vec3
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11084,7 +12237,7 @@ static readonly "FAILURE": $CastResult$Type
 
 
 public static "values"(): ($CastResult$Type)[]
-public static "valueOf"(arg0: string): $CastResult$Type
+public static "valueOf"(arg0: StringJS): $CastResult$Type
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11100,16 +12253,16 @@ export type $CastResult$Type_ = $CastResult$Type$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.ender.EchoingStrikesSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $EchoingStrikesSpell extends $AbstractSpell {
@@ -11118,12 +12271,12 @@ static readonly "radius": float
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
 public "getCastStartAnimation"(): $AnimationHolder
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -11153,26 +12306,26 @@ export class $BrewAlchemistCauldronRecipe$Input extends $Record implements $Reci
 
 constructor(fluidIn: $FluidStack$$Type, reagent: $ItemStack$$Type)
 
+public "getItem"(arg0: integer): $ItemStack
 public "size"(): integer
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "getItem"(arg0: integer): $ItemStack
 public "reagent"(): $ItemStack
 public "fluidIn"(): $FluidStack
 public "isEmpty"(): boolean
 public "find"(arg0: $SlotFilter$$Type): $ItemStack
 public "find"(arg0: $SlotFilter$$Type, arg1: integer): $ItemStack
-public "findAll"(): $List<($ItemStack)>
-public "findAll"(arg0: $SlotFilter$$Type): $List<($ItemStack)>
 public "self"(): $RecipeInput
+public "findAll"(arg0: $SlotFilter$$Type): $List<($ItemStack)>
+public "findAll"(): $List<($ItemStack)>
 get "empty"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $BrewAlchemistCauldronRecipe$Input$$Type = ({"fluidIn"?: $FluidStack$$Type, "reagent"?: $ItemStack$$Type}) | ([fluidIn?: $FluidStack$$Type, reagent?: $ItemStack$$Type]);
+export type $BrewAlchemistCauldronRecipe$Input$$Type = ({"reagent"?: $ItemStack$$Type, "fluidIn"?: $FluidStack$$Type}) | ([reagent?: $ItemStack$$Type, fluidIn?: $FluidStack$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -11191,8 +12344,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$SyncedSpellData, $SyncedSpellData$$Type} from "io.redspace.ironsspellbooks.capabilities.magic.SyncedSpellData"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
@@ -11201,24 +12354,24 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
-public "playSound"(arg0: $Optional$$Type<($SoundEvent$$Type)>, arg1: $Entity$$Type): void
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
+public "playSound"(arg0: $Optional$$Type<($SoundEvent$$Type)>, arg1: $Entity$$Type): void
+public "getCastType"(): $CastType
 public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
 public "getEffectiveCastTime"(arg0: integer, arg1: $LivingEntity$$Type): integer
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 public "getCastStartAnimation"(): $AnimationHolder
 public "getCastFinishAnimation"(): $AnimationHolder
 public "stopSoundOnCancel"(): boolean
 public static "ambientParticles"(arg0: $LivingEntity$$Type, arg1: $SyncedSpellData$$Type): void
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 get "castFinishAnimation"(): $AnimationHolder
 }
@@ -11233,6 +12386,30 @@ export type $RecallSpell$$Type = ($RecallSpell);
  */
 declare global {
 export type $RecallSpell_ = $RecallSpell$$Type;
+}}
+declare module "io.redspace.ironsspellbooks.entity.mobs.goals.WizardRecoverGoal" {
+import {$IMagicEntity, $IMagicEntity$$Type} from "io.redspace.ironsspellbooks.api.entity.IMagicEntity"
+import {$Goal, $Goal$$Type} from "net.minecraft.world.entity.ai.goal.Goal"
+
+export class $WizardRecoverGoal extends $Goal {
+
+constructor(arg0: $IMagicEntity$$Type)
+constructor(arg0: $IMagicEntity$$Type, arg1: integer, arg2: integer)
+
+public "start"(): void
+public "canUse"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $WizardRecoverGoal$$Type = ($WizardRecoverGoal);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $WizardRecoverGoal_ = $WizardRecoverGoal$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.armor.IArmorCapeProvider" {
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -11267,14 +12444,14 @@ export type $IArmorCapeProvider_ = $IArmorCapeProvider$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.evocation.WololoSpell" {
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
+import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
+import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
@@ -11283,16 +12460,16 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
+public "getCastType"(): $CastType
 public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
-public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11320,26 +12497,26 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
 import {$RenderShape, $RenderShape$$Type} from "net.minecraft.world.level.block.RenderShape"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ItemInteractionResult, $ItemInteractionResult$$Type} from "net.minecraft.world.ItemInteractionResult"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$Rotation, $Rotation$$Type} from "net.minecraft.world.level.block.Rotation"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
-import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
+import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$PushReaction, $PushReaction$$Type} from "net.minecraft.world.level.material.PushReaction"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
@@ -11358,7 +12535,7 @@ static readonly "HALF": $EnumProperty<($DoubleBlockHalf)>
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -11371,16 +12548,16 @@ constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "rotate"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $BlockState
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
+public "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
 public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
 public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
 public "useItemOn"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type, arg2: $Level$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type, arg5: $InteractionHand$$Type, arg6: $BlockHitResult$$Type): $ItemInteractionResult
-public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
-public "getPistonPushReaction"(arg0: $BlockState$$Type): $PushReaction
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "canTeleport"(arg0: $Entity$$Type): boolean
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "getPistonPushReaction"(arg0: $BlockState$$Type): $PushReaction
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -11396,15 +12573,17 @@ declare global {
 export type $PortalFrameBlock_ = $PortalFrameBlock$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.EldritchManuscript" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
@@ -11414,7 +12593,7 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 export class $EldritchManuscript extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -11424,6 +12603,7 @@ constructor(arg0: $Item$Properties$$Type)
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11439,28 +12619,30 @@ export type $EldritchManuscript_ = $EldritchManuscript$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.effect.TrueInvisibilityEffect" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
+import {$MobEffectInstance, $MobEffectInstance$$Type} from "net.minecraft.world.effect.MobEffectInstance"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ISyncedMobEffect, $ISyncedMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.ISyncedMobEffect"
+import {$MobEffect, $MobEffect$$Type} from "net.minecraft.world.effect.MobEffect"
+import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MagicMobEffect, $MagicMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.MagicMobEffect"
-import {$MobEffect, $MobEffect$$Type} from "net.minecraft.world.effect.MobEffect"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
 
-export class $TrueInvisibilityEffect extends $MagicMobEffect {
+export class $TrueInvisibilityEffect extends $MagicMobEffect implements $ISyncedMobEffect {
 static readonly "CODEC": $Codec<($Holder<($MobEffect)>)>
 readonly "attributeModifiers": $Map<($Holder<($Attribute)>), ($MobEffect$AttributeTemplate)>
 static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holder<($MobEffect)>)>
 
 constructor(arg0: $MobEffectCategory$$Type, arg1: integer)
 
-public "shouldApplyEffectTickThisTick"(arg0: integer, arg1: integer): boolean
 public "onEffectAdded"(arg0: $LivingEntity$$Type, arg1: integer): void
-public "onEffectRemoved"(arg0: $LivingEntity$$Type, arg1: integer): void
 public "applyEffectTick"(arg0: $LivingEntity$$Type, arg1: integer): boolean
+public "shouldApplyEffectTickThisTick"(arg0: integer, arg1: integer): boolean
+public "clientTick"(arg0: $LivingEntity$$Type, arg1: $MobEffectInstance$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11477,8 +12659,8 @@ export type $TrueInvisibilityEffect_ = $TrueInvisibilityEffect$$Type;
 declare module "io.redspace.ironsspellbooks.spells.ice.SnowballSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -11486,8 +12668,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $SnowballSpell extends $AbstractSpell {
@@ -11496,18 +12678,18 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 constructor()
 
 public "getDuration"(arg0: integer, arg1: $LivingEntity$$Type): float
-public "getRadius"(arg0: integer, arg1: $LivingEntity$$Type): float
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public "getCastStartAnimation"(): $AnimationHolder
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getRadius"(arg0: integer, arg1: $LivingEntity$$Type): float
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastStartAnimation"(): $AnimationHolder
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 }
 /**
@@ -11535,7 +12717,7 @@ static readonly "NONE": $CastSource
 
 
 public static "values"(): ($CastSource)[]
-public static "valueOf"(arg0: string): $CastSource
+public static "valueOf"(arg0: StringJS): $CastSource
 public "consumesMana"(): boolean
 public "respectsCooldown"(): boolean
 }
@@ -11558,8 +12740,8 @@ import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MagicMobEffect, $MagicMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.MagicMobEffect"
+import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect, $MobEffect$$Type} from "net.minecraft.world.effect.MobEffect"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
@@ -11571,10 +12753,10 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(arg0: $MobEffectCategory$$Type, arg1: integer)
 
-public "shouldApplyEffectTickThisTick"(arg0: integer, arg1: integer): boolean
 public "onEffectAdded"(arg0: $LivingEntity$$Type, arg1: integer): void
-public "onEffectRemoved"(arg0: $LivingEntity$$Type, arg1: integer): void
 public "applyEffectTick"(arg0: $LivingEntity$$Type, arg1: integer): boolean
+public "onEffectRemoved"(arg0: $LivingEntity$$Type, arg1: integer): void
+public "shouldApplyEffectTickThisTick"(arg0: integer, arg1: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11620,11 +12802,15 @@ declare global {
 export type $EntityAccessor_ = $EntityAccessor$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.armor.PlaguedArmorItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$GeoArmorRenderer, $GeoArmorRenderer$$Type} from "software.bernie.geckolib.renderer.GeoArmorRenderer"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$GeoAnimatable, $GeoAnimatable$$Type} from "software.bernie.geckolib.animatable.GeoAnimatable"
@@ -11639,7 +12825,7 @@ import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.A
 export class $PlaguedArmorItem extends $ImbuableChestplateArmorItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -11654,6 +12840,7 @@ public static "getId"(arg0: $ItemStack$$Type): long
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11670,8 +12857,8 @@ export type $PlaguedArmorItem_ = $PlaguedArmorItem$$Type;
 declare module "io.redspace.ironsspellbooks.spells.holy.HealingCircleSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -11680,8 +12867,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $HealingCircleSpell extends $AbstractSpell {
@@ -11689,21 +12876,21 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
-public "getCastStartAnimation"(): $AnimationHolder
-public "getTargetingColor"(): $Vector3f
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getTargetingColor"(): $Vector3f
+public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastStartAnimation"(): $AnimationHolder
 get "castType"(): $CastType
-get "spellResource"(): $ResourceLocation
-get "castStartSound"(): $Optional<($SoundEvent)>
-get "defaultConfig"(): $DefaultConfig
-get "castStartAnimation"(): $AnimationHolder
 get "targetingColor"(): $Vector3f
+get "spellResource"(): $ResourceLocation
+get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castStartAnimation"(): $AnimationHolder
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11720,14 +12907,14 @@ export type $HealingCircleSpell_ = $HealingCircleSpell$$Type;
 declare module "io.redspace.ironsspellbooks.spells.ender.EvasionSpell" {
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
+import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $EvasionSpell extends $AbstractSpell {
@@ -11735,11 +12922,11 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -11760,34 +12947,34 @@ declare module "io.redspace.ironsspellbooks.api.spells.SpellData" {
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$FriendlyByteBuf, $FriendlyByteBuf$$Type} from "net.minecraft.network.FriendlyByteBuf"
-import {$Comparable, $Comparable$$Type} from "java.lang.Comparable"
 import {$SpellRarity, $SpellRarity$$Type} from "io.redspace.ironsspellbooks.api.spells.SpellRarity"
+import {$Comparable, $Comparable$$Type} from "java.lang.Comparable"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $SpellData implements $Comparable<($SpellData)> {
 static readonly "CODEC": $Codec<($SpellData)>
-static readonly "SPELL_ID": string
-static readonly "SPELL_LEVEL": string
+static readonly "SPELL_ID": StringJS
+static readonly "SPELL_LEVEL": StringJS
 static readonly "EMPTY": $SpellData
-static readonly "SPELL_LOCKED": string
+static readonly "SPELL_LOCKED": StringJS
 
-constructor(arg0: $ResourceLocation$$Type, arg1: integer, arg2: boolean)
 constructor(arg0: $AbstractSpell$$Type, arg1: integer)
 constructor(arg0: $AbstractSpell$$Type, arg1: integer, arg2: boolean)
+constructor(arg0: $ResourceLocation$$Type, arg1: integer, arg2: boolean)
 
+public "isLocked"(): boolean
+public "getDisplayName"(): $Component
+public "getLevel"(): integer
 public "equals"(arg0: any): boolean
 public "hashCode"(): integer
 public "compareTo"(arg0: $SpellData$$Type): integer
 public "compareTo"(arg0: any): integer
-public "isLocked"(): boolean
-public "getDisplayName"(): $Component
-public "getLevel"(): integer
 public "getRarity"(): $SpellRarity
-public "getSpell"(): $AbstractSpell
 public "canRemove"(): boolean
 public static "writeToBuffer"(arg0: $FriendlyByteBuf$$Type, arg1: $SpellData$$Type): void
 public static "readFromBuffer"(arg0: $FriendlyByteBuf$$Type): $SpellData
+public "getSpell"(): $AbstractSpell
 get "locked"(): boolean
 get "displayName"(): $Component
 get "level"(): integer
@@ -11844,8 +13031,8 @@ export type $CustomDescriptionMobEffect_ = $CustomDescriptionMobEffect$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.api.magic.MagicData" {
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$PlayerRecasts, $PlayerRecasts$$Type} from "io.redspace.ironsspellbooks.capabilities.magic.PlayerRecasts"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
@@ -11858,69 +13045,69 @@ import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.Ser
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $MagicData {
-static readonly "MANA": string
-static readonly "COOLDOWNS": string
-static readonly "RECASTS": string
+static readonly "MANA": StringJS
+static readonly "COOLDOWNS": StringJS
+static readonly "RECASTS": StringJS
 
 constructor(arg0: $ServerPlayer$$Type)
 constructor()
 constructor(arg0: boolean)
 
-public "toString"(): string
+public "toString"(): StringJS
+public "markPoisoned"(): void
+public "getCastType"(): $CastType
+public "addMana"(arg0: float): void
+public "getCastSource"(): $CastSource
+public "getMana"(): float
+public "setMana"(arg0: float): void
+public "setSyncedData"(arg0: $SyncedSpellData$$Type): void
+public "isCasting"(): boolean
+public "getSyncedData"(): $SyncedSpellData
+public "saveNBTData"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "loadNBTData"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "initiateCast"(arg0: $AbstractSpell$$Type, arg1: integer, arg2: integer, arg3: $CastSource$$Type, arg4: StringJS): void
+public "resetCastingState"(): void
+public "getCastingSpell"(): $SpellData
+public "getCastingSpellLevel"(): integer
+public "getCastingSpellId"(): StringJS
+public "handleCastDuration"(): void
+public "setAdditionalCastData"(arg0: $ICastData$$Type): void
+public static "getPlayerMagicData"(arg0: $LivingEntity$$Type): $MagicData
+public "getPlayerCooldowns"(): $PlayerCooldowns
+public "getPlayerRecasts"(): $PlayerRecasts
+public "setPlayerCastingItem"(arg0: $ItemStack$$Type): void
+public "getAdditionalCastData"(): $ICastData
 public "getPlayerCastingItem"(): $ItemStack
 public "popMarkedPoison"(): boolean
 public "setServerPlayer"(arg0: $ServerPlayer$$Type): void
 public "getCastDuration"(): integer
 public "setPlayerRecasts"(arg0: $PlayerRecasts$$Type): void
-public "getCastType"(): $CastType
-public "markPoisoned"(): void
-public static "getPlayerMagicData"(arg0: $LivingEntity$$Type): $MagicData
-public "getPlayerCooldowns"(): $PlayerCooldowns
-public "getCastingSpell"(): $SpellData
-public "getPlayerRecasts"(): $PlayerRecasts
-public "handleCastDuration"(): void
-public "getCastingSpellId"(): string
-public "getCastingSpellLevel"(): integer
-public "setAdditionalCastData"(arg0: $ICastData$$Type): void
-public "setPlayerCastingItem"(arg0: $ItemStack$$Type): void
-public "getAdditionalCastData"(): $ICastData
-public "resetCastingState"(): void
-public "setMana"(arg0: float): void
-public "initiateCast"(arg0: $AbstractSpell$$Type, arg1: integer, arg2: integer, arg3: $CastSource$$Type, arg4: string): void
-public "getCastSource"(): $CastSource
-public "getMana"(): float
-public "addMana"(arg0: float): void
-public "isCasting"(): boolean
-public "getSyncedData"(): $SyncedSpellData
-public "setSyncedData"(arg0: $SyncedSpellData$$Type): void
-public "saveNBTData"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "loadNBTData"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "getCastCompletionPercent"(): float
-public "getCastingEquipmentSlot"(): string
-public "getCastDurationRemaining"(): integer
+public "getCastingEquipmentSlot"(): StringJS
 public "resetAdditionalCastData"(): void
+public "getCastDurationRemaining"(): integer
+public "getCastCompletionPercent"(): float
+get "castType"(): $CastType
+get "castSource"(): $CastSource
+get "mana"(): float
+set "mana"(value: float)
+set "syncedData"(value: $SyncedSpellData$$Type)
+get "casting"(): boolean
+get "syncedData"(): $SyncedSpellData
+get "castingSpell"(): $SpellData
+get "castingSpellLevel"(): integer
+get "castingSpellId"(): StringJS
+set "additionalCastData"(value: $ICastData$$Type)
+get "playerCooldowns"(): $PlayerCooldowns
+get "playerRecasts"(): $PlayerRecasts
+set "playerCastingItem"(value: $ItemStack$$Type)
+get "additionalCastData"(): $ICastData
 get "playerCastingItem"(): $ItemStack
 set "serverPlayer"(value: $ServerPlayer$$Type)
 get "castDuration"(): integer
 set "playerRecasts"(value: $PlayerRecasts$$Type)
-get "castType"(): $CastType
-get "playerCooldowns"(): $PlayerCooldowns
-get "castingSpell"(): $SpellData
-get "playerRecasts"(): $PlayerRecasts
-get "castingSpellId"(): string
-get "castingSpellLevel"(): integer
-set "additionalCastData"(value: $ICastData$$Type)
-set "playerCastingItem"(value: $ItemStack$$Type)
-get "additionalCastData"(): $ICastData
-set "mana"(value: float)
-get "castSource"(): $CastSource
-get "mana"(): float
-get "casting"(): boolean
-get "syncedData"(): $SyncedSpellData
-set "syncedData"(value: $SyncedSpellData$$Type)
-get "castCompletionPercent"(): float
-get "castingEquipmentSlot"(): string
+get "castingEquipmentSlot"(): StringJS
 get "castDurationRemaining"(): integer
+get "castCompletionPercent"(): float
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11936,18 +13123,20 @@ export type $MagicData_ = $MagicData$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.effect.ChargeEffect" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
+import {$MobEffectInstance, $MobEffectInstance$$Type} from "net.minecraft.world.effect.MobEffectInstance"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ISyncedMobEffect, $ISyncedMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.ISyncedMobEffect"
+import {$MobEffect, $MobEffect$$Type} from "net.minecraft.world.effect.MobEffect"
+import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MagicMobEffect, $MagicMobEffect$$Type} from "io.redspace.ironsspellbooks.effect.MagicMobEffect"
-import {$MobEffect, $MobEffect$$Type} from "net.minecraft.world.effect.MobEffect"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$MobEffectCategory, $MobEffectCategory$$Type} from "net.minecraft.world.effect.MobEffectCategory"
 import {$MobEffect$AttributeTemplate, $MobEffect$AttributeTemplate$$Type} from "net.minecraft.world.effect.MobEffect$AttributeTemplate"
 
-export class $ChargeEffect extends $MagicMobEffect {
+export class $ChargeEffect extends $MagicMobEffect implements $ISyncedMobEffect {
 static readonly "SPELL_POWER_PER_LEVEL": float
 static readonly "CODEC": $Codec<($Holder<($MobEffect)>)>
 readonly "attributeModifiers": $Map<($Holder<($Attribute)>), ($MobEffect$AttributeTemplate)>
@@ -11957,8 +13146,7 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Holde
 
 constructor(arg0: $MobEffectCategory$$Type, arg1: integer)
 
-public "onEffectAdded"(arg0: $LivingEntity$$Type, arg1: integer): void
-public "onEffectRemoved"(arg0: $LivingEntity$$Type, arg1: integer): void
+public "clientTick"(arg0: $LivingEntity$$Type, arg1: $MobEffectInstance$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11982,8 +13170,8 @@ import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.sp
 import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 import {$ICastDataSerializable, $ICastDataSerializable$$Type} from "io.redspace.ironsspellbooks.api.spells.ICastDataSerializable"
 
@@ -11992,22 +13180,22 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
+public "getCastType"(): $CastType
 public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
 public "getEffectiveCastTime"(arg0: integer, arg1: $LivingEntity$$Type): integer
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
 public "getEmptyCastData"(): $ICastDataSerializable
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 public "getCastStartAnimation"(): $AnimationHolder
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
 get "emptyCastData"(): $ICastDataSerializable
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 }
 /**
@@ -12025,8 +13213,8 @@ export type $PocketDimensionSpell_ = $PocketDimensionSpell$$Type;
 declare module "io.redspace.ironsspellbooks.api.spells.SchoolType" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Vector3f, $Vector3f$$Type} from "org.joml.Vector3f"
-import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$DamageType, $DamageType$$Type} from "net.minecraft.world.damagesource.DamageType"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -12041,21 +13229,21 @@ export class $SchoolType {
 constructor(arg0: $ResourceLocation$$Type, arg1: $TagKey$$Type<($Item)>, arg2: $Component$$Type, arg3: $Holder$$Type<($Attribute)>, arg4: $Holder$$Type<($Attribute)>, arg5: $Holder$$Type<($SoundEvent)>, arg6: $ResourceKey$$Type<($DamageType)>, arg7: boolean, arg8: boolean)
 constructor(arg0: $ResourceLocation$$Type, arg1: $TagKey$$Type<($Item)>, arg2: $Component$$Type, arg3: $Holder$$Type<($Attribute)>, arg4: $Holder$$Type<($Attribute)>, arg5: $Holder$$Type<($SoundEvent)>, arg6: $ResourceKey$$Type<($DamageType)>)
 
-public "getId"(): $ResourceLocation
 public "getDisplayName"(): $Component
-public "getResistanceFor"(arg0: $LivingEntity$$Type): double
-public "getTargetingColor"(): $Vector3f
+public "getId"(): $ResourceLocation
 public "isFocus"(arg0: $ItemStack$$Type): boolean
 public "getPowerFor"(arg0: $LivingEntity$$Type): double
 public "getCastSound"(): $SoundEvent
 public "getDamageType"(): $ResourceKey<($DamageType)>
 public "getFocus"(): $TagKey<($Item)>
-get "id"(): $ResourceLocation
+public "getResistanceFor"(arg0: $LivingEntity$$Type): double
+public "getTargetingColor"(): $Vector3f
 get "displayName"(): $Component
-get "targetingColor"(): $Vector3f
+get "id"(): $ResourceLocation
 get "castSound"(): $SoundEvent
 get "damageType"(): $ResourceKey<($DamageType)>
 get "focus"(): $TagKey<($Item)>
+get "targetingColor"(): $Vector3f
 /**
  * This field is a type stub generated by ProbeJS and shall not be used in any sense.
  */
@@ -12085,30 +13273,30 @@ import {$ListTag, $ListTag$$Type} from "net.minecraft.nbt.ListTag"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $PlayerCooldowns {
-static readonly "SPELL_ID": string
-static readonly "COOLDOWN_REMAINING": string
-static readonly "SPELL_COOLDOWN": string
+static readonly "SPELL_ID": StringJS
+static readonly "COOLDOWN_REMAINING": StringJS
+static readonly "SPELL_COOLDOWN": StringJS
 
 constructor()
 
 public "tick"(arg0: integer): void
-public "hasCooldownsActive"(): boolean
-public "isOnCooldown"(arg0: $AbstractSpell$$Type): boolean
-public "addCooldown"(arg0: string, arg1: integer, arg2: integer): void
-public "addCooldown"(arg0: string, arg1: integer): void
-public "addCooldown"(arg0: $AbstractSpell$$Type, arg1: integer, arg2: integer): void
-public "addCooldown"(arg0: $AbstractSpell$$Type, arg1: integer): void
 public "syncToPlayer"(arg0: $ServerPlayer$$Type): void
-public "decrementCooldown"(arg0: $CooldownInstance$$Type, arg1: integer): boolean
-public "getCooldownPercent"(arg0: $AbstractSpell$$Type): float
-public "getSpellCooldowns"(): $Map<(string), ($CooldownInstance)>
+public "isOnCooldown"(arg0: $AbstractSpell$$Type): boolean
+public "addCooldown"(arg0: $AbstractSpell$$Type, arg1: integer): void
+public "addCooldown"(arg0: $AbstractSpell$$Type, arg1: integer, arg2: integer): void
+public "addCooldown"(arg0: StringJS, arg1: integer): void
+public "addCooldown"(arg0: StringJS, arg1: integer, arg2: integer): void
 public "clearCooldowns"(): void
-public "setTickBuffer"(arg0: integer): void
+public "removeCooldown"(arg0: StringJS): boolean
 public "saveNBTData"(): $ListTag
 public "loadNBTData"(arg0: $ListTag$$Type): void
-public "removeCooldown"(arg0: string): boolean
-get "spellCooldowns"(): $Map<(string), ($CooldownInstance)>
+public "decrementCooldown"(arg0: $CooldownInstance$$Type, arg1: integer): boolean
+public "getCooldownPercent"(arg0: $AbstractSpell$$Type): float
+public "setTickBuffer"(arg0: integer): void
+public "getSpellCooldowns"(): $Map<(StringJS), ($CooldownInstance)>
+public "hasCooldownsActive"(): boolean
 set "tickBuffer"(value: integer)
+get "spellCooldowns"(): $Map<(StringJS), ($CooldownInstance)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12155,13 +13343,13 @@ constructor(arg0: integer)
 constructor(arg0: integer, arg1: integer)
 
 public "decrement"(): void
-public "getCooldownRemaining"(): integer
+public "decrementBy"(arg0: integer): void
 public "getCooldownPercent"(): float
 public "getSpellCooldown"(): integer
-public "decrementBy"(arg0: integer): void
-get "cooldownRemaining"(): integer
+public "getCooldownRemaining"(): integer
 get "cooldownPercent"(): float
 get "spellCooldown"(): integer
+get "cooldownRemaining"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12178,14 +13366,14 @@ export type $CooldownInstance_ = $CooldownInstance$$Type;
 declare module "io.redspace.ironsspellbooks.spells.evocation.SpectralHammerSpell" {
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
+import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $SpectralHammerSpell extends $AbstractSpell {
@@ -12193,12 +13381,12 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
-public "getDefaultConfig"(): $DefaultConfig
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -12217,8 +13405,8 @@ export type $SpectralHammerSpell_ = $SpectralHammerSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.blood.SacrificeSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -12226,8 +13414,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $SacrificeSpell extends $AbstractSpell {
@@ -12235,17 +13423,17 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12260,24 +13448,27 @@ declare global {
 export type $SacrificeSpell_ = $SacrificeSpell$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.PortalFrameBlockItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $PortalFrameBlockItem extends $BlockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -12296,6 +13487,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12310,16 +13502,20 @@ declare global {
 export type $PortalFrameBlockItem_ = $PortalFrameBlockItem$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.curios.InvisibiltyRing" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$SimpleDescriptiveCurio, $SimpleDescriptiveCurio$$Type} from "io.redspace.ironsspellbooks.item.curios.SimpleDescriptiveCurio"
 
 export class $InvisibiltyRing extends $SimpleDescriptiveCurio {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -12327,6 +13523,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12341,8 +13538,8 @@ declare global {
 export type $InvisibiltyRing_ = $InvisibiltyRing$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.fire.BurningDashSpell" {
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -12351,10 +13548,10 @@ import {$ClientLevel, $ClientLevel$$Type} from "net.minecraft.client.multiplayer
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$ICastData, $ICastData$$Type} from "io.redspace.ironsspellbooks.api.spells.ICastData"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 import {$ICastDataSerializable, $ICastDataSerializable$$Type} from "io.redspace.ironsspellbooks.api.spells.ICastDataSerializable"
 
@@ -12363,15 +13560,15 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "onClientCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $ICastData$$Type): void
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 public "getDamageSource"(arg0: $Entity$$Type, arg1: $Entity$$Type): $SpellDamageSource
 public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
 public "getEmptyCastData"(): $ICastDataSerializable
 public static "ambientParticles"(arg0: $ClientLevel$$Type, arg1: $LivingEntity$$Type): void
-public "onClientCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $ICastData$$Type): void
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -12389,6 +13586,143 @@ export type $BurningDashSpell$$Type = ($BurningDashSpell);
 declare global {
 export type $BurningDashSpell_ = $BurningDashSpell$$Type;
 }}
+declare module "io.redspace.ironsspellbooks.api.util.Utils" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
+import {$Potion, $Potion$$Type} from "net.minecraft.world.item.alchemy.Potion"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$List, $List$$Type} from "java.util.List"
+import {$Mob, $Mob$$Type} from "net.minecraft.world.entity.Mob"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$Vector3f, $Vector3f$$Type} from "org.joml.Vector3f"
+import {$ConditionalEffect, $ConditionalEffect$$Type} from "net.minecraft.world.item.enchantment.ConditionalEffect"
+import {$DataComponentType, $DataComponentType$$Type} from "net.minecraft.core.component.DataComponentType"
+import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$MobSpawnType, $MobSpawnType$$Type} from "net.minecraft.world.entity.MobSpawnType"
+import {$EnchantmentValueEffect, $EnchantmentValueEffect$$Type} from "net.minecraft.world.item.enchantment.effects.EnchantmentValueEffect"
+import {$Vec2, $Vec2$$Type} from "net.minecraft.world.phys.Vec2"
+import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
+import {$ItemEnchantments, $ItemEnchantments$$Type} from "net.minecraft.world.item.enchantment.ItemEnchantments"
+import {$Class, $Class$$Type} from "java.lang.Class"
+import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
+import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
+import {$Quaternionf, $Quaternionf$$Type} from "org.joml.Quaternionf"
+import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
+import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
+import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
+import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$HitResult, $HitResult$$Type} from "net.minecraft.world.phys.HitResult"
+import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
+import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
+import {$ServerLevelAccessor, $ServerLevelAccessor$$Type} from "net.minecraft.world.level.ServerLevelAccessor"
+import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
+import {$Enchantment, $Enchantment$$Type} from "net.minecraft.world.item.enchantment.Enchantment"
+import {$DamageSource, $DamageSource$$Type} from "net.minecraft.world.damagesource.DamageSource"
+import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
+import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
+import {$ParticleOptions, $ParticleOptions$$Type} from "net.minecraft.core.particles.ParticleOptions"
+import {$RegistryAccess, $RegistryAccess$$Type} from "net.minecraft.core.RegistryAccess"
+
+export class $Utils {
+static readonly "random": $RandomSource
+static readonly "NON_BASE_ATTRIBUTES": $Predicate<($Holder<($Attribute)>)>
+static readonly "ONLY_MAGIC_ATTRIBUTES": $Predicate<($Holder<($Attribute)>)>
+
+constructor()
+
+public static "lerp"(arg0: float, arg1: $Vec3$$Type, arg2: $Vec3$$Type): $Vec3
+public static "enchant"(arg0: $ItemStack$$Type, arg1: $RegistryAccess$$Type, arg2: $ResourceKey$$Type<($Enchantment)>, arg3: integer): void
+public static "saveAllItems"(arg0: $CompoundTag$$Type, arg1: $NonNullList$$Type<($ItemStack$$Type)>, arg2: StringJS, arg3: $HolderLookup$Provider$$Type): $CompoundTag
+public static "loadAllItems"(arg0: $CompoundTag$$Type, arg1: $NonNullList$$Type<($ItemStack$$Type)>, arg2: StringJS, arg3: $HolderLookup$Provider$$Type): void
+public static "hasLineOfSight"(arg0: $Level$$Type, arg1: $Entity$$Type, arg2: $Entity$$Type, arg3: boolean): boolean
+public static "hasLineOfSight"(arg0: $Level$$Type, arg1: $Vec3$$Type, arg2: $Vec3$$Type, arg3: boolean): boolean
+public static "smoothstep"(arg0: float, arg1: float, arg2: float): float
+public static "getTargetBlock"(arg0: $Level$$Type, arg1: $LivingEntity$$Type, arg2: $ClipContext$Fluid$$Type, arg3: double): $BlockHitResult
+public static "v3d"(arg0: $Vector3f$$Type): $Vec3
+public static "v3f"(arg0: $Vec3$$Type): $Vector3f
+public static "intPow"(arg0: float, arg1: integer): float
+public static "intPow"(arg0: double, arg1: integer): double
+public static "addFreezeTicks"(arg0: $LivingEntity$$Type, arg1: integer): void
+public static "addFreezeTicks"(arg0: $LivingEntity$$Type, arg1: integer, arg2: integer): void
+public static "getServerTick"(): long
+public static "spawnInWorld"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
+public static "getTargetOld"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ClipContext$Fluid$$Type, arg3: double): $BlockHitResult
+public static "getRandomVec3f"(arg0: double): $Vector3f
+public static "canImbue"(arg0: $ItemStack$$Type): boolean
+public static "canBeUpgraded"(arg0: $ItemStack$$Type): boolean
+public static "handleShriving"(arg0: $ItemStack$$Type): $ItemStack
+public static "packRGB"(arg0: $Vector3f$$Type): integer
+public static "timeFromTicks"(arg0: float, arg1: integer): StringJS
+public static "softCapFormula"(arg0: double): double
+public static "particleTrail"(arg0: $Level$$Type, arg1: $Vec3$$Type, arg2: $Vec3$$Type, arg3: $ParticleOptions$$Type): void
+public static "signedMin"(arg0: double, arg1: double): double
+public static "performTaunt"(arg0: $LivingEntity$$Type, arg1: float, arg2: $Predicate$$Type<($Entity)>): void
+public static "performTaunt"(arg0: $LivingEntity$$Type, arg1: $List$$Type<($Entity$$Type)>): void
+public static "doMeleeAttack"(arg0: $Mob$$Type, arg1: $Entity$$Type, arg2: $DamageSource$$Type): boolean
+public static "deconstructRGB"(arg0: integer): $Vector3f
+public static "getAngle"(arg0: $Vec2$$Type, arg1: $Vec2$$Type): float
+public static "getAngle"(arg0: double, arg1: double, arg2: double, arg3: double): float
+public static "setPotion"(arg0: $ItemStack$$Type, arg1: $Holder$$Type<($Potion)>): $ItemStack
+public static "getRandomVec3"(arg0: double): $Vec3
+public static "checkMonsterSpawnRules"(arg0: $ServerLevelAccessor$$Type, arg1: $MobSpawnType$$Type, arg2: $BlockPos$$Type, arg3: $RandomSource$$Type): boolean
+public static "getEnchantmentLevel"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $ResourceKey$$Type<($Enchantment)>): integer
+public static "getEnchantmentLevel"(arg0: $Level$$Type, arg1: $ResourceKey$$Type<($Enchantment)>, arg2: $ItemEnchantments$$Type): integer
+public static "raycastForEntity"(arg0: $Level$$Type, arg1: $Entity$$Type, arg2: float, arg3: boolean, arg4: float): $HitResult
+public static "raycastForEntity"(arg0: $Level$$Type, arg1: $Entity$$Type, arg2: $Vec3$$Type, arg3: $Vec3$$Type, arg4: boolean): $HitResult
+public static "raycastForEntity"(arg0: $Level$$Type, arg1: $Entity$$Type, arg2: $Vec3$$Type, arg3: $Vec3$$Type, arg4: boolean, arg5: float, arg6: $Predicate$$Type<($Entity)>): $HitResult
+public static "raycastForEntity"(arg0: $Level$$Type, arg1: $Entity$$Type, arg2: float, arg3: boolean): $HitResult
+public static "handleSpellTeleport"(arg0: $AbstractSpell$$Type, arg1: $Entity$$Type, arg2: $Vec3$$Type): boolean
+public static "canHitWithRaycast"(arg0: $Entity$$Type): boolean
+public static "getRandomScaled"(arg0: double): double
+public static "stringTruncation"(arg0: double, arg1: integer): StringJS
+public static "preCastTargetHelper"(arg0: $Level$$Type, arg1: $LivingEntity$$Type, arg2: $MagicData$$Type, arg3: $AbstractSpell$$Type, arg4: integer, arg5: float, arg6: boolean): boolean
+public static "preCastTargetHelper"(arg0: $Level$$Type, arg1: $LivingEntity$$Type, arg2: $MagicData$$Type, arg3: $AbstractSpell$$Type, arg4: integer, arg5: float): boolean
+public static "preCastTargetHelper"(arg0: $Level$$Type, arg1: $LivingEntity$$Type, arg2: $MagicData$$Type, arg3: $AbstractSpell$$Type, arg4: integer, arg5: float, arg6: boolean, arg7: $Predicate$$Type<($LivingEntity)>): boolean
+public static "raycastForBlock"(arg0: $Level$$Type, arg1: $Vec3$$Type, arg2: $Vec3$$Type, arg3: $ClipContext$Fluid$$Type): $BlockHitResult
+public static "rotationFromDirection"(arg0: $Vec3$$Type): $Vec2
+public static "serverSideCancelCast"(arg0: $ServerPlayer$$Type, arg1: boolean): void
+public static "serverSideCancelCast"(arg0: $ServerPlayer$$Type): void
+public static "validAntiMagicTarget"(arg0: $Entity$$Type): boolean
+public static "shouldHealEntity"(arg0: $LivingEntity$$Type, arg1: $LivingEntity$$Type): boolean
+public static "getWeaponDamage"(arg0: $LivingEntity$$Type): float
+public static "processEnchantment"(arg0: $Level$$Type, arg1: $ResourceKey$$Type<($Enchantment)>, arg2: $DataComponentType$$Type<($List$$Type<($ConditionalEffect$$Type<($EnchantmentValueEffect$$Type)>)>)>, arg3: $ItemEnchantments$$Type): float
+public static "getPositionFromEntityLookDirection"(arg0: $Entity$$Type, arg1: float): $Vec3
+public static "applyCooldownReduction"(arg0: integer, arg1: $LivingEntity$$Type): integer
+public static "createTremorBlock"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: float): void
+public static "enchantmentFromKey"(arg0: $RegistryAccess$$Type, arg1: $ResourceKey$$Type<($Enchantment)>): $Holder<($Enchantment)>
+public static "getStackTraceAsString"(): StringJS
+public static "releaseUsingHelper"(arg0: $LivingEntity$$Type, arg1: $ItemStack$$Type, arg2: integer): void
+public static "serverSideInitiateCast"(arg0: $ServerPlayer$$Type): boolean
+public static "rotationBetweenVectors"(arg0: $Vector3f$$Type, arg1: $Vector3f$$Type): $Quaternionf
+public static "checkEntityIntersecting"(arg0: $Entity$$Type, arg1: $Vec3$$Type, arg2: $Vec3$$Type, arg3: float): $HitResult
+public static "moveToRelativeGroundLevel"(arg0: $Level$$Type, arg1: $Vec3$$Type, arg2: integer, arg3: integer): $Vec3
+public static "moveToRelativeGroundLevel"(arg0: $Level$$Type, arg1: $Vec3$$Type, arg2: integer): $Vec3
+public static "doMobBreakSuffocatingBlocks"(arg0: $LivingEntity$$Type): void
+public static "doMobBreakSuffocatingBlocks"(arg0: $LivingEntity$$Type, arg1: $Vec3$$Type): void
+public static "setPlayerSpellbookStack"(arg0: $Player$$Type, arg1: $ItemStack$$Type): void
+public static "raycastForEntityOfClass"(arg0: $Level$$Type, arg1: $Entity$$Type, arg2: $Vec3$$Type, arg3: $Vec3$$Type, arg4: boolean, arg5: $Class$$Type<($Entity$$Type)>): $HitResult
+public static "createTremorBlockWithState"(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockPos$$Type, arg3: float): void
+public static "getPlayerSpellbookStack"(arg0: $Player$$Type): $ItemStack
+public static "sendTargetedNotification"(arg0: $ServerPlayer$$Type, arg1: $LivingEntity$$Type, arg2: $AbstractSpell$$Type): void
+public static "serverSideInitiateQuickCast"(arg0: $ServerPlayer$$Type, arg1: integer): boolean
+public static "findRelativeGroundLevel"(arg0: $Level$$Type, arg1: $Vec3$$Type, arg2: integer): float
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Utils$$Type = ($Utils);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Utils_ = $Utils$$Type;
+}}
 declare module "io.redspace.ironsspellbooks.capabilities.magic.PlayerRecasts" {
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
@@ -12402,36 +13736,36 @@ import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraf
 
 export class $PlayerRecasts {
 
-constructor(arg0: $Map$$Type<(string), ($RecastInstance$$Type)>)
-constructor(arg0: $ServerPlayer$$Type)
 constructor()
+constructor(arg0: $Map$$Type<(StringJS), ($RecastInstance$$Type)>)
+constructor(arg0: $ServerPlayer$$Type)
 
-public "toString"(): string
-public "removeAll"(arg0: $RecastResult$$Type): void
 public "tick"(arg0: integer): void
+public "removeAll"(arg0: $RecastResult$$Type): void
+public "toString"(): StringJS
+public "syncToPlayer"(arg0: $RecastInstance$$Type): void
+public "tickRecasts"(): void
+public "forceAddRecast"(arg0: $RecastInstance$$Type): void
+public "removeRecast"(arg0: StringJS): void
+public "removeRecast"(arg0: $RecastInstance$$Type, arg1: $RecastResult$$Type): void
+public "addRecast"(arg0: $RecastInstance$$Type, arg1: $MagicData$$Type): boolean
+public "saveNBTData"(arg0: $HolderLookup$Provider$$Type): $ListTag
+public "loadNBTData"(arg0: $ListTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "hasRecastForSpell"(arg0: StringJS): boolean
+public "hasRecastForSpell"(arg0: $AbstractSpell$$Type): boolean
+public "decrementRecastCount"(arg0: StringJS): void
+public "decrementRecastCount"(arg0: $AbstractSpell$$Type): void
+public "getRecastInstance"(arg0: StringJS): $RecastInstance
+public "isRecastActive"(arg0: $RecastInstance$$Type): boolean
+public "getAllRecasts"(): $List<($RecastInstance)>
 public "syncAllToPlayer"(): void
 public "hasRecastsActive"(): boolean
 public "getActiveRecasts"(): $List<($RecastInstance)>
-public "syncToPlayer"(arg0: $RecastInstance$$Type): void
-public "getRecastInstance"(arg0: string): $RecastInstance
-public "hasRecastForSpell"(arg0: $AbstractSpell$$Type): boolean
-public "hasRecastForSpell"(arg0: string): boolean
-public "decrementRecastCount"(arg0: $AbstractSpell$$Type): void
-public "decrementRecastCount"(arg0: string): void
-public "removeRecast"(arg0: $RecastInstance$$Type, arg1: $RecastResult$$Type): void
-public "removeRecast"(arg0: string): void
-public "addRecast"(arg0: $RecastInstance$$Type, arg1: $MagicData$$Type): boolean
-public "isRecastActive"(arg0: $RecastInstance$$Type): boolean
-public "getAllRecasts"(): $List<($RecastInstance)>
-public "saveNBTData"(arg0: $HolderLookup$Provider$$Type): $ListTag
-public "loadNBTData"(arg0: $ListTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "forceAddRecast"(arg0: $RecastInstance$$Type): void
-public "tickRecasts"(): void
+public "syncRemoveToPlayer"(arg0: StringJS): void
 public "getRemainingRecastsForSpell"(arg0: $AbstractSpell$$Type): integer
-public "getRemainingRecastsForSpell"(arg0: string): integer
-public "syncRemoveToPlayer"(arg0: string): void
-get "activeRecasts"(): $List<($RecastInstance)>
+public "getRemainingRecastsForSpell"(arg0: StringJS): integer
 get "allRecasts"(): $List<($RecastInstance)>
+get "activeRecasts"(): $List<($RecastInstance)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12499,18 +13833,22 @@ declare global {
 export type $IDisableJacket_ = $IDisableJacket$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.item.EnergizedCoreItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $EnergizedCoreItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -12519,6 +13857,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type)
 
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12533,17 +13872,17 @@ declare global {
 export type $EnergizedCoreItem_ = $EnergizedCoreItem$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.holy.BlessingOfLifeSpell" {
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
 import {$Vector3f, $Vector3f$$Type} from "org.joml.Vector3f"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $BlessingOfLifeSpell extends $AbstractSpell {
@@ -12551,17 +13890,17 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
-public "getDefaultConfig"(): $DefaultConfig
-public "getTargetingColor"(): $Vector3f
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getTargetingColor"(): $Vector3f
+public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
 get "castType"(): $CastType
+get "targetingColor"(): $Vector3f
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
-get "targetingColor"(): $Vector3f
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12575,12 +13914,43 @@ export type $BlessingOfLifeSpell$$Type = ($BlessingOfLifeSpell);
 declare global {
 export type $BlessingOfLifeSpell_ = $BlessingOfLifeSpell$$Type;
 }}
+declare module "io.redspace.ironsspellbooks.entity.mobs.goals.SpellBarrageGoal" {
+import {$IMagicEntity, $IMagicEntity$$Type} from "io.redspace.ironsspellbooks.api.entity.IMagicEntity"
+import {$Goal, $Goal$$Type} from "net.minecraft.world.entity.ai.goal.Goal"
+import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
+
+export class $SpellBarrageGoal extends $Goal {
+
+constructor(arg0: $IMagicEntity$$Type, arg1: $AbstractSpell$$Type, arg2: integer, arg3: integer, arg4: integer, arg5: integer, arg6: integer)
+
+public "tick"(): void
+public "stop"(): void
+public "canUse"(): boolean
+public "canContinueToUse"(): boolean
+public "requiresUpdateEveryTick"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SpellBarrageGoal$$Type = ($SpellBarrageGoal);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SpellBarrageGoal_ = $SpellBarrageGoal$$Type;
+}}
 declare module "io.redspace.ironsspellbooks.item.armor.PriestArmorItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$GeoArmorRenderer, $GeoArmorRenderer$$Type} from "software.bernie.geckolib.renderer.GeoArmorRenderer"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$GeoAnimatable, $GeoAnimatable$$Type} from "software.bernie.geckolib.animatable.GeoAnimatable"
@@ -12595,7 +13965,7 @@ import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.A
 export class $PriestArmorItem extends $ImbuableChestplateArmorItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -12610,6 +13980,7 @@ public static "getId"(arg0: $ItemStack$$Type): long
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12632,17 +14003,17 @@ export class $ModifySpellLevelEvent extends $Event {
 
 constructor(arg0: $AbstractSpell$$Type, arg1: $LivingEntity$$Type, arg2: integer, arg3: integer)
 
-public "getEntity"(): $LivingEntity
 public "getLevel"(): integer
 public "setLevel"(arg0: integer): void
-public "getSpell"(): $AbstractSpell
+public "getEntity"(): $LivingEntity
 public "getBaseLevel"(): integer
 public "addLevels"(arg0: integer): void
-get "entity"(): $LivingEntity
+public "getSpell"(): $AbstractSpell
 get "level"(): integer
 set "level"(value: integer)
-get "spell"(): $AbstractSpell
+get "entity"(): $LivingEntity
 get "baseLevel"(): integer
+get "spell"(): $AbstractSpell
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12665,12 +14036,12 @@ export class $SpellHealEvent extends $LivingEvent {
 
 constructor(arg0: $LivingEntity$$Type, arg1: $LivingEntity$$Type, arg2: float, arg3: $SchoolType$$Type)
 
-public "getTargetEntity"(): $LivingEntity
 public "getSchoolType"(): $SchoolType
 public "getHealAmount"(): float
-get "targetEntity"(): $LivingEntity
+public "getTargetEntity"(): $LivingEntity
 get "schoolType"(): $SchoolType
 get "healAmount"(): float
+get "targetEntity"(): $LivingEntity
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12687,8 +14058,8 @@ export type $SpellHealEvent_ = $SpellHealEvent$$Type;
 declare module "io.redspace.ironsspellbooks.spells.evocation.ArrowVolleySpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -12697,8 +14068,8 @@ import {$SpellDamageSource, $SpellDamageSource$$Type} from "io.redspace.ironsspe
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
@@ -12707,21 +14078,21 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
+public "getCastType"(): $CastType
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
 public "getDamageSource"(arg0: $Entity$$Type, arg1: $Entity$$Type): $SpellDamageSource
 public "getSpellResource"(): $ResourceLocation
-public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
 public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 public "getCastStartAnimation"(): $AnimationHolder
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 }
 /**
@@ -12739,8 +14110,8 @@ export type $ArrowVolleySpell_ = $ArrowVolleySpell$$Type;
 declare module "io.redspace.ironsspellbooks.spells.fire.RaiseHellSpell" {
 import {$AnimationHolder, $AnimationHolder$$Type} from "io.redspace.ironsspellbooks.api.util.AnimationHolder"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$Mob, $Mob$$Type} from "net.minecraft.world.entity.Mob"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
@@ -12751,8 +14122,8 @@ import {$SyncedSpellData, $SyncedSpellData$$Type} from "io.redspace.ironsspellbo
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $RaiseHellSpell extends $AbstractSpell {
@@ -12760,26 +14131,26 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
+public "getCastType"(): $CastType
+public "getRecastCount"(arg0: integer, arg1: $LivingEntity$$Type): integer
+public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "allowLooting"(): boolean
 public "getEffectiveCastTime"(arg0: integer, arg1: $LivingEntity$$Type): integer
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getSpellResource"(): $ResourceLocation
 public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 public "getCastStartAnimation"(): $AnimationHolder
 public "getCastFinishAnimation"(): $AnimationHolder
 public "shouldAIStopCasting"(arg0: integer, arg1: $Mob$$Type, arg2: $LivingEntity$$Type): boolean
 public "canBeInterrupted"(arg0: $Player$$Type): boolean
 public static "ambientParticles"(arg0: $LivingEntity$$Type, arg1: $SyncedSpellData$$Type): void
-public "getRecastCount"(arg0: integer, arg1: $LivingEntity$$Type): integer
-public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
-public "allowLooting"(): boolean
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 get "castStartAnimation"(): $AnimationHolder
 get "castFinishAnimation"(): $AnimationHolder
 }
@@ -12809,9 +14180,9 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($FillA
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($FillAlchemistCauldronRecipe)>
 public "codec"(): $MapCodec<($FillAlchemistCauldronRecipe)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($FillAlchemistCauldronRecipe)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12834,8 +14205,8 @@ import {$FenceBlock, $FenceBlock$$Type} from "net.minecraft.world.level.block.Fe
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -12855,7 +14226,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -12867,8 +14238,8 @@ static readonly "EAST": $BooleanProperty
 
 constructor()
 
-public "connectsTo"(arg0: $BlockState$$Type, arg1: $Direction$$Type): boolean
 public "codec"(): $MapCodec<($FenceBlock)>
+public "connectsTo"(arg0: $BlockState$$Type, arg1: $Direction$$Type): boolean
 public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "asHolder"(): $Holder<(any)>
 }
@@ -12886,8 +14257,8 @@ export type $VoidstoneBlock_ = $VoidstoneBlock$$Type;
 }}
 declare module "io.redspace.ironsspellbooks.spells.holy.CloudOfRegenerationSpell" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
@@ -12895,8 +14266,8 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $CloudOfRegenerationSpell extends $AbstractSpell {
@@ -12905,18 +14276,18 @@ static readonly "radius": float
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "getCastFinishSound"(): $Optional<($SoundEvent)>
-public "getCastStartSound"(): $Optional<($SoundEvent)>
-public "getDefaultConfig"(): $DefaultConfig
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
+public "getCastStartSound"(): $Optional<($SoundEvent)>
+public "getCastFinishSound"(): $Optional<($SoundEvent)>
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
-get "castFinishSound"(): $Optional<($SoundEvent)>
-get "castStartSound"(): $Optional<($SoundEvent)>
 get "defaultConfig"(): $DefaultConfig
+get "castStartSound"(): $Optional<($SoundEvent)>
+get "castFinishSound"(): $Optional<($SoundEvent)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12933,14 +14304,14 @@ export type $CloudOfRegenerationSpell_ = $CloudOfRegenerationSpell$$Type;
 declare module "io.redspace.ironsspellbooks.spells.blood.AcupunctureSpell" {
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MagicData, $MagicData$$Type} from "io.redspace.ironsspellbooks.api.magic.MagicData"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastType, $CastType$$Type} from "io.redspace.ironsspellbooks.api.spells.CastType"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CastSource, $CastSource$$Type} from "io.redspace.ironsspellbooks.api.spells.CastSource"
+import {$DefaultConfig, $DefaultConfig$$Type} from "io.redspace.ironsspellbooks.api.config.DefaultConfig"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
 
 export class $AcupunctureSpell extends $AbstractSpell {
@@ -12948,12 +14319,12 @@ static readonly "ELDRITCH_OBFUSCATED_STYLE": $Style
 
 constructor()
 
-public "getCastType"(): $CastType
 public "onCast"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $CastSource$$Type, arg4: $MagicData$$Type): void
-public "getSpellResource"(): $ResourceLocation
-public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
-public "getDefaultConfig"(): $DefaultConfig
+public "getCastType"(): $CastType
 public "getUniqueInfo"(arg0: integer, arg1: $LivingEntity$$Type): $List<($MutableComponent)>
+public "checkPreCastConditions"(arg0: $Level$$Type, arg1: integer, arg2: $LivingEntity$$Type, arg3: $MagicData$$Type): boolean
+public "getSpellResource"(): $ResourceLocation
+public "getDefaultConfig"(): $DefaultConfig
 get "castType"(): $CastType
 get "spellResource"(): $ResourceLocation
 get "defaultConfig"(): $DefaultConfig
@@ -12979,10 +14350,10 @@ import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$FluidStack, $FluidStack$$Type} from "net.neoforged.neoforge.fluids.FluidStack"
 import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
-import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
+import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$Recipe, $Recipe$$Type} from "net.minecraft.world.item.crafting.Recipe"
+import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
 import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.item.crafting.RecipeSerializer"
 import {$Record, $Record$$Type} from "java.lang.Record"
 
@@ -12990,34 +14361,34 @@ export class $FillAlchemistCauldronRecipe extends $Record implements $Recipe<($S
 
 constructor(input: $Ingredient$$Type, returned: $ItemStack$$Type, result: $FluidStack$$Type, mustFitAll: boolean, fillSound: $Holder$$Type<($SoundEvent)>)
 
+public "input"(): $Ingredient
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "matches"(arg0: $SingleRecipeInput$$Type, arg1: $Level$$Type): boolean
 public "result"(): $FluidStack
 public "getType"(): $RecipeType<(any)>
-public "input"(): $Ingredient
-public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "assemble"(arg0: $SingleRecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "getSerializer"(): $RecipeSerializer<(any)>
+public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
 public "isSpecial"(): boolean
-public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
+public "mustFitAll"(): boolean
 public "returned"(): $ItemStack
 public "fillSound"(): $Holder<($SoundEvent)>
-public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
-public "mustFitAll"(): boolean
+public "getSerializer"(): $RecipeSerializer<(any)>
+public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "assemble"(arg0: $SingleRecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "getIngredients"(): $NonNullList<($Ingredient)>
-public "getGroup"(): string
-public "showNotification"(): boolean
-public "getRemainingItems"(arg0: $SingleRecipeInput$$Type): $NonNullList<($ItemStack)>
+public "getGroup"(): StringJS
 public "isIncomplete"(): boolean
 public "getToastSymbol"(): $ItemStack
+public "showNotification"(): boolean
+public "getRemainingItems"(arg0: $SingleRecipeInput$$Type): $NonNullList<($ItemStack)>
 get "type"(): $RecipeType<(any)>
-get "serializer"(): $RecipeSerializer<(any)>
 get "special"(): boolean
+get "serializer"(): $RecipeSerializer<(any)>
 get "ingredients"(): $NonNullList<($Ingredient)>
-get "group"(): string
+get "group"(): StringJS
 get "incomplete"(): boolean
 get "toastSymbol"(): $ItemStack
 }
@@ -13025,7 +14396,7 @@ get "toastSymbol"(): $ItemStack
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $FillAlchemistCauldronRecipe$$Type = ({"mustFitAll"?: boolean, "fillSound"?: $Holder$$Type<($SoundEvent)>, "input"?: $Ingredient$$Type, "returned"?: $ItemStack$$Type, "result"?: $FluidStack$$Type}) | ([mustFitAll?: boolean, fillSound?: $Holder$$Type<($SoundEvent)>, input?: $Ingredient$$Type, returned?: $ItemStack$$Type, result?: $FluidStack$$Type]);
+export type $FillAlchemistCauldronRecipe$$Type = ({"result"?: $FluidStack$$Type, "mustFitAll"?: boolean, "fillSound"?: $Holder$$Type<($SoundEvent)>, "input"?: $Ingredient$$Type, "returned"?: $ItemStack$$Type}) | ([result?: $FluidStack$$Type, mustFitAll?: boolean, fillSound?: $Holder$$Type<($SoundEvent)>, input?: $Ingredient$$Type, returned?: $ItemStack$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -13033,15 +14404,54 @@ export type $FillAlchemistCauldronRecipe$$Type = ({"mustFitAll"?: boolean, "fill
 declare global {
 export type $FillAlchemistCauldronRecipe_ = $FillAlchemistCauldronRecipe$$Type;
 }}
+declare module "io.redspace.ironsspellbooks.entity.mobs.goals.WizardSupportGoal" {
+import {$PathfinderMob, $PathfinderMob$$Type} from "net.minecraft.world.entity.PathfinderMob"
+import {$List, $List$$Type} from "java.util.List"
+import {$IMagicEntity, $IMagicEntity$$Type} from "io.redspace.ironsspellbooks.api.entity.IMagicEntity"
+import {$Goal, $Goal$$Type} from "net.minecraft.world.entity.ai.goal.Goal"
+import {$AbstractSpell, $AbstractSpell$$Type} from "io.redspace.ironsspellbooks.api.spells.AbstractSpell"
+import {$SupportMob, $SupportMob$$Type} from "io.redspace.ironsspellbooks.entity.mobs.SupportMob"
+
+export class $WizardSupportGoal<T extends ($PathfinderMob) & ($SupportMob) & ($IMagicEntity)> extends $Goal {
+
+constructor(arg0: T, arg1: double, arg2: integer)
+constructor(arg0: T, arg1: double, arg2: integer, arg3: integer)
+
+public "tick"(): void
+public "start"(): void
+public "stop"(): void
+public "canUse"(): boolean
+public "setIsFlying"(): $WizardSupportGoal<(T)>
+public "setSpells"(arg0: $List$$Type<($AbstractSpell$$Type)>, arg1: $List$$Type<($AbstractSpell$$Type)>): $WizardSupportGoal<(T)>
+public "canContinueToUse"(): boolean
+public "setSpellQuality"(arg0: float, arg1: float): $WizardSupportGoal<(T)>
+public "requiresUpdateEveryTick"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $WizardSupportGoal$$Type<T> = ($WizardSupportGoal<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $WizardSupportGoal_<T> = $WizardSupportGoal$$Type<(T)>;
+}}
 declare module "io.redspace.ironsspellbooks.item.InkItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$SpellRarity, $SpellRarity$$Type} from "io.redspace.ironsspellbooks.api.spells.SpellRarity"
@@ -13050,7 +14460,7 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 export class $InkItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -13058,10 +14468,11 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $SpellRarity$$Type, arg1: $Holder$$Type<($Fluid)>)
 
-public static "getInkForRarity"(arg0: $SpellRarity$$Type): $InkItem
-public "getRarity"(): $SpellRarity
 public "fluid"(): $Holder<($Fluid)>
+public "getRarity"(): $SpellRarity
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "getInkForRarity"(arg0: $SpellRarity$$Type): $InkItem
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "rarity"(): $SpellRarity
 }
 /**

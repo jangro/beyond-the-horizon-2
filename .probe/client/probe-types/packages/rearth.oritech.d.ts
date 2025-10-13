@@ -6,8 +6,8 @@ import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$HorizontalDirectionalBlock, $HorizontalDirectionalBlock$$Type} from "net.minecraft.world.level.block.HorizontalDirectionalBlock"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Explosion, $Explosion$$Type} from "net.minecraft.world.level.Explosion"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
@@ -31,7 +31,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -39,11 +39,11 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "wasExploded"(world: $Level$$Type, pos: $BlockPos$$Type, explosion: $Explosion$$Type): void
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
+public "wasExploded"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $Explosion$$Type): void
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -68,10 +68,10 @@ static "ENDEC": $Endec<($AugmentDataRecipe$ModifierDefinition)>
 
 constructor(entityAttributeId: $ResourceLocation$$Type, attributeOperationType: integer, amount: float)
 
-public "equals"(o: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "amount"(): float
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
 public "entityAttributeId"(): $ResourceLocation
 public "attributeOperationType"(): integer
 }
@@ -79,7 +79,7 @@ public "attributeOperationType"(): integer
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $AugmentDataRecipe$ModifierDefinition$$Type = ({"attributeOperationType"?: integer, "entityAttributeId"?: $ResourceLocation$$Type, "amount"?: float}) | ([attributeOperationType?: integer, entityAttributeId?: $ResourceLocation$$Type, amount?: float]);
+export type $AugmentDataRecipe$ModifierDefinition$$Type = ({"amount"?: float, "attributeOperationType"?: integer, "entityAttributeId"?: $ResourceLocation$$Type}) | ([amount?: float, attributeOperationType?: integer, entityAttributeId?: $ResourceLocation$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -126,7 +126,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $IntegerProperty
 static "NO_CONNECTION": integer
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -149,19 +149,19 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
-public "apiValidationFunction"(): $TriFunction<($Level), ($BlockPos), ($Direction), (boolean)>
 public "getNormalBlock"(): $BlockState
-public "getNetworkData"(world: $Level$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
+public "getNetworkData"(arg0: $Level$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getConnectionBlock"(): $BlockState
-public "getPipeTypeName"(): string
-public "connectToOwnBlockType"(block: $Block$$Type): boolean
+public "getPipeTypeName"(): StringJS
+public "connectToOwnBlockType"(arg0: $Block$$Type): boolean
+public "apiValidationFunction"(): $TriFunction<($Level), ($BlockPos), ($Direction), (boolean)>
 public "asHolder"(): $Holder<(any)>
 get "normalBlock"(): $BlockState
 get "connectionBlock"(): $BlockState
-get "pipeTypeName"(): string
+get "pipeTypeName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -184,11 +184,11 @@ import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.leve
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$CropBlock, $CropBlock$$Type} from "net.minecraft.world.level.block.CropBlock"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
@@ -211,7 +211,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -219,10 +219,10 @@ static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 static readonly "AGE": $IntegerProperty
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -245,15 +245,15 @@ export class $FluidApi$FluidStorage {
 
 constructor()
 
+public "getContent"(): $List<($FluidStack)>
 public "getCapacity"(): long
 public "update"(): void
 public "extract"(arg0: $FluidStack$$Type, arg1: boolean): long
 public "insert"(arg0: $FluidStack$$Type, arg1: boolean): long
-public "getContent"(): $List<($FluidStack)>
 public "supportsInsertion"(): boolean
 public "supportsExtraction"(): boolean
-get "capacity"(): long
 get "content"(): $List<($FluidStack)>
+get "capacity"(): long
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -295,8 +295,8 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $EnchantmentCatalystBlock extends $HorizontalDirectionalBlock implements $EntityBlock {
@@ -313,7 +313,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -321,15 +321,15 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 }
@@ -360,7 +360,7 @@ static readonly "TICK": $SyncType
 
 
 public static "values"(): ($SyncType)[]
-public static "valueOf"(name: string): $SyncType
+public static "valueOf"(arg0: StringJS): $SyncType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -385,8 +385,8 @@ import {$ReplaceSphereConfiguration, $ReplaceSphereConfiguration$$Type} from "ne
 import {$BlockStateConfiguration, $BlockStateConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration"
 import {$BlockPileConfiguration, $BlockPileConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration"
 import {$NoneFeatureConfiguration, $NoneFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration"
-import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$EndGatewayConfiguration, $EndGatewayConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration"
+import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$LakeFeature$Configuration, $LakeFeature$Configuration$$Type} from "net.minecraft.world.level.levelgen.feature.LakeFeature$Configuration"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RootSystemConfiguration, $RootSystemConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration"
@@ -483,9 +483,9 @@ static readonly "DRIPSTONE_CLUSTER": $Feature<($DripstoneClusterConfiguration)>
 static readonly "GEODE": $Feature<($GeodeConfiguration)>
 static readonly "KELP": $Feature<($NoneFeatureConfiguration)>
 
-constructor(configCodec: $Codec$$Type<($UraniumPatchFeatureConfig$$Type)>)
+constructor(arg0: $Codec$$Type<($UraniumPatchFeatureConfig$$Type)>)
 
-public "place"(context: $FeaturePlaceContext$$Type<($UraniumPatchFeatureConfig$$Type)>): boolean
+public "place"(arg0: $FeaturePlaceContext$$Type<($UraniumPatchFeatureConfig$$Type)>): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -506,20 +506,20 @@ export class $MachineAddonController$BaseAddonData extends $Record {
 
 constructor(speed: float, efficiency: float, energyBonusCapacity: long, energyBonusTransfer: long, extraChambers: integer)
 
-public "equals"(o: any): boolean
-public "toString"(): string
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "efficiency"(): float
 public "speed"(): float
+public "efficiency"(): float
+public "extraChambers"(): integer
 public "energyBonusCapacity"(): long
 public "energyBonusTransfer"(): long
-public "extraChambers"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $MachineAddonController$BaseAddonData$$Type = ({"energyBonusCapacity"?: long, "energyBonusTransfer"?: long, "speed"?: float, "efficiency"?: float, "extraChambers"?: integer}) | ([energyBonusCapacity?: long, energyBonusTransfer?: long, speed?: float, efficiency?: float, extraChambers?: integer]);
+export type $MachineAddonController$BaseAddonData$$Type = ({"efficiency"?: float, "extraChambers"?: integer, "energyBonusCapacity"?: long, "energyBonusTransfer"?: long, "speed"?: float}) | ([efficiency?: float, extraChambers?: integer, energyBonusCapacity?: long, energyBonusTransfer?: long, speed?: float]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -541,8 +541,8 @@ import {$ItemPipeBlock, $ItemPipeBlock$$Type} from "rearth.oritech.block.blocks.
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -557,7 +557,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $IntegerProperty
 static "NO_CONNECTION": integer
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -580,7 +580,7 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getNormalBlock"(): $BlockState
 public "getConnectionBlock"(): $BlockState
@@ -625,8 +625,8 @@ import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.Tooltip
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $PipeBoosterBlock extends $HorizontalDirectionalBlock implements $EntityBlock {
@@ -643,7 +643,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -651,13 +651,13 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 }
@@ -702,24 +702,24 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getNormalBlock"(): $BlockState
-public "getNetworkData"(world: $Level$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
+public "getNetworkData"(arg0: $Level$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
 public "getConnectionBlock"(): $BlockState
-public "getPipeTypeName"(): string
-public "connectToOwnBlockType"(block: $Block$$Type): boolean
+public "getPipeTypeName"(): StringJS
+public "connectToOwnBlockType"(arg0: $Block$$Type): boolean
 public "asHolder"(): $Holder<(any)>
 get "normalBlock"(): $BlockState
 get "connectionBlock"(): $BlockState
-get "pipeTypeName"(): string
+get "pipeTypeName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -734,15 +734,15 @@ declare global {
 export type $EnergyPipeDuctBlock_ = $EnergyPipeDuctBlock$$Type;
 }}
 declare module "rearth.oritech.block.blocks.reactor.ReactorControllerBlock" {
-import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$BaseReactorBlock, $BaseReactorBlock$$Type} from "rearth.oritech.block.blocks.reactor.BaseReactorBlock"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
+import {$BaseReactorBlock, $BaseReactorBlock$$Type} from "rearth.oritech.block.blocks.reactor.BaseReactorBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
@@ -753,9 +753,9 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $ReactorControllerBlock extends $BaseReactorBlock implements $EntityBlock {
@@ -772,20 +772,20 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "validForWalls"(): boolean
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 }
@@ -816,43 +816,43 @@ static readonly "PACKET_CODEC": $StreamCodec<($ByteBuf), ($DynamicEnergyStorage)
  "maxInsert": long
  "capacity": long
 
-constructor(capacity: long, maxInsert: long, maxExtract: long, onUpdate: $Runnable$$Type)
-constructor(maxExtract: long, maxInsert: long, capacity: long, amount: long)
-constructor(capacity: long, maxInsert: long, maxExtract: long, onUpdate: $Runnable$$Type, alwaysFullUpdate: boolean)
+constructor(arg0: long, arg1: long, arg2: long, arg3: $Runnable$$Type)
+constructor(arg0: long, arg1: long, arg2: long, arg3: $Runnable$$Type, arg4: boolean)
+constructor(arg0: long, arg1: long, arg2: long, arg3: long)
 
+public "setCapacity"(arg0: long): void
 public "getCapacity"(): long
-public "setCapacity"(capacity: long): void
 public "update"(): void
-public "extract"(amount: long, simulate: boolean): long
-public "insert"(amount: long, simulate: boolean): long
-public "setAmount"(amount: long): void
+public "extract"(arg0: long, arg1: boolean): long
+public "insert"(arg0: long, arg1: boolean): long
 public "getAmount"(): long
-public "handleFullUpdate"(arg0: any): void
-public "handleFullUpdate"(updatedData: $DynamicEnergyStorage$$Type): void
-public "handleDeltaUpdate"(arg0: any): void
-public "handleDeltaUpdate"(updatedData: long): void
-public "insertIgnoringLimit"(amount: long, simulate: boolean): long
-public "getDeltaData"(): any
+public "setMaxInsert"(arg0: long): void
 public "getFullData"(): $DynamicEnergyStorage
-public "useDeltaOnly"(type: $SyncType$$Type): boolean
+public "getMaxInsert"(): long
+public "useDeltaOnly"(arg0: $SyncType$$Type): boolean
+public "getDeltaData"(): long
 public "getDeltaCodec"(): $StreamCodec<($ByteBuf), (long)>
 public "getFullCodec"(): $StreamCodec<($ByteBuf), ($DynamicEnergyStorage)>
-public "setMaxInsert"(maxInsert: long): void
-public "getMaxInsert"(): long
 public "getMaxExtract"(): long
-public "setMaxExtract"(maxExtract: long): void
-get "capacity"(): long
+public "setMaxExtract"(arg0: long): void
+public "setAmount"(arg0: long): void
+public "handleDeltaUpdate"(arg0: long): void
+public "handleDeltaUpdate"(arg0: any): void
+public "handleFullUpdate"(arg0: $DynamicEnergyStorage$$Type): void
+public "handleFullUpdate"(arg0: any): void
+public "insertIgnoringLimit"(arg0: long, arg1: boolean): long
 set "capacity"(value: long)
-set "amount"(value: long)
+get "capacity"(): long
 get "amount"(): long
-get "deltaData"(): any
+set "maxInsert"(value: long)
 get "fullData"(): $DynamicEnergyStorage
+get "maxInsert"(): long
+get "deltaData"(): long
 get "deltaCodec"(): $StreamCodec<($ByteBuf), (long)>
 get "fullCodec"(): $StreamCodec<($ByteBuf), ($DynamicEnergyStorage)>
-set "maxInsert"(value: long)
-get "maxInsert"(): long
 get "maxExtract"(): long
 set "maxExtract"(value: long)
+set "amount"(value: long)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -881,8 +881,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -899,7 +899,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $IntegerProperty
 static "NO_CONNECTION": integer
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -921,20 +921,20 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "apiValidationFunction"(): $TriFunction<($Level), ($BlockPos), ($Direction), (boolean)>
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getNormalBlock"(): $BlockState
-public "getNetworkData"(world: $Level$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
+public "getNetworkData"(arg0: $Level$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
 public "getConnectionBlock"(): $BlockState
-public "getPipeTypeName"(): string
-public "connectToOwnBlockType"(block: $Block$$Type): boolean
-public "isCompatibleTarget"(block: $Block$$Type): boolean
+public "getPipeTypeName"(): StringJS
+public "connectToOwnBlockType"(arg0: $Block$$Type): boolean
+public "isCompatibleTarget"(arg0: $Block$$Type): boolean
+public "apiValidationFunction"(): $TriFunction<($Level), ($BlockPos), ($Direction), (boolean)>
 public "asHolder"(): $Holder<(any)>
 get "normalBlock"(): $BlockState
 get "connectionBlock"(): $BlockState
-get "pipeTypeName"(): string
+get "pipeTypeName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -959,14 +959,14 @@ import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$AbstractPipeBlock, $AbstractPipeBlock$$Type} from "rearth.oritech.block.blocks.pipes.AbstractPipeBlock"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
-import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Wrench$Wrenchable, $Wrench$Wrenchable$$Type} from "rearth.oritech.item.tools.Wrench$Wrenchable"
+import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -983,7 +983,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $IntegerProperty
 static "NO_CONNECTION": integer
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -1005,29 +1005,29 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "updateShape"(state: $BlockState$$Type, direction: $Direction$$Type, neighborState: $BlockState$$Type, worldAccess: $LevelAccessor$$Type, pos: $BlockPos$$Type, neighborPos: $BlockPos$$Type): $BlockState
-public "onPlace"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, oldState: $BlockState$$Type, notify: boolean): void
-public "onRemove"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, newState: $BlockState$$Type, moved: boolean): void
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
-public "directionToProperty"(direction: $Direction$$Type): $IntegerProperty
-public "updateNeighbors"(world: $Level$$Type, pos: $BlockPos$$Type, neighborToggled: boolean): void
-public "shouldConnect"(current: $BlockState$$Type, direction: $Direction$$Type, currentPos: $BlockPos$$Type, world: $Level$$Type, createConnection: boolean): boolean
-public static "createShapes"(inner: $VoxelShape$$Type, north: $VoxelShape$$Type, east: $VoxelShape$$Type, south: $VoxelShape$$Type, west: $VoxelShape$$Type, up: $VoxelShape$$Type, down: $VoxelShape$$Type): ($VoxelShape)[]
+public "onPlace"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
+public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
+public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
+public static "createShapes"(arg0: $VoxelShape$$Type, arg1: $VoxelShape$$Type, arg2: $VoxelShape$$Type, arg3: $VoxelShape$$Type, arg4: $VoxelShape$$Type, arg5: $VoxelShape$$Type, arg6: $VoxelShape$$Type): ($VoxelShape)[]
 public "getUpProperty"(): $IntegerProperty
-public "onWrenchUse"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResult
-public "directionToPropertyValue"(state: $BlockState$$Type, direction: $Direction$$Type): integer
-public "isConnectingInDirection"(current: $BlockState$$Type, direction: $Direction$$Type, currentPos: $BlockPos$$Type, world: $Level$$Type, createConnection: boolean): boolean
+public "onWrenchUse"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $InteractionHand$$Type): $InteractionResult
+public "shouldConnect"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockPos$$Type, arg3: $Level$$Type, arg4: boolean): boolean
+public "updateNeighbors"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: boolean): void
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
+public "directionToProperty"(arg0: $Direction$$Type): $IntegerProperty
 public "getNorthProperty"(): $IntegerProperty
 public "getEastProperty"(): $IntegerProperty
 public "getSouthProperty"(): $IntegerProperty
 public "getWestProperty"(): $IntegerProperty
 public "getDownProperty"(): $IntegerProperty
-public "addConnectionStates"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, createConnection: boolean): $BlockState
-public "addConnectionStates"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, createDirection: $Direction$$Type): $BlockState
-public "onWrenchUseNeighbor"(state: $BlockState$$Type, neighborState: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, neighborPos: $BlockPos$$Type, neighborFace: $Direction$$Type, player: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResult
-public "addStraightState"(state: $BlockState$$Type): $BlockState
+public "addConnectionStates"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): $BlockState
+public "addConnectionStates"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: boolean): $BlockState
+public "addStraightState"(arg0: $BlockState$$Type): $BlockState
+public "onWrenchUseNeighbor"(arg0: $BlockState$$Type, arg1: $BlockState$$Type, arg2: $Level$$Type, arg3: $BlockPos$$Type, arg4: $BlockPos$$Type, arg5: $Direction$$Type, arg6: $Player$$Type, arg7: $InteractionHand$$Type): $InteractionResult
+public "isConnectingInDirection"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockPos$$Type, arg3: $Level$$Type, arg4: boolean): boolean
+public "directionToPropertyValue"(arg0: $BlockState$$Type, arg1: $Direction$$Type): integer
 public "asHolder"(): $Holder<(any)>
 get "upProperty"(): $IntegerProperty
 get "northProperty"(): $IntegerProperty
@@ -1057,9 +1057,9 @@ import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$HorizontalDirectionalBlock, $HorizontalDirectionalBlock$$Type} from "net.minecraft.world.level.block.HorizontalDirectionalBlock"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
@@ -1083,7 +1083,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1091,14 +1091,14 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "getShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
-public "isSignalSource"(state: $BlockState$$Type): boolean
-public "neighborChanged"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, sourceBlock: $Block$$Type, sourcePos: $BlockPos$$Type, notify: boolean): void
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
-public "getCollisionShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
+public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
+public "isSignalSource"(arg0: $BlockState$$Type): boolean
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
+public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
+public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -1125,7 +1125,7 @@ static readonly "ENABLED": $Augment$AugmentState
 
 
 public static "values"(): ($Augment$AugmentState)[]
-public static "valueOf"(name: string): $Augment$AugmentState
+public static "valueOf"(arg0: StringJS): $Augment$AugmentState
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1144,22 +1144,22 @@ import {$Record, $Record$$Type} from "java.lang.Record"
 
 export class $ScreenProvider$GuiSlot extends $Record {
 
-constructor(index: integer, x: integer, y: integer)
+constructor(arg0: integer, arg1: integer, arg2: integer)
 constructor(index: integer, x: integer, y: integer, output: boolean)
 
-public "index"(): integer
-public "equals"(o: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "x"(): integer
 public "y"(): integer
 public "output"(): boolean
+public "index"(): integer
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+public "x"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ScreenProvider$GuiSlot$$Type = ({"x"?: integer, "output"?: boolean, "index"?: integer, "y"?: integer}) | ([x?: integer, output?: boolean, index?: integer, y?: integer]);
+export type $ScreenProvider$GuiSlot$$Type = ({"index"?: integer, "y"?: integer, "x"?: integer, "output"?: boolean}) | ([index?: integer, y?: integer, x?: integer, output?: boolean]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1190,39 +1190,39 @@ static readonly "PACKET_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Fluid
 static readonly "FLUID_INGREDIENT_ENDEC": $Endec<($FluidIngredient)>
 static readonly "EMPTY": $FluidIngredient
 
-constructor(fluidContent: $Either$$Type<($TagKey$$Type<($Fluid$$Type)>), ($ResourceLocation$$Type)>, amount: long)
 constructor()
+constructor(fluidContent: $Either$$Type<($TagKey$$Type<($Fluid$$Type)>), ($ResourceLocation$$Type)>, amount: long)
 
-public "name"(): $Component
-public "equals"(o: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "test"(fluidStack: $FluidStack$$Type): boolean
-public "test"(arg0: any): boolean
-public "isEmpty"(): boolean
 public "amount"(): long
 public "getTag"(): $TagKey<($Fluid)>
-public "getFluid"(): $Fluid
+public "name"(): $Component
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+public "test"(arg0: $FluidStack$$Type): boolean
+public "test"(arg0: any): boolean
+public "isEmpty"(): boolean
 public "hasTag"(): boolean
-public "withSpecificAmount"(amountInMillis: long): $FluidIngredient
-public "withAmount"(withAmount: long): $FluidIngredient
-public "withAmount"(withAmountInBuckets: float): $FluidIngredient
-public "withContent"(fluidKey: $ResourceKey$$Type<($Fluid)>): $FluidIngredient
-public "withContent"(fluidTag: $TagKey$$Type<($Fluid)>): $FluidIngredient
-public "withContent"(fluidId: $ResourceLocation$$Type): $FluidIngredient
-public "withContent"(fluid: $Fluid$$Type): $FluidIngredient
-public "matchesFluid"(fluid: $Fluid$$Type): boolean
-public "matchesFluid"(fluidStack: $FluidStack$$Type): boolean
+public "getFluid"(): $Fluid
+public "withContent"(arg0: $ResourceLocation$$Type): $FluidIngredient
+public "withContent"(arg0: $Fluid$$Type): $FluidIngredient
+public "withContent"(arg0: $TagKey$$Type<($Fluid)>): $FluidIngredient
+public "withContent"(arg0: $ResourceKey$$Type<($Fluid)>): $FluidIngredient
+public "matchesFluid"(arg0: $FluidStack$$Type): boolean
+public "matchesFluid"(arg0: $Fluid$$Type): boolean
+public "withAmount"(arg0: float): $FluidIngredient
+public "withAmount"(arg0: long): $FluidIngredient
 public "getFluidStacks"(): $List<($FluidStack)>
 public "fluidContent"(): $Either<($TagKey<($Fluid)>), ($ResourceLocation)>
-public static "ofStack"(fluidStack: $FluidStack$$Type): $FluidIngredient
+public static "ofStack"(arg0: $FluidStack$$Type): $FluidIngredient
+public "withSpecificAmount"(arg0: long): $FluidIngredient
 public "or"(arg0: $Predicate$$Type<($FluidStack)>): $Predicate<($FluidStack)>
+public static "not"<T>(arg0: $Predicate$$Type<($FluidStack)>): $Predicate<($FluidStack)>
 public "negate"(): $Predicate<($FluidStack)>
 public "and"(arg0: $Predicate$$Type<($FluidStack)>): $Predicate<($FluidStack)>
-public static "not"<T>(arg0: $Predicate$$Type<($FluidStack)>): $Predicate<($FluidStack)>
 public static "isEqual"<T>(arg0: any): $Predicate<($FluidStack)>
-get "empty"(): boolean
 get "tag"(): $TagKey<($Fluid)>
+get "empty"(): boolean
 get "fluid"(): $Fluid
 get "fluidStacks"(): $List<($FluidStack)>
 }
@@ -1239,8 +1239,8 @@ declare global {
 export type $FluidIngredient_ = $FluidIngredient$$Type;
 }}
 declare module "rearth.oritech.block.blocks.reactor.ReactorAbsorberPortBlock" {
-import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
@@ -1249,8 +1249,8 @@ import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BaseReactorBlock, $BaseReactorBlock$$Type} from "rearth.oritech.block.blocks.reactor.BaseReactorBlock"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
@@ -1258,8 +1258,8 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $ReactorAbsorberPortBlock extends $BaseReactorBlock implements $EntityBlock {
@@ -1276,17 +1276,17 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "validForWalls"(): boolean
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
@@ -1305,6 +1305,7 @@ declare global {
 export type $ReactorAbsorberPortBlock_ = $ReactorAbsorberPortBlock$$Type;
 }}
 declare module "rearth.oritech.item.tools.ElectricMaceItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
@@ -1322,8 +1323,9 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$DamageSource, $DamageSource$$Type} from "net.minecraft.world.damagesource.DamageSource"
 import {$EnergyApi$EnergyStorage, $EnergyApi$EnergyStorage$$Type} from "rearth.oritech.api.energy.EnergyApi$EnergyStorage"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
@@ -1333,7 +1335,7 @@ import {$ParticleOptions, $ParticleOptions$$Type} from "net.minecraft.core.parti
 export class $ElectricMaceItem extends $MaceItem implements $OritechEnergyItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1342,29 +1344,30 @@ static readonly "SMASH_ATTACK_KNOCKBACK_RADIUS": float
 static readonly "SMASH_ATTACK_FALL_THRESHOLD": float
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(settings: $Item$Properties$$Type)
+constructor(arg0: $Item$Properties$$Type)
 
-public "allowComponentsUpdateAnimation"(player: $Player$$Type, hand: $InteractionHand$$Type, oldStack: $ItemStack$$Type, newStack: $ItemStack$$Type): boolean
-public "shouldCauseReequipAnimation"(oldStack: $ItemStack$$Type, newStack: $ItemStack$$Type, slotChanged: boolean): boolean
-public "shouldCauseBlockBreakReset"(oldStack: $ItemStack$$Type, newStack: $ItemStack$$Type): boolean
-public "isEnchantable"(stack: $ItemStack$$Type): boolean
-public "isBarVisible"(stack: $ItemStack$$Type): boolean
-public "getBarWidth"(stack: $ItemStack$$Type): integer
-public "getBarColor"(stack: $ItemStack$$Type): integer
-public "postHurtEnemy"(stack: $ItemStack$$Type, target: $LivingEntity$$Type, attacker: $LivingEntity$$Type): void
-public "getAttackDamageBonus"(target: $Entity$$Type, baseAttackDamage: float, damageSource: $DamageSource$$Type): float
-public "isValidRepairItem"(stack: $ItemStack$$Type, ingredient: $ItemStack$$Type): boolean
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
-public "getEnergyCapacity"(stack: $ItemStack$$Type): long
-public "getEnergyMaxInput"(stack: $ItemStack$$Type): long
-public static "processLightningEvents"(world: $Level$$Type): void
-public static "createLightningBolt"(level: $ServerLevel$$Type, startPos: $Vec3$$Type, endPos: $Vec3$$Type, mainSegments: integer, jitterAmount: double, particlesPerMeter: double, particleEffect: $ParticleOptions$$Type, branchChance: float, maxBranchDepth: integer, currentBranchDepth: integer): void
-public static "createAttributeModifiers"(): $ItemAttributeModifiers
-public "allowContinuingBlockBreaking"(player: $Player$$Type, oldStack: $ItemStack$$Type, newStack: $ItemStack$$Type): boolean
-public "getEnergyStorage"(stack: $ItemStack$$Type): $EnergyApi$EnergyStorage
-public "getEnergyMaxOutput"(stack: $ItemStack$$Type): long
-public "getStoredEnergy"(stack: $ItemStack$$Type): long
-public "tryUseEnergy"(stack: $ItemStack$$Type, amount: long, player: $Player$$Type): boolean
+public "isEnchantable"(arg0: $ItemStack$$Type): boolean
+public "postHurtEnemy"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type): void
+public "isBarVisible"(arg0: $ItemStack$$Type): boolean
+public "getBarWidth"(arg0: $ItemStack$$Type): integer
+public "getBarColor"(arg0: $ItemStack$$Type): integer
+public "getAttackDamageBonus"(arg0: $Entity$$Type, arg1: float, arg2: $DamageSource$$Type): float
+public static "createAttributes"(): $ItemAttributeModifiers
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "isValidRepairItem"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
+public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
+public "shouldCauseBlockBreakReset"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
+public "getEnergyCapacity"(arg0: $ItemStack$$Type): long
+public static "createLightningBolt"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type, arg2: $Vec3$$Type, arg3: integer, arg4: double, arg5: double, arg6: $ParticleOptions$$Type, arg7: float, arg8: integer, arg9: integer): void
+public static "processLightningEvents"(arg0: $Level$$Type): void
+public "getEnergyMaxInput"(arg0: $ItemStack$$Type): long
+public "allowComponentsUpdateAnimation"(arg0: $Player$$Type, arg1: $InteractionHand$$Type, arg2: $ItemStack$$Type, arg3: $ItemStack$$Type): boolean
+public "allowContinuingBlockBreaking"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: $ItemStack$$Type): boolean
+public "tryUseEnergy"(arg0: $ItemStack$$Type, arg1: long, arg2: $Player$$Type): boolean
+public "getEnergyStorage"(arg0: $ItemStack$$Type): $EnergyApi$EnergyStorage
+public "getEnergyMaxOutput"(arg0: $ItemStack$$Type): long
+public "getStoredEnergy"(arg0: $ItemStack$$Type): long
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1402,8 +1405,8 @@ import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.
 import {$MultiblockMachine, $MultiblockMachine$$Type} from "rearth.oritech.block.base.block.MultiblockMachine"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $SteamEngineBlock extends $MultiblockMachine {
@@ -1421,7 +1424,7 @@ static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "ASSEMBLED": $BooleanProperty
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1429,12 +1432,12 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
 public "getBlockEntityType"(): $Class<($BlockEntity)>
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "asHolder"(): $Holder<(any)>
 get "blockEntityType"(): $Class<($BlockEntity)>
 }
@@ -1451,14 +1454,16 @@ declare global {
 export type $SteamEngineBlock_ = $SteamEngineBlock$$Type;
 }}
 declare module "rearth.oritech.item.tools.harvesting.PromethiumAxeItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Tuple, $Tuple$$Type} from "net.minecraft.util.Tuple"
 import {$AxeItem, $AxeItem$$Type} from "net.minecraft.world.item.AxeItem"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$GeoAnimatable, $GeoAnimatable$$Type} from "software.bernie.geckolib.animatable.GeoAnimatable"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
@@ -1469,11 +1474,12 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$GeoRenderProvider, $GeoRenderProvider$$Type} from "software.bernie.geckolib.animatable.client.GeoRenderProvider"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$AnimatableInstanceCache, $AnimatableInstanceCache$$Type} from "software.bernie.geckolib.animatable.instance.AnimatableInstanceCache"
-import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$AnimatableManager$ControllerRegistrar, $AnimatableManager$ControllerRegistrar$$Type} from "software.bernie.geckolib.animation.AnimatableManager$ControllerRegistrar"
+import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$GeoItem, $GeoItem$$Type} from "software.bernie.geckolib.animatable.GeoItem"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Deque, $Deque$$Type} from "java.util.Deque"
@@ -1483,7 +1489,7 @@ import {$SerializableDataTicket, $SerializableDataTicket$$Type} from "software.b
 export class $PromethiumAxeItem extends $AxeItem implements $GeoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "pendingBlocks": $Deque<($Tuple<($Level), ($BlockPos)>)>
 static readonly "MAX_BAR_WIDTH": integer
@@ -1492,36 +1498,37 @@ static "STRIPPABLES": $Map<($Block), ($Block)>
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
+constructor(arg0: $Tier$$Type, arg1: $Item$Properties$$Type)
 
+public static "onTick"(arg0: $ServerLevel$$Type): void
+public "isEnchantable"(arg0: $ItemStack$$Type): boolean
+public "mineBlock"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockState$$Type, arg3: $BlockPos$$Type, arg4: $LivingEntity$$Type): boolean
+public "registerControllers"(arg0: $AnimatableManager$ControllerRegistrar$$Type): void
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "isValidRepairItem"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
 public "getDefaultAttributeModifiers"(): $ItemAttributeModifiers
+public "createGeoRenderer"(arg0: $Consumer$$Type<($GeoRenderProvider)>): void
+public static "processPendingBlocks"(arg0: $Level$$Type): void
 public "getAnimatableInstanceCache"(): $AnimatableInstanceCache
-public "isEnchantable"(stack: $ItemStack$$Type): boolean
-public "mineBlock"(stack: $ItemStack$$Type, world: $Level$$Type, state: $BlockState$$Type, pos: $BlockPos$$Type, miner: $LivingEntity$$Type): boolean
-public static "onTick"(serverWorld: $ServerLevel$$Type): void
-public "registerControllers"(controllers: $AnimatableManager$ControllerRegistrar$$Type): void
-public "isValidRepairItem"(stack: $ItemStack$$Type, ingredient: $ItemStack$$Type): boolean
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
-public static "processPendingBlocks"(world: $Level$$Type): void
-public "createGeoRenderer"(consumer: $Consumer$$Type<($GeoRenderProvider)>): void
 public static "getId"(arg0: $ItemStack$$Type): long
-public "animatableCacheOverride"(): $AnimatableInstanceCache
-public "isPerspectiveAware"(): boolean
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public "getTick"(arg0: any): double
+public "isPerspectiveAware"(): boolean
+public "animatableCacheOverride"(): $AnimatableInstanceCache
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
+public "triggerAnim"<D>(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
 public "syncAnimData"<D>(arg0: long, arg1: $SerializableDataTicket$$Type<(D)>, arg2: D, arg3: $Entity$$Type): void
-public "stopTriggeredAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "triggerArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "stopTriggeredArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "getRenderProvider"(): any
-public "triggerAnim"<D>(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
 public "getAnimData"<D>(arg0: long, arg1: $SerializableDataTicket$$Type<(D)>): D
 public "setAnimData"<D>(arg0: $Entity$$Type, arg1: long, arg2: $SerializableDataTicket$$Type<(D)>, arg3: D): void
+public "stopTriggeredAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
+public "getRenderProvider"(): any
+public "triggerArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
+public "stopTriggeredArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
 public static "getStrippables"(): $Map<($Block), ($Block)>
 public static "setStrippables"(strippedBlocks: $Map$$Type<($Block$$Type), ($Block$$Type)>): void
-public "shouldPlayAnimsWhileGamePaused"(): boolean
 public "getBoneResetTime"(): double
+public "shouldPlayAnimsWhileGamePaused"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "defaultAttributeModifiers"(): $ItemAttributeModifiers
 get "animatableInstanceCache"(): $AnimatableInstanceCache
 get "perspectiveAware"(): boolean
@@ -1571,8 +1578,8 @@ import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.
 import {$ItemInteractionResult, $ItemInteractionResult$$Type} from "net.minecraft.world.ItemInteractionResult"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $MachineBlock extends $HorizontalDirectionalBlock implements $EntityBlock {
@@ -1589,7 +1596,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1597,17 +1604,17 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
-public "useItemOn"(stack: $ItemStack$$Type, state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hand: $InteractionHand$$Type, hit: $BlockHitResult$$Type): $ItemInteractionResult
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
+public "useItemOn"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type, arg2: $Level$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type, arg5: $InteractionHand$$Type, arg6: $BlockHitResult$$Type): $ItemInteractionResult
 public "getBlockEntityType"(): $Class<($BlockEntity)>
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 get "blockEntityType"(): $Class<($BlockEntity)>
@@ -1648,10 +1655,10 @@ import {$AttachFace, $AttachFace$$Type} from "net.minecraft.world.level.block.st
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
-import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
-import {$MachineAddonBlock$AddonSettings, $MachineAddonBlock$AddonSettings$$Type} from "rearth.oritech.block.blocks.addons.MachineAddonBlock$AddonSettings"
+import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$MachineAddonBlock$AddonSettings, $MachineAddonBlock$AddonSettings$$Type} from "rearth.oritech.block.blocks.addons.MachineAddonBlock$AddonSettings"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $RedstoneAddonBlock extends $MachineAddonBlock {
@@ -1666,7 +1673,7 @@ static readonly "USE_ACCURATE_OUTLINES": boolean
 static "MACHINE_EFFICIENCY_ADDON_SHAPE": (($VoxelShape)[])[]
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static "MACHINE_PROCESSING_ADDON_SHAPE": (($VoxelShape)[])[]
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -1694,14 +1701,14 @@ static readonly "FACE": $EnumProperty<($AttachFace)>
  "hasCollision": boolean
 static "MACHINE_ULTIMATE_ADDON_SHAPE": (($VoxelShape)[])[]
 
-constructor(settings: $BlockBehaviour$Properties$$Type, addonSettings: $MachineAddonBlock$AddonSettings$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type, arg1: $MachineAddonBlock$AddonSettings$$Type)
 
-public "updateShape"(state: $BlockState$$Type, direction: $Direction$$Type, neighborState: $BlockState$$Type, world: $LevelAccessor$$Type, pos: $BlockPos$$Type, neighborPos: $BlockPos$$Type): $BlockState
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "isSignalSource"(state: $BlockState$$Type): boolean
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
+public "isSignalSource"(arg0: $BlockState$$Type): boolean
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getBlockEntityType"(): $Class<($BlockEntity)>
-public "neighborChanged"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, sourceBlock: $Block$$Type, sourcePos: $BlockPos$$Type, notify: boolean): void
+public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
 public "asHolder"(): $Holder<(any)>
 get "blockEntityType"(): $Class<($BlockEntity)>
 }
@@ -1751,7 +1758,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $IntegerProperty
 static "NO_CONNECTION": integer
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -1775,20 +1782,20 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
-public "apiValidationFunction"(): $TriFunction<($Level), ($BlockPos), ($Direction), (boolean)>
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getNormalBlock"(): $BlockState
-public "getNetworkData"(world: $Level$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
+public "getNetworkData"(arg0: $Level$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
 public "getConnectionBlock"(): $BlockState
-public "getPipeTypeName"(): string
-public "connectToOwnBlockType"(block: $Block$$Type): boolean
+public "getPipeTypeName"(): StringJS
+public "connectToOwnBlockType"(arg0: $Block$$Type): boolean
+public "apiValidationFunction"(): $TriFunction<($Level), ($BlockPos), ($Direction), (boolean)>
 public "asHolder"(): $Holder<(any)>
 get "normalBlock"(): $BlockState
 get "connectionBlock"(): $BlockState
-get "pipeTypeName"(): string
+get "pipeTypeName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1833,17 +1840,17 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "setPlacedBy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, placer: $LivingEntity$$Type, itemStack: $ItemStack$$Type): void
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
+public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -1864,15 +1871,15 @@ import {$Enum, $Enum$$Type} from "java.lang.Enum"
 export class $LaserArmBlockEntity$HunterTargetMode extends $Enum<($LaserArmBlockEntity$HunterTargetMode)> {
 static readonly "ALL": $LaserArmBlockEntity$HunterTargetMode
 static readonly "HOSTILE_ONLY": $LaserArmBlockEntity$HunterTargetMode
-readonly "message": string
+readonly "message": StringJS
 readonly "value": integer
 static readonly "HOSTILE_NEUTRAL": $LaserArmBlockEntity$HunterTargetMode
 
 
 public static "values"(): ($LaserArmBlockEntity$HunterTargetMode)[]
-public static "valueOf"(name: string): $LaserArmBlockEntity$HunterTargetMode
+public static "valueOf"(arg0: StringJS): $LaserArmBlockEntity$HunterTargetMode
 public "next"(): $LaserArmBlockEntity$HunterTargetMode
-public static "fromValue"(i: integer): $LaserArmBlockEntity$HunterTargetMode
+public static "fromValue"(arg0: integer): $LaserArmBlockEntity$HunterTargetMode
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1894,13 +1901,13 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$FluidPipeConnectionBlock, $FluidPipeConnectionBlock$$Type} from "rearth.oritech.block.blocks.pipes.fluid.FluidPipeConnectionBlock"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -1916,7 +1923,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $IntegerProperty
 static "NO_CONNECTION": integer
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -1939,11 +1946,11 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "getShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public "getCollisionShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
+public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "getNormalBlock"(): $BlockState
+public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "getConnectionBlock"(): $BlockState
 public "asHolder"(): $Holder<(any)>
 get "normalBlock"(): $BlockState
@@ -1962,13 +1969,16 @@ declare global {
 export type $FluidPipeConnectionBlock$FramedFluidPipeConnectionBlock_ = $FluidPipeConnectionBlock$FramedFluidPipeConnectionBlock$$Type;
 }}
 declare module "rearth.oritech.api.attachment.Attachment" {
+import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
+import {$ByteBuf, $ByteBuf$$Type} from "io.netty.buffer.ByteBuf"
 
 export interface $Attachment<A> {
 
  "identifier"(): $ResourceLocation
+ "networkCodec"(): $StreamCodec<($ByteBuf), (A)>
  "initializer"(): $Supplier<(A)>
  "persistenceCodec"(): $Codec<(A)>
 }
@@ -1980,6 +1990,7 @@ export class $Attachment$$Static<A> implements $Attachment {
 
 
  "identifier"(): $ResourceLocation
+ "networkCodec"(): $StreamCodec<($ByteBuf), (A)>
  "initializer"(): $Supplier<(A)>
  "persistenceCodec"(): $Codec<(A)>
 }
@@ -1998,8 +2009,8 @@ export type $Attachment_<A> = $Attachment$$Type<(A)>;
 declare module "rearth.oritech.block.blocks.interaction.LaserArmBlock" {
 import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$LaserArmEntityBehavior, $LaserArmEntityBehavior$$Type} from "rearth.oritech.block.behavior.LaserArmEntityBehavior"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
@@ -2011,8 +2022,8 @@ import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.leve
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
-import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$LaserArmBlockBehavior, $LaserArmBlockBehavior$$Type} from "rearth.oritech.block.behavior.LaserArmBlockBehavior"
+import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$EntityType, $EntityType$$Type} from "net.minecraft.world.entity.EntityType"
 import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
@@ -2026,8 +2037,8 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $LaserArmBlock extends $Block implements $EntityBlock {
 static readonly "UPDATE_IMMEDIATE": integer
@@ -2043,7 +2054,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "BLOCK_BEHAVIORS": $Map<($Block), ($LaserArmBlockBehavior)>
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -2052,21 +2063,21 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "ENTITY_BEHAVIORS": $Map<($EntityType<(any)>), ($LaserArmEntityBehavior)>
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "isSignalSource"(state: $BlockState$$Type): boolean
-public "neighborChanged"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, sourceBlock: $Block$$Type, sourcePos: $BlockPos$$Type, notify: boolean): void
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
-public static "getBehaviorForBlock"(targetBlock: $Block$$Type): $LaserArmBlockBehavior
-public static "getBehaviorForEntity"(targetEntityType: $EntityType$$Type<(any)>): $LaserArmEntityBehavior
-public static "registerBlockBehavior"(targetBlock: $Block$$Type, behavior: $LaserArmBlockBehavior$$Type): void
-public static "registerEntityBehavior"(entityType: $EntityType$$Type<(any)>, behavior: $LaserArmEntityBehavior$$Type): void
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "isSignalSource"(arg0: $BlockState$$Type): boolean
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "registerBlockBehavior"(arg0: $Block$$Type, arg1: $LaserArmBlockBehavior$$Type): void
+public static "registerEntityBehavior"(arg0: $EntityType$$Type<(any)>, arg1: $LaserArmEntityBehavior$$Type): void
+public static "getBehaviorForBlock"(arg0: $Block$$Type): $LaserArmBlockBehavior
+public static "getBehaviorForEntity"(arg0: $EntityType$$Type<(any)>): $LaserArmEntityBehavior
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 }
@@ -2089,8 +2100,8 @@ import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$Tuple, $Tuple$$Type} from "net.minecraft.util.Tuple"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
+import {$Tuple, $Tuple$$Type} from "net.minecraft.util.Tuple"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
@@ -2110,8 +2121,8 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $AugmentApplicationBlock extends $HorizontalDirectionalBlock implements $EntityBlock {
@@ -2129,7 +2140,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2137,14 +2148,14 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 }
@@ -2187,14 +2198,14 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "requiredStackCeiling"(): $Block
 public "asHolder"(): $Holder<(any)>
@@ -2220,8 +2231,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -2243,7 +2254,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2251,9 +2262,9 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -2280,8 +2291,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -2292,14 +2303,14 @@ import {$RenderShape, $RenderShape$$Type} from "net.minecraft.world.level.block.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $ItemFilterBlock extends $Block implements $EntityBlock {
@@ -2317,24 +2328,24 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "getShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
-public "getCollisionShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
+public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 }
@@ -2372,8 +2383,8 @@ import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.Vo
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$MachineAddonBlock$AddonSettings, $MachineAddonBlock$AddonSettings$$Type} from "rearth.oritech.block.blocks.addons.MachineAddonBlock$AddonSettings"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$MachineAddonBlock$AddonSettings, $MachineAddonBlock$AddonSettings$$Type} from "rearth.oritech.block.blocks.addons.MachineAddonBlock$AddonSettings"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $InventoryProxyAddonBlock extends $MachineAddonBlock {
@@ -2388,7 +2399,7 @@ static readonly "USE_ACCURATE_OUTLINES": boolean
 static "MACHINE_EFFICIENCY_ADDON_SHAPE": (($VoxelShape)[])[]
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static "MACHINE_PROCESSING_ADDON_SHAPE": (($VoxelShape)[])[]
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -2416,9 +2427,9 @@ static readonly "FACE": $EnumProperty<($AttachFace)>
  "hasCollision": boolean
 static "MACHINE_ULTIMATE_ADDON_SHAPE": (($VoxelShape)[])[]
 
-constructor(settings: $BlockBehaviour$Properties$$Type, addonSettings: $MachineAddonBlock$AddonSettings$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type, arg1: $MachineAddonBlock$AddonSettings$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
 public "getBlockEntityType"(): $Class<($BlockEntity)>
 public "asHolder"(): $Holder<(any)>
 get "blockEntityType"(): $Class<($BlockEntity)>
@@ -2436,6 +2447,7 @@ declare global {
 export type $InventoryProxyAddonBlock_ = $InventoryProxyAddonBlock$$Type;
 }}
 declare module "rearth.oritech.item.tools.harvesting.DrillItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
@@ -2443,14 +2455,15 @@ import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.Inte
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$OritechEnergyItem, $OritechEnergyItem$$Type} from "rearth.oritech.item.tools.util.OritechEnergyItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$EnergyApi$EnergyStorage, $EnergyApi$EnergyStorage$$Type} from "rearth.oritech.api.energy.EnergyApi$EnergyStorage"
 import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
+import {$EnergyApi$EnergyStorage, $EnergyApi$EnergyStorage$$Type} from "rearth.oritech.api.energy.EnergyApi$EnergyStorage"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
@@ -2461,7 +2474,7 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 export class $DrillItem extends $DiggerItem implements $OritechEnergyItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -2469,26 +2482,27 @@ static readonly "BAR_STEP_COUNT": integer
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(toolMaterial: $Tier$$Type, effectiveBlocks: $TagKey$$Type<($Block)>, settings: $Item$Properties$$Type)
+constructor(arg0: $Tier$$Type, arg1: $TagKey$$Type<($Block)>, arg2: $Item$Properties$$Type)
 
-public "allowComponentsUpdateAnimation"(player: $Player$$Type, hand: $InteractionHand$$Type, oldStack: $ItemStack$$Type, newStack: $ItemStack$$Type): boolean
-public "shouldCauseReequipAnimation"(oldStack: $ItemStack$$Type, newStack: $ItemStack$$Type, slotChanged: boolean): boolean
-public "shouldCauseBlockBreakReset"(oldStack: $ItemStack$$Type, newStack: $ItemStack$$Type): boolean
-public "isEnchantable"(stack: $ItemStack$$Type): boolean
-public "isBarVisible"(stack: $ItemStack$$Type): boolean
-public "getBarWidth"(stack: $ItemStack$$Type): integer
-public "getBarColor"(stack: $ItemStack$$Type): integer
-public "mineBlock"(stack: $ItemStack$$Type, world: $Level$$Type, state: $BlockState$$Type, pos: $BlockPos$$Type, miner: $LivingEntity$$Type): boolean
-public "isValidRepairItem"(stack: $ItemStack$$Type, ingredient: $ItemStack$$Type): boolean
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
-public "getDestroySpeed"(stack: $ItemStack$$Type, state: $BlockState$$Type): float
-public "getEnergyCapacity"(stack: $ItemStack$$Type): long
-public "getEnergyMaxInput"(stack: $ItemStack$$Type): long
-public "allowContinuingBlockBreaking"(player: $Player$$Type, oldStack: $ItemStack$$Type, newStack: $ItemStack$$Type): boolean
-public "getEnergyStorage"(stack: $ItemStack$$Type): $EnergyApi$EnergyStorage
-public "getEnergyMaxOutput"(stack: $ItemStack$$Type): long
-public "getStoredEnergy"(stack: $ItemStack$$Type): long
-public "tryUseEnergy"(stack: $ItemStack$$Type, amount: long, player: $Player$$Type): boolean
+public "isEnchantable"(arg0: $ItemStack$$Type): boolean
+public "mineBlock"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockState$$Type, arg3: $BlockPos$$Type, arg4: $LivingEntity$$Type): boolean
+public "isBarVisible"(arg0: $ItemStack$$Type): boolean
+public "getBarWidth"(arg0: $ItemStack$$Type): integer
+public "getBarColor"(arg0: $ItemStack$$Type): integer
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "isValidRepairItem"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
+public "getDestroySpeed"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type): float
+public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
+public "shouldCauseBlockBreakReset"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
+public "getEnergyCapacity"(arg0: $ItemStack$$Type): long
+public "getEnergyMaxInput"(arg0: $ItemStack$$Type): long
+public "allowComponentsUpdateAnimation"(arg0: $Player$$Type, arg1: $InteractionHand$$Type, arg2: $ItemStack$$Type, arg3: $ItemStack$$Type): boolean
+public "allowContinuingBlockBreaking"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: $ItemStack$$Type): boolean
+public "tryUseEnergy"(arg0: $ItemStack$$Type, arg1: long, arg2: $Player$$Type): boolean
+public "getEnergyStorage"(arg0: $ItemStack$$Type): $EnergyApi$EnergyStorage
+public "getEnergyMaxOutput"(arg0: $ItemStack$$Type): long
+public "getStoredEnergy"(arg0: $ItemStack$$Type): long
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2519,29 +2533,29 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export interface $BaseJetpackItem extends $OritechEnergyItem, $FluidApi$ItemProvider {
 
  "getSpeed"(): float
- "getJetpackBarColor"(stack: $ItemStack$$Type): integer
- "getJetpackBarStep"(stack: $ItemStack$$Type): integer
- "addJetpackTooltip"(stack: $ItemStack$$Type, tooltip: $List$$Type<($Component$$Type)>, includeEnergy: boolean): void
- "getFuelCapacity"(): long
- "getFluidStorage"(stack: $ItemStack$$Type): $FluidApi$SingleSlotStorage
- "tickJetpack"(stack: $ItemStack$$Type, entity: $Entity$$Type, world: $Level$$Type): void
+ "tickJetpack"(arg0: $ItemStack$$Type, arg1: $Entity$$Type, arg2: $Level$$Type): void
  "requireUpward"(): boolean
  "getRfUsage"(): integer
  "getFuelUsage"(): integer
  "requireTakeoff"(): boolean
- "tryUseFluid"(stack: $ItemStack$$Type): boolean
- "getStoredFluid"(stack: $ItemStack$$Type): $FluidStack
- "isValidFuel"(variant: $Fluid$$Type): boolean
- "getEnergyStorage"(stack: $ItemStack$$Type): $EnergyApi$EnergyStorage
- "getEnergyCapacity"(stack: $ItemStack$$Type): long
- "getEnergyMaxInput"(stack: $ItemStack$$Type): long
- "getEnergyMaxOutput"(stack: $ItemStack$$Type): long
- "getStoredEnergy"(stack: $ItemStack$$Type): long
- "tryUseEnergy"(stack: $ItemStack$$Type, amount: long, player: $Player$$Type): boolean
+ "tryUseFluid"(arg0: $ItemStack$$Type): boolean
+ "getStoredFluid"(arg0: $ItemStack$$Type): $FluidStack
+ "isValidFuel"(arg0: $Fluid$$Type): boolean
+ "getJetpackBarColor"(arg0: $ItemStack$$Type): integer
+ "getJetpackBarStep"(arg0: $ItemStack$$Type): integer
+ "addJetpackTooltip"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>, arg2: boolean): void
+ "getFuelCapacity"(): long
+ "getFluidStorage"(arg0: $ItemStack$$Type): $FluidApi$SingleSlotStorage
+ "tryUseEnergy"(arg0: $ItemStack$$Type, arg1: long, arg2: $Player$$Type): boolean
+ "getEnergyStorage"(arg0: $ItemStack$$Type): $EnergyApi$EnergyStorage
+ "getEnergyCapacity"(arg0: $ItemStack$$Type): long
+ "getEnergyMaxInput"(arg0: $ItemStack$$Type): long
+ "getEnergyMaxOutput"(arg0: $ItemStack$$Type): long
+ "getStoredEnergy"(arg0: $ItemStack$$Type): long
 get "speed"(): float
-get "fuelCapacity"(): long
 get "rfUsage"(): integer
 get "fuelUsage"(): integer
+get "fuelCapacity"(): long
 }
 
 export namespace $BaseJetpackItem {
@@ -2551,25 +2565,25 @@ export class $BaseJetpackItem$$Static implements $BaseJetpackItem {
 
 
  "getSpeed"(): float
- "getJetpackBarColor"(stack: $ItemStack$$Type): integer
- "getJetpackBarStep"(stack: $ItemStack$$Type): integer
- "addJetpackTooltip"(stack: $ItemStack$$Type, tooltip: $List$$Type<($Component$$Type)>, includeEnergy: boolean): void
- "getFuelCapacity"(): long
- "getFluidStorage"(stack: $ItemStack$$Type): $FluidApi$SingleSlotStorage
- "tickJetpack"(stack: $ItemStack$$Type, entity: $Entity$$Type, world: $Level$$Type): void
+ "tickJetpack"(arg0: $ItemStack$$Type, arg1: $Entity$$Type, arg2: $Level$$Type): void
  "requireUpward"(): boolean
  "getRfUsage"(): integer
  "getFuelUsage"(): integer
  "requireTakeoff"(): boolean
- "tryUseFluid"(stack: $ItemStack$$Type): boolean
- "getStoredFluid"(stack: $ItemStack$$Type): $FluidStack
- "isValidFuel"(variant: $Fluid$$Type): boolean
- "getEnergyStorage"(stack: $ItemStack$$Type): $EnergyApi$EnergyStorage
- "getEnergyCapacity"(stack: $ItemStack$$Type): long
- "getEnergyMaxInput"(stack: $ItemStack$$Type): long
- "getEnergyMaxOutput"(stack: $ItemStack$$Type): long
- "getStoredEnergy"(stack: $ItemStack$$Type): long
- "tryUseEnergy"(stack: $ItemStack$$Type, amount: long, player: $Player$$Type): boolean
+ "tryUseFluid"(arg0: $ItemStack$$Type): boolean
+ "getStoredFluid"(arg0: $ItemStack$$Type): $FluidStack
+ "isValidFuel"(arg0: $Fluid$$Type): boolean
+ "getJetpackBarColor"(arg0: $ItemStack$$Type): integer
+ "getJetpackBarStep"(arg0: $ItemStack$$Type): integer
+ "addJetpackTooltip"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>, arg2: boolean): void
+ "getFuelCapacity"(): long
+ "getFluidStorage"(arg0: $ItemStack$$Type): $FluidApi$SingleSlotStorage
+ "tryUseEnergy"(arg0: $ItemStack$$Type, arg1: long, arg2: $Player$$Type): boolean
+ "getEnergyStorage"(arg0: $ItemStack$$Type): $EnergyApi$EnergyStorage
+ "getEnergyCapacity"(arg0: $ItemStack$$Type): long
+ "getEnergyMaxInput"(arg0: $ItemStack$$Type): long
+ "getEnergyMaxOutput"(arg0: $ItemStack$$Type): long
+ "getStoredEnergy"(arg0: $ItemStack$$Type): long
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2592,8 +2606,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -2615,7 +2629,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2623,9 +2637,9 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -2641,8 +2655,8 @@ declare global {
 export type $FertilizerBlock_ = $FertilizerBlock$$Type;
 }}
 declare module "rearth.oritech.block.blocks.reactor.ReactorFuelPortBlock" {
-import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
@@ -2651,8 +2665,8 @@ import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BaseReactorBlock, $BaseReactorBlock$$Type} from "rearth.oritech.block.blocks.reactor.BaseReactorBlock"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
@@ -2660,8 +2674,8 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $ReactorFuelPortBlock extends $BaseReactorBlock implements $EntityBlock {
@@ -2678,17 +2692,17 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "validForWalls"(): boolean
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
@@ -2707,18 +2721,20 @@ declare global {
 export type $ReactorFuelPortBlock_ = $ReactorFuelPortBlock$$Type;
 }}
 declare module "rearth.oritech.item.tools.armor.ExoArmorItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ArmorMaterial, $ArmorMaterial$$Type} from "net.minecraft.world.item.ArmorMaterial"
 import {$DataComponentMap, $DataComponentMap$$Type} from "net.minecraft.core.component.DataComponentMap"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$GeoAnimatable, $GeoAnimatable$$Type} from "software.bernie.geckolib.animatable.GeoAnimatable"
-import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$EquipmentSlot, $EquipmentSlot$$Type} from "net.minecraft.world.entity.EquipmentSlot"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$ArmorItem, $ArmorItem$$Type} from "net.minecraft.world.item.ArmorItem"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
@@ -2729,11 +2745,12 @@ import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.A
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$GeoRenderProvider, $GeoRenderProvider$$Type} from "software.bernie.geckolib.animatable.client.GeoRenderProvider"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$AnimatableInstanceCache, $AnimatableInstanceCache$$Type} from "software.bernie.geckolib.animatable.instance.AnimatableInstanceCache"
-import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$AnimatableManager$ControllerRegistrar, $AnimatableManager$ControllerRegistrar$$Type} from "software.bernie.geckolib.animation.AnimatableManager$ControllerRegistrar"
+import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$GeoItem, $GeoItem$$Type} from "software.bernie.geckolib.animatable.GeoItem"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
@@ -2743,7 +2760,7 @@ import {$SerializableDataTicket, $SerializableDataTicket$$Type} from "software.b
 export class $ExoArmorItem extends $ArmorItem implements $GeoItem, $ArmorEventHandler {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -2751,40 +2768,41 @@ static readonly "DISPENSE_ITEM_BEHAVIOR": $DispenseItemBehavior
  "defaultModifiers": $Supplier<($ItemAttributeModifiers)>
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(material: $Holder$$Type<($ArmorMaterial)>, type: $ArmorItem$Type$$Type, settings: $Item$Properties$$Type)
+constructor(arg0: $Holder$$Type<($ArmorMaterial)>, arg1: $ArmorItem$Type$$Type, arg2: $Item$Properties$$Type)
 
-public "getDefaultAttributeModifiers"(): $ItemAttributeModifiers
-public "getAnimatableInstanceCache"(): $AnimatableInstanceCache
 public "getModel"(): $ResourceLocation
-public "isBarVisible"(stack: $ItemStack$$Type): boolean
+public "isBarVisible"(arg0: $ItemStack$$Type): boolean
 public "components"(): $DataComponentMap
-public "registerControllers"(controllers: $AnimatableManager$ControllerRegistrar$$Type): void
-public "isValidRepairItem"(stack: $ItemStack$$Type, ingredient: $ItemStack$$Type): boolean
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
-public "createGeoRenderer"(consumer: $Consumer$$Type<($GeoRenderProvider)>): void
-public "onEquipped"(playerEntity: $Player$$Type, stack: $ItemStack$$Type): void
-public "onUnequipped"(playerEntity: $Player$$Type, stack: $ItemStack$$Type): void
+public "onEquipped"(arg0: $Player$$Type, arg1: $ItemStack$$Type): void
+public "onUnequipped"(arg0: $Player$$Type, arg1: $ItemStack$$Type): void
+public "registerControllers"(arg0: $AnimatableManager$ControllerRegistrar$$Type): void
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "isValidRepairItem"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
+public "getDefaultAttributeModifiers"(): $ItemAttributeModifiers
+public "createGeoRenderer"(arg0: $Consumer$$Type<($GeoRenderProvider)>): void
+public "getAnimatableInstanceCache"(): $AnimatableInstanceCache
 public static "getId"(arg0: $ItemStack$$Type): long
-public "animatableCacheOverride"(): $AnimatableInstanceCache
-public "isPerspectiveAware"(): boolean
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public "getTick"(arg0: any): double
+public "isPerspectiveAware"(): boolean
+public "animatableCacheOverride"(): $AnimatableInstanceCache
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
-public static "processEvent"(livingEntity: $LivingEntity$$Type, equipmentSlot: $EquipmentSlot$$Type, previousStack: $ItemStack$$Type, currentStack: $ItemStack$$Type): void
+public static "processEvent"(arg0: $LivingEntity$$Type, arg1: $EquipmentSlot$$Type, arg2: $ItemStack$$Type, arg3: $ItemStack$$Type): void
+public "triggerAnim"<D>(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
 public "syncAnimData"<D>(arg0: long, arg1: $SerializableDataTicket$$Type<(D)>, arg2: D, arg3: $Entity$$Type): void
-public "stopTriggeredAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "triggerArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "stopTriggeredArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "getRenderProvider"(): any
-public "triggerAnim"<D>(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
 public "getAnimData"<D>(arg0: long, arg1: $SerializableDataTicket$$Type<(D)>): D
 public "setAnimData"<D>(arg0: $Entity$$Type, arg1: long, arg2: $SerializableDataTicket$$Type<(D)>, arg3: D): void
+public "stopTriggeredAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
+public "getRenderProvider"(): any
+public "triggerArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
+public "stopTriggeredArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
 public static "get"(arg0: $ItemStack$$Type): $Equipable
-public "shouldPlayAnimsWhileGamePaused"(): boolean
 public "getBoneResetTime"(): double
+public "shouldPlayAnimsWhileGamePaused"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
+get "model"(): $ResourceLocation
 get "defaultAttributeModifiers"(): $ItemAttributeModifiers
 get "animatableInstanceCache"(): $AnimatableInstanceCache
-get "model"(): $ResourceLocation
 get "perspectiveAware"(): boolean
 get "renderProvider"(): any
 get "boneResetTime"(): double
@@ -2811,8 +2829,8 @@ static "ENDEC": $Endec<($AugmentDataRecipe$EffectDefinition)>
 
 constructor(potionEffectId: $ResourceLocation$$Type, effectStrength: integer)
 
-public "equals"(o: any): boolean
-public "toString"(): string
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "potionEffectId"(): $ResourceLocation
 public "effectStrength"(): integer
@@ -2821,7 +2839,7 @@ public "effectStrength"(): integer
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $AugmentDataRecipe$EffectDefinition$$Type = ({"potionEffectId"?: $ResourceLocation$$Type, "effectStrength"?: integer}) | ([potionEffectId?: $ResourceLocation$$Type, effectStrength?: integer]);
+export type $AugmentDataRecipe$EffectDefinition$$Type = ({"effectStrength"?: integer, "potionEffectId"?: $ResourceLocation$$Type}) | ([effectStrength?: integer, potionEffectId?: $ResourceLocation$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -2856,14 +2874,14 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "asHolder"(): $Holder<(any)>
 }
@@ -2880,32 +2898,35 @@ declare global {
 export type $ReactorHeatPipeBlock_ = $ReactorHeatPipeBlock$$Type;
 }}
 declare module "rearth.oritech.item.tools.Wrench" {
-import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
-import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Tool, $Tool$$Type} from "net.minecraft.world.item.component.Tool"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
+import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export class $Wrench extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
 static "ACTION_COOLDOWN": integer
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(settings: $Item$Properties$$Type)
+constructor(arg0: $Item$Properties$$Type)
 
-public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
 public static "createToolComponent"(): $Tool
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2961,7 +2982,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "LIT": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -2969,15 +2990,15 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "setPlacedBy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, placer: $LivingEntity$$Type, itemStack: $ItemStack$$Type): void
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "getCloneItemStack"(world: $LevelReader$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type): $ItemStack
-public static "getBasePickStack"(creative: boolean): $ItemStack
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
+public "getCloneItemStack"(arg0: $LevelReader$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): $ItemStack
+public static "getBasePickStack"(arg0: boolean): $ItemStack
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 }
@@ -3007,8 +3028,8 @@ static readonly "NODE_FEATURE_ENDEC": $Endec<($ResourceNodeFeatureConfig)>
 
 constructor(nodeSize: integer, boulderRadius: integer, nodeOres: $List$$Type<($ResourceLocation$$Type)>, nodeOreChance: float, boulderOres: $List$$Type<($ResourceLocation$$Type)>, overlayBlock: $ResourceLocation$$Type, overlayHeight: integer)
 
-public "equals"(o: any): boolean
-public "toString"(): string
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "nodeOres"(): $List<($ResourceLocation)>
 public "nodeSize"(): integer
@@ -3024,7 +3045,7 @@ get "features"(): $Stream<($ConfiguredFeature<(any), (any)>)>
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ResourceNodeFeatureConfig$$Type = ({"boulderOres"?: $List$$Type<($ResourceLocation$$Type)>, "overlayBlock"?: $ResourceLocation$$Type, "nodeOreChance"?: float, "boulderRadius"?: integer, "overlayHeight"?: integer, "nodeOres"?: $List$$Type<($ResourceLocation$$Type)>, "nodeSize"?: integer}) | ([boulderOres?: $List$$Type<($ResourceLocation$$Type)>, overlayBlock?: $ResourceLocation$$Type, nodeOreChance?: float, boulderRadius?: integer, overlayHeight?: integer, nodeOres?: $List$$Type<($ResourceLocation$$Type)>, nodeSize?: integer]);
+export type $ResourceNodeFeatureConfig$$Type = ({"nodeOres"?: $List$$Type<($ResourceLocation$$Type)>, "nodeSize"?: integer, "boulderOres"?: $List$$Type<($ResourceLocation$$Type)>, "overlayBlock"?: $ResourceLocation$$Type, "nodeOreChance"?: float, "boulderRadius"?: integer, "overlayHeight"?: integer}) | ([nodeOres?: $List$$Type<($ResourceLocation$$Type)>, nodeSize?: integer, boulderOres?: $List$$Type<($ResourceLocation$$Type)>, overlayBlock?: $ResourceLocation$$Type, nodeOreChance?: float, boulderRadius?: integer, overlayHeight?: integer]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -3034,57 +3055,57 @@ export type $ResourceNodeFeatureConfig_ = $ResourceNodeFeatureConfig$$Type;
 }}
 declare module "rearth.oritech.api.item.containers.SimpleInventoryStorage" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$SyncType, $SyncType$$Type} from "rearth.oritech.api.networking.SyncType"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
-import {$List, $List$$Type} from "java.util.List"
 import {$UpdatableField, $UpdatableField$$Type} from "rearth.oritech.api.networking.UpdatableField"
+import {$List, $List$$Type} from "java.util.List"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$Runnable, $Runnable$$Type} from "java.lang.Runnable"
 import {$BlockContainerJS, $BlockContainerJS$$Type} from "dev.latvian.mods.kubejs.level.BlockContainerJS"
+import {$Runnable, $Runnable$$Type} from "java.lang.Runnable"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$ByteBuf, $ByteBuf$$Type} from "io.netty.buffer.ByteBuf"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Container, $Container$$Type} from "net.minecraft.world.Container"
 import {$ItemPredicate, $ItemPredicate$$Type} from "dev.latvian.mods.kubejs.item.ItemPredicate"
-import {$ItemApi$InventoryStorage, $ItemApi$InventoryStorage$$Type} from "rearth.oritech.api.item.ItemApi$InventoryStorage"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$ItemApi$InventoryStorage, $ItemApi$InventoryStorage$$Type} from "rearth.oritech.api.item.ItemApi$InventoryStorage"
 import {$Set, $Set$$Type} from "java.util.Set"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 
 export class $SimpleInventoryStorage implements $Container, $ItemApi$InventoryStorage, $UpdatableField<(void), ($List<($ItemStack)>)> {
 readonly "heldStacks": $NonNullList<($ItemStack)>
 
-constructor(size: integer, onUpdate: $Runnable$$Type)
+constructor(arg0: integer, arg1: $Runnable$$Type)
 
-public "removeItem"(slot: integer, amount: integer): $ItemStack
+public "removeItem"(arg0: integer, arg1: integer): $ItemStack
+public "getItem"(arg0: integer): $ItemStack
 public "update"(): void
-public "extract"(toExtract: $ItemStack$$Type, simulate: boolean): integer
-public "insert"(toInsert: $ItemStack$$Type, simulate: boolean): integer
+public "extract"(arg0: $ItemStack$$Type, arg1: boolean): integer
+public "insert"(arg0: $ItemStack$$Type, arg1: boolean): integer
 public "isEmpty"(): boolean
-public "getItem"(slot: integer): $ItemStack
-public "setItem"(slot: integer, stack: $ItemStack$$Type): void
+public "setItem"(arg0: integer, arg1: $ItemStack$$Type): void
 public "clearContent"(): void
-public "stillValid"(player: $Player$$Type): boolean
 public "setChanged"(): void
-public "getSlotLimit"(slot: integer): integer
-public "setStackInSlot"(slot: integer, stack: $ItemStack$$Type): void
-public "getStackInSlot"(slot: integer): $ItemStack
-public "getContainerSize"(): integer
-public "removeItemNoUpdate"(slot: integer): $ItemStack
-public "extractFromSlot"(extracted: $ItemStack$$Type, slot: integer, simulate: boolean): integer
-public "handleFullUpdate"(updatedData: void): void
-public "handleFullUpdate"(arg0: any): void
-public "handleDeltaUpdate"(updatedData: $List$$Type<($ItemStack$$Type)>): void
-public "handleDeltaUpdate"(arg0: any): void
+public "getSlotLimit"(arg0: integer): integer
+public "setStackInSlot"(arg0: integer, arg1: $ItemStack$$Type): void
+public "stillValid"(arg0: $Player$$Type): boolean
+public "getStackInSlot"(arg0: integer): $ItemStack
+public "getHeldStacks"(): $NonNullList<($ItemStack)>
+public "getFullData"(): void
+public "insertToSlot"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean): integer
+public "useDeltaOnly"(arg0: $SyncType$$Type): boolean
 public "getDeltaData"(): $List<($ItemStack)>
-public "getFullData"(): any
-public "useDeltaOnly"(type: $SyncType$$Type): boolean
 public "getDeltaCodec"(): $StreamCodec<($ByteBuf), ($List<($ItemStack)>)>
 public "getFullCodec"(): $StreamCodec<($ByteBuf), (void)>
-public "insertToSlot"(addedStack: $ItemStack$$Type, slot: integer, simulate: boolean): integer
-public "getHeldStacks"(): $NonNullList<($ItemStack)>
 public "getSlotCount"(): integer
+public "getContainerSize"(): integer
+public "removeItemNoUpdate"(arg0: integer): $ItemStack
+public "handleDeltaUpdate"(arg0: $List$$Type<($ItemStack$$Type)>): void
+public "handleDeltaUpdate"(arg0: any): void
+public "handleFullUpdate"(arg0: void): void
+public "handleFullUpdate"(arg0: any): void
+public "extractFromSlot"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean): integer
 public "startOpen"(arg0: $Player$$Type): void
 public "stopOpen"(arg0: $Player$$Type): void
 public "canPlaceItem"(arg0: integer, arg1: $ItemStack$$Type): boolean
@@ -3092,17 +3113,16 @@ public "countItem"(arg0: $Item$$Type): integer
 public "hasAnyOf"(arg0: $Set$$Type<($Item$$Type)>): boolean
 public "hasAnyMatching"(arg0: $Predicate$$Type<($ItemStack)>): boolean
 public "canTakeItem"(arg0: $Container$$Type, arg1: integer, arg2: $ItemStack$$Type): boolean
-public static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type, arg2: float): boolean
 public static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type): boolean
-public "getMaxStackSize"(arg0: $ItemStack$$Type): integer
+public static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type, arg2: float): boolean
 public "getMaxStackSize"(): integer
+public "getMaxStackSize"(arg0: $ItemStack$$Type): integer
 public "supportsInsertion"(): boolean
 public "supportsExtraction"(): boolean
 public static "tryClear"(arg0: any): void
-public "canReceiveTransferCooldown"(): boolean
 public "setTransferCooldown"(arg0: long): void
+public "canReceiveTransferCooldown"(): boolean
 public "lithium$itemInsertionTestRequiresStackSize1"(): boolean
-public "self"(): $Container
 public "getBlock"(arg0: $Level$$Type): $BlockContainerJS
 public "isMutable"(): boolean
 public "getSlots"(): integer
@@ -3111,30 +3131,31 @@ public "clear"(): void
 public "getWidth"(): integer
 public "getHeight"(): integer
 public "setChanged"(): void
+public "self"(): $Container
 public "setStackInSlot"(arg0: integer, arg1: $ItemStack$$Type): void
 public "getStackInSlot"(arg0: integer): $ItemStack
 public "extractItem"(arg0: integer, arg1: integer, arg2: boolean): $ItemStack
 public "getSlotLimit"(arg0: integer): integer
 public "isItemValid"(arg0: integer, arg1: $ItemStack$$Type): boolean
 public "asContainer"(): $Container
-public "isEmpty"(): boolean
 public "insertItem"(arg0: $ItemStack$$Type, arg1: boolean): $ItemStack
 public "clear"(arg0: $ItemPredicate$$Type): void
-public "find"(arg0: $ItemPredicate$$Type): integer
 public "find"(): integer
+public "find"(arg0: $ItemPredicate$$Type): integer
 public "count"(): integer
 public "count"(arg0: $ItemPredicate$$Type): integer
+public "isEmpty"(): boolean
 public "countNonEmpty"(arg0: $ItemPredicate$$Type): integer
 public "countNonEmpty"(): integer
 public "getAllItems"(): $List<($ItemStack)>
 get "empty"(): boolean
-get "containerSize"(): integer
+get "heldStacks"(): $NonNullList<($ItemStack)>
+get "fullData"(): void
 get "deltaData"(): $List<($ItemStack)>
-get "fullData"(): any
 get "deltaCodec"(): $StreamCodec<($ByteBuf), ($List<($ItemStack)>)>
 get "fullCodec"(): $StreamCodec<($ByteBuf), (void)>
-get "heldStacks"(): $NonNullList<($ItemStack)>
 get "slotCount"(): integer
+get "containerSize"(): integer
 get "maxStackSize"(): integer
 set "transferCooldown"(value: long)
 get "mutable"(): boolean
@@ -3167,8 +3188,8 @@ import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -3178,15 +3199,15 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$RenderShape, $RenderShape$$Type} from "net.minecraft.world.level.block.RenderShape"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$HorizontalDirectionalBlock, $HorizontalDirectionalBlock$$Type} from "net.minecraft.world.level.block.HorizontalDirectionalBlock"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $TechDoorBlock extends $HorizontalDirectionalBlock implements $EntityBlock {
@@ -3196,7 +3217,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "UPDATE_IMMEDIATE": integer
@@ -3216,19 +3237,19 @@ static readonly "FACING": $DirectionProperty
 static readonly "OPENED": $BooleanProperty
 static readonly "CLOSED_SHAPE_NORTH": $VoxelShape
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "getShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public "setPlacedBy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, placer: $LivingEntity$$Type, itemStack: $ItemStack$$Type): void
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
-public "canSurvive"(state: $BlockState$$Type, world: $LevelReader$$Type, pos: $BlockPos$$Type): boolean
-public "isSignalSource"(state: $BlockState$$Type): boolean
-public "neighborChanged"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, sourceBlock: $Block$$Type, sourcePos: $BlockPos$$Type, notify: boolean): void
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
-public "getCollisionShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public static "getClosedShape"(facing: $Direction$$Type): $VoxelShape
+public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
+public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "canSurvive"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type): boolean
+public "isSignalSource"(arg0: $BlockState$$Type): boolean
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
+public static "getClosedShape"(arg0: $Direction$$Type): $VoxelShape
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
+public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
@@ -3267,55 +3288,55 @@ import {$SizedIngredient, $SizedIngredient$$Type} from "rearth.oritech.util.Size
 
 export class $AugmentDataRecipe implements $Recipe<($RecipeInput)> {
 
-constructor(type: $AugmentDataRecipeType$$Type, toggleable: boolean, researchCost: $List$$Type<($SizedIngredient$$Type)>, applyCost: $List$$Type<($SizedIngredient$$Type)>, requirements: $List$$Type<($ResourceLocation$$Type)>, requiredStation: $ResourceLocation$$Type, uiX: integer, uiY: integer, time: integer, rfCost: long, effect: $Either$$Type<($Either$$Type<($AugmentDataRecipe$EffectDefinition$$Type), ($AugmentDataRecipe$ModifierDefinition$$Type)>), ($AugmentDataRecipe$CustomAugmentDefinition$$Type)>)
-constructor(type: $AugmentDataRecipeType$$Type, toggleable: boolean, researchCost: $List$$Type<($SizedIngredient$$Type)>, applyCost: $List$$Type<($SizedIngredient$$Type)>, requirements: $List$$Type<($ResourceLocation$$Type)>, requiredStation: $ResourceLocation$$Type, uiX: integer, uiY: integer, time: integer, rfCost: long, effectDefinition: $AugmentDataRecipe$EffectDefinition$$Type, modifierDefinition: $AugmentDataRecipe$ModifierDefinition$$Type, customAugmentDefinition: $AugmentDataRecipe$CustomAugmentDefinition$$Type)
+constructor(arg0: $AugmentDataRecipeType$$Type, arg1: boolean, arg2: $List$$Type<($SizedIngredient$$Type)>, arg3: $List$$Type<($SizedIngredient$$Type)>, arg4: $List$$Type<($ResourceLocation$$Type)>, arg5: $ResourceLocation$$Type, arg6: integer, arg7: integer, arg8: integer, arg9: long, arg10: $Either$$Type<($Either$$Type<($AugmentDataRecipe$EffectDefinition$$Type), ($AugmentDataRecipe$ModifierDefinition$$Type)>), ($AugmentDataRecipe$CustomAugmentDefinition$$Type)>)
+constructor(arg0: $AugmentDataRecipeType$$Type, arg1: boolean, arg2: $List$$Type<($SizedIngredient$$Type)>, arg3: $List$$Type<($SizedIngredient$$Type)>, arg4: $List$$Type<($ResourceLocation$$Type)>, arg5: $ResourceLocation$$Type, arg6: integer, arg7: integer, arg8: integer, arg9: long, arg10: $AugmentDataRecipe$EffectDefinition$$Type, arg11: $AugmentDataRecipe$ModifierDefinition$$Type, arg12: $AugmentDataRecipe$CustomAugmentDefinition$$Type)
 
-public "matches"(input: $RecipeInput$$Type, world: $Level$$Type): boolean
-public "getType"(): $RecipeType<(any)>
-public "getDefinition"(): $Either<($Either<($AugmentDataRecipe$EffectDefinition), ($AugmentDataRecipe$ModifierDefinition)>), ($AugmentDataRecipe$CustomAugmentDefinition)>
 public "getTime"(): integer
-public "assemble"(input: $RecipeInput$$Type, lookup: $HolderLookup$Provider$$Type): $ItemStack
-public "getSerializer"(): $RecipeSerializer<(any)>
+public "getDefinition"(): $Either<($Either<($AugmentDataRecipe$EffectDefinition), ($AugmentDataRecipe$ModifierDefinition)>), ($AugmentDataRecipe$CustomAugmentDefinition)>
+public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
+public "getType"(): $RecipeType<(any)>
+public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
 public "getUiX"(): integer
 public "getUiY"(): integer
-public "canCraftInDimensions"(width: integer, height: integer): boolean
-public "getResearchCost"(): $List<($SizedIngredient)>
-public "getRequiredStation"(): $ResourceLocation
-public "getRequirements"(): $List<($ResourceLocation)>
-public "createAugment"(recipeId: $ResourceLocation$$Type): $Augment
-public "getOriType"(): $AugmentDataRecipeType
 public "getRfCost"(): long
 public "getApplyCost"(): $List<($SizedIngredient)>
+public "createAugment"(arg0: $ResourceLocation$$Type): $Augment
+public "getOriType"(): $AugmentDataRecipeType
 public "isToggleable"(): boolean
-public "getResultItem"(registriesLookup: $HolderLookup$Provider$$Type): $ItemStack
-public "getCustomAugmentDefinition"(): $AugmentDataRecipe$CustomAugmentDefinition
+public "getSerializer"(): $RecipeSerializer<(any)>
+public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
+public "getRequirements"(): $List<($ResourceLocation)>
 public "getEffectDefinition"(): $AugmentDataRecipe$EffectDefinition
 public "getModifierDefinition"(): $AugmentDataRecipe$ModifierDefinition
+public "getResearchCost"(): $List<($SizedIngredient)>
+public "getRequiredStation"(): $ResourceLocation
+public "getCustomAugmentDefinition"(): $AugmentDataRecipe$CustomAugmentDefinition
 public "getIngredients"(): $NonNullList<($Ingredient)>
-public "getGroup"(): string
+public "getGroup"(): StringJS
 public "isSpecial"(): boolean
-public "showNotification"(): boolean
-public "getRemainingItems"(arg0: $RecipeInput$$Type): $NonNullList<($ItemStack)>
 public "isIncomplete"(): boolean
 public "getToastSymbol"(): $ItemStack
-get "type"(): $RecipeType<(any)>
-get "definition"(): $Either<($Either<($AugmentDataRecipe$EffectDefinition), ($AugmentDataRecipe$ModifierDefinition)>), ($AugmentDataRecipe$CustomAugmentDefinition)>
+public "showNotification"(): boolean
+public "getRemainingItems"(arg0: $RecipeInput$$Type): $NonNullList<($ItemStack)>
 get "time"(): integer
-get "serializer"(): $RecipeSerializer<(any)>
+get "definition"(): $Either<($Either<($AugmentDataRecipe$EffectDefinition), ($AugmentDataRecipe$ModifierDefinition)>), ($AugmentDataRecipe$CustomAugmentDefinition)>
+get "type"(): $RecipeType<(any)>
 get "uiX"(): integer
 get "uiY"(): integer
-get "researchCost"(): $List<($SizedIngredient)>
-get "requiredStation"(): $ResourceLocation
-get "requirements"(): $List<($ResourceLocation)>
-get "oriType"(): $AugmentDataRecipeType
 get "rfCost"(): long
 get "applyCost"(): $List<($SizedIngredient)>
+get "oriType"(): $AugmentDataRecipeType
 get "toggleable"(): boolean
-get "customAugmentDefinition"(): $AugmentDataRecipe$CustomAugmentDefinition
+get "serializer"(): $RecipeSerializer<(any)>
+get "requirements"(): $List<($ResourceLocation)>
 get "effectDefinition"(): $AugmentDataRecipe$EffectDefinition
 get "modifierDefinition"(): $AugmentDataRecipe$ModifierDefinition
+get "researchCost"(): $List<($SizedIngredient)>
+get "requiredStation"(): $ResourceLocation
+get "customAugmentDefinition"(): $AugmentDataRecipe$CustomAugmentDefinition
 get "ingredients"(): $NonNullList<($Ingredient)>
-get "group"(): string
+get "group"(): StringJS
 get "special"(): boolean
 get "incomplete"(): boolean
 get "toastSymbol"(): $ItemStack
@@ -3333,30 +3354,33 @@ declare global {
 export type $AugmentDataRecipe_ = $AugmentDataRecipe$$Type;
 }}
 declare module "rearth.oritech.item.OritechGeoItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$GeoRenderProvider, $GeoRenderProvider$$Type} from "software.bernie.geckolib.animatable.client.GeoRenderProvider"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$AnimatableInstanceCache, $AnimatableInstanceCache$$Type} from "software.bernie.geckolib.animatable.instance.AnimatableInstanceCache"
-import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$AnimatableManager$ControllerRegistrar, $AnimatableManager$ControllerRegistrar$$Type} from "software.bernie.geckolib.animation.AnimatableManager$ControllerRegistrar"
+import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$GeoItem, $GeoItem$$Type} from "software.bernie.geckolib.animatable.GeoItem"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$GeoAnimatable, $GeoAnimatable$$Type} from "software.bernie.geckolib.animatable.GeoAnimatable"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
+import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
-import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$SerializableDataTicket, $SerializableDataTicket$$Type} from "software.bernie.geckolib.constant.dataticket.SerializableDataTicket"
 
 export class $OritechGeoItem extends $BlockItem implements $GeoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3367,32 +3391,33 @@ static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
  "block": $Block
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(block: $Block$$Type, settings: $Item$Properties$$Type, scale: float, name: string)
+constructor(arg0: $Block$$Type, arg1: $Item$Properties$$Type, arg2: float, arg3: StringJS)
 
+public "registerControllers"(arg0: $AnimatableManager$ControllerRegistrar$$Type): void
+public "createGeoRenderer"(arg0: $Consumer$$Type<($GeoRenderProvider)>): void
 public "getAnimatableInstanceCache"(): $AnimatableInstanceCache
-public "registerControllers"(controllers: $AnimatableManager$ControllerRegistrar$$Type): void
-public "createGeoRenderer"(consumer: $Consumer$$Type<($GeoRenderProvider)>): void
 public static "getId"(arg0: $ItemStack$$Type): long
-public "animatableCacheOverride"(): $AnimatableInstanceCache
-public "isPerspectiveAware"(): boolean
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public "getTick"(arg0: any): double
+public "isPerspectiveAware"(): boolean
+public "animatableCacheOverride"(): $AnimatableInstanceCache
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
+public "triggerAnim"<D>(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
 public "syncAnimData"<D>(arg0: long, arg1: $SerializableDataTicket$$Type<(D)>, arg2: D, arg3: $Entity$$Type): void
-public "stopTriggeredAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "triggerArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "stopTriggeredArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "getRenderProvider"(): any
-public "triggerAnim"<D>(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
 public "getAnimData"<D>(arg0: long, arg1: $SerializableDataTicket$$Type<(D)>): D
 public "setAnimData"<D>(arg0: $Entity$$Type, arg1: long, arg2: $SerializableDataTicket$$Type<(D)>, arg3: D): void
+public "stopTriggeredAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
+public "getRenderProvider"(): any
+public "triggerArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
+public "stopTriggeredArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
 public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
-public "shouldPlayAnimsWhileGamePaused"(): boolean
 public "getBoneResetTime"(): double
+public "shouldPlayAnimsWhileGamePaused"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "animatableInstanceCache"(): $AnimatableInstanceCache
 get "perspectiveAware"(): boolean
 get "renderProvider"(): any
@@ -3418,8 +3443,8 @@ import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
@@ -3441,17 +3466,17 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
 public "validForWalls"(): boolean
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "requiredStackCeiling"(): $Block
 public "asHolder"(): $Holder<(any)>
 }
@@ -3472,8 +3497,8 @@ import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$ScreenProvider$ArrowConfiguration, $ScreenProvider$ArrowConfiguration$$Type} from "rearth.oritech.util.ScreenProvider$ArrowConfiguration"
 import {$List, $List$$Type} from "java.util.List"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
-import {$ScreenProvider$GuiSlot, $ScreenProvider$GuiSlot$$Type} from "rearth.oritech.util.ScreenProvider$GuiSlot"
 import {$InventoryInputMode, $InventoryInputMode$$Type} from "rearth.oritech.util.InventoryInputMode"
+import {$ScreenProvider$GuiSlot, $ScreenProvider$GuiSlot$$Type} from "rearth.oritech.util.ScreenProvider$GuiSlot"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Tuple, $Tuple$$Type} from "net.minecraft.util.Tuple"
 import {$ScreenProvider$BarConfiguration, $ScreenProvider$BarConfiguration$$Type} from "rearth.oritech.util.ScreenProvider$BarConfiguration"
@@ -3484,6 +3509,11 @@ import {$Property, $Property$$Type} from "net.minecraft.world.level.block.state.
 export interface $ScreenProvider {
 
  "getProgress"(): float
+ "showProgress"(): boolean
+ "getGuiSlots"(): $List<($ScreenProvider$GuiSlot)>
+ "showEnergy"(): boolean
+ "getWikiLink"(): $Optional<(StringJS)>
+ "showArmor"(): boolean
  "showExpansionPanel"(): boolean
  "getEnergyConfiguration"(): $ScreenProvider$BarConfiguration
  "getFluidConfiguration"(): $ScreenProvider$BarConfiguration
@@ -3493,26 +3523,21 @@ export interface $ScreenProvider {
  "getScreenHandlerType"(): $MenuType<(any)>
  "getBlockFacingProperty"(): $Property<($Direction)>
  "receivedRedstoneSignal"(): integer
- "currentRedstoneEffect"(): string
- "getGuiSlots"(): $List<($ScreenProvider$GuiSlot)>
- "showEnergy"(): boolean
- "getWikiLink"(): $Optional<(string)>
- "showProgress"(): boolean
- "showArmor"(): boolean
+ "currentRedstoneEffect"(): StringJS
  "getExtraExtensionLabels"(): $List<($Tuple<($Component), ($Component)>)>
  "getDisplayedEnergyUsage"(): float
  "getDisplayedEnergyTransfer"(): float
  "hasRedstoneControlAvailable"(): boolean
  "getIndicatorConfiguration"(): $ScreenProvider$ArrowConfiguration
 get "progress"(): float
+get "guiSlots"(): $List<($ScreenProvider$GuiSlot)>
+get "wikiLink"(): $Optional<(StringJS)>
 get "energyConfiguration"(): $ScreenProvider$BarConfiguration
 get "fluidConfiguration"(): $ScreenProvider$BarConfiguration
 get "inventoryInputMode"(): $InventoryInputMode
 get "displayedInventory"(): $Container
 get "screenHandlerType"(): $MenuType<(any)>
 get "blockFacingProperty"(): $Property<($Direction)>
-get "guiSlots"(): $List<($ScreenProvider$GuiSlot)>
-get "wikiLink"(): $Optional<(string)>
 get "extraExtensionLabels"(): $List<($Tuple<($Component), ($Component)>)>
 get "displayedEnergyUsage"(): float
 get "displayedEnergyTransfer"(): float
@@ -3526,6 +3551,11 @@ export class $ScreenProvider$$Static implements $ScreenProvider {
 
 
  "getProgress"(): float
+ "showProgress"(): boolean
+ "getGuiSlots"(): $List<($ScreenProvider$GuiSlot)>
+ "showEnergy"(): boolean
+ "getWikiLink"(): $Optional<(StringJS)>
+ "showArmor"(): boolean
  "showExpansionPanel"(): boolean
  "getEnergyConfiguration"(): $ScreenProvider$BarConfiguration
  "getFluidConfiguration"(): $ScreenProvider$BarConfiguration
@@ -3535,12 +3565,7 @@ export class $ScreenProvider$$Static implements $ScreenProvider {
  "getScreenHandlerType"(): $MenuType<(any)>
  "getBlockFacingProperty"(): $Property<($Direction)>
  "receivedRedstoneSignal"(): integer
- "currentRedstoneEffect"(): string
- "getGuiSlots"(): $List<($ScreenProvider$GuiSlot)>
- "showEnergy"(): boolean
- "getWikiLink"(): $Optional<(string)>
- "showProgress"(): boolean
- "showArmor"(): boolean
+ "currentRedstoneEffect"(): StringJS
  "getExtraExtensionLabels"(): $List<($Tuple<($Component), ($Component)>)>
  "getDisplayedEnergyUsage"(): float
  "getDisplayedEnergyTransfer"(): float
@@ -3570,8 +3595,8 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ItemPipeConnectionBlock, $ItemPipeConnectionBlock$$Type} from "rearth.oritech.block.blocks.pipes.item.ItemPipeConnectionBlock"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -3586,7 +3611,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $IntegerProperty
 static "NO_CONNECTION": integer
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -3610,7 +3635,7 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getNormalBlock"(): $BlockState
 public "getConnectionBlock"(): $BlockState
@@ -3638,34 +3663,34 @@ export class $MachineAddonBlock$AddonSettings extends $Record {
 
 constructor(extender: boolean, speedMultiplier: float, efficiencyMultiplier: float, addedCapacity: long, addedInsert: long, acceptEnergy: boolean, needsSupport: boolean, chamberCount: integer, boundingShape: (($VoxelShape$$Type)[])[])
 
-public "equals"(o: any): boolean
-public "toString"(): string
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "efficiencyMultiplier"(): float
-public "speedMultiplier"(): float
+public "withChambers"(arg0: integer): $MachineAddonBlock$AddonSettings
+public "withExtender"(arg0: boolean): $MachineAddonBlock$AddonSettings
+public "needsSupport"(): boolean
+public "boundingShape"(): (($VoxelShape)[])[]
+public "acceptEnergy"(): boolean
 public "extender"(): boolean
 public "addedCapacity"(): long
 public "addedInsert"(): long
 public "chamberCount"(): integer
-public "boundingShape"(): (($VoxelShape)[])[]
-public "acceptEnergy"(): boolean
-public "needsSupport"(): boolean
-public "withChambers"(chambers: integer): $MachineAddonBlock$AddonSettings
-public "withExtender"(newExtender: boolean): $MachineAddonBlock$AddonSettings
-public "withEfficiencyMultiplier"(newMultiplier: float): $MachineAddonBlock$AddonSettings
+public "speedMultiplier"(): float
 public static "getDefaultSettings"(): $MachineAddonBlock$AddonSettings
-public "withSpeedMultiplier"(newMultiplier: float): $MachineAddonBlock$AddonSettings
-public "withBoundingShape"(newShape: (($VoxelShape$$Type)[])[]): $MachineAddonBlock$AddonSettings
-public "withAddedCapacity"(newCapacity: long): $MachineAddonBlock$AddonSettings
-public "withAddedInsert"(newInsert: long): $MachineAddonBlock$AddonSettings
-public "withAcceptEnergy"(newAccept: boolean): $MachineAddonBlock$AddonSettings
-public "withNeedsSupport"(newSupport: boolean): $MachineAddonBlock$AddonSettings
+public "withSpeedMultiplier"(arg0: float): $MachineAddonBlock$AddonSettings
+public "withBoundingShape"(arg0: (($VoxelShape$$Type)[])[]): $MachineAddonBlock$AddonSettings
+public "withAddedCapacity"(arg0: long): $MachineAddonBlock$AddonSettings
+public "withAddedInsert"(arg0: long): $MachineAddonBlock$AddonSettings
+public "withAcceptEnergy"(arg0: boolean): $MachineAddonBlock$AddonSettings
+public "withNeedsSupport"(arg0: boolean): $MachineAddonBlock$AddonSettings
+public "efficiencyMultiplier"(): float
+public "withEfficiencyMultiplier"(arg0: float): $MachineAddonBlock$AddonSettings
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $MachineAddonBlock$AddonSettings$$Type = ({"needsSupport"?: boolean, "boundingShape"?: (($VoxelShape$$Type)[])[], "efficiencyMultiplier"?: float, "chamberCount"?: integer, "addedCapacity"?: long, "acceptEnergy"?: boolean, "speedMultiplier"?: float, "extender"?: boolean, "addedInsert"?: long}) | ([needsSupport?: boolean, boundingShape?: (($VoxelShape$$Type)[])[], efficiencyMultiplier?: float, chamberCount?: integer, addedCapacity?: long, acceptEnergy?: boolean, speedMultiplier?: float, extender?: boolean, addedInsert?: long]);
+export type $MachineAddonBlock$AddonSettings$$Type = ({"speedMultiplier"?: float, "extender"?: boolean, "addedInsert"?: long, "needsSupport"?: boolean, "boundingShape"?: (($VoxelShape$$Type)[])[], "efficiencyMultiplier"?: float, "chamberCount"?: integer, "addedCapacity"?: long, "acceptEnergy"?: boolean}) | ([speedMultiplier?: float, extender?: boolean, addedInsert?: long, needsSupport?: boolean, boundingShape?: (($VoxelShape$$Type)[])[], efficiencyMultiplier?: float, chamberCount?: integer, addedCapacity?: long, acceptEnergy?: boolean]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -3682,15 +3707,15 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$HashMap, $HashMap$$Type} from "java.util.HashMap"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$EnergyPipeBlock, $EnergyPipeBlock$$Type} from "rearth.oritech.block.blocks.pipes.energy.EnergyPipeBlock"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -3706,7 +3731,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $IntegerProperty
 static "NO_CONNECTION": integer
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -3729,11 +3754,11 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "getShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public "getCollisionShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
+public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "getNormalBlock"(): $BlockState
+public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "getConnectionBlock"(): $BlockState
 public "asHolder"(): $Holder<(any)>
 get "normalBlock"(): $BlockState
@@ -3762,8 +3787,8 @@ import {$ReplaceSphereConfiguration, $ReplaceSphereConfiguration$$Type} from "ne
 import {$BlockStateConfiguration, $BlockStateConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration"
 import {$BlockPileConfiguration, $BlockPileConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration"
 import {$NoneFeatureConfiguration, $NoneFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration"
-import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$EndGatewayConfiguration, $EndGatewayConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration"
+import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$LakeFeature$Configuration, $LakeFeature$Configuration$$Type} from "net.minecraft.world.level.levelgen.feature.LakeFeature$Configuration"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RootSystemConfiguration, $RootSystemConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration"
@@ -3860,9 +3885,9 @@ static readonly "DRIPSTONE_CLUSTER": $Feature<($DripstoneClusterConfiguration)>
 static readonly "GEODE": $Feature<($GeodeConfiguration)>
 static readonly "KELP": $Feature<($NoneFeatureConfiguration)>
 
-constructor(configCodec: $Codec$$Type<($OilSpringFeatureConfig$$Type)>)
+constructor(arg0: $Codec$$Type<($OilSpringFeatureConfig$$Type)>)
 
-public "place"(context: $FeaturePlaceContext$$Type<($OilSpringFeatureConfig$$Type)>): boolean
+public "place"(arg0: $FeaturePlaceContext$$Type<($OilSpringFeatureConfig$$Type)>): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3886,8 +3911,8 @@ import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BaseReactorBlock, $BaseReactorBlock$$Type} from "rearth.oritech.block.blocks.reactor.BaseReactorBlock"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
@@ -3910,7 +3935,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "PORT_MODE": $IntegerProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -3918,11 +3943,11 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
 public "validForWalls"(): boolean
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -3943,8 +3968,8 @@ import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$BaseReactorBlock, $BaseReactorBlock$$Type} from "rearth.oritech.block.blocks.reactor.BaseReactorBlock"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
+import {$BaseReactorBlock, $BaseReactorBlock$$Type} from "rearth.oritech.block.blocks.reactor.BaseReactorBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
@@ -3961,8 +3986,8 @@ import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.Tooltip
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $ReactorEnergyPortBlock extends $BaseReactorBlock implements $EntityBlock {
 static readonly "UPDATE_IMMEDIATE": integer
@@ -3978,19 +4003,19 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "validForWalls"(): boolean
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
@@ -4018,13 +4043,13 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -4040,7 +4065,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $IntegerProperty
 static "NO_CONNECTION": integer
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -4063,20 +4088,20 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "isSideExtractable"(state: $BlockState$$Type, side: $Direction$$Type): boolean
-public "isExtractable"(state: $BlockState$$Type): boolean
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
 public "getUpProperty"(): $IntegerProperty
+public "isExtractable"(arg0: $BlockState$$Type): boolean
+public "hasExtractingSide"(arg0: $BlockState$$Type): boolean
 public "getNorthProperty"(): $IntegerProperty
 public "getEastProperty"(): $IntegerProperty
 public "getSouthProperty"(): $IntegerProperty
 public "getWestProperty"(): $IntegerProperty
 public "getDownProperty"(): $IntegerProperty
-public "addConnectionStates"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, createConnection: boolean): $BlockState
-public "addConnectionStates"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, createDirection: $Direction$$Type): $BlockState
-public "hasExtractingSide"(state: $BlockState$$Type): boolean
+public "addConnectionStates"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): $BlockState
+public "addConnectionStates"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: boolean): $BlockState
+public "isSideExtractable"(arg0: $BlockState$$Type, arg1: $Direction$$Type): boolean
 public "asHolder"(): $Holder<(any)>
 get "upProperty"(): $IntegerProperty
 get "northProperty"(): $IntegerProperty
@@ -4099,18 +4124,20 @@ export type $ExtractablePipeConnectionBlock_ = $ExtractablePipeConnectionBlock$$
 }}
 declare module "rearth.oritech.item.tools.armor.JetpackExoArmorItem" {
 import {$BackstorageExoArmorItem, $BackstorageExoArmorItem$$Type} from "rearth.oritech.item.tools.armor.BackstorageExoArmorItem"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ArmorMaterial, $ArmorMaterial$$Type} from "net.minecraft.world.item.ArmorMaterial"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$GeoAnimatable, $GeoAnimatable$$Type} from "software.bernie.geckolib.animatable.GeoAnimatable"
+import {$EquipmentSlot, $EquipmentSlot$$Type} from "net.minecraft.world.entity.EquipmentSlot"
 import {$BaseJetpackItem, $BaseJetpackItem$$Type} from "rearth.oritech.item.tools.armor.BaseJetpackItem"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
-import {$EquipmentSlot, $EquipmentSlot$$Type} from "net.minecraft.world.entity.EquipmentSlot"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$FluidApi$SingleSlotStorage, $FluidApi$SingleSlotStorage$$Type} from "rearth.oritech.api.fluid.FluidApi$SingleSlotStorage"
@@ -4120,6 +4147,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.ArmorItem$Type"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
@@ -4130,7 +4158,7 @@ import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.Serve
 export class $JetpackExoArmorItem extends $BackstorageExoArmorItem implements $BaseJetpackItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4138,39 +4166,40 @@ static readonly "DISPENSE_ITEM_BEHAVIOR": $DispenseItemBehavior
  "defaultModifiers": $Supplier<($ItemAttributeModifiers)>
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(material: $Holder$$Type<($ArmorMaterial)>, type: $ArmorItem$Type$$Type, settings: $Item$Properties$$Type)
+constructor(arg0: $Holder$$Type<($ArmorMaterial)>, arg1: $ArmorItem$Type$$Type, arg2: $Item$Properties$$Type)
 
-public "getModel"(): $ResourceLocation
-public "getBarWidth"(stack: $ItemStack$$Type): integer
-public "getBarColor"(stack: $ItemStack$$Type): integer
+public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
 public "getSpeed"(): float
-public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
-public "getEnergyCapacity"(stack: $ItemStack$$Type): long
-public "getFuelCapacity"(): long
-public "getEnergyMaxInput"(stack: $ItemStack$$Type): long
+public "getModel"(): $ResourceLocation
+public "getBarWidth"(arg0: $ItemStack$$Type): integer
+public "getBarColor"(arg0: $ItemStack$$Type): integer
 public "requireUpward"(): boolean
 public "getRfUsage"(): integer
 public "getFuelUsage"(): integer
-public "getJetpackBarColor"(stack: $ItemStack$$Type): integer
-public "getJetpackBarStep"(stack: $ItemStack$$Type): integer
-public "addJetpackTooltip"(stack: $ItemStack$$Type, tooltip: $List$$Type<($Component$$Type)>, includeEnergy: boolean): void
-public "getFluidStorage"(stack: $ItemStack$$Type): $FluidApi$SingleSlotStorage
-public "tickJetpack"(stack: $ItemStack$$Type, entity: $Entity$$Type, world: $Level$$Type): void
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "getEnergyCapacity"(arg0: $ItemStack$$Type): long
+public "getFuelCapacity"(): long
+public "getEnergyMaxInput"(arg0: $ItemStack$$Type): long
+public "tickJetpack"(arg0: $ItemStack$$Type, arg1: $Entity$$Type, arg2: $Level$$Type): void
 public "requireTakeoff"(): boolean
-public "tryUseFluid"(stack: $ItemStack$$Type): boolean
-public "getStoredFluid"(stack: $ItemStack$$Type): $FluidStack
-public "isValidFuel"(variant: $Fluid$$Type): boolean
+public "tryUseFluid"(arg0: $ItemStack$$Type): boolean
+public "getStoredFluid"(arg0: $ItemStack$$Type): $FluidStack
+public "isValidFuel"(arg0: $Fluid$$Type): boolean
+public "getJetpackBarColor"(arg0: $ItemStack$$Type): integer
+public "getJetpackBarStep"(arg0: $ItemStack$$Type): integer
+public "addJetpackTooltip"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>, arg2: boolean): void
+public "getFluidStorage"(arg0: $ItemStack$$Type): $FluidApi$SingleSlotStorage
 public static "getId"(arg0: $ItemStack$$Type): long
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
-public static "processEvent"(livingEntity: $LivingEntity$$Type, equipmentSlot: $EquipmentSlot$$Type, previousStack: $ItemStack$$Type, currentStack: $ItemStack$$Type): void
+public static "processEvent"(arg0: $LivingEntity$$Type, arg1: $EquipmentSlot$$Type, arg2: $ItemStack$$Type, arg3: $ItemStack$$Type): void
 public static "get"(arg0: $ItemStack$$Type): $Equipable
-get "model"(): $ResourceLocation
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "speed"(): float
-get "fuelCapacity"(): long
+get "model"(): $ResourceLocation
 get "rfUsage"(): integer
 get "fuelUsage"(): integer
+get "fuelCapacity"(): long
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4224,15 +4253,15 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$HashMap, $HashMap$$Type} from "java.util.HashMap"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$FluidPipeBlock, $FluidPipeBlock$$Type} from "rearth.oritech.block.blocks.pipes.fluid.FluidPipeBlock"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -4248,7 +4277,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $IntegerProperty
 static "NO_CONNECTION": integer
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -4271,11 +4300,11 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "getShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public "getCollisionShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
+public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "getNormalBlock"(): $BlockState
+public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "getConnectionBlock"(): $BlockState
 public "asHolder"(): $Holder<(any)>
 get "normalBlock"(): $BlockState
@@ -4304,10 +4333,10 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$MultiblockMachine, $MultiblockMachine$$Type} from "rearth.oritech.block.base.block.MultiblockMachine"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
+import {$MultiblockMachine, $MultiblockMachine$$Type} from "rearth.oritech.block.base.block.MultiblockMachine"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Class, $Class$$Type} from "java.lang.Class"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
@@ -4330,7 +4359,7 @@ static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "ASSEMBLED": $BooleanProperty
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -4338,7 +4367,7 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getBlockEntityType"(): $Class<($BlockEntity)>
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
@@ -4366,13 +4395,13 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$SuperConductorConnectionBlock, $SuperConductorConnectionBlock$$Type} from "rearth.oritech.block.blocks.pipes.energy.SuperConductorConnectionBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -4388,7 +4417,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $IntegerProperty
 static "NO_CONNECTION": integer
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -4410,11 +4439,11 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "getShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public "getCollisionShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
+public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "getNormalBlock"(): $BlockState
+public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "getConnectionBlock"(): $BlockState
 public "asHolder"(): $Holder<(any)>
 get "normalBlock"(): $BlockState
@@ -4433,63 +4462,68 @@ declare global {
 export type $SuperConductorConnectionBlock$FramedSuperConductorConnectionBlock_ = $SuperConductorConnectionBlock$FramedSuperConductorConnectionBlock$$Type;
 }}
 declare module "rearth.oritech.item.UnstableContainerItem" {
-import {$Map, $Map$$Type} from "java.util.Map"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$GeoRenderProvider, $GeoRenderProvider$$Type} from "software.bernie.geckolib.animatable.client.GeoRenderProvider"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
-import {$AnimatableInstanceCache, $AnimatableInstanceCache$$Type} from "software.bernie.geckolib.animatable.instance.AnimatableInstanceCache"
-import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
-import {$AnimatableManager$ControllerRegistrar, $AnimatableManager$ControllerRegistrar$$Type} from "software.bernie.geckolib.animation.AnimatableManager$ControllerRegistrar"
-import {$GeoItem, $GeoItem$$Type} from "software.bernie.geckolib.animatable.GeoItem"
-import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$GeoAnimatable, $GeoAnimatable$$Type} from "software.bernie.geckolib.animatable.GeoAnimatable"
-import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
-import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
-import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$GeoRenderProvider, $GeoRenderProvider$$Type} from "software.bernie.geckolib.animatable.client.GeoRenderProvider"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$AnimatableInstanceCache, $AnimatableInstanceCache$$Type} from "software.bernie.geckolib.animatable.instance.AnimatableInstanceCache"
+import {$AnimatableManager$ControllerRegistrar, $AnimatableManager$ControllerRegistrar$$Type} from "software.bernie.geckolib.animation.AnimatableManager$ControllerRegistrar"
+import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
+import {$GeoItem, $GeoItem$$Type} from "software.bernie.geckolib.animatable.GeoItem"
+import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
+import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
+import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
+import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$SerializableDataTicket, $SerializableDataTicket$$Type} from "software.bernie.geckolib.constant.dataticket.SerializableDataTicket"
 
 export class $UnstableContainerItem extends $Item implements $GeoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(settings: $Item$Properties$$Type, scale: float, name: string)
+constructor(arg0: $Item$Properties$$Type, arg1: float, arg2: StringJS)
 
+public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public "registerControllers"(arg0: $AnimatableManager$ControllerRegistrar$$Type): void
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "createGeoRenderer"(arg0: $Consumer$$Type<($GeoRenderProvider)>): void
+public static "getBlocksFromTag"(arg0: $TagKey$$Type<($Block)>): $List<($MutableComponent)>
 public "getAnimatableInstanceCache"(): $AnimatableInstanceCache
-public "useOn"(context: $UseOnContext$$Type): $InteractionResult
-public "registerControllers"(controllers: $AnimatableManager$ControllerRegistrar$$Type): void
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
-public "createGeoRenderer"(consumer: $Consumer$$Type<($GeoRenderProvider)>): void
-public static "getBlocksFromTag"(tagKey: $TagKey$$Type<($Block)>): $List<($MutableComponent)>
 public static "getId"(arg0: $ItemStack$$Type): long
-public "animatableCacheOverride"(): $AnimatableInstanceCache
-public "isPerspectiveAware"(): boolean
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public "getTick"(arg0: any): double
+public "isPerspectiveAware"(): boolean
+public "animatableCacheOverride"(): $AnimatableInstanceCache
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
+public "triggerAnim"<D>(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
 public "syncAnimData"<D>(arg0: long, arg1: $SerializableDataTicket$$Type<(D)>, arg2: D, arg3: $Entity$$Type): void
-public "stopTriggeredAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "triggerArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "stopTriggeredArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "getRenderProvider"(): any
-public "triggerAnim"<D>(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
 public "getAnimData"<D>(arg0: long, arg1: $SerializableDataTicket$$Type<(D)>): D
 public "setAnimData"<D>(arg0: $Entity$$Type, arg1: long, arg2: $SerializableDataTicket$$Type<(D)>, arg3: D): void
-public "shouldPlayAnimsWhileGamePaused"(): boolean
+public "stopTriggeredAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
+public "getRenderProvider"(): any
+public "triggerArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
+public "stopTriggeredArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 public "getBoneResetTime"(): double
+public "shouldPlayAnimsWhileGamePaused"(): boolean
 get "animatableInstanceCache"(): $AnimatableInstanceCache
 get "perspectiveAware"(): boolean
 get "renderProvider"(): any
@@ -4527,8 +4561,8 @@ get "comparatorActiveState"(): integer
 }
 
 export namespace $RedstoneAddonBlockEntity$RedstoneControllable {
-function getFluidStorageComparatorOutput(storage: $FluidApi$SingleSlotStorage$$Type): integer
-function getItemStackComparatorOutput(stack: $ItemStack$$Type): integer
+function getFluidStorageComparatorOutput(arg0: $FluidApi$SingleSlotStorage$$Type): integer
+function getItemStackComparatorOutput(arg0: $ItemStack$$Type): integer
 const probejs$$marker: never
 }
 export class $RedstoneAddonBlockEntity$RedstoneControllable$$Static implements $RedstoneAddonBlockEntity$RedstoneControllable {
@@ -4540,8 +4574,8 @@ export class $RedstoneAddonBlockEntity$RedstoneControllable$$Static implements $
  "getComparatorEnergyAmount"(): integer
  "getComparatorSlotAmount"(arg0: integer): integer
  "getComparatorActiveState"(): integer
-static "getFluidStorageComparatorOutput"(storage: $FluidApi$SingleSlotStorage$$Type): integer
-static "getItemStackComparatorOutput"(stack: $ItemStack$$Type): integer
+static "getFluidStorageComparatorOutput"(arg0: $FluidApi$SingleSlotStorage$$Type): integer
+static "getItemStackComparatorOutput"(arg0: $ItemStack$$Type): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4563,12 +4597,12 @@ import {$EnergyApi$ItemProvider, $EnergyApi$ItemProvider$$Type} from "rearth.ori
 
 export interface $OritechEnergyItem extends $EnergyApi$ItemProvider {
 
- "getEnergyStorage"(stack: $ItemStack$$Type): $EnergyApi$EnergyStorage
- "getEnergyCapacity"(stack: $ItemStack$$Type): long
- "getEnergyMaxInput"(stack: $ItemStack$$Type): long
- "getEnergyMaxOutput"(stack: $ItemStack$$Type): long
- "getStoredEnergy"(stack: $ItemStack$$Type): long
- "tryUseEnergy"(stack: $ItemStack$$Type, amount: long, player: $Player$$Type): boolean
+ "tryUseEnergy"(arg0: $ItemStack$$Type, arg1: long, arg2: $Player$$Type): boolean
+ "getEnergyStorage"(arg0: $ItemStack$$Type): $EnergyApi$EnergyStorage
+ "getEnergyCapacity"(arg0: $ItemStack$$Type): long
+ "getEnergyMaxInput"(arg0: $ItemStack$$Type): long
+ "getEnergyMaxOutput"(arg0: $ItemStack$$Type): long
+ "getStoredEnergy"(arg0: $ItemStack$$Type): long
 }
 
 export namespace $OritechEnergyItem {
@@ -4577,12 +4611,12 @@ const probejs$$marker: never
 export class $OritechEnergyItem$$Static implements $OritechEnergyItem {
 
 
- "getEnergyStorage"(stack: $ItemStack$$Type): $EnergyApi$EnergyStorage
- "getEnergyCapacity"(stack: $ItemStack$$Type): long
- "getEnergyMaxInput"(stack: $ItemStack$$Type): long
- "getEnergyMaxOutput"(stack: $ItemStack$$Type): long
- "getStoredEnergy"(stack: $ItemStack$$Type): long
- "tryUseEnergy"(stack: $ItemStack$$Type, amount: long, player: $Player$$Type): boolean
+ "tryUseEnergy"(arg0: $ItemStack$$Type, arg1: long, arg2: $Player$$Type): boolean
+ "getEnergyStorage"(arg0: $ItemStack$$Type): $EnergyApi$EnergyStorage
+ "getEnergyCapacity"(arg0: $ItemStack$$Type): long
+ "getEnergyMaxInput"(arg0: $ItemStack$$Type): long
+ "getEnergyMaxOutput"(arg0: $ItemStack$$Type): long
+ "getStoredEnergy"(arg0: $ItemStack$$Type): long
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4625,8 +4659,8 @@ import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $SmallStorageBlock extends $Block implements $EntityBlock {
@@ -4644,26 +4678,26 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "setPlacedBy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, placer: $LivingEntity$$Type, itemStack: $ItemStack$$Type): void
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "isSignalSource"(state: $BlockState$$Type): boolean
-public "neighborChanged"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, sourceBlock: $Block$$Type, sourcePos: $BlockPos$$Type, notify: boolean): void
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
-public "getCloneItemStack"(world: $LevelReader$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type): $ItemStack
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "isSignalSource"(arg0: $BlockState$$Type): boolean
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "getCloneItemStack"(arg0: $LevelReader$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): $ItemStack
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 }
@@ -4680,10 +4714,11 @@ declare global {
 export type $SmallStorageBlock_ = $SmallStorageBlock$$Type;
 }}
 declare module "rearth.oritech.item.tools.armor.JetpackElytraItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ArmorMaterial, $ArmorMaterial$$Type} from "net.minecraft.world.item.ArmorMaterial"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
@@ -4703,11 +4738,12 @@ import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.A
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$GeoRenderProvider, $GeoRenderProvider$$Type} from "software.bernie.geckolib.animatable.client.GeoRenderProvider"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$AnimatableInstanceCache, $AnimatableInstanceCache$$Type} from "software.bernie.geckolib.animatable.instance.AnimatableInstanceCache"
-import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$AnimatableManager$ControllerRegistrar, $AnimatableManager$ControllerRegistrar$$Type} from "software.bernie.geckolib.animation.AnimatableManager$ControllerRegistrar"
+import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$GeoItem, $GeoItem$$Type} from "software.bernie.geckolib.animatable.GeoItem"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
@@ -4719,7 +4755,7 @@ import {$SerializableDataTicket, $SerializableDataTicket$$Type} from "software.b
 export class $JetpackElytraItem extends $ArmorItem implements $GeoItem, $BaseJetpackItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4727,62 +4763,63 @@ static readonly "DISPENSE_ITEM_BEHAVIOR": $DispenseItemBehavior
  "defaultModifiers": $Supplier<($ItemAttributeModifiers)>
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(material: $Holder$$Type<($ArmorMaterial)>, type: $ArmorItem$Type$$Type, settings: $Item$Properties$$Type)
+constructor(arg0: $Holder$$Type<($ArmorMaterial)>, arg1: $ArmorItem$Type$$Type, arg2: $Item$Properties$$Type)
 
-public "getAnimatableInstanceCache"(): $AnimatableInstanceCache
-public "isBarVisible"(stack: $ItemStack$$Type): boolean
-public "getBarWidth"(stack: $ItemStack$$Type): integer
-public "getBarColor"(stack: $ItemStack$$Type): integer
+public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
 public "getSpeed"(): float
-public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
-public "canElytraFly"(stack: $ItemStack$$Type, entity: $LivingEntity$$Type): boolean
-public "registerControllers"(controllers: $AnimatableManager$ControllerRegistrar$$Type): void
-public "elytraFlightTick"(stack: $ItemStack$$Type, entity: $LivingEntity$$Type, flightTicks: integer): boolean
-public "isValidRepairItem"(stack: $ItemStack$$Type, ingredient: $ItemStack$$Type): boolean
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
-public "getEnergyCapacity"(stack: $ItemStack$$Type): long
-public "getFuelCapacity"(): long
-public "useCustomElytra"(entity: $LivingEntity$$Type, chestStack: $ItemStack$$Type, tickElytra: boolean): boolean
-public "getEnergyMaxInput"(stack: $ItemStack$$Type): long
-public "createGeoRenderer"(consumer: $Consumer$$Type<($GeoRenderProvider)>): void
+public "canElytraFly"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): boolean
+public "isBarVisible"(arg0: $ItemStack$$Type): boolean
+public "getBarWidth"(arg0: $ItemStack$$Type): integer
+public "getBarColor"(arg0: $ItemStack$$Type): integer
 public "requireUpward"(): boolean
 public "getRfUsage"(): integer
 public "getFuelUsage"(): integer
 public "requireTakeoff"(): boolean
+public "registerControllers"(arg0: $AnimatableManager$ControllerRegistrar$$Type): void
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "isValidRepairItem"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
+public "elytraFlightTick"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: integer): boolean
+public "createGeoRenderer"(arg0: $Consumer$$Type<($GeoRenderProvider)>): void
+public "getEnergyCapacity"(arg0: $ItemStack$$Type): long
+public "useCustomElytra"(arg0: $LivingEntity$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
+public "getFuelCapacity"(): long
+public "getEnergyMaxInput"(arg0: $ItemStack$$Type): long
+public "getAnimatableInstanceCache"(): $AnimatableInstanceCache
 public static "getId"(arg0: $ItemStack$$Type): long
-public "animatableCacheOverride"(): $AnimatableInstanceCache
-public "isPerspectiveAware"(): boolean
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public "getTick"(arg0: any): double
+public "isPerspectiveAware"(): boolean
+public "animatableCacheOverride"(): $AnimatableInstanceCache
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
-public "getJetpackBarColor"(stack: $ItemStack$$Type): integer
-public "getJetpackBarStep"(stack: $ItemStack$$Type): integer
-public "addJetpackTooltip"(stack: $ItemStack$$Type, tooltip: $List$$Type<($Component$$Type)>, includeEnergy: boolean): void
-public "getFluidStorage"(stack: $ItemStack$$Type): $FluidApi$SingleSlotStorage
-public "tickJetpack"(stack: $ItemStack$$Type, entity: $Entity$$Type, world: $Level$$Type): void
-public "tryUseFluid"(stack: $ItemStack$$Type): boolean
-public "getStoredFluid"(stack: $ItemStack$$Type): $FluidStack
-public "isValidFuel"(variant: $Fluid$$Type): boolean
+public "tickJetpack"(arg0: $ItemStack$$Type, arg1: $Entity$$Type, arg2: $Level$$Type): void
+public "tryUseFluid"(arg0: $ItemStack$$Type): boolean
+public "getStoredFluid"(arg0: $ItemStack$$Type): $FluidStack
+public "isValidFuel"(arg0: $Fluid$$Type): boolean
+public "getJetpackBarColor"(arg0: $ItemStack$$Type): integer
+public "getJetpackBarStep"(arg0: $ItemStack$$Type): integer
+public "addJetpackTooltip"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>, arg2: boolean): void
+public "getFluidStorage"(arg0: $ItemStack$$Type): $FluidApi$SingleSlotStorage
+public "triggerAnim"<D>(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
 public "syncAnimData"<D>(arg0: long, arg1: $SerializableDataTicket$$Type<(D)>, arg2: D, arg3: $Entity$$Type): void
-public "stopTriggeredAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "triggerArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "stopTriggeredArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "getRenderProvider"(): any
-public "triggerAnim"<D>(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
 public "getAnimData"<D>(arg0: long, arg1: $SerializableDataTicket$$Type<(D)>): D
 public "setAnimData"<D>(arg0: $Entity$$Type, arg1: long, arg2: $SerializableDataTicket$$Type<(D)>, arg3: D): void
-public "getEnergyStorage"(stack: $ItemStack$$Type): $EnergyApi$EnergyStorage
-public "getEnergyMaxOutput"(stack: $ItemStack$$Type): long
-public "getStoredEnergy"(stack: $ItemStack$$Type): long
-public "tryUseEnergy"(stack: $ItemStack$$Type, amount: long, player: $Player$$Type): boolean
+public "stopTriggeredAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
+public "getRenderProvider"(): any
+public "triggerArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
+public "stopTriggeredArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
+public "tryUseEnergy"(arg0: $ItemStack$$Type, arg1: long, arg2: $Player$$Type): boolean
+public "getEnergyStorage"(arg0: $ItemStack$$Type): $EnergyApi$EnergyStorage
+public "getEnergyMaxOutput"(arg0: $ItemStack$$Type): long
+public "getStoredEnergy"(arg0: $ItemStack$$Type): long
 public static "get"(arg0: $ItemStack$$Type): $Equipable
-public "shouldPlayAnimsWhileGamePaused"(): boolean
 public "getBoneResetTime"(): double
-get "animatableInstanceCache"(): $AnimatableInstanceCache
+public "shouldPlayAnimsWhileGamePaused"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "speed"(): float
-get "fuelCapacity"(): long
 get "rfUsage"(): integer
 get "fuelUsage"(): integer
+get "fuelCapacity"(): long
+get "animatableInstanceCache"(): $AnimatableInstanceCache
 get "perspectiveAware"(): boolean
 get "renderProvider"(): any
 get "boneResetTime"(): double
@@ -4810,11 +4847,11 @@ export interface $ItemApi$InventoryStorage {
  "getSlotLimit"(arg0: integer): integer
  "setStackInSlot"(arg0: integer, arg1: $ItemStack$$Type): void
  "getStackInSlot"(arg0: integer): $ItemStack
- "extractFromSlot"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean): integer
- "supportsInsertion"(): boolean
- "supportsExtraction"(): boolean
  "insertToSlot"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean): integer
  "getSlotCount"(): integer
+ "supportsInsertion"(): boolean
+ "supportsExtraction"(): boolean
+ "extractFromSlot"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean): integer
 get "slotCount"(): integer
 }
 
@@ -4830,11 +4867,11 @@ export class $ItemApi$InventoryStorage$$Static implements $ItemApi$InventoryStor
  "getSlotLimit"(arg0: integer): integer
  "setStackInSlot"(arg0: integer, arg1: $ItemStack$$Type): void
  "getStackInSlot"(arg0: integer): $ItemStack
- "extractFromSlot"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean): integer
- "supportsInsertion"(): boolean
- "supportsExtraction"(): boolean
  "insertToSlot"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean): integer
  "getSlotCount"(): integer
+ "supportsInsertion"(): boolean
+ "supportsExtraction"(): boolean
+ "extractFromSlot"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4887,7 +4924,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $IntegerProperty
 static "NO_CONNECTION": integer
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -4909,12 +4946,12 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "updateShape"(state: $BlockState$$Type, direction: $Direction$$Type, neighborState: $BlockState$$Type, world: $LevelAccessor$$Type, pos: $BlockPos$$Type, neighborPos: $BlockPos$$Type): $BlockState
-public "onPlace"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, oldState: $BlockState$$Type, notify: boolean): void
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "getCloneItemStack"(world: $LevelReader$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type): $ItemStack
+public "onPlace"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
+public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getCloneItemStack"(arg0: $LevelReader$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): $ItemStack
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "asHolder"(): $Holder<(any)>
@@ -4932,27 +4969,30 @@ declare global {
 export type $GenericPipeConnectionBlock_ = $GenericPipeConnectionBlock$$Type;
 }}
 declare module "rearth.oritech.item.other.SmallEnergyStorageBlockItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$EnergyApi$ItemProvider, $EnergyApi$ItemProvider$$Type} from "rearth.oritech.api.energy.EnergyApi$ItemProvider"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$EnergyApi$EnergyStorage, $EnergyApi$EnergyStorage$$Type} from "rearth.oritech.api.energy.EnergyApi$EnergyStorage"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $SmallEnergyStorageBlockItem extends $BlockItem implements $EnergyApi$ItemProvider {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4963,18 +5003,19 @@ static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
  "block": $Block
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(block: $Block$$Type, settings: $Item$Properties$$Type)
+constructor(arg0: $Block$$Type, arg1: $Item$Properties$$Type)
 
-public "isBarVisible"(stack: $ItemStack$$Type): boolean
-public "getBarWidth"(stack: $ItemStack$$Type): integer
-public "getBarColor"(stack: $ItemStack$$Type): integer
-public "getEnergyStorage"(stack: $ItemStack$$Type): $EnergyApi$EnergyStorage
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public "isBarVisible"(arg0: $ItemStack$$Type): boolean
+public "getBarWidth"(arg0: $ItemStack$$Type): integer
+public "getBarColor"(arg0: $ItemStack$$Type): integer
+public "getEnergyStorage"(arg0: $ItemStack$$Type): $EnergyApi$EnergyStorage
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
 public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4993,8 +5034,8 @@ import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ArrayList, $ArrayList$$Type} from "java.util.ArrayList"
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$Vec3i, $Vec3i$$Type} from "net.minecraft.core.Vec3i"
-import {$EnergyApi$EnergyStorage, $EnergyApi$EnergyStorage$$Type} from "rearth.oritech.api.energy.EnergyApi$EnergyStorage"
 import {$List, $List$$Type} from "java.util.List"
+import {$EnergyApi$EnergyStorage, $EnergyApi$EnergyStorage$$Type} from "rearth.oritech.api.energy.EnergyApi$EnergyStorage"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$ItemApi$InventoryStorage, $ItemApi$InventoryStorage$$Type} from "rearth.oritech.api.item.ItemApi$InventoryStorage"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
@@ -5003,31 +5044,31 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 
 export interface $MultiblockMachineController {
 
- "addMultiblockToNbt"(nbt: $CompoundTag$$Type): void
- "loadMultiblockNbtData"(nbt: $CompoundTag$$Type): void
+ "getCoreQuality"(): float
+ "setCoreQuality"(arg0: float): void
+ "initMultiblock"(arg0: $BlockState$$Type): boolean
+ "onCoreBroken"(arg0: $BlockPos$$Type): void
+ "addMultiblockToNbt"(arg0: $CompoundTag$$Type): void
+ "loadMultiblockNbtData"(arg0: $CompoundTag$$Type): void
  "getConnectedCores"(): $ArrayList<($BlockPos)>
  "getFacingForMultiblock"(): $Direction
  "getPosForMultiblock"(): $BlockPos
  "getWorldForMultiblock"(): $Level
  "getCorePositions"(): $List<($Vec3i)>
  "triggerSetupAnimation"(): void
- "tryPlaceNextCore"(player: $Player$$Type): boolean
  "getNextMissingCore"(): $BlockPos
+ "tryPlaceNextCore"(arg0: $Player$$Type): boolean
  "onControllerBroken"(): void
- "initMultiblock"(state: $BlockState$$Type): boolean
- "onCoreBroken"(corePos: $BlockPos$$Type): void
- "getCoreQuality"(): float
- "setCoreQuality"(arg0: float): void
  "getInventoryForMultiblock"(): $ItemApi$InventoryStorage
  "getEnergyStorageForMultiblock"(arg0: $Direction$$Type): $EnergyApi$EnergyStorage
+get "coreQuality"(): float
+set "coreQuality"(value: float)
 get "connectedCores"(): $ArrayList<($BlockPos)>
 get "facingForMultiblock"(): $Direction
 get "posForMultiblock"(): $BlockPos
 get "worldForMultiblock"(): $Level
 get "corePositions"(): $List<($Vec3i)>
 get "nextMissingCore"(): $BlockPos
-get "coreQuality"(): float
-set "coreQuality"(value: float)
 get "inventoryForMultiblock"(): $ItemApi$InventoryStorage
 }
 
@@ -5037,21 +5078,21 @@ const probejs$$marker: never
 export class $MultiblockMachineController$$Static implements $MultiblockMachineController {
 
 
- "addMultiblockToNbt"(nbt: $CompoundTag$$Type): void
- "loadMultiblockNbtData"(nbt: $CompoundTag$$Type): void
+ "getCoreQuality"(): float
+ "setCoreQuality"(arg0: float): void
+ "initMultiblock"(arg0: $BlockState$$Type): boolean
+ "onCoreBroken"(arg0: $BlockPos$$Type): void
+ "addMultiblockToNbt"(arg0: $CompoundTag$$Type): void
+ "loadMultiblockNbtData"(arg0: $CompoundTag$$Type): void
  "getConnectedCores"(): $ArrayList<($BlockPos)>
  "getFacingForMultiblock"(): $Direction
  "getPosForMultiblock"(): $BlockPos
  "getWorldForMultiblock"(): $Level
  "getCorePositions"(): $List<($Vec3i)>
  "triggerSetupAnimation"(): void
- "tryPlaceNextCore"(player: $Player$$Type): boolean
  "getNextMissingCore"(): $BlockPos
+ "tryPlaceNextCore"(arg0: $Player$$Type): boolean
  "onControllerBroken"(): void
- "initMultiblock"(state: $BlockState$$Type): boolean
- "onCoreBroken"(corePos: $BlockPos$$Type): void
- "getCoreQuality"(): float
- "setCoreQuality"(arg0: float): void
  "getInventoryForMultiblock"(): $ItemApi$InventoryStorage
  "getEnergyStorageForMultiblock"(arg0: $Direction$$Type): $EnergyApi$EnergyStorage
 }
@@ -5086,42 +5127,42 @@ import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.it
 export class $OritechRecipe implements $Recipe<($RecipeInput)> {
 static readonly "DUMMY": $OritechRecipe
 
-constructor(time: integer, inputs: $List$$Type<($Ingredient$$Type)>, results: $List$$Type<($ItemStack$$Type)>, type: $OritechRecipeType$$Type, inVariant: $Fluid$$Type, inAmount: long, outVariant: $Fluid$$Type, outAmount: long)
-constructor(time: integer, inputs: $List$$Type<($Ingredient$$Type)>, results: $List$$Type<($ItemStack$$Type)>, type: $OritechRecipeType$$Type, fluidInput: $FluidIngredient$$Type, outVariant: $Fluid$$Type, outAmount: long)
-constructor(time: integer, inputs: $List$$Type<($Ingredient$$Type)>, results: $List$$Type<($ItemStack$$Type)>, type: $OritechRecipeType$$Type, fluidInput: $FluidIngredient$$Type, fluidOutputs: $List$$Type<($FluidStack$$Type)>)
-constructor(time: integer, inputs: $List$$Type<($Ingredient$$Type)>, results: $List$$Type<($ItemStack$$Type)>, type: $OritechRecipeType$$Type, fluidInput: $FluidIngredient$$Type, fluidOutput: $FluidStack$$Type)
+constructor(arg0: integer, arg1: $List$$Type<($Ingredient$$Type)>, arg2: $List$$Type<($ItemStack$$Type)>, arg3: $OritechRecipeType$$Type, arg4: $Fluid$$Type, arg5: long, arg6: $Fluid$$Type, arg7: long)
+constructor(arg0: integer, arg1: $List$$Type<($Ingredient$$Type)>, arg2: $List$$Type<($ItemStack$$Type)>, arg3: $OritechRecipeType$$Type, arg4: $FluidIngredient$$Type, arg5: $Fluid$$Type, arg6: long)
+constructor(arg0: integer, arg1: $List$$Type<($Ingredient$$Type)>, arg2: $List$$Type<($ItemStack$$Type)>, arg3: $OritechRecipeType$$Type, arg4: $FluidIngredient$$Type, arg5: $List$$Type<($FluidStack$$Type)>)
+constructor(arg0: integer, arg1: $List$$Type<($Ingredient$$Type)>, arg2: $List$$Type<($ItemStack$$Type)>, arg3: $OritechRecipeType$$Type, arg4: $FluidIngredient$$Type, arg5: $FluidStack$$Type)
 
-public "getInputs"(): $List<($Ingredient)>
-public "toString"(): string
-public "matches"(input: $RecipeInput$$Type, world: $Level$$Type): boolean
-public "getType"(): $RecipeType<(any)>
 public "getTime"(): integer
+public "toString"(): StringJS
+public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
+public "getType"(): $RecipeType<(any)>
+public "getInputs"(): $List<($Ingredient)>
 public "getIngredients"(): $NonNullList<($Ingredient)>
-public "assemble"(input: $RecipeInput$$Type, lookup: $HolderLookup$Provider$$Type): $ItemStack
+public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
 public "getResults"(): $List<($ItemStack)>
-public "getSerializer"(): $RecipeSerializer<(any)>
 public "isSpecial"(): boolean
-public "canCraftInDimensions"(width: integer, height: integer): boolean
-public "getFluidOutputs"(): $List<($FluidStack)>
 public "getOriType"(): $OritechRecipeType
 public "getFluidInput"(): $FluidIngredient
-public "getResultItem"(registriesLookup: $HolderLookup$Provider$$Type): $ItemStack
-public "getGroup"(): string
-public "showNotification"(): boolean
-public "getRemainingItems"(arg0: $RecipeInput$$Type): $NonNullList<($ItemStack)>
+public "getSerializer"(): $RecipeSerializer<(any)>
+public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
+public "getFluidOutputs"(): $List<($FluidStack)>
+public "getGroup"(): StringJS
 public "isIncomplete"(): boolean
 public "getToastSymbol"(): $ItemStack
-get "inputs"(): $List<($Ingredient)>
-get "type"(): $RecipeType<(any)>
+public "showNotification"(): boolean
+public "getRemainingItems"(arg0: $RecipeInput$$Type): $NonNullList<($ItemStack)>
 get "time"(): integer
+get "type"(): $RecipeType<(any)>
+get "inputs"(): $List<($Ingredient)>
 get "ingredients"(): $NonNullList<($Ingredient)>
 get "results"(): $List<($ItemStack)>
-get "serializer"(): $RecipeSerializer<(any)>
 get "special"(): boolean
-get "fluidOutputs"(): $List<($FluidStack)>
 get "oriType"(): $OritechRecipeType
 get "fluidInput"(): $FluidIngredient
-get "group"(): string
+get "serializer"(): $RecipeSerializer<(any)>
+get "fluidOutputs"(): $List<($FluidStack)>
+get "group"(): StringJS
 get "incomplete"(): boolean
 get "toastSymbol"(): $ItemStack
 }
@@ -5141,18 +5182,21 @@ declare module "rearth.oritech.block.base.block.MultiblockMachine" {
 import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$UpgradableMachineBlock, $UpgradableMachineBlock$$Type} from "rearth.oritech.block.base.block.UpgradableMachineBlock"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
+import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -5172,7 +5216,7 @@ static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "ASSEMBLED": $BooleanProperty
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -5180,10 +5224,12 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
+public "destroy"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): void
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "playerDestroy"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $BlockEntity$$Type, arg5: $ItemStack$$Type): void
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -5209,11 +5255,11 @@ export class $MachineAddonController$AddonBlock extends $Record {
 
 constructor(addonBlock: $MachineAddonBlock$$Type, state: $BlockState$$Type, pos: $BlockPos$$Type, addonEntity: $AddonBlockEntity$$Type)
 
-public "equals"(o: any): boolean
-public "toString"(): string
+public "pos"(): $BlockPos
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "state"(): $BlockState
-public "pos"(): $BlockPos
 public "addonBlock"(): $MachineAddonBlock
 public "addonEntity"(): $AddonBlockEntity
 }
@@ -5221,7 +5267,7 @@ public "addonEntity"(): $AddonBlockEntity
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $MachineAddonController$AddonBlock$$Type = ({"addonBlock"?: $MachineAddonBlock$$Type, "state"?: $BlockState$$Type, "addonEntity"?: $AddonBlockEntity$$Type, "pos"?: $BlockPos$$Type}) | ([addonBlock?: $MachineAddonBlock$$Type, state?: $BlockState$$Type, addonEntity?: $AddonBlockEntity$$Type, pos?: $BlockPos$$Type]);
+export type $MachineAddonController$AddonBlock$$Type = ({"addonEntity"?: $AddonBlockEntity$$Type, "pos"?: $BlockPos$$Type, "addonBlock"?: $MachineAddonBlock$$Type, "state"?: $BlockState$$Type}) | ([addonEntity?: $AddonBlockEntity$$Type, pos?: $BlockPos$$Type, addonBlock?: $MachineAddonBlock$$Type, state?: $BlockState$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -5240,10 +5286,10 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$MultiblockMachine, $MultiblockMachine$$Type} from "rearth.oritech.block.base.block.MultiblockMachine"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
+import {$MultiblockMachine, $MultiblockMachine$$Type} from "rearth.oritech.block.base.block.MultiblockMachine"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Class, $Class$$Type} from "java.lang.Class"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
@@ -5266,7 +5312,7 @@ static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "ASSEMBLED": $BooleanProperty
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -5274,7 +5320,7 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getBlockEntityType"(): $Class<($BlockEntity)>
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
@@ -5322,8 +5368,8 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $EnchanterBlock extends $HorizontalDirectionalBlock implements $EntityBlock {
@@ -5340,7 +5386,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -5348,15 +5394,15 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 }
@@ -5399,14 +5445,14 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "validForWalls"(): boolean
 public "asHolder"(): $Holder<(any)>
@@ -5475,26 +5521,26 @@ import {$Record, $Record$$Type} from "java.lang.Record"
 export class $JetpackItem$JetpackUsageUpdatePacket extends $Record implements $CustomPacketPayload {
 static readonly "PACKET_ID": $CustomPacketPayload$Type<($JetpackItem$JetpackUsageUpdatePacket)>
 
-constructor(energyStored: long, fluidType: string, fluidAmount: long)
+constructor(energyStored: long, fluidType: StringJS, fluidAmount: long)
 
 public "type"(): $CustomPacketPayload$Type<($CustomPacketPayload)>
-public "equals"(o: any): boolean
-public "toString"(): string
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "fluidType"(): string
+public "fluidType"(): StringJS
 public "fluidAmount"(): long
 public "energyStored"(): long
-public static "createType"<T extends $CustomPacketPayload>(arg0: string): $CustomPacketPayload$Type<(T)>
 public static "codec"<B extends $FriendlyByteBuf>(arg0: $CustomPacketPayload$FallbackProvider$$Type<(B)>, arg1: $List$$Type<($CustomPacketPayload$TypeAndCodec$$Type<(B), (any)>)>, arg2: $ConnectionProtocol$$Type, arg3: $PacketFlow$$Type): $StreamCodec<(B), ($CustomPacketPayload)>
 public static "codec"<B extends $ByteBuf, T extends $CustomPacketPayload>(arg0: $StreamMemberEncoder$$Type<(B), (T)>, arg1: $StreamDecoder$$Type<(B), (T)>): $StreamCodec<(B), (T)>
-public "toVanillaServerbound"(): $ServerboundCustomPayloadPacket
+public static "createType"<T extends $CustomPacketPayload>(arg0: StringJS): $CustomPacketPayload$Type<(T)>
 public "toVanillaClientbound"(): $ClientboundCustomPayloadPacket
+public "toVanillaServerbound"(): $ServerboundCustomPayloadPacket
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $JetpackItem$JetpackUsageUpdatePacket$$Type = ({"fluidType"?: string, "energyStored"?: long, "fluidAmount"?: long}) | ([fluidType?: string, energyStored?: long, fluidAmount?: long]);
+export type $JetpackItem$JetpackUsageUpdatePacket$$Type = ({"fluidAmount"?: long, "fluidType"?: StringJS, "energyStored"?: long}) | ([fluidAmount?: long, fluidType?: StringJS, energyStored?: long]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -5529,8 +5575,8 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $CreativeStorageBlock extends $Block implements $EntityBlock {
 static readonly "UPDATE_IMMEDIATE": integer
@@ -5546,21 +5592,21 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 }
@@ -5586,16 +5632,16 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$SmallFluidTank, $SmallFluidTank$$Type} from "rearth.oritech.block.blocks.storage.SmallFluidTank"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -5615,7 +5661,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "LIT": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -5623,11 +5669,11 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -5655,17 +5701,16 @@ readonly "toggleable": boolean
 readonly "id": $ResourceLocation
 
 
-public "isEnabled"(player: $Player$$Type): boolean
+public "isEnabled"(arg0: $Player$$Type): boolean
+public "toggle"(arg0: $Player$$Type): void
 public "activate"(arg0: $Player$$Type): void
 public "deactivate"(arg0: $Player$$Type): void
-public "toggle"(player: $Player$$Type): void
-public "installToPlayer"(player: $Player$$Type): void
-public "removeFromPlayer"(player: $Player$$Type): void
-public "refreshInterval"(): integer
-public "isInstalled"(player: $Player$$Type): boolean
+public "isInstalled"(arg0: $Player$$Type): boolean
 public "refreshServer"(arg0: $Player$$Type): void
-public "syncToClient"(player: $Player$$Type, data: $Map$$Type<($ResourceLocation$$Type), ($Augment$AugmentState$$Type)>): void
-public "refreshClient"(player: $Player$$Type): void
+public "refreshClient"(arg0: $Player$$Type): void
+public "installToPlayer"(arg0: $Player$$Type): void
+public "removeFromPlayer"(arg0: $Player$$Type): void
+public "refreshInterval"(): integer
 public static "registerAttachmentTypes"(): void
 }
 /**
@@ -5699,8 +5744,8 @@ import {$Function, $Function$$Type} from "java.util.function.Function"
 export interface $WorldPacketCodec<I, T> extends $StreamCodec<(I), (T)> {
 
  "decode"(arg0: I, arg1: $Level$$Type): T
- "decode"(buf: I): T
- "encode"(buf: I, value: T): void
+ "decode"(arg0: I): T
+ "encode"(arg0: I, arg1: T): void
  "encode"(arg0: I, arg1: T, arg2: $Level$$Type): void
  "dispatch"<U>(arg0: $Function$$Type<(U), (T)>, arg1: $Function$$Type<(T), ($StreamCodec$$Type<(I), (U)>)>): $StreamCodec<(I), (U)>
  "cast"<S extends B>(): $StreamCodec<(S), (T)>
@@ -5710,40 +5755,40 @@ export interface $WorldPacketCodec<I, T> extends $StreamCodec<(I), (T)> {
 }
 
 export namespace $WorldPacketCodec {
-function of<B, V>(arg0: $StreamEncoder$$Type<(I), (T)>, arg1: $StreamDecoder$$Type<(I), (T)>): $StreamCodec<(I), (T)>
 function unit<B, V>(arg0: T): $StreamCodec<(I), (T)>
 function recursive<B, T>(arg0: $UnaryOperator$$Type<($StreamCodec<(I), (T)>)>): $StreamCodec<(I), (T)>
-function ofMember<B, V>(arg0: $StreamMemberEncoder$$Type<(I), (T)>, arg1: $StreamDecoder$$Type<(I), (T)>): $StreamCodec<(I), (T)>
-function composite<B, C, T1, T2, T3, T4, T5, T6>(arg0: $StreamCodec$$Type<(I), (T1)>, arg1: $Function$$Type<(C), (T1)>, arg2: $StreamCodec$$Type<(I), (T2)>, arg3: $Function$$Type<(C), (T2)>, arg4: $StreamCodec$$Type<(I), (T3)>, arg5: $Function$$Type<(C), (T3)>, arg6: $StreamCodec$$Type<(I), (T4)>, arg7: $Function$$Type<(C), (T4)>, arg8: $StreamCodec$$Type<(I), (T5)>, arg9: $Function$$Type<(C), (T5)>, arg10: $StreamCodec$$Type<(I), (T6)>, arg11: $Function$$Type<(C), (T6)>, arg12: $Function6$$Type<(T1), (T2), (T3), (T4), (T5), (T6), (C)>): $StreamCodec<(I), (C)>
+function of<B, V>(arg0: $StreamEncoder$$Type<(I), (T)>, arg1: $StreamDecoder$$Type<(I), (T)>): $StreamCodec<(I), (T)>
 function composite<B, C, T1, T2, T3, T4, T5>(arg0: $StreamCodec$$Type<(I), (T1)>, arg1: $Function$$Type<(C), (T1)>, arg2: $StreamCodec$$Type<(I), (T2)>, arg3: $Function$$Type<(C), (T2)>, arg4: $StreamCodec$$Type<(I), (T3)>, arg5: $Function$$Type<(C), (T3)>, arg6: $StreamCodec$$Type<(I), (T4)>, arg7: $Function$$Type<(C), (T4)>, arg8: $StreamCodec$$Type<(I), (T5)>, arg9: $Function$$Type<(C), (T5)>, arg10: $Function5$$Type<(T1), (T2), (T3), (T4), (T5), (C)>): $StreamCodec<(I), (C)>
+function composite<B, C, T1, T2, T3, T4, T5, T6>(arg0: $StreamCodec$$Type<(I), (T1)>, arg1: $Function$$Type<(C), (T1)>, arg2: $StreamCodec$$Type<(I), (T2)>, arg3: $Function$$Type<(C), (T2)>, arg4: $StreamCodec$$Type<(I), (T3)>, arg5: $Function$$Type<(C), (T3)>, arg6: $StreamCodec$$Type<(I), (T4)>, arg7: $Function$$Type<(C), (T4)>, arg8: $StreamCodec$$Type<(I), (T5)>, arg9: $Function$$Type<(C), (T5)>, arg10: $StreamCodec$$Type<(I), (T6)>, arg11: $Function$$Type<(C), (T6)>, arg12: $Function6$$Type<(T1), (T2), (T3), (T4), (T5), (T6), (C)>): $StreamCodec<(I), (C)>
 function composite<B, C, T1>(arg0: $StreamCodec$$Type<(I), (T1)>, arg1: $Function$$Type<(C), (T1)>, arg2: $Function$$Type<(T1), (C)>): $StreamCodec<(I), (C)>
-function composite<B, C, T1, T2, T3, T4>(arg0: $StreamCodec$$Type<(I), (T1)>, arg1: $Function$$Type<(C), (T1)>, arg2: $StreamCodec$$Type<(I), (T2)>, arg3: $Function$$Type<(C), (T2)>, arg4: $StreamCodec$$Type<(I), (T3)>, arg5: $Function$$Type<(C), (T3)>, arg6: $StreamCodec$$Type<(I), (T4)>, arg7: $Function$$Type<(C), (T4)>, arg8: $Function4$$Type<(T1), (T2), (T3), (T4), (C)>): $StreamCodec<(I), (C)>
-function composite<B, C, T1, T2, T3>(arg0: $StreamCodec$$Type<(I), (T1)>, arg1: $Function$$Type<(C), (T1)>, arg2: $StreamCodec$$Type<(I), (T2)>, arg3: $Function$$Type<(C), (T2)>, arg4: $StreamCodec$$Type<(I), (T3)>, arg5: $Function$$Type<(C), (T3)>, arg6: $Function3$$Type<(T1), (T2), (T3), (C)>): $StreamCodec<(I), (C)>
 function composite<B, C, T1, T2>(arg0: $StreamCodec$$Type<(I), (T1)>, arg1: $Function$$Type<(C), (T1)>, arg2: $StreamCodec$$Type<(I), (T2)>, arg3: $Function$$Type<(C), (T2)>, arg4: $BiFunction$$Type<(T1), (T2), (C)>): $StreamCodec<(I), (C)>
+function composite<B, C, T1, T2, T3>(arg0: $StreamCodec$$Type<(I), (T1)>, arg1: $Function$$Type<(C), (T1)>, arg2: $StreamCodec$$Type<(I), (T2)>, arg3: $Function$$Type<(C), (T2)>, arg4: $StreamCodec$$Type<(I), (T3)>, arg5: $Function$$Type<(C), (T3)>, arg6: $Function3$$Type<(T1), (T2), (T3), (C)>): $StreamCodec<(I), (C)>
+function composite<B, C, T1, T2, T3, T4>(arg0: $StreamCodec$$Type<(I), (T1)>, arg1: $Function$$Type<(C), (T1)>, arg2: $StreamCodec$$Type<(I), (T2)>, arg3: $Function$$Type<(C), (T2)>, arg4: $StreamCodec$$Type<(I), (T3)>, arg5: $Function$$Type<(C), (T3)>, arg6: $StreamCodec$$Type<(I), (T4)>, arg7: $Function$$Type<(C), (T4)>, arg8: $Function4$$Type<(T1), (T2), (T3), (T4), (C)>): $StreamCodec<(I), (C)>
+function ofMember<B, V>(arg0: $StreamMemberEncoder$$Type<(I), (T)>, arg1: $StreamDecoder$$Type<(I), (T)>): $StreamCodec<(I), (T)>
 const probejs$$marker: never
 }
 export class $WorldPacketCodec$$Static<I, T> implements $WorldPacketCodec {
 
 
  "decode"(arg0: I, arg1: $Level$$Type): T
- "decode"(buf: I): T
- "encode"(buf: I, value: T): void
+ "decode"(arg0: I): T
+ "encode"(arg0: I, arg1: T): void
  "encode"(arg0: I, arg1: T, arg2: $Level$$Type): void
+static "unit"<B, V>(arg0: T): $StreamCodec<(I), (T)>
+static "recursive"<B, T>(arg0: $UnaryOperator$$Type<($StreamCodec<(I), (T)>)>): $StreamCodec<(I), (T)>
  "dispatch"<U>(arg0: $Function$$Type<(U), (T)>, arg1: $Function$$Type<(T), ($StreamCodec$$Type<(I), (U)>)>): $StreamCodec<(I), (U)>
  "cast"<S extends B>(): $StreamCodec<(S), (T)>
  "apply"<O>(arg0: $StreamCodec$CodecOperation$$Type<(I), (T), (O)>): $StreamCodec<(I), (O)>
  "map"<O>(arg0: $Function$$Type<(T), (O)>, arg1: $Function$$Type<(O), (T)>): $StreamCodec<(I), (O)>
 static "of"<B, V>(arg0: $StreamEncoder$$Type<(I), (T)>, arg1: $StreamDecoder$$Type<(I), (T)>): $StreamCodec<(I), (T)>
-static "unit"<B, V>(arg0: T): $StreamCodec<(I), (T)>
-static "recursive"<B, T>(arg0: $UnaryOperator$$Type<($StreamCodec<(I), (T)>)>): $StreamCodec<(I), (T)>
-static "ofMember"<B, V>(arg0: $StreamMemberEncoder$$Type<(I), (T)>, arg1: $StreamDecoder$$Type<(I), (T)>): $StreamCodec<(I), (T)>
  "mapStream"<O extends $ByteBuf>(arg0: $Function$$Type<(O), (I)>): $StreamCodec<(O), (T)>
-static "composite"<B, C, T1, T2, T3, T4, T5, T6>(arg0: $StreamCodec$$Type<(I), (T1)>, arg1: $Function$$Type<(C), (T1)>, arg2: $StreamCodec$$Type<(I), (T2)>, arg3: $Function$$Type<(C), (T2)>, arg4: $StreamCodec$$Type<(I), (T3)>, arg5: $Function$$Type<(C), (T3)>, arg6: $StreamCodec$$Type<(I), (T4)>, arg7: $Function$$Type<(C), (T4)>, arg8: $StreamCodec$$Type<(I), (T5)>, arg9: $Function$$Type<(C), (T5)>, arg10: $StreamCodec$$Type<(I), (T6)>, arg11: $Function$$Type<(C), (T6)>, arg12: $Function6$$Type<(T1), (T2), (T3), (T4), (T5), (T6), (C)>): $StreamCodec<(I), (C)>
 static "composite"<B, C, T1, T2, T3, T4, T5>(arg0: $StreamCodec$$Type<(I), (T1)>, arg1: $Function$$Type<(C), (T1)>, arg2: $StreamCodec$$Type<(I), (T2)>, arg3: $Function$$Type<(C), (T2)>, arg4: $StreamCodec$$Type<(I), (T3)>, arg5: $Function$$Type<(C), (T3)>, arg6: $StreamCodec$$Type<(I), (T4)>, arg7: $Function$$Type<(C), (T4)>, arg8: $StreamCodec$$Type<(I), (T5)>, arg9: $Function$$Type<(C), (T5)>, arg10: $Function5$$Type<(T1), (T2), (T3), (T4), (T5), (C)>): $StreamCodec<(I), (C)>
+static "composite"<B, C, T1, T2, T3, T4, T5, T6>(arg0: $StreamCodec$$Type<(I), (T1)>, arg1: $Function$$Type<(C), (T1)>, arg2: $StreamCodec$$Type<(I), (T2)>, arg3: $Function$$Type<(C), (T2)>, arg4: $StreamCodec$$Type<(I), (T3)>, arg5: $Function$$Type<(C), (T3)>, arg6: $StreamCodec$$Type<(I), (T4)>, arg7: $Function$$Type<(C), (T4)>, arg8: $StreamCodec$$Type<(I), (T5)>, arg9: $Function$$Type<(C), (T5)>, arg10: $StreamCodec$$Type<(I), (T6)>, arg11: $Function$$Type<(C), (T6)>, arg12: $Function6$$Type<(T1), (T2), (T3), (T4), (T5), (T6), (C)>): $StreamCodec<(I), (C)>
 static "composite"<B, C, T1>(arg0: $StreamCodec$$Type<(I), (T1)>, arg1: $Function$$Type<(C), (T1)>, arg2: $Function$$Type<(T1), (C)>): $StreamCodec<(I), (C)>
-static "composite"<B, C, T1, T2, T3, T4>(arg0: $StreamCodec$$Type<(I), (T1)>, arg1: $Function$$Type<(C), (T1)>, arg2: $StreamCodec$$Type<(I), (T2)>, arg3: $Function$$Type<(C), (T2)>, arg4: $StreamCodec$$Type<(I), (T3)>, arg5: $Function$$Type<(C), (T3)>, arg6: $StreamCodec$$Type<(I), (T4)>, arg7: $Function$$Type<(C), (T4)>, arg8: $Function4$$Type<(T1), (T2), (T3), (T4), (C)>): $StreamCodec<(I), (C)>
-static "composite"<B, C, T1, T2, T3>(arg0: $StreamCodec$$Type<(I), (T1)>, arg1: $Function$$Type<(C), (T1)>, arg2: $StreamCodec$$Type<(I), (T2)>, arg3: $Function$$Type<(C), (T2)>, arg4: $StreamCodec$$Type<(I), (T3)>, arg5: $Function$$Type<(C), (T3)>, arg6: $Function3$$Type<(T1), (T2), (T3), (C)>): $StreamCodec<(I), (C)>
 static "composite"<B, C, T1, T2>(arg0: $StreamCodec$$Type<(I), (T1)>, arg1: $Function$$Type<(C), (T1)>, arg2: $StreamCodec$$Type<(I), (T2)>, arg3: $Function$$Type<(C), (T2)>, arg4: $BiFunction$$Type<(T1), (T2), (C)>): $StreamCodec<(I), (C)>
+static "composite"<B, C, T1, T2, T3>(arg0: $StreamCodec$$Type<(I), (T1)>, arg1: $Function$$Type<(C), (T1)>, arg2: $StreamCodec$$Type<(I), (T2)>, arg3: $Function$$Type<(C), (T2)>, arg4: $StreamCodec$$Type<(I), (T3)>, arg5: $Function$$Type<(C), (T3)>, arg6: $Function3$$Type<(T1), (T2), (T3), (C)>): $StreamCodec<(I), (C)>
+static "composite"<B, C, T1, T2, T3, T4>(arg0: $StreamCodec$$Type<(I), (T1)>, arg1: $Function$$Type<(C), (T1)>, arg2: $StreamCodec$$Type<(I), (T2)>, arg3: $Function$$Type<(C), (T2)>, arg4: $StreamCodec$$Type<(I), (T3)>, arg5: $Function$$Type<(C), (T3)>, arg6: $StreamCodec$$Type<(I), (T4)>, arg7: $Function$$Type<(C), (T4)>, arg8: $Function4$$Type<(T1), (T2), (T3), (T4), (C)>): $StreamCodec<(I), (C)>
+static "ofMember"<B, V>(arg0: $StreamMemberEncoder$$Type<(I), (T)>, arg1: $StreamDecoder$$Type<(I), (T)>): $StreamCodec<(I), (T)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5763,16 +5808,17 @@ import {$Enum, $Enum$$Type} from "java.lang.Enum"
 export class $InventoryInputMode extends $Enum<($InventoryInputMode)> {
 static readonly "FILL_LEFT_TO_RIGHT": $InventoryInputMode
 static readonly "FILL_EVENLY": $InventoryInputMode
+static readonly "SIDED": $InventoryInputMode
 
 
 public static "values"(): ($InventoryInputMode)[]
-public static "valueOf"(name: string): $InventoryInputMode
+public static "valueOf"(arg0: StringJS): $InventoryInputMode
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $InventoryInputMode$$Type = (("fill_left_to_right") | ("fill_evenly"));
+export type $InventoryInputMode$$Type = (("fill_left_to_right") | ("fill_evenly") | ("sided"));
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -5781,11 +5827,12 @@ declare global {
 export type $InventoryInputMode_ = $InventoryInputMode$$Type;
 }}
 declare module "rearth.oritech.item.tools.armor.BackstorageExoArmorItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ArmorMaterial, $ArmorMaterial$$Type} from "net.minecraft.world.item.ArmorMaterial"
 import {$ExoArmorItem, $ExoArmorItem$$Type} from "rearth.oritech.item.tools.armor.ExoArmorItem"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$OritechEnergyItem, $OritechEnergyItem$$Type} from "rearth.oritech.item.tools.util.OritechEnergyItem"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
@@ -5793,8 +5840,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$GeoAnimatable, $GeoAnimatable$$Type} from "software.bernie.geckolib.animatable.GeoAnimatable"
-import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$EquipmentSlot, $EquipmentSlot$$Type} from "net.minecraft.world.entity.EquipmentSlot"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$DispenseItemBehavior, $DispenseItemBehavior$$Type} from "net.minecraft.core.dispenser.DispenseItemBehavior"
@@ -5802,6 +5849,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.ArmorItem$Type"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
@@ -5812,7 +5860,7 @@ import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.Serve
 export class $BackstorageExoArmorItem extends $ExoArmorItem implements $OritechEnergyItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -5820,24 +5868,25 @@ static readonly "DISPENSE_ITEM_BEHAVIOR": $DispenseItemBehavior
  "defaultModifiers": $Supplier<($ItemAttributeModifiers)>
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(material: $Holder$$Type<($ArmorMaterial)>, type: $ArmorItem$Type$$Type, settings: $Item$Properties$$Type)
+constructor(arg0: $Holder$$Type<($ArmorMaterial)>, arg1: $ArmorItem$Type$$Type, arg2: $Item$Properties$$Type)
 
-public "isBarVisible"(stack: $ItemStack$$Type): boolean
-public "getBarWidth"(stack: $ItemStack$$Type): integer
-public "getBarColor"(stack: $ItemStack$$Type): integer
-public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
-public "getEnergyCapacity"(stack: $ItemStack$$Type): long
-public "getEnergyMaxInput"(stack: $ItemStack$$Type): long
-public "getEnergyMaxOutput"(stack: $ItemStack$$Type): long
-public "getEnergyStorage"(stack: $ItemStack$$Type): $EnergyApi$EnergyStorage
-public "getStoredEnergy"(stack: $ItemStack$$Type): long
-public "tryUseEnergy"(stack: $ItemStack$$Type, amount: long, player: $Player$$Type): boolean
+public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
+public "isBarVisible"(arg0: $ItemStack$$Type): boolean
+public "getBarWidth"(arg0: $ItemStack$$Type): integer
+public "getBarColor"(arg0: $ItemStack$$Type): integer
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "getEnergyCapacity"(arg0: $ItemStack$$Type): long
+public "getEnergyMaxInput"(arg0: $ItemStack$$Type): long
+public "getEnergyMaxOutput"(arg0: $ItemStack$$Type): long
+public "tryUseEnergy"(arg0: $ItemStack$$Type, arg1: long, arg2: $Player$$Type): boolean
+public "getEnergyStorage"(arg0: $ItemStack$$Type): $EnergyApi$EnergyStorage
+public "getStoredEnergy"(arg0: $ItemStack$$Type): long
 public static "getId"(arg0: $ItemStack$$Type): long
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
-public static "processEvent"(livingEntity: $LivingEntity$$Type, equipmentSlot: $EquipmentSlot$$Type, previousStack: $ItemStack$$Type, currentStack: $ItemStack$$Type): void
+public static "processEvent"(arg0: $LivingEntity$$Type, arg1: $EquipmentSlot$$Type, arg2: $ItemStack$$Type, arg3: $ItemStack$$Type): void
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5888,14 +5937,14 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$LeverBlock, $LeverBlock$$Type} from "net.minecraft.world.level.block.LeverBlock"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$AttachFace, $AttachFace$$Type} from "net.minecraft.world.level.block.state.properties.AttachFace"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -5917,7 +5966,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -5926,9 +5975,9 @@ static readonly "FACING": $DirectionProperty
 static readonly "FACE": $EnumProperty<($AttachFace)>
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "getShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
+public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -5945,37 +5994,37 @@ export type $TechLever_ = $TechLever$$Type;
 }}
 declare module "rearth.oritech.api.networking.NetworkedBlockEntity" {
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
-import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
 import {$SyncType, $SyncType$$Type} from "rearth.oritech.api.networking.SyncType"
+import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$TrackedData, $TrackedData$$Type} from "dev.corgitaco.dataanchor.data.TrackedData"
 import {$TrackedDataContainer, $TrackedDataContainer$$Type} from "dev.corgitaco.dataanchor.data.TrackedDataContainer"
 import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.dataanchor.data.registry.TrackedDataRegistry"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $NetworkedBlockEntity extends $BlockEntity implements $BlockEntityTicker<($NetworkedBlockEntity)> {
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
-constructor(type: $BlockEntityType$$Type<(any)>, pos: $BlockPos$$Type, state: $BlockState$$Type)
+constructor(arg0: $BlockEntityType$$Type<(any)>, arg1: $BlockPos$$Type, arg2: $BlockState$$Type)
 
 public "tick"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $BlockEntity$$Type): void
-public "tick"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, blockEntity: $NetworkedBlockEntity$$Type): void
+public "tick"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $NetworkedBlockEntity$$Type): void
 public "serverTick"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $NetworkedBlockEntity$$Type): void
-public "markDirty"(updateComparator: boolean): void
-public "getUpdateTag"(registryLookup: $HolderLookup$Provider$$Type): $CompoundTag
-public "clientTick"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, blockEntity: $NetworkedBlockEntity$$Type): void
+public "markDirty"(arg0: boolean): void
+public "sendUpdate"(arg0: $SyncType$$Type): void
+public "sendUpdate"(arg0: $SyncType$$Type, arg1: $ServerPlayer$$Type): void
 public "setChanged"(): void
-public "sendUpdate"(type: $SyncType$$Type, player: $ServerPlayer$$Type): void
-public "sendUpdate"(type: $SyncType$$Type): void
-public "preNetworkUpdate"(type: $SyncType$$Type): void
+public "clientTick"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $NetworkedBlockEntity$$Type): void
+public "getUpdateTag"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
+public "preNetworkUpdate"(arg0: $SyncType$$Type): void
 public "getSparseUpdateInterval"(): integer
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "sparseUpdateInterval"(): integer
 }
 /**
@@ -6000,8 +6049,8 @@ static "ENDEC": $Endec<($AugmentDataRecipe$CustomAugmentDefinition)>
 
 constructor(customAugmentId: $ResourceLocation$$Type)
 
-public "equals"(o: any): boolean
-public "toString"(): string
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "customAugmentId"(): $ResourceLocation
 }
@@ -6030,8 +6079,8 @@ import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
@@ -6063,7 +6112,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -6071,16 +6120,16 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "isSignalSource"(state: $BlockState$$Type): boolean
-public "stepOn"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, entity: $Entity$$Type): void
-public "neighborChanged"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, sourceBlock: $Block$$Type, sourcePos: $BlockPos$$Type, notify: boolean): void
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "stepOn"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Entity$$Type): void
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "isSignalSource"(arg0: $BlockState$$Type): boolean
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
+public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 }
@@ -6097,10 +6146,11 @@ declare global {
 export type $SpawnerControllerBlock_ = $SpawnerControllerBlock$$Type;
 }}
 declare module "rearth.oritech.item.tools.armor.JetpackItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ArmorMaterial, $ArmorMaterial$$Type} from "net.minecraft.world.item.ArmorMaterial"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
@@ -6121,11 +6171,12 @@ import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.A
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$GeoRenderProvider, $GeoRenderProvider$$Type} from "software.bernie.geckolib.animatable.client.GeoRenderProvider"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$AnimatableInstanceCache, $AnimatableInstanceCache$$Type} from "software.bernie.geckolib.animatable.instance.AnimatableInstanceCache"
-import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$AnimatableManager$ControllerRegistrar, $AnimatableManager$ControllerRegistrar$$Type} from "software.bernie.geckolib.animation.AnimatableManager$ControllerRegistrar"
+import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$GeoItem, $GeoItem$$Type} from "software.bernie.geckolib.animatable.GeoItem"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
@@ -6138,7 +6189,7 @@ export class $JetpackItem extends $ArmorItem implements $GeoItem, $BaseJetpackIt
 static "PRESSED_SPACE": boolean
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static "LAST_GROUND_CONTACT": long
@@ -6147,60 +6198,61 @@ static readonly "DISPENSE_ITEM_BEHAVIOR": $DispenseItemBehavior
  "defaultModifiers": $Supplier<($ItemAttributeModifiers)>
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(material: $Holder$$Type<($ArmorMaterial)>, type: $ArmorItem$Type$$Type, settings: $Item$Properties$$Type)
+constructor(arg0: $Holder$$Type<($ArmorMaterial)>, arg1: $ArmorItem$Type$$Type, arg2: $Item$Properties$$Type)
 
-public "getAnimatableInstanceCache"(): $AnimatableInstanceCache
-public "isBarVisible"(stack: $ItemStack$$Type): boolean
-public "getBarWidth"(stack: $ItemStack$$Type): integer
-public "getBarColor"(stack: $ItemStack$$Type): integer
+public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
 public "getSpeed"(): float
-public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
-public "registerControllers"(controllers: $AnimatableManager$ControllerRegistrar$$Type): void
-public "isValidRepairItem"(stack: $ItemStack$$Type, ingredient: $ItemStack$$Type): boolean
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
-public "getEnergyCapacity"(stack: $ItemStack$$Type): long
-public "getFuelCapacity"(): long
-public "getEnergyMaxInput"(stack: $ItemStack$$Type): long
-public "createGeoRenderer"(consumer: $Consumer$$Type<($GeoRenderProvider)>): void
-public static "receiveUsagePacket"(packet: $JetpackItem$JetpackUsageUpdatePacket$$Type, player: $Player$$Type, dynamicRegistryManager: $RegistryAccess$$Type): void
+public "isBarVisible"(arg0: $ItemStack$$Type): boolean
+public "getBarWidth"(arg0: $ItemStack$$Type): integer
+public "getBarColor"(arg0: $ItemStack$$Type): integer
 public "requireUpward"(): boolean
 public "getRfUsage"(): integer
 public "getFuelUsage"(): integer
+public "registerControllers"(arg0: $AnimatableManager$ControllerRegistrar$$Type): void
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "isValidRepairItem"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
+public "createGeoRenderer"(arg0: $Consumer$$Type<($GeoRenderProvider)>): void
+public "getEnergyCapacity"(arg0: $ItemStack$$Type): long
+public "getFuelCapacity"(): long
+public static "receiveUsagePacket"(arg0: $JetpackItem$JetpackUsageUpdatePacket$$Type, arg1: $Player$$Type, arg2: $RegistryAccess$$Type): void
+public "getEnergyMaxInput"(arg0: $ItemStack$$Type): long
+public "getAnimatableInstanceCache"(): $AnimatableInstanceCache
 public static "getId"(arg0: $ItemStack$$Type): long
-public "animatableCacheOverride"(): $AnimatableInstanceCache
-public "isPerspectiveAware"(): boolean
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public "getTick"(arg0: any): double
+public "isPerspectiveAware"(): boolean
+public "animatableCacheOverride"(): $AnimatableInstanceCache
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
-public "getJetpackBarColor"(stack: $ItemStack$$Type): integer
-public "getJetpackBarStep"(stack: $ItemStack$$Type): integer
-public "addJetpackTooltip"(stack: $ItemStack$$Type, tooltip: $List$$Type<($Component$$Type)>, includeEnergy: boolean): void
-public "getFluidStorage"(stack: $ItemStack$$Type): $FluidApi$SingleSlotStorage
-public "tickJetpack"(stack: $ItemStack$$Type, entity: $Entity$$Type, world: $Level$$Type): void
+public "tickJetpack"(arg0: $ItemStack$$Type, arg1: $Entity$$Type, arg2: $Level$$Type): void
 public "requireTakeoff"(): boolean
-public "tryUseFluid"(stack: $ItemStack$$Type): boolean
-public "getStoredFluid"(stack: $ItemStack$$Type): $FluidStack
-public "isValidFuel"(variant: $Fluid$$Type): boolean
+public "tryUseFluid"(arg0: $ItemStack$$Type): boolean
+public "getStoredFluid"(arg0: $ItemStack$$Type): $FluidStack
+public "isValidFuel"(arg0: $Fluid$$Type): boolean
+public "getJetpackBarColor"(arg0: $ItemStack$$Type): integer
+public "getJetpackBarStep"(arg0: $ItemStack$$Type): integer
+public "addJetpackTooltip"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>, arg2: boolean): void
+public "getFluidStorage"(arg0: $ItemStack$$Type): $FluidApi$SingleSlotStorage
+public "triggerAnim"<D>(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
 public "syncAnimData"<D>(arg0: long, arg1: $SerializableDataTicket$$Type<(D)>, arg2: D, arg3: $Entity$$Type): void
-public "stopTriggeredAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "triggerArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "stopTriggeredArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "getRenderProvider"(): any
-public "triggerAnim"<D>(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
 public "getAnimData"<D>(arg0: long, arg1: $SerializableDataTicket$$Type<(D)>): D
 public "setAnimData"<D>(arg0: $Entity$$Type, arg1: long, arg2: $SerializableDataTicket$$Type<(D)>, arg3: D): void
-public "getEnergyStorage"(stack: $ItemStack$$Type): $EnergyApi$EnergyStorage
-public "getEnergyMaxOutput"(stack: $ItemStack$$Type): long
-public "getStoredEnergy"(stack: $ItemStack$$Type): long
-public "tryUseEnergy"(stack: $ItemStack$$Type, amount: long, player: $Player$$Type): boolean
+public "stopTriggeredAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
+public "getRenderProvider"(): any
+public "triggerArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
+public "stopTriggeredArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
+public "tryUseEnergy"(arg0: $ItemStack$$Type, arg1: long, arg2: $Player$$Type): boolean
+public "getEnergyStorage"(arg0: $ItemStack$$Type): $EnergyApi$EnergyStorage
+public "getEnergyMaxOutput"(arg0: $ItemStack$$Type): long
+public "getStoredEnergy"(arg0: $ItemStack$$Type): long
 public static "get"(arg0: $ItemStack$$Type): $Equipable
-public "shouldPlayAnimsWhileGamePaused"(): boolean
 public "getBoneResetTime"(): double
-get "animatableInstanceCache"(): $AnimatableInstanceCache
+public "shouldPlayAnimsWhileGamePaused"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "speed"(): float
-get "fuelCapacity"(): long
 get "rfUsage"(): integer
 get "fuelUsage"(): integer
+get "fuelCapacity"(): long
+get "animatableInstanceCache"(): $AnimatableInstanceCache
 get "perspectiveAware"(): boolean
 get "renderProvider"(): any
 get "boneResetTime"(): double
@@ -6280,39 +6332,49 @@ static readonly "BLOCK_BREAK_ENERGY": integer
  "hunterTargetMode": $LaserArmBlockEntity$HunterTargetMode
  "hunterAddons": integer
  "hasSilkTouchAddon": boolean
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 readonly "inventory": $SimpleInventoryStorage
  "hasCropFilterAddon": boolean
 static "LASER_TARGET_PACKET_CODEC": $WorldPacketCodec<($RegistryFriendlyByteBuf), ($LivingEntity)>
  "laserHead": $Vec3
  "lastRenderPosition": $Vec3
-static readonly "LASER_PLAYER_NAME": string
+static readonly "LASER_PLAYER_NAME": StringJS
  "areaSize": integer
 
-constructor(pos: $BlockPos$$Type, state: $BlockState$$Type)
+constructor(arg0: $BlockPos$$Type, arg1: $BlockState$$Type)
 
-public "isActive"(state: $BlockState$$Type): boolean
+public "isActive"(arg0: $BlockState$$Type): boolean
 public "getDisplayName"(): $Component
-public "getAnimatableInstanceCache"(): $AnimatableInstanceCache
-public "createMenu"(syncId: integer, playerInventory: $Inventory$$Type, player: $Player$$Type): $AbstractContainerMenu
-public "serverTick"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, blockEntity: $NetworkedBlockEntity$$Type): void
-public "canPassThrough"(state: $BlockState$$Type, blockPos: $BlockPos$$Type): boolean
+public "serverTick"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $NetworkedBlockEntity$$Type): void
+public "sendUpdate"(arg0: $SyncType$$Type, arg1: $ServerPlayer$$Type): void
+public "createMenu"(arg0: integer, arg1: $Inventory$$Type, arg2: $Player$$Type): $AbstractContainerMenu
 public "getProgress"(): float
-public "sendUpdate"(type: $SyncType$$Type, player: $ServerPlayer$$Type): void
-public "registerControllers"(controllers: $AnimatableManager$ControllerRegistrar$$Type): void
-public "getEnergyStorage"(direction: $Direction$$Type): $EnergyApi$EnergyStorage
+public "showProgress"(): boolean
+public "getDamageTick"(): float
+public "getCoreQuality"(): float
+public "setCoreQuality"(arg0: float): void
+public "getAddonSlots"(): $List<($Vec3i)>
+public "getPosForAddon"(): $BlockPos
+public "getGuiSlots"(): $List<($ScreenProvider$GuiSlot)>
+public "saveExtraData"(arg0: $FriendlyByteBuf$$Type): void
+public "isFiring"(): boolean
+public "canPassThrough"(arg0: $BlockState$$Type, arg1: $BlockPos$$Type): boolean
+public "getEnergyStorage"(arg0: $Direction$$Type): $EnergyApi$EnergyStorage
+public "registerControllers"(arg0: $AnimatableManager$ControllerRegistrar$$Type): void
 public "getCurrentTarget"(): $BlockPos
-public "finishBlockBreaking"(targetPos: $BlockPos$$Type, targetBlockState: $BlockState$$Type): void
-public static "tryGetRecipeOfBlock"(destroyed: $BlockState$$Type, world: $Level$$Type): $RecipeHolder<($OritechRecipe)>
+public "getInventoryStorage"(arg0: $Direction$$Type): $ItemApi$InventoryStorage
 public "getDefaultCapacity"(): long
 public "getDefaultInsertRate"(): long
 public "getLaserHeadPosition"(): $BlockPos
 public "energyRequiredToFire"(): integer
-public "setRedstonePowered"(redstonePowered: boolean): void
-public "addBlockBreakProgress"(progress: integer): void
-public "getBlockBreakProgress"(): integer
 public "getLaserPlayerEntity"(): $Player
-public "gatherAddonStats"(addons: $List$$Type<($MachineAddonController$AddonBlock$$Type)>): void
+public "gatherAddonStats"(arg0: $List$$Type<($MachineAddonController$AddonBlock$$Type)>): void
+public "isTargetingAtomicForge"(arg0: $Block$$Type): boolean
+public "isTargetingDeepdrill"(arg0: $Block$$Type): boolean
+public "isTargetingCatalyst"(arg0: $Block$$Type): boolean
+public "setRedstonePowered"(arg0: boolean): void
+public "addBlockBreakProgress"(arg0: integer): void
+public "getBlockBreakProgress"(): integer
 public "cycleHunterTargetMode"(): void
 public "getConnectedCores"(): $ArrayList<($BlockPos)>
 public "getFacingForMultiblock"(): $Direction
@@ -6326,13 +6388,10 @@ public "getStorageForAddon"(): $DynamicEnergyStorage
 public "getInventoryForAddon"(): $ItemApi$InventoryStorage
 public "getScreenProvider"(): $ScreenProvider
 public "getBaseAddonData"(): $MachineAddonController$BaseAddonData
-public "setBaseAddonData"(data: $MachineAddonController$BaseAddonData$$Type): void
+public "setBaseAddonData"(arg0: $MachineAddonController$BaseAddonData$$Type): void
 public "triggerSetupAnimation"(): void
 public "getVisualTarget"(): $Vec3
 public "getWorldForAddon"(): $Level
-public "isTargetingAtomicForge"(block: $Block$$Type): boolean
-public "isTargetingDeepdrill"(block: $Block$$Type): boolean
-public "isTargetingCatalyst"(block: $Block$$Type): boolean
 public "getInventoryInputMode"(): $InventoryInputMode
 public "inputOptionsEnabled"(): boolean
 public "getDisplayedInventory"(): $Container
@@ -6340,80 +6399,79 @@ public "getScreenHandlerType"(): $MenuType<(any)>
 public "getBlockFacingProperty"(): $Property<($Direction)>
 public "getComparatorProgress"(): integer
 public "receivedRedstoneSignal"(): integer
-public "currentRedstoneEffect"(): string
-public "onRedstoneEvent"(isPowered: boolean): void
-public "getInventoryStorage"(direction: $Direction$$Type): $ItemApi$InventoryStorage
-public "saveExtraData"(buf: $FriendlyByteBuf$$Type): void
-public "getDamageTick"(): float
-public "getCoreQuality"(): float
-public "setCoreQuality"(quality: float): void
-public "getAddonSlots"(): $List<($Vec3i)>
-public "getPosForAddon"(): $BlockPos
-public "getGuiSlots"(): $List<($ScreenProvider$GuiSlot)>
-public "showProgress"(): boolean
-public "isFiring"(): boolean
+public "currentRedstoneEffect"(): StringJS
+public "onRedstoneEvent"(arg0: boolean): void
+public "finishBlockBreaking"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): void
+public static "tryGetRecipeOfBlock"(arg0: $BlockState$$Type, arg1: $Level$$Type): $RecipeHolder<($OritechRecipe)>
+public "getAnimatableInstanceCache"(): $AnimatableInstanceCache
+public "getAdditionalStatFromAddon"(arg0: $MachineAddonController$AddonBlock$$Type): void
+public "isTargetingUnstableContainer"(arg0: $Block$$Type): boolean
+public "getExtraExtensionLabels"(): $List<($Tuple<($Component), ($Component)>)>
 public "getTargetBlockEnergyNeeded"(): integer
-public "getAdditionalStatFromAddon"(addonBlock: $MachineAddonController$AddonBlock$$Type): void
-public "setTargetFromDesignator"(targetPos: $BlockPos$$Type): boolean
+public "setTargetFromDesignator"(arg0: $BlockPos$$Type): boolean
 public "getInventoryForMultiblock"(): $ItemApi$InventoryStorage
-public "getEnergyStorageForMultiblock"(direction: $Direction$$Type): $EnergyApi$EnergyStorage
-public "isTargetingUnstableContainer"(block: $Block$$Type): boolean
+public "getEnergyStorageForMultiblock"(arg0: $Direction$$Type): $EnergyApi$EnergyStorage
 public "isTargetingEnergyContainer"(): boolean
 public "isTargetingBuddingAmethyst"(): boolean
-public "getExtraExtensionLabels"(): $List<($Tuple<($Component), ($Component)>)>
 public "getDisplayedEnergyUsage"(): float
 public "getDisplayedEnergyTransfer"(): float
 public "getComparatorEnergyAmount"(): integer
-public "getComparatorSlotAmount"(slot: integer): integer
+public "getComparatorSlotAmount"(arg0: integer): integer
 public "getComparatorActiveState"(): integer
 public "hasRedstoneControlAvailable"(): boolean
-public "stopTriggeredAnim"(arg0: string, arg1: string): void
+public "triggerAnim"(arg0: StringJS, arg1: StringJS): void
 public "getTick"(arg0: any): double
-public "triggerAnim"(arg0: string, arg1: string): void
 public "getAnimData"<D>(arg0: $SerializableDataTicket$$Type<(D)>): D
 public "setAnimData"<D>(arg0: $SerializableDataTicket$$Type<(D)>, arg1: D): void
+public "stopTriggeredAnim"(arg0: StringJS, arg1: StringJS): void
+public "showEnergy"(): boolean
+public "getWikiLink"(): $Optional<(StringJS)>
+public "showArmor"(): boolean
 public "showExpansionPanel"(): boolean
 public "getEnergyConfiguration"(): $ScreenProvider$BarConfiguration
 public "getFluidConfiguration"(): $ScreenProvider$BarConfiguration
-public "showEnergy"(): boolean
-public "getWikiLink"(): $Optional<(string)>
-public "showArmor"(): boolean
 public "getIndicatorConfiguration"(): $ScreenProvider$ArrowConfiguration
-public "addMultiblockToNbt"(nbt: $CompoundTag$$Type): void
-public "loadMultiblockNbtData"(nbt: $CompoundTag$$Type): void
-public "tryPlaceNextCore"(player: $Player$$Type): boolean
+public "initMultiblock"(arg0: $BlockState$$Type): boolean
+public "onCoreBroken"(arg0: $BlockPos$$Type): void
+public "addMultiblockToNbt"(arg0: $CompoundTag$$Type): void
+public "loadMultiblockNbtData"(arg0: $CompoundTag$$Type): void
 public "getNextMissingCore"(): $BlockPos
+public "tryPlaceNextCore"(arg0: $Player$$Type): boolean
 public "onControllerBroken"(): void
-public "initMultiblock"(state: $BlockState$$Type): boolean
-public "onCoreBroken"(corePos: $BlockPos$$Type): void
-public "writeAddonToNbt"(nbt: $CompoundTag$$Type): void
-public "loadAddonNbtData"(nbt: $CompoundTag$$Type): void
-public "updateEnergyContainer"(): void
+public "getAllAddons"(arg0: $BlockPos$$Type): $List<($MachineAddonController$AddonBlock)>
+public "writeAddons"(arg0: $List$$Type<($MachineAddonController$AddonBlock$$Type)>): void
 public "initAddons"(): void
-public "initAddons"(brokenAddon: $BlockPos$$Type): void
-public "getAllAddons"(brokenAddon: $BlockPos$$Type): $List<($MachineAddonController$AddonBlock)>
-public "writeAddons"(addons: $List$$Type<($MachineAddonController$AddonBlock$$Type)>): void
+public "initAddons"(arg0: $BlockPos$$Type): void
 public "resetAddons"(): void
+public "writeAddonToNbt"(arg0: $CompoundTag$$Type): void
+public "loadAddonNbtData"(arg0: $CompoundTag$$Type): void
+public "updateEnergyContainer"(): void
 public "getComparatorOutput"(): integer
+public "getBoneResetTime"(): double
 public "shouldPlayAnimsWhileGamePaused"(): boolean
 public "animatableCacheOverride"(): $AnimatableInstanceCache
-public "getBoneResetTime"(): double
-public static "getFluidStorageComparatorOutput"(storage: $FluidApi$SingleSlotStorage$$Type): integer
-public static "getItemStackComparatorOutput"(stack: $ItemStack$$Type): integer
-public "shouldTriggerClientSideContainerClosingOnOpen"(): boolean
+public static "getFluidStorageComparatorOutput"(arg0: $FluidApi$SingleSlotStorage$$Type): integer
+public static "getItemStackComparatorOutput"(arg0: $ItemStack$$Type): integer
 public "writeClientSideData"(arg0: $AbstractContainerMenu$$Type, arg1: $RegistryFriendlyByteBuf$$Type): void
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+public "shouldTriggerClientSideContainerClosingOnOpen"(): boolean
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "displayName"(): $Component
-get "animatableInstanceCache"(): $AnimatableInstanceCache
 get "progress"(): float
+get "damageTick"(): float
+get "coreQuality"(): float
+set "coreQuality"(value: float)
+get "addonSlots"(): $List<($Vec3i)>
+get "posForAddon"(): $BlockPos
+get "guiSlots"(): $List<($ScreenProvider$GuiSlot)>
+get "firing"(): boolean
 get "currentTarget"(): $BlockPos
 get "defaultCapacity"(): long
 get "defaultInsertRate"(): long
 get "laserHeadPosition"(): $BlockPos
+get "laserPlayerEntity"(): $Player
 set "redstonePowered"(value: boolean)
 get "blockBreakProgress"(): integer
-get "laserPlayerEntity"(): $Player
 get "connectedCores"(): $ArrayList<($BlockPos)>
 get "facingForMultiblock"(): $Direction
 get "posForMultiblock"(): $BlockPos
@@ -6434,26 +6492,20 @@ get "displayedInventory"(): $Container
 get "screenHandlerType"(): $MenuType<(any)>
 get "blockFacingProperty"(): $Property<($Direction)>
 get "comparatorProgress"(): integer
-get "damageTick"(): float
-get "coreQuality"(): float
-set "coreQuality"(value: float)
-get "addonSlots"(): $List<($Vec3i)>
-get "posForAddon"(): $BlockPos
-get "guiSlots"(): $List<($ScreenProvider$GuiSlot)>
-get "firing"(): boolean
+get "animatableInstanceCache"(): $AnimatableInstanceCache
+get "extraExtensionLabels"(): $List<($Tuple<($Component), ($Component)>)>
 get "targetBlockEnergyNeeded"(): integer
 set "targetFromDesignator"(value: $BlockPos$$Type)
 get "inventoryForMultiblock"(): $ItemApi$InventoryStorage
 get "targetingEnergyContainer"(): boolean
 get "targetingBuddingAmethyst"(): boolean
-get "extraExtensionLabels"(): $List<($Tuple<($Component), ($Component)>)>
 get "displayedEnergyUsage"(): float
 get "displayedEnergyTransfer"(): float
 get "comparatorEnergyAmount"(): integer
 get "comparatorActiveState"(): integer
+get "wikiLink"(): $Optional<(StringJS)>
 get "energyConfiguration"(): $ScreenProvider$BarConfiguration
 get "fluidConfiguration"(): $ScreenProvider$BarConfiguration
-get "wikiLink"(): $Optional<(string)>
 get "indicatorConfiguration"(): $ScreenProvider$ArrowConfiguration
 get "nextMissingCore"(): $BlockPos
 get "comparatorOutput"(): integer
@@ -6513,7 +6565,7 @@ static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "ASSEMBLED": $BooleanProperty
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -6521,10 +6573,10 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getBlockEntityType"(): $Class<($BlockEntity)>
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
@@ -6559,8 +6611,8 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -6576,7 +6628,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $IntegerProperty
 static "NO_CONNECTION": integer
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -6599,18 +6651,18 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "apiValidationFunction"(): $TriFunction<($Level), ($BlockPos), ($Direction), (boolean)>
 public "getNormalBlock"(): $BlockState
-public "getNetworkData"(world: $Level$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
+public "getNetworkData"(arg0: $Level$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
 public "getConnectionBlock"(): $BlockState
-public "getPipeTypeName"(): string
-public "connectToOwnBlockType"(block: $Block$$Type): boolean
+public "getPipeTypeName"(): StringJS
+public "connectToOwnBlockType"(arg0: $Block$$Type): boolean
+public "apiValidationFunction"(): $TriFunction<($Level), ($BlockPos), ($Direction), (boolean)>
 public "asHolder"(): $Holder<(any)>
 get "normalBlock"(): $BlockState
 get "connectionBlock"(): $BlockState
-get "pipeTypeName"(): string
+get "pipeTypeName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6651,8 +6703,8 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $PumpBlock extends $Block implements $EntityBlock {
 static readonly "UPDATE_IMMEDIATE": integer
@@ -6668,23 +6720,23 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "isSignalSource"(state: $BlockState$$Type): boolean
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "isSignalSource"(arg0: $BlockState$$Type): boolean
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 }
@@ -6742,7 +6794,7 @@ static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "ASSEMBLED": $BooleanProperty
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -6750,10 +6802,10 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getBlockEntityType"(): $Class<($BlockEntity)>
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
@@ -6779,13 +6831,13 @@ import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -6799,7 +6851,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -6817,10 +6869,10 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -6859,8 +6911,8 @@ readonly "pipeNetworkInterfaces": $HashMap<(integer), ($Set<($Tuple<($BlockPos),
 constructor()
 
 public "hashCode"(): integer
-public "save"(nbt: $CompoundTag$$Type, registryLookup: $HolderLookup$Provider$$Type): $CompoundTag
-public static "fromNbt"(nbt: $CompoundTag$$Type, registryLookup: $HolderLookup$Provider$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
+public "save"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): $CompoundTag
+public static "fromNbt"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6914,19 +6966,19 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "animateTick"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, random: $RandomSource$$Type): void
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "animateTick"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $RandomSource$$Type): void
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 }
@@ -6950,8 +7002,8 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
@@ -6975,7 +7027,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -6983,10 +7035,10 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -7029,8 +7081,8 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $RefineryModuleBlock extends $HorizontalDirectionalBlock implements $EntityBlock {
@@ -7047,7 +7099,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -7055,14 +7107,14 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
@@ -7119,7 +7171,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $IntegerProperty
 static "NO_CONNECTION": integer
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -7141,20 +7193,20 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
-public "apiValidationFunction"(): $TriFunction<($Level), ($BlockPos), ($Direction), (boolean)>
 public "getNormalBlock"(): $BlockState
-public "getNetworkData"(world: $Level$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
+public "getNetworkData"(arg0: $Level$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getConnectionBlock"(): $BlockState
-public "getPipeTypeName"(): string
-public "connectToOwnBlockType"(block: $Block$$Type): boolean
-public "isCompatibleTarget"(block: $Block$$Type): boolean
+public "getPipeTypeName"(): StringJS
+public "connectToOwnBlockType"(arg0: $Block$$Type): boolean
+public "isCompatibleTarget"(arg0: $Block$$Type): boolean
+public "apiValidationFunction"(): $TriFunction<($Level), ($BlockPos), ($Direction), (boolean)>
 public "asHolder"(): $Holder<(any)>
 get "normalBlock"(): $BlockState
 get "connectionBlock"(): $BlockState
-get "pipeTypeName"(): string
+get "pipeTypeName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7208,8 +7260,8 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Explosion, $Explosion$$Type} from "net.minecraft.world.level.Explosion"
@@ -7233,17 +7285,17 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type, small: boolean)
+constructor(arg0: $BlockBehaviour$Properties$$Type, arg1: boolean)
 
-public "wasExploded"(world: $Level$$Type, pos: $BlockPos$$Type, explosion: $Explosion$$Type): void
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "wasExploded"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $Explosion$$Type): void
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -7265,11 +7317,11 @@ export class $ScreenProvider$BarConfiguration extends $Record {
 
 constructor(x: integer, y: integer, width: integer, height: integer)
 
-public "equals"(o: any): boolean
-public "toString"(): string
+public "y"(): integer
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "x"(): integer
-public "y"(): integer
 public "width"(): integer
 public "height"(): integer
 }
@@ -7286,14 +7338,17 @@ declare global {
 export type $ScreenProvider$BarConfiguration_ = $ScreenProvider$BarConfiguration$$Type;
 }}
 declare module "rearth.oritech.item.other.MobCaptureItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -7305,17 +7360,18 @@ import {$EntityType, $EntityType$$Type} from "net.minecraft.world.entity.EntityT
 export class $MobCaptureItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
 readonly "targets": $List<($EntityType<(any)>)>
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(settings: $Item$Properties$$Type, targets: $List$$Type<($EntityType$$Type<(any)>)>)
+constructor(arg0: $Item$Properties$$Type, arg1: $List$$Type<($EntityType$$Type<(any)>)>)
 
-public "interactLivingEntity"(stack: $ItemStack$$Type, user: $Player$$Type, entity: $LivingEntity$$Type, hand: $InteractionHand$$Type): $InteractionResult
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public "interactLivingEntity"(arg0: $ItemStack$$Type, arg1: $Player$$Type, arg2: $LivingEntity$$Type, arg3: $InteractionHand$$Type): $InteractionResult
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7358,24 +7414,24 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getNormalBlock"(): $BlockState
-public "getNetworkData"(world: $Level$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
+public "getNetworkData"(arg0: $Level$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
 public "getConnectionBlock"(): $BlockState
-public "getPipeTypeName"(): string
-public "connectToOwnBlockType"(block: $Block$$Type): boolean
+public "getPipeTypeName"(): StringJS
+public "connectToOwnBlockType"(arg0: $Block$$Type): boolean
 public "asHolder"(): $Holder<(any)>
 get "normalBlock"(): $BlockState
 get "connectionBlock"(): $BlockState
-get "pipeTypeName"(): string
+get "pipeTypeName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7400,10 +7456,10 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$MultiblockMachine, $MultiblockMachine$$Type} from "rearth.oritech.block.base.block.MultiblockMachine"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
+import {$MultiblockMachine, $MultiblockMachine$$Type} from "rearth.oritech.block.base.block.MultiblockMachine"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Class, $Class$$Type} from "java.lang.Class"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
@@ -7426,7 +7482,7 @@ static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "ASSEMBLED": $BooleanProperty
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -7434,7 +7490,7 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getBlockEntityType"(): $Class<($BlockEntity)>
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
@@ -7466,12 +7522,12 @@ import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.it
 export class $AugmentDataRecipeType extends $EndecRecipeSerializer<($AugmentDataRecipe)> implements $RecipeType<($AugmentDataRecipe)> {
 static readonly "AUGMENT_DATA_RECIPE_ENDEC": $Endec<($AugmentDataRecipe)>
 
-constructor(identifier: $ResourceLocation$$Type)
+constructor(arg0: $ResourceLocation$$Type)
 
 public "getIdentifier"(): $ResourceLocation
-public static "register"<T extends $Recipe<(any)>>(arg0: string): $RecipeType<($AugmentDataRecipe)>
+public static "register"<T extends $Recipe<(any)>>(arg0: StringJS): $RecipeType<($AugmentDataRecipe)>
 public static "simple"<T extends $Recipe<(any)>>(arg0: $ResourceLocation$$Type): $RecipeType<($AugmentDataRecipe)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 get "identifier"(): $ResourceLocation
 }
 /**
@@ -7513,8 +7569,8 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $ChargerBlock extends $HorizontalDirectionalBlock implements $EntityBlock {
@@ -7531,7 +7587,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -7539,14 +7595,14 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 }
@@ -7614,8 +7670,8 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $DronePortBlock extends $Block implements $EntityBlock {
 static readonly "UPDATE_IMMEDIATE": integer
@@ -7631,22 +7687,22 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 }
@@ -7690,8 +7746,8 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $AugmentResearchStationBlock extends $DirectionalBlock implements $EntityBlock {
@@ -7708,7 +7764,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -7716,14 +7772,14 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
@@ -7754,8 +7810,8 @@ import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Class, $Class$$Type} from "java.lang.Class"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
@@ -7767,8 +7823,8 @@ import {$RenderShape, $RenderShape$$Type} from "net.minecraft.world.level.block.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$AttachFace, $AttachFace$$Type} from "net.minecraft.world.level.block.state.properties.AttachFace"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -7777,8 +7833,8 @@ import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.bloc
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MachineAddonBlock$AddonSettings, $MachineAddonBlock$AddonSettings$$Type} from "rearth.oritech.block.blocks.addons.MachineAddonBlock$AddonSettings"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
@@ -7794,7 +7850,7 @@ static readonly "USE_ACCURATE_OUTLINES": boolean
 static "MACHINE_EFFICIENCY_ADDON_SHAPE": (($VoxelShape)[])[]
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static "MACHINE_PROCESSING_ADDON_SHAPE": (($VoxelShape)[])[]
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -7822,19 +7878,19 @@ static readonly "FACE": $EnumProperty<($AttachFace)>
  "hasCollision": boolean
 static "MACHINE_ULTIMATE_ADDON_SHAPE": (($VoxelShape)[])[]
 
-constructor(settings: $BlockBehaviour$Properties$$Type, addonSettings: $MachineAddonBlock$AddonSettings$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type, arg1: $MachineAddonBlock$AddonSettings$$Type)
 
-public "getShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public "updateShape"(state: $BlockState$$Type, direction: $Direction$$Type, neighborState: $BlockState$$Type, world: $LevelAccessor$$Type, pos: $BlockPos$$Type, neighborPos: $BlockPos$$Type): $BlockState
-public "setPlacedBy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, placer: $LivingEntity$$Type, itemStack: $ItemStack$$Type): void
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
-public "canSurvive"(state: $BlockState$$Type, world: $LevelReader$$Type, pos: $BlockPos$$Type): boolean
+public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
+public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
+public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "canSurvive"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type): boolean
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
 public "getBlockEntityType"(): $Class<($BlockEntity)>
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
-public "getCollisionShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "getAddonSettings"(): $MachineAddonBlock$AddonSettings
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
@@ -7866,8 +7922,8 @@ export class $LaserArmBlockBehavior {
 
 constructor()
 
+public "fireAtBlock"(arg0: $Level$$Type, arg1: $LaserArmBlockEntity$$Type, arg2: $Block$$Type, arg3: $BlockPos$$Type, arg4: $BlockState$$Type, arg5: $BlockEntity$$Type): boolean
 public static "registerDefaults"(): void
-public "fireAtBlock"(world: $Level$$Type, laserEntity: $LaserArmBlockEntity$$Type, block: $Block$$Type, blockPos: $BlockPos$$Type, blockState: $BlockState$$Type, blockEntity: $BlockEntity$$Type): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7888,14 +7944,14 @@ import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.leve
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ItemPipeConnectionBlock, $ItemPipeConnectionBlock$$Type} from "rearth.oritech.block.blocks.pipes.item.ItemPipeConnectionBlock"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -7911,7 +7967,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $IntegerProperty
 static "NO_CONNECTION": integer
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -7935,11 +7991,11 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "getShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public "getCollisionShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
+public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "getNormalBlock"(): $BlockState
+public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "getConnectionBlock"(): $BlockState
 public "asHolder"(): $Holder<(any)>
 get "normalBlock"(): $BlockState
@@ -8003,11 +8059,19 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 
 export interface $MachineAddonController {
 
+ "getCoreQuality"(): float
+ "getAddonSlots"(): $List<($Vec3i)>
+ "getPosForAddon"(): $BlockPos
+ "getAllAddons"(arg0: $BlockPos$$Type): $List<($MachineAddonController$AddonBlock)>
+ "writeAddons"(arg0: $List$$Type<($MachineAddonController$AddonBlock$$Type)>): void
+ "initAddons"(): void
+ "initAddons"(arg0: $BlockPos$$Type): void
+ "resetAddons"(): void
  "getDefaultCapacity"(): long
  "getDefaultInsertRate"(): long
- "gatherAddonStats"(addons: $List$$Type<($MachineAddonController$AddonBlock$$Type)>): void
- "writeAddonToNbt"(nbt: $CompoundTag$$Type): void
- "loadAddonNbtData"(nbt: $CompoundTag$$Type): void
+ "gatherAddonStats"(arg0: $List$$Type<($MachineAddonController$AddonBlock$$Type)>): void
+ "writeAddonToNbt"(arg0: $CompoundTag$$Type): void
+ "loadAddonNbtData"(arg0: $CompoundTag$$Type): void
  "updateEnergyContainer"(): void
  "getConnectedAddons"(): $List<($BlockPos)>
  "getOpenAddonSlots"(): $List<($BlockPos)>
@@ -8018,15 +8082,10 @@ export interface $MachineAddonController {
  "getBaseAddonData"(): $MachineAddonController$BaseAddonData
  "setBaseAddonData"(arg0: $MachineAddonController$BaseAddonData$$Type): void
  "getWorldForAddon"(): $Level
- "getCoreQuality"(): float
- "getAddonSlots"(): $List<($Vec3i)>
- "getPosForAddon"(): $BlockPos
- "initAddons"(): void
- "initAddons"(brokenAddon: $BlockPos$$Type): void
- "getAllAddons"(brokenAddon: $BlockPos$$Type): $List<($MachineAddonController$AddonBlock)>
- "writeAddons"(addons: $List$$Type<($MachineAddonController$AddonBlock$$Type)>): void
- "resetAddons"(): void
- "getAdditionalStatFromAddon"(addonBlock: $MachineAddonController$AddonBlock$$Type): void
+ "getAdditionalStatFromAddon"(arg0: $MachineAddonController$AddonBlock$$Type): void
+get "coreQuality"(): float
+get "addonSlots"(): $List<($Vec3i)>
+get "posForAddon"(): $BlockPos
 get "defaultCapacity"(): long
 get "defaultInsertRate"(): long
 get "connectedAddons"(): $List<($BlockPos)>
@@ -8038,9 +8097,6 @@ get "screenProvider"(): $ScreenProvider
 get "baseAddonData"(): $MachineAddonController$BaseAddonData
 set "baseAddonData"(value: $MachineAddonController$BaseAddonData$$Type)
 get "worldForAddon"(): $Level
-get "coreQuality"(): float
-get "addonSlots"(): $List<($Vec3i)>
-get "posForAddon"(): $BlockPos
 }
 
 export namespace $MachineAddonController {
@@ -8051,11 +8107,19 @@ export class $MachineAddonController$$Static implements $MachineAddonController 
 static readonly "DEFAULT_ADDON_DATA": $MachineAddonController$BaseAddonData
 
 
+ "getCoreQuality"(): float
+ "getAddonSlots"(): $List<($Vec3i)>
+ "getPosForAddon"(): $BlockPos
+ "getAllAddons"(arg0: $BlockPos$$Type): $List<($MachineAddonController$AddonBlock)>
+ "writeAddons"(arg0: $List$$Type<($MachineAddonController$AddonBlock$$Type)>): void
+ "initAddons"(): void
+ "initAddons"(arg0: $BlockPos$$Type): void
+ "resetAddons"(): void
  "getDefaultCapacity"(): long
  "getDefaultInsertRate"(): long
- "gatherAddonStats"(addons: $List$$Type<($MachineAddonController$AddonBlock$$Type)>): void
- "writeAddonToNbt"(nbt: $CompoundTag$$Type): void
- "loadAddonNbtData"(nbt: $CompoundTag$$Type): void
+ "gatherAddonStats"(arg0: $List$$Type<($MachineAddonController$AddonBlock$$Type)>): void
+ "writeAddonToNbt"(arg0: $CompoundTag$$Type): void
+ "loadAddonNbtData"(arg0: $CompoundTag$$Type): void
  "updateEnergyContainer"(): void
  "getConnectedAddons"(): $List<($BlockPos)>
  "getOpenAddonSlots"(): $List<($BlockPos)>
@@ -8066,15 +8130,7 @@ static readonly "DEFAULT_ADDON_DATA": $MachineAddonController$BaseAddonData
  "getBaseAddonData"(): $MachineAddonController$BaseAddonData
  "setBaseAddonData"(arg0: $MachineAddonController$BaseAddonData$$Type): void
  "getWorldForAddon"(): $Level
- "getCoreQuality"(): float
- "getAddonSlots"(): $List<($Vec3i)>
- "getPosForAddon"(): $BlockPos
- "initAddons"(): void
- "initAddons"(brokenAddon: $BlockPos$$Type): void
- "getAllAddons"(brokenAddon: $BlockPos$$Type): $List<($MachineAddonController$AddonBlock)>
- "writeAddons"(addons: $List$$Type<($MachineAddonController$AddonBlock$$Type)>): void
- "resetAddons"(): void
- "getAdditionalStatFromAddon"(addonBlock: $MachineAddonController$AddonBlock$$Type): void
+ "getAdditionalStatFromAddon"(arg0: $MachineAddonController$AddonBlock$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8110,8 +8166,8 @@ import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.wo
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $AcceleratorRingBlock extends $AcceleratorPassthroughBlock {
@@ -8129,7 +8185,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "BENT": $IntegerProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -8138,12 +8194,12 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "neighborChanged"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, sourceBlock: $Block$$Type, sourcePos: $BlockPos$$Type, notify: boolean): void
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -8185,14 +8241,14 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "validForWalls"(): boolean
 public "asHolder"(): $Holder<(any)>
@@ -8250,7 +8306,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -8258,10 +8314,10 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
@@ -8279,6 +8335,7 @@ declare global {
 export type $AcceleratorMotorBlock_ = $AcceleratorMotorBlock$$Type;
 }}
 declare module "rearth.oritech.item.tools.harvesting.ChainsawItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
@@ -8286,10 +8343,11 @@ import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.Inte
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$OritechEnergyItem, $OritechEnergyItem$$Type} from "rearth.oritech.item.tools.util.OritechEnergyItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$AxeItem, $AxeItem$$Type} from "net.minecraft.world.item.AxeItem"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -8303,7 +8361,7 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 export class $ChainsawItem extends $AxeItem implements $OritechEnergyItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -8312,28 +8370,29 @@ static readonly "BAR_STEP_COUNT": integer
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(toolMaterial: $Tier$$Type, settings: $Item$Properties$$Type)
+constructor(arg0: $Tier$$Type, arg1: $Item$Properties$$Type)
 
-public "allowComponentsUpdateAnimation"(player: $Player$$Type, hand: $InteractionHand$$Type, oldStack: $ItemStack$$Type, newStack: $ItemStack$$Type): boolean
-public "shouldCauseReequipAnimation"(oldStack: $ItemStack$$Type, newStack: $ItemStack$$Type, slotChanged: boolean): boolean
-public "shouldCauseBlockBreakReset"(oldStack: $ItemStack$$Type, newStack: $ItemStack$$Type): boolean
-public "isEnchantable"(stack: $ItemStack$$Type): boolean
-public "isBarVisible"(stack: $ItemStack$$Type): boolean
-public "getBarWidth"(stack: $ItemStack$$Type): integer
-public "getBarColor"(stack: $ItemStack$$Type): integer
-public "mineBlock"(stack: $ItemStack$$Type, world: $Level$$Type, state: $BlockState$$Type, pos: $BlockPos$$Type, miner: $LivingEntity$$Type): boolean
-public "isValidRepairItem"(stack: $ItemStack$$Type, ingredient: $ItemStack$$Type): boolean
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
-public "getDestroySpeed"(stack: $ItemStack$$Type, state: $BlockState$$Type): float
-public "getEnergyCapacity"(stack: $ItemStack$$Type): long
-public "getEnergyMaxInput"(stack: $ItemStack$$Type): long
-public "allowContinuingBlockBreaking"(player: $Player$$Type, oldStack: $ItemStack$$Type, newStack: $ItemStack$$Type): boolean
-public "getEnergyStorage"(stack: $ItemStack$$Type): $EnergyApi$EnergyStorage
-public "getEnergyMaxOutput"(stack: $ItemStack$$Type): long
-public "getStoredEnergy"(stack: $ItemStack$$Type): long
-public "tryUseEnergy"(stack: $ItemStack$$Type, amount: long, player: $Player$$Type): boolean
+public "isEnchantable"(arg0: $ItemStack$$Type): boolean
+public "mineBlock"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockState$$Type, arg3: $BlockPos$$Type, arg4: $LivingEntity$$Type): boolean
+public "isBarVisible"(arg0: $ItemStack$$Type): boolean
+public "getBarWidth"(arg0: $ItemStack$$Type): integer
+public "getBarColor"(arg0: $ItemStack$$Type): integer
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "isValidRepairItem"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
+public "getDestroySpeed"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type): float
+public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
+public "shouldCauseBlockBreakReset"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
+public "getEnergyCapacity"(arg0: $ItemStack$$Type): long
+public "getEnergyMaxInput"(arg0: $ItemStack$$Type): long
+public "allowComponentsUpdateAnimation"(arg0: $Player$$Type, arg1: $InteractionHand$$Type, arg2: $ItemStack$$Type, arg3: $ItemStack$$Type): boolean
+public "allowContinuingBlockBreaking"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: $ItemStack$$Type): boolean
+public "tryUseEnergy"(arg0: $ItemStack$$Type, arg1: long, arg2: $Player$$Type): boolean
+public "getEnergyStorage"(arg0: $ItemStack$$Type): $EnergyApi$EnergyStorage
+public "getEnergyMaxOutput"(arg0: $ItemStack$$Type): long
+public "getStoredEnergy"(arg0: $ItemStack$$Type): long
 public static "getStrippables"(): $Map<($Block), ($Block)>
 public static "setStrippables"(strippedBlocks: $Map$$Type<($Block$$Type), ($Block$$Type)>): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8351,23 +8410,23 @@ declare module "rearth.oritech.block.blocks.pipes.AbstractPipeBlock" {
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$GenericPipeInterfaceEntity$PipeNetworkData, $GenericPipeInterfaceEntity$PipeNetworkData$$Type} from "rearth.oritech.block.entity.pipes.GenericPipeInterfaceEntity$PipeNetworkData"
+import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$TriFunction, $TriFunction$$Type} from "org.apache.commons.lang3.function.TriFunction"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $AbstractPipeBlock extends $Block {
@@ -8384,43 +8443,43 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "getShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public "updateShape"(state: $BlockState$$Type, direction: $Direction$$Type, neighborState: $BlockState$$Type, worldAccess: $LevelAccessor$$Type, pos: $BlockPos$$Type, neighborPos: $BlockPos$$Type): $BlockState
+public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "onPlace"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
-public "onRemove"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, newState: $BlockState$$Type, moved: boolean): void
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
-public "getCollisionShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public "apiValidationFunction"(): $TriFunction<($Level), ($BlockPos), ($Direction), (boolean)>
-public "hasMachineInDirection"(direction: $Direction$$Type, world: $Level$$Type, ownPos: $BlockPos$$Type, lookup: $TriFunction$$Type<($Level), ($BlockPos), ($Direction), (boolean)>): boolean
-public "updateNeighbors"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: boolean): void
-public "shouldConnect"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockPos$$Type, arg3: $Level$$Type, arg4: boolean): boolean
+public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
+public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
 public "getNormalBlock"(): $BlockState
 public "getNetworkData"(arg0: $Level$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
-public "isValidConnectionTarget"(target: $Block$$Type, world: $Level$$Type, direction: $Direction$$Type, pos: $BlockPos$$Type): boolean
-public "isConnectingInDirection"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockPos$$Type, arg3: $Level$$Type, arg4: boolean): boolean
+public "shouldConnect"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockPos$$Type, arg3: $Level$$Type, arg4: boolean): boolean
+public "updateNeighbors"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: boolean): void
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
+public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "getConnectionBlock"(): $BlockState
-public "getPipeTypeName"(): string
+public "getPipeTypeName"(): StringJS
 public "connectToOwnBlockType"(arg0: $Block$$Type): boolean
-public "hasNeighboringMachine"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, createConnection: boolean): boolean
-public "addConnectionStates"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: boolean): $BlockState
+public "hasNeighboringMachine"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: boolean): boolean
 public "addConnectionStates"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): $BlockState
+public "addConnectionStates"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: boolean): $BlockState
 public "addStraightState"(arg0: $BlockState$$Type): $BlockState
-public "isValidInterfaceTarget"(target: $Block$$Type, world: $Level$$Type, direction: $Direction$$Type, pos: $BlockPos$$Type): boolean
-public "isCompatibleTarget"(block: $Block$$Type): boolean
+public "isValidInterfaceTarget"(arg0: $Block$$Type, arg1: $Level$$Type, arg2: $Direction$$Type, arg3: $BlockPos$$Type): boolean
+public "isCompatibleTarget"(arg0: $Block$$Type): boolean
+public "apiValidationFunction"(): $TriFunction<($Level), ($BlockPos), ($Direction), (boolean)>
+public "hasMachineInDirection"(arg0: $Direction$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $TriFunction$$Type<($Level), ($BlockPos), ($Direction), (boolean)>): boolean
+public "isConnectingInDirection"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockPos$$Type, arg3: $Level$$Type, arg4: boolean): boolean
+public "isValidConnectionTarget"(arg0: $Block$$Type, arg1: $Level$$Type, arg2: $Direction$$Type, arg3: $BlockPos$$Type): boolean
 public "asHolder"(): $Holder<(any)>
 get "normalBlock"(): $BlockState
 get "connectionBlock"(): $BlockState
-get "pipeTypeName"(): string
+get "pipeTypeName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8435,6 +8494,7 @@ declare global {
 export type $AbstractPipeBlock_ = $AbstractPipeBlock$$Type;
 }}
 declare module "rearth.oritech.item.tools.PortableLaserItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
@@ -8453,12 +8513,13 @@ import {$Map, $Map$$Type} from "java.util.Map"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$GeoRenderProvider, $GeoRenderProvider$$Type} from "software.bernie.geckolib.animatable.client.GeoRenderProvider"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$HitResult, $HitResult$$Type} from "net.minecraft.world.phys.HitResult"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$AnimatableInstanceCache, $AnimatableInstanceCache$$Type} from "software.bernie.geckolib.animatable.instance.AnimatableInstanceCache"
-import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$AnimatableManager$ControllerRegistrar, $AnimatableManager$ControllerRegistrar$$Type} from "software.bernie.geckolib.animation.AnimatableManager$ControllerRegistrar"
+import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$GeoItem, $GeoItem$$Type} from "software.bernie.geckolib.animatable.GeoItem"
 import {$Enchantment, $Enchantment$$Type} from "net.minecraft.world.item.enchantment.Enchantment"
 import {$EnergyApi$EnergyStorage, $EnergyApi$EnergyStorage$$Type} from "rearth.oritech.api.energy.EnergyApi$EnergyStorage"
@@ -8470,59 +8531,60 @@ export class $PortableLaserItem extends $Item implements $OritechEnergyItem, $Ge
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static "lastSingleShot": long
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
 static readonly "ACTION_COOLDOWN": integer
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(settings: $Item$Properties$$Type)
+constructor(arg0: $Item$Properties$$Type)
 
-public "use"(world: $Level$$Type, player: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "allowComponentsUpdateAnimation"(player: $Player$$Type, hand: $InteractionHand$$Type, oldStack: $ItemStack$$Type, newStack: $ItemStack$$Type): boolean
-public "shouldCauseReequipAnimation"(oldStack: $ItemStack$$Type, newStack: $ItemStack$$Type, slotChanged: boolean): boolean
-public "shouldCauseBlockBreakReset"(oldStack: $ItemStack$$Type, newStack: $ItemStack$$Type): boolean
-public "getAnimatableInstanceCache"(): $AnimatableInstanceCache
-public "isEnchantable"(stack: $ItemStack$$Type): boolean
-public "isBarVisible"(stack: $ItemStack$$Type): boolean
-public "getBarWidth"(stack: $ItemStack$$Type): integer
-public "getBarColor"(stack: $ItemStack$$Type): integer
-public static "onUseTick"(player: $Player$$Type): void
-public "registerControllers"(controllers: $AnimatableManager$ControllerRegistrar$$Type): void
+public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "isEnchantable"(arg0: $ItemStack$$Type): boolean
+public static "onUseTick"(arg0: $Player$$Type): void
+public "isBarVisible"(arg0: $ItemStack$$Type): boolean
+public "getBarWidth"(arg0: $ItemStack$$Type): integer
+public "getBarColor"(arg0: $ItemStack$$Type): integer
+public "registerControllers"(arg0: $AnimatableManager$ControllerRegistrar$$Type): void
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getEnchantmentValue"(): integer
-public static "getEnchantmentLevel"(stack: $ItemStack$$Type, enchantment: $ResourceKey$$Type<($Enchantment)>): integer
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
-public "getEnergyCapacity"(stack: $ItemStack$$Type): long
-public "isMiningEnabled"(stack: $ItemStack$$Type): boolean
-public "setMiningEnabled"(stack: $ItemStack$$Type, status: boolean): void
-public static "getPlayerTargetRay"(player: $Player$$Type): $HitResult
-public "getEnergyMaxInput"(stack: $ItemStack$$Type): long
-public "getEnergyMaxOutput"(stack: $ItemStack$$Type): long
-public "createGeoRenderer"(consumer: $Consumer$$Type<($GeoRenderProvider)>): void
-public static "receiveUsePacket"(packet: $PortableLaserItem$LaserPlayerUsePacket$$Type, player: $Player$$Type, dynamicRegistryManager: $RegistryAccess$$Type): void
-public "allowContinuingBlockBreaking"(player: $Player$$Type, oldStack: $ItemStack$$Type, newStack: $ItemStack$$Type): boolean
-public "getEnergyStorage"(stack: $ItemStack$$Type): $EnergyApi$EnergyStorage
-public "getStoredEnergy"(stack: $ItemStack$$Type): long
-public "tryUseEnergy"(stack: $ItemStack$$Type, amount: long, player: $Player$$Type): boolean
+public static "getEnchantmentLevel"(arg0: $ItemStack$$Type, arg1: $ResourceKey$$Type<($Enchantment)>): integer
+public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
+public "shouldCauseBlockBreakReset"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
+public "createGeoRenderer"(arg0: $Consumer$$Type<($GeoRenderProvider)>): void
+public "getEnergyCapacity"(arg0: $ItemStack$$Type): long
+public "isMiningEnabled"(arg0: $ItemStack$$Type): boolean
+public "setMiningEnabled"(arg0: $ItemStack$$Type, arg1: boolean): void
+public static "getPlayerTargetRay"(arg0: $Player$$Type): $HitResult
+public static "receiveUsePacket"(arg0: $PortableLaserItem$LaserPlayerUsePacket$$Type, arg1: $Player$$Type, arg2: $RegistryAccess$$Type): void
+public "getEnergyMaxInput"(arg0: $ItemStack$$Type): long
+public "getEnergyMaxOutput"(arg0: $ItemStack$$Type): long
+public "allowComponentsUpdateAnimation"(arg0: $Player$$Type, arg1: $InteractionHand$$Type, arg2: $ItemStack$$Type, arg3: $ItemStack$$Type): boolean
+public "getAnimatableInstanceCache"(): $AnimatableInstanceCache
+public "allowContinuingBlockBreaking"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: $ItemStack$$Type): boolean
+public "tryUseEnergy"(arg0: $ItemStack$$Type, arg1: long, arg2: $Player$$Type): boolean
+public "getEnergyStorage"(arg0: $ItemStack$$Type): $EnergyApi$EnergyStorage
+public "getStoredEnergy"(arg0: $ItemStack$$Type): long
 public static "getId"(arg0: $ItemStack$$Type): long
-public "animatableCacheOverride"(): $AnimatableInstanceCache
-public "isPerspectiveAware"(): boolean
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public "getTick"(arg0: any): double
+public "isPerspectiveAware"(): boolean
+public "animatableCacheOverride"(): $AnimatableInstanceCache
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
+public "triggerAnim"<D>(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
 public "syncAnimData"<D>(arg0: long, arg1: $SerializableDataTicket$$Type<(D)>, arg2: D, arg3: $Entity$$Type): void
-public "stopTriggeredAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "triggerArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "stopTriggeredArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "getRenderProvider"(): any
-public "triggerAnim"<D>(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
 public "getAnimData"<D>(arg0: long, arg1: $SerializableDataTicket$$Type<(D)>): D
 public "setAnimData"<D>(arg0: $Entity$$Type, arg1: long, arg2: $SerializableDataTicket$$Type<(D)>, arg3: D): void
-public "shouldPlayAnimsWhileGamePaused"(): boolean
+public "stopTriggeredAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
+public "getRenderProvider"(): any
+public "triggerArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
+public "stopTriggeredArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 public "getBoneResetTime"(): double
-get "animatableInstanceCache"(): $AnimatableInstanceCache
+public "shouldPlayAnimsWhileGamePaused"(): boolean
 get "enchantmentValue"(): integer
+get "animatableInstanceCache"(): $AnimatableInstanceCache
 get "perspectiveAware"(): boolean
 get "renderProvider"(): any
 get "boneResetTime"(): double
@@ -8540,8 +8602,8 @@ declare global {
 export type $PortableLaserItem_ = $PortableLaserItem$$Type;
 }}
 declare module "rearth.oritech.init.recipes.OritechRecipeType" {
-import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
 import {$Endec, $Endec$$Type} from "io.wispforest.endec.Endec"
+import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
 import {$OritechRecipe, $OritechRecipe$$Type} from "rearth.oritech.init.recipes.OritechRecipe"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
@@ -8556,12 +8618,13 @@ static readonly "PACKET_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Orite
 static readonly "ORI_RECIPE_ENDEC": $Endec<($OritechRecipe)>
 static readonly "FLUID_STACK_ENDEC": $Endec<($FluidStack)>
 
+constructor(arg0: $ResourceLocation$$Type)
 
 public "getIdentifier"(): $ResourceLocation
-public "toString"(): string
-public static "register"<T extends $Recipe<(any)>>(arg0: string): $RecipeType<($OritechRecipe)>
+public "toString"(): StringJS
+public static "register"<T extends $Recipe<(any)>>(arg0: StringJS): $RecipeType<($OritechRecipe)>
 public static "simple"<T extends $Recipe<(any)>>(arg0: $ResourceLocation$$Type): $RecipeType<($OritechRecipe)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 get "identifier"(): $ResourceLocation
 }
 /**
@@ -8603,6 +8666,7 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
+import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 
@@ -8620,7 +8684,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -8628,16 +8692,18 @@ static readonly "USED": $BooleanProperty
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type, coreQuality: float)
+constructor(arg0: $BlockBehaviour$Properties$$Type, arg1: float)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
-public static "getControllerPos"(world: $Level$$Type, pos: $BlockPos$$Type): $BlockPos
+public "destroy"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): void
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "playerDestroy"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $BlockEntity$$Type, arg5: $ItemStack$$Type): void
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
 public "getCoreQuality"(): float
-public static "getControllerEntity"(world: $Level$$Type, pos: $BlockPos$$Type): $BlockEntity
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "getControllerPos"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type): $BlockPos
+public static "getControllerEntity"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type): $BlockEntity
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
@@ -8664,8 +8730,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$MultiblockMachine, $MultiblockMachine$$Type} from "rearth.oritech.block.base.block.MultiblockMachine"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Class, $Class$$Type} from "java.lang.Class"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -8687,7 +8753,7 @@ static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "ASSEMBLED": $BooleanProperty
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -8695,7 +8761,7 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getBlockEntityType"(): $Class<($BlockEntity)>
 public "asHolder"(): $Holder<(any)>
@@ -8722,8 +8788,8 @@ import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
@@ -8731,13 +8797,13 @@ import {$RenderShape, $RenderShape$$Type} from "net.minecraft.world.level.block.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $MachineFrameBlock extends $Block {
 static readonly "DOWN": $BooleanProperty
@@ -8748,7 +8814,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -8766,14 +8832,14 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "getShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public "updateShape"(state: $BlockState$$Type, direction: $Direction$$Type, neighborState: $BlockState$$Type, world: $LevelAccessor$$Type, pos: $BlockPos$$Type, neighborPos: $BlockPos$$Type): $BlockState
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
-public "getCollisionShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
+public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
+public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -8797,15 +8863,15 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$HashMap, $HashMap$$Type} from "java.util.HashMap"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ItemPipeBlock, $ItemPipeBlock$$Type} from "rearth.oritech.block.blocks.pipes.item.ItemPipeBlock"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -8821,7 +8887,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $IntegerProperty
 static "NO_CONNECTION": integer
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -8844,11 +8910,11 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "getShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public "getCollisionShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
+public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "getNormalBlock"(): $BlockState
+public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "getConnectionBlock"(): $BlockState
 public "asHolder"(): $Holder<(any)>
 get "normalBlock"(): $BlockState
@@ -8881,8 +8947,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -8899,7 +8965,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $IntegerProperty
 static "NO_CONNECTION": integer
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -8922,19 +8988,19 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "apiValidationFunction"(): $TriFunction<($Level), ($BlockPos), ($Direction), (boolean)>
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getNormalBlock"(): $BlockState
-public "getNetworkData"(world: $Level$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
+public "getNetworkData"(arg0: $Level$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
 public "getConnectionBlock"(): $BlockState
-public "getPipeTypeName"(): string
-public "connectToOwnBlockType"(block: $Block$$Type): boolean
+public "getPipeTypeName"(): StringJS
+public "connectToOwnBlockType"(arg0: $Block$$Type): boolean
+public "apiValidationFunction"(): $TriFunction<($Level), ($BlockPos), ($Direction), (boolean)>
 public "asHolder"(): $Holder<(any)>
 get "normalBlock"(): $BlockState
 get "connectionBlock"(): $BlockState
-get "pipeTypeName"(): string
+get "pipeTypeName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8955,8 +9021,8 @@ import {$FaceAttachedHorizontalDirectionalBlock, $FaceAttachedHorizontalDirectio
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$AttachFace, $AttachFace$$Type} from "net.minecraft.world.level.block.state.properties.AttachFace"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
@@ -8982,7 +9048,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -8991,9 +9057,9 @@ static readonly "FACING": $DirectionProperty
 static readonly "FACE": $EnumProperty<($AttachFace)>
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type, height: integer)
+constructor(arg0: $BlockBehaviour$Properties$$Type, arg1: integer)
 
-public "getShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
+public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -9023,8 +9089,8 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$Class, $Class$$Type} from "java.lang.Class"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
@@ -9044,7 +9110,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -9052,9 +9118,9 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "stepOn"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, entity: $Entity$$Type): void
+public "stepOn"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Entity$$Type): void
 public "getBlockEntityType"(): $Class<($BlockEntity)>
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
@@ -9100,8 +9166,8 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $DeepDrillBlock extends $Block implements $EntityBlock {
 static readonly "UPDATE_IMMEDIATE": integer
@@ -9117,22 +9183,22 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 }
@@ -9178,7 +9244,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -9186,7 +9252,7 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getBlockEntityType"(): $Class<($BlockEntity)>
 public "asHolder"(): $Holder<(any)>
@@ -9231,21 +9297,21 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type, rodCount: integer, internalPulseCount: integer)
+constructor(arg0: $BlockBehaviour$Properties$$Type, arg1: integer, arg2: integer)
 
-public "getInternalPulseCount"(): integer
 public "getRodCount"(): integer
 public "requiredStackCeiling"(): $Block
+public "getInternalPulseCount"(): integer
 public "asHolder"(): $Holder<(any)>
-get "internalPulseCount"(): integer
 get "rodCount"(): integer
+get "internalPulseCount"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9272,10 +9338,10 @@ static readonly "OIL_FEATURE_ENDEC": $Endec<($OilSpringFeatureConfig)>
 
 constructor(number: integer, blockId: $ResourceLocation$$Type)
 
-public "equals"(o: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "number"(): integer
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
 public "blockId"(): $ResourceLocation
 public "getFeatures"(): $Stream<($ConfiguredFeature<(any), (any)>)>
 get "features"(): $Stream<($ConfiguredFeature<(any), (any)>)>
@@ -9284,7 +9350,7 @@ get "features"(): $Stream<($ConfiguredFeature<(any), (any)>)>
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $OilSpringFeatureConfig$$Type = ({"blockId"?: $ResourceLocation$$Type, "number"?: integer}) | ([blockId?: $ResourceLocation$$Type, number?: integer]);
+export type $OilSpringFeatureConfig$$Type = ({"number"?: integer, "blockId"?: $ResourceLocation$$Type}) | ([number?: integer, blockId?: $ResourceLocation$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -9300,22 +9366,22 @@ export class $ScreenProvider$ArrowConfiguration extends $Record {
 
 constructor(empty: $ResourceLocation$$Type, full: $ResourceLocation$$Type, x: integer, y: integer, width: integer, height: integer, horizontal: boolean)
 
-public "equals"(o: any): boolean
-public "toString"(): string
+public "y"(): integer
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "x"(): integer
 public "empty"(): $ResourceLocation
 public "full"(): $ResourceLocation
-public "y"(): integer
 public "width"(): integer
-public "horizontal"(): boolean
 public "height"(): integer
+public "horizontal"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ScreenProvider$ArrowConfiguration$$Type = ({"x"?: integer, "width"?: integer, "y"?: integer, "full"?: $ResourceLocation$$Type, "empty"?: $ResourceLocation$$Type, "horizontal"?: boolean, "height"?: integer}) | ([x?: integer, width?: integer, y?: integer, full?: $ResourceLocation$$Type, empty?: $ResourceLocation$$Type, horizontal?: boolean, height?: integer]);
+export type $ScreenProvider$ArrowConfiguration$$Type = ({"horizontal"?: boolean, "height"?: integer, "x"?: integer, "width"?: integer, "y"?: integer, "full"?: $ResourceLocation$$Type, "empty"?: $ResourceLocation$$Type}) | ([horizontal?: boolean, height?: integer, x?: integer, width?: integer, y?: integer, full?: $ResourceLocation$$Type, empty?: $ResourceLocation$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -9336,17 +9402,17 @@ import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.da
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $AddonBlockEntity extends $BlockEntity implements $MachineAddonProvider {
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 static readonly "pendingInits": $HashSet<($MachineAddonController)>
 
-constructor(type: $BlockEntityType$$Type<(any)>, pos: $BlockPos$$Type, state: $BlockState$$Type)
-constructor(pos: $BlockPos$$Type, state: $BlockState$$Type)
+constructor(arg0: $BlockEntityType$$Type<(any)>, arg1: $BlockPos$$Type, arg2: $BlockState$$Type)
+constructor(arg0: $BlockPos$$Type, arg1: $BlockState$$Type)
 
-public "setControllerPos"(pos: $BlockPos$$Type): void
-public "getControllerPos"(): $BlockPos
 public static "completeInits"(): void
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+public "setControllerPos"(arg0: $BlockPos$$Type): void
+public "getControllerPos"(): $BlockPos
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 set "controllerPos"(value: $BlockPos$$Type)
 get "controllerPos"(): $BlockPos
 }
@@ -9389,8 +9455,8 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $AcceleratorControllerBlock extends $HorizontalDirectionalBlock implements $EntityBlock {
@@ -9407,7 +9473,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -9415,13 +9481,13 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 }
@@ -9466,24 +9532,24 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getNormalBlock"(): $BlockState
-public "getNetworkData"(world: $Level$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
+public "getNetworkData"(arg0: $Level$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
 public "getConnectionBlock"(): $BlockState
-public "getPipeTypeName"(): string
-public "connectToOwnBlockType"(block: $Block$$Type): boolean
+public "getPipeTypeName"(): StringJS
+public "connectToOwnBlockType"(arg0: $Block$$Type): boolean
 public "asHolder"(): $Holder<(any)>
 get "normalBlock"(): $BlockState
 get "connectionBlock"(): $BlockState
-get "pipeTypeName"(): string
+get "pipeTypeName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9498,12 +9564,13 @@ declare global {
 export type $SuperConductorDuctBlock_ = $SuperConductorDuctBlock$$Type;
 }}
 declare module "rearth.oritech.item.tools.harvesting.PromethiumPickaxeItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$IntValue, $IntValue$$Type} from "dev.architectury.utils.value.IntValue"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$EventResult, $EventResult$$Type} from "dev.architectury.event.EventResult"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
@@ -9519,11 +9586,12 @@ import {$Map, $Map$$Type} from "java.util.Map"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$GeoRenderProvider, $GeoRenderProvider$$Type} from "software.bernie.geckolib.animatable.client.GeoRenderProvider"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$AnimatableInstanceCache, $AnimatableInstanceCache$$Type} from "software.bernie.geckolib.animatable.instance.AnimatableInstanceCache"
-import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$AnimatableManager$ControllerRegistrar, $AnimatableManager$ControllerRegistrar$$Type} from "software.bernie.geckolib.animation.AnimatableManager$ControllerRegistrar"
+import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$GeoItem, $GeoItem$$Type} from "software.bernie.geckolib.animatable.GeoItem"
 import {$ClientLevel, $ClientLevel$$Type} from "net.minecraft.client.multiplayer.ClientLevel"
 import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
@@ -9536,43 +9604,44 @@ import {$SerializableDataTicket, $SerializableDataTicket$$Type} from "software.b
 export class $PromethiumPickaxeItem extends $DiggerItem implements $GeoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(toolMaterial: $Tier$$Type, effectiveBlocks: $TagKey$$Type<($Block)>, settings: $Item$Properties$$Type)
+constructor(arg0: $Tier$$Type, arg1: $TagKey$$Type<($Block)>, arg2: $Item$Properties$$Type)
 
-public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "isEnchantable"(arg0: $ItemStack$$Type): boolean
+public "mineBlock"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockState$$Type, arg3: $BlockPos$$Type, arg4: $LivingEntity$$Type): boolean
+public "onHeldTick"(arg0: $ItemStack$$Type, arg1: $Player$$Type, arg2: $ClientLevel$$Type): void
+public static "preMine"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $ServerPlayer$$Type, arg4: $IntValue$$Type): $EventResult
+public "registerControllers"(arg0: $AnimatableManager$ControllerRegistrar$$Type): void
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "isValidRepairItem"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
 public "getDefaultAttributeModifiers"(): $ItemAttributeModifiers
+public "createGeoRenderer"(arg0: $Consumer$$Type<($GeoRenderProvider)>): void
+public static "getOffsetBlocks"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $BlockPos$$Type): $List<($BlockPos)>
 public "getAnimatableInstanceCache"(): $AnimatableInstanceCache
-public "isEnchantable"(stack: $ItemStack$$Type): boolean
-public "mineBlock"(stack: $ItemStack$$Type, world: $Level$$Type, state: $BlockState$$Type, pos: $BlockPos$$Type, miner: $LivingEntity$$Type): boolean
-public "registerControllers"(controllers: $AnimatableManager$ControllerRegistrar$$Type): void
-public "isValidRepairItem"(stack: $ItemStack$$Type, ingredient: $ItemStack$$Type): boolean
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
-public "createGeoRenderer"(consumer: $Consumer$$Type<($GeoRenderProvider)>): void
-public static "getOffsetBlocks"(world: $Level$$Type, player: $Player$$Type, pos: $BlockPos$$Type): $List<($BlockPos)>
-public static "preMine"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $ServerPlayer$$Type, xp: $IntValue$$Type): $EventResult
-public "onHeldTick"(stack: $ItemStack$$Type, player: $Player$$Type, world: $ClientLevel$$Type): void
 public static "getId"(arg0: $ItemStack$$Type): long
-public "animatableCacheOverride"(): $AnimatableInstanceCache
-public "isPerspectiveAware"(): boolean
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public "getTick"(arg0: any): double
+public "isPerspectiveAware"(): boolean
+public "animatableCacheOverride"(): $AnimatableInstanceCache
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
+public "triggerAnim"<D>(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
 public "syncAnimData"<D>(arg0: long, arg1: $SerializableDataTicket$$Type<(D)>, arg2: D, arg3: $Entity$$Type): void
-public "stopTriggeredAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "triggerArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "stopTriggeredArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
-public "getRenderProvider"(): any
-public "triggerAnim"<D>(arg0: $Entity$$Type, arg1: long, arg2: string, arg3: string): void
 public "getAnimData"<D>(arg0: long, arg1: $SerializableDataTicket$$Type<(D)>): D
 public "setAnimData"<D>(arg0: $Entity$$Type, arg1: long, arg2: $SerializableDataTicket$$Type<(D)>, arg3: D): void
-public "shouldPlayAnimsWhileGamePaused"(): boolean
+public "stopTriggeredAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
+public "getRenderProvider"(): any
+public "triggerArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
+public "stopTriggeredArmorAnim"(arg0: $Entity$$Type, arg1: long, arg2: StringJS, arg3: StringJS): void
 public "getBoneResetTime"(): double
+public "shouldPlayAnimsWhileGamePaused"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "defaultAttributeModifiers"(): $ItemAttributeModifiers
 get "animatableInstanceCache"(): $AnimatableInstanceCache
 get "perspectiveAware"(): boolean
@@ -9592,6 +9661,7 @@ declare global {
 export type $PromethiumPickaxeItem_ = $PromethiumPickaxeItem$$Type;
 }}
 declare module "rearth.oritech.item.other.SmallFluidTankBlockItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
@@ -9599,20 +9669,22 @@ import {$FluidApi$ItemProvider, $FluidApi$ItemProvider$$Type} from "rearth.orite
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$FluidApi$SingleSlotStorage, $FluidApi$SingleSlotStorage$$Type} from "rearth.oritech.api.fluid.FluidApi$SingleSlotStorage"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $SmallFluidTankBlockItem extends $BlockItem implements $FluidApi$ItemProvider {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -9623,19 +9695,20 @@ static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
  "block": $Block
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(block: $Block$$Type, settings: $Item$Properties$$Type)
+constructor(arg0: $Block$$Type, arg1: $Item$Properties$$Type)
 
-public "getName"(stack: $ItemStack$$Type): $Component
-public "isBarVisible"(stack: $ItemStack$$Type): boolean
-public "getBarWidth"(stack: $ItemStack$$Type): integer
-public "getBarColor"(stack: $ItemStack$$Type): integer
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
-public "getFluidStorage"(stack: $ItemStack$$Type): $FluidApi$SingleSlotStorage
+public "getName"(arg0: $ItemStack$$Type): $Component
+public "isBarVisible"(arg0: $ItemStack$$Type): boolean
+public "getBarWidth"(arg0: $ItemStack$$Type): integer
+public "getBarColor"(arg0: $ItemStack$$Type): integer
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "getFluidStorage"(arg0: $ItemStack$$Type): $FluidApi$SingleSlotStorage
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
 public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9660,10 +9733,10 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$MultiblockMachine, $MultiblockMachine$$Type} from "rearth.oritech.block.base.block.MultiblockMachine"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
+import {$MultiblockMachine, $MultiblockMachine$$Type} from "rearth.oritech.block.base.block.MultiblockMachine"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Class, $Class$$Type} from "java.lang.Class"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
@@ -9686,7 +9759,7 @@ static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "ASSEMBLED": $BooleanProperty
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -9694,7 +9767,7 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getBlockEntityType"(): $Class<($BlockEntity)>
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
@@ -9742,8 +9815,8 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $TreefellerBlock extends $HorizontalDirectionalBlock implements $EntityBlock {
@@ -9760,7 +9833,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -9768,15 +9841,15 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 }
@@ -9801,8 +9874,8 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
@@ -9830,20 +9903,20 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
-public "getCloneItemStack"(world: $LevelReader$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type): $ItemStack
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
+public "getCloneItemStack"(arg0: $LevelReader$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): $ItemStack
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -9885,14 +9958,14 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "asHolder"(): $Holder<(any)>
 }
@@ -9936,8 +10009,8 @@ import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $FrameInteractionBlock extends $HorizontalDirectionalBlock implements $EntityBlock {
@@ -9955,7 +10028,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -9963,13 +10036,13 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "asHolder"(): $Holder<(any)>
@@ -9995,8 +10068,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$MultiblockMachine, $MultiblockMachine$$Type} from "rearth.oritech.block.base.block.MultiblockMachine"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Class, $Class$$Type} from "java.lang.Class"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
@@ -10019,7 +10092,7 @@ static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "ASSEMBLED": $BooleanProperty
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -10027,10 +10100,10 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getBlockEntityType"(): $Class<($BlockEntity)>
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "asHolder"(): $Holder<(any)>
 get "blockEntityType"(): $Class<($BlockEntity)>
 }
@@ -10047,13 +10120,17 @@ declare global {
 export type $FuelGeneratorBlock_ = $FuelGeneratorBlock$$Type;
 }}
 declare module "rearth.oritech.item.tools.WeedKiller" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
@@ -10063,16 +10140,17 @@ import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.conte
 export class $WeedKiller extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(settings: $Item$Properties$$Type)
+constructor(arg0: $Item$Properties$$Type)
 
-public "useOn"(context: $UseOnContext$$Type): $InteractionResult
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10096,14 +10174,14 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$HashMap, $HashMap$$Type} from "java.util.HashMap"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -10120,7 +10198,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $IntegerProperty
 static "NO_CONNECTION": integer
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -10142,11 +10220,11 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "getShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public "getCollisionShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
+public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "getNormalBlock"(): $BlockState
+public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "getConnectionBlock"(): $BlockState
 public "asHolder"(): $Holder<(any)>
 get "normalBlock"(): $BlockState
@@ -10204,26 +10282,26 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "onPlace"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, oldState: $BlockState$$Type, notify: boolean): void
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "onPlace"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
+public "onWrenchUse"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $InteractionHand$$Type): $InteractionResult
+public "shouldConnect"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockPos$$Type, arg3: $Level$$Type, arg4: boolean): boolean
+public "updateNeighbors"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: boolean): void
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "addConnectionStates"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: boolean): $BlockState
+public "addConnectionStates"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): $BlockState
+public "addStraightState"(arg0: $BlockState$$Type): $BlockState
+public "onWrenchUseNeighbor"(arg0: $BlockState$$Type, arg1: $BlockState$$Type, arg2: $Level$$Type, arg3: $BlockPos$$Type, arg4: $BlockPos$$Type, arg5: $Direction$$Type, arg6: $Player$$Type, arg7: $InteractionHand$$Type): $InteractionResult
 public "apiValidationFunction"(): $TriFunction<($Level), ($BlockPos), ($Direction), (boolean)>
-public "updateNeighbors"(world: $Level$$Type, pos: $BlockPos$$Type, neighborToggled: boolean): void
-public "shouldConnect"(current: $BlockState$$Type, direction: $Direction$$Type, currentPos: $BlockPos$$Type, world: $Level$$Type, createConnection: boolean): boolean
-public "onWrenchUse"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResult
-public "isConnectingInDirection"(current: $BlockState$$Type, direction: $Direction$$Type, currentPos: $BlockPos$$Type, world: $Level$$Type, createConnection: boolean): boolean
-public "addConnectionStates"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, createConnection: boolean): $BlockState
-public "addConnectionStates"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, createDirection: $Direction$$Type): $BlockState
-public "onWrenchUseNeighbor"(state: $BlockState$$Type, neighborState: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, neighborPos: $BlockPos$$Type, neighborFace: $Direction$$Type, player: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResult
-public "addStraightState"(state: $BlockState$$Type): $BlockState
+public "isConnectingInDirection"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockPos$$Type, arg3: $Level$$Type, arg4: boolean): boolean
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -10247,12 +10325,12 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
@@ -10273,7 +10351,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -10281,10 +10359,10 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -10312,13 +10390,13 @@ export interface $ArmorEventHandler {
 }
 
 export namespace $ArmorEventHandler {
-function processEvent(livingEntity: $LivingEntity$$Type, equipmentSlot: $EquipmentSlot$$Type, previousStack: $ItemStack$$Type, currentStack: $ItemStack$$Type): void
+function processEvent(arg0: $LivingEntity$$Type, arg1: $EquipmentSlot$$Type, arg2: $ItemStack$$Type, arg3: $ItemStack$$Type): void
 const probejs$$marker: never
 }
 export class $ArmorEventHandler$$Static implements $ArmorEventHandler {
 
 
-static "processEvent"(livingEntity: $LivingEntity$$Type, equipmentSlot: $EquipmentSlot$$Type, previousStack: $ItemStack$$Type, currentStack: $ItemStack$$Type): void
+static "processEvent"(arg0: $LivingEntity$$Type, arg1: $EquipmentSlot$$Type, arg2: $ItemStack$$Type, arg3: $ItemStack$$Type): void
  "onEquipped"(arg0: $Player$$Type, arg1: $ItemStack$$Type): void
  "onUnequipped"(arg0: $Player$$Type, arg1: $ItemStack$$Type): void
 }
@@ -10357,14 +10435,14 @@ static readonly "PACKET_ID": $CustomPacketPayload$Type<($PortableLaserItem$Laser
 constructor()
 
 public "type"(): $CustomPacketPayload$Type<($CustomPacketPayload)>
-public "equals"(o: any): boolean
-public "toString"(): string
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
 public "hashCode"(): integer
-public static "createType"<T extends $CustomPacketPayload>(arg0: string): $CustomPacketPayload$Type<(T)>
 public static "codec"<B extends $FriendlyByteBuf>(arg0: $CustomPacketPayload$FallbackProvider$$Type<(B)>, arg1: $List$$Type<($CustomPacketPayload$TypeAndCodec$$Type<(B), (any)>)>, arg2: $ConnectionProtocol$$Type, arg3: $PacketFlow$$Type): $StreamCodec<(B), ($CustomPacketPayload)>
 public static "codec"<B extends $ByteBuf, T extends $CustomPacketPayload>(arg0: $StreamMemberEncoder$$Type<(B), (T)>, arg1: $StreamDecoder$$Type<(B), (T)>): $StreamCodec<(B), (T)>
-public "toVanillaServerbound"(): $ServerboundCustomPayloadPacket
+public static "createType"<T extends $CustomPacketPayload>(arg0: StringJS): $CustomPacketPayload$Type<(T)>
 public "toVanillaClientbound"(): $ClientboundCustomPayloadPacket
+public "toVanillaServerbound"(): $ServerboundCustomPayloadPacket
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10425,8 +10503,8 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$AttachFace, $AttachFace$$Type} from "net.minecraft.world.level.block.state.properties.AttachFace"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Class, $Class$$Type} from "java.lang.Class"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
@@ -10447,7 +10525,7 @@ static readonly "USE_ACCURATE_OUTLINES": boolean
 static "MACHINE_EFFICIENCY_ADDON_SHAPE": (($VoxelShape)[])[]
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static "MACHINE_PROCESSING_ADDON_SHAPE": (($VoxelShape)[])[]
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -10475,7 +10553,7 @@ static readonly "FACE": $EnumProperty<($AttachFace)>
  "hasCollision": boolean
 static "MACHINE_ULTIMATE_ADDON_SHAPE": (($VoxelShape)[])[]
 
-constructor(settings: $BlockBehaviour$Properties$$Type, addonSettings: $MachineAddonBlock$AddonSettings$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type, arg1: $MachineAddonBlock$AddonSettings$$Type)
 
 public "getBlockEntityType"(): $Class<($BlockEntity)>
 public "asHolder"(): $Holder<(any)>
@@ -10500,13 +10578,13 @@ import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.leve
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$EnergyPipeConnectionBlock, $EnergyPipeConnectionBlock$$Type} from "rearth.oritech.block.blocks.pipes.energy.EnergyPipeConnectionBlock"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -10523,7 +10601,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $IntegerProperty
 static "NO_CONNECTION": integer
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -10545,11 +10623,11 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "getShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public "getCollisionShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
+public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "getNormalBlock"(): $BlockState
+public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "getConnectionBlock"(): $BlockState
 public "asHolder"(): $Holder<(any)>
 get "normalBlock"(): $BlockState
@@ -10583,8 +10661,8 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $PassiveGeneratorBlock extends $Block implements $EntityBlock {
@@ -10601,16 +10679,16 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "asHolder"(): $Holder<(any)>
@@ -10630,8 +10708,8 @@ export type $PassiveGeneratorBlock_ = $PassiveGeneratorBlock$$Type;
 declare module "rearth.oritech.util.SizedIngredient" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
+import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$Record, $Record$$Type} from "java.lang.Record"
@@ -10642,24 +10720,24 @@ static "PACKET_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($SizedIngredien
 
 constructor(count: integer, ingredient: $Ingredient$$Type)
 
-public "equals"(o: any): boolean
-public "toString"(): string
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "test"(itemStack: $ItemStack$$Type): boolean
+public "test"(arg0: $ItemStack$$Type): boolean
 public "test"(arg0: any): boolean
 public "count"(): integer
 public "ingredient"(): $Ingredient
 public "or"(arg0: $Predicate$$Type<($ItemStack)>): $Predicate<($ItemStack)>
+public static "not"<T>(arg0: $Predicate$$Type<($ItemStack)>): $Predicate<($ItemStack)>
 public "negate"(): $Predicate<($ItemStack)>
 public "and"(arg0: $Predicate$$Type<($ItemStack)>): $Predicate<($ItemStack)>
-public static "not"<T>(arg0: $Predicate$$Type<($ItemStack)>): $Predicate<($ItemStack)>
 public static "isEqual"<T>(arg0: any): $Predicate<($ItemStack)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $SizedIngredient$$Type = ({"count"?: integer, "ingredient"?: $Ingredient$$Type}) | ([count?: integer, ingredient?: $Ingredient$$Type]);
+export type $SizedIngredient$$Type = ({"ingredient"?: $Ingredient$$Type, "count"?: integer}) | ([ingredient?: $Ingredient$$Type, count?: integer]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -10678,10 +10756,10 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$MultiblockMachine, $MultiblockMachine$$Type} from "rearth.oritech.block.base.block.MultiblockMachine"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
+import {$MultiblockMachine, $MultiblockMachine$$Type} from "rearth.oritech.block.base.block.MultiblockMachine"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Class, $Class$$Type} from "java.lang.Class"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
@@ -10704,7 +10782,7 @@ static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "ASSEMBLED": $BooleanProperty
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -10712,7 +10790,7 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getBlockEntityType"(): $Class<($BlockEntity)>
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
@@ -10743,8 +10821,8 @@ import {$BlockStateConfiguration, $BlockStateConfiguration$$Type} from "net.mine
 import {$BlockPileConfiguration, $BlockPileConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration"
 import {$ResourceNodeFeatureConfig, $ResourceNodeFeatureConfig$$Type} from "rearth.oritech.init.world.features.resourcenode.ResourceNodeFeatureConfig"
 import {$NoneFeatureConfiguration, $NoneFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration"
-import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$EndGatewayConfiguration, $EndGatewayConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration"
+import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$LakeFeature$Configuration, $LakeFeature$Configuration$$Type} from "net.minecraft.world.level.levelgen.feature.LakeFeature$Configuration"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RootSystemConfiguration, $RootSystemConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration"
@@ -10841,9 +10919,9 @@ static readonly "DRIPSTONE_CLUSTER": $Feature<($DripstoneClusterConfiguration)>
 static readonly "GEODE": $Feature<($GeodeConfiguration)>
 static readonly "KELP": $Feature<($NoneFeatureConfiguration)>
 
-constructor(configCodec: $Codec$$Type<($ResourceNodeFeatureConfig$$Type)>)
+constructor(arg0: $Codec$$Type<($ResourceNodeFeatureConfig$$Type)>)
 
-public "place"(context: $FeaturePlaceContext$$Type<($ResourceNodeFeatureConfig$$Type)>): boolean
+public "place"(arg0: $FeaturePlaceContext$$Type<($ResourceNodeFeatureConfig$$Type)>): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10859,18 +10937,20 @@ export type $ResourceNodeFeature_ = $ResourceNodeFeature$$Type;
 }}
 declare module "rearth.oritech.item.tools.armor.JetpackExoElytraItem" {
 import {$BackstorageExoArmorItem, $BackstorageExoArmorItem$$Type} from "rearth.oritech.item.tools.armor.BackstorageExoArmorItem"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ArmorMaterial, $ArmorMaterial$$Type} from "net.minecraft.world.item.ArmorMaterial"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$GeoAnimatable, $GeoAnimatable$$Type} from "software.bernie.geckolib.animatable.GeoAnimatable"
+import {$EquipmentSlot, $EquipmentSlot$$Type} from "net.minecraft.world.entity.EquipmentSlot"
 import {$BaseJetpackItem, $BaseJetpackItem$$Type} from "rearth.oritech.item.tools.armor.BaseJetpackItem"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
-import {$EquipmentSlot, $EquipmentSlot$$Type} from "net.minecraft.world.entity.EquipmentSlot"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$FluidApi$SingleSlotStorage, $FluidApi$SingleSlotStorage$$Type} from "rearth.oritech.api.fluid.FluidApi$SingleSlotStorage"
@@ -10880,6 +10960,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.ArmorItem$Type"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
@@ -10890,7 +10971,7 @@ import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.Serve
 export class $JetpackExoElytraItem extends $BackstorageExoArmorItem implements $BaseJetpackItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -10898,42 +10979,43 @@ static readonly "DISPENSE_ITEM_BEHAVIOR": $DispenseItemBehavior
  "defaultModifiers": $Supplier<($ItemAttributeModifiers)>
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(material: $Holder$$Type<($ArmorMaterial)>, type: $ArmorItem$Type$$Type, settings: $Item$Properties$$Type)
+constructor(arg0: $Holder$$Type<($ArmorMaterial)>, arg1: $ArmorItem$Type$$Type, arg2: $Item$Properties$$Type)
 
-public "getModel"(): $ResourceLocation
-public "getBarWidth"(stack: $ItemStack$$Type): integer
-public "getBarColor"(stack: $ItemStack$$Type): integer
+public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
 public "getSpeed"(): float
-public "inventoryTick"(stack: $ItemStack$$Type, world: $Level$$Type, entity: $Entity$$Type, slot: integer, selected: boolean): void
-public "canElytraFly"(stack: $ItemStack$$Type, entity: $LivingEntity$$Type): boolean
-public "elytraFlightTick"(stack: $ItemStack$$Type, entity: $LivingEntity$$Type, flightTicks: integer): boolean
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
-public "getEnergyCapacity"(stack: $ItemStack$$Type): long
-public "getFuelCapacity"(): long
-public "useCustomElytra"(entity: $LivingEntity$$Type, chestStack: $ItemStack$$Type, tickElytra: boolean): boolean
-public "getEnergyMaxInput"(stack: $ItemStack$$Type): long
+public "canElytraFly"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): boolean
+public "getModel"(): $ResourceLocation
+public "getBarWidth"(arg0: $ItemStack$$Type): integer
+public "getBarColor"(arg0: $ItemStack$$Type): integer
 public "requireUpward"(): boolean
 public "getRfUsage"(): integer
 public "getFuelUsage"(): integer
 public "requireTakeoff"(): boolean
-public "getJetpackBarColor"(stack: $ItemStack$$Type): integer
-public "getJetpackBarStep"(stack: $ItemStack$$Type): integer
-public "addJetpackTooltip"(stack: $ItemStack$$Type, tooltip: $List$$Type<($Component$$Type)>, includeEnergy: boolean): void
-public "getFluidStorage"(stack: $ItemStack$$Type): $FluidApi$SingleSlotStorage
-public "tickJetpack"(stack: $ItemStack$$Type, entity: $Entity$$Type, world: $Level$$Type): void
-public "tryUseFluid"(stack: $ItemStack$$Type): boolean
-public "getStoredFluid"(stack: $ItemStack$$Type): $FluidStack
-public "isValidFuel"(variant: $Fluid$$Type): boolean
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "elytraFlightTick"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: integer): boolean
+public "getEnergyCapacity"(arg0: $ItemStack$$Type): long
+public "useCustomElytra"(arg0: $LivingEntity$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
+public "getFuelCapacity"(): long
+public "getEnergyMaxInput"(arg0: $ItemStack$$Type): long
+public "tickJetpack"(arg0: $ItemStack$$Type, arg1: $Entity$$Type, arg2: $Level$$Type): void
+public "tryUseFluid"(arg0: $ItemStack$$Type): boolean
+public "getStoredFluid"(arg0: $ItemStack$$Type): $FluidStack
+public "isValidFuel"(arg0: $Fluid$$Type): boolean
+public "getJetpackBarColor"(arg0: $ItemStack$$Type): integer
+public "getJetpackBarStep"(arg0: $ItemStack$$Type): integer
+public "addJetpackTooltip"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>, arg2: boolean): void
+public "getFluidStorage"(arg0: $ItemStack$$Type): $FluidApi$SingleSlotStorage
 public static "getId"(arg0: $ItemStack$$Type): long
 public static "getOrAssignId"(arg0: $ItemStack$$Type, arg1: $ServerLevel$$Type): long
 public static "registerSyncedAnimatable"(arg0: $GeoAnimatable$$Type): void
-public static "processEvent"(livingEntity: $LivingEntity$$Type, equipmentSlot: $EquipmentSlot$$Type, previousStack: $ItemStack$$Type, currentStack: $ItemStack$$Type): void
+public static "processEvent"(arg0: $LivingEntity$$Type, arg1: $EquipmentSlot$$Type, arg2: $ItemStack$$Type, arg3: $ItemStack$$Type): void
 public static "get"(arg0: $ItemStack$$Type): $Equipable
-get "model"(): $ResourceLocation
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "speed"(): float
-get "fuelCapacity"(): long
+get "model"(): $ResourceLocation
 get "rfUsage"(): integer
 get "fuelUsage"(): integer
+get "fuelCapacity"(): long
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10946,6 +11028,62 @@ export type $JetpackExoElytraItem$$Type = ($JetpackExoElytraItem);
  */
 declare global {
 export type $JetpackExoElytraItem_ = $JetpackExoElytraItem$$Type;
+}}
+declare module "rearth.oritech.block.blocks.decorative.MetalGirderBlock" {
+import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
+import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$HorizontalDirectionalBlock, $HorizontalDirectionalBlock$$Type} from "net.minecraft.world.level.block.HorizontalDirectionalBlock"
+import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
+import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
+import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
+import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
+
+export class $MetalGirderBlock extends $HorizontalDirectionalBlock {
+static readonly "UPDATE_IMMEDIATE": integer
+ "item": $Item
+static readonly "CODEC": $MapCodec<($Block)>
+static readonly "UPDATE_NEIGHBORS": integer
+static readonly "INDESTRUCTIBLE": float
+static readonly "OCCLUSION_CACHE": $ThreadLocal<($Object2ByteLinkedOpenHashMap<($Block$BlockStatePairKey)>)>
+static readonly "UPDATE_NONE": integer
+static readonly "UPDATE_INVISIBLE": integer
+static readonly "UPDATE_MOVE_BY_PISTON": integer
+static readonly "HEADING": $BooleanProperty
+static readonly "UPDATE_LIMIT": integer
+static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
+static readonly "UPDATE_ALL": integer
+static readonly "UPDATE_ALL_IMMEDIATE": integer
+ "descriptionId": StringJS
+static readonly "UPDATE_KNOWN_SHAPE": integer
+static readonly "UPDATE_SUPPRESS_DROPS": integer
+static readonly "INSTANT": float
+static readonly "UPDATE_CLIENTS": integer
+static readonly "FACING": $DirectionProperty
+ "hasCollision": boolean
+
+constructor(arg0: $BlockBehaviour$Properties$$Type)
+
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "asHolder"(): $Holder<(any)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $MetalGirderBlock$$Type = ($MetalGirderBlock);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $MetalGirderBlock_ = $MetalGirderBlock$$Type;
 }}
 declare module "rearth.oritech.block.blocks.pipes.energy.SuperConductorConnectionBlock" {
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
@@ -10962,8 +11100,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -10980,7 +11118,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $IntegerProperty
 static "NO_CONNECTION": integer
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -11002,20 +11140,20 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "apiValidationFunction"(): $TriFunction<($Level), ($BlockPos), ($Direction), (boolean)>
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getNormalBlock"(): $BlockState
-public "getNetworkData"(world: $Level$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
+public "getNetworkData"(arg0: $Level$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
 public "getConnectionBlock"(): $BlockState
-public "getPipeTypeName"(): string
-public "connectToOwnBlockType"(block: $Block$$Type): boolean
-public "isCompatibleTarget"(block: $Block$$Type): boolean
+public "getPipeTypeName"(): StringJS
+public "connectToOwnBlockType"(arg0: $Block$$Type): boolean
+public "isCompatibleTarget"(arg0: $Block$$Type): boolean
+public "apiValidationFunction"(): $TriFunction<($Level), ($BlockPos), ($Direction), (boolean)>
 public "asHolder"(): $Holder<(any)>
 get "normalBlock"(): $BlockState
 get "connectionBlock"(): $BlockState
-get "pipeTypeName"(): string
+get "pipeTypeName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11045,8 +11183,8 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $NuclearExplosionBlock extends $Block implements $EntityBlock {
@@ -11063,17 +11201,17 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type, size: integer)
+constructor(arg0: $BlockBehaviour$Properties$$Type, arg1: integer)
 
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 }
@@ -11096,15 +11234,15 @@ import {$ByteBuf, $ByteBuf$$Type} from "io.netty.buffer.ByteBuf"
 
 export interface $UpdatableField<T, R> {
 
- "handleFullUpdate"(arg0: T): void
- "handleDeltaUpdate"(arg0: R): void
- "getDeltaData"(): R
  "getFullData"(): T
- "useDeltaOnly"(type: $SyncType$$Type): boolean
+ "useDeltaOnly"(arg0: $SyncType$$Type): boolean
+ "getDeltaData"(): R
  "getDeltaCodec"(): $StreamCodec<($ByteBuf), (R)>
  "getFullCodec"(): $StreamCodec<($ByteBuf), (T)>
-get "deltaData"(): R
+ "handleDeltaUpdate"(arg0: R): void
+ "handleFullUpdate"(arg0: T): void
 get "fullData"(): T
+get "deltaData"(): R
 get "deltaCodec"(): $StreamCodec<($ByteBuf), (R)>
 get "fullCodec"(): $StreamCodec<($ByteBuf), (T)>
 }
@@ -11115,13 +11253,13 @@ const probejs$$marker: never
 export class $UpdatableField$$Static<T, R> implements $UpdatableField {
 
 
- "handleFullUpdate"(arg0: T): void
- "handleDeltaUpdate"(arg0: R): void
- "getDeltaData"(): R
  "getFullData"(): T
- "useDeltaOnly"(type: $SyncType$$Type): boolean
+ "useDeltaOnly"(arg0: $SyncType$$Type): boolean
+ "getDeltaData"(): R
  "getDeltaCodec"(): $StreamCodec<($ByteBuf), (R)>
  "getFullCodec"(): $StreamCodec<($ByteBuf), (T)>
+ "handleDeltaUpdate"(arg0: R): void
+ "handleFullUpdate"(arg0: T): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11142,14 +11280,14 @@ import {$BlockSetType, $BlockSetType$$Type} from "net.minecraft.world.level.bloc
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ButtonBlock, $ButtonBlock$$Type} from "net.minecraft.world.level.block.ButtonBlock"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$AttachFace, $AttachFace$$Type} from "net.minecraft.world.level.block.state.properties.AttachFace"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -11164,7 +11302,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "UPDATE_IMMEDIATE": integer
@@ -11182,9 +11320,9 @@ static readonly "FACING": $DirectionProperty
 static readonly "FACE": $EnumProperty<($AttachFace)>
  "hasCollision": boolean
 
-constructor(blockSetType: $BlockSetType$$Type, pressTicks: integer, settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockSetType$$Type, arg1: integer, arg2: $BlockBehaviour$Properties$$Type)
 
-public "getShape"(state: $BlockState$$Type, world: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
+public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -11228,24 +11366,24 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getNormalBlock"(): $BlockState
-public "getNetworkData"(world: $Level$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
+public "getNetworkData"(arg0: $Level$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
 public "getConnectionBlock"(): $BlockState
-public "getPipeTypeName"(): string
-public "connectToOwnBlockType"(block: $Block$$Type): boolean
+public "getPipeTypeName"(): StringJS
+public "connectToOwnBlockType"(arg0: $Block$$Type): boolean
 public "asHolder"(): $Holder<(any)>
 get "normalBlock"(): $BlockState
 get "connectionBlock"(): $BlockState
-get "pipeTypeName"(): string
+get "pipeTypeName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11269,13 +11407,13 @@ public "getCapacity"(): long
 public "update"(): void
 public "extract"(arg0: long, arg1: boolean): long
 public "insert"(arg0: long, arg1: boolean): long
-public "setAmount"(arg0: long): void
 public "getAmount"(): long
+public "setAmount"(arg0: long): void
 public "supportsInsertion"(): boolean
 public "supportsExtraction"(): boolean
 get "capacity"(): long
-set "amount"(value: long)
 get "amount"(): long
+set "amount"(value: long)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11290,29 +11428,34 @@ declare global {
 export type $EnergyApi$EnergyStorage_ = $EnergyApi$EnergyStorage$$Type;
 }}
 declare module "rearth.oritech.item.other.CustomTooltipItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
-import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 
 export class $CustomTooltipItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(settings: $Item$Properties$$Type, translationKey: string)
+constructor(arg0: $Item$Properties$$Type, arg1: StringJS)
 
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11367,7 +11510,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -11375,11 +11518,11 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 }
@@ -11408,10 +11551,10 @@ static readonly "URANIUM_FEATURE_ENDEC": $Endec<($UraniumPatchFeatureConfig)>
 
 constructor(number: integer, blockId: $ResourceLocation$$Type)
 
-public "equals"(o: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "number"(): integer
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
 public "blockId"(): $ResourceLocation
 public "getFeatures"(): $Stream<($ConfiguredFeature<(any), (any)>)>
 get "features"(): $Stream<($ConfiguredFeature<(any), (any)>)>
@@ -11420,7 +11563,7 @@ get "features"(): $Stream<($ConfiguredFeature<(any), (any)>)>
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $UraniumPatchFeatureConfig$$Type = ({"blockId"?: $ResourceLocation$$Type, "number"?: integer}) | ([blockId?: $ResourceLocation$$Type, number?: integer]);
+export type $UraniumPatchFeatureConfig$$Type = ({"number"?: integer, "blockId"?: $ResourceLocation$$Type}) | ([number?: integer, blockId?: $ResourceLocation$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -11439,10 +11582,10 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$MultiblockMachine, $MultiblockMachine$$Type} from "rearth.oritech.block.base.block.MultiblockMachine"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
+import {$MultiblockMachine, $MultiblockMachine$$Type} from "rearth.oritech.block.base.block.MultiblockMachine"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Class, $Class$$Type} from "java.lang.Class"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
@@ -11465,7 +11608,7 @@ static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "ASSEMBLED": $BooleanProperty
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -11473,7 +11616,7 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getBlockEntityType"(): $Class<($BlockEntity)>
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
@@ -11498,17 +11641,17 @@ import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.B
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$RenderShape, $RenderShape$$Type} from "net.minecraft.world.level.block.RenderShape"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
@@ -11533,20 +11676,20 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type, productionRate: integer)
+constructor(arg0: $BlockBehaviour$Properties$$Type, arg1: integer)
 
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
-public "playerWillDestroy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
+public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -11603,20 +11746,20 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "setPlacedBy"(world: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, placer: $LivingEntity$$Type, itemStack: $ItemStack$$Type): void
-public "useWithoutItem"(state: $BlockState$$Type, world: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 }
@@ -11671,7 +11814,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $IntegerProperty
 static "NO_CONNECTION": integer
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -11694,20 +11837,20 @@ static readonly "INSTANT": float
 static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
-public "apiValidationFunction"(): $TriFunction<($Level), ($BlockPos), ($Direction), (boolean)>
 public "getNormalBlock"(): $BlockState
-public "getNetworkData"(world: $Level$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
+public "getNetworkData"(arg0: $Level$$Type): $GenericPipeInterfaceEntity$PipeNetworkData
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getConnectionBlock"(): $BlockState
-public "getPipeTypeName"(): string
-public "connectToOwnBlockType"(block: $Block$$Type): boolean
-public "isCompatibleTarget"(block: $Block$$Type): boolean
+public "getPipeTypeName"(): StringJS
+public "connectToOwnBlockType"(arg0: $Block$$Type): boolean
+public "isCompatibleTarget"(arg0: $Block$$Type): boolean
+public "apiValidationFunction"(): $TriFunction<($Level), ($BlockPos), ($Direction), (boolean)>
 public "asHolder"(): $Holder<(any)>
 get "normalBlock"(): $BlockState
 get "connectionBlock"(): $BlockState
-get "pipeTypeName"(): string
+get "pipeTypeName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11734,16 +11877,16 @@ get "comparatorOutput"(): integer
 }
 
 export namespace $ComparatorOutputProvider {
-function getFluidStorageComparatorOutput(storage: $FluidApi$SingleSlotStorage$$Type): integer
-function getItemStackComparatorOutput(stack: $ItemStack$$Type): integer
+function getFluidStorageComparatorOutput(arg0: $FluidApi$SingleSlotStorage$$Type): integer
+function getItemStackComparatorOutput(arg0: $ItemStack$$Type): integer
 const probejs$$marker: never
 }
 export class $ComparatorOutputProvider$$Static implements $ComparatorOutputProvider {
 
 
-static "getFluidStorageComparatorOutput"(storage: $FluidApi$SingleSlotStorage$$Type): integer
  "getComparatorOutput"(): integer
-static "getItemStackComparatorOutput"(stack: $ItemStack$$Type): integer
+static "getFluidStorageComparatorOutput"(arg0: $FluidApi$SingleSlotStorage$$Type): integer
+static "getItemStackComparatorOutput"(arg0: $ItemStack$$Type): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11758,13 +11901,17 @@ declare global {
 export type $ComparatorOutputProvider_ = $ComparatorOutputProvider$$Type;
 }}
 declare module "rearth.oritech.item.tools.LaserTargetDesignator" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
@@ -11774,16 +11921,17 @@ import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.conte
 export class $LaserTargetDesignator extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(settings: $Item$Properties$$Type)
+constructor(arg0: $Item$Properties$$Type)
 
-public "useOn"(context: $UseOnContext$$Type): $InteractionResult
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, type: $TooltipFlag$$Type): void
+public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11805,8 +11953,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -11829,7 +11977,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -11837,9 +11985,9 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -11878,8 +12026,8 @@ import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.Tooltip
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $ParticleCollectorBlock extends $DirectionalBlock implements $EntityBlock {
@@ -11896,7 +12044,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -11904,12 +12052,12 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "newBlockEntity"(pos: $BlockPos$$Type, state: $BlockState$$Type): $BlockEntity
-public "getTicker"<T extends $BlockEntity>(world: $Level$$Type, state: $BlockState$$Type, type: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "getStateForPlacement"(ctx: $BlockPlaceContext$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, options: $TooltipFlag$$Type): void
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 }
@@ -11934,8 +12082,8 @@ export class $LaserArmEntityBehavior {
 
 constructor()
 
+public "fireAtEntity"(arg0: $Level$$Type, arg1: $LaserArmBlockEntity$$Type, arg2: $LivingEntity$$Type): boolean
 public static "registerDefaults"(): void
-public "fireAtEntity"(world: $Level$$Type, laserEntity: $LaserArmBlockEntity$$Type, entity: $LivingEntity$$Type): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11958,8 +12106,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$MultiblockMachine, $MultiblockMachine$$Type} from "rearth.oritech.block.base.block.MultiblockMachine"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Class, $Class$$Type} from "java.lang.Class"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -11981,7 +12129,7 @@ static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "ASSEMBLED": $BooleanProperty
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -11989,7 +12137,7 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(settings: $BlockBehaviour$Properties$$Type)
+constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getBlockEntityType"(): $Class<($BlockEntity)>
 public "asHolder"(): $Holder<(any)>

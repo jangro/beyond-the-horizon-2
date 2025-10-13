@@ -5,38 +5,47 @@ import {$IDrawerAttributes, $IDrawerAttributes$$Type} from "com.jaquadro.minecra
 export interface $IDrawerAttributesModifiable extends $IDrawerAttributes {
 
  "setPriority"(arg0: integer): boolean
+ "setItemLocked"(arg0: $LockAttribute$$Type, arg1: boolean): boolean
+ "setIsConcealed"(arg0: boolean): boolean
+ "setIsSuspended"(arg0: boolean): boolean
+ "setIsVoid"(arg0: boolean): boolean
+ "setIsHopper"(arg0: boolean): boolean
+ "setIsMagnet"(arg0: boolean): boolean
+ "setIsSealed"(arg0: boolean): boolean
  "setIsShowingQuantity"(arg0: boolean): boolean
  "setHasFillLevel"(arg0: boolean): boolean
  "setIsDictConvertible"(arg0: boolean): boolean
  "setIsUnlimitedStorage"(arg0: boolean): boolean
  "setIsUnlimitedVending"(arg0: boolean): boolean
  "setIsBalancedFill"(arg0: boolean): boolean
- "setItemLocked"(arg0: $LockAttribute$$Type, arg1: boolean): boolean
- "setIsConcealed"(arg0: boolean): boolean
- "setIsSealed"(arg0: boolean): boolean
- "setIsVoid"(arg0: boolean): boolean
+ "isVoid"(): boolean
+ "isSuspended"(): boolean
  "isSealed"(): boolean
  "getPriority"(): integer
- "isVoid"(): boolean
+ "isItemLocked"(arg0: $LockAttribute$$Type): boolean
+ "isBalancedFill"(): boolean
+ "isHopper"(): boolean
+ "isMagnet"(): boolean
+ "isConcealed"(): boolean
+ "hasFillLevel"(): boolean
+ "canItemLock"(arg0: $LockAttribute$$Type): boolean
+ "isUnlimitedVending"(): boolean
  "isShowingQuantity"(): boolean
  "isUnlimitedStorage"(): boolean
- "isUnlimitedVending"(): boolean
  "isDictConvertible"(): boolean
- "isConcealed"(): boolean
- "canItemLock"(arg0: $LockAttribute$$Type): boolean
- "isBalancedFill"(): boolean
- "isItemLocked"(arg0: $LockAttribute$$Type): boolean
- "hasFillLevel"(): boolean
 set "priority"(value: integer)
+get "void"(): boolean
+get "suspended"(): boolean
 get "sealed"(): boolean
 get "priority"(): integer
-get "void"(): boolean
+get "balancedFill"(): boolean
+get "hopper"(): boolean
+get "magnet"(): boolean
+get "concealed"(): boolean
+get "unlimitedVending"(): boolean
 get "showingQuantity"(): boolean
 get "unlimitedStorage"(): boolean
-get "unlimitedVending"(): boolean
 get "dictConvertible"(): boolean
-get "concealed"(): boolean
-get "balancedFill"(): boolean
 }
 
 export namespace $IDrawerAttributesModifiable {
@@ -46,28 +55,34 @@ export class $IDrawerAttributesModifiable$$Static implements $IDrawerAttributesM
 
 
  "setPriority"(arg0: integer): boolean
+ "setItemLocked"(arg0: $LockAttribute$$Type, arg1: boolean): boolean
+ "setIsConcealed"(arg0: boolean): boolean
+ "setIsSuspended"(arg0: boolean): boolean
+ "setIsVoid"(arg0: boolean): boolean
+ "setIsHopper"(arg0: boolean): boolean
+ "setIsMagnet"(arg0: boolean): boolean
+ "setIsSealed"(arg0: boolean): boolean
  "setIsShowingQuantity"(arg0: boolean): boolean
  "setHasFillLevel"(arg0: boolean): boolean
  "setIsDictConvertible"(arg0: boolean): boolean
  "setIsUnlimitedStorage"(arg0: boolean): boolean
  "setIsUnlimitedVending"(arg0: boolean): boolean
  "setIsBalancedFill"(arg0: boolean): boolean
- "setItemLocked"(arg0: $LockAttribute$$Type, arg1: boolean): boolean
- "setIsConcealed"(arg0: boolean): boolean
- "setIsSealed"(arg0: boolean): boolean
- "setIsVoid"(arg0: boolean): boolean
+ "isVoid"(): boolean
+ "isSuspended"(): boolean
  "isSealed"(): boolean
  "getPriority"(): integer
- "isVoid"(): boolean
+ "isItemLocked"(arg0: $LockAttribute$$Type): boolean
+ "isBalancedFill"(): boolean
+ "isHopper"(): boolean
+ "isMagnet"(): boolean
+ "isConcealed"(): boolean
+ "hasFillLevel"(): boolean
+ "canItemLock"(arg0: $LockAttribute$$Type): boolean
+ "isUnlimitedVending"(): boolean
  "isShowingQuantity"(): boolean
  "isUnlimitedStorage"(): boolean
- "isUnlimitedVending"(): boolean
  "isDictConvertible"(): boolean
- "isConcealed"(): boolean
- "canItemLock"(arg0: $LockAttribute$$Type): boolean
- "isBalancedFill"(): boolean
- "isItemLocked"(arg0: $LockAttribute$$Type): boolean
- "hasFillLevel"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -111,7 +126,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -149,8 +164,8 @@ import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockType, $BlockType$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.BlockType"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -160,13 +175,13 @@ import {$IDrawerConfig, $IDrawerConfig$$Type} from "com.jaquadro.minecraft.stora
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PathComputationType, $PathComputationType$$Type} from "net.minecraft.world.level.pathfinder.PathComputationType"
 import {$FaceSlotBlock$InteractContext, $FaceSlotBlock$InteractContext$$Type} from "com.jaquadro.minecraft.storagedrawers.block.FaceSlotBlock$InteractContext"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$AABB, $AABB$$Type} from "net.minecraft.world.phys.AABB"
 import {$INetworked, $INetworked$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.INetworked"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
@@ -180,7 +195,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 readonly "slotGeometry": ($AABB)[]
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -198,43 +213,43 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
-constructor(arg0: integer, arg1: boolean, arg2: $IDrawerConfig$$Type, arg3: $BlockBehaviour$Properties$$Type)
 /**
  * 
  * @deprecated
  */
 constructor(arg0: integer, arg1: boolean, arg2: integer, arg3: $BlockBehaviour$Properties$$Type)
+constructor(arg0: integer, arg1: boolean, arg2: $IDrawerConfig$$Type, arg3: $BlockBehaviour$Properties$$Type)
 
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "useShapeForLightOcclusion"(arg0: $BlockState$$Type): boolean
+public "isPathfindable"(arg0: $BlockState$$Type, arg1: $PathComputationType$$Type): boolean
 public "getDrops"(arg0: $BlockState$$Type, arg1: $LootParams$Builder$$Type): $List<($ItemStack)>
 public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
-public "isPathfindable"(arg0: $BlockState$$Type, arg1: $PathComputationType$$Type): boolean
 public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
 public "isSignalSource"(arg0: $BlockState$$Type): boolean
 public "getSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
 public "putSlot"(arg0: $FaceSlotBlock$InteractContext$$Type, arg1: boolean): $InteractionResult
-public "hasAnalogOutputSignal"(arg0: $BlockState$$Type): boolean
+public "isHalfDepth"(): boolean
+public "getDrawerCount"(): integer
+public "retrimType"(): $BlockType
+public "retrimBlock"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): boolean
+public "getNameTypeKey"(): StringJS
+public "useSlot"(arg0: $FaceSlotBlock$InteractContext$$Type): $Optional<($InteractionResult)>
+public "takeSlot"(arg0: $FaceSlotBlock$InteractContext$$Type, arg1: boolean): $InteractionResult
 public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "hasAnalogOutputSignal"(arg0: $BlockState$$Type): boolean
 public "getAnalogOutputSignal"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type): integer
 public "getDirectSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
+public "useShapeForLightOcclusion"(arg0: $BlockState$$Type): boolean
 public "repartitionBlock"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): boolean
 public "getStorageUnits"(): integer
 public "interactPullDrawer"(arg0: $FaceSlotBlock$InteractContext$$Type): boolean
 public "interactReturnDrawer"(arg0: $FaceSlotBlock$InteractContext$$Type, arg1: $ItemStack$$Type): boolean
 public "useSlotInvertible"(arg0: $FaceSlotBlock$InteractContext$$Type): $Optional<($InteractionResult)>
-public "isHalfDepth"(): boolean
-public "getDrawerCount"(): integer
-public "getNameTypeKey"(): string
-public "useSlot"(arg0: $FaceSlotBlock$InteractContext$$Type): $Optional<($InteractionResult)>
-public "takeSlot"(arg0: $FaceSlotBlock$InteractContext$$Type, arg1: boolean): $InteractionResult
-public "retrimType"(): $BlockType
-public "retrimBlock"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): boolean
 public "asHolder"(): $Holder<(any)>
-get "storageUnits"(): integer
 get "halfDepth"(): boolean
 get "drawerCount"(): integer
-get "nameTypeKey"(): string
+get "nameTypeKey"(): StringJS
+get "storageUnits"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -285,75 +300,22 @@ export type $IFramedMaterials$$Type = ($IFramedMaterials);
 declare global {
 export type $IFramedMaterials_ = $IFramedMaterials$$Type;
 }}
-declare module "com.jaquadro.minecraft.storagedrawers.block.meta.BlockMetaFacingSizedOpen" {
-import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
-import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
-import {$EnumCompDrawer, $EnumCompDrawer$$Type} from "com.jaquadro.minecraft.storagedrawers.block.EnumCompDrawer"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
-import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$BlockMetaFacingSized, $BlockMetaFacingSized$$Type} from "com.jaquadro.minecraft.storagedrawers.block.meta.BlockMetaFacingSized"
-import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
-import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
-import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
-
-export class $BlockMetaFacingSizedOpen extends $BlockMetaFacingSized {
-static readonly "SLOTS": $EnumProperty<($EnumCompDrawer)>
-static readonly "UPDATE_IMMEDIATE": integer
- "item": $Item
-static readonly "CODEC": $MapCodec<($Block)>
-static readonly "UPDATE_NEIGHBORS": integer
-static readonly "INDESTRUCTIBLE": float
-static readonly "OCCLUSION_CACHE": $ThreadLocal<($Object2ByteLinkedOpenHashMap<($Block$BlockStatePairKey)>)>
-static readonly "UPDATE_NONE": integer
-static readonly "UPDATE_INVISIBLE": integer
-static readonly "UPDATE_MOVE_BY_PISTON": integer
-static readonly "UPDATE_LIMIT": integer
-static readonly "HALF": $BooleanProperty
-static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
-static readonly "UPDATE_ALL": integer
-static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
-static readonly "UPDATE_KNOWN_SHAPE": integer
-static readonly "UPDATE_SUPPRESS_DROPS": integer
-static readonly "INSTANT": float
-static readonly "UPDATE_CLIENTS": integer
-static readonly "FACING": $DirectionProperty
- "hasCollision": boolean
-
-constructor(arg0: $BlockBehaviour$Properties$$Type)
-
-public "asHolder"(): $Holder<(any)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $BlockMetaFacingSizedOpen$$Type = ($BlockMetaFacingSizedOpen);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $BlockMetaFacingSizedOpen_ = $BlockMetaFacingSizedOpen$$Type;
-}}
 declare module "com.jaquadro.minecraft.storagedrawers.item.ItemUpgradeIllumination" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$ItemUpgrade, $ItemUpgrade$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemUpgrade"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $ItemUpgradeIllumination extends $ItemUpgrade {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -362,6 +324,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type)
 
 public "isEnabled"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "enabled"(): boolean
 }
 /**
@@ -386,7 +349,7 @@ static readonly "LOCK_POPULATED": $LockAttribute
 
 
 public static "values"(): ($LockAttribute)[]
-public static "valueOf"(arg0: string): $LockAttribute
+public static "valueOf"(arg0: StringJS): $LockAttribute
 public static "getEnumSet"(arg0: integer): $EnumSet<($LockAttribute)>
 public static "getBitfield"(arg0: $EnumSet$$Type<($LockAttribute$$Type)>): integer
 public "getFlagValue"(): integer
@@ -415,8 +378,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$EnumFramingTablePart, $EnumFramingTablePart$$Type} from "com.jaquadro.minecraft.storagedrawers.block.EnumFramingTablePart"
@@ -426,16 +389,16 @@ import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
 import {$DoubleBlockCombiner$BlockType, $DoubleBlockCombiner$BlockType$$Type} from "net.minecraft.world.level.block.DoubleBlockCombiner$BlockType"
 import {$HorizontalDirectionalBlock, $HorizontalDirectionalBlock$$Type} from "net.minecraft.world.level.block.HorizontalDirectionalBlock"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $BlockFramingTable extends $HorizontalDirectionalBlock implements $EntityBlock {
@@ -452,7 +415,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "PART": $EnumProperty<($EnumFramingTablePart)>
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -464,10 +427,10 @@ static readonly "FACING": $DirectionProperty
 constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
 public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
 public static "getBlockType"(arg0: $BlockState$$Type): $DoubleBlockCombiner$BlockType
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
 public static "getConnectedDirection"(arg0: $BlockState$$Type): $Direction
@@ -527,7 +490,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -602,7 +565,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -615,9 +578,9 @@ public "getDrops"(arg0: $BlockState$$Type, arg1: $LootParams$Builder$$Type): $Li
 public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getCloneItemStack"(arg0: $LevelReader$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): $ItemStack
+public "canUseForRetrim"(): boolean
 public "getFramedBlockEntity"(arg0: $Level$$Type, arg1: $BlockPos$$Type): $IFramedBlockEntity
 public "supportsFrameMaterial"(arg0: $FrameMaterial$$Type): boolean
-public "canUseForRetrim"(): boolean
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getStateDefinition"(): $StateDefinition<($Block), ($BlockState)>
@@ -641,27 +604,33 @@ import {$LockAttribute, $LockAttribute$$Type} from "com.jaquadro.minecraft.stora
 
 export interface $IDrawerAttributes {
 
+ "isVoid"(): boolean
+ "isSuspended"(): boolean
  "isSealed"(): boolean
  "getPriority"(): integer
- "isVoid"(): boolean
+ "isItemLocked"(arg0: $LockAttribute$$Type): boolean
+ "isBalancedFill"(): boolean
+ "isHopper"(): boolean
+ "isMagnet"(): boolean
+ "isConcealed"(): boolean
+ "hasFillLevel"(): boolean
+ "canItemLock"(arg0: $LockAttribute$$Type): boolean
+ "isUnlimitedVending"(): boolean
  "isShowingQuantity"(): boolean
  "isUnlimitedStorage"(): boolean
- "isUnlimitedVending"(): boolean
  "isDictConvertible"(): boolean
- "isConcealed"(): boolean
- "canItemLock"(arg0: $LockAttribute$$Type): boolean
- "isBalancedFill"(): boolean
- "isItemLocked"(arg0: $LockAttribute$$Type): boolean
- "hasFillLevel"(): boolean
+get "void"(): boolean
+get "suspended"(): boolean
 get "sealed"(): boolean
 get "priority"(): integer
-get "void"(): boolean
+get "balancedFill"(): boolean
+get "hopper"(): boolean
+get "magnet"(): boolean
+get "concealed"(): boolean
+get "unlimitedVending"(): boolean
 get "showingQuantity"(): boolean
 get "unlimitedStorage"(): boolean
-get "unlimitedVending"(): boolean
 get "dictConvertible"(): boolean
-get "concealed"(): boolean
-get "balancedFill"(): boolean
 }
 
 export namespace $IDrawerAttributes {
@@ -670,18 +639,21 @@ const probejs$$marker: never
 export class $IDrawerAttributes$$Static implements $IDrawerAttributes {
 
 
+ "isVoid"(): boolean
+ "isSuspended"(): boolean
  "isSealed"(): boolean
  "getPriority"(): integer
- "isVoid"(): boolean
+ "isItemLocked"(arg0: $LockAttribute$$Type): boolean
+ "isBalancedFill"(): boolean
+ "isHopper"(): boolean
+ "isMagnet"(): boolean
+ "isConcealed"(): boolean
+ "hasFillLevel"(): boolean
+ "canItemLock"(arg0: $LockAttribute$$Type): boolean
+ "isUnlimitedVending"(): boolean
  "isShowingQuantity"(): boolean
  "isUnlimitedStorage"(): boolean
- "isUnlimitedVending"(): boolean
  "isDictConvertible"(): boolean
- "isConcealed"(): boolean
- "canItemLock"(arg0: $LockAttribute$$Type): boolean
- "isBalancedFill"(): boolean
- "isItemLocked"(arg0: $LockAttribute$$Type): boolean
- "hasFillLevel"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -696,15 +668,19 @@ declare global {
 export type $IDrawerAttributes_ = $IDrawerAttributes$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.item.ItemDetachedDrawer" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$TooltipComponent, $TooltipComponent$$Type} from "net.minecraft.world.inventory.tooltip.TooltipComponent"
 import {$IPortable, $IPortable$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.attribute.IPortable"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -714,7 +690,7 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 export class $ItemDetachedDrawer extends $Item implements $IPortable {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -723,15 +699,16 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type)
 
 public "getDescription"(): $Component
-public "canFitInsideContainerItems"(): boolean
+public "isHeavy"(arg0: $HolderLookup$Provider$$Type, arg1: $ItemStack$$Type): boolean
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getTooltipImage"(arg0: $ItemStack$$Type): $Optional<($TooltipComponent)>
 public "getDefaultInstance"(): $ItemStack
-public "getDescriptionId"(): string
-public "isHeavy"(arg0: $HolderLookup$Provider$$Type, arg1: $ItemStack$$Type): boolean
+public "getDescriptionId"(): StringJS
+public "canFitInsideContainerItems"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "description"(): $Component
 get "defaultInstance"(): $ItemStack
-get "descriptionId"(): string
+get "descriptionId"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -746,17 +723,21 @@ declare global {
 export type $ItemDetachedDrawer_ = $ItemDetachedDrawer$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.item.ItemShroudKey" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$ItemKey, $ItemKey$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemKey"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ItemKey, $ItemKey$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemKey"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $ItemShroudKey extends $ItemKey {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -765,6 +746,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type)
 
 public "isEnabled"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "enabled"(): boolean
 }
 /**
@@ -780,17 +762,21 @@ declare global {
 export type $ItemShroudKey_ = $ItemShroudKey$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.item.ItemUpgradeOneStack" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$ItemUpgrade, $ItemUpgrade$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemUpgrade"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $ItemUpgradeOneStack extends $ItemUpgrade {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -799,6 +785,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type)
 
 public "isEnabled"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "enabled"(): boolean
 }
 /**
@@ -845,8 +832,8 @@ export type $IDrawerConfig_ = $IDrawerConfig$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.block.EnumCompDrawer" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -859,28 +846,28 @@ static readonly "OPEN3": $EnumCompDrawer
 static readonly "OPEN1": $EnumCompDrawer
 
 
-public "toString"(): string
+public "toString"(): StringJS
 public static "values"(): ($EnumCompDrawer)[]
-public static "valueOf"(arg0: string): $EnumCompDrawer
-public static "byMetadata"(arg0: integer): $EnumCompDrawer
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $EnumCompDrawer
 public static "byOpenSlots"(arg0: integer): $EnumCompDrawer
 public "isHalfDepth"(): boolean
 public "getDrawerCount"(): integer
-public "getOpenSlots"(): integer
 public "getMetadata"(): integer
+public "getOpenSlots"(): integer
+public static "byMetadata"(arg0: integer): $EnumCompDrawer
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "serializedName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
 get "halfDepth"(): boolean
 get "drawerCount"(): integer
-get "openSlots"(): integer
 get "metadata"(): integer
-get "remappedEnumConstantName"(): string
+get "openSlots"(): integer
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -901,10 +888,10 @@ import {$IDrawer, $IDrawer$$Type} from "com.jaquadro.minecraft.storagedrawers.ap
 
 export interface $IDrawerGroup extends $IDrawerCapabilityProvider {
 
- "hasMissingDrawers"(): boolean
  "getDrawerCount"(): integer
  "getDrawer"(arg0: integer): $IDrawer
  "isGroupValid"(): boolean
+ "hasMissingDrawers"(): boolean
  "getAccessibleDrawerSlots"(): (integer)[]
  "getCapability"<T>(arg0: $ChameleonCapability$$Type<(T)>): T
 get "drawerCount"(): integer
@@ -918,10 +905,10 @@ const probejs$$marker: never
 export class $IDrawerGroup$$Static implements $IDrawerGroup {
 
 
- "hasMissingDrawers"(): boolean
  "getDrawerCount"(): integer
  "getDrawer"(arg0: integer): $IDrawer
  "isGroupValid"(): boolean
+ "hasMissingDrawers"(): boolean
  "getAccessibleDrawerSlots"(): (integer)[]
  "getCapability"<T>(arg0: $ChameleonCapability$$Type<(T)>): T
 }
@@ -938,17 +925,21 @@ declare global {
 export type $IDrawerGroup_ = $IDrawerGroup$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.item.ItemUpgradeConversion" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$ItemUpgrade, $ItemUpgrade$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemUpgrade"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $ItemUpgradeConversion extends $ItemUpgrade {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -957,6 +948,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type)
 
 public "isEnabled"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "enabled"(): boolean
 }
 /**
@@ -980,14 +972,15 @@ export class $KeyType extends $Record {
 static readonly "PERSONAL": $KeyType
 static readonly "CODEC": $Codec<($KeyType)>
 static readonly "CONCEALMENT": $KeyType
+static readonly "SUSPEND": $KeyType
 static readonly "QUANTIFY": $KeyType
 static readonly "DRAWER": $KeyType
 
-constructor(name: string)
+constructor(name: StringJS)
 
-public "name"(): string
+public "name"(): StringJS
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public static "values"(): $Stream<($KeyType)>
 public "hashCode"(): integer
 public "isEnabled"(): boolean
@@ -998,7 +991,7 @@ get "enabled"(): boolean
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $KeyType$$Type = ({"name"?: string}) | ([name?: string]);
+export type $KeyType$$Type = ({"name"?: StringJS}) | ([name?: StringJS]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1018,15 +1011,15 @@ import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.da
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $BlockEntityTrim extends $BaseBlockEntity implements $IFramedBlockEntity {
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 constructor(arg0: $BlockPos$$Type, arg1: $BlockState$$Type)
 
 public "material"(): $IFramedMaterials
 public "dataPacketRequiresRenderUpdate"(): boolean
 public "getUpdatePacket"(): $Packet<(any)>
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "updatePacket"(): $Packet<(any)>
 }
 /**
@@ -1107,6 +1100,7 @@ import {$IDrawerAttributesModifiable, $IDrawerAttributesModifiable$$Type} from "
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$BlockEntityDataShim, $BlockEntityDataShim$$Type} from "com.jaquadro.minecraft.storagedrawers.block.tile.tiledata.BlockEntityDataShim"
+import {$MagnetDim, $MagnetDim$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.attribute.MagnetDim"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$EnumUpgradeRedstone, $EnumUpgradeRedstone$$Type} from "com.jaquadro.minecraft.storagedrawers.item.EnumUpgradeRedstone"
 
@@ -1116,13 +1110,24 @@ constructor(arg0: integer)
 
 public "write"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): $CompoundTag
 public "read"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): void
+public "getMagnetRange"(arg0: $MagnetDim$$Type): integer
+public "canAddUpgrade"(arg0: $ItemStack$$Type): boolean
+public "addUpgrade"(arg0: $ItemStack$$Type): boolean
+public "getUpgrade"(arg0: integer): $ItemStack
+public "setUpgrade"(arg0: integer, arg1: $ItemStack$$Type): boolean
+public "hasEmptySlot"(): boolean
+public "canSwapUpgrade"(arg0: integer, arg1: $ItemStack$$Type): boolean
+public "getSlotCount"(): integer
 public "hasRemoteUpgrade"(): boolean
 public "getStorageMultiplier"(): integer
 public "hasPortabilityUpgrade"(): boolean
+public "getMagnetIdleRate"(): integer
+public "getMagnetActiveRate"(): integer
 public "setDrawerAttributes"(arg0: $IDrawerAttributesModifiable$$Type): void
 public "getRemoteUpgrade"(): $ItemStack
 public "unbindRemoteUpgrade"(): void
 public "hasOneStackUpgrade"(): boolean
+public "hasMagnetUpgrade"(): boolean
 public "getRedstoneType"(): $EnumUpgradeRedstone
 public "hasbalancedFillUpgrade"(): boolean
 public "hasVendingUpgrade"(): boolean
@@ -1130,19 +1135,15 @@ public "canRemoveUpgrade"(arg0: integer): boolean
 public "hasUnlimitedUpgrade"(): boolean
 public "hasConversionUpgrade"(): boolean
 public "hasIlluminationUpgrade"(): boolean
-public "canAddUpgrade"(arg0: $ItemStack$$Type): boolean
-public "addUpgrade"(arg0: $ItemStack$$Type): boolean
-public "hasEmptySlot"(): boolean
-public "canSwapUpgrade"(arg0: integer, arg1: $ItemStack$$Type): boolean
-public "setUpgrade"(arg0: integer, arg1: $ItemStack$$Type): boolean
-public "getUpgrade"(arg0: integer): $ItemStack
-public "getSlotCount"(): integer
+public "hasHopperUpgrade"(): boolean
 public "updateRemoteUpgradeBinding"(arg0: $ItemStack$$Type): void
+get "slotCount"(): integer
 get "storageMultiplier"(): integer
+get "magnetIdleRate"(): integer
+get "magnetActiveRate"(): integer
 set "drawerAttributes"(value: $IDrawerAttributesModifiable$$Type)
 get "remoteUpgrade"(): $ItemStack
 get "redstoneType"(): $EnumUpgradeRedstone
-get "slotCount"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1179,6 +1180,7 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
 import {$IFramedBlockEntity, $IFramedBlockEntity$$Type} from "com.jaquadro.minecraft.storagedrawers.api.framing.IFramedBlockEntity"
+import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$AABB, $AABB$$Type} from "net.minecraft.world.phys.AABB"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
@@ -1192,7 +1194,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 readonly "slotGeometry": ($AABB)[]
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -1228,6 +1230,7 @@ public "getCloneItemStack"(arg0: $LevelReader$$Type, arg1: $BlockPos$$Type, arg2
 public "getFramedBlockEntity"(arg0: $Level$$Type, arg1: $BlockPos$$Type): $IFramedBlockEntity
 public "supportsFrameMaterial"(arg0: $FrameMaterial$$Type): boolean
 public "getStateDefinition"(): $StateDefinition<($Block), ($BlockState)>
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "asHolder"(): $Holder<(any)>
 get "stateDefinition"(): $StateDefinition<($Block), ($BlockState)>
 }
@@ -1247,8 +1250,8 @@ declare module "com.jaquadro.minecraft.storagedrawers.block.BlockStandardDrawers
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$BlockDrawers, $BlockDrawers$$Type} from "com.jaquadro.minecraft.storagedrawers.block.BlockDrawers"
 import {$IDrawerConfig, $IDrawerConfig$$Type} from "com.jaquadro.minecraft.storagedrawers.api.config.IDrawerConfig"
+import {$BlockDrawers, $BlockDrawers$$Type} from "com.jaquadro.minecraft.storagedrawers.block.BlockDrawers"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
@@ -1256,9 +1259,9 @@ import {$IFramedSourceBlock, $IFramedSourceBlock$$Type} from "com.jaquadro.minec
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BlockEntityDrawers, $BlockEntityDrawers$$Type} from "com.jaquadro.minecraft.storagedrawers.block.tile.BlockEntityDrawers"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$AABB, $AABB$$Type} from "net.minecraft.world.phys.AABB"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
@@ -1273,7 +1276,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 readonly "slotGeometry": ($AABB)[]
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -1303,20 +1306,20 @@ constructor(arg0: integer, arg1: boolean, arg2: $BlockBehaviour$Properties$$Type
 constructor(arg0: integer, arg1: boolean, arg2: integer, arg3: $BlockBehaviour$Properties$$Type)
 constructor(arg0: integer, arg1: boolean, arg2: $IDrawerConfig$$Type, arg3: $BlockBehaviour$Properties$$Type)
 
-public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntityDrawers
 public "codec"(): $MapCodec<($BlockStandardDrawers)>
-public "repartitionBlock"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): boolean
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "setMatKey"(arg0: $ResourceLocation$$Type): $BlockStandardDrawers
-public "setMatKey"(arg0: string): $BlockStandardDrawers
-public "getMatKey"(): string
+public "setMatKey"(arg0: StringJS): $BlockStandardDrawers
+public "getMatKey"(): StringJS
 public "makeFramedItem"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: $ItemStack$$Type, arg3: $ItemStack$$Type): $ItemStack
-public "getNameMatKey"(): string
+public "getNameMatKey"(): StringJS
 public "retrimBlock"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): boolean
+public "repartitionBlock"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): boolean
 public "asHolder"(): $Holder<(any)>
 set "matKey"(value: $ResourceLocation$$Type)
-set "matKey"(value: string)
-get "matKey"(): string
-get "nameMatKey"(): string
+set "matKey"(value: StringJS)
+get "matKey"(): StringJS
+get "nameMatKey"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1330,13 +1333,158 @@ export type $BlockStandardDrawers$$Type = ($BlockStandardDrawers);
 declare global {
 export type $BlockStandardDrawers_ = $BlockStandardDrawers$$Type;
 }}
-declare module "com.jaquadro.minecraft.storagedrawers.item.ItemFramedTrim" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+declare module "com.jaquadro.minecraft.storagedrawers.item.ItemSuspendKey" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemKey, $ItemKey$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemKey"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+
+export class $ItemSuspendKey extends $ItemKey {
+static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
+static readonly "DEFAULT_MAX_STACK_SIZE": integer
+ "descriptionId": StringJS
+static readonly "MAX_BAR_WIDTH": integer
+static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
+static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
+static readonly "BY_BLOCK": $Map<($Block), ($Item)>
+
+constructor(arg0: $Item$Properties$$Type)
+
+public "isEnabled"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
+get "enabled"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ItemSuspendKey$$Type = ($ItemSuspendKey);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ItemSuspendKey_ = $ItemSuspendKey$$Type;
+}}
+declare module "com.jaquadro.minecraft.storagedrawers.item.EnumUpgradeMagnet" {
+import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
+import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
+import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
+import {$Function, $Function$$Type} from "java.util.function.Function"
+import {$StringRepresentable, $StringRepresentable$$Type} from "net.minecraft.util.StringRepresentable"
+
+export class $EnumUpgradeMagnet extends $Enum<($EnumUpgradeMagnet)> implements $StringRepresentable {
+static readonly "LEVEL1": $EnumUpgradeMagnet
+static readonly "LEVEL2": $EnumUpgradeMagnet
+static readonly "LEVEL3": $EnumUpgradeMagnet
+
+
+public "getLevel"(): integer
+public "toString"(): StringJS
+public static "values"(): ($EnumUpgradeMagnet)[]
+public static "valueOf"(arg0: StringJS): $EnumUpgradeMagnet
+public "getMetadata"(): integer
+public static "byMetadata"(arg0: integer): $EnumUpgradeMagnet
+public "getSerializedName"(): StringJS
+public "getUnlocalizedName"(): StringJS
+public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
+public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "level"(): integer
+get "metadata"(): integer
+get "serializedName"(): StringJS
+get "unlocalizedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $EnumUpgradeMagnet$$Type = (("level1") | ("level2") | ("level3"));
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $EnumUpgradeMagnet_ = $EnumUpgradeMagnet$$Type;
+}}
+declare module "com.jaquadro.minecraft.storagedrawers.block.meta.BlockMetaFacingSizedSlotted$Label" {
+import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
+import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
+import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
+import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
+import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
+import {$BlockMetaFacingSized, $BlockMetaFacingSized$$Type} from "com.jaquadro.minecraft.storagedrawers.block.meta.BlockMetaFacingSized"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
+import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
+
+export class $BlockMetaFacingSizedSlotted$Label extends $BlockMetaFacingSized {
+static readonly "UPDATE_IMMEDIATE": integer
+ "item": $Item
+static readonly "CODEC": $MapCodec<($Block)>
+static readonly "UPDATE_NEIGHBORS": integer
+static readonly "INDESTRUCTIBLE": float
+static readonly "OCCLUSION_CACHE": $ThreadLocal<($Object2ByteLinkedOpenHashMap<($Block$BlockStatePairKey)>)>
+static readonly "UPDATE_NONE": integer
+static readonly "UPDATE_INVISIBLE": integer
+static readonly "UPDATE_MOVE_BY_PISTON": integer
+static readonly "UPDATE_LIMIT": integer
+static readonly "HALF": $BooleanProperty
+static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
+static readonly "UPDATE_ALL": integer
+static readonly "UPDATE_ALL_IMMEDIATE": integer
+ "descriptionId": StringJS
+static readonly "UPDATE_KNOWN_SHAPE": integer
+static readonly "SLOT": $IntegerProperty
+static readonly "UPDATE_SUPPRESS_DROPS": integer
+static readonly "INSTANT": float
+static readonly "UPDATE_CLIENTS": integer
+static readonly "FACING": $DirectionProperty
+ "hasCollision": boolean
+
+constructor(arg0: $BlockBehaviour$Properties$$Type)
+
+public "asHolder"(): $Holder<(any)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $BlockMetaFacingSizedSlotted$Label$$Type = ($BlockMetaFacingSizedSlotted$Label);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $BlockMetaFacingSizedSlotted$Label_ = $BlockMetaFacingSizedSlotted$Label$$Type;
+}}
+declare module "com.jaquadro.minecraft.storagedrawers.item.ItemFramedTrim" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ItemTrim, $ItemTrim$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemTrim"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -1345,7 +1493,7 @@ import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehv
 export class $ItemFramedTrim extends $ItemTrim {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1363,6 +1511,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1380,8 +1529,8 @@ declare module "com.jaquadro.minecraft.storagedrawers.block.BlockCompDrawers" {
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$BlockDrawers, $BlockDrawers$$Type} from "com.jaquadro.minecraft.storagedrawers.block.BlockDrawers"
 import {$IDrawerConfig, $IDrawerConfig$$Type} from "com.jaquadro.minecraft.storagedrawers.api.config.IDrawerConfig"
+import {$BlockDrawers, $BlockDrawers$$Type} from "com.jaquadro.minecraft.storagedrawers.block.BlockDrawers"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$EnumCompDrawer, $EnumCompDrawer$$Type} from "com.jaquadro.minecraft.storagedrawers.block.EnumCompDrawer"
@@ -1389,11 +1538,11 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IFramedSourceBlock, $IFramedSourceBlock$$Type} from "com.jaquadro.minecraft.storagedrawers.api.framing.IFramedSourceBlock"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BlockEntityDrawers, $BlockEntityDrawers$$Type} from "com.jaquadro.minecraft.storagedrawers.block.tile.BlockEntityDrawers"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$AABB, $AABB$$Type} from "net.minecraft.world.phys.AABB"
 import {$INetworked, $INetworked$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.INetworked"
@@ -1409,7 +1558,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 readonly "slotGeometry": ($AABB)[]
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -1428,6 +1577,7 @@ static readonly "UPDATE_CLIENTS": integer
 static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
+constructor(arg0: integer, arg1: boolean, arg2: $IDrawerConfig$$Type, arg3: $BlockBehaviour$Properties$$Type)
 /**
  * 
  * @deprecated
@@ -1448,11 +1598,10 @@ constructor(arg0: integer, arg1: boolean, arg2: $BlockBehaviour$Properties$$Type
  * @deprecated
  */
 constructor(arg0: integer, arg1: boolean, arg2: integer, arg3: $BlockBehaviour$Properties$$Type)
-constructor(arg0: integer, arg1: boolean, arg2: $IDrawerConfig$$Type, arg3: $BlockBehaviour$Properties$$Type)
 
-public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
-public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntityDrawers
 public "codec"(): $MapCodec<($BlockCompDrawers)>
+public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "makeFramedItem"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: $ItemStack$$Type, arg3: $ItemStack$$Type): $ItemStack
 public "asHolder"(): $Holder<(any)>
 }
@@ -1497,33 +1646,33 @@ public "getHostBlock"(): $ItemStack
 public "getMaterial"(arg0: $FrameMaterial$$Type): $ItemStack
 public "getSide"(): $ItemStack
 public "setSide"(arg0: $ItemStack$$Type): void
-public "getEffectiveSide"(): $ItemStack
-public "getEffectiveFront"(): $ItemStack
-public "getEffectiveTrim"(): $ItemStack
-public "getFront"(): $ItemStack
-public "allMatOpaque"(): boolean
-public "setTrim"(arg0: $ItemStack$$Type): void
 public "isMatOpaque"(arg0: $ItemStack$$Type): boolean
 public "getFrameBase"(): $ItemStack
-public "getTrim"(): $ItemStack
+public "getFront"(): $ItemStack
 public "setFrameBase"(arg0: $ItemStack$$Type): void
 public "setFront"(arg0: $ItemStack$$Type): void
 public "setHostBlock"(arg0: $ItemStack$$Type): void
+public "allMatOpaque"(): boolean
 public "setMaterial"(arg0: $FrameMaterial$$Type, arg1: $ItemStack$$Type): void
+public "getTrim"(): $ItemStack
+public "setTrim"(arg0: $ItemStack$$Type): void
+public "getEffectiveSide"(): $ItemStack
+public "getEffectiveFront"(): $ItemStack
+public "getEffectiveTrim"(): $ItemStack
 get "empty"(): boolean
 get "hostBlock"(): $ItemStack
 get "side"(): $ItemStack
 set "side"(value: $ItemStack$$Type)
-get "effectiveSide"(): $ItemStack
-get "effectiveFront"(): $ItemStack
-get "effectiveTrim"(): $ItemStack
-get "front"(): $ItemStack
-set "trim"(value: $ItemStack$$Type)
 get "frameBase"(): $ItemStack
-get "trim"(): $ItemStack
+get "front"(): $ItemStack
 set "frameBase"(value: $ItemStack$$Type)
 set "front"(value: $ItemStack$$Type)
 set "hostBlock"(value: $ItemStack$$Type)
+get "trim"(): $ItemStack
+set "trim"(value: $ItemStack$$Type)
+get "effectiveSide"(): $ItemStack
+get "effectiveFront"(): $ItemStack
+get "effectiveTrim"(): $ItemStack
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1539,8 +1688,8 @@ export type $MaterialData_ = $MaterialData$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.item.EnumUpgradeCreative" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -1551,23 +1700,23 @@ static readonly "STORAGE": $EnumUpgradeCreative
 static readonly "VENDING": $EnumUpgradeCreative
 
 
-public "toString"(): string
+public "toString"(): StringJS
 public static "values"(): ($EnumUpgradeCreative)[]
-public static "valueOf"(arg0: string): $EnumUpgradeCreative
-public static "byMetadata"(arg0: integer): $EnumUpgradeCreative
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $EnumUpgradeCreative
 public "getMetadata"(): integer
-public "getUnlocalizedName"(): string
+public static "byMetadata"(arg0: integer): $EnumUpgradeCreative
+public "getSerializedName"(): StringJS
+public "getUnlocalizedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "serializedName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
 get "metadata"(): integer
-get "unlocalizedName"(): string
-get "remappedEnumConstantName"(): string
+get "serializedName"(): StringJS
+get "unlocalizedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1584,12 +1733,20 @@ export type $EnumUpgradeCreative_ = $EnumUpgradeCreative$$Type;
 declare module "com.jaquadro.minecraft.storagedrawers.api.storage.IDrawer" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
+import {$IDrawerAttributes, $IDrawerAttributes$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.IDrawerAttributes"
 
 export interface $IDrawer {
 
+ "getAttributes"(): $IDrawerAttributes
  "isEmpty"(): boolean
  "isEnabled"(): boolean
  "copy"(): $IDrawer
+ "setStoredItem"(arg0: $ItemStack$$Type, arg1: integer): $IDrawer
+ "setStoredItem"(arg0: $ItemStack$$Type): $IDrawer
+ "getMaxCapacity"(arg0: $ItemStack$$Type): integer
+ "getMaxCapacity"(): integer
+ "canDetach"(): boolean
+ "setDetached"(arg0: boolean): void
  "isMissing"(): boolean
  "getStoredItemPrototype"(): $ItemStack
  "getStoredItemCount"(): integer
@@ -1599,28 +1756,23 @@ export interface $IDrawer {
  "getRemainingCapacity"(): integer
  "canItemBeStored"(arg0: $ItemStack$$Type): boolean
  "canItemBeStored"(arg0: $ItemStack$$Type, arg1: $Predicate$$Type<($ItemStack)>): boolean
- "canDetach"(): boolean
- "setStoredItem"(arg0: $ItemStack$$Type, arg1: integer): $IDrawer
- "setStoredItem"(arg0: $ItemStack$$Type): $IDrawer
- "getMaxCapacity"(arg0: $ItemStack$$Type): integer
- "getMaxCapacity"(): integer
- "setDetached"(arg0: boolean): void
- "getAcceptingRemainingCapacity"(): integer
- "getAcceptingMaxCapacity"(arg0: $ItemStack$$Type): integer
  "canItemBeExtracted"(arg0: $ItemStack$$Type): boolean
  "canItemBeExtracted"(arg0: $ItemStack$$Type, arg1: $Predicate$$Type<($ItemStack)>): boolean
  "adjustStoredItemCount"(arg0: integer): integer
+ "getAcceptingMaxCapacity"(arg0: $ItemStack$$Type): integer
+ "getAcceptingRemainingCapacity"(): integer
+get "attributes"(): $IDrawerAttributes
 get "empty"(): boolean
 get "enabled"(): boolean
+set "storedItem"(value: $ItemStack$$Type)
+get "maxCapacity"(): integer
+set "detached"(value: boolean)
 get "missing"(): boolean
 get "storedItemPrototype"(): $ItemStack
 get "storedItemCount"(): integer
 get "storedItemStackSize"(): integer
 set "storedItemCount"(value: integer)
 get "remainingCapacity"(): integer
-set "storedItem"(value: $ItemStack$$Type)
-get "maxCapacity"(): integer
-set "detached"(value: boolean)
 get "acceptingRemainingCapacity"(): integer
 }
 
@@ -1630,9 +1782,16 @@ const probejs$$marker: never
 export class $IDrawer$$Static implements $IDrawer {
 
 
+ "getAttributes"(): $IDrawerAttributes
  "isEmpty"(): boolean
  "isEnabled"(): boolean
  "copy"(): $IDrawer
+ "setStoredItem"(arg0: $ItemStack$$Type, arg1: integer): $IDrawer
+ "setStoredItem"(arg0: $ItemStack$$Type): $IDrawer
+ "getMaxCapacity"(arg0: $ItemStack$$Type): integer
+ "getMaxCapacity"(): integer
+ "canDetach"(): boolean
+ "setDetached"(arg0: boolean): void
  "isMissing"(): boolean
  "getStoredItemPrototype"(): $ItemStack
  "getStoredItemCount"(): integer
@@ -1642,17 +1801,11 @@ export class $IDrawer$$Static implements $IDrawer {
  "getRemainingCapacity"(): integer
  "canItemBeStored"(arg0: $ItemStack$$Type): boolean
  "canItemBeStored"(arg0: $ItemStack$$Type, arg1: $Predicate$$Type<($ItemStack)>): boolean
- "canDetach"(): boolean
- "setStoredItem"(arg0: $ItemStack$$Type, arg1: integer): $IDrawer
- "setStoredItem"(arg0: $ItemStack$$Type): $IDrawer
- "getMaxCapacity"(arg0: $ItemStack$$Type): integer
- "getMaxCapacity"(): integer
- "setDetached"(arg0: boolean): void
- "getAcceptingRemainingCapacity"(): integer
- "getAcceptingMaxCapacity"(arg0: $ItemStack$$Type): integer
  "canItemBeExtracted"(arg0: $ItemStack$$Type): boolean
  "canItemBeExtracted"(arg0: $ItemStack$$Type, arg1: $Predicate$$Type<($ItemStack)>): boolean
  "adjustStoredItemCount"(arg0: integer): integer
+ "getAcceptingMaxCapacity"(arg0: $ItemStack$$Type): integer
+ "getAcceptingRemainingCapacity"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1692,7 +1845,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1717,8 +1870,8 @@ export type $BlockMeta_ = $BlockMeta$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.block.EnumFramingTablePart" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -1729,18 +1882,18 @@ static readonly "LEFT": $EnumFramingTablePart
 static readonly "RIGHT": $EnumFramingTablePart
 
 
-public "toString"(): string
+public "toString"(): StringJS
 public static "values"(): ($EnumFramingTablePart)[]
-public static "valueOf"(arg0: string): $EnumFramingTablePart
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $EnumFramingTablePart
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1787,8 +1940,8 @@ export type $IDrawerGeometry_ = $IDrawerGeometry$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.item.EnumUpgradeStorage" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -1804,26 +1957,26 @@ static readonly "IRON": $EnumUpgradeStorage
 static readonly "COPPER": $EnumUpgradeStorage
 
 
-public "toString"(): string
-public static "values"(): ($EnumUpgradeStorage)[]
-public static "valueOf"(arg0: string): $EnumUpgradeStorage
 public "getLevel"(): integer
-public static "byMetadata"(arg0: integer): $EnumUpgradeStorage
-public "getSerializedName"(): string
-public "getMetadata"(): integer
+public "toString"(): StringJS
+public static "values"(): ($EnumUpgradeStorage)[]
+public static "valueOf"(arg0: StringJS): $EnumUpgradeStorage
 public static "byLevel"(arg0: integer): $EnumUpgradeStorage
-public "getUnlocalizedName"(): string
+public "getMetadata"(): integer
+public static "byMetadata"(arg0: integer): $EnumUpgradeStorage
+public "getSerializedName"(): StringJS
+public "getUnlocalizedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
 get "level"(): integer
-get "serializedName"(): string
 get "metadata"(): integer
-get "unlocalizedName"(): string
-get "remappedEnumConstantName"(): string
+get "serializedName"(): StringJS
+get "unlocalizedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1859,6 +2012,7 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$IFramedBlockEntity, $IFramedBlockEntity$$Type} from "com.jaquadro.minecraft.storagedrawers.api.framing.IFramedBlockEntity"
+import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$AABB, $AABB$$Type} from "net.minecraft.world.phys.AABB"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
@@ -1872,7 +2026,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 readonly "slotGeometry": ($AABB)[]
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -1903,11 +2057,12 @@ constructor(arg0: integer, arg1: boolean, arg2: integer, arg3: $BlockBehaviour$P
 constructor(arg0: integer, arg1: boolean, arg2: $IDrawerConfig$$Type, arg3: $BlockBehaviour$Properties$$Type)
 
 public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
+public "retrimType"(): $BlockType
 public "getCloneItemStack"(arg0: $LevelReader$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): $ItemStack
 public "getFramedBlockEntity"(arg0: $Level$$Type, arg1: $BlockPos$$Type): $IFramedBlockEntity
 public "supportsFrameMaterial"(arg0: $FrameMaterial$$Type): boolean
-public "retrimType"(): $BlockType
 public "getStateDefinition"(): $StateDefinition<($Block), ($BlockState)>
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "asHolder"(): $Holder<(any)>
 get "stateDefinition"(): $StateDefinition<($Block), ($BlockState)>
 }
@@ -1949,28 +2104,33 @@ declare global {
 export type $BlockEntityDataShim_ = $BlockEntityDataShim$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.item.ItemPersonalKey" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$ItemKey, $ItemKey$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemKey"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ItemKey, $ItemKey$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemKey"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $ItemPersonalKey extends $ItemKey {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(arg0: string, arg1: $Item$Properties$$Type)
+constructor(arg0: StringJS, arg1: $Item$Properties$$Type)
 
 public "isEnabled"(): boolean
-public "getSecurityProviderKey"(): string
+public "getSecurityProviderKey"(): StringJS
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "enabled"(): boolean
-get "securityProviderKey"(): string
+get "securityProviderKey"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1984,6 +2144,62 @@ export type $ItemPersonalKey$$Type = ($ItemPersonalKey);
 declare global {
 export type $ItemPersonalKey_ = $ItemPersonalKey$$Type;
 }}
+declare module "com.jaquadro.minecraft.storagedrawers.block.meta.BlockMetaFacingSizedSlotted$Slots23" {
+import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
+import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
+import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
+import {$IntegerSetProperty, $IntegerSetProperty$$Type} from "com.jaquadro.minecraft.storagedrawers.block.state.IntegerSetProperty"
+import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
+import {$BlockMetaFacingSized, $BlockMetaFacingSized$$Type} from "com.jaquadro.minecraft.storagedrawers.block.meta.BlockMetaFacingSized"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
+import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
+
+export class $BlockMetaFacingSizedSlotted$Slots23 extends $BlockMetaFacingSized {
+static readonly "SLOTS": $IntegerSetProperty
+static readonly "UPDATE_IMMEDIATE": integer
+ "item": $Item
+static readonly "CODEC": $MapCodec<($Block)>
+static readonly "UPDATE_NEIGHBORS": integer
+static readonly "INDESTRUCTIBLE": float
+static readonly "OCCLUSION_CACHE": $ThreadLocal<($Object2ByteLinkedOpenHashMap<($Block$BlockStatePairKey)>)>
+static readonly "UPDATE_NONE": integer
+static readonly "UPDATE_INVISIBLE": integer
+static readonly "UPDATE_MOVE_BY_PISTON": integer
+static readonly "UPDATE_LIMIT": integer
+static readonly "HALF": $BooleanProperty
+static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
+static readonly "UPDATE_ALL": integer
+static readonly "UPDATE_ALL_IMMEDIATE": integer
+ "descriptionId": StringJS
+static readonly "UPDATE_KNOWN_SHAPE": integer
+static readonly "UPDATE_SUPPRESS_DROPS": integer
+static readonly "INSTANT": float
+static readonly "UPDATE_CLIENTS": integer
+static readonly "FACING": $DirectionProperty
+ "hasCollision": boolean
+
+constructor(arg0: $BlockBehaviour$Properties$$Type)
+
+public "asHolder"(): $Holder<(any)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $BlockMetaFacingSizedSlotted$Slots23$$Type = ($BlockMetaFacingSizedSlotted$Slots23);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $BlockMetaFacingSizedSlotted$Slots23_ = $BlockMetaFacingSizedSlotted$Slots23$$Type;
+}}
 declare module "com.jaquadro.minecraft.storagedrawers.block.meta.BlockMetaFacingSized" {
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
@@ -1993,8 +2209,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockMetaFacing, $BlockMetaFacing$$Type} from "com.jaquadro.minecraft.storagedrawers.block.meta.BlockMetaFacing"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -2014,7 +2230,7 @@ static readonly "HALF": $BooleanProperty
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2039,24 +2255,26 @@ declare global {
 export type $BlockMetaFacingSized_ = $BlockMetaFacingSized$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.item.ItemTrim" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $ItemTrim extends $BlockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -2076,6 +2294,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2093,21 +2312,23 @@ declare module "com.jaquadro.minecraft.storagedrawers.api.storage.IControlGroup"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IDrawerGroup, $IDrawerGroup$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.IDrawerGroup"
 import {$List, $List$$Type} from "java.util.List"
-import {$INetworked, $INetworked$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.INetworked"
+import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$IDrawerAttributesGroupControl, $IDrawerAttributesGroupControl$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.IDrawerAttributesGroupControl"
+import {$INetworked, $INetworked$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.INetworked"
 
 export interface $IControlGroup {
 
- "getBoundControlGroup"(): $IControlGroup
- "invalidateRemoteNode"(arg0: $INetworked$$Type): void
- "getBoundRemoteNodes"(): $List<($INetworked)>
- "validateRemoteNode"(arg0: $INetworked$$Type): void
  "addRemoteNode"(arg0: $INetworked$$Type): boolean
  "getDrawerGroup"(): $IDrawerGroup
+ "getBoundControlGroup"(): $IControlGroup
+ "getBoundRemoteNodes"(): $List<($INetworked)>
+ "validateRemoteNode"(arg0: $INetworked$$Type): void
+ "invalidateRemoteNode"(arg0: $INetworked$$Type): void
+ "isSoftBindingValid"(arg0: $BlockPos$$Type, arg1: $IDrawerGroup$$Type): boolean
  "getGroupControllableAttributes"(arg0: $Player$$Type): $IDrawerAttributesGroupControl
+get "drawerGroup"(): $IDrawerGroup
 get "boundControlGroup"(): $IControlGroup
 get "boundRemoteNodes"(): $List<($INetworked)>
-get "drawerGroup"(): $IDrawerGroup
 }
 
 export namespace $IControlGroup {
@@ -2116,12 +2337,13 @@ const probejs$$marker: never
 export class $IControlGroup$$Static implements $IControlGroup {
 
 
- "getBoundControlGroup"(): $IControlGroup
- "invalidateRemoteNode"(arg0: $INetworked$$Type): void
- "getBoundRemoteNodes"(): $List<($INetworked)>
- "validateRemoteNode"(arg0: $INetworked$$Type): void
  "addRemoteNode"(arg0: $INetworked$$Type): boolean
  "getDrawerGroup"(): $IDrawerGroup
+ "getBoundControlGroup"(): $IControlGroup
+ "getBoundRemoteNodes"(): $List<($INetworked)>
+ "validateRemoteNode"(arg0: $INetworked$$Type): void
+ "invalidateRemoteNode"(arg0: $INetworked$$Type): void
+ "isSoftBindingValid"(arg0: $BlockPos$$Type, arg1: $IDrawerGroup$$Type): boolean
  "getGroupControllableAttributes"(arg0: $Player$$Type): $IDrawerAttributesGroupControl
 }
 /**
@@ -2136,22 +2358,64 @@ export type $IControlGroup$$Type = ($IControlGroup);
 declare global {
 export type $IControlGroup_ = $IControlGroup$$Type;
 }}
-declare module "com.jaquadro.minecraft.storagedrawers.item.ItemFramedDrawers" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+declare module "com.jaquadro.minecraft.storagedrawers.item.ItemUpgradeHopper" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ItemUpgrade, $ItemUpgrade$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemUpgrade"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+
+export class $ItemUpgradeHopper extends $ItemUpgrade {
+static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
+static readonly "DEFAULT_MAX_STACK_SIZE": integer
+ "descriptionId": StringJS
+static readonly "MAX_BAR_WIDTH": integer
+static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
+static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
+static readonly "BY_BLOCK": $Map<($Block), ($Item)>
+
+constructor(arg0: $Item$Properties$$Type)
+
+public "isEnabled"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
+get "enabled"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ItemUpgradeHopper$$Type = ($ItemUpgradeHopper);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ItemUpgradeHopper_ = $ItemUpgradeHopper$$Type;
+}}
+declare module "com.jaquadro.minecraft.storagedrawers.item.ItemFramedDrawers" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$ItemDrawers, $ItemDrawers$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemDrawers"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
-import {$ItemDrawers, $ItemDrawers$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemDrawers"
 
 export class $ItemFramedDrawers extends $ItemDrawers {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -2169,6 +2433,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2181,6 +2446,36 @@ export type $ItemFramedDrawers$$Type = ($ItemFramedDrawers);
  */
 declare global {
 export type $ItemFramedDrawers_ = $ItemFramedDrawers$$Type;
+}}
+declare module "com.jaquadro.minecraft.storagedrawers.block.state.IntegerSetProperty" {
+import {$Collection, $Collection$$Type} from "java.util.Collection"
+import {$Optional, $Optional$$Type} from "java.util.Optional"
+import {$Comparable, $Comparable$$Type} from "java.lang.Comparable"
+import {$Property, $Property$$Type} from "net.minecraft.world.level.block.state.properties.Property"
+
+export class $IntegerSetProperty extends $Property<(integer)> {
+
+
+public static "create"(arg0: StringJS, arg1: StringJS): $IntegerSetProperty
+public "getName"(arg0: integer): StringJS
+public "getName"(arg0: $Comparable$$Type<(any)>): StringJS
+public "equals"(arg0: any): boolean
+public "getValue"(arg0: StringJS): $Optional<(integer)>
+public "getPossibleValues"(): $Collection<(integer)>
+public "generateHashCode"(): integer
+get "possibleValues"(): $Collection<(integer)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $IntegerSetProperty$$Type = ($IntegerSetProperty);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $IntegerSetProperty_ = $IntegerSetProperty$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.api.storage.attribute.IProtectable" {
 import {$UUID, $UUID$$Type} from "java.util.UUID"
@@ -2229,34 +2524,34 @@ import {$BlockEntityDataShim, $BlockEntityDataShim$$Type} from "com.jaquadro.min
 import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.dataanchor.data.registry.TrackedDataRegistry"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$ClientboundBlockEntityDataPacket, $ClientboundBlockEntityDataPacket$$Type} from "net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket"
 import {$Packet, $Packet$$Type} from "net.minecraft.network.protocol.Packet"
+import {$ClientboundBlockEntityDataPacket, $ClientboundBlockEntityDataPacket$$Type} from "net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
-import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$Connection, $Connection$$Type} from "net.minecraft.network.Connection"
+import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $BaseBlockEntity extends $BlockEntity {
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 constructor(arg0: $BlockEntityType$$Type<(any)>, arg1: $BlockPos$$Type, arg2: $BlockState$$Type)
 
 public "read"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
 public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "injectData"(arg0: $BlockEntityDataShim$$Type): void
+public "writePortable"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): $CompoundTag
+public "readPortable"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): void
+public "hasDataPacket"(): boolean
 public "getUpdateTag"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
 public "onDataPacket"(arg0: $Connection$$Type, arg1: $ClientboundBlockEntityDataPacket$$Type, arg2: $HolderLookup$Provider$$Type): void
 public "getUpdatePacket"(): $Packet<(any)>
-public "markBlockForUpdate"(): void
 public "injectPortableData"(arg0: $BlockEntityDataShim$$Type): void
-public "readPortable"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): void
-public "injectData"(arg0: $BlockEntityDataShim$$Type): void
-public "writePortable"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): $CompoundTag
-public "hasDataPacket"(): boolean
+public "markBlockForUpdate"(): void
+public "dataPacketRequiresRenderUpdate"(): boolean
 public "markBlockForRenderUpdate"(): void
 public "markBlockForUpdateClient"(): void
-public "dataPacketRequiresRenderUpdate"(): boolean
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "updatePacket"(): $Packet<(any)>
 }
 /**
@@ -2273,8 +2568,8 @@ export type $BaseBlockEntity_ = $BaseBlockEntity$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.item.EnumUpgradeRedstone" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -2286,23 +2581,23 @@ static readonly "MIN": $EnumUpgradeRedstone
 static readonly "MAX": $EnumUpgradeRedstone
 
 
-public "toString"(): string
+public "toString"(): StringJS
 public static "values"(): ($EnumUpgradeRedstone)[]
-public static "valueOf"(arg0: string): $EnumUpgradeRedstone
-public static "byMetadata"(arg0: integer): $EnumUpgradeRedstone
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $EnumUpgradeRedstone
 public "getMetadata"(): integer
-public "getUnlocalizedName"(): string
+public static "byMetadata"(arg0: integer): $EnumUpgradeRedstone
+public "getSerializedName"(): StringJS
+public "getUnlocalizedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "serializedName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
 get "metadata"(): integer
-get "unlocalizedName"(): string
-get "remappedEnumConstantName"(): string
+get "serializedName"(): StringJS
+get "unlocalizedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2322,14 +2617,17 @@ import {$EnumSet, $EnumSet$$Type} from "java.util.EnumSet"
 
 export interface $IDrawerAttributesGroupControl {
 
- "toggleItemLocked"(arg0: $EnumSet$$Type<($LockAttribute$$Type)>, arg1: $LockAttribute$$Type): boolean
- "toggleConcealed"(): boolean
- "setIsShowingQuantity"(arg0: boolean): boolean
  "setItemLocked"(arg0: $EnumSet$$Type<($LockAttribute$$Type)>, arg1: $LockAttribute$$Type, arg2: boolean): boolean
  "setIsConcealed"(arg0: boolean): boolean
+ "setIsSuspended"(arg0: boolean): boolean
+ "toggleItemLocked"(arg0: $EnumSet$$Type<($LockAttribute$$Type)>, arg1: $LockAttribute$$Type): boolean
+ "toggleConcealed"(): boolean
+ "toggleIsSuspended"(): boolean
+ "setIsShowingQuantity"(arg0: boolean): boolean
  "toggleIsShowingQuantity"(): boolean
-set "isShowingQuantity"(value: boolean)
 set "isConcealed"(value: boolean)
+set "isSuspended"(value: boolean)
+set "isShowingQuantity"(value: boolean)
 }
 
 export namespace $IDrawerAttributesGroupControl {
@@ -2338,11 +2636,13 @@ const probejs$$marker: never
 export class $IDrawerAttributesGroupControl$$Static implements $IDrawerAttributesGroupControl {
 
 
- "toggleItemLocked"(arg0: $EnumSet$$Type<($LockAttribute$$Type)>, arg1: $LockAttribute$$Type): boolean
- "toggleConcealed"(): boolean
- "setIsShowingQuantity"(arg0: boolean): boolean
  "setItemLocked"(arg0: $EnumSet$$Type<($LockAttribute$$Type)>, arg1: $LockAttribute$$Type, arg2: boolean): boolean
  "setIsConcealed"(arg0: boolean): boolean
+ "setIsSuspended"(arg0: boolean): boolean
+ "toggleItemLocked"(arg0: $EnumSet$$Type<($LockAttribute$$Type)>, arg1: $LockAttribute$$Type): boolean
+ "toggleConcealed"(): boolean
+ "toggleIsSuspended"(): boolean
+ "setIsShowingQuantity"(arg0: boolean): boolean
  "toggleIsShowingQuantity"(): boolean
 }
 /**
@@ -2359,14 +2659,19 @@ export type $IDrawerAttributesGroupControl_ = $IDrawerAttributesGroupControl$$Ty
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.api.storage.INetworked" {
 import {$IControlGroup, $IControlGroup$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.IControlGroup"
+import {$Set, $Set$$Type} from "java.util.Set"
 
 export interface $INetworked {
 
  "getBoundControlGroup"(): $IControlGroup
+ "softBindControlGroup"(arg0: $IControlGroup$$Type): void
  "canRecurseSearch"(): boolean
  "unbindControlGroup"(): void
+ "scheduleValidation"(): void
  "supportsDirectControllerLink"(): boolean
+ "getSoftBoundControlGroups"(): $Set<($IControlGroup)>
 get "boundControlGroup"(): $IControlGroup
+get "softBoundControlGroups"(): $Set<($IControlGroup)>
 }
 
 export namespace $INetworked {
@@ -2376,9 +2681,12 @@ export class $INetworked$$Static implements $INetworked {
 
 
  "getBoundControlGroup"(): $IControlGroup
+ "softBindControlGroup"(arg0: $IControlGroup$$Type): void
  "canRecurseSearch"(): boolean
  "unbindControlGroup"(): void
+ "scheduleValidation"(): void
  "supportsDirectControllerLink"(): boolean
+ "getSoftBoundControlGroups"(): $Set<($IControlGroup)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2394,28 +2702,29 @@ export type $INetworked_ = $INetworked$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.block.framed.BlockFramedController" {
 import {$BlockController, $BlockController$$Type} from "com.jaquadro.minecraft.storagedrawers.block.BlockController"
-import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$LootParams$Builder, $LootParams$Builder$$Type} from "net.minecraft.world.level.storage.loot.LootParams$Builder"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$FrameMaterial, $FrameMaterial$$Type} from "com.jaquadro.minecraft.storagedrawers.api.framing.FrameMaterial"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IFramedBlock, $IFramedBlock$$Type} from "com.jaquadro.minecraft.storagedrawers.api.framing.IFramedBlock"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$StateDefinition, $StateDefinition$$Type} from "net.minecraft.world.level.block.state.StateDefinition"
-import {$IFramedBlockEntity, $IFramedBlockEntity$$Type} from "com.jaquadro.minecraft.storagedrawers.api.framing.IFramedBlockEntity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
+import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+import {$IFramedBlockEntity, $IFramedBlockEntity$$Type} from "com.jaquadro.minecraft.storagedrawers.api.framing.IFramedBlockEntity"
+import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
-import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $BlockFramedController extends $BlockController implements $IFramedBlock {
 static readonly "UPDATE_IMMEDIATE": integer
@@ -2431,7 +2740,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2447,6 +2756,7 @@ public "getCloneItemStack"(arg0: $LevelReader$$Type, arg1: $BlockPos$$Type, arg2
 public "getFramedBlockEntity"(arg0: $Level$$Type, arg1: $BlockPos$$Type): $IFramedBlockEntity
 public "supportsFrameMaterial"(arg0: $FrameMaterial$$Type): boolean
 public "getStateDefinition"(): $StateDefinition<($Block), ($BlockState)>
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "asHolder"(): $Holder<(any)>
 get "stateDefinition"(): $StateDefinition<($Block), ($BlockState)>
 }
@@ -2493,17 +2803,21 @@ declare global {
 export type $IFramedSourceBlock_ = $IFramedSourceBlock$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.item.ItemUpgradeFillLevel" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$ItemUpgrade, $ItemUpgrade$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemUpgrade"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $ItemUpgradeFillLevel extends $ItemUpgrade {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -2512,6 +2826,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type)
 
 public "isEnabled"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "enabled"(): boolean
 }
 /**
@@ -2538,13 +2853,13 @@ export interface $IItemRepository {
  "insertItem"(arg0: $ItemStack$$Type, arg1: boolean, arg2: $Predicate$$Type<($ItemStack)>): $ItemStack
  "extractItem"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean): $ItemStack
  "extractItem"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Predicate$$Type<($ItemStack)>): $ItemStack
+ "getAllItems"(): $NonNullList<($IItemRepository$ItemRecord)>
  "getStoredItemCount"(arg0: $ItemStack$$Type): integer
  "getStoredItemCount"(arg0: $ItemStack$$Type, arg1: $Predicate$$Type<($ItemStack)>): integer
  "getItemCapacity"(arg0: $ItemStack$$Type, arg1: $Predicate$$Type<($ItemStack)>): integer
  "getItemCapacity"(arg0: $ItemStack$$Type): integer
- "getAllItems"(): $NonNullList<($IItemRepository$ItemRecord)>
- "getRemainingItemCapacity"(arg0: $ItemStack$$Type): integer
  "getRemainingItemCapacity"(arg0: $ItemStack$$Type, arg1: $Predicate$$Type<($ItemStack)>): integer
+ "getRemainingItemCapacity"(arg0: $ItemStack$$Type): integer
 get "allItems"(): $NonNullList<($IItemRepository$ItemRecord)>
 }
 
@@ -2558,13 +2873,13 @@ export class $IItemRepository$$Static implements $IItemRepository {
  "insertItem"(arg0: $ItemStack$$Type, arg1: boolean, arg2: $Predicate$$Type<($ItemStack)>): $ItemStack
  "extractItem"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean): $ItemStack
  "extractItem"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Predicate$$Type<($ItemStack)>): $ItemStack
+ "getAllItems"(): $NonNullList<($IItemRepository$ItemRecord)>
  "getStoredItemCount"(arg0: $ItemStack$$Type): integer
  "getStoredItemCount"(arg0: $ItemStack$$Type, arg1: $Predicate$$Type<($ItemStack)>): integer
  "getItemCapacity"(arg0: $ItemStack$$Type, arg1: $Predicate$$Type<($ItemStack)>): integer
  "getItemCapacity"(arg0: $ItemStack$$Type): integer
- "getAllItems"(): $NonNullList<($IItemRepository$ItemRecord)>
- "getRemainingItemCapacity"(arg0: $ItemStack$$Type): integer
  "getRemainingItemCapacity"(arg0: $ItemStack$$Type, arg1: $Predicate$$Type<($ItemStack)>): integer
+ "getRemainingItemCapacity"(arg0: $ItemStack$$Type): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2580,71 +2895,75 @@ export type $IItemRepository_ = $IItemRepository$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.block.tile.BlockEntityController" {
 import {$BlockController, $BlockController$$Type} from "com.jaquadro.minecraft.storagedrawers.block.BlockController"
-import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$IDrawerGroup, $IDrawerGroup$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.IDrawerGroup"
+import {$MaterialData, $MaterialData$$Type} from "com.jaquadro.minecraft.storagedrawers.block.tile.tiledata.MaterialData"
 import {$List, $List$$Type} from "java.util.List"
-import {$IControlGroup, $IControlGroup$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.IControlGroup"
-import {$ISecurityProvider, $ISecurityProvider$$Type} from "com.jaquadro.minecraft.storagedrawers.api.security.ISecurityProvider"
-import {$TrackedData, $TrackedData$$Type} from "dev.corgitaco.dataanchor.data.TrackedData"
 import {$TrackedDataContainer, $TrackedDataContainer$$Type} from "dev.corgitaco.dataanchor.data.TrackedDataContainer"
-import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.dataanchor.data.registry.TrackedDataRegistry"
-import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
-import {$IDrawerAttributesGroupControl, $IDrawerAttributesGroupControl$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.IDrawerAttributesGroupControl"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
-import {$ChameleonCapability, $ChameleonCapability$$Type} from "com.texelsaurus.minecraft.chameleon.capabilities.ChameleonCapability"
-import {$BaseBlockEntity, $BaseBlockEntity$$Type} from "com.jaquadro.minecraft.storagedrawers.block.tile.BaseBlockEntity"
-import {$IFramedMaterials, $IFramedMaterials$$Type} from "com.jaquadro.minecraft.storagedrawers.api.framing.IFramedMaterials"
-import {$Packet, $Packet$$Type} from "net.minecraft.network.protocol.Packet"
 import {$IItemRepository, $IItemRepository$$Type} from "com.jaquadro.minecraft.storagedrawers.api.capabilities.IItemRepository"
 import {$IDrawer, $IDrawer$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.IDrawer"
-import {$GameProfile, $GameProfile$$Type} from "com.mojang.authlib.GameProfile"
-import {$IFramedBlockEntity, $IFramedBlockEntity$$Type} from "com.jaquadro.minecraft.storagedrawers.api.framing.IFramedBlockEntity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
-import {$INetworked, $INetworked$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.INetworked"
+import {$Stream, $Stream$$Type} from "java.util.stream.Stream"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
+import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
+import {$ISecurityProvider, $ISecurityProvider$$Type} from "com.jaquadro.minecraft.storagedrawers.api.security.ISecurityProvider"
+import {$IControlGroup, $IControlGroup$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.IControlGroup"
+import {$TrackedData, $TrackedData$$Type} from "dev.corgitaco.dataanchor.data.TrackedData"
+import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.dataanchor.data.registry.TrackedDataRegistry"
+import {$IDrawerAttributesGroupControl, $IDrawerAttributesGroupControl$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.IDrawerAttributesGroupControl"
+import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
+import {$ChameleonCapability, $ChameleonCapability$$Type} from "com.texelsaurus.minecraft.chameleon.capabilities.ChameleonCapability"
+import {$BaseBlockEntity, $BaseBlockEntity$$Type} from "com.jaquadro.minecraft.storagedrawers.block.tile.BaseBlockEntity"
+import {$Packet, $Packet$$Type} from "net.minecraft.network.protocol.Packet"
+import {$IFramedBlockEntity, $IFramedBlockEntity$$Type} from "com.jaquadro.minecraft.storagedrawers.api.framing.IFramedBlockEntity"
+import {$GameProfile, $GameProfile$$Type} from "com.mojang.authlib.GameProfile"
+import {$INetworked, $INetworked$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.INetworked"
 
 export class $BlockEntityController extends $BaseBlockEntity implements $IDrawerGroup, $IControlGroup, $IFramedBlockEntity {
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 constructor(arg0: $BlockPos$$Type, arg1: $BlockState$$Type)
 
 public "getBlock"(): $BlockController
 public "setRemoved"(): void
 public "getCapability"<T>(arg0: $ChameleonCapability$$Type<(T)>): T
-public "clearProtection"(): void
-public "toggleProtection"(arg0: $GameProfile$$Type, arg1: $ISecurityProvider$$Type): void
-public "getBoundControlGroup"(): $IControlGroup
-public "invalidateRemoteNode"(arg0: $INetworked$$Type): void
-public "getBoundRemoteNodes"(): $List<($INetworked)>
-public "validateRemoteNode"(arg0: $INetworked$$Type): void
-public "getGroupForDrawerSlot"(arg0: integer): $IDrawerGroup
-public "getItemRepository"(): $IItemRepository
 public "getDrawerCount"(): integer
 public "getDrawer"(arg0: integer): $IDrawer
 public "printDebugInfo"(): void
+public "updateCache"(): void
 public "addRemoteNode"(arg0: $INetworked$$Type): boolean
 public "isGroupValid"(): boolean
-public "readFixed"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): void
 public "getDrawerGroup"(): $IDrawerGroup
+public "readFixed"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): void
 public "isValidIO"(arg0: $BlockPos$$Type): boolean
-public "updateCache"(): void
 public "onEntityLoad"(): void
-public "material"(): $IFramedMaterials
+public "material"(): $MaterialData
+public "clearProtection"(): void
+public "toggleProtection"(arg0: $GameProfile$$Type, arg1: $ISecurityProvider$$Type): void
+public "getBoundControlGroup"(): $IControlGroup
+public "getBoundRemoteNodes"(): $List<($INetworked)>
+public "validateRemoteNode"(arg0: $INetworked$$Type): void
+public "invalidateRemoteNode"(arg0: $INetworked$$Type): void
+public "isSoftBindingValid"(arg0: $BlockPos$$Type, arg1: $IDrawerGroup$$Type): boolean
+public "getGroupForDrawerSlot"(arg0: integer): $IDrawerGroup
+public "getItemRepository"(): $IItemRepository
+public "getBalanceDrawers"(arg0: $ItemStack$$Type, arg1: $Player$$Type): $Stream<($IDrawer)>
 public "interactPutItemsIntoInventory"(arg0: $Player$$Type): integer
 public "getGroupControllableAttributes"(arg0: $Player$$Type): $IDrawerAttributesGroupControl
 public "getAccessibleDrawerSlots"(): (integer)[]
 public "dataPacketRequiresRenderUpdate"(): boolean
 public "hasMissingDrawers"(): boolean
 public "getUpdatePacket"(): $Packet<(any)>
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "block"(): $BlockController
-get "boundControlGroup"(): $IControlGroup
-get "boundRemoteNodes"(): $List<($INetworked)>
-get "itemRepository"(): $IItemRepository
 get "drawerCount"(): integer
 get "groupValid"(): boolean
 get "drawerGroup"(): $IDrawerGroup
+get "boundControlGroup"(): $IControlGroup
+get "boundRemoteNodes"(): $List<($INetworked)>
+get "itemRepository"(): $IItemRepository
 get "accessibleDrawerSlots"(): (integer)[]
 get "updatePacket"(): $Packet<(any)>
 }
@@ -2661,15 +2980,17 @@ declare global {
 export type $BlockEntityController_ = $BlockEntityController$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.item.ItemKey" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -2682,7 +3003,7 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 export class $ItemKey extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -2692,10 +3013,11 @@ constructor(arg0: $Item$Properties$$Type)
 
 public "getDescription"(): $Component
 public "isEnabled"(): boolean
-public "canAttackBlock"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): boolean
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public "canAttackBlock"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): boolean
 public static "createAttributes"(): $ItemAttributeModifiers
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "description"(): $Component
 get "enabled"(): boolean
 }
@@ -2720,14 +3042,14 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$KeyType, $KeyType$$Type} from "com.jaquadro.minecraft.storagedrawers.block.KeyType"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
 import {$AttachFace, $AttachFace$$Type} from "net.minecraft.world.level.block.state.properties.AttachFace"
@@ -2753,7 +3075,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2766,9 +3088,9 @@ constructor(arg0: $KeyType$$Type, arg1: $BlockBehaviour$Properties$$Type)
 
 public "tick"(arg0: $BlockState$$Type, arg1: $ServerLevel$$Type, arg2: $BlockPos$$Type, arg3: $RandomSource$$Type): void
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
-public "codec"(): $MapCodec<($BlockKeyButton)>
 public "press"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type): void
+public "codec"(): $MapCodec<($BlockKeyButton)>
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -2811,18 +3133,81 @@ export type $IDrawerCapabilityProvider$$Type = ($IDrawerCapabilityProvider);
 declare global {
 export type $IDrawerCapabilityProvider_ = $IDrawerCapabilityProvider$$Type;
 }}
-declare module "com.jaquadro.minecraft.storagedrawers.item.ItemUpgradePortability" {
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+declare module "com.jaquadro.minecraft.storagedrawers.item.ItemUpgradeMagnet" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
+import {$EnumUpgradeMagnet, $EnumUpgradeMagnet$$Type} from "com.jaquadro.minecraft.storagedrawers.item.EnumUpgradeMagnet"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ItemUpgrade, $ItemUpgrade$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemUpgrade"
 
+export class $ItemUpgradeMagnet extends $ItemUpgrade {
+static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
+static readonly "DEFAULT_MAX_STACK_SIZE": integer
+ "descriptionId": StringJS
+static readonly "MAX_BAR_WIDTH": integer
+static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
+static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
+readonly "type": $EnumUpgradeMagnet
+static readonly "BY_BLOCK": $Map<($Block), ($Item)>
+
+constructor(arg0: $EnumUpgradeMagnet$$Type, arg1: $Item$Properties$$Type)
+
+public "getDescription"(): $Component
+public "isEnabled"(): boolean
+public "getActiveSpeed"(): integer
+public "getHorzRange"(): integer
+public "getUpRange"(): integer
+public "getDownRange"(): integer
+public "getIdleSpeed"(): integer
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
+get "description"(): $Component
+get "enabled"(): boolean
+get "activeSpeed"(): integer
+get "horzRange"(): integer
+get "upRange"(): integer
+get "downRange"(): integer
+get "idleSpeed"(): integer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ItemUpgradeMagnet$$Type = ($ItemUpgradeMagnet);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ItemUpgradeMagnet_ = $ItemUpgradeMagnet$$Type;
+}}
+declare module "com.jaquadro.minecraft.storagedrawers.item.ItemUpgradePortability" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ItemUpgrade, $ItemUpgrade$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemUpgrade"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+
 export class $ItemUpgradePortability extends $ItemUpgrade {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -2831,6 +3216,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type)
 
 public "isEnabled"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "enabled"(): boolean
 }
 /**
@@ -2846,22 +3232,24 @@ declare global {
 export type $ItemUpgradePortability_ = $ItemUpgradePortability$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.item.ItemPriorityKey" {
-import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$ItemKey, $ItemKey$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemKey"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
-import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ItemKey, $ItemKey$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemKey"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
+import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export class $ItemPriorityKey extends $ItemKey {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -2869,9 +3257,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: integer, arg1: integer, arg2: $Item$Properties$$Type)
 
-public "isEnabled"(): boolean
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "isEnabled"(): boolean
 public "getNextKey"(): $ItemPriorityKey
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "enabled"(): boolean
 get "nextKey"(): $ItemPriorityKey
 }
@@ -2897,8 +3286,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$BlockEntityController, $BlockEntityController$$Type} from "com.jaquadro.minecraft.storagedrawers.block.tile.BlockEntityController"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Set, $Set$$Type} from "java.util.Set"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -2914,8 +3303,8 @@ import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$INetworked, $INetworked$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.INetworked"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
@@ -2933,7 +3322,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2944,22 +3333,26 @@ static readonly "FACING": $DirectionProperty
 constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "tick"(arg0: $BlockState$$Type, arg1: $ServerLevel$$Type, arg2: $BlockPos$$Type, arg3: $RandomSource$$Type): void
-public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
-public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntityController
 public "toggle"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $Player$$Type, arg3: $KeyType$$Type): void
 public "toggle"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $Player$$Type, arg3: $Item$$Type): boolean
 public "codec"(): $MapCodec<($BlockController)>
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "makeFramedItem"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: $ItemStack$$Type, arg3: $ItemStack$$Type): $ItemStack
-public "togglePersonal"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $Player$$Type, arg3: string): void
+public "togglePersonal"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $Player$$Type, arg3: StringJS): void
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "getBoundControlGroup"(): $IControlGroup
+public "softBindControlGroup"(arg0: $IControlGroup$$Type): void
 public "canRecurseSearch"(): boolean
 public "unbindControlGroup"(): void
+public "scheduleValidation"(): void
 public "supportsDirectControllerLink"(): boolean
+public "getSoftBoundControlGroups"(): $Set<($IControlGroup)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
 get "boundControlGroup"(): $IControlGroup
+get "softBoundControlGroups"(): $Set<($IControlGroup)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2974,17 +3367,21 @@ declare global {
 export type $BlockController_ = $BlockController$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.item.ItemDrawerPuller" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$ItemKey, $ItemKey$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemKey"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ItemKey, $ItemKey$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemKey"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $ItemDrawerPuller extends $ItemKey {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -2993,6 +3390,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type)
 
 public "isEnabled"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "enabled"(): boolean
 }
 /**
@@ -3008,17 +3406,21 @@ declare global {
 export type $ItemDrawerPuller_ = $ItemDrawerPuller$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.item.ItemQuantifyKey" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$ItemKey, $ItemKey$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemKey"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ItemKey, $ItemKey$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemKey"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $ItemQuantifyKey extends $ItemKey {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3027,6 +3429,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type)
 
 public "isEnabled"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "enabled"(): boolean
 }
 /**
@@ -3054,6 +3457,7 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Set, $Set$$Type} from "java.util.Set"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$INetworked, $INetworked$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.INetworked"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -3072,7 +3476,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3081,24 +3485,28 @@ static readonly "UPDATE_CLIENTS": integer
 
 constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "canUseForRetrim"(): boolean
+public "setMatKey"(arg0: StringJS): $BlockTrim
 public "setMatKey"(arg0: $ResourceLocation$$Type): $BlockTrim
-public "setMatKey"(arg0: string): $BlockTrim
-public "getNameTypeKey"(): string
-public "getMatKey"(): string
+public "getMatKey"(): StringJS
 public "makeFramedItem"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: $ItemStack$$Type, arg3: $ItemStack$$Type): $ItemStack
-public "getNameMatKey"(): string
+public "getNameMatKey"(): StringJS
+public "getNameTypeKey"(): StringJS
+public "canUseForRetrim"(): boolean
 public "getBoundControlGroup"(): $IControlGroup
+public "softBindControlGroup"(arg0: $IControlGroup$$Type): void
 public "canRecurseSearch"(): boolean
 public "unbindControlGroup"(): void
+public "scheduleValidation"(): void
 public "supportsDirectControllerLink"(): boolean
+public "getSoftBoundControlGroups"(): $Set<($IControlGroup)>
 public "asHolder"(): $Holder<(any)>
+set "matKey"(value: StringJS)
 set "matKey"(value: $ResourceLocation$$Type)
-set "matKey"(value: string)
-get "nameTypeKey"(): string
-get "matKey"(): string
-get "nameMatKey"(): string
+get "matKey"(): StringJS
+get "nameMatKey"(): StringJS
+get "nameTypeKey"(): StringJS
 get "boundControlGroup"(): $IControlGroup
+get "softBoundControlGroups"(): $Set<($IControlGroup)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3113,17 +3521,21 @@ declare global {
 export type $BlockTrim_ = $BlockTrim$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.item.ItemDrawerKey" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$ItemKey, $ItemKey$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemKey"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ItemKey, $ItemKey$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemKey"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $ItemDrawerKey extends $ItemKey {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3132,6 +3544,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type)
 
 public "isEnabled"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "enabled"(): boolean
 }
 /**
@@ -3170,8 +3583,8 @@ export type $IItemRepository$ItemRecord_ = $IItemRepository$ItemRecord$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.api.framing.FrameMaterial" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -3184,18 +3597,18 @@ static readonly "FRONT": $FrameMaterial
 
 
 public static "values"(): ($FrameMaterial)[]
-public static "valueOf"(arg0: string): $FrameMaterial
-public "getSerializedName"(): string
-public "getTagKey"(): string
+public static "valueOf"(arg0: StringJS): $FrameMaterial
+public "getTagKey"(): StringJS
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "serializedName"(): string
-get "tagKey"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "tagKey"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3210,18 +3623,22 @@ declare global {
 export type $FrameMaterial_ = $FrameMaterial$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.item.ItemUpgradeBalance" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$ItemUpgrade, $ItemUpgrade$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemUpgrade"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 
 export class $ItemUpgradeBalance extends $ItemUpgrade {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3231,6 +3648,7 @@ constructor(arg0: $Item$Properties$$Type)
 
 public "getDescription"(): $Component
 public "isEnabled"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "description"(): $Component
 get "enabled"(): boolean
 }
@@ -3285,24 +3703,65 @@ export type $IFramedBlock$$Type = ($IFramedBlock);
 declare global {
 export type $IFramedBlock_ = $IFramedBlock$$Type;
 }}
-declare module "com.jaquadro.minecraft.storagedrawers.block.meta.BlockMetaFacingSizedSlotted" {
+declare module "com.jaquadro.minecraft.storagedrawers.item.ItemUpgradeRedstone" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ItemUpgrade, $ItemUpgrade$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemUpgrade"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$EnumUpgradeRedstone, $EnumUpgradeRedstone$$Type} from "com.jaquadro.minecraft.storagedrawers.item.EnumUpgradeRedstone"
+
+export class $ItemUpgradeRedstone extends $ItemUpgrade {
+static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
+static readonly "DEFAULT_MAX_STACK_SIZE": integer
+ "descriptionId": StringJS
+static readonly "MAX_BAR_WIDTH": integer
+static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
+static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
+readonly "type": $EnumUpgradeRedstone
+static readonly "BY_BLOCK": $Map<($Block), ($Item)>
+
+constructor(arg0: $EnumUpgradeRedstone$$Type, arg1: $Item$Properties$$Type)
+
+public "isEnabled"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
+get "enabled"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ItemUpgradeRedstone$$Type = ($ItemUpgradeRedstone);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ItemUpgradeRedstone_ = $ItemUpgradeRedstone$$Type;
+}}
+declare module "com.jaquadro.minecraft.storagedrawers.block.meta.BlockMetaFacingSizedSlotted$Slots124" {
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
-import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
+import {$IntegerSetProperty, $IntegerSetProperty$$Type} from "com.jaquadro.minecraft.storagedrawers.block.state.IntegerSetProperty"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockMetaFacingSized, $BlockMetaFacingSized$$Type} from "com.jaquadro.minecraft.storagedrawers.block.meta.BlockMetaFacingSized"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
-export class $BlockMetaFacingSizedSlotted extends $BlockMetaFacingSized {
-static readonly "SLOTS": $IntegerProperty
+export class $BlockMetaFacingSizedSlotted$Slots124 extends $BlockMetaFacingSized {
+static readonly "SLOTS": $IntegerSetProperty
 static readonly "UPDATE_IMMEDIATE": integer
  "item": $Item
 static readonly "CODEC": $MapCodec<($Block)>
@@ -3317,7 +3776,7 @@ static readonly "HALF": $BooleanProperty
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3333,49 +3792,13 @@ public "asHolder"(): $Holder<(any)>
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $BlockMetaFacingSizedSlotted$$Type = ($BlockMetaFacingSizedSlotted);
+export type $BlockMetaFacingSizedSlotted$Slots124$$Type = ($BlockMetaFacingSizedSlotted$Slots124);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
  */
 declare global {
-export type $BlockMetaFacingSizedSlotted_ = $BlockMetaFacingSizedSlotted$$Type;
-}}
-declare module "com.jaquadro.minecraft.storagedrawers.item.ItemUpgradeRedstone" {
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$ItemUpgrade, $ItemUpgrade$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemUpgrade"
-import {$EnumUpgradeRedstone, $EnumUpgradeRedstone$$Type} from "com.jaquadro.minecraft.storagedrawers.item.EnumUpgradeRedstone"
-
-export class $ItemUpgradeRedstone extends $ItemUpgrade {
-static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
-static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
-static readonly "MAX_BAR_WIDTH": integer
-static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
-static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
-readonly "type": $EnumUpgradeRedstone
-static readonly "BY_BLOCK": $Map<($Block), ($Item)>
-
-constructor(arg0: $EnumUpgradeRedstone$$Type, arg1: $Item$Properties$$Type)
-
-public "isEnabled"(): boolean
-get "enabled"(): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $ItemUpgradeRedstone$$Type = ($ItemUpgradeRedstone);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $ItemUpgradeRedstone_ = $ItemUpgradeRedstone$$Type;
+export type $BlockMetaFacingSizedSlotted$Slots124_ = $BlockMetaFacingSizedSlotted$Slots124$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.api.storage.BlockType" {
 import {$Enum, $Enum$$Type} from "java.lang.Enum"
@@ -3386,7 +3809,7 @@ static readonly "Drawers": $BlockType
 
 
 public static "values"(): ($BlockType)[]
-public static "valueOf"(arg0: string): $BlockType
+public static "valueOf"(arg0: StringJS): $BlockType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3400,16 +3823,156 @@ export type $BlockType$$Type = (("drawers") | ("trim"));
 declare global {
 export type $BlockType_ = $BlockType$$Type;
 }}
+declare module "com.jaquadro.minecraft.storagedrawers.api.storage.attribute.MagnetDim" {
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
+
+export class $MagnetDim extends $Enum<($MagnetDim)> {
+static readonly "DOWN": $MagnetDim
+static readonly "HORIZONTAL": $MagnetDim
+static readonly "UP": $MagnetDim
+
+
+public static "values"(): ($MagnetDim)[]
+public static "valueOf"(arg0: StringJS): $MagnetDim
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $MagnetDim$$Type = (("horizontal") | ("up") | ("down"));
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $MagnetDim_ = $MagnetDim$$Type;
+}}
+declare module "com.jaquadro.minecraft.storagedrawers.block.meta.BlockMetaFacingSizedOpen$Open3" {
+import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
+import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
+import {$EnumCompDrawer, $EnumCompDrawer$$Type} from "com.jaquadro.minecraft.storagedrawers.block.EnumCompDrawer"
+import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
+import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
+import {$BlockMetaFacingSized, $BlockMetaFacingSized$$Type} from "com.jaquadro.minecraft.storagedrawers.block.meta.BlockMetaFacingSized"
+import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
+import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
+
+export class $BlockMetaFacingSizedOpen$Open3 extends $BlockMetaFacingSized {
+static readonly "SLOTS": $EnumProperty<($EnumCompDrawer)>
+static readonly "UPDATE_IMMEDIATE": integer
+ "item": $Item
+static readonly "CODEC": $MapCodec<($Block)>
+static readonly "UPDATE_NEIGHBORS": integer
+static readonly "INDESTRUCTIBLE": float
+static readonly "OCCLUSION_CACHE": $ThreadLocal<($Object2ByteLinkedOpenHashMap<($Block$BlockStatePairKey)>)>
+static readonly "UPDATE_NONE": integer
+static readonly "UPDATE_INVISIBLE": integer
+static readonly "UPDATE_MOVE_BY_PISTON": integer
+static readonly "UPDATE_LIMIT": integer
+static readonly "HALF": $BooleanProperty
+static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
+static readonly "UPDATE_ALL": integer
+static readonly "UPDATE_ALL_IMMEDIATE": integer
+ "descriptionId": StringJS
+static readonly "UPDATE_KNOWN_SHAPE": integer
+static readonly "UPDATE_SUPPRESS_DROPS": integer
+static readonly "INSTANT": float
+static readonly "UPDATE_CLIENTS": integer
+static readonly "FACING": $DirectionProperty
+ "hasCollision": boolean
+
+constructor(arg0: $BlockBehaviour$Properties$$Type)
+
+public "asHolder"(): $Holder<(any)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $BlockMetaFacingSizedOpen$Open3$$Type = ($BlockMetaFacingSizedOpen$Open3);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $BlockMetaFacingSizedOpen$Open3_ = $BlockMetaFacingSizedOpen$Open3$$Type;
+}}
+declare module "com.jaquadro.minecraft.storagedrawers.block.meta.BlockMetaFacingSizedOpen$Open2" {
+import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
+import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
+import {$EnumCompDrawer, $EnumCompDrawer$$Type} from "com.jaquadro.minecraft.storagedrawers.block.EnumCompDrawer"
+import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
+import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
+import {$BlockMetaFacingSized, $BlockMetaFacingSized$$Type} from "com.jaquadro.minecraft.storagedrawers.block.meta.BlockMetaFacingSized"
+import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
+import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
+
+export class $BlockMetaFacingSizedOpen$Open2 extends $BlockMetaFacingSized {
+static readonly "SLOTS": $EnumProperty<($EnumCompDrawer)>
+static readonly "UPDATE_IMMEDIATE": integer
+ "item": $Item
+static readonly "CODEC": $MapCodec<($Block)>
+static readonly "UPDATE_NEIGHBORS": integer
+static readonly "INDESTRUCTIBLE": float
+static readonly "OCCLUSION_CACHE": $ThreadLocal<($Object2ByteLinkedOpenHashMap<($Block$BlockStatePairKey)>)>
+static readonly "UPDATE_NONE": integer
+static readonly "UPDATE_INVISIBLE": integer
+static readonly "UPDATE_MOVE_BY_PISTON": integer
+static readonly "UPDATE_LIMIT": integer
+static readonly "HALF": $BooleanProperty
+static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
+static readonly "UPDATE_ALL": integer
+static readonly "UPDATE_ALL_IMMEDIATE": integer
+ "descriptionId": StringJS
+static readonly "UPDATE_KNOWN_SHAPE": integer
+static readonly "UPDATE_SUPPRESS_DROPS": integer
+static readonly "INSTANT": float
+static readonly "UPDATE_CLIENTS": integer
+static readonly "FACING": $DirectionProperty
+ "hasCollision": boolean
+
+constructor(arg0: $BlockBehaviour$Properties$$Type)
+
+public "asHolder"(): $Holder<(any)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $BlockMetaFacingSizedOpen$Open2$$Type = ($BlockMetaFacingSizedOpen$Open2);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $BlockMetaFacingSizedOpen$Open2_ = $BlockMetaFacingSizedOpen$Open2$$Type;
+}}
 declare module "com.jaquadro.minecraft.storagedrawers.item.ItemDrawers" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IPortable, $IPortable$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.attribute.IPortable"
@@ -3417,13 +3980,13 @@ import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelR
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $ItemDrawers extends $BlockItem implements $IPortable {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3438,15 +4001,16 @@ constructor(arg0: $Block$$Type, arg1: $Item$Properties$$Type)
 
 public "getDescription"(): $Component
 public "getName"(arg0: $ItemStack$$Type): $Component
-public "canFitInsideContainerItems"(): boolean
-public "doesSneakBypassUse"(arg0: $ItemStack$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): boolean
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "isHeavy"(arg0: $HolderLookup$Provider$$Type, arg1: $ItemStack$$Type): boolean
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "doesSneakBypassUse"(arg0: $ItemStack$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): boolean
+public "canFitInsideContainerItems"(): boolean
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
 public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "description"(): $Component
 }
 /**
@@ -3462,18 +4026,22 @@ declare global {
 export type $ItemDrawers_ = $ItemDrawers$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.item.ItemUpgradeCreative" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$EnumUpgradeCreative, $EnumUpgradeCreative$$Type} from "com.jaquadro.minecraft.storagedrawers.item.EnumUpgradeCreative"
 import {$ItemUpgrade, $ItemUpgrade$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemUpgrade"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $ItemUpgradeCreative extends $ItemUpgrade {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3483,6 +4051,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $EnumUpgradeCreative$$Type, arg1: $Item$Properties$$Type)
 
 public "isEnabled"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "enabled"(): boolean
 }
 /**
@@ -3504,10 +4073,10 @@ import {$GameProfile, $GameProfile$$Type} from "com.mojang.authlib.GameProfile"
 
 export interface $ISecurityProvider {
 
+ "getProviderID"(): StringJS
  "hasAccess"(arg0: $Player$$Type, arg1: $IProtectable$$Type): boolean
  "hasOwnership"(arg0: $GameProfile$$Type, arg1: $IProtectable$$Type): boolean
- "getProviderID"(): string
-get "providerID"(): string
+get "providerID"(): StringJS
 }
 
 export namespace $ISecurityProvider {
@@ -3516,9 +4085,9 @@ const probejs$$marker: never
 export class $ISecurityProvider$$Static implements $ISecurityProvider {
 
 
+ "getProviderID"(): StringJS
  "hasAccess"(arg0: $Player$$Type, arg1: $IProtectable$$Type): boolean
  "hasOwnership"(arg0: $GameProfile$$Type, arg1: $IProtectable$$Type): boolean
- "getProviderID"(): string
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3568,17 +4137,21 @@ declare global {
 export type $FaceSlotBlock$InteractContext_ = $FaceSlotBlock$InteractContext$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.item.ItemUpgradeVoid" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$ItemUpgrade, $ItemUpgrade$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemUpgrade"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $ItemUpgradeVoid extends $ItemUpgrade {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3587,6 +4160,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type)
 
 public "isEnabled"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "enabled"(): boolean
 }
 /**
@@ -3602,63 +4176,54 @@ declare global {
 export type $ItemUpgradeVoid_ = $ItemUpgradeVoid$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.block.tile.BlockEntityDrawers" {
-import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$IDrawerGroup, $IDrawerGroup$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.IDrawerGroup"
+import {$MaterialData, $MaterialData$$Type} from "com.jaquadro.minecraft.storagedrawers.block.tile.tiledata.MaterialData"
 import {$UUID, $UUID$$Type} from "java.util.UUID"
 import {$IDrawerAttributes, $IDrawerAttributes$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.IDrawerAttributes"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$TrackedDataContainer, $TrackedDataContainer$$Type} from "dev.corgitaco.dataanchor.data.TrackedDataContainer"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$UpgradeData, $UpgradeData$$Type} from "com.jaquadro.minecraft.storagedrawers.block.tile.tiledata.UpgradeData"
+import {$Set, $Set$$Type} from "java.util.Set"
+import {$IDrawer, $IDrawer$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.IDrawer"
+import {$IProtectable, $IProtectable$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.attribute.IProtectable"
+import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
+import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
+import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$IControlGroup, $IControlGroup$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.IControlGroup"
 import {$ISecurityProvider, $ISecurityProvider$$Type} from "com.jaquadro.minecraft.storagedrawers.api.security.ISecurityProvider"
 import {$TrackedData, $TrackedData$$Type} from "dev.corgitaco.dataanchor.data.TrackedData"
-import {$TrackedDataContainer, $TrackedDataContainer$$Type} from "dev.corgitaco.dataanchor.data.TrackedDataContainer"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.dataanchor.data.registry.TrackedDataRegistry"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
-import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Nameable, $Nameable$$Type} from "net.minecraft.world.Nameable"
 import {$ChameleonCapability, $ChameleonCapability$$Type} from "com.texelsaurus.minecraft.chameleon.capabilities.ChameleonCapability"
-import {$UpgradeData, $UpgradeData$$Type} from "com.jaquadro.minecraft.storagedrawers.block.tile.tiledata.UpgradeData"
-import {$IFramedMaterials, $IFramedMaterials$$Type} from "com.jaquadro.minecraft.storagedrawers.api.framing.IFramedMaterials"
 import {$BaseBlockEntity, $BaseBlockEntity$$Type} from "com.jaquadro.minecraft.storagedrawers.block.tile.BaseBlockEntity"
 import {$Packet, $Packet$$Type} from "net.minecraft.network.protocol.Packet"
-import {$IDrawer, $IDrawer$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.IDrawer"
-import {$IProtectable, $IProtectable$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.attribute.IProtectable"
 import {$IFramedBlockEntity, $IFramedBlockEntity$$Type} from "com.jaquadro.minecraft.storagedrawers.api.framing.IFramedBlockEntity"
 import {$INetworked, $INetworked$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.INetworked"
 
 export class $BlockEntityDrawers extends $BaseBlockEntity implements $IDrawerGroup, $IProtectable, $INetworked, $IFramedBlockEntity, $Nameable {
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 
-public "getName"(): $Component
 public "getOwner"(): $UUID
 public "setOwner"(arg0: $UUID$$Type): boolean
-public "removeComponentsFromTag"(arg0: $CompoundTag$$Type): void
+public "getName"(): $Component
+public "pushItemsTick"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): boolean
+public "entityInside"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Entity$$Type): void
 public "getCustomName"(): $Component
-public "getCapability"<T>(arg0: $ChameleonCapability$$Type<(T)>): T
 public "setChanged"(): void
+public "getCapability"<T>(arg0: $ChameleonCapability$$Type<(T)>): T
 public "getGroup"(): $IDrawerGroup
 public static "getGroup"(arg0: $BlockEntityDrawers$$Type): $IDrawerGroup
-public "getRedstoneLevel"(): integer
-public "setSecurityProvider"(arg0: $ISecurityProvider$$Type): boolean
-public "takeItemsFromSlot"(arg0: integer, arg1: integer): $ItemStack
-public "interactReplaceDrawer"(arg0: integer, arg1: $ItemStack$$Type): boolean
-public "getBoundControlGroup"(): $IControlGroup
-public "canRecurseSearch"(): boolean
-public "unbindControlGroup"(): void
-public static "getDrawerAttributes"(arg0: $BlockEntityDrawers$$Type): $IDrawerAttributes
-public "getDrawerAttributes"(): $IDrawerAttributes
-public "getDrawerCapacity"(): integer
-public "putItemsIntoSlot"(arg0: integer, arg1: $ItemStack$$Type, arg2: integer): integer
-public "getSecurityProvider"(): $ISecurityProvider
-public "clientUpdateCount"(arg0: integer, arg1: integer): void
 /**
  * 
  * @deprecated
  */
 public "getDrawerCount"(): integer
-public "readPortable"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): void
-public "isRedstone"(): boolean
 /**
  * 
  * @deprecated
@@ -3666,13 +4231,36 @@ public "isRedstone"(): boolean
 public "getDrawer"(arg0: integer): $IDrawer
 public "writePortable"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): $CompoundTag
 public "isGroupValid"(): boolean
+public "readPortable"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): void
+public "isRedstone"(): boolean
 public "onEntityLoad"(): void
 public "upgrades"(): $UpgradeData
-public "material"(): $IFramedMaterials
+public "material"(): $MaterialData
+public "getRedstoneLevel"(): integer
+public "removeComponentsFromTag"(arg0: $CompoundTag$$Type): void
+public static "getDrawerAttributes"(arg0: $BlockEntityDrawers$$Type): $IDrawerAttributes
+public "getDrawerAttributes"(): $IDrawerAttributes
+public "setSecurityProvider"(arg0: $ISecurityProvider$$Type): boolean
+public "takeItemsFromSlot"(arg0: integer, arg1: integer): $ItemStack
+public "takeItemsFromSlot"(arg0: integer, arg1: integer, arg2: $Player$$Type): $ItemStack
+public "interactReplaceDrawer"(arg0: integer, arg1: $ItemStack$$Type, arg2: $Player$$Type): boolean
+public "interactReplaceDrawer"(arg0: integer, arg1: $ItemStack$$Type): boolean
+public "getBoundControlGroup"(): $IControlGroup
+public "softBindControlGroup"(arg0: $IControlGroup$$Type): void
+public "canRecurseSearch"(): boolean
+public "unbindControlGroup"(): void
+public "scheduleValidation"(): void
+public "interactPutCurrentInventoryIntoSlot"(arg0: integer, arg1: $Player$$Type): integer
+public "getDrawerCapacity"(): integer
+public "putItemsIntoSlot"(arg0: integer, arg1: $ItemStack$$Type, arg2: integer, arg3: $Player$$Type): integer
+public "putItemsIntoSlot"(arg0: integer, arg1: $ItemStack$$Type, arg2: integer): integer
+public "getSecurityProvider"(): $ISecurityProvider
+public "clientUpdateCount"(arg0: integer, arg1: integer): void
 public "interactPutItemsIntoSlot"(arg0: integer, arg1: $Player$$Type): integer
 public "getEffectiveDrawerCapacity"(): integer
 public "validateBoundController"(): void
 public "supportsDirectControllerLink"(): boolean
+public "getSoftBoundControlGroups"(): $Set<($IControlGroup)>
 public "interactPutCurrentItemIntoSlot"(arg0: integer, arg1: $Player$$Type): integer
 /**
  * 
@@ -3680,28 +4268,28 @@ public "interactPutCurrentItemIntoSlot"(arg0: integer, arg1: $Player$$Type): int
  */
 public "getAccessibleDrawerSlots"(): (integer)[]
 public "dataPacketRequiresRenderUpdate"(): boolean
-public "interactPutCurrentInventoryIntoSlot"(arg0: integer, arg1: $Player$$Type): integer
 public "hasMissingDrawers"(): boolean
 public "getDisplayName"(): $Component
 public "hasCustomName"(): boolean
 public "getUpdatePacket"(): $Packet<(any)>
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
-get "name"(): $Component
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "owner"(): $UUID
 set "owner"(value: $UUID$$Type)
+get "name"(): $Component
 get "customName"(): $Component
 get "group"(): $IDrawerGroup
+get "drawerCount"(): integer
+get "groupValid"(): boolean
+get "redstone"(): boolean
 get "redstoneLevel"(): integer
+get "drawerAttributes"(): $IDrawerAttributes
 set "securityProvider"(value: $ISecurityProvider$$Type)
 get "boundControlGroup"(): $IControlGroup
-get "drawerAttributes"(): $IDrawerAttributes
 get "drawerCapacity"(): integer
 get "securityProvider"(): $ISecurityProvider
-get "drawerCount"(): integer
-get "redstone"(): boolean
-get "groupValid"(): boolean
 get "effectiveDrawerCapacity"(): integer
+get "softBoundControlGroups"(): $Set<($IControlGroup)>
 get "accessibleDrawerSlots"(): (integer)[]
 get "displayName"(): $Component
 get "updatePacket"(): $Packet<(any)>
@@ -3719,19 +4307,23 @@ declare global {
 export type $BlockEntityDrawers_ = $BlockEntityDrawers$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.item.ItemUpgradeStorage" {
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ItemUpgrade, $ItemUpgrade$$Type} from "com.jaquadro.minecraft.storagedrawers.item.ItemUpgrade"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$EnumUpgradeStorage, $EnumUpgradeStorage$$Type} from "com.jaquadro.minecraft.storagedrawers.item.EnumUpgradeStorage"
 
 export class $ItemUpgradeStorage extends $ItemUpgrade {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 readonly "level": $EnumUpgradeStorage
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -3742,6 +4334,7 @@ constructor(arg0: $EnumUpgradeStorage$$Type, arg1: $Item$Properties$$Type)
 
 public "getDescription"(): $Component
 public "isEnabled"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "description"(): $Component
 get "enabled"(): boolean
 }
@@ -3758,13 +4351,16 @@ declare global {
 export type $ItemUpgradeStorage_ = $ItemUpgradeStorage$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.item.ItemUpgrade" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -3775,7 +4371,7 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 export class $ItemUpgrade extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3785,16 +4381,17 @@ constructor(arg0: $Item$Properties$$Type)
 
 public "getDescription"(): $Component
 public "isEnabled"(): boolean
-public "doesSneakBypassUse"(arg0: $ItemStack$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): boolean
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-public "getAllowMultiple"(): boolean
-public "setAllowMultiple"(arg0: boolean): void
 public "getUpgradeGroup"(): integer
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "doesSneakBypassUse"(arg0: $ItemStack$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): boolean
+public "setAllowMultiple"(arg0: boolean): void
+public "getAllowMultiple"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "description"(): $Component
 get "enabled"(): boolean
-get "allowMultiple"(): boolean
-set "allowMultiple"(value: boolean)
 get "upgradeGroup"(): integer
+set "allowMultiple"(value: boolean)
+get "allowMultiple"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3809,29 +4406,30 @@ declare global {
 export type $ItemUpgrade_ = $ItemUpgrade$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.block.BlockControllerIO" {
-import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
-import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$IControlGroup, $IControlGroup$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.IControlGroup"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$IFramedSourceBlock, $IFramedSourceBlock$$Type} from "com.jaquadro.minecraft.storagedrawers.api.framing.IFramedSourceBlock"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$BlockEntityController, $BlockEntityController$$Type} from "com.jaquadro.minecraft.storagedrawers.block.tile.BlockEntityController"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
+import {$Set, $Set$$Type} from "java.util.Set"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
+import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
+import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
+import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
+import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$IControlGroup, $IControlGroup$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.IControlGroup"
+import {$IFramedSourceBlock, $IFramedSourceBlock$$Type} from "com.jaquadro.minecraft.storagedrawers.api.framing.IFramedSourceBlock"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
+import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
-import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$INetworked, $INetworked$$Type} from "com.jaquadro.minecraft.storagedrawers.api.storage.INetworked"
-import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $BlockControllerIO extends $Block implements $INetworked, $EntityBlock, $IFramedSourceBlock {
 static readonly "UPDATE_IMMEDIATE": integer
@@ -3847,7 +4445,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3860,13 +4458,17 @@ public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockE
 public "makeFramedItem"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: $ItemStack$$Type, arg3: $ItemStack$$Type): $ItemStack
 public "getController"(arg0: $Level$$Type, arg1: $BlockPos$$Type): $BlockEntityController
 public "getBoundControlGroup"(): $IControlGroup
+public "softBindControlGroup"(arg0: $IControlGroup$$Type): void
 public "canRecurseSearch"(): boolean
 public "unbindControlGroup"(): void
+public "scheduleValidation"(): void
 public "supportsDirectControllerLink"(): boolean
+public "getSoftBoundControlGroups"(): $Set<($IControlGroup)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
 get "boundControlGroup"(): $IControlGroup
+get "softBoundControlGroups"(): $Set<($IControlGroup)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3890,6 +4492,7 @@ import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Set, $Set$$Type} from "java.util.Set"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -3922,7 +4525,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3931,24 +4534,28 @@ static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
 
+public "attack"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): void
 public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
 public "putSlot"(arg0: $FaceSlotBlock$InteractContext$$Type, arg1: boolean): $InteractionResult
-public "attack"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): void
-public "useSlotInvertible"(arg0: $FaceSlotBlock$InteractContext$$Type): $Optional<($InteractionResult)>
+public "getFaceSlot"(arg0: $BlockState$$Type, arg1: $BlockHitResult$$Type): integer
 public "useSlot"(arg0: $FaceSlotBlock$InteractContext$$Type): $Optional<($InteractionResult)>
 public "takeSlot"(arg0: $FaceSlotBlock$InteractContext$$Type, arg1: boolean): $InteractionResult
 public "rightAction"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
 public "leftAction"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
-public "getFaceSlot"(arg0: $BlockState$$Type, arg1: $BlockHitResult$$Type): integer
+public "useSlotInvertible"(arg0: $FaceSlotBlock$InteractContext$$Type): $Optional<($InteractionResult)>
 public "getBoundControlGroup"(): $IControlGroup
+public "softBindControlGroup"(arg0: $IControlGroup$$Type): void
 public "canRecurseSearch"(): boolean
 public "unbindControlGroup"(): void
+public "scheduleValidation"(): void
 public "supportsDirectControllerLink"(): boolean
+public "getSoftBoundControlGroups"(): $Set<($IControlGroup)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
 get "boundControlGroup"(): $IControlGroup
+get "softBoundControlGroups"(): $Set<($IControlGroup)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3963,13 +4570,14 @@ declare global {
 export type $FaceSlotBlock_ = $FaceSlotBlock$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.item.ItemKeyring" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$List, $List$$Type} from "java.util.List"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$Slot, $Slot$$Type} from "net.minecraft.world.inventory.Slot"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$Slot, $Slot$$Type} from "net.minecraft.world.inventory.Slot"
 import {$TooltipComponent, $TooltipComponent$$Type} from "net.minecraft.world.inventory.tooltip.TooltipComponent"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$ClickAction, $ClickAction$$Type} from "net.minecraft.world.inventory.ClickAction"
@@ -3982,6 +4590,7 @@ import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.Inte
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$SlotAccess, $SlotAccess$$Type} from "net.minecraft.world.entity.SlotAccess"
 import {$ItemEntity, $ItemEntity$$Type} from "net.minecraft.world.entity.item.ItemEntity"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
@@ -3991,7 +4600,7 @@ import {$RegistryEntry, $RegistryEntry$$Type} from "com.texelsaurus.minecraft.ch
 export class $ItemKeyring extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3999,16 +4608,17 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $RegistryEntry$$Type<($ItemKey$$Type)>, arg1: $Item$Properties$$Type)
 
+public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
 public "getDescription"(): $Component
 public "getName"(arg0: $ItemStack$$Type): $Component
 public "getKey"(): $ItemStack
-public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "overrideOtherStackedOnMe"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: $Slot$$Type, arg3: $ClickAction$$Type, arg4: $Player$$Type, arg5: $SlotAccess$$Type): boolean
-public "onDestroyed"(arg0: $ItemEntity$$Type): void
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public "onDestroyed"(arg0: $ItemEntity$$Type): void
+public static "getKeyring"(arg0: $ItemStack$$Type): $ItemStack
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getTooltipImage"(arg0: $ItemStack$$Type): $Optional<($TooltipComponent)>
-public static "getKeyring"(arg0: $ItemStack$$Type): $ItemStack
+public "overrideOtherStackedOnMe"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: $Slot$$Type, arg3: $ClickAction$$Type, arg4: $Player$$Type, arg5: $SlotAccess$$Type): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "description"(): $Component
 get "key"(): $ItemStack
 }
@@ -4025,15 +4635,18 @@ declare global {
 export type $ItemKeyring_ = $ItemKeyring$$Type;
 }}
 declare module "com.jaquadro.minecraft.storagedrawers.item.ItemUpgradeRemote" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Inventory, $Inventory$$Type} from "net.minecraft.world.entity.player.Inventory"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$BlockEntityController, $BlockEntityController$$Type} from "com.jaquadro.minecraft.storagedrawers.block.tile.BlockEntityController"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
@@ -4045,7 +4658,7 @@ import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.Le
 export class $ItemUpgradeRemote extends $ItemUpgrade {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4055,14 +4668,15 @@ constructor(arg0: boolean, arg1: boolean, arg2: $Item$Properties$$Type)
 
 public "isEnabled"(): boolean
 public "isBound"(): boolean
+public "isGroupUpgrade"(): boolean
+public static "setUnbound"(arg0: $ItemStack$$Type): $ItemStack
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public static "setBoundController"(arg0: $ItemStack$$Type, arg1: $BlockEntityController$$Type): $ItemStack
 public static "getBoundPosition"(arg0: $ItemStack$$Type): $BlockPos
 public static "getBoundController"(arg0: $ItemStack$$Type, arg1: $LevelAccessor$$Type): $BlockEntityController
 public static "copyControllerBinding"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): $ItemStack
 public static "validateInventory"(arg0: $Inventory$$Type, arg1: $Level$$Type): void
-public "isGroupUpgrade"(): boolean
-public static "setUnbound"(arg0: $ItemStack$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "enabled"(): boolean
 get "bound"(): boolean
 get "groupUpgrade"(): boolean

@@ -38,22 +38,22 @@ constructor(i: integer, j: integer, k: integer, l: integer)
 
 public "getWidth"(): integer
 public "getHeight"(): integer
-public "getY"(): integer
 public "contains"(x: integer, y: integer): boolean
-public "setWidth"(width: integer): void
-public "setHeight"(height: integer): void
-public "setPosition"(xPos: integer, yPos: integer): void
+public "getY"(): integer
+public "getX"(): integer
 public "setX"(xPos: integer): void
 public "setY"(yPos: integer): void
-public "getX"(): integer
+public "setPosition"(xPos: integer, yPos: integer): void
+public "setWidth"(width: integer): void
+public "setHeight"(height: integer): void
 get "width"(): integer
 get "height"(): integer
 get "y"(): integer
-set "width"(value: integer)
-set "height"(value: integer)
+get "x"(): integer
 set "x"(value: integer)
 set "y"(value: integer)
-get "x"(): integer
+set "width"(value: integer)
+set "height"(value: integer)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

@@ -1,8 +1,8 @@
 declare module "dev.corgitaco.enhancedcelestials.api.lunarevent.client.LunarEventClientSettings" {
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
-import {$ColorSettings, $ColorSettings$$Type} from "dev.corgitaco.enhancedcelestials.api.client.ColorSettings"
 import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
+import {$ColorSettings, $ColorSettings$$Type} from "dev.corgitaco.enhancedcelestials.api.client.ColorSettings"
 import {$Record, $Record$$Type} from "java.lang.Record"
 
 export class $LunarEventClientSettings extends $Record {
@@ -11,18 +11,18 @@ static readonly "CODEC": $Codec<($LunarEventClientSettings)>
 constructor(colorSettings: $ColorSettings$$Type, moonSize: float, moonTextureLocation: $ResourceLocation$$Type, soundTrack: $SoundEvent$$Type)
 
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "moonSize"(): float
-public "colorSettings"(): $ColorSettings
 public "soundTrack"(): $SoundEvent
+public "colorSettings"(): $ColorSettings
+public "moonSize"(): float
 public "moonTextureLocation"(): $ResourceLocation
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $LunarEventClientSettings$$Type = ({"colorSettings"?: $ColorSettings$$Type, "moonTextureLocation"?: $ResourceLocation$$Type, "moonSize"?: float, "soundTrack"?: $SoundEvent$$Type}) | ([colorSettings?: $ColorSettings$$Type, moonTextureLocation?: $ResourceLocation$$Type, moonSize?: float, soundTrack?: $SoundEvent$$Type]);
+export type $LunarEventClientSettings$$Type = ({"moonSize"?: float, "soundTrack"?: $SoundEvent$$Type, "colorSettings"?: $ColorSettings$$Type, "moonTextureLocation"?: $ResourceLocation$$Type}) | ([moonSize?: float, soundTrack?: $SoundEvent$$Type, colorSettings?: $ColorSettings$$Type, moonTextureLocation?: $ResourceLocation$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -42,10 +42,10 @@ static readonly "DEFAULT": $LunarMobSpawnInfo
 constructor(useBiomeSpawnSettings: boolean, forceSurfaceSpawning: boolean, slimesSpawnEverywhere: boolean, spawnInfo: $MobSpawnSettings$$Type)
 
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "slimesSpawnEverywhere"(): boolean
 public "spawnInfo"(): $MobSpawnSettings
+public "slimesSpawnEverywhere"(): boolean
 public "useBiomeSpawnSettings"(): boolean
 public "forceSurfaceSpawning"(): boolean
 }
@@ -53,7 +53,7 @@ public "forceSurfaceSpawning"(): boolean
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $LunarMobSpawnInfo$$Type = ({"useBiomeSpawnSettings"?: boolean, "spawnInfo"?: $MobSpawnSettings$$Type, "forceSurfaceSpawning"?: boolean, "slimesSpawnEverywhere"?: boolean}) | ([useBiomeSpawnSettings?: boolean, spawnInfo?: $MobSpawnSettings$$Type, forceSurfaceSpawning?: boolean, slimesSpawnEverywhere?: boolean]);
+export type $LunarMobSpawnInfo$$Type = ({"forceSurfaceSpawning"?: boolean, "slimesSpawnEverywhere"?: boolean, "useBiomeSpawnSettings"?: boolean, "spawnInfo"?: $MobSpawnSettings$$Type}) | ([forceSurfaceSpawning?: boolean, slimesSpawnEverywhere?: boolean, useBiomeSpawnSettings?: boolean, spawnInfo?: $MobSpawnSettings$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -75,7 +75,7 @@ static readonly "EMPTY": $DropSettings
 constructor(dropEnhancer: $Map$$Type<($TagKey$$Type<($Item$$Type)>), (double)>)
 
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "dropEnhancer"(): $Map<($TagKey<($Item)>), (double)>
 }
@@ -94,8 +94,8 @@ export type $DropSettings_ = $DropSettings$$Type;
 declare module "dev.corgitaco.dataanchor.data.TrackedData" {
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
-import {$Tag, $Tag$$Type} from "net.minecraft.nbt.Tag"
 import {$Class, $Class$$Type} from "java.lang.Class"
+import {$Tag, $Tag$$Type} from "net.minecraft.nbt.Tag"
 
 export interface $TrackedData<T> extends $Supplier<(T)> {
 
@@ -107,8 +107,8 @@ export interface $TrackedData<T> extends $Supplier<(T)> {
 }
 
 export namespace $TrackedData {
-function fromTag<T>(tag: $Tag$$Type, clazz: $Class$$Type<(T)>): T
 function toTag(obj: any): $Tag
+function fromTag<T>(tag: $Tag$$Type, clazz: $Class$$Type<(T)>): T
 function updateExistingFromTag<T>(tag: $Tag$$Type, obj: T): T
 const probejs$$marker: never
 }
@@ -117,8 +117,8 @@ export class $TrackedData$$Static<T> implements $TrackedData {
 
  "load"(tag: $CompoundTag$$Type): void
  "save"(): $CompoundTag
-static "fromTag"<T>(tag: $Tag$$Type, clazz: $Class$$Type<(T)>): T
 static "toTag"(obj: any): $Tag
+static "fromTag"<T>(tag: $Tag$$Type, clazz: $Class$$Type<(T)>): T
 static "updateExistingFromTag"<T>(tag: $Tag$$Type, obj: T): T
  "get"(): T
 }
@@ -147,11 +147,11 @@ constructor(chance: double, minNumberOfNights: integer, validMoonPhases: $Collec
 constructor(chance: double, minNumberOfNights: integer, validMoonPhases: $IntArraySet$$Type)
 
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "chance"(): double
-public "validMoonPhases"(): $IntArraySet
 public "minNumberOfNights"(): integer
+public "validMoonPhases"(): $IntArraySet
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -212,7 +212,7 @@ static readonly "DEFAULT": $LunarMobSettings
 constructor(spawnCategoryMultiplier: $Map$$Type<($MobCategory$$Type), (double)>, lunarMobSpawnInfo: $LunarMobSpawnInfo$$Type, effectsForEntityTag: $List$$Type<($Pair$$Type<($Condition$$Type), ($MobEffectInstanceBuilder$$Type)>)>, blockSleeping: $Condition$$Type)
 
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "blockSleeping"(): $Condition
 public "lunarMobSpawnInfo"(): $LunarMobSpawnInfo
@@ -223,7 +223,7 @@ public "spawnCategoryMultiplier"(): $Map<($MobCategory), (double)>
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $LunarMobSettings$$Type = ({"lunarMobSpawnInfo"?: $LunarMobSpawnInfo$$Type, "effectsForEntityTag"?: $List$$Type<($Pair$$Type<($Condition$$Type), ($MobEffectInstanceBuilder$$Type)>)>, "blockSleeping"?: $Condition$$Type, "spawnCategoryMultiplier"?: $Map$$Type<($MobCategory$$Type), (double)>}) | ([lunarMobSpawnInfo?: $LunarMobSpawnInfo$$Type, effectsForEntityTag?: $List$$Type<($Pair$$Type<($Condition$$Type), ($MobEffectInstanceBuilder$$Type)>)>, blockSleeping?: $Condition$$Type, spawnCategoryMultiplier?: $Map$$Type<($MobCategory$$Type), (double)>]);
+export type $LunarMobSettings$$Type = ({"spawnCategoryMultiplier"?: $Map$$Type<($MobCategory$$Type), (double)>, "lunarMobSpawnInfo"?: $LunarMobSpawnInfo$$Type, "effectsForEntityTag"?: $List$$Type<($Pair$$Type<($Condition$$Type), ($MobEffectInstanceBuilder$$Type)>)>, "blockSleeping"?: $Condition$$Type}) | ([spawnCategoryMultiplier?: $Map$$Type<($MobCategory$$Type), (double)>, lunarMobSpawnInfo?: $LunarMobSpawnInfo$$Type, effectsForEntityTag?: $List$$Type<($Pair$$Type<($Condition$$Type), ($MobEffectInstanceBuilder$$Type)>)>, blockSleeping?: $Condition$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -266,24 +266,24 @@ import {$TrackedDataKey, $TrackedDataKey$$Type} from "dev.corgitaco.dataanchor.d
 
 export interface $TrackedDataContainer<O, T extends $TrackedData<(O)>> {
 
- "dataAnchor$getTrackedData"<E extends T>(arg0: $TrackedDataKey$$Type<(E)>): $Optional<(E)>
  "dataAnchor$createTrackedData"(): void
  "dataAnchor$getTrackedDataKeys"(): $Collection<($TrackedDataKey<(T)>)>
+ "dataAnchor$getTrackedData"<E extends T>(arg0: $TrackedDataKey$$Type<(E)>): $Optional<(E)>
 }
 
 export namespace $TrackedDataContainer {
-function makeBasicContainer<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 function makeBasicContainer<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+function makeBasicContainer<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 const probejs$$marker: never
 }
 export class $TrackedDataContainer$$Static<O, T extends $TrackedData<(O)>> implements $TrackedDataContainer {
 
 
- "dataAnchor$getTrackedData"<E extends T>(arg0: $TrackedDataKey$$Type<(E)>): $Optional<(E)>
+static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
  "dataAnchor$createTrackedData"(): void
  "dataAnchor$getTrackedDataKeys"(): $Collection<($TrackedDataKey<(T)>)>
-static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
-static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+ "dataAnchor$getTrackedData"<E extends T>(arg0: $TrackedDataKey$$Type<(E)>): $Optional<(E)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -305,13 +305,13 @@ import {$LunarEvent$SpawnRequirements, $LunarEvent$SpawnRequirements$$Type} from
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$LunarMobSpawnInfo, $LunarMobSpawnInfo$$Type} from "dev.corgitaco.enhancedcelestials.api.lunarevent.LunarMobSpawnInfo"
 import {$LunarMobSettings, $LunarMobSettings$$Type} from "dev.corgitaco.enhancedcelestials.api.lunarevent.LunarMobSettings"
-import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$MobCategory, $MobCategory$$Type} from "net.minecraft.world.entity.MobCategory"
+import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$LunarEventClientSettings, $LunarEventClientSettings$$Type} from "dev.corgitaco.enhancedcelestials.api.lunarevent.client.LunarEventClientSettings"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$LunarTextComponents$Notification, $LunarTextComponents$Notification$$Type} from "dev.corgitaco.enhancedcelestials.api.lunarevent.LunarTextComponents$Notification"
 import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
-import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$LunarTextComponents, $LunarTextComponents$$Type} from "dev.corgitaco.enhancedcelestials.api.lunarevent.LunarTextComponents"
 
 export class $LunarEvent {
@@ -320,28 +320,28 @@ static readonly "DIRECT_CODEC": $Codec<($LunarEvent)>
 constructor(eventChancesByDimension: $Map$$Type<($ResourceKey$$Type<($Level$$Type)>), ($LunarEvent$SpawnRequirements$$Type)>, clientSettings: $LunarEventClientSettings$$Type, textComponents: $LunarTextComponents$$Type, lunarMobSettings: $LunarMobSettings$$Type, dropSettings: $DropSettings$$Type)
 constructor(eventChancesByDimension: $Map$$Type<($ResourceKey$$Type<($Level$$Type)>), ($LunarEvent$SpawnRequirements$$Type)>, clientSettings: $LunarEventClientSettings$$Type, textComponents: $LunarTextComponents$$Type, lunarMobSettings: $LunarMobSettings$$Type, dropSettings: $DropSettings$$Type, anvilCostAmplifier: double, enchantmentTableCostAmplifier: double, xpAmplifier: double, beaconRadiusAmplifier: double)
 
-public "getEventChancesByDimension"(): $Map<($ResourceKey<($Level)>), ($LunarEvent$SpawnRequirements)>
-public "enchantmentTableCostAmplifier"(): double
 public "blockSleeping"(entity: $LivingEntity$$Type): boolean
 public "xpAmplifier"(): double
-public "livingEntityTick"(entity: $LivingEntity$$Type): void
-public "onBlockItemDrop"(world: $ServerLevel$$Type, itemStack: $ItemStack$$Type): void
+public "getTextComponents"(): $LunarTextComponents
+public "anvilCostAmplifier"(): double
 public "getLunarMobSettings"(): $LunarMobSettings
 public "beaconRadiusAmplifier"(): double
-public "anvilCostAmplifier"(): double
+public "onBlockItemDrop"(world: $ServerLevel$$Type, itemStack: $ItemStack$$Type): void
+public "livingEntityTick"(entity: $LivingEntity$$Type): void
+public "getSpawnMultiplierForMonsterCategory"(classification: $MobCategory$$Type): double
 public "startNotification"(): $LunarTextComponents$Notification
 public "endNotification"(): $LunarTextComponents$Notification
 public "getClientSettings"(): $LunarEventClientSettings
 public "getLunarSpawner"(): $LunarMobSpawnInfo
 public "getDropSettings"(): $DropSettings
-public "getTextComponents"(): $LunarTextComponents
-public "getSpawnMultiplierForMonsterCategory"(classification: $MobCategory$$Type): double
-get "eventChancesByDimension"(): $Map<($ResourceKey<($Level)>), ($LunarEvent$SpawnRequirements)>
+public "getEventChancesByDimension"(): $Map<($ResourceKey<($Level)>), ($LunarEvent$SpawnRequirements)>
+public "enchantmentTableCostAmplifier"(): double
+get "textComponents"(): $LunarTextComponents
 get "lunarMobSettings"(): $LunarMobSettings
 get "clientSettings"(): $LunarEventClientSettings
 get "lunarSpawner"(): $LunarMobSpawnInfo
 get "dropSettings"(): $DropSettings
-get "textComponents"(): $LunarTextComponents
+get "eventChancesByDimension"(): $Map<($ResourceKey<($Level)>), ($LunarEvent$SpawnRequirements)>
 /**
  * This field is a type stub generated by ProbeJS and shall not be used in any sense.
  */
@@ -374,22 +374,22 @@ static readonly "CODEC": $Codec<($MobEffectInstanceBuilder)>
 
 constructor(effect: $MobEffect$$Type, duration: integer, amplifier: integer, ambient: boolean, visible: boolean, showIcon: boolean)
 
+public "visible"(): boolean
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "duration"(): integer
-public "visible"(): boolean
-public "showIcon"(): boolean
+public "effect"(): $MobEffect
 public "ambient"(): boolean
 public "amplifier"(): integer
-public "effect"(): $MobEffect
 public "makeInstance"(): $MobEffectInstance
+public "showIcon"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $MobEffectInstanceBuilder$$Type = ({"duration"?: integer, "amplifier"?: integer, "visible"?: boolean, "showIcon"?: boolean, "ambient"?: boolean, "effect"?: $MobEffect$$Type}) | ([duration?: integer, amplifier?: integer, visible?: boolean, showIcon?: boolean, ambient?: boolean, effect?: $MobEffect$$Type]);
+export type $MobEffectInstanceBuilder$$Type = ({"showIcon"?: boolean, "ambient"?: boolean, "effect"?: $MobEffect$$Type, "duration"?: integer, "amplifier"?: integer, "visible"?: boolean}) | ([showIcon?: boolean, ambient?: boolean, effect?: $MobEffect$$Type, duration?: integer, amplifier?: integer, visible?: boolean]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -398,8 +398,8 @@ declare global {
 export type $MobEffectInstanceBuilder_ = $MobEffectInstanceBuilder$$Type;
 }}
 declare module "dev.corgitaco.enhancedcelestials.api.lunarevent.LunarTextComponents" {
-import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$LunarTextComponents$Notification, $LunarTextComponents$Notification$$Type} from "dev.corgitaco.enhancedcelestials.api.lunarevent.LunarTextComponents$Notification"
 import {$CustomTranslationTextComponent, $CustomTranslationTextComponent$$Type} from "dev.corgitaco.enhancedcelestials.util.CustomTranslationTextComponent"
 import {$Record, $Record$$Type} from "java.lang.Record"
@@ -413,7 +413,7 @@ constructor(name: $CustomTranslationTextComponent$$Type, riseNotification: $Cust
 
 public "name"(): $CustomTranslationTextComponent
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "setNotification"(): $Optional<($LunarTextComponents$Notification)>
 public "riseNotification"(): $Optional<($LunarTextComponents$Notification)>
@@ -422,7 +422,7 @@ public "riseNotification"(): $Optional<($LunarTextComponents$Notification)>
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $LunarTextComponents$$Type = ({"setNotification"?: ($LunarTextComponents$Notification$$Type)?, "riseNotification"?: ($LunarTextComponents$Notification$$Type)?, "name"?: $CustomTranslationTextComponent$$Type}) | ([setNotification?: ($LunarTextComponents$Notification$$Type)?, riseNotification?: ($LunarTextComponents$Notification$$Type)?, name?: $CustomTranslationTextComponent$$Type]);
+export type $LunarTextComponents$$Type = ({"name"?: $CustomTranslationTextComponent$$Type, "setNotification"?: ($LunarTextComponents$Notification$$Type)?, "riseNotification"?: ($LunarTextComponents$Notification$$Type)?}) | ([name?: $CustomTranslationTextComponent$$Type, setNotification?: ($LunarTextComponents$Notification$$Type)?, riseNotification?: ($LunarTextComponents$Notification$$Type)?]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -443,8 +443,8 @@ import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from
 import {$LakeFeature$Configuration, $LakeFeature$Configuration$$Type} from "net.minecraft.world.level.levelgen.feature.LakeFeature$Configuration"
 import {$BonusChestFeature, $BonusChestFeature$$Type} from "net.minecraft.world.level.levelgen.feature.BonusChestFeature"
 import {$StructureTemplate$StructureBlockInfo, $StructureTemplate$StructureBlockInfo$$Type} from "net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo"
-import {$NetherForestVegetationConfig, $NetherForestVegetationConfig$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.NetherForestVegetationConfig"
 import {$Set, $Set$$Type} from "java.util.Set"
+import {$NetherForestVegetationConfig, $NetherForestVegetationConfig$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.NetherForestVegetationConfig"
 import {$OreConfiguration, $OreConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration"
 import {$RandomBooleanFeatureConfiguration, $RandomBooleanFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.RandomBooleanFeatureConfiguration"
 import {$RandomPatchConfiguration, $RandomPatchConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration"
@@ -560,19 +560,19 @@ static readonly "KELP": $Feature<($NoneFeatureConfiguration)>
 constructor($$0: $Codec$$Type<($TreeFromStructureNBTConfig$$Type)>)
 
 public "place"(featurePlaceContext: $FeaturePlaceContext$$Type<($TreeFromStructureNBTConfig$$Type)>): boolean
+public static "intersectTrunk"(logProvider: $BlockStateProvider$$Type, level: $WorldGenLevel$$Type, random: $RandomSource$$Type, origin: $BlockPos$$Type, placeSettings: $StructurePlaceSettings$$Type, centerOffset: $BlockPos$$Type, logBuilders: $List$$Type<($StructureTemplate$StructureBlockInfo$$Type)>, maxTrunkBuildingDepth: integer, trunkPositions: $Map$$Type<($BlockPos$$Type), ($BlockState$$Type)>): boolean
+public static "fillLogsUnder"(logProvider: $BlockStateProvider$$Type, level: $WorldGenLevel$$Type, random: $RandomSource$$Type, origin: $BlockPos$$Type, placeSettings: $StructurePlaceSettings$$Type, centerOffset: $BlockPos$$Type, logBuilders: $List$$Type<($StructureTemplate$StructureBlockInfo$$Type)>, maxTrunkBuildingDepth: integer, groundFilter: $BlockPredicate$$Type, trunkPositions: $Map$$Type<($BlockPos$$Type), ($BlockState$$Type)>): void
+public static "getModifiedPos"(settings: $StructurePlaceSettings$$Type, placing: $StructureTemplate$StructureBlockInfo$$Type, partCenter: $BlockPos$$Type, featureOrigin: $BlockPos$$Type): $BlockPos
+public static "isOnGround"(maxLogDepth: integer, level: $WorldGenLevel$$Type, pos: $BlockPos$$Type, growableOn: $BlockPredicate$$Type): boolean
+public static "placeLogsWithRotation"(logProvider: $BlockStateProvider$$Type, level: $WorldGenLevel$$Type, random: $RandomSource$$Type, origin: $BlockPos$$Type, placeSettings: $StructurePlaceSettings$$Type, centerOffset: $BlockPos$$Type, logs: $List$$Type<($StructureTemplate$StructureBlockInfo$$Type)>, trunkPositions: $Map$$Type<($BlockPos$$Type), ($BlockState$$Type)>): void
+public static "getTransformedState"(modifiedPos: $BlockPos$$Type, state: $BlockState$$Type, nbtState: $BlockState$$Type, rotation: $Rotation$$Type, level: $WorldGenLevel$$Type): $BlockState
 public static "placeLeavesWithCalculatedDistanceAndRotation"(leavesProvider: $BlockStateProvider$$Type, level: $WorldGenLevel$$Type, origin: $BlockPos$$Type, random: $RandomSource$$Type, placeSettings: $StructurePlaceSettings$$Type, leaves: $List$$Type<($StructureTemplate$StructureBlockInfo$$Type)>, leavePositions: $Map$$Type<($BlockPos$$Type), ($BlockState$$Type)>, canopyCenterOffset: $BlockPos$$Type, leavesPlacementFilter: $BlockPredicate$$Type): void
-public static "getStructureInfosInStructurePalletteFromBlockList"(blocks: $Iterable$$Type<($Block$$Type)>, palette: $StructureTemplate$Palette$$Type): $List<($StructureTemplate$StructureBlockInfo)>
 public static "noTreePartPresent"(location: $ResourceLocation$$Type): $IllegalArgumentException
 public static "fillTrunkPositions"(logProvider: $BlockStateProvider$$Type, leavesProvider: $BlockStateProvider$$Type, config: $TreeFromStructureNBTConfig$$Type, level: $WorldGenLevel$$Type, randomSource: $RandomSource$$Type, origin: $BlockPos$$Type, placeSettings: $StructurePlaceSettings$$Type, trunkBasePalette: $StructureTemplate$Palette$$Type, centerOffset: $BlockPos$$Type, logs: $List$$Type<($StructureTemplate$StructureBlockInfo$$Type)>, logBuilders: $List$$Type<($StructureTemplate$StructureBlockInfo$$Type)>, leavePositions: $Map$$Type<($BlockPos$$Type), ($BlockState$$Type)>, trunkPositions: $Map$$Type<($BlockPos$$Type), ($BlockState$$Type)>, maxTrunkBuildingDepth: integer): void
 public static "fillCanopyPositions"(logProvider: $BlockStateProvider$$Type, leavesProvider: $BlockStateProvider$$Type, config: $TreeFromStructureNBTConfig$$Type, level: $WorldGenLevel$$Type, randomSource: $RandomSource$$Type, origin: $BlockPos$$Type, placeSettings: $StructurePlaceSettings$$Type, randomCanopyPalette: $StructureTemplate$Palette$$Type, leavePositions: $Map$$Type<($BlockPos$$Type), ($BlockState$$Type)>, trunkPositions: $Map$$Type<($BlockPos$$Type), ($BlockState$$Type)>, trunkLength: integer): boolean
 public static "placeAdditional"(config: $TreeFromStructureNBTConfig$$Type, level: $WorldGenLevel$$Type, origin: $BlockPos$$Type, placeSettings: $StructurePlaceSettings$$Type, palette: $StructureTemplate$Palette$$Type, centerOffset: $BlockPos$$Type): void
 public static "placeTreeDecorations"(treeDecorators: $Iterable$$Type<($TreeDecorator$$Type)>, level: $WorldGenLevel$$Type, random: $RandomSource$$Type, leavePositions: $Set$$Type<($BlockPos$$Type)>, trunkPositions: $Set$$Type<($BlockPos$$Type)>, decorationPositions: $Set$$Type<($BlockPos$$Type)>): void
-public static "placeLogsWithRotation"(logProvider: $BlockStateProvider$$Type, level: $WorldGenLevel$$Type, random: $RandomSource$$Type, origin: $BlockPos$$Type, placeSettings: $StructurePlaceSettings$$Type, centerOffset: $BlockPos$$Type, logs: $List$$Type<($StructureTemplate$StructureBlockInfo$$Type)>, trunkPositions: $Map$$Type<($BlockPos$$Type), ($BlockState$$Type)>): void
-public static "getTransformedState"(modifiedPos: $BlockPos$$Type, state: $BlockState$$Type, nbtState: $BlockState$$Type, rotation: $Rotation$$Type, level: $WorldGenLevel$$Type): $BlockState
-public static "getModifiedPos"(settings: $StructurePlaceSettings$$Type, placing: $StructureTemplate$StructureBlockInfo$$Type, partCenter: $BlockPos$$Type, featureOrigin: $BlockPos$$Type): $BlockPos
-public static "isOnGround"(maxLogDepth: integer, level: $WorldGenLevel$$Type, pos: $BlockPos$$Type, growableOn: $BlockPredicate$$Type): boolean
-public static "fillLogsUnder"(logProvider: $BlockStateProvider$$Type, level: $WorldGenLevel$$Type, random: $RandomSource$$Type, origin: $BlockPos$$Type, placeSettings: $StructurePlaceSettings$$Type, centerOffset: $BlockPos$$Type, logBuilders: $List$$Type<($StructureTemplate$StructureBlockInfo$$Type)>, maxTrunkBuildingDepth: integer, groundFilter: $BlockPredicate$$Type, trunkPositions: $Map$$Type<($BlockPos$$Type), ($BlockState$$Type)>): void
-public static "intersectTrunk"(logProvider: $BlockStateProvider$$Type, level: $WorldGenLevel$$Type, random: $RandomSource$$Type, origin: $BlockPos$$Type, placeSettings: $StructurePlaceSettings$$Type, centerOffset: $BlockPos$$Type, logBuilders: $List$$Type<($StructureTemplate$StructureBlockInfo$$Type)>, maxTrunkBuildingDepth: integer, trunkPositions: $Map$$Type<($BlockPos$$Type), ($BlockState$$Type)>): boolean
+public static "getStructureInfosInStructurePalletteFromBlockList"(blocks: $Iterable$$Type<($Block$$Type)>, palette: $StructureTemplate$Palette$$Type): $List<($StructureTemplate$StructureBlockInfo)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -653,10 +653,10 @@ import {$Vector3f, $Vector3f$$Type} from "org.joml.Vector3f"
 export class $ColorSettings {
 static readonly "CODEC": $Codec<($ColorSettings)>
 
-constructor(skyLightHexColor: string, moonTextureHexColor: string)
+constructor(skyLightHexColor: StringJS, moonTextureHexColor: StringJS)
 constructor(skyLightColor: integer, moonTextureColor: integer)
 
-public static "tryParseColor"(input: string): integer
+public static "tryParseColor"(input: StringJS): integer
 public "getGLMoonColor"(): $Vector3f
 public "getMoonTextureColor"(): integer
 public "getSkyLightColor"(): integer
@@ -679,8 +679,8 @@ declare global {
 export type $ColorSettings_ = $ColorSettings$$Type;
 }}
 declare module "dev.corgitaco.enhancedcelestials.api.lunarevent.LunarEventProbabilities" {
-import {$Map, $Map$$Type} from "java.util.Map"
 import {$LunarEvent, $LunarEvent$$Type} from "dev.corgitaco.enhancedcelestials.api.lunarevent.LunarEvent"
+import {$Map, $Map$$Type} from "java.util.Map"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$LunarEvent$SpawnRequirements, $LunarEvent$SpawnRequirements$$Type} from "dev.corgitaco.enhancedcelestials.api.lunarevent.LunarEvent$SpawnRequirements"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
@@ -694,7 +694,7 @@ constructor(priority: integer, probabilitiesByEvent: $Map$$Type<($ResourceKey$$T
 
 public "priority"(): integer
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "probabilitiesByEvent"(): $Map<($ResourceKey<($LunarEvent)>), ($Map<($ResourceKey<($Level)>), ($LunarEvent$SpawnRequirements)>)>
 /**
@@ -710,7 +710,7 @@ public "probabilitiesByEvent"(): $Map<($ResourceKey<($LunarEvent)>), ($Map<($Res
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $LunarEventProbabilities$$Type = (Special.EnhancedcelestialsLunarEventProbability) | ({"probabilitiesByEvent"?: $Map$$Type<($ResourceKey$$Type<($LunarEvent$$Type)>), ($Map$$Type<($ResourceKey$$Type<($Level$$Type)>), ($LunarEvent$SpawnRequirements$$Type)>)>, "priority"?: integer}) | ([probabilitiesByEvent?: $Map$$Type<($ResourceKey$$Type<($LunarEvent$$Type)>), ($Map$$Type<($ResourceKey$$Type<($Level$$Type)>), ($LunarEvent$SpawnRequirements$$Type)>)>, priority?: integer]);
+export type $LunarEventProbabilities$$Type = (Special.EnhancedcelestialsLunarEventProbability) | ({"priority"?: integer, "probabilitiesByEvent"?: $Map$$Type<($ResourceKey$$Type<($LunarEvent$$Type)>), ($Map$$Type<($ResourceKey$$Type<($Level$$Type)>), ($LunarEvent$SpawnRequirements$$Type)>)>}) | ([priority?: integer, probabilitiesByEvent?: $Map$$Type<($ResourceKey$$Type<($LunarEvent$$Type)>), ($Map$$Type<($ResourceKey$$Type<($Level$$Type)>), ($LunarEvent$SpawnRequirements$$Type)>)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -740,7 +740,6 @@ export class $TreeFromStructureNBTConfig extends $Record implements $FeatureConf
 static readonly "BLOCK_SET_CODEC": $Codec<($Set<($Block)>)>
 static readonly "CODEC": $Codec<($TreeFromStructureNBTConfig)>
 
-constructor(baseLocation: $ResourceLocation$$Type, canopyLocation: $ResourceLocation$$Type, height: $IntProvider$$Type, logProvider: $BlockStateProvider$$Type, leavesProvider: $BlockStateProvider$$Type, logTarget: $Collection$$Type<($Block$$Type)>, leavesTarget: $List$$Type<($Block$$Type)>, growableOn: $TagKey$$Type<($Block)>, maxLogDepth: integer, treeDecorators: $List$$Type<($TreeDecorator$$Type)>, isSapling: boolean)
 constructor(baseLocation: $ResourceLocation$$Type, canopyLocation: $ResourceLocation$$Type, height: $IntProvider$$Type, logProvider: $BlockStateProvider$$Type, leavesProvider: $BlockStateProvider$$Type, logTarget: $Block$$Type, leavesTarget: $Block$$Type, growableOn: $TagKey$$Type<($Block)>, maxLogDepth: integer, treeDecorators: $List$$Type<($TreeDecorator$$Type)>, isSapling: boolean)
 constructor(baseLocation: $ResourceLocation$$Type, canopyLocation: $ResourceLocation$$Type, height: $IntProvider$$Type, logProvider: $BlockStateProvider$$Type, leavesProvider: $BlockStateProvider$$Type, logTarget: $Block$$Type, leavesTarget: $Block$$Type, growableOn: $TagKey$$Type<($Block)>, maxLogDepth: integer, isSapling: boolean)
 constructor(baseLocation: $ResourceLocation$$Type, canopyLocation: $ResourceLocation$$Type, height: $IntProvider$$Type, logProvider: $BlockStateProvider$$Type, leavesProvider: $BlockStateProvider$$Type, logTarget: $Supplier$$Type<($Block$$Type)>, leavesTarget: $Supplier$$Type<($Block$$Type)>, growableOn: $TagKey$$Type<($Block)>, maxLogDepth: integer, treeDecorators: $List$$Type<($TreeDecorator$$Type)>, isSapling: boolean)
@@ -749,23 +748,24 @@ constructor(baseLocation: $ResourceLocation$$Type, canopyLocation: $ResourceLoca
 constructor(baseLocation: $ResourceLocation$$Type, canopyLocation: $ResourceLocation$$Type, height: $IntProvider$$Type, logProvider: $BlockStateProvider$$Type, leavesProvider: $BlockStateProvider$$Type, logTarget: $Block$$Type, leavesTarget: $Block$$Type, growableOn: $TagKey$$Type<($Block)>, maxLogDepth: integer, treeDecorators: $List$$Type<($TreeDecorator$$Type)>)
 constructor(baseLocation: $ResourceLocation$$Type, canopyLocation: $ResourceLocation$$Type, height: $IntProvider$$Type, logProvider: $BlockStateProvider$$Type, leavesProvider: $BlockStateProvider$$Type, logTarget: $Block$$Type, leavesTarget: $Block$$Type, growableOn: $TagKey$$Type<($Block)>, maxLogDepth: integer)
 constructor(baseLocation: $ResourceLocation$$Type, canopyLocation: $ResourceLocation$$Type, height: $IntProvider$$Type, logProvider: $BlockStateProvider$$Type, leavesProvider: $BlockStateProvider$$Type, logTarget: $Supplier$$Type<($Block$$Type)>, leavesTarget: $Supplier$$Type<($Block$$Type)>, growableOn: $TagKey$$Type<($Block)>, maxLogDepth: integer, treeDecorators: $List$$Type<($TreeDecorator$$Type)>)
+constructor(baseLocation: $ResourceLocation$$Type, canopyLocation: $ResourceLocation$$Type, height: $IntProvider$$Type, logProvider: $BlockStateProvider$$Type, leavesProvider: $BlockStateProvider$$Type, logTarget: $Collection$$Type<($Block$$Type)>, leavesTarget: $List$$Type<($Block$$Type)>, growableOn: $TagKey$$Type<($Block)>, maxLogDepth: integer, treeDecorators: $List$$Type<($TreeDecorator$$Type)>, isSapling: boolean)
 
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "height"(): $IntProvider
-public "leavesPlacementFilter"(): $BlockPredicate
+public "leavesTarget"(): $Set<($Block)>
+public "placeFromNBT"(): $Set<($Block)>
 public "logProvider"(): $BlockStateProvider
 public "leavesProvider"(): $BlockStateProvider
-public "baseLocation"(): $ResourceLocation
 public "canopyLocation"(): $ResourceLocation
 public "logTarget"(): $Set<($Block)>
 public "maxLogDepth"(): integer
-public "growableOn"(): $BlockPredicate
 public "isSapling"(): boolean
 public "treeDecorators"(): $List<($TreeDecorator)>
-public "placeFromNBT"(): $Set<($Block)>
-public "leavesTarget"(): $Set<($Block)>
+public "baseLocation"(): $ResourceLocation
+public "growableOn"(): $BlockPredicate
+public "leavesPlacementFilter"(): $BlockPredicate
 public "getFeatures"(): $Stream<($ConfiguredFeature<(any), (any)>)>
 get "sapling"(): boolean
 get "features"(): $Stream<($ConfiguredFeature<(any), (any)>)>
@@ -774,7 +774,7 @@ get "features"(): $Stream<($ConfiguredFeature<(any), (any)>)>
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $TreeFromStructureNBTConfig$$Type = ({"placeFromNBT"?: $Set$$Type<($Block$$Type)>, "leavesProvider"?: $BlockStateProvider$$Type, "maxLogDepth"?: integer, "growableOn"?: $BlockPredicate$$Type, "canopyLocation"?: $ResourceLocation$$Type, "isSapling"?: boolean, "logTarget"?: $Set$$Type<($Block$$Type)>, "logProvider"?: $BlockStateProvider$$Type, "leavesPlacementFilter"?: $BlockPredicate$$Type, "height"?: $IntProvider$$Type, "baseLocation"?: $ResourceLocation$$Type, "leavesTarget"?: $Set$$Type<($Block$$Type)>, "treeDecorators"?: $List$$Type<($TreeDecorator$$Type)>}) | ([placeFromNBT?: $Set$$Type<($Block$$Type)>, leavesProvider?: $BlockStateProvider$$Type, maxLogDepth?: integer, growableOn?: $BlockPredicate$$Type, canopyLocation?: $ResourceLocation$$Type, isSapling?: boolean, logTarget?: $Set$$Type<($Block$$Type)>, logProvider?: $BlockStateProvider$$Type, leavesPlacementFilter?: $BlockPredicate$$Type, height?: $IntProvider$$Type, baseLocation?: $ResourceLocation$$Type, leavesTarget?: $Set$$Type<($Block$$Type)>, treeDecorators?: $List$$Type<($TreeDecorator$$Type)>]);
+export type $TreeFromStructureNBTConfig$$Type = ({"leavesPlacementFilter"?: $BlockPredicate$$Type, "height"?: $IntProvider$$Type, "baseLocation"?: $ResourceLocation$$Type, "leavesTarget"?: $Set$$Type<($Block$$Type)>, "treeDecorators"?: $List$$Type<($TreeDecorator$$Type)>, "placeFromNBT"?: $Set$$Type<($Block$$Type)>, "leavesProvider"?: $BlockStateProvider$$Type, "maxLogDepth"?: integer, "growableOn"?: $BlockPredicate$$Type, "canopyLocation"?: $ResourceLocation$$Type, "isSapling"?: boolean, "logTarget"?: $Set$$Type<($Block$$Type)>, "logProvider"?: $BlockStateProvider$$Type}) | ([leavesPlacementFilter?: $BlockPredicate$$Type, height?: $IntProvider$$Type, baseLocation?: $ResourceLocation$$Type, leavesTarget?: $Set$$Type<($Block$$Type)>, treeDecorators?: $List$$Type<($TreeDecorator$$Type)>, placeFromNBT?: $Set$$Type<($Block$$Type)>, leavesProvider?: $BlockStateProvider$$Type, maxLogDepth?: integer, growableOn?: $BlockPredicate$$Type, canopyLocation?: $ResourceLocation$$Type, isSapling?: boolean, logTarget?: $Set$$Type<($Block$$Type)>, logProvider?: $BlockStateProvider$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -794,16 +794,16 @@ static readonly "CODEC": $Codec<($LunarTextComponents$Notification)>
 constructor(customTranslationTextComponent: $CustomTranslationTextComponent$$Type, notificationType: $LunarTextComponents$NotificationType$$Type)
 
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "customTranslationTextComponent"(): $CustomTranslationTextComponent
 public "notificationType"(): $LunarTextComponents$NotificationType
+public "customTranslationTextComponent"(): $CustomTranslationTextComponent
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $LunarTextComponents$Notification$$Type = ({"customTranslationTextComponent"?: $CustomTranslationTextComponent$$Type, "notificationType"?: $LunarTextComponents$NotificationType$$Type}) | ([customTranslationTextComponent?: $CustomTranslationTextComponent$$Type, notificationType?: $LunarTextComponents$NotificationType$$Type]);
+export type $LunarTextComponents$Notification$$Type = ({"notificationType"?: $LunarTextComponents$NotificationType$$Type, "customTranslationTextComponent"?: $CustomTranslationTextComponent$$Type}) | ([notificationType?: $LunarTextComponents$NotificationType$$Type, customTranslationTextComponent?: $CustomTranslationTextComponent$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -817,8 +817,8 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 
 export interface $RandomTickScheduler {
 
- "getScheduledRandomTicks"(): $List<($BlockPos)>
  "scheduleRandomTick"(arg0: $BlockPos$$Type): void
+ "getScheduledRandomTicks"(): $List<($BlockPos)>
 get "scheduledRandomTicks"(): $List<($BlockPos)>
 }
 
@@ -828,8 +828,8 @@ const probejs$$marker: never
 export class $RandomTickScheduler$$Static implements $RandomTickScheduler {
 
 
- "getScheduledRandomTicks"(): $List<($BlockPos)>
  "scheduleRandomTick"(arg0: $BlockPos$$Type): void
+ "getScheduledRandomTicks"(): $List<($BlockPos)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -854,15 +854,15 @@ static readonly "CODEC": $Codec<($LunarDimensionSettings)>
 
 constructor(defaultEvent: $ResourceKey$$Type<($LunarEvent)>, trackedPastEventsMaxCount: long, dayLength: long, yearLengthInDays: long, minDaysBetweenEvents: long, maxDaysBetweenEvents: long, requiresClearSkies: boolean)
 
-public "defaultEvent"(): $ResourceKey<($LunarEvent)>
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
+public "defaultEvent"(): $ResourceKey<($LunarEvent)>
+public "dayLength"(): long
 public "yearLengthInDays"(): long
 public "maxDaysBetweenEvents"(): long
 public "requiresClearSkies"(): boolean
 public "minDaysBetweenEvents"(): long
-public "dayLength"(): long
 public "trackedPastEventsMaxCount"(): long
 /**
  * This field is a type stub generated by ProbeJS and shall not be used in any sense.
@@ -877,7 +877,7 @@ public "trackedPastEventsMaxCount"(): long
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $LunarDimensionSettings$$Type = (Special.EnhancedcelestialsLunarDimensionSettings) | ({"defaultEvent"?: $ResourceKey$$Type<($LunarEvent)>, "minDaysBetweenEvents"?: long, "yearLengthInDays"?: long, "maxDaysBetweenEvents"?: long, "dayLength"?: long, "trackedPastEventsMaxCount"?: long, "requiresClearSkies"?: boolean}) | ([defaultEvent?: $ResourceKey$$Type<($LunarEvent)>, minDaysBetweenEvents?: long, yearLengthInDays?: long, maxDaysBetweenEvents?: long, dayLength?: long, trackedPastEventsMaxCount?: long, requiresClearSkies?: boolean]);
+export type $LunarDimensionSettings$$Type = (Special.EnhancedcelestialsLunarDimensionSettings) | ({"dayLength"?: long, "trackedPastEventsMaxCount"?: long, "requiresClearSkies"?: boolean, "defaultEvent"?: $ResourceKey$$Type<($LunarEvent)>, "minDaysBetweenEvents"?: long, "yearLengthInDays"?: long, "maxDaysBetweenEvents"?: long}) | ([dayLength?: long, trackedPastEventsMaxCount?: long, requiresClearSkies?: boolean, defaultEvent?: $ResourceKey$$Type<($LunarEvent)>, minDaysBetweenEvents?: long, yearLengthInDays?: long, maxDaysBetweenEvents?: long]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -900,11 +900,11 @@ static readonly "REGISTRIES": $Map<($ResourceLocation), ($TrackedDataRegistry<(a
 
 
 public "getContainer"(o: O): $TrackedDataContainer<(O), (T)>
+public "factories"(): $Map<($TrackedDataKey<(T)>), ($TrackedDataRegistry$TrackedDataFactory<(O), (T)>)>
 public "get"<E extends T>(key: $TrackedDataKey$$Type<(E)>, o: O): $Optional<(E)>
 public static "of"<O, T extends $TrackedData<(O)>>(id: $ResourceLocation$$Type): $TrackedDataRegistry<(O), (T)>
 public "register"<E extends T>(id: $ResourceLocation$$Type, clazz: $Class$$Type<(E)>, factory: $TrackedDataRegistry$TrackedDataFactory$$Type<(O), (E)>): $TrackedDataKey<(E)>
 public "register"<F extends T, K extends $TrackedDataKey<(F)>>(key: K, factory: $TrackedDataRegistry$TrackedDataFactory$$Type<(O), (F)>): void
-public "factories"(): $Map<($TrackedDataKey<(T)>), ($TrackedDataRegistry$TrackedDataFactory<(O), (T)>)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -920,8 +920,8 @@ export type $TrackedDataRegistry_<O, T> = $TrackedDataRegistry$$Type<(O), (T)>;
 }}
 declare module "dev.corgitaco.enhancedcelestials.api.lunarevent.LunarTextComponents$NotificationType" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -935,17 +935,17 @@ static readonly "NONE": $LunarTextComponents$NotificationType
 
 
 public static "values"(): ($LunarTextComponents$NotificationType)[]
-public static "valueOf"(name: string): $LunarTextComponents$NotificationType
-public static "byName"(name: string): $LunarTextComponents$NotificationType
-public "getSerializedName"(): string
+public static "valueOf"(name: StringJS): $LunarTextComponents$NotificationType
+public static "byName"(name: StringJS): $LunarTextComponents$NotificationType
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -961,22 +961,22 @@ export type $LunarTextComponents$NotificationType_ = $LunarTextComponents$Notifi
 }}
 declare module "dev.corgitaco.enhancedcelestials.util.CustomTranslationTextComponent" {
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
-import {$List, $List$$Type} from "java.util.List"
 import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
+import {$List, $List$$Type} from "java.util.List"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 
 export class $CustomTranslationTextComponent {
 static readonly "CODEC": $Codec<($CustomTranslationTextComponent)>
 static readonly "DEFAULT": $CustomTranslationTextComponent
 
-constructor(translationKey: string, style: $Style$$Type, args: $List$$Type<($CustomTranslationTextComponent$$Type)>)
-constructor(translationKey: string, style: $Style$$Type, ...args: ($CustomTranslationTextComponent$$Type)[])
-constructor(translationKey: string, ...args: ($CustomTranslationTextComponent$$Type)[])
+constructor(translationKey: StringJS, style: $Style$$Type, args: $List$$Type<($CustomTranslationTextComponent$$Type)>)
+constructor(translationKey: StringJS, style: $Style$$Type, ...args: ($CustomTranslationTextComponent$$Type)[])
+constructor(translationKey: StringJS, ...args: ($CustomTranslationTextComponent$$Type)[])
 
-public "getKey"(): string
+public "getKey"(): StringJS
 public "getStyle"(): $Style
 public "getComponent"(): $Component
-get "key"(): string
+get "key"(): StringJS
 get "style"(): $Style
 get "component"(): $Component
 }

@@ -38,8 +38,8 @@ export class $HarvestHandlerTree extends $HarvestHandler {
 
 constructor()
 
-public "harvestAndReplant"(arg0: $Level$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $IDrone$$Type): boolean
 public "canHarvest"(arg0: $Level$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $IDrone$$Type): boolean
+public "harvestAndReplant"(arg0: $Level$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $IDrone$$Type): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -54,16 +54,18 @@ declare global {
 export type $HarvestHandlerTree_ = $HarvestHandlerTree$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.ClassifyFilterItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
-import {$IFilteringItem, $IFilteringItem$$Type} from "me.desht.pneumaticcraft.api.item.IFilteringItem"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$IFilteringItem, $IFilteringItem$$Type} from "me.desht.pneumaticcraft.api.item.IFilteringItem"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
@@ -73,7 +75,7 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 export class $ClassifyFilterItem extends $Item implements $IFilteringItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -82,9 +84,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-public static "xlateMatch"(arg0: boolean): $MutableComponent
 public "matchFilter"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
+public static "xlateMatch"(arg0: boolean): $MutableComponent
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -99,6 +102,7 @@ declare global {
 export type $ClassifyFilterItem_ = $ClassifyFilterItem$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.AmadronTabletItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$UUID, $UUID$$Type} from "java.util.UUID"
@@ -122,8 +126,9 @@ import {$ImmutableBasket, $ImmutableBasket$$Type} from "me.desht.pneumaticcraft.
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
@@ -133,7 +138,7 @@ import {$ChargingStationBlockEntity, $ChargingStationBlockEntity$$Type} from "me
 export class $AmadronTabletItem extends $PressurizableItem implements $IPositionProvider, $IChargeableContainerProvider {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -142,22 +147,23 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public static "getFluidProvidingLocation"(arg0: $ItemStack$$Type): $GlobalPos
-public static "getItemProvidingLocation"(arg0: $ItemStack$$Type): $GlobalPos
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public "getRenderColor"(arg0: integer): integer
+public static "openGui"(arg0: $ServerPlayer$$Type, arg1: $InteractionHand$$Type): void
+public "getContainerProvider"(arg0: $ChargingStationBlockEntity$$Type): $MenuProvider
 public static "getItemCapability"(arg0: $ItemStack$$Type): $Optional<($IItemHandler)>
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-public "getContainerProvider"(arg0: $ChargingStationBlockEntity$$Type): $MenuProvider
 public "getStoredPositions"(arg0: $UUID$$Type, arg1: $ItemStack$$Type): $List<($BlockPos)>
 public static "getFluidCapability"(arg0: $ItemStack$$Type): $Optional<($IFluidHandler)>
 public static "loadShoppingCart"(arg0: $ItemStack$$Type): $ImmutableBasket
 public static "saveShoppingCart"(arg0: $ItemStack$$Type, arg1: $ShoppingBasket$$Type): void
 public "getUpgradeBlacklistTag"(): $Optional<($TagKey<($Item)>)>
-public "getRenderColor"(arg0: integer): integer
-public static "openGui"(arg0: $ServerPlayer$$Type, arg1: $InteractionHand$$Type): void
+public static "getFluidProvidingLocation"(arg0: $ItemStack$$Type): $GlobalPos
+public static "getItemProvidingLocation"(arg0: $ItemStack$$Type): $GlobalPos
+public "syncVariables"(arg0: $ServerPlayer$$Type, arg1: $ItemStack$$Type): void
 public "disableDepthTest"(): boolean
 public "getRawStoredPositions"(arg0: $Player$$Type, arg1: $ItemStack$$Type): $List<($BlockPos)>
-public "syncVariables"(arg0: $ServerPlayer$$Type, arg1: $ItemStack$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "upgradeBlacklistTag"(): $Optional<($TagKey<($Item)>)>
 }
 /**
@@ -201,15 +207,15 @@ import {$SyncedField$FieldType, $SyncedField$FieldType$$Type} from "me.desht.pne
 export class $SyncedField<T> {
 
 
-public "toString"(): string
+public "getFieldType"(): $SyncedField$FieldType
+public "toString"(): StringJS
 public "update"(): boolean
 public "getValue"(): T
 public "setValue"(arg0: any): void
-public "getFieldType"(): $SyncedField$FieldType
 public "setLazy"(arg0: boolean): $SyncedField<(T)>
+get "fieldType"(): $SyncedField$FieldType
 get "value"(): T
 set "value"(value: any)
-get "fieldType"(): $SyncedField$FieldType
 set "lazy"(value: boolean)
 }
 /**
@@ -258,17 +264,21 @@ declare global {
 export type $ExplosionCraftingRecipeImpl$IFactory_<T> = $ExplosionCraftingRecipeImpl$IFactory$$Type<(T)>;
 }}
 declare module "me.desht.modularrouters.item.augment.RangeAugments" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$AugmentItem, $AugmentItem$$Type} from "me.desht.modularrouters.item.augment.AugmentItem"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $RangeAugments extends $AugmentItem {
 static readonly "SLOTS": integer
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -276,6 +286,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -322,27 +333,27 @@ export class $RedstoneController<T extends ($BlockEntity) & ($IRedstoneControl<(
 constructor(arg0: T)
 constructor(arg0: T, arg1: $List$$Type<($RedstoneController$RedstoneMode$$Type<(T)>)>)
 
-public "restore"(arg0: $RedstoneController$Saved$$Type): void
 public "getDescription"(): $Component
+public "restore"(arg0: $RedstoneController$Saved$$Type): void
 public "save"(): $RedstoneController$Saved
-public "getCurrentRedstonePower"(): integer
 public "shouldRun"(): boolean
-public "shouldEmit"(): boolean
-public "parseRedstoneMode"(arg0: string): boolean
-public "getRedstoneTabTitle"(): $Component
-public "updateRedstonePower"(): void
 public "getModeDetails"(arg0: integer): $RedstoneController$RedstoneMode<(T)>
-public "isEmitter"(): boolean
 public "setCurrentMode"(arg0: integer): void
+public "shouldEmit"(): boolean
+public "isEmitter"(): boolean
 public "getCurrentMode"(): integer
 public "getModeCount"(): integer
+public "updateRedstonePower"(): void
+public "parseRedstoneMode"(arg0: StringJS): boolean
+public "getRedstoneTabTitle"(): $Component
+public "getCurrentRedstonePower"(): integer
 get "description"(): $Component
-get "currentRedstonePower"(): integer
-get "redstoneTabTitle"(): $Component
-get "emitter"(): boolean
 set "currentMode"(value: integer)
+get "emitter"(): boolean
 get "currentMode"(): integer
 get "modeCount"(): integer
+get "redstoneTabTitle"(): $Component
+get "currentRedstonePower"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -360,8 +371,8 @@ declare module "me.desht.pneumaticcraft.common.block.entity.IGUITextFieldSensiti
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $IGUITextFieldSensitive {
 
- "getText"(arg0: integer): string
- "setText"(arg0: integer, arg1: string): void
+ "setText"(arg0: integer, arg1: StringJS): void
+ "getText"(arg0: integer): StringJS
 }
 
 export namespace $IGUITextFieldSensitive {
@@ -370,8 +381,8 @@ const probejs$$marker: never
 export class $IGUITextFieldSensitive$$Static implements $IGUITextFieldSensitive {
 
 
- "getText"(arg0: integer): string
- "setText"(arg0: integer, arg1: string): void
+ "setText"(arg0: integer, arg1: StringJS): void
+ "getText"(arg0: integer): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -402,25 +413,25 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 export class $AssemblyLaserBlockEntity extends $AbstractAssemblyRobotBlockEntity {
 readonly "oldAngles": (float)[]
 readonly "angles": (float)[]
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
  "isLaserOn": boolean
 
 constructor(arg0: $BlockPos$$Type, arg1: $BlockState$$Type)
 
 public "reset"(): boolean
-public "canMoveToDiagonalNeighbours"(): boolean
-public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "isIdle"(): boolean
 public "tickServer"(): void
 public "saveAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "isIdle"(): boolean
-public "getAssemblyType"(): $AssemblyProgram$EnumMachine
-public "hasItemCapability"(): boolean
-public "startLasering"(): void
-public "gotoNeighbour"(arg0: $AbstractAssemblyRobotBlockEntity$TargetDirections$$Type): boolean
+public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
 public "getItemHandler"(arg0: $Direction$$Type): $IItemHandler
+public "gotoNeighbour"(arg0: $AbstractAssemblyRobotBlockEntity$TargetDirections$$Type): boolean
+public "startLasering"(): void
+public "hasItemCapability"(): boolean
+public "getAssemblyType"(): $AssemblyProgram$EnumMachine
+public "canMoveToDiagonalNeighbours"(): boolean
 public "getUpgradeHandler"(): $IItemHandler
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "idle"(): boolean
 get "assemblyType"(): $AssemblyProgram$EnumMachine
 get "upgradeHandler"(): $IItemHandler
@@ -445,8 +456,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockAndTintGetter, $BlockAndTintGetter$$Type} from "net.minecraft.world.level.BlockAndTintGetter"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -456,8 +467,8 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$ColorHandlers$IHeatTintable, $ColorHandlers$IHeatTintable$$Type} from "me.desht.pneumaticcraft.client.ColorHandlers$IHeatTintable"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -474,7 +485,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -519,9 +530,9 @@ declare module "me.desht.pneumaticcraft.common.thirdparty.computer_common.ILuaMe
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $ILuaMethod {
 
+ "getMethodName"(): StringJS
  "call"(arg0: (any)[]): (any)[]
- "getMethodName"(): string
-get "methodName"(): string
+get "methodName"(): StringJS
 }
 
 export namespace $ILuaMethod {
@@ -530,8 +541,8 @@ const probejs$$marker: never
 export class $ILuaMethod$$Static implements $ILuaMethod {
 
 
+ "getMethodName"(): StringJS
  "call"(arg0: (any)[]): (any)[]
- "getMethodName"(): string
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -548,8 +559,8 @@ export type $ILuaMethod_ = $ILuaMethod$$Type;
 declare module "me.desht.pneumaticcraft.api.crafting.recipe.AssemblyRecipe$AssemblyProgramType" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -563,20 +574,20 @@ static readonly "DRILL": $AssemblyRecipe$AssemblyProgramType
 
 
 public static "values"(): ($AssemblyRecipe$AssemblyProgramType)[]
-public static "valueOf"(arg0: string): $AssemblyRecipe$AssemblyProgramType
-public "getRegistryName"(): string
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $AssemblyRecipe$AssemblyProgramType
 public "getRecipeType"(): $ResourceLocation
+public "getRegistryName"(): StringJS
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "registryName"(): string
-get "serializedName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
 get "recipeType"(): $ResourceLocation
-get "remappedEnumConstantName"(): string
+get "registryName"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -622,20 +633,24 @@ declare global {
 export type $EntityAccess_ = $EntityAccess$$Type;
 }}
 declare module "me.desht.modularrouters.item.augment.StackAugment" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$AugmentItem, $AugmentItem$$Type} from "me.desht.modularrouters.item.augment.AugmentItem"
 import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 
 export class $StackAugment extends $AugmentItem {
 static readonly "SLOTS": integer
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -643,8 +658,9 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "getExtraInfo"(arg0: integer, arg1: $ItemStack$$Type): $Component
 public "getMaxAugments"(arg0: $ModuleItem$$Type): integer
+public "getExtraInfo"(arg0: integer, arg1: $ItemStack$$Type): $Component
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -665,9 +681,9 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 
 export interface $IGPSToolSync {
 
- "syncFromClient"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: $BlockPos$$Type, arg4: string, arg5: boolean): void
+ "syncFromClient"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: $BlockPos$$Type, arg4: StringJS, arg5: boolean): void
 
-(arg0: $Player, arg1: $ItemStack, arg2: integer, arg3: $BlockPos, arg4: string, arg5: boolean): void
+(arg0: $Player, arg1: $ItemStack, arg2: integer, arg3: $BlockPos, arg4: StringJS, arg5: boolean): void
 }
 
 export namespace $IGPSToolSync {
@@ -676,13 +692,13 @@ const probejs$$marker: never
 export class $IGPSToolSync$$Static implements $IGPSToolSync {
 
 
- "syncFromClient"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: $BlockPos$$Type, arg4: string, arg5: boolean): void
+ "syncFromClient"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: $BlockPos$$Type, arg4: StringJS, arg5: boolean): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $IGPSToolSync$$Type = ((arg0: $Player, arg1: $ItemStack, arg2: integer, arg3: $BlockPos, arg4: string, arg5: boolean) => void);
+export type $IGPSToolSync$$Type = ((arg0: $Player, arg1: $ItemStack, arg2: integer, arg3: $BlockPos, arg4: StringJS, arg5: boolean) => void);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -722,24 +738,28 @@ declare global {
 export type $IFluidRendered_ = $IFluidRendered$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.NetworkComponentItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$IProgrammable, $IProgrammable$$Type} from "me.desht.pneumaticcraft.api.item.IProgrammable"
+import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$ItemEntity, $ItemEntity$$Type} from "net.minecraft.world.entity.item.ItemEntity"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$NetworkComponentItem$NetworkComponentType, $NetworkComponentItem$NetworkComponentType$$Type} from "me.desht.pneumaticcraft.common.item.NetworkComponentItem$NetworkComponentType"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export class $NetworkComponentItem extends $Item implements $IProgrammable {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -747,14 +767,15 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $NetworkComponentItem$NetworkComponentType$$Type)
 
-public static "getType"(arg0: $ItemStack$$Type): $Optional<($NetworkComponentItem$NetworkComponentType)>
 public static "isType"(arg0: $ItemStack$$Type, arg1: $NetworkComponentItem$NetworkComponentType$$Type): boolean
-public "onEntityItemUpdate"(arg0: $ItemStack$$Type, arg1: $ItemEntity$$Type): boolean
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-public "showProgramTooltip"(): boolean
+public static "getType"(arg0: $ItemStack$$Type): $Optional<($NetworkComponentItem$NetworkComponentType)>
 public "canProgram"(arg0: $ItemStack$$Type): boolean
 public "usesPieces"(arg0: $ItemStack$$Type): boolean
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "onEntityItemUpdate"(arg0: $ItemStack$$Type, arg1: $ItemEntity$$Type): boolean
+public "showProgramTooltip"(): boolean
 public static "isProgrammable"(arg0: $ItemStack$$Type): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -805,13 +826,13 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $PressurizedSpawnerBlock extends $AbstractPneumaticCraftBlock implements $PneumaticCraftEntityBlock {
@@ -823,7 +844,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -866,10 +887,10 @@ declare module "me.desht.pneumaticcraft.mixin.accessors.ItemEntityAccess" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $ItemEntityAccess {
 
- "getAge"(): integer
  "setAge"(arg0: integer): void
-get "age"(): integer
+ "getAge"(): integer
 set "age"(value: integer)
+get "age"(): integer
 }
 
 export namespace $ItemEntityAccess {
@@ -878,8 +899,8 @@ const probejs$$marker: never
 export class $ItemEntityAccess$$Static implements $ItemEntityAccess {
 
 
- "getAge"(): integer
  "setAge"(arg0: integer): void
+ "getAge"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -894,18 +915,22 @@ declare global {
 export type $ItemEntityAccess_ = $ItemEntityAccess$$Type;
 }}
 declare module "me.desht.modularrouters.item.module.CreativeModule" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.TintColor"
 
 export class $CreativeModule extends $ModuleItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -913,11 +938,12 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "isDirectional"(): boolean
 public "getItemTint"(): $TintColor
+public "isDirectional"(): boolean
 public "getEnergyCost"(arg0: $ItemStack$$Type): integer
-get "directional"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
+get "directional"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -947,9 +973,9 @@ readonly "pattern": $ShapedRecipePattern
 
 constructor(arg0: $ShapedRecipe$$Type)
 
-public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
 public "getSerializer"(): $RecipeSerializer<(any)>
+public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
 get "serializer"(): $RecipeSerializer<(any)>
 }
 /**
@@ -965,16 +991,20 @@ declare global {
 export type $CompressorUpgradeCrafting_ = $CompressorUpgradeCrafting$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.TubeModuleItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$PressureTubeBlockEntity, $PressureTubeBlockEntity$$Type} from "me.desht.pneumaticcraft.common.block.entity.tube.PressureTubeBlockEntity"
+import {$List, $List$$Type} from "java.util.List"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$AbstractTubeModule, $AbstractTubeModule$$Type} from "me.desht.pneumaticcraft.common.tubemodules.AbstractTubeModule"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$BiFunction, $BiFunction$$Type} from "java.util.function.BiFunction"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -984,7 +1014,7 @@ import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.conte
 export class $TubeModuleItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -992,9 +1022,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $BiFunction$$Type<($Direction), ($PressureTubeBlockEntity), ($AbstractTubeModule$$Type)>)
 
-public "createModule"(arg0: $Direction$$Type, arg1: $PressureTubeBlockEntity$$Type): $AbstractTubeModule
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public "createModule"(arg0: $Direction$$Type, arg1: $PressureTubeBlockEntity$$Type): $AbstractTubeModule
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1017,20 +1048,20 @@ import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$PathComputationType, $PathComputationType$$Type} from "net.minecraft.world.level.pathfinder.PathComputationType"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ColorHandlers$ITintableBlock, $ColorHandlers$ITintableBlock$$Type} from "me.desht.pneumaticcraft.client.ColorHandlers$ITintableBlock"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockAndTintGetter, $BlockAndTintGetter$$Type} from "net.minecraft.world.level.BlockAndTintGetter"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$DyeColor, $DyeColor$$Type} from "net.minecraft.world.item.DyeColor"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $PlasticBrickBlock extends $Block implements $ColorHandlers$ITintableBlock {
@@ -1047,7 +1078,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1056,15 +1087,15 @@ static readonly "UPDATE_CLIENTS": integer
 
 constructor(arg0: $BlockBehaviour$Properties$$Type, arg1: $DyeColor$$Type)
 
-public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
 public "isPathfindable"(arg0: $BlockState$$Type, arg1: $PathComputationType$$Type): boolean
 public "getVisualShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "getDyeColor"(): $DyeColor
+public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
 public "entityInside"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): void
+public "getDyeColor"(): $DyeColor
+public "getTintColor"(arg0: $BlockState$$Type, arg1: $BlockAndTintGetter$$Type, arg2: $BlockPos$$Type, arg3: integer): integer
 public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "getBlockSupportShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): $VoxelShape
 public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "getTintColor"(arg0: $BlockState$$Type, arg1: $BlockAndTintGetter$$Type, arg2: $BlockPos$$Type, arg3: integer): integer
 public "asHolder"(): $Holder<(any)>
 get "dyeColor"(): $DyeColor
 }
@@ -1081,20 +1112,24 @@ declare global {
 export type $PlasticBrickBlock_ = $PlasticBrickBlock$$Type;
 }}
 declare module "me.desht.modularrouters.item.augment.PickupDelayAugment" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$AugmentItem, $AugmentItem$$Type} from "me.desht.modularrouters.item.augment.AugmentItem"
 import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 
 export class $PickupDelayAugment extends $AugmentItem {
 static readonly "SLOTS": integer
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "TICKS_PER_AUGMENT": integer
@@ -1103,8 +1138,9 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "getExtraInfo"(arg0: integer, arg1: $ItemStack$$Type): $Component
 public "getMaxAugments"(arg0: $ModuleItem$$Type): integer
+public "getExtraInfo"(arg0: integer, arg1: $ItemStack$$Type): $Component
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1128,16 +1164,16 @@ constructor(arg0: $Direction$$Type)
 constructor(primary: $Direction$$Type, secondary: $Direction$$Type)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "secondary"(): $Direction
 public "primary"(): $Direction
+public "secondary"(): $Direction
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $AbstractAssemblyRobotBlockEntity$TargetDirections$$Type = ({"secondary"?: $Direction$$Type, "primary"?: $Direction$$Type}) | ([secondary?: $Direction$$Type, primary?: $Direction$$Type]);
+export type $AbstractAssemblyRobotBlockEntity$TargetDirections$$Type = ({"primary"?: $Direction$$Type, "secondary"?: $Direction$$Type}) | ([primary?: $Direction$$Type, secondary?: $Direction$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1177,18 +1213,22 @@ declare global {
 export type $BaseContainerBlockEntityAccess_ = $BaseContainerBlockEntityAccess$$Type;
 }}
 declare module "me.desht.modularrouters.item.module.DropperModule" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.TintColor"
 
 export class $DropperModule extends $ModuleItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1198,6 +1238,7 @@ constructor()
 
 public "getItemTint"(): $TintColor
 public "getEnergyCost"(arg0: $ItemStack$$Type): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
 }
 /**
@@ -1217,10 +1258,10 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 
 export interface $IPathNavigator {
 
- "isGoingToTeleport"(): boolean
  "moveToXYZ"(arg0: double, arg1: double, arg2: double): boolean
  "moveToEntity"(arg0: $Entity$$Type): boolean
  "hasNoPath"(): boolean
+ "isGoingToTeleport"(): boolean
 get "goingToTeleport"(): boolean
 }
 
@@ -1230,10 +1271,10 @@ const probejs$$marker: never
 export class $IPathNavigator$$Static implements $IPathNavigator {
 
 
- "isGoingToTeleport"(): boolean
  "moveToXYZ"(arg0: double, arg1: double, arg2: double): boolean
  "moveToEntity"(arg0: $Entity$$Type): boolean
  "hasNoPath"(): boolean
+ "isGoingToTeleport"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1253,7 +1294,6 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$BaseFlowingFluid$Flowing, $BaseFlowingFluid$Flowing$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Flowing"
 
 export class $FluidGasoline$Flowing extends $BaseFlowingFluid$Flowing {
@@ -1263,7 +1303,6 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -1300,8 +1339,8 @@ export type $HarvestHandlerCropLike$SweetBerry_ = $HarvestHandlerCropLike$SweetB
 }}
 declare module "me.desht.pneumaticcraft.common.item.AirCanisterItem$ChargeMode" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -1315,19 +1354,19 @@ static readonly "NONE": $AirCanisterItem$ChargeMode
 
 
 public static "values"(): ($AirCanisterItem$ChargeMode)[]
-public static "valueOf"(arg0: string): $AirCanisterItem$ChargeMode
-public "getTranslationKey"(): string
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $AirCanisterItem$ChargeMode
 public "nextMode"(): $AirCanisterItem$ChargeMode
+public "getTranslationKey"(): StringJS
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "translationKey"(): string
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "translationKey"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1342,6 +1381,7 @@ declare global {
 export type $AirCanisterItem$ChargeMode_ = $AirCanisterItem$ChargeMode$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.minigun.MinigunItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$List, $List$$Type} from "java.util.List"
@@ -1364,6 +1404,7 @@ import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.Inte
 import {$IInventoryItem, $IInventoryItem$$Type} from "me.desht.pneumaticcraft.api.item.IInventoryItem"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$IFOVModifierItem, $IFOVModifierItem$$Type} from "me.desht.pneumaticcraft.api.client.IFOVModifierItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$MinigunItem$MagazineHandler, $MinigunItem$MagazineHandler$$Type} from "me.desht.pneumaticcraft.common.item.minigun.MinigunItem$MagazineHandler"
 import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
@@ -1373,7 +1414,7 @@ import {$ChargingStationBlockEntity, $ChargingStationBlockEntity$$Type} from "me
 export class $MinigunItem extends $PressurizableItem implements $IChargeableContainerProvider, $IFOVModifierItem, $IInventoryItem, $IShiftScrollable {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1384,24 +1425,25 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
 public "onUseTick"(arg0: $Level$$Type, arg1: $LivingEntity$$Type, arg2: $ItemStack$$Type, arg3: integer): void
 public "getUseDuration"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): integer
-public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
-public static "getLockedSlot"(arg0: $ItemStack$$Type): integer
-public "finishUsingItem"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $LivingEntity$$Type): $ItemStack
-public "getContainerProvider"(arg0: $ChargingStationBlockEntity$$Type): $MenuProvider
-public "getStacksInItem"(arg0: $ItemStack$$Type, arg1: $List$$Type<($ItemStack$$Type)>): void
-public "getUpgradeBlacklistTag"(): $Optional<($TagKey<($Item)>)>
-public "getInventoryHeader"(): $Component
-public "onShiftScrolled"(arg0: $Player$$Type, arg1: boolean, arg2: $InteractionHand$$Type): void
-public "onEquipmentChange"(arg0: $ServerPlayer$$Type, arg1: $ItemStack$$Type, arg2: boolean): void
 public "getMinigun"(arg0: $ItemStack$$Type, arg1: $Player$$Type): $Minigun
 public "getMagazine"(arg0: $ItemStack$$Type): $MinigunItem$MagazineHandler
+public static "getLockedSlot"(arg0: $ItemStack$$Type): integer
 public "getFOVModifier"(arg0: $ItemStack$$Type, arg1: $Player$$Type, arg2: $EquipmentSlot$$Type): float
+public "getContainerProvider"(arg0: $ChargingStationBlockEntity$$Type): $MenuProvider
+public "finishUsingItem"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $LivingEntity$$Type): $ItemStack
+public "getStacksInItem"(arg0: $ItemStack$$Type, arg1: $List$$Type<($ItemStack$$Type)>): void
+public "getInventoryHeader"(): $Component
+public "onShiftScrolled"(arg0: $Player$$Type, arg1: boolean, arg2: $InteractionHand$$Type): void
+public "getUpgradeBlacklistTag"(): $Optional<($TagKey<($Item)>)>
+public "onEquipmentChange"(arg0: $ServerPlayer$$Type, arg1: $ItemStack$$Type, arg2: boolean): void
 public static "getStacks"(arg0: $ItemContainerContents$$Type, arg1: $List$$Type<($ItemStack$$Type)>): void
-public "getTooltipPrefix"(arg0: $ItemStack$$Type): string
-get "upgradeBlacklistTag"(): $Optional<($TagKey<($Item)>)>
+public "getTooltipPrefix"(arg0: $ItemStack$$Type): StringJS
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "inventoryHeader"(): $Component
+get "upgradeBlacklistTag"(): $Optional<($TagKey<($Item)>)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1416,16 +1458,19 @@ declare global {
 export type $MinigunItem_ = $MinigunItem$$Type;
 }}
 declare module "me.desht.modularrouters.item.module.PullerModule2" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
+import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$ITargetedModule, $ITargetedModule$$Type} from "me.desht.modularrouters.item.module.ITargetedModule"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$IPositionProvider, $IPositionProvider$$Type} from "me.desht.modularrouters.client.render.area.IPositionProvider"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$IRangedModule, $IRangedModule$$Type} from "me.desht.modularrouters.item.module.IRangedModule"
 import {$ModuleTarget, $ModuleTarget$$Type} from "me.desht.modularrouters.logic.ModuleTarget"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
@@ -1437,7 +1482,7 @@ import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.
 export class $PullerModule2 extends $ModuleItem implements $IRangedModule, $IPositionProvider, $ITargetedModule {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1445,26 +1490,27 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "getHardMaxRange"(): integer
 public "getItemTint"(): $TintColor
 public "getBaseRange"(): integer
-public "getEnergyCost"(arg0: $ItemStack$$Type): integer
 public "getRenderColor"(arg0: integer): integer
+public "getEnergyCost"(arg0: $ItemStack$$Type): integer
+public "getHardMaxRange"(): integer
 public "getCurrentRange"(arg0: integer): integer
 public "getCurrentRange"(arg0: $ItemStack$$Type): integer
 public "getStoredPositions"(arg0: $ItemStack$$Type): $List<($ModuleTarget)>
 public static "setTargets"(arg0: $ItemStack$$Type, arg1: $Collection$$Type<($ModuleTarget$$Type)>): void
 public static "getTargets"(arg0: $ItemStack$$Type, arg1: boolean): $Set<($ModuleTarget)>
+public "getMaxTargets"(): integer
+public "isRangeLimited"(): boolean
+public "isValidTarget"(arg0: $UseOnContext$$Type): boolean
 public "canOperateInDimension"(arg0: $ResourceKey$$Type<($Level)>): boolean
 public static "canSelectTarget"(arg0: $UseOnContext$$Type): boolean
-public "isRangeLimited"(): boolean
-public "getMaxTargets"(): integer
-public "isValidTarget"(arg0: $UseOnContext$$Type): boolean
-get "hardMaxRange"(): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
 get "baseRange"(): integer
-get "rangeLimited"(): boolean
+get "hardMaxRange"(): integer
 get "maxTargets"(): integer
+get "rangeLimited"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1479,18 +1525,22 @@ declare global {
 export type $PullerModule2_ = $PullerModule2$$Type;
 }}
 declare module "me.desht.modularrouters.item.module.PullerModule1" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.TintColor"
 
 export class $PullerModule1 extends $ModuleItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1500,6 +1550,7 @@ constructor()
 
 public "getItemTint"(): $TintColor
 public "getEnergyCost"(arg0: $ItemStack$$Type): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
 }
 /**
@@ -1523,7 +1574,7 @@ import {$ItemContainerContents, $ItemContainerContents$$Type} from "net.minecraf
 export interface $IInventoryItem {
 
  "getStacksInItem"(arg0: $ItemStack$$Type, arg1: $List$$Type<($ItemStack$$Type)>): void
- "getTooltipPrefix"(arg0: $ItemStack$$Type): string
+ "getTooltipPrefix"(arg0: $ItemStack$$Type): StringJS
  "getInventoryHeader"(): $Component
 
 (arg0: $ItemStack, arg1: $List<($ItemStack)>): void
@@ -1539,7 +1590,7 @@ export class $IInventoryItem$$Static implements $IInventoryItem {
 
 static "getStacks"(arg0: $ItemContainerContents$$Type, arg1: $List$$Type<($ItemStack$$Type)>): void
  "getStacksInItem"(arg0: $ItemStack$$Type, arg1: $List$$Type<($ItemStack$$Type)>): void
- "getTooltipPrefix"(arg0: $ItemStack$$Type): string
+ "getTooltipPrefix"(arg0: $ItemStack$$Type): StringJS
  "getInventoryHeader"(): $Component
 }
 /**
@@ -1566,17 +1617,17 @@ export class $HeatFrameCoolingRecipe extends $PneumaticCraftRecipe {
 constructor()
 
 public "getInput"(): $Either<($Ingredient), ($FluidContainerIngredient)>
-public "getOutput"(): $ItemStack
 public "matches"(arg0: $ItemStack$$Type): boolean
+public "getOutput"(): $ItemStack
 public "getBonusLimit"(): float
-public "calculateOutputQuantity"(arg0: double): integer
-public "getThresholdTemperature"(): integer
 public "getBonusMultiplier"(): float
+public "getThresholdTemperature"(): integer
+public "calculateOutputQuantity"(arg0: double): integer
 get "input"(): $Either<($Ingredient), ($FluidContainerIngredient)>
 get "output"(): $ItemStack
 get "bonusLimit"(): float
-get "thresholdTemperature"(): integer
 get "bonusMultiplier"(): float
+get "thresholdTemperature"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1629,8 +1680,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -1639,8 +1690,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -1648,8 +1699,8 @@ import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.bloc
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $KeroseneLampBlock extends $AbstractPneumaticCraftBlock implements $PneumaticCraftEntityBlock {
 static readonly "DOWN": $BooleanProperty
@@ -1660,7 +1711,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -1686,8 +1737,8 @@ public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $Bloc
 public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "isRotatable"(): boolean
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public static "forBlock"(arg0: $Block$$Type): $IPneumaticWrenchable
@@ -1711,9 +1762,9 @@ import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.Ser
 
 export interface $IGUIButtonSensitive {
 
- "handleGUIButtonPress"(arg0: string, arg1: boolean, arg2: $ServerPlayer$$Type): void
+ "handleGUIButtonPress"(arg0: StringJS, arg1: boolean, arg2: $ServerPlayer$$Type): void
 
-(arg0: string, arg1: boolean, arg2: $ServerPlayer): void
+(arg0: StringJS, arg1: boolean, arg2: $ServerPlayer): void
 }
 
 export namespace $IGUIButtonSensitive {
@@ -1722,13 +1773,13 @@ const probejs$$marker: never
 export class $IGUIButtonSensitive$$Static implements $IGUIButtonSensitive {
 
 
- "handleGUIButtonPress"(arg0: string, arg1: boolean, arg2: $ServerPlayer$$Type): void
+ "handleGUIButtonPress"(arg0: StringJS, arg1: boolean, arg2: $ServerPlayer$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $IGUIButtonSensitive$$Type = ((arg0: string, arg1: boolean, arg2: $ServerPlayer) => void);
+export type $IGUIButtonSensitive$$Type = ((arg0: StringJS, arg1: boolean, arg2: $ServerPlayer) => void);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1737,19 +1788,23 @@ declare global {
 export type $IGUIButtonSensitive_ = $IGUIButtonSensitive$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.logistics.LogisticsConfiguratorItem" {
-import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
+import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$PressurizableItem, $PressurizableItem$$Type} from "me.desht.pneumaticcraft.common.item.PressurizableItem"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
 
 export class $LogisticsConfiguratorItem extends $PressurizableItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1758,6 +1813,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "onItemUseFirst"(arg0: $ItemStack$$Type, arg1: $UseOnContext$$Type): $InteractionResult
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1785,35 +1841,35 @@ export class $HeatPropertiesRecipe extends $PneumaticCraftRecipe {
 
 constructor()
 
-public "getBlock"(): $Block
 public "getTransforms"(): $HeatPropertiesRecipe$Transforms
+public "getBlock"(): $Block
 public "getTemperature"(): integer
 public "getBlockState"(): $BlockState
 public "matchState"(arg0: $BlockState$$Type): boolean
-public "getDescriptionKey"(): string
 public "getLogic"(): $IHeatExchangerLogic
-public "getBlockStatePredicates"(): $Map<(string), (string)>
-public "getTransformColdFlowing"(): $Optional<($BlockState)>
+public "getDescriptionKey"(): StringJS
 public "getHeatCapacity"(): $Optional<(integer)>
 public "getThermalResistance"(): $Optional<(double)>
 public "getTransformHot"(): $Optional<($BlockState)>
 public "getTransformCold"(): $Optional<($BlockState)>
 public "getTransformHotFlowing"(): $Optional<($BlockState)>
 public "getInputDisplayName"(): $Component
-get "block"(): $Block
+public "getBlockStatePredicates"(): $Map<(StringJS), (StringJS)>
+public "getTransformColdFlowing"(): $Optional<($BlockState)>
 get "transforms"(): $HeatPropertiesRecipe$Transforms
+get "block"(): $Block
 get "temperature"(): integer
 get "blockState"(): $BlockState
-get "descriptionKey"(): string
 get "logic"(): $IHeatExchangerLogic
-get "blockStatePredicates"(): $Map<(string), (string)>
-get "transformColdFlowing"(): $Optional<($BlockState)>
+get "descriptionKey"(): StringJS
 get "heatCapacity"(): $Optional<(integer)>
 get "thermalResistance"(): $Optional<(double)>
 get "transformHot"(): $Optional<($BlockState)>
 get "transformCold"(): $Optional<($BlockState)>
 get "transformHotFlowing"(): $Optional<($BlockState)>
 get "inputDisplayName"(): $Component
+get "blockStatePredicates"(): $Map<(StringJS), (StringJS)>
+get "transformColdFlowing"(): $Optional<($BlockState)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1828,25 +1884,28 @@ declare global {
 export type $HeatPropertiesRecipe_ = $HeatPropertiesRecipe$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.block.ReinforcedChestBlock$ItemBlockReinforcedChest" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$IInventoryItem, $IInventoryItem$$Type} from "me.desht.pneumaticcraft.api.item.IInventoryItem"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ReinforcedChestBlock, $ReinforcedChestBlock$$Type} from "me.desht.pneumaticcraft.common.block.ReinforcedChestBlock"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$ItemContainerContents, $ItemContainerContents$$Type} from "net.minecraft.world.item.component.ItemContainerContents"
 
 export class $ReinforcedChestBlock$ItemBlockReinforcedChest extends $BlockItem implements $IInventoryItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1861,7 +1920,7 @@ constructor(arg0: $ReinforcedChestBlock$$Type)
 
 public "canFitInsideContainerItems"(): boolean
 public "getStacksInItem"(arg0: $ItemStack$$Type, arg1: $List$$Type<($ItemStack$$Type)>): void
-public "getTooltipPrefix"(arg0: $ItemStack$$Type): string
+public "getTooltipPrefix"(arg0: $ItemStack$$Type): StringJS
 public static "getStacks"(arg0: $ItemContainerContents$$Type, arg1: $List$$Type<($ItemStack$$Type)>): void
 public "getInventoryHeader"(): $Component
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
@@ -1869,6 +1928,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "inventoryHeader"(): $Component
 }
 /**
@@ -1884,8 +1944,8 @@ declare global {
 export type $ReinforcedChestBlock$ItemBlockReinforcedChest_ = $ReinforcedChestBlock$ItemBlockReinforcedChest$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.amadron.MutableBasket" {
-import {$AmadronMenu$EnumProblemState, $AmadronMenu$EnumProblemState$$Type} from "me.desht.pneumaticcraft.common.inventory.AmadronMenu$EnumProblemState"
 import {$ImmutableBasket, $ImmutableBasket$$Type} from "me.desht.pneumaticcraft.common.amadron.ImmutableBasket"
+import {$AmadronMenu$EnumProblemState, $AmadronMenu$EnumProblemState$$Type} from "me.desht.pneumaticcraft.common.inventory.AmadronMenu$EnumProblemState"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ShoppingBasket, $ShoppingBasket$$Type} from "me.desht.pneumaticcraft.common.amadron.ShoppingBasket"
@@ -1898,8 +1958,8 @@ public "clear"(): void
 public "validate"(arg0: $ItemStack$$Type, arg1: boolean): $AmadronMenu$EnumProblemState
 public "toImmutable"(): $ImmutableBasket
 public "halve"(arg0: $ResourceLocation$$Type): void
-public "addUnitsToOffer"(arg0: $ResourceLocation$$Type, arg1: integer): void
 public "setUnits"(arg0: $ResourceLocation$$Type, arg1: integer): void
+public "addUnitsToOffer"(arg0: $ResourceLocation$$Type, arg1: integer): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1914,16 +1974,20 @@ declare global {
 export type $MutableBasket_ = $MutableBasket$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.logistics.LogisticsFrameDefaultStorageItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$AbstractLogisticsFrameItem, $AbstractLogisticsFrameItem$$Type} from "me.desht.pneumaticcraft.common.item.logistics.AbstractLogisticsFrameItem"
 
 export class $LogisticsFrameDefaultStorageItem extends $AbstractLogisticsFrameItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1931,6 +1995,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1957,8 +2022,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$OmnidirectionalHopperBlock, $OmnidirectionalHopperBlock$$Type} from "me.desht.pneumaticcraft.common.block.OmnidirectionalHopperBlock"
@@ -1975,7 +2040,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -2016,14 +2081,17 @@ export type $LiquidHopperBlock_ = $LiquidHopperBlock$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.minigun.AbstractGunAmmoItem" {
 import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Minigun, $Minigun$$Type} from "me.desht.pneumaticcraft.common.minigun.Minigun"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
@@ -2031,7 +2099,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $AbstractGunAmmoItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -2039,14 +2107,15 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "getEnchantmentValue"(arg0: $ItemStack$$Type): integer
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-public "getRangeMultiplier"(arg0: $ItemStack$$Type): float
-public "getAirUsageMultiplier"(arg0: $Minigun$$Type, arg1: $ItemStack$$Type): float
 public "onTargetHit"(arg0: $Minigun$$Type, arg1: $ItemStack$$Type, arg2: $Entity$$Type): integer
 public "onBlockHit"(arg0: $Minigun$$Type, arg1: $ItemStack$$Type, arg2: $BlockHitResult$$Type): integer
 public "getAmmoCost"(arg0: $ItemStack$$Type): integer
 public "getAmmoColor"(arg0: $ItemStack$$Type): integer
+public "getRangeMultiplier"(arg0: $ItemStack$$Type): float
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "getEnchantmentValue"(arg0: $ItemStack$$Type): integer
+public "getAirUsageMultiplier"(arg0: $Minigun$$Type, arg1: $ItemStack$$Type): float
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2067,8 +2136,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -2077,8 +2146,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -2095,7 +2164,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -2145,7 +2214,7 @@ static readonly "NO_PROBLEM": $AssemblyProgram$EnumAssemblyProblem
 
 
 public static "values"(): ($AssemblyProgram$EnumAssemblyProblem)[]
-public static "valueOf"(arg0: string): $AssemblyProgram$EnumAssemblyProblem
+public static "valueOf"(arg0: StringJS): $AssemblyProgram$EnumAssemblyProblem
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2174,9 +2243,9 @@ public "test"(arg0: $ItemStack$$Type): boolean
 public "test"(arg0: any): boolean
 public "getConsumer"(arg0: $ItemStack$$Type): $Consumer<($Player)>
 public "or"(arg0: $Predicate$$Type<($ItemStack)>): $Predicate<($ItemStack)>
+public static "not"<T>(arg0: $Predicate$$Type<($ItemStack)>): $Predicate<($ItemStack)>
 public "negate"(): $Predicate<($ItemStack)>
 public "and"(arg0: $Predicate$$Type<($ItemStack)>): $Predicate<($ItemStack)>
-public static "not"<T>(arg0: $Predicate$$Type<($ItemStack)>): $Predicate<($ItemStack)>
 public static "isEqual"<T>(arg0: any): $Predicate<($ItemStack)>
 /**
  * This field is a type stub generated by ProbeJS and shall not be used in any sense.
@@ -2213,8 +2282,8 @@ import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -2226,8 +2295,8 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$PathComputationType, $PathComputationType$$Type} from "net.minecraft.world.level.pathfinder.PathComputationType"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ItemInteractionResult, $ItemInteractionResult$$Type} from "net.minecraft.world.ItemInteractionResult"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
@@ -2246,7 +2315,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -2269,19 +2338,19 @@ static readonly "UPDATE_CLIENTS": integer
 constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "addSerializableComponents"(arg0: $List$$Type<($DataComponentType$$Type<(any)>)>): void
-public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
 public "isPathfindable"(arg0: $BlockState$$Type, arg1: $PathComputationType$$Type): boolean
+public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "canSurvive"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type): boolean
 public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
 public "useItemOn"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type, arg2: $Level$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type, arg5: $InteractionHand$$Type, arg6: $BlockHitResult$$Type): $ItemInteractionResult
-public "canSurvive"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type): boolean
+public static "isTopDoor"(arg0: $BlockState$$Type): boolean
+public "onWrenched"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type, arg4: $InteractionHand$$Type): boolean
+public "isRotatable"(): boolean
 public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
 public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
 public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "isRotatable"(): boolean
-public static "isTopDoor"(arg0: $BlockState$$Type): boolean
-public "onWrenched"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type, arg4: $InteractionHand$$Type): boolean
+public "addSerializableComponents"(arg0: $List$$Type<($DataComponentType$$Type<(any)>)>): void
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public static "forBlock"(arg0: $Block$$Type): $IPneumaticWrenchable
@@ -2302,8 +2371,8 @@ export type $PneumaticDoorBlock_ = $PneumaticDoorBlock$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.util.playerfilter.PlayerFilter$Op" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -2316,19 +2385,19 @@ static readonly "YES": $PlayerFilter$Op
 static readonly "AND": $PlayerFilter$Op
 
 
-public static "values"(): ($PlayerFilter$Op)[]
-public static "valueOf"(arg0: string): $PlayerFilter$Op
 public "isReal"(): boolean
-public "getSerializedName"(): string
+public static "values"(): ($PlayerFilter$Op)[]
+public static "valueOf"(arg0: StringJS): $PlayerFilter$Op
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
 get "real"(): boolean
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2348,7 +2417,6 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$BaseFlowingFluid$Flowing, $BaseFlowingFluid$Flowing$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Flowing"
 
 export class $FluidLPG$Flowing extends $BaseFlowingFluid$Flowing {
@@ -2358,7 +2426,6 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -2382,6 +2449,7 @@ export class $BulletParticleType extends $SimpleParticleType {
 constructor()
 
 public "getType"(): $ParticleType<(any)>
+public static "init"(arg0: boolean): $SimpleParticleType
 get "type"(): $ParticleType<(any)>
 }
 /**
@@ -2405,8 +2473,8 @@ import {$ColorHandlers$ITintableBlock, $ColorHandlers$ITintableBlock$$Type} from
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockAndTintGetter, $BlockAndTintGetter$$Type} from "net.minecraft.world.level.BlockAndTintGetter"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -2415,8 +2483,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -2433,7 +2501,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -2458,8 +2526,8 @@ constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "isRotatable"(): boolean
 public "getTintColor"(arg0: $BlockState$$Type, arg1: $BlockAndTintGetter$$Type, arg2: $BlockPos$$Type, arg3: integer): integer
+public "isRotatable"(): boolean
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public static "forBlock"(arg0: $Block$$Type): $IPneumaticWrenchable
@@ -2479,20 +2547,24 @@ declare global {
 export type $UVLightBoxBlock_ = $UVLightBoxBlock$$Type;
 }}
 declare module "me.desht.modularrouters.item.augment.RegulatorAugment" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$AugmentItem, $AugmentItem$$Type} from "me.desht.modularrouters.item.augment.AugmentItem"
 import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 
 export class $RegulatorAugment extends $AugmentItem {
 static readonly "SLOTS": integer
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -2500,8 +2572,9 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "getExtraInfo"(arg0: integer, arg1: $ItemStack$$Type): $Component
 public "getMaxAugments"(arg0: $ModuleItem$$Type): integer
+public "getExtraInfo"(arg0: integer, arg1: $ItemStack$$Type): $Component
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2525,8 +2598,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -2540,8 +2613,8 @@ import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockG
 import {$ModelProperty, $ModelProperty$$Type} from "net.neoforged.neoforge.client.model.data.ModelProperty"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
-import {$AbstractCamouflageBlock, $AbstractCamouflageBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractCamouflageBlock"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
+import {$AbstractCamouflageBlock, $AbstractCamouflageBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractCamouflageBlock"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 
@@ -2557,7 +2630,7 @@ static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "BLOCK_ACCESS": $ModelProperty<($BlockGetter)>
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -2579,13 +2652,13 @@ static readonly "UPDATE_CLIENTS": integer
 
 constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "addSerializableComponents"(arg0: $List$$Type<($DataComponentType$$Type<(any)>)>): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "isSignalSource"(arg0: $BlockState$$Type): boolean
 public "getSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
+public "isRotatable"(): boolean
 public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "getUncamouflagedShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "isRotatable"(): boolean
+public "addSerializableComponents"(arg0: $List$$Type<($DataComponentType$$Type<(any)>)>): void
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public static "forBlock"(arg0: $Block$$Type): $IPneumaticWrenchable
@@ -2605,17 +2678,21 @@ declare global {
 export type $ChargingStationBlock_ = $ChargingStationBlock$$Type;
 }}
 declare module "me.desht.modularrouters.item.upgrade.BlastUpgrade" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$UpgradeItem, $UpgradeItem$$Type} from "me.desht.modularrouters.item.upgrade.UpgradeItem"
 import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.TintColor"
 
 export class $BlastUpgrade extends $UpgradeItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -2624,6 +2701,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "getItemTint"(): $TintColor
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
 }
 /**
@@ -2640,6 +2718,7 @@ export type $BlastUpgrade_ = $BlastUpgrade$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.JackHammerItem" {
 import {$JackHammerItem$EnchantmentHandler, $JackHammerItem$EnchantmentHandler$$Type} from "me.desht.pneumaticcraft.common.item.JackHammerItem$EnchantmentHandler"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
@@ -2662,6 +2741,7 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$DrillBitItem$DrillBitType, $DrillBitItem$DrillBitType$$Type} from "me.desht.pneumaticcraft.common.item.DrillBitItem$DrillBitType"
 import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
@@ -2670,7 +2750,7 @@ import {$ChargingStationBlockEntity, $ChargingStationBlockEntity$$Type} from "me
 export class $JackHammerItem extends $PressurizableItem implements $IChargeableContainerProvider, $ColorHandlers$ITintableItem, $IShiftScrollable {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -2681,21 +2761,22 @@ constructor()
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
 public "onEntitySwing"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: $InteractionHand$$Type): boolean
 public "mineBlock"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockState$$Type, arg3: $BlockPos$$Type, arg4: $LivingEntity$$Type): boolean
+public static "getDigMode"(arg0: $ItemStack$$Type): $JackHammerItem$DigMode
+public static "setDigMode"(arg0: $ItemStack$$Type, arg1: $JackHammerItem$DigMode$$Type): void
+public static "cycleDigMode"(arg0: $ItemStack$$Type, arg1: boolean): $JackHammerItem$DigMode
 public static "getDrillBit"(arg0: $ItemStack$$Type): $DrillBitItem$DrillBitType
-public "isCorrectToolForDrops"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type): boolean
-public "canPerformAction"(arg0: $ItemStack$$Type, arg1: $ItemAbility$$Type): boolean
-public "getDestroySpeed"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type): float
+public "getTintColor"(arg0: $ItemStack$$Type, arg1: integer): integer
 public "getContainerProvider"(arg0: $ChargingStationBlockEntity$$Type): $MenuProvider
+public "isCorrectToolForDrops"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type): boolean
+public "getDestroySpeed"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type): float
+public "canPerformAction"(arg0: $ItemStack$$Type, arg1: $ItemAbility$$Type): boolean
 public static "getBreakPositions"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $Direction$$Type, arg3: $Player$$Type, arg4: $JackHammerItem$DigMode$$Type): $Set<($BlockPos)>
-public "getUpgradeBlacklistTag"(): $Optional<($TagKey<($Item)>)>
-public "onShiftScrolled"(arg0: $Player$$Type, arg1: boolean, arg2: $InteractionHand$$Type): void
 public static "getLastModeSwitchTime"(): long
 public static "getDrillBitHandler"(arg0: $ItemStack$$Type): $JackHammerItem$DrillBitHandler
 public static "getEnchantmentHandler"(arg0: $ItemStack$$Type): $JackHammerItem$EnchantmentHandler
-public static "setDigMode"(arg0: $ItemStack$$Type, arg1: $JackHammerItem$DigMode$$Type): void
-public static "cycleDigMode"(arg0: $ItemStack$$Type, arg1: boolean): $JackHammerItem$DigMode
-public "getTintColor"(arg0: $ItemStack$$Type, arg1: integer): integer
-public static "getDigMode"(arg0: $ItemStack$$Type): $JackHammerItem$DigMode
+public "onShiftScrolled"(arg0: $Player$$Type, arg1: boolean, arg2: $InteractionHand$$Type): void
+public "getUpgradeBlacklistTag"(): $Optional<($TagKey<($Item)>)>
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "upgradeBlacklistTag"(): $Optional<($TagKey<($Item)>)>
 }
 /**
@@ -2717,8 +2798,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockAndTintGetter, $BlockAndTintGetter$$Type} from "net.minecraft.world.level.BlockAndTintGetter"
-import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$IBlockComparatorSupport, $IBlockComparatorSupport$$Type} from "me.desht.pneumaticcraft.common.block.IBlockComparatorSupport"
+import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
@@ -2745,7 +2826,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -2790,8 +2871,8 @@ import {$ModuleFlags, $ModuleFlags$$Type} from "me.desht.modularrouters.logic.se
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$List, $List$$Type} from "java.util.List"
+import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 
 export class $Filter implements $Predicate<($ItemStack)> {
 static readonly "FILTER_SIZE": integer
@@ -2799,23 +2880,23 @@ static readonly "FILTER_SIZE": integer
 constructor()
 constructor(arg0: $ItemStack$$Type, arg1: boolean, arg2: boolean)
 
-public "test"(arg0: any): boolean
-public "test"(arg0: $ItemStack$$Type): boolean
-public "isEmpty"(): boolean
 public "getFlags"(): $ModuleFlags
-public "cycleRoundRobin"(): $Optional<(integer)>
-public "isWhiteList"(): boolean
+public "test"(arg0: $ItemStack$$Type): boolean
+public "test"(arg0: any): boolean
+public "isEmpty"(): boolean
 public "getRawStacks"(): $List<($ItemStack)>
 public "testFluid"(arg0: $Fluid$$Type): boolean
+public "isWhiteList"(): boolean
+public "cycleRoundRobin"(): $Optional<(integer)>
 public "or"(arg0: $Predicate$$Type<($ItemStack)>): $Predicate<($ItemStack)>
+public static "not"<T>(arg0: $Predicate$$Type<($ItemStack)>): $Predicate<($ItemStack)>
 public "negate"(): $Predicate<($ItemStack)>
 public "and"(arg0: $Predicate$$Type<($ItemStack)>): $Predicate<($ItemStack)>
-public static "not"<T>(arg0: $Predicate$$Type<($ItemStack)>): $Predicate<($ItemStack)>
 public static "isEqual"<T>(arg0: any): $Predicate<($ItemStack)>
-get "empty"(): boolean
 get "flags"(): $ModuleFlags
-get "whiteList"(): boolean
+get "empty"(): boolean
 get "rawStacks"(): $List<($ItemStack)>
+get "whiteList"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2838,7 +2919,7 @@ static readonly "FILTER": $MFLocator$ItemType
 
 
 public static "values"(): ($MFLocator$ItemType)[]
-public static "valueOf"(arg0: string): $MFLocator$ItemType
+public static "valueOf"(arg0: StringJS): $MFLocator$ItemType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2866,8 +2947,8 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$LiquidBlock, $LiquidBlock$$Type} from "net.minecraft.world.level.block.LiquidBlock"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -2888,7 +2969,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2921,17 +3002,17 @@ export class $PressureChamberRecipe$RecipeSlot extends $Record {
 
 constructor(input: boolean, index: integer)
 
+public "input"(): boolean
 public "index"(): integer
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "input"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $PressureChamberRecipe$RecipeSlot$$Type = ({"index"?: integer, "input"?: boolean}) | ([index?: integer, input?: boolean]);
+export type $PressureChamberRecipe$RecipeSlot$$Type = ({"input"?: boolean, "index"?: integer}) | ([input?: boolean, index?: integer]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -2948,8 +3029,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -2958,8 +3039,8 @@ import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$CamouflageableBlock, $CamouflageableBlock$$Type} from "me.desht.modularrouters.block.CamouflageableBlock"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ModelProperty, $ModelProperty$$Type} from "net.neoforged.neoforge.client.model.data.ModelProperty"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
@@ -2981,7 +3062,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3010,11 +3091,15 @@ declare global {
 export type $TemplateFrameBlock_ = $TemplateFrameBlock$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.fluid.FluidPlastic$Bucket" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$PneumaticCraftBucketItem, $PneumaticCraftBucketItem$$Type} from "me.desht.pneumaticcraft.common.item.PneumaticCraftBucketItem"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ICustomTooltipName, $ICustomTooltipName$$Type} from "me.desht.pneumaticcraft.common.item.ICustomTooltipName"
@@ -3022,7 +3107,7 @@ import {$ICustomTooltipName, $ICustomTooltipName$$Type} from "me.desht.pneumatic
 export class $FluidPlastic$Bucket extends $PneumaticCraftBucketItem implements $ICustomTooltipName {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3031,9 +3116,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "getCustomTooltipTranslationKey"(): string
-public static "getTranslationKey"(arg0: $ItemStack$$Type, arg1: boolean): string
-get "customTooltipTranslationKey"(): string
+public "getCustomTooltipTranslationKey"(): StringJS
+public static "getTranslationKey"(arg0: $ItemStack$$Type, arg1: boolean): StringJS
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
+get "customTooltipTranslationKey"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3048,17 +3134,21 @@ declare global {
 export type $FluidPlastic$Bucket_ = $FluidPlastic$Bucket$$Type;
 }}
 declare module "me.desht.modularrouters.item.upgrade.MufflerUpgrade" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$UpgradeItem, $UpgradeItem$$Type} from "me.desht.modularrouters.item.upgrade.UpgradeItem"
 import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.TintColor"
 
 export class $MufflerUpgrade extends $UpgradeItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3066,10 +3156,11 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "getInstalledStackLimit"(): integer
 public "getItemTint"(): $TintColor
-get "installedStackLimit"(): integer
+public "getInstalledStackLimit"(): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
+get "installedStackLimit"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3142,10 +3233,10 @@ export type $JackHammerItem$EnchantmentHandler_ = $JackHammerItem$EnchantmentHan
 }}
 declare module "me.desht.pneumaticcraft.api.crafting.recipe.ThermoPlantRecipe$Inputs" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
-import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
-import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
+import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
+import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$SizedFluidIngredient, $SizedFluidIngredient$$Type} from "net.neoforged.neoforge.fluids.crafting.SizedFluidIngredient"
 import {$Record, $Record$$Type} from "java.lang.Record"
 
@@ -3156,7 +3247,7 @@ static "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($ThermoPlantRec
 constructor(inputFluid: $Optional$$Type<($SizedFluidIngredient$$Type)>, inputItem: $Optional$$Type<($Ingredient$$Type)>)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public static "of"(arg0: $SizedFluidIngredient$$Type, arg1: $Ingredient$$Type): $ThermoPlantRecipe$Inputs
 public "inputFluid"(): $Optional<($SizedFluidIngredient)>
@@ -3166,7 +3257,7 @@ public "inputItem"(): $Optional<($Ingredient)>
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ThermoPlantRecipe$Inputs$$Type = ({"inputFluid"?: ($SizedFluidIngredient$$Type)?, "inputItem"?: ($Ingredient$$Type)?}) | ([inputFluid?: ($SizedFluidIngredient$$Type)?, inputItem?: ($Ingredient$$Type)?]);
+export type $ThermoPlantRecipe$Inputs$$Type = ({"inputItem"?: ($Ingredient$$Type)?, "inputFluid"?: ($SizedFluidIngredient$$Type)?}) | ([inputItem?: ($Ingredient$$Type)?, inputFluid?: ($SizedFluidIngredient$$Type)?]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -3177,9 +3268,9 @@ export type $ThermoPlantRecipe$Inputs_ = $ThermoPlantRecipe$Inputs$$Type;
 declare module "me.desht.pneumaticcraft.common.tubemodules.AbstractTubeModule" {
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
-import {$PressureTubeBlockEntity, $PressureTubeBlockEntity$$Type} from "me.desht.pneumaticcraft.common.block.entity.tube.PressureTubeBlockEntity"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$PressureTubeBlockEntity, $PressureTubeBlockEntity$$Type} from "me.desht.pneumaticcraft.common.block.entity.tube.PressureTubeBlockEntity"
+import {$List, $List$$Type} from "java.util.List"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
@@ -3198,55 +3289,55 @@ static readonly "MAX_VALUE": float
 
 constructor(arg0: $Direction$$Type, arg1: $PressureTubeBlockEntity$$Type)
 
+public "isValid"(): boolean
 public "getWidth"(): double
+public "getShape"(): $VoxelShape
+public "getItem"(): $Item
 public "equals"(arg0: any): boolean
 public "hashCode"(): integer
 public "getType"(): $ResourceLocation
-public "isValid"(): boolean
-public "getShape"(): $VoxelShape
-public "getItem"(): $Item
+public "isFake"(): boolean
 public "getDrops"(): $NonNullList<($ItemStack)>
 public "tickClient"(): void
 public "tickServer"(): void
-public "getDirection"(): $Direction
 public "upgrade"(): void
-public "isFake"(): boolean
+public "getDirection"(): $Direction
 public "hasGui"(): boolean
-public "getRedstoneLevel"(): integer
-public "getRenderBoundingBox"(): $AABB
-public "onNeighborTileUpdate"(): void
-public "sendDescriptionPacket"(): void
-public "isInlineAndFocused"(arg0: $PressureTubeBlock$TubeHitInfo$$Type): boolean
-public "updateNeighbors"(): void
-public "onNeighborBlockUpdate"(): void
-public "onPlaced"(): void
+public "getTube"(): $PressureTubeBlockEntity
+public "getInternalId"(): integer
 public "onActivated"(arg0: $Player$$Type, arg1: $InteractionHand$$Type): boolean
+public "onPlaced"(): void
 public "markFake"(): void
 public "isUpgraded"(): boolean
 public "canUpgrade"(): boolean
 public "addInfo"(arg0: $List$$Type<($Component$$Type)>): void
-public "getInternalId"(): integer
-public "readFromNBT"(arg0: $CompoundTag$$Type): void
-public "writeToNBT"(arg0: $CompoundTag$$Type): $CompoundTag
-public "getThreshold"(arg0: integer): float
-public "canConnectTo"(arg0: $AbstractTubeModule$$Type): boolean
 public "isInline"(): boolean
+public "canConnectTo"(arg0: $AbstractTubeModule$$Type): boolean
+public "getThreshold"(arg0: integer): float
+public "writeToNBT"(arg0: $CompoundTag$$Type): $CompoundTag
+public "readFromNBT"(arg0: $CompoundTag$$Type): void
 public "onRemoved"(): void
-public "getTube"(): $PressureTubeBlockEntity
-get "width"(): double
-get "type"(): $ResourceLocation
+public "updateNeighbors"(): void
+public "getRenderBoundingBox"(): $AABB
+public "getRedstoneLevel"(): integer
+public "onNeighborTileUpdate"(): void
+public "onNeighborBlockUpdate"(): void
+public "sendDescriptionPacket"(): void
+public "isInlineAndFocused"(arg0: $PressureTubeBlock$TubeHitInfo$$Type): boolean
 get "valid"(): boolean
+get "width"(): double
 get "shape"(): $VoxelShape
 get "item"(): $Item
+get "type"(): $ResourceLocation
+get "fake"(): boolean
 get "drops"(): $NonNullList<($ItemStack)>
 get "direction"(): $Direction
-get "fake"(): boolean
-get "redstoneLevel"(): integer
-get "renderBoundingBox"(): $AABB
-get "upgraded"(): boolean
-get "internalId"(): integer
-get "inline"(): boolean
 get "tube"(): $PressureTubeBlockEntity
+get "internalId"(): integer
+get "upgraded"(): boolean
+get "inline"(): boolean
+get "renderBoundingBox"(): $AABB
+get "redstoneLevel"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3273,9 +3364,9 @@ export class $HeatPropertiesRecipeImpl$Serializer<T extends $HeatPropertiesRecip
 
 constructor(arg0: $HeatPropertiesRecipeImpl$IFactory$$Type<(T)>)
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
 public "codec"(): $MapCodec<(T)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3305,7 +3396,7 @@ static readonly "SYNCED_ENUM": $SyncedField$FieldType
 
 
 public static "values"(): ($SyncedField$FieldType)[]
-public static "valueOf"(arg0: string): $SyncedField$FieldType
+public static "valueOf"(arg0: StringJS): $SyncedField$FieldType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3320,24 +3411,26 @@ declare global {
 export type $SyncedField$FieldType_ = $SyncedField$FieldType$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.PneumaticWrenchItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$PressurizableItem, $PressurizableItem$$Type} from "me.desht.pneumaticcraft.common.item.PressurizableItem"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 
 export class $PneumaticWrenchItem extends $PressurizableItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3345,9 +3438,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "onItemUseFirst"(arg0: $ItemStack$$Type, arg1: $UseOnContext$$Type): $InteractionResult
 public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
+public "onItemUseFirst"(arg0: $ItemStack$$Type, arg1: $UseOnContext$$Type): $InteractionResult
 public "interactLivingEntity"(arg0: $ItemStack$$Type, arg1: $Player$$Type, arg2: $LivingEntity$$Type, arg3: $InteractionHand$$Type): $InteractionResult
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3362,18 +3456,22 @@ declare global {
 export type $PneumaticWrenchItem_ = $PneumaticWrenchItem$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.minigun.ArmorPiercingGunAmmoItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$AbstractGunAmmoItem, $AbstractGunAmmoItem$$Type} from "me.desht.pneumaticcraft.common.item.minigun.AbstractGunAmmoItem"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 
 export class $ArmorPiercingGunAmmoItem extends $AbstractGunAmmoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3382,8 +3480,9 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "getMaxDamage"(arg0: $ItemStack$$Type): integer
-public "getDamageMultiplier"(arg0: $Entity$$Type, arg1: $ItemStack$$Type): float
 public "getAmmoColor"(arg0: $ItemStack$$Type): integer
+public "getDamageMultiplier"(arg0: $Entity$$Type, arg1: $ItemStack$$Type): float
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3398,15 +3497,19 @@ declare global {
 export type $ArmorPiercingGunAmmoItem_ = $ArmorPiercingGunAmmoItem$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.EmptyPCBItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$ItemEntity, $ItemEntity$$Type} from "net.minecraft.world.entity.item.ItemEntity"
 import {$FluidStack, $FluidStack$$Type} from "net.neoforged.neoforge.fluids.FluidStack"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$NonDespawningItem, $NonDespawningItem$$Type} from "me.desht.pneumaticcraft.common.item.NonDespawningItem"
 import {$ICustomDurabilityBar, $ICustomDurabilityBar$$Type} from "me.desht.pneumaticcraft.api.item.ICustomDurabilityBar"
@@ -3417,7 +3520,7 @@ import {$CreativeTabStackProvider, $CreativeTabStackProvider$$Type} from "me.des
 export class $EmptyPCBItem extends $NonDespawningItem implements $ICustomDurabilityBar, $CreativeTabStackProvider {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3425,24 +3528,25 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "shouldShowCustomDurabilityBar"(arg0: $ItemStack$$Type): boolean
-public "getCustomDurabilityColour"(arg0: $ItemStack$$Type): integer
 public "isBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getBarWidth"(arg0: $ItemStack$$Type): integer
 public "getBarColor"(arg0: $ItemStack$$Type): integer
-public "onEntityItemUpdate"(arg0: $ItemStack$$Type, arg1: $ItemEntity$$Type): boolean
+public "getSuccessItem"(): $ItemStack
+public "getFailedItem"(): $ItemStack
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "onEntityItemUpdate"(arg0: $ItemStack$$Type, arg1: $ItemEntity$$Type): boolean
 public "getCustomDurability"(arg0: $ItemStack$$Type): float
 public "isShowingOtherBar"(arg0: $ItemStack$$Type): boolean
 public static "getEtchProgress"(arg0: $ItemStack$$Type): integer
 public static "setEtchProgress"(arg0: $ItemStack$$Type, arg1: integer): void
 public "getStacksForItem"(): $Stream<($ItemStack)>
 public static "getEtchingFluid"(): $FluidStack
-public "getSuccessItem"(): $ItemStack
-public "getFailedItem"(): $ItemStack
-get "stacksForItem"(): $Stream<($ItemStack)>
+public "shouldShowCustomDurabilityBar"(arg0: $ItemStack$$Type): boolean
+public "getCustomDurabilityColour"(arg0: $ItemStack$$Type): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "successItem"(): $ItemStack
 get "failedItem"(): $ItemStack
+get "stacksForItem"(): $Stream<($ItemStack)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3496,35 +3600,35 @@ import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.Le
 export interface $IHeatExchangerLogic {
 
  "tick"(): void
- "getTemperature"(): double
  "deserializeNBT"(arg0: $CompoundTag$$Type): void
  "serializeNBT"(): $CompoundTag
- "isSideConnected"(arg0: $Direction$$Type): boolean
+ "getTemperature"(): double
+ "addHeat"(arg0: double): void
+ "setTemperature"(arg0: double): void
+ "getThermalResistance"(): double
+ "getThermalCapacity"(): double
+ "addTemperatureListener"(arg0: $TemperatureListener$$Type): void
  "addConnectedExchanger"(arg0: $IHeatExchangerLogic$$Type): void
  "addConnectedExchanger"(arg0: $IHeatExchangerLogic$$Type, arg1: boolean): void
- "initializeAsHull"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BiPredicate$$Type<($LevelAccessor), ($BlockPos)>, ...arg3: ($Direction$$Type)[]): void
- "setThermalCapacity"(arg0: double): void
  "setThermalResistance"(arg0: double): void
+ "isSideConnected"(arg0: $Direction$$Type): boolean
+ "setThermalCapacity"(arg0: double): void
+ "initializeAsHull"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BiPredicate$$Type<($LevelAccessor), ($BlockPos)>, ...arg3: ($Direction$$Type)[]): void
  "getAmbientTemperature"(): double
  "getHeatBehaviour"<T extends $HeatBehaviour>(arg0: $BlockPos$$Type, arg1: $Class$$Type<(T)>): $Optional<(T)>
  "getTemperatureAsInt"(): integer
- "addHeat"(arg0: double): void
- "setTemperature"(arg0: double): void
- "initializeAmbientTemperature"(arg0: $Level$$Type, arg1: $BlockPos$$Type): void
- "removeTemperatureListener"(arg0: $TemperatureListener$$Type): void
  "removeConnectedExchanger"(arg0: $IHeatExchangerLogic$$Type): void
  "removeConnectedExchanger"(arg0: $IHeatExchangerLogic$$Type, arg1: boolean): void
- "addTemperatureListener"(arg0: $TemperatureListener$$Type): void
- "getThermalResistance"(): double
- "getThermalCapacity"(): double
+ "initializeAmbientTemperature"(arg0: $Level$$Type, arg1: $BlockPos$$Type): void
+ "removeTemperatureListener"(arg0: $TemperatureListener$$Type): void
 get "temperature"(): double
-set "thermalCapacity"(value: double)
-set "thermalResistance"(value: double)
-get "ambientTemperature"(): double
-get "temperatureAsInt"(): integer
 set "temperature"(value: double)
 get "thermalResistance"(): double
 get "thermalCapacity"(): double
+set "thermalResistance"(value: double)
+set "thermalCapacity"(value: double)
+get "ambientTemperature"(): double
+get "temperatureAsInt"(): integer
 }
 
 export namespace $IHeatExchangerLogic {
@@ -3536,27 +3640,27 @@ static readonly "ALL_BLOCKS": $BiPredicate<($LevelAccessor), ($BlockPos)>
 
 
  "tick"(): void
- "getTemperature"(): double
  "deserializeNBT"(arg0: $CompoundTag$$Type): void
  "serializeNBT"(): $CompoundTag
- "isSideConnected"(arg0: $Direction$$Type): boolean
+ "getTemperature"(): double
+ "addHeat"(arg0: double): void
+ "setTemperature"(arg0: double): void
+ "getThermalResistance"(): double
+ "getThermalCapacity"(): double
+ "addTemperatureListener"(arg0: $TemperatureListener$$Type): void
  "addConnectedExchanger"(arg0: $IHeatExchangerLogic$$Type): void
  "addConnectedExchanger"(arg0: $IHeatExchangerLogic$$Type, arg1: boolean): void
- "initializeAsHull"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BiPredicate$$Type<($LevelAccessor), ($BlockPos)>, ...arg3: ($Direction$$Type)[]): void
- "setThermalCapacity"(arg0: double): void
  "setThermalResistance"(arg0: double): void
+ "isSideConnected"(arg0: $Direction$$Type): boolean
+ "setThermalCapacity"(arg0: double): void
+ "initializeAsHull"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BiPredicate$$Type<($LevelAccessor), ($BlockPos)>, ...arg3: ($Direction$$Type)[]): void
  "getAmbientTemperature"(): double
  "getHeatBehaviour"<T extends $HeatBehaviour>(arg0: $BlockPos$$Type, arg1: $Class$$Type<(T)>): $Optional<(T)>
  "getTemperatureAsInt"(): integer
- "addHeat"(arg0: double): void
- "setTemperature"(arg0: double): void
- "initializeAmbientTemperature"(arg0: $Level$$Type, arg1: $BlockPos$$Type): void
- "removeTemperatureListener"(arg0: $TemperatureListener$$Type): void
  "removeConnectedExchanger"(arg0: $IHeatExchangerLogic$$Type): void
  "removeConnectedExchanger"(arg0: $IHeatExchangerLogic$$Type, arg1: boolean): void
- "addTemperatureListener"(arg0: $TemperatureListener$$Type): void
- "getThermalResistance"(): double
- "getThermalCapacity"(): double
+ "initializeAmbientTemperature"(arg0: $Level$$Type, arg1: $BlockPos$$Type): void
+ "removeTemperatureListener"(arg0: $TemperatureListener$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3571,17 +3675,21 @@ declare global {
 export type $IHeatExchangerLogic_ = $IHeatExchangerLogic$$Type;
 }}
 declare module "me.desht.modularrouters.item.upgrade.SpeedUpgrade" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$UpgradeItem, $UpgradeItem$$Type} from "me.desht.modularrouters.item.upgrade.UpgradeItem"
 import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.TintColor"
 
 export class $SpeedUpgrade extends $UpgradeItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3589,12 +3697,13 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public "getItemTint"(): $TintColor
 public "getExtraUsageParams"(): (any)[]
 public "getInstalledStackLimit"(): integer
-public "getItemTint"(): $TintColor
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
+get "itemTint"(): $TintColor
 get "extraUsageParams"(): (any)[]
 get "installedStackLimit"(): integer
-get "itemTint"(): $TintColor
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3615,8 +3724,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -3625,8 +3734,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -3643,7 +3752,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -3695,11 +3804,11 @@ static readonly "CENTER": $PressureTubeBlock$TubeHitInfo
 
 constructor(dir: $Direction$$Type, type: $PressureTubeBlock$TubeHitInfo$PartType$$Type)
 
+public "dir"(): $Direction
 public "type"(): $PressureTubeBlock$TubeHitInfo$PartType
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "dir"(): $Direction
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3714,14 +3823,18 @@ declare global {
 export type $PressureTubeBlock$TubeHitInfo_ = $PressureTubeBlock$TubeHitInfo$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.TagFilterItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
-import {$IFilteringItem, $IFilteringItem$$Type} from "me.desht.pneumaticcraft.api.item.IFilteringItem"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$IFilteringItem, $IFilteringItem$$Type} from "me.desht.pneumaticcraft.api.item.IFilteringItem"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
@@ -3730,7 +3843,7 @@ import {$Set, $Set$$Type} from "java.util.Set"
 export class $TagFilterItem extends $Item implements $IFilteringItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3738,10 +3851,11 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public "matchFilter"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public static "getConfiguredTagList"(arg0: $ItemStack$$Type): $Set<($TagKey<($Item)>)>
 public static "setConfiguredTagList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($TagKey$$Type<($Item$$Type)>)>): void
-public "matchFilter"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3756,21 +3870,23 @@ declare global {
 export type $TagFilterItem_ = $TagFilterItem$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.VortexCannonItem" {
-import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
-import {$PressurizableItem, $PressurizableItem$$Type} from "me.desht.pneumaticcraft.common.item.PressurizableItem"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
-import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$PressurizableItem, $PressurizableItem$$Type} from "me.desht.pneumaticcraft.common.item.PressurizableItem"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export class $VortexCannonItem extends $PressurizableItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3779,6 +3895,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3804,15 +3921,15 @@ constructor(arg0: $ModularRouterBlockEntity$$Type, arg1: $CompiledModule$$Type)
 
 public "getModule"(): $CompiledModule
 public "setCanceled"(arg0: boolean): void
-public "getRouter"(): $ModularRouterBlockEntity
 public "setExecuted"(arg0: boolean): void
 public "isExecuted"(): boolean
+public "getRouter"(): $ModularRouterBlockEntity
 public "isCanceled"(): boolean
 get "module"(): $CompiledModule
 set "canceled"(value: boolean)
-get "router"(): $ModularRouterBlockEntity
 set "executed"(value: boolean)
 get "executed"(): boolean
+get "router"(): $ModularRouterBlockEntity
 get "canceled"(): boolean
 }
 /**
@@ -3855,7 +3972,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3879,21 +3996,24 @@ declare global {
 export type $SmoothPlasticBrickBlock_ = $SmoothPlasticBrickBlock$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.block.OmnidirectionalHopperBlock$ItemBlockOmnidirectionalHopper" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$ColorHandlers$ITintableItem, $ColorHandlers$ITintableItem$$Type} from "me.desht.pneumaticcraft.client.ColorHandlers$ITintableItem"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$ColorHandlers$ITintableItem, $ColorHandlers$ITintableItem$$Type} from "me.desht.pneumaticcraft.client.ColorHandlers$ITintableItem"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $OmnidirectionalHopperBlock$ItemBlockOmnidirectionalHopper extends $BlockItem implements $ColorHandlers$ITintableItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3912,6 +4032,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3934,10 +4055,10 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$IBlockComparatorSupport, $IBlockComparatorSupport$$Type} from "me.desht.pneumaticcraft.common.block.IBlockComparatorSupport"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
+import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -3946,8 +4067,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -3965,7 +4086,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -3987,10 +4108,10 @@ static readonly "UPDATE_CLIENTS": integer
 constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "addSerializableComponents"(arg0: $List$$Type<($DataComponentType$$Type<(any)>)>): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "onDestroyedByPlayer"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: boolean, arg5: $FluidState$$Type): boolean
 public "isRotatable"(): boolean
+public "onDestroyedByPlayer"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: boolean, arg5: $FluidState$$Type): boolean
+public "addSerializableComponents"(arg0: $List$$Type<($DataComponentType$$Type<(any)>)>): void
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public static "forBlock"(arg0: $Block$$Type): $IPneumaticWrenchable
@@ -4015,7 +4136,6 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$BaseFlowingFluid$Flowing, $BaseFlowingFluid$Flowing$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Flowing"
 
 export class $FluidEtchingAcid$Flowing extends $BaseFlowingFluid$Flowing {
@@ -4025,7 +4145,6 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -4091,9 +4210,9 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Compr
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($CompressorUpgradeCrafting)>
 public "codec"(): $MapCodec<($CompressorUpgradeCrafting)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($CompressorUpgradeCrafting)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4109,8 +4228,8 @@ export type $CompressorUpgradeCrafting$Serializer_ = $CompressorUpgradeCrafting$
 }}
 declare module "me.desht.pneumaticcraft.common.particle.AirParticleType" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
-import {$ParticleType, $ParticleType$$Type} from "net.minecraft.core.particles.ParticleType"
 import {$AirParticleData, $AirParticleData$$Type} from "me.desht.pneumaticcraft.common.particle.AirParticleData"
+import {$ParticleType, $ParticleType$$Type} from "net.minecraft.core.particles.ParticleType"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 
@@ -4118,8 +4237,8 @@ export class $AirParticleType extends $ParticleType<($AirParticleData)> {
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($AirParticleData)>
 public "codec"(): $MapCodec<($AirParticleData)>
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($AirParticleData)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4167,8 +4286,8 @@ import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
-import {$Either, $Either$$Type} from "com.mojang.datafixers.util.Either"
 import {$Function, $Function$$Type} from "java.util.function.Function"
+import {$Either, $Either$$Type} from "com.mojang.datafixers.util.Either"
 import {$IFluidHandler, $IFluidHandler$$Type} from "net.neoforged.neoforge.fluids.capability.IFluidHandler"
 import {$Record, $Record$$Type} from "java.lang.Record"
 
@@ -4178,33 +4297,33 @@ static "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($AmadronTradeRe
 
 constructor(resource: $Either$$Type<($ItemStack$$Type), ($FluidStack$$Type)>)
 
-public "getName"(): string
+public "resource"(): $Either<($ItemStack), ($FluidStack)>
+public "getItem"(): $ItemStack
+public "getName"(): StringJS
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "isEmpty"(): boolean
 public "apply"<T>(arg0: $Function$$Type<($ItemStack), (T)>, arg1: $Function$$Type<($FluidStack), (T)>): T
-public static "of"(arg0: $ItemStack$$Type): $AmadronTradeResource
 public static "of"(arg0: $FluidStack$$Type): $AmadronTradeResource
+public static "of"(arg0: $ItemStack$$Type): $AmadronTradeResource
 public "validate"(): $AmadronTradeResource
 public "accept"(arg0: $Consumer$$Type<($ItemStack)>, arg1: $Consumer$$Type<($FluidStack)>): void
 public "getId"(): $ResourceLocation
-public "resource"(): $Either<($ItemStack), ($FluidStack)>
-public "getItem"(): $ItemStack
+public "getAmount"(): integer
 public "getFluid"(): $FluidStack
 public "equivalentTo"(arg0: $AmadronTradeResource$$Type): boolean
-public "getAmount"(): integer
+public "countTradesInInventory"(arg0: $IItemHandler$$Type): integer
+public "countTradesInTank"(arg0: $IFluidHandler$$Type): integer
 public "totalSpaceRequired"(arg0: integer): integer
 public "findSpaceInFluidOutput"(arg0: $IFluidHandler$$Type, arg1: integer): integer
 public "findSpaceInItemOutput"(arg0: $IItemHandler$$Type, arg1: integer): integer
-public "countTradesInInventory"(arg0: $IItemHandler$$Type): integer
-public "countTradesInTank"(arg0: $IFluidHandler$$Type): integer
-get "name"(): string
+get "item"(): $ItemStack
+get "name"(): StringJS
 get "empty"(): boolean
 get "id"(): $ResourceLocation
-get "item"(): $ItemStack
-get "fluid"(): $FluidStack
 get "amount"(): integer
+get "fluid"(): $FluidStack
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4225,7 +4344,6 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $FluidLPG$Source extends $BaseFlowingFluid$Source {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -4234,7 +4352,6 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -4251,9 +4368,9 @@ export type $FluidLPG$Source_ = $FluidLPG$Source$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.remote.SavedRemoteLayout" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$IRemoteWidget, $IRemoteWidget$$Type} from "me.desht.pneumaticcraft.api.remote.IRemoteWidget"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
+import {$IRemoteWidget, $IRemoteWidget$$Type} from "me.desht.pneumaticcraft.api.remote.IRemoteWidget"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$SavedRemoteLayout$Versioned, $SavedRemoteLayout$Versioned$$Type} from "me.desht.pneumaticcraft.common.remote.SavedRemoteLayout$Versioned"
@@ -4271,12 +4388,12 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Saved
 constructor(arg0: $Collection$$Type<($IRemoteWidget$$Type)>)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public static "fromItem"(arg0: $ItemStack$$Type): $SavedRemoteLayout
+public "toJson"(arg0: $HolderLookup$Provider$$Type): $JsonElement
 public "getWidgets"(): $List<($IRemoteWidget)>
 public static "fromJson"(arg0: $HolderLookup$Provider$$Type, arg1: $JsonElement$$Type): $SavedRemoteLayout
-public "toJson"(arg0: $HolderLookup$Provider$$Type): $JsonElement
+public static "fromItem"(arg0: $ItemStack$$Type): $SavedRemoteLayout
 get "widgets"(): $List<($IRemoteWidget)>
 }
 /**
@@ -4299,10 +4416,10 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockAndTintGetter, $BlockAndTintGetter$$Type} from "net.minecraft.world.level.BlockAndTintGetter"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
@@ -4311,15 +4428,15 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$ColorHandlers$IHeatTintable, $ColorHandlers$IHeatTintable$$Type} from "me.desht.pneumaticcraft.client.ColorHandlers$IHeatTintable"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $HeatSinkBlock extends $AbstractPneumaticCraftBlock implements $ColorHandlers$IHeatTintable, $PneumaticCraftEntityBlock {
 static readonly "DOWN": $BooleanProperty
@@ -4330,7 +4447,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -4354,8 +4471,8 @@ constructor(arg0: $BlockBehaviour$Properties$$Type)
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "entityInside"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): void
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "isRotatable"(): boolean
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "getTintColor"(arg0: $BlockState$$Type, arg1: $BlockAndTintGetter$$Type, arg2: $BlockPos$$Type, arg3: integer): integer
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
@@ -4380,12 +4497,12 @@ import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 
 export interface $IRangedModule {
 
- "getHardMaxRange"(): integer
+ "getBaseRange"(): integer
  "getCurrentRange"(arg0: integer): integer
  "getCurrentRange"(arg0: $ItemStack$$Type): integer
- "getBaseRange"(): integer
-get "hardMaxRange"(): integer
+ "getHardMaxRange"(): integer
 get "baseRange"(): integer
+get "hardMaxRange"(): integer
 }
 
 export namespace $IRangedModule {
@@ -4394,10 +4511,10 @@ const probejs$$marker: never
 export class $IRangedModule$$Static implements $IRangedModule {
 
 
- "getHardMaxRange"(): integer
+ "getBaseRange"(): integer
  "getCurrentRange"(arg0: integer): integer
  "getCurrentRange"(arg0: $ItemStack$$Type): integer
- "getBaseRange"(): integer
+ "getHardMaxRange"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4449,10 +4566,10 @@ import {$SpecialVariableRetrievalEvent$ItemVariable, $SpecialVariableRetrievalEv
 import {$IDrone, $IDrone$$Type} from "me.desht.pneumaticcraft.api.drone.IDrone"
 
 export class $SpecialVariableRetrievalEvent$ItemVariable$Drone extends $SpecialVariableRetrievalEvent$ItemVariable {
-readonly "specialVarName": string
+readonly "specialVarName": StringJS
 readonly "drone": $IDrone
 
-constructor(arg0: $IDrone$$Type, arg1: string)
+constructor(arg0: $IDrone$$Type, arg1: StringJS)
 
 }
 /**
@@ -4484,12 +4601,12 @@ constructor(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg
 constructor(arg0: $Vec3$$Type, arg1: $Vec3$$Type)
 constructor(arg0: $Vector3f$$Type, arg1: $Vector3f$$Type)
 
-public "getProgress"(): float
 public "setProgress"(arg0: float): $ProgressingLine
-public "incProgressByDistance"(arg0: float): boolean
+public "getProgress"(): float
 public "incProgress"(arg0: float): boolean
-get "progress"(): float
+public "incProgressByDistance"(arg0: float): boolean
 set "progress"(value: float)
+get "progress"(): float
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4516,17 +4633,17 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Widge
 
 constructor(x: integer, y: integer, width: integer, height: integer, title: $Component$$Type, tooltip: $Component$$Type)
 
+public "resize"(arg0: integer, arg1: integer): $WidgetSettings
+public "y"(): integer
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "x"(): integer
 public "copy"(): $WidgetSettings
-public "resize"(arg0: integer, arg1: integer): $WidgetSettings
-public "y"(): integer
-public "width"(): integer
-public "tooltip"(): $Component
-public "height"(): integer
 public "title"(): $Component
+public "width"(): integer
+public "height"(): integer
+public "tooltip"(): $Component
 public "copyToPos"(arg0: integer, arg1: integer): $WidgetSettings
 public "withText"(arg0: $Component$$Type, arg1: $Component$$Type): $WidgetSettings
 }
@@ -4548,19 +4665,19 @@ import {$SpawnData, $SpawnData$$Type} from "net.minecraft.world.level.SpawnData"
 export interface $BaseSpawnerAccess {
 
  "getSpin"(): double
- "getNextSpawnData"(): $SpawnData
- "setRequiredPlayerRange"(arg0: integer): void
- "getRequiredPlayerRange"(): integer
  "getSpawnDelay"(): integer
  "setSpawnDelay"(arg0: integer): void
  "setOSpin"(arg0: double): void
+ "getNextSpawnData"(): $SpawnData
+ "setRequiredPlayerRange"(arg0: integer): void
+ "getRequiredPlayerRange"(): integer
 get "spin"(): double
-get "nextSpawnData"(): $SpawnData
-set "requiredPlayerRange"(value: integer)
-get "requiredPlayerRange"(): integer
 get "spawnDelay"(): integer
 set "spawnDelay"(value: integer)
 set "oSpin"(value: double)
+get "nextSpawnData"(): $SpawnData
+set "requiredPlayerRange"(value: integer)
+get "requiredPlayerRange"(): integer
 }
 
 export namespace $BaseSpawnerAccess {
@@ -4570,12 +4687,12 @@ export class $BaseSpawnerAccess$$Static implements $BaseSpawnerAccess {
 
 
  "getSpin"(): double
- "getNextSpawnData"(): $SpawnData
- "setRequiredPlayerRange"(arg0: integer): void
- "getRequiredPlayerRange"(): integer
  "getSpawnDelay"(): integer
  "setSpawnDelay"(arg0: integer): void
  "setOSpin"(arg0: double): void
+ "getNextSpawnData"(): $SpawnData
+ "setRequiredPlayerRange"(arg0: integer): void
+ "getRequiredPlayerRange"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4590,18 +4707,20 @@ declare global {
 export type $BaseSpawnerAccess_ = $BaseSpawnerAccess$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.UpgradeItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$IUpgradeItem, $IUpgradeItem$$Type} from "me.desht.pneumaticcraft.api.upgrade.IUpgradeItem"
+import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Rarity, $Rarity$$Type} from "net.minecraft.world.item.Rarity"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$PNCUpgrade, $PNCUpgrade$$Type} from "me.desht.pneumaticcraft.api.upgrade.PNCUpgrade"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -4615,25 +4734,26 @@ import {$CreativeTabStackProvider, $CreativeTabStackProvider$$Type} from "me.des
 export class $UpgradeItem extends $Item implements $IUpgradeItem, $CreativeTabStackProvider {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(arg0: $PNCUpgrade$$Type, arg1: integer, arg2: $Rarity$$Type)
 constructor(arg0: $PNCUpgrade$$Type, arg1: integer, arg2: $Item$Properties$$Type)
+constructor(arg0: $PNCUpgrade$$Type, arg1: integer, arg2: $Rarity$$Type)
 
-public static "of"(arg0: $ItemStack$$Type): $UpgradeItem
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public static "of"(arg0: $ItemStack$$Type): $UpgradeItem
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-public "getStacksForItem"(): $Stream<($ItemStack)>
 public "getUpgradeTier"(): integer
 public "getUpgradeType"(): $PNCUpgrade
-get "stacksForItem"(): $Stream<($ItemStack)>
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "getStacksForItem"(): $Stream<($ItemStack)>
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "upgradeTier"(): integer
 get "upgradeType"(): $PNCUpgrade
+get "stacksForItem"(): $Stream<($ItemStack)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4685,14 +4805,14 @@ import {$IAirHandlerMachine, $IAirHandlerMachine$$Type} from "me.desht.pneumatic
 export interface $IAirHandlerMachine$Connection {
 
  "getDirection"(): $Direction
- "getMaxDispersion"(): integer
  "getAirHandler"(): $IAirHandlerMachine
+ "getMaxDispersion"(): integer
  "setMaxDispersion"(arg0: integer): void
  "setAirToDisperse"(arg0: integer): void
  "getDispersedAir"(): integer
 get "direction"(): $Direction
-get "maxDispersion"(): integer
 get "airHandler"(): $IAirHandlerMachine
+get "maxDispersion"(): integer
 set "maxDispersion"(value: integer)
 set "airToDisperse"(value: integer)
 get "dispersedAir"(): integer
@@ -4705,8 +4825,8 @@ export class $IAirHandlerMachine$Connection$$Static implements $IAirHandlerMachi
 
 
  "getDirection"(): $Direction
- "getMaxDispersion"(): integer
  "getAirHandler"(): $IAirHandlerMachine
+ "getMaxDispersion"(): integer
  "setMaxDispersion"(arg0: integer): void
  "setAirToDisperse"(arg0: integer): void
  "getDispersedAir"(): integer
@@ -4724,24 +4844,26 @@ declare global {
 export type $IAirHandlerMachine$Connection_ = $IAirHandlerMachine$Connection$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.ManometerItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$PressurizableItem, $PressurizableItem$$Type} from "me.desht.pneumaticcraft.common.item.PressurizableItem"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 
 export class $ManometerItem extends $PressurizableItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4752,6 +4874,7 @@ constructor()
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
 public "onItemUseFirst"(arg0: $ItemStack$$Type, arg1: $UseOnContext$$Type): $InteractionResult
 public "interactLivingEntity"(arg0: $ItemStack$$Type, arg1: $Player$$Type, arg2: $LivingEntity$$Type, arg3: $InteractionHand$$Type): $InteractionResult
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4767,19 +4890,22 @@ export type $ManometerItem_ = $ManometerItem$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.minigun.IncendiaryGunAmmoItem" {
 import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$AbstractGunAmmoItem, $AbstractGunAmmoItem$$Type} from "me.desht.pneumaticcraft.common.item.minigun.AbstractGunAmmoItem"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Minigun, $Minigun$$Type} from "me.desht.pneumaticcraft.common.minigun.Minigun"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 
 export class $IncendiaryGunAmmoItem extends $AbstractGunAmmoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4791,6 +4917,7 @@ public "getMaxDamage"(arg0: $ItemStack$$Type): integer
 public "onTargetHit"(arg0: $Minigun$$Type, arg1: $ItemStack$$Type, arg2: $Entity$$Type): integer
 public "onBlockHit"(arg0: $Minigun$$Type, arg1: $ItemStack$$Type, arg2: $BlockHitResult$$Type): integer
 public "getAmmoColor"(arg0: $ItemStack$$Type): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4805,22 +4932,26 @@ declare global {
 export type $IncendiaryGunAmmoItem_ = $IncendiaryGunAmmoItem$$Type;
 }}
 declare module "me.desht.modularrouters.item.module.DetectorModule" {
-import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
-import {$ModuleMenu, $ModuleMenu$$Type} from "me.desht.modularrouters.container.ModuleMenu"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
+import {$ModuleMenu, $ModuleMenu$$Type} from "me.desht.modularrouters.container.ModuleMenu"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MenuType, $MenuType$$Type} from "net.minecraft.world.inventory.MenuType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.TintColor"
 
 export class $DetectorModule extends $ModuleItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4828,14 +4959,15 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public "getItemTint"(): $TintColor
+public "getMenuType"(): $MenuType<($ModuleMenu)>
+public "getEnergyCost"(arg0: $ItemStack$$Type): integer
 public "isOmniDirectional"(): boolean
 public "addSettingsInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
-public "getMenuType"(): $MenuType<($ModuleMenu)>
-public "getItemTint"(): $TintColor
-public "getEnergyCost"(arg0: $ItemStack$$Type): integer
-get "omniDirectional"(): boolean
-get "menuType"(): $MenuType<($ModuleMenu)>
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
+get "menuType"(): $MenuType<($ModuleMenu)>
+get "omniDirectional"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4850,8 +4982,8 @@ declare global {
 export type $DetectorModule_ = $DetectorModule$$Type;
 }}
 declare module "me.desht.pneumaticcraft.api.crafting.recipe.AmadronRecipe" {
-import {$PneumaticCraftRecipe, $PneumaticCraftRecipe$$Type} from "me.desht.pneumaticcraft.api.crafting.recipe.PneumaticCraftRecipe"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$PneumaticCraftRecipe, $PneumaticCraftRecipe$$Type} from "me.desht.pneumaticcraft.api.crafting.recipe.PneumaticCraftRecipe"
 import {$AmadronTradeResource, $AmadronTradeResource$$Type} from "me.desht.pneumaticcraft.api.crafting.AmadronTradeResource"
 import {$IPlayerFilter, $IPlayerFilter$$Type} from "me.desht.pneumaticcraft.api.misc.IPlayerFilter"
 import {$List, $List$$Type} from "java.util.List"
@@ -4863,32 +4995,32 @@ constructor()
 
 public "getInput"(): $AmadronTradeResource
 public "getOutput"(): $AmadronTradeResource
-public "isVillagerTrade"(): boolean
-public "addAvailabilityData"(arg0: $Player$$Type, arg1: $List$$Type<($Component$$Type)>): void
-public "isLocationLimited"(): boolean
-public "isUsableByPlayer"(arg0: $Player$$Type): boolean
-public "isRemovableBy"(arg0: $Player$$Type): boolean
-public "getMaxStock"(): integer
-public "setStock"(arg0: integer): void
-public "getWhitelist"(): $IPlayerFilter
 public "getVendorName"(): $Component
 public "isStaticOffer"(): boolean
 public "getTradeLevel"(): integer
 public "getBlacklist"(): $IPlayerFilter
-public "passesQuery"(arg0: string): boolean
+public "passesQuery"(arg0: StringJS): boolean
+public "isRemovableBy"(arg0: $Player$$Type): boolean
+public "getMaxStock"(): integer
+public "setStock"(arg0: integer): void
+public "getWhitelist"(): $IPlayerFilter
 public "getStock"(): integer
+public "isVillagerTrade"(): boolean
+public "addAvailabilityData"(arg0: $Player$$Type, arg1: $List$$Type<($Component$$Type)>): void
+public "isLocationLimited"(): boolean
+public "isUsableByPlayer"(arg0: $Player$$Type): boolean
 get "input"(): $AmadronTradeResource
 get "output"(): $AmadronTradeResource
-get "villagerTrade"(): boolean
-get "locationLimited"(): boolean
-get "maxStock"(): integer
-set "stock"(value: integer)
-get "whitelist"(): $IPlayerFilter
 get "vendorName"(): $Component
 get "staticOffer"(): boolean
 get "tradeLevel"(): integer
 get "blacklist"(): $IPlayerFilter
+get "maxStock"(): integer
+set "stock"(value: integer)
+get "whitelist"(): $IPlayerFilter
 get "stock"(): integer
+get "villagerTrade"(): boolean
+get "locationLimited"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4908,10 +5040,10 @@ import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$IBlockComparatorSupport, $IBlockComparatorSupport$$Type} from "me.desht.pneumaticcraft.common.block.IBlockComparatorSupport"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
+import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -4920,8 +5052,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -4938,7 +5070,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -4961,8 +5093,8 @@ constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
 public "isRotatable"(): boolean
+public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public static "forBlock"(arg0: $Block$$Type): $IPneumaticWrenchable
@@ -4982,6 +5114,7 @@ declare global {
 export type $RefineryControllerBlock_ = $RefineryControllerBlock$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.GPSAreaToolItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$UUID, $UUID$$Type} from "java.util.UUID"
@@ -5002,16 +5135,17 @@ import {$IGPSToolSync, $IGPSToolSync$$Type} from "me.desht.pneumaticcraft.common
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
-import {$ProgWidgetArea, $ProgWidgetArea$$Type} from "me.desht.pneumaticcraft.common.drone.progwidgets.ProgWidgetArea"
 import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
+import {$ProgWidgetArea, $ProgWidgetArea$$Type} from "me.desht.pneumaticcraft.common.drone.progwidgets.ProgWidgetArea"
 
 export class $GPSAreaToolItem extends $Item implements $IPositionProvider, $IGPSToolSync, $ILeftClickableItem, $IShiftScrollable {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -5020,27 +5154,28 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public static "getVariable"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: integer): string
-public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
-public static "setVariable"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: string, arg3: integer): void
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
-public "onLeftClickEmpty"(arg0: $ServerPlayer$$Type): void
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-public "disableDepthTest"(): boolean
-public "getRawStoredPositions"(arg0: $Player$$Type, arg1: $ItemStack$$Type): $List<($BlockPos)>
-public "getStoredPositions"(arg0: $UUID$$Type, arg1: $ItemStack$$Type): $List<($BlockPos)>
-public static "setGPSPosAndNotify"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: $BlockPos$$Type, arg3: integer): void
-public static "setGPSPosAndNotify"(arg0: $Player$$Type, arg1: $InteractionHand$$Type, arg2: $BlockPos$$Type, arg3: integer): void
-public "onShiftScrolled"(arg0: $Player$$Type, arg1: boolean, arg2: $InteractionHand$$Type): void
-public "syncFromClient"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: $BlockPos$$Type, arg4: string, arg5: boolean): void
+public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
+public static "setVariable"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: StringJS, arg3: integer): void
+public static "getVariable"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: integer): StringJS
+public "syncFromClient"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: $BlockPos$$Type, arg4: StringJS, arg5: boolean): void
 public static "setActiveIndex"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: integer): void
 public static "getArea"(arg0: $Player$$Type, arg1: $ItemStack$$Type): $ProgWidgetArea
 public static "getArea"(arg0: $UUID$$Type, arg1: $ItemStack$$Type): $ProgWidgetArea
 public static "setArea"(arg0: $ItemStack$$Type, arg1: $ProgWidgetArea$$Type): void
 public static "getActiveIndex"(arg0: $ItemStack$$Type): integer
-public "syncVariables"(arg0: $ServerPlayer$$Type, arg1: $ItemStack$$Type): void
 public static "getGPSLocation"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: integer): $Optional<($BlockPos)>
+public "syncVariables"(arg0: $ServerPlayer$$Type, arg1: $ItemStack$$Type): void
 public "getRenderColor"(arg0: integer): integer
+public "onLeftClickEmpty"(arg0: $ServerPlayer$$Type): void
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "disableDepthTest"(): boolean
+public "getRawStoredPositions"(arg0: $Player$$Type, arg1: $ItemStack$$Type): $List<($BlockPos)>
+public "getStoredPositions"(arg0: $UUID$$Type, arg1: $ItemStack$$Type): $List<($BlockPos)>
+public "onShiftScrolled"(arg0: $Player$$Type, arg1: boolean, arg2: $InteractionHand$$Type): void
+public static "setGPSPosAndNotify"(arg0: $Player$$Type, arg1: $InteractionHand$$Type, arg2: $BlockPos$$Type, arg3: integer): void
+public static "setGPSPosAndNotify"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: $BlockPos$$Type, arg3: integer): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5133,31 +5268,31 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 export class $AssemblyIOUnitBlockEntity extends $AbstractAssemblyRobotBlockEntity {
 readonly "oldAngles": (float)[]
 readonly "angles": (float)[]
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
  "clawProgress": float
  "oldClawProgress": float
 
 constructor(arg0: $BlockPos$$Type, arg1: $BlockState$$Type)
 
 public "reset"(): boolean
-public "canMoveToDiagonalNeighbours"(): boolean
-public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "isIdle"(): boolean
 public "tickClient"(): void
 public "tickServer"(): void
 public "saveAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "isIdle"(): boolean
-public "getAssemblyType"(): $AssemblyProgram$EnumMachine
-public "gotoHomePosition"(): void
-public "hasItemCapability"(): boolean
+public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "getItemHandler"(arg0: $Direction$$Type): $IItemHandler
 public "isImportUnit"(): boolean
 public "pickupItem"(arg0: $Collection$$Type<($AssemblyRecipe$$Type)>): boolean
-public "getItemHandler"(arg0: $Direction$$Type): $IItemHandler
+public "hasItemCapability"(): boolean
+public "getAssemblyType"(): $AssemblyProgram$EnumMachine
+public "gotoHomePosition"(): void
+public "canMoveToDiagonalNeighbours"(): boolean
 public "getUpgradeHandler"(): $IItemHandler
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "idle"(): boolean
-get "assemblyType"(): $AssemblyProgram$EnumMachine
 get "importUnit"(): boolean
+get "assemblyType"(): $AssemblyProgram$EnumMachine
 get "upgradeHandler"(): $IItemHandler
 }
 /**
@@ -5178,7 +5313,6 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$BaseFlowingFluid$Flowing, $BaseFlowingFluid$Flowing$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Flowing"
 
 export class $FluidEthanol$Flowing extends $BaseFlowingFluid$Flowing {
@@ -5188,7 +5322,6 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -5251,17 +5384,17 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Fluid
 
 constructor(tag: $TagKey$$Type<($Fluid)>, amount: integer)
 
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "tag"(): $TagKey<($Fluid)>
 public "amount"(): integer
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $FluidContainerIngredient$TagWithAmount$$Type = ({"amount"?: integer, "tag"?: $TagKey$$Type<($Fluid)>}) | ([amount?: integer, tag?: $TagKey$$Type<($Fluid)>]);
+export type $FluidContainerIngredient$TagWithAmount$$Type = ({"tag"?: $TagKey$$Type<($Fluid)>, "amount"?: integer}) | ([tag?: $TagKey$$Type<($Fluid)>, amount?: integer]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -5279,8 +5412,8 @@ import {$Inventory, $Inventory$$Type} from "net.minecraft.world.entity.player.In
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Slot, $Slot$$Type} from "net.minecraft.world.inventory.Slot"
-import {$MenuType, $MenuType$$Type} from "net.minecraft.world.inventory.MenuType"
 import {$AbstractMRContainerMenu, $AbstractMRContainerMenu$$Type} from "me.desht.modularrouters.container.AbstractMRContainerMenu"
+import {$MenuType, $MenuType$$Type} from "net.minecraft.world.inventory.MenuType"
 import {$Set, $Set$$Type} from "java.util.Set"
 import {$ClickType, $ClickType$$Type} from "net.minecraft.world.inventory.ClickType"
 import {$MFLocator, $MFLocator$$Type} from "me.desht.modularrouters.util.MFLocator"
@@ -5310,11 +5443,11 @@ constructor(arg0: $MenuType$$Type<(any)>, arg1: integer, arg2: $Inventory$$Type,
 constructor(arg0: integer, arg1: $Inventory$$Type, arg2: $FriendlyByteBuf$$Type)
 
 public "getLocator"(): $MFLocator
-public "quickMoveStack"(arg0: $Player$$Type, arg1: integer): $ItemStack
-public "clicked"(arg0: integer, arg1: integer, arg2: $ClickType$$Type, arg3: $Player$$Type): void
 public "stillValid"(arg0: $Player$$Type): boolean
 public "canDragTo"(arg0: $Slot$$Type): boolean
+public "clicked"(arg0: integer, arg1: integer, arg2: $ClickType$$Type, arg3: $Player$$Type): void
 public "getRouter"(): $ModularRouterBlockEntity
+public "quickMoveStack"(arg0: $Player$$Type, arg1: integer): $ItemStack
 get "locator"(): $MFLocator
 get "router"(): $ModularRouterBlockEntity
 }
@@ -5336,7 +5469,6 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$BaseFlowingFluid$Flowing, $BaseFlowingFluid$Flowing$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Flowing"
 
 export class $FluidPlastic$Flowing extends $BaseFlowingFluid$Flowing {
@@ -5346,7 +5478,6 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -5400,12 +5531,12 @@ export class $FuelQualityRecipe extends $PneumaticCraftRecipe {
 
 constructor()
 
-public "getFuel"(): $FluidIngredient
 public "matchesFluid"(arg0: $Fluid$$Type): boolean
 public "getBurnRate"(): float
+public "getFuel"(): $FluidIngredient
 public "getAirPerBucket"(): integer
-get "fuel"(): $FluidIngredient
 get "burnRate"(): float
+get "fuel"(): $FluidIngredient
 get "airPerBucket"(): integer
 }
 /**
@@ -5473,7 +5604,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -5521,22 +5652,27 @@ static readonly "PROGWIDGET_HEIGHT": integer
 static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($IProgWidget)>
 
 
+public "isAvailable"(): boolean
 public "getWidth"(): integer
 public "getHeight"(): integer
 public "getPosition"(): $ProgWidget$PositionFields
-public "isAvailable"(): boolean
-public "getY"(): integer
 public "setParameter"(arg0: integer, arg1: $IProgWidget$$Type): void
+public "setParent"(arg0: $IProgWidget$$Type): void
 public "equals"(arg0: any): boolean
 public "hashCode"(): integer
 public "getParent"(): $IProgWidget
 public "getType"(): $ProgWidgetType<(any)>
-public "setParent"(arg0: $IProgWidget$$Type): void
-public "getTypeID"(): $ResourceLocation
-public "getTooltip"(arg0: $List$$Type<($Component$$Type)>): void
+public "getY"(): integer
+public "getX"(): integer
 public "setX"(arg0: integer): void
 public "setY"(arg0: integer): void
-public "getX"(): integer
+public "getTypeID"(): $ResourceLocation
+public "getTooltip"(arg0: $List$$Type<($Component$$Type)>): void
+public "hasStepOutput"(): boolean
+public "getWidgetAI"(arg0: $IDrone$$Type, arg1: $IProgWidget$$Type): $Goal
+public "addWarnings"(arg0: $List$$Type<($Component$$Type)>, arg1: $List$$Type<($IProgWidget$$Type)>): void
+public "addErrors"(arg0: $List$$Type<($Component$$Type)>, arg1: $List$$Type<($IProgWidget$$Type)>): void
+public "getMaxUV"(): $Pair<(float), (float)>
 public "getConnectedParameters"(): ($IProgWidget)[]
 public "getExtraStringInfo"(): $List<($Component)>
 public "getWidgetTargetAI"(arg0: $IDrone$$Type, arg1: $IProgWidget$$Type): $Goal
@@ -5545,45 +5681,40 @@ public "setOutputWidget"(arg0: $IProgWidget$$Type): void
 public "getOutputWidget"(): $IProgWidget
 public "getOutputWidget"(arg0: $IDrone$$Type, arg1: $List$$Type<($IProgWidget$$Type)>): $IProgWidget
 public "canBeRunByComputers"(arg0: $IDrone$$Type, arg1: $IProgWidget$$Type): boolean
-public "hasStepOutput"(): boolean
-public "getWidgetAI"(arg0: $IDrone$$Type, arg1: $IProgWidget$$Type): $Goal
-public "addWarnings"(arg0: $List$$Type<($Component$$Type)>, arg1: $List$$Type<($IProgWidget$$Type)>): void
-public "addErrors"(arg0: $List$$Type<($Component$$Type)>, arg1: $List$$Type<($IProgWidget$$Type)>): void
-public "getMaxUV"(): $Pair<(float), (float)>
-public "returnType"(): $ProgWidgetType<(any)>
-public "getParameters"(): $List<($ProgWidgetType<(any)>)>
 public static "create"(arg0: $ProgWidgetType$$Type<(any)>): $IProgWidget
+public "getParameters"(): $List<($ProgWidgetType<(any)>)>
+public "returnType"(): $ProgWidgetType<(any)>
+public "setPosition"(arg0: integer, arg1: integer): void
 public "getColor"(): $DyeColor
 public "getDifficulty"(): $IProgWidget$WidgetDifficulty
-public "setPosition"(arg0: integer, arg1: integer): void
 public "getTexture"(): $ResourceLocation
-public "getTranslationKey"(): string
+public "copyWidget"(): $IProgWidget
 public "hasStepInput"(): boolean
 public "isDifficultyOK"(arg0: $IProgWidget$WidgetDifficulty$$Type): boolean
-public "copyWidget"(): $IProgWidget
 public "freeToUse"(): boolean
+public "getTranslationKey"(): StringJS
+get "available"(): boolean
 get "width"(): integer
 get "height"(): integer
 get "position"(): $ProgWidget$PositionFields
-get "available"(): boolean
-get "y"(): integer
+set "parent"(value: $IProgWidget$$Type)
 get "parent"(): $IProgWidget
 get "type"(): $ProgWidgetType<(any)>
-set "parent"(value: $IProgWidget$$Type)
-get "typeID"(): $ResourceLocation
+get "y"(): integer
+get "x"(): integer
 set "x"(value: integer)
 set "y"(value: integer)
-get "x"(): integer
+get "typeID"(): $ResourceLocation
+get "maxUV"(): $Pair<(float), (float)>
 get "connectedParameters"(): ($IProgWidget)[]
 get "extraStringInfo"(): $List<($Component)>
 set "outputWidget"(value: $IProgWidget$$Type)
 get "outputWidget"(): $IProgWidget
-get "maxUV"(): $Pair<(float), (float)>
 get "parameters"(): $List<($ProgWidgetType<(any)>)>
 get "color"(): $DyeColor
 get "difficulty"(): $IProgWidget$WidgetDifficulty
 get "texture"(): $ResourceLocation
-get "translationKey"(): string
+get "translationKey"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5700,27 +5831,27 @@ import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 
 export interface $ICustomTooltipName {
 
- "getCustomTooltipTranslationKey"(): string
+ "getCustomTooltipTranslationKey"(): StringJS
 
-(): string
-get "customTooltipTranslationKey"(): string
+(): StringJS
+get "customTooltipTranslationKey"(): StringJS
 }
 
 export namespace $ICustomTooltipName {
-function getTranslationKey(arg0: $ItemStack$$Type, arg1: boolean): string
+function getTranslationKey(arg0: $ItemStack$$Type, arg1: boolean): StringJS
 const probejs$$marker: never
 }
 export class $ICustomTooltipName$$Static implements $ICustomTooltipName {
 
 
- "getCustomTooltipTranslationKey"(): string
-static "getTranslationKey"(arg0: $ItemStack$$Type, arg1: boolean): string
+static "getTranslationKey"(arg0: $ItemStack$$Type, arg1: boolean): StringJS
+ "getCustomTooltipTranslationKey"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ICustomTooltipName$$Type = (() => string);
+export type $ICustomTooltipName$$Type = (() => StringJS);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -5737,7 +5868,6 @@ import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $FluidPlastic$Source extends $BaseFlowingFluid$Source {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -5747,7 +5877,6 @@ static readonly "LEVEL": $IntegerProperty
 constructor()
 
 public "tick"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $FluidState$$Type): void
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -5770,28 +5899,28 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 
 export interface $CamouflageableBlockEntity {
 
- "getCamouflage"(): $BlockState
  "setCamouflage"(arg0: $BlockState$$Type): void
-get "camouflage"(): $BlockState
+ "getCamouflage"(): $BlockState
 set "camouflage"(value: $BlockState$$Type)
+get "camouflage"(): $BlockState
 }
 
 export namespace $CamouflageableBlockEntity {
-function onCamouflageChanged(arg0: $AbstractPneumaticCraftBlockEntity$$Type): void
-function getStackForState(arg0: $BlockState$$Type): $ItemStack
 function writeCamo(arg0: $CompoundTag$$Type, arg1: $BlockState$$Type): void
 function readCamo(arg0: $CompoundTag$$Type): $BlockState
+function onCamouflageChanged(arg0: $AbstractPneumaticCraftBlockEntity$$Type): void
+function getStackForState(arg0: $BlockState$$Type): $ItemStack
 const probejs$$marker: never
 }
 export class $CamouflageableBlockEntity$$Static implements $CamouflageableBlockEntity {
 
 
-static "onCamouflageChanged"(arg0: $AbstractPneumaticCraftBlockEntity$$Type): void
-static "getStackForState"(arg0: $BlockState$$Type): $ItemStack
- "getCamouflage"(): $BlockState
- "setCamouflage"(arg0: $BlockState$$Type): void
 static "writeCamo"(arg0: $CompoundTag$$Type, arg1: $BlockState$$Type): void
 static "readCamo"(arg0: $CompoundTag$$Type): $BlockState
+ "setCamouflage"(arg0: $BlockState$$Type): void
+ "getCamouflage"(): $BlockState
+static "onCamouflageChanged"(arg0: $AbstractPneumaticCraftBlockEntity$$Type): void
+static "getStackForState"(arg0: $BlockState$$Type): $ItemStack
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5810,8 +5939,8 @@ import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.Stre
 import {$AreaTypeSerializer, $AreaTypeSerializer$$Type} from "me.desht.pneumaticcraft.api.drone.area.AreaTypeSerializer"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
-import {$List, $List$$Type} from "java.util.List"
 import {$AreaTypeWidget, $AreaTypeWidget$$Type} from "me.desht.pneumaticcraft.api.drone.area.AreaTypeWidget"
+import {$List, $List$$Type} from "java.util.List"
 import {$EnumOldAreaType, $EnumOldAreaType$$Type} from "me.desht.pneumaticcraft.api.drone.area.EnumOldAreaType"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
@@ -5820,19 +5949,19 @@ export class $AreaType {
 static readonly "CODEC": $Codec<($AreaType)>
 static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($AreaType)>
 
-constructor(arg0: string)
+constructor(arg0: StringJS)
 
-public "getName"(): string
+public "getName"(): StringJS
 public "copy"(): $AreaType
-public "getSerializer"(): $AreaTypeSerializer<($AreaType)>
-public "getTranslationKey"(): string
-public "convertFromLegacy"(arg0: $EnumOldAreaType$$Type, arg1: integer): void
-public "isDeterministic"(): boolean
 public "addUIWidgets"(arg0: $List$$Type<($AreaTypeWidget$$Type)>): void
 public "addArea"(arg0: $Consumer$$Type<($BlockPos)>, arg1: $BlockPos$$Type, arg2: $BlockPos$$Type, arg3: integer, arg4: integer, arg5: integer, arg6: integer, arg7: integer, arg8: integer): void
-get "name"(): string
+public "getSerializer"(): $AreaTypeSerializer<($AreaType)>
+public "getTranslationKey"(): StringJS
+public "convertFromLegacy"(arg0: $EnumOldAreaType$$Type, arg1: integer): void
+public "isDeterministic"(): boolean
+get "name"(): StringJS
 get "serializer"(): $AreaTypeSerializer<($AreaType)>
-get "translationKey"(): string
+get "translationKey"(): StringJS
 get "deterministic"(): boolean
 }
 /**
@@ -5852,24 +5981,24 @@ import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 
 export interface $IProgrammable {
 
- "showProgramTooltip"(): boolean
  "canProgram"(arg0: $ItemStack$$Type): boolean
  "usesPieces"(arg0: $ItemStack$$Type): boolean
+ "showProgramTooltip"(): boolean
 }
 
 export namespace $IProgrammable {
-const NBT_WIDGETS: string
+const NBT_WIDGETS: StringJS
 function isProgrammable(arg0: $ItemStack$$Type): boolean
 const probejs$$marker: never
 }
 export class $IProgrammable$$Static implements $IProgrammable {
-static readonly "NBT_WIDGETS": string
+static readonly "NBT_WIDGETS": StringJS
 
 
- "showProgramTooltip"(): boolean
+static "isProgrammable"(arg0: $ItemStack$$Type): boolean
  "canProgram"(arg0: $ItemStack$$Type): boolean
  "usesPieces"(arg0: $ItemStack$$Type): boolean
-static "isProgrammable"(arg0: $ItemStack$$Type): boolean
+ "showProgramTooltip"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5891,10 +6020,10 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$IBlockComparatorSupport, $IBlockComparatorSupport$$Type} from "me.desht.pneumaticcraft.common.block.IBlockComparatorSupport"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
+import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -5904,8 +6033,8 @@ import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.Inte
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -5913,8 +6042,8 @@ import {$FluidTankBlock$Size, $FluidTankBlock$Size$$Type} from "me.desht.pneumat
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $FluidTankBlock extends $AbstractPneumaticCraftBlock implements $PneumaticCraftEntityBlock, $IBlockComparatorSupport {
 static readonly "DOWN": $BooleanProperty
@@ -5925,7 +6054,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -5946,12 +6075,12 @@ static readonly "UPDATE_CLIENTS": integer
 
 constructor(arg0: $BlockBehaviour$Properties$$Type, arg1: $FluidTankBlock$Size$$Type)
 
-public "getSize"(): $FluidTankBlock$Size
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
+public "getSize"(): $FluidTankBlock$Size
 public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "onWrenched"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type, arg4: $InteractionHand$$Type): boolean
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public static "forBlock"(arg0: $Block$$Type): $IPneumaticWrenchable
@@ -5981,19 +6110,19 @@ static readonly "STREAM_CODEC": $StreamCodec<($ByteBuf), ($BeamData$ByteOffset)>
 
 constructor(x: byte, y: byte, z: byte)
 
+public "y"(): byte
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "offset"(arg0: $Vec3$$Type): $Vec3
 public "x"(): byte
 public "z"(): byte
-public "y"(): byte
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $BeamData$ByteOffset$$Type = ({"x"?: byte, "y"?: byte, "z"?: byte}) | ([x?: byte, y?: byte, z?: byte]);
+export type $BeamData$ByteOffset$$Type = ({"z"?: byte, "x"?: byte, "y"?: byte}) | ([z?: byte, x?: byte, y?: byte]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -6039,7 +6168,7 @@ static readonly "HUGE": $FluidTankBlock$Size
 
 public "getCapacity"(): integer
 public static "values"(): ($FluidTankBlock$Size)[]
-public static "valueOf"(arg0: string): $FluidTankBlock$Size
+public static "valueOf"(arg0: StringJS): $FluidTankBlock$Size
 get "capacity"(): integer
 }
 /**
@@ -6074,11 +6203,11 @@ import {$AbstractSemiblockEntity, $AbstractSemiblockEntity$$Type} from "me.desht
 import {$EntityDimensions, $EntityDimensions$$Type} from "net.minecraft.world.entity.EntityDimensions"
 import {$TrackedData, $TrackedData$$Type} from "dev.corgitaco.dataanchor.data.TrackedData"
 import {$PathComputationType, $PathComputationType$$Type} from "net.minecraft.world.level.pathfinder.PathComputationType"
-import {$Entity$RemovalReason, $Entity$RemovalReason$$Type} from "net.minecraft.world.entity.Entity$RemovalReason"
 import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.dataanchor.data.registry.TrackedDataRegistry"
+import {$Entity$RemovalReason, $Entity$RemovalReason$$Type} from "net.minecraft.world.entity.Entity$RemovalReason"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
-import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$AbstractLogisticsFrameEntity$ItemFilterHandler, $AbstractLogisticsFrameEntity$ItemFilterHandler$$Type} from "me.desht.pneumaticcraft.common.entity.semiblock.AbstractLogisticsFrameEntity$ItemFilterHandler"
+import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Stack, $Stack$$Type} from "java.util.Stack"
@@ -6086,7 +6215,7 @@ import {$Tag, $Tag$$Type} from "net.minecraft.nbt.Tag"
 import {$GameProfile, $GameProfile$$Type} from "com.mojang.authlib.GameProfile"
 
 export class $AbstractLogisticsFrameEntity extends $AbstractSemiblockEntity implements $IDirectionalSemiblock {
-static readonly "NBT_ITEM_FILTERS": string
+static readonly "NBT_ITEM_FILTERS": StringJS
  "xRot": float
  "hasImpulse": boolean
  "ars_Nouveau$motions": $Stack<(any)>
@@ -6094,7 +6223,7 @@ static readonly "NBT_ITEM_FILTERS": string
  "an_isRewinding": boolean
  "noPhysics": boolean
  "yo": double
-static readonly "NBT_MATCH_DURABILITY": string
+static readonly "NBT_MATCH_DURABILITY": StringJS
 static readonly "BOARDING_COOLDOWN": integer
  "removalReason": $Entity$RemovalReason
  "yRotO": float
@@ -6102,7 +6231,7 @@ static readonly "CONTENTS_SLOT_INDEX": integer
  "level": $Level
  "yRot": float
  "moveDist": float
-static readonly "ID_TAG": string
+static readonly "ID_TAG": StringJS
 static readonly "FLUID_FILTER_SLOTS": integer
  "mainSupportingBlockPos": $Optional<($BlockPos)>
 static readonly "DELTA_AFFECTED_BY_BLOCKS_BELOW_1_0": double
@@ -6113,34 +6242,34 @@ static readonly "DELTA_AFFECTED_BY_BLOCKS_BELOW_1_0": double
  "noCulling": boolean
  "wasInPowderSnow": boolean
  "hurtMarked": boolean
-static readonly "NBT_MATCH_MODID": string
+static readonly "NBT_MATCH_MODID": StringJS
  "invulnerableTime": integer
-static readonly "UUID_TAG": string
+static readonly "UUID_TAG": StringJS
 static readonly "BASE_TICKS_REQUIRED_TO_FREEZE": integer
  "fallDistance": float
  "portalProcess": $PortalProcessor
  "verticalCollision": boolean
 static readonly "DELTA_AFFECTED_BY_BLOCKS_BELOW_0_5": double
-static readonly "NBT_ITEM_WHITELIST": string
+static readonly "NBT_ITEM_WHITELIST": StringJS
 static readonly "MAX_ENTITY_TAG_COUNT": integer
 static readonly "DELTA_AFFECTED_BY_BLOCKS_BELOW_0_2": float
  "verticalCollisionBelow": boolean
-static readonly "NBT_FLUID_FILTERS": string
+static readonly "NBT_FLUID_FILTERS": StringJS
  "yOld": double
 static readonly "DEFAULT_BB_WIDTH": float
  "eyeHeight": float
  "minorHorizontalCollision": boolean
-static readonly "NBT_FLUID_WHITELIST": string
+static readonly "NBT_FLUID_WHITELIST": StringJS
 static readonly "DEFAULT_BB_HEIGHT": float
  "walkDistO": float
 static readonly "FREEZE_HURT_FREQUENCY": integer
  "flyDist": float
  "isInPowderSnow": boolean
-static readonly "ATTACHMENTS_NBT_KEY": string
-static readonly "NBT_INVISIBLE": string
-static readonly "PASSENGERS_TAG": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
+static readonly "NBT_INVISIBLE": StringJS
+static readonly "PASSENGERS_TAG": StringJS
  "blocksBuilding": boolean
-static readonly "NBT_MATCH_COMPONENTS": string
+static readonly "NBT_MATCH_COMPONENTS": StringJS
  "wasOnFire": boolean
  "zOld": double
 static readonly "TOTAL_AIR_SUPPLY": integer
@@ -6151,78 +6280,78 @@ static readonly "BASE_SAFE_FALL_DISTANCE": integer
  "dimensions": $EntityDimensions
 
 
-public "getPriority"(): integer
 public "tick"(): void
-public "isSemiblockInvisible"(): boolean
-public "onRightClickWithConfigurator"(arg0: $Player$$Type, arg1: $Direction$$Type): boolean
+public "getPriority"(): integer
 public "canPlace"(arg0: $Direction$$Type): boolean
-public "getColor"(): integer
 public "serializeNBT"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): $CompoundTag
 public "getAlpha"(): integer
 public "addTooltip"(arg0: $Consumer$$Type<($Component)>, arg1: $Player$$Type, arg2: $CompoundTag$$Type, arg3: boolean): void
+public "getColor"(): integer
 public "getSide"(): $Direction
 public "setSide"(arg0: $Direction$$Type): void
 public "getTexture"(): $ResourceLocation
-public "clearIncomingStack"(arg0: $FluidStack$$Type): void
-public "clearIncomingStack"(arg0: $ItemStack$$Type): void
-public "getItemFilterHandler"(): $AbstractLogisticsFrameEntity$ItemFilterHandler
-public "isMatchComponents"(): boolean
-public "setMatchComponents"(arg0: boolean): void
-public "setMatchDurability"(arg0: boolean): void
-public "canFilterStack"(): boolean
-public "onPlaced"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: $Direction$$Type): void
-public "writeToBuf"(arg0: $RegistryFriendlyByteBuf$$Type): void
-public "readFromBuf"(arg0: $RegistryFriendlyByteBuf$$Type): void
-public "canStay"(): boolean
-public static "fromItemStack"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): $AbstractLogisticsFrameEntity
-public "setMatchModId"(arg0: boolean): void
-public "isMatchModId"(): boolean
-public "setItemFilter"(arg0: integer, arg1: $ItemStack$$Type): void
 public "setFluidFilter"(arg0: integer, arg1: $FluidStack$$Type): void
 public "getFluidFilter"(arg0: integer): $FluidStack
+public "setItemFilter"(arg0: integer, arg1: $ItemStack$$Type): void
 public "isObstructed"(arg0: $PathComputationType$$Type): boolean
+public "setMatchModId"(arg0: boolean): void
+public "isMatchModId"(): boolean
+public "canFilterStack"(): boolean
+public "canStay"(): boolean
+public "readFromBuf"(arg0: $RegistryFriendlyByteBuf$$Type): void
+public "onPlaced"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: $Direction$$Type): void
+public "writeToBuf"(arg0: $RegistryFriendlyByteBuf$$Type): void
+public static "fromItemStack"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): $AbstractLogisticsFrameEntity
+public "setMatchComponents"(arg0: boolean): void
+public "setMatchDurability"(arg0: boolean): void
+public "shouldProvideTo"(arg0: integer): boolean
+public "informIncomingStack"(arg0: $FluidStack$$Type): void
+public "informIncomingStack"(arg0: $ItemStack$$Type): void
+public "getIncomingFluid"(arg0: $Fluid$$Type): integer
+public "getIncomingItems"(arg0: $ItemStack$$Type): integer
+public "supportsBlacklisting"(): boolean
 public "setSemiblockInvisible"(arg0: boolean): void
 public "setItemWhiteList"(arg0: boolean): void
 public "setFluidWhiteList"(arg0: boolean): void
 public "isMatchDurability"(): boolean
 public "isItemWhiteList"(): boolean
 public "isFluidWhiteList"(): boolean
-public "shouldProvideTo"(arg0: integer): boolean
-public "informIncomingStack"(arg0: $ItemStack$$Type): void
-public "informIncomingStack"(arg0: $FluidStack$$Type): void
-public "getIncomingFluid"(arg0: $Fluid$$Type): integer
-public "getIncomingItems"(arg0: $ItemStack$$Type): integer
-public "supportsBlacklisting"(): boolean
+public "isSemiblockInvisible"(): boolean
+public "clearIncomingStack"(arg0: $ItemStack$$Type): void
+public "clearIncomingStack"(arg0: $FluidStack$$Type): void
+public "isMatchComponents"(): boolean
+public "getItemFilterHandler"(): $AbstractLogisticsFrameEntity$ItemFilterHandler
+public "onRightClickWithConfigurator"(arg0: $Player$$Type, arg1: $Direction$$Type): boolean
 public static "getDirection"(arg0: $ISemiBlock$$Type): $Direction
 public static "byTrackingId"(arg0: $Level$$Type, arg1: integer): $ISemiBlock
-public static "forNameOnly"(arg0: string): $ScoreHolder
+public static "forNameOnly"(arg0: StringJS): $ScoreHolder
 public static "fromGameProfile"(arg0: $GameProfile$$Type): $ScoreHolder
 /**
  * 
  * @deprecated
  */
 public "serializeNBT"(arg0: $HolderLookup$Provider$$Type): $Tag
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "priority"(): integer
-get "semiblockInvisible"(): boolean
-get "color"(): integer
 get "alpha"(): integer
+get "color"(): integer
 get "side"(): $Direction
 set "side"(value: $Direction$$Type)
 get "texture"(): $ResourceLocation
-get "itemFilterHandler"(): $AbstractLogisticsFrameEntity$ItemFilterHandler
-get "matchComponents"(): boolean
-set "matchComponents"(value: boolean)
-set "matchDurability"(value: boolean)
 set "matchModId"(value: boolean)
 get "matchModId"(): boolean
+set "matchComponents"(value: boolean)
+set "matchDurability"(value: boolean)
 set "semiblockInvisible"(value: boolean)
 set "itemWhiteList"(value: boolean)
 set "fluidWhiteList"(value: boolean)
 get "matchDurability"(): boolean
 get "itemWhiteList"(): boolean
 get "fluidWhiteList"(): boolean
+get "semiblockInvisible"(): boolean
+get "matchComponents"(): boolean
+get "itemFilterHandler"(): $AbstractLogisticsFrameEntity$ItemFilterHandler
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6258,34 +6387,34 @@ export interface $ISemiBlock {
 
  "tick"(): void
  "isValid"(): boolean
- "onRightClickWithConfigurator"(arg0: $Player$$Type, arg1: $Direction$$Type): boolean
- "getSemiblockDisplayName"(): $Component
  "getDrops"(): $NonNullList<($ItemStack)>
  "canPlace"(arg0: $Direction$$Type): boolean
- "getColor"(): integer
- "getBlockPos"(): $BlockPos
  "serializeNBT"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): $CompoundTag
  "addTooltip"(arg0: $Consumer$$Type<($Component)>, arg1: $Player$$Type, arg2: $CompoundTag$$Type, arg3: boolean): void
+ "getBlockPos"(): $BlockPos
+ "getColor"(): integer
+ "getSemiblockId"(): $ResourceLocation
+ "getTrackingId"(): integer
+ "readFromBuf"(arg0: $RegistryFriendlyByteBuf$$Type): void
+ "killedByEntity"(arg0: $Entity$$Type): void
+ "onPlaced"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: $Direction$$Type): void
+ "canCoexist"(arg0: $ISemiBlock$$Type): boolean
+ "writeToBuf"(arg0: $RegistryFriendlyByteBuf$$Type): void
+ "getWorld"(): $Level
  "getCachedTileEntity"(): $BlockEntity
  "getSemiblockCapability"<T>(arg0: $EntityCapability$$Type<(T), (void)>): $Optional<(T)>
  "getSemiblockCapability"<T>(arg0: $EntityCapability$$Type<(T), ($Direction$$Type)>, arg1: $Direction$$Type): $Optional<(T)>
- "onPlaced"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: $Direction$$Type): void
- "canCoexist"(arg0: $ISemiBlock$$Type): boolean
- "getSemiblockId"(): $ResourceLocation
- "getTrackingId"(): integer
- "writeToBuf"(arg0: $RegistryFriendlyByteBuf$$Type): void
- "readFromBuf"(arg0: $RegistryFriendlyByteBuf$$Type): void
- "killedByEntity"(arg0: $Entity$$Type): void
- "getWorld"(): $Level
+ "onRightClickWithConfigurator"(arg0: $Player$$Type, arg1: $Direction$$Type): boolean
+ "getSemiblockDisplayName"(): $Component
 get "valid"(): boolean
-get "semiblockDisplayName"(): $Component
 get "drops"(): $NonNullList<($ItemStack)>
-get "color"(): integer
 get "blockPos"(): $BlockPos
-get "cachedTileEntity"(): $BlockEntity
+get "color"(): integer
 get "semiblockId"(): $ResourceLocation
 get "trackingId"(): integer
 get "world"(): $Level
+get "cachedTileEntity"(): $BlockEntity
+get "semiblockDisplayName"(): $Component
 }
 
 export namespace $ISemiBlock {
@@ -6297,26 +6426,26 @@ export class $ISemiBlock$$Static implements $ISemiBlock {
 
  "tick"(): void
  "isValid"(): boolean
- "onRightClickWithConfigurator"(arg0: $Player$$Type, arg1: $Direction$$Type): boolean
- "getSemiblockDisplayName"(): $Component
  "getDrops"(): $NonNullList<($ItemStack)>
  "canPlace"(arg0: $Direction$$Type): boolean
- "getColor"(): integer
- "getBlockPos"(): $BlockPos
  "serializeNBT"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): $CompoundTag
  "addTooltip"(arg0: $Consumer$$Type<($Component)>, arg1: $Player$$Type, arg2: $CompoundTag$$Type, arg3: boolean): void
- "getCachedTileEntity"(): $BlockEntity
- "getSemiblockCapability"<T>(arg0: $EntityCapability$$Type<(T), (void)>): $Optional<(T)>
- "getSemiblockCapability"<T>(arg0: $EntityCapability$$Type<(T), ($Direction$$Type)>, arg1: $Direction$$Type): $Optional<(T)>
- "onPlaced"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: $Direction$$Type): void
- "canCoexist"(arg0: $ISemiBlock$$Type): boolean
+ "getBlockPos"(): $BlockPos
+ "getColor"(): integer
  "getSemiblockId"(): $ResourceLocation
  "getTrackingId"(): integer
- "writeToBuf"(arg0: $RegistryFriendlyByteBuf$$Type): void
  "readFromBuf"(arg0: $RegistryFriendlyByteBuf$$Type): void
 static "byTrackingId"(arg0: $Level$$Type, arg1: integer): $ISemiBlock
  "killedByEntity"(arg0: $Entity$$Type): void
+ "onPlaced"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: $Direction$$Type): void
+ "canCoexist"(arg0: $ISemiBlock$$Type): boolean
+ "writeToBuf"(arg0: $RegistryFriendlyByteBuf$$Type): void
  "getWorld"(): $Level
+ "getCachedTileEntity"(): $BlockEntity
+ "getSemiblockCapability"<T>(arg0: $EntityCapability$$Type<(T), (void)>): $Optional<(T)>
+ "getSemiblockCapability"<T>(arg0: $EntityCapability$$Type<(T), ($Direction$$Type)>, arg1: $Direction$$Type): $Optional<(T)>
+ "onRightClickWithConfigurator"(arg0: $Player$$Type, arg1: $Direction$$Type): boolean
+ "getSemiblockDisplayName"(): $Component
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6367,8 +6496,8 @@ import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$PacketPlayMovingSound$MovingSoundFocus, $PacketPlayMovingSound$MovingSoundFocus$$Type} from "me.desht.pneumaticcraft.common.network.PacketPlayMovingSound$MovingSoundFocus"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$PNCUpgrade, $PNCUpgrade$$Type} from "me.desht.pneumaticcraft.api.upgrade.PNCUpgrade"
+import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$IAirHandler, $IAirHandler$$Type} from "me.desht.pneumaticcraft.api.tileentity.IAirHandler"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
@@ -6384,19 +6513,31 @@ static readonly "MAX_GUN_SPEED": float
 
 constructor(arg0: $Player$$Type, arg1: boolean)
 
-public "getRange"(): double
 public "tick"(arg0: double, arg1: double, arg2: double): void
 public "isValid"(): boolean
-public "setMinigunTriggerTimeOut"(arg0: integer): void
-public "dispenserWeightedPercentage"(arg0: integer): boolean
-public "dispenserWeightedPercentage"(arg0: integer, arg1: float): boolean
+public "getRange"(): double
 public "getPlayer"(): $Player
-public "setSweeping"(arg0: boolean): void
-public "getSoundSource"(): $PacketPlayMovingSound$MovingSoundFocus
 public "playSound"(arg0: $SoundEvent$$Type, arg1: float, arg2: float): void
 public "getLookAngle"(): $Vec3
 public "isSweeping"(): boolean
+public "getSoundSource"(): $PacketPlayMovingSound$MovingSoundFocus
+public "setIdleYaw"(arg0: float): void
+public "setReturning"(arg0: boolean): void
+public static "clampYaw"(arg0: float): float
+public static "clampYaw"(arg0: double): double
+public "isInfiniteAmmo"(): boolean
+public "isReturning"(): boolean
+public "setAmmoStack"(arg0: $ItemStack$$Type): $Minigun
+public "setAirHandler"(arg0: $IAirHandler$$Type, arg1: integer): $Minigun
+public "tryFireMinigun"(arg0: $Entity$$Type): $Minigun$FiringResult
+public "setWorld"(arg0: $Level$$Type): $Minigun
+public "getAmmoColor"(): integer
+public "getAmmoStack"(): $ItemStack
+public "getUpgrades"(arg0: $PNCUpgrade$$Type): integer
+public "getWorld"(): $Level
+public "setSweeping"(arg0: boolean): void
 public "setAttackTarget"(arg0: $LivingEntity$$Type): $Minigun
+public "getAttackTarget"(): $LivingEntity
 public "getMinigunRotation"(): float
 public "setOldMinigunRotation"(arg0: float): void
 public "setAmmoColorStack"(arg0: $ItemStack$$Type): void
@@ -6405,37 +6546,34 @@ public "getMuzzlePosition"(): $Vec3
 public "getParticleScale"(): float
 public "getOldMinigunRotation"(): float
 public "isGunAimedAtTarget"(): boolean
-public "getAttackTarget"(): $LivingEntity
 public "getMinigunSpeed"(): float
 public "isMinigunActivated"(): boolean
 public "setMinigunSpeed"(arg0: float): void
 public "setMinigunActivated"(arg0: boolean): void
 public "getAirCapability"(): $Optional<($IAirHandler)>
 public "setInfiniteAmmo"(arg0: boolean): $Minigun
-public "isInfiniteAmmo"(): boolean
-public "isReturning"(): boolean
-public "getAmmoColor"(): integer
-public "setAmmoStack"(arg0: $ItemStack$$Type): $Minigun
-public "setAirHandler"(arg0: $IAirHandler$$Type, arg1: integer): $Minigun
-public "tryFireMinigun"(arg0: $Entity$$Type): $Minigun$FiringResult
-public "getAmmoStack"(): $ItemStack
-public "setIdleYaw"(arg0: float): void
-public "setReturning"(arg0: boolean): void
-public static "clampYaw"(arg0: double): double
-public static "clampYaw"(arg0: float): float
-public "getWorld"(): $Level
-public "setWorld"(arg0: $Level$$Type): $Minigun
-public "getUpgrades"(arg0: $PNCUpgrade$$Type): integer
 public "getMinigunTriggerTimeOut"(): integer
-get "range"(): double
+public "dispenserWeightedPercentage"(arg0: integer, arg1: float): boolean
+public "dispenserWeightedPercentage"(arg0: integer): boolean
+public "setMinigunTriggerTimeOut"(arg0: integer): void
 get "valid"(): boolean
-set "minigunTriggerTimeOut"(value: integer)
+get "range"(): double
 get "player"(): $Player
-set "sweeping"(value: boolean)
-get "soundSource"(): $PacketPlayMovingSound$MovingSoundFocus
 get "lookAngle"(): $Vec3
 get "sweeping"(): boolean
+get "soundSource"(): $PacketPlayMovingSound$MovingSoundFocus
+set "idleYaw"(value: float)
+set "returning"(value: boolean)
+get "infiniteAmmo"(): boolean
+get "returning"(): boolean
+set "ammoStack"(value: $ItemStack$$Type)
+set "world"(value: $Level$$Type)
+get "ammoColor"(): integer
+get "ammoStack"(): $ItemStack
+get "world"(): $Level
+set "sweeping"(value: boolean)
 set "attackTarget"(value: $LivingEntity$$Type)
+get "attackTarget"(): $LivingEntity
 get "minigunRotation"(): float
 set "oldMinigunRotation"(value: float)
 set "ammoColorStack"(value: $ItemStack$$Type)
@@ -6444,23 +6582,14 @@ get "muzzlePosition"(): $Vec3
 get "particleScale"(): float
 get "oldMinigunRotation"(): float
 get "gunAimedAtTarget"(): boolean
-get "attackTarget"(): $LivingEntity
 get "minigunSpeed"(): float
 get "minigunActivated"(): boolean
 set "minigunSpeed"(value: float)
 set "minigunActivated"(value: boolean)
 get "airCapability"(): $Optional<($IAirHandler)>
 set "infiniteAmmo"(value: boolean)
-get "infiniteAmmo"(): boolean
-get "returning"(): boolean
-get "ammoColor"(): integer
-set "ammoStack"(value: $ItemStack$$Type)
-get "ammoStack"(): $ItemStack
-set "idleYaw"(value: float)
-set "returning"(value: boolean)
-get "world"(): $Level
-set "world"(value: $Level$$Type)
 get "minigunTriggerTimeOut"(): integer
+set "minigunTriggerTimeOut"(value: integer)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6483,14 +6612,14 @@ import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component
 
 export interface $IPlayerFilter extends $Predicate<($Player)> {
 
- "matchers"(): $List<($IPlayerMatcher)>
  "getDescription"(arg0: $Player$$Type, arg1: $List$$Type<($Component$$Type)>): void
  "isReal"(): boolean
+ "matchers"(): $List<($IPlayerMatcher)>
  "matchAll"(): boolean
- "test"(arg0: $Player$$Type): boolean
  "or"(arg0: $Predicate$$Type<($Player)>): $Predicate<($Player)>
  "negate"(): $Predicate<($Player)>
  "and"(arg0: $Predicate$$Type<($Player)>): $Predicate<($Player)>
+ "test"(arg0: $Player$$Type): boolean
 get "real"(): boolean
 }
 
@@ -6502,16 +6631,16 @@ const probejs$$marker: never
 export class $IPlayerFilter$$Static implements $IPlayerFilter {
 
 
- "matchers"(): $List<($IPlayerMatcher)>
  "getDescription"(arg0: $Player$$Type, arg1: $List$$Type<($Component$$Type)>): void
  "isReal"(): boolean
+ "matchers"(): $List<($IPlayerMatcher)>
  "matchAll"(): boolean
- "test"(arg0: $Player$$Type): boolean
  "or"(arg0: $Predicate$$Type<($Player)>): $Predicate<($Player)>
+static "not"<T>(arg0: $Predicate$$Type<($Player)>): $Predicate<($Player)>
  "negate"(): $Predicate<($Player)>
  "and"(arg0: $Predicate$$Type<($Player)>): $Predicate<($Player)>
-static "not"<T>(arg0: $Predicate$$Type<($Player)>): $Predicate<($Player)>
 static "isEqual"<T>(arg0: any): $Predicate<($Player)>
+ "test"(arg0: $Player$$Type): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6534,7 +6663,7 @@ static readonly "NONE": $Minigun$FiringResult
 constructor(ammoUsed: integer, ammoUsedUp: boolean)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "ammoUsedUp"(): boolean
 public "ammoUsed"(): integer
@@ -6543,7 +6672,7 @@ public "ammoUsed"(): integer
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $Minigun$FiringResult$$Type = ({"ammoUsed"?: integer, "ammoUsedUp"?: boolean}) | ([ammoUsed?: integer, ammoUsedUp?: boolean]);
+export type $Minigun$FiringResult$$Type = ({"ammoUsedUp"?: boolean, "ammoUsed"?: integer}) | ([ammoUsedUp?: boolean, ammoUsed?: integer]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -6552,6 +6681,7 @@ declare global {
 export type $Minigun$FiringResult_ = $Minigun$FiringResult$$Type;
 }}
 declare module "me.desht.modularrouters.item.module.ModuleItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
@@ -6570,6 +6700,7 @@ import {$ModItems$ITintable, $ModItems$ITintable$$Type} from "me.desht.modularro
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$IItemMatcher, $IItemMatcher$$Type} from "me.desht.modularrouters.api.matching.IItemMatcher"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ModularRouterBlockEntity, $ModularRouterBlockEntity$$Type} from "me.desht.modularrouters.block.tile.ModularRouterBlockEntity"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
@@ -6578,15 +6709,15 @@ import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.
 import {$ModuleMenu, $ModuleMenu$$Type} from "me.desht.modularrouters.container.ModuleMenu"
 import {$CompiledModule, $CompiledModule$$Type} from "me.desht.modularrouters.logic.compiled.CompiledModule"
 import {$MenuType, $MenuType$$Type} from "net.minecraft.world.inventory.MenuType"
-import {$RelativeDirection, $RelativeDirection$$Type} from "me.desht.modularrouters.logic.settings.RelativeDirection"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
+import {$RelativeDirection, $RelativeDirection$$Type} from "me.desht.modularrouters.logic.settings.RelativeDirection"
 import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 import {$MRBaseItem, $MRBaseItem$$Type} from "me.desht.modularrouters.item.MRBaseItem"
 
 export class $ModuleItem extends $MRBaseItem implements $ModItems$ITintable {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -6594,12 +6725,16 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Item$Properties$$Type, arg1: $BiFunction$$Type<($ModularRouterBlockEntity), ($ItemStack), ($CompiledModule$$Type)>)
 
-public "compile"(arg0: $ModularRouterBlockEntity$$Type, arg1: $ItemStack$$Type): $CompiledModule
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public "compile"(arg0: $ModularRouterBlockEntity$$Type, arg1: $ItemStack$$Type): $CompiledModule
 public "isFoil"(arg0: $ItemStack$$Type): boolean
+public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public "getItemTint"(): $TintColor
+public "isDirectional"(): boolean
+public "isFluidModule"(): boolean
+public "getMenuType"(): $MenuType<($ModuleMenu)>
+public "getEnergyCost"(arg0: $ItemStack$$Type): integer
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-public static "getRangeModifier"(arg0: $ItemStack$$Type): integer
 public static "getCommonSettings"(arg0: $ItemStack$$Type): $ModuleSettings
 public "getDirectionString"(arg0: $RelativeDirection$$Type): $MutableComponent
 public "isOmniDirectional"(): boolean
@@ -6610,17 +6745,14 @@ public static "getRoundRobinCounter"(arg0: $ItemStack$$Type): integer
 public static "getRedstoneBehaviour"(arg0: $ItemStack$$Type): $RedstoneBehaviour
 public "isItemValidForFilter"(arg0: $ItemStack$$Type): boolean
 public "getFilterItemMatcher"(arg0: $ItemStack$$Type): $IItemMatcher
-public "getMenuType"(): $MenuType<($ModuleMenu)>
-public "isDirectional"(): boolean
-public "isFluidModule"(): boolean
-public "getItemTint"(): $TintColor
-public "getEnergyCost"(arg0: $ItemStack$$Type): integer
-public "getRegulatorTranslationKey"(arg0: $ItemStack$$Type): string
-get "omniDirectional"(): boolean
-get "menuType"(): $MenuType<($ModuleMenu)>
+public static "getRangeModifier"(arg0: $ItemStack$$Type): integer
+public "getRegulatorTranslationKey"(arg0: $ItemStack$$Type): StringJS
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
+get "itemTint"(): $TintColor
 get "directional"(): boolean
 get "fluidModule"(): boolean
-get "itemTint"(): $TintColor
+get "menuType"(): $MenuType<($ModuleMenu)>
+get "omniDirectional"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6647,12 +6779,12 @@ import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 export class $ShoppingBasket implements $Iterable<($ResourceLocation)> {
 
 
+public "getUnits"(arg0: $ResourceLocation$$Type): integer
 public "equals"(arg0: any): boolean
 public "hashCode"(): integer
 public "isEmpty"(): boolean
 public "iterator"(): $Iterator<($ResourceLocation)>
 public static "empty"(): $ImmutableBasket
-public "getUnits"(arg0: $ResourceLocation$$Type): integer
 public "syncToPlayer"(arg0: $ServerPlayer$$Type): void
 public "toImmutable"(): $ImmutableBasket
 public static "createMutable"(): $MutableBasket
@@ -6687,10 +6819,10 @@ static readonly "DRILL": $AssemblyProgram$EnumMachine
 
 
 public static "values"(): ($AssemblyProgram$EnumMachine)[]
-public static "valueOf"(arg0: string): $AssemblyProgram$EnumMachine
-public "getTranslationKey"(): string
+public static "valueOf"(arg0: StringJS): $AssemblyProgram$EnumMachine
+public "getTranslationKey"(): StringJS
 public "getMachineBlock"(): $Block
-get "translationKey"(): string
+get "translationKey"(): StringJS
 get "machineBlock"(): $Block
 }
 /**
@@ -6716,19 +6848,19 @@ static readonly "CODEC": $Codec<($TemperatureRange)>
 static "STREAM_CODEC": $StreamCodec<($ByteBuf), ($TemperatureRange)>
 
 
+public static "any"(): $TemperatureRange
+public "inRange"(arg0: double): boolean
+public "inRange"(arg0: integer): boolean
+public static "invalid"(): $TemperatureRange
 public static "min"(arg0: integer): $TemperatureRange
 public static "max"(arg0: integer): $TemperatureRange
 public static "of"(arg0: integer, arg1: integer): $TemperatureRange
-public static "invalid"(): $TemperatureRange
-public "inRange"(arg0: double): boolean
-public "inRange"(arg0: integer): boolean
-public static "any"(): $TemperatureRange
-public "getMin"(): integer
-public "getMax"(): integer
-public "asString"(arg0: $TemperatureRange$TemperatureScale$$Type): string
-public "hasMax"(): boolean
-public "hasMin"(): boolean
 public "isAny"(): boolean
+public "getMax"(): integer
+public "getMin"(): integer
+public "asString"(arg0: $TemperatureRange$TemperatureScale$$Type): StringJS
+public "hasMin"(): boolean
+public "hasMax"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6744,8 +6876,8 @@ export type $TemperatureRange_ = $TemperatureRange$$Type;
 }}
 declare module "me.desht.modularrouters.logic.filter.matchers.InspectionMatcher$InspectionSubject" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -6763,19 +6895,19 @@ static readonly "FOOD": $InspectionMatcher$InspectionSubject
 
 
 public static "values"(): ($InspectionMatcher$InspectionSubject)[]
-public static "valueOf"(arg0: string): $InspectionMatcher$InspectionSubject
+public static "valueOf"(arg0: StringJS): $InspectionMatcher$InspectionSubject
 public "cycle"(arg0: integer): $InspectionMatcher$InspectionSubject
-public "getTranslationKey"(): string
-public "getSerializedName"(): string
+public "getTranslationKey"(): StringJS
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "translationKey"(): string
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "translationKey"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6793,10 +6925,10 @@ declare module "me.desht.pneumaticcraft.api.pressure.PressureTier" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $PressureTier {
 
- "getCriticalPressure"(): float
  "getDangerPressure"(): float
-get "criticalPressure"(): float
+ "getCriticalPressure"(): float
 get "dangerPressure"(): float
+get "criticalPressure"(): float
 }
 
 export namespace $PressureTier {
@@ -6811,8 +6943,8 @@ static readonly "TIER_ONE_HALF": $PressureTier
 static readonly "TIER_ONE": $PressureTier
 
 
- "getCriticalPressure"(): float
  "getDangerPressure"(): float
+ "getCriticalPressure"(): float
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6832,7 +6964,6 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$BaseFlowingFluid$Flowing, $BaseFlowingFluid$Flowing$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Flowing"
 
 export class $FluidOil$Flowing extends $BaseFlowingFluid$Flowing {
@@ -6842,7 +6973,6 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -6864,8 +6994,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -6874,8 +7004,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -6892,7 +7022,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -6978,10 +7108,10 @@ export class $HarvestHandler {
 
 constructor()
 
-public "harvestAndReplant"(arg0: $Level$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $IDrone$$Type): boolean
 public "addFilterItems"(arg0: $Level$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $IDrone$$Type): $List<($ItemStack)>
-public "harvest"(arg0: $Level$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $IDrone$$Type): void
 public "canHarvest"(arg0: $Level$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $IDrone$$Type): boolean
+public "harvest"(arg0: $Level$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $IDrone$$Type): void
+public "harvestAndReplant"(arg0: $Level$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $IDrone$$Type): boolean
 /**
  * This field is a type stub generated by ProbeJS and shall not be used in any sense.
  */
@@ -7004,19 +7134,23 @@ declare global {
 export type $HarvestHandler_ = $HarvestHandler$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.minigun.WeightedGunAmmoItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$AbstractGunAmmoItem, $AbstractGunAmmoItem$$Type} from "me.desht.pneumaticcraft.common.item.minigun.AbstractGunAmmoItem"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Minigun, $Minigun$$Type} from "me.desht.pneumaticcraft.common.minigun.Minigun"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 
 export class $WeightedGunAmmoItem extends $AbstractGunAmmoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -7025,10 +7159,11 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "getMaxDamage"(arg0: $ItemStack$$Type): integer
-public "getDamageMultiplier"(arg0: $Entity$$Type, arg1: $ItemStack$$Type): float
-public "getRangeMultiplier"(arg0: $ItemStack$$Type): float
-public "getAirUsageMultiplier"(arg0: $Minigun$$Type, arg1: $ItemStack$$Type): float
 public "getAmmoColor"(arg0: $ItemStack$$Type): integer
+public "getRangeMultiplier"(arg0: $ItemStack$$Type): float
+public "getDamageMultiplier"(arg0: $Entity$$Type, arg1: $ItemStack$$Type): float
+public "getAirUsageMultiplier"(arg0: $Minigun$$Type, arg1: $ItemStack$$Type): float
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7049,8 +7184,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -7059,8 +7194,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -7077,7 +7212,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -7119,8 +7254,8 @@ export type $AssemblyDrillBlock_ = $AssemblyDrillBlock$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.recipes.machine.HeatFrameCoolingRecipeImpl$IFactory" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$FluidContainerIngredient, $FluidContainerIngredient$$Type} from "me.desht.pneumaticcraft.api.crafting.ingredient.FluidContainerIngredient"
+import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$Either, $Either$$Type} from "com.mojang.datafixers.util.Either"
 import {$HeatFrameCoolingRecipe, $HeatFrameCoolingRecipe$$Type} from "me.desht.pneumaticcraft.api.crafting.recipe.HeatFrameCoolingRecipe"
 
@@ -7158,16 +7293,16 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
 import {$ModelProperty, $ModelProperty$$Type} from "net.neoforged.neoforge.client.model.data.ModelProperty"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -7185,7 +7320,7 @@ static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "BLOCK_ACCESS": $ModelProperty<($BlockGetter)>
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -7229,16 +7364,20 @@ declare global {
 export type $AbstractCamouflageBlock_ = $AbstractCamouflageBlock$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.logistics.LogisticsFrameStorageItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$AbstractLogisticsFrameItem, $AbstractLogisticsFrameItem$$Type} from "me.desht.pneumaticcraft.common.item.logistics.AbstractLogisticsFrameItem"
 
 export class $LogisticsFrameStorageItem extends $AbstractLogisticsFrameItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -7246,6 +7385,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7292,16 +7432,16 @@ export type $ColorHandlers$ITintableItem_ = $ColorHandlers$ITintableItem$$Type;
 declare module "me.desht.modularrouters.util.MFLocator" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$FriendlyByteBuf, $FriendlyByteBuf$$Type} from "net.minecraft.network.FriendlyByteBuf"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
+import {$FriendlyByteBuf, $FriendlyByteBuf$$Type} from "net.minecraft.network.FriendlyByteBuf"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$ModularRouterBlockEntity, $ModularRouterBlockEntity$$Type} from "me.desht.modularrouters.block.tile.ModularRouterBlockEntity"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
-import {$MFLocator$ItemType, $MFLocator$ItemType$$Type} from "me.desht.modularrouters.util.MFLocator$ItemType"
 import {$Record, $Record$$Type} from "java.lang.Record"
+import {$MFLocator$ItemType, $MFLocator$ItemType$$Type} from "me.desht.modularrouters.util.MFLocator$ItemType"
 
 export class $MFLocator extends $Record {
 static readonly "STREAM_CODEC": $StreamCodec<($FriendlyByteBuf), ($MFLocator)>
@@ -7309,31 +7449,31 @@ static readonly "STREAM_CODEC": $StreamCodec<($FriendlyByteBuf), ($MFLocator)>
 constructor(hand: $InteractionHand$$Type, routerPos: $BlockPos$$Type, routerSlot: integer, filterSlot: integer, itemType: $MFLocator$ItemType$$Type)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "itemType"(): $MFLocator$ItemType
 public "hand"(): $InteractionHand
-public "setFilterStack"(arg0: $Player$$Type, arg1: $ItemStack$$Type): void
+public "itemType"(): $MFLocator$ItemType
+public static "moduleInRouter"(arg0: $BlockPos$$Type, arg1: integer): $MFLocator
+public "routerSlot"(): integer
 public static "heldModule"(arg0: $InteractionHand$$Type): $MFLocator
 public "getRouter"(arg0: $Level$$Type): $Optional<($ModularRouterBlockEntity)>
 public "getModuleStack"(arg0: $Player$$Type): $ItemStack
-public static "fromNetwork"(arg0: $FriendlyByteBuf$$Type): $MFLocator
-public "toNetwork"(arg0: $RegistryFriendlyByteBuf$$Type): void
-public static "moduleInRouter"(arg0: $BlockPos$$Type, arg1: integer): $MFLocator
-public "routerSlot"(): integer
+public "routerPos"(): $BlockPos
 public static "heldFilter"(arg0: $InteractionHand$$Type): $MFLocator
 public "getTargetItem"(arg0: $Player$$Type): $ItemStack
+public "setFilterStack"(arg0: $Player$$Type, arg1: $ItemStack$$Type): void
 public "filterSlot"(): integer
-public "routerPos"(): $BlockPos
-public static "filterInInstalledModule"(arg0: $BlockPos$$Type, arg1: integer, arg2: integer): $MFLocator
+public static "fromNetwork"(arg0: $FriendlyByteBuf$$Type): $MFLocator
+public "toNetwork"(arg0: $RegistryFriendlyByteBuf$$Type): void
 public "setModuleStack"(arg0: $Player$$Type, arg1: $ItemStack$$Type): void
 public static "filterInHeldModule"(arg0: $InteractionHand$$Type, arg1: integer): $MFLocator
+public static "filterInInstalledModule"(arg0: $BlockPos$$Type, arg1: integer, arg2: integer): $MFLocator
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $MFLocator$$Type = ({"itemType"?: $MFLocator$ItemType$$Type, "routerSlot"?: integer, "hand"?: $InteractionHand$$Type, "filterSlot"?: integer, "routerPos"?: $BlockPos$$Type}) | ([itemType?: $MFLocator$ItemType$$Type, routerSlot?: integer, hand?: $InteractionHand$$Type, filterSlot?: integer, routerPos?: $BlockPos$$Type]);
+export type $MFLocator$$Type = ({"filterSlot"?: integer, "routerPos"?: $BlockPos$$Type, "itemType"?: $MFLocator$ItemType$$Type, "routerSlot"?: integer, "hand"?: $InteractionHand$$Type}) | ([filterSlot?: integer, routerPos?: $BlockPos$$Type, itemType?: $MFLocator$ItemType$$Type, routerSlot?: integer, hand?: $InteractionHand$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -7354,9 +7494,9 @@ export class $AmadronOffer$Serializer<T extends $AmadronOffer> implements $Recip
 
 constructor(arg0: $AmadronOffer$IFactory$$Type<(T)>)
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
 public "codec"(): $MapCodec<(T)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7375,11 +7515,11 @@ import {$LuaMethodRegistry, $LuaMethodRegistry$$Type} from "me.desht.pneumaticcr
 
 export interface $ILuaMethodProvider {
 
- "getLuaMethodRegistry"(): $LuaMethodRegistry
- "getPeripheralType"(): string
  "addLuaMethods"(arg0: $LuaMethodRegistry$$Type): void
+ "getPeripheralType"(): StringJS
+ "getLuaMethodRegistry"(): $LuaMethodRegistry
+get "peripheralType"(): StringJS
 get "luaMethodRegistry"(): $LuaMethodRegistry
-get "peripheralType"(): string
 }
 
 export namespace $ILuaMethodProvider {
@@ -7388,9 +7528,9 @@ const probejs$$marker: never
 export class $ILuaMethodProvider$$Static implements $ILuaMethodProvider {
 
 
- "getLuaMethodRegistry"(): $LuaMethodRegistry
- "getPeripheralType"(): string
  "addLuaMethods"(arg0: $LuaMethodRegistry$$Type): void
+ "getPeripheralType"(): StringJS
+ "getLuaMethodRegistry"(): $LuaMethodRegistry
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7427,16 +7567,20 @@ declare global {
 export type $AmadronRetrievalEvent_ = $AmadronRetrievalEvent$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.AbstractChestUpgradeKitItem$Smart" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$AbstractChestUpgradeKitItem, $AbstractChestUpgradeKitItem$$Type} from "me.desht.pneumaticcraft.common.item.AbstractChestUpgradeKitItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $AbstractChestUpgradeKitItem$Smart extends $AbstractChestUpgradeKitItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -7444,6 +7588,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7456,6 +7601,39 @@ export type $AbstractChestUpgradeKitItem$Smart$$Type = ($AbstractChestUpgradeKit
  */
 declare global {
 export type $AbstractChestUpgradeKitItem$Smart_ = $AbstractChestUpgradeKitItem$Smart$$Type;
+}}
+declare module "me.desht.pneumaticcraft.common.debug.DroneDebugger" {
+import {$IDroneDebugger, $IDroneDebugger$$Type} from "me.desht.pneumaticcraft.api.drone.debug.IDroneDebugger"
+import {$Collection, $Collection$$Type} from "java.util.Collection"
+import {$DroneDebugEntry, $DroneDebugEntry$$Type} from "me.desht.pneumaticcraft.api.drone.debug.DroneDebugEntry"
+import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
+import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$IDroneBase, $IDroneBase$$Type} from "me.desht.pneumaticcraft.common.drone.IDroneBase"
+
+export class $DroneDebugger implements $IDroneDebugger {
+
+constructor(arg0: $IDroneBase$$Type)
+
+public "addEntry"(arg0: $DroneDebugEntry$$Type): void
+public "addEntry"(arg0: StringJS, arg1: $BlockPos$$Type): void
+public "addEntry"(arg0: StringJS): void
+public "getDebugEntry"(arg0: integer): $DroneDebugEntry
+public "trackAsDebugged"(arg0: $ServerPlayer$$Type): void
+public "getDebuggingPlayers"(): $Collection<($ServerPlayer)>
+public "updateDebuggingPlayers"(): void
+get "debuggingPlayers"(): $Collection<($ServerPlayer)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $DroneDebugger$$Type = ($DroneDebugger);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $DroneDebugger_ = $DroneDebugger$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.harvesting.HarvestHandlerCrops" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
@@ -7488,7 +7666,6 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$BaseFlowingFluid$Flowing, $BaseFlowingFluid$Flowing$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Flowing"
 
 export class $FluidDiesel$Flowing extends $BaseFlowingFluid$Flowing {
@@ -7498,7 +7675,6 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -7520,8 +7696,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -7530,8 +7706,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -7548,7 +7724,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -7600,7 +7776,7 @@ constructor(slot: $PressureChamberRecipe$RecipeSlot$$Type, cycle: $IntList$$Type
 
 public "slot"(): $PressureChamberRecipe$RecipeSlot
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "cycle"(): $IntList
 }
@@ -7608,7 +7784,7 @@ public "cycle"(): $IntList
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $PressureChamberRecipe$SlotCycle$$Type = ({"cycle"?: $IntList$$Type, "slot"?: $PressureChamberRecipe$RecipeSlot$$Type}) | ([cycle?: $IntList$$Type, slot?: $PressureChamberRecipe$RecipeSlot$$Type]);
+export type $PressureChamberRecipe$SlotCycle$$Type = ({"slot"?: $PressureChamberRecipe$RecipeSlot$$Type, "cycle"?: $IntList$$Type}) | ([slot?: $PressureChamberRecipe$RecipeSlot$$Type, cycle?: $IntList$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -7626,7 +7802,7 @@ static readonly "STRONG": $DetectorModule$SignalType
 
 
 public static "values"(): ($DetectorModule$SignalType)[]
-public static "valueOf"(arg0: string): $DetectorModule$SignalType
+public static "valueOf"(arg0: StringJS): $DetectorModule$SignalType
 public static "getType"(arg0: boolean): $DetectorModule$SignalType
 }
 /**
@@ -7677,66 +7853,66 @@ export class $ElevatorBaseBlockEntity extends $AbstractAirHandlingBlockEntity im
  "ticksRunning": integer
  "lightAbove": integer
  "oldExtension": double
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
  "floorHeights": (integer)[]
 
 constructor(arg0: $BlockPos$$Type, arg1: $BlockState$$Type)
 
-public "getText"(arg0: integer): string
-public "setText"(arg0: integer, arg1: string): void
-public "createMenu"(arg0: integer, arg1: $Inventory$$Type, arg2: $Player$$Type): $AbstractContainerMenu
-public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "saveAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "isStopped"(): boolean
+public "setText"(arg0: integer, arg1: StringJS): void
 public "onLoad"(): void
-public "getMaxElevatorHeight"(): float
-public "getTargetExtension"(): double
+public "createMenu"(arg0: integer, arg1: $Inventory$$Type, arg2: $Player$$Type): $AbstractContainerMenu
+public "saveAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "getItemHandler"(arg0: $Direction$$Type): $IItemHandler
+public "isStopped"(): boolean
+public "getText"(arg0: integer): StringJS
+public "isCoreElevator"(): boolean
+public "updateFloors"(arg0: boolean): void
+public "setFloorName"(arg0: integer, arg1: StringJS): void
+public "getFloorName"(arg0: integer): StringJS
+public "tickCommonPre"(): void
+public "writeToPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "readFromPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "addLuaMethods"(arg0: $LuaMethodRegistry$$Type): void
+public "goToFloor"(arg0: integer): void
+public "setCamouflage"(arg0: $BlockState$$Type): void
+public "getCamouflage"(): $BlockState
+public "hasItemCapability"(): boolean
 public "canConnectPneumatic"(arg0: $Direction$$Type): boolean
 public "getMinWorkingPressure"(): float
 public "getRedstoneTabTitle"(): $MutableComponent
-public "moveUpgradesFromAbove"(): void
-public "onRedstoneModeChanged"(arg0: integer): void
-public "hasItemCapability"(): boolean
-public "handleGUIButtonPress"(arg0: string, arg1: boolean, arg2: $ServerPlayer$$Type): void
 public "onNeighborBlockUpdate"(arg0: $BlockPos$$Type): void
+public "onRedstoneModeChanged"(arg0: integer): void
 public "getRedstoneController"(): $RedstoneController<($ElevatorBaseBlockEntity)>
 public "isGuiUseableByPlayer"(arg0: $Player$$Type): boolean
-public "getCamouflage"(): $BlockState
-public "setCamouflage"(arg0: $BlockState$$Type): void
-public "readFromPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "writeToPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "addLuaMethods"(arg0: $LuaMethodRegistry$$Type): void
-public "isCoreElevator"(): boolean
-public "updateFloors"(arg0: boolean): void
-public "setFloorName"(arg0: integer, arg1: string): void
-public "getFloorName"(arg0: integer): string
-public "goToFloor"(arg0: integer): void
-public "tickCommonPre"(): void
-public "getItemHandler"(arg0: $Direction$$Type): $IItemHandler
+public "moveUpgradesFromAbove"(): void
+public "getMaxElevatorHeight"(): float
+public "getTargetExtension"(): double
+public "handleGUIButtonPress"(arg0: StringJS, arg1: boolean, arg2: $ServerPlayer$$Type): void
 public "updateMaxElevatorHeight"(): void
-public "getCurrentRedstonePower"(): integer
 public "getRedstoneMode"(): integer
-public static "onCamouflageChanged"(arg0: $AbstractPneumaticCraftBlockEntity$$Type): void
-public static "getStackForState"(arg0: $BlockState$$Type): $ItemStack
+public "getCurrentRedstonePower"(): integer
 public static "writeCamo"(arg0: $CompoundTag$$Type, arg1: $BlockState$$Type): void
 public static "readCamo"(arg0: $CompoundTag$$Type): $BlockState
+public static "onCamouflageChanged"(arg0: $AbstractPneumaticCraftBlockEntity$$Type): void
+public static "getStackForState"(arg0: $BlockState$$Type): $ItemStack
 public "getDisplayName"(): $Component
-public "shouldTriggerClientSideContainerClosingOnOpen"(): boolean
 public "writeClientSideData"(arg0: $AbstractContainerMenu$$Type, arg1: $RegistryFriendlyByteBuf$$Type): void
+public "shouldTriggerClientSideContainerClosingOnOpen"(): boolean
 public "getUpgradeHandler"(): $IItemHandler
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "stopped"(): boolean
-get "maxElevatorHeight"(): float
-get "targetExtension"(): double
+get "coreElevator"(): boolean
+set "camouflage"(value: $BlockState$$Type)
+get "camouflage"(): $BlockState
 get "minWorkingPressure"(): float
 get "redstoneTabTitle"(): $MutableComponent
 get "redstoneController"(): $RedstoneController<($ElevatorBaseBlockEntity)>
-get "camouflage"(): $BlockState
-set "camouflage"(value: $BlockState$$Type)
-get "coreElevator"(): boolean
-get "currentRedstonePower"(): integer
+get "maxElevatorHeight"(): float
+get "targetExtension"(): double
 get "redstoneMode"(): integer
+get "currentRedstonePower"(): integer
 get "displayName"(): $Component
 get "upgradeHandler"(): $IItemHandler
 }
@@ -7761,8 +7937,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -7777,8 +7953,8 @@ import {$ModelProperty, $ModelProperty$$Type} from "net.neoforged.neoforge.clien
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$AbstractCamouflageBlock, $AbstractCamouflageBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractCamouflageBlock"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
+import {$AbstractCamouflageBlock, $AbstractCamouflageBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractCamouflageBlock"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 
@@ -7794,7 +7970,7 @@ static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "BLOCK_ACCESS": $ModelProperty<($BlockGetter)>
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -7819,9 +7995,9 @@ public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $Bloc
 public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
+public "isRotatable"(): boolean
 public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
 public "getUncamouflagedShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "isRotatable"(): boolean
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public static "forBlock"(arg0: $Block$$Type): $IPneumaticWrenchable
@@ -7858,19 +8034,19 @@ constructor(items: $List$$Type<($InspectionMatcher$Comparison$$Type)>, matchAll:
 public "items"(): $List<($InspectionMatcher$Comparison)>
 public "removeAt"(arg0: integer): $InspectionMatcher$ComparisonList
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "isEmpty"(): boolean
+public "addComparison"(arg0: $InspectionMatcher$Comparison$$Type): $InspectionMatcher$ComparisonList
 public "matchAll"(): boolean
 public "setMatchAll"(arg0: boolean): $InspectionMatcher$ComparisonList
-public "addComparison"(arg0: $InspectionMatcher$Comparison$$Type): $InspectionMatcher$ComparisonList
 get "empty"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $InspectionMatcher$ComparisonList$$Type = ({"items"?: $List$$Type<($InspectionMatcher$Comparison$$Type)>, "matchAll"?: boolean}) | ([items?: $List$$Type<($InspectionMatcher$Comparison$$Type)>, matchAll?: boolean]);
+export type $InspectionMatcher$ComparisonList$$Type = ({"matchAll"?: boolean, "items"?: $List$$Type<($InspectionMatcher$Comparison$$Type)>}) | ([matchAll?: boolean, items?: $List$$Type<($InspectionMatcher$Comparison$$Type)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -7885,8 +8061,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -7895,8 +8071,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -7913,7 +8089,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -7960,10 +8136,10 @@ import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 
 export interface $ICustomDurabilityBar {
 
- "shouldShowCustomDurabilityBar"(arg0: $ItemStack$$Type): boolean
- "getCustomDurabilityColour"(arg0: $ItemStack$$Type): integer
  "getCustomDurability"(arg0: $ItemStack$$Type): float
  "isShowingOtherBar"(arg0: $ItemStack$$Type): boolean
+ "shouldShowCustomDurabilityBar"(arg0: $ItemStack$$Type): boolean
+ "getCustomDurabilityColour"(arg0: $ItemStack$$Type): integer
 }
 
 export namespace $ICustomDurabilityBar {
@@ -7972,10 +8148,10 @@ const probejs$$marker: never
 export class $ICustomDurabilityBar$$Static implements $ICustomDurabilityBar {
 
 
- "shouldShowCustomDurabilityBar"(arg0: $ItemStack$$Type): boolean
- "getCustomDurabilityColour"(arg0: $ItemStack$$Type): integer
  "getCustomDurability"(arg0: $ItemStack$$Type): float
  "isShowingOtherBar"(arg0: $ItemStack$$Type): boolean
+ "shouldShowCustomDurabilityBar"(arg0: $ItemStack$$Type): boolean
+ "getCustomDurabilityColour"(arg0: $ItemStack$$Type): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8028,10 +8204,10 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$IBlockComparatorSupport, $IBlockComparatorSupport$$Type} from "me.desht.pneumaticcraft.common.block.IBlockComparatorSupport"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
+import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -8041,8 +8217,8 @@ import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.Inte
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ItemInteractionResult, $ItemInteractionResult$$Type} from "net.minecraft.world.ItemInteractionResult"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
@@ -8050,8 +8226,8 @@ import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.leve
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $DisplayTableBlock extends $AbstractPneumaticCraftBlock implements $PneumaticCraftEntityBlock, $IBlockComparatorSupport {
 static readonly "DOWN": $BooleanProperty
@@ -8062,7 +8238,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -8087,15 +8263,15 @@ public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $Bloc
 public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "useItemOn"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type, arg2: $Level$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type, arg5: $InteractionHand$$Type, arg6: $BlockHitResult$$Type): $ItemInteractionResult
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
-public "isRotatable"(): boolean
 public "getTableHeight"(): double
+public "isRotatable"(): boolean
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public static "forBlock"(arg0: $Block$$Type): $IPneumaticWrenchable
 public "asHolder"(): $Holder<(any)>
-get "rotatable"(): boolean
 get "tableHeight"(): double
+get "rotatable"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8114,7 +8290,7 @@ import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$SpecialVariableRetrievalEvent, $SpecialVariableRetrievalEvent$$Type} from "me.desht.pneumaticcraft.api.drone.SpecialVariableRetrievalEvent"
 
 export class $SpecialVariableRetrievalEvent$ItemVariable extends $SpecialVariableRetrievalEvent {
-readonly "specialVarName": string
+readonly "specialVarName": StringJS
 
 
 public "getItem"(): $ItemStack
@@ -8142,10 +8318,10 @@ export class $UpgradeCache {
 
 constructor(arg0: $IUpgradeHolder$$Type)
 
-public "invalidateCache"(): void
-public "getEjectDirection"(): $Optional<($Direction)>
 public "validateCache"(): void
 public "getUpgrades"(arg0: $PNCUpgrade$$Type): integer
+public "invalidateCache"(): void
+public "getEjectDirection"(): $Optional<($Direction)>
 get "ejectDirection"(): $Optional<($Direction)>
 }
 /**
@@ -8226,12 +8402,16 @@ declare global {
 export type $IAirListener_ = $IAirListener$$Type;
 }}
 declare module "me.desht.modularrouters.item.module.ActivatorModule" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$IRangedModule, $IRangedModule$$Type} from "me.desht.modularrouters.item.module.IRangedModule"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
 import {$ModuleMenu, $ModuleMenu$$Type} from "me.desht.modularrouters.container.ModuleMenu"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -8242,7 +8422,7 @@ import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.
 export class $ActivatorModule extends $ModuleItem implements $IRangedModule {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -8250,18 +8430,19 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "getHardMaxRange"(): integer
-public "addSettingsInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
-public "getMenuType"(): $MenuType<($ModuleMenu)>
 public "getItemTint"(): $TintColor
 public "getBaseRange"(): integer
+public "getMenuType"(): $MenuType<($ModuleMenu)>
 public "getEnergyCost"(arg0: $ItemStack$$Type): integer
+public "addSettingsInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
+public "getHardMaxRange"(): integer
 public "getCurrentRange"(arg0: integer): integer
 public "getCurrentRange"(arg0: $ItemStack$$Type): integer
-get "hardMaxRange"(): integer
-get "menuType"(): $MenuType<($ModuleMenu)>
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
 get "baseRange"(): integer
+get "menuType"(): $MenuType<($ModuleMenu)>
+get "hardMaxRange"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8284,31 +8465,31 @@ import {$IAssemblyMachine, $IAssemblyMachine$$Type} from "me.desht.pneumaticcraf
 import {$TrackedData, $TrackedData$$Type} from "dev.corgitaco.dataanchor.data.TrackedData"
 import {$TrackedDataContainer, $TrackedDataContainer$$Type} from "dev.corgitaco.dataanchor.data.TrackedDataContainer"
 import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.dataanchor.data.registry.TrackedDataRegistry"
-import {$IResettable, $IResettable$$Type} from "me.desht.pneumaticcraft.common.block.entity.processing.IResettable"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
+import {$IResettable, $IResettable$$Type} from "me.desht.pneumaticcraft.common.block.entity.processing.IResettable"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 
 export class $AbstractAssemblyRobotBlockEntity extends $AbstractTickingBlockEntity implements $IAssemblyMachine, $IResettable {
 readonly "oldAngles": (float)[]
 readonly "angles": (float)[]
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 
-public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
 public "saveAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
 public "setSpeed"(arg0: float): void
-public "setControllerPos"(arg0: $BlockPos$$Type): void
-public "gotoHomePosition"(): void
-public "onNeighborBlockUpdate"(arg0: $BlockPos$$Type): void
 public "tickCommonPre"(): void
 public "gotoNeighbour"(arg0: $AbstractAssemblyRobotBlockEntity$TargetDirections$$Type): boolean
+public "setControllerPos"(arg0: $BlockPos$$Type): void
+public "onNeighborBlockUpdate"(arg0: $BlockPos$$Type): void
+public "gotoHomePosition"(): void
 public "isIdle"(): boolean
 public "getAssemblyType"(): $AssemblyProgram$EnumMachine
 public "reset"(): boolean
 public "getUpgradeHandler"(): $IItemHandler
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 set "speed"(value: float)
 set "controllerPos"(value: $BlockPos$$Type)
 get "idle"(): boolean
@@ -8366,10 +8547,10 @@ declare module "me.desht.pneumaticcraft.api.misc.ITranslatableEnum" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $ITranslatableEnum {
 
- "getTranslationKey"(): string
+ "getTranslationKey"(): StringJS
 
-(): string
-get "translationKey"(): string
+(): StringJS
+get "translationKey"(): StringJS
 }
 
 export namespace $ITranslatableEnum {
@@ -8378,13 +8559,13 @@ const probejs$$marker: never
 export class $ITranslatableEnum$$Static implements $ITranslatableEnum {
 
 
- "getTranslationKey"(): string
+ "getTranslationKey"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ITranslatableEnum$$Type = (() => string);
+export type $ITranslatableEnum$$Type = (() => StringJS);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -8416,13 +8597,13 @@ declare global {
 export type $SemiblockEvent$BreakEvent_ = $SemiblockEvent$BreakEvent$$Type;
 }}
 declare module "me.desht.pneumaticcraft.api.misc.IPlayerMatcher" {
-import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$IPlayerMatcher$MatcherType, $IPlayerMatcher$MatcherType$$Type} from "me.desht.pneumaticcraft.api.misc.IPlayerMatcher$MatcherType"
-import {$List, $List$$Type} from "java.util.List"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
+import {$List, $List$$Type} from "java.util.List"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 
 export interface $IPlayerMatcher extends $Predicate<($Player)> {
@@ -8430,10 +8611,10 @@ export interface $IPlayerMatcher extends $Predicate<($Player)> {
  "type"(): $IPlayerMatcher$MatcherType<($IPlayerMatcher)>
  "addDescription"(arg0: $Player$$Type, arg1: $List$$Type<($Component$$Type)>): void
  "standardTooltip"(arg0: $Player$$Type, arg1: $List$$Type<($Component$$Type)>, arg2: $Component$$Type, arg3: $List$$Type<($Component$$Type)>): void
- "test"(arg0: $Player$$Type): boolean
  "or"(arg0: $Predicate$$Type<($Player)>): $Predicate<($Player)>
  "negate"(): $Predicate<($Player)>
  "and"(arg0: $Predicate$$Type<($Player)>): $Predicate<($Player)>
+ "test"(arg0: $Player$$Type): boolean
 }
 
 export namespace $IPlayerMatcher {
@@ -8451,12 +8632,12 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($IPlay
  "type"(): $IPlayerMatcher$MatcherType<($IPlayerMatcher)>
  "addDescription"(arg0: $Player$$Type, arg1: $List$$Type<($Component$$Type)>): void
  "standardTooltip"(arg0: $Player$$Type, arg1: $List$$Type<($Component$$Type)>, arg2: $Component$$Type, arg3: $List$$Type<($Component$$Type)>): void
- "test"(arg0: $Player$$Type): boolean
  "or"(arg0: $Predicate$$Type<($Player)>): $Predicate<($Player)>
+static "not"<T>(arg0: $Predicate$$Type<($Player)>): $Predicate<($Player)>
  "negate"(): $Predicate<($Player)>
  "and"(arg0: $Predicate$$Type<($Player)>): $Predicate<($Player)>
-static "not"<T>(arg0: $Predicate$$Type<($Player)>): $Predicate<($Player)>
 static "isEqual"<T>(arg0: any): $Predicate<($Player)>
+ "test"(arg0: $Player$$Type): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8471,21 +8652,25 @@ declare global {
 export type $IPlayerMatcher_ = $IPlayerMatcher$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.DrillBitItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$DrillBitItem$DrillBitType, $DrillBitItem$DrillBitType$$Type} from "me.desht.pneumaticcraft.common.item.DrillBitItem$DrillBitType"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$DrillBitItem$DrillBitType, $DrillBitItem$DrillBitType$$Type} from "me.desht.pneumaticcraft.common.item.DrillBitItem$DrillBitType"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export class $DrillBitItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -8495,6 +8680,7 @@ constructor(arg0: $DrillBitItem$DrillBitType$$Type)
 
 public "getType"(): $DrillBitItem$DrillBitType
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "type"(): $DrillBitItem$DrillBitType
 }
 /**
@@ -8516,8 +8702,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -8526,8 +8712,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -8544,7 +8730,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -8585,11 +8771,13 @@ declare global {
 export type $AssemblyPlatformBlock_ = $AssemblyPlatformBlock$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.CamoApplicatorItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
@@ -8603,7 +8791,7 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 export class $CamoApplicatorItem extends $PressurizableItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -8611,10 +8799,11 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "getName"(arg0: $ItemStack$$Type): $Component
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public static "getCamoStateDisplayName"(arg0: $BlockState$$Type): $Component
+public "getName"(arg0: $ItemStack$$Type): $Component
 public "onItemUseFirst"(arg0: $ItemStack$$Type, arg1: $UseOnContext$$Type): $InteractionResult
+public static "getCamoStateDisplayName"(arg0: $BlockState$$Type): $Component
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8629,21 +8818,24 @@ declare global {
 export type $CamoApplicatorItem_ = $CamoApplicatorItem$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.block.CreativeCompressedIronBlock$ItemBlockCreativeCompressedIron" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$CreativeCompressedIronBlock, $CreativeCompressedIronBlock$$Type} from "me.desht.pneumaticcraft.common.block.CreativeCompressedIronBlock"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
-import {$CreativeCompressedIronBlock, $CreativeCompressedIronBlock$$Type} from "me.desht.pneumaticcraft.common.block.CreativeCompressedIronBlock"
 
 export class $CreativeCompressedIronBlock$ItemBlockCreativeCompressedIron extends $BlockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -8661,6 +8853,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8681,7 +8874,6 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $FluidBiodiesel$Source extends $BaseFlowingFluid$Source {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -8690,7 +8882,6 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -8748,8 +8939,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -8760,8 +8951,8 @@ import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.d
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -8779,7 +8970,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -8801,10 +8992,10 @@ static readonly "UPDATE_CLIENTS": integer
 constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "addSerializableComponents"(arg0: $List$$Type<($DataComponentType$$Type<(any)>)>): void
 public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "addExtraInformation"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "addSerializableComponents"(arg0: $List$$Type<($DataComponentType$$Type<(any)>)>): void
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public static "forBlock"(arg0: $Block$$Type): $IPneumaticWrenchable
@@ -8831,8 +9022,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -8841,8 +9032,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -8860,7 +9051,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -8937,51 +9128,51 @@ export class $ChargingStationBlockEntity extends $AbstractAirHandlingBlockEntity
  "upgradeOnly": boolean
 static readonly "CHARGE_INVENTORY_INDEX": integer
  "charging": boolean
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 constructor(arg0: $BlockPos$$Type, arg1: $BlockState$$Type)
 
 public "createMenu"(arg0: integer, arg1: $Inventory$$Type, arg2: $Player$$Type): $AbstractContainerMenu
-public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
 public "tickServer"(): void
 public "saveAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "clearRemoved"(): void
 public "setRemoved"(): void
+public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "getItemHandler"(arg0: $Direction$$Type): $IItemHandler
+public "writeToPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "readFromPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "setCamouflage"(arg0: $BlockState$$Type): void
+public "getCamouflage"(): $BlockState
+public "clearRemoved"(): void
+public "onUpgradesChanged"(): void
 public "canConnectPneumatic"(arg0: $Direction$$Type): boolean
+public "getRedstoneController"(): $RedstoneController<($ChargingStationBlockEntity)>
 public "getChargingStack"(): $ItemStack
 public "getChargingStackSynced"(): $ItemStack
 public "getChargeableInventory"(): $ChargeableItemHandler
-public "handleGUIButtonPress"(arg0: string, arg1: boolean, arg2: $ServerPlayer$$Type): void
-public "getRedstoneController"(): $RedstoneController<($ChargingStationBlockEntity)>
-public "onUpgradesChanged"(): void
-public "getCamouflage"(): $BlockState
-public "setCamouflage"(arg0: $BlockState$$Type): void
-public "readFromPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "writeToPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "getItemHandler"(arg0: $Direction$$Type): $IItemHandler
-public "getCurrentRedstonePower"(): integer
+public "handleGUIButtonPress"(arg0: StringJS, arg1: boolean, arg2: $ServerPlayer$$Type): void
 public "getRedstoneTabTitle"(): $MutableComponent
 public "getRedstoneMode"(): integer
 public "onRedstoneModeChanged"(arg0: integer): void
-public static "onCamouflageChanged"(arg0: $AbstractPneumaticCraftBlockEntity$$Type): void
-public static "getStackForState"(arg0: $BlockState$$Type): $ItemStack
+public "getCurrentRedstonePower"(): integer
 public static "writeCamo"(arg0: $CompoundTag$$Type, arg1: $BlockState$$Type): void
 public static "readCamo"(arg0: $CompoundTag$$Type): $BlockState
+public static "onCamouflageChanged"(arg0: $AbstractPneumaticCraftBlockEntity$$Type): void
+public static "getStackForState"(arg0: $BlockState$$Type): $ItemStack
 public "getDisplayName"(): $Component
-public "shouldTriggerClientSideContainerClosingOnOpen"(): boolean
 public "writeClientSideData"(arg0: $AbstractContainerMenu$$Type, arg1: $RegistryFriendlyByteBuf$$Type): void
+public "shouldTriggerClientSideContainerClosingOnOpen"(): boolean
 public "getUpgradeHandler"(): $IItemHandler
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+set "camouflage"(value: $BlockState$$Type)
+get "camouflage"(): $BlockState
+get "redstoneController"(): $RedstoneController<($ChargingStationBlockEntity)>
 get "chargingStack"(): $ItemStack
 get "chargingStackSynced"(): $ItemStack
 get "chargeableInventory"(): $ChargeableItemHandler
-get "redstoneController"(): $RedstoneController<($ChargingStationBlockEntity)>
-get "camouflage"(): $BlockState
-set "camouflage"(value: $BlockState$$Type)
-get "currentRedstonePower"(): integer
 get "redstoneTabTitle"(): $MutableComponent
 get "redstoneMode"(): integer
+get "currentRedstonePower"(): integer
 get "displayName"(): $Component
 get "upgradeHandler"(): $IItemHandler
 }
@@ -9013,18 +9204,18 @@ import {$Stream, $Stream$$Type} from "java.util.stream.Stream"
 
 export class $PneumaticCraftRecipeType<T extends $PneumaticCraftRecipe> implements $RecipeType<(T)> {
 
-constructor(arg0: string)
+constructor(arg0: StringJS)
 
-public "toString"(): string
-public "stream"(arg0: $Level$$Type): $Stream<($RecipeHolder<(T)>)>
 public "findFirst"(arg0: $Level$$Type, arg1: $Predicate$$Type<(T)>): $Optional<($RecipeHolder<(T)>)>
-public static "getCacheReloadListener"(): $PneumaticCraftRecipeType$CacheReloadListener
-public "allRecipeHolders"(arg0: $Level$$Type): $Collection<($RecipeHolder<(T)>)>
-public static "clearCachedRecipes"(): void
+public "toString"(): StringJS
+public "stream"(arg0: $Level$$Type): $Stream<($RecipeHolder<(T)>)>
 public "getRecipeMap"(arg0: $Level$$Type): $Map<($ResourceLocation), ($RecipeHolder<(T)>)>
 public "allRecipes"(arg0: $Level$$Type): $Collection<(T)>
 public "getRecipe"(arg0: $Level$$Type, arg1: $ResourceLocation$$Type): $Optional<($RecipeHolder<(T)>)>
-public static "register"<T extends $Recipe<(any)>>(arg0: string): $RecipeType<(T)>
+public static "getCacheReloadListener"(): $PneumaticCraftRecipeType$CacheReloadListener
+public static "clearCachedRecipes"(): void
+public "allRecipeHolders"(arg0: $Level$$Type): $Collection<($RecipeHolder<(T)>)>
+public static "register"<T extends $Recipe<(any)>>(arg0: StringJS): $RecipeType<(T)>
 public static "simple"<T extends $Recipe<(any)>>(arg0: $ResourceLocation$$Type): $RecipeType<(T)>
 }
 /**
@@ -9049,8 +9240,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$AirCompressorBlock, $AirCompressorBlock$$Type} from "me.desht.pneumaticcraft.common.block.AirCompressorBlock"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -9065,7 +9256,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -9109,7 +9300,6 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $FluidVegetableOil$Source extends $BaseFlowingFluid$Source {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -9118,7 +9308,6 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -9169,7 +9358,7 @@ declare module "me.desht.pneumaticcraft.api.drone.SpecialVariableRetrievalEvent"
 import {$Event, $Event$$Type} from "net.neoforged.bus.api.Event"
 
 export class $SpecialVariableRetrievalEvent extends $Event {
-readonly "specialVarName": string
+readonly "specialVarName": StringJS
 
 
 }
@@ -9186,15 +9375,17 @@ declare global {
 export type $SpecialVariableRetrievalEvent_ = $SpecialVariableRetrievalEvent$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.MicromissilesItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
@@ -9204,7 +9395,7 @@ import {$MicromissilesItem$FireMode, $MicromissilesItem$FireMode$$Type} from "me
 export class $MicromissilesItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -9214,10 +9405,11 @@ constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
 public "getMaxDamage"(arg0: $ItemStack$$Type): integer
-public "isValidRepairItem"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-public static "setEntityFilter"(arg0: $ItemStack$$Type, arg1: string): void
 public static "getFireMode"(arg0: $ItemStack$$Type): $MicromissilesItem$FireMode
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "isValidRepairItem"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
+public static "setEntityFilter"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9245,8 +9437,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Vec3i, $Vec3i$$Type} from "net.minecraft.core.Vec3i"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
@@ -9255,8 +9447,8 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ItemInteractionResult, $ItemInteractionResult$$Type} from "net.minecraft.world.ItemInteractionResult"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -9272,7 +9464,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -9295,13 +9487,13 @@ static readonly "UPDATE_CLIENTS": integer
 constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "addSerializableComponents"(arg0: $List$$Type<($DataComponentType$$Type<(any)>)>): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "useItemOn"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type, arg2: $Level$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type, arg5: $InteractionHand$$Type, arg6: $BlockHitResult$$Type): $ItemInteractionResult
+public "isRotatable"(): boolean
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "isRotatable"(): boolean
 public "getBoundingBlockOffsets"(): ($Vec3i)[]
+public "addSerializableComponents"(arg0: $List$$Type<($DataComponentType$$Type<(any)>)>): void
 public static "forBlock"(arg0: $Block$$Type): $IPneumaticWrenchable
 public "asHolder"(): $Holder<(any)>
 get "rotatable"(): boolean
@@ -9320,11 +9512,14 @@ declare global {
 export type $SolarCompressorBlock_ = $SolarCompressorBlock$$Type;
 }}
 declare module "me.desht.modularrouters.item.module.PlayerModule" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
@@ -9342,7 +9537,7 @@ import {$IPlayerOwned, $IPlayerOwned$$Type} from "me.desht.modularrouters.item.I
 export class $PlayerModule extends $ModuleItem implements $IPlayerOwned {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -9351,17 +9546,18 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public "getItemTint"(): $TintColor
+public "isDirectional"(): boolean
+public "getMenuType"(): $MenuType<($ModuleMenu)>
+public "getEnergyCost"(arg0: $ItemStack$$Type): integer
 public "doModuleValidation"(arg0: $ItemStack$$Type, arg1: $ServerPlayer$$Type): void
 public "addSettingsInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
-public "getMenuType"(): $MenuType<($ModuleMenu)>
-public "isDirectional"(): boolean
-public "getItemTint"(): $TintColor
-public "getEnergyCost"(arg0: $ItemStack$$Type): integer
 public "setOwner"(arg0: $ItemStack$$Type, arg1: $Player$$Type): void
 public "getOwnerProfile"(arg0: $ItemStack$$Type): $Optional<($GameProfile)>
-get "menuType"(): $MenuType<($ModuleMenu)>
-get "directional"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
+get "directional"(): boolean
+get "menuType"(): $MenuType<($ModuleMenu)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9376,15 +9572,19 @@ declare global {
 export type $PlayerModule_ = $PlayerModule$$Type;
 }}
 declare module "me.desht.modularrouters.item.smartfilter.ModFilter" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$AbstractSmartFilterMenu, $AbstractSmartFilterMenu$$Type} from "me.desht.modularrouters.container.AbstractSmartFilterMenu"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$IItemMatcher, $IItemMatcher$$Type} from "me.desht.modularrouters.api.matching.IItemMatcher"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$SmartFilterItem, $SmartFilterItem$$Type} from "me.desht.modularrouters.item.smartfilter.SmartFilterItem"
 import {$Inventory, $Inventory$$Type} from "net.minecraft.world.entity.player.Inventory"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$MFLocator, $MFLocator$$Type} from "me.desht.modularrouters.util.MFLocator"
@@ -9392,7 +9592,7 @@ import {$MFLocator, $MFLocator$$Type} from "me.desht.modularrouters.util.MFLocat
 export class $ModFilter extends $SmartFilterItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "MAX_SIZE": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -9401,12 +9601,13 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "compile"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): $IItemMatcher
 public "getSize"(arg0: $ItemStack$$Type): integer
+public "compile"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): $IItemMatcher
 public "createMenu"(arg0: integer, arg1: $Inventory$$Type, arg2: $MFLocator$$Type): $AbstractSmartFilterMenu
-public static "getModList"(arg0: $ItemStack$$Type): $List<(string)>
+public static "getModList"(arg0: $ItemStack$$Type): $List<(StringJS)>
+public static "setModList"(arg0: $ItemStack$$Type, arg1: $List$$Type<(StringJS)>): void
 public "addExtraInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
-public static "setModList"(arg0: $ItemStack$$Type, arg1: $List$$Type<(string)>): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9426,7 +9627,6 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$BaseFlowingFluid$Flowing, $BaseFlowingFluid$Flowing$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Flowing"
 
 export class $FluidVegetableOil$Flowing extends $BaseFlowingFluid$Flowing {
@@ -9436,7 +9636,6 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -9452,13 +9651,17 @@ declare global {
 export type $FluidVegetableOil$Flowing_ = $FluidVegetableOil$Flowing$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.SpawnerCoreItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$ColorHandlers$ITintableItem, $ColorHandlers$ITintableItem$$Type} from "me.desht.pneumaticcraft.client.ColorHandlers$ITintableItem"
@@ -9468,7 +9671,7 @@ import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.conte
 export class $SpawnerCoreItem extends $Item implements $ColorHandlers$ITintableItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -9477,8 +9680,9 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getTintColor"(arg0: $ItemStack$$Type, arg1: integer): integer
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9501,7 +9705,7 @@ static readonly "UPGRADES": $ModularRouterBlockEntity$RecompileFlag
 
 
 public static "values"(): ($ModularRouterBlockEntity$RecompileFlag)[]
-public static "valueOf"(arg0: string): $ModularRouterBlockEntity$RecompileFlag
+public static "valueOf"(arg0: StringJS): $ModularRouterBlockEntity$RecompileFlag
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9524,16 +9728,16 @@ import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.d
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$AirBlock, $AirBlock$$Type} from "net.minecraft.world.level.block.AirBlock"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -9551,7 +9755,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -9600,44 +9804,44 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 export class $CompiledModule {
 
 
-public "getEvent"(): $ExecuteModuleEvent
-public "getRange"(): integer
-public "getModule"(): $ModuleItem
-public "execute"(arg0: $ModularRouterBlockEntity$$Type): boolean
-public "termination"(): $ModuleTermination
 public "getTarget"(): $ModuleTarget
 public "cleanup"(arg0: $ModularRouterBlockEntity$$Type): void
 public "getFilter"(): $Filter
+public "getEvent"(): $ExecuteModuleEvent
+public "getModule"(): $ModuleItem
+public "execute"(arg0: $ModularRouterBlockEntity$$Type): boolean
+public "termination"(): $ModuleTermination
+public "getRange"(): integer
 public "getDirection"(): $RelativeDirection
 public "getTargets"(): $List<($ModuleTarget)>
-public "getAugmentCount"(arg0: $Item$$Type): integer
-public "getAugmentCount"(arg0: $Supplier$$Type<($Item$$Type)>): integer
-public "getRedstoneBehaviour"(): $RedstoneBehaviour
-public "getItemsPerTick"(arg0: $ModularRouterBlockEntity$$Type): integer
-public "getAbsoluteFacing"(): $Direction
-public "getRangeSquared"(): integer
+public "checkRedstone"(arg0: boolean, arg1: boolean): boolean
+public "isRegulationOK"(arg0: $ModularRouterBlockEntity$$Type, arg1: boolean): boolean
 public "onCompiled"(arg0: $ModularRouterBlockEntity$$Type): void
 public "shouldExecute"(): boolean
 public "getEnergyCost"(): integer
-public "checkRedstone"(arg0: boolean, arg1: boolean): boolean
-public "isRegulationOK"(arg0: $ModularRouterBlockEntity$$Type, arg1: boolean): boolean
-public "careAboutItemAttributes"(): boolean
+public "getItemsPerTick"(arg0: $ModularRouterBlockEntity$$Type): integer
+public "getAugmentCount"(arg0: $Supplier$$Type<($Item$$Type)>): integer
+public "getAugmentCount"(arg0: $Item$$Type): integer
+public "getRedstoneBehaviour"(): $RedstoneBehaviour
 public "getRegulationAmount"(): integer
 public "transferToRouter"(arg0: $IItemHandler$$Type, arg1: $BlockPos$$Type, arg2: $ModularRouterBlockEntity$$Type): $ItemStack
 public "getEffectiveTarget"(arg0: $ModularRouterBlockEntity$$Type): $ModuleTarget
 public "onNeighbourChange"(arg0: $ModularRouterBlockEntity$$Type): void
-get "event"(): $ExecuteModuleEvent
-get "range"(): integer
-get "module"(): $ModuleItem
+public "getRangeSquared"(): integer
+public "getAbsoluteFacing"(): $Direction
+public "careAboutItemAttributes"(): boolean
 get "target"(): $ModuleTarget
 get "filter"(): $Filter
+get "event"(): $ExecuteModuleEvent
+get "module"(): $ModuleItem
+get "range"(): integer
 get "direction"(): $RelativeDirection
 get "targets"(): $List<($ModuleTarget)>
-get "redstoneBehaviour"(): $RedstoneBehaviour
-get "absoluteFacing"(): $Direction
-get "rangeSquared"(): integer
 get "energyCost"(): integer
+get "redstoneBehaviour"(): $RedstoneBehaviour
 get "regulationAmount"(): integer
+get "rangeSquared"(): integer
+get "absoluteFacing"(): $Direction
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9652,18 +9856,22 @@ declare global {
 export type $CompiledModule_ = $CompiledModule$$Type;
 }}
 declare module "me.desht.modularrouters.item.module.EnergyOutputModule" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.TintColor"
 
 export class $EnergyOutputModule extends $ModuleItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -9673,6 +9881,7 @@ constructor()
 
 public "getItemTint"(): $TintColor
 public "getEnergyCost"(arg0: $ItemStack$$Type): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
 }
 /**
@@ -9688,22 +9897,22 @@ declare global {
 export type $EnergyOutputModule_ = $EnergyOutputModule$$Type;
 }}
 declare module "me.desht.modularrouters.item.module.ITargetedModule" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$Set, $Set$$Type} from "java.util.Set"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
+import {$Set, $Set$$Type} from "java.util.Set"
 import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
 import {$ModuleTarget, $ModuleTarget$$Type} from "me.desht.modularrouters.logic.ModuleTarget"
 
 export interface $ITargetedModule {
 
- "canOperateInDimension"(arg0: $ResourceKey$$Type<($Level)>): boolean
- "isRangeLimited"(): boolean
  "getMaxTargets"(): integer
+ "isRangeLimited"(): boolean
  "isValidTarget"(arg0: $UseOnContext$$Type): boolean
-get "rangeLimited"(): boolean
+ "canOperateInDimension"(arg0: $ResourceKey$$Type<($Level)>): boolean
 get "maxTargets"(): integer
+get "rangeLimited"(): boolean
 }
 
 export namespace $ITargetedModule {
@@ -9717,11 +9926,11 @@ export class $ITargetedModule$$Static implements $ITargetedModule {
 
 static "setTargets"(arg0: $ItemStack$$Type, arg1: $Collection$$Type<($ModuleTarget$$Type)>): void
 static "getTargets"(arg0: $ItemStack$$Type, arg1: boolean): $Set<($ModuleTarget)>
+ "getMaxTargets"(): integer
+ "isRangeLimited"(): boolean
+ "isValidTarget"(arg0: $UseOnContext$$Type): boolean
  "canOperateInDimension"(arg0: $ResourceKey$$Type<($Level)>): boolean
 static "canSelectTarget"(arg0: $UseOnContext$$Type): boolean
- "isRangeLimited"(): boolean
- "getMaxTargets"(): integer
- "isValidTarget"(arg0: $UseOnContext$$Type): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9753,8 +9962,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$SignalGetter, $SignalGetter$$Type} from "net.minecraft.world.level.SignalGetter"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -9772,7 +9981,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -9796,8 +10005,8 @@ constructor(arg0: $BlockBehaviour$Properties$$Type)
 public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
-public "shouldCheckWeakPower"(arg0: $BlockState$$Type, arg1: $SignalGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): boolean
 public "isRotatable"(): boolean
+public "shouldCheckWeakPower"(arg0: $BlockState$$Type, arg1: $SignalGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): boolean
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public static "forBlock"(arg0: $Block$$Type): $IPneumaticWrenchable
@@ -9851,7 +10060,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -9873,14 +10082,14 @@ static readonly "UPDATE_CLIENTS": integer
 constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "getStacksForItem"(): $Stream<($ItemStack)>
 public "isRotatable"(): boolean
+public "getStacksForItem"(): $Stream<($ItemStack)>
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public static "forBlock"(arg0: $Block$$Type): $IPneumaticWrenchable
 public "asHolder"(): $Holder<(any)>
-get "stacksForItem"(): $Stream<($ItemStack)>
 get "rotatable"(): boolean
+get "stacksForItem"(): $Stream<($ItemStack)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9904,13 +10113,13 @@ import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 export class $ProgWidgetType<P extends $IProgWidget> {
 
 
-public "cast"(arg0: $IProgWidget$$Type): P
 public "create"(): P
-public static "createType"<P extends $IProgWidget>(arg0: $Supplier$$Type<(P)>, arg1: $MapCodec$$Type<(P)>, arg2: $StreamCodec$$Type<($RegistryFriendlyByteBuf$$Type), (P)>): $ProgWidgetType<(P)>
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($IProgWidget)>
+public "cast"(arg0: $IProgWidget$$Type): P
 public "codec"(): $MapCodec<($IProgWidget)>
-public "getTranslationKey"(): string
-get "translationKey"(): string
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($IProgWidget)>
+public static "createType"<P extends $IProgWidget>(arg0: $Supplier$$Type<(P)>, arg1: $MapCodec$$Type<(P)>, arg2: $StreamCodec$$Type<($RegistryFriendlyByteBuf$$Type), (P)>): $ProgWidgetType<(P)>
+public "getTranslationKey"(): StringJS
+get "translationKey"(): StringJS
 /**
  * This field is a type stub generated by ProbeJS and shall not be used in any sense.
  */
@@ -9933,20 +10142,24 @@ declare global {
 export type $ProgWidgetType_<P> = $ProgWidgetType$$Type<(P)>;
 }}
 declare module "me.desht.modularrouters.item.augment.AugmentItem" {
-import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$MRBaseItem, $MRBaseItem$$Type} from "me.desht.modularrouters.item.MRBaseItem"
 
 export class $AugmentItem extends $MRBaseItem {
 static readonly "SLOTS": integer
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -9954,8 +10167,9 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "getExtraInfo"(arg0: integer, arg1: $ItemStack$$Type): $Component
 public "getMaxAugments"(arg0: $ModuleItem$$Type): integer
+public "getExtraInfo"(arg0: integer, arg1: $ItemStack$$Type): $Component
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9970,17 +10184,21 @@ declare global {
 export type $AugmentItem_ = $AugmentItem$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.AbstractChestUpgradeKitItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $AbstractChestUpgradeKitItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -9988,6 +10206,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10050,7 +10269,6 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $FluidDiesel$Source extends $BaseFlowingFluid$Source {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -10059,7 +10277,6 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -10075,21 +10292,24 @@ declare global {
 export type $FluidDiesel$Source_ = $FluidDiesel$Source$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.block.PneumaticDoorBlock$ItemBlockPneumaticDoor" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$ColorHandlers$ITintableItem, $ColorHandlers$ITintableItem$$Type} from "me.desht.pneumaticcraft.client.ColorHandlers$ITintableItem"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$ColorHandlers$ITintableItem, $ColorHandlers$ITintableItem$$Type} from "me.desht.pneumaticcraft.client.ColorHandlers$ITintableItem"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $PneumaticDoorBlock$ItemBlockPneumaticDoor extends $BlockItem implements $ColorHandlers$ITintableItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -10108,6 +10328,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10131,11 +10352,11 @@ import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraf
 export interface $IDescSynced {
 
  "getPosition"(): $BlockPos
+ "writeToPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+ "readFromPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+ "onDescUpdate"(): void
  "getDescriptionFields"(): $List<($SyncedField<(any)>)>
  "shouldSyncField"(arg0: integer): boolean
- "readFromPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
- "writeToPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
- "onDescUpdate"(): void
 get "position"(): $BlockPos
 get "descriptionFields"(): $List<($SyncedField<(any)>)>
 }
@@ -10147,11 +10368,11 @@ export class $IDescSynced$$Static implements $IDescSynced {
 
 
  "getPosition"(): $BlockPos
+ "writeToPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+ "readFromPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+ "onDescUpdate"(): void
  "getDescriptionFields"(): $List<($SyncedField<(any)>)>
  "shouldSyncField"(arg0: integer): boolean
- "readFromPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
- "writeToPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
- "onDescUpdate"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10175,10 +10396,10 @@ import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ColorHandlers$ITintableBlock, $ColorHandlers$ITintableBlock$$Type} from "me.desht.pneumaticcraft.client.ColorHandlers$ITintableBlock"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockAndTintGetter, $BlockAndTintGetter$$Type} from "net.minecraft.world.level.BlockAndTintGetter"
-import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$IBlockComparatorSupport, $IBlockComparatorSupport$$Type} from "me.desht.pneumaticcraft.common.block.IBlockComparatorSupport"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
+import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -10189,16 +10410,16 @@ import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.Inte
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $OmnidirectionalHopperBlock extends $AbstractPneumaticCraftBlock implements $ColorHandlers$ITintableBlock, $PneumaticCraftEntityBlock, $IBlockComparatorSupport {
 static readonly "DOWN": $BooleanProperty
@@ -10209,7 +10430,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -10234,10 +10455,10 @@ constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
-public "isRotatable"(): boolean
-public "getTintColor"(arg0: $BlockState$$Type, arg1: $BlockAndTintGetter$$Type, arg2: $BlockPos$$Type, arg3: integer): integer
 public "onWrenched"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type, arg4: $InteractionHand$$Type): boolean
+public "getTintColor"(arg0: $BlockState$$Type, arg1: $BlockAndTintGetter$$Type, arg2: $BlockPos$$Type, arg3: integer): integer
+public "isRotatable"(): boolean
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public static "forBlock"(arg0: $Block$$Type): $IPneumaticWrenchable
@@ -10268,21 +10489,21 @@ static readonly "CODEC": $Codec<($BaseSettings)>
 static readonly "STREAM_CODEC": $StreamCodec<($FriendlyByteBuf), ($BaseSettings)>
 static readonly "DEFAULT": $BaseSettings
 
-constructor(enableVariable: string, enablingValue: $BlockPos$$Type)
+constructor(enableVariable: StringJS, enablingValue: $BlockPos$$Type)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "withEnablingValue"(arg0: $BlockPos$$Type): $BaseSettings
-public "enableVariable"(): string
+public "withVariable"(arg0: StringJS): $BaseSettings
+public "enableVariable"(): StringJS
 public "enablingValue"(): $BlockPos
-public "withVariable"(arg0: string): $BaseSettings
+public "withEnablingValue"(arg0: $BlockPos$$Type): $BaseSettings
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $BaseSettings$$Type = ({"enableVariable"?: string, "enablingValue"?: $BlockPos$$Type}) | ([enableVariable?: string, enablingValue?: $BlockPos$$Type]);
+export type $BaseSettings$$Type = ({"enablingValue"?: $BlockPos$$Type, "enableVariable"?: StringJS}) | ([enablingValue?: $BlockPos$$Type, enableVariable?: StringJS]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -10291,21 +10512,25 @@ declare global {
 export type $BaseSettings_ = $BaseSettings$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.SpawnerAgitatorItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$SemiblockItem, $SemiblockItem$$Type} from "me.desht.pneumaticcraft.common.semiblock.SemiblockItem"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
-import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 
 export class $SpawnerAgitatorItem extends $SemiblockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -10314,6 +10539,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10334,10 +10560,13 @@ import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$AbstractGunAmmoItem, $AbstractGunAmmoItem$$Type} from "me.desht.pneumaticcraft.common.item.minigun.AbstractGunAmmoItem"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Minigun, $Minigun$$Type} from "me.desht.pneumaticcraft.common.minigun.Minigun"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
@@ -10345,7 +10574,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $StandardGunAmmoItem extends $AbstractGunAmmoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -10353,16 +10582,17 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public "isFoil"(arg0: $ItemStack$$Type): boolean
 public "getMaxDamage"(arg0: $ItemStack$$Type): integer
 public static "getPotionStack"(arg0: $ItemStack$$Type): $ItemStack
-public "isFoil"(arg0: $ItemStack$$Type): boolean
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-public "getAirUsageMultiplier"(arg0: $Minigun$$Type, arg1: $ItemStack$$Type): float
 public "onTargetHit"(arg0: $Minigun$$Type, arg1: $ItemStack$$Type, arg2: $Entity$$Type): integer
 public "onBlockHit"(arg0: $Minigun$$Type, arg1: $ItemStack$$Type, arg2: $BlockHitResult$$Type): integer
 public "getAmmoCost"(arg0: $ItemStack$$Type): integer
 public "getAmmoColor"(arg0: $ItemStack$$Type): integer
 public static "setPotion"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): void
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "getAirUsageMultiplier"(arg0: $Minigun$$Type, arg1: $ItemStack$$Type): float
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10383,7 +10613,6 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $FluidEthanol$Source extends $BaseFlowingFluid$Source {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -10392,7 +10621,6 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -10427,48 +10655,48 @@ export class $AmadronOffer extends $AmadronRecipe {
 
 constructor(arg0: $ResourceLocation$$Type, arg1: $AmadronTradeResource$$Type, arg2: $AmadronTradeResource$$Type, arg3: boolean, arg4: boolean, arg5: integer, arg6: integer, arg7: integer, arg8: $PlayerFilter$$Type, arg9: $PlayerFilter$$Type)
 
-public "getInput"(): $AmadronTradeResource
-public "getOutput"(): $AmadronTradeResource
 public "getDescription"(): $Component
+public "getInput"(): $AmadronTradeResource
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "write"(arg0: $RegistryFriendlyByteBuf$$Type): void
 public "getType"(): $RecipeType<(any)>
-public "getSerializer"(): $RecipeSerializer<(any)>
+public "getOutput"(): $AmadronTradeResource
+public "onTrade"(arg0: integer, arg1: StringJS): void
 public "equivalentTo"(arg0: $AmadronPlayerOffer$$Type): boolean
+public "getVendorName"(): $Component
+public "isStaticOffer"(): boolean
+public "getTradeLevel"(): integer
+public "getBlacklist"(): $PlayerFilter
+public static "villagerTrade"(arg0: $ResourceLocation$$Type, arg1: $MerchantOffer$$Type, arg2: integer): $AmadronOffer
+public "getOfferType"(): $OfferType
+public "getMaxStock"(): integer
+public "setStock"(arg0: integer): void
+public "getWhitelist"(): $IPlayerFilter
+public "getStock"(): integer
+public "getOfferId"(): $ResourceLocation
+public "getSerializer"(): $RecipeSerializer<(any)>
 public "isVillagerTrade"(): boolean
 public "addAvailabilityData"(arg0: $Player$$Type, arg1: $List$$Type<($Component$$Type)>): void
 public "isLocationLimited"(): boolean
 public "isUsableByPlayer"(arg0: $Player$$Type): boolean
-public "getMaxStock"(): integer
-public "setStock"(arg0: integer): void
-public "getWhitelist"(): $PlayerFilter
-public "onTrade"(arg0: integer, arg1: string): void
-public "getVendorName"(): $Component
-public "isStaticOffer"(): boolean
-public "getTradeLevel"(): integer
-public "getBlacklist"(): $IPlayerFilter
-public static "villagerTrade"(arg0: $ResourceLocation$$Type, arg1: $MerchantOffer$$Type, arg2: integer): $AmadronOffer
-public "getOfferType"(): $OfferType
-public "getStock"(): integer
-public "getOfferId"(): $ResourceLocation
-get "input"(): $AmadronTradeResource
-get "output"(): $AmadronTradeResource
 get "description"(): $Component
+get "input"(): $AmadronTradeResource
 get "type"(): $RecipeType<(any)>
-get "serializer"(): $RecipeSerializer<(any)>
-get "locationLimited"(): boolean
-get "maxStock"(): integer
-set "stock"(value: integer)
-get "whitelist"(): $PlayerFilter
+get "output"(): $AmadronTradeResource
 get "vendorName"(): $Component
 get "staticOffer"(): boolean
 get "tradeLevel"(): integer
-get "blacklist"(): $IPlayerFilter
+get "blacklist"(): $PlayerFilter
 get "offerType"(): $OfferType
+get "maxStock"(): integer
+set "stock"(value: integer)
+get "whitelist"(): $IPlayerFilter
 get "stock"(): integer
 get "offerId"(): $ResourceLocation
+get "serializer"(): $RecipeSerializer<(any)>
+get "locationLimited"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10483,15 +10711,17 @@ declare global {
 export type $AmadronOffer_ = $AmadronOffer$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.logistics.AbstractLogisticsFrameItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
@@ -10501,7 +10731,7 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 export class $AbstractLogisticsFrameItem extends $SemiblockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -10512,6 +10742,7 @@ constructor()
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public static "addLogisticsTooltip"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: boolean): $List<($Component)>
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10532,7 +10763,6 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $FluidMemoryEssence$Source extends $BaseFlowingFluid$Source {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -10541,7 +10771,6 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -10563,7 +10792,6 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $FluidKerosene$Source extends $BaseFlowingFluid$Source {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -10572,7 +10800,6 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -10603,9 +10830,9 @@ readonly "pattern": $ShapedRecipePattern
 
 constructor(arg0: $ShapedRecipe$$Type)
 
+public "getSerializer"(): $RecipeSerializer<(any)>
 public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
 public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "getSerializer"(): $RecipeSerializer<(any)>
 get "serializer"(): $RecipeSerializer<(any)>
 }
 /**
@@ -10660,41 +10887,41 @@ import {$IAssemblyMachine, $IAssemblyMachine$$Type} from "me.desht.pneumaticcraf
 import {$TrackedData, $TrackedData$$Type} from "dev.corgitaco.dataanchor.data.TrackedData"
 import {$TrackedDataContainer, $TrackedDataContainer$$Type} from "dev.corgitaco.dataanchor.data.TrackedDataContainer"
 import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.dataanchor.data.registry.TrackedDataRegistry"
-import {$IResettable, $IResettable$$Type} from "me.desht.pneumaticcraft.common.block.entity.processing.IResettable"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
+import {$IResettable, $IResettable$$Type} from "me.desht.pneumaticcraft.common.block.entity.processing.IResettable"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $AssemblyPlatformBlockEntity extends $AbstractTickingBlockEntity implements $IAssemblyMachine, $IResettable {
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
  "clawProgress": float
  "oldClawProgress": float
 
 constructor(arg0: $BlockPos$$Type, arg1: $BlockState$$Type)
 
 public "reset"(): boolean
-public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "saveAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "setSpeed"(arg0: float): void
 public "isIdle"(): boolean
-public "getAssemblyType"(): $AssemblyProgram$EnumMachine
+public "saveAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "getItemHandler"(arg0: $Direction$$Type): $IItemHandler
+public "setSpeed"(arg0: float): void
+public "getHeldStack"(): $ItemStack
+public "setHeldStack"(arg0: $ItemStack$$Type): void
+public "tickCommonPre"(): void
 public "setControllerPos"(arg0: $BlockPos$$Type): void
 public "hasItemCapability"(): boolean
 public "onNeighborBlockUpdate"(arg0: $BlockPos$$Type): void
-public "tickCommonPre"(): void
-public "getHeldStack"(): $ItemStack
-public "setHeldStack"(arg0: $ItemStack$$Type): void
-public "getItemHandler"(arg0: $Direction$$Type): $IItemHandler
+public "getAssemblyType"(): $AssemblyProgram$EnumMachine
 public "getUpgradeHandler"(): $IItemHandler
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
-set "speed"(value: float)
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "idle"(): boolean
-get "assemblyType"(): $AssemblyProgram$EnumMachine
-set "controllerPos"(value: $BlockPos$$Type)
+set "speed"(value: float)
 get "heldStack"(): $ItemStack
 set "heldStack"(value: $ItemStack$$Type)
+set "controllerPos"(value: $BlockPos$$Type)
+get "assemblyType"(): $AssemblyProgram$EnumMachine
 get "upgradeHandler"(): $IItemHandler
 }
 /**
@@ -10710,16 +10937,20 @@ declare global {
 export type $AssemblyPlatformBlockEntity_ = $AssemblyPlatformBlockEntity$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.logistics.LogisticsFramePassiveProviderItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$AbstractLogisticsFrameItem, $AbstractLogisticsFrameItem$$Type} from "me.desht.pneumaticcraft.common.item.logistics.AbstractLogisticsFrameItem"
 
 export class $LogisticsFramePassiveProviderItem extends $AbstractLogisticsFrameItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -10727,6 +10958,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10741,16 +10973,20 @@ declare global {
 export type $LogisticsFramePassiveProviderItem_ = $LogisticsFramePassiveProviderItem$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.logistics.LogisticsFrameActiveProviderItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$AbstractLogisticsFrameItem, $AbstractLogisticsFrameItem$$Type} from "me.desht.pneumaticcraft.common.item.logistics.AbstractLogisticsFrameItem"
 
 export class $LogisticsFrameActiveProviderItem extends $AbstractLogisticsFrameItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -10758,6 +10994,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10773,8 +11010,8 @@ export type $LogisticsFrameActiveProviderItem_ = $LogisticsFrameActiveProviderIt
 }}
 declare module "me.desht.modularrouters.logic.settings.TransferDirection" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -10786,21 +11023,21 @@ static readonly "TO_ROUTER": $TransferDirection
 static readonly "FROM_ROUTER": $TransferDirection
 
 
+public "getSymbol"(): StringJS
 public static "values"(): ($TransferDirection)[]
-public static "valueOf"(arg0: string): $TransferDirection
-public "getSymbol"(): string
-public "getTranslationKey"(): string
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $TransferDirection
+public "getTranslationKey"(): StringJS
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "symbol"(): string
-get "translationKey"(): string
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "symbol"(): StringJS
+get "translationKey"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10852,7 +11089,7 @@ static readonly "BASIC": $AirCanisterItem$CanisterType
 
 
 public static "values"(): ($AirCanisterItem$CanisterType)[]
-public static "valueOf"(arg0: string): $AirCanisterItem$CanisterType
+public static "valueOf"(arg0: StringJS): $AirCanisterItem$CanisterType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10905,10 +11142,10 @@ declare module "me.desht.modularrouters.util.TranslatableEnum" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $TranslatableEnum {
 
- "getTranslationKey"(): string
+ "getTranslationKey"(): StringJS
 
-(): string
-get "translationKey"(): string
+(): StringJS
+get "translationKey"(): StringJS
 }
 
 export namespace $TranslatableEnum {
@@ -10917,13 +11154,13 @@ const probejs$$marker: never
 export class $TranslatableEnum$$Static implements $TranslatableEnum {
 
 
- "getTranslationKey"(): string
+ "getTranslationKey"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $TranslatableEnum$$Type = (() => string);
+export type $TranslatableEnum$$Type = (() => StringJS);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -10942,8 +11179,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -10952,8 +11189,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
@@ -10972,7 +11209,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -10994,8 +11231,8 @@ static readonly "UPDATE_CLIENTS": integer
 constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
 public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "isSignalSource"(arg0: $BlockState$$Type): boolean
 public "getSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
@@ -11019,13 +11256,17 @@ declare global {
 export type $SecurityStationBlock_ = $SecurityStationBlock$$Type;
 }}
 declare module "me.desht.modularrouters.item.module.BreakerModule" {
-import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
-import {$ModuleMenu, $ModuleMenu$$Type} from "me.desht.modularrouters.container.ModuleMenu"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$IPickaxeUser, $IPickaxeUser$$Type} from "me.desht.modularrouters.item.module.IPickaxeUser"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
+import {$ModuleMenu, $ModuleMenu$$Type} from "me.desht.modularrouters.container.ModuleMenu"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MenuType, $MenuType$$Type} from "net.minecraft.world.inventory.MenuType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.TintColor"
@@ -11033,7 +11274,7 @@ import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.
 export class $BreakerModule extends $ModuleItem implements $IPickaxeUser {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -11041,13 +11282,14 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "getMenuType"(): $MenuType<($ModuleMenu)>
 public "getItemTint"(): $TintColor
+public "getMenuType"(): $MenuType<($ModuleMenu)>
 public "getEnergyCost"(arg0: $ItemStack$$Type): integer
-public "getPickaxe"(arg0: $ItemStack$$Type): $ItemStack
 public "setPickaxe"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): $ItemStack
-get "menuType"(): $MenuType<($ModuleMenu)>
+public "getPickaxe"(arg0: $ItemStack$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
+get "menuType"(): $MenuType<($ModuleMenu)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11075,28 +11317,28 @@ export class $HeatBehaviour {
 
 constructor()
 
+public "tick"(): void
 public "equals"(arg0: any): boolean
 public "hashCode"(): integer
 public "initialize"(arg0: $IHeatExchangerLogic$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): $HeatBehaviour
 public "getId"(): $ResourceLocation
-public "tick"(): void
+public "getPos"(): $BlockPos
+public "deserializeNBT"(arg0: $CompoundTag$$Type): void
+public "serializeNBT"(): $CompoundTag
 public "isApplicable"(): boolean
 public "getDirection"(): $Direction
 public "getBlockState"(): $BlockState
-public "deserializeNBT"(arg0: $CompoundTag$$Type): void
-public "serializeNBT"(): $CompoundTag
-public "getPos"(): $BlockPos
+public "getWorld"(): $Level
 public "getHeatExchanger"(): $IHeatExchangerLogic
 public "getCachedTileEntity"(): $BlockEntity
-public "getWorld"(): $Level
 get "id"(): $ResourceLocation
+get "pos"(): $BlockPos
 get "applicable"(): boolean
 get "direction"(): $Direction
 get "blockState"(): $BlockState
-get "pos"(): $BlockPos
+get "world"(): $Level
 get "heatExchanger"(): $IHeatExchangerLogic
 get "cachedTileEntity"(): $BlockEntity
-get "world"(): $Level
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11125,8 +11367,8 @@ import {$WalkAnimationState, $WalkAnimationState$$Type} from "net.minecraft.worl
 import {$ScoreHolder, $ScoreHolder$$Type} from "net.minecraft.world.scores.ScoreHolder"
 import {$GoalSelector, $GoalSelector$$Type} from "net.minecraft.world.entity.ai.goal.GoalSelector"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$PortalProcessor, $PortalProcessor$$Type} from "net.minecraft.world.entity.PortalProcessor"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$EntityType, $EntityType$$Type} from "net.minecraft.world.entity.EntityType"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$EntityDimensions, $EntityDimensions$$Type} from "net.minecraft.world.entity.EntityDimensions"
@@ -11134,10 +11376,12 @@ import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.Inte
 import {$TrackedData, $TrackedData$$Type} from "dev.corgitaco.dataanchor.data.TrackedData"
 import {$LevelRenderer, $LevelRenderer$$Type} from "net.minecraft.client.renderer.LevelRenderer"
 import {$ChangeSubscriber, $ChangeSubscriber$$Type} from "net.caffeinemc.mods.lithium.common.util.change_tracking.ChangeSubscriber"
-import {$Entity$RemovalReason, $Entity$RemovalReason$$Type} from "net.minecraft.world.entity.Entity$RemovalReason"
 import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.dataanchor.data.registry.TrackedDataRegistry"
+import {$Entity$RemovalReason, $Entity$RemovalReason$$Type} from "net.minecraft.world.entity.Entity$RemovalReason"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
+import {$HashMap, $HashMap$$Type} from "java.util.HashMap"
+import {$SpellData, $SpellData$$Type} from "io.redspace.ironsspellbooks.api.spells.SpellData"
 import {$Leashable, $Leashable$$Type} from "net.minecraft.world.entity.Leashable"
 import {$Stack, $Stack$$Type} from "java.util.Stack"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
@@ -11162,8 +11406,9 @@ static readonly "MAX_PICKUP_LOOT_CHANCE": float
  "zza": float
  "goalSelector": $GoalSelector
  "swingingArm": $InteractionHand
-static readonly "ID_TAG": string
+static readonly "ID_TAG": StringJS
 static readonly "DATA_HEALTH_ID": $EntityDataAccessor<(float)>
+ "persistenceRequired": boolean
 static readonly "DELTA_AFFECTED_BY_BLOCKS_BELOW_1_0": double
  "xRotO": float
  "zo": double
@@ -11173,7 +11418,7 @@ static readonly "DELTA_AFFECTED_BY_BLOCKS_BELOW_1_0": double
  "yya": float
  "oAttackAnim": float
  "yHeadRotO": float
-static readonly "UUID_TAG": string
+static readonly "UUID_TAG": StringJS
  "hurtDuration": integer
 static readonly "DEATH_DURATION": integer
  "portalProcess": $PortalProcessor
@@ -11183,12 +11428,12 @@ static readonly "DEATH_DURATION": integer
  "laserExtension": float
 static readonly "DEFAULT_BABY_SCALE": float
  "eyeHeight": float
-static readonly "ATTRIBUTES_FIELD": string
+static readonly "ATTRIBUTES_FIELD": StringJS
 static readonly "UPDATE_GOAL_SELECTOR_EVERY_N_TICKS": integer
 static readonly "DEFAULT_BB_HEIGHT": float
  "xxa": float
  "flyDist": float
-static readonly "PASSENGERS_TAG": string
+static readonly "PASSENGERS_TAG": StringJS
  "wasOnFire": boolean
  "attackAnim": float
  "zOld": double
@@ -11197,13 +11442,16 @@ readonly "timeOffs": float
 readonly "rotA": float
  "horizontalCollision": boolean
  "dimensions": $EntityDimensions
+ "castingSpell": $SpellData
 static readonly "DEFAULT_EQUIPMENT_DROP_CHANCE": float
 static readonly "ARMOR_SLOT_OFFSET": integer
  "swingTime": integer
+ "entityJs$builder": any
 static readonly "BODY_ARMOR_OFFSET": integer
  "tickCount": integer
 static readonly "MAX_ENCHANTED_ARMOR_CHANCE": float
 static readonly "MAX_ENCHANTED_WEAPON_CHANCE": float
+ "hasUsedSingleAttack": boolean
 static readonly "BOARDING_COOLDOWN": integer
 static readonly "PRESERVE_ITEM_DROP_CHANCE": integer
 static readonly "SWING_DURATION": integer
@@ -11219,6 +11467,7 @@ static readonly "BASE_JUMP_POWER": float
  "targetSelector": $GoalSelector
  "oldPropRotation": float
  "oldLaserExtension": float
+ "drinkTime": integer
  "xOld": double
  "wasInPowderSnow": boolean
  "hurtTime": integer
@@ -11243,12 +11492,13 @@ static readonly "PLAYER_HURT_EXPERIENCE_TIME": integer
 static readonly "HAND_SLOTS": integer
 static readonly "DEFAULT_BB_WIDTH": float
  "minorHorizontalCollision": boolean
+readonly "spells": $HashMap<(any), (any)>
 static readonly "EXTRA_RENDER_CULLING_SIZE_WITH_BIG_HAT": float
  "removeArrowTime": integer
  "walkDistO": float
 static readonly "FREEZE_HURT_FREQUENCY": integer
  "isInPowderSnow": boolean
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
  "target": $LivingEntity
  "yBodyRot": float
  "blocksBuilding": boolean
@@ -11261,43 +11511,49 @@ static readonly "BASE_SAFE_FALL_DISTANCE": integer
 
 constructor(arg0: $EntityType$$Type<($PathfinderMob$$Type)>, arg1: $Level$$Type)
 
-public "getLabel"(): string
-public "getLaserOffsetY"(): double
-public "getDroneHeldItem"(): $ItemStack
-public "getTargetedBlock"(): $BlockPos
-public "isTeleportRangeLimited"(): boolean
-public "getDroneColor"(): integer
-public "getOwnerName"(): $Component
+public "getLabel"(): StringJS
 public "getDugBlock"(): $BlockPos
 public "getLaserColor"(): integer
 public "isAccelerating"(): boolean
 public "hasMinigun"(): boolean
+public "getOwnerName"(): $Component
+public "getDroneColor"(): integer
+public "getLaserOffsetY"(): double
+public "getDroneHeldItem"(): $ItemStack
+public "getTargetedBlock"(): $BlockPos
+public "isTeleportRangeLimited"(): boolean
+public "self"(): $LivingEntity
+/**
+ * 
+ * @deprecated
+ */
+public "getItemBySlot"(arg0: $EquipmentSlot$$Type): $ItemStack
 public static "tickLeash"<E extends ($Entity) & ($Leashable)>(arg0: E): void
+public static "getAlternativeStack"(livingEntity: $LivingEntity$$Type, equipmentSlot: $EquipmentSlot$$Type, consumer: $Consumer$$Type<($ItemStack)>): void
 public "setLookupToggle"(value: boolean): void
 public "getLookupToggle"(): boolean
-public static "getAlternativeStack"(livingEntity: $LivingEntity$$Type, equipmentSlot: $EquipmentSlot$$Type, consumer: $Consumer$$Type<($ItemStack)>): void
 public "lithium$onEquipmentReplaced"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): void
 public static "tickEntity"(entity: $LivingEntity$$Type): void
 public static "getAlpha"(le: $LivingEntity$$Type, partialTicks: float): float
 public "lithium$getCachedFeetBlockState"(): $BlockState
-public "sodiumdynamiclights$scheduleTrackedChunksRebuild"(arg0: $LevelRenderer$$Type): void
-public "sodiumdynamiclights$updateDynamicLight"(arg0: $LevelRenderer$$Type): boolean
-public "sdl$getDynamicLightLevel"(): $Level
-public "sdl$shouldUpdateDynamicLight"(): boolean
-public "sdl$getDynamicLightX"(): double
-public "sdl$getDynamicLightY"(): double
-public "sdl$getDynamicLightZ"(): double
-public "sdl$resetDynamicLight"(): void
 public static "is"(arg0: $Entity$$Type): boolean
 public static "spawnedFromEndTrialSpawner"(arg0: $Entity$$Type): boolean
 public static "setSpawnedFromEndTrialSpawner"(arg0: $Entity$$Type, arg1: boolean): void
 public static "getMagniaProperties"(arg0: $Entity$$Type): $MagniaProperties
 public static "canMagniaAffect"(arg0: $Entity$$Type): boolean
 public static "getMagnetismFactor"(arg0: $Entity$$Type): float
+public static "dashed"(arg0: $Entity$$Type): boolean
 public static "setDashed"(arg0: $Entity$$Type, arg1: boolean): void
 public static "dashTicks"(arg0: $Entity$$Type): integer
 public static "setDashTicks"(arg0: $Entity$$Type, arg1: integer): void
-public static "dashed"(arg0: $Entity$$Type): boolean
+public "sdl$getDynamicLightX"(): double
+public "sdl$getDynamicLightY"(): double
+public "sdl$getDynamicLightZ"(): double
+public "sdl$resetDynamicLight"(): void
+public "sodiumdynamiclights$updateDynamicLight"(arg0: $LevelRenderer$$Type): boolean
+public "sdl$getDynamicLightLevel"(): $Level
+public "sdl$shouldUpdateDynamicLight"(): boolean
+public "sodiumdynamiclights$scheduleTrackedChunksRebuild"(arg0: $LevelRenderer$$Type): void
 /**
  * 
  * @deprecated
@@ -11306,24 +11562,24 @@ public "serializeNBT"(arg0: $HolderLookup$Provider$$Type): $Tag
 public static "without"<T>(arg0: $ChangeSubscriber$$Type<(T)>, arg1: $ChangeSubscriber$$Type<(T)>, arg2: integer, arg3: boolean): $ChangeSubscriber<(T)>
 public static "without"<T>(arg0: $ChangeSubscriber$$Type<(T)>, arg1: $ChangeSubscriber$$Type<(T)>): $ChangeSubscriber<(T)>
 public static "combine"<T>(arg0: $ChangeSubscriber$$Type<(T)>, arg1: integer, arg2: $ChangeSubscriber$$Type<(T)>, arg3: integer): $ChangeSubscriber<(T)>
+public static "dataOf"(arg0: $ChangeSubscriber$$Type<(any)>, arg1: $ChangeSubscriber$$Type<(any)>, arg2: integer): integer
 public static "dataWithout"<T>(arg0: $ChangeSubscriber$$Type<(T)>, arg1: $ChangeSubscriber$$Type<(T)>, arg2: integer, arg3: integer, arg4: boolean): integer
 public static "dataWithout"<T>(arg0: $ChangeSubscriber$$Type<(T)>, arg1: $ChangeSubscriber$$Type<(T)>, arg2: integer): integer
-public static "dataOf"(arg0: $ChangeSubscriber$$Type<(any)>, arg1: $ChangeSubscriber$$Type<(any)>, arg2: integer): integer
 public static "containsSubscriber"(arg0: $ChangeSubscriber$$Type<($ItemStack$$Type)>, arg1: integer, arg2: $ChangeSubscriber$$Type<($ItemStack$$Type)>, arg3: integer): boolean
-public static "forNameOnly"(arg0: string): $ScoreHolder
+public static "forNameOnly"(arg0: StringJS): $ScoreHolder
 public static "fromGameProfile"(arg0: $GameProfile$$Type): $ScoreHolder
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
-get "label"(): string
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+get "label"(): StringJS
+get "dugBlock"(): $BlockPos
+get "laserColor"(): integer
+get "accelerating"(): boolean
+get "ownerName"(): $Component
+get "droneColor"(): integer
 get "laserOffsetY"(): double
 get "droneHeldItem"(): $ItemStack
 get "targetedBlock"(): $BlockPos
 get "teleportRangeLimited"(): boolean
-get "droneColor"(): integer
-get "ownerName"(): $Component
-get "dugBlock"(): $BlockPos
-get "laserColor"(): integer
-get "accelerating"(): boolean
 set "lookupToggle"(value: boolean)
 get "lookupToggle"(): boolean
 }
@@ -11376,12 +11632,12 @@ static readonly "ADVANCED": $IProgWidget$WidgetDifficulty
 
 
 public static "values"(): ($IProgWidget$WidgetDifficulty)[]
-public static "valueOf"(arg0: string): $IProgWidget$WidgetDifficulty
-public "getTooltipTranslationKey"(): string
-public "getTranslationKey"(): string
+public static "valueOf"(arg0: StringJS): $IProgWidget$WidgetDifficulty
+public "getTranslationKey"(): StringJS
 public "isNotMoreDifficult"(arg0: $IProgWidget$WidgetDifficulty$$Type): boolean
-get "tooltipTranslationKey"(): string
-get "translationKey"(): string
+public "getTooltipTranslationKey"(): StringJS
+get "translationKey"(): StringJS
+get "tooltipTranslationKey"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11405,14 +11661,14 @@ import {$ISemiBlock, $ISemiBlock$$Type} from "me.desht.pneumaticcraft.api.semibl
 export class $SemiblockEvent extends $Event {
 
 
-public "getSide"(): $Direction
 public "getPos"(): $BlockPos
-public "getWorld"(): $Level
+public "getSide"(): $Direction
 public "getSemiblock"(): $ISemiBlock
-get "side"(): $Direction
+public "getWorld"(): $Level
 get "pos"(): $BlockPos
-get "world"(): $Level
+get "side"(): $Direction
 get "semiblock"(): $ISemiBlock
+get "world"(): $Level
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11427,15 +11683,18 @@ declare global {
 export type $SemiblockEvent_ = $SemiblockEvent$$Type;
 }}
 declare module "me.desht.modularrouters.item.module.SenderModule3" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
+import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$ITargetedModule, $ITargetedModule$$Type} from "me.desht.modularrouters.item.module.ITargetedModule"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$IPositionProvider, $IPositionProvider$$Type} from "me.desht.modularrouters.client.render.area.IPositionProvider"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ModuleTarget, $ModuleTarget$$Type} from "me.desht.modularrouters.logic.ModuleTarget"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
@@ -11447,7 +11706,7 @@ import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.
 export class $SenderModule3 extends $ModuleItem implements $IPositionProvider, $ITargetedModule {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -11455,19 +11714,20 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "canOperateInDimension"(arg0: $ResourceKey$$Type<($Level)>): boolean
-public "isRangeLimited"(): boolean
 public "getItemTint"(): $TintColor
-public "getEnergyCost"(arg0: $ItemStack$$Type): integer
+public "isRangeLimited"(): boolean
 public "getRenderColor"(arg0: integer): integer
+public "getEnergyCost"(arg0: $ItemStack$$Type): integer
+public "canOperateInDimension"(arg0: $ResourceKey$$Type<($Level)>): boolean
 public "getStoredPositions"(arg0: $ItemStack$$Type): $List<($ModuleTarget)>
 public static "setTargets"(arg0: $ItemStack$$Type, arg1: $Collection$$Type<($ModuleTarget$$Type)>): void
 public static "getTargets"(arg0: $ItemStack$$Type, arg1: boolean): $Set<($ModuleTarget)>
-public static "canSelectTarget"(arg0: $UseOnContext$$Type): boolean
 public "getMaxTargets"(): integer
 public "isValidTarget"(arg0: $UseOnContext$$Type): boolean
-get "rangeLimited"(): boolean
+public static "canSelectTarget"(arg0: $UseOnContext$$Type): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
+get "rangeLimited"(): boolean
 get "maxTargets"(): integer
 }
 /**
@@ -11483,19 +11743,23 @@ declare global {
 export type $SenderModule3_ = $SenderModule3$$Type;
 }}
 declare module "me.desht.modularrouters.item.module.SenderModule1" {
-import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$IRangedModule, $IRangedModule$$Type} from "me.desht.modularrouters.item.module.IRangedModule"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.TintColor"
 
 export class $SenderModule1 extends $ModuleItem implements $IRangedModule {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -11503,15 +11767,16 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "getHardMaxRange"(): integer
 public "getItemTint"(): $TintColor
 public "getBaseRange"(): integer
 public "getEnergyCost"(arg0: $ItemStack$$Type): integer
+public "getHardMaxRange"(): integer
 public "getCurrentRange"(arg0: integer): integer
 public "getCurrentRange"(arg0: $ItemStack$$Type): integer
-get "hardMaxRange"(): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
 get "baseRange"(): integer
+get "hardMaxRange"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11526,16 +11791,19 @@ declare global {
 export type $SenderModule1_ = $SenderModule1$$Type;
 }}
 declare module "me.desht.modularrouters.item.module.SenderModule2" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
+import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$ITargetedModule, $ITargetedModule$$Type} from "me.desht.modularrouters.item.module.ITargetedModule"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$IPositionProvider, $IPositionProvider$$Type} from "me.desht.modularrouters.client.render.area.IPositionProvider"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$IRangedModule, $IRangedModule$$Type} from "me.desht.modularrouters.item.module.IRangedModule"
 import {$ModuleTarget, $ModuleTarget$$Type} from "me.desht.modularrouters.logic.ModuleTarget"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
@@ -11547,7 +11815,7 @@ import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.
 export class $SenderModule2 extends $ModuleItem implements $IRangedModule, $IPositionProvider, $ITargetedModule {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -11555,26 +11823,27 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "getHardMaxRange"(): integer
 public "getItemTint"(): $TintColor
 public "getBaseRange"(): integer
-public "getEnergyCost"(arg0: $ItemStack$$Type): integer
 public "getRenderColor"(arg0: integer): integer
+public "getEnergyCost"(arg0: $ItemStack$$Type): integer
+public "getHardMaxRange"(): integer
 public "getCurrentRange"(arg0: integer): integer
 public "getCurrentRange"(arg0: $ItemStack$$Type): integer
 public "getStoredPositions"(arg0: $ItemStack$$Type): $List<($ModuleTarget)>
 public static "setTargets"(arg0: $ItemStack$$Type, arg1: $Collection$$Type<($ModuleTarget$$Type)>): void
 public static "getTargets"(arg0: $ItemStack$$Type, arg1: boolean): $Set<($ModuleTarget)>
+public "getMaxTargets"(): integer
+public "isRangeLimited"(): boolean
+public "isValidTarget"(arg0: $UseOnContext$$Type): boolean
 public "canOperateInDimension"(arg0: $ResourceKey$$Type<($Level)>): boolean
 public static "canSelectTarget"(arg0: $UseOnContext$$Type): boolean
-public "isRangeLimited"(): boolean
-public "getMaxTargets"(): integer
-public "isValidTarget"(arg0: $UseOnContext$$Type): boolean
-get "hardMaxRange"(): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
 get "baseRange"(): integer
-get "rangeLimited"(): boolean
+get "hardMaxRange"(): integer
 get "maxTargets"(): integer
+get "rangeLimited"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11589,22 +11858,25 @@ declare global {
 export type $SenderModule2_ = $SenderModule2$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.block.AphorismTileBlock$ItemBlockAphorismTile" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$ColorHandlers$ITintableItem, $ColorHandlers$ITintableItem$$Type} from "me.desht.pneumaticcraft.client.ColorHandlers$ITintableItem"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
 import {$AphorismTileBlock, $AphorismTileBlock$$Type} from "me.desht.pneumaticcraft.common.block.AphorismTileBlock"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$ColorHandlers$ITintableItem, $ColorHandlers$ITintableItem$$Type} from "me.desht.pneumaticcraft.client.ColorHandlers$ITintableItem"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $AphorismTileBlock$ItemBlockAphorismTile extends $BlockItem implements $ColorHandlers$ITintableItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -11623,6 +11895,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11670,21 +11943,25 @@ declare global {
 export type $ITubeNetworkConnector_ = $ITubeNetworkConnector$$Type;
 }}
 declare module "me.desht.modularrouters.item.MRBaseItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
-import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 
 export class $MRBaseItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -11693,6 +11970,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type)
 
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11713,14 +11991,14 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -11734,7 +12012,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -11772,16 +12050,20 @@ declare global {
 export type $EmptySpawnerBlock_ = $EmptySpawnerBlock$$Type;
 }}
 declare module "me.desht.modularrouters.item.module.FlingerModule" {
-import {$ModuleMenu, $ModuleMenu$$Type} from "me.desht.modularrouters.container.ModuleMenu"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
-import {$DropperModule, $DropperModule$$Type} from "me.desht.modularrouters.item.module.DropperModule"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$MenuType, $MenuType$$Type} from "net.minecraft.world.inventory.MenuType"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ModuleMenu, $ModuleMenu$$Type} from "me.desht.modularrouters.container.ModuleMenu"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$MenuType, $MenuType$$Type} from "net.minecraft.world.inventory.MenuType"
+import {$DropperModule, $DropperModule$$Type} from "me.desht.modularrouters.item.module.DropperModule"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.TintColor"
 
 export class $FlingerModule extends $DropperModule {
@@ -11792,7 +12074,7 @@ static readonly "MAX_PITCH": float
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
 static readonly "MIN_YAW": float
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_SPEED": float
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "MAX_YAW": float
@@ -11801,12 +12083,13 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "addSettingsInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
-public "getMenuType"(): $MenuType<($ModuleMenu)>
 public "getItemTint"(): $TintColor
+public "getMenuType"(): $MenuType<($ModuleMenu)>
 public "getEnergyCost"(arg0: $ItemStack$$Type): integer
-get "menuType"(): $MenuType<($ModuleMenu)>
+public "addSettingsInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
+get "menuType"(): $MenuType<($ModuleMenu)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11829,8 +12112,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockAndTintGetter, $BlockAndTintGetter$$Type} from "net.minecraft.world.level.BlockAndTintGetter"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -11840,8 +12123,8 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$ColorHandlers$IHeatTintable, $ColorHandlers$IHeatTintable$$Type} from "me.desht.pneumaticcraft.client.ColorHandlers$IHeatTintable"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -11859,7 +12142,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -11913,8 +12196,8 @@ import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneum
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -11927,7 +12210,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -11981,10 +12264,10 @@ import {$Explosion, $Explosion$$Type} from "net.minecraft.world.level.Explosion"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockAndTintGetter, $BlockAndTintGetter$$Type} from "net.minecraft.world.level.BlockAndTintGetter"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
@@ -11994,8 +12277,8 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$CamouflageableBlock, $CamouflageableBlock$$Type} from "me.desht.modularrouters.block.CamouflageableBlock"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ModelProperty, $ModelProperty$$Type} from "net.neoforged.neoforge.client.model.data.ModelProperty"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
@@ -12005,8 +12288,8 @@ import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.Liv
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $ModularRouterBlock extends $CamouflageableBlock implements $EntityBlock {
@@ -12025,7 +12308,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -12037,23 +12320,23 @@ static readonly "FACING": $DirectionProperty
 constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "rotate"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $BlockState
-public "shouldDisplayFluidOverlay"(arg0: $BlockState$$Type, arg1: $BlockAndTintGetter$$Type, arg2: $BlockPos$$Type, arg3: $FluidState$$Type): boolean
-public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
+public "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
 public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
-public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "isSignalSource"(arg0: $BlockState$$Type): boolean
 public "getSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
-public "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "hasAnalogOutputSignal"(arg0: $BlockState$$Type): boolean
 public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "getAnalogOutputSignal"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type): integer
+public "getDirectSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
 public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "canEntityDestroy"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): boolean
-public "getAnalogOutputSignal"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type): integer
-public "getDirectSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
+public "shouldDisplayFluidOverlay"(arg0: $BlockState$$Type, arg1: $BlockAndTintGetter$$Type, arg2: $BlockPos$$Type, arg3: $FluidState$$Type): boolean
 public "getUncamouflagedShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
@@ -12083,9 +12366,9 @@ export class $FuelQualityRecipeImpl$Serializer<T extends $FuelQualityRecipe> imp
 
 constructor(arg0: $FuelQualityRecipeImpl$IFactory$$Type<(T)>)
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
 public "codec"(): $MapCodec<(T)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12100,20 +12383,23 @@ declare global {
 export type $FuelQualityRecipeImpl$Serializer_<T> = $FuelQualityRecipeImpl$Serializer$$Type<(T)>;
 }}
 declare module "me.desht.pneumaticcraft.common.item.PressurizableItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$IPressurizableItem, $IPressurizableItem$$Type} from "me.desht.pneumaticcraft.api.pressure.IPressurizableItem"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 
 export class $PressurizableItem extends $Item implements $IPressurizableItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -12121,22 +12407,23 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Item$Properties$$Type, arg1: integer, arg2: integer)
 
-public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
+public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
 public "isEnchantable"(arg0: $ItemStack$$Type): boolean
 public "isBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getBarWidth"(arg0: $ItemStack$$Type): integer
 public "getBarColor"(arg0: $ItemStack$$Type): integer
-public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
 public "getAir"(arg0: $ItemStack$$Type): integer
-public "getEnchantmentValue"(): integer
-public "getVolumeUpgrades"(arg0: $ItemStack$$Type): integer
-public "getMaxPressure"(): float
 public "getBaseVolume"(): integer
-public "getEffectiveVolume"(arg0: $ItemStack$$Type): integer
+public "getMaxPressure"(): float
+public "getEnchantmentValue"(): integer
+public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
+public "getVolumeUpgrades"(arg0: $ItemStack$$Type): integer
 public "getPressure"(arg0: $ItemStack$$Type): float
-get "enchantmentValue"(): integer
-get "maxPressure"(): float
+public "getEffectiveVolume"(arg0: $ItemStack$$Type): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "baseVolume"(): integer
+get "maxPressure"(): float
+get "enchantmentValue"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12152,10 +12439,11 @@ export type $PressurizableItem_ = $PressurizableItem$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.PneumaticArmorItem" {
 import {$AbstractDroneEntity, $AbstractDroneEntity$$Type} from "me.desht.pneumaticcraft.common.entity.drone.AbstractDroneEntity"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$DataComponentType, $DataComponentType$$Type} from "net.minecraft.core.component.DataComponentType"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
@@ -12177,6 +12465,7 @@ import {$Map, $Map$$Type} from "java.util.Map"
 import {$IPressurizableItem, $IPressurizableItem$$Type} from "me.desht.pneumaticcraft.api.pressure.IPressurizableItem"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$IFOVModifierItem, $IFOVModifierItem$$Type} from "me.desht.pneumaticcraft.api.client.IFOVModifierItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$IDroneBase, $IDroneBase$$Type} from "me.desht.pneumaticcraft.common.drone.IDroneBase"
@@ -12194,7 +12483,7 @@ static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
 static readonly "DEFAULT_SECONDARY_COLOR": $DyedItemColor
 static readonly "DEFAULT_PRIMARY_COLOR": $DyedItemColor
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "DEFAULT_EYEPIECE_COLOR": $DyedItemColor
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "DISPENSE_ITEM_BEHAVIOR": $DispenseItemBehavior
@@ -12203,53 +12492,54 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $ArmorItem$Type$$Type)
 
-public static "isPlayerWearingAnyPneumaticArmor"(arg0: $Player$$Type): boolean
-public "shouldShowCustomDurabilityBar"(arg0: $ItemStack$$Type): boolean
-public "getCustomDurabilityColour"(arg0: $ItemStack$$Type): integer
-public "getDefaultAttributeModifiers"(arg0: $ItemStack$$Type): $ItemAttributeModifiers
+public "isFoil"(arg0: $ItemStack$$Type): boolean
 public "isDamageable"(arg0: $ItemStack$$Type): boolean
 public "isEnderMask"(arg0: $ItemStack$$Type, arg1: $Player$$Type, arg2: $EnderMan$$Type): boolean
 public "canElytraFly"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): boolean
-public "isFoil"(arg0: $ItemStack$$Type): boolean
 public "getAir"(arg0: $ItemStack$$Type): integer
-public "getEquipmentSlot"(arg0: $ItemStack$$Type): $EquipmentSlot
-public "elytraFlightTick"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: integer): boolean
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-public "canWalkOnPowderedSnow"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): boolean
-public "makesPiglinsNeutral"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): boolean
-public static "isPneumaticArmorPiece"(arg0: $Player$$Type, arg1: $EquipmentSlot$$Type): boolean
-public "getEyepieceColor"(arg0: $ItemStack$$Type): integer
-public "getContainerProvider"(arg0: $ChargingStationBlockEntity$$Type): $MenuProvider
-public "getUpgradeBlacklistTag"(): $Optional<($TagKey<($Item)>)>
-public static "getSearchedItem"(arg0: $ItemStack$$Type): $Item
-public static "getCoordTrackerPos"(arg0: $ItemStack$$Type, arg1: $Level$$Type): $BlockPos
+public static "getIntData"(arg0: $ItemStack$$Type, arg1: $DataComponentType$$Type<(integer)>, arg2: integer, arg3: integer, arg4: integer): integer
+public static "getIntData"(arg0: $ItemStack$$Type, arg1: $DataComponentType$$Type<(integer)>, arg2: integer): integer
+public static "getBooleanData"(arg0: $ItemStack$$Type, arg1: $DataComponentType$$Type<(boolean)>, arg2: boolean): boolean
+public "getFOVModifier"(arg0: $ItemStack$$Type, arg1: $Player$$Type, arg2: $EquipmentSlot$$Type): float
+public "getBaseVolume"(): integer
+public "getMaxPressure"(): float
+public "getTintColor"(arg0: $ItemStack$$Type, arg1: integer): integer
 public "getPrimaryColor"(arg0: $ItemStack$$Type): integer
 public "getSecondaryColor"(arg0: $ItemStack$$Type): integer
+public "setPrimaryColor"(arg0: $ItemStack$$Type, arg1: integer): void
+public "setSecondaryColor"(arg0: $ItemStack$$Type, arg1: integer): void
+public "getContainerProvider"(arg0: $ChargingStationBlockEntity$$Type): $MenuProvider
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "getEquipmentSlot"(arg0: $ItemStack$$Type): $EquipmentSlot
+public "canWalkOnPowderedSnow"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): boolean
+public "makesPiglinsNeutral"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): boolean
+public "elytraFlightTick"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: integer): boolean
+public "getDefaultAttributeModifiers"(arg0: $ItemStack$$Type): $ItemAttributeModifiers
+public static "isPlayerWearingAnyPneumaticArmor"(arg0: $Player$$Type): boolean
+public static "isPneumaticArmorPiece"(arg0: $Player$$Type, arg1: $EquipmentSlot$$Type): boolean
+public "getEyepieceColor"(arg0: $ItemStack$$Type): integer
+public static "getSearchedItem"(arg0: $ItemStack$$Type): $Item
+public static "getCoordTrackerPos"(arg0: $ItemStack$$Type, arg1: $Level$$Type): $BlockPos
 public static "setSearchedItem"(arg0: $ItemStack$$Type, arg1: $Item$$Type): void
+public "getVolumeUpgrades"(arg0: $ItemStack$$Type): integer
 public static "setCoordTrackerPos"(arg0: $ItemStack$$Type, arg1: $GlobalPos$$Type): void
-public static "getEntityFilter"(arg0: $ItemStack$$Type): string
+public static "getEntityFilter"(arg0: $ItemStack$$Type): StringJS
 public static "isPlayerDebuggingDrone"(arg0: $Player$$Type, arg1: $AbstractDroneEntity$$Type): boolean
 public static "isPlayerDebuggingDrone"(arg0: $Player$$Type, arg1: $IDroneBase$$Type): boolean
 public static "getDebuggedDrone"(arg0: $Player$$Type): $IDroneBase
 public "getCustomDurability"(arg0: $ItemStack$$Type): float
-public "setPrimaryColor"(arg0: $ItemStack$$Type, arg1: integer): void
-public "setSecondaryColor"(arg0: $ItemStack$$Type, arg1: integer): void
 public "setEyepieceColor"(arg0: $ItemStack$$Type, arg1: integer): void
-public "getVolumeUpgrades"(arg0: $ItemStack$$Type): integer
-public static "getIntData"(arg0: $ItemStack$$Type, arg1: $DataComponentType$$Type<(integer)>, arg2: integer): integer
-public static "getIntData"(arg0: $ItemStack$$Type, arg1: $DataComponentType$$Type<(integer)>, arg2: integer, arg3: integer, arg4: integer): integer
-public static "getBooleanData"(arg0: $ItemStack$$Type, arg1: $DataComponentType$$Type<(boolean)>, arg2: boolean): boolean
-public "getMaxPressure"(): float
-public "getTintColor"(arg0: $ItemStack$$Type, arg1: integer): integer
-public "getBaseVolume"(): integer
-public "getFOVModifier"(arg0: $ItemStack$$Type, arg1: $Player$$Type, arg2: $EquipmentSlot$$Type): float
+public "getUpgradeBlacklistTag"(): $Optional<($TagKey<($Item)>)>
+public "shouldShowCustomDurabilityBar"(arg0: $ItemStack$$Type): boolean
+public "getCustomDurabilityColour"(arg0: $ItemStack$$Type): integer
 public "isShowingOtherBar"(arg0: $ItemStack$$Type): boolean
-public "getEffectiveVolume"(arg0: $ItemStack$$Type): integer
 public "getPressure"(arg0: $ItemStack$$Type): float
+public "getEffectiveVolume"(arg0: $ItemStack$$Type): integer
 public static "get"(arg0: $ItemStack$$Type): $Equipable
-get "upgradeBlacklistTag"(): $Optional<($TagKey<($Item)>)>
-get "maxPressure"(): float
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "baseVolume"(): integer
+get "maxPressure"(): float
+get "upgradeBlacklistTag"(): $Optional<($TagKey<($Item)>)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12303,7 +12593,6 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $FluidLubricant$Source extends $BaseFlowingFluid$Source {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -12312,7 +12601,6 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -12340,14 +12628,14 @@ constructor(arg0: $BlockPos$$Type)
 
 public "getPlatform"(): $AssemblyPlatformBlockEntity
 public "getExportUnit"(): $AssemblyIOUnitBlockEntity
+public "getDrill"(): $AssemblyDrillBlockEntity
 public "getImportUnit"(): $AssemblyIOUnitBlockEntity
 public "getLaser"(): $AssemblyLaserBlockEntity
-public "getDrill"(): $AssemblyDrillBlockEntity
 get "platform"(): $AssemblyPlatformBlockEntity
 get "exportUnit"(): $AssemblyIOUnitBlockEntity
+get "drill"(): $AssemblyDrillBlockEntity
 get "importUnit"(): $AssemblyIOUnitBlockEntity
 get "laser"(): $AssemblyLaserBlockEntity
-get "drill"(): $AssemblyDrillBlockEntity
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12365,8 +12653,8 @@ declare module "me.desht.pneumaticcraft.common.recipes.assembly.AssemblyProgram"
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$AssemblyRecipe$AssemblyProgramType, $AssemblyRecipe$AssemblyProgramType$$Type} from "me.desht.pneumaticcraft.api.crafting.recipe.AssemblyRecipe$AssemblyProgramType"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
-import {$AssemblyControllerBlockEntity$AssemblySystem, $AssemblyControllerBlockEntity$AssemblySystem$$Type} from "me.desht.pneumaticcraft.common.block.entity.processing.AssemblyControllerBlockEntity$AssemblySystem"
 import {$AssemblyProgram$EnumMachine, $AssemblyProgram$EnumMachine$$Type} from "me.desht.pneumaticcraft.common.recipes.assembly.AssemblyProgram$EnumMachine"
+import {$AssemblyControllerBlockEntity$AssemblySystem, $AssemblyControllerBlockEntity$AssemblySystem$$Type} from "me.desht.pneumaticcraft.common.block.entity.processing.AssemblyControllerBlockEntity$AssemblySystem"
 import {$List, $List$$Type} from "java.util.List"
 import {$AssemblyProgram$EnumAssemblyProblem, $AssemblyProgram$EnumAssemblyProblem$$Type} from "me.desht.pneumaticcraft.common.recipes.assembly.AssemblyProgram$EnumAssemblyProblem"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
@@ -12379,18 +12667,18 @@ readonly "curProblem": $AssemblyProgram$EnumAssemblyProblem
 
 constructor()
 
-public "getType"(): $AssemblyRecipe$AssemblyProgramType
 public "getItem"(): $AssemblyProgramItem
-public "validateBlockEntity"(arg0: $AssemblyControllerBlockEntity$AssemblySystem$$Type): boolean
-public "getRequiredMachines"(): ($AssemblyProgram$EnumMachine)[]
+public "getType"(): $AssemblyRecipe$AssemblyProgramType
+public static "fromRecipe"(arg0: $AssemblyRecipe$$Type): $AssemblyProgram
 public "executeStep"(arg0: $AssemblyControllerBlockEntity$AssemblySystem$$Type): boolean
 public "getRecipeList"(arg0: $Level$$Type): $Collection<($AssemblyRecipe)>
-public "readFromNBT"(arg0: $CompoundTag$$Type): void
 public "writeToNBT"(arg0: $CompoundTag$$Type): void
-public static "fromRecipe"(arg0: $AssemblyRecipe$$Type): $AssemblyProgram
+public "readFromNBT"(arg0: $CompoundTag$$Type): void
 public "addProgramProblem"(arg0: $List$$Type<($Component$$Type)>): void
-get "type"(): $AssemblyRecipe$AssemblyProgramType
+public "validateBlockEntity"(arg0: $AssemblyControllerBlockEntity$AssemblySystem$$Type): boolean
+public "getRequiredMachines"(): ($AssemblyProgram$EnumMachine)[]
 get "item"(): $AssemblyProgramItem
+get "type"(): $AssemblyRecipe$AssemblyProgramType
 get "requiredMachines"(): ($AssemblyProgram$EnumMachine)[]
 }
 /**
@@ -12406,34 +12694,36 @@ declare global {
 export type $AssemblyProgram_ = $AssemblyProgram$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.GPSToolItem" {
-import {$IGPSToolSync, $IGPSToolSync$$Type} from "me.desht.pneumaticcraft.common.item.IGPSToolSync"
-import {$Map, $Map$$Type} from "java.util.Map"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$UUID, $UUID$$Type} from "java.util.UUID"
-import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$List, $List$$Type} from "java.util.List"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IPositionProvider, $IPositionProvider$$Type} from "me.desht.pneumaticcraft.api.item.IPositionProvider"
-import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
 import {$IShiftScrollable, $IShiftScrollable$$Type} from "me.desht.pneumaticcraft.common.item.IShiftScrollable"
-import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$IGPSToolSync, $IGPSToolSync$$Type} from "me.desht.pneumaticcraft.common.item.IGPSToolSync"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
+import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 
 export class $GPSToolItem extends $Item implements $IPositionProvider, $IGPSToolSync, $IShiftScrollable {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -12442,22 +12732,23 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public static "getVariable"(arg0: $ItemStack$$Type): string
-public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
-public static "setVariable"(arg0: $ItemStack$$Type, arg1: string): void
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
+public static "setVariable"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getVariable"(arg0: $ItemStack$$Type): StringJS
+public static "setGPSLocation"(arg0: $UUID$$Type, arg1: $ItemStack$$Type, arg2: $BlockPos$$Type, arg3: boolean): void
+public static "setGPSLocation"(arg0: $UUID$$Type, arg1: $ItemStack$$Type, arg2: $BlockPos$$Type): void
+public "syncFromClient"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: $BlockPos$$Type, arg4: StringJS, arg5: boolean): void
+public static "getGPSLocation"(arg0: $ItemStack$$Type): $Optional<($BlockPos)>
+public static "getGPSLocation"(arg0: $UUID$$Type, arg1: $ItemStack$$Type): $Optional<($BlockPos)>
+public "syncVariables"(arg0: $ServerPlayer$$Type, arg1: $ItemStack$$Type): void
+public "getRenderColor"(arg0: integer): integer
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getStoredPositions"(arg0: $UUID$$Type, arg1: $ItemStack$$Type): $List<($BlockPos)>
 public "onShiftScrolled"(arg0: $Player$$Type, arg1: boolean, arg2: $InteractionHand$$Type): void
-public "syncFromClient"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: $BlockPos$$Type, arg4: string, arg5: boolean): void
-public static "setGPSLocation"(arg0: $UUID$$Type, arg1: $ItemStack$$Type, arg2: $BlockPos$$Type, arg3: boolean): void
-public static "setGPSLocation"(arg0: $UUID$$Type, arg1: $ItemStack$$Type, arg2: $BlockPos$$Type): void
-public "syncVariables"(arg0: $ServerPlayer$$Type, arg1: $ItemStack$$Type): void
-public static "getGPSLocation"(arg0: $UUID$$Type, arg1: $ItemStack$$Type): $Optional<($BlockPos)>
-public static "getGPSLocation"(arg0: $ItemStack$$Type): $Optional<($BlockPos)>
-public "getRenderColor"(arg0: integer): integer
 public "disableDepthTest"(): boolean
 public "getRawStoredPositions"(arg0: $Player$$Type, arg1: $ItemStack$$Type): $List<($BlockPos)>
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12477,10 +12768,10 @@ import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$IBlockComparatorSupport, $IBlockComparatorSupport$$Type} from "me.desht.pneumaticcraft.common.block.IBlockComparatorSupport"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
+import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -12489,8 +12780,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -12507,7 +12798,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -12550,20 +12841,24 @@ declare global {
 export type $ThermopneumaticProcessingPlantBlock_ = $ThermopneumaticProcessingPlantBlock$$Type;
 }}
 declare module "me.desht.modularrouters.item.upgrade.EnergyUpgrade" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$UpgradeItem, $UpgradeItem$$Type} from "me.desht.modularrouters.item.upgrade.UpgradeItem"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.TintColor"
+import {$UpgradeItem, $UpgradeItem$$Type} from "me.desht.modularrouters.item.upgrade.UpgradeItem"
 
 export class $EnergyUpgrade extends $UpgradeItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -12571,11 +12866,12 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public "getItemTint"(): $TintColor
 public "addUsageInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
 public "getInstalledStackLimit"(): integer
-public "getItemTint"(): $TintColor
-get "installedStackLimit"(): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
+get "installedStackLimit"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12599,7 +12895,7 @@ export class $SavedRemoteLayout$Versioned extends $Record {
 constructor(version: integer, widgets: $List$$Type<($IRemoteWidget$$Type)>)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "version"(): integer
 public "hashCode"(): integer
 public "widgets"(): $List<($IRemoteWidget)>
@@ -12626,7 +12922,7 @@ constructor(priority: integer, goal: $Goal$$Type)
 
 public "priority"(): integer
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "goal"(): $Goal
 }
@@ -12675,9 +12971,9 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ModelProperty, $ModelProperty$$Type} from "net.neoforged.neoforge.client.model.data.ModelProperty"
 import {$Explosion, $Explosion$$Type} from "net.minecraft.world.level.Explosion"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
@@ -12703,7 +12999,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -12718,12 +13014,12 @@ public "isSignalSource"(arg0: $BlockState$$Type): boolean
 public "getSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
 public "getLightEmission"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): integer
 public "getInteractionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): $VoxelShape
+public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
+public "getDirectSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
 public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
 public "getOcclusionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): $VoxelShape
 public "propagatesSkylightDown"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): boolean
-public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
 public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "getDirectSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
 public "getUncamouflagedShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "asHolder"(): $Holder<(any)>
 }
@@ -12740,20 +13036,24 @@ declare global {
 export type $CamouflageableBlock_ = $CamouflageableBlock$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.PneumaticCraftBucketItem" {
-import {$BucketItem, $BucketItem$$Type} from "net.minecraft.world.item.BucketItem"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
+import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$IFluidCapProvider, $IFluidCapProvider$$Type} from "me.desht.pneumaticcraft.common.item.IFluidCapProvider"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BucketItem, $BucketItem$$Type} from "net.minecraft.world.item.BucketItem"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
-import {$Map, $Map$$Type} from "java.util.Map"
-import {$IFluidCapProvider, $IFluidCapProvider$$Type} from "me.desht.pneumaticcraft.common.item.IFluidCapProvider"
 import {$IFluidHandlerItem, $IFluidHandlerItem$$Type} from "net.neoforged.neoforge.fluids.capability.IFluidHandlerItem"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export class $PneumaticCraftBucketItem extends $BucketItem implements $IFluidCapProvider {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -12763,6 +13063,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Fluid$$Type)
 
 public "provideFluidCapability"(arg0: $ItemStack$$Type): $IFluidHandlerItem
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12777,13 +13078,16 @@ declare global {
 export type $PneumaticCraftBucketItem_ = $PneumaticCraftBucketItem$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.block.SmoothPlasticBrickBlock$SmoothPlasticBrickItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$ICustomTooltipName, $ICustomTooltipName$$Type} from "me.desht.pneumaticcraft.common.item.ICustomTooltipName"
@@ -12792,7 +13096,7 @@ import {$SmoothPlasticBrickBlock, $SmoothPlasticBrickBlock$$Type} from "me.desht
 export class $SmoothPlasticBrickBlock$SmoothPlasticBrickItem extends $BlockItem implements $ICustomTooltipName {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -12805,14 +13109,15 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $SmoothPlasticBrickBlock$$Type)
 
-public "getCustomTooltipTranslationKey"(): string
-public static "getTranslationKey"(arg0: $ItemStack$$Type, arg1: boolean): string
+public "getCustomTooltipTranslationKey"(): StringJS
+public static "getTranslationKey"(arg0: $ItemStack$$Type, arg1: boolean): StringJS
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
 public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
-get "customTooltipTranslationKey"(): string
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
+get "customTooltipTranslationKey"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12827,17 +13132,21 @@ declare global {
 export type $SmoothPlasticBrickBlock$SmoothPlasticBrickItem_ = $SmoothPlasticBrickBlock$SmoothPlasticBrickItem$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.SeismicSensorItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $SeismicSensorItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -12846,6 +13155,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12873,9 +13183,9 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Shape
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($ShapedPressurizableRecipe)>
 public "codec"(): $MapCodec<($ShapedPressurizableRecipe)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($ShapedPressurizableRecipe)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12925,7 +13235,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -12976,8 +13286,8 @@ import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneum
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -12990,7 +13300,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -13047,32 +13357,32 @@ static readonly "TICK_RATE": integer
 constructor(arg0: $IDroneBase$$Type)
 constructor(arg0: $IDrone$$Type, arg1: $List$$Type<($IProgWidget$$Type)>)
 
-public "setLabel"(arg0: string): void
-public "getLabel"(): string
-public "getStack"(arg0: $UUID$$Type, arg1: string): $ItemStack
-public "getCoordinate"(arg0: $UUID$$Type, arg1: string): $Optional<($BlockPos)>
-public "dontStopWhenEndReached"(): void
-public "getRunningTasks"(): $List<($DroneAIManager$WrappedGoal)>
-public "getActiveManager"(): $DroneAIManager
-public "setWidgets"(arg0: $List$$Type<($IProgWidget$$Type)>): void
-public "setCoordinate"(arg0: string, arg1: $BlockPos$$Type): void
+public "getStack"(arg0: $UUID$$Type, arg1: StringJS): $ItemStack
+public "getLabel"(): StringJS
+public "setLabel"(arg0: StringJS): void
+public "getCoordinate"(arg0: $UUID$$Type, arg1: StringJS): $Optional<($BlockPos)>
 public "isIdling"(): boolean
 public "getCurrentGoal"(): $Goal
-public "widgets"(): $List<($IProgWidget)>
 public "onUpdateTasks"(): void
 public "getTargetAI"(): $Goal
-public "readFromNBT"(arg0: $CompoundTag$$Type): void
-public "writeToNBT"(arg0: $CompoundTag$$Type): $CompoundTag
+public "setWidgets"(arg0: $List$$Type<($IProgWidget$$Type)>): void
+public "setCoordinate"(arg0: StringJS, arg1: $BlockPos$$Type): void
 public "getDrone"(): $IDrone
-public "setItemStack"(arg0: string, arg1: $ItemStack$$Type): void
-set "label"(value: string)
-get "label"(): string
-get "runningTasks"(): $List<($DroneAIManager$WrappedGoal)>
-get "activeManager"(): $DroneAIManager
+public "widgets"(): $List<($IProgWidget)>
+public "writeToNBT"(arg0: $CompoundTag$$Type): $CompoundTag
+public "readFromNBT"(arg0: $CompoundTag$$Type): void
+public "setItemStack"(arg0: StringJS, arg1: $ItemStack$$Type): void
+public "getRunningTasks"(): $List<($DroneAIManager$WrappedGoal)>
+public "getActiveManager"(): $DroneAIManager
+public "dontStopWhenEndReached"(): void
+get "label"(): StringJS
+set "label"(value: StringJS)
 get "idling"(): boolean
 get "currentGoal"(): $Goal
 get "targetAI"(): $Goal
 get "drone"(): $IDrone
+get "runningTasks"(): $List<($DroneAIManager$WrappedGoal)>
+get "activeManager"(): $DroneAIManager
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -13087,26 +13397,29 @@ declare global {
 export type $DroneAIManager_ = $DroneAIManager$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.block.SmartChestBlock$ItemBlockBlockSmartChest" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$IInventoryItem, $IInventoryItem$$Type} from "me.desht.pneumaticcraft.api.item.IInventoryItem"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$ItemContainerContents, $ItemContainerContents$$Type} from "net.minecraft.world.item.component.ItemContainerContents"
 
 export class $SmartChestBlock$ItemBlockBlockSmartChest extends $BlockItem implements $IInventoryItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -13119,10 +13432,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Block$$Type)
 
-public "canFitInsideContainerItems"(): boolean
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "canFitInsideContainerItems"(): boolean
 public "getStacksInItem"(arg0: $ItemStack$$Type, arg1: $List$$Type<($ItemStack$$Type)>): void
-public "getTooltipPrefix"(arg0: $ItemStack$$Type): string
+public "getTooltipPrefix"(arg0: $ItemStack$$Type): StringJS
 public static "getStacks"(arg0: $ItemContainerContents$$Type, arg1: $List$$Type<($ItemStack$$Type)>): void
 public "getInventoryHeader"(): $Component
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
@@ -13130,6 +13443,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "inventoryHeader"(): $Component
 }
 /**
@@ -13145,14 +13459,17 @@ declare global {
 export type $SmartChestBlock$ItemBlockBlockSmartChest_ = $SmartChestBlock$ItemBlockBlockSmartChest$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.block.WallLampBlock$ItemWallLamp" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$WallLampBlock, $WallLampBlock$$Type} from "me.desht.pneumaticcraft.common.block.WallLampBlock"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$ICustomTooltipName, $ICustomTooltipName$$Type} from "me.desht.pneumaticcraft.common.item.ICustomTooltipName"
@@ -13160,7 +13477,7 @@ import {$ICustomTooltipName, $ICustomTooltipName$$Type} from "me.desht.pneumatic
 export class $WallLampBlock$ItemWallLamp extends $BlockItem implements $ICustomTooltipName {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -13173,14 +13490,15 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $WallLampBlock$$Type)
 
-public "getCustomTooltipTranslationKey"(): string
-public static "getTranslationKey"(arg0: $ItemStack$$Type, arg1: boolean): string
+public "getCustomTooltipTranslationKey"(): StringJS
+public static "getTranslationKey"(arg0: $ItemStack$$Type, arg1: boolean): StringJS
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
 public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
-get "customTooltipTranslationKey"(): string
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
+get "customTooltipTranslationKey"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -13195,22 +13513,26 @@ declare global {
 export type $WallLampBlock$ItemWallLamp_ = $WallLampBlock$ItemWallLamp$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.AssemblyProgramItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$AssemblyRecipe$AssemblyProgramType, $AssemblyRecipe$AssemblyProgramType$$Type} from "me.desht.pneumaticcraft.api.crafting.recipe.AssemblyRecipe$AssemblyProgramType"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$AssemblyProgram, $AssemblyProgram$$Type} from "me.desht.pneumaticcraft.common.recipes.assembly.AssemblyProgram"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export class $AssemblyProgramItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -13220,9 +13542,10 @@ constructor(arg0: $AssemblyRecipe$AssemblyProgramType$$Type)
 
 public static "getProgram"(arg0: $ItemStack$$Type): $AssemblyProgram
 public "getProgram"(): $AssemblyProgram
+public "getProgramType"(): $AssemblyRecipe$AssemblyProgramType
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public static "fromProgramType"(arg0: $AssemblyRecipe$AssemblyProgramType$$Type): $AssemblyProgramItem
-public "getProgramType"(): $AssemblyRecipe$AssemblyProgramType
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "program"(): $AssemblyProgram
 get "programType"(): $AssemblyRecipe$AssemblyProgramType
 }
@@ -13245,8 +13568,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -13255,15 +13578,15 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $PneumaticDynamoBlock extends $AbstractPneumaticCraftBlock implements $PneumaticCraftEntityBlock {
 static readonly "DOWN": $BooleanProperty
@@ -13274,7 +13597,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -13297,8 +13620,8 @@ constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "isRotatable"(): boolean
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public static "forBlock"(arg0: $Block$$Type): $IPneumaticWrenchable
@@ -13318,17 +13641,21 @@ declare global {
 export type $PneumaticDynamoBlock_ = $PneumaticDynamoBlock$$Type;
 }}
 declare module "me.desht.modularrouters.item.upgrade.StackUpgrade" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$UpgradeItem, $UpgradeItem$$Type} from "me.desht.modularrouters.item.upgrade.UpgradeItem"
 import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.TintColor"
 
 export class $StackUpgrade extends $UpgradeItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -13336,12 +13663,13 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public "getItemTint"(): $TintColor
 public "getExtraUsageParams"(): (any)[]
 public "getInstalledStackLimit"(): integer
-public "getItemTint"(): $TintColor
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
+get "itemTint"(): $TintColor
 get "extraUsageParams"(): (any)[]
 get "installedStackLimit"(): integer
-get "itemTint"(): $TintColor
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -13394,7 +13722,6 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$BaseFlowingFluid$Flowing, $BaseFlowingFluid$Flowing$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Flowing"
 
 export class $FluidYeastCulture$Flowing extends $BaseFlowingFluid$Flowing {
@@ -13404,7 +13731,6 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -13420,16 +13746,20 @@ declare global {
 export type $FluidYeastCulture$Flowing_ = $FluidYeastCulture$Flowing$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.logistics.LogisticsFrameRequesterItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$AbstractLogisticsFrameItem, $AbstractLogisticsFrameItem$$Type} from "me.desht.pneumaticcraft.common.item.logistics.AbstractLogisticsFrameItem"
 
 export class $LogisticsFrameRequesterItem extends $AbstractLogisticsFrameItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -13437,6 +13767,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -13451,17 +13782,21 @@ declare global {
 export type $LogisticsFrameRequesterItem_ = $LogisticsFrameRequesterItem$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.GlycerolItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$RecipeType, $RecipeType$$Type} from "net.minecraft.world.item.crafting.RecipeType"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $GlycerolItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -13470,6 +13805,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "getBurnTime"(arg0: $ItemStack$$Type, arg1: $RecipeType$$Type<(any)>): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -13494,8 +13830,8 @@ export class $RegisterRouterContainerData extends $Event {
 
 constructor(arg0: $ModularRouterBlockEntity$$Type)
 
-public "register"(arg0: $ResourceLocation$$Type, arg1: $DataSlot$$Type): void
 public "getData"(): $Map<($ResourceLocation), ($DataSlot)>
+public "register"(arg0: $ResourceLocation$$Type, arg1: $DataSlot$$Type): void
 public "getRouter"(): $ModularRouterBlockEntity
 get "data"(): $Map<($ResourceLocation), ($DataSlot)>
 get "router"(): $ModularRouterBlockEntity
@@ -13538,15 +13874,17 @@ declare global {
 export type $IPneumaticCraftProbeable_ = $IPneumaticCraftProbeable$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.RemoteItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -13559,7 +13897,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $RemoteItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -13568,11 +13906,12 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public static "hasSameSecuritySettings"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
-public static "saveToItem"(arg0: $ItemStack$$Type, arg1: $SavedRemoteLayout$$Type): void
-public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
+public static "saveToItem"(arg0: $ItemStack$$Type, arg1: $SavedRemoteLayout$$Type): void
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "hasSameSecuritySettings"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -13610,30 +13949,30 @@ static readonly "MODE_VEIN": $JackHammerItem$DigMode
 
 
 public "atLeast"(arg0: $JackHammerItem$DigMode$$Type): boolean
-public "getName"(): string
+public "getName"(): StringJS
 public static "values"(): ($JackHammerItem$DigMode)[]
-public static "valueOf"(arg0: string): $JackHammerItem$DigMode
-public "getTranslationKey"(): string
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $JackHammerItem$DigMode
 public "getGuiIcon"(): $ResourceLocation
 public "isVeinMining"(): boolean
 public "okToVeinMine"(arg0: $BlockState$$Type): boolean
 public "getBlocksDug"(): integer
 public "getBitType"(): $DrillBitItem$DrillBitType
+public "getTranslationKey"(): StringJS
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "name"(): string
-get "translationKey"(): string
-get "serializedName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "name"(): StringJS
 get "guiIcon"(): $ResourceLocation
 get "veinMining"(): boolean
 get "blocksDug"(): integer
 get "bitType"(): $DrillBitItem$DrillBitType
-get "remappedEnumConstantName"(): string
+get "translationKey"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -13704,20 +14043,23 @@ declare global {
 export type $HoeHandler$DefaultHoeHandler_ = $HoeHandler$DefaultHoeHandler$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.block.CreativeCompressorBlock$ItemBlockCreativeCompressor" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $CreativeCompressorBlock$ItemBlockCreativeCompressor extends $BlockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -13735,6 +14077,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -13778,20 +14121,23 @@ declare global {
 export type $ShulkerAccess_ = $ShulkerAccess$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.block.ChargingStationBlock$ItemBlockChargingStation" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $ChargingStationBlock$ItemBlockChargingStation extends $BlockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -13804,12 +14150,13 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Block$$Type)
 
-public "getDescriptionId"(arg0: $ItemStack$$Type): string
+public "getDescriptionId"(arg0: $ItemStack$$Type): StringJS
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
 public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -13832,7 +14179,6 @@ import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.leve
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $FluidOil$Source extends $BaseFlowingFluid$Source {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -13842,7 +14188,6 @@ static readonly "LEVEL": $IntegerProperty
 constructor()
 
 public "move"(arg0: $FluidState$$Type, arg1: $LivingEntity$$Type, arg2: $Vec3$$Type, arg3: double): boolean
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -13858,16 +14203,16 @@ declare global {
 export type $FluidOil$Source_ = $FluidOil$Source$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.drone.LogisticsManager" {
+import {$AbstractLogisticsFrameEntity, $AbstractLogisticsFrameEntity$$Type} from "me.desht.pneumaticcraft.common.entity.semiblock.AbstractLogisticsFrameEntity"
 import {$PriorityQueue, $PriorityQueue$$Type} from "java.util.PriorityQueue"
 import {$LogisticsManager$LogisticsTask, $LogisticsManager$LogisticsTask$$Type} from "me.desht.pneumaticcraft.common.drone.LogisticsManager$LogisticsTask"
-import {$AbstractLogisticsFrameEntity, $AbstractLogisticsFrameEntity$$Type} from "me.desht.pneumaticcraft.common.entity.semiblock.AbstractLogisticsFrameEntity"
 
 export class $LogisticsManager {
 
 constructor()
 
-public "addLogisticFrame"(arg0: $AbstractLogisticsFrameEntity$$Type): void
 public "getTasks"(arg0: any, arg1: boolean): $PriorityQueue<($LogisticsManager$LogisticsTask)>
+public "addLogisticFrame"(arg0: $AbstractLogisticsFrameEntity$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -13882,13 +14227,16 @@ declare global {
 export type $LogisticsManager_ = $LogisticsManager$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.block.KeroseneLampBlock$ItemBlockKeroseneLamp" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$ICustomTooltipName, $ICustomTooltipName$$Type} from "me.desht.pneumaticcraft.common.item.ICustomTooltipName"
@@ -13896,7 +14244,7 @@ import {$ICustomTooltipName, $ICustomTooltipName$$Type} from "me.desht.pneumatic
 export class $KeroseneLampBlock$ItemBlockKeroseneLamp extends $BlockItem implements $ICustomTooltipName {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -13909,14 +14257,15 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Block$$Type)
 
-public "getCustomTooltipTranslationKey"(): string
-public static "getTranslationKey"(arg0: $ItemStack$$Type, arg1: boolean): string
+public "getCustomTooltipTranslationKey"(): StringJS
+public static "getTranslationKey"(arg0: $ItemStack$$Type, arg1: boolean): StringJS
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
 public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
-get "customTooltipTranslationKey"(): string
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
+get "customTooltipTranslationKey"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -13939,8 +14288,8 @@ import {$IVariableWidget, $IVariableWidget$$Type} from "me.desht.pneumaticcraft.
 import {$DroneAIManager, $DroneAIManager$$Type} from "me.desht.pneumaticcraft.common.drone.ai.DroneAIManager"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$IVariableProvider, $IVariableProvider$$Type} from "me.desht.pneumaticcraft.api.misc.IVariableProvider"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$IProgWidget, $IProgWidget$$Type} from "me.desht.pneumaticcraft.api.drone.IProgWidget"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$DyeColor, $DyeColor$$Type} from "net.minecraft.world.item.DyeColor"
@@ -13948,8 +14297,8 @@ import {$IAreaProvider, $IAreaProvider$$Type} from "me.desht.pneumaticcraft.comm
 import {$AreaType, $AreaType$$Type} from "me.desht.pneumaticcraft.api.drone.area.AreaType"
 import {$Set, $Set$$Type} from "java.util.Set"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
-import {$IProgWidget$WidgetDifficulty, $IProgWidget$WidgetDifficulty$$Type} from "me.desht.pneumaticcraft.api.drone.IProgWidget$WidgetDifficulty"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$IProgWidget$WidgetDifficulty, $IProgWidget$WidgetDifficulty$$Type} from "me.desht.pneumaticcraft.api.drone.IProgWidget$WidgetDifficulty"
 import {$ProgWidgetType, $ProgWidgetType$$Type} from "me.desht.pneumaticcraft.api.drone.ProgWidgetType"
 import {$ProgWidget, $ProgWidget$$Type} from "me.desht.pneumaticcraft.common.drone.progwidgets.ProgWidget"
 
@@ -13963,24 +14312,18 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($ProgW
 
 constructor()
 
+public "getParameters"(): $List<($ProgWidgetType<(any)>)>
 public "returnType"(): $ProgWidgetType<(any)>
 public "equals"(arg0: any): boolean
 public "hashCode"(): integer
 public "getType"(): $ProgWidgetType<(any)>
-public "getParameters"(): $List<($ProgWidgetType<(any)>)>
-public "getColor"(): $DyeColor
-public "getDifficulty"(): $IProgWidget$WidgetDifficulty
-public "getTooltip"(arg0: $List$$Type<($Component$$Type)>): void
-public "getTexture"(): $ResourceLocation
 public "setPos"(arg0: integer, arg1: $BlockPos$$Type): void
 public "getPos"(arg0: integer): $Optional<($BlockPos)>
-public "getExtraStringInfo"(): $List<($Component)>
-public static "addAreaTypeInfo"(arg0: $AreaType$$Type, arg1: $List$$Type<($Component$$Type)>): void
-public static "getAllAreaTypes"(): $List<($AreaType)>
-public "setVariableProvider"(arg0: $IVariableProvider$$Type, arg1: $UUID$$Type): void
-public "addAreaTypeTooltip"(arg0: $List$$Type<($Component$$Type)>): void
-public "hasStepInput"(): boolean
-public "addErrors"(arg0: $List$$Type<($Component$$Type)>, arg1: $List$$Type<($IProgWidget$$Type)>): void
+public "getColor"(): $DyeColor
+public "getTooltip"(arg0: $List$$Type<($Component$$Type)>): void
+public "getDifficulty"(): $IProgWidget$WidgetDifficulty
+public "getTexture"(): $ResourceLocation
+public "copyWidget"(): $IProgWidget
 public static "fromPositions"(arg0: $BlockPos$$Type, arg1: $BlockPos$$Type): $ProgWidgetArea
 public static "fromPosition"(arg0: $BlockPos$$Type, arg1: integer, arg2: integer, arg3: integer): $ProgWidgetArea
 public static "fromPosition"(arg0: $BlockPos$$Type): $ProgWidgetArea
@@ -13988,23 +14331,29 @@ public static "fromPosition"(arg0: $BlockPos$$Type, arg1: integer): $ProgWidgetA
 public "getAreaType"(): $AreaType
 public "setAreaType"(arg0: $AreaType$$Type): void
 public "setAIManager"(arg0: $DroneAIManager$$Type): void
-public "copyWidget"(): $IProgWidget
 public "updateFrom"(arg0: $ProgWidgetArea$$Type): void
+public "hasStepInput"(): boolean
+public "addErrors"(arg0: $List$$Type<($Component$$Type)>, arg1: $List$$Type<($IProgWidget$$Type)>): void
+public "addVariables"(arg0: $Set$$Type<(StringJS)>): void
 public "getArea"(arg0: $Set$$Type<($BlockPos$$Type)>, arg1: $AreaType$$Type): void
 public "getArea"(arg0: $Set$$Type<($BlockPos$$Type)>): $Set<($BlockPos)>
-public "getVarName"(arg0: integer): string
-public "setVarName"(arg0: integer, arg1: string): void
-public "addVariables"(arg0: $Set$$Type<(string)>): void
+public "getVarName"(arg0: integer): StringJS
+public "setVarName"(arg0: integer, arg1: StringJS): void
+public "getExtraStringInfo"(): $List<($Component)>
+public static "addAreaTypeInfo"(arg0: $AreaType$$Type, arg1: $List$$Type<($Component$$Type)>): void
+public static "getAllAreaTypes"(): $List<($AreaType)>
+public "setVariableProvider"(arg0: $IVariableProvider$$Type, arg1: $UUID$$Type): void
+public "addAreaTypeTooltip"(arg0: $List$$Type<($Component$$Type)>): void
 public static "create"(arg0: $ProgWidgetType$$Type<(any)>): $IProgWidget
-get "type"(): $ProgWidgetType<(any)>
 get "parameters"(): $List<($ProgWidgetType<(any)>)>
+get "type"(): $ProgWidgetType<(any)>
 get "color"(): $DyeColor
 get "difficulty"(): $IProgWidget$WidgetDifficulty
 get "texture"(): $ResourceLocation
-get "extraStringInfo"(): $List<($Component)>
 get "areaType"(): $AreaType
 set "areaType"(value: $AreaType$$Type)
 set "aIManager"(value: $DroneAIManager$$Type)
+get "extraStringInfo"(): $List<($Component)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -14033,7 +14382,7 @@ static "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($ThermoPlantRec
 constructor(outputFluid: $FluidStack$$Type, outputItem: $ItemStack$$Type)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "outputFluid"(): $FluidStack
 public "outputItem"(): $ItemStack
@@ -14042,7 +14391,7 @@ public "outputItem"(): $ItemStack
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ThermoPlantRecipe$Outputs$$Type = ({"outputItem"?: $ItemStack$$Type, "outputFluid"?: $FluidStack$$Type}) | ([outputItem?: $ItemStack$$Type, outputFluid?: $FluidStack$$Type]);
+export type $ThermoPlantRecipe$Outputs$$Type = ({"outputFluid"?: $FluidStack$$Type, "outputItem"?: $ItemStack$$Type}) | ([outputFluid?: $FluidStack$$Type, outputItem?: $ItemStack$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -14060,8 +14409,8 @@ export class $RemoteWidgetType<R extends $IRemoteWidget> {
 
 constructor(arg0: $MapCodec$$Type<(R)>, arg1: $StreamCodec$$Type<($RegistryFriendlyByteBuf$$Type), (R)>)
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (R)>
 public "codec"(): $MapCodec<(R)>
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (R)>
 /**
  * This field is a type stub generated by ProbeJS and shall not be used in any sense.
  */
@@ -14088,8 +14437,8 @@ import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$AbstractTubeModule, $AbstractTubeModule$$Type} from "me.desht.pneumaticcraft.common.tubemodules.AbstractTubeModule"
-import {$IAirHandlerMachine, $IAirHandlerMachine$$Type} from "me.desht.pneumaticcraft.api.tileentity.IAirHandlerMachine"
 import {$TrackedDataContainer, $TrackedDataContainer$$Type} from "dev.corgitaco.dataanchor.data.TrackedDataContainer"
+import {$IAirHandlerMachine, $IAirHandlerMachine$$Type} from "me.desht.pneumaticcraft.api.tileentity.IAirHandlerMachine"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$AbstractPneumaticCraftBlockEntity, $AbstractPneumaticCraftBlockEntity$$Type} from "me.desht.pneumaticcraft.common.block.entity.AbstractPneumaticCraftBlockEntity"
@@ -14111,50 +14460,50 @@ import {$AABB, $AABB$$Type} from "net.minecraft.world.phys.AABB"
 
 export class $PressureTubeBlockEntity extends $AbstractAirHandlingBlockEntity implements $IAirListener, $IManoMeasurable, $CamouflageableBlockEntity {
 static readonly "CONNECTION_PROPERTY": $ModelProperty<(short)>
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 constructor(arg0: $BlockPos$$Type, arg1: $BlockState$$Type)
 
 public "getModule"(arg0: $Direction$$Type): $AbstractTubeModule
-public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "onLoad"(): void
 public "tickClient"(): void
 public "tickServer"(): void
 public "saveAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
 public "setModule"(arg0: $Direction$$Type, arg1: $AbstractTubeModule$$Type): void
-public "onLoad"(): void
-public "getRenderBoundingBox"(): $AABB
-public "writeModulesToNBT"(arg0: $CompoundTag$$Type): void
-public "setSideConnected"(arg0: $Direction$$Type, arg1: boolean): void
-public "getShapeCacheKey"(): integer
-public "isSideConnected"(arg0: $Direction$$Type): boolean
-public "onNeighborTileUpdate"(arg0: $BlockPos$$Type): void
-public "getConnectedNeighbor"(arg0: $Direction$$Type): $BlockEntity
-public "canConnectPneumatic"(arg0: $Direction$$Type): boolean
-public "printManometerMessage"(arg0: $Player$$Type, arg1: $List$$Type<($Component$$Type)>): void
-public "onNeighborBlockUpdate"(arg0: $BlockPos$$Type): void
-public "onAirDispersion"(arg0: $IAirHandlerMachine$$Type, arg1: $Direction$$Type, arg2: integer): void
-public "getMaxDispersion"(arg0: $IAirHandlerMachine$$Type, arg1: $Direction$$Type): integer
-public "getCamouflage"(): $BlockState
-public "setCamouflage"(arg0: $BlockState$$Type): void
-public "readFromPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
 public "writeToPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "onDescUpdate"(): void
+public "readFromPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
 public "isSideClosed"(arg0: $Direction$$Type): boolean
 public "mayPlaceModule"(arg0: $AbstractTubeModule$$Type): boolean
 public "setSideClosed"(arg0: $Direction$$Type, arg1: boolean): void
 public "tubeModules"(): $Stream<($AbstractTubeModule)>
+public "onDescUpdate"(): void
+public "setCamouflage"(arg0: $BlockState$$Type): void
+public "getCamouflage"(): $BlockState
+public "getRenderBoundingBox"(): $AABB
+public "writeModulesToNBT"(arg0: $CompoundTag$$Type): void
+public "setSideConnected"(arg0: $Direction$$Type, arg1: boolean): void
+public "canConnectPneumatic"(arg0: $Direction$$Type): boolean
+public "getShapeCacheKey"(): integer
+public "isSideConnected"(arg0: $Direction$$Type): boolean
+public "onNeighborTileUpdate"(arg0: $BlockPos$$Type): void
+public "onNeighborBlockUpdate"(arg0: $BlockPos$$Type): void
+public "onAirDispersion"(arg0: $IAirHandlerMachine$$Type, arg1: $Direction$$Type, arg2: integer): void
+public "getMaxDispersion"(arg0: $IAirHandlerMachine$$Type, arg1: $Direction$$Type): integer
+public "getConnectedNeighbor"(arg0: $Direction$$Type): $BlockEntity
+public "printManometerMessage"(arg0: $Player$$Type, arg1: $List$$Type<($Component$$Type)>): void
 public "addConnectedPneumatics"(arg0: $List$$Type<($IAirHandlerMachine$$Type)>): $List<($IAirHandlerMachine)>
-public static "onCamouflageChanged"(arg0: $AbstractPneumaticCraftBlockEntity$$Type): void
-public static "getStackForState"(arg0: $BlockState$$Type): $ItemStack
 public static "writeCamo"(arg0: $CompoundTag$$Type, arg1: $BlockState$$Type): void
 public static "readCamo"(arg0: $CompoundTag$$Type): $BlockState
+public static "onCamouflageChanged"(arg0: $AbstractPneumaticCraftBlockEntity$$Type): void
+public static "getStackForState"(arg0: $BlockState$$Type): $ItemStack
 public "getUpgradeHandler"(): $IItemHandler
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+set "camouflage"(value: $BlockState$$Type)
+get "camouflage"(): $BlockState
 get "renderBoundingBox"(): $AABB
 get "shapeCacheKey"(): integer
-get "camouflage"(): $BlockState
-set "camouflage"(value: $BlockState$$Type)
 get "upgradeHandler"(): $IItemHandler
 }
 /**
@@ -14182,9 +14531,9 @@ export class $ThermoPlantRecipeImpl$Serializer<T extends $ThermoPlantRecipe> imp
 
 constructor(arg0: $ThermoPlantRecipeImpl$IFactory$$Type<(T)>)
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
 public "codec"(): $MapCodec<(T)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -14214,8 +14563,8 @@ import {$ColorHandlers$ITintableBlock, $ColorHandlers$ITintableBlock$$Type} from
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockAndTintGetter, $BlockAndTintGetter$$Type} from "net.minecraft.world.level.BlockAndTintGetter"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -14228,8 +14577,8 @@ import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.d
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ItemInteractionResult, $ItemInteractionResult$$Type} from "net.minecraft.world.ItemInteractionResult"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
@@ -14237,8 +14586,8 @@ import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.leve
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $AphorismTileBlock extends $AbstractPneumaticCraftBlock implements $ColorHandlers$ITintableBlock, $PneumaticCraftEntityBlock {
 static readonly "DOWN": $BooleanProperty
@@ -14250,7 +14599,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -14273,16 +14622,16 @@ static readonly "UPDATE_CLIENTS": integer
 constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "addSerializableComponents"(arg0: $List$$Type<($DataComponentType$$Type<(any)>)>): void
 public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
 public "useItemOn"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type, arg2: $Level$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type, arg5: $InteractionHand$$Type, arg6: $BlockHitResult$$Type): $ItemInteractionResult
+public "onWrenched"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type, arg4: $InteractionHand$$Type): boolean
+public "getTintColor"(arg0: $BlockState$$Type, arg1: $BlockAndTintGetter$$Type, arg2: $BlockPos$$Type, arg3: integer): integer
+public "isRotatable"(): boolean
 public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-public "isRotatable"(): boolean
-public "getTintColor"(arg0: $BlockState$$Type, arg1: $BlockAndTintGetter$$Type, arg2: $BlockPos$$Type, arg3: integer): integer
-public "onWrenched"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type, arg4: $InteractionHand$$Type): boolean
+public "addSerializableComponents"(arg0: $List$$Type<($DataComponentType$$Type<(any)>)>): void
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public static "forBlock"(arg0: $Block$$Type): $IPneumaticWrenchable
@@ -14307,7 +14656,6 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$BaseFlowingFluid$Flowing, $BaseFlowingFluid$Flowing$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Flowing"
 
 export class $FluidMemoryEssence$Flowing extends $BaseFlowingFluid$Flowing {
@@ -14317,7 +14665,6 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -14340,8 +14687,8 @@ import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$IBlockComparatorSupport, $IBlockComparatorSupport$$Type} from "me.desht.pneumaticcraft.common.block.IBlockComparatorSupport"
+import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
@@ -14351,8 +14698,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
@@ -14369,7 +14716,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -14424,22 +14771,22 @@ import {$MoveControl, $MoveControl$$Type} from "net.minecraft.world.entity.ai.co
 import {$SoundSource, $SoundSource$$Type} from "net.minecraft.sounds.SoundSource"
 import {$EntityDataAccessor, $EntityDataAccessor$$Type} from "net.minecraft.network.syncher.EntityDataAccessor"
 import {$EquipmentSlot, $EquipmentSlot$$Type} from "net.minecraft.world.entity.EquipmentSlot"
-import {$DronePacket$DroneTarget, $DronePacket$DroneTarget$$Type} from "me.desht.pneumaticcraft.common.network.DronePacket$DroneTarget"
 import {$GoalSelector, $GoalSelector$$Type} from "net.minecraft.world.entity.ai.goal.GoalSelector"
+import {$DronePacket$DroneTarget, $DronePacket$DroneTarget$$Type} from "me.desht.pneumaticcraft.common.network.DronePacket$DroneTarget"
 import {$FluidType, $FluidType$$Type} from "net.neoforged.neoforge.fluids.FluidType"
-import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$EntityType, $EntityType$$Type} from "net.minecraft.world.entity.EntityType"
-import {$IDroneDebugger, $IDroneDebugger$$Type} from "me.desht.pneumaticcraft.api.drone.debug.IDroneDebugger"
+import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Minigun$FiringResult, $Minigun$FiringResult$$Type} from "me.desht.pneumaticcraft.common.minigun.Minigun$FiringResult"
 import {$LogisticsManager, $LogisticsManager$$Type} from "me.desht.pneumaticcraft.common.drone.LogisticsManager"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$DroneAIManager, $DroneAIManager$$Type} from "me.desht.pneumaticcraft.common.drone.ai.DroneAIManager"
 import {$Entity$RemovalReason, $Entity$RemovalReason$$Type} from "net.minecraft.world.entity.Entity$RemovalReason"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$IDroneBase, $IDroneBase$$Type} from "me.desht.pneumaticcraft.common.drone.IDroneBase"
+import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$IManoMeasurable, $IManoMeasurable$$Type} from "me.desht.pneumaticcraft.api.tileentity.IManoMeasurable"
+import {$SpellData, $SpellData$$Type} from "io.redspace.ironsspellbooks.api.spells.SpellData"
 import {$FluidTank, $FluidTank$$Type} from "net.neoforged.neoforge.fluids.capability.templates.FluidTank"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$DamageSource, $DamageSource$$Type} from "net.minecraft.world.damagesource.DamageSource"
@@ -14457,20 +14804,21 @@ import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BasicAirHandler, $BasicAirHandler$$Type} from "me.desht.pneumaticcraft.common.capabilities.BasicAirHandler"
 import {$TrackedDataContainer, $TrackedDataContainer$$Type} from "dev.corgitaco.dataanchor.data.TrackedDataContainer"
 import {$Minigun, $Minigun$$Type} from "me.desht.pneumaticcraft.common.minigun.Minigun"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$FakePlayer, $FakePlayer$$Type} from "net.neoforged.neoforge.common.util.FakePlayer"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$IProgWidget, $IProgWidget$$Type} from "me.desht.pneumaticcraft.api.drone.IProgWidget"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$DimensionTransition, $DimensionTransition$$Type} from "net.minecraft.world.level.portal.DimensionTransition"
+import {$DroneDebugger, $DroneDebugger$$Type} from "me.desht.pneumaticcraft.common.debug.DroneDebugger"
 import {$WalkAnimationState, $WalkAnimationState$$Type} from "net.minecraft.world.entity.WalkAnimationState"
 import {$ScoreHolder, $ScoreHolder$$Type} from "net.minecraft.world.scores.ScoreHolder"
 import {$Class, $Class$$Type} from "java.lang.Class"
-import {$DroneAIManager$WrappedGoal, $DroneAIManager$WrappedGoal$$Type} from "me.desht.pneumaticcraft.common.drone.ai.DroneAIManager$WrappedGoal"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$IHackableEntity, $IHackableEntity$$Type} from "me.desht.pneumaticcraft.api.pneumatic_armor.hacking.IHackableEntity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$DroneAIManager$WrappedGoal, $DroneAIManager$WrappedGoal$$Type} from "me.desht.pneumaticcraft.common.drone.ai.DroneAIManager$WrappedGoal"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$PortalProcessor, $PortalProcessor$$Type} from "net.minecraft.world.entity.PortalProcessor"
 import {$IEntityWithComplexSpawn, $IEntityWithComplexSpawn$$Type} from "net.neoforged.neoforge.entity.IEntityWithComplexSpawn"
 import {$IPathNavigator, $IPathNavigator$$Type} from "me.desht.pneumaticcraft.api.drone.IPathNavigator"
@@ -14487,6 +14835,7 @@ import {$ChangeSubscriber, $ChangeSubscriber$$Type} from "net.caffeinemc.mods.li
 import {$ChunkPos, $ChunkPos$$Type} from "net.minecraft.world.level.ChunkPos"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.dataanchor.data.registry.TrackedDataRegistry"
+import {$HashMap, $HashMap$$Type} from "java.util.HashMap"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Leashable, $Leashable$$Type} from "net.minecraft.world.entity.Leashable"
@@ -14514,8 +14863,9 @@ static readonly "MAX_PICKUP_LOOT_CHANCE": float
  "zza": float
  "goalSelector": $GoalSelector
  "swingingArm": $InteractionHand
-static readonly "ID_TAG": string
+static readonly "ID_TAG": StringJS
 static readonly "DATA_HEALTH_ID": $EntityDataAccessor<(float)>
+ "persistenceRequired": boolean
 static readonly "DELTA_AFFECTED_BY_BLOCKS_BELOW_1_0": double
  "xRotO": float
  "zo": double
@@ -14525,7 +14875,7 @@ static readonly "DELTA_AFFECTED_BY_BLOCKS_BELOW_1_0": double
  "yya": float
  "oAttackAnim": float
  "yHeadRotO": float
-static readonly "UUID_TAG": string
+static readonly "UUID_TAG": StringJS
  "hurtDuration": integer
 static readonly "DEATH_DURATION": integer
  "portalProcess": $PortalProcessor
@@ -14535,12 +14885,12 @@ static readonly "DEATH_DURATION": integer
  "laserExtension": float
 static readonly "DEFAULT_BABY_SCALE": float
  "eyeHeight": float
-static readonly "ATTRIBUTES_FIELD": string
+static readonly "ATTRIBUTES_FIELD": StringJS
 static readonly "UPDATE_GOAL_SELECTOR_EVERY_N_TICKS": integer
 static readonly "DEFAULT_BB_HEIGHT": float
  "xxa": float
  "flyDist": float
-static readonly "PASSENGERS_TAG": string
+static readonly "PASSENGERS_TAG": StringJS
  "wasOnFire": boolean
  "attackAnim": float
  "zOld": double
@@ -14549,13 +14899,16 @@ readonly "timeOffs": float
 readonly "rotA": float
  "horizontalCollision": boolean
  "dimensions": $EntityDimensions
+ "castingSpell": $SpellData
 static readonly "DEFAULT_EQUIPMENT_DROP_CHANCE": float
 static readonly "ARMOR_SLOT_OFFSET": integer
  "swingTime": integer
+ "entityJs$builder": any
 static readonly "BODY_ARMOR_OFFSET": integer
  "tickCount": integer
 static readonly "MAX_ENCHANTED_ARMOR_CHANCE": float
 static readonly "MAX_ENCHANTED_WEAPON_CHANCE": float
+ "hasUsedSingleAttack": boolean
 static readonly "BOARDING_COOLDOWN": integer
 static readonly "PRESERVE_ITEM_DROP_CHANCE": integer
 static readonly "SWING_DURATION": integer
@@ -14571,6 +14924,7 @@ static readonly "BASE_JUMP_POWER": float
  "targetSelector": $GoalSelector
  "oldPropRotation": float
  "oldLaserExtension": float
+ "drinkTime": integer
  "xOld": double
  "wasInPowderSnow": boolean
  "hurtTime": integer
@@ -14597,12 +14951,13 @@ static readonly "PLAYER_HURT_EXPERIENCE_TIME": integer
 static readonly "HAND_SLOTS": integer
 static readonly "DEFAULT_BB_WIDTH": float
  "minorHorizontalCollision": boolean
+readonly "spells": $HashMap<(any), (any)>
 static readonly "EXTRA_RENDER_CULLING_SIZE_WITH_BIG_HAT": float
  "removeArrowTime": integer
  "walkDistO": float
 static readonly "FREEZE_HURT_FREQUENCY": integer
  "isInPowderSnow": boolean
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
  "target": $LivingEntity
  "yBodyRot": float
  "blocksBuilding": boolean
@@ -14613,46 +14968,103 @@ readonly "invulnerableDuration": integer
 static readonly "BASE_SAFE_FALL_DISTANCE": integer
  "effectsDirty": boolean
 
-constructor(arg0: $Level$$Type, arg1: $Player$$Type)
 constructor(arg0: $EntityType$$Type<($DroneEntity$$Type)>, arg1: $Level$$Type)
+constructor(arg0: $Level$$Type, arg1: $Player$$Type)
 
-public "getLabel"(): string
-public "setName"(arg0: $Component$$Type): void
+public "tick"(): void
 public "setTarget"(arg0: $LivingEntity$$Type): void
 public "getOwner"(): $Player
-public "tick"(): void
-public "dropItem"(arg0: $ItemStack$$Type): void
-public "getOwnerUUID"(): $UUID
-public "getVariable"(arg0: string): $Optional<($BlockPos)>
-public "playSound"(arg0: $SoundEvent$$Type, arg1: $SoundSource$$Type, arg2: float, arg3: float): void
-public "getArmorValue"(): integer
-public "doHurtTarget"(arg0: $Entity$$Type): boolean
-public "isFlying"(): boolean
-public "startRiding"(arg0: $Entity$$Type, arg1: boolean): boolean
-public "isDescending"(): boolean
-public "mobInteract"(arg0: $Player$$Type, arg1: $InteractionHand$$Type): $InteractionResult
-public "setVariable"(arg0: string, arg1: $BlockPos$$Type): void
-public "getInv"(): $IItemHandlerModifiable
+public "getLabel"(): StringJS
+public "setName"(arg0: $Component$$Type): void
 public "attack"(arg0: $DamageSource$$Type, arg1: float): boolean
 public "setPos"(arg0: double, arg1: double, arg2: double): void
 public "die"(arg0: $DamageSource$$Type): void
 public "travel"(arg0: $Vec3$$Type): void
+public "mobInteract"(arg0: $Player$$Type, arg1: $InteractionHand$$Type): $InteractionResult
+public "dropItem"(arg0: $ItemStack$$Type): void
+public "startRiding"(arg0: $Entity$$Type, arg1: boolean): boolean
+public "isDescending"(): boolean
+public "playSound"(arg0: $SoundEvent$$Type, arg1: $SoundSource$$Type, arg2: float, arg3: float): void
+public "getArmorValue"(): integer
+public "doHurtTarget"(arg0: $Entity$$Type): boolean
+public "setVariable"(arg0: StringJS, arg1: $BlockPos$$Type): void
+public "isFlying"(): boolean
+public "getVariable"(arg0: StringJS): $Optional<($BlockPos)>
+public "getInv"(): $IItemHandlerModifiable
+public "canHack"(arg0: $Entity$$Type, arg1: $Player$$Type): boolean
+public "getSlotForAmmo"(): integer
+public "onHackFinished"(arg0: $Entity$$Type, arg1: $Player$$Type): void
+public "onHackFinished"(arg0: $DroneEntity$$Type, arg1: $Player$$Type): void
+public "getHackTime"(arg0: $Entity$$Type, arg1: $Player$$Type): integer
+public "getHackTime"(arg0: $DroneEntity$$Type, arg1: $Player$$Type): integer
+public "addHackInfo"(arg0: $DroneEntity$$Type, arg1: $List$$Type<($Component$$Type)>, arg2: $Player$$Type): void
+public "addHackInfo"(arg0: $Entity$$Type, arg1: $List$$Type<(any)>, arg2: $Player$$Type): void
+public "getTargetLine"(): $ProgressingLine
+public "getHackableId"(): $ResourceLocation
+public "setStandby"(arg0: boolean, arg1: boolean): void
+public "incAttackCount"(): void
+public "getAttackCount"(): integer
+public "getDroneSpeed"(): double
+public "getDebugger"(): $DroneDebugger
+public "getDronePos"(): $Vec3
+public "setDugBlock"(arg0: $BlockPos$$Type, arg1: $Direction$$Type): void
+public "setDugBlock"(arg0: $BlockPos$$Type): void
+public "getAIManager"(): $DroneAIManager
+public "getDeployPos"(): $BlockPos
+public "getDroneLevel"(): $Level
+public "getProgWidgets"(): $List<($IProgWidget)>
+public "getTargetAI"(): $GoalSelector
+public "isAIOverridden"(): boolean
+public "overload"(arg0: StringJS, ...arg1: (any)[]): void
+public "addAirToDrone"(arg0: integer): void
+public "getDroneName"(): $Component
+public "setDroneSpeed"(arg0: double): void
+public "getDugBlock"(): $BlockPos
+public "getLaserColor"(): integer
+public "isAccelerating"(): boolean
+public "hasMinigun"(): boolean
+public "getOwnerName"(): $Component
+public "getMinigun"(): $Minigun
+public "tryFireMinigun"(arg0: $LivingEntity$$Type): $Minigun$FiringResult
+public "updateLabel"(): void
+public "getAirHandler"(): $BasicAirHandler
+public "setDeployPos"(arg0: $BlockPos$$Type): void
+public "addProgram"(arg0: $BlockPos$$Type, arg1: $Direction$$Type, arg2: $BlockPos$$Type, arg3: $ItemStack$$Type, arg4: $List$$Type<($IProgWidget$$Type)>): boolean
+public "getDroneColor"(): integer
+public "getAmmoColor"(): integer
+public "getUpgrades"(arg0: $PNCUpgrade$$Type): integer
+public "getFakePlayer"(): $FakePlayer
+public "onWrenched"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type, arg4: $InteractionHand$$Type): boolean
+public "getFluidTank"(): $FluidTank
+public "writeSpawnData"(arg0: $RegistryFriendlyByteBuf$$Type): void
+public "readSpawnData"(arg0: $RegistryFriendlyByteBuf$$Type): void
+public "getOwnerUUID"(): $UUID
+public "readFromItemStack"(arg0: $ItemStack$$Type): void
 public "getEnergyStorage"(): $IEnergyStorage
+public "getUpgradeHandler"(): $IItemHandler
+public "removeWhenFarAway"(arg0: double): boolean
 public "addAdditionalSaveData"(arg0: $CompoundTag$$Type): void
 public "readAdditionalSaveData"(arg0: $CompoundTag$$Type): void
-public "isInvulnerableTo"(arg0: $DamageSource$$Type): boolean
 public "changeDimension"(arg0: $DimensionTransition$$Type): $Entity
+public "onRemovedFromLevel"(): void
+public "isInvulnerableTo"(arg0: $DamageSource$$Type): boolean
 public "onSyncedDataUpdated"(arg0: $EntityDataAccessor$$Type<(any)>): void
 public "canDrownInFluidType"(arg0: $FluidType$$Type): boolean
-public "onRemovedFromLevel"(): void
-public "removeWhenFarAway"(arg0: double): boolean
+public "onUpgradesChanged"(): void
+public "getControllerPos"(): $BlockPos
+public "getDroneItemHandler"(): $DroneItemHandler
+public static "prepareAttributes"(): $AttributeSupplier$Builder
 public "shouldDropAsItem"(): boolean
+public "addPostHackInfo"(arg0: $DroneEntity$$Type, arg1: $List$$Type<($Component$$Type)>, arg2: $Player$$Type): void
+public "addPostHackInfo"(arg0: $Entity$$Type, arg1: $List$$Type<(any)>, arg2: $Player$$Type): void
+public "getOldTargetLine"(): $ProgressingLine
+public "getHackableClass"(): $Class<($DroneEntity)>
+public "getRunningTasks"(): $List<($DroneAIManager$WrappedGoal)>
+public "getRunningTargetAI"(): $Goal
 public "getDroneHeldItem"(): $ItemStack
 public "getTargetedBlock"(): $BlockPos
 public "isTeleportRangeLimited"(): boolean
-public "setEmittingRedstone"(arg0: $Direction$$Type, arg1: integer): void
 public "getEmittingRedstone"(arg0: $Direction$$Type): integer
-public "isDroneStillValid"(): boolean
 public "onSemiblockEvent"(arg0: $SemiblockEvent$$Type): void
 public "shouldLoadChunk"(arg0: $ChunkPos$$Type): boolean
 public "getPathNavigator"(): $IPathNavigator
@@ -14671,105 +15083,54 @@ public "getPacketTarget"(): $DronePacket$DroneTarget
 public "getActiveWidgetIndex"(): integer
 public "storeTrackerData"(arg0: $ItemStack$$Type): void
 public "resetAttackCount"(): void
-public "getRunningTasks"(): $List<($DroneAIManager$WrappedGoal)>
-public "getRunningTargetAI"(): $Goal
-public "getUpgradeHandler"(): $IItemHandler
-public "getDroneItemHandler"(): $DroneItemHandler
-public "readFromItemStack"(arg0: $ItemStack$$Type): void
-public "getControllerPos"(): $BlockPos
+public "setEmittingRedstone"(arg0: $Direction$$Type, arg1: integer): void
+public "isDroneStillValid"(): boolean
 public "printManometerMessage"(arg0: $Player$$Type, arg1: $List$$Type<($Component$$Type)>): void
-public "onUpgradesChanged"(): void
-public "setDroneSpeed"(arg0: double): void
-public "canHack"(arg0: $Entity$$Type, arg1: $Player$$Type): boolean
-public "getSlotForAmmo"(): integer
-public "onHackFinished"(arg0: $DroneEntity$$Type, arg1: $Player$$Type): void
-public "onHackFinished"(arg0: $Entity$$Type, arg1: $Player$$Type): void
-public "getHackTime"(arg0: $Entity$$Type, arg1: $Player$$Type): integer
-public "getHackTime"(arg0: $DroneEntity$$Type, arg1: $Player$$Type): integer
-public "addHackInfo"(arg0: $Entity$$Type, arg1: $List$$Type<(any)>, arg2: $Player$$Type): void
-public "addHackInfo"(arg0: $DroneEntity$$Type, arg1: $List$$Type<($Component$$Type)>, arg2: $Player$$Type): void
-public "getTargetLine"(): $ProgressingLine
-public "getHackableId"(): $ResourceLocation
-public "setStandby"(arg0: boolean, arg1: boolean): void
-public "incAttackCount"(): void
-public "getAttackCount"(): integer
-public "getDroneSpeed"(): double
-public "getAirHandler"(): $BasicAirHandler
-public "setDeployPos"(arg0: $BlockPos$$Type): void
-public "addProgram"(arg0: $BlockPos$$Type, arg1: $Direction$$Type, arg2: $BlockPos$$Type, arg3: $ItemStack$$Type, arg4: $List$$Type<($IProgWidget$$Type)>): boolean
-public "getDroneColor"(): integer
-public "getAmmoColor"(): integer
-public "getMinigun"(): $Minigun
-public "tryFireMinigun"(arg0: $LivingEntity$$Type): $Minigun$FiringResult
-public "getFakePlayer"(): $FakePlayer
-public "getOwnerName"(): $Component
-public "getDebugger"(): $IDroneDebugger
-public "getDronePos"(): $Vec3
-public "setDugBlock"(arg0: $BlockPos$$Type, arg1: $Direction$$Type): void
-public "setDugBlock"(arg0: $BlockPos$$Type): void
-public "getAIManager"(): $DroneAIManager
-public "getDeployPos"(): $BlockPos
-public "getDroneLevel"(): $Level
-public "getProgWidgets"(): $List<($IProgWidget)>
-public "getTargetAI"(): $GoalSelector
-public "isAIOverridden"(): boolean
-public "overload"(arg0: string, ...arg1: (any)[]): void
-public "updateLabel"(): void
-public "addAirToDrone"(arg0: integer): void
-public "getDroneName"(): $Component
-public "getDugBlock"(): $BlockPos
-public "getLaserColor"(): integer
-public "isAccelerating"(): boolean
-public "hasMinigun"(): boolean
-public "getFluidTank"(): $FluidTank
-public "writeSpawnData"(arg0: $RegistryFriendlyByteBuf$$Type): void
-public "readSpawnData"(arg0: $RegistryFriendlyByteBuf$$Type): void
-public "getUpgrades"(arg0: $PNCUpgrade$$Type): integer
-public "onWrenched"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type, arg4: $InteractionHand$$Type): boolean
-public "getHackableClass"(): $Class<($DroneEntity)>
-public "getOldTargetLine"(): $ProgressingLine
-public static "prepareAttributes"(): $AttributeSupplier$Builder
-public "addPostHackInfo"(arg0: $DroneEntity$$Type, arg1: $List$$Type<($Component$$Type)>, arg2: $Player$$Type): void
-public "addPostHackInfo"(arg0: $Entity$$Type, arg1: $List$$Type<(any)>, arg2: $Player$$Type): void
 public "isBlockValidPathfindBlock"(arg0: $BlockPos$$Type): boolean
 public static "forBlock"(arg0: $Block$$Type): $IPneumaticWrenchable
-public "_onHackFinished"(arg0: $Entity$$Type, arg1: $Player$$Type): void
-public "_addPostHackInfo"(arg0: $Entity$$Type, arg1: $List$$Type<($Component$$Type)>, arg2: $Player$$Type): void
 public "afterHackTick"(arg0: $DroneEntity$$Type): boolean
 public "_afterHackTick"(arg0: $Entity$$Type): boolean
 public "_getHackTime"(arg0: $Entity$$Type, arg1: $Player$$Type): integer
 public "_addHackInfo"(arg0: $Entity$$Type, arg1: $List$$Type<($Component$$Type)>, arg2: $Player$$Type): void
+public "_onHackFinished"(arg0: $Entity$$Type, arg1: $Player$$Type): void
+public "_addPostHackInfo"(arg0: $Entity$$Type, arg1: $List$$Type<($Component$$Type)>, arg2: $Player$$Type): void
 public static "asDroneBase"(arg0: $IDrone$$Type): $IDroneBase
 public static "asDrone"(arg0: $IDrone$$Type): $DroneEntity
 public "getActiveAIManager"(): $DroneAIManager
-public "onVariableChanged"(arg0: string, arg1: boolean): void
+public "onVariableChanged"(arg0: StringJS, arg1: boolean): void
 public "getActiveWidget"(): $IProgWidget
+public "self"(): $LivingEntity
+/**
+ * 
+ * @deprecated
+ */
+public "getItemBySlot"(arg0: $EquipmentSlot$$Type): $ItemStack
 public static "tickLeash"<E extends ($Entity) & ($Leashable)>(arg0: E): void
+public static "getAlternativeStack"(livingEntity: $LivingEntity$$Type, equipmentSlot: $EquipmentSlot$$Type, consumer: $Consumer$$Type<($ItemStack)>): void
 public "setLookupToggle"(value: boolean): void
 public "getLookupToggle"(): boolean
-public static "getAlternativeStack"(livingEntity: $LivingEntity$$Type, equipmentSlot: $EquipmentSlot$$Type, consumer: $Consumer$$Type<($ItemStack)>): void
 public "lithium$onEquipmentReplaced"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): void
 public static "tickEntity"(entity: $LivingEntity$$Type): void
 public static "getAlpha"(le: $LivingEntity$$Type, partialTicks: float): float
 public "lithium$getCachedFeetBlockState"(): $BlockState
-public "sodiumdynamiclights$scheduleTrackedChunksRebuild"(arg0: $LevelRenderer$$Type): void
-public "sodiumdynamiclights$updateDynamicLight"(arg0: $LevelRenderer$$Type): boolean
-public "sdl$getDynamicLightLevel"(): $Level
-public "sdl$shouldUpdateDynamicLight"(): boolean
-public "sdl$getDynamicLightX"(): double
-public "sdl$getDynamicLightY"(): double
-public "sdl$getDynamicLightZ"(): double
-public "sdl$resetDynamicLight"(): void
 public static "is"(arg0: $Entity$$Type): boolean
 public static "spawnedFromEndTrialSpawner"(arg0: $Entity$$Type): boolean
 public static "setSpawnedFromEndTrialSpawner"(arg0: $Entity$$Type, arg1: boolean): void
 public static "getMagniaProperties"(arg0: $Entity$$Type): $MagniaProperties
 public static "canMagniaAffect"(arg0: $Entity$$Type): boolean
 public static "getMagnetismFactor"(arg0: $Entity$$Type): float
+public static "dashed"(arg0: $Entity$$Type): boolean
 public static "setDashed"(arg0: $Entity$$Type, arg1: boolean): void
 public static "dashTicks"(arg0: $Entity$$Type): integer
 public static "setDashTicks"(arg0: $Entity$$Type, arg1: integer): void
-public static "dashed"(arg0: $Entity$$Type): boolean
+public "sdl$getDynamicLightX"(): double
+public "sdl$getDynamicLightY"(): double
+public "sdl$getDynamicLightZ"(): double
+public "sdl$resetDynamicLight"(): void
+public "sodiumdynamiclights$updateDynamicLight"(arg0: $LevelRenderer$$Type): boolean
+public "sdl$getDynamicLightLevel"(): $Level
+public "sdl$shouldUpdateDynamicLight"(): boolean
+public "sodiumdynamiclights$scheduleTrackedChunksRebuild"(arg0: $LevelRenderer$$Type): void
 /**
  * 
  * @deprecated
@@ -14778,28 +15139,61 @@ public "serializeNBT"(arg0: $HolderLookup$Provider$$Type): $Tag
 public static "without"<T>(arg0: $ChangeSubscriber$$Type<(T)>, arg1: $ChangeSubscriber$$Type<(T)>, arg2: integer, arg3: boolean): $ChangeSubscriber<(T)>
 public static "without"<T>(arg0: $ChangeSubscriber$$Type<(T)>, arg1: $ChangeSubscriber$$Type<(T)>): $ChangeSubscriber<(T)>
 public static "combine"<T>(arg0: $ChangeSubscriber$$Type<(T)>, arg1: integer, arg2: $ChangeSubscriber$$Type<(T)>, arg3: integer): $ChangeSubscriber<(T)>
+public static "dataOf"(arg0: $ChangeSubscriber$$Type<(any)>, arg1: $ChangeSubscriber$$Type<(any)>, arg2: integer): integer
 public static "dataWithout"<T>(arg0: $ChangeSubscriber$$Type<(T)>, arg1: $ChangeSubscriber$$Type<(T)>, arg2: integer, arg3: integer, arg4: boolean): integer
 public static "dataWithout"<T>(arg0: $ChangeSubscriber$$Type<(T)>, arg1: $ChangeSubscriber$$Type<(T)>, arg2: integer): integer
-public static "dataOf"(arg0: $ChangeSubscriber$$Type<(any)>, arg1: $ChangeSubscriber$$Type<(any)>, arg2: integer): integer
 public static "containsSubscriber"(arg0: $ChangeSubscriber$$Type<($ItemStack$$Type)>, arg1: integer, arg2: $ChangeSubscriber$$Type<($ItemStack$$Type)>, arg3: integer): boolean
-public static "forNameOnly"(arg0: string): $ScoreHolder
+public static "forNameOnly"(arg0: StringJS): $ScoreHolder
 public static "fromGameProfile"(arg0: $GameProfile$$Type): $ScoreHolder
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
-get "label"(): string
-set "name"(value: $Component$$Type)
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 set "target"(value: $LivingEntity$$Type)
 get "owner"(): $Player
-get "ownerUUID"(): $UUID
+get "label"(): StringJS
+set "name"(value: $Component$$Type)
+get "descending"(): boolean
 get "armorValue"(): integer
 get "flying"(): boolean
-get "descending"(): boolean
 get "inv"(): $IItemHandlerModifiable
+get "slotForAmmo"(): integer
+get "targetLine"(): $ProgressingLine
+get "hackableId"(): $ResourceLocation
+get "attackCount"(): integer
+get "droneSpeed"(): double
+get "debugger"(): $DroneDebugger
+get "dronePos"(): $Vec3
+set "dugBlock"(value: $BlockPos$$Type)
+get "aIManager"(): $DroneAIManager
+get "deployPos"(): $BlockPos
+get "droneLevel"(): $Level
+get "progWidgets"(): $List<($IProgWidget)>
+get "targetAI"(): $GoalSelector
+get "aIOverridden"(): boolean
+get "droneName"(): $Component
+set "droneSpeed"(value: double)
+get "dugBlock"(): $BlockPos
+get "laserColor"(): integer
+get "accelerating"(): boolean
+get "ownerName"(): $Component
+get "minigun"(): $Minigun
+get "airHandler"(): $BasicAirHandler
+set "deployPos"(value: $BlockPos$$Type)
+get "droneColor"(): integer
+get "ammoColor"(): integer
+get "fakePlayer"(): $FakePlayer
+get "fluidTank"(): $FluidTank
+get "ownerUUID"(): $UUID
 get "energyStorage"(): $IEnergyStorage
+get "upgradeHandler"(): $IItemHandler
+get "controllerPos"(): $BlockPos
+get "droneItemHandler"(): $DroneItemHandler
+get "oldTargetLine"(): $ProgressingLine
+get "hackableClass"(): $Class<($DroneEntity)>
+get "runningTasks"(): $List<($DroneAIManager$WrappedGoal)>
+get "runningTargetAI"(): $Goal
 get "droneHeldItem"(): $ItemStack
 get "targetedBlock"(): $BlockPos
 get "teleportRangeLimited"(): boolean
-get "droneStillValid"(): boolean
 get "pathNavigator"(): $IPathNavigator
 get "fakePlayerPos"(): $Vec3
 set "activeProgram"(value: $IProgWidget$$Type)
@@ -14810,40 +15204,7 @@ set "logisticsManager"(value: $LogisticsManager$$Type)
 get "dronePressure"(): float
 get "packetTarget"(): $DronePacket$DroneTarget
 get "activeWidgetIndex"(): integer
-get "runningTasks"(): $List<($DroneAIManager$WrappedGoal)>
-get "runningTargetAI"(): $Goal
-get "upgradeHandler"(): $IItemHandler
-get "droneItemHandler"(): $DroneItemHandler
-get "controllerPos"(): $BlockPos
-set "droneSpeed"(value: double)
-get "slotForAmmo"(): integer
-get "targetLine"(): $ProgressingLine
-get "hackableId"(): $ResourceLocation
-get "attackCount"(): integer
-get "droneSpeed"(): double
-get "airHandler"(): $BasicAirHandler
-set "deployPos"(value: $BlockPos$$Type)
-get "droneColor"(): integer
-get "ammoColor"(): integer
-get "minigun"(): $Minigun
-get "fakePlayer"(): $FakePlayer
-get "ownerName"(): $Component
-get "debugger"(): $IDroneDebugger
-get "dronePos"(): $Vec3
-set "dugBlock"(value: $BlockPos$$Type)
-get "aIManager"(): $DroneAIManager
-get "deployPos"(): $BlockPos
-get "droneLevel"(): $Level
-get "progWidgets"(): $List<($IProgWidget)>
-get "targetAI"(): $GoalSelector
-get "aIOverridden"(): boolean
-get "droneName"(): $Component
-get "dugBlock"(): $BlockPos
-get "laserColor"(): integer
-get "accelerating"(): boolean
-get "fluidTank"(): $FluidTank
-get "hackableClass"(): $Class<($DroneEntity)>
-get "oldTargetLine"(): $ProgressingLine
+get "droneStillValid"(): boolean
 get "activeAIManager"(): $DroneAIManager
 get "activeWidget"(): $IProgWidget
 set "lookupToggle"(value: boolean)
@@ -14868,7 +15229,6 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $FluidEtchingAcid$Source extends $BaseFlowingFluid$Source {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -14877,7 +15237,6 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -14901,8 +15260,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -14911,8 +15270,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
@@ -14930,7 +15289,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -14954,8 +15313,8 @@ constructor(arg0: $BlockBehaviour$Properties$$Type)
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "isRotatable"(): boolean
+public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public static "forBlock"(arg0: $Block$$Type): $IPneumaticWrenchable
@@ -15011,20 +15370,20 @@ static readonly "NONE": $DrillBitItem$DrillBitType
 
 
 public static "values"(): ($DrillBitItem$DrillBitType)[]
-public static "valueOf"(arg0: string): $DrillBitItem$DrillBitType
-public "getRegistryName"(): string
-public "getBaseEfficiency"(): integer
-public "asItemStack"(): $ItemStack
-public "getBestDigType"(): $JackHammerItem$DigMode
+public static "valueOf"(arg0: StringJS): $DrillBitItem$DrillBitType
 public "getTint"(): integer
 public "getBitQuality"(): integer
+public "asItemStack"(): $ItemStack
+public "getBestDigType"(): $JackHammerItem$DigMode
 public "getTier"(): $Tier
-get "registryName"(): string
-get "baseEfficiency"(): integer
-get "bestDigType"(): $JackHammerItem$DigMode
+public "getRegistryName"(): StringJS
+public "getBaseEfficiency"(): integer
 get "tint"(): integer
 get "bitQuality"(): integer
+get "bestDigType"(): $JackHammerItem$DigMode
 get "tier"(): $Tier
+get "registryName"(): StringJS
+get "baseEfficiency"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -15039,14 +15398,16 @@ declare global {
 export type $DrillBitItem$DrillBitType_ = $DrillBitItem$DrillBitType$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.semiblock.SemiblockItem" {
-import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
-import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$AbstractSemiblockEntity, $AbstractSemiblockEntity$$Type} from "me.desht.pneumaticcraft.common.entity.semiblock.AbstractSemiblockEntity"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -15054,7 +15415,7 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 export class $SemiblockItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -15064,6 +15425,7 @@ constructor()
 
 public "createEntity"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type, arg3: $BlockPos$$Type): $AbstractSemiblockEntity
 public "onItemUseFirst"(arg0: $ItemStack$$Type, arg1: $UseOnContext$$Type): $InteractionResult
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -15083,16 +15445,16 @@ import {$UUID, $UUID$$Type} from "java.util.UUID"
 import {$List, $List$$Type} from "java.util.List"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$FakePlayer, $FakePlayer$$Type} from "net.neoforged.neoforge.common.util.FakePlayer"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$IProgWidget, $IProgWidget$$Type} from "me.desht.pneumaticcraft.api.drone.IProgWidget"
 import {$SoundSource, $SoundSource$$Type} from "net.minecraft.sounds.SoundSource"
 import {$GoalSelector, $GoalSelector$$Type} from "net.minecraft.world.entity.ai.goal.GoalSelector"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$ProgWidgetType, $ProgWidgetType$$Type} from "me.desht.pneumaticcraft.api.drone.ProgWidgetType"
 import {$IPathNavigator, $IPathNavigator$$Type} from "me.desht.pneumaticcraft.api.drone.IPathNavigator"
 import {$IDroneDebugger, $IDroneDebugger$$Type} from "me.desht.pneumaticcraft.api.drone.debug.IDroneDebugger"
@@ -15105,18 +15467,33 @@ import {$IEnergyStorage, $IEnergyStorage$$Type} from "net.neoforged.neoforge.ene
 
 export interface $IDrone {
 
- "getLabel"(): string
- "setName"(arg0: $Component$$Type): void
  "getOwner"(): $Player
+ "getLabel"(): StringJS
+ "setName"(arg0: $Component$$Type): void
  "dropItem"(arg0: $ItemStack$$Type): void
- "getOwnerUUID"(): $UUID
  "playSound"(arg0: $SoundEvent$$Type, arg1: $SoundSource$$Type, arg2: float, arg3: float): void
  "getInv"(): $IItemHandlerModifiable
+ "getDebugger"(): $IDroneDebugger
+ "getDronePos"(): $Vec3
+ "setDugBlock"(arg0: $BlockPos$$Type): void
+ "setDugBlock"(arg0: $BlockPos$$Type, arg1: $Direction$$Type): void
+ "getDeployPos"(): $BlockPos
+ "getDroneLevel"(): $Level
+ "getProgWidgets"(): $List<($IProgWidget)>
+ "getTargetAI"(): $GoalSelector
+ "isAIOverridden"(): boolean
+ "overload"(arg0: StringJS, ...arg1: (any)[]): void
+ "addAirToDrone"(arg0: integer): void
+ "getDroneName"(): $Component
+ "updateLabel"(): void
+ "getUpgrades"(arg0: $PNCUpgrade$$Type): integer
+ "getFakePlayer"(): $FakePlayer
+ "getFluidTank"(): $FluidTank
+ "getOwnerUUID"(): $UUID
  "getEnergyStorage"(): $IEnergyStorage
- "setEmittingRedstone"(arg0: $Direction$$Type, arg1: integer): void
+ "getControllerPos"(): $BlockPos
  "getEmittingRedstone"(arg0: $Direction$$Type): integer
- "isDroneStillValid"(): boolean
- "onVariableChanged"(arg0: string, arg1: boolean): void
+ "onVariableChanged"(arg0: StringJS, arg1: boolean): void
  "getPathNavigator"(): $IPathNavigator
  "sendWireframeToClient"(arg0: $BlockPos$$Type): void
  "setActiveProgram"(arg0: $IProgWidget$$Type): void
@@ -15130,40 +15507,13 @@ export interface $IDrone {
  "storeTrackerData"(arg0: $ItemStack$$Type): void
  "getActiveWidget"(): $IProgWidget
  "resetAttackCount"(): void
- "getControllerPos"(): $BlockPos
- "getFakePlayer"(): $FakePlayer
- "getDebugger"(): $IDroneDebugger
- "getDronePos"(): $Vec3
- "setDugBlock"(arg0: $BlockPos$$Type, arg1: $Direction$$Type): void
- "setDugBlock"(arg0: $BlockPos$$Type): void
- "getDeployPos"(): $BlockPos
- "getDroneLevel"(): $Level
- "getProgWidgets"(): $List<($IProgWidget)>
- "getTargetAI"(): $GoalSelector
- "isAIOverridden"(): boolean
- "overload"(arg0: string, ...arg1: (any)[]): void
- "updateLabel"(): void
- "addAirToDrone"(arg0: integer): void
- "getDroneName"(): $Component
- "getFluidTank"(): $FluidTank
- "getUpgrades"(arg0: $PNCUpgrade$$Type): integer
+ "setEmittingRedstone"(arg0: $Direction$$Type, arg1: integer): void
+ "isDroneStillValid"(): boolean
  "isBlockValidPathfindBlock"(arg0: $BlockPos$$Type): boolean
-get "label"(): string
-set "name"(value: $Component$$Type)
 get "owner"(): $Player
-get "ownerUUID"(): $UUID
+get "label"(): StringJS
+set "name"(value: $Component$$Type)
 get "inv"(): $IItemHandlerModifiable
-get "energyStorage"(): $IEnergyStorage
-get "droneStillValid"(): boolean
-get "pathNavigator"(): $IPathNavigator
-set "activeProgram"(value: $IProgWidget$$Type)
-set "carryingEntity"(value: $Entity$$Type)
-get "carryingEntities"(): $List<($Entity)>
-get "dronePressure"(): float
-get "activeWidgetIndex"(): integer
-get "activeWidget"(): $IProgWidget
-get "controllerPos"(): $BlockPos
-get "fakePlayer"(): $FakePlayer
 get "debugger"(): $IDroneDebugger
 get "dronePos"(): $Vec3
 set "dugBlock"(value: $BlockPos$$Type)
@@ -15173,7 +15523,19 @@ get "progWidgets"(): $List<($IProgWidget)>
 get "targetAI"(): $GoalSelector
 get "aIOverridden"(): boolean
 get "droneName"(): $Component
+get "fakePlayer"(): $FakePlayer
 get "fluidTank"(): $FluidTank
+get "ownerUUID"(): $UUID
+get "energyStorage"(): $IEnergyStorage
+get "controllerPos"(): $BlockPos
+get "pathNavigator"(): $IPathNavigator
+set "activeProgram"(value: $IProgWidget$$Type)
+set "carryingEntity"(value: $Entity$$Type)
+get "carryingEntities"(): $List<($Entity)>
+get "dronePressure"(): float
+get "activeWidgetIndex"(): integer
+get "activeWidget"(): $IProgWidget
+get "droneStillValid"(): boolean
 }
 
 export namespace $IDrone {
@@ -15182,18 +15544,33 @@ const probejs$$marker: never
 export class $IDrone$$Static implements $IDrone {
 
 
- "getLabel"(): string
- "setName"(arg0: $Component$$Type): void
  "getOwner"(): $Player
+ "getLabel"(): StringJS
+ "setName"(arg0: $Component$$Type): void
  "dropItem"(arg0: $ItemStack$$Type): void
- "getOwnerUUID"(): $UUID
  "playSound"(arg0: $SoundEvent$$Type, arg1: $SoundSource$$Type, arg2: float, arg3: float): void
  "getInv"(): $IItemHandlerModifiable
+ "getDebugger"(): $IDroneDebugger
+ "getDronePos"(): $Vec3
+ "setDugBlock"(arg0: $BlockPos$$Type): void
+ "setDugBlock"(arg0: $BlockPos$$Type, arg1: $Direction$$Type): void
+ "getDeployPos"(): $BlockPos
+ "getDroneLevel"(): $Level
+ "getProgWidgets"(): $List<($IProgWidget)>
+ "getTargetAI"(): $GoalSelector
+ "isAIOverridden"(): boolean
+ "overload"(arg0: StringJS, ...arg1: (any)[]): void
+ "addAirToDrone"(arg0: integer): void
+ "getDroneName"(): $Component
+ "updateLabel"(): void
+ "getUpgrades"(arg0: $PNCUpgrade$$Type): integer
+ "getFakePlayer"(): $FakePlayer
+ "getFluidTank"(): $FluidTank
+ "getOwnerUUID"(): $UUID
  "getEnergyStorage"(): $IEnergyStorage
- "setEmittingRedstone"(arg0: $Direction$$Type, arg1: integer): void
+ "getControllerPos"(): $BlockPos
  "getEmittingRedstone"(arg0: $Direction$$Type): integer
- "isDroneStillValid"(): boolean
- "onVariableChanged"(arg0: string, arg1: boolean): void
+ "onVariableChanged"(arg0: StringJS, arg1: boolean): void
  "getPathNavigator"(): $IPathNavigator
  "sendWireframeToClient"(arg0: $BlockPos$$Type): void
  "setActiveProgram"(arg0: $IProgWidget$$Type): void
@@ -15207,23 +15584,8 @@ export class $IDrone$$Static implements $IDrone {
  "storeTrackerData"(arg0: $ItemStack$$Type): void
  "getActiveWidget"(): $IProgWidget
  "resetAttackCount"(): void
- "getControllerPos"(): $BlockPos
- "getFakePlayer"(): $FakePlayer
- "getDebugger"(): $IDroneDebugger
- "getDronePos"(): $Vec3
- "setDugBlock"(arg0: $BlockPos$$Type, arg1: $Direction$$Type): void
- "setDugBlock"(arg0: $BlockPos$$Type): void
- "getDeployPos"(): $BlockPos
- "getDroneLevel"(): $Level
- "getProgWidgets"(): $List<($IProgWidget)>
- "getTargetAI"(): $GoalSelector
- "isAIOverridden"(): boolean
- "overload"(arg0: string, ...arg1: (any)[]): void
- "updateLabel"(): void
- "addAirToDrone"(arg0: integer): void
- "getDroneName"(): $Component
- "getFluidTank"(): $FluidTank
- "getUpgrades"(arg0: $PNCUpgrade$$Type): integer
+ "setEmittingRedstone"(arg0: $Direction$$Type, arg1: integer): void
+ "isDroneStillValid"(): boolean
  "isBlockValidPathfindBlock"(arg0: $BlockPos$$Type): boolean
 }
 /**
@@ -15248,8 +15610,8 @@ import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneum
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -15264,7 +15626,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -15316,8 +15678,8 @@ readonly "transportingFluid": $FluidStack
 
 public "compareTo"(arg0: any): integer
 public "compareTo"(arg0: $LogisticsManager$LogisticsTask$$Type): integer
-public "informRequester"(): void
 public "isStillValid"(arg0: any): boolean
+public "informRequester"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -15344,8 +15706,8 @@ export class $PneumaticCraftRecipeType$CacheReloadListener implements $Preparabl
 constructor()
 
 public "reload"(arg0: $PreparableReloadListener$PreparationBarrier$$Type, arg1: $ResourceManager$$Type, arg2: $ProfilerFiller$$Type, arg3: $ProfilerFiller$$Type, arg4: $Executor$$Type, arg5: $Executor$$Type): $CompletableFuture<(void)>
-public "getName"(): string
-get "name"(): string
+public "getName"(): StringJS
+get "name"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -15366,8 +15728,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -15376,8 +15738,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -15394,7 +15756,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -15443,12 +15805,12 @@ import {$ObjectArrayList, $ObjectArrayList$$Type} from "it.unimi.dsi.fastutil.ob
 
 export interface $StructureTemplatePoolAccess {
 
+ "getTemplates"(): $ObjectArrayList<($StructurePoolElement)>
  "getRawTemplates"(): $List<($Pair<($StructurePoolElement), (integer)>)>
  "setRawTemplates"(arg0: $List$$Type<($Pair$$Type<($StructurePoolElement$$Type), (integer)>)>): void
- "getTemplates"(): $ObjectArrayList<($StructurePoolElement)>
+get "templates"(): $ObjectArrayList<($StructurePoolElement)>
 get "rawTemplates"(): $List<($Pair<($StructurePoolElement), (integer)>)>
 set "rawTemplates"(value: $List$$Type<($Pair$$Type<($StructurePoolElement$$Type), (integer)>)>)
-get "templates"(): $ObjectArrayList<($StructurePoolElement)>
 }
 
 export namespace $StructureTemplatePoolAccess {
@@ -15457,9 +15819,9 @@ const probejs$$marker: never
 export class $StructureTemplatePoolAccess$$Static implements $StructureTemplatePoolAccess {
 
 
+ "getTemplates"(): $ObjectArrayList<($StructurePoolElement)>
  "getRawTemplates"(): $List<($Pair<($StructurePoolElement), (integer)>)>
  "setRawTemplates"(arg0: $List$$Type<($Pair$$Type<($StructurePoolElement$$Type), (integer)>)>): void
- "getTemplates"(): $ObjectArrayList<($StructurePoolElement)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -15483,8 +15845,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -15493,8 +15855,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -15513,7 +15875,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -15588,14 +15950,14 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -15609,7 +15971,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -15685,8 +16047,8 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 
 export interface $IVariableProvider {
 
- "getStack"(arg0: $UUID$$Type, arg1: string): $ItemStack
- "getCoordinate"(arg0: $UUID$$Type, arg1: string): $Optional<($BlockPos)>
+ "getStack"(arg0: $UUID$$Type, arg1: StringJS): $ItemStack
+ "getCoordinate"(arg0: $UUID$$Type, arg1: StringJS): $Optional<($BlockPos)>
 }
 
 export namespace $IVariableProvider {
@@ -15695,8 +16057,8 @@ const probejs$$marker: never
 export class $IVariableProvider$$Static implements $IVariableProvider {
 
 
- "getStack"(arg0: $UUID$$Type, arg1: string): $ItemStack
- "getCoordinate"(arg0: $UUID$$Type, arg1: string): $Optional<($BlockPos)>
+ "getStack"(arg0: $UUID$$Type, arg1: StringJS): $ItemStack
+ "getCoordinate"(arg0: $UUID$$Type, arg1: StringJS): $Optional<($BlockPos)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -15727,26 +16089,26 @@ static readonly "STREAM_CODEC": $StreamCodec<($FriendlyByteBuf), ($InspectionMat
 
 constructor(subject: $InspectionMatcher$InspectionSubject$$Type, op: $InspectionMatcher$InspectionOp$$Type, target: integer)
 
+public "subject"(): $InspectionMatcher$InspectionSubject
 public "equals"(arg0: any): boolean
 public "target"(): integer
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "test"(arg0: any): boolean
 public "test"(arg0: $ItemStack$$Type): boolean
+public "test"(arg0: any): boolean
 public "op"(): $InspectionMatcher$InspectionOp
-public "subject"(): $InspectionMatcher$InspectionSubject
 public "asLocalizedText"(): $MutableComponent
 public "or"(arg0: $Predicate$$Type<($ItemStack)>): $Predicate<($ItemStack)>
+public static "not"<T>(arg0: $Predicate$$Type<($ItemStack)>): $Predicate<($ItemStack)>
 public "negate"(): $Predicate<($ItemStack)>
 public "and"(arg0: $Predicate$$Type<($ItemStack)>): $Predicate<($ItemStack)>
-public static "not"<T>(arg0: $Predicate$$Type<($ItemStack)>): $Predicate<($ItemStack)>
 public static "isEqual"<T>(arg0: any): $Predicate<($ItemStack)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $InspectionMatcher$Comparison$$Type = ({"subject"?: $InspectionMatcher$InspectionSubject$$Type, "op"?: $InspectionMatcher$InspectionOp$$Type, "target"?: integer}) | ([subject?: $InspectionMatcher$InspectionSubject$$Type, op?: $InspectionMatcher$InspectionOp$$Type, target?: integer]);
+export type $InspectionMatcher$Comparison$$Type = ({"target"?: integer, "subject"?: $InspectionMatcher$InspectionSubject$$Type, "op"?: $InspectionMatcher$InspectionOp$$Type}) | ([target?: integer, subject?: $InspectionMatcher$InspectionSubject$$Type, op?: $InspectionMatcher$InspectionOp$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -15755,21 +16117,25 @@ declare global {
 export type $InspectionMatcher$Comparison_ = $InspectionMatcher$Comparison$$Type;
 }}
 declare module "me.desht.modularrouters.item.module.ExtruderModule2" {
-import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$IRangedModule, $IRangedModule$$Type} from "me.desht.modularrouters.item.module.IRangedModule"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.TintColor"
 
 export class $ExtruderModule2 extends $ModuleItem implements $IRangedModule {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -15777,16 +16143,17 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "getHardMaxRange"(): integer
-public "addSettingsInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
 public "getItemTint"(): $TintColor
 public "getBaseRange"(): integer
 public "getEnergyCost"(arg0: $ItemStack$$Type): integer
+public "addSettingsInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
+public "getHardMaxRange"(): integer
 public "getCurrentRange"(arg0: integer): integer
 public "getCurrentRange"(arg0: $ItemStack$$Type): integer
-get "hardMaxRange"(): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
 get "baseRange"(): integer
+get "hardMaxRange"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -15801,22 +16168,26 @@ declare global {
 export type $ExtruderModule2_ = $ExtruderModule2$$Type;
 }}
 declare module "me.desht.modularrouters.item.module.ExtruderModule1" {
-import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$IPickaxeUser, $IPickaxeUser$$Type} from "me.desht.modularrouters.item.module.IPickaxeUser"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$IRangedModule, $IRangedModule$$Type} from "me.desht.modularrouters.item.module.IRangedModule"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.TintColor"
 
 export class $ExtruderModule1 extends $ModuleItem implements $IRangedModule, $IPickaxeUser {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -15824,18 +16195,19 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "getHardMaxRange"(): integer
-public "addSettingsInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
 public "getItemTint"(): $TintColor
 public "getBaseRange"(): integer
 public "getEnergyCost"(arg0: $ItemStack$$Type): integer
+public "addSettingsInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
+public "getHardMaxRange"(): integer
 public "getCurrentRange"(arg0: integer): integer
 public "getCurrentRange"(arg0: $ItemStack$$Type): integer
-public "getPickaxe"(arg0: $ItemStack$$Type): $ItemStack
 public "setPickaxe"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): $ItemStack
-get "hardMaxRange"(): integer
+public "getPickaxe"(arg0: $ItemStack$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
 get "baseRange"(): integer
+get "hardMaxRange"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -15850,8 +16222,8 @@ declare global {
 export type $ExtruderModule1_ = $ExtruderModule1$$Type;
 }}
 declare module "me.desht.modularrouters.api.event.RouterCompiledEvent$Modules" {
-import {$ModularRouterBlockEntity, $ModularRouterBlockEntity$$Type} from "me.desht.modularrouters.block.tile.ModularRouterBlockEntity"
 import {$RouterCompiledEvent, $RouterCompiledEvent$$Type} from "me.desht.modularrouters.api.event.RouterCompiledEvent"
+import {$ModularRouterBlockEntity, $ModularRouterBlockEntity$$Type} from "me.desht.modularrouters.block.tile.ModularRouterBlockEntity"
 
 export class $RouterCompiledEvent$Modules extends $RouterCompiledEvent {
 
@@ -15870,30 +16242,6 @@ export type $RouterCompiledEvent$Modules$$Type = ($RouterCompiledEvent$Modules);
 declare global {
 export type $RouterCompiledEvent$Modules_ = $RouterCompiledEvent$Modules$$Type;
 }}
-declare module "me.desht.pneumaticcraft.common.block.entity.AbstractPneumaticCraftBlockEntity$UpgradeHandler" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$Tag, $Tag$$Type} from "net.minecraft.nbt.Tag"
-import {$BaseItemStackHandler, $BaseItemStackHandler$$Type} from "me.desht.pneumaticcraft.common.inventory.handler.BaseItemStackHandler"
-import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
-
-export class $AbstractPneumaticCraftBlockEntity$UpgradeHandler extends $BaseItemStackHandler {
-
-
-public "isItemValid"(arg0: integer, arg1: $ItemStack$$Type): boolean
-public "serializeNBT"(arg0: $HolderLookup$Provider$$Type): $Tag
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $AbstractPneumaticCraftBlockEntity$UpgradeHandler$$Type = ($AbstractPneumaticCraftBlockEntity$UpgradeHandler);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $AbstractPneumaticCraftBlockEntity$UpgradeHandler_ = $AbstractPneumaticCraftBlockEntity$UpgradeHandler$$Type;
-}}
 declare module "me.desht.modularrouters.util.fake_player.RouterFakePlayer" {
 import {$HumanoidArm, $HumanoidArm$$Type} from "net.minecraft.world.entity.HumanoidArm"
 import {$MagniaProperties, $MagniaProperties$$Type} from "net.bunten.enderscape.entity.magnia.MagniaProperties"
@@ -15905,16 +16253,17 @@ import {$ServerGamePacketListenerImpl, $ServerGamePacketListenerImpl$$Type} from
 import {$TrackedDataContainer, $TrackedDataContainer$$Type} from "dev.corgitaco.dataanchor.data.TrackedDataContainer"
 import {$FakePlayer, $FakePlayer$$Type} from "net.neoforged.neoforge.common.util.FakePlayer"
 import {$Inventory, $Inventory$$Type} from "net.minecraft.world.entity.player.Inventory"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$Abilities, $Abilities$$Type} from "net.minecraft.world.entity.player.Abilities"
-import {$FishingHook, $FishingHook$$Type} from "net.minecraft.world.entity.projectile.FishingHook"
 import {$EntityDataAccessor, $EntityDataAccessor$$Type} from "net.minecraft.network.syncher.EntityDataAccessor"
+import {$FishingHook, $FishingHook$$Type} from "net.minecraft.world.entity.projectile.FishingHook"
 import {$EquipmentSlot, $EquipmentSlot$$Type} from "net.minecraft.world.entity.EquipmentSlot"
 import {$WalkAnimationState, $WalkAnimationState$$Type} from "net.minecraft.world.entity.WalkAnimationState"
 import {$ScoreHolder, $ScoreHolder$$Type} from "net.minecraft.world.scores.ScoreHolder"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$PortalProcessor, $PortalProcessor$$Type} from "net.minecraft.world.entity.PortalProcessor"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$EntityDimensions, $EntityDimensions$$Type} from "net.minecraft.world.entity.EntityDimensions"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
@@ -15922,8 +16271,8 @@ import {$TrackedData, $TrackedData$$Type} from "dev.corgitaco.dataanchor.data.Tr
 import {$LevelRenderer, $LevelRenderer$$Type} from "net.minecraft.client.renderer.LevelRenderer"
 import {$ModularRouterBlockEntity, $ModularRouterBlockEntity$$Type} from "me.desht.modularrouters.block.tile.ModularRouterBlockEntity"
 import {$ChangeSubscriber, $ChangeSubscriber$$Type} from "net.caffeinemc.mods.lithium.common.util.change_tracking.ChangeSubscriber"
-import {$Entity$RemovalReason, $Entity$RemovalReason$$Type} from "net.minecraft.world.entity.Entity$RemovalReason"
 import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.dataanchor.data.registry.TrackedDataRegistry"
+import {$Entity$RemovalReason, $Entity$RemovalReason$$Type} from "net.minecraft.world.entity.Entity$RemovalReason"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$AbstractContainerMenu, $AbstractContainerMenu$$Type} from "net.minecraft.world.inventory.AbstractContainerMenu"
@@ -15953,7 +16302,7 @@ static readonly "USE_ITEM_INTERVAL": integer
  "swingingArm": $InteractionHand
 static readonly "CRAFTING_SLOT_OFFSET": integer
 static readonly "INTERACTION_DISTANCE_VERIFICATION_BUFFER": double
-static readonly "ID_TAG": string
+static readonly "ID_TAG": StringJS
 static readonly "DATA_HEALTH_ID": $EntityDataAccessor<(float)>
 static readonly "WAKE_UP_DURATION": integer
 static readonly "DELTA_AFFECTED_BY_BLOCKS_BELOW_1_0": double
@@ -15971,7 +16320,7 @@ readonly "server": $MinecraftServer
  "oAttackAnim": float
  "yHeadRotO": float
  "containerCounter": integer
-static readonly "UUID_TAG": string
+static readonly "UUID_TAG": StringJS
 static readonly "DEFAULT_MODEL_CUSTOMIZATION": integer
  "hurtDuration": integer
 static readonly "DEATH_DURATION": integer
@@ -15984,16 +16333,16 @@ static readonly "DEFAULT_ENTITY_INTERACTION_RANGE": float
  "experienceLevel": integer
 static readonly "DEFAULT_BABY_SCALE": float
  "eyeHeight": float
-static readonly "ATTRIBUTES_FIELD": string
+static readonly "ATTRIBUTES_FIELD": StringJS
  "camera": $Entity
-static readonly "PERSISTED_NBT_TAG": string
+static readonly "PERSISTED_NBT_TAG": StringJS
 static readonly "DEFAULT_BB_HEIGHT": float
  "seenCredits": boolean
  "xxa": float
  "zCloak": double
  "flyDist": float
  "currentImpulseImpactPos": $Vec3
-static readonly "PASSENGERS_TAG": string
+static readonly "PASSENGERS_TAG": StringJS
  "xCloakO": double
  "wasOnFire": boolean
  "attackAnim": float
@@ -16009,6 +16358,7 @@ static readonly "SLEEP_DURATION": integer
 static readonly "HELD_ITEM_SLOT": integer
  "yCloak": double
  "swingTime": integer
+ "entityJs$builder": any
 static readonly "BODY_ARMOR_OFFSET": integer
  "xCloak": double
 readonly "abilities": $Abilities
@@ -16063,7 +16413,7 @@ static readonly "EXTRA_RENDER_CULLING_SIZE_WITH_BIG_HAT": float
 static readonly "SWIMMING_BB_WIDTH": float
 static readonly "FREEZE_HURT_FREQUENCY": integer
  "isInPowderSnow": boolean
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
  "yBodyRot": float
  "blocksBuilding": boolean
  "takeXpDelay": integer
@@ -16079,20 +16429,21 @@ static readonly "BASE_SAFE_FALL_DISTANCE": integer
 
 constructor(arg0: $ModularRouterBlockEntity$$Type, arg1: $ServerLevel$$Type, arg2: $GameProfile$$Type)
 
-public "position"(): $Vec3
 public "tick"(): void
-public "tryInsertIntoRouter"(arg0: $ItemStack$$Type): $ItemStack
-public "isSilent"(): boolean
+public "position"(): $Vec3
 public "getEyeY"(): double
+public "isSilent"(): boolean
 public "giveExperiencePoints"(arg0: integer): void
-public "sodiumdynamiclights$scheduleTrackedChunksRebuild"(arg0: $LevelRenderer$$Type): void
-public "sodiumdynamiclights$updateDynamicLight"(arg0: $LevelRenderer$$Type): boolean
-public "sdl$getDynamicLightLevel"(): $Level
-public "sdl$shouldUpdateDynamicLight"(): boolean
+public "tryInsertIntoRouter"(arg0: $ItemStack$$Type): $ItemStack
+public "self"(): $Player
 public "sdl$getDynamicLightX"(): double
 public "sdl$getDynamicLightY"(): double
 public "sdl$getDynamicLightZ"(): double
 public "sdl$resetDynamicLight"(): void
+public "sodiumdynamiclights$updateDynamicLight"(arg0: $LevelRenderer$$Type): boolean
+public "sdl$getDynamicLightLevel"(): $Level
+public "sdl$shouldUpdateDynamicLight"(): boolean
+public "sodiumdynamiclights$scheduleTrackedChunksRebuild"(arg0: $LevelRenderer$$Type): void
 public static "tickEntity"(entity: $LivingEntity$$Type): void
 public static "getAlpha"(le: $LivingEntity$$Type, partialTicks: float): float
 public static "getAlternativeStack"(livingEntity: $LivingEntity$$Type, equipmentSlot: $EquipmentSlot$$Type, consumer: $Consumer$$Type<($ItemStack)>): void
@@ -16103,10 +16454,10 @@ public static "setSpawnedFromEndTrialSpawner"(arg0: $Entity$$Type, arg1: boolean
 public static "getMagniaProperties"(arg0: $Entity$$Type): $MagniaProperties
 public static "canMagniaAffect"(arg0: $Entity$$Type): boolean
 public static "getMagnetismFactor"(arg0: $Entity$$Type): float
+public static "dashed"(arg0: $Entity$$Type): boolean
 public static "setDashed"(arg0: $Entity$$Type, arg1: boolean): void
 public static "dashTicks"(arg0: $Entity$$Type): integer
 public static "setDashTicks"(arg0: $Entity$$Type, arg1: integer): void
-public static "dashed"(arg0: $Entity$$Type): boolean
 /**
  * 
  * @deprecated
@@ -16115,16 +16466,16 @@ public "serializeNBT"(arg0: $HolderLookup$Provider$$Type): $Tag
 public static "without"<T>(arg0: $ChangeSubscriber$$Type<(T)>, arg1: $ChangeSubscriber$$Type<(T)>, arg2: integer, arg3: boolean): $ChangeSubscriber<(T)>
 public static "without"<T>(arg0: $ChangeSubscriber$$Type<(T)>, arg1: $ChangeSubscriber$$Type<(T)>): $ChangeSubscriber<(T)>
 public static "combine"<T>(arg0: $ChangeSubscriber$$Type<(T)>, arg1: integer, arg2: $ChangeSubscriber$$Type<(T)>, arg3: integer): $ChangeSubscriber<(T)>
+public static "dataOf"(arg0: $ChangeSubscriber$$Type<(any)>, arg1: $ChangeSubscriber$$Type<(any)>, arg2: integer): integer
 public static "dataWithout"<T>(arg0: $ChangeSubscriber$$Type<(T)>, arg1: $ChangeSubscriber$$Type<(T)>, arg2: integer, arg3: integer, arg4: boolean): integer
 public static "dataWithout"<T>(arg0: $ChangeSubscriber$$Type<(T)>, arg1: $ChangeSubscriber$$Type<(T)>, arg2: integer): integer
-public static "dataOf"(arg0: $ChangeSubscriber$$Type<(any)>, arg1: $ChangeSubscriber$$Type<(any)>, arg2: integer): integer
 public static "containsSubscriber"(arg0: $ChangeSubscriber$$Type<($ItemStack$$Type)>, arg1: integer, arg2: $ChangeSubscriber$$Type<($ItemStack$$Type)>, arg3: integer): boolean
-public static "forNameOnly"(arg0: string): $ScoreHolder
+public static "forNameOnly"(arg0: StringJS): $ScoreHolder
 public static "fromGameProfile"(arg0: $GameProfile$$Type): $ScoreHolder
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
-get "silent"(): boolean
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "eyeY"(): double
+get "silent"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -16145,22 +16496,22 @@ import {$Record, $Record$$Type} from "java.lang.Record"
 
 export class $MemoryStickItem$MemoryStickLocator extends $Record {
 
-constructor(invName: string, slot: integer)
+constructor(invName: StringJS, slot: integer)
 
 public "slot"(): integer
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "invName"(): string
-public static "playerInv"(arg0: integer): $MemoryStickItem$MemoryStickLocator
 public "getMemoryStick"(arg0: $Player$$Type): $ItemStack
-public static "namedInv"(arg0: string, arg1: integer): $MemoryStickItem$MemoryStickLocator
+public static "namedInv"(arg0: StringJS, arg1: integer): $MemoryStickItem$MemoryStickLocator
+public "invName"(): StringJS
+public static "playerInv"(arg0: integer): $MemoryStickItem$MemoryStickLocator
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $MemoryStickItem$MemoryStickLocator$$Type = ({"invName"?: string, "slot"?: integer}) | ([invName?: string, slot?: integer]);
+export type $MemoryStickItem$MemoryStickLocator$$Type = ({"slot"?: integer, "invName"?: StringJS}) | ([slot?: integer, invName?: StringJS]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -16169,13 +16520,15 @@ declare global {
 export type $MemoryStickItem$MemoryStickLocator_ = $MemoryStickItem$MemoryStickLocator$$Type;
 }}
 declare module "me.desht.modularrouters.item.upgrade.SecurityUpgrade" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$ModularRouterBlockEntity, $ModularRouterBlockEntity$$Type} from "me.desht.modularrouters.block.tile.ModularRouterBlockEntity"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
@@ -16192,7 +16545,7 @@ import {$IPlayerOwned, $IPlayerOwned$$Type} from "me.desht.modularrouters.item.I
 export class $SecurityUpgrade extends $UpgradeItem implements $IPlayerOwned {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -16201,12 +16554,13 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "getItemTint"(): $TintColor
+public "onCompiled"(arg0: $ItemStack$$Type, arg1: $ModularRouterBlockEntity$$Type): void
 public "interactLivingEntity"(arg0: $ItemStack$$Type, arg1: $Player$$Type, arg2: $LivingEntity$$Type, arg3: $InteractionHand$$Type): $InteractionResult
 public "addExtraInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
-public "onCompiled"(arg0: $ItemStack$$Type, arg1: $ModularRouterBlockEntity$$Type): void
-public "getItemTint"(): $TintColor
 public "setOwner"(arg0: $ItemStack$$Type, arg1: $Player$$Type): void
 public "getOwnerProfile"(arg0: $ItemStack$$Type): $Optional<($GameProfile)>
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
 }
 /**
@@ -16233,7 +16587,7 @@ static readonly "ELEVATOR": $MovingSounds$Sound
 
 
 public static "values"(): ($MovingSounds$Sound)[]
-public static "valueOf"(arg0: string): $MovingSounds$Sound
+public static "valueOf"(arg0: StringJS): $MovingSounds$Sound
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -16265,29 +16619,29 @@ constructor()
 public "inputs"(): $ThermoPlantRecipe$Inputs
 public "matches"(arg0: $FluidStack$$Type, arg1: $ItemStack$$Type): boolean
 public "outputs"(): $ThermoPlantRecipe$Outputs
-public "getInputFluidAmount"(): integer
-public "getAirUseMultiplier"(): float
-public "getRequiredPressure"(): float
-public "getOutputItem"(): $ItemStack
+public "isExothermic"(): boolean
+public "testFluid"(arg0: $FluidStack$$Type): boolean
+public "getInputFluid"(): $Optional<($SizedFluidIngredient)>
 public "getRecipeSpeed"(): float
 public "airUsed"(): integer
 public "heatUsed"(arg0: double): double
 public "getOutputFluid"(): $FluidStack
 public "getInputItem"(): $Optional<($Ingredient)>
 public "testItem"(arg0: $ItemStack$$Type): boolean
-public "isExothermic"(): boolean
-public "getInputFluid"(): $Optional<($SizedFluidIngredient)>
-public "testFluid"(arg0: $FluidStack$$Type): boolean
+public "getOutputItem"(): $ItemStack
+public "getInputFluidAmount"(): integer
+public "getAirUseMultiplier"(): float
+public "getRequiredPressure"(): float
 public "getOperatingTemperature"(): $TemperatureRange
-get "inputFluidAmount"(): integer
-get "airUseMultiplier"(): float
-get "requiredPressure"(): float
-get "outputItem"(): $ItemStack
+get "exothermic"(): boolean
+get "inputFluid"(): $Optional<($SizedFluidIngredient)>
 get "recipeSpeed"(): float
 get "outputFluid"(): $FluidStack
 get "inputItem"(): $Optional<($Ingredient)>
-get "exothermic"(): boolean
-get "inputFluid"(): $Optional<($SizedFluidIngredient)>
+get "outputItem"(): $ItemStack
+get "inputFluidAmount"(): integer
+get "airUseMultiplier"(): float
+get "requiredPressure"(): float
 get "operatingTemperature"(): $TemperatureRange
 }
 /**
@@ -16303,14 +16657,18 @@ declare global {
 export type $ThermoPlantRecipe_ = $ThermoPlantRecipe$$Type;
 }}
 declare module "me.desht.modularrouters.item.module.DistributorModule" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
+import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$SenderModule2, $SenderModule2$$Type} from "me.desht.modularrouters.item.module.SenderModule2"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$ModuleTarget, $ModuleTarget$$Type} from "me.desht.modularrouters.logic.ModuleTarget"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ModuleMenu, $ModuleMenu$$Type} from "me.desht.modularrouters.container.ModuleMenu"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$MenuType, $MenuType$$Type} from "net.minecraft.world.inventory.MenuType"
@@ -16322,7 +16680,7 @@ import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.
 export class $DistributorModule extends $SenderModule2 {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -16330,18 +16688,19 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "addSettingsInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
-public "getMenuType"(): $MenuType<($ModuleMenu)>
-public "getMaxTargets"(): integer
 public "getItemTint"(): $TintColor
-public "getEnergyCost"(arg0: $ItemStack$$Type): integer
+public "getMaxTargets"(): integer
 public "getRenderColor"(arg0: integer): integer
+public "getMenuType"(): $MenuType<($ModuleMenu)>
+public "getEnergyCost"(arg0: $ItemStack$$Type): integer
+public "addSettingsInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
 public static "setTargets"(arg0: $ItemStack$$Type, arg1: $Collection$$Type<($ModuleTarget$$Type)>): void
 public static "getTargets"(arg0: $ItemStack$$Type, arg1: boolean): $Set<($ModuleTarget)>
 public static "canSelectTarget"(arg0: $UseOnContext$$Type): boolean
-get "menuType"(): $MenuType<($ModuleMenu)>
-get "maxTargets"(): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
+get "maxTargets"(): integer
+get "menuType"(): $MenuType<($ModuleMenu)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -16372,19 +16731,19 @@ import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.
 export interface $IAirHandlerMachine extends $IAirHandler, $IManoMeasurable {
 
  "tick"(arg0: $BlockEntity$$Type): void
- "getConnectedAirHandlers"(arg0: $BlockEntity$$Type): $List<($IAirHandlerMachine$Connection)>
  "deserializeNBT"(arg0: $CompoundTag$$Type): void
  "serializeNBT"(): $Tag
+ "getSideLeaking"(): $Direction
+ "setSideLeaking"(arg0: $Direction$$Type): void
+ "setPressure"(arg0: float): void
+ "addPendingAir"(arg0: integer): void
+ "getDangerPressure"(): float
  "enableSafetyVenting"(arg0: $FloatPredicate$$Type, arg1: $Direction$$Type): void
  "disableSafetyVenting"(): void
  "setConnectableFaces"(arg0: $Collection$$Type<($Direction$$Type)>): void
  "getCriticalPressure"(): float
  "setVolumeUpgrades"(arg0: integer): void
- "getDangerPressure"(): float
- "addPendingAir"(arg0: integer): void
- "setSideLeaking"(arg0: $Direction$$Type): void
- "setPressure"(arg0: float): void
- "getSideLeaking"(): $Direction
+ "getConnectedAirHandlers"(arg0: $BlockEntity$$Type): $List<($IAirHandlerMachine$Connection)>
  "getVolume"(): integer
  "getAir"(): integer
  "addAir"(arg0: integer): void
@@ -16393,13 +16752,13 @@ export interface $IAirHandlerMachine extends $IAirHandler, $IManoMeasurable {
  "maxPressure"(): float
  "getPressure"(): float
  "printManometerMessage"(arg0: $Player$$Type, arg1: $List$$Type<($Component$$Type)>): void
+get "sideLeaking"(): $Direction
+set "sideLeaking"(value: $Direction$$Type)
+set "pressure"(value: float)
+get "dangerPressure"(): float
 set "connectableFaces"(value: $Collection$$Type<($Direction$$Type)>)
 get "criticalPressure"(): float
 set "volumeUpgrades"(value: integer)
-get "dangerPressure"(): float
-set "sideLeaking"(value: $Direction$$Type)
-set "pressure"(value: float)
-get "sideLeaking"(): $Direction
 get "volume"(): integer
 get "air"(): integer
 get "baseVolume"(): integer
@@ -16414,19 +16773,19 @@ export class $IAirHandlerMachine$$Static implements $IAirHandlerMachine {
 
 
  "tick"(arg0: $BlockEntity$$Type): void
- "getConnectedAirHandlers"(arg0: $BlockEntity$$Type): $List<($IAirHandlerMachine$Connection)>
  "deserializeNBT"(arg0: $CompoundTag$$Type): void
  "serializeNBT"(): $Tag
+ "getSideLeaking"(): $Direction
+ "setSideLeaking"(arg0: $Direction$$Type): void
+ "setPressure"(arg0: float): void
+ "addPendingAir"(arg0: integer): void
+ "getDangerPressure"(): float
  "enableSafetyVenting"(arg0: $FloatPredicate$$Type, arg1: $Direction$$Type): void
  "disableSafetyVenting"(): void
  "setConnectableFaces"(arg0: $Collection$$Type<($Direction$$Type)>): void
  "getCriticalPressure"(): float
  "setVolumeUpgrades"(arg0: integer): void
- "getDangerPressure"(): float
- "addPendingAir"(arg0: integer): void
- "setSideLeaking"(arg0: $Direction$$Type): void
- "setPressure"(arg0: float): void
- "getSideLeaking"(): $Direction
+ "getConnectedAirHandlers"(arg0: $BlockEntity$$Type): $List<($IAirHandlerMachine$Connection)>
  "getVolume"(): integer
  "getAir"(): integer
  "addAir"(arg0: integer): void
@@ -16477,19 +16836,19 @@ import {$PathComputationType, $PathComputationType$$Type} from "net.minecraft.wo
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ItemInteractionResult, $ItemInteractionResult$$Type} from "net.minecraft.world.ItemInteractionResult"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
-import {$Rotation, $Rotation$$Type} from "net.minecraft.world.level.block.Rotation"
 import {$SerializableComponentsProvider, $SerializableComponentsProvider$$Type} from "me.desht.pneumaticcraft.common.block.SerializableComponentsProvider"
+import {$Rotation, $Rotation$$Type} from "net.minecraft.world.level.block.Rotation"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $AbstractPneumaticCraftBlock extends $Block implements $IPneumaticWrenchable, $IPneumaticCraftProbeable, $SimpleWaterloggedBlock, $SerializableComponentsProvider {
 static readonly "DOWN": $BooleanProperty
@@ -16500,7 +16859,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -16521,29 +16880,29 @@ static readonly "UPDATE_CLIENTS": integer
 
 
 public "rotate"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $BlockState
-public "addSerializableComponents"(arg0: $List$$Type<($DataComponentType$$Type<(any)>)>): void
+public "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
+public "isPathfindable"(arg0: $BlockState$$Type, arg1: $PathComputationType$$Type): boolean
 public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
 public "playerDestroy"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $BlockEntity$$Type, arg5: $ItemStack$$Type): void
 public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
-public "isPathfindable"(arg0: $BlockState$$Type, arg1: $PathComputationType$$Type): boolean
 public "canPlaceLiquid"(arg0: $Player$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $Fluid$$Type): boolean
 public "placeLiquid"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $FluidState$$Type): boolean
 public "pickupBlock"(arg0: $Player$$Type, arg1: $LevelAccessor$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type): $ItemStack
-public "getRotation"(arg0: $BlockState$$Type): $Direction
-public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
-public "useItemOn"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type, arg2: $Level$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type, arg5: $InteractionHand$$Type, arg6: $BlockHitResult$$Type): $ItemInteractionResult
 public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
 public "getFluidState"(arg0: $BlockState$$Type): $FluidState
-public "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
+public "useItemOn"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type, arg2: $Level$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type, arg5: $InteractionHand$$Type, arg6: $BlockHitResult$$Type): $ItemInteractionResult
+public "getRotation"(arg0: $BlockState$$Type): $Direction
+public "onWrenched"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type, arg4: $InteractionHand$$Type): boolean
+public "isRotatable"(): boolean
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "hasAnalogOutputSignal"(arg0: $BlockState$$Type): boolean
 public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
 public "onNeighborChange"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $BlockPos$$Type): void
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getAnalogOutputSignal"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type): integer
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public static "connectionProperty"(arg0: $Direction$$Type): $BooleanProperty
-public "isRotatable"(): boolean
-public "onWrenched"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type, arg4: $InteractionHand$$Type): boolean
+public "addSerializableComponents"(arg0: $List$$Type<($DataComponentType$$Type<(any)>)>): void
 public static "forBlock"(arg0: $Block$$Type): $IPneumaticWrenchable
 public "getPickupSound"(): $Optional<($SoundEvent)>
 public "asHolder"(): $Holder<(any)>
@@ -16564,8 +16923,8 @@ declare global {
 export type $AbstractPneumaticCraftBlock_ = $AbstractPneumaticCraftBlock$$Type;
 }}
 declare module "me.desht.modularrouters.api.event.RouterCompiledEvent$Upgrades" {
-import {$ModularRouterBlockEntity, $ModularRouterBlockEntity$$Type} from "me.desht.modularrouters.block.tile.ModularRouterBlockEntity"
 import {$RouterCompiledEvent, $RouterCompiledEvent$$Type} from "me.desht.modularrouters.api.event.RouterCompiledEvent"
+import {$ModularRouterBlockEntity, $ModularRouterBlockEntity$$Type} from "me.desht.modularrouters.block.tile.ModularRouterBlockEntity"
 
 export class $RouterCompiledEvent$Upgrades extends $RouterCompiledEvent {
 
@@ -16631,34 +16990,26 @@ import {$IProgWidget$WidgetDifficulty, $IProgWidget$WidgetDifficulty$$Type} from
 
 export interface $IProgWidget {
 
+ "isAvailable"(): boolean
  "getWidth"(): integer
  "getHeight"(): integer
- "isAvailable"(): boolean
- "getY"(): integer
+ "getParameters"(): $List<($ProgWidgetType<(any)>)>
  "setParameter"(arg0: integer, arg1: $IProgWidget$$Type): void
+ "setParent"(arg0: $IProgWidget$$Type): void
  "returnType"(): $ProgWidgetType<(any)>
  "getParent"(): $IProgWidget
  "getType"(): $ProgWidgetType<(any)>
- "getParameters"(): $List<($ProgWidgetType<(any)>)>
- "setParent"(arg0: $IProgWidget$$Type): void
- "getColor"(): $DyeColor
- "getDifficulty"(): $IProgWidget$WidgetDifficulty
- "getTypeID"(): $ResourceLocation
- "getTooltip"(arg0: $List$$Type<($Component$$Type)>): void
- "setPosition"(arg0: integer, arg1: integer): void
- "getTexture"(): $ResourceLocation
+ "getY"(): integer
+ "getX"(): integer
  "setX"(arg0: integer): void
  "setY"(arg0: integer): void
- "getX"(): integer
- "getTranslationKey"(): string
- "getConnectedParameters"(): ($IProgWidget)[]
- "getExtraStringInfo"(): $List<($Component)>
- "getWidgetTargetAI"(arg0: $IDrone$$Type, arg1: $IProgWidget$$Type): $Goal
- "canSetParameter"(arg0: integer): boolean
- "setOutputWidget"(arg0: $IProgWidget$$Type): void
- "getOutputWidget"(): $IProgWidget
- "getOutputWidget"(arg0: $IDrone$$Type, arg1: $List$$Type<($IProgWidget$$Type)>): $IProgWidget
- "canBeRunByComputers"(arg0: $IDrone$$Type, arg1: $IProgWidget$$Type): boolean
+ "getTypeID"(): $ResourceLocation
+ "setPosition"(arg0: integer, arg1: integer): void
+ "getColor"(): $DyeColor
+ "getTooltip"(arg0: $List$$Type<($Component$$Type)>): void
+ "getDifficulty"(): $IProgWidget$WidgetDifficulty
+ "getTexture"(): $ResourceLocation
+ "copyWidget"(): $IProgWidget
  "hasStepInput"(): boolean
  "hasStepOutput"(): boolean
  "getWidgetAI"(arg0: $IDrone$$Type, arg1: $IProgWidget$$Type): $Goal
@@ -16666,29 +17017,37 @@ export interface $IProgWidget {
  "addErrors"(arg0: $List$$Type<($Component$$Type)>, arg1: $List$$Type<($IProgWidget$$Type)>): void
  "getMaxUV"(): $Pair<(float), (float)>
  "isDifficultyOK"(arg0: $IProgWidget$WidgetDifficulty$$Type): boolean
- "copyWidget"(): $IProgWidget
  "freeToUse"(): boolean
+ "getTranslationKey"(): StringJS
+ "getConnectedParameters"(): ($IProgWidget)[]
+ "getExtraStringInfo"(): $List<($Component)>
+ "getWidgetTargetAI"(arg0: $IDrone$$Type, arg1: $IProgWidget$$Type): $Goal
+ "canSetParameter"(arg0: integer): boolean
+ "setOutputWidget"(arg0: $IProgWidget$$Type): void
+ "getOutputWidget"(arg0: $IDrone$$Type, arg1: $List$$Type<($IProgWidget$$Type)>): $IProgWidget
+ "getOutputWidget"(): $IProgWidget
+ "canBeRunByComputers"(arg0: $IDrone$$Type, arg1: $IProgWidget$$Type): boolean
+get "available"(): boolean
 get "width"(): integer
 get "height"(): integer
-get "available"(): boolean
-get "y"(): integer
-get "parent"(): $IProgWidget
-get "type"(): $ProgWidgetType<(any)>
 get "parameters"(): $List<($ProgWidgetType<(any)>)>
 set "parent"(value: $IProgWidget$$Type)
-get "color"(): $DyeColor
-get "difficulty"(): $IProgWidget$WidgetDifficulty
-get "typeID"(): $ResourceLocation
-get "texture"(): $ResourceLocation
+get "parent"(): $IProgWidget
+get "type"(): $ProgWidgetType<(any)>
+get "y"(): integer
+get "x"(): integer
 set "x"(value: integer)
 set "y"(value: integer)
-get "x"(): integer
-get "translationKey"(): string
+get "typeID"(): $ResourceLocation
+get "color"(): $DyeColor
+get "difficulty"(): $IProgWidget$WidgetDifficulty
+get "texture"(): $ResourceLocation
+get "maxUV"(): $Pair<(float), (float)>
+get "translationKey"(): StringJS
 get "connectedParameters"(): ($IProgWidget)[]
 get "extraStringInfo"(): $List<($Component)>
 set "outputWidget"(value: $IProgWidget$$Type)
 get "outputWidget"(): $IProgWidget
-get "maxUV"(): $Pair<(float), (float)>
 }
 
 export namespace $IProgWidget {
@@ -16698,35 +17057,27 @@ const probejs$$marker: never
 export class $IProgWidget$$Static implements $IProgWidget {
 
 
+ "isAvailable"(): boolean
+static "create"(arg0: $ProgWidgetType$$Type<(any)>): $IProgWidget
  "getWidth"(): integer
  "getHeight"(): integer
- "isAvailable"(): boolean
- "getY"(): integer
+ "getParameters"(): $List<($ProgWidgetType<(any)>)>
  "setParameter"(arg0: integer, arg1: $IProgWidget$$Type): void
+ "setParent"(arg0: $IProgWidget$$Type): void
  "returnType"(): $ProgWidgetType<(any)>
  "getParent"(): $IProgWidget
  "getType"(): $ProgWidgetType<(any)>
- "getParameters"(): $List<($ProgWidgetType<(any)>)>
-static "create"(arg0: $ProgWidgetType$$Type<(any)>): $IProgWidget
- "setParent"(arg0: $IProgWidget$$Type): void
- "getColor"(): $DyeColor
- "getDifficulty"(): $IProgWidget$WidgetDifficulty
- "getTypeID"(): $ResourceLocation
- "getTooltip"(arg0: $List$$Type<($Component$$Type)>): void
- "setPosition"(arg0: integer, arg1: integer): void
- "getTexture"(): $ResourceLocation
+ "getY"(): integer
+ "getX"(): integer
  "setX"(arg0: integer): void
  "setY"(arg0: integer): void
- "getX"(): integer
- "getTranslationKey"(): string
- "getConnectedParameters"(): ($IProgWidget)[]
- "getExtraStringInfo"(): $List<($Component)>
- "getWidgetTargetAI"(arg0: $IDrone$$Type, arg1: $IProgWidget$$Type): $Goal
- "canSetParameter"(arg0: integer): boolean
- "setOutputWidget"(arg0: $IProgWidget$$Type): void
- "getOutputWidget"(): $IProgWidget
- "getOutputWidget"(arg0: $IDrone$$Type, arg1: $List$$Type<($IProgWidget$$Type)>): $IProgWidget
- "canBeRunByComputers"(arg0: $IDrone$$Type, arg1: $IProgWidget$$Type): boolean
+ "getTypeID"(): $ResourceLocation
+ "setPosition"(arg0: integer, arg1: integer): void
+ "getColor"(): $DyeColor
+ "getTooltip"(arg0: $List$$Type<($Component$$Type)>): void
+ "getDifficulty"(): $IProgWidget$WidgetDifficulty
+ "getTexture"(): $ResourceLocation
+ "copyWidget"(): $IProgWidget
  "hasStepInput"(): boolean
  "hasStepOutput"(): boolean
  "getWidgetAI"(arg0: $IDrone$$Type, arg1: $IProgWidget$$Type): $Goal
@@ -16734,8 +17085,16 @@ static "create"(arg0: $ProgWidgetType$$Type<(any)>): $IProgWidget
  "addErrors"(arg0: $List$$Type<($Component$$Type)>, arg1: $List$$Type<($IProgWidget$$Type)>): void
  "getMaxUV"(): $Pair<(float), (float)>
  "isDifficultyOK"(arg0: $IProgWidget$WidgetDifficulty$$Type): boolean
- "copyWidget"(): $IProgWidget
  "freeToUse"(): boolean
+ "getTranslationKey"(): StringJS
+ "getConnectedParameters"(): ($IProgWidget)[]
+ "getExtraStringInfo"(): $List<($Component)>
+ "getWidgetTargetAI"(arg0: $IDrone$$Type, arg1: $IProgWidget$$Type): $Goal
+ "canSetParameter"(arg0: integer): boolean
+ "setOutputWidget"(arg0: $IProgWidget$$Type): void
+ "getOutputWidget"(arg0: $IDrone$$Type, arg1: $List$$Type<($IProgWidget$$Type)>): $IProgWidget
+ "getOutputWidget"(): $IProgWidget
+ "canBeRunByComputers"(arg0: $IDrone$$Type, arg1: $IProgWidget$$Type): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -16767,11 +17126,11 @@ static readonly "STREAM_CODEC": $StreamCodec<($FriendlyByteBuf), ($DronePacket$D
 
 constructor(idOrPos: $Either$$Type<(integer), ($BlockPos$$Type)>)
 
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "is"(arg0: $BlockPos$$Type): boolean
 public "is"(arg0: $Entity$$Type): boolean
+public "is"(arg0: $BlockPos$$Type): boolean
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
 public static "none"(): $DronePacket$DroneTarget
 public static "forPos"(arg0: $BlockPos$$Type): $DronePacket$DroneTarget
 public static "forEntityId"(arg0: integer): $DronePacket$DroneTarget
@@ -16791,18 +17150,22 @@ declare global {
 export type $DronePacket$DroneTarget_ = $DronePacket$DroneTarget$$Type;
 }}
 declare module "me.desht.modularrouters.item.augment.MimicAugment" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$AugmentItem, $AugmentItem$$Type} from "me.desht.modularrouters.item.augment.AugmentItem"
 import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $MimicAugment extends $AugmentItem {
 static readonly "SLOTS": integer
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -16811,6 +17174,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "getMaxAugments"(arg0: $ModuleItem$$Type): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -16866,8 +17230,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -16877,8 +17241,8 @@ import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.Inte
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ItemInteractionResult, $ItemInteractionResult$$Type} from "net.minecraft.world.ItemInteractionResult"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
@@ -16896,7 +17260,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -16940,16 +17304,20 @@ declare global {
 export type $ProgrammerBlock_ = $ProgrammerBlock$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.AbstractChestUpgradeKitItem$Reinforced" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$AbstractChestUpgradeKitItem, $AbstractChestUpgradeKitItem$$Type} from "me.desht.pneumaticcraft.common.item.AbstractChestUpgradeKitItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $AbstractChestUpgradeKitItem$Reinforced extends $AbstractChestUpgradeKitItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -16957,6 +17325,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -16971,24 +17340,26 @@ declare global {
 export type $AbstractChestUpgradeKitItem$Reinforced_ = $AbstractChestUpgradeKitItem$Reinforced$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.MemoryStickItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
-import {$IFluidCapProvider, $IFluidCapProvider$$Type} from "me.desht.pneumaticcraft.common.item.IFluidCapProvider"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$IFluidCapProvider, $IFluidCapProvider$$Type} from "me.desht.pneumaticcraft.common.item.IFluidCapProvider"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$ColorHandlers$ITintableItem, $ColorHandlers$ITintableItem$$Type} from "me.desht.pneumaticcraft.client.ColorHandlers$ITintableItem"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
 import {$IFluidHandlerItem, $IFluidHandlerItem$$Type} from "net.neoforged.neoforge.fluids.capability.IFluidHandlerItem"
 import {$ILeftClickableItem, $ILeftClickableItem$$Type} from "me.desht.pneumaticcraft.common.item.ILeftClickableItem"
-import {$MemoryStickItem$MemoryStickLocator, $MemoryStickItem$MemoryStickLocator$$Type} from "me.desht.pneumaticcraft.common.item.MemoryStickItem$MemoryStickLocator"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$MemoryStickItem$MemoryStickLocator, $MemoryStickItem$MemoryStickLocator$$Type} from "me.desht.pneumaticcraft.common.item.MemoryStickItem$MemoryStickLocator"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 
@@ -16996,7 +17367,7 @@ export class $MemoryStickItem extends $Item implements $ColorHandlers$ITintableI
 static readonly "XP_FLUID_CAPACITY": integer
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -17005,17 +17376,18 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public static "cacheMemoryStickLocation"(arg0: $Player$$Type, arg1: $MemoryStickItem$MemoryStickLocator$$Type): void
+public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
 public "isBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getBarWidth"(arg0: $ItemStack$$Type): integer
-public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
+public static "isRoomInStick"(arg0: $ItemStack$$Type): boolean
+public "getTintColor"(arg0: $ItemStack$$Type, arg1: integer): integer
 public "onLeftClickEmpty"(arg0: $ServerPlayer$$Type): void
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "provideFluidCapability"(arg0: $ItemStack$$Type): $IFluidHandlerItem
 public static "shouldAbsorbXPOrbs"(arg0: $ItemStack$$Type): boolean
 public static "setAbsorbXPOrbs"(arg0: $ItemStack$$Type, arg1: boolean): void
-public static "isRoomInStick"(arg0: $ItemStack$$Type): boolean
-public "getTintColor"(arg0: $ItemStack$$Type, arg1: integer): integer
+public static "cacheMemoryStickLocation"(arg0: $Player$$Type, arg1: $MemoryStickItem$MemoryStickLocator$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -17039,8 +17411,8 @@ import {$AbstractAssemblyIOUnitBlock, $AbstractAssemblyIOUnitBlock$$Type} from "
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -17053,7 +17425,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -17103,11 +17475,11 @@ static readonly "STREAM_CODEC": $StreamCodec<($FriendlyByteBuf), ($ProgWidget$Po
 
 constructor(x: integer, y: integer)
 
+public "y"(): integer
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "x"(): integer
-public "y"(): integer
 public static "below"(arg0: $IProgWidget$$Type): $ProgWidget$PositionFields
 public static "rightParam"(arg0: $IProgWidget$$Type, arg1: integer): $ProgWidget$PositionFields
 public static "leftParam"(arg0: $IProgWidget$$Type, arg1: integer): $ProgWidget$PositionFields
@@ -17116,7 +17488,7 @@ public static "leftParam"(arg0: $IProgWidget$$Type, arg1: integer): $ProgWidget$
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ProgWidget$PositionFields$$Type = ({"x"?: integer, "y"?: integer}) | ([x?: integer, y?: integer]);
+export type $ProgWidget$PositionFields$$Type = ({"y"?: integer, "x"?: integer}) | ([y?: integer, x?: integer]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -17125,6 +17497,7 @@ declare global {
 export type $ProgWidget$PositionFields_ = $ProgWidget$PositionFields$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.block.VacuumTrapBlock$ItemBlockVacuumTrap" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$VacuumTrapBlock, $VacuumTrapBlock$$Type} from "me.desht.pneumaticcraft.common.block.VacuumTrapBlock"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
@@ -17132,18 +17505,20 @@ import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $VacuumTrapBlock$ItemBlockVacuumTrap extends $BlockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -17162,6 +17537,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -17185,14 +17561,14 @@ import {$Record, $Record$$Type} from "java.lang.Record"
 export class $DroneDebugEntry extends $Record {
 static readonly "STREAM_CODEC": $StreamCodec<($FriendlyByteBuf), ($DroneDebugEntry)>
 
-constructor(progWidgetIndex: integer, message: string, pos: $Optional$$Type<($BlockPos$$Type)>, receivedTime: long)
+constructor(progWidgetIndex: integer, message: StringJS, pos: $Optional$$Type<($BlockPos$$Type)>, receivedTime: long)
 
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "message"(): string
-public static "create"(arg0: string, arg1: $BlockPos$$Type, arg2: integer): $DroneDebugEntry
 public "pos"(): $Optional<($BlockPos)>
+public static "create"(arg0: StringJS, arg1: $BlockPos$$Type, arg2: integer): $DroneDebugEntry
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+public "message"(): StringJS
 public "hasPos"(): boolean
 public "getPos"(): $BlockPos
 public "receivedTime"(): long
@@ -17202,7 +17578,7 @@ public "progWidgetIndex"(): integer
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $DroneDebugEntry$$Type = ({"pos"?: ($BlockPos$$Type)?, "receivedTime"?: long, "message"?: string, "progWidgetIndex"?: integer}) | ([pos?: ($BlockPos$$Type)?, receivedTime?: long, message?: string, progWidgetIndex?: integer]);
+export type $DroneDebugEntry$$Type = ({"progWidgetIndex"?: integer, "pos"?: ($BlockPos$$Type)?, "receivedTime"?: long, "message"?: StringJS}) | ([progWidgetIndex?: integer, pos?: ($BlockPos$$Type)?, receivedTime?: long, message?: StringJS]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -17241,18 +17617,22 @@ declare global {
 export type $WitchAccess_ = $WitchAccess$$Type;
 }}
 declare module "me.desht.modularrouters.item.augment.RangeAugments$RangeUpAugment" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$RangeAugments, $RangeAugments$$Type} from "me.desht.modularrouters.item.augment.RangeAugments"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $RangeAugments$RangeUpAugment extends $RangeAugments {
 static readonly "SLOTS": integer
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -17261,6 +17641,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "getMaxAugments"(arg0: $ModuleItem$$Type): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -17341,15 +17722,15 @@ declare global {
 export type $ShapedRecipeAccess_ = $ShapedRecipeAccess$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.util.playerfilter.PlayerFilter" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$PlayerFilter$Op, $PlayerFilter$Op$$Type} from "me.desht.pneumaticcraft.common.util.playerfilter.PlayerFilter$Op"
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
-import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IPlayerFilter, $IPlayerFilter$$Type} from "me.desht.pneumaticcraft.api.misc.IPlayerFilter"
 import {$IPlayerMatcher, $IPlayerMatcher$$Type} from "me.desht.pneumaticcraft.api.misc.IPlayerMatcher"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
-import {$List, $List$$Type} from "java.util.List"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
+import {$List, $List$$Type} from "java.util.List"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Record, $Record$$Type} from "java.lang.Record"
 
@@ -17361,22 +17742,22 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Playe
 
 constructor(op: $PlayerFilter$Op$$Type, matchers: $List$$Type<($IPlayerMatcher$$Type)>)
 
-public "matchers"(): $List<($IPlayerMatcher)>
 public "getDescription"(arg0: $Player$$Type, arg1: $List$$Type<($Component$$Type)>): void
+public "isReal"(): boolean
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "test"(arg0: any): boolean
 public "test"(arg0: $Player$$Type): boolean
 public "op"(): $PlayerFilter$Op
-public "isReal"(): boolean
+public "matchers"(): $List<($IPlayerMatcher)>
 public "matchAll"(): boolean
 public static "fromNetwork"(arg0: $RegistryFriendlyByteBuf$$Type): $PlayerFilter
 public "toNetwork"(arg0: $RegistryFriendlyByteBuf$$Type): void
 public "or"(arg0: $Predicate$$Type<($Player)>): $Predicate<($Player)>
+public static "not"<T>(arg0: $Predicate$$Type<($Player)>): $Predicate<($Player)>
 public "negate"(): $Predicate<($Player)>
 public "and"(arg0: $Predicate$$Type<($Player)>): $Predicate<($Player)>
-public static "not"<T>(arg0: $Predicate$$Type<($Player)>): $Predicate<($Player)>
 public static "isEqual"<T>(arg0: any): $Predicate<($Player)>
 get "real"(): boolean
 }
@@ -17393,22 +17774,24 @@ declare global {
 export type $PlayerFilter_ = $PlayerFilter$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.BandageItem" {
-import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
-import {$UseAnim, $UseAnim$$Type} from "net.minecraft.world.item.UseAnim"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
-import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$UseAnim, $UseAnim$$Type} from "net.minecraft.world.item.UseAnim"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 
 export class $BandageItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -17418,8 +17801,9 @@ constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
 public "getUseDuration"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): integer
-public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
 public "finishUsingItem"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $LivingEntity$$Type): $ItemStack
+public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -17440,10 +17824,13 @@ import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$AbstractGunAmmoItem, $AbstractGunAmmoItem$$Type} from "me.desht.pneumaticcraft.common.item.minigun.AbstractGunAmmoItem"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Minigun, $Minigun$$Type} from "me.desht.pneumaticcraft.common.minigun.Minigun"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
@@ -17451,7 +17838,7 @@ import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 export class $ExplosiveGunAmmoItem extends $AbstractGunAmmoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -17460,11 +17847,12 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "getMaxDamage"(arg0: $ItemStack$$Type): integer
-public "getDamageMultiplier"(arg0: $Entity$$Type, arg1: $ItemStack$$Type): float
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "onTargetHit"(arg0: $Minigun$$Type, arg1: $ItemStack$$Type, arg2: $Entity$$Type): integer
 public "onBlockHit"(arg0: $Minigun$$Type, arg1: $ItemStack$$Type, arg2: $BlockHitResult$$Type): integer
 public "getAmmoColor"(arg0: $ItemStack$$Type): integer
+public "getDamageMultiplier"(arg0: $Entity$$Type, arg1: $ItemStack$$Type): float
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -17496,7 +17884,7 @@ constructor(mode: integer)
 
 public "mode"(): integer
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "toNBT"(arg0: $HolderLookup$Provider$$Type): $Tag
 public static "fromNBT"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): $RedstoneController$Saved
@@ -17519,8 +17907,8 @@ import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
 import {$RecipeType, $RecipeType$$Type} from "net.minecraft.world.item.crafting.RecipeType"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CraftingBookCategory, $CraftingBookCategory$$Type} from "net.minecraft.world.item.crafting.CraftingBookCategory"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CraftingRecipe, $CraftingRecipe$$Type} from "net.minecraft.world.item.crafting.CraftingRecipe"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.item.crafting.RecipeSerializer"
@@ -17529,27 +17917,27 @@ import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraf
 export class $PneumaticCraftRecipe implements $CraftingRecipe {
 
 
+public "category"(): $CraftingBookCategory
 public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "matches"(arg0: $CraftingInput$$Type, arg1: $Level$$Type): boolean
-public "category"(): $CraftingBookCategory
+public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
+public "isSpecial"(): boolean
 public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
 public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "isSpecial"(): boolean
 public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
-public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
 public "getType"(): $RecipeType<(any)>
 public "getIngredients"(): $NonNullList<($Ingredient)>
+public "getGroup"(): StringJS
 public "getSerializer"(): $RecipeSerializer<(any)>
-public "getGroup"(): string
-public "showNotification"(): boolean
-public "getRemainingItems"(arg0: $CraftingInput$$Type): $NonNullList<($ItemStack)>
 public "isIncomplete"(): boolean
 public "getToastSymbol"(): $ItemStack
+public "showNotification"(): boolean
+public "getRemainingItems"(arg0: $CraftingInput$$Type): $NonNullList<($ItemStack)>
 get "special"(): boolean
 get "type"(): $RecipeType<(any)>
 get "ingredients"(): $NonNullList<($Ingredient)>
+get "group"(): StringJS
 get "serializer"(): $RecipeSerializer<(any)>
-get "group"(): string
 get "incomplete"(): boolean
 get "toastSymbol"(): $ItemStack
 }
@@ -17590,22 +17978,22 @@ static readonly "GE": $InspectionMatcher$InspectionOp
 public static "values"(): ($InspectionMatcher$InspectionOp)[]
 public "test"(arg0: any, arg1: any): boolean
 public "test"(arg0: long, arg1: long): boolean
-public static "valueOf"(arg0: string): $InspectionMatcher$InspectionOp
+public static "valueOf"(arg0: StringJS): $InspectionMatcher$InspectionOp
 public "cycle"(arg0: integer): $InspectionMatcher$InspectionOp
-public "getTranslationKey"(): string
-public "getSerializedName"(): string
+public "getTranslationKey"(): StringJS
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
 public "or"(arg0: $BiPredicate$$Type<(long), (long)>): $BiPredicate<(long), (long)>
 public "negate"(): $BiPredicate<(long), (long)>
 public "and"(arg0: $BiPredicate$$Type<(long), (long)>): $BiPredicate<(long), (long)>
-get "translationKey"(): string
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+get "translationKey"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -17650,10 +18038,10 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$IBlockComparatorSupport, $IBlockComparatorSupport$$Type} from "me.desht.pneumaticcraft.common.block.IBlockComparatorSupport"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
+import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -17663,8 +18051,8 @@ import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.Inte
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ItemInteractionResult, $ItemInteractionResult$$Type} from "net.minecraft.world.ItemInteractionResult"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
@@ -17683,7 +18071,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -17707,8 +18095,8 @@ constructor(arg0: $BlockBehaviour$Properties$$Type)
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "useItemOn"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type, arg2: $Level$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type, arg5: $InteractionHand$$Type, arg6: $BlockHitResult$$Type): $ItemInteractionResult
 public "canSurvive"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type): boolean
+public "useItemOn"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type, arg2: $Level$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type, arg5: $InteractionHand$$Type, arg6: $BlockHitResult$$Type): $ItemInteractionResult
 public "isRotatable"(): boolean
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
@@ -17738,8 +18126,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -17754,8 +18142,8 @@ import {$ModelProperty, $ModelProperty$$Type} from "net.neoforged.neoforge.clien
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
-import {$AbstractCamouflageBlock, $AbstractCamouflageBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractCamouflageBlock"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
+import {$AbstractCamouflageBlock, $AbstractCamouflageBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractCamouflageBlock"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 
@@ -17771,7 +18159,7 @@ static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "BLOCK_ACCESS": $ModelProperty<($BlockGetter)>
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -17798,8 +18186,8 @@ public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockE
 public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
 public "isSignalSource"(arg0: $BlockState$$Type): boolean
 public "getSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
-public "getUncamouflagedShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "isRotatable"(): boolean
+public "getUncamouflagedShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public static "setSurroundingElevators"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
@@ -17820,12 +18208,14 @@ declare global {
 export type $ElevatorCallerBlock_ = $ElevatorCallerBlock$$Type;
 }}
 declare module "me.desht.modularrouters.item.upgrade.SyncUpgrade" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$ModularRouterBlockEntity, $ModularRouterBlockEntity$$Type} from "me.desht.modularrouters.block.tile.ModularRouterBlockEntity"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
@@ -17838,7 +18228,7 @@ import {$UpgradeItem, $UpgradeItem$$Type} from "me.desht.modularrouters.item.upg
 export class $SyncUpgrade extends $UpgradeItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -17847,11 +18237,12 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "addExtraInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
-public "onCompiled"(arg0: $ItemStack$$Type, arg1: $ModularRouterBlockEntity$$Type): void
 public "getItemTint"(): $TintColor
 public static "getTunedValue"(arg0: $ItemStack$$Type): integer
 public static "setTunedValue"(arg0: $ItemStack$$Type, arg1: integer): void
+public "onCompiled"(arg0: $ItemStack$$Type, arg1: $ModularRouterBlockEntity$$Type): void
+public "addExtraInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
 }
 /**
@@ -17867,13 +18258,17 @@ declare global {
 export type $SyncUpgrade_ = $SyncUpgrade$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.CompressedIronArmorItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
-import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$ArmorItem, $ArmorItem$$Type} from "net.minecraft.world.item.ArmorItem"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$DispenseItemBehavior, $DispenseItemBehavior$$Type} from "net.minecraft.core.dispenser.DispenseItemBehavior"
@@ -17882,7 +18277,7 @@ import {$ArmorItem$Type, $ArmorItem$Type$$Type} from "net.minecraft.world.item.A
 export class $CompressedIronArmorItem extends $ArmorItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -17893,6 +18288,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $ArmorItem$Type$$Type)
 
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -17913,7 +18309,7 @@ import {$DroneAIManager, $DroneAIManager$$Type} from "me.desht.pneumaticcraft.co
 export interface $IVariableWidget {
 
  "setAIManager"(arg0: $DroneAIManager$$Type): void
- "addVariables"(arg0: $Set$$Type<(string)>): void
+ "addVariables"(arg0: $Set$$Type<(StringJS)>): void
 set "aIManager"(value: $DroneAIManager$$Type)
 }
 
@@ -17924,7 +18320,7 @@ export class $IVariableWidget$$Static implements $IVariableWidget {
 
 
  "setAIManager"(arg0: $DroneAIManager$$Type): void
- "addVariables"(arg0: $Set$$Type<(string)>): void
+ "addVariables"(arg0: $Set$$Type<(StringJS)>): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -17939,24 +18335,27 @@ declare global {
 export type $IVariableWidget_ = $IVariableWidget$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.block.FluidTankBlock$ItemBlockFluidTank" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$IFluidCapProvider, $IFluidCapProvider$$Type} from "me.desht.pneumaticcraft.common.item.IFluidCapProvider"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$IFluidRendered, $IFluidRendered$$Type} from "me.desht.pneumaticcraft.common.item.IFluidRendered"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$IFluidHandlerItem, $IFluidHandlerItem$$Type} from "net.neoforged.neoforge.fluids.capability.IFluidHandlerItem"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$IFluidItemRenderInfoProvider, $IFluidItemRenderInfoProvider$$Type} from "me.desht.pneumaticcraft.client.render.fluid.IFluidItemRenderInfoProvider"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $FluidTankBlock$ItemBlockFluidTank extends $BlockItem implements $IFluidRendered, $IFluidCapProvider {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -17969,16 +18368,17 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Block$$Type)
 
+public "getMaxStackSize"(arg0: $ItemStack$$Type): integer
 public "getCraftingRemainingItem"(arg0: $ItemStack$$Type): $ItemStack
 public "hasCraftingRemainingItem"(arg0: $ItemStack$$Type): boolean
-public "getMaxStackSize"(arg0: $ItemStack$$Type): integer
-public "provideFluidCapability"(arg0: $ItemStack$$Type): $IFluidHandlerItem
 public "getFluidItemRenderer"(): $IFluidItemRenderInfoProvider
+public "provideFluidCapability"(arg0: $ItemStack$$Type): $IFluidHandlerItem
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
 public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "fluidItemRenderer"(): $IFluidItemRenderInfoProvider
 }
 /**
@@ -17995,8 +18395,8 @@ export type $FluidTankBlock$ItemBlockFluidTank_ = $FluidTankBlock$ItemBlockFluid
 }}
 declare module "me.desht.pneumaticcraft.common.block.entity.AbstractTickingBlockEntity" {
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$TrackedData, $TrackedData$$Type} from "dev.corgitaco.dataanchor.data.TrackedData"
 import {$AbstractPneumaticCraftBlockEntity, $AbstractPneumaticCraftBlockEntity$$Type} from "me.desht.pneumaticcraft.common.block.entity.AbstractPneumaticCraftBlockEntity"
+import {$TrackedData, $TrackedData$$Type} from "dev.corgitaco.dataanchor.data.TrackedData"
 import {$TrackedDataContainer, $TrackedDataContainer$$Type} from "dev.corgitaco.dataanchor.data.TrackedDataContainer"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.dataanchor.data.registry.TrackedDataRegistry"
@@ -18004,7 +18404,7 @@ import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.I
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $AbstractTickingBlockEntity extends $AbstractPneumaticCraftBlockEntity {
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 constructor(arg0: $BlockEntityType$$Type<(any)>, arg1: $BlockPos$$Type, arg2: $BlockState$$Type)
 constructor(arg0: $BlockEntityType$$Type<(any)>, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: integer)
@@ -18014,8 +18414,8 @@ public "tickServer"(): void
 public "tickCommonPre"(): void
 public "tickCommonPost"(): void
 public "getUpgradeHandler"(): $IItemHandler
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "upgradeHandler"(): $IItemHandler
 }
 /**
@@ -18038,9 +18438,9 @@ import {$List, $List$$Type} from "java.util.List"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$DroneItemHandler, $DroneItemHandler$$Type} from "me.desht.pneumaticcraft.common.util.fakeplayer.DroneItemHandler"
-import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$FakePlayer, $FakePlayer$$Type} from "net.neoforged.neoforge.common.util.FakePlayer"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$DroneEntity, $DroneEntity$$Type} from "me.desht.pneumaticcraft.common.entity.drone.DroneEntity"
@@ -18048,8 +18448,8 @@ import {$IProgWidget, $IProgWidget$$Type} from "me.desht.pneumaticcraft.api.dron
 import {$SoundSource, $SoundSource$$Type} from "net.minecraft.sounds.SoundSource"
 import {$DronePacket$DroneTarget, $DronePacket$DroneTarget$$Type} from "me.desht.pneumaticcraft.common.network.DronePacket$DroneTarget"
 import {$GoalSelector, $GoalSelector$$Type} from "net.minecraft.world.entity.ai.goal.GoalSelector"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$ProgWidgetType, $ProgWidgetType$$Type} from "me.desht.pneumaticcraft.api.drone.ProgWidgetType"
 import {$IPathNavigator, $IPathNavigator$$Type} from "me.desht.pneumaticcraft.api.drone.IPathNavigator"
 import {$IDroneDebugger, $IDroneDebugger$$Type} from "me.desht.pneumaticcraft.api.drone.debug.IDroneDebugger"
@@ -18064,25 +18464,40 @@ import {$IEnergyStorage, $IEnergyStorage$$Type} from "net.neoforged.neoforge.ene
 
 export interface $IDroneBase extends $IDrone {
 
+ "getAIManager"(): $DroneAIManager
+ "getDroneItemHandler"(): $DroneItemHandler
  "getActiveAIManager"(): $DroneAIManager
  "getFakePlayerPos"(): $Vec3
  "getLogisticsManager"(): $LogisticsManager
  "setLogisticsManager"(arg0: $LogisticsManager$$Type): void
  "getPacketTarget"(): $DronePacket$DroneTarget
- "getDroneItemHandler"(): $DroneItemHandler
- "getAIManager"(): $DroneAIManager
- "getLabel"(): string
- "setName"(arg0: $Component$$Type): void
  "getOwner"(): $Player
+ "getLabel"(): StringJS
+ "setName"(arg0: $Component$$Type): void
  "dropItem"(arg0: $ItemStack$$Type): void
- "getOwnerUUID"(): $UUID
  "playSound"(arg0: $SoundEvent$$Type, arg1: $SoundSource$$Type, arg2: float, arg3: float): void
  "getInv"(): $IItemHandlerModifiable
+ "getDebugger"(): $IDroneDebugger
+ "getDronePos"(): $Vec3
+ "setDugBlock"(arg0: $BlockPos$$Type): void
+ "setDugBlock"(arg0: $BlockPos$$Type, arg1: $Direction$$Type): void
+ "getDeployPos"(): $BlockPos
+ "getDroneLevel"(): $Level
+ "getProgWidgets"(): $List<($IProgWidget)>
+ "getTargetAI"(): $GoalSelector
+ "isAIOverridden"(): boolean
+ "overload"(arg0: StringJS, ...arg1: (any)[]): void
+ "addAirToDrone"(arg0: integer): void
+ "getDroneName"(): $Component
+ "updateLabel"(): void
+ "getUpgrades"(arg0: $PNCUpgrade$$Type): integer
+ "getFakePlayer"(): $FakePlayer
+ "getFluidTank"(): $FluidTank
+ "getOwnerUUID"(): $UUID
  "getEnergyStorage"(): $IEnergyStorage
- "setEmittingRedstone"(arg0: $Direction$$Type, arg1: integer): void
+ "getControllerPos"(): $BlockPos
  "getEmittingRedstone"(arg0: $Direction$$Type): integer
- "isDroneStillValid"(): boolean
- "onVariableChanged"(arg0: string, arg1: boolean): void
+ "onVariableChanged"(arg0: StringJS, arg1: boolean): void
  "getPathNavigator"(): $IPathNavigator
  "sendWireframeToClient"(arg0: $BlockPos$$Type): void
  "setActiveProgram"(arg0: $IProgWidget$$Type): void
@@ -18096,47 +18511,20 @@ export interface $IDroneBase extends $IDrone {
  "storeTrackerData"(arg0: $ItemStack$$Type): void
  "getActiveWidget"(): $IProgWidget
  "resetAttackCount"(): void
- "getControllerPos"(): $BlockPos
- "getFakePlayer"(): $FakePlayer
- "getDebugger"(): $IDroneDebugger
- "getDronePos"(): $Vec3
- "setDugBlock"(arg0: $BlockPos$$Type, arg1: $Direction$$Type): void
- "setDugBlock"(arg0: $BlockPos$$Type): void
- "getDeployPos"(): $BlockPos
- "getDroneLevel"(): $Level
- "getProgWidgets"(): $List<($IProgWidget)>
- "getTargetAI"(): $GoalSelector
- "isAIOverridden"(): boolean
- "overload"(arg0: string, ...arg1: (any)[]): void
- "updateLabel"(): void
- "addAirToDrone"(arg0: integer): void
- "getDroneName"(): $Component
- "getFluidTank"(): $FluidTank
- "getUpgrades"(arg0: $PNCUpgrade$$Type): integer
+ "setEmittingRedstone"(arg0: $Direction$$Type, arg1: integer): void
+ "isDroneStillValid"(): boolean
  "isBlockValidPathfindBlock"(arg0: $BlockPos$$Type): boolean
+get "aIManager"(): $DroneAIManager
+get "droneItemHandler"(): $DroneItemHandler
 get "activeAIManager"(): $DroneAIManager
 get "fakePlayerPos"(): $Vec3
 get "logisticsManager"(): $LogisticsManager
 set "logisticsManager"(value: $LogisticsManager$$Type)
 get "packetTarget"(): $DronePacket$DroneTarget
-get "droneItemHandler"(): $DroneItemHandler
-get "aIManager"(): $DroneAIManager
-get "label"(): string
-set "name"(value: $Component$$Type)
 get "owner"(): $Player
-get "ownerUUID"(): $UUID
+get "label"(): StringJS
+set "name"(value: $Component$$Type)
 get "inv"(): $IItemHandlerModifiable
-get "energyStorage"(): $IEnergyStorage
-get "droneStillValid"(): boolean
-get "pathNavigator"(): $IPathNavigator
-set "activeProgram"(value: $IProgWidget$$Type)
-set "carryingEntity"(value: $Entity$$Type)
-get "carryingEntities"(): $List<($Entity)>
-get "dronePressure"(): float
-get "activeWidgetIndex"(): integer
-get "activeWidget"(): $IProgWidget
-get "controllerPos"(): $BlockPos
-get "fakePlayer"(): $FakePlayer
 get "debugger"(): $IDroneDebugger
 get "dronePos"(): $Vec3
 set "dugBlock"(value: $BlockPos$$Type)
@@ -18146,7 +18534,19 @@ get "progWidgets"(): $List<($IProgWidget)>
 get "targetAI"(): $GoalSelector
 get "aIOverridden"(): boolean
 get "droneName"(): $Component
+get "fakePlayer"(): $FakePlayer
 get "fluidTank"(): $FluidTank
+get "ownerUUID"(): $UUID
+get "energyStorage"(): $IEnergyStorage
+get "controllerPos"(): $BlockPos
+get "pathNavigator"(): $IPathNavigator
+set "activeProgram"(value: $IProgWidget$$Type)
+set "carryingEntity"(value: $Entity$$Type)
+get "carryingEntities"(): $List<($Entity)>
+get "dronePressure"(): float
+get "activeWidgetIndex"(): integer
+get "activeWidget"(): $IProgWidget
+get "droneStillValid"(): boolean
 }
 
 export namespace $IDroneBase {
@@ -18157,27 +18557,42 @@ const probejs$$marker: never
 export class $IDroneBase$$Static implements $IDroneBase {
 
 
+ "getAIManager"(): $DroneAIManager
 static "asDroneBase"(arg0: $IDrone$$Type): $IDroneBase
 static "asDrone"(arg0: $IDrone$$Type): $DroneEntity
+ "getDroneItemHandler"(): $DroneItemHandler
  "getActiveAIManager"(): $DroneAIManager
  "getFakePlayerPos"(): $Vec3
  "getLogisticsManager"(): $LogisticsManager
  "setLogisticsManager"(arg0: $LogisticsManager$$Type): void
  "getPacketTarget"(): $DronePacket$DroneTarget
- "getDroneItemHandler"(): $DroneItemHandler
- "getAIManager"(): $DroneAIManager
- "getLabel"(): string
- "setName"(arg0: $Component$$Type): void
  "getOwner"(): $Player
+ "getLabel"(): StringJS
+ "setName"(arg0: $Component$$Type): void
  "dropItem"(arg0: $ItemStack$$Type): void
- "getOwnerUUID"(): $UUID
  "playSound"(arg0: $SoundEvent$$Type, arg1: $SoundSource$$Type, arg2: float, arg3: float): void
  "getInv"(): $IItemHandlerModifiable
+ "getDebugger"(): $IDroneDebugger
+ "getDronePos"(): $Vec3
+ "setDugBlock"(arg0: $BlockPos$$Type): void
+ "setDugBlock"(arg0: $BlockPos$$Type, arg1: $Direction$$Type): void
+ "getDeployPos"(): $BlockPos
+ "getDroneLevel"(): $Level
+ "getProgWidgets"(): $List<($IProgWidget)>
+ "getTargetAI"(): $GoalSelector
+ "isAIOverridden"(): boolean
+ "overload"(arg0: StringJS, ...arg1: (any)[]): void
+ "addAirToDrone"(arg0: integer): void
+ "getDroneName"(): $Component
+ "updateLabel"(): void
+ "getUpgrades"(arg0: $PNCUpgrade$$Type): integer
+ "getFakePlayer"(): $FakePlayer
+ "getFluidTank"(): $FluidTank
+ "getOwnerUUID"(): $UUID
  "getEnergyStorage"(): $IEnergyStorage
- "setEmittingRedstone"(arg0: $Direction$$Type, arg1: integer): void
+ "getControllerPos"(): $BlockPos
  "getEmittingRedstone"(arg0: $Direction$$Type): integer
- "isDroneStillValid"(): boolean
- "onVariableChanged"(arg0: string, arg1: boolean): void
+ "onVariableChanged"(arg0: StringJS, arg1: boolean): void
  "getPathNavigator"(): $IPathNavigator
  "sendWireframeToClient"(arg0: $BlockPos$$Type): void
  "setActiveProgram"(arg0: $IProgWidget$$Type): void
@@ -18191,23 +18606,8 @@ static "asDrone"(arg0: $IDrone$$Type): $DroneEntity
  "storeTrackerData"(arg0: $ItemStack$$Type): void
  "getActiveWidget"(): $IProgWidget
  "resetAttackCount"(): void
- "getControllerPos"(): $BlockPos
- "getFakePlayer"(): $FakePlayer
- "getDebugger"(): $IDroneDebugger
- "getDronePos"(): $Vec3
- "setDugBlock"(arg0: $BlockPos$$Type, arg1: $Direction$$Type): void
- "setDugBlock"(arg0: $BlockPos$$Type): void
- "getDeployPos"(): $BlockPos
- "getDroneLevel"(): $Level
- "getProgWidgets"(): $List<($IProgWidget)>
- "getTargetAI"(): $GoalSelector
- "isAIOverridden"(): boolean
- "overload"(arg0: string, ...arg1: (any)[]): void
- "updateLabel"(): void
- "addAirToDrone"(arg0: integer): void
- "getDroneName"(): $Component
- "getFluidTank"(): $FluidTank
- "getUpgrades"(arg0: $PNCUpgrade$$Type): integer
+ "setEmittingRedstone"(arg0: $Direction$$Type, arg1: integer): void
+ "isDroneStillValid"(): boolean
  "isBlockValidPathfindBlock"(arg0: $BlockPos$$Type): boolean
 }
 /**
@@ -18224,8 +18624,8 @@ export type $IDroneBase_ = $IDroneBase$$Type;
 }}
 declare module "me.desht.modularrouters.logic.settings.ModuleTermination" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -18239,18 +18639,18 @@ static readonly "RAN": $ModuleTermination
 
 
 public static "values"(): ($ModuleTermination)[]
-public static "valueOf"(arg0: string): $ModuleTermination
-public "getTranslationKey"(): string
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $ModuleTermination
+public "getTranslationKey"(): StringJS
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "translationKey"(): string
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "translationKey"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -18305,11 +18705,11 @@ export class $LuaMethodRegistry {
 
 constructor(arg0: $ILuaMethodProvider$$Type)
 
-public "getMethod"(arg0: string): $ILuaMethod
+public "getMethod"(arg0: StringJS): $ILuaMethod
 public "getMethod"(arg0: integer): $ILuaMethod
-public "getMethodNames"(): (string)[]
+public "getMethodNames"(): (StringJS)[]
 public "registerLuaMethod"(arg0: $ILuaMethod$$Type): void
-get "methodNames"(): (string)[]
+get "methodNames"(): (StringJS)[]
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -18332,9 +18732,9 @@ import {$HeatPropertiesRecipe, $HeatPropertiesRecipe$$Type} from "me.desht.pneum
 
 export interface $HeatPropertiesRecipeImpl$IFactory<T extends $HeatPropertiesRecipe> {
 
- "create"(arg0: $Block$$Type, arg1: $HeatPropertiesRecipe$Transforms$$Type, arg2: $Optional$$Type<(integer)>, arg3: integer, arg4: $Optional$$Type<(double)>, arg5: $Map$$Type<(string), (string)>, arg6: string): T
+ "create"(arg0: $Block$$Type, arg1: $HeatPropertiesRecipe$Transforms$$Type, arg2: $Optional$$Type<(integer)>, arg3: integer, arg4: $Optional$$Type<(double)>, arg5: $Map$$Type<(StringJS), (StringJS)>, arg6: StringJS): T
 
-(arg0: $Block, arg1: $HeatPropertiesRecipe$Transforms, arg2: $Optional<(integer)>, arg3: integer, arg4: $Optional<(double)>, arg5: $Map<(string), (string)>, arg6: string): T
+(arg0: $Block, arg1: $HeatPropertiesRecipe$Transforms, arg2: $Optional<(integer)>, arg3: integer, arg4: $Optional<(double)>, arg5: $Map<(StringJS), (StringJS)>, arg6: StringJS): T
 }
 
 export namespace $HeatPropertiesRecipeImpl$IFactory {
@@ -18343,13 +18743,13 @@ const probejs$$marker: never
 export class $HeatPropertiesRecipeImpl$IFactory$$Static<T extends $HeatPropertiesRecipe> implements $HeatPropertiesRecipeImpl$IFactory {
 
 
- "create"(arg0: $Block$$Type, arg1: $HeatPropertiesRecipe$Transforms$$Type, arg2: $Optional$$Type<(integer)>, arg3: integer, arg4: $Optional$$Type<(double)>, arg5: $Map$$Type<(string), (string)>, arg6: string): T
+ "create"(arg0: $Block$$Type, arg1: $HeatPropertiesRecipe$Transforms$$Type, arg2: $Optional$$Type<(integer)>, arg3: integer, arg4: $Optional$$Type<(double)>, arg5: $Map$$Type<(StringJS), (StringJS)>, arg6: StringJS): T
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $HeatPropertiesRecipeImpl$IFactory$$Type<T> = ((arg0: $Block, arg1: $HeatPropertiesRecipe$Transforms, arg2: $Optional<(integer)>, arg3: integer, arg4: $Optional<(double)>, arg5: $Map<(string), (string)>, arg6: string) => T);
+export type $HeatPropertiesRecipeImpl$IFactory$$Type<T> = ((arg0: $Block, arg1: $HeatPropertiesRecipe$Transforms, arg2: $Optional<(integer)>, arg3: integer, arg4: $Optional<(double)>, arg5: $Map<(StringJS), (StringJS)>, arg6: StringJS) => T);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -18358,20 +18758,24 @@ declare global {
 export type $HeatPropertiesRecipeImpl$IFactory_<T> = $HeatPropertiesRecipeImpl$IFactory$$Type<(T)>;
 }}
 declare module "me.desht.modularrouters.item.upgrade.FluidUpgrade" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$UpgradeItem, $UpgradeItem$$Type} from "me.desht.modularrouters.item.upgrade.UpgradeItem"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.TintColor"
+import {$UpgradeItem, $UpgradeItem$$Type} from "me.desht.modularrouters.item.upgrade.UpgradeItem"
 
 export class $FluidUpgrade extends $UpgradeItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -18379,13 +18783,14 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "addUsageInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
-public "getExtraUsageParams"(): (any)[]
-public "getInstalledStackLimit"(): integer
 public "getItemTint"(): $TintColor
+public "getExtraUsageParams"(): (any)[]
+public "addUsageInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
+public "getInstalledStackLimit"(): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
+get "itemTint"(): $TintColor
 get "extraUsageParams"(): (any)[]
 get "installedStackLimit"(): integer
-get "itemTint"(): $TintColor
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -18400,20 +18805,24 @@ declare global {
 export type $FluidUpgrade_ = $FluidUpgrade$$Type;
 }}
 declare module "me.desht.modularrouters.item.augment.RedstoneAugment" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$AugmentItem, $AugmentItem$$Type} from "me.desht.modularrouters.item.augment.AugmentItem"
 import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 
 export class $RedstoneAugment extends $AugmentItem {
 static readonly "SLOTS": integer
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -18421,8 +18830,9 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "getExtraInfo"(arg0: integer, arg1: $ItemStack$$Type): $Component
 public "getMaxAugments"(arg0: $ModuleItem$$Type): integer
+public "getExtraInfo"(arg0: integer, arg1: $ItemStack$$Type): $Component
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -18441,16 +18851,16 @@ import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$UUID, $UUID$$Type} from "java.util.UUID"
 import {$List, $List$$Type} from "java.util.List"
-import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 
 export interface $IPositionProvider {
 
+ "syncVariables"(arg0: $ServerPlayer$$Type, arg1: $ItemStack$$Type): void
+ "getRenderColor"(arg0: integer): integer
  "disableDepthTest"(): boolean
  "getRawStoredPositions"(arg0: $Player$$Type, arg1: $ItemStack$$Type): $List<($BlockPos)>
  "getStoredPositions"(arg0: $UUID$$Type, arg1: $ItemStack$$Type): $List<($BlockPos)>
- "syncVariables"(arg0: $ServerPlayer$$Type, arg1: $ItemStack$$Type): void
- "getRenderColor"(arg0: integer): integer
 
 (arg0: $UUID, arg1: $ItemStack): $List$$Type<($BlockPos$$Type)>
 }
@@ -18461,11 +18871,11 @@ const probejs$$marker: never
 export class $IPositionProvider$$Static implements $IPositionProvider {
 
 
+ "syncVariables"(arg0: $ServerPlayer$$Type, arg1: $ItemStack$$Type): void
+ "getRenderColor"(arg0: integer): integer
  "disableDepthTest"(): boolean
  "getRawStoredPositions"(arg0: $Player$$Type, arg1: $ItemStack$$Type): $List<($BlockPos)>
  "getStoredPositions"(arg0: $UUID$$Type, arg1: $ItemStack$$Type): $List<($BlockPos)>
- "syncVariables"(arg0: $ServerPlayer$$Type, arg1: $ItemStack$$Type): void
- "getRenderColor"(arg0: integer): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -18523,8 +18933,8 @@ export type $AbstractMRContainerMenu_ = $AbstractMRContainerMenu$$Type;
 }}
 declare module "me.desht.modularrouters.logic.settings.RedstoneBehaviour" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -18540,20 +18950,20 @@ static readonly "ALWAYS": $RedstoneBehaviour
 
 
 public static "values"(): ($RedstoneBehaviour)[]
-public static "valueOf"(arg0: string): $RedstoneBehaviour
+public static "valueOf"(arg0: StringJS): $RedstoneBehaviour
 public "shouldRun"(arg0: boolean, arg1: boolean): boolean
-public "getTranslationKey"(): string
-public "getSerializedName"(): string
-public static "forValue"(arg0: string): $RedstoneBehaviour
+public static "forValue"(arg0: StringJS): $RedstoneBehaviour
+public "getTranslationKey"(): StringJS
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "translationKey"(): string
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "translationKey"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -18568,18 +18978,22 @@ declare global {
 export type $RedstoneBehaviour_ = $RedstoneBehaviour$$Type;
 }}
 declare module "me.desht.modularrouters.item.module.VoidModule" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.TintColor"
 
 export class $VoidModule extends $ModuleItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -18587,11 +19001,12 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "isDirectional"(): boolean
 public "getItemTint"(): $TintColor
+public "isDirectional"(): boolean
 public "getEnergyCost"(arg0: $ItemStack$$Type): integer
-get "directional"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
+get "directional"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -18607,8 +19022,8 @@ export type $VoidModule_ = $VoidModule$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.MicromissilesItem$FireMode" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -18621,19 +19036,19 @@ static readonly "SMART": $MicromissilesItem$FireMode
 
 
 public static "values"(): ($MicromissilesItem$FireMode)[]
-public static "valueOf"(arg0: string): $MicromissilesItem$FireMode
-public static "fromString"(arg0: string): $MicromissilesItem$FireMode
-public "getTranslationKey"(): string
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $MicromissilesItem$FireMode
+public static "fromString"(arg0: StringJS): $MicromissilesItem$FireMode
+public "getTranslationKey"(): StringJS
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "translationKey"(): string
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "translationKey"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -18656,10 +19071,10 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$IBlockComparatorSupport, $IBlockComparatorSupport$$Type} from "me.desht.pneumaticcraft.common.block.IBlockComparatorSupport"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
+import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -18668,8 +19083,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -18687,7 +19102,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -18709,10 +19124,10 @@ static readonly "UPDATE_CLIENTS": integer
 constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "addSerializableComponents"(arg0: $List$$Type<($DataComponentType$$Type<(any)>)>): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "onDestroyedByPlayer"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: boolean, arg5: $FluidState$$Type): boolean
 public "isRotatable"(): boolean
+public "onDestroyedByPlayer"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: boolean, arg5: $FluidState$$Type): boolean
+public "addSerializableComponents"(arg0: $List$$Type<($DataComponentType$$Type<(any)>)>): void
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public static "forBlock"(arg0: $Block$$Type): $IPneumaticWrenchable
@@ -18732,25 +19147,28 @@ declare global {
 export type $SmartChestBlock_ = $SmartChestBlock$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.block.LiquidHopperBlock$ItemBlockLiquidHopper" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$IFluidCapProvider, $IFluidCapProvider$$Type} from "me.desht.pneumaticcraft.common.item.IFluidCapProvider"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$IFluidRendered, $IFluidRendered$$Type} from "me.desht.pneumaticcraft.common.item.IFluidRendered"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$ColorHandlers$ITintableItem, $ColorHandlers$ITintableItem$$Type} from "me.desht.pneumaticcraft.client.ColorHandlers$ITintableItem"
 import {$IFluidHandlerItem, $IFluidHandlerItem$$Type} from "net.neoforged.neoforge.fluids.capability.IFluidHandlerItem"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$IFluidItemRenderInfoProvider, $IFluidItemRenderInfoProvider$$Type} from "me.desht.pneumaticcraft.client.render.fluid.IFluidItemRenderInfoProvider"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $LiquidHopperBlock$ItemBlockLiquidHopper extends $BlockItem implements $ColorHandlers$ITintableItem, $IFluidRendered, $IFluidCapProvider {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -18763,16 +19181,17 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Block$$Type)
 
+public "getTintColor"(arg0: $ItemStack$$Type, arg1: integer): integer
 public "getCraftingRemainingItem"(arg0: $ItemStack$$Type): $ItemStack
 public "hasCraftingRemainingItem"(arg0: $ItemStack$$Type): boolean
-public "provideFluidCapability"(arg0: $ItemStack$$Type): $IFluidHandlerItem
 public "getFluidItemRenderer"(): $IFluidItemRenderInfoProvider
-public "getTintColor"(arg0: $ItemStack$$Type, arg1: integer): integer
+public "provideFluidCapability"(arg0: $ItemStack$$Type): $IFluidHandlerItem
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
 public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "fluidItemRenderer"(): $IFluidItemRenderInfoProvider
 }
 /**
@@ -18797,8 +19216,8 @@ export class $AbstractLogisticsFrameEntity$ItemFilterHandler extends $ItemStackH
 
 
 public "isEmpty"(): boolean
-public "deserializeNBT"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): void
 public "deserializeNBT"(arg0: $HolderLookup$Provider$$Type, arg1: $Tag$$Type): void
+public "deserializeNBT"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): void
 public "serializeNBT"(arg0: $HolderLookup$Provider$$Type): $Tag
 get "empty"(): boolean
 }
@@ -18827,9 +19246,9 @@ export class $AssemblyRecipeImpl$Serializer<T extends $AssemblyRecipe> implement
 
 constructor(arg0: $AssemblyRecipeImpl$IFactory$$Type<(T)>)
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
 public "codec"(): $MapCodec<(T)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -18883,7 +19302,7 @@ static readonly "VILLAGER": $OfferType
 
 
 public static "values"(): ($OfferType)[]
-public static "valueOf"(arg0: string): $OfferType
+public static "valueOf"(arg0: StringJS): $OfferType
 public "write"(arg0: $RegistryFriendlyByteBuf$$Type, arg1: $AmadronOffer$$Type): void
 public "read"(arg0: $RegistryFriendlyByteBuf$$Type): $Optional<($AmadronOffer)>
 }
@@ -18941,24 +19360,24 @@ export class $AssemblyDrillBlockEntity extends $AbstractAssemblyRobotBlockEntity
 readonly "oldAngles": (float)[]
 readonly "angles": (float)[]
  "oldDrillRotation": float
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
  "drillRotation": float
 
 constructor(arg0: $BlockPos$$Type, arg1: $BlockState$$Type)
 
 public "reset"(): boolean
-public "canMoveToDiagonalNeighbours"(): boolean
-public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "isIdle"(): boolean
 public "tickServer"(): void
 public "saveAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "isIdle"(): boolean
-public "getAssemblyType"(): $AssemblyProgram$EnumMachine
-public "hasItemCapability"(): boolean
-public "tickCommonPre"(): void
+public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
 public "goDrilling"(): void
+public "tickCommonPre"(): void
+public "hasItemCapability"(): boolean
+public "getAssemblyType"(): $AssemblyProgram$EnumMachine
+public "canMoveToDiagonalNeighbours"(): boolean
 public "getUpgradeHandler"(): $IItemHandler
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "idle"(): boolean
 get "assemblyType"(): $AssemblyProgram$EnumMachine
 get "upgradeHandler"(): $IItemHandler
@@ -18993,10 +19412,10 @@ static readonly "NOT_ENOUGH_FLUID_SPACE": $AmadronMenu$EnumProblemState
 
 
 public static "values"(): ($AmadronMenu$EnumProblemState)[]
-public static "valueOf"(arg0: string): $AmadronMenu$EnumProblemState
-public "getTranslationKey"(): string
+public static "valueOf"(arg0: StringJS): $AmadronMenu$EnumProblemState
 public "addProblem"(arg0: $AmadronMenu$EnumProblemState$$Type): $AmadronMenu$EnumProblemState
-get "translationKey"(): string
+public "getTranslationKey"(): StringJS
+get "translationKey"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -19011,16 +19430,19 @@ declare global {
 export type $AmadronMenu$EnumProblemState_ = $AmadronMenu$EnumProblemState$$Type;
 }}
 declare module "me.desht.modularrouters.item.module.EnergyDistributorModule" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
+import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$ITargetedModule, $ITargetedModule$$Type} from "me.desht.modularrouters.item.module.ITargetedModule"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$IPositionProvider, $IPositionProvider$$Type} from "me.desht.modularrouters.client.render.area.IPositionProvider"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$IRangedModule, $IRangedModule$$Type} from "me.desht.modularrouters.item.module.IRangedModule"
 import {$ModuleTarget, $ModuleTarget$$Type} from "me.desht.modularrouters.logic.ModuleTarget"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
 import {$ModuleMenu, $ModuleMenu$$Type} from "me.desht.modularrouters.container.ModuleMenu"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -19034,7 +19456,7 @@ import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.
 export class $EnergyDistributorModule extends $ModuleItem implements $IRangedModule, $IPositionProvider, $ITargetedModule {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -19042,27 +19464,28 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "getHardMaxRange"(): integer
-public "getMenuType"(): $MenuType<($ModuleMenu)>
-public "getMaxTargets"(): integer
 public "getItemTint"(): $TintColor
 public "getBaseRange"(): integer
-public "getEnergyCost"(arg0: $ItemStack$$Type): integer
+public "getMaxTargets"(): integer
 public "getRenderColor"(arg0: integer): integer
+public "getMenuType"(): $MenuType<($ModuleMenu)>
+public "getEnergyCost"(arg0: $ItemStack$$Type): integer
 public "isValidTarget"(arg0: $UseOnContext$$Type): boolean
+public "getHardMaxRange"(): integer
 public "getCurrentRange"(arg0: integer): integer
 public "getCurrentRange"(arg0: $ItemStack$$Type): integer
 public "getStoredPositions"(arg0: $ItemStack$$Type): $List<($ModuleTarget)>
 public static "setTargets"(arg0: $ItemStack$$Type, arg1: $Collection$$Type<($ModuleTarget$$Type)>): void
 public static "getTargets"(arg0: $ItemStack$$Type, arg1: boolean): $Set<($ModuleTarget)>
+public "isRangeLimited"(): boolean
 public "canOperateInDimension"(arg0: $ResourceKey$$Type<($Level)>): boolean
 public static "canSelectTarget"(arg0: $UseOnContext$$Type): boolean
-public "isRangeLimited"(): boolean
-get "hardMaxRange"(): integer
-get "menuType"(): $MenuType<($ModuleMenu)>
-get "maxTargets"(): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
 get "baseRange"(): integer
+get "maxTargets"(): integer
+get "menuType"(): $MenuType<($ModuleMenu)>
+get "hardMaxRange"(): integer
 get "rangeLimited"(): boolean
 }
 /**
@@ -19082,13 +19505,11 @@ import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$List, $List$$Type} from "java.util.List"
 import {$Class, $Class$$Type} from "java.lang.Class"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 
 export interface $IHackableEntity<T extends $Entity> {
 
- "_onHackFinished"(arg0: $Entity$$Type, arg1: $Player$$Type): void
- "_addPostHackInfo"(arg0: $Entity$$Type, arg1: $List$$Type<($Component$$Type)>, arg2: $Player$$Type): void
  "canHack"(arg0: $Entity$$Type, arg1: $Player$$Type): boolean
  "onHackFinished"(arg0: T, arg1: $Player$$Type): void
  "getHackTime"(arg0: T, arg1: $Player$$Type): integer
@@ -19098,8 +19519,10 @@ export interface $IHackableEntity<T extends $Entity> {
  "_afterHackTick"(arg0: $Entity$$Type): boolean
  "_getHackTime"(arg0: $Entity$$Type, arg1: $Player$$Type): integer
  "_addHackInfo"(arg0: $Entity$$Type, arg1: $List$$Type<($Component$$Type)>, arg2: $Player$$Type): void
- "getHackableClass"(): $Class<(T)>
  "addPostHackInfo"(arg0: T, arg1: $List$$Type<($Component$$Type)>, arg2: $Player$$Type): void
+ "getHackableClass"(): $Class<(T)>
+ "_onHackFinished"(arg0: $Entity$$Type, arg1: $Player$$Type): void
+ "_addPostHackInfo"(arg0: $Entity$$Type, arg1: $List$$Type<($Component$$Type)>, arg2: $Player$$Type): void
 get "hackableId"(): $ResourceLocation
 get "hackableClass"(): $Class<(T)>
 }
@@ -19110,8 +19533,6 @@ const probejs$$marker: never
 export class $IHackableEntity$$Static<T extends $Entity> implements $IHackableEntity {
 
 
- "_onHackFinished"(arg0: $Entity$$Type, arg1: $Player$$Type): void
- "_addPostHackInfo"(arg0: $Entity$$Type, arg1: $List$$Type<($Component$$Type)>, arg2: $Player$$Type): void
  "canHack"(arg0: $Entity$$Type, arg1: $Player$$Type): boolean
  "onHackFinished"(arg0: T, arg1: $Player$$Type): void
  "getHackTime"(arg0: T, arg1: $Player$$Type): integer
@@ -19121,8 +19542,10 @@ export class $IHackableEntity$$Static<T extends $Entity> implements $IHackableEn
  "_afterHackTick"(arg0: $Entity$$Type): boolean
  "_getHackTime"(arg0: $Entity$$Type, arg1: $Player$$Type): integer
  "_addHackInfo"(arg0: $Entity$$Type, arg1: $List$$Type<($Component$$Type)>, arg2: $Player$$Type): void
- "getHackableClass"(): $Class<(T)>
  "addPostHackInfo"(arg0: T, arg1: $List$$Type<($Component$$Type)>, arg2: $Player$$Type): void
+ "getHackableClass"(): $Class<(T)>
+ "_onHackFinished"(arg0: $Entity$$Type, arg1: $Player$$Type): void
+ "_addPostHackInfo"(arg0: $Entity$$Type, arg1: $List$$Type<($Component$$Type)>, arg2: $Player$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -19168,8 +19591,8 @@ export class $HarvestHandlerAbstractCrop extends $HarvestHandler {
 
 constructor(arg0: $Predicate$$Type<($BlockState)>)
 
-public "harvestAndReplant"(arg0: $Level$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $IDrone$$Type): boolean
 public "canHarvest"(arg0: $Level$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $IDrone$$Type): boolean
+public "harvestAndReplant"(arg0: $Level$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $IDrone$$Type): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -19193,8 +19616,8 @@ import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$PlayerFilter, $PlayerFilter$$Type} from "me.desht.pneumaticcraft.common.util.playerfilter.PlayerFilter"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$GlobalPos, $GlobalPos$$Type} from "net.minecraft.core.GlobalPos"
+import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$JsonObject, $JsonObject$$Type} from "com.google.gson.JsonObject"
 import {$AmadronOffer, $AmadronOffer$$Type} from "me.desht.pneumaticcraft.common.recipes.amadron.AmadronOffer"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
@@ -19206,12 +19629,22 @@ constructor(arg0: $ResourceLocation$$Type, arg1: $AmadronTradeResource$$Type, ar
 constructor(arg0: $ResourceLocation$$Type, arg1: $AmadronTradeResource$$Type, arg2: $AmadronTradeResource$$Type, arg3: $Player$$Type, arg4: $PlayerFilter$$Type, arg5: $PlayerFilter$$Type)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "write"(arg0: $RegistryFriendlyByteBuf$$Type): void
+public "toJson"(): $JsonObject
+public "addPayment"(arg0: integer): void
+public "onTrade"(arg0: integer, arg1: StringJS): void
+public "notifyRestock"(): void
 public "equivalentTo"(arg0: $AmadronPlayerOffer$$Type): boolean
 public static "fromJson"(arg0: $JsonObject$$Type): $AmadronPlayerOffer
-public "toJson"(): $JsonObject
+public "getVendorName"(): $Component
+public static "getReversedId"(arg0: $ResourceLocation$$Type): $ResourceLocation
+public "getOfferType"(): $OfferType
+public "updatePlayerId"(): void
+public "isRemovableBy"(arg0: $Player$$Type): boolean
+public "returnStock"(): void
+public "getPlayerId"(): $UUID
 public "payout"(): boolean
 public "setProvidingPosition"(arg0: $GlobalPos$$Type): $AmadronPlayerOffer
 public "setReturningPosition"(arg0: $GlobalPos$$Type): $AmadronPlayerOffer
@@ -19219,26 +19652,16 @@ public "getReversedOffer"(): $AmadronPlayerOffer
 public "getProvidingTileEntity"(): $BlockEntity
 public "getProvidingPos"(): $GlobalPos
 public static "playerOfferFromBuf"(arg0: $RegistryFriendlyByteBuf$$Type): $AmadronPlayerOffer
-public "isRemovableBy"(arg0: $Player$$Type): boolean
-public "returnStock"(): void
-public "updatePlayerId"(): void
-public static "getReversedId"(arg0: $ResourceLocation$$Type): $ResourceLocation
-public "addPayment"(arg0: integer): void
-public "onTrade"(arg0: integer, arg1: string): void
-public "notifyRestock"(): void
-public "getVendorName"(): $Component
-public "getOfferType"(): $OfferType
-public "getPlayerId"(): $UUID
-public "getBlacklist"(): $IPlayerFilter
+public "getWhitelist"(): $IPlayerFilter
+get "vendorName"(): $Component
+get "offerType"(): $OfferType
+get "playerId"(): $UUID
 set "providingPosition"(value: $GlobalPos$$Type)
 set "returningPosition"(value: $GlobalPos$$Type)
 get "reversedOffer"(): $AmadronPlayerOffer
 get "providingTileEntity"(): $BlockEntity
 get "providingPos"(): $GlobalPos
-get "vendorName"(): $Component
-get "offerType"(): $OfferType
-get "playerId"(): $UUID
-get "blacklist"(): $IPlayerFilter
+get "whitelist"(): $IPlayerFilter
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -19253,9 +19676,9 @@ declare global {
 export type $AmadronPlayerOffer_ = $AmadronPlayerOffer$$Type;
 }}
 declare module "me.desht.pneumaticcraft.api.remote.IRemoteWidget" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$WidgetSettings, $WidgetSettings$$Type} from "me.desht.pneumaticcraft.api.remote.WidgetSettings"
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
-import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$UUID, $UUID$$Type} from "java.util.UUID"
@@ -19268,22 +19691,22 @@ export interface $IRemoteWidget {
  "isEnabled"(arg0: $Player$$Type): boolean
  "getType"(): $RemoteWidgetType<($IRemoteWidget)>
  "copy"(): $IRemoteWidget
- "getTranslationKey"(): string
- "discoverVariables"(arg0: $Set$$Type<(string)>, arg1: $UUID$$Type): void
- "hasConfigurableText"(): boolean
  "widgetSettings"(): $WidgetSettings
  "copyToPos"(arg0: integer, arg1: integer): $IRemoteWidget
  "baseSettings"(): $BaseSettings
+ "getTranslationKey"(): StringJS
+ "hasConfigurableText"(): boolean
+ "discoverVariables"(arg0: $Set$$Type<(StringJS)>, arg1: $UUID$$Type): void
 get "type"(): $RemoteWidgetType<($IRemoteWidget)>
-get "translationKey"(): string
+get "translationKey"(): StringJS
 }
 
 export namespace $IRemoteWidget {
 const CODEC: $Codec<($IRemoteWidget)>
 const TRAY_WIDGET_X: integer
 const STREAM_CODEC: $StreamCodec<($RegistryFriendlyByteBuf), ($IRemoteWidget)>
-function getTooltipTranslationKey(arg0: $RemoteWidgetType$$Type<(any)>): string
-function getTranslationKey(arg0: $RemoteWidgetType$$Type<(any)>): string
+function getTranslationKey(arg0: $RemoteWidgetType$$Type<(any)>): StringJS
+function getTooltipTranslationKey(arg0: $RemoteWidgetType$$Type<(any)>): StringJS
 const probejs$$marker: never
 }
 export class $IRemoteWidget$$Static implements $IRemoteWidget {
@@ -19295,14 +19718,14 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($IRemo
  "isEnabled"(arg0: $Player$$Type): boolean
  "getType"(): $RemoteWidgetType<($IRemoteWidget)>
  "copy"(): $IRemoteWidget
-static "getTooltipTranslationKey"(arg0: $RemoteWidgetType$$Type<(any)>): string
-static "getTranslationKey"(arg0: $RemoteWidgetType$$Type<(any)>): string
- "getTranslationKey"(): string
- "discoverVariables"(arg0: $Set$$Type<(string)>, arg1: $UUID$$Type): void
- "hasConfigurableText"(): boolean
  "widgetSettings"(): $WidgetSettings
  "copyToPos"(arg0: integer, arg1: integer): $IRemoteWidget
  "baseSettings"(): $BaseSettings
+static "getTranslationKey"(arg0: $RemoteWidgetType$$Type<(any)>): StringJS
+ "getTranslationKey"(): StringJS
+ "hasConfigurableText"(): boolean
+ "discoverVariables"(arg0: $Set$$Type<(StringJS)>, arg1: $UUID$$Type): void
+static "getTooltipTranslationKey"(arg0: $RemoteWidgetType$$Type<(any)>): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -19322,7 +19745,6 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$BaseFlowingFluid$Flowing, $BaseFlowingFluid$Flowing$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Flowing"
 
 export class $FluidKerosene$Flowing extends $BaseFlowingFluid$Flowing {
@@ -19332,7 +19754,6 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -19349,18 +19770,18 @@ export type $FluidKerosene$Flowing_ = $FluidKerosene$Flowing$$Type;
 }}
 declare module "me.desht.pneumaticcraft.api.drone.debug.IDroneDebugger" {
 import {$Collection, $Collection$$Type} from "java.util.Collection"
+import {$DroneDebugEntry, $DroneDebugEntry$$Type} from "me.desht.pneumaticcraft.api.drone.debug.DroneDebugEntry"
 import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
-import {$DroneDebugEntry, $DroneDebugEntry$$Type} from "me.desht.pneumaticcraft.api.drone.debug.DroneDebugEntry"
 
 export interface $IDroneDebugger {
 
  "addEntry"(arg0: $DroneDebugEntry$$Type): void
- "addEntry"(arg0: string, arg1: $BlockPos$$Type): void
- "addEntry"(arg0: string): void
+ "addEntry"(arg0: StringJS, arg1: $BlockPos$$Type): void
+ "addEntry"(arg0: StringJS): void
+ "getDebugEntry"(arg0: integer): $DroneDebugEntry
  "trackAsDebugged"(arg0: $ServerPlayer$$Type): void
  "getDebuggingPlayers"(): $Collection<($ServerPlayer)>
- "getDebugEntry"(arg0: integer): $DroneDebugEntry
 get "debuggingPlayers"(): $Collection<($ServerPlayer)>
 }
 
@@ -19371,11 +19792,11 @@ export class $IDroneDebugger$$Static implements $IDroneDebugger {
 
 
  "addEntry"(arg0: $DroneDebugEntry$$Type): void
- "addEntry"(arg0: string, arg1: $BlockPos$$Type): void
- "addEntry"(arg0: string): void
+ "addEntry"(arg0: StringJS, arg1: $BlockPos$$Type): void
+ "addEntry"(arg0: StringJS): void
+ "getDebugEntry"(arg0: integer): $DroneDebugEntry
  "trackAsDebugged"(arg0: $ServerPlayer$$Type): void
  "getDebuggingPlayers"(): $Collection<($ServerPlayer)>
- "getDebugEntry"(arg0: integer): $DroneDebugEntry
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -19399,14 +19820,14 @@ export class $AddModuleTargetEvent extends $Event {
 
 constructor(arg0: $ModuleItem$$Type, arg1: $UseOnContext$$Type, arg2: boolean)
 
+public "isValid"(): boolean
 public "getModule"(): $ItemStack
 public "getContext"(): $UseOnContext
-public "isValid"(): boolean
 public "getModuleType"(): $ModuleItem
 public "setValid"(arg0: boolean): void
+get "valid"(): boolean
 get "module"(): $ItemStack
 get "context"(): $UseOnContext
-get "valid"(): boolean
 get "moduleType"(): $ModuleItem
 set "valid"(value: boolean)
 }
@@ -19464,19 +19885,19 @@ static readonly "STREAM_CODEC": $StreamCodec<($FriendlyByteBuf), ($ModuleSetting
 constructor(flags: $ModuleFlags$$Type, facing: $RelativeDirection$$Type, termination: $ModuleTermination$$Type, redstoneBehaviour: $RedstoneBehaviour$$Type, regulatorAmount: integer)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "flags"(): $ModuleFlags
 public "hashCode"(): integer
 public "termination"(): $ModuleTermination
 public "facing"(): $RelativeDirection
-public "redstoneBehaviour"(): $RedstoneBehaviour
 public "regulatorAmount"(): integer
+public "redstoneBehaviour"(): $RedstoneBehaviour
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ModuleSettings$$Type = ({"regulatorAmount"?: integer, "redstoneBehaviour"?: $RedstoneBehaviour$$Type, "facing"?: $RelativeDirection$$Type, "termination"?: $ModuleTermination$$Type, "flags"?: $ModuleFlags$$Type}) | ([regulatorAmount?: integer, redstoneBehaviour?: $RedstoneBehaviour$$Type, facing?: $RelativeDirection$$Type, termination?: $ModuleTermination$$Type, flags?: $ModuleFlags$$Type]);
+export type $ModuleSettings$$Type = ({"flags"?: $ModuleFlags$$Type, "regulatorAmount"?: integer, "redstoneBehaviour"?: $RedstoneBehaviour$$Type, "facing"?: $RelativeDirection$$Type, "termination"?: $ModuleTermination$$Type}) | ([flags?: $ModuleFlags$$Type, regulatorAmount?: integer, redstoneBehaviour?: $RedstoneBehaviour$$Type, facing?: $RelativeDirection$$Type, termination?: $ModuleTermination$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -19490,7 +19911,6 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$BaseFlowingFluid$Flowing, $BaseFlowingFluid$Flowing$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Flowing"
 
 export class $FluidBiodiesel$Flowing extends $BaseFlowingFluid$Flowing {
@@ -19500,7 +19920,6 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -19524,8 +19943,8 @@ import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneum
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$LiquidCompressorBlock, $LiquidCompressorBlock$$Type} from "me.desht.pneumaticcraft.common.block.LiquidCompressorBlock"
@@ -19541,7 +19960,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -19617,7 +20036,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -19640,8 +20059,8 @@ constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "useItemOn"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type, arg2: $Level$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type, arg5: $InteractionHand$$Type, arg6: $BlockHitResult$$Type): $ItemInteractionResult
 public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
+public "useItemOn"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type, arg2: $Level$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type, arg5: $InteractionHand$$Type, arg6: $BlockHitResult$$Type): $ItemInteractionResult
 public "isRotatable"(): boolean
 public static "pressureChamberBlockProps"(): $BlockBehaviour$Properties
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
@@ -19696,8 +20115,8 @@ export type $FuelQualityRecipeImpl$IFactory_<T> = $FuelQualityRecipeImpl$IFactor
 declare module "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable" {
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
-import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 
@@ -19741,8 +20160,8 @@ export class $AssemblyRecipe extends $PneumaticCraftRecipe {
 constructor()
 
 public "getInput"(): $SizedIngredient
-public "getOutput"(): $ItemStack
 public "matches"(arg0: $ItemStack$$Type): boolean
+public "getOutput"(): $ItemStack
 public "getInputAmount"(): integer
 public "getProgramType"(): $AssemblyRecipe$AssemblyProgramType
 get "input"(): $SizedIngredient
@@ -19763,22 +20182,26 @@ declare global {
 export type $AssemblyRecipe_ = $AssemblyRecipe$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.NonDespawningItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ItemEntity, $ItemEntity$$Type} from "net.minecraft.world.entity.item.ItemEntity"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$ItemEntity, $ItemEntity$$Type} from "net.minecraft.world.entity.item.ItemEntity"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
-import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 
 export class $NonDespawningItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -19787,8 +20210,9 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type)
 constructor()
 
-public "onEntityItemUpdate"(arg0: $ItemStack$$Type, arg1: $ItemEntity$$Type): boolean
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "onEntityItemUpdate"(arg0: $ItemStack$$Type, arg1: $ItemEntity$$Type): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -19815,9 +20239,9 @@ export class $PressureChamberRecipeImpl$Serializer<T extends $PressureChamberRec
 
 constructor(arg0: $PressureChamberRecipeImpl$IFactory$$Type<(T)>)
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
 public "codec"(): $MapCodec<(T)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -19832,18 +20256,22 @@ declare global {
 export type $PressureChamberRecipeImpl$Serializer_<T> = $PressureChamberRecipeImpl$Serializer$$Type<(T)>;
 }}
 declare module "me.desht.modularrouters.item.augment.RangeAugments$RangeDownAugment" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$RangeAugments, $RangeAugments$$Type} from "me.desht.modularrouters.item.augment.RangeAugments"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $RangeAugments$RangeDownAugment extends $RangeAugments {
 static readonly "SLOTS": integer
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -19852,6 +20280,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "getMaxAugments"(arg0: $ModuleItem$$Type): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -19866,18 +20295,22 @@ declare global {
 export type $RangeAugments$RangeDownAugment_ = $RangeAugments$RangeDownAugment$$Type;
 }}
 declare module "me.desht.modularrouters.item.augment.PushingAugment" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$AugmentItem, $AugmentItem$$Type} from "me.desht.modularrouters.item.augment.AugmentItem"
 import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $PushingAugment extends $AugmentItem {
 static readonly "SLOTS": integer
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -19886,6 +20319,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "getMaxAugments"(arg0: $ModuleItem$$Type): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -19906,8 +20340,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -19916,8 +20350,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -19934,7 +20368,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -20013,14 +20447,14 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 
 export interface $IAssemblyMachine {
 
- "setSpeed"(arg0: float): void
  "isIdle"(): boolean
- "getAssemblyType"(): $AssemblyProgram$EnumMachine
+ "setSpeed"(arg0: float): void
  "setControllerPos"(arg0: $BlockPos$$Type): void
-set "speed"(value: float)
+ "getAssemblyType"(): $AssemblyProgram$EnumMachine
 get "idle"(): boolean
-get "assemblyType"(): $AssemblyProgram$EnumMachine
+set "speed"(value: float)
 set "controllerPos"(value: $BlockPos$$Type)
+get "assemblyType"(): $AssemblyProgram$EnumMachine
 }
 
 export namespace $IAssemblyMachine {
@@ -20029,10 +20463,10 @@ const probejs$$marker: never
 export class $IAssemblyMachine$$Static implements $IAssemblyMachine {
 
 
- "setSpeed"(arg0: float): void
  "isIdle"(): boolean
- "getAssemblyType"(): $AssemblyProgram$EnumMachine
+ "setSpeed"(arg0: float): void
  "setControllerPos"(arg0: $BlockPos$$Type): void
+ "getAssemblyType"(): $AssemblyProgram$EnumMachine
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -20053,8 +20487,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -20063,8 +20497,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -20081,7 +20515,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -20124,12 +20558,16 @@ declare global {
 export type $AirCannonBlock_ = $AirCannonBlock$$Type;
 }}
 declare module "me.desht.modularrouters.item.module.VacuumModule" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$IRangedModule, $IRangedModule$$Type} from "me.desht.modularrouters.item.module.IRangedModule"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
 import {$ModuleMenu, $ModuleMenu$$Type} from "me.desht.modularrouters.container.ModuleMenu"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -20140,7 +20578,7 @@ import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.
 export class $VacuumModule extends $ModuleItem implements $IRangedModule {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -20148,20 +20586,21 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "getHardMaxRange"(): integer
-public "isOmniDirectional"(): boolean
-public "addSettingsInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
-public "getMenuType"(): $MenuType<($ModuleMenu)>
 public "getItemTint"(): $TintColor
 public "getBaseRange"(): integer
+public "getMenuType"(): $MenuType<($ModuleMenu)>
 public "getEnergyCost"(arg0: $ItemStack$$Type): integer
+public "isOmniDirectional"(): boolean
+public "addSettingsInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
+public "getHardMaxRange"(): integer
 public "getCurrentRange"(arg0: integer): integer
 public "getCurrentRange"(arg0: $ItemStack$$Type): integer
-get "hardMaxRange"(): integer
-get "omniDirectional"(): boolean
-get "menuType"(): $MenuType<($ModuleMenu)>
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
 get "baseRange"(): integer
+get "menuType"(): $MenuType<($ModuleMenu)>
+get "omniDirectional"(): boolean
+get "hardMaxRange"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -20210,22 +20649,25 @@ declare global {
 export type $IUpgradeItem_ = $IUpgradeItem$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.block.PlasticBrickBlock$ItemPlasticBrick" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
-import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$PlasticBrickBlock, $PlasticBrickBlock$$Type} from "me.desht.pneumaticcraft.common.block.PlasticBrickBlock"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$ICustomTooltipName, $ICustomTooltipName$$Type} from "me.desht.pneumaticcraft.common.item.ICustomTooltipName"
 
 export class $PlasticBrickBlock$ItemPlasticBrick extends $BlockItem implements $ICustomTooltipName {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -20238,14 +20680,15 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $PlasticBrickBlock$$Type)
 
-public "getCustomTooltipTranslationKey"(): string
-public static "getTranslationKey"(arg0: $ItemStack$$Type, arg1: boolean): string
+public "getCustomTooltipTranslationKey"(): StringJS
+public static "getTranslationKey"(arg0: $ItemStack$$Type, arg1: boolean): StringJS
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
 public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
-get "customTooltipTranslationKey"(): string
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
+get "customTooltipTranslationKey"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -20260,16 +20703,18 @@ declare global {
 export type $PlasticBrickBlock$ItemPlasticBrick_ = $PlasticBrickBlock$ItemPlasticBrick$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.AirCanisterItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$AirCanisterItem$CanisterType, $AirCanisterItem$CanisterType$$Type} from "me.desht.pneumaticcraft.common.item.AirCanisterItem$CanisterType"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$PressurizableItem, $PressurizableItem$$Type} from "me.desht.pneumaticcraft.common.item.PressurizableItem"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -20281,7 +20726,7 @@ import {$AirCanisterItem$ChargeMode, $AirCanisterItem$ChargeMode$$Type} from "me
 export class $AirCanisterItem extends $PressurizableItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -20290,11 +20735,12 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $AirCanisterItem$CanisterType$$Type)
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
 public "isFoil"(arg0: $ItemStack$$Type): boolean
+public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
+public static "getChargeMode"(arg0: $ItemStack$$Type): $AirCanisterItem$ChargeMode
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getMaxStackSize"(arg0: $ItemStack$$Type): integer
-public static "getChargeMode"(arg0: $ItemStack$$Type): $AirCanisterItem$ChargeMode
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -20315,8 +20761,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -20325,8 +20771,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -20343,7 +20789,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -20384,13 +20830,15 @@ declare global {
 export type $AbstractAssemblyIOUnitBlock_ = $AbstractAssemblyIOUnitBlock$$Type;
 }}
 declare module "me.desht.modularrouters.item.smartfilter.SmartFilterItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$AbstractSmartFilterMenu, $AbstractSmartFilterMenu$$Type} from "me.desht.modularrouters.container.AbstractSmartFilterMenu"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$IItemMatcher, $IItemMatcher$$Type} from "me.desht.modularrouters.api.matching.IItemMatcher"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Inventory, $Inventory$$Type} from "net.minecraft.world.entity.player.Inventory"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -20403,7 +20851,7 @@ import {$MFLocator, $MFLocator$$Type} from "me.desht.modularrouters.util.MFLocat
 export class $SmartFilterItem extends $MRBaseItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -20412,11 +20860,12 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 constructor(arg0: $Item$Properties$$Type)
 
-public "compile"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): $IItemMatcher
-public "getSize"(arg0: $ItemStack$$Type): integer
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "getSize"(arg0: $ItemStack$$Type): integer
+public "compile"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): $IItemMatcher
 public "createMenu"(arg0: integer, arg1: $Inventory$$Type, arg2: $MFLocator$$Type): $AbstractSmartFilterMenu
 public "hasMenu"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -20454,17 +20903,17 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Fluid
 
 constructor(either: $Either$$Type<($FluidStack$$Type), ($FluidContainerIngredient$TagWithAmount$$Type)>)
 
+public "amount"(): integer
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "test"(arg0: $ItemStack$$Type): boolean
 public static "of"(arg0: $TagKey$$Type<($Fluid)>, arg1: integer): $FluidContainerIngredient
 public static "of"(arg0: $Fluid$$Type, arg1: integer): $FluidContainerIngredient
 public "getType"(): $IngredientType<(any)>
-public "amount"(): integer
+public "either"(): $Either<($FluidStack), ($FluidContainerIngredient$TagWithAmount)>
 public "getItems"(): $Stream<($ItemStack)>
 public "isSimple"(): boolean
-public "either"(): $Either<($FluidStack), ($FluidContainerIngredient$TagWithAmount)>
 public "toVanilla"(): $Ingredient
 get "type"(): $IngredientType<(any)>
 get "items"(): $Stream<($ItemStack)>
@@ -20489,17 +20938,17 @@ import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.
 
 export interface $IRedstoneControl<T extends ($BlockEntity) & ($IRedstoneControl<(T)>)> {
 
- "getCurrentRedstonePower"(): integer
  "getRedstoneTabTitle"(): $MutableComponent
  "getRedstoneMode"(): integer
  "onRedstoneModeChanged"(arg0: integer): void
  "getRedstoneController"(): $RedstoneController<(T)>
+ "getCurrentRedstonePower"(): integer
 
 (): $RedstoneController$$Type<(T)>
-get "currentRedstonePower"(): integer
 get "redstoneTabTitle"(): $MutableComponent
 get "redstoneMode"(): integer
 get "redstoneController"(): $RedstoneController<(T)>
+get "currentRedstonePower"(): integer
 }
 
 export namespace $IRedstoneControl {
@@ -20508,11 +20957,11 @@ const probejs$$marker: never
 export class $IRedstoneControl$$Static<T extends ($BlockEntity) & ($IRedstoneControl<(T)>)> implements $IRedstoneControl {
 
 
- "getCurrentRedstonePower"(): integer
  "getRedstoneTabTitle"(): $MutableComponent
  "getRedstoneMode"(): integer
  "onRedstoneModeChanged"(arg0: integer): void
  "getRedstoneController"(): $RedstoneController<(T)>
+ "getCurrentRedstonePower"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -20533,7 +20982,6 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $FluidGasoline$Source extends $BaseFlowingFluid$Source {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -20542,7 +20990,6 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -20570,9 +21017,9 @@ export class $RefineryRecipeImpl$Serializer<T extends $RefineryRecipe> implement
 
 constructor(arg0: $RefineryRecipeImpl$IFactory$$Type<(T)>)
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
 public "codec"(): $MapCodec<(T)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -20593,8 +21040,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -20603,8 +21050,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -20621,7 +21068,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -20664,6 +21111,7 @@ declare global {
 export type $VacuumPumpBlock_ = $VacuumPumpBlock$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.item.DroneItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$List, $List$$Type} from "java.util.List"
@@ -20685,6 +21133,7 @@ import {$Map, $Map$$Type} from "java.util.Map"
 import {$IProgrammable, $IProgrammable$$Type} from "me.desht.pneumaticcraft.api.item.IProgrammable"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$ItemEntity, $ItemEntity$$Type} from "net.minecraft.world.entity.item.ItemEntity"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$BiFunction, $BiFunction$$Type} from "java.util.function.BiFunction"
@@ -20695,7 +21144,7 @@ import {$ChargingStationBlockEntity, $ChargingStationBlockEntity$$Type} from "me
 export class $DroneItem extends $PressurizableItem implements $IChargeableContainerProvider, $IProgrammable, $ColorHandlers$ITintableItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -20704,18 +21153,19 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $BiFunction$$Type<($Level), ($Player), ($DroneEntity$$Type)>, arg1: boolean, arg2: $DyeColor$$Type)
 
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
-public "onEntityItemUpdate"(arg0: $ItemStack$$Type, arg1: $ItemEntity$$Type): boolean
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-public "getContainerProvider"(arg0: $ChargingStationBlockEntity$$Type): $MenuProvider
-public "getUpgradeBlacklistTag"(): $Optional<($TagKey<($Item)>)>
-public "showProgramTooltip"(): boolean
 public "spawnDrone"(arg0: $Player$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type, arg4: $BlockPos$$Type, arg5: $ItemStack$$Type): boolean
 public "getDroneColor"(arg0: $ItemStack$$Type): $DyeColor
 public static "isBasicDrone"(arg0: $ItemStack$$Type): boolean
 public "canProgram"(arg0: $ItemStack$$Type): boolean
 public "usesPieces"(arg0: $ItemStack$$Type): boolean
 public "getTintColor"(arg0: $ItemStack$$Type, arg1: integer): integer
+public "getContainerProvider"(arg0: $ChargingStationBlockEntity$$Type): $MenuProvider
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "onEntityItemUpdate"(arg0: $ItemStack$$Type, arg1: $ItemEntity$$Type): boolean
+public "getUpgradeBlacklistTag"(): $Optional<($TagKey<($Item)>)>
+public "showProgramTooltip"(): boolean
 public static "isProgrammable"(arg0: $ItemStack$$Type): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "upgradeBlacklistTag"(): $Optional<($TagKey<($Item)>)>
 }
 /**
@@ -20776,14 +21226,14 @@ static readonly "STREAM_CODEC": $StreamCodec<($ByteBuf), ($ModuleFlags)>
 constructor(whiteList: boolean, matchDamage: boolean, matchComponents: boolean, matchItemTags: boolean, matchAllItems: boolean)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "matchComponents"(): boolean
-public "whiteList"(): boolean
 public "matchDamage"(): boolean
 public "matchItemTags"(): boolean
 public "matchAllItems"(): boolean
+public "whiteList"(): boolean
 public static "forItem"(arg0: $ItemStack$$Type): $ModuleFlags
+public "matchComponents"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -20798,18 +21248,22 @@ declare global {
 export type $ModuleFlags_ = $ModuleFlags$$Type;
 }}
 declare module "me.desht.modularrouters.item.augment.FilterRoundRobinAugment" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$AugmentItem, $AugmentItem$$Type} from "me.desht.modularrouters.item.augment.AugmentItem"
 import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $FilterRoundRobinAugment extends $AugmentItem {
 static readonly "SLOTS": integer
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -20818,6 +21272,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "getMaxAugments"(arg0: $ModuleItem$$Type): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -20864,18 +21319,22 @@ declare global {
 export type $IFluidItemRenderInfoProvider_ = $IFluidItemRenderInfoProvider$$Type;
 }}
 declare module "me.desht.modularrouters.item.module.PlacerModule" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.TintColor"
 
 export class $PlacerModule extends $ModuleItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -20885,6 +21344,7 @@ constructor()
 
 public "getItemTint"(): $TintColor
 public "getEnergyCost"(arg0: $ItemStack$$Type): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
 }
 /**
@@ -20911,8 +21371,8 @@ import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelR
 import {$Vec3i, $Vec3i$$Type} from "net.minecraft.core.Vec3i"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -20922,8 +21382,8 @@ import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.Inte
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
@@ -20942,7 +21402,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -20968,15 +21428,15 @@ public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $Bloc
 public "onPlace"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
 public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "setRotation"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $Direction$$Type): void
 public "canSurvive"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type): boolean
 public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
+public "getMainPos"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type): $BlockPos
+public "onWrenched"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type, arg4: $InteractionHand$$Type): boolean
+public "setRotation"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $Direction$$Type): void
 public "onDestroyedByPlayer"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: boolean, arg5: $FluidState$$Type): boolean
 public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "removeBoundingBlocks"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): void
 public "placeBoundingBlocks"(arg0: $Level$$Type, arg1: $BlockPos$$Type): void
-public "getMainPos"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type): $BlockPos
-public "onWrenched"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type, arg4: $InteractionHand$$Type): boolean
 public "getBoundingBlockOffsets"(): ($Vec3i)[]
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
@@ -21034,18 +21494,22 @@ declare global {
 export type $AbstractFurnaceBlockEntityAccess_ = $AbstractFurnaceBlockEntityAccess$$Type;
 }}
 declare module "me.desht.modularrouters.item.augment.XPVacuumAugment" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$AugmentItem, $AugmentItem$$Type} from "me.desht.modularrouters.item.augment.AugmentItem"
 import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $XPVacuumAugment extends $AugmentItem {
 static readonly "SLOTS": integer
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -21054,6 +21518,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "getMaxAugments"(arg0: $ModuleItem$$Type): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -21078,8 +21543,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -21094,13 +21559,13 @@ import {$ModelProperty, $ModelProperty$$Type} from "net.neoforged.neoforge.clien
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
-import {$AbstractCamouflageBlock, $AbstractCamouflageBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractCamouflageBlock"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
+import {$AbstractCamouflageBlock, $AbstractCamouflageBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractCamouflageBlock"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $HeatPipeBlock extends $AbstractCamouflageBlock implements $SimpleWaterloggedBlock, $PneumaticCraftEntityBlock {
 static readonly "DOWN": $BooleanProperty
@@ -21114,7 +21579,7 @@ static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "BLOCK_ACCESS": $ModelProperty<($BlockGetter)>
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -21161,8 +21626,8 @@ export type $HeatPipeBlock_ = $HeatPipeBlock$$Type;
 }}
 declare module "me.desht.pneumaticcraft.api.crafting.recipe.HeatPropertiesRecipe$Transforms" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
-import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Record, $Record$$Type} from "java.lang.Record"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -21175,18 +21640,18 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($HeatP
 constructor(hot: $Optional$$Type<($BlockState$$Type)>, cold: $Optional$$Type<($BlockState$$Type)>, hotFlowing: $Optional$$Type<($BlockState$$Type)>, coldFlowing: $Optional$$Type<($BlockState$$Type)>)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "hot"(): $Optional<($BlockState)>
 public "cold"(): $Optional<($BlockState)>
-public "coldFlowing"(): $Optional<($BlockState)>
+public "hot"(): $Optional<($BlockState)>
 public "hotFlowing"(): $Optional<($BlockState)>
+public "coldFlowing"(): $Optional<($BlockState)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $HeatPropertiesRecipe$Transforms$$Type = ({"hot"?: ($BlockState$$Type)?, "hotFlowing"?: ($BlockState$$Type)?, "coldFlowing"?: ($BlockState$$Type)?, "cold"?: ($BlockState$$Type)?}) | ([hot?: ($BlockState$$Type)?, hotFlowing?: ($BlockState$$Type)?, coldFlowing?: ($BlockState$$Type)?, cold?: ($BlockState$$Type)?]);
+export type $HeatPropertiesRecipe$Transforms$$Type = ({"cold"?: ($BlockState$$Type)?, "hot"?: ($BlockState$$Type)?, "hotFlowing"?: ($BlockState$$Type)?, "coldFlowing"?: ($BlockState$$Type)?}) | ([cold?: ($BlockState$$Type)?, hot?: ($BlockState$$Type)?, hotFlowing?: ($BlockState$$Type)?, coldFlowing?: ($BlockState$$Type)?]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -21199,12 +21664,12 @@ import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component
 
 export class $AreaTypeWidget {
 
-constructor(arg0: string)
+constructor(arg0: StringJS)
 
 public "getDisplayName"(): $Component
-public "getTranslationKey"(): string
+public "getTranslationKey"(): StringJS
 get "displayName"(): $Component
-get "translationKey"(): string
+get "translationKey"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -21250,9 +21715,9 @@ declare global {
 export type $SerializableComponentsProvider_ = $SerializableComponentsProvider$$Type;
 }}
 declare module "me.desht.pneumaticcraft.common.recipes.amadron.AmadronOffer$IFactory" {
-import {$PlayerFilter, $PlayerFilter$$Type} from "me.desht.pneumaticcraft.common.util.playerfilter.PlayerFilter"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$AmadronTradeResource, $AmadronTradeResource$$Type} from "me.desht.pneumaticcraft.api.crafting.AmadronTradeResource"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$PlayerFilter, $PlayerFilter$$Type} from "me.desht.pneumaticcraft.common.util.playerfilter.PlayerFilter"
 import {$AmadronRecipe, $AmadronRecipe$$Type} from "me.desht.pneumaticcraft.api.crafting.recipe.AmadronRecipe"
 
 export interface $AmadronOffer$IFactory<T extends $AmadronRecipe> {
@@ -21295,10 +21760,10 @@ static readonly "NETWORK_REGISTRY": $NetworkComponentItem$NetworkComponentType
 
 
 public static "values"(): ($NetworkComponentItem$NetworkComponentType)[]
-public static "valueOf"(arg0: string): $NetworkComponentItem$NetworkComponentType
-public "getRegistryName"(): string
+public static "valueOf"(arg0: StringJS): $NetworkComponentItem$NetworkComponentType
+public "getRegistryName"(): StringJS
 public "isSecStationComponent"(): boolean
-get "registryName"(): string
+get "registryName"(): StringJS
 get "secStationComponent"(): boolean
 }
 /**
@@ -21326,19 +21791,19 @@ import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$ScoreHolder, $ScoreHolder$$Type} from "net.minecraft.world.scores.ScoreHolder"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$PortalProcessor, $PortalProcessor$$Type} from "net.minecraft.world.entity.PortalProcessor"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$IGUIButtonSensitive, $IGUIButtonSensitive$$Type} from "me.desht.pneumaticcraft.common.block.entity.IGUIButtonSensitive"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
-import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$EntityDimensions, $EntityDimensions$$Type} from "net.minecraft.world.entity.EntityDimensions"
+import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$TrackedData, $TrackedData$$Type} from "dev.corgitaco.dataanchor.data.TrackedData"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
-import {$Entity$RemovalReason, $Entity$RemovalReason$$Type} from "net.minecraft.world.entity.Entity$RemovalReason"
 import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.dataanchor.data.registry.TrackedDataRegistry"
-import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
+import {$Entity$RemovalReason, $Entity$RemovalReason$$Type} from "net.minecraft.world.entity.Entity$RemovalReason"
 import {$EntityCapability, $EntityCapability$$Type} from "net.neoforged.neoforge.capabilities.EntityCapability"
+import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$DamageSource, $DamageSource$$Type} from "net.minecraft.world.damagesource.DamageSource"
@@ -21365,7 +21830,7 @@ static readonly "CONTENTS_SLOT_INDEX": integer
  "level": $Level
  "yRot": float
  "moveDist": float
-static readonly "ID_TAG": string
+static readonly "ID_TAG": StringJS
  "mainSupportingBlockPos": $Optional<($BlockPos)>
 static readonly "DELTA_AFFECTED_BY_BLOCKS_BELOW_1_0": double
  "xRotO": float
@@ -21376,7 +21841,7 @@ static readonly "DELTA_AFFECTED_BY_BLOCKS_BELOW_1_0": double
  "wasInPowderSnow": boolean
  "hurtMarked": boolean
  "invulnerableTime": integer
-static readonly "UUID_TAG": string
+static readonly "UUID_TAG": StringJS
 static readonly "BASE_TICKS_REQUIRED_TO_FREEZE": integer
  "fallDistance": float
  "portalProcess": $PortalProcessor
@@ -21394,8 +21859,8 @@ static readonly "DEFAULT_BB_HEIGHT": float
 static readonly "FREEZE_HURT_FREQUENCY": integer
  "flyDist": float
  "isInPowderSnow": boolean
-static readonly "ATTACHMENTS_NBT_KEY": string
-static readonly "PASSENGERS_TAG": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
+static readonly "PASSENGERS_TAG": StringJS
  "blocksBuilding": boolean
  "wasOnFire": boolean
  "zOld": double
@@ -21409,64 +21874,64 @@ static readonly "BASE_SAFE_FALL_DISTANCE": integer
 
 public "tick"(): void
 public "isValid"(): boolean
-public "getSemiblockDisplayName"(): $Component
+public "attack"(arg0: $DamageSource$$Type, arg1: float): boolean
+public "setPos"(arg0: double, arg1: double, arg2: double): void
+public "isAir"(): boolean
 public "getDrops"(): $NonNullList<($ItemStack)>
+public "isNoGravity"(): boolean
+public "serializeNBT"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): $CompoundTag
+public "onAddedToLevel"(): void
+public "isPickable"(): boolean
 public "getBlockPos"(): $BlockPos
 public "getBlockState"(): $BlockState
 public "interactAt"(arg0: $Player$$Type, arg1: $Vec3$$Type, arg2: $InteractionHand$$Type): $InteractionResult
-public "isPickable"(): boolean
-public "serializeNBT"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): $CompoundTag
-public "onAddedToLevel"(): void
-public "isNoGravity"(): boolean
-public "isAir"(): boolean
-public "attack"(arg0: $DamageSource$$Type, arg1: float): boolean
-public "setPos"(arg0: double, arg1: double, arg2: double): void
-public "onRemovedFromLevel"(): void
-public "getCachedTileEntity"(): $BlockEntity
-public "getSemiblockCapability"<T>(arg0: $EntityCapability$$Type<(T), ($Direction$$Type)>, arg1: $Direction$$Type): $Optional<(T)>
-public "getSemiblockCapability"<T>(arg0: $EntityCapability$$Type<(T), (void)>): $Optional<(T)>
-public "getTimeSinceHit"(): integer
-public "handleGUIButtonPress"(arg0: string, arg1: boolean, arg2: $ServerPlayer$$Type): void
-public "canCoexist"(arg0: $ISemiBlock$$Type): boolean
-public "getSemiblockId"(): $ResourceLocation
-public "getTrackingId"(): integer
-public "writeToBuf"(arg0: $RegistryFriendlyByteBuf$$Type): void
-public "readFromBuf"(arg0: $RegistryFriendlyByteBuf$$Type): void
 public "getBlockBounds"(): $AABB
 public "getDamageTaken"(): float
 public "canStay"(): boolean
+public "getSemiblockId"(): $ResourceLocation
+public "getTrackingId"(): integer
+public "readFromBuf"(arg0: $RegistryFriendlyByteBuf$$Type): void
 public "killedByEntity"(arg0: $Entity$$Type): void
+public "canCoexist"(arg0: $ISemiBlock$$Type): boolean
+public "writeToBuf"(arg0: $RegistryFriendlyByteBuf$$Type): void
 public "getWorld"(): $Level
-public "onRightClickWithConfigurator"(arg0: $Player$$Type, arg1: $Direction$$Type): boolean
+public "onRemovedFromLevel"(): void
+public "getTimeSinceHit"(): integer
+public "getCachedTileEntity"(): $BlockEntity
+public "handleGUIButtonPress"(arg0: StringJS, arg1: boolean, arg2: $ServerPlayer$$Type): void
+public "getSemiblockCapability"<T>(arg0: $EntityCapability$$Type<(T), (void)>): $Optional<(T)>
+public "getSemiblockCapability"<T>(arg0: $EntityCapability$$Type<(T), ($Direction$$Type)>, arg1: $Direction$$Type): $Optional<(T)>
+public "getSemiblockDisplayName"(): $Component
 public "canPlace"(arg0: $Direction$$Type): boolean
-public "getColor"(): integer
 public "addTooltip"(arg0: $Consumer$$Type<($Component)>, arg1: $Player$$Type, arg2: $CompoundTag$$Type, arg3: boolean): void
-public "onPlaced"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: $Direction$$Type): void
+public "getColor"(): integer
 public static "byTrackingId"(arg0: $Level$$Type, arg1: integer): $ISemiBlock
-public static "forNameOnly"(arg0: string): $ScoreHolder
+public "onPlaced"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: $Direction$$Type): void
+public "onRightClickWithConfigurator"(arg0: $Player$$Type, arg1: $Direction$$Type): boolean
+public static "forNameOnly"(arg0: StringJS): $ScoreHolder
 public static "fromGameProfile"(arg0: $GameProfile$$Type): $ScoreHolder
 /**
  * 
  * @deprecated
  */
 public "serializeNBT"(arg0: $HolderLookup$Provider$$Type): $Tag
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "valid"(): boolean
-get "semiblockDisplayName"(): $Component
+get "air"(): boolean
 get "drops"(): $NonNullList<($ItemStack)>
+get "noGravity"(): boolean
+get "pickable"(): boolean
 get "blockPos"(): $BlockPos
 get "blockState"(): $BlockState
-get "pickable"(): boolean
-get "noGravity"(): boolean
-get "air"(): boolean
-get "cachedTileEntity"(): $BlockEntity
-get "timeSinceHit"(): integer
-get "semiblockId"(): $ResourceLocation
-get "trackingId"(): integer
 get "blockBounds"(): $AABB
 get "damageTaken"(): float
+get "semiblockId"(): $ResourceLocation
+get "trackingId"(): integer
 get "world"(): $Level
+get "timeSinceHit"(): integer
+get "cachedTileEntity"(): $BlockEntity
+get "semiblockDisplayName"(): $Component
 get "color"(): integer
 }
 /**
@@ -21482,15 +21947,19 @@ declare global {
 export type $AbstractSemiblockEntity_ = $AbstractSemiblockEntity$$Type;
 }}
 declare module "me.desht.modularrouters.item.smartfilter.BulkItemFilter" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$AbstractSmartFilterMenu, $AbstractSmartFilterMenu$$Type} from "me.desht.modularrouters.container.AbstractSmartFilterMenu"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$IItemMatcher, $IItemMatcher$$Type} from "me.desht.modularrouters.api.matching.IItemMatcher"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$SmartFilterItem, $SmartFilterItem$$Type} from "me.desht.modularrouters.item.smartfilter.SmartFilterItem"
 import {$Inventory, $Inventory$$Type} from "net.minecraft.world.entity.player.Inventory"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
@@ -21501,7 +21970,7 @@ export class $BulkItemFilter extends $SmartFilterItem {
 static readonly "FILTER_SIZE": integer
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -21509,11 +21978,12 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "compile"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): $IItemMatcher
 public "getSize"(arg0: $ItemStack$$Type): integer
-public "createMenu"(arg0: integer, arg1: $Inventory$$Type, arg2: $MFLocator$$Type): $AbstractSmartFilterMenu
+public "compile"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): $IItemMatcher
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public "createMenu"(arg0: integer, arg1: $Inventory$$Type, arg2: $MFLocator$$Type): $AbstractSmartFilterMenu
 public "addExtraInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -21536,8 +22006,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -21547,15 +22017,15 @@ import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.Inte
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $TubeJunctionBlock extends $AbstractPneumaticCraftBlock implements $PneumaticCraftEntityBlock {
 static readonly "DOWN": $BooleanProperty
@@ -21566,7 +22036,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -21589,8 +22059,8 @@ constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "onWrenched"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type, arg4: $InteractionHand$$Type): boolean
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public static "forBlock"(arg0: $Block$$Type): $IPneumaticWrenchable
@@ -21629,25 +22099,25 @@ static readonly "UP": $RelativeDirection
 static readonly "NONE": $RelativeDirection
 
 
+public "getSymbol"(): StringJS
 public static "values"(): ($RelativeDirection)[]
-public static "valueOf"(arg0: string): $RelativeDirection
-public "getSymbol"(): string
-public "getTranslationKey"(): string
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $RelativeDirection
 public "toAbsolute"(arg0: $Direction$$Type): $Direction
 public "getTextureX"(arg0: boolean): integer
 public "getTextureY"(): integer
+public "getTranslationKey"(): StringJS
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "symbol"(): string
-get "translationKey"(): string
-get "serializedName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "symbol"(): StringJS
 get "textureY"(): integer
-get "remappedEnumConstantName"(): string
+get "translationKey"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -21675,15 +22145,15 @@ import {$ColorHandlers$ITintableBlock, $ColorHandlers$ITintableBlock$$Type} from
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockAndTintGetter, $BlockAndTintGetter$$Type} from "net.minecraft.world.level.BlockAndTintGetter"
 import {$DyeColor, $DyeColor$$Type} from "net.minecraft.world.item.DyeColor"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
@@ -21692,8 +22162,8 @@ import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.leve
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $WallLampBlock extends $AbstractPneumaticCraftBlock implements $ColorHandlers$ITintableBlock, $SimpleWaterloggedBlock {
 static readonly "DOWN": $BooleanProperty
@@ -21704,7 +22174,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -21729,11 +22199,11 @@ public "tick"(arg0: $BlockState$$Type, arg1: $ServerLevel$$Type, arg2: $BlockPos
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
 public "canSurvive"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type): boolean
-public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
-public static "wallLampProperties"(): $BlockBehaviour$Properties
-public "isRotatable"(): boolean
 public "getTintColor"(arg0: $BlockState$$Type, arg1: $BlockAndTintGetter$$Type, arg2: $BlockPos$$Type, arg3: integer): integer
+public "isRotatable"(): boolean
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
+public static "wallLampProperties"(): $BlockBehaviour$Properties
 public "canPlaceLiquid"(arg0: $Player$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $Fluid$$Type): boolean
 public "placeLiquid"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $FluidState$$Type): boolean
 public "pickupBlock"(arg0: $Player$$Type, arg1: $LevelAccessor$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type): $ItemStack
@@ -21757,8 +22227,8 @@ declare module "me.desht.pneumaticcraft.common.harvesting.HarvestHandlerLeaves" 
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$IDrone, $IDrone$$Type} from "me.desht.pneumaticcraft.api.drone.IDrone"
-import {$HarvestHandler, $HarvestHandler$$Type} from "me.desht.pneumaticcraft.api.harvesting.HarvestHandler"
 import {$List, $List$$Type} from "java.util.List"
+import {$HarvestHandler, $HarvestHandler$$Type} from "me.desht.pneumaticcraft.api.harvesting.HarvestHandler"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -21795,9 +22265,9 @@ export class $ExplosionCraftingRecipeImpl$Serializer<T extends $ExplosionCraftin
 
 constructor(arg0: $ExplosionCraftingRecipeImpl$IFactory$$Type<(T)>)
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
 public "codec"(): $MapCodec<(T)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -21812,8 +22282,8 @@ declare global {
 export type $ExplosionCraftingRecipeImpl$Serializer_<T> = $ExplosionCraftingRecipeImpl$Serializer$$Type<(T)>;
 }}
 declare module "me.desht.modularrouters.util.BeamData" {
-import {$BeamData$ByteOffset, $BeamData$ByteOffset$$Type} from "me.desht.modularrouters.util.BeamData$ByteOffset"
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
+import {$BeamData$ByteOffset, $BeamData$ByteOffset$$Type} from "me.desht.modularrouters.util.BeamData$ByteOffset"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
@@ -21826,17 +22296,17 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($BeamD
 constructor(arg0: $BeamData$ByteOffset$$Type, arg1: integer, arg2: integer, arg3: $ItemStack$$Type, arg4: boolean, arg5: boolean)
 
 public "isExpired"(): boolean
+public "tick"(): void
 public "getRGB"(): (integer)[]
 public "stack"(): $ItemStack
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "tick"(): void
+public "fade"(): boolean
 public "getProgress"(arg0: float): float
 public "getStart"(arg0: $Vec3$$Type): $Vec3
-public "fade"(): boolean
-public "getEnd"(arg0: $Vec3$$Type): $Vec3
 public "getAABB"(arg0: $BlockPos$$Type): $AABB
+public "getEnd"(arg0: $Vec3$$Type): $Vec3
 get "expired"(): boolean
 get "rGB"(): (integer)[]
 }
@@ -21862,8 +22332,8 @@ import {$AbstractAssemblyIOUnitBlock, $AbstractAssemblyIOUnitBlock$$Type} from "
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -21876,7 +22346,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -21925,10 +22395,10 @@ import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
@@ -21939,8 +22409,8 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$PathComputationType, $PathComputationType$$Type} from "net.minecraft.world.level.pathfinder.PathComputationType"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ItemInteractionResult, $ItemInteractionResult$$Type} from "net.minecraft.world.ItemInteractionResult"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
@@ -21950,8 +22420,8 @@ import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.Serve
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $ElevatorFrameBlock extends $AbstractPneumaticCraftBlock implements $SimpleWaterloggedBlock, $PneumaticCraftEntityBlock {
 static readonly "DOWN": $BooleanProperty
@@ -21962,7 +22432,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -21984,15 +22454,15 @@ static readonly "UPDATE_CLIENTS": integer
 constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
 public "isPathfindable"(arg0: $BlockState$$Type, arg1: $PathComputationType$$Type): boolean
 public "onPlace"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
+public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "entityInside"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): void
+public "canSurvive"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type): boolean
+public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
 public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
 public "useItemOn"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type, arg2: $Level$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type, arg5: $InteractionHand$$Type, arg6: $BlockHitResult$$Type): $ItemInteractionResult
-public "canSurvive"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type): boolean
-public "entityInside"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): void
-public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
 public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "canPlaceLiquid"(arg0: $Player$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $Fluid$$Type): boolean
@@ -22021,13 +22491,13 @@ import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 export interface $IPressurizableItem {
 
  "getAir"(arg0: $ItemStack$$Type): integer
- "getVolumeUpgrades"(arg0: $ItemStack$$Type): integer
- "getEffectiveVolume"(arg0: $ItemStack$$Type): integer
- "getMaxPressure"(): float
  "getBaseVolume"(): integer
  "getPressure"(arg0: $ItemStack$$Type): float
-get "maxPressure"(): float
+ "getMaxPressure"(): float
+ "getVolumeUpgrades"(arg0: $ItemStack$$Type): integer
+ "getEffectiveVolume"(arg0: $ItemStack$$Type): integer
 get "baseVolume"(): integer
+get "maxPressure"(): float
 }
 
 export namespace $IPressurizableItem {
@@ -22037,11 +22507,11 @@ export class $IPressurizableItem$$Static implements $IPressurizableItem {
 
 
  "getAir"(arg0: $ItemStack$$Type): integer
- "getVolumeUpgrades"(arg0: $ItemStack$$Type): integer
- "getEffectiveVolume"(arg0: $ItemStack$$Type): integer
- "getMaxPressure"(): float
  "getBaseVolume"(): integer
  "getPressure"(arg0: $ItemStack$$Type): float
+ "getMaxPressure"(): float
+ "getVolumeUpgrades"(arg0: $ItemStack$$Type): integer
+ "getEffectiveVolume"(arg0: $ItemStack$$Type): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -22095,8 +22565,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -22105,8 +22575,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -22124,7 +22594,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -22211,10 +22681,10 @@ export class $IPlayerMatcher$MatcherType<P extends $IPlayerMatcher> extends $Rec
 constructor(codec: $MapCodec$$Type<(P)>, streamCodec: $StreamCodec$$Type<($RegistryFriendlyByteBuf$$Type), (P)>)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (P)>
 public "codec"(): $MapCodec<(P)>
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (P)>
 /**
  * This field is a type stub generated by ProbeJS and shall not be used in any sense.
  */
@@ -22228,7 +22698,7 @@ public "codec"(): $MapCodec<(P)>
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $IPlayerMatcher$MatcherType$$Type<P> = (Special.PneumaticcraftPlayerMatchers) | ({"streamCodec"?: $StreamCodec$$Type<($RegistryFriendlyByteBuf$$Type), (any)>, "codec"?: $MapCodec$$Type<(any)>}) | ([streamCodec?: $StreamCodec$$Type<($RegistryFriendlyByteBuf$$Type), (any)>, codec?: $MapCodec$$Type<(any)>]);
+export type $IPlayerMatcher$MatcherType$$Type<P> = (Special.PneumaticcraftPlayerMatchers) | ({"codec"?: $MapCodec$$Type<(any)>, "streamCodec"?: $StreamCodec$$Type<($RegistryFriendlyByteBuf$$Type), (any)>}) | ([codec?: $MapCodec$$Type<(any)>, streamCodec?: $StreamCodec$$Type<($RegistryFriendlyByteBuf$$Type), (any)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -22242,24 +22712,24 @@ export class $TintColor {
 static readonly "WHITE": $TintColor
 static readonly "BLACK": $TintColor
 
-constructor(arg0: integer, arg1: integer, arg2: integer, arg3: integer)
 constructor(arg0: integer)
 constructor(arg0: integer, arg1: integer, arg2: integer)
+constructor(arg0: integer, arg1: integer, arg2: integer, arg3: integer)
 
 public "getRGB"(): integer
+public static "HSBtoRGB"(arg0: float, arg1: float, arg2: float): integer
 public static "RGBtoHSB"(arg0: integer, arg1: integer, arg2: integer, arg3: (float)[]): (float)[]
 public static "getHSBColor"(arg0: float, arg1: float, arg2: float): $TintColor
+public "getRed"(): integer
+public "getAlpha"(): integer
+public "darker"(): $TintColor
 public "getGreen"(): integer
 public "getBlue"(): integer
-public "getAlpha"(): integer
-public "getRed"(): integer
-public "darker"(): $TintColor
-public static "HSBtoRGB"(arg0: float, arg1: float, arg2: float): integer
 get "rGB"(): integer
+get "red"(): integer
+get "alpha"(): integer
 get "green"(): integer
 get "blue"(): integer
-get "alpha"(): integer
-get "red"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -22287,8 +22757,8 @@ import {$Inventory, $Inventory$$Type} from "net.minecraft.world.entity.player.In
 import {$ModularRouterBlockEntity$TrackedEnergy, $ModularRouterBlockEntity$TrackedEnergy$$Type} from "me.desht.modularrouters.block.tile.ModularRouterBlockEntity$TrackedEnergy"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$MenuProvider, $MenuProvider$$Type} from "net.minecraft.world.MenuProvider"
-import {$GlobalPos, $GlobalPos$$Type} from "net.minecraft.core.GlobalPos"
 import {$SoundSource, $SoundSource$$Type} from "net.minecraft.sounds.SoundSource"
+import {$GlobalPos, $GlobalPos$$Type} from "net.minecraft.core.GlobalPos"
 import {$IFluidHandlerItem, $IFluidHandlerItem$$Type} from "net.neoforged.neoforge.fluids.capability.IFluidHandlerItem"
 import {$ItemCapability, $ItemCapability$$Type} from "net.neoforged.neoforge.capabilities.ItemCapability"
 import {$Set, $Set$$Type} from "java.util.Set"
@@ -22298,8 +22768,8 @@ import {$ICamouflageable, $ICamouflageable$$Type} from "me.desht.modularrouters.
 import {$UpgradeItem, $UpgradeItem$$Type} from "me.desht.modularrouters.item.upgrade.UpgradeItem"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$RedstoneBehaviour, $RedstoneBehaviour$$Type} from "me.desht.modularrouters.logic.settings.RedstoneBehaviour"
-import {$ModularRouterBlockEntity$EnergyDirection, $ModularRouterBlockEntity$EnergyDirection$$Type} from "me.desht.modularrouters.block.tile.ModularRouterBlockEntity$EnergyDirection"
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
+import {$ModularRouterBlockEntity$EnergyDirection, $ModularRouterBlockEntity$EnergyDirection$$Type} from "me.desht.modularrouters.block.tile.ModularRouterBlockEntity$EnergyDirection"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$TrackedData, $TrackedData$$Type} from "dev.corgitaco.dataanchor.data.TrackedData"
 import {$ModularRouterBlockEntity$RecompileFlag, $ModularRouterBlockEntity$RecompileFlag$$Type} from "me.desht.modularrouters.block.tile.ModularRouterBlockEntity$RecompileFlag"
@@ -22314,7 +22784,6 @@ import {$IItemHandlerModifiable, $IItemHandlerModifiable$$Type} from "net.neofor
 import {$RouterFakePlayer, $RouterFakePlayer$$Type} from "me.desht.modularrouters.util.fake_player.RouterFakePlayer"
 import {$BeamData, $BeamData$$Type} from "me.desht.modularrouters.util.BeamData"
 import {$ClientboundBlockEntityDataPacket, $ClientboundBlockEntityDataPacket$$Type} from "net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket"
-import {$Packet, $Packet$$Type} from "net.minecraft.network.protocol.Packet"
 import {$IEnergyStorage, $IEnergyStorage$$Type} from "net.neoforged.neoforge.energy.IEnergyStorage"
 import {$GameProfile, $GameProfile$$Type} from "com.mojang.authlib.GameProfile"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
@@ -22324,65 +22793,28 @@ import {$AABB, $AABB$$Type} from "net.minecraft.world.phys.AABB"
 export class $ModularRouterBlockEntity extends $BlockEntity implements $ICamouflageable, $MenuProvider {
 readonly "beams": $List<($BeamData)>
 static readonly "DEFAULT_FAKEPLAYER_PROFILE": $GameProfile
-static readonly "NBT_UPGRADES": string
+static readonly "NBT_UPGRADES": StringJS
 readonly "trackedEnergy": $ModularRouterBlockEntity$TrackedEnergy
 readonly "pendingBeams": $List<($BeamData)>
-static readonly "NBT_REDSTONE_MODE": string
-static readonly "ATTACHMENTS_NBT_KEY": string
-static readonly "NBT_MODULES": string
+static readonly "NBT_REDSTONE_MODE": StringJS
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
+static readonly "NBT_MODULES": StringJS
 
 constructor(arg0: $BlockPos$$Type, arg1: $BlockState$$Type)
 
 public "isPermitted"(arg0: $Player$$Type): boolean
 public "getDisplayName"(): $Component
-public "setOwner"(arg0: $Player$$Type): void
 public "getBuffer"(): $IItemHandler
-public "getFluidTransferRate"(): integer
-public "getModuleSlotCount"(): integer
-public "getUpgradeSlotCount"(): integer
-public "setRedstoneBehaviour"(arg0: $RedstoneBehaviour$$Type): void
-public "createMenu"(arg0: integer, arg1: $Inventory$$Type, arg2: $Player$$Type): $AbstractContainerMenu
+public "setOwner"(arg0: $Player$$Type): void
 public "serverTick"(): void
-public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "createMenu"(arg0: integer, arg1: $Inventory$$Type, arg2: $Player$$Type): $AbstractContainerMenu
 public "saveAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "getUpdateTag"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
-public "onDataPacket"(arg0: $Connection$$Type, arg1: $ClientboundBlockEntityDataPacket$$Type, arg2: $HolderLookup$Provider$$Type): void
-public "clientTick"(): void
-public "getModules"(): $IItemHandlerModifiable
 public "playSound"(arg0: $Player$$Type, arg1: $BlockPos$$Type, arg2: $SoundEvent$$Type, arg3: $SoundSource$$Type, arg4: float, arg5: float): void
 public "getModelData"(): $ModelData
-public "getEnergyStorage"(): $IEnergyStorage
-public "getFluidHandler"(): $IFluidHandlerItem
-public "getRedstoneLevel"(arg0: $Direction$$Type, arg1: boolean): integer
-public "getUpdatePacket"(): $Packet<(any)>
-public "handleUpdateTag"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "getRenderBoundingBox"(): $AABB
-public "getEnergyCapacity"(): integer
-public "getBufferSlotCount"(): integer
-public "getRedstoneBehaviour"(): $RedstoneBehaviour
-public "getEnergyXferRate"(): integer
-public "addPermittedIds"(arg0: $Set$$Type<($UUID$$Type)>): void
-public "checkForRedstonePulse"(): void
-public "recompileNeeded"(arg0: $ModularRouterBlockEntity$RecompileFlag$$Type): void
-public "getItemsPerTick"(): integer
-public "setTunedSyncValue"(arg0: integer): void
-public "setUpgradesFrom"(arg0: $IItemHandler$$Type): void
-public "getRedstonePower"(): integer
-public "setEnergyDirection"(arg0: $ModularRouterBlockEntity$EnergyDirection$$Type): void
-public "getAbsoluteFacing"(arg0: $RelativeDirection$$Type): $Direction
-public "getUpgradeCount"(arg0: $UpgradeItem$$Type): integer
-public "getExtensionData"(): $CompoundTag
-public "emitRedstone"(arg0: $RelativeDirection$$Type, arg1: integer, arg2: $DetectorModule$SignalType$$Type): void
-public "getGlobalPos"(): $GlobalPos
-public "getModuleCount"(): integer
-public "notifyModules"(): void
-public "getCamouflage"(): $BlockState
-public "setCamouflage"(arg0: $BlockState$$Type): void
-public "nonNullLevel"(): $Level
-public "getFakePlayer"(): $RouterFakePlayer
+public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "clientTick"(): void
+public "getModules"(): $IItemHandlerModifiable
 public "getTickRate"(): integer
-public "getUpgrades"(): $IItemHandler
-public "getAllUpgrades"(): $Map<($UpgradeItem), (integer)>
 public "insertBuffer"(arg0: $ItemStack$$Type): $ItemStack
 public "isBufferFull"(): boolean
 public "peekBuffer"(arg0: integer): $ItemStack
@@ -22391,61 +22823,98 @@ public "extractBuffer"(arg0: integer): $ItemStack
 public "setEcoMode"(arg0: boolean): void
 public "isBufferEmpty"(): boolean
 public "getEcoMode"(): boolean
-public "sendBlockUpdateIfNeeded"(): void
-public "caresAboutItemAttributes"(): boolean
-public "setAllowRedstoneEmission"(arg0: boolean): void
-public "getCurrentFluidTransferAllowance"(arg0: $TransferDirection$$Type): integer
+public "getModuleCount"(): integer
+public "emitRedstone"(arg0: $RelativeDirection$$Type, arg1: integer, arg2: $DetectorModule$SignalType$$Type): void
+public "getAllUpgrades"(): $Map<($UpgradeItem), (integer)>
+public "getGlobalPos"(): $GlobalPos
+public "getUpgrades"(): $IItemHandler
+public "notifyModules"(): void
+public "nonNullLevel"(): $Level
+public "setCamouflage"(arg0: $BlockState$$Type): void
+public "getCamouflage"(): $BlockState
+public "getFakePlayer"(): $RouterFakePlayer
+public "getUpdateTag"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
+public "onDataPacket"(arg0: $Connection$$Type, arg1: $ClientboundBlockEntityDataPacket$$Type, arg2: $HolderLookup$Provider$$Type): void
+public "getEnergyStorage"(): $IEnergyStorage
+public "getFluidHandler"(): $IFluidHandlerItem
+public "getRenderBoundingBox"(): $AABB
+public "handleUpdateTag"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "getRedstoneLevel"(arg0: $Direction$$Type, arg1: boolean): integer
+public "getUpdatePacket"(): $ClientboundBlockEntityDataPacket
+public "getItemsPerTick"(): integer
+public "getRedstonePower"(): integer
+public "getExtensionData"(): $CompoundTag
+public "getRedstoneBehaviour"(): $RedstoneBehaviour
+public "getFluidTransferRate"(): integer
+public "addPermittedIds"(arg0: $Set$$Type<($UUID$$Type)>): void
+public "setTunedSyncValue"(arg0: integer): void
+public "getEnergyCapacity"(): integer
+public "getEnergyXferRate"(): integer
+public "recompileNeeded"(arg0: $ModularRouterBlockEntity$RecompileFlag$$Type): void
+public "getModuleSlotCount"(): integer
+public "getUpgradeSlotCount"(): integer
+public "getUpgradeCount"(arg0: $UpgradeItem$$Type): integer
+public "checkForRedstonePulse"(): void
 public "getBufferItemStack"(): $ItemStack
 public "setBufferItemStack"(arg0: $ItemStack$$Type): void
 public "setHasPulsedModules"(arg0: boolean): void
 public "transferredFluid"(arg0: integer, arg1: $TransferDirection$$Type): void
+public "setRedstoneBehaviour"(arg0: $RedstoneBehaviour$$Type): void
+public "getBufferSlotCount"(): integer
+public "setUpgradesFrom"(arg0: $IItemHandler$$Type): void
+public "setEnergyDirection"(arg0: $ModularRouterBlockEntity$EnergyDirection$$Type): void
 public "getEnergyDirection"(): $ModularRouterBlockEntity$EnergyDirection
 public "getBufferCapability"<T>(arg0: $ItemCapability$$Type<(T), (void)>): T
+public "getAbsoluteFacing"(arg0: $RelativeDirection$$Type): $Direction
+public "getCurrentFluidTransferAllowance"(arg0: $TransferDirection$$Type): integer
+public "sendBlockUpdateIfNeeded"(): void
+public "setAllowRedstoneEmission"(arg0: boolean): void
+public "caresAboutItemAttributes"(): boolean
 public "extendedMimic"(): boolean
-public "shouldTriggerClientSideContainerClosingOnOpen"(): boolean
 public "writeClientSideData"(arg0: $AbstractContainerMenu$$Type, arg1: $RegistryFriendlyByteBuf$$Type): void
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+public "shouldTriggerClientSideContainerClosingOnOpen"(): boolean
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "displayName"(): $Component
-set "owner"(value: $Player$$Type)
 get "buffer"(): $IItemHandler
-get "fluidTransferRate"(): integer
-get "moduleSlotCount"(): integer
-get "upgradeSlotCount"(): integer
-set "redstoneBehaviour"(value: $RedstoneBehaviour$$Type)
-get "modules"(): $IItemHandlerModifiable
+set "owner"(value: $Player$$Type)
 get "modelData"(): $ModelData
-get "energyStorage"(): $IEnergyStorage
-get "fluidHandler"(): $IFluidHandlerItem
-get "updatePacket"(): $Packet<(any)>
-get "renderBoundingBox"(): $AABB
-get "energyCapacity"(): integer
-get "bufferSlotCount"(): integer
-get "redstoneBehaviour"(): $RedstoneBehaviour
-get "energyXferRate"(): integer
-get "itemsPerTick"(): integer
-set "tunedSyncValue"(value: integer)
-set "upgradesFrom"(value: $IItemHandler$$Type)
-get "redstonePower"(): integer
-set "energyDirection"(value: $ModularRouterBlockEntity$EnergyDirection$$Type)
-get "extensionData"(): $CompoundTag
-get "globalPos"(): $GlobalPos
-get "moduleCount"(): integer
-get "camouflage"(): $BlockState
-set "camouflage"(value: $BlockState$$Type)
-get "fakePlayer"(): $RouterFakePlayer
+get "modules"(): $IItemHandlerModifiable
 get "tickRate"(): integer
-get "upgrades"(): $IItemHandler
-get "allUpgrades"(): $Map<($UpgradeItem), (integer)>
 get "bufferFull"(): boolean
 set "ecoMode"(value: boolean)
 get "bufferEmpty"(): boolean
 get "ecoMode"(): boolean
-set "allowRedstoneEmission"(value: boolean)
+get "moduleCount"(): integer
+get "allUpgrades"(): $Map<($UpgradeItem), (integer)>
+get "globalPos"(): $GlobalPos
+get "upgrades"(): $IItemHandler
+set "camouflage"(value: $BlockState$$Type)
+get "camouflage"(): $BlockState
+get "fakePlayer"(): $RouterFakePlayer
+get "energyStorage"(): $IEnergyStorage
+get "fluidHandler"(): $IFluidHandlerItem
+get "renderBoundingBox"(): $AABB
+get "updatePacket"(): $ClientboundBlockEntityDataPacket
+get "itemsPerTick"(): integer
+get "redstonePower"(): integer
+get "extensionData"(): $CompoundTag
+get "redstoneBehaviour"(): $RedstoneBehaviour
+get "fluidTransferRate"(): integer
+set "tunedSyncValue"(value: integer)
+get "energyCapacity"(): integer
+get "energyXferRate"(): integer
+get "moduleSlotCount"(): integer
+get "upgradeSlotCount"(): integer
 get "bufferItemStack"(): $ItemStack
 set "bufferItemStack"(value: $ItemStack$$Type)
 set "hasPulsedModules"(value: boolean)
+set "redstoneBehaviour"(value: $RedstoneBehaviour$$Type)
+get "bufferSlotCount"(): integer
+set "upgradesFrom"(value: $IItemHandler$$Type)
+set "energyDirection"(value: $ModularRouterBlockEntity$EnergyDirection$$Type)
 get "energyDirection"(): $ModularRouterBlockEntity$EnergyDirection
+set "allowRedstoneEmission"(value: boolean)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -22529,15 +22998,15 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
@@ -22553,7 +23022,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -22578,8 +23047,8 @@ public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $Bloc
 public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
 public "skipRendering"(arg0: $BlockState$$Type, arg1: $BlockState$$Type, arg2: $Direction$$Type): boolean
 public "canSurvive"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type): boolean
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "isRotatable"(): boolean
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public static "forBlock"(arg0: $Block$$Type): $IPneumaticWrenchable
 public "asHolder"(): $Holder<(any)>
 get "rotatable"(): boolean
@@ -22597,21 +23066,25 @@ declare global {
 export type $ThermalLaggingBlock_ = $ThermalLaggingBlock$$Type;
 }}
 declare module "me.desht.modularrouters.item.upgrade.UpgradeItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$ModItems$ITintable, $ModItems$ITintable$$Type} from "me.desht.modularrouters.core.ModItems$ITintable"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ModItems$ITintable, $ModItems$ITintable$$Type} from "me.desht.modularrouters.core.ModItems$ITintable"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ModularRouterBlockEntity, $ModularRouterBlockEntity$$Type} from "me.desht.modularrouters.block.tile.ModularRouterBlockEntity"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.TintColor"
 import {$MRBaseItem, $MRBaseItem$$Type} from "me.desht.modularrouters.item.MRBaseItem"
 
 export class $UpgradeItem extends $MRBaseItem implements $ModItems$ITintable {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -22620,13 +23093,14 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "isCompatibleWith"(arg0: $UpgradeItem$$Type): boolean
+public "getItemTint"(): $TintColor
+public "onCompiled"(arg0: $ItemStack$$Type, arg1: $ModularRouterBlockEntity$$Type): void
 public "createUpdateTag"(arg0: $ModularRouterBlockEntity$$Type): $CompoundTag
 public "processClientSync"(arg0: $ModularRouterBlockEntity$$Type, arg1: $CompoundTag$$Type): void
 public "getInstalledStackLimit"(): integer
-public "onCompiled"(arg0: $ItemStack$$Type, arg1: $ModularRouterBlockEntity$$Type): void
-public "getItemTint"(): $TintColor
-get "installedStackLimit"(): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
+get "installedStackLimit"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -22683,18 +23157,18 @@ export class $FluidMixerRecipe extends $PneumaticCraftRecipe {
 constructor()
 
 public "matches"(arg0: $FluidStack$$Type, arg1: $FluidStack$$Type): boolean
-public "getRequiredPressure"(): float
-public "getProcessingTime"(): integer
-public "getOutputItem"(): $ItemStack
 public "getOutputFluid"(): $FluidStack
 public "getInput1"(): $SizedFluidIngredient
 public "getInput2"(): $SizedFluidIngredient
-get "requiredPressure"(): float
-get "processingTime"(): integer
-get "outputItem"(): $ItemStack
+public "getOutputItem"(): $ItemStack
+public "getProcessingTime"(): integer
+public "getRequiredPressure"(): float
 get "outputFluid"(): $FluidStack
 get "input1"(): $SizedFluidIngredient
 get "input2"(): $SizedFluidIngredient
+get "outputItem"(): $ItemStack
+get "processingTime"(): integer
+get "requiredPressure"(): float
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -22709,8 +23183,8 @@ declare global {
 export type $FluidMixerRecipe_ = $FluidMixerRecipe$$Type;
 }}
 declare module "me.desht.modularrouters.api.matching.IItemMatcher" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$IModuleFlags, $IModuleFlags$$Type} from "me.desht.modularrouters.api.matching.IModuleFlags"
 
 export interface $IItemMatcher {
@@ -22780,7 +23254,7 @@ import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.Ser
 
 export class $CustomTrigger extends $SimpleCriterionTrigger<($CustomTrigger$Instance)> {
 
-constructor(arg0: string)
+constructor(arg0: StringJS)
 constructor(arg0: $ResourceLocation$$Type)
 
 public "trigger"(arg0: $ServerPlayer$$Type): void
@@ -22805,10 +23279,10 @@ import {$IDrone, $IDrone$$Type} from "me.desht.pneumaticcraft.api.drone.IDrone"
 import {$SpecialVariableRetrievalEvent$CoordinateVariable, $SpecialVariableRetrievalEvent$CoordinateVariable$$Type} from "me.desht.pneumaticcraft.api.drone.SpecialVariableRetrievalEvent$CoordinateVariable"
 
 export class $SpecialVariableRetrievalEvent$CoordinateVariable$Drone extends $SpecialVariableRetrievalEvent$CoordinateVariable {
-readonly "specialVarName": string
+readonly "specialVarName": StringJS
 readonly "drone": $IDrone
 
-constructor(arg0: $IDrone$$Type, arg1: string)
+constructor(arg0: $IDrone$$Type, arg1: StringJS)
 
 }
 /**
@@ -22839,7 +23313,7 @@ import {$IEnergyStorage, $IEnergyStorage$$Type} from "net.neoforged.neoforge.ene
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 
 export class $ModuleTarget {
-readonly "blockTranslationKey": string
+readonly "blockTranslationKey": StringJS
 readonly "face": $Direction
 static readonly "CODEC": $Codec<($ModuleTarget)>
 readonly "gPos": $GlobalPos
@@ -22848,23 +23322,23 @@ static readonly "STREAM_CODEC": $StreamCodec<($FriendlyByteBuf), ($ModuleTarget)
 constructor(arg0: $GlobalPos$$Type)
 constructor(arg0: $GlobalPos$$Type, arg1: $Direction$$Type)
 constructor(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $Direction$$Type)
-constructor(arg0: $GlobalPos$$Type, arg1: $Direction$$Type, arg2: string)
+constructor(arg0: $GlobalPos$$Type, arg1: $Direction$$Type, arg2: StringJS)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "getCapability"<T>(arg0: $BlockCapability$$Type<(T), (any)>): $Optional<(T)>
+public "getItemHandler"(): $Optional<($IItemHandler)>
+public "isSameWorld"(arg0: $ModuleTarget$$Type): boolean
+public "isSameWorld"(arg0: $Level$$Type): boolean
+public "hasItemHandler"(arg0: $Level$$Type): boolean
 public "getEnergyHandler"(): $Optional<($IEnergyStorage)>
 public "getFluidHandler"(): $Optional<($IFluidHandler)>
 public "getTextComponent"(): $Component
-public "isSameWorld"(arg0: $ModuleTarget$$Type): boolean
-public "isSameWorld"(arg0: $Level$$Type): boolean
-public "getItemHandler"(): $Optional<($IItemHandler)>
-public "hasItemHandler"(arg0: $Level$$Type): boolean
+get "itemHandler"(): $Optional<($IItemHandler)>
 get "energyHandler"(): $Optional<($IEnergyStorage)>
 get "fluidHandler"(): $Optional<($IFluidHandler)>
 get "textComponent"(): $Component
-get "itemHandler"(): $Optional<($IItemHandler)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -22916,7 +23390,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -22936,8 +23410,8 @@ static readonly "UPDATE_CLIENTS": integer
  "hasCollision": boolean
 
 
-public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
 public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
+public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
 public static "pressureChamberBlockProps"(): $BlockBehaviour$Properties
@@ -22966,8 +23440,8 @@ import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$IntCollection, $IntCollection$$Type} from "it.unimi.dsi.fastutil.ints.IntCollection"
 import {$PressureChamberRecipe$RecipeSlot, $PressureChamberRecipe$RecipeSlot$$Type} from "me.desht.pneumaticcraft.api.crafting.recipe.PressureChamberRecipe$RecipeSlot"
-import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$IntList, $IntList$$Type} from "it.unimi.dsi.fastutil.ints.IntList"
+import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$SizedIngredient, $SizedIngredient$$Type} from "net.neoforged.neoforge.common.crafting.SizedIngredient"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 
@@ -22977,15 +23451,15 @@ constructor()
 
 public "getInputs"(): $List<($SizedIngredient)>
 public "getOutputs"(): $List<($ItemStack)>
+public "getTooltipKey"(arg0: boolean, arg1: StringJS): StringJS
+public "getPressure"(): float
+public "craftRecipe"(arg0: $IItemHandler$$Type, arg1: $IntList$$Type, arg2: boolean): $List<($ItemStack)>
 public "getResultsForDisplay"(arg0: $HolderLookup$Provider$$Type): $List<($List<($ItemStack)>)>
 public "getSyncForDisplay"(arg0: $PressureChamberRecipe$SlotCycle$$Type): $Map<($PressureChamberRecipe$RecipeSlot), ($IntList)>
 public "getInputsForDisplay"(arg0: $HolderLookup$Provider$$Type): $List<($List<($ItemStack)>)>
 public "isValidInputItem"(arg0: $ItemStack$$Type): boolean
 public "getCraftingPressure"(arg0: $IItemHandler$$Type, arg1: $IntList$$Type): float
 public "findIngredients"(arg0: $IItemHandler$$Type): $IntCollection
-public "getTooltipKey"(arg0: boolean, arg1: string): string
-public "craftRecipe"(arg0: $IItemHandler$$Type, arg1: $IntList$$Type, arg2: boolean): $List<($ItemStack)>
-public "getPressure"(): float
 public "getCraftingPressureForDisplay"(): float
 get "inputs"(): $List<($SizedIngredient)>
 get "outputs"(): $List<($ItemStack)>
@@ -23018,8 +23492,8 @@ import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.wo
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockAndTintGetter, $BlockAndTintGetter$$Type} from "net.minecraft.world.level.BlockAndTintGetter"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
@@ -23038,7 +23512,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -23059,11 +23533,11 @@ static readonly "UPDATE_CLIENTS": integer
 
 constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public "shouldDisplayFluidOverlay"(arg0: $BlockState$$Type, arg1: $BlockAndTintGetter$$Type, arg2: $BlockPos$$Type, arg3: $FluidState$$Type): boolean
 public "skipRendering"(arg0: $BlockState$$Type, arg1: $BlockState$$Type, arg2: $Direction$$Type): boolean
+public "getShadeBrightness"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): float
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "propagatesSkylightDown"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): boolean
-public "getShadeBrightness"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): float
+public "shouldDisplayFluidOverlay"(arg0: $BlockState$$Type, arg1: $BlockAndTintGetter$$Type, arg2: $BlockPos$$Type, arg3: $FluidState$$Type): boolean
 public static "pressureChamberBlockProps"(): $BlockBehaviour$Properties
 public static "forBlock"(arg0: $Block$$Type): $IPneumaticWrenchable
 public "asHolder"(): $Holder<(any)>
@@ -23087,8 +23561,8 @@ import {$ModuleTarget, $ModuleTarget$$Type} from "me.desht.modularrouters.logic.
 
 export interface $IPositionProvider {
 
- "getStoredPositions"(arg0: $ItemStack$$Type): $List<($ModuleTarget)>
  "getRenderColor"(arg0: integer): integer
+ "getStoredPositions"(arg0: $ItemStack$$Type): $List<($ModuleTarget)>
 }
 
 export namespace $IPositionProvider {
@@ -23097,8 +23571,8 @@ const probejs$$marker: never
 export class $IPositionProvider$$Static implements $IPositionProvider {
 
 
- "getStoredPositions"(arg0: $ItemStack$$Type): $List<($ModuleTarget)>
  "getRenderColor"(arg0: integer): integer
+ "getStoredPositions"(arg0: $ItemStack$$Type): $List<($ModuleTarget)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -23127,7 +23601,7 @@ static readonly "STREAM_CODEC": $StreamCodec<($FriendlyByteBuf), ($AirParticleDa
 constructor(alpha: float)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "getType"(): $ParticleType<(any)>
 public "alpha"(): float
@@ -23151,7 +23625,6 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$BaseFlowingFluid$Flowing, $BaseFlowingFluid$Flowing$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Flowing"
 
 export class $FluidLubricant$Flowing extends $BaseFlowingFluid$Flowing {
@@ -23161,7 +23634,6 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -23181,8 +23653,8 @@ import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$AbstractTickingBlockEntity, $AbstractTickingBlockEntity$$Type} from "me.desht.pneumaticcraft.common.block.entity.AbstractTickingBlockEntity"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$TrackedData, $TrackedData$$Type} from "dev.corgitaco.dataanchor.data.TrackedData"
-import {$IAirHandlerMachine, $IAirHandlerMachine$$Type} from "me.desht.pneumaticcraft.api.tileentity.IAirHandlerMachine"
 import {$TrackedDataContainer, $TrackedDataContainer$$Type} from "dev.corgitaco.dataanchor.data.TrackedDataContainer"
+import {$IAirHandlerMachine, $IAirHandlerMachine$$Type} from "me.desht.pneumaticcraft.api.tileentity.IAirHandlerMachine"
 import {$PressureTier, $PressureTier$$Type} from "me.desht.pneumaticcraft.api.pressure.PressureTier"
 import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.dataanchor.data.registry.TrackedDataRegistry"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
@@ -23193,38 +23665,38 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $AbstractAirHandlingBlockEntity extends $AbstractTickingBlockEntity {
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 constructor(arg0: $BlockEntityType$$Type<(any)>, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $PressureTier$$Type, arg4: integer, arg5: integer)
 
-public "initializeHullAirHandlers"(): void
-public "initializeHullAirHandlerClient"(arg0: $Direction$$Type, arg1: $IAirHandlerMachine$$Type): void
-public "hasNoConnectedAirHandlers"(): boolean
-public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "saveAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
 public "onLoad"(): void
+public "saveAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
 public "addAir"(arg0: integer): void
+public "getAirHandler"(arg0: $Direction$$Type): $IAirHandlerMachine
+public "getPressure"(): float
+public "tickCommonPre"(): void
+public "writeToPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "readFromPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "onBlockRotated"(): void
+public "addLuaMethods"(arg0: $LuaMethodRegistry$$Type): void
 public "handleUpdateTag"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "onUpgradesChanged"(): void
 public "canConnectPneumatic"(arg0: $Direction$$Type): boolean
-public "getCriticalPressure"(): float
-public "getDefaultVolume"(): integer
 public "getDangerPressure"(): float
 public "onNeighborBlockUpdate"(arg0: $BlockPos$$Type): void
-public "onUpgradesChanged"(): void
-public "getAirHandler"(arg0: $Direction$$Type): $IAirHandlerMachine
-public "readFromPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "writeToPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "addLuaMethods"(arg0: $LuaMethodRegistry$$Type): void
-public "onBlockRotated"(): void
-public "tickCommonPre"(): void
-public "getPressure"(): float
+public "getCriticalPressure"(): float
+public "getDefaultVolume"(): integer
+public "hasNoConnectedAirHandlers"(): boolean
+public "initializeHullAirHandlers"(): void
+public "initializeHullAirHandlerClient"(arg0: $Direction$$Type, arg1: $IAirHandlerMachine$$Type): void
 public "getUpgradeHandler"(): $IItemHandler
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+get "pressure"(): float
+get "dangerPressure"(): float
 get "criticalPressure"(): float
 get "defaultVolume"(): integer
-get "dangerPressure"(): float
-get "pressure"(): float
 get "upgradeHandler"(): $IItemHandler
 }
 /**
@@ -23240,21 +23712,25 @@ declare global {
 export type $AbstractAirHandlingBlockEntity_ = $AbstractAirHandlingBlockEntity$$Type;
 }}
 declare module "me.desht.modularrouters.item.module.FluidModule1" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$IItemMatcher, $IItemMatcher$$Type} from "me.desht.modularrouters.api.matching.IItemMatcher"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
 import {$ModuleMenu, $ModuleMenu$$Type} from "me.desht.modularrouters.container.ModuleMenu"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$MenuType, $MenuType$$Type} from "net.minecraft.world.inventory.MenuType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$IItemMatcher, $IItemMatcher$$Type} from "me.desht.modularrouters.api.matching.IItemMatcher"
 import {$TintColor, $TintColor$$Type} from "me.desht.modularrouters.client.util.TintColor"
 
 export class $FluidModule1 extends $ModuleItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -23262,16 +23738,17 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public "getItemTint"(): $TintColor
+public "isFluidModule"(): boolean
+public "getMenuType"(): $MenuType<($ModuleMenu)>
+public "getEnergyCost"(arg0: $ItemStack$$Type): integer
 public "isItemValidForFilter"(arg0: $ItemStack$$Type): boolean
 public "getFilterItemMatcher"(arg0: $ItemStack$$Type): $IItemMatcher
-public "getMenuType"(): $MenuType<($ModuleMenu)>
-public "isFluidModule"(): boolean
-public "getItemTint"(): $TintColor
-public "getEnergyCost"(arg0: $ItemStack$$Type): integer
-public "getRegulatorTranslationKey"(arg0: $ItemStack$$Type): string
-get "menuType"(): $MenuType<($ModuleMenu)>
-get "fluidModule"(): boolean
+public "getRegulatorTranslationKey"(arg0: $ItemStack$$Type): StringJS
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
+get "fluidModule"(): boolean
+get "menuType"(): $MenuType<($ModuleMenu)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -23286,16 +23763,19 @@ declare global {
 export type $FluidModule1_ = $FluidModule1$$Type;
 }}
 declare module "me.desht.modularrouters.item.module.FluidModule2" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
+import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$ITargetedModule, $ITargetedModule$$Type} from "me.desht.modularrouters.item.module.ITargetedModule"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$IPositionProvider, $IPositionProvider$$Type} from "me.desht.modularrouters.client.render.area.IPositionProvider"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$IRangedModule, $IRangedModule$$Type} from "me.desht.modularrouters.item.module.IRangedModule"
 import {$ModuleTarget, $ModuleTarget$$Type} from "me.desht.modularrouters.logic.ModuleTarget"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$Set, $Set$$Type} from "java.util.Set"
@@ -23307,7 +23787,7 @@ import {$FluidModule1, $FluidModule1$$Type} from "me.desht.modularrouters.item.m
 export class $FluidModule2 extends $FluidModule1 implements $IRangedModule, $IPositionProvider, $ITargetedModule {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -23315,26 +23795,27 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "getHardMaxRange"(): integer
 public "getItemTint"(): $TintColor
 public "getBaseRange"(): integer
-public "getEnergyCost"(arg0: $ItemStack$$Type): integer
 public "getRenderColor"(arg0: integer): integer
+public "getEnergyCost"(arg0: $ItemStack$$Type): integer
 public "isValidTarget"(arg0: $UseOnContext$$Type): boolean
+public "getHardMaxRange"(): integer
 public "getCurrentRange"(arg0: integer): integer
 public "getCurrentRange"(arg0: $ItemStack$$Type): integer
 public "getStoredPositions"(arg0: $ItemStack$$Type): $List<($ModuleTarget)>
 public static "setTargets"(arg0: $ItemStack$$Type, arg1: $Collection$$Type<($ModuleTarget$$Type)>): void
 public static "getTargets"(arg0: $ItemStack$$Type, arg1: boolean): $Set<($ModuleTarget)>
+public "getMaxTargets"(): integer
+public "isRangeLimited"(): boolean
 public "canOperateInDimension"(arg0: $ResourceKey$$Type<($Level)>): boolean
 public static "canSelectTarget"(arg0: $UseOnContext$$Type): boolean
-public "isRangeLimited"(): boolean
-public "getMaxTargets"(): integer
-get "hardMaxRange"(): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "itemTint"(): $TintColor
 get "baseRange"(): integer
-get "rangeLimited"(): boolean
+get "hardMaxRange"(): integer
 get "maxTargets"(): integer
+get "rangeLimited"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -23363,14 +23844,14 @@ static readonly "STREAM_CODEC": $StreamCodec<($FriendlyByteBuf), ($PacketPlayMov
 
 constructor(entityOrPos: $Either$$Type<(integer), ($BlockPos$$Type)>)
 
+public "handle"(arg0: $MovingSounds$Sound$$Type): void
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public static "of"(arg0: $BlockPos$$Type): $PacketPlayMovingSound$MovingSoundFocus
 public static "of"(arg0: $BlockEntity$$Type): $PacketPlayMovingSound$MovingSoundFocus
+public static "of"(arg0: $BlockPos$$Type): $PacketPlayMovingSound$MovingSoundFocus
 public static "of"(arg0: $Entity$$Type): $PacketPlayMovingSound$MovingSoundFocus
 public static "of"(arg0: integer): $PacketPlayMovingSound$MovingSoundFocus
-public "handle"(arg0: $MovingSounds$Sound$$Type): void
 public "entityOrPos"(): $Either<(integer), ($BlockPos)>
 }
 /**
@@ -23390,7 +23871,7 @@ import {$SpecialVariableRetrievalEvent, $SpecialVariableRetrievalEvent$$Type} fr
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 
 export class $SpecialVariableRetrievalEvent$CoordinateVariable extends $SpecialVariableRetrievalEvent {
-readonly "specialVarName": string
+readonly "specialVarName": StringJS
 
 
 public "getCoordinate"(): $BlockPos
@@ -23433,10 +23914,10 @@ static readonly "X_WALL": $EnumOldAreaType
 static readonly "Y_CYLINDER": $EnumOldAreaType
 
 
-public "toString"(): string
+public "toString"(): StringJS
 public static "values"(): ($EnumOldAreaType)[]
-public static "valueOf"(arg0: string): $EnumOldAreaType
-public static "byName"(arg0: string): $EnumOldAreaType
+public static "valueOf"(arg0: StringJS): $EnumOldAreaType
+public static "byName"(arg0: StringJS): $EnumOldAreaType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -23451,21 +23932,25 @@ declare global {
 export type $EnumOldAreaType_ = $EnumOldAreaType$$Type;
 }}
 declare module "me.desht.modularrouters.item.smartfilter.InspectionFilter" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$IItemMatcher, $IItemMatcher$$Type} from "me.desht.modularrouters.api.matching.IItemMatcher"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$SmartFilterItem, $SmartFilterItem$$Type} from "me.desht.modularrouters.item.smartfilter.SmartFilterItem"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$InspectionMatcher$ComparisonList, $InspectionMatcher$ComparisonList$$Type} from "me.desht.modularrouters.logic.filter.matchers.InspectionMatcher$ComparisonList"
 
 export class $InspectionFilter extends $SmartFilterItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "MAX_SIZE": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -23474,12 +23959,13 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "compile"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): $IItemMatcher
 public "getSize"(arg0: $ItemStack$$Type): integer
+public "compile"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): $IItemMatcher
+public "hasMenu"(): boolean
+public "addExtraInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
 public static "getComparisonList"(arg0: $ItemStack$$Type): $InspectionMatcher$ComparisonList
 public static "setComparisonList"(arg0: $ItemStack$$Type, arg1: $InspectionMatcher$ComparisonList$$Type): void
-public "addExtraInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
-public "hasMenu"(): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -23504,10 +23990,10 @@ static readonly "NONE": $ModularRouterBlockEntity$EnergyDirection
 
 
 public static "values"(): ($ModularRouterBlockEntity$EnergyDirection)[]
-public static "valueOf"(arg0: string): $ModularRouterBlockEntity$EnergyDirection
-public "getTranslationKey"(): string
-public static "forValue"(arg0: string): $ModularRouterBlockEntity$EnergyDirection
-get "translationKey"(): string
+public static "valueOf"(arg0: StringJS): $ModularRouterBlockEntity$EnergyDirection
+public static "forValue"(arg0: StringJS): $ModularRouterBlockEntity$EnergyDirection
+public "getTranslationKey"(): StringJS
+get "translationKey"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -23522,15 +24008,19 @@ declare global {
 export type $ModularRouterBlockEntity$EnergyDirection_ = $ModularRouterBlockEntity$EnergyDirection$$Type;
 }}
 declare module "me.desht.modularrouters.item.smartfilter.TagFilter" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$AbstractSmartFilterMenu, $AbstractSmartFilterMenu$$Type} from "me.desht.modularrouters.container.AbstractSmartFilterMenu"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$IItemMatcher, $IItemMatcher$$Type} from "me.desht.modularrouters.api.matching.IItemMatcher"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$SmartFilterItem, $SmartFilterItem$$Type} from "me.desht.modularrouters.item.smartfilter.SmartFilterItem"
 import {$Inventory, $Inventory$$Type} from "net.minecraft.world.entity.player.Inventory"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
@@ -23539,7 +24029,7 @@ import {$MFLocator, $MFLocator$$Type} from "me.desht.modularrouters.util.MFLocat
 export class $TagFilter extends $SmartFilterItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -23547,12 +24037,13 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "compile"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): $IItemMatcher
 public "getSize"(arg0: $ItemStack$$Type): integer
+public "compile"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): $IItemMatcher
 public "createMenu"(arg0: integer, arg1: $Inventory$$Type, arg2: $MFLocator$$Type): $AbstractSmartFilterMenu
-public "addExtraInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
 public static "getTagList"(arg0: $ItemStack$$Type): $List<($TagKey<($Item)>)>
 public static "setTagList"(arg0: $ItemStack$$Type, arg1: $List$$Type<($TagKey$$Type<($Item$$Type)>)>): void
+public "addExtraInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -23573,8 +24064,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -23583,8 +24074,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -23601,7 +24092,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -23709,11 +24200,11 @@ declare module "me.desht.modularrouters.api.matching.IModuleFlags" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $IModuleFlags {
 
- "matchComponents"(): boolean
- "whiteList"(): boolean
  "matchDamage"(): boolean
  "matchItemTags"(): boolean
  "matchAllItems"(): boolean
+ "whiteList"(): boolean
+ "matchComponents"(): boolean
 }
 
 export namespace $IModuleFlags {
@@ -23722,11 +24213,11 @@ const probejs$$marker: never
 export class $IModuleFlags$$Static implements $IModuleFlags {
 
 
- "matchComponents"(): boolean
- "whiteList"(): boolean
  "matchDamage"(): boolean
  "matchItemTags"(): boolean
  "matchAllItems"(): boolean
+ "whiteList"(): boolean
+ "matchComponents"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -23753,9 +24244,9 @@ export class $FluidMixerRecipeImpl$Serializer<T extends $FluidMixerRecipe> imple
 
 constructor(arg0: $FluidMixerRecipeImpl$IFactory$$Type<(T)>)
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
 public "codec"(): $MapCodec<(T)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -23793,12 +24284,12 @@ import {$PNCUpgrade, $PNCUpgrade$$Type} from "me.desht.pneumaticcraft.api.upgrad
 import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.dataanchor.data.registry.TrackedDataRegistry"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
-import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$ClientGamePacketListener, $ClientGamePacketListener$$Type} from "net.minecraft.network.protocol.game.ClientGamePacketListener"
+import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$Nameable, $Nameable$$Type} from "net.minecraft.world.Nameable"
 import {$LuaMethodRegistry, $LuaMethodRegistry$$Type} from "me.desht.pneumaticcraft.common.thirdparty.computer_common.LuaMethodRegistry"
-import {$ClientboundBlockEntityDataPacket, $ClientboundBlockEntityDataPacket$$Type} from "net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket"
 import {$Packet, $Packet$$Type} from "net.minecraft.network.protocol.Packet"
+import {$ClientboundBlockEntityDataPacket, $ClientboundBlockEntityDataPacket$$Type} from "net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket"
 import {$IEnergyStorage, $IEnergyStorage$$Type} from "net.neoforged.neoforge.energy.IEnergyStorage"
 import {$IUpgradeHolder, $IUpgradeHolder$$Type} from "me.desht.pneumaticcraft.common.upgrades.IUpgradeHolder"
 import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
@@ -23806,86 +24297,86 @@ import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.
 import {$Connection, $Connection$$Type} from "net.minecraft.network.Connection"
 
 export class $AbstractPneumaticCraftBlockEntity extends $BlockEntity implements $Nameable, $IGUIButtonSensitive, $IDescSynced, $IUpgradeHolder, $ILuaMethodProvider {
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
-constructor(arg0: $BlockEntityType$$Type<(any)>, arg1: $BlockPos$$Type, arg2: $BlockState$$Type)
 constructor(arg0: $BlockEntityType$$Type<(any)>, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: integer)
+constructor(arg0: $BlockEntityType$$Type<(any)>, arg1: $BlockPos$$Type, arg2: $BlockState$$Type)
 
+public "getDisplayName"(): $Component
 public "getPosition"(): $BlockPos
 public "getName"(): $Component
-public "getDisplayName"(): $Component
-public "getSpeedUsageMultiplierFromUpgrades"(): float
-public "setPreserveStateOnBreak"(arg0: boolean): void
-public "shouldPreserveStateOnBreak"(): boolean
-public "getSpeedMultiplierFromUpgrades"(): float
-public "getCurrentRecipeIdSynced"(): string
-public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "onLoad"(): void
 public "saveAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "getUpdateTag"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
-public "onDataPacket"(arg0: $Connection$$Type, arg1: $ClientboundBlockEntityDataPacket$$Type, arg2: $HolderLookup$Provider$$Type): void
-public "getRotation"(): $Direction
 public "getCustomName"(): $Component
 public "setCustomName"(arg0: $Component$$Type): void
 public "setChanged"(): void
 public "getModelData"(): $ModelData
-public "onLoad"(): void
+public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "getItemHandler"(arg0: $Direction$$Type): $IItemHandler
+public "getItemHandler"(): $IItemHandler
+public "getRotation"(): $Direction
+public "writeToPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "readFromPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "onBlockRotated"(): void
+public "onDescUpdate"(): void
+public "onGuiUpdate"(): void
+public "addLuaMethods"(arg0: $LuaMethodRegistry$$Type): void
+public "getUpgrades"(arg0: $PNCUpgrade$$Type): integer
+public "nonNullLevel"(): $Level
+public "getUpdateTag"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
+public "onDataPacket"(arg0: $Connection$$Type, arg1: $ClientboundBlockEntityDataPacket$$Type, arg2: $HolderLookup$Provider$$Type): void
+public "getPeripheralType"(): StringJS
 public "getEnergyHandler"(arg0: $Direction$$Type): $IEnergyStorage
 public "getFluidHandler"(): $IFluidHandler
 public "getFluidHandler"(arg0: $Direction$$Type): $IFluidHandler
-public "getUpdatePacket"(): $Packet<($ClientGamePacketListener)>
+public "getUpgradeHandler"(): $IItemHandler
 public "requestModelDataUpdate"(): void
 public "handleUpdateTag"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "onNeighborTileUpdate"(arg0: $BlockPos$$Type): void
-public "sendDescriptionPacket"(): void
-public "getUpgradeHandler"(): $IItemHandler
-public "hasItemCapability"(): boolean
+public "getUpdatePacket"(): $Packet<($ClientGamePacketListener)>
+public "onUpgradesChanged"(): void
 public "hasFluidCapability"(): boolean
+public "getSpeedUsageMultiplierFromUpgrades"(): float
+public "hasItemCapability"(): boolean
 public "hasEnergyCapability"(): boolean
-public "handleGUIButtonPress"(arg0: string, arg1: boolean, arg2: $ServerPlayer$$Type): void
-public "getMuffledVolume"(arg0: float): float
+public "onNeighborTileUpdate"(arg0: $BlockPos$$Type): void
 public "getContentsToDrop"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
 public "onNeighborBlockUpdate"(arg0: $BlockPos$$Type): void
+public "getMuffledVolume"(arg0: float): float
 public "getDescriptionFields"(): $List<($SyncedField<(any)>)>
 public "shouldSyncField"(arg0: integer): boolean
 public "isGuiUseableByPlayer"(arg0: $Player$$Type): boolean
 public "getCachedNeighbor"(arg0: $Direction$$Type): $BlockEntity
 public "getLuaMethodRegistry"(): $LuaMethodRegistry
-public "getPeripheralType"(): string
-public "onUpgradesChanged"(): void
 public "getUpgradeCache"(): $UpgradeCache
 public "countPlayersUsing"(): integer
-public "readFromPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "nonNullLevel"(): $Level
-public "writeToPacket"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "onDescUpdate"(): void
-public "onGuiUpdate"(): void
-public "addLuaMethods"(arg0: $LuaMethodRegistry$$Type): void
-public "onBlockRotated"(): void
-public "getItemHandler"(): $IItemHandler
-public "getItemHandler"(arg0: $Direction$$Type): $IItemHandler
-public "getUpgrades"(arg0: $PNCUpgrade$$Type): integer
+public "sendDescriptionPacket"(): void
+public "handleGUIButtonPress"(arg0: StringJS, arg1: boolean, arg2: $ServerPlayer$$Type): void
+public "setPreserveStateOnBreak"(arg0: boolean): void
+public "shouldPreserveStateOnBreak"(): boolean
+public "getSpeedMultiplierFromUpgrades"(): float
+public "getCurrentRecipeIdSynced"(): StringJS
 public "hasCustomName"(): boolean
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+get "displayName"(): $Component
 get "position"(): $BlockPos
 get "name"(): $Component
-get "displayName"(): $Component
-get "speedUsageMultiplierFromUpgrades"(): float
-set "preserveStateOnBreak"(value: boolean)
-get "speedMultiplierFromUpgrades"(): float
-get "currentRecipeIdSynced"(): string
-get "rotation"(): $Direction
 get "customName"(): $Component
 set "customName"(value: $Component$$Type)
 get "modelData"(): $ModelData
+get "itemHandler"(): $IItemHandler
+get "rotation"(): $Direction
+get "peripheralType"(): StringJS
 get "fluidHandler"(): $IFluidHandler
-get "updatePacket"(): $Packet<($ClientGamePacketListener)>
 get "upgradeHandler"(): $IItemHandler
+get "updatePacket"(): $Packet<($ClientGamePacketListener)>
+get "speedUsageMultiplierFromUpgrades"(): float
 get "descriptionFields"(): $List<($SyncedField<(any)>)>
 get "luaMethodRegistry"(): $LuaMethodRegistry
-get "peripheralType"(): string
 get "upgradeCache"(): $UpgradeCache
-get "itemHandler"(): $IItemHandler
+set "preserveStateOnBreak"(value: boolean)
+get "speedMultiplierFromUpgrades"(): float
+get "currentRecipeIdSynced"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -23907,9 +24398,9 @@ export class $BasicAirHandler implements $IAirHandler {
 
 constructor(arg0: integer)
 
-public "getVolume"(): integer
 public "deserializeNBT"(arg0: $CompoundTag$$Type): void
 public "serializeNBT"(): $CompoundTag
+public "getVolume"(): integer
 public "getAir"(): integer
 public "addAir"(arg0: integer): void
 public "getBaseVolume"(): integer
@@ -23935,20 +24426,24 @@ declare global {
 export type $BasicAirHandler_ = $BasicAirHandler$$Type;
 }}
 declare module "me.desht.modularrouters.item.smartfilter.RegexFilter" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$IItemMatcher, $IItemMatcher$$Type} from "me.desht.modularrouters.api.matching.IItemMatcher"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$SmartFilterItem, $SmartFilterItem$$Type} from "me.desht.modularrouters.item.smartfilter.SmartFilterItem"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export class $RegexFilter extends $SmartFilterItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "MAX_SIZE": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -23957,12 +24452,13 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "compile"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): $IItemMatcher
 public "getSize"(arg0: $ItemStack$$Type): integer
-public "addExtraInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
-public static "getRegexList"(arg0: $ItemStack$$Type): $List<(string)>
-public static "setRegexList"(arg0: $ItemStack$$Type, arg1: $List$$Type<(string)>): void
+public "compile"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): $IItemMatcher
+public static "getRegexList"(arg0: $ItemStack$$Type): $List<(StringJS)>
+public static "setRegexList"(arg0: $ItemStack$$Type, arg1: $List$$Type<(StringJS)>): void
 public "hasMenu"(): boolean
+public "addExtraInformation"(arg0: $ItemStack$$Type, arg1: $List$$Type<($Component$$Type)>): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -23983,23 +24479,23 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export interface $PNCUpgrade {
 
- "getId"(): $ResourceLocation
- "getItem"(): $Item
  "getItem"(arg0: integer): $Item
- "getItemStack"(arg0: integer): $ItemStack
+ "getItem"(): $Item
+ "getId"(): $ResourceLocation
  "getItemStack"(): $ItemStack
+ "getItemStack"(arg0: integer): $ItemStack
  "getCacheId"(): integer
- "isDependencyLoaded"(): boolean
+ "getMaxTier"(): integer
  "getItemRegistryName"(): $ResourceLocation
  "getItemRegistryName"(arg0: integer): $ResourceLocation
- "getMaxTier"(): integer
-get "id"(): $ResourceLocation
+ "isDependencyLoaded"(): boolean
 get "item"(): $Item
+get "id"(): $ResourceLocation
 get "itemStack"(): $ItemStack
 get "cacheId"(): integer
-get "dependencyLoaded"(): boolean
-get "itemRegistryName"(): $ResourceLocation
 get "maxTier"(): integer
+get "itemRegistryName"(): $ResourceLocation
+get "dependencyLoaded"(): boolean
 }
 
 export namespace $PNCUpgrade {
@@ -24009,17 +24505,17 @@ const probejs$$marker: never
 export class $PNCUpgrade$$Static implements $PNCUpgrade {
 
 
+ "getItem"(arg0: integer): $Item
+ "getItem"(): $Item
 static "from"(arg0: $ItemStack$$Type): $PNCUpgrade
  "getId"(): $ResourceLocation
- "getItem"(): $Item
- "getItem"(arg0: integer): $Item
- "getItemStack"(arg0: integer): $ItemStack
  "getItemStack"(): $ItemStack
+ "getItemStack"(arg0: integer): $ItemStack
  "getCacheId"(): integer
- "isDependencyLoaded"(): boolean
+ "getMaxTier"(): integer
  "getItemRegistryName"(): $ResourceLocation
  "getItemRegistryName"(arg0: integer): $ResourceLocation
- "getMaxTier"(): integer
+ "isDependencyLoaded"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -24086,22 +24582,26 @@ declare global {
 export type $AbstractSmartFilterMenu_ = $AbstractSmartFilterMenu$$Type;
 }}
 declare module "me.desht.modularrouters.item.upgrade.CamouflageUpgrade" {
-import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$ModularRouterBlockEntity, $ModularRouterBlockEntity$$Type} from "me.desht.modularrouters.block.tile.ModularRouterBlockEntity"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
-import {$ModularRouterBlockEntity, $ModularRouterBlockEntity$$Type} from "me.desht.modularrouters.block.tile.ModularRouterBlockEntity"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$UpgradeItem, $UpgradeItem$$Type} from "me.desht.modularrouters.item.upgrade.UpgradeItem"
 
 export class $CamouflageUpgrade extends $UpgradeItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
-static readonly "NBT_STATE_NAME": string
+ "descriptionId": StringJS
+static readonly "NBT_STATE_NAME": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -24112,6 +24612,7 @@ constructor()
 public "getName"(arg0: $ItemStack$$Type): $Component
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
 public "onCompiled"(arg0: $ItemStack$$Type, arg1: $ModularRouterBlockEntity$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -24136,9 +24637,9 @@ export class $AreaTypeSerializer<A extends $AreaType> {
 
 constructor(arg0: $Supplier$$Type<(A)>, arg1: $MapCodec$$Type<(A)>, arg2: $StreamCodec$$Type<($RegistryFriendlyByteBuf$$Type), (A)>)
 
-public static "createType"<A extends $AreaType>(arg0: $Supplier$$Type<(A)>, arg1: $MapCodec$$Type<(A)>, arg2: $StreamCodec$$Type<($RegistryFriendlyByteBuf$$Type), (A)>): $AreaTypeSerializer<(A)>
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (A)>
 public "codec"(): $MapCodec<(A)>
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (A)>
+public static "createType"<A extends $AreaType>(arg0: $Supplier$$Type<(A)>, arg1: $MapCodec$$Type<(A)>, arg2: $StreamCodec$$Type<($RegistryFriendlyByteBuf$$Type), (A)>): $AreaTypeSerializer<(A)>
 public "createDefaultInstance"(): A
 /**
  * This field is a type stub generated by ProbeJS and shall not be used in any sense.
@@ -24175,8 +24676,8 @@ import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -24197,8 +24698,8 @@ import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$AbstractCamouflageBlock, $AbstractCamouflageBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractCamouflageBlock"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
+import {$AbstractCamouflageBlock, $AbstractCamouflageBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractCamouflageBlock"
 import {$ITubeNetworkConnector, $ITubeNetworkConnector$$Type} from "me.desht.pneumaticcraft.api.block.ITubeNetworkConnector"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
@@ -24218,7 +24719,7 @@ static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "BLOCK_ACCESS": $ModelProperty<($BlockGetter)>
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -24243,16 +24744,16 @@ constructor(arg0: $BlockBehaviour$Properties$$Type, arg1: $BiFunction$$Type<($Bl
 public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
 public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "useItemOn"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type, arg2: $Level$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type, arg5: $InteractionHand$$Type, arg6: $BlockHitResult$$Type): $ItemInteractionResult
 public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
 public "isSignalSource"(arg0: $BlockState$$Type): boolean
 public "getSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
-public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
-public static "getFocusedModule"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $Player$$Type): $AbstractTubeModule
-public "canConnectToNetwork"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $Direction$$Type, arg3: $BlockState$$Type): boolean
-public "getUncamouflagedShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
+public "useItemOn"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type, arg2: $Level$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type, arg5: $InteractionHand$$Type, arg6: $BlockHitResult$$Type): $ItemInteractionResult
 public "tryPlaceModule"(arg0: $Player$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type, arg4: $InteractionHand$$Type, arg5: boolean): boolean
 public "onWrenched"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type, arg4: $InteractionHand$$Type): boolean
+public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "getUncamouflagedShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
+public static "getFocusedModule"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $Player$$Type): $AbstractTubeModule
+public "canConnectToNetwork"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $Direction$$Type, arg3: $BlockState$$Type): boolean
 public "canPlaceLiquid"(arg0: $Player$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $Fluid$$Type): boolean
 public "placeLiquid"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $FluidState$$Type): boolean
 public "pickupBlock"(arg0: $Player$$Type, arg1: $LevelAccessor$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type): $ItemStack
@@ -24329,18 +24830,22 @@ declare global {
 export type $BaseItemStackHandler_ = $BaseItemStackHandler$$Type;
 }}
 declare module "me.desht.modularrouters.item.augment.FastPickupAugment" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$AugmentItem, $AugmentItem$$Type} from "me.desht.modularrouters.item.augment.AugmentItem"
 import {$ModuleItem, $ModuleItem$$Type} from "me.desht.modularrouters.item.module.ModuleItem"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $FastPickupAugment extends $AugmentItem {
 static readonly "SLOTS": integer
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -24349,6 +24854,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "getMaxAugments"(arg0: $ModuleItem$$Type): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -24372,15 +24878,15 @@ import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.
 
 export class $RedstoneController$RedstoneMode<T extends ($BlockEntity) & ($IRedstoneControl<(T)>)> {
 
-constructor(arg0: string, arg1: $ResourceLocation$$Type, arg2: $Predicate$$Type<(T)>, arg3: $Predicate$$Type<(T)>)
-constructor(arg0: string, arg1: $ItemStack$$Type, arg2: $Predicate$$Type<(T)>, arg3: $Predicate$$Type<(T)>)
+constructor(arg0: StringJS, arg1: $ResourceLocation$$Type, arg2: $Predicate$$Type<(T)>, arg3: $Predicate$$Type<(T)>)
+constructor(arg0: StringJS, arg1: $ItemStack$$Type, arg2: $Predicate$$Type<(T)>, arg3: $Predicate$$Type<(T)>)
 
-public "getId"(): string
+public "getId"(): StringJS
 public "getTexture"(): $Either<($ItemStack), ($ResourceLocation)>
-public "getTranslationKey"(): string
-get "id"(): string
+public "getTranslationKey"(): StringJS
+get "id"(): StringJS
 get "texture"(): $Either<($ItemStack), ($ResourceLocation)>
-get "translationKey"(): string
+get "translationKey"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -24400,8 +24906,8 @@ import {$ItemContainerContents, $ItemContainerContents$$Type} from "net.minecraf
 
 export interface $IPickaxeUser {
 
- "getPickaxe"(arg0: $ItemStack$$Type): $ItemStack
  "setPickaxe"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): $ItemStack
+ "getPickaxe"(arg0: $ItemStack$$Type): $ItemStack
 }
 
 export namespace $IPickaxeUser {
@@ -24412,8 +24918,8 @@ export class $IPickaxeUser$$Static implements $IPickaxeUser {
 static readonly "DEFAULT_PICK": $ItemContainerContents
 
 
- "getPickaxe"(arg0: $ItemStack$$Type): $ItemStack
  "setPickaxe"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): $ItemStack
+ "getPickaxe"(arg0: $ItemStack$$Type): $ItemStack
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -24436,7 +24942,6 @@ import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $FluidYeastCulture$Source extends $BaseFlowingFluid$Source {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -24446,7 +24951,6 @@ static readonly "LEVEL": $IntegerProperty
 constructor()
 
 public "tick"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $FluidState$$Type): void
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -24472,8 +24976,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -24490,8 +24994,8 @@ import {$ModelProperty, $ModelProperty$$Type} from "net.neoforged.neoforge.clien
 import {$ItemInteractionResult, $ItemInteractionResult$$Type} from "net.minecraft.world.ItemInteractionResult"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
-import {$AbstractCamouflageBlock, $AbstractCamouflageBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractCamouflageBlock"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
+import {$AbstractCamouflageBlock, $AbstractCamouflageBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractCamouflageBlock"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 
@@ -24507,7 +25011,7 @@ static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "BLOCK_ACCESS": $ModelProperty<($BlockGetter)>
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -24530,10 +25034,10 @@ constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "onPlace"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "useItemOn"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type, arg2: $Level$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type, arg5: $InteractionHand$$Type, arg6: $BlockHitResult$$Type): $ItemInteractionResult
 public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
-public static "getCoreBlockEntity"(arg0: $Level$$Type, arg1: $BlockPos$$Type): $Optional<($ElevatorBaseBlockEntity)>
+public "useItemOn"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type, arg2: $Level$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type, arg5: $InteractionHand$$Type, arg6: $BlockHitResult$$Type): $ItemInteractionResult
 public "getUncamouflagedShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
+public static "getCoreBlockEntity"(arg0: $Level$$Type, arg1: $BlockPos$$Type): $Optional<($ElevatorBaseBlockEntity)>
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public static "forBlock"(arg0: $Block$$Type): $IPneumaticWrenchable
@@ -24573,19 +25077,22 @@ export type $HarvestHandlerCropLike$NetherWart_ = $HarvestHandlerCropLike$Nether
 }}
 declare module "me.desht.pneumaticcraft.common.item.minigun.FreezingGunAmmoItem" {
 import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$AbstractGunAmmoItem, $AbstractGunAmmoItem$$Type} from "me.desht.pneumaticcraft.common.item.minigun.AbstractGunAmmoItem"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Minigun, $Minigun$$Type} from "me.desht.pneumaticcraft.common.minigun.Minigun"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 
 export class $FreezingGunAmmoItem extends $AbstractGunAmmoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -24597,6 +25104,7 @@ public "getMaxDamage"(arg0: $ItemStack$$Type): integer
 public "onTargetHit"(arg0: $Minigun$$Type, arg1: $ItemStack$$Type, arg2: $Entity$$Type): integer
 public "onBlockHit"(arg0: $Minigun$$Type, arg1: $ItemStack$$Type, arg2: $BlockHitResult$$Type): integer
 public "getAmmoColor"(arg0: $ItemStack$$Type): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -24616,8 +25124,8 @@ import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$ContextAwarePredicate, $ContextAwarePredicate$$Type} from "net.minecraft.advancements.critereon.ContextAwarePredicate"
 import {$CriterionValidator, $CriterionValidator$$Type} from "net.minecraft.advancements.critereon.CriterionValidator"
-import {$Record, $Record$$Type} from "java.lang.Record"
 import {$SimpleCriterionTrigger$SimpleInstance, $SimpleCriterionTrigger$SimpleInstance$$Type} from "net.minecraft.advancements.critereon.SimpleCriterionTrigger$SimpleInstance"
+import {$Record, $Record$$Type} from "java.lang.Record"
 
 export class $CustomTrigger$Instance extends $Record implements $SimpleCriterionTrigger$SimpleInstance {
 static readonly "CODEC": $Codec<($CustomTrigger$Instance)>
@@ -24625,7 +25133,7 @@ static readonly "CODEC": $Codec<($CustomTrigger$Instance)>
 constructor(id: $ResourceLocation$$Type)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "test"(): boolean
 public "id"(): $ResourceLocation
@@ -24675,9 +25183,9 @@ static readonly "FAHRENHEIT": $TemperatureRange$TemperatureScale
 static readonly "CELSIUS": $TemperatureRange$TemperatureScale
 
 
+public "symbol"(): StringJS
 public static "values"(): ($TemperatureRange$TemperatureScale)[]
-public static "valueOf"(arg0: string): $TemperatureRange$TemperatureScale
-public "symbol"(): string
+public static "valueOf"(arg0: StringJS): $TemperatureRange$TemperatureScale
 public "convertFromKelvin"(arg0: float): float
 }
 /**
@@ -24699,8 +25207,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -24709,8 +25217,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -24727,7 +25235,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -24782,8 +25290,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -24792,8 +25300,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
@@ -24814,7 +25322,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -24836,11 +25344,11 @@ static readonly "UPDATE_CLIENTS": integer
 constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "addSerializableComponents"(arg0: $List$$Type<($DataComponentType$$Type<(any)>)>): void
 public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
 public "isRotatable"(): boolean
+public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
+public "addSerializableComponents"(arg0: $List$$Type<($DataComponentType$$Type<(any)>)>): void
 public "canPlaceLiquid"(arg0: $Player$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $Fluid$$Type): boolean
 public "placeLiquid"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $FluidState$$Type): boolean
 public "pickupBlock"(arg0: $Player$$Type, arg1: $LevelAccessor$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type): $ItemStack
@@ -24896,8 +25404,8 @@ export type $MobAccess_ = $MobAccess$$Type;
 declare module "me.desht.pneumaticcraft.common.recipes.machine.HeatFrameCoolingRecipeImpl$Serializer" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
-import {$HeatFrameCoolingRecipeImpl$IFactory, $HeatFrameCoolingRecipeImpl$IFactory$$Type} from "me.desht.pneumaticcraft.common.recipes.machine.HeatFrameCoolingRecipeImpl$IFactory"
 import {$Recipe, $Recipe$$Type} from "net.minecraft.world.item.crafting.Recipe"
+import {$HeatFrameCoolingRecipeImpl$IFactory, $HeatFrameCoolingRecipeImpl$IFactory$$Type} from "me.desht.pneumaticcraft.common.recipes.machine.HeatFrameCoolingRecipeImpl$IFactory"
 import {$HeatFrameCoolingRecipe, $HeatFrameCoolingRecipe$$Type} from "me.desht.pneumaticcraft.api.crafting.recipe.HeatFrameCoolingRecipe"
 import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.item.crafting.RecipeSerializer"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -24906,9 +25414,9 @@ export class $HeatFrameCoolingRecipeImpl$Serializer<T extends $HeatFrameCoolingR
 
 constructor(arg0: $HeatFrameCoolingRecipeImpl$IFactory$$Type<(T)>)
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
 public "codec"(): $MapCodec<(T)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -24929,8 +25437,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -24939,8 +25447,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PneumaticCraftEntityBlock, $PneumaticCraftEntityBlock$$Type} from "me.desht.pneumaticcraft.common.block.PneumaticCraftEntityBlock"
 import {$IPneumaticWrenchable, $IPneumaticWrenchable$$Type} from "me.desht.pneumaticcraft.api.block.IPneumaticWrenchable"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$AbstractPneumaticCraftBlock, $AbstractPneumaticCraftBlock$$Type} from "me.desht.pneumaticcraft.common.block.AbstractPneumaticCraftBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -24957,7 +25465,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer

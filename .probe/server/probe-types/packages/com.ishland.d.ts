@@ -6,7 +6,7 @@ export class $KeyStatusPair<K, V, Ctx> {
 constructor(key: K, status: $ItemStatus$$Type<(K), (V), (Ctx)>)
 
 public "equals"(obj: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "key"(): K
 public "status"(): $ItemStatus<(K), (V), (Ctx)>
@@ -84,8 +84,8 @@ export type $ITryFlushable_ = $ITryFlushable$$Type;
 }}
 declare module "com.ishland.flowsched.executor.Task" {
 import {$LockToken, $LockToken$$Type} from "com.ishland.flowsched.executor.LockToken"
-import {$Runnable, $Runnable$$Type} from "java.lang.Runnable"
 import {$Throwable, $Throwable$$Type} from "java.lang.Throwable"
+import {$Runnable, $Runnable$$Type} from "java.lang.Runnable"
 
 export interface $Task {
 
@@ -118,12 +118,43 @@ export type $Task$$Type = ($Task);
 declare global {
 export type $Task_ = $Task$$Type;
 }}
+declare module "com.ishland.c2me.base.mixin.access.IRegionBasedStorage" {
+import {$RegionFile, $RegionFile$$Type} from "net.minecraft.world.level.chunk.storage.RegionFile"
+import {$ChunkPos, $ChunkPos$$Type} from "net.minecraft.world.level.ChunkPos"
+
+export interface $IRegionBasedStorage {
+
+ "invokeGetRegionFile"(arg0: $ChunkPos$$Type): $RegionFile
+
+(arg0: $ChunkPos): $RegionFile$$Type
+}
+
+export namespace $IRegionBasedStorage {
+const probejs$$marker: never
+}
+export class $IRegionBasedStorage$$Static implements $IRegionBasedStorage {
+
+
+ "invokeGetRegionFile"(arg0: $ChunkPos$$Type): $RegionFile
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $IRegionBasedStorage$$Type = ((arg0: $ChunkPos) => $RegionFile$$Type);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $IRegionBasedStorage_ = $IRegionBasedStorage$$Type;
+}}
 declare module "com.ishland.c2me.base.mixin.access.IThreadedAnvilChunkStorage" {
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$Long2ObjectLinkedOpenHashMap, $Long2ObjectLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap"
-import {$ChunkAccess, $ChunkAccess$$Type} from "net.minecraft.world.level.chunk.ChunkAccess"
 import {$ThreadedLevelLightEngine, $ThreadedLevelLightEngine$$Type} from "net.minecraft.server.level.ThreadedLevelLightEngine"
+import {$ChunkAccess, $ChunkAccess$$Type} from "net.minecraft.world.level.chunk.ChunkAccess"
 import {$WorldGenContext, $WorldGenContext$$Type} from "net.minecraft.world.level.chunk.status.WorldGenContext"
 import {$Runnable, $Runnable$$Type} from "java.lang.Runnable"
 import {$ChunkPos, $ChunkPos$$Type} from "net.minecraft.world.level.ChunkPos"
@@ -140,9 +171,15 @@ import {$PoiManager, $PoiManager$$Type} from "net.minecraft.world.entity.ai.vill
 
 export interface $IThreadedAnvilChunkStorage {
 
+ "getWorld"(): $ServerLevel
  "getGenerationContext"(): $WorldGenContext
  "getMainThreadExecutor"(): $BlockableEventLoop<($Runnable)>
- "getWorld"(): $ServerLevel
+ "invokeSave"(arg0: $ChunkAccess$$Type): boolean
+ "invokeUpdateHolderMap"(): boolean
+ "getLightingProvider"(): $ThreadedLevelLightEngine
+ "invokeSendToPlayers"(arg0: $LevelChunk$$Type): void
+ "invokeGetChunkHolder"(arg0: long): $ChunkHolder
+ "getCurrentChunkHolders"(): $Long2ObjectLinkedOpenHashMap<($ChunkHolder)>
  "getWorldGenerationProgressListener"(): $ChunkProgressListener
  "getTotalChunksLoadedCount"(): $AtomicInteger
  "invokeOnChunkStatusChange"(arg0: $ChunkPos$$Type, arg1: $FullChunkStatus$$Type): void
@@ -150,22 +187,16 @@ export interface $IThreadedAnvilChunkStorage {
  "setChunkHolderListDirty"(arg0: boolean): void
  "invokeGetUpdatedChunkNbt"(arg0: $ChunkPos$$Type): $CompletableFuture<($Optional<($CompoundTag)>)>
  "getPointOfInterestStorage"(): $PoiManager
- "invokeSave"(arg0: $ChunkAccess$$Type): boolean
- "invokeUpdateHolderMap"(): boolean
- "getLightingProvider"(): $ThreadedLevelLightEngine
- "invokeSendToPlayers"(arg0: $LevelChunk$$Type): void
- "invokeGetChunkHolder"(arg0: long): $ChunkHolder
- "getCurrentChunkHolders"(): $Long2ObjectLinkedOpenHashMap<($ChunkHolder)>
+get "world"(): $ServerLevel
 get "generationContext"(): $WorldGenContext
 get "mainThreadExecutor"(): $BlockableEventLoop<($Runnable)>
-get "world"(): $ServerLevel
+get "lightingProvider"(): $ThreadedLevelLightEngine
+get "currentChunkHolders"(): $Long2ObjectLinkedOpenHashMap<($ChunkHolder)>
 get "worldGenerationProgressListener"(): $ChunkProgressListener
 get "totalChunksLoadedCount"(): $AtomicInteger
 get "chunkToNextSaveTimeMs"(): $Long2LongMap
 set "chunkHolderListDirty"(value: boolean)
 get "pointOfInterestStorage"(): $PoiManager
-get "lightingProvider"(): $ThreadedLevelLightEngine
-get "currentChunkHolders"(): $Long2ObjectLinkedOpenHashMap<($ChunkHolder)>
 }
 
 export namespace $IThreadedAnvilChunkStorage {
@@ -174,9 +205,15 @@ const probejs$$marker: never
 export class $IThreadedAnvilChunkStorage$$Static implements $IThreadedAnvilChunkStorage {
 
 
+ "getWorld"(): $ServerLevel
  "getGenerationContext"(): $WorldGenContext
  "getMainThreadExecutor"(): $BlockableEventLoop<($Runnable)>
- "getWorld"(): $ServerLevel
+ "invokeSave"(arg0: $ChunkAccess$$Type): boolean
+ "invokeUpdateHolderMap"(): boolean
+ "getLightingProvider"(): $ThreadedLevelLightEngine
+ "invokeSendToPlayers"(arg0: $LevelChunk$$Type): void
+ "invokeGetChunkHolder"(arg0: long): $ChunkHolder
+ "getCurrentChunkHolders"(): $Long2ObjectLinkedOpenHashMap<($ChunkHolder)>
  "getWorldGenerationProgressListener"(): $ChunkProgressListener
  "getTotalChunksLoadedCount"(): $AtomicInteger
  "invokeOnChunkStatusChange"(arg0: $ChunkPos$$Type, arg1: $FullChunkStatus$$Type): void
@@ -184,12 +221,6 @@ export class $IThreadedAnvilChunkStorage$$Static implements $IThreadedAnvilChunk
  "setChunkHolderListDirty"(arg0: boolean): void
  "invokeGetUpdatedChunkNbt"(arg0: $ChunkPos$$Type): $CompletableFuture<($Optional<($CompoundTag)>)>
  "getPointOfInterestStorage"(): $PoiManager
- "invokeSave"(arg0: $ChunkAccess$$Type): boolean
- "invokeUpdateHolderMap"(): boolean
- "getLightingProvider"(): $ThreadedLevelLightEngine
- "invokeSendToPlayers"(arg0: $LevelChunk$$Type): void
- "invokeGetChunkHolder"(arg0: long): $ChunkHolder
- "getCurrentChunkHolders"(): $Long2ObjectLinkedOpenHashMap<($ChunkHolder)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -207,14 +238,14 @@ declare module "com.ishland.c2me.base.mixin.access.IChunkNoiseSampler" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $IChunkNoiseSampler {
 
- "getStartBlockX"(): integer
- "getStartBlockY"(): integer
- "getStartBlockZ"(): integer
+ "getCellBlockZ"(): integer
  "getStartBiomeX"(): integer
  "getStartBiomeZ"(): integer
- "getCellBlockX"(): integer
  "getCellBlockY"(): integer
- "getCellBlockZ"(): integer
+ "getStartBlockZ"(): integer
+ "getStartBlockY"(): integer
+ "getCellBlockX"(): integer
+ "getStartBlockX"(): integer
  "getIsSamplingForCaches"(): boolean
  "getHorizontalCellCount"(): integer
  "getVerticalCellCount"(): integer
@@ -222,14 +253,14 @@ export interface $IChunkNoiseSampler {
  "getHorizontalCellBlockCount"(): integer
  "getVerticalCellBlockCount"(): integer
  "getIsInInterpolationLoop"(): boolean
-get "startBlockX"(): integer
-get "startBlockY"(): integer
-get "startBlockZ"(): integer
+get "cellBlockZ"(): integer
 get "startBiomeX"(): integer
 get "startBiomeZ"(): integer
-get "cellBlockX"(): integer
 get "cellBlockY"(): integer
-get "cellBlockZ"(): integer
+get "startBlockZ"(): integer
+get "startBlockY"(): integer
+get "cellBlockX"(): integer
+get "startBlockX"(): integer
 get "isSamplingForCaches"(): boolean
 get "horizontalCellCount"(): integer
 get "verticalCellCount"(): integer
@@ -245,14 +276,14 @@ const probejs$$marker: never
 export class $IChunkNoiseSampler$$Static implements $IChunkNoiseSampler {
 
 
- "getStartBlockX"(): integer
- "getStartBlockY"(): integer
- "getStartBlockZ"(): integer
+ "getCellBlockZ"(): integer
  "getStartBiomeX"(): integer
  "getStartBiomeZ"(): integer
- "getCellBlockX"(): integer
  "getCellBlockY"(): integer
- "getCellBlockZ"(): integer
+ "getStartBlockZ"(): integer
+ "getStartBlockY"(): integer
+ "getCellBlockX"(): integer
+ "getStartBlockX"(): integer
  "getIsSamplingForCaches"(): boolean
  "getHorizontalCellCount"(): integer
  "getVerticalCellCount"(): integer
@@ -281,8 +312,8 @@ import {$SchedulingManager, $SchedulingManager$$Type} from "com.ishland.c2me.bas
 import {$StaticCache2D, $StaticCache2D$$Type} from "net.minecraft.util.StaticCache2D"
 import {$ChunkPos, $ChunkPos$$Type} from "net.minecraft.world.level.ChunkPos"
 import {$NewChunkHolderVanillaInterface, $NewChunkHolderVanillaInterface$$Type} from "com.ishland.c2me.rewrites.chunksystem.common.NewChunkHolderVanillaInterface"
-import {$GenerationChunkHolder, $GenerationChunkHolder$$Type} from "net.minecraft.server.level.GenerationChunkHolder"
 import {$ChunkMap, $ChunkMap$$Type} from "net.minecraft.server.level.ChunkMap"
+import {$GenerationChunkHolder, $GenerationChunkHolder$$Type} from "net.minecraft.server.level.GenerationChunkHolder"
 import {$Record, $Record$$Type} from "java.lang.Record"
 
 export class $ChunkLoadingContext extends $Record {
@@ -290,11 +321,11 @@ export class $ChunkLoadingContext extends $Record {
 constructor(holder: $ItemHolder$$Type<($ChunkPos$$Type), ($ChunkState$$Type), ($ChunkLoadingContext$$Type), ($NewChunkHolderVanillaInterface$$Type)>, tacs: $ChunkMap$$Type, schedulingManager: $SchedulingManager$$Type, chunks: $StaticCache2D$$Type<($GenerationChunkHolder$$Type)>, dependencies: ($KeyStatusPair$$Type<($ChunkPos$$Type), ($ChunkState$$Type), ($ChunkLoadingContext$$Type)>)[])
 
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "holder"(): $ItemHolder<($ChunkPos), ($ChunkState), ($ChunkLoadingContext), ($NewChunkHolderVanillaInterface)>
-public "dependencies"(): ($KeyStatusPair<($ChunkPos), ($ChunkState), ($ChunkLoadingContext)>)[]
 public "chunks"(): $StaticCache2D<($GenerationChunkHolder)>
+public "dependencies"(): ($KeyStatusPair<($ChunkPos), ($ChunkState), ($ChunkLoadingContext)>)[]
 public "tacs"(): $ChunkMap
 public "schedulingManager"(): $SchedulingManager
 }
@@ -302,7 +333,7 @@ public "schedulingManager"(): $SchedulingManager
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ChunkLoadingContext$$Type = ({"chunks"?: $StaticCache2D$$Type<($GenerationChunkHolder$$Type)>, "tacs"?: $ChunkMap$$Type, "dependencies"?: ($KeyStatusPair$$Type<($ChunkPos$$Type), ($ChunkState$$Type), ($ChunkLoadingContext$$Type)>)[], "holder"?: $ItemHolder$$Type<($ChunkPos$$Type), ($ChunkState$$Type), ($ChunkLoadingContext$$Type), ($NewChunkHolderVanillaInterface$$Type)>, "schedulingManager"?: $SchedulingManager$$Type}) | ([chunks?: $StaticCache2D$$Type<($GenerationChunkHolder$$Type)>, tacs?: $ChunkMap$$Type, dependencies?: ($KeyStatusPair$$Type<($ChunkPos$$Type), ($ChunkState$$Type), ($ChunkLoadingContext$$Type)>)[], holder?: $ItemHolder$$Type<($ChunkPos$$Type), ($ChunkState$$Type), ($ChunkLoadingContext$$Type), ($NewChunkHolderVanillaInterface$$Type)>, schedulingManager?: $SchedulingManager$$Type]);
+export type $ChunkLoadingContext$$Type = ({"schedulingManager"?: $SchedulingManager$$Type, "chunks"?: $StaticCache2D$$Type<($GenerationChunkHolder$$Type)>, "tacs"?: $ChunkMap$$Type, "dependencies"?: ($KeyStatusPair$$Type<($ChunkPos$$Type), ($ChunkState$$Type), ($ChunkLoadingContext$$Type)>)[], "holder"?: $ItemHolder$$Type<($ChunkPos$$Type), ($ChunkState$$Type), ($ChunkLoadingContext$$Type), ($NewChunkHolderVanillaInterface$$Type)>}) | ([schedulingManager?: $SchedulingManager$$Type, chunks?: $StaticCache2D$$Type<($GenerationChunkHolder$$Type)>, tacs?: $ChunkMap$$Type, dependencies?: ($KeyStatusPair$$Type<($ChunkPos$$Type), ($ChunkState$$Type), ($ChunkLoadingContext$$Type)>)[], holder?: $ItemHolder$$Type<($ChunkPos$$Type), ($ChunkState$$Type), ($ChunkLoadingContext$$Type), ($NewChunkHolderVanillaInterface$$Type)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -316,27 +347,27 @@ import {$PerlinNoise, $PerlinNoise$$Type} from "net.minecraft.world.level.levelg
 export interface $IInterpolatedNoiseSampler {
 
  "getMaxValue"(): double
- "getLowerInterpolatedNoise"(): $PerlinNoise
- "getUpperInterpolatedNoise"(): $PerlinNoise
- "getSmearScaleMultiplier"(): double
- "getInterpolationNoise"(): $PerlinNoise
- "getScaledXzScale"(): double
- "getScaledYScale"(): double
  "getYScale"(): double
  "getXzFactor"(): double
  "getYFactor"(): double
  "getXzScale"(): double
+ "getInterpolationNoise"(): $PerlinNoise
+ "getScaledXzScale"(): double
+ "getScaledYScale"(): double
+ "getLowerInterpolatedNoise"(): $PerlinNoise
+ "getUpperInterpolatedNoise"(): $PerlinNoise
+ "getSmearScaleMultiplier"(): double
 get "maxValue"(): double
-get "lowerInterpolatedNoise"(): $PerlinNoise
-get "upperInterpolatedNoise"(): $PerlinNoise
-get "smearScaleMultiplier"(): double
-get "interpolationNoise"(): $PerlinNoise
-get "scaledXzScale"(): double
-get "scaledYScale"(): double
 get "yScale"(): double
 get "xzFactor"(): double
 get "yFactor"(): double
 get "xzScale"(): double
+get "interpolationNoise"(): $PerlinNoise
+get "scaledXzScale"(): double
+get "scaledYScale"(): double
+get "lowerInterpolatedNoise"(): $PerlinNoise
+get "upperInterpolatedNoise"(): $PerlinNoise
+get "smearScaleMultiplier"(): double
 }
 
 export namespace $IInterpolatedNoiseSampler {
@@ -346,16 +377,16 @@ export class $IInterpolatedNoiseSampler$$Static implements $IInterpolatedNoiseSa
 
 
  "getMaxValue"(): double
- "getLowerInterpolatedNoise"(): $PerlinNoise
- "getUpperInterpolatedNoise"(): $PerlinNoise
- "getSmearScaleMultiplier"(): double
- "getInterpolationNoise"(): $PerlinNoise
- "getScaledXzScale"(): double
- "getScaledYScale"(): double
  "getYScale"(): double
  "getXzFactor"(): double
  "getYFactor"(): double
  "getXzScale"(): double
+ "getInterpolationNoise"(): $PerlinNoise
+ "getScaledXzScale"(): double
+ "getScaledYScale"(): double
+ "getLowerInterpolatedNoise"(): $PerlinNoise
+ "getUpperInterpolatedNoise"(): $PerlinNoise
+ "getSmearScaleMultiplier"(): double
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -379,9 +410,9 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 
 export interface $IFlowableFluid {
 
+ "invokeReceivesFlow"(arg0: $Direction$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $BlockPos$$Type, arg5: $BlockState$$Type): boolean
  "invokeGetLevelDecreasePerBlock"(arg0: $LevelReader$$Type): integer
  "invokeIsMatchingAndStill"(arg0: $FluidState$$Type): boolean
- "invokeReceivesFlow"(arg0: $Direction$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $BlockPos$$Type, arg5: $BlockState$$Type): boolean
 }
 
 export namespace $IFlowableFluid {
@@ -390,9 +421,9 @@ const probejs$$marker: never
 export class $IFlowableFluid$$Static implements $IFlowableFluid {
 
 
+ "invokeReceivesFlow"(arg0: $Direction$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $BlockPos$$Type, arg5: $BlockState$$Type): boolean
  "invokeGetLevelDecreasePerBlock"(arg0: $LevelReader$$Type): integer
  "invokeIsMatchingAndStill"(arg0: $FluidState$$Type): boolean
- "invokeReceivesFlow"(arg0: $Direction$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $BlockPos$$Type, arg5: $BlockState$$Type): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -447,20 +478,21 @@ import {$Record, $Record$$Type} from "java.lang.Record"
 
 export class $ChunkState extends $Record {
 
-constructor(chunk: $ChunkAccess$$Type, protoChunk: $ProtoChunk$$Type, reachedStatus: $ChunkStatus$$Type)
+constructor(chunk: $ChunkAccess$$Type, protoChunk: $ProtoChunk$$Type, reachedStatus: $ChunkStatus$$Type, wasFullChunk: boolean)
 
 public "chunk"(): $ChunkAccess
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "reachedStatus"(): $ChunkStatus
 public "protoChunk"(): $ProtoChunk
+public "reachedStatus"(): $ChunkStatus
+public "wasFullChunk"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ChunkState$$Type = ({"protoChunk"?: $ProtoChunk$$Type, "reachedStatus"?: $ChunkStatus$$Type, "chunk"?: $ChunkAccess$$Type}) | ([protoChunk?: $ProtoChunk$$Type, reachedStatus?: $ChunkStatus$$Type, chunk?: $ChunkAccess$$Type]);
+export type $ChunkState$$Type = ({"reachedStatus"?: $ChunkStatus$$Type, "wasFullChunk"?: boolean, "chunk"?: $ChunkAccess$$Type, "protoChunk"?: $ProtoChunk$$Type}) | ([reachedStatus?: $ChunkStatus$$Type, wasFullChunk?: boolean, chunk?: $ChunkAccess$$Type, protoChunk?: $ProtoChunk$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -479,12 +511,12 @@ static readonly "NO_OP": $Runnable
 
 
 public "getHolder"(key: K): $ItemHolder<(K), (V), (Ctx), (UserData)>
-public "addTicket"(key: K, targetStatus: $ItemStatus$$Type<(K), (V), (Ctx)>, callback: $Runnable$$Type): $ItemHolder<(K), (V), (Ctx), (UserData)>
 public "addTicket"(key: K, source: any, targetStatus: $ItemStatus$$Type<(K), (V), (Ctx)>, callback: $Runnable$$Type): $ItemHolder<(K), (V), (Ctx), (UserData)>
 public "addTicket"(key: K, type: $ItemTicket$TicketType$$Type, source: any, targetStatus: $ItemStatus$$Type<(K), (V), (Ctx)>, callback: $Runnable$$Type): $ItemHolder<(K), (V), (Ctx), (UserData)>
-public "removeTicket"(key: K, type: $ItemTicket$TicketType$$Type, source: any, targetStatus: $ItemStatus$$Type<(K), (V), (Ctx)>): void
-public "removeTicket"(key: K, targetStatus: $ItemStatus$$Type<(K), (V), (Ctx)>): void
+public "addTicket"(key: K, targetStatus: $ItemStatus$$Type<(K), (V), (Ctx)>, callback: $Runnable$$Type): $ItemHolder<(K), (V), (Ctx), (UserData)>
 public "itemCount"(): integer
+public "removeTicket"(key: K, targetStatus: $ItemStatus$$Type<(K), (V), (Ctx)>): void
+public "removeTicket"(key: K, type: $ItemTicket$TicketType$$Type, source: any, targetStatus: $ItemStatus$$Type<(K), (V), (Ctx)>): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -587,13 +619,13 @@ declare global {
 export type $IPOIUnloading_ = $IPOIUnloading$$Type;
 }}
 declare module "com.ishland.c2me.rewrites.chunksystem.common.NewChunkStatus" {
-import {$Cancellable, $Cancellable$$Type} from "com.ishland.flowsched.scheduler.Cancellable"
 import {$KeyStatusPair, $KeyStatusPair$$Type} from "com.ishland.flowsched.scheduler.KeyStatusPair"
 import {$ItemStatus, $ItemStatus$$Type} from "com.ishland.flowsched.scheduler.ItemStatus"
+import {$Cancellable, $Cancellable$$Type} from "com.ishland.flowsched.scheduler.Cancellable"
 import {$ChunkLoadingContext, $ChunkLoadingContext$$Type} from "com.ishland.c2me.rewrites.chunksystem.common.ChunkLoadingContext"
-import {$CompletionStage, $CompletionStage$$Type} from "java.util.concurrent.CompletionStage"
 import {$ChunkState, $ChunkState$$Type} from "com.ishland.c2me.rewrites.chunksystem.common.ChunkState"
 import {$ItemHolder, $ItemHolder$$Type} from "com.ishland.flowsched.scheduler.ItemHolder"
+import {$Completable, $Completable$$Type} from "io.reactivex.rxjava3.core.Completable"
 import {$ChunkPos, $ChunkPos$$Type} from "net.minecraft.world.level.ChunkPos"
 import {$ChunkStatus, $ChunkStatus$$Type} from "net.minecraft.world.level.chunk.status.ChunkStatus"
 import {$FullChunkStatus, $FullChunkStatus$$Type} from "net.minecraft.server.level.FullChunkStatus"
@@ -612,20 +644,22 @@ static readonly "BLOCK_TICKING": $NewChunkStatus
 
 public "ordinal"(): integer
 public "getDependencies"(holder: $ItemHolder$$Type<($ChunkPos$$Type), ($ChunkState$$Type), ($ChunkLoadingContext$$Type), (any)>): ($KeyStatusPair<($ChunkPos), ($ChunkState), ($ChunkLoadingContext)>)[]
-public "getEffectiveVanillaStatus"(): $ChunkStatus
-public "getAllStatuses"(): ($ItemStatus<($ChunkPos), ($ChunkState), ($ChunkLoadingContext)>)[]
 public "toVanillaLevel"(): integer
+public "getAllStatuses"(): ($ItemStatus<($ChunkPos), ($ChunkState), ($ChunkLoadingContext)>)[]
 public "toChunkLevelType"(): $FullChunkStatus
 public static "fromVanillaLevel"(level: integer): $NewChunkStatus
 public static "fromVanillaStatus"(status: $ChunkStatus$$Type): $NewChunkStatus
+public "getEffectiveVanillaStatus"(): $ChunkStatus
 public "getNext"(): $ItemStatus<($ChunkPos), ($ChunkState), ($ChunkLoadingContext)>
 public "getPrev"(): $ItemStatus<($ChunkPos), ($ChunkState), ($ChunkLoadingContext)>
-public "upgradeToThis"(arg0: $ChunkLoadingContext$$Type, arg1: $Cancellable$$Type): $CompletionStage<(void)>
-public "downgradeFromThis"(arg0: $ChunkLoadingContext$$Type, arg1: $Cancellable$$Type): $CompletionStage<(void)>
+public "upgradeToThis"(arg0: $ChunkLoadingContext$$Type, arg1: $Cancellable$$Type): $Completable
+public "postUpgradeToThis"(arg0: $ChunkLoadingContext$$Type): $Completable
+public "preDowngradeFromThis"(arg0: $ChunkLoadingContext$$Type, arg1: $Cancellable$$Type): $Completable
+public "downgradeFromThis"(arg0: $ChunkLoadingContext$$Type, arg1: $Cancellable$$Type): $Completable
 public "getDependenciesToAdd"(holder: $ItemHolder$$Type<($ChunkPos$$Type), ($ChunkState$$Type), ($ChunkLoadingContext$$Type), (any)>): ($KeyStatusPair<($ChunkPos), ($ChunkState), ($ChunkLoadingContext)>)[]
 public "getDependenciesToRemove"(holder: $ItemHolder$$Type<($ChunkPos$$Type), ($ChunkState$$Type), ($ChunkLoadingContext$$Type), (any)>): ($KeyStatusPair<($ChunkPos), ($ChunkState), ($ChunkLoadingContext)>)[]
-get "effectiveVanillaStatus"(): $ChunkStatus
 get "allStatuses"(): ($ItemStatus<($ChunkPos), ($ChunkState), ($ChunkLoadingContext)>)[]
+get "effectiveVanillaStatus"(): $ChunkStatus
 get "next"(): $ItemStatus<($ChunkPos), ($ChunkState), ($ChunkLoadingContext)>
 get "prev"(): $ItemStatus<($ChunkPos), ($ChunkState), ($ChunkLoadingContext)>
 }
@@ -651,17 +685,17 @@ import {$StructurePieceType, $StructurePieceType$$Type} from "net.minecraft.worl
 export interface $IStructurePiece {
 
  "getType"(): $StructurePieceType
- "getRotation"(): $Rotation
  "getBoundingBox"(): $BoundingBox
+ "getRotation"(): $Rotation
  "getMirror"(): $Mirror
- "getFacing"(): $Direction
  "getChainLength"(): integer
+ "getFacing"(): $Direction
 get "type"(): $StructurePieceType
-get "rotation"(): $Rotation
 get "boundingBox"(): $BoundingBox
+get "rotation"(): $Rotation
 get "mirror"(): $Mirror
-get "facing"(): $Direction
 get "chainLength"(): integer
+get "facing"(): $Direction
 }
 
 export namespace $IStructurePiece {
@@ -671,11 +705,11 @@ export class $IStructurePiece$$Static implements $IStructurePiece {
 
 
  "getType"(): $StructurePieceType
- "getRotation"(): $Rotation
  "getBoundingBox"(): $BoundingBox
+ "getRotation"(): $Rotation
  "getMirror"(): $Mirror
- "getFacing"(): $Direction
  "getChainLength"(): integer
+ "getFacing"(): $Direction
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -725,9 +759,9 @@ import {$LightLayer, $LightLayer$$Type} from "net.minecraft.world.level.LightLay
 
 export interface $DuckChunkHolder {
 
- "c2me$undirtyLight"(): void
  "c2me$queueLightSectionDirty"(arg0: $LightLayer$$Type, arg1: integer): void
  "c2me$shouldScheduleUndirty"(): boolean
+ "c2me$undirtyLight"(): void
 }
 
 export namespace $DuckChunkHolder {
@@ -736,9 +770,9 @@ const probejs$$marker: never
 export class $DuckChunkHolder$$Static implements $DuckChunkHolder {
 
 
- "c2me$undirtyLight"(): void
  "c2me$queueLightSectionDirty"(arg0: $LightLayer$$Type, arg1: integer): void
  "c2me$shouldScheduleUndirty"(): boolean
+ "c2me$undirtyLight"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -760,15 +794,15 @@ import {$ChunkPos, $ChunkPos$$Type} from "net.minecraft.world.level.ChunkPos"
 
 export interface $ProtoChunkExtension {
 
+ "getInitialMainThreadComputeFuture"(): $CompletableFuture<(void)>
+ "setInitialMainThreadComputeFuture"(arg0: $CompletableFuture$$Type<(void)>): void
  "setBlendingInfo"(arg0: $ChunkPos$$Type, arg1: $List$$Type<($BitSet$$Type)>): void
  "getNeedBlending"(): boolean
  "setBlendingComputeFuture"(arg0: $CompletableFuture$$Type<(void)>): void
- "setInitialMainThreadComputeFuture"(arg0: $CompletableFuture$$Type<(void)>): void
- "getInitialMainThreadComputeFuture"(): $CompletableFuture<(void)>
+get "initialMainThreadComputeFuture"(): $CompletableFuture<(void)>
+set "initialMainThreadComputeFuture"(value: $CompletableFuture$$Type<(void)>)
 get "needBlending"(): boolean
 set "blendingComputeFuture"(value: $CompletableFuture$$Type<(void)>)
-set "initialMainThreadComputeFuture"(value: $CompletableFuture$$Type<(void)>)
-get "initialMainThreadComputeFuture"(): $CompletableFuture<(void)>
 }
 
 export namespace $ProtoChunkExtension {
@@ -777,11 +811,11 @@ const probejs$$marker: never
 export class $ProtoChunkExtension$$Static implements $ProtoChunkExtension {
 
 
+ "getInitialMainThreadComputeFuture"(): $CompletableFuture<(void)>
+ "setInitialMainThreadComputeFuture"(arg0: $CompletableFuture$$Type<(void)>): void
  "setBlendingInfo"(arg0: $ChunkPos$$Type, arg1: $List$$Type<($BitSet$$Type)>): void
  "getNeedBlending"(): boolean
  "setBlendingComputeFuture"(arg0: $CompletableFuture$$Type<(void)>): void
- "setInitialMainThreadComputeFuture"(arg0: $CompletableFuture$$Type<(void)>): void
- "getInitialMainThreadComputeFuture"(): $CompletableFuture<(void)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -946,8 +980,8 @@ export type $ChunkTicketManagerExtension_ = $ChunkTicketManagerExtension$$Type;
 declare module "com.ishland.c2me.base.mixin.access.IChunkTickScheduler" {
 import {$SerializableTickContainer, $SerializableTickContainer$$Type} from "net.minecraft.world.ticks.SerializableTickContainer"
 import {$Queue, $Queue$$Type} from "java.util.Queue"
-import {$Function, $Function$$Type} from "java.util.function.Function"
 import {$List, $List$$Type} from "java.util.List"
+import {$Function, $Function$$Type} from "java.util.function.Function"
 import {$Tag, $Tag$$Type} from "net.minecraft.nbt.Tag"
 import {$SavedTick, $SavedTick$$Type} from "net.minecraft.world.ticks.SavedTick"
 import {$ScheduledTick, $ScheduledTick$$Type} from "net.minecraft.world.ticks.ScheduledTick"
@@ -956,7 +990,7 @@ export interface $IChunkTickScheduler<T> extends $SerializableTickContainer<(T)>
 
  "getTicks"(): $List<($SavedTick<(T)>)>
  "getTickQueue"(): $Queue<($ScheduledTick<(T)>)>
- "save"(arg0: long, arg1: $Function$$Type<(T), (string)>): $Tag
+ "save"(arg0: long, arg1: $Function$$Type<(T), (StringJS)>): $Tag
 get "ticks"(): $List<($SavedTick<(T)>)>
 get "tickQueue"(): $Queue<($ScheduledTick<(T)>)>
 }
@@ -969,7 +1003,7 @@ export class $IChunkTickScheduler$$Static<T> implements $IChunkTickScheduler {
 
  "getTicks"(): $List<($SavedTick<(T)>)>
  "getTickQueue"(): $Queue<($ScheduledTick<(T)>)>
- "save"(arg0: long, arg1: $Function$$Type<(T), (string)>): $Tag
+ "save"(arg0: long, arg1: $Function$$Type<(T), (StringJS)>): $Tag
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1109,12 +1143,12 @@ export type $IBlendingData_ = $IBlendingData$$Type;
 }}
 declare module "com.ishland.c2me.rewrites.chunksystem.common.NewChunkHolderVanillaInterface" {
 import {$LevelLightEngine, $LevelLightEngine$$Type} from "net.minecraft.world.level.lighting.LevelLightEngine"
-import {$LightLayer, $LightLayer$$Type} from "net.minecraft.world.level.LightLayer"
 import {$LevelHeightAccessor, $LevelHeightAccessor$$Type} from "net.minecraft.world.level.LevelHeightAccessor"
+import {$LightLayer, $LightLayer$$Type} from "net.minecraft.world.level.LightLayer"
 import {$ChunkLoadingContext, $ChunkLoadingContext$$Type} from "com.ishland.c2me.rewrites.chunksystem.common.ChunkLoadingContext"
 import {$ChunkResult, $ChunkResult$$Type} from "net.minecraft.server.level.ChunkResult"
-import {$ChunkState, $ChunkState$$Type} from "com.ishland.c2me.rewrites.chunksystem.common.ChunkState"
 import {$Pair, $Pair$$Type} from "com.mojang.datafixers.util.Pair"
+import {$ChunkState, $ChunkState$$Type} from "com.ishland.c2me.rewrites.chunksystem.common.ChunkState"
 import {$List, $List$$Type} from "java.util.List"
 import {$ItemHolder, $ItemHolder$$Type} from "com.ishland.flowsched.scheduler.ItemHolder"
 import {$ImposterProtoChunk, $ImposterProtoChunk$$Type} from "net.minecraft.world.level.chunk.ImposterProtoChunk"
@@ -1141,57 +1175,57 @@ static readonly "UNLOADED_CHUNK_FUTURE": $CompletableFuture<($ChunkResult<($Chun
 
 constructor(chunkSystem: $TheChunkSystem$$Type, newHolder: $ItemHolder$$Type<($ChunkPos$$Type), ($ChunkState$$Type), ($ChunkLoadingContext$$Type), ($NewChunkHolderVanillaInterface$$Type)>, world: $LevelHeightAccessor$$Type, lightingProvider: $LevelLightEngine$$Type, playersWatchingChunkProvider: $ChunkHolder$PlayerProvider$$Type)
 
+public "getPos"(): $ChunkPos
 public "getFullStatus"(): $FullChunkStatus
 public "blockChanged"(pos: $BlockPos$$Type): void
-public "getPos"(): $ChunkPos
-public "broadcastChanges"(chunk: $LevelChunk$$Type): void
 public "getPersistedStatus"(): $ChunkStatus
-public "getLatestChunk"(): $ChunkAccess
+public "broadcastChanges"(chunk: $LevelChunk$$Type): void
+public "c2me$immediateWorldChunk"(): $LevelChunk
+public "scheduleChunkGenerationTask"(requestedStatus: $ChunkStatus$$Type, chunkLoadingManager: $ChunkMap$$Type): $CompletableFuture<($ChunkResult<($ChunkAccess)>)>
+public "getChunkIfPresentUnchecked"(requestedStatus: $ChunkStatus$$Type): $ChunkAccess
 public "getTicketLevel"(): integer
-public "replaceProtoChunk"(chunk: $ImposterProtoChunk$$Type): void
-public "getLatestStatus"(): $ChunkStatus
-public "refreshAccessibility"(): void
-public "wasAccessibleSinceLastSave"(): boolean
-public "increaseGenerationRefCount"(): void
-public "decreaseGenerationRefCount"(): void
-public "getEntityTickingChunkFuture"(): $CompletableFuture<($ChunkResult<($LevelChunk)>)>
+public "getLatestChunk"(): $ChunkAccess
 public "getChunkToSend"(): $LevelChunk
 public "getAllFutures"(): $List<($Pair<($ChunkStatus), ($CompletableFuture<($ChunkResult<($ChunkAccess)>)>)>)>
 public "getQueueLevel"(): integer
 public "setTicketLevel"(level: integer): void
-public "getGenerationRefCount"(): integer
+public "updateDeferredStatus"(status: $NewChunkStatus$$Type): void
+public "triggerDeferredLoad"(requestedStatus: $NewChunkStatus$$Type): void
 public "getChunkIfPresent"(requestedStatus: $ChunkStatus$$Type): $ChunkAccess
 public "getTickingChunkFuture"(): $CompletableFuture<($ChunkResult<($LevelChunk)>)>
 public "getFullChunkFuture"(): $CompletableFuture<($ChunkResult<($LevelChunk)>)>
 public "sectionLightChanged"(lightType: $LightLayer$$Type, y: integer): void
-public "addSendDependency"(postProcessingFuture: $CompletableFuture$$Type<(any)>): void
-public "getSendSyncFuture"(): $CompletableFuture<(any)>
-public "updateDeferredStatus"(status: $NewChunkStatus$$Type): void
-public "getTickingChunk"(): $LevelChunk
-public "triggerDeferredLoad"(requestedStatus: $NewChunkStatus$$Type): void
+public "replaceProtoChunk"(chunk: $ImposterProtoChunk$$Type): void
+public "getLatestStatus"(): $ChunkStatus
+public "refreshAccessibility"(): void
+public "getGenerationRefCount"(): integer
 public "getSaveSyncFuture"(): $CompletableFuture<(any)>
 public "isReadyForSaving"(): boolean
-public "scheduleChunkGenerationTask"(requestedStatus: $ChunkStatus$$Type, chunkLoadingManager: $ChunkMap$$Type): $CompletableFuture<($ChunkResult<($ChunkAccess)>)>
-public "getChunkIfPresentUnchecked"(requestedStatus: $ChunkStatus$$Type): $ChunkAccess
-public "c2me$immediateWorldChunk"(): $LevelChunk
-get "fullStatus"(): $FullChunkStatus
+public "addSendDependency"(postProcessingFuture: $CompletableFuture$$Type<(any)>): void
+public "getSendSyncFuture"(): $CompletableFuture<(any)>
+public "getTickingChunk"(): $LevelChunk
+public "wasAccessibleSinceLastSave"(): boolean
+public "increaseGenerationRefCount"(): void
+public "decreaseGenerationRefCount"(): void
+public "getEntityTickingChunkFuture"(): $CompletableFuture<($ChunkResult<($LevelChunk)>)>
 get "pos"(): $ChunkPos
+get "fullStatus"(): $FullChunkStatus
 get "persistedStatus"(): $ChunkStatus
-get "latestChunk"(): $ChunkAccess
 get "ticketLevel"(): integer
-get "latestStatus"(): $ChunkStatus
-get "entityTickingChunkFuture"(): $CompletableFuture<($ChunkResult<($LevelChunk)>)>
+get "latestChunk"(): $ChunkAccess
 get "chunkToSend"(): $LevelChunk
 get "allFutures"(): $List<($Pair<($ChunkStatus), ($CompletableFuture<($ChunkResult<($ChunkAccess)>)>)>)>
 get "queueLevel"(): integer
 set "ticketLevel"(value: integer)
-get "generationRefCount"(): integer
 get "tickingChunkFuture"(): $CompletableFuture<($ChunkResult<($LevelChunk)>)>
 get "fullChunkFuture"(): $CompletableFuture<($ChunkResult<($LevelChunk)>)>
-get "sendSyncFuture"(): $CompletableFuture<(any)>
-get "tickingChunk"(): $LevelChunk
+get "latestStatus"(): $ChunkStatus
+get "generationRefCount"(): integer
 get "saveSyncFuture"(): $CompletableFuture<(any)>
 get "readyForSaving"(): boolean
+get "sendSyncFuture"(): $CompletableFuture<(any)>
+get "tickingChunk"(): $LevelChunk
+get "entityTickingChunkFuture"(): $CompletableFuture<($ChunkResult<($LevelChunk)>)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1362,8 +1396,8 @@ export type $IServerChunkManager_ = $IServerChunkManager$$Type;
 declare module "com.ishland.c2me.base.common.scheduler.AbstractPosAwarePrioritizedTask" {
 import {$LockToken, $LockToken$$Type} from "com.ishland.flowsched.executor.LockToken"
 import {$Task, $Task$$Type} from "com.ishland.flowsched.executor.Task"
-import {$Runnable, $Runnable$$Type} from "java.lang.Runnable"
 import {$Throwable, $Throwable$$Type} from "java.lang.Throwable"
+import {$Runnable, $Runnable$$Type} from "java.lang.Runnable"
 
 export class $AbstractPosAwarePrioritizedTask implements $Task {
 
@@ -1391,20 +1425,22 @@ declare global {
 export type $AbstractPosAwarePrioritizedTask_ = $AbstractPosAwarePrioritizedTask$$Type;
 }}
 declare module "com.ishland.flowsched.scheduler.ItemStatus" {
-import {$Cancellable, $Cancellable$$Type} from "com.ishland.flowsched.scheduler.Cancellable"
 import {$KeyStatusPair, $KeyStatusPair$$Type} from "com.ishland.flowsched.scheduler.KeyStatusPair"
-import {$CompletionStage, $CompletionStage$$Type} from "java.util.concurrent.CompletionStage"
+import {$Cancellable, $Cancellable$$Type} from "com.ishland.flowsched.scheduler.Cancellable"
 import {$ItemHolder, $ItemHolder$$Type} from "com.ishland.flowsched.scheduler.ItemHolder"
+import {$Completable, $Completable$$Type} from "io.reactivex.rxjava3.core.Completable"
 
 export interface $ItemStatus<K, V, Ctx> {
 
  "getNext"(): $ItemStatus<(K), (V), (Ctx)>
  "ordinal"(): integer
- "getDependencies"(arg0: $ItemHolder$$Type<(K), (V), (Ctx), (any)>): ($KeyStatusPair<(K), (V), (Ctx)>)[]
  "getPrev"(): $ItemStatus<(K), (V), (Ctx)>
- "upgradeToThis"(arg0: Ctx, arg1: $Cancellable$$Type): $CompletionStage<(void)>
+ "getDependencies"(arg0: $ItemHolder$$Type<(K), (V), (Ctx), (any)>): ($KeyStatusPair<(K), (V), (Ctx)>)[]
  "getAllStatuses"(): ($ItemStatus<(K), (V), (Ctx)>)[]
- "downgradeFromThis"(arg0: Ctx, arg1: $Cancellable$$Type): $CompletionStage<(void)>
+ "upgradeToThis"(arg0: Ctx, arg1: $Cancellable$$Type): $Completable
+ "postUpgradeToThis"(arg0: Ctx): $Completable
+ "preDowngradeFromThis"(arg0: Ctx, arg1: $Cancellable$$Type): $Completable
+ "downgradeFromThis"(arg0: Ctx, arg1: $Cancellable$$Type): $Completable
  "getDependenciesToAdd"(holder: $ItemHolder$$Type<(K), (V), (Ctx), (any)>): ($KeyStatusPair<(K), (V), (Ctx)>)[]
  "getDependenciesToRemove"(holder: $ItemHolder$$Type<(K), (V), (Ctx), (any)>): ($KeyStatusPair<(K), (V), (Ctx)>)[]
 get "next"(): $ItemStatus<(K), (V), (Ctx)>
@@ -1422,11 +1458,13 @@ static readonly "EMPTY_DEPENDENCIES": ($KeyStatusPair<(any), (any), (any)>)[]
 
  "getNext"(): $ItemStatus<(K), (V), (Ctx)>
  "ordinal"(): integer
- "getDependencies"(arg0: $ItemHolder$$Type<(K), (V), (Ctx), (any)>): ($KeyStatusPair<(K), (V), (Ctx)>)[]
  "getPrev"(): $ItemStatus<(K), (V), (Ctx)>
- "upgradeToThis"(arg0: Ctx, arg1: $Cancellable$$Type): $CompletionStage<(void)>
+ "getDependencies"(arg0: $ItemHolder$$Type<(K), (V), (Ctx), (any)>): ($KeyStatusPair<(K), (V), (Ctx)>)[]
  "getAllStatuses"(): ($ItemStatus<(K), (V), (Ctx)>)[]
- "downgradeFromThis"(arg0: Ctx, arg1: $Cancellable$$Type): $CompletionStage<(void)>
+ "upgradeToThis"(arg0: Ctx, arg1: $Cancellable$$Type): $Completable
+ "postUpgradeToThis"(arg0: Ctx): $Completable
+ "preDowngradeFromThis"(arg0: Ctx, arg1: $Cancellable$$Type): $Completable
+ "downgradeFromThis"(arg0: Ctx, arg1: $Cancellable$$Type): $Completable
  "getDependenciesToAdd"(holder: $ItemHolder$$Type<(K), (V), (Ctx), (any)>): ($KeyStatusPair<(K), (V), (Ctx)>)[]
  "getDependenciesToRemove"(holder: $ItemHolder$$Type<(K), (V), (Ctx), (any)>): ($KeyStatusPair<(K), (V), (Ctx)>)[]
 }
@@ -1561,8 +1599,8 @@ declare global {
 export type $IVersionedChunkStorage_ = $IVersionedChunkStorage$$Type;
 }}
 declare module "com.ishland.flowsched.scheduler.ItemHolder" {
-import {$KeyStatusPair, $KeyStatusPair$$Type} from "com.ishland.flowsched.scheduler.KeyStatusPair"
 import {$ItemStatus, $ItemStatus$$Type} from "com.ishland.flowsched.scheduler.ItemStatus"
+import {$KeyStatusPair, $KeyStatusPair$$Type} from "com.ishland.flowsched.scheduler.KeyStatusPair"
 import {$ItemTicket, $ItemTicket$$Type} from "com.ishland.flowsched.scheduler.ItemTicket"
 import {$IllegalStateException, $IllegalStateException$$Type} from "java.lang.IllegalStateException"
 import {$AtomicReference, $AtomicReference$$Type} from "java.util.concurrent.atomic.AtomicReference"
@@ -1582,28 +1620,25 @@ static readonly "FLAG_REMOVED": integer
 static readonly "FLAG_BROKEN": integer
 
 
+public "getFlags"(): integer
+public "getItem"(): $AtomicReference<(V)>
 public "getUserData"(): $AtomicReference<(UserData)>
 public "isOpen"(): boolean
 public "getKey"(): K
-public "getFlags"(): integer
-public "getItem"(): $AtomicReference<(V)>
 public "markDirty"(scheduler: $StatusAdvancingScheduler$$Type<(K), (V), (Ctx), (UserData)>): void
 public "clearFlag"(flag: integer): void
 public "setFlag"(flag: integer): void
 public "getStatus"(): $ItemStatus<(K), (V), (Ctx)>
 public "isBusy"(): boolean
-public "getDependencies"(status: $ItemStatus$$Type<(K), (V), (Ctx)>): ($KeyStatusPair<(K), (V), (Ctx)>)[]
-public "setDependencies"(status: $ItemStatus$$Type<(K), (V), (Ctx)>, dependencies: ($KeyStatusPair$$Type<(K), (V), (Ctx)>)[]): void
 public "addTicket"(ticket: $ItemTicket$$Type<(K), (V), (Ctx)>): void
 public "removeTicket"(ticket: $ItemTicket$$Type<(K), (V), (Ctx)>): void
 public "setStatus"(status: $ItemStatus$$Type<(K), (V), (Ctx)>, isCancellation: boolean): boolean
-public "submitOpListener"(runnable: $Runnable$$Type): void
-public "getCriticalSectionScheduler"(): $Scheduler
-public "executeCriticalSectionAndBusy"(command: $Runnable$$Type): void
-public "getCriticalSectionExecutor"(): $Executor
+public "getDependencies"(status: $ItemStatus$$Type<(K), (V), (Ctx)>): ($KeyStatusPair<(K), (V), (Ctx)>)[]
+public "setDependencies"(status: $ItemStatus$$Type<(K), (V), (Ctx)>, dependencies: ($KeyStatusPair$$Type<(K), (V), (Ctx)>)[]): void
 public "subscribeOp"(op: $Completable$$Type): void
-public "submitOp"(op: $CompletionStage$$Type<(void)>): void
+public "tryMarkDirty"(scheduler: $StatusAdvancingScheduler$$Type<(K), (V), (Ctx), (UserData)>): boolean
 public "getOpFuture"(): $CompletableFuture<(void)>
+public "submitOp"(op: $CompletionStage$$Type<(void)>): void
 public "getTargetStatus"(): $ItemStatus<(K), (V), (Ctx)>
 public "isDependencyDirty"(): boolean
 public "holdsDependency"(): boolean
@@ -1614,21 +1649,25 @@ public "submitUpgradeAction"(signaller: $CancellationSignaller$$Type, status: $I
 public "addDependencyTicket"(scheduler: $StatusAdvancingScheduler$$Type<(K), (V), (Ctx), (any)>, key: K, status: $ItemStatus$$Type<(K), (V), (Ctx)>, callback: $Runnable$$Type): void
 public "removeDependencyTicket"(key: K, status: $ItemStatus$$Type<(K), (V), (Ctx)>): void
 public "cleanupDependencies"(scheduler: $StatusAdvancingScheduler$$Type<(K), (V), (Ctx), (any)>): void
-public "getFutureForStatus"(status: $ItemStatus$$Type<(K), (V), (Ctx)>): $CompletableFuture<(void)>
 public "getFutureForStatus0"(status: $ItemStatus$$Type<(K), (V), (Ctx)>): $CompletableFuture<(void)>
+public "getFutureForStatus"(status: $ItemStatus$$Type<(K), (V), (Ctx)>): $CompletableFuture<(void)>
+public "submitOpListener"(runnable: $Runnable$$Type): void
+public "getCriticalSectionScheduler"(): $Scheduler
+public "executeCriticalSectionAndBusy"(command: $Runnable$$Type): void
+public "getCriticalSectionExecutor"(): $Executor
+get "flags"(): integer
+get "item"(): $AtomicReference<(V)>
 get "userData"(): $AtomicReference<(UserData)>
 get "open"(): boolean
 get "key"(): K
-get "flags"(): integer
-get "item"(): $AtomicReference<(V)>
 set "flag"(value: integer)
 get "status"(): $ItemStatus<(K), (V), (Ctx)>
 get "busy"(): boolean
-get "criticalSectionScheduler"(): $Scheduler
-get "criticalSectionExecutor"(): $Executor
 get "opFuture"(): $CompletableFuture<(void)>
 get "targetStatus"(): $ItemStatus<(K), (V), (Ctx)>
 get "dependencyDirty"(): boolean
+get "criticalSectionScheduler"(): $Scheduler
+get "criticalSectionExecutor"(): $Executor
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1679,10 +1718,10 @@ export class $ItemTicket$TicketType {
 static "DEPENDENCY": $ItemTicket$TicketType
 static "EXTERNAL": $ItemTicket$TicketType
 
-constructor(description: string)
+constructor(description: StringJS)
 
-public "getDescription"(): string
-get "description"(): string
+public "getDescription"(): StringJS
+get "description"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1701,21 +1740,21 @@ import {$ObjectSet, $ObjectSet$$Type} from "it.unimi.dsi.fastutil.objects.Object
 import {$Long2ObjectMap, $Long2ObjectMap$$Type} from "it.unimi.dsi.fastutil.longs.Long2ObjectMap"
 import {$Ticket, $Ticket$$Type} from "net.minecraft.server.level.Ticket"
 import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
+import {$TickingTracker, $TickingTracker$$Type} from "net.minecraft.server.level.TickingTracker"
 import {$SortedArraySet, $SortedArraySet$$Type} from "net.minecraft.util.SortedArraySet"
 import {$Long2ObjectOpenHashMap, $Long2ObjectOpenHashMap$$Type} from "it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap"
-import {$TickingTracker, $TickingTracker$$Type} from "net.minecraft.server.level.TickingTracker"
 import {$DistanceManager$PlayerTicketTracker, $DistanceManager$PlayerTicketTracker$$Type} from "net.minecraft.server.level.DistanceManager$PlayerTicketTracker"
 
 export interface $IChunkTicketManager {
 
+ "getSimulationDistanceTracker"(): $TickingTracker
  "invokeSetWatchDistance"(arg0: integer): void
  "getPlayersByChunkPos"(): $Long2ObjectMap<($ObjectSet<($ServerPlayer)>)>
  "getTicketsByPosition"(): $Long2ObjectOpenHashMap<($SortedArraySet<($Ticket<(any)>)>)>
- "getSimulationDistanceTracker"(): $TickingTracker
  "getNearbyChunkTicketUpdater"(): $DistanceManager$PlayerTicketTracker
+get "simulationDistanceTracker"(): $TickingTracker
 get "playersByChunkPos"(): $Long2ObjectMap<($ObjectSet<($ServerPlayer)>)>
 get "ticketsByPosition"(): $Long2ObjectOpenHashMap<($SortedArraySet<($Ticket<(any)>)>)>
-get "simulationDistanceTracker"(): $TickingTracker
 get "nearbyChunkTicketUpdater"(): $DistanceManager$PlayerTicketTracker
 }
 
@@ -1725,10 +1764,10 @@ const probejs$$marker: never
 export class $IChunkTicketManager$$Static implements $IChunkTicketManager {
 
 
+ "getSimulationDistanceTracker"(): $TickingTracker
  "invokeSetWatchDistance"(arg0: integer): void
  "getPlayersByChunkPos"(): $Long2ObjectMap<($ObjectSet<($ServerPlayer)>)>
  "getTicketsByPosition"(): $Long2ObjectOpenHashMap<($SortedArraySet<($Ticket<(any)>)>)>
- "getSimulationDistanceTracker"(): $TickingTracker
  "getNearbyChunkTicketUpdater"(): $DistanceManager$PlayerTicketTracker
 }
 /**
@@ -1774,15 +1813,15 @@ export type $IChunkTicket_ = $IChunkTicket$$Type;
 }}
 declare module "com.ishland.c2me.base.mixin.access.ISimpleTickScheduler" {
 import {$SerializableTickContainer, $SerializableTickContainer$$Type} from "net.minecraft.world.ticks.SerializableTickContainer"
-import {$Function, $Function$$Type} from "java.util.function.Function"
 import {$List, $List$$Type} from "java.util.List"
+import {$Function, $Function$$Type} from "java.util.function.Function"
 import {$Tag, $Tag$$Type} from "net.minecraft.nbt.Tag"
 import {$SavedTick, $SavedTick$$Type} from "net.minecraft.world.ticks.SavedTick"
 
 export interface $ISimpleTickScheduler<T> extends $SerializableTickContainer<(T)> {
 
  "getScheduledTicks"(): $List<($SavedTick<(T)>)>
- "save"(arg0: long, arg1: $Function$$Type<(T), (string)>): $Tag
+ "save"(arg0: long, arg1: $Function$$Type<(T), (StringJS)>): $Tag
 get "scheduledTicks"(): $List<($SavedTick<(T)>)>
 }
 
@@ -1793,7 +1832,7 @@ export class $ISimpleTickScheduler$$Static<T> implements $ISimpleTickScheduler {
 
 
  "getScheduledTicks"(): $List<($SavedTick<(T)>)>
- "save"(arg0: long, arg1: $Function$$Type<(T), (string)>): $Tag
+ "save"(arg0: long, arg1: $Function$$Type<(T), (StringJS)>): $Tag
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2098,8 +2137,8 @@ static readonly "NO_OP": $Runnable
 
 constructor(tacs: $ChunkMap$$Type)
 
-public "vanillaIf$setLevel"(pos: long, level: integer): $ChunkHolder
 public "vanillaIf$getManagedLevel"(pos: long): integer
+public "vanillaIf$setLevel"(pos: long, level: integer): $ChunkHolder
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2146,8 +2185,8 @@ export type $IServerEntityManager_ = $IServerEntityManager$$Type;
 declare module "com.ishland.c2me.base.mixin.access.IChunkSection" {
 import {$PalettedContainer, $PalettedContainer$$Type} from "net.minecraft.world.level.chunk.PalettedContainer"
 import {$Biome, $Biome$$Type} from "net.minecraft.world.level.biome.Biome"
-import {$PalettedContainerRO, $PalettedContainerRO$$Type} from "net.minecraft.world.level.chunk.PalettedContainerRO"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$PalettedContainerRO, $PalettedContainerRO$$Type} from "net.minecraft.world.level.chunk.PalettedContainerRO"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export interface $IChunkSection {
@@ -2193,14 +2232,14 @@ constructor(executor: $Executor$$Type)
 public "enqueue"(task: $AbstractPosAwarePrioritizedTask$$Type): void
 public "enqueue"(pos: long, command: $Runnable$$Type): void
 public "getId"(): integer
-public "updatePriorityFromLevelOnMain"(pos: long, level: integer): void
+public "setConsolidatingLevelUpdates"(value: boolean): void
 public "setCurrentSyncLoad"(pos: $ChunkPos$$Type): void
 public "positionedExecutor"(pos: long): $Executor
+public "updatePriorityFromLevelOnMain"(pos: long, level: integer): void
 public "updatePriorityFromLevel"(pos: long, level: integer): void
-public "setConsolidatingLevelUpdates"(value: boolean): void
 get "id"(): integer
-set "currentSyncLoad"(value: $ChunkPos$$Type)
 set "consolidatingLevelUpdates"(value: boolean)
+set "currentSyncLoad"(value: $ChunkPos$$Type)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

@@ -34,8 +34,8 @@ export type $CapabilityCurios$AttributesTooltipFunction_ = $CapabilityCurios$Att
 declare module "net.zhaiji.kubejscurios.curios.CapabilityCurios$AttributeModificationContext" {
 import {$SlotContext, $SlotContext$$Type} from "top.theillusivec4.curios.api.SlotContext"
 import {$AttributeModifier, $AttributeModifier$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeModifier"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$AttributeModifier$Operation, $AttributeModifier$Operation$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation"
 import {$Multimap, $Multimap$$Type} from "com.google.common.collect.Multimap"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
@@ -45,15 +45,15 @@ export class $CapabilityCurios$AttributeModificationContext {
 
 constructor(arg0: $SlotContext$$Type, arg1: $ResourceLocation$$Type, arg2: $ItemStack$$Type, arg3: $Multimap$$Type<($Holder$$Type<($Attribute$$Type)>), ($AttributeModifier$$Type)>)
 
+public "getStack"(): $ItemStack
 public "getIdentifier"(): $ResourceLocation
 public "remove"(arg0: $Holder$$Type<($Attribute)>, arg1: $ResourceLocation$$Type): $CapabilityCurios$AttributeModificationContext
 public "getModifiers"(): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
-public "getStack"(): $ItemStack
 public "modify"(arg0: $Holder$$Type<($Attribute)>, arg1: $ResourceLocation$$Type, arg2: double, arg3: $AttributeModifier$Operation$$Type): $CapabilityCurios$AttributeModificationContext
 public "getSlotContext"(): $SlotContext
+get "stack"(): $ItemStack
 get "identifier"(): $ResourceLocation
 get "modifiers"(): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
-get "stack"(): $ItemStack
 get "slotContext"(): $SlotContext
 }
 /**
@@ -72,8 +72,8 @@ declare module "net.zhaiji.kubejscurios.curios.CurioRenderer$RenderContext" {
 import {$SlotContext, $SlotContext$$Type} from "top.theillusivec4.curios.api.SlotContext"
 import {$MultiBufferSource, $MultiBufferSource$$Type} from "net.minecraft.client.renderer.MultiBufferSource"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$PoseStack, $PoseStack$$Type} from "com.mojang.blaze3d.vertex.PoseStack"
 import {$RenderLayerParent, $RenderLayerParent$$Type} from "net.minecraft.client.renderer.entity.RenderLayerParent"
+import {$PoseStack, $PoseStack$$Type} from "com.mojang.blaze3d.vertex.PoseStack"
 import {$EntityModel, $EntityModel$$Type} from "net.minecraft.client.model.EntityModel"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 
@@ -121,17 +121,29 @@ public "remove"(arg0: $Item$$Type): void
 public "register"(arg0: $Item$$Type, arg1: $Consumer$$Type<($CurioRenderer$RenderContext)>): void
 public "getClient"(): $Minecraft
 /**
+ * Stops the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `success` denotes a `true` outcome.
+ */
+public "success"(): any
+/**
  * Stops the event with the given exit value. Execution will be stopped **immediately**.
  * 
- * `exit` denotes a `default` outcome.
+ * `success` denotes a `true` outcome.
  */
-public "exit"(arg1: any): any
+public "success"(arg1: any): any
 /**
  * Stops the event with default exit value. Execution will be stopped **immediately**.
  * 
  * `exit` denotes a `default` outcome.
  */
 public "exit"(): any
+/**
+ * Stops the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(arg1: any): any
 /**
  * Cancels the event with the given exit value. Execution will be stopped **immediately**.
  * 
@@ -144,18 +156,6 @@ public "cancel"(arg1: any): any
  * `cancel` denotes a `false` outcome.
  */
 public "cancel"(): any
-/**
- * Stops the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `success` denotes a `true` outcome.
- */
-public "success"(): any
-/**
- * Stops the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `success` denotes a `true` outcome.
- */
-public "success"(arg1: any): any
 get "client"(): $Minecraft
 }
 /**
@@ -172,13 +172,13 @@ export type $KubeJSCuriosEventJS$registerRenderer_ = $KubeJSCuriosEventJS$regist
 }}
 declare module "net.zhaiji.kubejscurios.kubejs.KubeJSCuriosEventJS$CurioAttributeModifier" {
 import {$AttributeModifier, $AttributeModifier$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeModifier"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Multimap, $Multimap$$Type} from "com.google.common.collect.Multimap"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$SlotContext, $SlotContext$$Type} from "top.theillusivec4.curios.api.SlotContext"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$SlotContext, $SlotContext$$Type} from "top.theillusivec4.curios.api.SlotContext"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$KubeLivingEntityEvent, $KubeLivingEntityEvent$$Type} from "dev.latvian.mods.kubejs.entity.KubeLivingEntityEvent"
@@ -194,40 +194,16 @@ readonly "slotContext": $SlotContext
 
 constructor(arg0: $ItemStack$$Type, arg1: $SlotContext$$Type, arg2: $ResourceLocation$$Type, arg3: $Multimap$$Type<($Holder$$Type<($Attribute$$Type)>), ($AttributeModifier$$Type)>)
 
-public "getEntity"(): $Entity
-public "getModifiers"(): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
 public "removeAttribute"(arg0: $Holder$$Type<($Attribute)>): $Collection<($AttributeModifier)>
+public "getModifiers"(): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
+public "getEntity"(): $Entity
+public "removeModifier"(arg0: $Holder$$Type<($Attribute)>, arg1: $AttributeModifier$$Type): boolean
 public "addModifier"(arg0: $Holder$$Type<($Attribute)>, arg1: $AttributeModifier$$Type): boolean
 public "clearModifiers"(): void
-public "removeModifier"(arg0: $Holder$$Type<($Attribute)>, arg1: $AttributeModifier$$Type): boolean
 public "getLevel"(): $Level
 public "getPlayer"(): $Player
-public "getRegistries"(): $RegistryAccess
 public "getServer"(): $MinecraftServer
-/**
- * Stops the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(arg1: any): any
-/**
- * Stops the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(): any
-/**
- * Cancels the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(arg1: any): any
-/**
- * Cancels the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(): any
+public "getRegistries"(): $RegistryAccess
 /**
  * Stops the event with default exit value. Execution will be stopped **immediately**.
  * 
@@ -240,12 +216,36 @@ public "success"(): any
  * `success` denotes a `true` outcome.
  */
 public "success"(arg1: any): any
-get "entity"(): $Entity
+/**
+ * Stops the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(): any
+/**
+ * Stops the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(arg1: any): any
+/**
+ * Cancels the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(arg1: any): any
+/**
+ * Cancels the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(): any
 get "modifiers"(): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
+get "entity"(): $Entity
 get "level"(): $Level
 get "player"(): $Player
-get "registries"(): $RegistryAccess
 get "server"(): $MinecraftServer
+get "registries"(): $RegistryAccess
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -269,42 +269,18 @@ import {$MinecraftServer, $MinecraftServer$$Type} from "net.minecraft.server.Min
 import {$RegistryAccess, $RegistryAccess$$Type} from "net.minecraft.core.RegistryAccess"
 
 export class $KubeJSCuriosEventJS$CurioChange implements $KubeLivingEntityEvent {
-readonly "slotType": string
+readonly "slotType": StringJS
 readonly "newStack": $ItemStack
 readonly "index": integer
 readonly "oldStack": $ItemStack
 
-constructor(arg0: $LivingEntity$$Type, arg1: string, arg2: integer, arg3: $ItemStack$$Type, arg4: $ItemStack$$Type)
+constructor(arg0: $LivingEntity$$Type, arg1: StringJS, arg2: integer, arg3: $ItemStack$$Type, arg4: $ItemStack$$Type)
 
 public "getEntity"(): $LivingEntity
 public "getLevel"(): $Level
 public "getPlayer"(): $Player
-public "getRegistries"(): $RegistryAccess
 public "getServer"(): $MinecraftServer
-/**
- * Stops the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(arg1: any): any
-/**
- * Stops the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(): any
-/**
- * Cancels the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(arg1: any): any
-/**
- * Cancels the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(): any
+public "getRegistries"(): $RegistryAccess
 /**
  * Stops the event with default exit value. Execution will be stopped **immediately**.
  * 
@@ -317,11 +293,35 @@ public "success"(): any
  * `success` denotes a `true` outcome.
  */
 public "success"(arg1: any): any
+/**
+ * Stops the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(): any
+/**
+ * Stops the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(arg1: any): any
+/**
+ * Cancels the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(arg1: any): any
+/**
+ * Cancels the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(): any
 get "entity"(): $LivingEntity
 get "level"(): $Level
 get "player"(): $Player
-get "registries"(): $RegistryAccess
 get "server"(): $MinecraftServer
+get "registries"(): $RegistryAccess
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -349,8 +349,8 @@ static readonly "itemModifications": $Map<($ItemModificationKubeEvent$ItemModifi
 
 constructor()
 
-public static "load"(): void
 public "create"(): $CapabilityCurios
+public static "load"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -375,37 +375,37 @@ import {$CapabilityCurios$EquipConsumer, $CapabilityCurios$EquipConsumer$$Type} 
 import {$CapabilityCurios$AttributeModificationContext, $CapabilityCurios$AttributeModificationContext$$Type} from "net.zhaiji.kubejscurios.curios.CapabilityCurios$AttributeModificationContext"
 import {$CapabilityCurios$LootingFunction, $CapabilityCurios$LootingFunction$$Type} from "net.zhaiji.kubejscurios.curios.CapabilityCurios$LootingFunction"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
-import {$SlotContext, $SlotContext$$Type} from "top.theillusivec4.curios.api.SlotContext"
 import {$BiFunction, $BiFunction$$Type} from "java.util.function.BiFunction"
+import {$SlotContext, $SlotContext$$Type} from "top.theillusivec4.curios.api.SlotContext"
 import {$CapabilityCurios$DropRulePredicate, $CapabilityCurios$DropRulePredicate$$Type} from "net.zhaiji.kubejscurios.curios.CapabilityCurios$DropRulePredicate"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$AttributeModifier$Operation, $AttributeModifier$Operation$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation"
-import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$BiConsumer, $BiConsumer$$Type} from "java.util.function.BiConsumer"
-import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
+import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$ICurio$SoundInfo, $ICurio$SoundInfo$$Type} from "top.theillusivec4.curios.api.type.capability.ICurio$SoundInfo"
+import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
 
 export class $CapabilityCurios {
 
 constructor()
 
 public "addAttribute"(arg0: $ResourceKey$$Type<($Attribute)>, arg1: $ResourceLocation$$Type, arg2: double, arg3: $AttributeModifier$Operation$$Type): $CapabilityCurios
-public "modifyAttribute"(arg0: $Consumer$$Type<($CapabilityCurios$AttributeModificationContext)>): $CapabilityCurios
-public "modifyEquipSound"(arg0: $BiFunction$$Type<($SlotContext), ($ItemStack), ($ICurio$SoundInfo$$Type)>): $CapabilityCurios
-public "modifyFortuneLevel"(arg0: $CapabilityCurios$FortuneFunction$$Type): $CapabilityCurios
-public "modifyLootingLevel"(arg0: $CapabilityCurios$LootingFunction$$Type): $CapabilityCurios
-public "modifySlotsTooltip"(arg0: $CapabilityCurios$SlotsTooltipFunction$$Type): $CapabilityCurios
 public "canEquip"(arg0: $BiPredicate$$Type<($SlotContext), ($ItemStack)>): $CapabilityCurios
 public "isEnderMask"(arg0: $CapabilityCurios$EnderMaskPredicate$$Type): $CapabilityCurios
-public "canEquipFromUse"(arg0: $BiPredicate$$Type<($SlotContext), ($ItemStack)>): $CapabilityCurios
-public "canWalkOnPowderedSnow"(arg0: $BiPredicate$$Type<($SlotContext), ($ItemStack)>): $CapabilityCurios
-public "makesPiglinsNeutral"(arg0: $BiPredicate$$Type<($SlotContext), ($ItemStack)>): $CapabilityCurios
 public "canDrop"(arg0: $CapabilityCurios$DropRulePredicate$$Type): $CapabilityCurios
 public "curioTick"(arg0: $BiConsumer$$Type<($SlotContext), ($ItemStack)>): $CapabilityCurios
 public "onEquip"(arg0: $CapabilityCurios$EquipConsumer$$Type): $CapabilityCurios
 public "onUnequip"(arg0: $CapabilityCurios$EquipConsumer$$Type): $CapabilityCurios
 public "canUnequip"(arg0: $BiPredicate$$Type<($SlotContext), ($ItemStack)>): $CapabilityCurios
 public "onEquipFromUse"(arg0: $BiConsumer$$Type<($SlotContext), ($ItemStack)>): $CapabilityCurios
+public "canEquipFromUse"(arg0: $BiPredicate$$Type<($SlotContext), ($ItemStack)>): $CapabilityCurios
+public "canWalkOnPowderedSnow"(arg0: $BiPredicate$$Type<($SlotContext), ($ItemStack)>): $CapabilityCurios
+public "makesPiglinsNeutral"(arg0: $BiPredicate$$Type<($SlotContext), ($ItemStack)>): $CapabilityCurios
+public "modifyAttribute"(arg0: $Consumer$$Type<($CapabilityCurios$AttributeModificationContext)>): $CapabilityCurios
+public "modifyEquipSound"(arg0: $BiFunction$$Type<($SlotContext), ($ItemStack), ($ICurio$SoundInfo$$Type)>): $CapabilityCurios
+public "modifyFortuneLevel"(arg0: $CapabilityCurios$FortuneFunction$$Type): $CapabilityCurios
+public "modifyLootingLevel"(arg0: $CapabilityCurios$LootingFunction$$Type): $CapabilityCurios
+public "modifySlotsTooltip"(arg0: $CapabilityCurios$SlotsTooltipFunction$$Type): $CapabilityCurios
 public "modifyAttributesTooltip"(arg0: $CapabilityCurios$AttributesTooltipFunction$$Type): $CapabilityCurios
 }
 /**
@@ -485,13 +485,12 @@ declare global {
 export type $CapabilityCurios$DropRulePredicate_ = $CapabilityCurios$DropRulePredicate$$Type;
 }}
 declare module "net.zhaiji.kubejscurios.kubejs.KubeJSCuriosEventJS$CurioCanEquip" {
-import {$SlotContext, $SlotContext$$Type} from "top.theillusivec4.curios.api.SlotContext"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$SlotContext, $SlotContext$$Type} from "top.theillusivec4.curios.api.SlotContext"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$KubeLivingEntityEvent, $KubeLivingEntityEvent$$Type} from "dev.latvian.mods.kubejs.entity.KubeLivingEntityEvent"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$MinecraftServer, $MinecraftServer$$Type} from "net.minecraft.server.MinecraftServer"
 import {$RegistryAccess, $RegistryAccess$$Type} from "net.minecraft.core.RegistryAccess"
 import {$TriState, $TriState$$Type} from "net.neoforged.neoforge.common.util.TriState"
@@ -503,36 +502,12 @@ readonly "slotContext": $SlotContext
 
 constructor(arg0: $LivingEntity$$Type, arg1: $SlotContext$$Type, arg2: $ItemStack$$Type, arg3: $TriState$$Type)
 
-public "getEntity"(): $Entity
 public "setResult"(arg0: $TriState$$Type): void
+public "getEntity"(): $LivingEntity
 public "getLevel"(): $Level
 public "getPlayer"(): $Player
-public "getRegistries"(): $RegistryAccess
 public "getServer"(): $MinecraftServer
-/**
- * Stops the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(arg1: any): any
-/**
- * Stops the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(): any
-/**
- * Cancels the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(arg1: any): any
-/**
- * Cancels the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(): any
+public "getRegistries"(): $RegistryAccess
 /**
  * Stops the event with default exit value. Execution will be stopped **immediately**.
  * 
@@ -545,12 +520,36 @@ public "success"(): any
  * `success` denotes a `true` outcome.
  */
 public "success"(arg1: any): any
-get "entity"(): $Entity
+/**
+ * Stops the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(): any
+/**
+ * Stops the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(arg1: any): any
+/**
+ * Cancels the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(arg1: any): any
+/**
+ * Cancels the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(): any
 set "result"(value: $TriState$$Type)
+get "entity"(): $LivingEntity
 get "level"(): $Level
 get "player"(): $Player
-get "registries"(): $RegistryAccess
 get "server"(): $MinecraftServer
+get "registries"(): $RegistryAccess
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -565,13 +564,12 @@ declare global {
 export type $KubeJSCuriosEventJS$CurioCanEquip_ = $KubeJSCuriosEventJS$CurioCanEquip$$Type;
 }}
 declare module "net.zhaiji.kubejscurios.kubejs.KubeJSCuriosEventJS$CurioCanUnequip" {
-import {$SlotContext, $SlotContext$$Type} from "top.theillusivec4.curios.api.SlotContext"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$SlotContext, $SlotContext$$Type} from "top.theillusivec4.curios.api.SlotContext"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$KubeLivingEntityEvent, $KubeLivingEntityEvent$$Type} from "dev.latvian.mods.kubejs.entity.KubeLivingEntityEvent"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$MinecraftServer, $MinecraftServer$$Type} from "net.minecraft.server.MinecraftServer"
 import {$RegistryAccess, $RegistryAccess$$Type} from "net.minecraft.core.RegistryAccess"
 import {$TriState, $TriState$$Type} from "net.neoforged.neoforge.common.util.TriState"
@@ -583,36 +581,12 @@ readonly "slotContext": $SlotContext
 
 constructor(arg0: $LivingEntity$$Type, arg1: $SlotContext$$Type, arg2: $ItemStack$$Type, arg3: $TriState$$Type)
 
-public "getEntity"(): $Entity
 public "setResult"(arg0: $TriState$$Type): void
+public "getEntity"(): $LivingEntity
 public "getLevel"(): $Level
 public "getPlayer"(): $Player
-public "getRegistries"(): $RegistryAccess
 public "getServer"(): $MinecraftServer
-/**
- * Stops the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(arg1: any): any
-/**
- * Stops the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(): any
-/**
- * Cancels the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(arg1: any): any
-/**
- * Cancels the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(): any
+public "getRegistries"(): $RegistryAccess
 /**
  * Stops the event with default exit value. Execution will be stopped **immediately**.
  * 
@@ -625,12 +599,36 @@ public "success"(): any
  * `success` denotes a `true` outcome.
  */
 public "success"(arg1: any): any
-get "entity"(): $Entity
+/**
+ * Stops the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(): any
+/**
+ * Stops the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(arg1: any): any
+/**
+ * Cancels the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(arg1: any): any
+/**
+ * Cancels the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(): any
 set "result"(value: $TriState$$Type)
+get "entity"(): $LivingEntity
 get "level"(): $Level
 get "player"(): $Player
-get "registries"(): $RegistryAccess
 get "server"(): $MinecraftServer
+get "registries"(): $RegistryAccess
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -680,10 +678,10 @@ import {$AttributeModifier, $AttributeModifier$$Type} from "net.minecraft.world.
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
+import {$List, $List$$Type} from "java.util.List"
 import {$ICurio, $ICurio$$Type} from "top.theillusivec4.curios.api.type.capability.ICurio"
 import {$Multimap, $Multimap$$Type} from "com.google.common.collect.Multimap"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
-import {$List, $List$$Type} from "java.util.List"
 import {$SlotResult, $SlotResult$$Type} from "top.theillusivec4.curios.api.SlotResult"
 import {$ICurioStacksHandler, $ICurioStacksHandler$$Type} from "top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -695,34 +693,34 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export interface $KubeJSCuriosHelper {
 
- "getEntityCuriosRegistrySlots"(): $Map<(string), ($ISlotType)>
- "removeCuriosSlotModifier"(arg0: string, arg1: $ResourceLocation$$Type): void
- "clearCuriosSlotModifiers"(): void
- "findCurios"(arg0: $Item$$Type): $List<($SlotResult)>
+ "findCurios"(...arg0: (StringJS)[]): $List<($SlotResult)>
  "findCurios"(arg0: $Predicate$$Type<($ItemStack)>): $List<($SlotResult)>
- "findCurios"(...arg0: (string)[]): $List<($SlotResult)>
- "findCurio"(arg0: string, arg1: integer): $Optional<($SlotResult)>
- "getAllCurios"(): $Map<(string), ($ICurioStacksHandler)>
+ "findCurios"(arg0: $Item$$Type): $List<($SlotResult)>
+ "findCurio"(arg0: StringJS, arg1: integer): $Optional<($SlotResult)>
+ "getAllCurios"(): $Map<(StringJS), ($ICurioStacksHandler)>
  "findFirstCurio"(arg0: $Predicate$$Type<($ItemStack)>): $Optional<($SlotResult)>
  "findFirstCurio"(arg0: $Item$$Type): $Optional<($SlotResult)>
- "setEquippedCurio"(arg0: string, arg1: integer, arg2: $ItemStack$$Type): void
- "getCuriosRegistrySlot"(arg0: string): $Optional<($ISlotType)>
- "getCuriosRegistrySlots"(): $Map<(string), ($ISlotType)>
+ "getEquippedCurios"(): $IItemHandlerModifiable
+ "setEquippedCurio"(arg0: StringJS, arg1: integer, arg2: $ItemStack$$Type): void
+ "getCuriosRegistrySlot"(arg0: StringJS): $Optional<($ISlotType)>
+ "getCuriosRegistrySlots"(): $Map<(StringJS), ($ISlotType)>
  "getCurioCapability"(arg0: $ItemStack$$Type): $Optional<($ICurio)>
- "getStackInCuriosSlots"(arg0: $ItemStack$$Type): $Map<(string), ($ISlotType)>
- "getCuriosStacksHandler"(arg0: string): $Optional<($ICurioStacksHandler)>
+ "getStackInCuriosSlots"(arg0: $ItemStack$$Type): $Map<(StringJS), ($ISlotType)>
+ "getCuriosStacksHandler"(arg0: StringJS): $Optional<($ICurioStacksHandler)>
  "isCuriosEquipped"(arg0: $Predicate$$Type<($ItemStack)>): boolean
  "isCuriosEquipped"(arg0: $Item$$Type): boolean
- "addCuriosSlotModifier"(arg0: string, arg1: $ResourceLocation$$Type, arg2: double, arg3: $AttributeModifier$Operation$$Type): void
- "getCuriosSlotModifiers"(): $Multimap<(string), ($AttributeModifier)>
+ "addCuriosSlotModifier"(arg0: StringJS, arg1: $ResourceLocation$$Type, arg2: double, arg3: $AttributeModifier$Operation$$Type): void
+ "getCuriosSlotModifiers"(): $Multimap<(StringJS), ($AttributeModifier)>
  "getCuriosInventory"(): $ICuriosItemHandler
- "getEquippedCurios"(): $IItemHandlerModifiable
-get "entityCuriosRegistrySlots"(): $Map<(string), ($ISlotType)>
-get "allCurios"(): $Map<(string), ($ICurioStacksHandler)>
-get "curiosRegistrySlots"(): $Map<(string), ($ISlotType)>
-get "curiosSlotModifiers"(): $Multimap<(string), ($AttributeModifier)>
-get "curiosInventory"(): $ICuriosItemHandler
+ "getEntityCuriosRegistrySlots"(): $Map<(StringJS), ($ISlotType)>
+ "removeCuriosSlotModifier"(arg0: StringJS, arg1: $ResourceLocation$$Type): void
+ "clearCuriosSlotModifiers"(): void
+get "allCurios"(): $Map<(StringJS), ($ICurioStacksHandler)>
 get "equippedCurios"(): $IItemHandlerModifiable
+get "curiosRegistrySlots"(): $Map<(StringJS), ($ISlotType)>
+get "curiosSlotModifiers"(): $Multimap<(StringJS), ($AttributeModifier)>
+get "curiosInventory"(): $ICuriosItemHandler
+get "entityCuriosRegistrySlots"(): $Map<(StringJS), ($ISlotType)>
 }
 
 export namespace $KubeJSCuriosHelper {
@@ -731,28 +729,28 @@ const probejs$$marker: never
 export class $KubeJSCuriosHelper$$Static implements $KubeJSCuriosHelper {
 
 
- "getEntityCuriosRegistrySlots"(): $Map<(string), ($ISlotType)>
- "removeCuriosSlotModifier"(arg0: string, arg1: $ResourceLocation$$Type): void
- "clearCuriosSlotModifiers"(): void
- "findCurios"(arg0: $Item$$Type): $List<($SlotResult)>
+ "findCurios"(...arg0: (StringJS)[]): $List<($SlotResult)>
  "findCurios"(arg0: $Predicate$$Type<($ItemStack)>): $List<($SlotResult)>
- "findCurios"(...arg0: (string)[]): $List<($SlotResult)>
- "findCurio"(arg0: string, arg1: integer): $Optional<($SlotResult)>
- "getAllCurios"(): $Map<(string), ($ICurioStacksHandler)>
+ "findCurios"(arg0: $Item$$Type): $List<($SlotResult)>
+ "findCurio"(arg0: StringJS, arg1: integer): $Optional<($SlotResult)>
+ "getAllCurios"(): $Map<(StringJS), ($ICurioStacksHandler)>
  "findFirstCurio"(arg0: $Predicate$$Type<($ItemStack)>): $Optional<($SlotResult)>
  "findFirstCurio"(arg0: $Item$$Type): $Optional<($SlotResult)>
- "setEquippedCurio"(arg0: string, arg1: integer, arg2: $ItemStack$$Type): void
- "getCuriosRegistrySlot"(arg0: string): $Optional<($ISlotType)>
- "getCuriosRegistrySlots"(): $Map<(string), ($ISlotType)>
+ "getEquippedCurios"(): $IItemHandlerModifiable
+ "setEquippedCurio"(arg0: StringJS, arg1: integer, arg2: $ItemStack$$Type): void
+ "getCuriosRegistrySlot"(arg0: StringJS): $Optional<($ISlotType)>
+ "getCuriosRegistrySlots"(): $Map<(StringJS), ($ISlotType)>
  "getCurioCapability"(arg0: $ItemStack$$Type): $Optional<($ICurio)>
- "getStackInCuriosSlots"(arg0: $ItemStack$$Type): $Map<(string), ($ISlotType)>
- "getCuriosStacksHandler"(arg0: string): $Optional<($ICurioStacksHandler)>
+ "getStackInCuriosSlots"(arg0: $ItemStack$$Type): $Map<(StringJS), ($ISlotType)>
+ "getCuriosStacksHandler"(arg0: StringJS): $Optional<($ICurioStacksHandler)>
  "isCuriosEquipped"(arg0: $Predicate$$Type<($ItemStack)>): boolean
  "isCuriosEquipped"(arg0: $Item$$Type): boolean
- "addCuriosSlotModifier"(arg0: string, arg1: $ResourceLocation$$Type, arg2: double, arg3: $AttributeModifier$Operation$$Type): void
- "getCuriosSlotModifiers"(): $Multimap<(string), ($AttributeModifier)>
+ "addCuriosSlotModifier"(arg0: StringJS, arg1: $ResourceLocation$$Type, arg2: double, arg3: $AttributeModifier$Operation$$Type): void
+ "getCuriosSlotModifiers"(): $Multimap<(StringJS), ($AttributeModifier)>
  "getCuriosInventory"(): $ICuriosItemHandler
- "getEquippedCurios"(): $IItemHandlerModifiable
+ "getEntityCuriosRegistrySlots"(): $Map<(StringJS), ($ISlotType)>
+ "removeCuriosSlotModifier"(arg0: StringJS, arg1: $ResourceLocation$$Type): void
+ "clearCuriosSlotModifiers"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -802,46 +800,22 @@ declare module "net.zhaiji.kubejscurios.kubejs.KubeJSCuriosEventJS$SlotModifiers
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$KubeLivingEntityEvent, $KubeLivingEntityEvent$$Type} from "dev.latvian.mods.kubejs.entity.KubeLivingEntityEvent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Set, $Set$$Type} from "java.util.Set"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$MinecraftServer, $MinecraftServer$$Type} from "net.minecraft.server.MinecraftServer"
 import {$RegistryAccess, $RegistryAccess$$Type} from "net.minecraft.core.RegistryAccess"
 
 export class $KubeJSCuriosEventJS$SlotModifiersUpdated implements $KubeLivingEntityEvent {
 
-constructor(arg0: $LivingEntity$$Type, arg1: $Set$$Type<(string)>)
+constructor(arg0: $LivingEntity$$Type, arg1: $Set$$Type<(StringJS)>)
 
 public "getEntity"(): $Entity
-public "getTypes"(): $Set<(string)>
+public "getTypes"(): $Set<(StringJS)>
 public "getLevel"(): $Level
 public "getPlayer"(): $Player
-public "getRegistries"(): $RegistryAccess
 public "getServer"(): $MinecraftServer
-/**
- * Stops the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(arg1: any): any
-/**
- * Stops the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(): any
-/**
- * Cancels the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(arg1: any): any
-/**
- * Cancels the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(): any
+public "getRegistries"(): $RegistryAccess
 /**
  * Stops the event with default exit value. Execution will be stopped **immediately**.
  * 
@@ -854,12 +828,36 @@ public "success"(): any
  * `success` denotes a `true` outcome.
  */
 public "success"(arg1: any): any
+/**
+ * Stops the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(): any
+/**
+ * Stops the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(arg1: any): any
+/**
+ * Cancels the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(arg1: any): any
+/**
+ * Cancels the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(): any
 get "entity"(): $Entity
-get "types"(): $Set<(string)>
+get "types"(): $Set<(StringJS)>
 get "level"(): $Level
 get "player"(): $Player
-get "registries"(): $RegistryAccess
 get "server"(): $MinecraftServer
+get "registries"(): $RegistryAccess
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -875,8 +873,8 @@ export type $KubeJSCuriosEventJS$SlotModifiersUpdated_ = $KubeJSCuriosEventJS$Sl
 }}
 declare module "net.zhaiji.kubejscurios.kubejs.KubeJSCuriosEventJS$DropRules" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ICurio$DropRule, $ICurio$DropRule$$Type} from "top.theillusivec4.curios.api.type.capability.ICurio$DropRule"
 import {$List, $List$$Type} from "java.util.List"
+import {$ICurio$DropRule, $ICurio$DropRule$$Type} from "top.theillusivec4.curios.api.type.capability.ICurio$DropRule"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Tuple, $Tuple$$Type} from "net.minecraft.util.Tuple"
@@ -902,32 +900,8 @@ public "getEntity"(): $Entity
 public "addOverride"(arg0: $Predicate$$Type<($ItemStack)>, arg1: $ICurio$DropRule$$Type): void
 public "getLevel"(): $Level
 public "getPlayer"(): $Player
-public "getRegistries"(): $RegistryAccess
 public "getServer"(): $MinecraftServer
-/**
- * Stops the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(arg1: any): any
-/**
- * Stops the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(): any
-/**
- * Cancels the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(arg1: any): any
-/**
- * Cancels the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(): any
+public "getRegistries"(): $RegistryAccess
 /**
  * Stops the event with default exit value. Execution will be stopped **immediately**.
  * 
@@ -940,11 +914,35 @@ public "success"(): any
  * `success` denotes a `true` outcome.
  */
 public "success"(arg1: any): any
+/**
+ * Stops the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(): any
+/**
+ * Stops the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(arg1: any): any
+/**
+ * Cancels the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(arg1: any): any
+/**
+ * Cancels the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(): any
 get "entity"(): $Entity
 get "level"(): $Level
 get "player"(): $Player
-get "registries"(): $RegistryAccess
 get "server"(): $MinecraftServer
+get "registries"(): $RegistryAccess
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1030,8 +1028,8 @@ import {$DamageSource, $DamageSource$$Type} from "net.minecraft.world.damagesour
 import {$ICuriosItemHandler, $ICuriosItemHandler$$Type} from "top.theillusivec4.curios.api.type.capability.ICuriosItemHandler"
 import {$KubeLivingEntityEvent, $KubeLivingEntityEvent$$Type} from "dev.latvian.mods.kubejs.entity.KubeLivingEntityEvent"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$ItemEntity, $ItemEntity$$Type} from "net.minecraft.world.entity.item.ItemEntity"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$MinecraftServer, $MinecraftServer$$Type} from "net.minecraft.server.MinecraftServer"
 import {$RegistryAccess, $RegistryAccess$$Type} from "net.minecraft.core.RegistryAccess"
 
@@ -1047,32 +1045,8 @@ constructor(arg0: $LivingEntity$$Type, arg1: $DamageSource$$Type, arg2: $Collect
 public "getEntity"(): $LivingEntity
 public "getLevel"(): $Level
 public "getPlayer"(): $Player
-public "getRegistries"(): $RegistryAccess
 public "getServer"(): $MinecraftServer
-/**
- * Stops the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(arg1: any): any
-/**
- * Stops the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(): any
-/**
- * Cancels the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(arg1: any): any
-/**
- * Cancels the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(): any
+public "getRegistries"(): $RegistryAccess
 /**
  * Stops the event with default exit value. Execution will be stopped **immediately**.
  * 
@@ -1085,11 +1059,35 @@ public "success"(): any
  * `success` denotes a `true` outcome.
  */
 public "success"(arg1: any): any
+/**
+ * Stops the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(): any
+/**
+ * Stops the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(arg1: any): any
+/**
+ * Cancels the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(arg1: any): any
+/**
+ * Cancels the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(): any
 get "entity"(): $LivingEntity
 get "level"(): $Level
 get "player"(): $Player
-get "registries"(): $RegistryAccess
 get "server"(): $MinecraftServer
+get "registries"(): $RegistryAccess
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

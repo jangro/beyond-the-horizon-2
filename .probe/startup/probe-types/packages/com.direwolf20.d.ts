@@ -24,7 +24,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -48,10 +48,11 @@ declare global {
 export type $RawBlazegoldOre_ = $RawBlazegoldOre$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.EclipseAlloyHoe" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
@@ -69,6 +70,7 @@ import {$Map, $Map$$Type} from "java.util.Map"
 import {$Pair, $Pair$$Type} from "com.mojang.datafixers.util.Pair"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
@@ -83,7 +85,7 @@ static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
  */
 static "TILLABLES": $Map<($Block), ($Pair<($Predicate<($UseOnContext)>), ($Consumer<($UseOnContext)>)>)>
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -98,15 +100,24 @@ public "getBarColor"(arg0: $ItemStack$$Type): integer
 public "getMaxEnergy"(): integer
 public "getBlockBreakFECost"(): integer
 public "getPoweredAttributeModifiers"(arg0: $ItemStack$$Type, arg1: $ItemAttributeModifiers$$Type): $ItemAttributeModifiers
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -116,20 +127,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -138,13 +142,12 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "aether$getTillables"(): $Map<($Block), ($Pair<($Predicate<($UseOnContext)>), ($Consumer<($UseOnContext)>)>)>
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "maxEnergy"(): integer
 get "blockBreakFECost"(): integer
 }
@@ -191,10 +194,11 @@ declare global {
 export type $Ability$UseOnAbilityAction_ = $Ability$UseOnAbilityAction$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.armors.BlazegoldLeggings" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
@@ -210,6 +214,7 @@ import {$BaseLeggings, $BaseLeggings$$Type} from "com.direwolf20.justdirethings.
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$ItemEntity, $ItemEntity$$Type} from "net.minecraft.world.entity.item.ItemEntity"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
@@ -219,7 +224,7 @@ import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.Serve
 export class $BlazegoldLeggings extends $BaseLeggings {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -230,9 +235,18 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "onEntityItemUpdate"(arg0: $ItemStack$$Type, arg1: $ItemEntity$$Type): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -242,20 +256,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -264,13 +271,12 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -316,7 +322,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -342,15 +348,17 @@ declare global {
 export type $PolymorphicFluidBlock_ = $PolymorphicFluidBlock$$Type;
 }}
 declare module "com.direwolf20.buildinggadgets2.common.items.TemplateItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
@@ -359,7 +367,7 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 export class $TemplateItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -369,6 +377,7 @@ constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -383,33 +392,35 @@ declare global {
 export type $TemplateItem_ = $TemplateItem$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.CelestigemSword" {
-import {$Map, $Map$$Type} from "java.util.Map"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
-import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
-import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Set, $Set$$Type} from "java.util.Set"
-import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$PoweredTool, $PoweredTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.PoweredTool"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
+import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BaseSword, $BaseSword$$Type} from "com.direwolf20.justdirethings.common.items.tools.basetools.BaseSword"
 
 export class $CelestigemSword extends $BaseSword implements $PoweredTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -423,16 +434,25 @@ public "getBarWidth"(arg0: $ItemStack$$Type): integer
 public "getBarColor"(arg0: $ItemStack$$Type): integer
 public "getBlockBreakFECost"(): integer
 public "getPoweredAttributeModifiers"(arg0: $ItemStack$$Type, arg1: $ItemAttributeModifiers$$Type): $ItemAttributeModifiers
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public "getMaxEnergy"(): integer
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public "getMaxEnergy"(): integer
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -442,20 +462,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -464,12 +477,11 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "blockBreakFECost"(): integer
 get "maxEnergy"(): integer
 }
@@ -492,7 +504,6 @@ import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.leve
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$PolymorphicFluid, $PolymorphicFluid$$Type} from "com.direwolf20.justdirethings.common.fluids.polymorphicfluid.PolymorphicFluid"
 
 export class $PolymorphicFluid$Flowing extends $PolymorphicFluid {
@@ -503,9 +514,8 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "isSource"(arg0: $FluidState$$Type): boolean
 public "getAmount"(arg0: $FluidState$$Type): integer
-public "asHolder"(): $Holder<(any)>
+public "isSource"(arg0: $FluidState$$Type): boolean
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -521,29 +531,31 @@ declare global {
 export type $PolymorphicFluid$Flowing_ = $PolymorphicFluid$Flowing$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.PocketGenerator" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$PoweredItem, $PoweredItem$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.PoweredItem"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$UseAnim, $UseAnim$$Type} from "net.minecraft.world.item.UseAnim"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
-import {$EnergyStorageItemStackNoReceive, $EnergyStorageItemStackNoReceive$$Type} from "com.direwolf20.justdirethings.common.capabilities.EnergyStorageItemStackNoReceive"
 import {$ToggleableItem, $ToggleableItem$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToggleableItem"
+import {$EnergyStorageItemStackNoReceive, $EnergyStorageItemStackNoReceive$$Type} from "com.direwolf20.justdirethings.common.capabilities.EnergyStorageItemStackNoReceive"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 
 export class $PocketGenerator extends $Item implements $PoweredItem, $ToggleableItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -552,32 +564,33 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
+public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
 public "isBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getBarWidth"(arg0: $ItemStack$$Type): integer
 public "getBarColor"(arg0: $ItemStack$$Type): integer
-public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
-public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
+public "tryBurn"(arg0: $EnergyStorageItemStackNoReceive$$Type, arg1: $ItemStack$$Type): void
+public "getFEPerTick"(): integer
+public "getMaxEnergy"(): integer
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
+public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
 public "setFuelMultiplier"(arg0: $ItemStack$$Type, arg1: integer): void
 public "getFuelMultiplier"(arg0: $ItemStack$$Type): integer
 public "getBurnSpeedMultiplier"(arg0: $ItemStack$$Type): integer
 public "getFePerFuelTick"(): integer
-public "tryBurn"(arg0: $EnergyStorageItemStackNoReceive$$Type, arg1: $ItemStack$$Type): void
-public "getFEPerTick"(): integer
-public "getMaxEnergy"(): integer
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public "toggleEnabled"(arg0: $ItemStack$$Type, arg1: $Player$$Type): void
 public "getEnabled"(arg0: $ItemStack$$Type): boolean
-get "fePerFuelTick"(): integer
+public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "fEPerTick"(): integer
 get "maxEnergy"(): integer
+get "fePerFuelTick"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -604,11 +617,11 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($GooSp
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($GooSpreadRecipe)>
 public "codec"(): $MapCodec<($GooSpreadRecipe)>
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($GooSpreadRecipe)>
 public static "fromNetwork"(arg0: $RegistryFriendlyByteBuf$$Type): $GooSpreadRecipe
 public static "toNetwork"(arg0: $RegistryFriendlyByteBuf$$Type, arg1: $GooSpreadRecipe$$Type): void
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -627,13 +640,12 @@ import {$ReplacementMatch, $ReplacementMatch$$Type} from "dev.latvian.mods.kubej
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BaseFlowingFluid, $BaseFlowingFluid$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid"
 import {$RefinedFuel, $RefinedFuel$$Type} from "com.direwolf20.justdirethings.common.fluids.basefluids.RefinedFuel"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$BaseFlowingFluid, $BaseFlowingFluid$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid"
 
 export class $RefinedT2Fuel extends $BaseFlowingFluid implements $RefinedFuel {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -646,7 +658,6 @@ public "getSource"(): $Fluid
 public "getFlowing"(): $Fluid
 public "getBucket"(): $Item
 public "fePerMb"(): integer
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 get "source"(): $Fluid
 get "flowing"(): $Fluid
@@ -670,17 +681,17 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BaseMachineBlock, $BaseMachineBlock$$Type} from "com.direwolf20.justdirethings.common.blocks.baseblocks.BaseMachineBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$Rotation, $Rotation$$Type} from "net.minecraft.world.level.block.Rotation"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
-import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
+import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -699,7 +710,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -712,9 +723,9 @@ public "rotate"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $BlockState
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "openMenu"(arg0: $Player$$Type, arg1: $BlockPos$$Type): void
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
-public "isValidBE"(arg0: $BlockEntity$$Type): boolean
 public "direRotate"(arg0: $BlockState$$Type, arg1: $LevelAccessor$$Type, arg2: $BlockPos$$Type, arg3: $Rotation$$Type): $BlockState
+public "isValidBE"(arg0: $BlockEntity$$Type): boolean
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -735,8 +746,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BaseMachineBlock, $BaseMachineBlock$$Type} from "com.direwolf20.justdirethings.common.blocks.baseblocks.BaseMachineBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -758,7 +769,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -790,8 +801,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BaseMachineBlock, $BaseMachineBlock$$Type} from "com.direwolf20.justdirethings.common.blocks.baseblocks.BaseMachineBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -813,7 +824,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -867,15 +878,19 @@ declare global {
 export type $UnrefinedT3FuelType_ = $UnrefinedT3FuelType$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.resources.Coal_T1" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $Coal_T1 extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -884,6 +899,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "getBurnSpeedMultiplier"(): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "burnSpeedMultiplier"(): integer
 }
 /**
@@ -900,15 +916,19 @@ export type $Coal_T1_ = $Coal_T1$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.resources.Coal_T2" {
 import {$Coal_T1, $Coal_T1$$Type} from "com.direwolf20.justdirethings.common.items.resources.Coal_T1"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $Coal_T2 extends $Coal_T1 {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -917,6 +937,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "getBurnSpeedMultiplier"(): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "burnSpeedMultiplier"(): integer
 }
 /**
@@ -933,15 +954,19 @@ export type $Coal_T2_ = $Coal_T2$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.resources.Coal_T3" {
 import {$Coal_T1, $Coal_T1$$Type} from "com.direwolf20.justdirethings.common.items.resources.Coal_T1"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $Coal_T3 extends $Coal_T1 {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -950,6 +975,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "getBurnSpeedMultiplier"(): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "burnSpeedMultiplier"(): integer
 }
 /**
@@ -966,15 +992,19 @@ export type $Coal_T3_ = $Coal_T3$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.resources.Coal_T4" {
 import {$Coal_T1, $Coal_T1$$Type} from "com.direwolf20.justdirethings.common.items.resources.Coal_T1"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $Coal_T4 extends $Coal_T1 {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -983,6 +1013,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "getBurnSpeedMultiplier"(): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "burnSpeedMultiplier"(): integer
 }
 /**
@@ -1012,10 +1043,10 @@ static readonly "STREAM_CODEC": $StreamCodec<($FriendlyByteBuf), ($NBTHelpers$Bo
 
 constructor(globalPos: $GlobalPos$$Type, direction: $Direction$$Type)
 
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "direction"(): $Direction
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
 public static "toNBT"(arg0: $NBTHelpers$BoundInventory$$Type): $CompoundTag
 public "globalPos"(): $GlobalPos
 public static "fromNBT"(arg0: $CompoundTag$$Type): $NBTHelpers$BoundInventory
@@ -1024,7 +1055,7 @@ public static "fromNBT"(arg0: $CompoundTag$$Type): $NBTHelpers$BoundInventory
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $NBTHelpers$BoundInventory$$Type = ({"direction"?: $Direction$$Type, "globalPos"?: $GlobalPos$$Type}) | ([direction?: $Direction$$Type, globalPos?: $GlobalPos$$Type]);
+export type $NBTHelpers$BoundInventory$$Type = ({"globalPos"?: $GlobalPos$$Type, "direction"?: $Direction$$Type}) | ([globalPos?: $GlobalPos$$Type, direction?: $Direction$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1040,7 +1071,6 @@ import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.leve
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$PortalFluid, $PortalFluid$$Type} from "com.direwolf20.justdirethings.common.fluids.portalfluid.PortalFluid"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $PortalFluid$Flowing extends $PortalFluid {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -1050,9 +1080,8 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "isSource"(arg0: $FluidState$$Type): boolean
 public "getAmount"(arg0: $FluidState$$Type): integer
-public "asHolder"(): $Holder<(any)>
+public "isSource"(arg0: $FluidState$$Type): boolean
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -1080,9 +1109,9 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Paxel
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($PaxelRecipe)>
 public "codec"(): $MapCodec<($PaxelRecipe)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($PaxelRecipe)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1126,10 +1155,11 @@ declare global {
 export type $RefinedFuel_ = $RefinedFuel$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.armors.EclipseAlloyLeggings" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
@@ -1145,6 +1175,7 @@ import {$PoweredTool, $PoweredTool$$Type} from "com.direwolf20.justdirethings.co
 import {$BaseLeggings, $BaseLeggings$$Type} from "com.direwolf20.justdirethings.common.items.armors.basearmors.BaseLeggings"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
@@ -1154,7 +1185,7 @@ import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.Serve
 export class $EclipseAlloyLeggings extends $BaseLeggings implements $PoweredTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1170,15 +1201,24 @@ public "getBarColor"(arg0: $ItemStack$$Type): integer
 public "getMaxEnergy"(): integer
 public "getBlockBreakFECost"(): integer
 public "getPoweredAttributeModifiers"(arg0: $ItemStack$$Type, arg1: $ItemAttributeModifiers$$Type): $ItemAttributeModifiers
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -1188,20 +1228,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -1210,13 +1243,12 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "maxEnergy"(): integer
 get "blockBreakFECost"(): integer
 }
@@ -1257,7 +1289,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1301,17 +1333,17 @@ readonly "paradox_uuid": $UUID
 constructor(arg0: $ItemStack$$Type, arg1: double, arg2: double, arg3: double, arg4: integer, arg5: $UUID$$Type)
 
 public "getType"(): $ParticleType<($ParadoxParticleData)>
+public "getItemStack"(): $ItemStack
+public "getTargetX"(): double
 public "getTargetY"(): double
 public "getTargetZ"(): double
-public "getTargetX"(): double
-public "getItemStack"(): $ItemStack
 public "getTicksPerBlock"(): integer
 public "getParadox_uuid"(): $UUID
 get "type"(): $ParticleType<($ParadoxParticleData)>
+get "itemStack"(): $ItemStack
+get "targetX"(): double
 get "targetY"(): double
 get "targetZ"(): double
-get "targetX"(): double
-get "itemStack"(): $ItemStack
 get "ticksPerBlock"(): integer
 get "paradox_uuid"(): $UUID
 }
@@ -1328,15 +1360,19 @@ declare global {
 export type $ParadoxParticleData_ = $ParadoxParticleData$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.abilityupgrades.UpgradeTemplate" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $UpgradeTemplate extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1344,6 +1380,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1369,7 +1406,7 @@ static readonly "CUTPASTE": $GadgetTarget
 
 
 public static "values"(): ($GadgetTarget)[]
-public static "valueOf"(arg0: string): $GadgetTarget
+public static "valueOf"(arg0: StringJS): $GadgetTarget
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1389,8 +1426,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BaseMachineBlock, $BaseMachineBlock$$Type} from "com.direwolf20.justdirethings.common.blocks.baseblocks.BaseMachineBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -1412,7 +1449,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1450,8 +1487,8 @@ export class $GlitterParticleType extends $ParticleType<($GlitterParticleData)> 
 constructor(arg0: boolean)
 
 public "getType"(): $GlitterParticleType
-public "streamCodec"(): $StreamCodec<($FriendlyByteBuf), ($GlitterParticleData)>
 public "codec"(): $MapCodec<($GlitterParticleData)>
+public "streamCodec"(): $StreamCodec<($FriendlyByteBuf), ($GlitterParticleData)>
 get "type"(): $GlitterParticleType
 }
 /**
@@ -1471,28 +1508,29 @@ import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.B
 import {$FluidCanister$FillMode, $FluidCanister$FillMode$$Type} from "com.direwolf20.justdirethings.common.items.FluidCanister$FillMode"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
-import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$FluidContainingItem, $FluidContainingItem$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.FluidContainingItem"
 import {$SimpleFluidContent, $SimpleFluidContent$$Type} from "net.neoforged.neoforge.fluids.SimpleFluidContent"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$LiquidBlock, $LiquidBlock$$Type} from "net.minecraft.world.level.block.LiquidBlock"
 
 export class $FluidCanister extends $Item implements $FluidContainingItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1501,25 +1539,26 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public static "getFluid"(arg0: $ItemStack$$Type): $Fluid
 public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "getFluid"(arg0: $ItemStack$$Type): $Fluid
 public "placeFluid"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: $BlockHitResult$$Type): boolean
-public static "getFluidColor"(arg0: $ItemStack$$Type): integer
-public "pickupFluid"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: $BlockHitResult$$Type): boolean
 public static "nextFillMode"(arg0: $ItemStack$$Type): void
 public static "getFillMode"(arg0: $ItemStack$$Type): $FluidCanister$FillMode
+public static "getFluidColor"(arg0: $ItemStack$$Type): integer
 public static "getFluidData"(arg0: $ItemStack$$Type): $SimpleFluidContent
+public "pickupFluid"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: $BlockHitResult$$Type): boolean
 public "getMaxMB"(): integer
-public "emptyContents"(arg0: $Player$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $ItemStack$$Type): boolean
 public static "getFullness"(arg0: $ItemStack$$Type): integer
-public static "getLiquidBlockAt"(arg0: $Level$$Type, arg1: $BlockPos$$Type): $LiquidBlock
+public "emptyContents"(arg0: $Player$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $ItemStack$$Type): boolean
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "consumeFluid"(arg0: $ItemStack$$Type, arg1: integer): void
+public static "hasEnoughFluid"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public static "getAvailableFluid"(arg0: $ItemStack$$Type): integer
 public "isFluidBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getFluidBarWidth"(arg0: $ItemStack$$Type): integer
 public "getFluidBarColor"(arg0: $ItemStack$$Type): integer
-public static "consumeFluid"(arg0: $ItemStack$$Type, arg1: integer): void
-public static "hasEnoughFluid"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public static "getLiquidBlockAt"(arg0: $Level$$Type, arg1: $BlockPos$$Type): $LiquidBlock
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "maxMB"(): integer
 }
 /**
@@ -1535,15 +1574,19 @@ declare global {
 export type $FluidCanister_ = $FluidCanister$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.resources.RawFerricore" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $RawFerricore extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1551,6 +1594,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1566,13 +1610,12 @@ export type $RawFerricore_ = $RawFerricore$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.fluids.refinedt4fuel.RefinedT4Fuel$Source" {
 import {$ReplacementMatch, $ReplacementMatch$$Type} from "dev.latvian.mods.kubejs.recipe.match.ReplacementMatch"
-import {$RefinedT4Fuel, $RefinedT4Fuel$$Type} from "com.direwolf20.justdirethings.common.fluids.refinedt4fuel.RefinedT4Fuel"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
+import {$RefinedT4Fuel, $RefinedT4Fuel$$Type} from "com.direwolf20.justdirethings.common.fluids.refinedt4fuel.RefinedT4Fuel"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $RefinedT4Fuel$Source extends $RefinedT4Fuel {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -1582,9 +1625,8 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "isSource"(arg0: $FluidState$$Type): boolean
 public "getAmount"(arg0: $FluidState$$Type): integer
-public "asHolder"(): $Holder<(any)>
+public "isSource"(arg0: $FluidState$$Type): boolean
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -1631,7 +1673,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1657,34 +1699,36 @@ declare global {
 export type $PortalFluidBlock_ = $PortalFluidBlock$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.armors.FerricoreHelmet" {
-import {$Map, $Map$$Type} from "java.util.Map"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
-import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
-import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Set, $Set$$Type} from "java.util.Set"
-import {$BaseHelmet, $BaseHelmet$$Type} from "com.direwolf20.justdirethings.common.items.armors.basearmors.BaseHelmet"
-import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$DispenseItemBehavior, $DispenseItemBehavior$$Type} from "net.minecraft.core.dispenser.DispenseItemBehavior"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
+import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
+import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
+import {$BaseHelmet, $BaseHelmet$$Type} from "com.direwolf20.justdirethings.common.items.armors.basearmors.BaseHelmet"
 
 export class $FerricoreHelmet extends $BaseHelmet {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1694,9 +1738,18 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -1706,20 +1759,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -1728,13 +1774,12 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1780,7 +1825,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1806,15 +1851,19 @@ declare global {
 export type $UnrefinedT3FuelBlock_ = $UnrefinedT3FuelBlock$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.abilityupgrades.UpgradeBlank" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $UpgradeBlank extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1822,6 +1871,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1836,6 +1886,7 @@ declare global {
 export type $UpgradeBlank_ = $UpgradeBlank$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.FerricoreShovel" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
@@ -1844,6 +1895,7 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
@@ -1861,7 +1913,7 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 export class $FerricoreShovel extends $BaseShovel {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static "FLATTENABLES": $Map<($Block), ($BlockState)>
 static readonly "MAX_BAR_WIDTH": integer
@@ -1871,9 +1923,18 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -1883,20 +1944,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -1905,12 +1959,11 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1930,8 +1983,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BaseMachineBlock, $BaseMachineBlock$$Type} from "com.direwolf20.justdirethings.common.blocks.baseblocks.BaseMachineBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -1953,7 +2006,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1985,8 +2038,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BaseMachineBlock, $BaseMachineBlock$$Type} from "com.direwolf20.justdirethings.common.blocks.baseblocks.BaseMachineBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -2008,7 +2061,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2060,7 +2113,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2111,7 +2164,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2161,7 +2214,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2212,7 +2265,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2262,7 +2315,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2286,10 +2339,11 @@ declare global {
 export type $EclipseAlloyBlock_ = $EclipseAlloyBlock$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.armors.CelestigemBoots" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
@@ -2304,6 +2358,7 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$PoweredTool, $PoweredTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.PoweredTool"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$BaseBoots, $BaseBoots$$Type} from "com.direwolf20.justdirethings.common.items.armors.basearmors.BaseBoots"
@@ -2314,7 +2369,7 @@ import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.Serve
 export class $CelestigemBoots extends $BaseBoots implements $PoweredTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -2329,16 +2384,25 @@ public "getBarWidth"(arg0: $ItemStack$$Type): integer
 public "getBarColor"(arg0: $ItemStack$$Type): integer
 public "getBlockBreakFECost"(): integer
 public "getPoweredAttributeModifiers"(arg0: $ItemStack$$Type, arg1: $ItemAttributeModifiers$$Type): $ItemAttributeModifiers
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public "getMaxEnergy"(): integer
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public "getMaxEnergy"(): integer
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -2348,20 +2412,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -2370,13 +2427,12 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "blockBreakFECost"(): integer
 get "maxEnergy"(): integer
 }
@@ -2393,10 +2449,11 @@ declare global {
 export type $CelestigemBoots_ = $CelestigemBoots$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.CelestigemHoe" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
@@ -2414,6 +2471,7 @@ import {$Map, $Map$$Type} from "java.util.Map"
 import {$Pair, $Pair$$Type} from "com.mojang.datafixers.util.Pair"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
@@ -2428,7 +2486,7 @@ static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
  */
 static "TILLABLES": $Map<($Block), ($Pair<($Predicate<($UseOnContext)>), ($Consumer<($UseOnContext)>)>)>
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -2442,16 +2500,25 @@ public "getBarWidth"(arg0: $ItemStack$$Type): integer
 public "getBarColor"(arg0: $ItemStack$$Type): integer
 public "getBlockBreakFECost"(): integer
 public "getPoweredAttributeModifiers"(arg0: $ItemStack$$Type, arg1: $ItemAttributeModifiers$$Type): $ItemAttributeModifiers
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public "getMaxEnergy"(): integer
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public "getMaxEnergy"(): integer
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -2461,20 +2528,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -2483,13 +2543,12 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "aether$getTillables"(): $Map<($Block), ($Pair<($Predicate<($UseOnContext)>), ($Consumer<($UseOnContext)>)>)>
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "blockBreakFECost"(): integer
 get "maxEnergy"(): integer
 }
@@ -2506,10 +2565,11 @@ declare global {
 export type $CelestigemHoe_ = $CelestigemHoe$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.armors.BlazegoldBoots" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
@@ -2524,6 +2584,7 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$ItemEntity, $ItemEntity$$Type} from "net.minecraft.world.entity.item.ItemEntity"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$BaseBoots, $BaseBoots$$Type} from "com.direwolf20.justdirethings.common.items.armors.basearmors.BaseBoots"
@@ -2534,7 +2595,7 @@ import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.Serve
 export class $BlazegoldBoots extends $BaseBoots {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -2545,9 +2606,18 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "onEntityItemUpdate"(arg0: $ItemStack$$Type, arg1: $ItemEntity$$Type): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -2557,20 +2627,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -2579,13 +2642,12 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2600,34 +2662,36 @@ declare global {
 export type $BlazegoldBoots_ = $BlazegoldBoots$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.armors.FerricoreBoots" {
-import {$Map, $Map$$Type} from "java.util.Map"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
-import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
-import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
-import {$BaseBoots, $BaseBoots$$Type} from "com.direwolf20.justdirethings.common.items.armors.basearmors.BaseBoots"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Set, $Set$$Type} from "java.util.Set"
-import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$DispenseItemBehavior, $DispenseItemBehavior$$Type} from "net.minecraft.core.dispenser.DispenseItemBehavior"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
+import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
+import {$BaseBoots, $BaseBoots$$Type} from "com.direwolf20.justdirethings.common.items.armors.basearmors.BaseBoots"
+import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 
 export class $FerricoreBoots extends $BaseBoots {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -2637,9 +2701,18 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -2649,20 +2722,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -2671,13 +2737,12 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2699,8 +2764,8 @@ export class $EnergyStorageItemStackNoReceive extends $EnergyStorageItemstack {
 
 constructor(arg0: integer, arg1: $ItemStack$$Type)
 
-public "forceReceiveEnergy"(arg0: integer, arg1: boolean): integer
 public "canReceive"(): boolean
+public "forceReceiveEnergy"(arg0: integer, arg1: boolean): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2715,6 +2780,7 @@ declare global {
 export type $EnergyStorageItemStackNoReceive_ = $EnergyStorageItemStackNoReceive$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.basetools.BasePickaxe" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
 import {$List, $List$$Type} from "java.util.List"
@@ -2740,23 +2806,24 @@ import {$Map, $Map$$Type} from "java.util.Map"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$ToggleableTool, $ToggleableTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToggleableTool"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
-import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$Enchantment, $Enchantment$$Type} from "net.minecraft.world.item.enchantment.Enchantment"
 import {$UseAnim, $UseAnim$$Type} from "net.minecraft.world.item.UseAnim"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$PickaxeItem, $PickaxeItem$$Type} from "net.minecraft.world.item.PickaxeItem"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$EnumSet, $EnumSet$$Type} from "java.util.EnumSet"
 
 export class $BasePickaxe extends $PickaxeItem implements $ToggleableTool, $LeftClickableTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -2766,23 +2833,43 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Tier$$Type, arg1: $Item$Properties$$Type)
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
-public "shouldCauseBlockBreakReset"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
+public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
 public "damageItem"<T extends $LivingEntity>(arg0: $ItemStack$$Type, arg1: integer, arg2: T, arg3: $Consumer$$Type<($Item)>): integer
-public "getAbilities"(): $EnumSet<($Ability)>
 public "hurtEnemy"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type): boolean
 public "mineBlock"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockState$$Type, arg3: $BlockPos$$Type, arg4: $LivingEntity$$Type): boolean
-public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
-public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
-public "isPrimaryItemFor"(arg0: $ItemStack$$Type, arg1: $Holder$$Type<($Enchantment)>): boolean
+public "getAbilities"(): $EnumSet<($Ability)>
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "isPrimaryItemFor"(arg0: $ItemStack$$Type, arg1: $Holder$$Type<($Enchantment)>): boolean
+public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
+public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
+public "shouldCauseBlockBreakReset"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
 public "getAllAbilities"(): $EnumSet<($Ability)>
 public "getAbilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
-public "registerAbility"(arg0: $Ability$$Type): void
-public "registerAbility"(arg0: $Ability$$Type, arg1: $AbilityParams$$Type): void
+public "canUseAbility"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public "bindDrops"(arg0: $UseOnContext$$Type): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: boolean): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: boolean): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: integer, arg4: boolean): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type, arg3: boolean): boolean
+public "hasAbility"(arg0: $Ability$$Type): boolean
+public "canInstaBreak"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Set$$Type<($BlockPos$$Type)>): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public "armorTick"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
+public "bindSoil"(arg0: $UseOnContext$$Type): boolean
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public "openSettings"(arg0: $Player$$Type): void
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public "getBreakBlockPositions"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $LivingEntity$$Type, arg4: $BlockState$$Type): $Set<($BlockPos)>
@@ -2797,39 +2884,21 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public "getCooldownAbilities"(): $List<($Ability)>
 public "hurtEnemyAbility"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type): boolean
 public "mineBlocksAbility"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $LivingEntity$$Type): void
+public "registerAbility"(arg0: $Ability$$Type, arg1: $AbilityParams$$Type): void
+public "registerAbility"(arg0: $Ability$$Type): void
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public "canUseAbility"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public "hasAbility"(arg0: $Ability$$Type): boolean
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public "canInstaBreak"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Set$$Type<($BlockPos$$Type)>): boolean
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public "armorTick"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
-public "bindSoil"(arg0: $UseOnContext$$Type): boolean
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public "bindDrops"(arg0: $UseOnContext$$Type): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: boolean): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: boolean): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type, arg3: boolean): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: integer, arg4: boolean): boolean
-public "openSettings"(arg0: $Player$$Type): void
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public "getPassiveTickAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
 public "canUseAbilityAndDurability"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
 public "canUseAbilityAndDurability"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): boolean
-public "getPassiveTickAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -2838,14 +2907,13 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
-public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public "toggleEnabled"(arg0: $ItemStack$$Type, arg1: $Player$$Type): void
 public "getEnabled"(arg0: $ItemStack$$Type): boolean
+public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "abilities"(): $EnumSet<($Ability)>
 get "allAbilities"(): $EnumSet<($Ability)>
 get "abilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
@@ -2876,22 +2944,22 @@ static readonly "CODEC": $Codec<($ToolRecords$AbilityBinding)>
 static readonly "LIST_CODEC": $Codec<($List<($ToolRecords$AbilityBinding)>)>
 static readonly "STREAM_CODEC": $StreamCodec<($ByteBuf), ($ToolRecords$AbilityBinding)>
 
-constructor(abilityName: string, key: integer, isMouse: boolean, requireEquipped: boolean)
+constructor(abilityName: StringJS, key: integer, isMouse: boolean, requireEquipped: boolean)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "key"(): integer
-public "requireEquipped"(): boolean
-public "abilityName"(): string
+public "abilityName"(): StringJS
 public "isMouse"(): boolean
+public "requireEquipped"(): boolean
 get "mouse"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ToolRecords$AbilityBinding$$Type = ({"abilityName"?: string, "key"?: integer, "isMouse"?: boolean, "requireEquipped"?: boolean}) | ([abilityName?: string, key?: integer, isMouse?: boolean, requireEquipped?: boolean]);
+export type $ToolRecords$AbilityBinding$$Type = ({"isMouse"?: boolean, "requireEquipped"?: boolean, "abilityName"?: StringJS, "key"?: integer}) | ([isMouse?: boolean, requireEquipped?: boolean, abilityName?: StringJS, key?: integer]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -2904,12 +2972,11 @@ import {$ReplacementMatch, $ReplacementMatch$$Type} from "dev.latvian.mods.kubej
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
 import {$BaseFlowingFluid, $BaseFlowingFluid$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $TimeFluid extends $BaseFlowingFluid {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -2921,7 +2988,6 @@ static readonly "LEVEL": $IntegerProperty
 public "getSource"(): $Fluid
 public "getFlowing"(): $Fluid
 public "getBucket"(): $Item
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 get "source"(): $Fluid
 get "flowing"(): $Fluid
@@ -2947,7 +3013,6 @@ import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.leve
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $UnstablePortalFluid$Source extends $UnstablePortalFluid {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -2957,9 +3022,8 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "isSource"(arg0: $FluidState$$Type): boolean
 public "getAmount"(arg0: $FluidState$$Type): integer
-public "asHolder"(): $Holder<(any)>
+public "isSource"(arg0: $FluidState$$Type): boolean
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -2975,10 +3039,11 @@ declare global {
 export type $UnstablePortalFluid$Source_ = $UnstablePortalFluid$Source$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.EclipseAlloyPaxel" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
@@ -2995,6 +3060,7 @@ import {$BasePaxel, $BasePaxel$$Type} from "com.direwolf20.justdirethings.common
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
@@ -3003,7 +3069,7 @@ import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.Serve
 export class $EclipseAlloyPaxel extends $BasePaxel implements $PoweredTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -3015,21 +3081,30 @@ constructor()
 public "isBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getBarWidth"(arg0: $ItemStack$$Type): integer
 public "getBarColor"(arg0: $ItemStack$$Type): integer
-public "isCorrectToolForDrops"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type): boolean
-public "canPerformAction"(arg0: $ItemStack$$Type, arg1: $ItemAbility$$Type): boolean
-public "getDestroySpeed"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type): float
 public "getMaxEnergy"(): integer
+public "isCorrectToolForDrops"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type): boolean
+public "getDestroySpeed"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type): float
+public "canPerformAction"(arg0: $ItemStack$$Type, arg1: $ItemAbility$$Type): boolean
 public "getBlockBreakFECost"(): integer
 public "getPoweredAttributeModifiers"(arg0: $ItemStack$$Type, arg1: $ItemAttributeModifiers$$Type): $ItemAttributeModifiers
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -3039,20 +3114,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -3061,12 +3129,11 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "maxEnergy"(): integer
 get "blockBreakFECost"(): integer
 }
@@ -3083,16 +3150,18 @@ declare global {
 export type $EclipseAlloyPaxel_ = $EclipseAlloyPaxel$$Type;
 }}
 declare module "com.direwolf20.buildinggadgets2.common.items.GadgetDestruction" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
-import {$BaseGadget, $BaseGadget$$Type} from "com.direwolf20.buildinggadgets2.common.items.BaseGadget"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$BaseGadget, $BaseGadget$$Type} from "com.direwolf20.buildinggadgets2.common.items.BaseGadget"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
@@ -3102,7 +3171,7 @@ import {$GadgetTarget, $GadgetTarget$$Type} from "com.direwolf20.buildinggadgets
 export class $GadgetDestruction extends $BaseGadget {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3112,12 +3181,13 @@ constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
 public "undo"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): void
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "gadgetTarget"(): $GadgetTarget
-public "getEnergyMax"(): integer
 public "getEnergyCost"(): integer
-get "energyMax"(): integer
+public "getEnergyMax"(): integer
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "energyCost"(): integer
+get "energyMax"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3137,8 +3207,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BaseMachineBlock, $BaseMachineBlock$$Type} from "com.direwolf20.justdirethings.common.blocks.baseblocks.BaseMachineBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -3160,7 +3230,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3192,8 +3262,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BaseMachineBlock, $BaseMachineBlock$$Type} from "com.direwolf20.justdirethings.common.blocks.baseblocks.BaseMachineBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -3215,7 +3285,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3262,16 +3332,16 @@ import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$Rotation, $Rotation$$Type} from "net.minecraft.world.level.block.Rotation"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $BaseMachineBlock extends $Block implements $EntityBlock {
 static readonly "UPDATE_IMMEDIATE": integer
@@ -3287,7 +3357,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3296,20 +3366,20 @@ static readonly "UPDATE_CLIENTS": integer
 
 constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public static "never"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): boolean
 public "rotate"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $BlockState
+public static "never"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): boolean
+public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
 public "getDrops"(arg0: $BlockState$$Type, arg1: $LootParams$Builder$$Type): $List<($ItemStack)>
 public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
-public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
-public "openMenu"(arg0: $Player$$Type, arg1: $BlockPos$$Type): void
 public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
-public "canConnectRedstone"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): boolean
-public "isValidBE"(arg0: $BlockEntity$$Type): boolean
-public "direRotate"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $BlockState
+public "openMenu"(arg0: $Player$$Type, arg1: $BlockPos$$Type): void
 public "direRotate"(arg0: $BlockState$$Type, arg1: $LevelAccessor$$Type, arg2: $BlockPos$$Type, arg3: $Rotation$$Type): $BlockState
+public "direRotate"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $BlockState
+public "isValidBE"(arg0: $BlockEntity$$Type): boolean
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
+public "canConnectRedstone"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): boolean
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "asHolder"(): $Holder<(any)>
@@ -3327,15 +3397,17 @@ declare global {
 export type $BaseMachineBlock_ = $BaseMachineBlock$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.FerricoreWrench" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -3347,7 +3419,7 @@ import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.conte
 export class $FerricoreWrench extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3356,12 +3428,13 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
 public "isFoil"(arg0: $ItemStack$$Type): boolean
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public static "removeBoundTo"(arg0: $ItemStack$$Type): void
 public static "getBoundTo"(arg0: $ItemStack$$Type): $GlobalPos
 public static "setBoundTo"(arg0: $ItemStack$$Type, arg1: $GlobalPos$$Type): void
-public static "removeBoundTo"(arg0: $ItemStack$$Type): void
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3376,6 +3449,7 @@ declare global {
 export type $FerricoreWrench_ = $FerricoreWrench$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.FerricoreHoe" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
 import {$List, $List$$Type} from "java.util.List"
@@ -3395,6 +3469,7 @@ import {$Map, $Map$$Type} from "java.util.Map"
 import {$Pair, $Pair$$Type} from "com.mojang.datafixers.util.Pair"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
@@ -3409,7 +3484,7 @@ static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
  */
 static "TILLABLES": $Map<($Block), ($Pair<($Predicate<($UseOnContext)>), ($Consumer<($UseOnContext)>)>)>
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -3418,9 +3493,18 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -3430,20 +3514,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -3452,13 +3529,12 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "aether$getTillables"(): $Map<($Block), ($Pair<($Predicate<($UseOnContext)>), ($Consumer<($UseOnContext)>)>)>
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3504,7 +3580,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3515,9 +3591,9 @@ constructor()
 
 public "advance"(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockPos$$Type, arg3: integer): void
 public "animateTick"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $RandomSource$$Type): void
+public "canAdvanceTo"(arg0: $Level$$Type, arg1: $BlockState$$Type): integer
 public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "canAdvanceToCustom"(arg0: $Level$$Type, arg1: $BlockState$$Type): integer
-public "canAdvanceTo"(arg0: $Level$$Type, arg1: $BlockState$$Type): integer
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -3538,9 +3614,9 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BaseMachineBlock, $BaseMachineBlock$$Type} from "com.direwolf20.justdirethings.common.blocks.baseblocks.BaseMachineBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
@@ -3566,7 +3642,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3579,11 +3655,11 @@ constructor()
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "openMenu"(arg0: $Player$$Type, arg1: $BlockPos$$Type): void
+public "isValidBE"(arg0: $BlockEntity$$Type): boolean
 public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "getShadeBrightness"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): float
 public "getOcclusionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): $VoxelShape
 public "propagatesSkylightDown"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): boolean
-public "getShadeBrightness"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): float
-public "isValidBE"(arg0: $BlockEntity$$Type): boolean
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -3606,8 +3682,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
@@ -3615,8 +3691,8 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $RenderBlock extends $Block implements $EntityBlock {
@@ -3633,7 +3709,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3642,16 +3718,16 @@ static readonly "UPDATE_CLIENTS": integer
 
 constructor()
 
+public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getShadeBrightness"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): float
+public "getOcclusionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): $VoxelShape
+public "propagatesSkylightDown"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): boolean
 /**
  * 
  * @deprecated
  */
 public "useShapeForLightOcclusion"(arg0: $BlockState$$Type): boolean
-public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "getOcclusionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): $VoxelShape
-public "propagatesSkylightDown"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): boolean
-public "getShadeBrightness"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): float
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 }
@@ -3668,10 +3744,11 @@ declare global {
 export type $RenderBlock_ = $RenderBlock$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.armors.CelestigemHelmet" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
@@ -3686,17 +3763,18 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$PoweredTool, $PoweredTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.PoweredTool"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$BaseHelmet, $BaseHelmet$$Type} from "com.direwolf20.justdirethings.common.items.armors.basearmors.BaseHelmet"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
+import {$BaseHelmet, $BaseHelmet$$Type} from "com.direwolf20.justdirethings.common.items.armors.basearmors.BaseHelmet"
 
 export class $CelestigemHelmet extends $BaseHelmet implements $PoweredTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3711,16 +3789,25 @@ public "getBarWidth"(arg0: $ItemStack$$Type): integer
 public "getBarColor"(arg0: $ItemStack$$Type): integer
 public "getBlockBreakFECost"(): integer
 public "getPoweredAttributeModifiers"(arg0: $ItemStack$$Type, arg1: $ItemAttributeModifiers$$Type): $ItemAttributeModifiers
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public "getMaxEnergy"(): integer
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public "getMaxEnergy"(): integer
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -3730,20 +3817,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -3752,13 +3832,12 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "blockBreakFECost"(): integer
 get "maxEnergy"(): integer
 }
@@ -3775,15 +3854,17 @@ declare global {
 export type $CelestigemHelmet_ = $CelestigemHelmet$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.CreatureCatcher" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
@@ -3792,7 +3873,7 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 export class $CreatureCatcher extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3801,8 +3882,9 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public static "hasEntity"(arg0: $ItemStack$$Type): boolean
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3829,11 +3911,11 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($GooSp
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($GooSpreadRecipeTag)>
 public "codec"(): $MapCodec<($GooSpreadRecipeTag)>
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($GooSpreadRecipeTag)>
 public static "fromNetwork"(arg0: $RegistryFriendlyByteBuf$$Type): $GooSpreadRecipeTag
 public static "toNetwork"(arg0: $RegistryFriendlyByteBuf$$Type, arg1: $GooSpreadRecipeTag$$Type): void
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3879,7 +3961,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3905,6 +3987,7 @@ declare global {
 export type $UnrefinedT4FuelBlock_ = $UnrefinedT4FuelBlock$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.basetools.BaseHoe" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
 import {$List, $List$$Type} from "java.util.List"
@@ -3929,10 +4012,11 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 import {$LeftClickableTool, $LeftClickableTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.LeftClickableTool"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Pair, $Pair$$Type} from "com.mojang.datafixers.util.Pair"
-import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
+import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$ToggleableTool, $ToggleableTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToggleableTool"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
@@ -3953,7 +4037,7 @@ static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
  */
 static "TILLABLES": $Map<($Block), ($Pair<($Predicate<($UseOnContext)>), ($Consumer<($UseOnContext)>)>)>
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -3963,23 +4047,43 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Tier$$Type, arg1: $Item$Properties$$Type)
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
-public "shouldCauseBlockBreakReset"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
+public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
 public "damageItem"<T extends $LivingEntity>(arg0: $ItemStack$$Type, arg1: integer, arg2: T, arg3: $Consumer$$Type<($Item)>): integer
-public "getAbilities"(): $EnumSet<($Ability)>
 public "hurtEnemy"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type): boolean
 public "mineBlock"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockState$$Type, arg3: $BlockPos$$Type, arg4: $LivingEntity$$Type): boolean
-public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
-public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
-public "isPrimaryItemFor"(arg0: $ItemStack$$Type, arg1: $Holder$$Type<($Enchantment)>): boolean
+public "getAbilities"(): $EnumSet<($Ability)>
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "isPrimaryItemFor"(arg0: $ItemStack$$Type, arg1: $Holder$$Type<($Enchantment)>): boolean
+public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
+public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
+public "shouldCauseBlockBreakReset"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
 public "getAllAbilities"(): $EnumSet<($Ability)>
 public "getAbilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
-public "registerAbility"(arg0: $Ability$$Type): void
-public "registerAbility"(arg0: $Ability$$Type, arg1: $AbilityParams$$Type): void
+public "canUseAbility"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public "bindDrops"(arg0: $UseOnContext$$Type): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: boolean): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: boolean): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: integer, arg4: boolean): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type, arg3: boolean): boolean
+public "hasAbility"(arg0: $Ability$$Type): boolean
+public "canInstaBreak"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Set$$Type<($BlockPos$$Type)>): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public "armorTick"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
+public "bindSoil"(arg0: $UseOnContext$$Type): boolean
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public "openSettings"(arg0: $Player$$Type): void
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public "getBreakBlockPositions"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $LivingEntity$$Type, arg4: $BlockState$$Type): $Set<($BlockPos)>
@@ -3994,39 +4098,21 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public "getCooldownAbilities"(): $List<($Ability)>
 public "hurtEnemyAbility"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type): boolean
 public "mineBlocksAbility"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $LivingEntity$$Type): void
+public "registerAbility"(arg0: $Ability$$Type, arg1: $AbilityParams$$Type): void
+public "registerAbility"(arg0: $Ability$$Type): void
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public "canUseAbility"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public "hasAbility"(arg0: $Ability$$Type): boolean
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public "canInstaBreak"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Set$$Type<($BlockPos$$Type)>): boolean
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public "armorTick"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
-public "bindSoil"(arg0: $UseOnContext$$Type): boolean
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public "bindDrops"(arg0: $UseOnContext$$Type): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: boolean): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: boolean): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type, arg3: boolean): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: integer, arg4: boolean): boolean
-public "openSettings"(arg0: $Player$$Type): void
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public "getPassiveTickAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
 public "canUseAbilityAndDurability"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
 public "canUseAbilityAndDurability"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): boolean
-public "getPassiveTickAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -4035,15 +4121,14 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
-public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public "toggleEnabled"(arg0: $ItemStack$$Type, arg1: $Player$$Type): void
 public "getEnabled"(arg0: $ItemStack$$Type): boolean
+public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "aether$getTillables"(): $Map<($Block), ($Pair<($Predicate<($UseOnContext)>), ($Consumer<($UseOnContext)>)>)>
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "abilities"(): $EnumSet<($Ability)>
 get "allAbilities"(): $EnumSet<($Ability)>
 get "abilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
@@ -4069,9 +4154,9 @@ import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BaseMachineBlock, $BaseMachineBlock$$Type} from "com.direwolf20.justdirethings.common.blocks.baseblocks.BaseMachineBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -4093,7 +4178,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -4103,12 +4188,12 @@ static readonly "UPDATE_CLIENTS": integer
 constructor()
 
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "openMenu"(arg0: $Player$$Type, arg1: $BlockPos$$Type): void
 public "isSignalSource"(arg0: $BlockState$$Type): boolean
 public "getSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
-public "canConnectRedstone"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): boolean
-public "getDirectSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
+public "openMenu"(arg0: $Player$$Type, arg1: $BlockPos$$Type): void
 public "isValidBE"(arg0: $BlockEntity$$Type): boolean
+public "getDirectSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
+public "canConnectRedstone"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): boolean
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -4157,9 +4242,9 @@ import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BaseMachineBlock, $BaseMachineBlock$$Type} from "com.direwolf20.justdirethings.common.blocks.baseblocks.BaseMachineBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -4181,7 +4266,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -4191,12 +4276,12 @@ static readonly "UPDATE_CLIENTS": integer
 constructor()
 
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "openMenu"(arg0: $Player$$Type, arg1: $BlockPos$$Type): void
 public "isSignalSource"(arg0: $BlockState$$Type): boolean
 public "getSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
-public "canConnectRedstone"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): boolean
-public "getDirectSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
+public "openMenu"(arg0: $Player$$Type, arg1: $BlockPos$$Type): void
 public "isValidBE"(arg0: $BlockEntity$$Type): boolean
+public "getDirectSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
+public "canConnectRedstone"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): boolean
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -4224,9 +4309,9 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Abili
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($AbilityRecipe)>
 public "codec"(): $MapCodec<($AbilityRecipe)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($AbilityRecipe)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4242,13 +4327,12 @@ export type $AbilityRecipe$Serializer_ = $AbilityRecipe$Serializer$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.fluids.refinedt4fuel.RefinedT4Fuel$Flowing" {
 import {$ReplacementMatch, $ReplacementMatch$$Type} from "dev.latvian.mods.kubejs.recipe.match.ReplacementMatch"
-import {$RefinedT4Fuel, $RefinedT4Fuel$$Type} from "com.direwolf20.justdirethings.common.fluids.refinedt4fuel.RefinedT4Fuel"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
+import {$RefinedT4Fuel, $RefinedT4Fuel$$Type} from "com.direwolf20.justdirethings.common.fluids.refinedt4fuel.RefinedT4Fuel"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $RefinedT4Fuel$Flowing extends $RefinedT4Fuel {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -4258,9 +4342,8 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "isSource"(arg0: $FluidState$$Type): boolean
 public "getAmount"(arg0: $FluidState$$Type): integer
-public "asHolder"(): $Holder<(any)>
+public "isSource"(arg0: $FluidState$$Type): boolean
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -4300,7 +4383,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -4348,7 +4431,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -4375,25 +4458,26 @@ declare module "com.direwolf20.buildinggadgets2.common.items.BaseGadget" {
 import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
-import {$GadgetTarget, $GadgetTarget$$Type} from "com.direwolf20.buildinggadgets2.api.gadgets.GadgetTarget"
 import {$ItemActionContext, $ItemActionContext$$Type} from "com.direwolf20.buildinggadgets2.util.context.ItemActionContext"
+import {$GadgetTarget, $GadgetTarget$$Type} from "com.direwolf20.buildinggadgets2.api.gadgets.GadgetTarget"
 
 export class $BaseGadget extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4402,23 +4486,24 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
+public "undo"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): void
+public "getMaxDamage"(arg0: $ItemStack$$Type): integer
 public "isBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getBarWidth"(arg0: $ItemStack$$Type): integer
 public "getBarColor"(arg0: $ItemStack$$Type): integer
-public "getMaxDamage"(arg0: $ItemStack$$Type): integer
-public "undo"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): void
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-public "bindToInventory"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: $BlockHitResult$$Type): boolean
 public "rotateModes"(arg0: $ItemStack$$Type): $ResourceLocation
-public static "getGadget"(arg0: $Player$$Type): $ItemStack
-public static "getHitPos"(arg0: $ItemActionContext$$Type): $BlockPos
 public "gadgetTarget"(): $GadgetTarget
-public "canUndo"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
-public "getEnergyMax"(): integer
+public static "getHitPos"(arg0: $ItemActionContext$$Type): $BlockPos
+public static "getGadget"(arg0: $Player$$Type): $ItemStack
 public "getEnergyCost"(): integer
-get "energyMax"(): integer
+public "getEnergyMax"(): integer
+public "canUndo"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
+public "bindToInventory"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: $BlockHitResult$$Type): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "energyCost"(): integer
+get "energyMax"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4433,33 +4518,35 @@ declare global {
 export type $BaseGadget_ = $BaseGadget$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.EclipseAlloyAxe" {
-import {$Map, $Map$$Type} from "java.util.Map"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
-import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
-import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$BaseAxe, $BaseAxe$$Type} from "com.direwolf20.justdirethings.common.items.tools.basetools.BaseAxe"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Set, $Set$$Type} from "java.util.Set"
-import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$PoweredTool, $PoweredTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.PoweredTool"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
+import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 
 export class $EclipseAlloyAxe extends $BaseAxe implements $PoweredTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -4475,15 +4562,24 @@ public "getBarColor"(arg0: $ItemStack$$Type): integer
 public "getMaxEnergy"(): integer
 public "getBlockBreakFECost"(): integer
 public "getPoweredAttributeModifiers"(arg0: $ItemStack$$Type, arg1: $ItemAttributeModifiers$$Type): $ItemAttributeModifiers
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -4493,20 +4589,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -4515,14 +4604,13 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "getStrippables"(): $Map<($Block), ($Block)>
 public static "setStrippables"(strippedBlocks: $Map$$Type<($Block$$Type), ($Block$$Type)>): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "maxEnergy"(): integer
 get "blockBreakFECost"(): integer
 }
@@ -4543,12 +4631,11 @@ import {$ReplacementMatch, $ReplacementMatch$$Type} from "dev.latvian.mods.kubej
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
 import {$BaseFlowingFluid, $BaseFlowingFluid$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $UnrefinedT2Fuel extends $BaseFlowingFluid {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -4560,7 +4647,6 @@ static readonly "LEVEL": $IntegerProperty
 public "getSource"(): $Fluid
 public "getFlowing"(): $Fluid
 public "getBucket"(): $Item
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 get "source"(): $Fluid
 get "flowing"(): $Fluid
@@ -4588,10 +4674,9 @@ import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.da
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$ClientboundBlockEntityDataPacket, $ClientboundBlockEntityDataPacket$$Type} from "net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket"
-import {$Packet, $Packet$$Type} from "net.minecraft.network.protocol.Packet"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
-import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$Connection, $Connection$$Type} from "net.minecraft.network.Connection"
+import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $GooBlockBE_Base extends $BlockEntity {
@@ -4599,35 +4684,35 @@ readonly "durationCache": $Map<($BlockState), (integer)>
 readonly "sidedDurations": $Map<($Direction), (integer)>
 readonly "sidedCounters": $Map<($Direction), (integer)>
 readonly "outputCache": $Map<($BlockState), ($BlockState)>
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 constructor(arg0: $BlockEntityType$$Type<(any)>, arg1: $BlockPos$$Type, arg2: $BlockState$$Type)
 
-public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
 public "tickClient"(): void
 public "tickServer"(): void
-public "spawnParticles"(arg0: $Direction$$Type): void
 public "saveAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "getUpdateTag"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
-public "onDataPacket"(arg0: $Connection$$Type, arg1: $ClientboundBlockEntityDataPacket$$Type, arg2: $HolderLookup$Provider$$Type): void
-public "getUpdatePacket"(): $Packet<(any)>
-public "handleUpdateTag"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "updateSideCounter"(arg0: $Direction$$Type, arg1: integer): boolean
-public "markDirtyClient"(): void
-public "setBlockToTarget"(arg0: $BlockState$$Type, arg1: $Direction$$Type): void
-public "getCraftingDuration"(arg0: $Direction$$Type): integer
-public "getRemainingTimeFor"(arg0: $Direction$$Type): integer
+public "spawnParticles"(arg0: $Direction$$Type): void
+public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
 public "counterReducer"(): integer
 public "tickCounters"(): void
 public "checkSides"(): void
 public "findOutput"(arg0: $BlockState$$Type): $BlockState
 public "findDuration"(arg0: $BlockState$$Type): integer
 public "populateCaches"(arg0: $BlockState$$Type): void
+public "getUpdateTag"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
+public "onDataPacket"(arg0: $Connection$$Type, arg1: $ClientboundBlockEntityDataPacket$$Type, arg2: $HolderLookup$Provider$$Type): void
 public "getTier"(): integer
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+public "handleUpdateTag"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "getUpdatePacket"(): $ClientboundBlockEntityDataPacket
+public "markDirtyClient"(): void
+public "updateSideCounter"(arg0: $Direction$$Type, arg1: integer): boolean
+public "setBlockToTarget"(arg0: $BlockState$$Type, arg1: $Direction$$Type): void
+public "getCraftingDuration"(arg0: $Direction$$Type): integer
+public "getRemainingTimeFor"(arg0: $Direction$$Type): integer
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
-get "updatePacket"(): $Packet<(any)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "tier"(): integer
+get "updatePacket"(): $ClientboundBlockEntityDataPacket
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4642,6 +4727,7 @@ declare global {
 export type $GooBlockBE_Base_ = $GooBlockBE_Base$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.BlazegoldSword" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
@@ -4651,6 +4737,7 @@ import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$ItemEntity, $ItemEntity$$Type} from "net.minecraft.world.entity.item.ItemEntity"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
@@ -4667,7 +4754,7 @@ import {$BaseSword, $BaseSword$$Type} from "com.direwolf20.justdirethings.common
 export class $BlazegoldSword extends $BaseSword {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -4677,9 +4764,18 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "onEntityItemUpdate"(arg0: $ItemStack$$Type, arg1: $ItemEntity$$Type): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -4689,20 +4785,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -4711,12 +4800,11 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4731,33 +4819,35 @@ declare global {
 export type $BlazegoldSword_ = $BlazegoldSword$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.CelestigemPickaxe" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$BasePickaxe, $BasePickaxe$$Type} from "com.direwolf20.justdirethings.common.items.tools.basetools.BasePickaxe"
-import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
-import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
-import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Set, $Set$$Type} from "java.util.Set"
-import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$PoweredTool, $PoweredTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.PoweredTool"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
+import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 
 export class $CelestigemPickaxe extends $BasePickaxe implements $PoweredTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -4771,16 +4861,25 @@ public "getBarWidth"(arg0: $ItemStack$$Type): integer
 public "getBarColor"(arg0: $ItemStack$$Type): integer
 public "getBlockBreakFECost"(): integer
 public "getPoweredAttributeModifiers"(arg0: $ItemStack$$Type, arg1: $ItemAttributeModifiers$$Type): $ItemAttributeModifiers
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public "getMaxEnergy"(): integer
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public "getMaxEnergy"(): integer
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -4790,20 +4889,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -4812,12 +4904,11 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "blockBreakFECost"(): integer
 get "maxEnergy"(): integer
 }
@@ -4834,35 +4925,37 @@ declare global {
 export type $CelestigemPickaxe_ = $CelestigemPickaxe$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.EclipseAlloyBow" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$BaseBow, $BaseBow$$Type} from "com.direwolf20.justdirethings.common.items.tools.basetools.BaseBow"
-import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
-import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
-import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
-import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Set, $Set$$Type} from "java.util.Set"
-import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$PoweredTool, $PoweredTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.PoweredTool"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
+import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 
 export class $EclipseAlloyBow extends $BaseBow implements $PoweredTool {
 static readonly "ARROW_ONLY": $Predicate<($ItemStack)>
 static readonly "MAX_DRAW_DURATION": integer
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "DEFAULT_RANGE": integer
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -4879,15 +4972,24 @@ public "getMaxDraw"(): float
 public "getMaxEnergy"(): integer
 public "getBlockBreakFECost"(): integer
 public "getPoweredAttributeModifiers"(arg0: $ItemStack$$Type, arg1: $ItemAttributeModifiers$$Type): $ItemAttributeModifiers
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -4897,20 +4999,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -4919,12 +5014,11 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "maxDraw"(): float
 get "maxEnergy"(): integer
 get "blockBreakFECost"(): integer
@@ -4949,7 +5043,6 @@ import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.leve
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $UnrefinedT2Fuel$Flowing extends $UnrefinedT2Fuel {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -4959,9 +5052,8 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "isSource"(arg0: $FluidState$$Type): boolean
 public "getAmount"(arg0: $FluidState$$Type): integer
-public "asHolder"(): $Holder<(any)>
+public "isSource"(arg0: $FluidState$$Type): boolean
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -4977,11 +5069,13 @@ declare global {
 export type $UnrefinedT2Fuel$Flowing_ = $UnrefinedT2Fuel$Flowing$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.MachineSettingsCopier" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -4993,7 +5087,7 @@ import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.
 export class $MachineSettingsCopier extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -5001,15 +5095,16 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public static "setSettings"(arg0: $ItemStack$$Type, arg1: boolean, arg2: boolean, arg3: boolean, arg4: boolean): void
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public static "setSettings"(arg0: $ItemStack$$Type, arg1: boolean, arg2: boolean, arg3: boolean, arg4: boolean): void
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
-public static "getCopyRedstone"(arg0: $ItemStack$$Type): boolean
 public static "getCopyArea"(arg0: $ItemStack$$Type): boolean
 public static "getCopyOffset"(arg0: $ItemStack$$Type): boolean
 public static "getCopyFilter"(arg0: $ItemStack$$Type): boolean
 public "loadSettings"(arg0: $Level$$Type, arg1: $BlockEntity$$Type, arg2: $ItemStack$$Type): void
 public "saveSettings"(arg0: $Level$$Type, arg1: $BlockEntity$$Type, arg2: $ItemStack$$Type): void
+public static "getCopyRedstone"(arg0: $ItemStack$$Type): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5056,8 +5151,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
@@ -5081,7 +5176,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -5125,15 +5220,16 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$Set, $Set$$Type} from "java.util.Set"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
 import {$FluidContainingItem, $FluidContainingItem$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.FluidContainingItem"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$LeftClickableTool, $LeftClickableTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.LeftClickableTool"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
-import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
@@ -5143,7 +5239,7 @@ import {$LiquidBlock, $LiquidBlock$$Type} from "net.minecraft.world.level.block.
 export class $PolymorphicWand extends $BaseToggleableTool implements $LeftClickableTool, $FluidContainingItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -5153,9 +5249,11 @@ constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
-public "onLeftClickEntity"(arg0: $ItemStack$$Type, arg1: $Player$$Type, arg2: $Entity$$Type): boolean
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getMaxMB"(): integer
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "onLeftClickEntity"(arg0: $ItemStack$$Type, arg1: $Player$$Type, arg2: $Entity$$Type): boolean
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -5164,22 +5262,29 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
-public static "getLiquidBlockAt"(arg0: $Level$$Type, arg1: $BlockPos$$Type): $LiquidBlock
+public static "pickupFluid"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: $BlockHitResult$$Type): boolean
+public static "consumeFluid"(arg0: $ItemStack$$Type, arg1: integer): void
+public static "hasEnoughFluid"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public static "getAvailableFluid"(arg0: $ItemStack$$Type): integer
 public "isFluidBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getFluidBarWidth"(arg0: $ItemStack$$Type): integer
 public "getFluidBarColor"(arg0: $ItemStack$$Type): integer
-public static "pickupFluid"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: $BlockHitResult$$Type): boolean
-public static "consumeFluid"(arg0: $ItemStack$$Type, arg1: integer): void
-public static "hasEnoughFluid"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "getLiquidBlockAt"(arg0: $Level$$Type, arg1: $BlockPos$$Type): $LiquidBlock
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -5189,21 +5294,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "maxMB"(): integer
 }
 /**
@@ -5222,8 +5319,8 @@ declare module "com.direwolf20.justdirethings.common.blocks.InventoryHolder" {
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$LootParams$Builder, $LootParams$Builder$$Type} from "net.minecraft.world.level.storage.loot.LootParams$Builder"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
@@ -5239,8 +5336,8 @@ import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.Liv
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $InventoryHolder extends $BaseMachineBlock {
@@ -5257,7 +5354,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -5270,12 +5367,12 @@ public "rotate"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $BlockState
 public "getDrops"(arg0: $BlockState$$Type, arg1: $LootParams$Builder$$Type): $List<($ItemStack)>
 public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "openMenu"(arg0: $Player$$Type, arg1: $BlockPos$$Type): void
 public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
-public "isValidBE"(arg0: $BlockEntity$$Type): boolean
+public "openMenu"(arg0: $Player$$Type, arg1: $BlockPos$$Type): void
 public "direRotate"(arg0: $BlockState$$Type, arg1: $LevelAccessor$$Type, arg2: $BlockPos$$Type, arg3: $Rotation$$Type): $BlockState
+public "isValidBE"(arg0: $BlockEntity$$Type): boolean
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -5291,15 +5388,17 @@ declare global {
 export type $InventoryHolder_ = $InventoryHolder$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.TotemOfDeathRecall" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$UseAnim, $UseAnim$$Type} from "net.minecraft.world.item.UseAnim"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -5311,7 +5410,7 @@ import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.Liv
 export class $TotemOfDeathRecall extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -5320,13 +5419,14 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "getUseDuration"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): integer
-public "releaseUsing"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $LivingEntity$$Type, arg3: integer): void
 public "isFoil"(arg0: $ItemStack$$Type): boolean
-public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "releaseUsing"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $LivingEntity$$Type, arg3: integer): void
+public "getUseDuration"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): integer
 public static "getBoundTo"(arg0: $ItemStack$$Type): $NBTHelpers$GlobalVec3
 public static "setBoundTo"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$GlobalVec3$$Type): void
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5372,7 +5472,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -5410,6 +5510,8 @@ export interface $LeftClickableTool {
 }
 
 export namespace $LeftClickableTool {
+function getBindingMode(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+function setBindingMode(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 function getLeftClickList(arg0: $ItemStack$$Type): $Set<($Ability)>
 function setLeftClickList(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 function getCustomBindingList(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -5418,8 +5520,6 @@ function addToLeftClickList(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 function getAbilityBinding(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 function addToCustomBindingList(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 function getLeftClickableItem(arg0: $Player$$Type): $ItemStack
-function getBindingMode(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-function setBindingMode(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 function removeFromCustomBindingList(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 function removeFromLeftClickList(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 function getCustomBindingListFor(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
@@ -5428,6 +5528,8 @@ const probejs$$marker: never
 export class $LeftClickableTool$$Static implements $LeftClickableTool {
 
 
+static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -5436,8 +5538,6 @@ static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
@@ -5466,8 +5566,8 @@ export class $ItemFlowParticleType extends $ParticleType<($ItemFlowParticleData)
 constructor(arg0: boolean)
 
 public "getType"(): $ItemFlowParticleType
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($ItemFlowParticleData)>
 public "codec"(): $MapCodec<($ItemFlowParticleData)>
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($ItemFlowParticleData)>
 get "type"(): $ItemFlowParticleType
 }
 /**
@@ -5490,8 +5590,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -5510,7 +5610,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -5546,13 +5646,13 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $GooBlock_Base extends $Block implements $EntityBlock {
@@ -5569,7 +5669,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -5597,6 +5697,7 @@ declare global {
 export type $GooBlock_Base_ = $GooBlock_Base$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.BlazegoldPickaxe" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$BasePickaxe, $BasePickaxe$$Type} from "com.direwolf20.justdirethings.common.items.tools.basetools.BasePickaxe"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
@@ -5607,6 +5708,7 @@ import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$ItemEntity, $ItemEntity$$Type} from "net.minecraft.world.entity.item.ItemEntity"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
@@ -5622,7 +5724,7 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 export class $BlazegoldPickaxe extends $BasePickaxe {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -5632,9 +5734,18 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "onEntityItemUpdate"(arg0: $ItemStack$$Type, arg1: $ItemEntity$$Type): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -5644,20 +5755,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -5666,12 +5770,11 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5689,14 +5792,15 @@ declare module "com.direwolf20.justdirethings.common.items.TimeWand" {
 import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$PoweredItem, $PoweredItem$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.PoweredItem"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$BasePoweredItem, $BasePoweredItem$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.BasePoweredItem"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$UseAnim, $UseAnim$$Type} from "net.minecraft.world.item.UseAnim"
@@ -5710,7 +5814,7 @@ import {$LiquidBlock, $LiquidBlock$$Type} from "net.minecraft.world.level.block.
 export class $TimeWand extends $BasePoweredItem implements $PoweredItem, $FluidContainingItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -5719,31 +5823,32 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
-public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-public static "calculateFluidCost"(arg0: $Player$$Type, arg1: integer): integer
-public static "calculateFECost"(arg0: $Player$$Type, arg1: integer): integer
 public static "pickupFluid"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: $BlockHitResult$$Type): boolean
 public "spawnEntity"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $BlockPos$$Type, arg3: $ItemStack$$Type): boolean
 public static "getFEPerRate"(): integer
 public static "getMBPerRate"(): float
-public "getMaxEnergy"(): integer
 public "hasResources"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: integer): boolean
+public "getMaxEnergy"(): integer
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
+public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
+public static "calculateFluidCost"(arg0: $Player$$Type, arg1: integer): integer
+public static "calculateFECost"(arg0: $Player$$Type, arg1: integer): integer
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getLiquidBlockAt"(arg0: $Level$$Type, arg1: $BlockPos$$Type): $LiquidBlock
+public static "consumeFluid"(arg0: $ItemStack$$Type, arg1: integer): void
+public static "hasEnoughFluid"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public "getMaxMB"(): integer
 public static "getAvailableFluid"(arg0: $ItemStack$$Type): integer
 public "isFluidBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getFluidBarWidth"(arg0: $ItemStack$$Type): integer
 public "getFluidBarColor"(arg0: $ItemStack$$Type): integer
-public static "consumeFluid"(arg0: $ItemStack$$Type, arg1: integer): void
-public static "hasEnoughFluid"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public "getMaxMB"(): integer
+public static "getLiquidBlockAt"(arg0: $Level$$Type, arg1: $BlockPos$$Type): $LiquidBlock
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "maxEnergy"(): integer
 get "maxMB"(): integer
 }
@@ -5760,10 +5865,11 @@ declare global {
 export type $TimeWand_ = $TimeWand$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.armors.CelestigemChestplate" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
@@ -5778,6 +5884,7 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$PoweredTool, $PoweredTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.PoweredTool"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
@@ -5788,7 +5895,7 @@ import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.Serve
 export class $CelestigemChestplate extends $BaseChestplate implements $PoweredTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -5798,24 +5905,33 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public "canElytraFly"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): boolean
 public "isBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getBarWidth"(arg0: $ItemStack$$Type): integer
 public "getBarColor"(arg0: $ItemStack$$Type): integer
-public "canElytraFly"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): boolean
-public "elytraFlightTick"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: integer): boolean
 public static "isFlyEnabled"(arg0: $ItemStack$$Type): boolean
+public "elytraFlightTick"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: integer): boolean
 public "getBlockBreakFECost"(): integer
 public "getPoweredAttributeModifiers"(arg0: $ItemStack$$Type, arg1: $ItemAttributeModifiers$$Type): $ItemAttributeModifiers
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public "getMaxEnergy"(): integer
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public "getMaxEnergy"(): integer
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -5825,20 +5941,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -5847,13 +5956,12 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "blockBreakFECost"(): integer
 get "maxEnergy"(): integer
 }
@@ -5881,8 +5989,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -5902,7 +6010,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -5940,8 +6048,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -5961,7 +6069,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -5999,8 +6107,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -6020,7 +6128,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -6058,8 +6166,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -6079,7 +6187,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -6106,6 +6214,7 @@ declare global {
 export type $GooBlock_Tier1_ = $GooBlock_Tier1$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.BlazegoldAxe" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
@@ -6115,6 +6224,7 @@ import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$ItemEntity, $ItemEntity$$Type} from "net.minecraft.world.entity.item.ItemEntity"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
@@ -6131,7 +6241,7 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 export class $BlazegoldAxe extends $BaseAxe {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -6142,9 +6252,18 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "onEntityItemUpdate"(arg0: $ItemStack$$Type, arg1: $ItemEntity$$Type): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -6154,20 +6273,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -6176,14 +6288,13 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "getStrippables"(): $Map<($Block), ($Block)>
 public static "setStrippables"(strippedBlocks: $Map$$Type<($Block$$Type), ($Block$$Type)>): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6219,36 +6330,36 @@ readonly "maxAgeMul": float
 readonly "r": float
 readonly "size": float
 static readonly "MAP_CODEC": $MapCodec<($GlitterParticleData)>
-readonly "partType": string
+readonly "partType": StringJS
 
 
-public "getG"(): float
 public "getA"(): float
 public "getB"(): float
-public "getType"(): $ParticleType<($GlitterParticleData)>
 public "getSize"(): float
+public "getType"(): $ParticleType<($GlitterParticleData)>
+public "getG"(): float
+public "getR"(): float
+public static "composite"<B, C, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(arg0: $StreamCodec$$Type<(B), (T1)>, arg1: $Function$$Type<(C), (T1)>, arg2: $StreamCodec$$Type<(B), (T2)>, arg3: $Function$$Type<(C), (T2)>, arg4: $StreamCodec$$Type<(B), (T3)>, arg5: $Function$$Type<(C), (T3)>, arg6: $StreamCodec$$Type<(B), (T4)>, arg7: $Function$$Type<(C), (T4)>, arg8: $StreamCodec$$Type<(B), (T5)>, arg9: $Function$$Type<(C), (T5)>, arg10: $StreamCodec$$Type<(B), (T6)>, arg11: $Function$$Type<(C), (T6)>, arg12: $StreamCodec$$Type<(B), (T7)>, arg13: $Function$$Type<(C), (T7)>, arg14: $StreamCodec$$Type<(B), (T8)>, arg15: $Function$$Type<(C), (T8)>, arg16: $StreamCodec$$Type<(B), (T9)>, arg17: $Function$$Type<(C), (T9)>, arg18: $StreamCodec$$Type<(B), (T10)>, arg19: $Function$$Type<(C), (T10)>, arg20: $StreamCodec$$Type<(B), (T11)>, arg21: $Function$$Type<(C), (T11)>, arg22: $Function11$$Type<(T1), (T2), (T3), (T4), (T5), (T6), (T7), (T8), (T9), (T10), (T11), (C)>): $StreamCodec<(B), (C)>
+public static "playerparticle"(arg0: StringJS, arg1: double, arg2: double, arg3: double, arg4: float, arg5: float, arg6: float, arg7: float, arg8: float): $GlitterParticleData
+public static "playerparticle"(arg0: StringJS, arg1: double, arg2: double, arg3: double, arg4: float, arg5: float, arg6: float, arg7: float, arg8: float, arg9: float, arg10: boolean): $GlitterParticleData
+public static "playerparticle"(arg0: StringJS, arg1: double, arg2: double, arg3: double, arg4: float, arg5: float, arg6: float, arg7: float): $GlitterParticleData
+public static "playerparticle"(arg0: StringJS, arg1: double, arg2: double, arg3: double, arg4: float, arg5: float, arg6: float, arg7: float, arg8: boolean): $GlitterParticleData
+public "getPartType"(): StringJS
+public "getTargetX"(): double
 public "getTargetY"(): double
 public "getTargetZ"(): double
-public "getTargetX"(): double
-public static "composite"<B, C, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(arg0: $StreamCodec$$Type<(B), (T1)>, arg1: $Function$$Type<(C), (T1)>, arg2: $StreamCodec$$Type<(B), (T2)>, arg3: $Function$$Type<(C), (T2)>, arg4: $StreamCodec$$Type<(B), (T3)>, arg5: $Function$$Type<(C), (T3)>, arg6: $StreamCodec$$Type<(B), (T4)>, arg7: $Function$$Type<(C), (T4)>, arg8: $StreamCodec$$Type<(B), (T5)>, arg9: $Function$$Type<(C), (T5)>, arg10: $StreamCodec$$Type<(B), (T6)>, arg11: $Function$$Type<(C), (T6)>, arg12: $StreamCodec$$Type<(B), (T7)>, arg13: $Function$$Type<(C), (T7)>, arg14: $StreamCodec$$Type<(B), (T8)>, arg15: $Function$$Type<(C), (T8)>, arg16: $StreamCodec$$Type<(B), (T9)>, arg17: $Function$$Type<(C), (T9)>, arg18: $StreamCodec$$Type<(B), (T10)>, arg19: $Function$$Type<(C), (T10)>, arg20: $StreamCodec$$Type<(B), (T11)>, arg21: $Function$$Type<(C), (T11)>, arg22: $Function11$$Type<(T1), (T2), (T3), (T4), (T5), (T6), (T7), (T8), (T9), (T10), (T11), (C)>): $StreamCodec<(B), (C)>
-public "getR"(): float
-public static "playerparticle"(arg0: string, arg1: double, arg2: double, arg3: double, arg4: float, arg5: float, arg6: float, arg7: float, arg8: float): $GlitterParticleData
-public static "playerparticle"(arg0: string, arg1: double, arg2: double, arg3: double, arg4: float, arg5: float, arg6: float, arg7: float, arg8: boolean): $GlitterParticleData
-public static "playerparticle"(arg0: string, arg1: double, arg2: double, arg3: double, arg4: float, arg5: float, arg6: float, arg7: float): $GlitterParticleData
-public static "playerparticle"(arg0: string, arg1: double, arg2: double, arg3: double, arg4: float, arg5: float, arg6: float, arg7: float, arg8: float, arg9: float, arg10: boolean): $GlitterParticleData
-public "getPartType"(): string
 public "getMaxAgeMul"(): float
 public "isDepthTest"(): boolean
-get "g"(): float
 get "a"(): float
 get "b"(): float
-get "type"(): $ParticleType<($GlitterParticleData)>
 get "size"(): float
+get "type"(): $ParticleType<($GlitterParticleData)>
+get "g"(): float
+get "r"(): float
+get "partType"(): StringJS
+get "targetX"(): double
 get "targetY"(): double
 get "targetZ"(): double
-get "targetX"(): double
-get "r"(): float
-get "partType"(): string
 get "maxAgeMul"(): float
 get "depthTest"(): boolean
 }
@@ -6265,33 +6376,35 @@ declare global {
 export type $GlitterParticleData_ = $GlitterParticleData$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.CelestigemAxe" {
-import {$Map, $Map$$Type} from "java.util.Map"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
-import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
-import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$BaseAxe, $BaseAxe$$Type} from "com.direwolf20.justdirethings.common.items.tools.basetools.BaseAxe"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Set, $Set$$Type} from "java.util.Set"
-import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$PoweredTool, $PoweredTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.PoweredTool"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
+import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 
 export class $CelestigemAxe extends $BaseAxe implements $PoweredTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -6306,16 +6419,25 @@ public "getBarWidth"(arg0: $ItemStack$$Type): integer
 public "getBarColor"(arg0: $ItemStack$$Type): integer
 public "getBlockBreakFECost"(): integer
 public "getPoweredAttributeModifiers"(arg0: $ItemStack$$Type, arg1: $ItemAttributeModifiers$$Type): $ItemAttributeModifiers
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public "getMaxEnergy"(): integer
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public "getMaxEnergy"(): integer
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -6325,20 +6447,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -6347,14 +6462,13 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "getStrippables"(): $Map<($Block), ($Block)>
 public static "setStrippables"(strippedBlocks: $Map$$Type<($Block$$Type), ($Block$$Type)>): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "blockBreakFECost"(): integer
 get "maxEnergy"(): integer
 }
@@ -6378,8 +6492,8 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -6398,7 +6512,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -6423,10 +6537,11 @@ declare global {
 export type $GooPatternBlock_ = $GooPatternBlock$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.armors.CelestigemLeggings" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
@@ -6442,6 +6557,7 @@ import {$PoweredTool, $PoweredTool$$Type} from "com.direwolf20.justdirethings.co
 import {$BaseLeggings, $BaseLeggings$$Type} from "com.direwolf20.justdirethings.common.items.armors.basearmors.BaseLeggings"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
@@ -6451,7 +6567,7 @@ import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.Serve
 export class $CelestigemLeggings extends $BaseLeggings implements $PoweredTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -6466,16 +6582,25 @@ public "getBarWidth"(arg0: $ItemStack$$Type): integer
 public "getBarColor"(arg0: $ItemStack$$Type): integer
 public "getBlockBreakFECost"(): integer
 public "getPoweredAttributeModifiers"(arg0: $ItemStack$$Type, arg1: $ItemAttributeModifiers$$Type): $ItemAttributeModifiers
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public "getMaxEnergy"(): integer
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public "getMaxEnergy"(): integer
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -6485,20 +6610,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -6507,13 +6625,12 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "blockBreakFECost"(): integer
 get "maxEnergy"(): integer
 }
@@ -6535,9 +6652,9 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BaseMachineBlock, $BaseMachineBlock$$Type} from "com.direwolf20.justdirethings.common.blocks.baseblocks.BaseMachineBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
@@ -6563,7 +6680,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -6576,11 +6693,11 @@ constructor()
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "openMenu"(arg0: $Player$$Type, arg1: $BlockPos$$Type): void
+public "isValidBE"(arg0: $BlockEntity$$Type): boolean
 public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "getShadeBrightness"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): float
 public "getOcclusionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): $VoxelShape
 public "propagatesSkylightDown"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): boolean
-public "getShadeBrightness"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): float
-public "isValidBE"(arg0: $BlockEntity$$Type): boolean
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -6603,7 +6720,6 @@ import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.leve
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $XPFluid$Flowing extends $XPFluid {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -6613,9 +6729,8 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "isSource"(arg0: $FluidState$$Type): boolean
 public "getAmount"(arg0: $FluidState$$Type): integer
-public "asHolder"(): $Holder<(any)>
+public "isSource"(arg0: $FluidState$$Type): boolean
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -6638,7 +6753,6 @@ import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.leve
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $TimeFluid$Flowing extends $TimeFluid {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -6648,9 +6762,8 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "isSource"(arg0: $FluidState$$Type): boolean
 public "getAmount"(arg0: $FluidState$$Type): integer
-public "asHolder"(): $Holder<(any)>
+public "isSource"(arg0: $FluidState$$Type): boolean
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -6679,13 +6792,13 @@ static readonly "CODEC": $Codec<($NBTHelpers$PortalDestination)>
 static readonly "EMPTY": $NBTHelpers$PortalDestination
 static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($NBTHelpers$PortalDestination)>
 
-constructor(globalVec3: $NBTHelpers$GlobalVec3$$Type, direction: $Direction$$Type, name: string)
+constructor(globalVec3: $NBTHelpers$GlobalVec3$$Type, direction: $Direction$$Type, name: StringJS)
 
-public "name"(): string
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "direction"(): $Direction
+public "name"(): StringJS
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
 public static "toNBT"(arg0: $NBTHelpers$PortalDestination$$Type): $CompoundTag
 public "globalVec3"(): $NBTHelpers$GlobalVec3
 public static "fromNBT"(arg0: $CompoundTag$$Type): $NBTHelpers$PortalDestination
@@ -6694,7 +6807,7 @@ public static "fromNBT"(arg0: $CompoundTag$$Type): $NBTHelpers$PortalDestination
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $NBTHelpers$PortalDestination$$Type = ({"globalVec3"?: $NBTHelpers$GlobalVec3$$Type, "direction"?: $Direction$$Type, "name"?: string}) | ([globalVec3?: $NBTHelpers$GlobalVec3$$Type, direction?: $Direction$$Type, name?: string]);
+export type $NBTHelpers$PortalDestination$$Type = ({"name"?: StringJS, "globalVec3"?: $NBTHelpers$GlobalVec3$$Type, "direction"?: $Direction$$Type}) | ([name?: StringJS, globalVec3?: $NBTHelpers$GlobalVec3$$Type, direction?: $Direction$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -6712,7 +6825,7 @@ static readonly "CYCLE": $Ability$SettingType
 
 
 public static "values"(): ($Ability$SettingType)[]
-public static "valueOf"(arg0: string): $Ability$SettingType
+public static "valueOf"(arg0: StringJS): $Ability$SettingType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6727,34 +6840,36 @@ declare global {
 export type $Ability$SettingType_ = $Ability$SettingType$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.armors.FerricoreLeggings" {
-import {$BaseLeggings, $BaseLeggings$$Type} from "com.direwolf20.justdirethings.common.items.armors.basearmors.BaseLeggings"
-import {$Map, $Map$$Type} from "java.util.Map"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
-import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
-import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Set, $Set$$Type} from "java.util.Set"
-import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$DispenseItemBehavior, $DispenseItemBehavior$$Type} from "net.minecraft.core.dispenser.DispenseItemBehavior"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$BaseLeggings, $BaseLeggings$$Type} from "com.direwolf20.justdirethings.common.items.armors.basearmors.BaseLeggings"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
+import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
+import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 
 export class $FerricoreLeggings extends $BaseLeggings {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -6764,9 +6879,18 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -6776,20 +6900,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -6798,13 +6915,12 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6819,20 +6935,24 @@ declare global {
 export type $FerricoreLeggings_ = $FerricoreLeggings$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.PolymorphicCatalyst" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export class $PolymorphicCatalyst extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -6841,6 +6961,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6873,16 +6994,16 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($ItemF
 constructor(arg0: $ItemStack$$Type, arg1: double, arg2: double, arg3: double, arg4: integer)
 
 public "getType"(): $ParticleType<($ItemFlowParticleData)>
+public "getItemStack"(): $ItemStack
+public "getTargetX"(): double
 public "getTargetY"(): double
 public "getTargetZ"(): double
-public "getTargetX"(): double
-public "getItemStack"(): $ItemStack
 public "getTicksPerBlock"(): integer
 get "type"(): $ParticleType<($ItemFlowParticleData)>
+get "itemStack"(): $ItemStack
+get "targetX"(): double
 get "targetY"(): double
 get "targetZ"(): double
-get "targetX"(): double
-get "itemStack"(): $ItemStack
 get "ticksPerBlock"(): integer
 }
 /**
@@ -6929,7 +7050,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -6959,12 +7080,11 @@ import {$ReplacementMatch, $ReplacementMatch$$Type} from "dev.latvian.mods.kubej
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
 import {$BaseFlowingFluid, $BaseFlowingFluid$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $PolymorphicFluid extends $BaseFlowingFluid {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -6976,7 +7096,6 @@ static readonly "LEVEL": $IntegerProperty
 public "getSource"(): $Fluid
 public "getFlowing"(): $Fluid
 public "getBucket"(): $Item
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 get "source"(): $Fluid
 get "flowing"(): $Fluid
@@ -6999,8 +7118,8 @@ import {$CraftingInput, $CraftingInput$$Type} from "net.minecraft.world.item.cra
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$RecipeType, $RecipeType$$Type} from "net.minecraft.world.item.crafting.RecipeType"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CraftingBookCategory, $CraftingBookCategory$$Type} from "net.minecraft.world.item.crafting.CraftingBookCategory"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -7014,36 +7133,36 @@ export class $GooSpreadRecipe implements $CraftingRecipe {
 
 constructor(arg0: $ResourceLocation$$Type, arg1: $BlockState$$Type, arg2: $BlockState$$Type, arg3: integer, arg4: integer)
 
+public "category"(): $CraftingBookCategory
 public "getInput"(): $BlockState
-public "getOutput"(): $BlockState
 public "matches"(arg0: $CraftingInput$$Type, arg1: $Level$$Type): boolean
 public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "matches"(arg0: $GooBlockBE_Base$$Type, arg1: $BlockState$$Type): boolean
 public "getType"(): $RecipeType<(any)>
-public "category"(): $CraftingBookCategory
-public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "getSerializer"(): $RecipeSerializer<(any)>
-public "isSpecial"(): boolean
-public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
-public "getCraftingDuration"(): integer
+public "getOutput"(): $BlockState
 public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
+public "isSpecial"(): boolean
+public "getSerializer"(): $RecipeSerializer<(any)>
+public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "getTierRequirement"(): integer
+public "getCraftingDuration"(): integer
 public "getIngredients"(): $NonNullList<($Ingredient)>
-public "getGroup"(): string
-public "showNotification"(): boolean
-public "getRemainingItems"(arg0: $CraftingInput$$Type): $NonNullList<($ItemStack)>
+public "getGroup"(): StringJS
 public "isIncomplete"(): boolean
 public "getToastSymbol"(): $ItemStack
+public "showNotification"(): boolean
+public "getRemainingItems"(arg0: $CraftingInput$$Type): $NonNullList<($ItemStack)>
 get "input"(): $BlockState
-get "output"(): $BlockState
 get "type"(): $RecipeType<(any)>
-get "serializer"(): $RecipeSerializer<(any)>
+get "output"(): $BlockState
 get "special"(): boolean
-get "craftingDuration"(): integer
+get "serializer"(): $RecipeSerializer<(any)>
 get "tierRequirement"(): integer
+get "craftingDuration"(): integer
 get "ingredients"(): $NonNullList<($Ingredient)>
-get "group"(): string
+get "group"(): StringJS
 get "incomplete"(): boolean
 get "toastSymbol"(): $ItemStack
 }
@@ -7076,13 +7195,13 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Fluid
 constructor(arg0: $FluidStack$$Type, arg1: boolean, arg2: boolean)
 
 public "getType"(): $ParticleType<($FluidFlowParticleData)>
-public "getFluidStack"(): $FluidStack
 public "isDoGravity"(): boolean
 public "isShrinking"(): boolean
+public "getFluidStack"(): $FluidStack
 get "type"(): $ParticleType<($FluidFlowParticleData)>
-get "fluidStack"(): $FluidStack
 get "doGravity"(): boolean
 get "shrinking"(): boolean
+get "fluidStack"(): $FluidStack
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7122,7 +7241,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -7171,7 +7290,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -7220,7 +7339,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -7269,7 +7388,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -7302,7 +7421,7 @@ static readonly "NONE": $Ability$BindingType
 
 
 public static "values"(): ($Ability$BindingType)[]
-public static "valueOf"(arg0: string): $Ability$BindingType
+public static "valueOf"(arg0: StringJS): $Ability$BindingType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7317,10 +7436,11 @@ declare global {
 export type $Ability$BindingType_ = $Ability$BindingType$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.armors.EclipseAlloyChestplate" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
@@ -7335,6 +7455,7 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$PoweredTool, $PoweredTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.PoweredTool"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
@@ -7345,7 +7466,7 @@ import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.Serve
 export class $EclipseAlloyChestplate extends $BaseChestplate implements $PoweredTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -7355,24 +7476,33 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public "canElytraFly"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): boolean
 public "isBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getBarWidth"(arg0: $ItemStack$$Type): integer
 public "getBarColor"(arg0: $ItemStack$$Type): integer
-public "canElytraFly"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): boolean
-public "elytraFlightTick"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: integer): boolean
 public "getMaxEnergy"(): integer
 public static "isFlyEnabled"(arg0: $ItemStack$$Type): boolean
+public "elytraFlightTick"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: integer): boolean
 public "getBlockBreakFECost"(): integer
 public "getPoweredAttributeModifiers"(arg0: $ItemStack$$Type, arg1: $ItemAttributeModifiers$$Type): $ItemAttributeModifiers
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -7382,20 +7512,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -7404,13 +7527,12 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "maxEnergy"(): integer
 get "blockBreakFECost"(): integer
 }
@@ -7427,17 +7549,19 @@ declare global {
 export type $EclipseAlloyChestplate_ = $EclipseAlloyChestplate$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.BlazegoldBow" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$BaseBow, $BaseBow$$Type} from "com.direwolf20.justdirethings.common.items.tools.basetools.BaseBow"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$List, $List$$Type} from "java.util.List"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$ItemEntity, $ItemEntity$$Type} from "net.minecraft.world.entity.item.ItemEntity"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
@@ -7454,7 +7578,7 @@ static readonly "ARROW_ONLY": $Predicate<($ItemStack)>
 static readonly "MAX_DRAW_DURATION": integer
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "DEFAULT_RANGE": integer
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -7464,11 +7588,20 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "onEntityItemUpdate"(arg0: $ItemStack$$Type, arg1: $ItemEntity$$Type): boolean
 public "getMaxDraw"(): float
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public "onEntityItemUpdate"(arg0: $ItemStack$$Type, arg1: $ItemEntity$$Type): boolean
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -7478,20 +7611,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -7500,12 +7626,11 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "maxDraw"(): float
 }
 /**
@@ -7525,8 +7650,8 @@ import {$CraftingInput, $CraftingInput$$Type} from "net.minecraft.world.item.cra
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$RecipeType, $RecipeType$$Type} from "net.minecraft.world.item.crafting.RecipeType"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CraftingBookCategory, $CraftingBookCategory$$Type} from "net.minecraft.world.item.crafting.CraftingBookCategory"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -7541,36 +7666,36 @@ export class $GooSpreadRecipeTag implements $CraftingRecipe {
 
 constructor(arg0: $ResourceLocation$$Type, arg1: $BlockTagIngredient$$Type, arg2: $BlockState$$Type, arg3: integer, arg4: integer)
 
+public "category"(): $CraftingBookCategory
 public "getInput"(): $BlockTagIngredient
-public "getOutput"(): $BlockState
 public "matches"(arg0: $CraftingInput$$Type, arg1: $Level$$Type): boolean
 public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "matches"(arg0: $GooBlockBE_Base$$Type, arg1: $BlockState$$Type): boolean
 public "getType"(): $RecipeType<(any)>
-public "category"(): $CraftingBookCategory
-public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "getSerializer"(): $RecipeSerializer<(any)>
-public "isSpecial"(): boolean
-public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
-public "getCraftingDuration"(): integer
+public "getOutput"(): $BlockState
 public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
+public "isSpecial"(): boolean
+public "getSerializer"(): $RecipeSerializer<(any)>
+public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "getTierRequirement"(): integer
+public "getCraftingDuration"(): integer
 public "getIngredients"(): $NonNullList<($Ingredient)>
-public "getGroup"(): string
-public "showNotification"(): boolean
-public "getRemainingItems"(arg0: $CraftingInput$$Type): $NonNullList<($ItemStack)>
+public "getGroup"(): StringJS
 public "isIncomplete"(): boolean
 public "getToastSymbol"(): $ItemStack
+public "showNotification"(): boolean
+public "getRemainingItems"(arg0: $CraftingInput$$Type): $NonNullList<($ItemStack)>
 get "input"(): $BlockTagIngredient
-get "output"(): $BlockState
 get "type"(): $RecipeType<(any)>
-get "serializer"(): $RecipeSerializer<(any)>
+get "output"(): $BlockState
 get "special"(): boolean
-get "craftingDuration"(): integer
+get "serializer"(): $RecipeSerializer<(any)>
 get "tierRequirement"(): integer
+get "craftingDuration"(): integer
 get "ingredients"(): $NonNullList<($Ingredient)>
-get "group"(): string
+get "group"(): StringJS
 get "incomplete"(): boolean
 get "toastSymbol"(): $ItemStack
 }
@@ -7587,15 +7712,19 @@ declare global {
 export type $GooSpreadRecipeTag_ = $GooSpreadRecipeTag$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.resources.FerricoreIngot" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $FerricoreIngot extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -7603,6 +7732,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7617,35 +7747,37 @@ declare global {
 export type $FerricoreIngot_ = $FerricoreIngot$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.CelestigemBow" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$BaseBow, $BaseBow$$Type} from "com.direwolf20.justdirethings.common.items.tools.basetools.BaseBow"
-import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
-import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
-import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
-import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Set, $Set$$Type} from "java.util.Set"
-import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$PoweredTool, $PoweredTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.PoweredTool"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
+import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 
 export class $CelestigemBow extends $BaseBow implements $PoweredTool {
 static readonly "ARROW_ONLY": $Predicate<($ItemStack)>
 static readonly "MAX_DRAW_DURATION": integer
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "DEFAULT_RANGE": integer
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -7661,16 +7793,25 @@ public "getBarColor"(arg0: $ItemStack$$Type): integer
 public "getMaxDraw"(): float
 public "getBlockBreakFECost"(): integer
 public "getPoweredAttributeModifiers"(arg0: $ItemStack$$Type, arg1: $ItemAttributeModifiers$$Type): $ItemAttributeModifiers
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public "getMaxEnergy"(): integer
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public "getMaxEnergy"(): integer
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -7680,20 +7821,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -7702,12 +7836,11 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "maxDraw"(): float
 get "blockBreakFECost"(): integer
 get "maxEnergy"(): integer
@@ -7730,8 +7863,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BaseMachineBlock, $BaseMachineBlock$$Type} from "com.direwolf20.justdirethings.common.blocks.baseblocks.BaseMachineBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -7753,7 +7886,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -7785,8 +7918,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BaseMachineBlock, $BaseMachineBlock$$Type} from "com.direwolf20.justdirethings.common.blocks.baseblocks.BaseMachineBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -7808,7 +7941,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -7835,15 +7968,19 @@ declare global {
 export type $ClickerT1_ = $ClickerT1$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.PortalFluidCatalyst" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $PortalFluidCatalyst extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -7851,6 +7988,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7881,10 +8019,10 @@ constructor(dimension: $ResourceKey$$Type<($Level)>, position: $Vec3$$Type)
 
 public "dimension"(): $ResourceKey<($Level)>
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "position"(): $Vec3
-public "toVec3ShortString"(): string
+public "toVec3ShortString"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7899,15 +8037,17 @@ declare global {
 export type $NBTHelpers$GlobalVec3_ = $NBTHelpers$GlobalVec3$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.PotionCanister" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
@@ -7917,7 +8057,7 @@ import {$PotionContents, $PotionContents$$Type} from "net.minecraft.world.item.a
 export class $PotionCanister extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -7926,17 +8066,18 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public static "setPotionContents"(arg0: $ItemStack$$Type, arg1: $PotionContents$$Type): void
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-public static "getPotionContents"(arg0: $ItemStack$$Type): $PotionContents
-public static "getPotionAmount"(arg0: $ItemStack$$Type): integer
-public static "addPotionAmount"(arg0: $ItemStack$$Type, arg1: integer): void
-public static "setPotionAmount"(arg0: $ItemStack$$Type, arg1: integer): void
-public static "reducePotionAmount"(arg0: $ItemStack$$Type, arg1: integer): void
 public static "attemptFill"(arg0: $ItemStack$$Type): void
 public static "getPotionColor"(arg0: $ItemStack$$Type): integer
 public static "getMaxMB"(): integer
 public static "getFullness"(arg0: $ItemStack$$Type): integer
+public static "setPotionContents"(arg0: $ItemStack$$Type, arg1: $PotionContents$$Type): void
+public static "getPotionContents"(arg0: $ItemStack$$Type): $PotionContents
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "getPotionAmount"(arg0: $ItemStack$$Type): integer
+public static "addPotionAmount"(arg0: $ItemStack$$Type, arg1: integer): void
+public static "setPotionAmount"(arg0: $ItemStack$$Type, arg1: integer): void
+public static "reducePotionAmount"(arg0: $ItemStack$$Type, arg1: integer): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7978,34 +8119,36 @@ declare global {
 export type $PolymorphicFluidType_ = $PolymorphicFluidType$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.CelestigemShovel" {
-import {$Map, $Map$$Type} from "java.util.Map"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
-import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
-import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
-import {$BaseShovel, $BaseShovel$$Type} from "com.direwolf20.justdirethings.common.items.tools.basetools.BaseShovel"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Set, $Set$$Type} from "java.util.Set"
-import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$PoweredTool, $PoweredTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.PoweredTool"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
+import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
+import {$BaseShovel, $BaseShovel$$Type} from "com.direwolf20.justdirethings.common.items.tools.basetools.BaseShovel"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 
 export class $CelestigemShovel extends $BaseShovel implements $PoweredTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static "FLATTENABLES": $Map<($Block), ($BlockState)>
 static readonly "MAX_BAR_WIDTH": integer
@@ -8020,16 +8163,25 @@ public "getBarWidth"(arg0: $ItemStack$$Type): integer
 public "getBarColor"(arg0: $ItemStack$$Type): integer
 public "getBlockBreakFECost"(): integer
 public "getPoweredAttributeModifiers"(arg0: $ItemStack$$Type, arg1: $ItemAttributeModifiers$$Type): $ItemAttributeModifiers
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public "getMaxEnergy"(): integer
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public "getMaxEnergy"(): integer
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -8039,20 +8191,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -8061,12 +8206,11 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "blockBreakFECost"(): integer
 get "maxEnergy"(): integer
 }
@@ -8095,21 +8239,21 @@ export class $ItemActionContext extends $Record {
 
 constructor(pos: $BlockPos$$Type, hitResult: $BlockHitResult$$Type, player: $Player$$Type, level: $Level$$Type, hand: $InteractionHand$$Type, stack: $ItemStack$$Type)
 
-public "stack"(): $ItemStack
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "pos"(): $BlockPos
 public "level"(): $Level
-public "hitResult"(): $BlockHitResult
-public "player"(): $Player
+public "stack"(): $ItemStack
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
 public "hand"(): $InteractionHand
+public "player"(): $Player
+public "hitResult"(): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ItemActionContext$$Type = ({"pos"?: $BlockPos$$Type, "level"?: $Level$$Type, "stack"?: $ItemStack$$Type, "hitResult"?: $BlockHitResult$$Type, "player"?: $Player$$Type, "hand"?: $InteractionHand$$Type}) | ([pos?: $BlockPos$$Type, level?: $Level$$Type, stack?: $ItemStack$$Type, hitResult?: $BlockHitResult$$Type, player?: $Player$$Type, hand?: $InteractionHand$$Type]);
+export type $ItemActionContext$$Type = ({"hand"?: $InteractionHand$$Type, "pos"?: $BlockPos$$Type, "level"?: $Level$$Type, "stack"?: $ItemStack$$Type, "hitResult"?: $BlockHitResult$$Type, "player"?: $Player$$Type}) | ([hand?: $InteractionHand$$Type, pos?: $BlockPos$$Type, level?: $Level$$Type, stack?: $ItemStack$$Type, hitResult?: $BlockHitResult$$Type, player?: $Player$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -8118,6 +8262,7 @@ declare global {
 export type $ItemActionContext_ = $ItemActionContext$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.basetools.BaseShovel" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
 import {$List, $List$$Type} from "java.util.List"
@@ -8144,6 +8289,7 @@ import {$Map, $Map$$Type} from "java.util.Map"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$ToggleableTool, $ToggleableTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToggleableTool"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
@@ -8159,7 +8305,7 @@ import {$EnumSet, $EnumSet$$Type} from "java.util.EnumSet"
 export class $BaseShovel extends $ShovelItem implements $ToggleableTool, $LeftClickableTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static "FLATTENABLES": $Map<($Block), ($BlockState)>
 static readonly "MAX_BAR_WIDTH": integer
@@ -8170,23 +8316,43 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Tier$$Type, arg1: $Item$Properties$$Type)
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
-public "shouldCauseBlockBreakReset"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
+public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
 public "damageItem"<T extends $LivingEntity>(arg0: $ItemStack$$Type, arg1: integer, arg2: T, arg3: $Consumer$$Type<($Item)>): integer
-public "getAbilities"(): $EnumSet<($Ability)>
 public "hurtEnemy"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type): boolean
 public "mineBlock"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockState$$Type, arg3: $BlockPos$$Type, arg4: $LivingEntity$$Type): boolean
-public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
-public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
-public "isPrimaryItemFor"(arg0: $ItemStack$$Type, arg1: $Holder$$Type<($Enchantment)>): boolean
+public "getAbilities"(): $EnumSet<($Ability)>
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "isPrimaryItemFor"(arg0: $ItemStack$$Type, arg1: $Holder$$Type<($Enchantment)>): boolean
+public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
+public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
+public "shouldCauseBlockBreakReset"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
 public "getAllAbilities"(): $EnumSet<($Ability)>
 public "getAbilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
-public "registerAbility"(arg0: $Ability$$Type): void
-public "registerAbility"(arg0: $Ability$$Type, arg1: $AbilityParams$$Type): void
+public "canUseAbility"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public "bindDrops"(arg0: $UseOnContext$$Type): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: boolean): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: boolean): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: integer, arg4: boolean): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type, arg3: boolean): boolean
+public "hasAbility"(arg0: $Ability$$Type): boolean
+public "canInstaBreak"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Set$$Type<($BlockPos$$Type)>): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public "armorTick"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
+public "bindSoil"(arg0: $UseOnContext$$Type): boolean
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public "openSettings"(arg0: $Player$$Type): void
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public "getBreakBlockPositions"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $LivingEntity$$Type, arg4: $BlockState$$Type): $Set<($BlockPos)>
@@ -8201,39 +8367,21 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public "getCooldownAbilities"(): $List<($Ability)>
 public "hurtEnemyAbility"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type): boolean
 public "mineBlocksAbility"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $LivingEntity$$Type): void
+public "registerAbility"(arg0: $Ability$$Type, arg1: $AbilityParams$$Type): void
+public "registerAbility"(arg0: $Ability$$Type): void
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public "canUseAbility"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public "hasAbility"(arg0: $Ability$$Type): boolean
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public "canInstaBreak"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Set$$Type<($BlockPos$$Type)>): boolean
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public "armorTick"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
-public "bindSoil"(arg0: $UseOnContext$$Type): boolean
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public "bindDrops"(arg0: $UseOnContext$$Type): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: boolean): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: boolean): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type, arg3: boolean): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: integer, arg4: boolean): boolean
-public "openSettings"(arg0: $Player$$Type): void
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public "getPassiveTickAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
 public "canUseAbilityAndDurability"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
 public "canUseAbilityAndDurability"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): boolean
-public "getPassiveTickAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -8242,14 +8390,13 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
-public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public "toggleEnabled"(arg0: $ItemStack$$Type, arg1: $Player$$Type): void
 public "getEnabled"(arg0: $ItemStack$$Type): boolean
+public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "abilities"(): $EnumSet<($Ability)>
 get "allAbilities"(): $EnumSet<($Ability)>
 get "abilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
@@ -8273,12 +8420,11 @@ import {$ReplacementMatch, $ReplacementMatch$$Type} from "dev.latvian.mods.kubej
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
 import {$BaseFlowingFluid, $BaseFlowingFluid$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $UnrefinedT4Fuel extends $BaseFlowingFluid {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -8290,7 +8436,6 @@ static readonly "LEVEL": $IntegerProperty
 public "getSource"(): $Fluid
 public "getFlowing"(): $Fluid
 public "getBucket"(): $Item
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 get "source"(): $Fluid
 get "flowing"(): $Fluid
@@ -8340,7 +8485,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -8366,20 +8511,24 @@ declare global {
 export type $UnrefinedT2FuelBlock_ = $UnrefinedT2FuelBlock$$Type;
 }}
 declare module "com.direwolf20.buildinggadgets2.common.items.Redprint" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export class $Redprint extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -8388,6 +8537,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8402,25 +8552,28 @@ declare global {
 export type $Redprint_ = $Redprint$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.blocks.gooblocks.GooBlock_Item" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $GooBlock_Item extends $BlockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -8439,6 +8592,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8460,7 +8614,6 @@ import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.leve
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $XPFluid$Source extends $XPFluid {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -8470,9 +8623,8 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "isSource"(arg0: $FluidState$$Type): boolean
 public "getAmount"(arg0: $FluidState$$Type): integer
-public "asHolder"(): $Holder<(any)>
+public "isSource"(arg0: $FluidState$$Type): boolean
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -8495,7 +8647,6 @@ import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.leve
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$RefinedT2Fuel, $RefinedT2Fuel$$Type} from "com.direwolf20.justdirethings.common.fluids.refinedt2fuel.RefinedT2Fuel"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $RefinedT2Fuel$Flowing extends $RefinedT2Fuel {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -8505,9 +8656,8 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "isSource"(arg0: $FluidState$$Type): boolean
 public "getAmount"(arg0: $FluidState$$Type): integer
-public "asHolder"(): $Holder<(any)>
+public "isSource"(arg0: $FluidState$$Type): boolean
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -8526,8 +8676,8 @@ declare module "com.direwolf20.justdirethings.common.items.interfaces.Toggleable
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$List, $List$$Type} from "java.util.List"
+import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
@@ -8538,8 +8688,8 @@ import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.Liv
 import {$Set, $Set$$Type} from "java.util.Set"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
-import {$ToggleableItem, $ToggleableItem$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToggleableItem"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$ToggleableItem, $ToggleableItem$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToggleableItem"
 import {$AbilityParams, $AbilityParams$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.AbilityParams"
 import {$EnumSet, $EnumSet$$Type} from "java.util.EnumSet"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -8547,8 +8697,21 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 export interface $ToggleableTool extends $ToggleableItem {
 
  "getAbilities"(): $EnumSet<($Ability)>
- "registerAbility"(arg0: $Ability$$Type): void
- "registerAbility"(arg0: $Ability$$Type, arg1: $AbilityParams$$Type): void
+ "canUseAbility"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+ "bindDrops"(arg0: $UseOnContext$$Type): boolean
+ "useOnAbility"(arg0: $UseOnContext$$Type, arg1: boolean): boolean
+ "useOnAbility"(arg0: $UseOnContext$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: boolean): boolean
+ "useOnAbility"(arg0: $UseOnContext$$Type): boolean
+ "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): boolean
+ "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: integer, arg4: boolean): boolean
+ "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type, arg3: boolean): boolean
+ "hasAbility"(arg0: $Ability$$Type): boolean
+ "canInstaBreak"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Set$$Type<($BlockPos$$Type)>): boolean
+ "armorTick"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
+ "bindSoil"(arg0: $UseOnContext$$Type): boolean
+ "openSettings"(arg0: $Player$$Type): void
+ "getAllAbilities"(): $EnumSet<($Ability)>
+ "getAbilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
  "getBreakBlockPositions"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $LivingEntity$$Type, arg4: $BlockState$$Type): $Set<($BlockPos)>
  "getAbilityParams"(arg0: $Ability$$Type): $AbilityParams
  "getActiveAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
@@ -8557,37 +8720,33 @@ export interface $ToggleableTool extends $ToggleableItem {
  "getCooldownAbilities"(): $List<($Ability)>
  "hurtEnemyAbility"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type): boolean
  "mineBlocksAbility"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $LivingEntity$$Type): void
- "getAllAbilities"(): $EnumSet<($Ability)>
- "getAbilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
- "canUseAbility"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
- "hasAbility"(arg0: $Ability$$Type): boolean
- "canInstaBreak"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Set$$Type<($BlockPos$$Type)>): boolean
- "armorTick"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
- "bindSoil"(arg0: $UseOnContext$$Type): boolean
- "bindDrops"(arg0: $UseOnContext$$Type): boolean
- "useOnAbility"(arg0: $UseOnContext$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: boolean): boolean
- "useOnAbility"(arg0: $UseOnContext$$Type): boolean
- "useOnAbility"(arg0: $UseOnContext$$Type, arg1: boolean): boolean
- "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type, arg3: boolean): boolean
- "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): boolean
- "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: integer, arg4: boolean): boolean
- "openSettings"(arg0: $Player$$Type): void
+ "registerAbility"(arg0: $Ability$$Type, arg1: $AbilityParams$$Type): void
+ "registerAbility"(arg0: $Ability$$Type): void
+ "getPassiveTickAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
  "canUseAbilityAndDurability"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
  "canUseAbilityAndDurability"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): boolean
- "getPassiveTickAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
  "toggleEnabled"(arg0: $ItemStack$$Type, arg1: $Player$$Type): void
  "getEnabled"(arg0: $ItemStack$$Type): boolean
 get "abilities"(): $EnumSet<($Ability)>
-get "allPassiveAbilities"(): $List<($Ability)>
-get "cooldownAbilities"(): $List<($Ability)>
 get "allAbilities"(): $EnumSet<($Ability)>
 get "abilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
+get "allPassiveAbilities"(): $List<($Ability)>
+get "cooldownAbilities"(): $List<($Ability)>
 }
 
 export namespace $ToggleableTool {
-function getSetting(arg0: $ItemStack$$Type, arg1: string): boolean
-function setSetting(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+function setSetting(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+function getSetting(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 function addCooldown(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+function isItemEquipped(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+function cycleSetting(arg0: $ItemStack$$Type, arg1: StringJS): void
+function tickCooldowns(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+function getAnyCooldown(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+function hasUpgrade(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+function setToolValue(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+function toggleSetting(arg0: $ItemStack$$Type, arg1: StringJS): void
+function getToolValue(arg0: $ItemStack$$Type, arg1: StringJS): integer
+function getCooldown(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 function getTargetLookDirection(arg0: $LivingEntity$$Type): $Direction
 function getInstantRFCost(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 function cooldownDataClear(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -8597,32 +8756,45 @@ function setBoundInventory(arg0: $ItemStack$$Type, arg1: $NBTHelpers$BoundInvent
 function smelterParticles(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 function smokerParticles(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 function getBoundHandler(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-function setCustomSetting(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-function getCustomSetting(arg0: $ItemStack$$Type, arg1: string): integer
+function setCustomSetting(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+function getCustomSetting(arg0: $ItemStack$$Type, arg1: StringJS): integer
+function teleportParticles(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 function teleportParticles(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 function teleportParticles(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-function teleportParticles(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-function getToolValue(arg0: $ItemStack$$Type, arg1: string): integer
-function cycleSetting(arg0: $ItemStack$$Type, arg1: string): void
-function toggleSetting(arg0: $ItemStack$$Type, arg1: string): void
-function tickCooldowns(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-function setToolValue(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-function getAnyCooldown(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-function isItemEquipped(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-function hasUpgrade(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-function getCooldown(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 function getToggleableItem(arg0: $Player$$Type): $ItemStack
 const probejs$$marker: never
 }
 export class $ToggleableTool$$Static implements $ToggleableTool {
 
 
-static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
- "getAbilities"(): $EnumSet<($Ability)>
+static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
- "registerAbility"(arg0: $Ability$$Type): void
- "registerAbility"(arg0: $Ability$$Type, arg1: $AbilityParams$$Type): void
+ "getAbilities"(): $EnumSet<($Ability)>
+ "canUseAbility"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+ "bindDrops"(arg0: $UseOnContext$$Type): boolean
+ "useOnAbility"(arg0: $UseOnContext$$Type, arg1: boolean): boolean
+ "useOnAbility"(arg0: $UseOnContext$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: boolean): boolean
+ "useOnAbility"(arg0: $UseOnContext$$Type): boolean
+ "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): boolean
+ "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: integer, arg4: boolean): boolean
+ "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type, arg3: boolean): boolean
+ "hasAbility"(arg0: $Ability$$Type): boolean
+ "canInstaBreak"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Set$$Type<($BlockPos$$Type)>): boolean
+static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+ "armorTick"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
+ "bindSoil"(arg0: $UseOnContext$$Type): boolean
+static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+ "openSettings"(arg0: $Player$$Type): void
+static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+ "getAllAbilities"(): $EnumSet<($Ability)>
+ "getAbilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
 static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
  "getBreakBlockPositions"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $LivingEntity$$Type, arg4: $BlockState$$Type): $Set<($BlockPos)>
@@ -8637,44 +8809,22 @@ static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$BoundInvent
  "getCooldownAbilities"(): $List<($Ability)>
  "hurtEnemyAbility"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type): boolean
  "mineBlocksAbility"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $LivingEntity$$Type): void
+ "registerAbility"(arg0: $Ability$$Type, arg1: $AbilityParams$$Type): void
+ "registerAbility"(arg0: $Ability$$Type): void
 static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
- "getAllAbilities"(): $EnumSet<($Ability)>
- "getAbilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
+static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
- "canUseAbility"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
- "hasAbility"(arg0: $Ability$$Type): boolean
-static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
- "canInstaBreak"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Set$$Type<($BlockPos$$Type)>): boolean
-static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
- "armorTick"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
- "bindSoil"(arg0: $UseOnContext$$Type): boolean
-static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
- "bindDrops"(arg0: $UseOnContext$$Type): boolean
- "useOnAbility"(arg0: $UseOnContext$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: boolean): boolean
- "useOnAbility"(arg0: $UseOnContext$$Type): boolean
- "useOnAbility"(arg0: $UseOnContext$$Type, arg1: boolean): boolean
- "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type, arg3: boolean): boolean
- "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): boolean
- "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: integer, arg4: boolean): boolean
- "openSettings"(arg0: $Player$$Type): void
-static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+ "getPassiveTickAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
  "canUseAbilityAndDurability"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
  "canUseAbilityAndDurability"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): boolean
- "getPassiveTickAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
-static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
  "toggleEnabled"(arg0: $ItemStack$$Type, arg1: $Player$$Type): void
  "getEnabled"(arg0: $ItemStack$$Type): boolean
+static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8753,35 +8903,35 @@ static readonly "LINGERING": $Ability
 static readonly "RUNSPEED": $Ability
 
 
-public "getName"(): string
+public "getName"(): StringJS
 public static "values"(): ($Ability)[]
-public static "valueOf"(arg0: string): $Ability
-public static "byName"(arg0: string): $Ability
-public "getLocalization"(): string
-public "requiresUpgrade"(): boolean
-public "getCustomSetting"(): $Ability$CustomSettingType
-public "hasDynamicParams"(arg0: $Ability$$Type): boolean
-public "getIconLocation"(): $ResourceLocation
-public "getDurabilityCost"(): integer
-public "getCooldownIcon"(): $ResourceLocation
-public "hasCustomSetting"(): boolean
+public static "valueOf"(arg0: StringJS): $Ability
+public static "byName"(arg0: StringJS): $Ability
 public "getFeCost"(): integer
 public "getSettingType"(): $Ability$SettingType
 public "isBindable"(): boolean
 public "getBindingType"(): $Ability$BindingType
 public "getUpgradeItem"(): $Holder<($Item)>
+public "hasCustomSetting"(): boolean
+public "hasDynamicParams"(arg0: $Ability$$Type): boolean
+public "getIconLocation"(): $ResourceLocation
+public "getDurabilityCost"(): integer
+public "getCooldownIcon"(): $ResourceLocation
+public "getLocalization"(): StringJS
+public "requiresUpgrade"(): boolean
+public "getCustomSetting"(): $Ability$CustomSettingType
 public static "getAbilityFromUpgradeItem"(arg0: $Item$$Type): $Ability
-get "name"(): string
-get "localization"(): string
-get "customSetting"(): $Ability$CustomSettingType
-get "iconLocation"(): $ResourceLocation
-get "durabilityCost"(): integer
-get "cooldownIcon"(): $ResourceLocation
+get "name"(): StringJS
 get "feCost"(): integer
 get "settingType"(): $Ability$SettingType
 get "bindable"(): boolean
 get "bindingType"(): $Ability$BindingType
 get "upgradeItem"(): $Holder<($Item)>
+get "iconLocation"(): $ResourceLocation
+get "durabilityCost"(): integer
+get "cooldownIcon"(): $ResourceLocation
+get "localization"(): StringJS
+get "customSetting"(): $Ability$CustomSettingType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8801,17 +8951,17 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BaseMachineBlock, $BaseMachineBlock$$Type} from "com.direwolf20.justdirethings.common.blocks.baseblocks.BaseMachineBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$Rotation, $Rotation$$Type} from "net.minecraft.world.level.block.Rotation"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
-import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
+import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -8830,7 +8980,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -8843,9 +8993,9 @@ public "rotate"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $BlockState
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "openMenu"(arg0: $Player$$Type, arg1: $BlockPos$$Type): void
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
-public "isValidBE"(arg0: $BlockEntity$$Type): boolean
 public "direRotate"(arg0: $BlockState$$Type, arg1: $LevelAccessor$$Type, arg2: $BlockPos$$Type, arg3: $Rotation$$Type): $BlockState
+public "isValidBE"(arg0: $BlockEntity$$Type): boolean
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -8861,10 +9011,11 @@ declare global {
 export type $GeneratorFluidT1_ = $GeneratorFluidT1$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.armors.BlazegoldChestplate" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
@@ -8879,6 +9030,7 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$ItemEntity, $ItemEntity$$Type} from "net.minecraft.world.entity.item.ItemEntity"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
@@ -8889,7 +9041,7 @@ import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.Serve
 export class $BlazegoldChestplate extends $BaseChestplate {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -8900,9 +9052,18 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "onEntityItemUpdate"(arg0: $ItemStack$$Type, arg1: $ItemEntity$$Type): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -8912,20 +9073,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -8934,13 +9088,12 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8955,34 +9108,36 @@ declare global {
 export type $BlazegoldChestplate_ = $BlazegoldChestplate$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.armors.FerricoreChestplate" {
-import {$Map, $Map$$Type} from "java.util.Map"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
-import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
-import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
-import {$BaseChestplate, $BaseChestplate$$Type} from "com.direwolf20.justdirethings.common.items.armors.basearmors.BaseChestplate"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Set, $Set$$Type} from "java.util.Set"
-import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$DispenseItemBehavior, $DispenseItemBehavior$$Type} from "net.minecraft.core.dispenser.DispenseItemBehavior"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
+import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
+import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
+import {$BaseChestplate, $BaseChestplate$$Type} from "com.direwolf20.justdirethings.common.items.armors.basearmors.BaseChestplate"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 
 export class $FerricoreChestplate extends $BaseChestplate {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -8992,9 +9147,18 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -9004,20 +9168,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -9026,13 +9183,12 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9052,8 +9208,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BaseMachineBlock, $BaseMachineBlock$$Type} from "com.direwolf20.justdirethings.common.blocks.baseblocks.BaseMachineBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -9075,7 +9231,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -9107,8 +9263,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BaseMachineBlock, $BaseMachineBlock$$Type} from "com.direwolf20.justdirethings.common.blocks.baseblocks.BaseMachineBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -9130,7 +9286,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -9157,16 +9313,18 @@ declare global {
 export type $FluidCollectorT1_ = $FluidCollectorT1$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.FerricoreBow" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$BaseBow, $BaseBow$$Type} from "com.direwolf20.justdirethings.common.items.tools.basetools.BaseBow"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$List, $List$$Type} from "java.util.List"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
@@ -9183,7 +9341,7 @@ static readonly "ARROW_ONLY": $Predicate<($ItemStack)>
 static readonly "MAX_DRAW_DURATION": integer
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "DEFAULT_RANGE": integer
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -9193,9 +9351,18 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -9205,20 +9372,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -9227,12 +9387,11 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9306,6 +9465,7 @@ declare global {
 export type $Ability$AbilityAction_ = $Ability$AbilityAction$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.BlazegoldHoe" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
 import {$List, $List$$Type} from "java.util.List"
@@ -9326,6 +9486,7 @@ import {$Pair, $Pair$$Type} from "com.mojang.datafixers.util.Pair"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$ItemEntity, $ItemEntity$$Type} from "net.minecraft.world.entity.item.ItemEntity"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
@@ -9340,7 +9501,7 @@ static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
  */
 static "TILLABLES": $Map<($Block), ($Pair<($Predicate<($UseOnContext)>), ($Consumer<($UseOnContext)>)>)>
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -9350,9 +9511,18 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "onEntityItemUpdate"(arg0: $ItemStack$$Type, arg1: $ItemEntity$$Type): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -9362,20 +9532,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -9384,13 +9547,12 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "aether$getTillables"(): $Map<($Block), ($Pair<($Predicate<($UseOnContext)>), ($Consumer<($UseOnContext)>)>)>
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9412,7 +9574,6 @@ import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.leve
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $UnrefinedT2Fuel$Source extends $UnrefinedT2Fuel {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -9422,9 +9583,8 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "isSource"(arg0: $FluidState$$Type): boolean
 public "getAmount"(arg0: $FluidState$$Type): integer
-public "asHolder"(): $Holder<(any)>
+public "isSource"(arg0: $FluidState$$Type): boolean
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -9440,6 +9600,7 @@ declare global {
 export type $UnrefinedT2Fuel$Source_ = $UnrefinedT2Fuel$Source$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.VoidshiftWand" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$LeftClickableTool, $LeftClickableTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.LeftClickableTool"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
@@ -9449,8 +9610,9 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
-import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$PoweredItem, $PoweredItem$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.PoweredItem"
+import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$BaseToggleableTool, $BaseToggleableTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.BaseToggleableTool"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
@@ -9465,7 +9627,7 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 export class $VoidshiftWand extends $BaseToggleableTool implements $PoweredItem, $LeftClickableTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -9473,13 +9635,15 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public "getMaxEnergy"(): integer
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public "getMaxEnergy"(): integer
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -9488,14 +9652,21 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -9505,21 +9676,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "maxEnergy"(): integer
 }
 /**
@@ -9560,7 +9723,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -9584,6 +9747,7 @@ declare global {
 export type $RawEclipseAlloyOre_ = $RawEclipseAlloyOre$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.basetools.BaseSword" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
 import {$List, $List$$Type} from "java.util.List"
@@ -9611,6 +9775,7 @@ import {$Map, $Map$$Type} from "java.util.Map"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$ToggleableTool, $ToggleableTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToggleableTool"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
@@ -9626,7 +9791,7 @@ import {$EnumSet, $EnumSet$$Type} from "java.util.EnumSet"
 export class $BaseSword extends $SwordItem implements $ToggleableTool, $LeftClickableTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -9636,24 +9801,44 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Tier$$Type, arg1: $Item$Properties$$Type)
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
-public "shouldCauseBlockBreakReset"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
+public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
 public "damageItem"<T extends $LivingEntity>(arg0: $ItemStack$$Type, arg1: integer, arg2: T, arg3: $Consumer$$Type<($Item)>): integer
-public "getAbilities"(): $EnumSet<($Ability)>
 public "hurtEnemy"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type): boolean
 public "mineBlock"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockState$$Type, arg3: $BlockPos$$Type, arg4: $LivingEntity$$Type): boolean
-public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
-public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
-public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
-public "isPrimaryItemFor"(arg0: $ItemStack$$Type, arg1: $Holder$$Type<($Enchantment)>): boolean
+public "getAbilities"(): $EnumSet<($Ability)>
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "isPrimaryItemFor"(arg0: $ItemStack$$Type, arg1: $Holder$$Type<($Enchantment)>): boolean
+public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
+public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
+public "shouldCauseBlockBreakReset"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
 public "getAllAbilities"(): $EnumSet<($Ability)>
 public "getAbilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
-public "registerAbility"(arg0: $Ability$$Type): void
-public "registerAbility"(arg0: $Ability$$Type, arg1: $AbilityParams$$Type): void
+public "canUseAbility"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public "bindDrops"(arg0: $UseOnContext$$Type): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: boolean): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: boolean): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: integer, arg4: boolean): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type, arg3: boolean): boolean
+public "hasAbility"(arg0: $Ability$$Type): boolean
+public "canInstaBreak"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Set$$Type<($BlockPos$$Type)>): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public "armorTick"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
+public "bindSoil"(arg0: $UseOnContext$$Type): boolean
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public "openSettings"(arg0: $Player$$Type): void
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public "getBreakBlockPositions"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $LivingEntity$$Type, arg4: $BlockState$$Type): $Set<($BlockPos)>
@@ -9668,39 +9853,21 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public "getCooldownAbilities"(): $List<($Ability)>
 public "hurtEnemyAbility"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type): boolean
 public "mineBlocksAbility"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $LivingEntity$$Type): void
+public "registerAbility"(arg0: $Ability$$Type, arg1: $AbilityParams$$Type): void
+public "registerAbility"(arg0: $Ability$$Type): void
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public "canUseAbility"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public "hasAbility"(arg0: $Ability$$Type): boolean
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public "canInstaBreak"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Set$$Type<($BlockPos$$Type)>): boolean
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public "armorTick"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
-public "bindSoil"(arg0: $UseOnContext$$Type): boolean
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public "bindDrops"(arg0: $UseOnContext$$Type): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: boolean): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: boolean): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type, arg3: boolean): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: integer, arg4: boolean): boolean
-public "openSettings"(arg0: $Player$$Type): void
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public "getPassiveTickAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
 public "canUseAbilityAndDurability"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
 public "canUseAbilityAndDurability"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): boolean
-public "getPassiveTickAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -9709,14 +9876,13 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
-public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public "toggleEnabled"(arg0: $ItemStack$$Type, arg1: $Player$$Type): void
 public "getEnabled"(arg0: $ItemStack$$Type): boolean
+public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "abilities"(): $EnumSet<($Ability)>
 get "allAbilities"(): $EnumSet<($Ability)>
 get "abilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
@@ -9743,7 +9909,6 @@ import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.leve
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$UnrefinedT4Fuel, $UnrefinedT4Fuel$$Type} from "com.direwolf20.justdirethings.common.fluids.unrefinedt4fuel.UnrefinedT4Fuel"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $UnrefinedT4Fuel$Flowing extends $UnrefinedT4Fuel {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -9753,9 +9918,8 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "isSource"(arg0: $FluidState$$Type): boolean
 public "getAmount"(arg0: $FluidState$$Type): integer
-public "asHolder"(): $Holder<(any)>
+public "isSource"(arg0: $FluidState$$Type): boolean
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -9771,6 +9935,7 @@ declare global {
 export type $UnrefinedT4Fuel$Flowing_ = $UnrefinedT4Fuel$Flowing$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.BlazejetWand" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$LeftClickableTool, $LeftClickableTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.LeftClickableTool"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
@@ -9780,6 +9945,7 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$BaseToggleableTool, $BaseToggleableTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.BaseToggleableTool"
@@ -9795,7 +9961,7 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 export class $BlazejetWand extends $BaseToggleableTool implements $LeftClickableTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -9803,6 +9969,8 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -9811,14 +9979,21 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -9828,21 +10003,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -9857,6 +10024,7 @@ declare global {
 export type $BlazejetWand_ = $BlazejetWand$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.EclipsegateWand" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$LeftClickableTool, $LeftClickableTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.LeftClickableTool"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
@@ -9866,8 +10034,9 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
-import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$PoweredItem, $PoweredItem$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.PoweredItem"
+import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$BaseToggleableTool, $BaseToggleableTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.BaseToggleableTool"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
@@ -9882,7 +10051,7 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 export class $EclipsegateWand extends $BaseToggleableTool implements $PoweredItem, $LeftClickableTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -9891,12 +10060,14 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "getMaxEnergy"(): integer
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -9905,14 +10076,21 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -9922,21 +10100,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "maxEnergy"(): integer
 }
 /**
@@ -9952,6 +10122,7 @@ declare global {
 export type $EclipsegateWand_ = $EclipsegateWand$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.basetools.BaseAxe" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
 import {$List, $List$$Type} from "java.util.List"
@@ -9978,6 +10149,7 @@ import {$Map, $Map$$Type} from "java.util.Map"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$ToggleableTool, $ToggleableTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToggleableTool"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
@@ -9993,7 +10165,7 @@ import {$EnumSet, $EnumSet$$Type} from "java.util.EnumSet"
 export class $BaseAxe extends $AxeItem implements $ToggleableTool, $LeftClickableTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -10004,23 +10176,43 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Tier$$Type, arg1: $Item$Properties$$Type)
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
-public "shouldCauseBlockBreakReset"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
+public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
 public "damageItem"<T extends $LivingEntity>(arg0: $ItemStack$$Type, arg1: integer, arg2: T, arg3: $Consumer$$Type<($Item)>): integer
-public "getAbilities"(): $EnumSet<($Ability)>
 public "hurtEnemy"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type): boolean
 public "mineBlock"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockState$$Type, arg3: $BlockPos$$Type, arg4: $LivingEntity$$Type): boolean
-public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
-public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
-public "isPrimaryItemFor"(arg0: $ItemStack$$Type, arg1: $Holder$$Type<($Enchantment)>): boolean
+public "getAbilities"(): $EnumSet<($Ability)>
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "isPrimaryItemFor"(arg0: $ItemStack$$Type, arg1: $Holder$$Type<($Enchantment)>): boolean
+public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
+public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
+public "shouldCauseBlockBreakReset"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
 public "getAllAbilities"(): $EnumSet<($Ability)>
 public "getAbilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
-public "registerAbility"(arg0: $Ability$$Type): void
-public "registerAbility"(arg0: $Ability$$Type, arg1: $AbilityParams$$Type): void
+public "canUseAbility"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public "bindDrops"(arg0: $UseOnContext$$Type): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: boolean): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: boolean): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: integer, arg4: boolean): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type, arg3: boolean): boolean
+public "hasAbility"(arg0: $Ability$$Type): boolean
+public "canInstaBreak"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Set$$Type<($BlockPos$$Type)>): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public "armorTick"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
+public "bindSoil"(arg0: $UseOnContext$$Type): boolean
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public "openSettings"(arg0: $Player$$Type): void
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public "getBreakBlockPositions"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $LivingEntity$$Type, arg4: $BlockState$$Type): $Set<($BlockPos)>
@@ -10035,39 +10227,21 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public "getCooldownAbilities"(): $List<($Ability)>
 public "hurtEnemyAbility"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type): boolean
 public "mineBlocksAbility"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $LivingEntity$$Type): void
+public "registerAbility"(arg0: $Ability$$Type, arg1: $AbilityParams$$Type): void
+public "registerAbility"(arg0: $Ability$$Type): void
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public "canUseAbility"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public "hasAbility"(arg0: $Ability$$Type): boolean
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public "canInstaBreak"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Set$$Type<($BlockPos$$Type)>): boolean
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public "armorTick"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
-public "bindSoil"(arg0: $UseOnContext$$Type): boolean
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public "bindDrops"(arg0: $UseOnContext$$Type): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: boolean): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: boolean): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type, arg3: boolean): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: integer, arg4: boolean): boolean
-public "openSettings"(arg0: $Player$$Type): void
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public "getPassiveTickAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
 public "canUseAbilityAndDurability"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
 public "canUseAbilityAndDurability"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): boolean
-public "getPassiveTickAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -10076,16 +10250,15 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
-public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public "toggleEnabled"(arg0: $ItemStack$$Type, arg1: $Player$$Type): void
 public "getEnabled"(arg0: $ItemStack$$Type): boolean
+public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "getStrippables"(): $Map<($Block), ($Block)>
 public static "setStrippables"(strippedBlocks: $Map$$Type<($Block$$Type), ($Block$$Type)>): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "abilities"(): $EnumSet<($Ability)>
 get "allAbilities"(): $EnumSet<($Ability)>
 get "abilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
@@ -10133,6 +10306,7 @@ export type $RefinedT4FuelType_ = $RefinedT4FuelType$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.basetools.BaseBow" {
 import {$BowItem, $BowItem$$Type} from "net.minecraft.world.item.BowItem"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$JustDireArrow, $JustDireArrow$$Type} from "com.direwolf20.justdirethings.common.entities.JustDireArrow"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
@@ -10150,20 +10324,21 @@ import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$Set, $Set$$Type} from "java.util.Set"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$AbilityParams, $AbilityParams$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.AbilityParams"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$LeftClickableTool, $LeftClickableTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.LeftClickableTool"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
+import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$ToggleableTool, $ToggleableTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToggleableTool"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
-import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$Enchantment, $Enchantment$$Type} from "net.minecraft.world.item.enchantment.Enchantment"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
@@ -10175,7 +10350,7 @@ static readonly "ARROW_ONLY": $Predicate<($ItemStack)>
 static readonly "MAX_DRAW_DURATION": integer
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "DEFAULT_RANGE": integer
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -10186,22 +10361,42 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type)
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
+public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
 public "damageItem"<T extends $LivingEntity>(arg0: $ItemStack$$Type, arg1: integer, arg2: T, arg3: $Consumer$$Type<($Item)>): integer
 public "getAbilities"(): $EnumSet<($Ability)>
-public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
-public "isPrimaryItemFor"(arg0: $ItemStack$$Type, arg1: $Holder$$Type<($Enchantment)>): boolean
+public "getMaxDraw"(): float
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "isPrimaryItemFor"(arg0: $ItemStack$$Type, arg1: $Holder$$Type<($Enchantment)>): boolean
+public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
 public "getAllAbilities"(): $EnumSet<($Ability)>
 public "getAbilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
 public "findAimedAtEntity"(arg0: $LivingEntity$$Type, arg1: boolean, arg2: $JustDireArrow$$Type): $LivingEntity
-public "getMaxDraw"(): float
 public "noPotionAbilitiesActive"(arg0: $ItemStack$$Type): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
-public "registerAbility"(arg0: $Ability$$Type): void
-public "registerAbility"(arg0: $Ability$$Type, arg1: $AbilityParams$$Type): void
+public "canUseAbility"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public "bindDrops"(arg0: $UseOnContext$$Type): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: boolean): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: boolean): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: integer, arg4: boolean): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type, arg3: boolean): boolean
+public "hasAbility"(arg0: $Ability$$Type): boolean
+public "canInstaBreak"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Set$$Type<($BlockPos$$Type)>): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public "armorTick"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
+public "bindSoil"(arg0: $UseOnContext$$Type): boolean
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public "openSettings"(arg0: $Player$$Type): void
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public "getBreakBlockPositions"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $LivingEntity$$Type, arg4: $BlockState$$Type): $Set<($BlockPos)>
@@ -10216,39 +10411,21 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public "getCooldownAbilities"(): $List<($Ability)>
 public "hurtEnemyAbility"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type): boolean
 public "mineBlocksAbility"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $LivingEntity$$Type): void
+public "registerAbility"(arg0: $Ability$$Type, arg1: $AbilityParams$$Type): void
+public "registerAbility"(arg0: $Ability$$Type): void
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public "canUseAbility"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public "hasAbility"(arg0: $Ability$$Type): boolean
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public "canInstaBreak"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Set$$Type<($BlockPos$$Type)>): boolean
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public "armorTick"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
-public "bindSoil"(arg0: $UseOnContext$$Type): boolean
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public "bindDrops"(arg0: $UseOnContext$$Type): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: boolean): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: boolean): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type, arg3: boolean): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: integer, arg4: boolean): boolean
-public "openSettings"(arg0: $Player$$Type): void
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public "getPassiveTickAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
 public "canUseAbilityAndDurability"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
 public "canUseAbilityAndDurability"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): boolean
-public "getPassiveTickAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -10257,18 +10434,17 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
-public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public "toggleEnabled"(arg0: $ItemStack$$Type, arg1: $Player$$Type): void
 public "getEnabled"(arg0: $ItemStack$$Type): boolean
+public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "abilities"(): $EnumSet<($Ability)>
+get "maxDraw"(): float
 get "allAbilities"(): $EnumSet<($Ability)>
 get "abilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
-get "maxDraw"(): float
 get "allPassiveAbilities"(): $List<($Ability)>
 get "cooldownAbilities"(): $List<($Ability)>
 }
@@ -10285,10 +10461,11 @@ declare global {
 export type $BaseBow_ = $BaseBow$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.armors.EclipseAlloyHelmet" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
@@ -10303,17 +10480,18 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$PoweredTool, $PoweredTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.PoweredTool"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$BaseHelmet, $BaseHelmet$$Type} from "com.direwolf20.justdirethings.common.items.armors.basearmors.BaseHelmet"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
+import {$BaseHelmet, $BaseHelmet$$Type} from "com.direwolf20.justdirethings.common.items.armors.basearmors.BaseHelmet"
 
 export class $EclipseAlloyHelmet extends $BaseHelmet implements $PoweredTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -10329,15 +10507,24 @@ public "getBarColor"(arg0: $ItemStack$$Type): integer
 public "getMaxEnergy"(): integer
 public "getBlockBreakFECost"(): integer
 public "getPoweredAttributeModifiers"(arg0: $ItemStack$$Type, arg1: $ItemAttributeModifiers$$Type): $ItemAttributeModifiers
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -10347,20 +10534,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -10369,13 +10549,12 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "maxEnergy"(): integer
 get "blockBreakFECost"(): integer
 }
@@ -10392,6 +10571,7 @@ declare global {
 export type $EclipseAlloyHelmet_ = $EclipseAlloyHelmet$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.FerricoreAxe" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
@@ -10400,6 +10580,7 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
@@ -10416,7 +10597,7 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 export class $FerricoreAxe extends $BaseAxe {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -10426,9 +10607,18 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -10438,20 +10628,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -10460,14 +10643,13 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "getStrippables"(): $Map<($Block), ($Block)>
 public static "setStrippables"(strippedBlocks: $Map$$Type<($Block$$Type), ($Block$$Type)>): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10493,16 +10675,16 @@ constructor(arg0: integer, arg1: $ItemStack$$Type)
 
 public "deserializeNBT"(arg0: $HolderLookup$Provider$$Type, arg1: $Tag$$Type): void
 public "serializeNBT"(arg0: $HolderLookup$Provider$$Type): $Tag
-public "getEnergyStored"(): integer
-public "getMaxEnergyStored"(): integer
 public "setEnergy"(arg0: integer): void
+public "extractEnergy"(arg0: integer, arg1: boolean): integer
 public "receiveEnergy"(arg0: integer, arg1: boolean): integer
 public "canExtract"(): boolean
 public "canReceive"(): boolean
-public "extractEnergy"(arg0: integer, arg1: boolean): integer
+public "getEnergyStored"(): integer
+public "getMaxEnergyStored"(): integer
+set "energy"(value: integer)
 get "energyStored"(): integer
 get "maxEnergyStored"(): integer
-set "energy"(value: integer)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10517,6 +10699,7 @@ declare global {
 export type $EnergyStorageItemstack_ = $EnergyStorageItemstack$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.interfaces.BaseToggleableTool" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
 import {$List, $List$$Type} from "java.util.List"
@@ -10524,8 +10707,8 @@ import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$BasePoweredItem, $BasePoweredItem$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.BasePoweredItem"
+import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -10542,8 +10725,9 @@ import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.Inte
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$ItemEntity, $ItemEntity$$Type} from "net.minecraft.world.entity.item.ItemEntity"
 import {$ToggleableTool, $ToggleableTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToggleableTool"
-import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
@@ -10556,7 +10740,7 @@ import {$EnumSet, $EnumSet$$Type} from "java.util.EnumSet"
 export class $BaseToggleableTool extends $BasePoweredItem implements $ToggleableTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -10565,21 +10749,41 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type)
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
+public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
 public "damageItem"<T extends $LivingEntity>(arg0: $ItemStack$$Type, arg1: integer, arg2: T, arg3: $Consumer$$Type<($Item)>): integer
 public "getAbilities"(): $EnumSet<($Ability)>
-public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
-public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "onEntityItemUpdate"(arg0: $ItemStack$$Type, arg1: $ItemEntity$$Type): boolean
 public "isPrimaryItemFor"(arg0: $ItemStack$$Type, arg1: $Holder$$Type<($Enchantment)>): boolean
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
+public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
 public "getAllAbilities"(): $EnumSet<($Ability)>
 public "getAbilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
-public "registerAbility"(arg0: $Ability$$Type): void
-public "registerAbility"(arg0: $Ability$$Type, arg1: $AbilityParams$$Type): void
+public "canUseAbility"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public "bindDrops"(arg0: $UseOnContext$$Type): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: boolean): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: boolean): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: integer, arg4: boolean): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type, arg3: boolean): boolean
+public "hasAbility"(arg0: $Ability$$Type): boolean
+public "canInstaBreak"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Set$$Type<($BlockPos$$Type)>): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public "armorTick"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
+public "bindSoil"(arg0: $UseOnContext$$Type): boolean
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public "openSettings"(arg0: $Player$$Type): void
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public "getBreakBlockPositions"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $LivingEntity$$Type, arg4: $BlockState$$Type): $Set<($BlockPos)>
@@ -10594,42 +10798,23 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public "getCooldownAbilities"(): $List<($Ability)>
 public "hurtEnemyAbility"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type): boolean
 public "mineBlocksAbility"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $LivingEntity$$Type): void
+public "registerAbility"(arg0: $Ability$$Type, arg1: $AbilityParams$$Type): void
+public "registerAbility"(arg0: $Ability$$Type): void
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public "canUseAbility"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public "hasAbility"(arg0: $Ability$$Type): boolean
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public "canInstaBreak"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Set$$Type<($BlockPos$$Type)>): boolean
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public "armorTick"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
-public "bindSoil"(arg0: $UseOnContext$$Type): boolean
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public "bindDrops"(arg0: $UseOnContext$$Type): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: boolean): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: boolean): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type, arg3: boolean): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: integer, arg4: boolean): boolean
-public "openSettings"(arg0: $Player$$Type): void
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public "getPassiveTickAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
 public "canUseAbilityAndDurability"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
 public "canUseAbilityAndDurability"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): boolean
-public "getPassiveTickAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
-public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public "toggleEnabled"(arg0: $ItemStack$$Type, arg1: $Player$$Type): void
 public "getEnabled"(arg0: $ItemStack$$Type): boolean
+public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "abilities"(): $EnumSet<($Ability)>
 get "allAbilities"(): $EnumSet<($Ability)>
 get "abilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
@@ -10686,7 +10871,7 @@ static readonly "JDTONLY": $FluidCanister$FillMode
 
 
 public static "values"(): ($FluidCanister$FillMode)[]
-public static "valueOf"(arg0: string): $FluidCanister$FillMode
+public static "valueOf"(arg0: StringJS): $FluidCanister$FillMode
 public "next"(): $FluidCanister$FillMode
 public "getTooltip"(): $Component
 get "tooltip"(): $Component
@@ -10704,15 +10889,19 @@ declare global {
 export type $FluidCanister$FillMode_ = $FluidCanister$FillMode$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.resources.Celestigem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $Celestigem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -10720,6 +10909,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10771,15 +10961,19 @@ declare global {
 export type $ItemFlowParticleData_ = $ItemFlowParticleData$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.resources.EclipseAlloyIngot" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $EclipseAlloyIngot extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -10787,6 +10981,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10801,10 +10996,11 @@ declare global {
 export type $EclipseAlloyIngot_ = $EclipseAlloyIngot$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.armors.BlazegoldHelmet" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
@@ -10819,17 +11015,18 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$ItemEntity, $ItemEntity$$Type} from "net.minecraft.world.entity.item.ItemEntity"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Equipable, $Equipable$$Type} from "net.minecraft.world.item.Equipable"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$BaseHelmet, $BaseHelmet$$Type} from "com.direwolf20.justdirethings.common.items.armors.basearmors.BaseHelmet"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
+import {$BaseHelmet, $BaseHelmet$$Type} from "com.direwolf20.justdirethings.common.items.armors.basearmors.BaseHelmet"
 
 export class $BlazegoldHelmet extends $BaseHelmet {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -10840,9 +11037,18 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "onEntityItemUpdate"(arg0: $ItemStack$$Type, arg1: $ItemEntity$$Type): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -10852,20 +11058,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -10874,13 +11073,12 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10895,33 +11093,35 @@ declare global {
 export type $BlazegoldHelmet_ = $BlazegoldHelmet$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.BlazegoldShovel" {
-import {$Map, $Map$$Type} from "java.util.Map"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
 import {$List, $List$$Type} from "java.util.List"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$ItemEntity, $ItemEntity$$Type} from "net.minecraft.world.entity.item.ItemEntity"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
-import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
-import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
-import {$BaseShovel, $BaseShovel$$Type} from "com.direwolf20.justdirethings.common.items.tools.basetools.BaseShovel"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Set, $Set$$Type} from "java.util.Set"
-import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ItemEntity, $ItemEntity$$Type} from "net.minecraft.world.entity.item.ItemEntity"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
+import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
+import {$BaseShovel, $BaseShovel$$Type} from "com.direwolf20.justdirethings.common.items.tools.basetools.BaseShovel"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 
 export class $BlazegoldShovel extends $BaseShovel {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static "FLATTENABLES": $Map<($Block), ($BlockState)>
 static readonly "MAX_BAR_WIDTH": integer
@@ -10932,9 +11132,18 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "onEntityItemUpdate"(arg0: $ItemStack$$Type, arg1: $ItemEntity$$Type): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -10944,20 +11153,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -10966,12 +11168,11 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -10991,8 +11192,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BaseMachineBlock, $BaseMachineBlock$$Type} from "com.direwolf20.justdirethings.common.blocks.baseblocks.BaseMachineBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -11014,7 +11215,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -11046,8 +11247,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BaseMachineBlock, $BaseMachineBlock$$Type} from "com.direwolf20.justdirethings.common.blocks.baseblocks.BaseMachineBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -11069,7 +11270,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -11121,7 +11322,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -11145,11 +11346,12 @@ declare global {
 export type $RawCelestigemOre_ = $RawCelestigemOre$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.armors.basearmors.BaseChestplate" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ArmorMaterial, $ArmorMaterial$$Type} from "net.minecraft.world.item.ArmorMaterial"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
@@ -11174,6 +11376,7 @@ import {$Map, $Map$$Type} from "java.util.Map"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$ToggleableTool, $ToggleableTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToggleableTool"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
@@ -11188,7 +11391,7 @@ import {$EnumSet, $EnumSet$$Type} from "java.util.EnumSet"
 export class $BaseChestplate extends $ArmorItem implements $ToggleableTool, $LeftClickableTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -11198,18 +11401,38 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Holder$$Type<($ArmorMaterial)>, arg1: $Item$Properties$$Type)
 
+public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
 public "damageItem"<T extends $LivingEntity>(arg0: $ItemStack$$Type, arg1: integer, arg2: T, arg3: $Consumer$$Type<($Item)>): integer
 public "getAbilities"(): $EnumSet<($Ability)>
-public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
-public "isPrimaryItemFor"(arg0: $ItemStack$$Type, arg1: $Holder$$Type<($Enchantment)>): boolean
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "isPrimaryItemFor"(arg0: $ItemStack$$Type, arg1: $Holder$$Type<($Enchantment)>): boolean
 public "getAllAbilities"(): $EnumSet<($Ability)>
 public "getAbilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
-public "registerAbility"(arg0: $Ability$$Type): void
-public "registerAbility"(arg0: $Ability$$Type, arg1: $AbilityParams$$Type): void
+public "canUseAbility"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public "bindDrops"(arg0: $UseOnContext$$Type): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: boolean): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: boolean): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: integer, arg4: boolean): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type, arg3: boolean): boolean
+public "hasAbility"(arg0: $Ability$$Type): boolean
+public "canInstaBreak"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Set$$Type<($BlockPos$$Type)>): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public "armorTick"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
+public "bindSoil"(arg0: $UseOnContext$$Type): boolean
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public "openSettings"(arg0: $Player$$Type): void
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public "getBreakBlockPositions"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $LivingEntity$$Type, arg4: $BlockState$$Type): $Set<($BlockPos)>
@@ -11224,39 +11447,21 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public "getCooldownAbilities"(): $List<($Ability)>
 public "hurtEnemyAbility"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type): boolean
 public "mineBlocksAbility"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $LivingEntity$$Type): void
+public "registerAbility"(arg0: $Ability$$Type, arg1: $AbilityParams$$Type): void
+public "registerAbility"(arg0: $Ability$$Type): void
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public "canUseAbility"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public "hasAbility"(arg0: $Ability$$Type): boolean
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public "canInstaBreak"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Set$$Type<($BlockPos$$Type)>): boolean
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public "armorTick"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
-public "bindSoil"(arg0: $UseOnContext$$Type): boolean
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public "bindDrops"(arg0: $UseOnContext$$Type): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: boolean): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: boolean): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type, arg3: boolean): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: integer, arg4: boolean): boolean
-public "openSettings"(arg0: $Player$$Type): void
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public "getPassiveTickAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
 public "canUseAbilityAndDurability"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
 public "canUseAbilityAndDurability"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): boolean
-public "getPassiveTickAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -11265,15 +11470,14 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
-public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public "toggleEnabled"(arg0: $ItemStack$$Type, arg1: $Player$$Type): void
 public "getEnabled"(arg0: $ItemStack$$Type): boolean
+public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "abilities"(): $EnumSet<($Ability)>
 get "allAbilities"(): $EnumSet<($Ability)>
 get "abilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
@@ -11295,32 +11499,33 @@ export type $BaseChestplate_ = $BaseChestplate$$Type;
 declare module "com.direwolf20.justdirethings.common.items.PortalGunV2" {
 import {$NBTHelpers$PortalDestination, $NBTHelpers$PortalDestination$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$PortalDestination"
 import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
-import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$UUID, $UUID$$Type} from "java.util.UUID"
-import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$List, $List$$Type} from "java.util.List"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$PoweredItem, $PoweredItem$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.PoweredItem"
-import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$BasePoweredItem, $BasePoweredItem$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.BasePoweredItem"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
-import {$UseAnim, $UseAnim$$Type} from "net.minecraft.world.item.UseAnim"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$FluidContainingItem, $FluidContainingItem$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.FluidContainingItem"
-import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$PoweredItem, $PoweredItem$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.PoweredItem"
+import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$UseAnim, $UseAnim$$Type} from "net.minecraft.world.item.UseAnim"
+import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$LiquidBlock, $LiquidBlock$$Type} from "net.minecraft.world.level.block.LiquidBlock"
 
 export class $PortalGunV2 extends $BasePoweredItem implements $PoweredItem, $FluidContainingItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "maxMB": integer
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -11331,20 +11536,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
+public static "setPrevious"(arg0: $Player$$Type, arg1: $ItemStack$$Type): void
 public static "getUUID"(arg0: $ItemStack$$Type): $UUID
 public static "setUUID"(arg0: $ItemStack$$Type): $UUID
-public static "setPrevious"(arg0: $Player$$Type, arg1: $ItemStack$$Type): void
 public static "getPrevious"(arg0: $ItemStack$$Type): $NBTHelpers$PortalDestination
-public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-public static "calculateFluidCost"(arg0: $ServerLevel$$Type, arg1: $Player$$Type, arg2: $NBTHelpers$PortalDestination$$Type): integer
-public static "spawnProjectile"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: boolean): void
-public static "getSelectedFavorite"(arg0: $ItemStack$$Type): $NBTHelpers$PortalDestination
-public static "getFavoritePosition"(arg0: $ItemStack$$Type): integer
-public static "setFavoritePosition"(arg0: $ItemStack$$Type, arg1: integer): void
-public static "pickupFluid"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: $BlockHitResult$$Type): boolean
-public static "consumeFluid"(arg0: $ItemStack$$Type, arg1: integer): void
 public static "getFavorites"(arg0: $ItemStack$$Type): $List<($NBTHelpers$PortalDestination)>
 public static "setFavorites"(arg0: $ItemStack$$Type, arg1: $List$$Type<($NBTHelpers$PortalDestination$$Type)>): void
 public static "getFavorite"(arg0: $ItemStack$$Type, arg1: integer): $NBTHelpers$PortalDestination
@@ -11353,21 +11548,32 @@ public static "removeFavorite"(arg0: $ItemStack$$Type, arg1: integer): void
 public static "getStayOpen"(arg0: $ItemStack$$Type): boolean
 public static "setStayOpen"(arg0: $ItemStack$$Type, arg1: boolean): void
 public static "getPortalGunv2"(arg0: $Player$$Type): $ItemStack
+public static "pickupFluid"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: $BlockHitResult$$Type): boolean
+public static "consumeFluid"(arg0: $ItemStack$$Type, arg1: integer): void
 public static "hasEnoughFluid"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "getMaxEnergy"(): integer
 public static "getFullness"(arg0: $ItemStack$$Type): integer
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
+public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
+public static "getSelectedFavorite"(arg0: $ItemStack$$Type): $NBTHelpers$PortalDestination
+public static "getFavoritePosition"(arg0: $ItemStack$$Type): integer
+public static "setFavoritePosition"(arg0: $ItemStack$$Type, arg1: integer): void
+public static "calculateFluidCost"(arg0: $ServerLevel$$Type, arg1: $Player$$Type, arg2: $NBTHelpers$PortalDestination$$Type): integer
+public static "spawnProjectile"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: boolean): void
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getLiquidBlockAt"(arg0: $Level$$Type, arg1: $BlockPos$$Type): $LiquidBlock
+public "getMaxMB"(): integer
 public static "getAvailableFluid"(arg0: $ItemStack$$Type): integer
 public "isFluidBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getFluidBarWidth"(arg0: $ItemStack$$Type): integer
 public "getFluidBarColor"(arg0: $ItemStack$$Type): integer
-public "getMaxMB"(): integer
+public static "getLiquidBlockAt"(arg0: $Level$$Type, arg1: $BlockPos$$Type): $LiquidBlock
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "maxEnergy"(): integer
 get "maxMB"(): integer
 }
@@ -11388,12 +11594,11 @@ import {$ReplacementMatch, $ReplacementMatch$$Type} from "dev.latvian.mods.kubej
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
 import {$BaseFlowingFluid, $BaseFlowingFluid$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $UnrefinedT3Fuel extends $BaseFlowingFluid {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -11405,7 +11610,6 @@ static readonly "LEVEL": $IntegerProperty
 public "getSource"(): $Fluid
 public "getFlowing"(): $Fluid
 public "getBucket"(): $Item
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 get "source"(): $Fluid
 get "flowing"(): $Fluid
@@ -11424,15 +11628,19 @@ declare global {
 export type $UnrefinedT3Fuel_ = $UnrefinedT3Fuel$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.resources.BlazeGoldIngot" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $BlazeGoldIngot extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -11440,6 +11648,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11454,15 +11663,19 @@ declare global {
 export type $BlazeGoldIngot_ = $BlazeGoldIngot$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.resources.RawBlazegold" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $RawBlazegold extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -11470,6 +11683,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11495,17 +11709,17 @@ import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$EntityDataAccessor, $EntityDataAccessor$$Type} from "net.minecraft.network.syncher.EntityDataAccessor"
 import {$ScoreHolder, $ScoreHolder$$Type} from "net.minecraft.world.scores.ScoreHolder"
 import {$AbstractArrow, $AbstractArrow$$Type} from "net.minecraft.world.entity.projectile.AbstractArrow"
-import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
-import {$PortalProcessor, $PortalProcessor$$Type} from "net.minecraft.world.entity.PortalProcessor"
 import {$PotionContents, $PotionContents$$Type} from "net.minecraft.world.item.alchemy.PotionContents"
+import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$PortalProcessor, $PortalProcessor$$Type} from "net.minecraft.world.entity.PortalProcessor"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$EntityType, $EntityType$$Type} from "net.minecraft.world.entity.EntityType"
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$IntOpenHashSet, $IntOpenHashSet$$Type} from "it.unimi.dsi.fastutil.ints.IntOpenHashSet"
 import {$EntityDimensions, $EntityDimensions$$Type} from "net.minecraft.world.entity.EntityDimensions"
 import {$TrackedData, $TrackedData$$Type} from "dev.corgitaco.dataanchor.data.TrackedData"
-import {$Entity$RemovalReason, $Entity$RemovalReason$$Type} from "net.minecraft.world.entity.Entity$RemovalReason"
 import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.dataanchor.data.registry.TrackedDataRegistry"
+import {$Entity$RemovalReason, $Entity$RemovalReason$$Type} from "net.minecraft.world.entity.Entity$RemovalReason"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$AbstractArrow$Pickup, $AbstractArrow$Pickup$$Type} from "net.minecraft.world.entity.projectile.AbstractArrow$Pickup"
 import {$Stack, $Stack$$Type} from "java.util.Stack"
@@ -11529,7 +11743,7 @@ static readonly "CONTENTS_SLOT_INDEX": integer
  "level": $Level
  "yRot": float
  "moveDist": float
-static readonly "ID_TAG": string
+static readonly "ID_TAG": StringJS
  "mainSupportingBlockPos": $Optional<($BlockPos)>
 static readonly "DELTA_AFFECTED_BY_BLOCKS_BELOW_1_0": double
  "shakeTime": integer
@@ -11543,7 +11757,7 @@ static readonly "DELTA_AFFECTED_BY_BLOCKS_BELOW_1_0": double
  "piercingIgnoreEntityIds": $IntOpenHashSet
  "invulnerableTime": integer
  "piercedAndKilledEntities": $List<($Entity)>
-static readonly "UUID_TAG": string
+static readonly "UUID_TAG": StringJS
 static readonly "BASE_TICKS_REQUIRED_TO_FREEZE": integer
  "fallDistance": float
  "portalProcess": $PortalProcessor
@@ -11558,15 +11772,16 @@ static readonly "DEFAULT_BB_WIDTH": float
  "minorHorizontalCollision": boolean
 static readonly "DEFAULT_BB_HEIGHT": float
  "ownerUUID": $UUID
+ "firedFromWeapon": $ItemStack
  "walkDistO": float
  "pickup": $AbstractArrow$Pickup
 static readonly "FREEZE_HURT_FREQUENCY": integer
  "flyDist": float
  "isInPowderSnow": boolean
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
  "hasBeenShot": boolean
  "cachedOwner": $Entity
-static readonly "PASSENGERS_TAG": string
+static readonly "PASSENGERS_TAG": StringJS
  "blocksBuilding": boolean
  "wasOnFire": boolean
  "zOld": double
@@ -11578,29 +11793,19 @@ static readonly "BASE_SAFE_FALL_DISTANCE": integer
  "dimensions": $EntityDimensions
 
 constructor(arg0: $EntityType$$Type<($AbstractArrow$$Type)>, arg1: $Level$$Type)
-constructor(arg0: $Level$$Type, arg1: $LivingEntity$$Type, arg2: $ItemStack$$Type, arg3: $ItemStack$$Type)
 constructor(arg0: $Level$$Type, arg1: double, arg2: double, arg3: double, arg4: $ItemStack$$Type, arg5: $ItemStack$$Type)
+constructor(arg0: $Level$$Type, arg1: $LivingEntity$$Type, arg2: $ItemStack$$Type, arg3: $ItemStack$$Type)
 
+public "tick"(): void
 public "setData"(arg0: $EntityDataAccessor$$Type<(integer)>, arg1: integer): void
 public "setData"(arg0: $EntityDataAccessor$$Type<(boolean)>, arg1: boolean): void
-public "tick"(): void
-public "searchRadius"(): double
-public "getColor"(): integer
+public "setPhase"(arg0: boolean): void
+public "setSplash"(arg0: boolean): void
 public "setYaw"(arg0: float): void
 public "setPitch"(arg0: float): void
+public "getColor"(): integer
 public "addEffect"(arg0: $MobEffectInstance$$Type): void
-public "setSplash"(arg0: boolean): void
 public "isEpic"(): boolean
-public "setPotionContents"(arg0: $PotionContents$$Type): void
-public "addAdditionalSaveData"(arg0: $CompoundTag$$Type): void
-public "readAdditionalSaveData"(arg0: $CompoundTag$$Type): void
-public "setDeltaMovement"(arg0: $Vec3$$Type): void
-public "handleEntityEvent"(arg0: byte): void
-public "getPotionContents"(): $PotionContents
-public "isGlowing"(): boolean
-public "getOriginalVelocity"(): float
-public "setTargetEntity"(arg0: $LivingEntity$$Type): void
-public "isHostileEntity"(arg0: $LivingEntity$$Type): boolean
 public "setEpicArrow"(arg0: boolean): void
 public "setHoming"(arg0: boolean): void
 public "setHostileOnly"(arg0: boolean): void
@@ -11608,29 +11813,34 @@ public "setPotionArrow"(arg0: boolean): void
 public "setLingering"(arg0: boolean): void
 public "getTargetAngry"(): boolean
 public "setTargetAngry"(arg0: boolean): void
-public "isPhase"(): boolean
 public "getHostileOnly"(): boolean
-public "setPhase"(arg0: boolean): void
-public static "forNameOnly"(arg0: string): $ScoreHolder
+public "isPhase"(): boolean
+public "searchRadius"(): double
+public "setPotionContents"(arg0: $PotionContents$$Type): void
+public "getPotionContents"(): $PotionContents
+public "isGlowing"(): boolean
+public "addAdditionalSaveData"(arg0: $CompoundTag$$Type): void
+public "readAdditionalSaveData"(arg0: $CompoundTag$$Type): void
+public "setDeltaMovement"(arg0: $Vec3$$Type): void
+public "handleEntityEvent"(arg0: byte): void
+public "getOriginalVelocity"(): float
+public "setTargetEntity"(arg0: $LivingEntity$$Type): void
+public "isHostileEntity"(arg0: $LivingEntity$$Type): boolean
+public static "forNameOnly"(arg0: StringJS): $ScoreHolder
 public static "fromGameProfile"(arg0: $GameProfile$$Type): $ScoreHolder
 /**
  * 
  * @deprecated
  */
 public "serializeNBT"(arg0: $HolderLookup$Provider$$Type): $Tag
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
-get "color"(): integer
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+set "phase"(value: boolean)
+set "splash"(value: boolean)
 set "yaw"(value: float)
 set "pitch"(value: float)
-set "splash"(value: boolean)
+get "color"(): integer
 get "epic"(): boolean
-set "potionContents"(value: $PotionContents$$Type)
-set "deltaMovement"(value: $Vec3$$Type)
-get "potionContents"(): $PotionContents
-get "glowing"(): boolean
-get "originalVelocity"(): float
-set "targetEntity"(value: $LivingEntity$$Type)
 set "epicArrow"(value: boolean)
 set "homing"(value: boolean)
 set "hostileOnly"(value: boolean)
@@ -11638,9 +11848,14 @@ set "potionArrow"(value: boolean)
 set "lingering"(value: boolean)
 get "targetAngry"(): boolean
 set "targetAngry"(value: boolean)
-get "phase"(): boolean
 get "hostileOnly"(): boolean
-set "phase"(value: boolean)
+get "phase"(): boolean
+set "potionContents"(value: $PotionContents$$Type)
+get "potionContents"(): $PotionContents
+get "glowing"(): boolean
+set "deltaMovement"(value: $Vec3$$Type)
+get "originalVelocity"(): float
+set "targetEntity"(value: $LivingEntity$$Type)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11664,33 +11879,33 @@ import {$LiquidBlock, $LiquidBlock$$Type} from "net.minecraft.world.level.block.
 
 export interface $FluidContainingItem {
 
+ "getMaxMB"(): integer
  "isFluidBarVisible"(arg0: $ItemStack$$Type): boolean
  "getFluidBarWidth"(arg0: $ItemStack$$Type): integer
  "getFluidBarColor"(arg0: $ItemStack$$Type): integer
- "getMaxMB"(): integer
 get "maxMB"(): integer
 }
 
 export namespace $FluidContainingItem {
-function getLiquidBlockAt(arg0: $Level$$Type, arg1: $BlockPos$$Type): $LiquidBlock
-function getAvailableFluid(arg0: $ItemStack$$Type): integer
 function pickupFluid(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: $BlockHitResult$$Type): boolean
 function consumeFluid(arg0: $ItemStack$$Type, arg1: integer): void
 function hasEnoughFluid(arg0: $ItemStack$$Type, arg1: integer): boolean
+function getAvailableFluid(arg0: $ItemStack$$Type): integer
+function getLiquidBlockAt(arg0: $Level$$Type, arg1: $BlockPos$$Type): $LiquidBlock
 const probejs$$marker: never
 }
 export class $FluidContainingItem$$Static implements $FluidContainingItem {
 
 
-static "getLiquidBlockAt"(arg0: $Level$$Type, arg1: $BlockPos$$Type): $LiquidBlock
-static "getAvailableFluid"(arg0: $ItemStack$$Type): integer
- "isFluidBarVisible"(arg0: $ItemStack$$Type): boolean
- "getFluidBarWidth"(arg0: $ItemStack$$Type): integer
- "getFluidBarColor"(arg0: $ItemStack$$Type): integer
 static "pickupFluid"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: $BlockHitResult$$Type): boolean
 static "consumeFluid"(arg0: $ItemStack$$Type, arg1: integer): void
 static "hasEnoughFluid"(arg0: $ItemStack$$Type, arg1: integer): boolean
  "getMaxMB"(): integer
+static "getAvailableFluid"(arg0: $ItemStack$$Type): integer
+ "isFluidBarVisible"(arg0: $ItemStack$$Type): boolean
+ "getFluidBarWidth"(arg0: $ItemStack$$Type): integer
+ "getFluidBarColor"(arg0: $ItemStack$$Type): integer
+static "getLiquidBlockAt"(arg0: $Level$$Type, arg1: $BlockPos$$Type): $LiquidBlock
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -11729,7 +11944,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -11753,11 +11968,12 @@ declare global {
 export type $CelestigemBlock_ = $CelestigemBlock$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.armors.basearmors.BaseLeggings" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ArmorMaterial, $ArmorMaterial$$Type} from "net.minecraft.world.item.ArmorMaterial"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
@@ -11782,6 +11998,7 @@ import {$Map, $Map$$Type} from "java.util.Map"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$ToggleableTool, $ToggleableTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToggleableTool"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
@@ -11796,7 +12013,7 @@ import {$EnumSet, $EnumSet$$Type} from "java.util.EnumSet"
 export class $BaseLeggings extends $ArmorItem implements $ToggleableTool, $LeftClickableTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -11806,18 +12023,38 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Holder$$Type<($ArmorMaterial)>, arg1: $Item$Properties$$Type)
 
+public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
 public "damageItem"<T extends $LivingEntity>(arg0: $ItemStack$$Type, arg1: integer, arg2: T, arg3: $Consumer$$Type<($Item)>): integer
 public "getAbilities"(): $EnumSet<($Ability)>
-public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
-public "isPrimaryItemFor"(arg0: $ItemStack$$Type, arg1: $Holder$$Type<($Enchantment)>): boolean
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "isPrimaryItemFor"(arg0: $ItemStack$$Type, arg1: $Holder$$Type<($Enchantment)>): boolean
 public "getAllAbilities"(): $EnumSet<($Ability)>
 public "getAbilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
-public "registerAbility"(arg0: $Ability$$Type): void
-public "registerAbility"(arg0: $Ability$$Type, arg1: $AbilityParams$$Type): void
+public "canUseAbility"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public "bindDrops"(arg0: $UseOnContext$$Type): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: boolean): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: boolean): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: integer, arg4: boolean): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type, arg3: boolean): boolean
+public "hasAbility"(arg0: $Ability$$Type): boolean
+public "canInstaBreak"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Set$$Type<($BlockPos$$Type)>): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public "armorTick"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
+public "bindSoil"(arg0: $UseOnContext$$Type): boolean
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public "openSettings"(arg0: $Player$$Type): void
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public "getBreakBlockPositions"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $LivingEntity$$Type, arg4: $BlockState$$Type): $Set<($BlockPos)>
@@ -11832,39 +12069,21 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public "getCooldownAbilities"(): $List<($Ability)>
 public "hurtEnemyAbility"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type): boolean
 public "mineBlocksAbility"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $LivingEntity$$Type): void
+public "registerAbility"(arg0: $Ability$$Type, arg1: $AbilityParams$$Type): void
+public "registerAbility"(arg0: $Ability$$Type): void
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public "canUseAbility"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public "hasAbility"(arg0: $Ability$$Type): boolean
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public "canInstaBreak"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Set$$Type<($BlockPos$$Type)>): boolean
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public "armorTick"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
-public "bindSoil"(arg0: $UseOnContext$$Type): boolean
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public "bindDrops"(arg0: $UseOnContext$$Type): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: boolean): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: boolean): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type, arg3: boolean): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: integer, arg4: boolean): boolean
-public "openSettings"(arg0: $Player$$Type): void
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public "getPassiveTickAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
 public "canUseAbilityAndDurability"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
 public "canUseAbilityAndDurability"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): boolean
-public "getPassiveTickAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -11873,15 +12092,14 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
-public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public "toggleEnabled"(arg0: $ItemStack$$Type, arg1: $Player$$Type): void
 public "getEnabled"(arg0: $ItemStack$$Type): boolean
+public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "abilities"(): $EnumSet<($Ability)>
 get "allAbilities"(): $EnumSet<($Ability)>
 get "abilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
@@ -11908,7 +12126,6 @@ import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.leve
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$PortalFluid, $PortalFluid$$Type} from "com.direwolf20.justdirethings.common.fluids.portalfluid.PortalFluid"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $PortalFluid$Source extends $PortalFluid {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -11918,9 +12135,8 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "isSource"(arg0: $FluidState$$Type): boolean
 public "getAmount"(arg0: $FluidState$$Type): integer
-public "asHolder"(): $Holder<(any)>
+public "isSource"(arg0: $FluidState$$Type): boolean
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -11963,7 +12179,7 @@ static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "random": $Random
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "STABLE_SHAPE": $VoxelShape
@@ -11999,20 +12215,24 @@ declare global {
 export type $UnstablePortalFluidBlock_ = $UnstablePortalFluidBlock$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.abilityupgrades.Upgrade" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export class $Upgrade extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -12021,6 +12241,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12035,12 +12256,14 @@ declare global {
 export type $Upgrade_ = $Upgrade$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.PortalGun" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$UUID, $UUID$$Type} from "java.util.UUID"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$PoweredItem, $PoweredItem$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.PoweredItem"
 import {$BasePoweredItem, $BasePoweredItem$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.BasePoweredItem"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
@@ -12053,7 +12276,7 @@ import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.Serve
 export class $PortalGun extends $BasePoweredItem implements $PoweredItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -12062,19 +12285,20 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
 public static "getUUID"(arg0: $ItemStack$$Type): $UUID
 public static "setUUID"(arg0: $ItemStack$$Type): $UUID
-public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
-public static "spawnProjectile"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: boolean): void
 public static "closeMyPortals"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
 public "getMaxEnergy"(): integer
+public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
+public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
+public static "spawnProjectile"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: boolean): void
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "maxEnergy"(): integer
 }
 /**
@@ -12117,6 +12341,7 @@ declare global {
 export type $TimeFluidType_ = $TimeFluidType$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.FerricorePickaxe" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$BasePickaxe, $BasePickaxe$$Type} from "com.direwolf20.justdirethings.common.items.tools.basetools.BasePickaxe"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
@@ -12126,6 +12351,7 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
@@ -12141,7 +12367,7 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 export class $FerricorePickaxe extends $BasePickaxe {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -12150,9 +12376,18 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -12162,20 +12397,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -12184,12 +12412,11 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12215,8 +12442,8 @@ export class $ItemFlowParticleType extends $ParticleType<($ItemFlowParticleData)
 constructor(arg0: boolean)
 
 public "getType"(): $ItemFlowParticleType
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($ItemFlowParticleData)>
 public "codec"(): $MapCodec<($ItemFlowParticleData)>
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($ItemFlowParticleData)>
 get "type"(): $ItemFlowParticleType
 }
 /**
@@ -12233,8 +12460,8 @@ export type $ItemFlowParticleType_ = $ItemFlowParticleType$$Type;
 }}
 declare module "com.direwolf20.buildinggadgets2.client.particles.fluidparticle.FluidFlowParticleType" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
-import {$FluidFlowParticleData, $FluidFlowParticleData$$Type} from "com.direwolf20.buildinggadgets2.client.particles.fluidparticle.FluidFlowParticleData"
 import {$ParticleType, $ParticleType$$Type} from "net.minecraft.core.particles.ParticleType"
+import {$FluidFlowParticleData, $FluidFlowParticleData$$Type} from "com.direwolf20.buildinggadgets2.client.particles.fluidparticle.FluidFlowParticleData"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 
@@ -12243,8 +12470,8 @@ export class $FluidFlowParticleType extends $ParticleType<($FluidFlowParticleDat
 constructor(arg0: boolean)
 
 public "getType"(): $FluidFlowParticleType
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($FluidFlowParticleData)>
 public "codec"(): $MapCodec<($FluidFlowParticleData)>
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($FluidFlowParticleData)>
 get "type"(): $FluidFlowParticleType
 }
 /**
@@ -12318,22 +12545,26 @@ declare global {
 export type $AbilityParams_ = $AbilityParams$$Type;
 }}
 declare module "com.direwolf20.buildinggadgets2.common.items.GadgetBuilding" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$List, $List$$Type} from "java.util.List"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$BaseGadget, $BaseGadget$$Type} from "com.direwolf20.buildinggadgets2.common.items.BaseGadget"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$GadgetTarget, $GadgetTarget$$Type} from "com.direwolf20.buildinggadgets2.api.gadgets.GadgetTarget"
 
 export class $GadgetBuilding extends $BaseGadget {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -12341,12 +12572,13 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "gadgetTarget"(): $GadgetTarget
-public "getEnergyMax"(): integer
 public "getEnergyCost"(): integer
-get "energyMax"(): integer
+public "getEnergyMax"(): integer
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "energyCost"(): integer
+get "energyMax"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12392,23 +12624,27 @@ declare global {
 export type $GooExplodeParticleData_ = $GooExplodeParticleData$$Type;
 }}
 declare module "com.direwolf20.buildinggadgets2.common.items.GadgetCopyPaste" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$List, $List$$Type} from "java.util.List"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$BaseGadget, $BaseGadget$$Type} from "com.direwolf20.buildinggadgets2.common.items.BaseGadget"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$GadgetTarget, $GadgetTarget$$Type} from "com.direwolf20.buildinggadgets2.api.gadgets.GadgetTarget"
 import {$ItemActionContext, $ItemActionContext$$Type} from "com.direwolf20.buildinggadgets2.util.context.ItemActionContext"
+import {$GadgetTarget, $GadgetTarget$$Type} from "com.direwolf20.buildinggadgets2.api.gadgets.GadgetTarget"
 
 export class $GadgetCopyPaste extends $BaseGadget {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -12416,13 +12652,14 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "gadgetTarget"(): $GadgetTarget
 public "buildAndStore"(arg0: $ItemActionContext$$Type, arg1: $ItemStack$$Type): void
-public "getEnergyMax"(): integer
 public "getEnergyCost"(): integer
-get "energyMax"(): integer
+public "getEnergyMax"(): integer
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "energyCost"(): integer
+get "energyMax"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -12444,7 +12681,6 @@ import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.leve
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $UnstablePortalFluid$Flowing extends $UnstablePortalFluid {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -12454,9 +12690,8 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "isSource"(arg0: $FluidState$$Type): boolean
 public "getAmount"(arg0: $FluidState$$Type): integer
-public "asHolder"(): $Holder<(any)>
+public "isSource"(arg0: $FluidState$$Type): boolean
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -12503,7 +12738,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -12536,7 +12771,6 @@ import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.leve
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$UnrefinedT4Fuel, $UnrefinedT4Fuel$$Type} from "com.direwolf20.justdirethings.common.fluids.unrefinedt4fuel.UnrefinedT4Fuel"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $UnrefinedT4Fuel$Source extends $UnrefinedT4Fuel {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -12546,9 +12780,8 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "isSource"(arg0: $FluidState$$Type): boolean
 public "getAmount"(arg0: $FluidState$$Type): integer
-public "asHolder"(): $Holder<(any)>
+public "isSource"(arg0: $FluidState$$Type): boolean
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -12564,34 +12797,36 @@ declare global {
 export type $UnrefinedT4Fuel$Source_ = $UnrefinedT4Fuel$Source$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.EclipseAlloyShovel" {
-import {$Map, $Map$$Type} from "java.util.Map"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
-import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
-import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
-import {$BaseShovel, $BaseShovel$$Type} from "com.direwolf20.justdirethings.common.items.tools.basetools.BaseShovel"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Set, $Set$$Type} from "java.util.Set"
-import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$PoweredTool, $PoweredTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.PoweredTool"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
+import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
+import {$BaseShovel, $BaseShovel$$Type} from "com.direwolf20.justdirethings.common.items.tools.basetools.BaseShovel"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 
 export class $EclipseAlloyShovel extends $BaseShovel implements $PoweredTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static "FLATTENABLES": $Map<($Block), ($BlockState)>
 static readonly "MAX_BAR_WIDTH": integer
@@ -12607,15 +12842,24 @@ public "getBarColor"(arg0: $ItemStack$$Type): integer
 public "getMaxEnergy"(): integer
 public "getBlockBreakFECost"(): integer
 public "getPoweredAttributeModifiers"(arg0: $ItemStack$$Type, arg1: $ItemAttributeModifiers$$Type): $ItemAttributeModifiers
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -12625,20 +12869,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -12647,12 +12884,11 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "maxEnergy"(): integer
 get "blockBreakFECost"(): integer
 }
@@ -12674,14 +12910,14 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BaseMachineBlock, $BaseMachineBlock$$Type} from "com.direwolf20.justdirethings.common.blocks.baseblocks.BaseMachineBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Rotation, $Rotation$$Type} from "net.minecraft.world.level.block.Rotation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
-import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
+import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -12700,7 +12936,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -12712,9 +12948,9 @@ constructor()
 public "rotate"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $BlockState
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "openMenu"(arg0: $Player$$Type, arg1: $BlockPos$$Type): void
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
-public "isValidBE"(arg0: $BlockEntity$$Type): boolean
 public "direRotate"(arg0: $BlockState$$Type, arg1: $LevelAccessor$$Type, arg2: $BlockPos$$Type, arg3: $Rotation$$Type): $BlockState
+public "isValidBE"(arg0: $BlockEntity$$Type): boolean
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -12734,13 +12970,12 @@ import {$ReplacementMatch, $ReplacementMatch$$Type} from "dev.latvian.mods.kubej
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BaseFlowingFluid, $BaseFlowingFluid$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid"
 import {$RefinedFuel, $RefinedFuel$$Type} from "com.direwolf20.justdirethings.common.fluids.basefluids.RefinedFuel"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$BaseFlowingFluid, $BaseFlowingFluid$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid"
 
 export class $RefinedT4Fuel extends $BaseFlowingFluid implements $RefinedFuel {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -12753,7 +12988,6 @@ public "getSource"(): $Fluid
 public "getFlowing"(): $Fluid
 public "getBucket"(): $Item
 public "fePerMb"(): integer
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 get "source"(): $Fluid
 get "flowing"(): $Fluid
@@ -12803,7 +13037,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -12837,15 +13071,15 @@ import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$FarmBlock, $FarmBlock$$Type} from "net.minecraft.world.level.block.FarmBlock"
 import {$TriState, $TriState$$Type} from "net.neoforged.neoforge.common.util.TriState"
@@ -12867,7 +13101,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -12877,17 +13111,17 @@ static readonly "UPDATE_CLIENTS": integer
 constructor()
 
 public "tick"(arg0: $BlockState$$Type, arg1: $ServerLevel$$Type, arg2: $BlockPos$$Type, arg3: $RandomSource$$Type): void
+public "fallOn"(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type, arg4: float): void
 public "randomTick"(arg0: $BlockState$$Type, arg1: $ServerLevel$$Type, arg2: $BlockPos$$Type, arg3: $RandomSource$$Type): void
 public "canSurvive"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type): boolean
-public "fallOn"(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type, arg4: float): void
-public "canSustainPlant"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type, arg4: $BlockState$$Type): $TriState
-public static "harvestStemCrop"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): $List<($ItemStack)>
-public static "harvest2TallCrop"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): $List<($ItemStack)>
+public static "bonemealMe"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type): void
 public static "teleportDrops"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: $List$$Type<($ItemStack$$Type)>, arg3: $BlockPos$$Type): void
 public static "dropDrops"(arg0: $ServerLevel$$Type, arg1: $List$$Type<($ItemStack$$Type)>, arg2: $BlockPos$$Type): void
 public static "harvestCrop"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): $List<($ItemStack)>
 public static "autoHarvest"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type): void
-public static "bonemealMe"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type): void
+public "canSustainPlant"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type, arg4: $BlockState$$Type): $TriState
+public static "harvestStemCrop"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): $List<($ItemStack)>
+public static "harvest2TallCrop"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): $List<($ItemStack)>
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -12903,6 +13137,7 @@ declare global {
 export type $GooSoilBase_ = $GooSoilBase$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.basetools.BasePaxel" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$BasePickaxe, $BasePickaxe$$Type} from "com.direwolf20.justdirethings.common.items.tools.basetools.BasePickaxe"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
@@ -12923,6 +13158,7 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
@@ -12932,7 +13168,7 @@ import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.Serve
 export class $BasePaxel extends $BasePickaxe {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -12941,14 +13177,23 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Tier$$Type, arg1: $Item$Properties$$Type)
 
-public "shouldCauseBlockBreakReset"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
 public "isCorrectToolForDrops"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type): boolean
-public "canPerformAction"(arg0: $ItemStack$$Type, arg1: $ItemAbility$$Type): boolean
 public "getDestroySpeed"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type): float
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public "canPerformAction"(arg0: $ItemStack$$Type, arg1: $ItemAbility$$Type): boolean
+public "shouldCauseBlockBreakReset"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): boolean
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -12958,20 +13203,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -12980,12 +13218,11 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -13000,21 +13237,25 @@ declare global {
 export type $BasePaxel_ = $BasePaxel$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.interfaces.BasePoweredItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
-import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 
 export class $BasePoweredItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -13026,6 +13267,7 @@ public "isBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getBarWidth"(arg0: $ItemStack$$Type): integer
 public "getBarColor"(arg0: $ItemStack$$Type): integer
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -13040,6 +13282,7 @@ declare global {
 export type $BasePoweredItem_ = $BasePoweredItem$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.FerricoreSword" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
@@ -13048,6 +13291,7 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
@@ -13064,7 +13308,7 @@ import {$BaseSword, $BaseSword$$Type} from "com.direwolf20.justdirethings.common
 export class $FerricoreSword extends $BaseSword {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -13073,9 +13317,18 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -13085,20 +13338,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -13107,12 +13353,11 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -13131,29 +13376,29 @@ import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 
 export interface $PoweredItem {
 
+ "getMaxEnergy"(): integer
  "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
  "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
  "getPowerBarColor"(arg0: $ItemStack$$Type): integer
- "getMaxEnergy"(): integer
 get "maxEnergy"(): integer
 }
 
 export namespace $PoweredItem {
-function getAvailableEnergy(arg0: $ItemStack$$Type): integer
-function hasEnoughEnergy(arg0: $ItemStack$$Type, arg1: integer): boolean
 function consumeEnergy(arg0: $ItemStack$$Type, arg1: integer): boolean
+function hasEnoughEnergy(arg0: $ItemStack$$Type, arg1: integer): boolean
+function getAvailableEnergy(arg0: $ItemStack$$Type): integer
 const probejs$$marker: never
 }
 export class $PoweredItem$$Static implements $PoweredItem {
 
 
+static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+ "getMaxEnergy"(): integer
+static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
  "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
  "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
  "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
- "getMaxEnergy"(): integer
-static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -13168,15 +13413,17 @@ declare global {
 export type $PoweredItem_ = $PoweredItem$$Type;
 }}
 declare module "com.direwolf20.buildinggadgets2.common.items.GadgetCutPaste" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$BaseGadget, $BaseGadget$$Type} from "com.direwolf20.buildinggadgets2.common.items.BaseGadget"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
@@ -13187,7 +13434,7 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 export class $GadgetCutPaste extends $BaseGadget {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -13195,14 +13442,15 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-public static "customCutValidation"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $Player$$Type, arg3: $BlockPos$$Type): boolean
 public "gadgetTarget"(): $GadgetTarget
 public "cutAndStore"(arg0: $Player$$Type, arg1: $ItemStack$$Type): void
-public "getEnergyMax"(): integer
 public "getEnergyCost"(): integer
-get "energyMax"(): integer
+public "getEnergyMax"(): integer
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "customCutValidation"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $Player$$Type, arg3: $BlockPos$$Type): boolean
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "energyCost"(): integer
+get "energyMax"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -13217,33 +13465,35 @@ declare global {
 export type $GadgetCutPaste_ = $GadgetCutPaste$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.EclipseAlloySword" {
-import {$Map, $Map$$Type} from "java.util.Map"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
-import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
-import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Set, $Set$$Type} from "java.util.Set"
-import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$PoweredTool, $PoweredTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.PoweredTool"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
+import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BaseSword, $BaseSword$$Type} from "com.direwolf20.justdirethings.common.items.tools.basetools.BaseSword"
 
 export class $EclipseAlloySword extends $BaseSword implements $PoweredTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -13258,15 +13508,24 @@ public "getBarColor"(arg0: $ItemStack$$Type): integer
 public "getMaxEnergy"(): integer
 public "getBlockBreakFECost"(): integer
 public "getPoweredAttributeModifiers"(arg0: $ItemStack$$Type, arg1: $ItemAttributeModifiers$$Type): $ItemAttributeModifiers
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -13276,20 +13535,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -13298,12 +13550,11 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "maxEnergy"(): integer
 get "blockBreakFECost"(): integer
 }
@@ -13324,11 +13575,11 @@ import {$CraftingInput, $CraftingInput$$Type} from "net.minecraft.world.item.cra
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$RecipeType, $RecipeType$$Type} from "net.minecraft.world.item.crafting.RecipeType"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CraftingBookCategory, $CraftingBookCategory$$Type} from "net.minecraft.world.item.crafting.CraftingBookCategory"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
-import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
@@ -13341,38 +13592,38 @@ export class $FluidDropRecipe implements $CraftingRecipe {
 constructor(arg0: $ResourceLocation$$Type, arg1: $BlockState$$Type, arg2: $BlockState$$Type, arg3: $Item$$Type)
 constructor(arg0: $ResourceLocation$$Type, arg1: $BlockState$$Type, arg2: $BlockState$$Type, arg3: $Holder$$Type<($Item)>)
 
+public "category"(): $CraftingBookCategory
 public "getInput"(): $BlockState
-public "getOutput"(): $BlockState
-public "matches"(arg0: $CraftingInput$$Type, arg1: $Level$$Type): boolean
 public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
+public "matches"(arg0: $CraftingInput$$Type, arg1: $Level$$Type): boolean
 public "matches"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type): boolean
 public "getId"(): $ResourceLocation
 public "getType"(): $RecipeType<(any)>
-public "category"(): $CraftingBookCategory
+public "getOutput"(): $BlockState
+public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
+public "isSpecial"(): boolean
+public "getCatalyst"(): $Item
+public "getSerializer"(): $RecipeSerializer<(any)>
 public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
 public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "getSerializer"(): $RecipeSerializer<(any)>
-public "isSpecial"(): boolean
 public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "getCatalystHolder"(): $Holder<($Item)>
-public "getCatalyst"(): $Item
-public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
 public "getIngredients"(): $NonNullList<($Ingredient)>
-public "getGroup"(): string
-public "showNotification"(): boolean
-public "getRemainingItems"(arg0: $CraftingInput$$Type): $NonNullList<($ItemStack)>
+public "getGroup"(): StringJS
 public "isIncomplete"(): boolean
 public "getToastSymbol"(): $ItemStack
+public "showNotification"(): boolean
+public "getRemainingItems"(arg0: $CraftingInput$$Type): $NonNullList<($ItemStack)>
 get "input"(): $BlockState
-get "output"(): $BlockState
 get "id"(): $ResourceLocation
 get "type"(): $RecipeType<(any)>
-get "serializer"(): $RecipeSerializer<(any)>
+get "output"(): $BlockState
 get "special"(): boolean
-get "catalystHolder"(): $Holder<($Item)>
 get "catalyst"(): $Item
+get "serializer"(): $RecipeSerializer<(any)>
+get "catalystHolder"(): $Holder<($Item)>
 get "ingredients"(): $NonNullList<($Ingredient)>
-get "group"(): string
+get "group"(): StringJS
 get "incomplete"(): boolean
 get "toastSymbol"(): $ItemStack
 }
@@ -13396,7 +13647,6 @@ import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.leve
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $RefinedT3Fuel$Source extends $RefinedT3Fuel {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -13406,9 +13656,8 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "isSource"(arg0: $FluidState$$Type): boolean
 public "getAmount"(arg0: $FluidState$$Type): integer
-public "asHolder"(): $Holder<(any)>
+public "isSource"(arg0: $FluidState$$Type): boolean
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -13424,22 +13673,25 @@ declare global {
 export type $RefinedT3Fuel$Source_ = $RefinedT3Fuel$Source$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.resources.TimeCrystal" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 
 export class $TimeCrystal extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -13448,8 +13700,9 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "timeProtection"(arg0: $Entity$$Type): boolean
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -13464,16 +13717,16 @@ declare global {
 export type $TimeCrystal_ = $TimeCrystal$$Type;
 }}
 declare module "com.direwolf20.buildinggadgets2.common.blocks.TemplateManager" {
-import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
@@ -13482,8 +13735,8 @@ import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.Serve
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -13501,7 +13754,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -13557,7 +13810,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -13585,12 +13838,11 @@ import {$ReplacementMatch, $ReplacementMatch$$Type} from "dev.latvian.mods.kubej
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
 import {$BaseFlowingFluid, $BaseFlowingFluid$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $PortalFluid extends $BaseFlowingFluid {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -13602,7 +13854,6 @@ static readonly "LEVEL": $IntegerProperty
 public "getSource"(): $Fluid
 public "getFlowing"(): $Fluid
 public "getBucket"(): $Item
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 get "source"(): $Fluid
 get "flowing"(): $Fluid
@@ -13621,33 +13872,35 @@ declare global {
 export type $PortalFluid_ = $PortalFluid$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.CelestigemPaxel" {
-import {$Map, $Map$$Type} from "java.util.Map"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
-import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
-import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Set, $Set$$Type} from "java.util.Set"
-import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$PoweredTool, $PoweredTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.PoweredTool"
 import {$BasePaxel, $BasePaxel$$Type} from "com.direwolf20.justdirethings.common.items.tools.basetools.BasePaxel"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
+import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 
 export class $CelestigemPaxel extends $BasePaxel implements $PoweredTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -13661,16 +13914,25 @@ public "getBarWidth"(arg0: $ItemStack$$Type): integer
 public "getBarColor"(arg0: $ItemStack$$Type): integer
 public "getBlockBreakFECost"(): integer
 public "getPoweredAttributeModifiers"(arg0: $ItemStack$$Type, arg1: $ItemAttributeModifiers$$Type): $ItemAttributeModifiers
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public "getMaxEnergy"(): integer
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public "getMaxEnergy"(): integer
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -13680,20 +13942,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -13702,12 +13957,11 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "blockBreakFECost"(): integer
 get "maxEnergy"(): integer
 }
@@ -13735,8 +13989,8 @@ export class $ParadoxParticleType extends $ParticleType<($ParadoxParticleData)> 
 constructor(arg0: boolean)
 
 public "getType"(): $ParadoxParticleType
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($ParadoxParticleData)>
 public "codec"(): $MapCodec<($ParadoxParticleData)>
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($ParadoxParticleData)>
 get "type"(): $ParadoxParticleType
 }
 /**
@@ -13759,7 +14013,6 @@ import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.leve
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
 import {$UnrefinedT3Fuel, $UnrefinedT3Fuel$$Type} from "com.direwolf20.justdirethings.common.fluids.unrefinedt3fuel.UnrefinedT3Fuel"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $UnrefinedT3Fuel$Source extends $UnrefinedT3Fuel {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -13769,9 +14022,8 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "isSource"(arg0: $FluidState$$Type): boolean
 public "getAmount"(arg0: $FluidState$$Type): integer
-public "asHolder"(): $Holder<(any)>
+public "isSource"(arg0: $FluidState$$Type): boolean
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -13811,7 +14063,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -13847,9 +14099,9 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Fluid
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($FluidDropRecipe)>
 public "codec"(): $MapCodec<($FluidDropRecipe)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($FluidDropRecipe)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -13870,7 +14122,6 @@ import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.leve
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$PolymorphicFluid, $PolymorphicFluid$$Type} from "com.direwolf20.justdirethings.common.fluids.polymorphicfluid.PolymorphicFluid"
 
 export class $PolymorphicFluid$Source extends $PolymorphicFluid {
@@ -13881,9 +14132,8 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "isSource"(arg0: $FluidState$$Type): boolean
 public "getAmount"(arg0: $FluidState$$Type): integer
-public "asHolder"(): $Holder<(any)>
+public "isSource"(arg0: $FluidState$$Type): boolean
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -13899,11 +14149,12 @@ declare global {
 export type $PolymorphicFluid$Source_ = $PolymorphicFluid$Source$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.armors.basearmors.BaseBoots" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ArmorMaterial, $ArmorMaterial$$Type} from "net.minecraft.world.item.ArmorMaterial"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
@@ -13928,6 +14179,7 @@ import {$Map, $Map$$Type} from "java.util.Map"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$ToggleableTool, $ToggleableTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToggleableTool"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
@@ -13942,7 +14194,7 @@ import {$EnumSet, $EnumSet$$Type} from "java.util.EnumSet"
 export class $BaseBoots extends $ArmorItem implements $ToggleableTool, $LeftClickableTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -13952,18 +14204,38 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Holder$$Type<($ArmorMaterial)>, arg1: $Item$Properties$$Type)
 
+public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
 public "damageItem"<T extends $LivingEntity>(arg0: $ItemStack$$Type, arg1: integer, arg2: T, arg3: $Consumer$$Type<($Item)>): integer
 public "getAbilities"(): $EnumSet<($Ability)>
-public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
-public "isPrimaryItemFor"(arg0: $ItemStack$$Type, arg1: $Holder$$Type<($Enchantment)>): boolean
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "isPrimaryItemFor"(arg0: $ItemStack$$Type, arg1: $Holder$$Type<($Enchantment)>): boolean
 public "getAllAbilities"(): $EnumSet<($Ability)>
 public "getAbilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
-public "registerAbility"(arg0: $Ability$$Type): void
-public "registerAbility"(arg0: $Ability$$Type, arg1: $AbilityParams$$Type): void
+public "canUseAbility"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public "bindDrops"(arg0: $UseOnContext$$Type): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: boolean): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: boolean): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: integer, arg4: boolean): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type, arg3: boolean): boolean
+public "hasAbility"(arg0: $Ability$$Type): boolean
+public "canInstaBreak"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Set$$Type<($BlockPos$$Type)>): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public "armorTick"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
+public "bindSoil"(arg0: $UseOnContext$$Type): boolean
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public "openSettings"(arg0: $Player$$Type): void
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public "getBreakBlockPositions"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $LivingEntity$$Type, arg4: $BlockState$$Type): $Set<($BlockPos)>
@@ -13978,39 +14250,21 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public "getCooldownAbilities"(): $List<($Ability)>
 public "hurtEnemyAbility"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type): boolean
 public "mineBlocksAbility"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $LivingEntity$$Type): void
+public "registerAbility"(arg0: $Ability$$Type, arg1: $AbilityParams$$Type): void
+public "registerAbility"(arg0: $Ability$$Type): void
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public "canUseAbility"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public "hasAbility"(arg0: $Ability$$Type): boolean
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public "canInstaBreak"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Set$$Type<($BlockPos$$Type)>): boolean
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public "armorTick"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
-public "bindSoil"(arg0: $UseOnContext$$Type): boolean
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public "bindDrops"(arg0: $UseOnContext$$Type): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: boolean): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: boolean): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type, arg3: boolean): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: integer, arg4: boolean): boolean
-public "openSettings"(arg0: $Player$$Type): void
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public "getPassiveTickAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
 public "canUseAbilityAndDurability"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
 public "canUseAbilityAndDurability"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): boolean
-public "getPassiveTickAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -14019,15 +14273,14 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
-public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public "toggleEnabled"(arg0: $ItemStack$$Type, arg1: $Player$$Type): void
 public "getEnabled"(arg0: $ItemStack$$Type): boolean
+public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "abilities"(): $EnumSet<($Ability)>
 get "allAbilities"(): $EnumSet<($Ability)>
 get "abilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
@@ -14051,12 +14304,11 @@ import {$ReplacementMatch, $ReplacementMatch$$Type} from "dev.latvian.mods.kubej
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
 import {$BaseFlowingFluid, $BaseFlowingFluid$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $XPFluid extends $BaseFlowingFluid {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -14068,7 +14320,6 @@ static readonly "LEVEL": $IntegerProperty
 public "getSource"(): $Fluid
 public "getFlowing"(): $Fluid
 public "getBucket"(): $Item
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 get "source"(): $Fluid
 get "flowing"(): $Fluid
@@ -14088,10 +14339,10 @@ export type $XPFluid_ = $XPFluid$$Type;
 }}
 declare module "com.direwolf20.justdirethings.datagen.recipes.AbilityRecipe" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
-import {$SmithingRecipeInput, $SmithingRecipeInput$$Type} from "net.minecraft.world.item.crafting.SmithingRecipeInput"
+import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$RecipeType, $RecipeType$$Type} from "net.minecraft.world.item.crafting.RecipeType"
+import {$SmithingRecipeInput, $SmithingRecipeInput$$Type} from "net.minecraft.world.item.crafting.SmithingRecipeInput"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$SmithingRecipe, $SmithingRecipe$$Type} from "net.minecraft.world.item.crafting.SmithingRecipe"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
@@ -14102,36 +14353,36 @@ export class $AbilityRecipe implements $SmithingRecipe {
 
 constructor(arg0: $Ingredient$$Type, arg1: $Ingredient$$Type, arg2: $Ingredient$$Type)
 
+public "getBase"(): $Ingredient
 public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "matches"(arg0: $SmithingRecipeInput$$Type, arg1: $Level$$Type): boolean
 public "getType"(): $RecipeType<(any)>
-public "getBase"(): $Ingredient
+public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
+public "getTemplate"(): $Ingredient
+public "getAddition"(): $Ingredient
+public "getSerializer"(): $RecipeSerializer<(any)>
+public "isIncomplete"(): boolean
 public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
 public "assemble"(arg0: $SmithingRecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "getSerializer"(): $RecipeSerializer<(any)>
-public "getTemplate"(): $Ingredient
 public "isTemplateIngredient"(arg0: $ItemStack$$Type): boolean
 public "isBaseIngredient"(arg0: $ItemStack$$Type): boolean
 public "isAdditionIngredient"(arg0: $ItemStack$$Type): boolean
-public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
-public "isIncomplete"(): boolean
-public "getAddition"(): $Ingredient
-public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "getToastSymbol"(): $ItemStack
+public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "getIngredients"(): $NonNullList<($Ingredient)>
-public "getGroup"(): string
+public "getGroup"(): StringJS
 public "isSpecial"(): boolean
 public "showNotification"(): boolean
 public "getRemainingItems"(arg0: $SmithingRecipeInput$$Type): $NonNullList<($ItemStack)>
-get "type"(): $RecipeType<(any)>
 get "base"(): $Ingredient
-get "serializer"(): $RecipeSerializer<(any)>
+get "type"(): $RecipeType<(any)>
 get "template"(): $Ingredient
-get "incomplete"(): boolean
 get "addition"(): $Ingredient
+get "serializer"(): $RecipeSerializer<(any)>
+get "incomplete"(): boolean
 get "toastSymbol"(): $ItemStack
 get "ingredients"(): $NonNullList<($Ingredient)>
-get "group"(): string
+get "group"(): StringJS
 get "special"(): boolean
 }
 /**
@@ -14156,7 +14407,7 @@ static readonly "NONE": $Ability$CustomSettingType
 
 
 public static "values"(): ($Ability$CustomSettingType)[]
-public static "valueOf"(arg0: string): $Ability$CustomSettingType
+public static "valueOf"(arg0: StringJS): $Ability$CustomSettingType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -14202,7 +14453,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -14228,10 +14479,11 @@ declare global {
 export type $TimeFluidBlock_ = $TimeFluidBlock$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.armors.EclipseAlloyBoots" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
@@ -14246,6 +14498,7 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$PoweredTool, $PoweredTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.PoweredTool"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$BaseBoots, $BaseBoots$$Type} from "com.direwolf20.justdirethings.common.items.armors.basearmors.BaseBoots"
@@ -14256,7 +14509,7 @@ import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.Serve
 export class $EclipseAlloyBoots extends $BaseBoots implements $PoweredTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -14272,15 +14525,24 @@ public "getBarColor"(arg0: $ItemStack$$Type): integer
 public "getMaxEnergy"(): integer
 public "getBlockBreakFECost"(): integer
 public "getPoweredAttributeModifiers"(arg0: $ItemStack$$Type, arg1: $ItemAttributeModifiers$$Type): $ItemAttributeModifiers
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -14290,20 +14552,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -14312,13 +14567,12 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "maxEnergy"(): integer
 get "blockBreakFECost"(): integer
 }
@@ -14394,15 +14648,17 @@ declare global {
 export type $XPFluidType_ = $XPFluidType$$Type;
 }}
 declare module "com.direwolf20.buildinggadgets2.common.items.GadgetExchanger" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$BaseGadget, $BaseGadget$$Type} from "com.direwolf20.buildinggadgets2.common.items.BaseGadget"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Enchantment, $Enchantment$$Type} from "net.minecraft.world.item.enchantment.Enchantment"
@@ -14413,7 +14669,7 @@ import {$GadgetTarget, $GadgetTarget$$Type} from "com.direwolf20.buildinggadgets
 export class $GadgetExchanger extends $BaseGadget {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -14421,17 +14677,18 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "isEnchantable"(arg0: $ItemStack$$Type): boolean
 public "undo"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): void
+public "isEnchantable"(arg0: $ItemStack$$Type): boolean
+public "gadgetTarget"(): $GadgetTarget
+public "getEnergyCost"(): integer
+public "getEnergyMax"(): integer
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getEnchantmentValue"(): integer
 public "isPrimaryItemFor"(arg0: $ItemStack$$Type, arg1: $Holder$$Type<($Enchantment)>): boolean
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-public "gadgetTarget"(): $GadgetTarget
-public "getEnergyMax"(): integer
-public "getEnergyCost"(): integer
-get "enchantmentValue"(): integer
-get "energyMax"(): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "energyCost"(): integer
+get "energyMax"(): integer
+get "enchantmentValue"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -14462,9 +14719,9 @@ const probejs$$marker: never
 export class $ToggleableItem$$Static implements $ToggleableItem {
 
 
-static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
  "toggleEnabled"(arg0: $ItemStack$$Type, arg1: $Player$$Type): void
  "getEnabled"(arg0: $ItemStack$$Type): boolean
+static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -14486,7 +14743,6 @@ import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.leve
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $TimeFluid$Source extends $TimeFluid {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -14496,9 +14752,8 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "isSource"(arg0: $FluidState$$Type): boolean
 public "getAmount"(arg0: $FluidState$$Type): integer
-public "asHolder"(): $Holder<(any)>
+public "isSource"(arg0: $FluidState$$Type): boolean
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -14518,12 +14773,11 @@ import {$ReplacementMatch, $ReplacementMatch$$Type} from "dev.latvian.mods.kubej
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
 import {$BaseFlowingFluid, $BaseFlowingFluid$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $UnstablePortalFluid extends $BaseFlowingFluid {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -14535,7 +14789,6 @@ static readonly "LEVEL": $IntegerProperty
 public "getSource"(): $Fluid
 public "getFlowing"(): $Fluid
 public "getBucket"(): $Item
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 get "source"(): $Fluid
 get "flowing"(): $Fluid
@@ -14558,13 +14811,12 @@ import {$ReplacementMatch, $ReplacementMatch$$Type} from "dev.latvian.mods.kubej
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BaseFlowingFluid, $BaseFlowingFluid$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid"
 import {$RefinedFuel, $RefinedFuel$$Type} from "com.direwolf20.justdirethings.common.fluids.basefluids.RefinedFuel"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$BaseFlowingFluid, $BaseFlowingFluid$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid"
 
 export class $RefinedT3Fuel extends $BaseFlowingFluid implements $RefinedFuel {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -14577,7 +14829,6 @@ public "getSource"(): $Fluid
 public "getFlowing"(): $Fluid
 public "getBucket"(): $Item
 public "fePerMb"(): integer
-public "asHolder"(): $Holder<(any)>
 public static "wrap"(arg1: any): $ReplacementMatch
 get "source"(): $Fluid
 get "flowing"(): $Fluid
@@ -14604,18 +14855,18 @@ export interface $PoweredTool extends $PoweredItem {
 
  "getBlockBreakFECost"(): integer
  "getPoweredAttributeModifiers"(arg0: $ItemStack$$Type, arg1: $ItemAttributeModifiers$$Type): $ItemAttributeModifiers
+ "getMaxEnergy"(): integer
  "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
  "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
  "getPowerBarColor"(arg0: $ItemStack$$Type): integer
- "getMaxEnergy"(): integer
 get "blockBreakFECost"(): integer
 get "maxEnergy"(): integer
 }
 
 export namespace $PoweredTool {
-function getAvailableEnergy(arg0: $ItemStack$$Type): integer
-function hasEnoughEnergy(arg0: $ItemStack$$Type, arg1: integer): boolean
 function consumeEnergy(arg0: $ItemStack$$Type, arg1: integer): boolean
+function hasEnoughEnergy(arg0: $ItemStack$$Type, arg1: integer): boolean
+function getAvailableEnergy(arg0: $ItemStack$$Type): integer
 const probejs$$marker: never
 }
 export class $PoweredTool$$Static implements $PoweredTool {
@@ -14623,13 +14874,13 @@ export class $PoweredTool$$Static implements $PoweredTool {
 
  "getBlockBreakFECost"(): integer
  "getPoweredAttributeModifiers"(arg0: $ItemStack$$Type, arg1: $ItemAttributeModifiers$$Type): $ItemAttributeModifiers
+static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+ "getMaxEnergy"(): integer
+static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
  "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
  "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
  "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
- "getMaxEnergy"(): integer
-static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -14651,7 +14902,6 @@ import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.leve
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $RefinedT3Fuel$Flowing extends $RefinedT3Fuel {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -14661,9 +14911,8 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "isSource"(arg0: $FluidState$$Type): boolean
 public "getAmount"(arg0: $FluidState$$Type): integer
-public "asHolder"(): $Holder<(any)>
+public "isSource"(arg0: $FluidState$$Type): boolean
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -14680,10 +14929,10 @@ export type $RefinedT3Fuel$Flowing_ = $RefinedT3Fuel$Flowing$$Type;
 }}
 declare module "com.direwolf20.justdirethings.datagen.recipes.PaxelRecipe" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
-import {$SmithingRecipeInput, $SmithingRecipeInput$$Type} from "net.minecraft.world.item.crafting.SmithingRecipeInput"
+import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$RecipeType, $RecipeType$$Type} from "net.minecraft.world.item.crafting.RecipeType"
+import {$SmithingRecipeInput, $SmithingRecipeInput$$Type} from "net.minecraft.world.item.crafting.SmithingRecipeInput"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$SmithingRecipe, $SmithingRecipe$$Type} from "net.minecraft.world.item.crafting.SmithingRecipe"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
@@ -14694,38 +14943,38 @@ export class $PaxelRecipe implements $SmithingRecipe {
 
 constructor(arg0: $Ingredient$$Type, arg1: $Ingredient$$Type, arg2: $Ingredient$$Type, arg3: $ItemStack$$Type)
 
-public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
-public "matches"(arg0: $SmithingRecipeInput$$Type, arg1: $Level$$Type): boolean
-public "getType"(): $RecipeType<(any)>
-public "getBase"(): $Ingredient
 public "getResult"(): $ItemStack
+public "getBase"(): $Ingredient
+public "matches"(arg0: $SmithingRecipeInput$$Type, arg1: $Level$$Type): boolean
+public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
+public "getType"(): $RecipeType<(any)>
+public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
+public "getTemplate"(): $Ingredient
+public "getAddition"(): $Ingredient
+public "getSerializer"(): $RecipeSerializer<(any)>
+public "isIncomplete"(): boolean
 public "assemble"(arg0: $SmithingRecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
 public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "getSerializer"(): $RecipeSerializer<(any)>
-public "getTemplate"(): $Ingredient
 public "isTemplateIngredient"(arg0: $ItemStack$$Type): boolean
 public "isBaseIngredient"(arg0: $ItemStack$$Type): boolean
 public "isAdditionIngredient"(arg0: $ItemStack$$Type): boolean
-public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
-public "isIncomplete"(): boolean
-public "getAddition"(): $Ingredient
-public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "getToastSymbol"(): $ItemStack
+public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "getIngredients"(): $NonNullList<($Ingredient)>
-public "getGroup"(): string
+public "getGroup"(): StringJS
 public "isSpecial"(): boolean
 public "showNotification"(): boolean
 public "getRemainingItems"(arg0: $SmithingRecipeInput$$Type): $NonNullList<($ItemStack)>
-get "type"(): $RecipeType<(any)>
-get "base"(): $Ingredient
 get "result"(): $ItemStack
-get "serializer"(): $RecipeSerializer<(any)>
+get "base"(): $Ingredient
+get "type"(): $RecipeType<(any)>
 get "template"(): $Ingredient
-get "incomplete"(): boolean
 get "addition"(): $Ingredient
+get "serializer"(): $RecipeSerializer<(any)>
+get "incomplete"(): boolean
 get "toastSymbol"(): $ItemStack
 get "ingredients"(): $NonNullList<($Ingredient)>
-get "group"(): string
+get "group"(): StringJS
 get "special"(): boolean
 }
 /**
@@ -14768,15 +15017,19 @@ declare global {
 export type $UnrefinedT4FuelType_ = $UnrefinedT4FuelType$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.resources.RawEclipseAlloy" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $RawEclipseAlloy extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -14784,6 +15037,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -14803,11 +15057,11 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BaseMachineBlock, $BaseMachineBlock$$Type} from "com.direwolf20.justdirethings.common.blocks.baseblocks.BaseMachineBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
@@ -14829,7 +15083,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -14840,8 +15094,8 @@ constructor()
 
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "openMenu"(arg0: $Player$$Type, arg1: $BlockPos$$Type): void
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "isValidBE"(arg0: $BlockEntity$$Type): boolean
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -14862,8 +15116,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BaseMachineBlock, $BaseMachineBlock$$Type} from "com.direwolf20.justdirethings.common.blocks.baseblocks.BaseMachineBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -14885,7 +15139,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -14923,8 +15177,8 @@ export class $AlwaysVisibleParticleType extends $ParticleType<($AlwaysVisiblePar
 constructor(arg0: boolean)
 
 public "getType"(): $AlwaysVisibleParticleType
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($AlwaysVisibleParticleData)>
 public "codec"(): $MapCodec<($AlwaysVisibleParticleData)>
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($AlwaysVisibleParticleData)>
 get "type"(): $AlwaysVisibleParticleType
 }
 /**
@@ -14940,16 +15194,18 @@ declare global {
 export type $AlwaysVisibleParticleType_ = $AlwaysVisibleParticleType$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.FuelCanister" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$RecipeType, $RecipeType$$Type} from "net.minecraft.world.item.crafting.RecipeType"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
@@ -14958,7 +15214,7 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 export class $FuelCanister extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -14967,18 +15223,19 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "getCraftingRemainingItem"(arg0: $ItemStack$$Type): $ItemStack
-public "hasCraftingRemainingItem"(arg0: $ItemStack$$Type): boolean
 public "getBurnTime"(arg0: $ItemStack$$Type, arg1: $RecipeType$$Type<(any)>): integer
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-public static "calculateBurnSpeed"(arg0: integer, arg1: double, arg2: integer, arg3: double): double
-public static "getBurnSpeedMultiplier"(arg0: $ItemStack$$Type): integer
-public static "setFuelLevel"(arg0: $ItemStack$$Type, arg1: integer): void
-public static "getFuelLevel"(arg0: $ItemStack$$Type): integer
 public static "decrementFuel"(arg0: $ItemStack$$Type): void
 public static "getBurnSpeed"(arg0: $ItemStack$$Type): double
 public static "setBurnSpeed"(arg0: $ItemStack$$Type, arg1: double): void
 public static "incrementFuel"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): void
+public static "setFuelLevel"(arg0: $ItemStack$$Type, arg1: integer): void
+public static "getFuelLevel"(arg0: $ItemStack$$Type): integer
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "getCraftingRemainingItem"(arg0: $ItemStack$$Type): $ItemStack
+public "hasCraftingRemainingItem"(arg0: $ItemStack$$Type): boolean
+public static "calculateBurnSpeed"(arg0: integer, arg1: double, arg2: integer, arg3: double): double
+public static "getBurnSpeedMultiplier"(arg0: $ItemStack$$Type): integer
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -14993,33 +15250,35 @@ declare global {
 export type $FuelCanister_ = $FuelCanister$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.tools.EclipseAlloyPickaxe" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$BasePickaxe, $BasePickaxe$$Type} from "com.direwolf20.justdirethings.common.items.tools.basetools.BasePickaxe"
-import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
-import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
-import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$Tier, $Tier$$Type} from "net.minecraft.world.item.Tier"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Set, $Set$$Type} from "java.util.Set"
-import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$PoweredTool, $PoweredTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.PoweredTool"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
+import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 
 export class $EclipseAlloyPickaxe extends $BasePickaxe implements $PoweredTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
  "tier": $Tier
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
@@ -15034,15 +15293,24 @@ public "getBarColor"(arg0: $ItemStack$$Type): integer
 public "getMaxEnergy"(): integer
 public "getBlockBreakFECost"(): integer
 public "getPoweredAttributeModifiers"(arg0: $ItemStack$$Type, arg1: $ItemAttributeModifiers$$Type): $ItemAttributeModifiers
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -15052,20 +15320,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -15074,12 +15335,11 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "maxEnergy"(): integer
 get "blockBreakFECost"(): integer
 }
@@ -15103,7 +15363,6 @@ import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.leve
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$RefinedT2Fuel, $RefinedT2Fuel$$Type} from "com.direwolf20.justdirethings.common.fluids.refinedt2fuel.RefinedT2Fuel"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $RefinedT2Fuel$Source extends $RefinedT2Fuel {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -15113,9 +15372,8 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "isSource"(arg0: $FluidState$$Type): boolean
 public "getAmount"(arg0: $FluidState$$Type): integer
-public "asHolder"(): $Holder<(any)>
+public "isSource"(arg0: $FluidState$$Type): boolean
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -15142,8 +15400,8 @@ export class $GooExplodeParticleType extends $ParticleType<($GooExplodeParticleD
 constructor(arg0: boolean)
 
 public "getType"(): $GooExplodeParticleType
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($GooExplodeParticleData)>
 public "codec"(): $MapCodec<($GooExplodeParticleData)>
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($GooExplodeParticleData)>
 get "type"(): $GooExplodeParticleType
 }
 /**
@@ -15164,8 +15422,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
-import {$GooSoilBase, $GooSoilBase$$Type} from "com.direwolf20.justdirethings.common.blocks.soil.GooSoilBase"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
+import {$GooSoilBase, $GooSoilBase$$Type} from "com.direwolf20.justdirethings.common.blocks.soil.GooSoilBase"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
@@ -15190,7 +15448,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -15220,8 +15478,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.level.block.state.properties.IntegerProperty"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
-import {$GooSoilBase, $GooSoilBase$$Type} from "com.direwolf20.justdirethings.common.blocks.soil.GooSoilBase"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
+import {$GooSoilBase, $GooSoilBase$$Type} from "com.direwolf20.justdirethings.common.blocks.soil.GooSoilBase"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
@@ -15246,7 +15504,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -15279,16 +15537,16 @@ import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.leve
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
-import {$GooSoilBase, $GooSoilBase$$Type} from "com.direwolf20.justdirethings.common.blocks.soil.GooSoilBase"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
+import {$GooSoilBase, $GooSoilBase$$Type} from "com.direwolf20.justdirethings.common.blocks.soil.GooSoilBase"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$FarmBlock, $FarmBlock$$Type} from "net.minecraft.world.level.block.FarmBlock"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -15308,7 +15566,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -15344,16 +15602,16 @@ import {$IntegerProperty, $IntegerProperty$$Type} from "net.minecraft.world.leve
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
-import {$GooSoilBase, $GooSoilBase$$Type} from "com.direwolf20.justdirethings.common.blocks.soil.GooSoilBase"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
+import {$GooSoilBase, $GooSoilBase$$Type} from "com.direwolf20.justdirethings.common.blocks.soil.GooSoilBase"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$FarmBlock, $FarmBlock$$Type} from "net.minecraft.world.level.block.FarmBlock"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -15373,7 +15631,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -15408,7 +15666,6 @@ import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.leve
 import {$BaseFlowingFluid$Properties, $BaseFlowingFluid$Properties$$Type} from "net.neoforged.neoforge.fluids.BaseFlowingFluid$Properties"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
 import {$UnrefinedT3Fuel, $UnrefinedT3Fuel$$Type} from "com.direwolf20.justdirethings.common.fluids.unrefinedt3fuel.UnrefinedT3Fuel"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export class $UnrefinedT3Fuel$Flowing extends $UnrefinedT3Fuel {
 static readonly "FLUID_STATE_REGISTRY": $IdMapper<($FluidState)>
@@ -15418,9 +15675,8 @@ static readonly "LEVEL": $IntegerProperty
 
 constructor()
 
-public "isSource"(arg0: $FluidState$$Type): boolean
 public "getAmount"(arg0: $FluidState$$Type): integer
-public "asHolder"(): $Holder<(any)>
+public "isSource"(arg0: $FluidState$$Type): boolean
 public static "wrap"(arg1: any): $ReplacementMatch
 }
 /**
@@ -15443,8 +15699,8 @@ import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
@@ -15453,8 +15709,8 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $EclipseGateBlock extends $Block implements $EntityBlock {
@@ -15471,7 +15727,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -15483,8 +15739,8 @@ constructor()
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "propagatesSkylightDown"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): boolean
 public "getShadeBrightness"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): float
+public "propagatesSkylightDown"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): boolean
 public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
@@ -15507,9 +15763,9 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BaseMachineBlock, $BaseMachineBlock$$Type} from "com.direwolf20.justdirethings.common.blocks.baseblocks.BaseMachineBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
@@ -15535,7 +15791,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -15548,11 +15804,11 @@ constructor()
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "openMenu"(arg0: $Player$$Type, arg1: $BlockPos$$Type): void
+public "isValidBE"(arg0: $BlockEntity$$Type): boolean
 public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "getShadeBrightness"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): float
 public "getOcclusionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): $VoxelShape
 public "propagatesSkylightDown"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): boolean
-public "getShadeBrightness"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type): float
-public "isValidBE"(arg0: $BlockEntity$$Type): boolean
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -15568,11 +15824,12 @@ declare global {
 export type $EnergyTransmitter_ = $EnergyTransmitter$$Type;
 }}
 declare module "com.direwolf20.justdirethings.common.items.armors.basearmors.BaseHelmet" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ArmorMaterial, $ArmorMaterial$$Type} from "net.minecraft.world.item.ArmorMaterial"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$NBTHelpers$BoundInventory, $NBTHelpers$BoundInventory$$Type} from "com.direwolf20.justdirethings.util.NBTHelpers$BoundInventory"
-import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$List, $List$$Type} from "java.util.List"
+import {$ItemAttributeModifiers, $ItemAttributeModifiers$$Type} from "net.minecraft.world.item.component.ItemAttributeModifiers"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Ability, $Ability$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.Ability"
@@ -15597,6 +15854,7 @@ import {$Map, $Map$$Type} from "java.util.Map"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$ToggleableTool, $ToggleableTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToggleableTool"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
@@ -15611,7 +15869,7 @@ import {$EnumSet, $EnumSet$$Type} from "java.util.EnumSet"
 export class $BaseHelmet extends $ArmorItem implements $ToggleableTool, $LeftClickableTool {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -15621,18 +15879,38 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Holder$$Type<($ArmorMaterial)>, arg1: $Item$Properties$$Type)
 
+public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
 public "damageItem"<T extends $LivingEntity>(arg0: $ItemStack$$Type, arg1: integer, arg2: T, arg3: $Consumer$$Type<($Item)>): integer
 public "getAbilities"(): $EnumSet<($Ability)>
-public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
-public "isPrimaryItemFor"(arg0: $ItemStack$$Type, arg1: $Holder$$Type<($Enchantment)>): boolean
 public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "isPrimaryItemFor"(arg0: $ItemStack$$Type, arg1: $Holder$$Type<($Enchantment)>): boolean
 public "getAllAbilities"(): $EnumSet<($Ability)>
 public "getAbilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
-public "registerAbility"(arg0: $Ability$$Type): void
-public "registerAbility"(arg0: $Ability$$Type, arg1: $AbilityParams$$Type): void
+public "canUseAbility"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public "bindDrops"(arg0: $UseOnContext$$Type): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: boolean): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: boolean): boolean
+public "useOnAbility"(arg0: $UseOnContext$$Type): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: integer, arg4: boolean): boolean
+public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type, arg3: boolean): boolean
+public "hasAbility"(arg0: $Ability$$Type): boolean
+public "canInstaBreak"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Set$$Type<($BlockPos$$Type)>): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public "armorTick"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
+public "bindSoil"(arg0: $UseOnContext$$Type): boolean
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public "openSettings"(arg0: $Player$$Type): void
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public "getBreakBlockPositions"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $LivingEntity$$Type, arg4: $BlockState$$Type): $Set<($BlockPos)>
@@ -15647,39 +15925,21 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public "getCooldownAbilities"(): $List<($Ability)>
 public "hurtEnemyAbility"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type, arg2: $LivingEntity$$Type): boolean
 public "mineBlocksAbility"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $LivingEntity$$Type): void
+public "registerAbility"(arg0: $Ability$$Type, arg1: $AbilityParams$$Type): void
+public "registerAbility"(arg0: $Ability$$Type): void
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public "canUseAbility"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public "hasAbility"(arg0: $Ability$$Type): boolean
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public "canInstaBreak"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Set$$Type<($BlockPos$$Type)>): boolean
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public "armorTick"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type): boolean
-public "bindSoil"(arg0: $UseOnContext$$Type): boolean
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public "bindDrops"(arg0: $UseOnContext$$Type): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: $ItemStack$$Type, arg2: integer, arg3: boolean): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type): boolean
-public "useOnAbility"(arg0: $UseOnContext$$Type, arg1: boolean): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type, arg3: boolean): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): boolean
-public "useAbility"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: integer, arg4: boolean): boolean
-public "openSettings"(arg0: $Player$$Type): void
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
+public "getPassiveTickAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
 public "canUseAbilityAndDurability"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
 public "canUseAbilityAndDurability"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): boolean
-public "getPassiveTickAbilities"(arg0: $ItemStack$$Type): $List<($Ability)>
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -15688,15 +15948,14 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
-public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public "toggleEnabled"(arg0: $ItemStack$$Type, arg1: $Player$$Type): void
 public "getEnabled"(arg0: $ItemStack$$Type): boolean
+public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
 public static "get"(arg0: $ItemStack$$Type): $Equipable
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "abilities"(): $EnumSet<($Ability)>
 get "allAbilities"(): $EnumSet<($Ability)>
 get "abilityParamsMap"(): $Map<($Ability), ($AbilityParams)>
@@ -15733,16 +15992,17 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$Set, $Set$$Type} from "java.util.Set"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
 import {$FluidContainingItem, $FluidContainingItem$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.FluidContainingItem"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$LeftClickableTool, $LeftClickableTool$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.LeftClickableTool"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$PoweredItem, $PoweredItem$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.PoweredItem"
-import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
+import {$ToolRecords$AbilityBinding, $ToolRecords$AbilityBinding$$Type} from "com.direwolf20.justdirethings.common.items.interfaces.ToolRecords$AbilityBinding"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$UseAnim, $UseAnim$$Type} from "net.minecraft.world.item.UseAnim"
@@ -15753,7 +16013,7 @@ import {$LiquidBlock, $LiquidBlock$$Type} from "net.minecraft.world.level.block.
 export class $PolymorphicWandV2 extends $BaseToggleableTool implements $LeftClickableTool, $FluidContainingItem, $PoweredItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -15762,14 +16022,16 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
-public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
-public "onLeftClickEntity"(arg0: $ItemStack$$Type, arg1: $Player$$Type, arg2: $Entity$$Type): boolean
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-public static "savePolymorphTarget"(arg0: $ItemStack$$Type, arg1: $Player$$Type, arg2: $LivingEntity$$Type): void
 public "getMaxMB"(): integer
 public "getMaxEnergy"(): integer
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "onLeftClickEntity"(arg0: $ItemStack$$Type, arg1: $Player$$Type, arg2: $Entity$$Type): boolean
+public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
+public "shouldCauseReequipAnimation"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: boolean): boolean
+public static "savePolymorphTarget"(arg0: $ItemStack$$Type, arg1: $Player$$Type, arg2: $LivingEntity$$Type): void
+public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "getLeftClickList"(arg0: $ItemStack$$Type): $Set<($Ability)>
 public static "setLeftClickList"(arg0: $ItemStack$$Type, arg1: $Set$$Type<($Ability$$Type)>): void
 public static "getCustomBindingList"(arg0: $ItemStack$$Type): $List<($ToolRecords$AbilityBinding)>
@@ -15778,28 +16040,35 @@ public static "addToLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type)
 public static "getAbilityBinding"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): $ToolRecords$AbilityBinding
 public static "addToCustomBindingList"(arg0: $ItemStack$$Type, arg1: $ToolRecords$AbilityBinding$$Type): void
 public static "getLeftClickableItem"(arg0: $Player$$Type): $ItemStack
-public static "getBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "setBindingMode"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer): void
 public static "removeFromCustomBindingList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "removeFromLeftClickList"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
 public static "getCustomBindingListFor"(arg0: $ItemStack$$Type, arg1: integer, arg2: boolean, arg3: $Player$$Type): $List<($Ability)>
-public static "getLiquidBlockAt"(arg0: $Level$$Type, arg1: $BlockPos$$Type): $LiquidBlock
+public static "pickupFluid"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: $BlockHitResult$$Type): boolean
+public static "consumeFluid"(arg0: $ItemStack$$Type, arg1: integer): void
+public static "hasEnoughFluid"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public static "getAvailableFluid"(arg0: $ItemStack$$Type): integer
 public "isFluidBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getFluidBarWidth"(arg0: $ItemStack$$Type): integer
 public "getFluidBarColor"(arg0: $ItemStack$$Type): integer
-public static "pickupFluid"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ItemStack$$Type, arg3: $BlockHitResult$$Type): boolean
-public static "consumeFluid"(arg0: $ItemStack$$Type, arg1: integer): void
-public static "hasEnoughFluid"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public static "getLiquidBlockAt"(arg0: $Level$$Type, arg1: $BlockPos$$Type): $LiquidBlock
+public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
+public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
 public "isPowerBarVisible"(arg0: $ItemStack$$Type): boolean
 public "getPowerBarWidth"(arg0: $ItemStack$$Type): integer
 public "getPowerBarColor"(arg0: $ItemStack$$Type): integer
 public static "getAvailableEnergy"(arg0: $ItemStack$$Type): integer
-public static "hasEnoughEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "consumeEnergy"(arg0: $ItemStack$$Type, arg1: integer): boolean
-public static "getSetting"(arg0: $ItemStack$$Type, arg1: string): boolean
-public static "setSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: boolean): void
+public static "setSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: boolean): void
+public static "getSetting"(arg0: $ItemStack$$Type, arg1: StringJS): boolean
 public static "addCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: integer, arg3: boolean): void
+public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
+public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
+public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
+public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
+public static "setToolValue"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public static "getToolValue"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getTargetLookDirection"(arg0: $LivingEntity$$Type): $Direction
 public static "getInstantRFCost"(arg0: float, arg1: $Level$$Type, arg2: $ItemStack$$Type): integer
 public static "cooldownDataClear"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): void
@@ -15809,21 +16078,13 @@ public static "setBoundInventory"(arg0: $ItemStack$$Type, arg1: $NBTHelpers$Boun
 public static "smelterParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
 public static "smokerParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "getBoundHandler"(arg0: $ServerLevel$$Type, arg1: $ItemStack$$Type): $IItemHandler
-public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: string): integer
+public static "setCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS, arg2: integer): void
+public static "getCustomSetting"(arg0: $ItemStack$$Type, arg1: StringJS): integer
+public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Vec3$$Type): void
 public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $Set$$Type<($BlockPos$$Type)>): void
-public static "teleportParticles"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: integer): void
-public static "getToolValue"(arg0: $ItemStack$$Type, arg1: string): integer
-public static "cycleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "toggleSetting"(arg0: $ItemStack$$Type, arg1: string): void
-public static "tickCooldowns"(arg0: $Level$$Type, arg1: $ItemStack$$Type, arg2: $Player$$Type): void
-public static "setToolValue"(arg0: $ItemStack$$Type, arg1: string, arg2: integer): void
-public static "getAnyCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): integer
-public static "isItemEquipped"(arg0: $ItemStack$$Type, arg1: $Player$$Type): boolean
-public static "hasUpgrade"(arg0: $ItemStack$$Type, arg1: $Ability$$Type): boolean
-public static "getCooldown"(arg0: $ItemStack$$Type, arg1: $Ability$$Type, arg2: boolean): integer
 public static "getToggleableItem"(arg0: $Player$$Type): $ItemStack
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "maxMB"(): integer
 get "maxEnergy"(): integer
 }

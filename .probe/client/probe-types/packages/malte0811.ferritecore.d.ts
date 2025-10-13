@@ -33,10 +33,10 @@ declare global {
 export type $DiscreteVSAccess_ = $DiscreteVSAccess$$Type;
 }}
 declare module "malte0811.ferritecore.fastmap.FastMap" {
-import {$Map, $Map$$Type} from "java.util.Map"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
-import {$Comparable, $Comparable$$Type} from "java.lang.Comparable"
+import {$Map, $Map$$Type} from "java.util.Map"
 import {$FastMapKey, $FastMapKey$$Type} from "malte0811.ferritecore.fastmap.FastMapKey"
+import {$Comparable, $Comparable$$Type} from "java.lang.Comparable"
 import {$ReferenceSet, $ReferenceSet$$Type} from "it.unimi.dsi.fastutil.objects.ReferenceSet"
 import {$Map$Entry, $Map$Entry$$Type} from "java.util.Map$Entry"
 import {$Property, $Property$$Type} from "net.minecraft.world.level.block.state.properties.Property"
@@ -45,17 +45,17 @@ export class $FastMap<Value> {
 
 constructor(arg0: $Collection$$Type<($Property$$Type<(any)>)>, arg1: $Map$$Type<($Map$$Type<($Property$$Type<(any)>), ($Comparable$$Type<(any)>)>), (Value)>, arg2: boolean)
 
-public "getValue"(arg0: integer, arg1: any): $Comparable<(any)>
+public "getEntry"(arg0: integer, arg1: integer): $Map$Entry<($Property<(any)>), ($Comparable<(any)>)>
 public "getValue"<T extends $Comparable<(T)>>(arg0: integer, arg1: $Property$$Type<(T)>): T
+public "getValue"(arg0: integer, arg1: any): $Comparable<(any)>
 public "getKey"(arg0: integer): $FastMapKey<(any)>
 public "with"(arg0: integer, arg1: $Property$$Type<(any)>, arg2: any): Value
-public "getEntry"(arg0: integer, arg1: integer): $Map$Entry<($Property<(any)>), ($Comparable<(any)>)>
-public "getIndexOf"(arg0: $Map$$Type<($Property$$Type<(any)>), ($Comparable$$Type<(any)>)>): integer
-public "numProperties"(): integer
-public "isSingleState"(): boolean
 public "getPropertySet"(): $ReferenceSet<($Property<(any)>)>
-get "singleState"(): boolean
+public "isSingleState"(): boolean
+public "numProperties"(): integer
+public "getIndexOf"(arg0: $Map$$Type<($Property$$Type<(any)>), ($Comparable$$Type<(any)>)>): integer
 get "propertySet"(): $ReferenceSet<($Property<(any)>)>
+get "singleState"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -171,18 +171,18 @@ import {$Property, $Property$$Type} from "net.minecraft.world.level.block.state.
 
 export interface $FastMapStateHolder<S> {
 
- "getStateMap"(): $FastMap<(S)>
  "getStateIndex"(): integer
- "setStateMap"(arg0: $FastMap$$Type<(S)>): void
  "setStateIndex"(arg0: integer): void
+ "setStateMap"(arg0: $FastMap$$Type<(S)>): void
+ "getStateMap"(): $FastMap<(S)>
  "getVanillaPropertyMap"(): $Reference2ObjectMap<($Property<(any)>), ($Comparable<(any)>)>
  "setNeighborTable"(arg0: $Table$$Type<($Property$$Type<(any)>), ($Comparable$$Type<(any)>), (S)>): void
  "getNeighborTable"(): $Table<($Property<(any)>), ($Comparable<(any)>), (S)>
  "replacePropertyMap"(arg0: $Reference2ObjectMap$$Type<($Property$$Type<(any)>), ($Comparable$$Type<(any)>)>): void
-get "stateMap"(): $FastMap<(S)>
 get "stateIndex"(): integer
-set "stateMap"(value: $FastMap$$Type<(S)>)
 set "stateIndex"(value: integer)
+set "stateMap"(value: $FastMap$$Type<(S)>)
+get "stateMap"(): $FastMap<(S)>
 get "vanillaPropertyMap"(): $Reference2ObjectMap<($Property<(any)>), ($Comparable<(any)>)>
 set "neighborTable"(value: $Table$$Type<($Property$$Type<(any)>), ($Comparable$$Type<(any)>), (S)>)
 get "neighborTable"(): $Table<($Property<(any)>), ($Comparable<(any)>), (S)>
@@ -194,10 +194,10 @@ const probejs$$marker: never
 export class $FastMapStateHolder$$Static<S> implements $FastMapStateHolder {
 
 
- "getStateMap"(): $FastMap<(S)>
  "getStateIndex"(): integer
- "setStateMap"(arg0: $FastMap$$Type<(S)>): void
  "setStateIndex"(arg0: integer): void
+ "setStateMap"(arg0: $FastMap$$Type<(S)>): void
+ "getStateMap"(): $FastMap<(S)>
  "getVanillaPropertyMap"(): $Reference2ObjectMap<($Property<(any)>), ($Comparable<(any)>)>
  "setNeighborTable"(arg0: $Table$$Type<($Property$$Type<(any)>), ($Comparable$$Type<(any)>), (S)>): void
  "getNeighborTable"(): $Table<($Property<(any)>), ($Comparable<(any)>), (S)>

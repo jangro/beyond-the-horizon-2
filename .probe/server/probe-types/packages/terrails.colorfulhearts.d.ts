@@ -8,24 +8,24 @@ export class $NeoHeartSingleRenderEvent extends $Event {
 
 constructor(heart: $Heart$$Type, guiGraphics: $GuiGraphics$$Type, index: integer, x: integer, y: integer, hardcore: boolean, blinking: boolean, blinkingHeart: boolean)
 
+public "getIndex"(): integer
 public "getEvent"(): $HeartSingleRenderEvent
 public "getY"(): integer
-public "getIndex"(): integer
 public "getX"(): integer
+public "getHeart"(): $Heart
+public "isBlinking"(): boolean
+public "getGuiGraphics"(): $GuiGraphics
 public "isHardcoreEnabled"(): boolean
 public "isBlinkingHeart"(): boolean
-public "isBlinking"(): boolean
-public "getHeart"(): $Heart
-public "getGuiGraphics"(): $GuiGraphics
+get "index"(): integer
 get "event"(): $HeartSingleRenderEvent
 get "y"(): integer
-get "index"(): integer
 get "x"(): integer
+get "heart"(): $Heart
+get "blinking"(): boolean
+get "guiGraphics"(): $GuiGraphics
 get "hardcoreEnabled"(): boolean
 get "blinkingHeart"(): boolean
-get "blinking"(): boolean
-get "heart"(): $Heart
-get "guiGraphics"(): $GuiGraphics
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -61,9 +61,9 @@ export type $NeoHeartUpdateEvent_ = $NeoHeartUpdateEvent$$Type;
 }}
 declare module "terrails.colorfulhearts.api.neoforge.event.NeoHeartRenderEvent$Pre" {
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$GuiGraphics, $GuiGraphics$$Type} from "net.minecraft.client.gui.GuiGraphics"
 import {$HeartRenderEvent$Pre, $HeartRenderEvent$Pre$$Type} from "terrails.colorfulhearts.api.event.HeartRenderEvent$Pre"
 import {$NeoHeartRenderEvent, $NeoHeartRenderEvent$$Type} from "terrails.colorfulhearts.api.neoforge.event.NeoHeartRenderEvent"
-import {$GuiGraphics, $GuiGraphics$$Type} from "net.minecraft.client.gui.GuiGraphics"
 import {$OverlayHeart, $OverlayHeart$$Type} from "terrails.colorfulhearts.api.heart.drawing.OverlayHeart"
 
 export class $NeoHeartRenderEvent$Pre extends $NeoHeartRenderEvent<($HeartRenderEvent$Pre)> {
@@ -73,17 +73,17 @@ constructor(guiGraphics: $GuiGraphics$$Type, player: $Player$$Type, x: integer, 
 public "isCancelled"(): boolean
 public "setX"(x: integer): void
 public "setY"(y: integer): void
-public "setOverlayHeart"(heart: $OverlayHeart$$Type): void
 public "setCancelled"(cancel: boolean): void
 public "setBlinking"(blinking: boolean): void
 public "setHardcore"(hardcore: boolean): void
+public "setOverlayHeart"(heart: $OverlayHeart$$Type): void
 get "cancelled"(): boolean
 set "x"(value: integer)
 set "y"(value: integer)
-set "overlayHeart"(value: $OverlayHeart$$Type)
 set "cancelled"(value: boolean)
 set "blinking"(value: boolean)
 set "hardcore"(value: boolean)
+set "overlayHeart"(value: $OverlayHeart$$Type)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -131,27 +131,27 @@ export class $HeartRenderEvent {
 constructor(guiGraphics: $GuiGraphics$$Type, player: $Player$$Type, x: integer, y: integer, maxHealth: integer, currentHealth: integer, displayHealth: integer, absorption: integer, blinking: boolean, hardcore: boolean, overlayHeart: $OverlayHeart$$Type)
 
 public "getY"(): integer
+public "getX"(): integer
 public "getPlayer"(): $Player
 public "isHardcore"(): boolean
 public "getMaxHealth"(): integer
 public "getHealth"(): integer
-public "getX"(): integer
+public "getAbsorption"(): integer
+public "isBlinking"(): boolean
+public "getGuiGraphics"(): $GuiGraphics
 public "getDisplayHealth"(): integer
 public "getOverlayHeart"(): $Optional<($OverlayHeart)>
-public "isBlinking"(): boolean
-public "getAbsorption"(): integer
-public "getGuiGraphics"(): $GuiGraphics
 get "y"(): integer
+get "x"(): integer
 get "player"(): $Player
 get "hardcore"(): boolean
 get "maxHealth"(): integer
 get "health"(): integer
-get "x"(): integer
+get "absorption"(): integer
+get "blinking"(): boolean
+get "guiGraphics"(): $GuiGraphics
 get "displayHealth"(): integer
 get "overlayHeart"(): $Optional<($OverlayHeart)>
-get "blinking"(): boolean
-get "absorption"(): integer
-get "guiGraphics"(): $GuiGraphics
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -179,28 +179,28 @@ constructor(event: E)
 
 public "getEvent"(): E
 public "getY"(): integer
+public "getX"(): integer
 public "getPlayer"(): $Player
 public "isHardcore"(): boolean
 public "getMaxHealth"(): integer
 public "getHealth"(): integer
-public "getX"(): integer
+public "getAbsorption"(): integer
+public "isBlinking"(): boolean
+public "getGuiGraphics"(): $GuiGraphics
 public "getDisplayHealth"(): integer
 public "getOverlayHeart"(): $Optional<($OverlayHeart)>
-public "isBlinking"(): boolean
-public "getAbsorption"(): integer
-public "getGuiGraphics"(): $GuiGraphics
 get "event"(): E
 get "y"(): integer
+get "x"(): integer
 get "player"(): $Player
 get "hardcore"(): boolean
 get "maxHealth"(): integer
 get "health"(): integer
-get "x"(): integer
+get "absorption"(): integer
+get "blinking"(): boolean
+get "guiGraphics"(): $GuiGraphics
 get "displayHealth"(): integer
 get "overlayHeart"(): $Optional<($OverlayHeart)>
-get "blinking"(): boolean
-get "absorption"(): integer
-get "guiGraphics"(): $GuiGraphics
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -222,7 +222,7 @@ export class $HeartDrawing {
 
 constructor()
 
-public "toString"(): string
+public "toString"(): StringJS
 public "getId"(): $ResourceLocation
 public "draw"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: boolean, arg4: boolean, arg5: boolean): void
 public static "colorBlend"(drawing: $HeartDrawing$$Type, id: $ResourceLocation$$Type, r: float, g: float, b: float, a: float, sourceFactor: integer, destinationFactor: integer): $HeartDrawing
@@ -274,17 +274,17 @@ static readonly "CONTAINER_NONE": $Heart
 static readonly "CONTAINER_FULL": $Heart
 
 
-public "isContainer"(): boolean
+public static "half"(drawing: $HeartDrawing$$Type): $Heart
 public "equals"(o: any): boolean
 public "hashCode"(): integer
 public "isEmpty"(): boolean
-public static "full"(drawing: $HeartDrawing$$Type, background: $Heart$$Type): $Heart
 public static "full"(drawing: $HeartDrawing$$Type): $Heart
+public static "full"(drawing: $HeartDrawing$$Type, background: $Heart$$Type): $Heart
 public static "full"(drawing: $HeartDrawing$$Type, half: boolean, background: $Heart$$Type): $Heart
-public static "half"(drawing: $HeartDrawing$$Type): $Heart
+public "isContainer"(): boolean
 public "draw"(guiGraphics: $GuiGraphics$$Type, x: integer, y: integer, hardcore: boolean, highlightContainer: boolean, highlightHeart: boolean): void
-get "container"(): boolean
 get "empty"(): boolean
+get "container"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -300,8 +300,8 @@ export type $Heart_ = $Heart$$Type;
 }}
 declare module "terrails.colorfulhearts.api.neoforge.event.NeoHeartRenderEvent$Post" {
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
-import {$NeoHeartRenderEvent, $NeoHeartRenderEvent$$Type} from "terrails.colorfulhearts.api.neoforge.event.NeoHeartRenderEvent"
 import {$GuiGraphics, $GuiGraphics$$Type} from "net.minecraft.client.gui.GuiGraphics"
+import {$NeoHeartRenderEvent, $NeoHeartRenderEvent$$Type} from "terrails.colorfulhearts.api.neoforge.event.NeoHeartRenderEvent"
 import {$HeartRenderEvent$Post, $HeartRenderEvent$Post$$Type} from "terrails.colorfulhearts.api.event.HeartRenderEvent$Post"
 import {$OverlayHeart, $OverlayHeart$$Type} from "terrails.colorfulhearts.api.heart.drawing.OverlayHeart"
 
@@ -331,14 +331,14 @@ export class $OverlayHeart$Builder {
 
 public "finish"(): $OverlayHeart
 public "transparent"(): $OverlayHeart$Builder
-public "addHealth"(drawing: $HeartDrawing$$Type, r: float, g: float, b: float): $OverlayHeart$Builder
-public "addHealth"(drawing: $HeartDrawing$$Type, r: float, g: float, b: float, alpha: float, sourceFactor: integer, destinationFactor: integer): $OverlayHeart$Builder
-public "addHealth"(drawing: $HeartDrawing$$Type): $OverlayHeart$Builder
-public "addHealth"(first: $HeartDrawing$$Type, second: $HeartDrawing$$Type): $OverlayHeart$Builder
-public "addAbsorption"(drawing: $HeartDrawing$$Type): $OverlayHeart$Builder
-public "addAbsorption"(drawing: $HeartDrawing$$Type, r: float, g: float, b: float, alpha: float, sourceFactor: integer, destinationFactor: integer): $OverlayHeart$Builder
-public "addAbsorption"(first: $HeartDrawing$$Type, second: $HeartDrawing$$Type): $OverlayHeart$Builder
 public "addAbsorption"(drawing: $HeartDrawing$$Type, r: float, g: float, b: float): $OverlayHeart$Builder
+public "addAbsorption"(drawing: $HeartDrawing$$Type, r: float, g: float, b: float, alpha: float, sourceFactor: integer, destinationFactor: integer): $OverlayHeart$Builder
+public "addAbsorption"(drawing: $HeartDrawing$$Type): $OverlayHeart$Builder
+public "addAbsorption"(first: $HeartDrawing$$Type, second: $HeartDrawing$$Type): $OverlayHeart$Builder
+public "addHealth"(drawing: $HeartDrawing$$Type, r: float, g: float, b: float, alpha: float, sourceFactor: integer, destinationFactor: integer): $OverlayHeart$Builder
+public "addHealth"(first: $HeartDrawing$$Type, second: $HeartDrawing$$Type): $OverlayHeart$Builder
+public "addHealth"(drawing: $HeartDrawing$$Type): $OverlayHeart$Builder
+public "addHealth"(drawing: $HeartDrawing$$Type, r: float, g: float, b: float): $OverlayHeart$Builder
 public "blankAbsorption"(): $OverlayHeart$Builder
 }
 /**
@@ -361,22 +361,22 @@ export class $HeartSingleRenderEvent {
 
 constructor(heart: $Heart$$Type, guiGraphics: $GuiGraphics$$Type, index: integer, x: integer, y: integer, hardcore: boolean, blinking: boolean, blinkingHeart: boolean)
 
-public "getY"(): integer
 public "getIndex"(): integer
+public "getY"(): integer
 public "getX"(): integer
+public "getHeart"(): $Heart
+public "isBlinking"(): boolean
+public "getGuiGraphics"(): $GuiGraphics
 public "isHardcoreEnabled"(): boolean
 public "isBlinkingHeart"(): boolean
-public "isBlinking"(): boolean
-public "getHeart"(): $Heart
-public "getGuiGraphics"(): $GuiGraphics
-get "y"(): integer
 get "index"(): integer
+get "y"(): integer
 get "x"(): integer
+get "heart"(): $Heart
+get "blinking"(): boolean
+get "guiGraphics"(): $GuiGraphics
 get "hardcoreEnabled"(): boolean
 get "blinkingHeart"(): boolean
-get "blinking"(): boolean
-get "heart"(): $Heart
-get "guiGraphics"(): $GuiGraphics
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -401,15 +401,15 @@ import {$OverlayHeart$Builder, $OverlayHeart$Builder$$Type} from "terrails.color
 export class $OverlayHeart {
 
 
-public "toString"(): string
-public "getId"(): $ResourceLocation
 public "isOpaque"(): boolean
 public static "build"(id: $ResourceLocation$$Type, condition: $Predicate$$Type<($Player)>): $OverlayHeart$Builder
+public "toString"(): StringJS
+public "getId"(): $ResourceLocation
 public "shouldDraw"(player: $Player$$Type): boolean
 public "getHealthDrawings"(): $List<($HeartDrawing)>
 public "getAbsorptionDrawings"(): $List<($HeartDrawing)>
-get "id"(): $ResourceLocation
 get "opaque"(): boolean
+get "id"(): $ResourceLocation
 get "healthDrawings"(): $List<($HeartDrawing)>
 get "absorptionDrawings"(): $List<($HeartDrawing)>
 }
@@ -438,17 +438,17 @@ constructor(guiGraphics: $GuiGraphics$$Type, player: $Player$$Type, x: integer, 
 public "isCancelled"(): boolean
 public "setX"(x: integer): void
 public "setY"(y: integer): void
-public "setOverlayHeart"(heart: $OverlayHeart$$Type): void
 public "setCancelled"(cancel: boolean): void
 public "setBlinking"(blinking: boolean): void
 public "setHardcore"(hardcore: boolean): void
+public "setOverlayHeart"(heart: $OverlayHeart$$Type): void
 get "cancelled"(): boolean
 set "x"(value: integer)
 set "y"(value: integer)
-set "overlayHeart"(value: $OverlayHeart$$Type)
 set "cancelled"(value: boolean)
 set "blinking"(value: boolean)
 set "hardcore"(value: boolean)
+set "overlayHeart"(value: $OverlayHeart$$Type)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

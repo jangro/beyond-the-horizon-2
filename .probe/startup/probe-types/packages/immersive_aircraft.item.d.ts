@@ -1,12 +1,16 @@
 declare module "immersive_aircraft.item.WeaponItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$DescriptionItem, $DescriptionItem$$Type} from "immersive_aircraft.item.DescriptionItem"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
@@ -15,7 +19,7 @@ import {$WeaponMount$Type, $WeaponMount$Type$$Type} from "immersive_aircraft.ent
 export class $WeaponItem extends $DescriptionItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -23,8 +27,9 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(settings: $Item$Properties$$Type, mountType: $WeaponMount$Type$$Type)
 
-public "appendHoverText"(stack: $ItemStack$$Type, ctx: $Item$TooltipContext$$Type, tooltips: $List$$Type<($Component$$Type)>, flags: $TooltipFlag$$Type): void
 public "getMountType"(): $WeaponMount$Type
+public "appendHoverText"(stack: $ItemStack$$Type, ctx: $Item$TooltipContext$$Type, tooltips: $List$$Type<($Component$$Type)>, flags: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "mountType"(): $WeaponMount$Type
 }
 /**
@@ -71,21 +76,25 @@ declare global {
 export type $VehicleItem$VehicleConstructor_ = $VehicleItem$VehicleConstructor$$Type;
 }}
 declare module "immersive_aircraft.item.DescriptionItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
-import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 
 export class $DescriptionItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -94,6 +103,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(properties: $Item$Properties$$Type)
 
 public "appendHoverText"(stack: $ItemStack$$Type, ctx: $Item$TooltipContext$$Type, tooltips: $List$$Type<($Component$$Type)>, flags: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -147,8 +157,9 @@ export class $VehicleStat extends $Record {
 static readonly "FRICTION": $VehicleStat
 static readonly "WIND": $VehicleStat
 static readonly "PUSH_SPEED": $VehicleStat
+static readonly "DIALS": $VehicleStat
 static readonly "ENGINE_SPEED": $VehicleStat
-static readonly "STATS": $Map<(string), ($VehicleStat)>
+static readonly "STATS": $Map<(StringJS), ($VehicleStat)>
 static readonly "PITCH_SPEED": $VehicleStat
 static readonly "LIFT": $VehicleStat
 static readonly "VERTICAL_SPEED": $VehicleStat
@@ -157,6 +168,7 @@ static readonly "VERTICAL_DECAY": $VehicleStat
 static readonly "ACCELERATION": $VehicleStat
 static readonly "DURABILITY": $VehicleStat
 static readonly "GROUND_FRICTION": $VehicleStat
+static readonly "HUD": $VehicleStat
 static readonly "ROTATION_DECAY": $VehicleStat
 static readonly "FUEL": $VehicleStat
 static readonly "MASS": $VehicleStat
@@ -167,22 +179,22 @@ static readonly "ROLL_FACTOR": $VehicleStat
 static readonly "YAW_SPEED": $VehicleStat
 static readonly "HORIZONTAL_DECAY": $VehicleStat
 
-constructor(name: string, positive: boolean, defaultValue: float)
+constructor(name: StringJS, positive: boolean, defaultValue: float)
 
-public "name"(): string
-public "equals"(o: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public static "register"(name: string, positive: boolean, defaultValue: float): $VehicleStat
-public static "register"(name: string, positive: boolean): $VehicleStat
-public "defaultValue"(): float
 public "positive"(): boolean
+public "name"(): StringJS
+public "equals"(o: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+public static "register"(name: StringJS, positive: boolean, defaultValue: float): $VehicleStat
+public static "register"(name: StringJS, positive: boolean): $VehicleStat
+public "defaultValue"(): float
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $VehicleStat$$Type = ({"defaultValue"?: float, "positive"?: boolean, "name"?: string}) | ([defaultValue?: float, positive?: boolean, name?: string]);
+export type $VehicleStat$$Type = ({"name"?: StringJS, "defaultValue"?: float, "positive"?: boolean}) | ([name?: StringJS, defaultValue?: float, positive?: boolean]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -191,17 +203,19 @@ declare global {
 export type $VehicleStat_ = $VehicleStat$$Type;
 }}
 declare module "immersive_aircraft.item.VehicleItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$VehicleItem$VehicleConstructor, $VehicleItem$VehicleConstructor$$Type} from "immersive_aircraft.item.VehicleItem$VehicleConstructor"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$DescriptionItem, $DescriptionItem$$Type} from "immersive_aircraft.item.DescriptionItem"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
@@ -211,7 +225,7 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 export class $VehicleItem extends $DescriptionItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -222,6 +236,7 @@ constructor(settings: $Item$Properties$$Type, arg1: $VehicleItem$VehicleConstruc
 
 public "use"(world: $Level$$Type, user: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
 public "appendHoverText"(stack: $ItemStack$$Type, ctx: $Item$TooltipContext$$Type, tooltips: $List$$Type<($Component$$Type)>, flags: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -236,18 +251,22 @@ declare global {
 export type $VehicleItem_ = $VehicleItem$$Type;
 }}
 declare module "immersive_aircraft.item.AircraftItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$VehicleItem, $VehicleItem$$Type} from "immersive_aircraft.item.VehicleItem"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$AircraftItem$AircraftConstructor, $AircraftItem$AircraftConstructor$$Type} from "immersive_aircraft.item.AircraftItem$AircraftConstructor"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $AircraftItem extends $VehicleItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -255,6 +274,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(settings: $Item$Properties$$Type, arg1: $AircraftItem$AircraftConstructor$$Type)
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -269,18 +289,22 @@ declare global {
 export type $AircraftItem_ = $AircraftItem$$Type;
 }}
 declare module "immersive_aircraft.item.DyeableAircraftItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$AircraftItem$AircraftConstructor, $AircraftItem$AircraftConstructor$$Type} from "immersive_aircraft.item.AircraftItem$AircraftConstructor"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$AircraftItem, $AircraftItem$$Type} from "immersive_aircraft.item.AircraftItem"
 
 export class $DyeableAircraftItem extends $AircraftItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -288,6 +312,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(settings: $Item$Properties$$Type, arg1: $AircraftItem$AircraftConstructor$$Type)
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

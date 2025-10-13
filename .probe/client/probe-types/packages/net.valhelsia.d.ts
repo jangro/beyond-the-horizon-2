@@ -1,3 +1,32 @@
+declare module "net.valhelsia.valhelsia_core.api.common.registry.helper.RegistryHelper" {
+import {$Registry, $Registry$$Type} from "net.minecraft.core.Registry"
+import {$Class, $Class$$Type} from "java.lang.Class"
+import {$ImmutableList, $ImmutableList$$Type} from "com.google.common.collect.ImmutableList"
+import {$RegistryClass, $RegistryClass$$Type} from "net.valhelsia.valhelsia_core.api.common.registry.RegistryClass"
+import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
+
+export class $RegistryHelper<T, R extends $RegistryClass> {
+
+
+public "getRegistry"(): $ResourceKey<($Registry<(T)>)>
+public "getModId"(): StringJS
+public "getRegistryClasses"(): $ImmutableList<($Class<(any)>)>
+get "registry"(): $ResourceKey<($Registry<(T)>)>
+get "modId"(): StringJS
+get "registryClasses"(): $ImmutableList<($Class<(any)>)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $RegistryHelper$$Type<T, R> = ($RegistryHelper<(T), (R)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $RegistryHelper_<T, R> = $RegistryHelper$$Type<(T), (R)>;
+}}
 declare module "net.valhelsia.valhelsia_furniture.common.block.SeatableBlock" {
 import {$SeatEntity$EjectType, $SeatEntity$EjectType$$Type} from "net.valhelsia.valhelsia_furniture.common.entity.SeatEntity$EjectType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
@@ -8,15 +37,15 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 
 export interface $SeatableBlock {
 
- "trySitEntityOnBlock"(level: $Level$$Type, pos: $BlockPos$$Type, entity: $Entity$$Type): void
- "getRidingOffset"(): double
  "sitOnBlock"(level: $Level$$Type, pos: $BlockPos$$Type, entity: $LivingEntity$$Type): void
  "isSeatOccupied"(entityGetter: $EntityGetter$$Type, pos: $BlockPos$$Type): boolean
  "getEjectType"(): $SeatEntity$EjectType
+ "trySitEntityOnBlock"(level: $Level$$Type, pos: $BlockPos$$Type, entity: $Entity$$Type): void
+ "getRidingOffset"(): double
 
 (): $SeatEntity$EjectType$$Type
-get "ridingOffset"(): double
 get "ejectType"(): $SeatEntity$EjectType
+get "ridingOffset"(): double
 }
 
 export namespace $SeatableBlock {
@@ -25,11 +54,11 @@ const probejs$$marker: never
 export class $SeatableBlock$$Static implements $SeatableBlock {
 
 
- "trySitEntityOnBlock"(level: $Level$$Type, pos: $BlockPos$$Type, entity: $Entity$$Type): void
- "getRidingOffset"(): double
  "sitOnBlock"(level: $Level$$Type, pos: $BlockPos$$Type, entity: $LivingEntity$$Type): void
  "isSeatOccupied"(entityGetter: $EntityGetter$$Type, pos: $BlockPos$$Type): boolean
  "getEjectType"(): $SeatEntity$EjectType
+ "trySitEntityOnBlock"(level: $Level$$Type, pos: $BlockPos$$Type, entity: $Entity$$Type): void
+ "getRidingOffset"(): double
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -52,8 +81,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$OpenCurtainBlock, $OpenCurtainBlock$$Type} from "net.valhelsia.valhelsia_furniture.common.block.OpenCurtainBlock"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$DyeColor, $DyeColor$$Type} from "net.minecraft.world.item.DyeColor"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$ClosedCurtainPart, $ClosedCurtainPart$$Type} from "net.valhelsia.valhelsia_furniture.common.block.properties.ClosedCurtainPart"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -61,13 +90,13 @@ import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$AbstractCurtainBlock, $AbstractCurtainBlock$$Type} from "net.valhelsia.valhelsia_furniture.common.block.AbstractCurtainBlock"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $ClosedCurtainBlock extends $AbstractCurtainBlock<($ClosedCurtainPart)> {
@@ -79,7 +108,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "BRACKET_SHAPES": $Map<($Direction), ($VoxelShape)>
 static "PART": $EnumProperty<($ClosedCurtainPart)>
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -101,9 +130,9 @@ constructor(color: $DyeColor$$Type, properties: $BlockBehaviour$Properties$$Type
 
 public "getShape"(state: $BlockState$$Type, level: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
 public "onRemove"(state: $BlockState$$Type, level: $Level$$Type, pos: $BlockPos$$Type, newState: $BlockState$$Type, isMoving: boolean): void
+public "getOpenBlock"(): $OpenCurtainBlock
 public "getStateForPlacement"(context: $BlockPlaceContext$$Type): $BlockState
 public "getCollisionShape"(state: $BlockState$$Type, level: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public "getOpenBlock"(): $OpenCurtainBlock
 public "asHolder"(): $Holder<(any)>
 get "openBlock"(): $OpenCurtainBlock
 }
@@ -121,8 +150,8 @@ export type $ClosedCurtainBlock_ = $ClosedCurtainBlock$$Type;
 }}
 declare module "net.valhelsia.valhelsia_furniture.common.block.DeskDrawerBlock" {
 import {$TextureSlot, $TextureSlot$$Type} from "net.minecraft.data.models.model.TextureSlot"
-import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$WoodType, $WoodType$$Type} from "net.minecraft.world.level.block.state.properties.WoodType"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
 import {$List, $List$$Type} from "java.util.List"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
@@ -132,8 +161,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -142,8 +171,8 @@ import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
@@ -160,12 +189,12 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "RIGHT": $BooleanProperty
-static readonly "VARIANT_TEXTURES": $Map<(string), ($List<($TextureSlot)>)>
+static readonly "VARIANT_TEXTURES": $Map<(StringJS), ($List<($TextureSlot)>)>
 static readonly "UPDATE_IMMEDIATE": integer
  "item": $Item
 static readonly "CODEC": $MapCodec<($Block)>
@@ -216,24 +245,24 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$Rotation, $Rotation$$Type} from "net.minecraft.world.level.block.Rotation"
 import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
+import {$Rotation, $Rotation$$Type} from "net.minecraft.world.level.block.Rotation"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $DeskBlock extends $Block implements $SimpleWaterloggedBlock {
@@ -243,12 +272,12 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "RIGHT": $BooleanProperty
-static readonly "VARIANT_TEXTURES": $Map<(string), ($List<($TextureSlot)>)>
+static readonly "VARIANT_TEXTURES": $Map<(StringJS), ($List<($TextureSlot)>)>
 static readonly "UPDATE_IMMEDIATE": integer
  "item": $Item
 static readonly "CODEC": $MapCodec<($Block)>
@@ -266,14 +295,14 @@ constructor(woodType: $WoodType$$Type, tag: $TagKey$$Type<($Block)>, properties:
 
 public "rotate"(state: $BlockState$$Type, rotation: $Rotation$$Type): $BlockState
 public "getShape"(state: $BlockState$$Type, level: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public "useShapeForLightOcclusion"(state: $BlockState$$Type): boolean
+public "mirror"(state: $BlockState$$Type, mirror: $Mirror$$Type): $BlockState
 public "updateShape"(state: $BlockState$$Type, direction: $Direction$$Type, neighborState: $BlockState$$Type, level: $LevelAccessor$$Type, currentPos: $BlockPos$$Type, neighborPos: $BlockPos$$Type): $BlockState
 public "getWoodType"(): $WoodType
 public "getFluidState"(state: $BlockState$$Type): $FluidState
-public "mirror"(state: $BlockState$$Type, mirror: $Mirror$$Type): $BlockState
-public "getStateForPlacement"(context: $BlockPlaceContext$$Type): $BlockState
 public "hasSameFacing"(state: $BlockState$$Type, facing: $Direction$$Type): boolean
 public "isCenterPart"(state: $BlockState$$Type): boolean
+public "getStateForPlacement"(context: $BlockPlaceContext$$Type): $BlockState
+public "useShapeForLightOcclusion"(state: $BlockState$$Type): boolean
 public "getPickupSound"(): $Optional<($SoundEvent)>
 public "canPlaceLiquid"(arg0: $Player$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $Fluid$$Type): boolean
 public "placeLiquid"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $FluidState$$Type): boolean
@@ -307,13 +336,13 @@ import {$BootstrapContext, $BootstrapContext$$Type} from "net.minecraft.data.wor
 export class $JigsawBuilder {
 
 
-public static "builder"(key: $ResourceKey$$Type<($StructureTemplatePool)>, folder: string, context: $BootstrapContext$$Type<($StructureTemplatePool$$Type)>, elementFunction: $JigsawBuilder$ElementFunction$$Type): $JigsawBuilder
+public "element"(location: StringJS, terrainAdjustment: $TerrainAdjustment$$Type): $JigsawBuilder
+public "element"(location: StringJS): $JigsawBuilder
+public "element"(location: StringJS, weight: integer, terrainAdjustment: $TerrainAdjustment$$Type): $JigsawBuilder
+public "element"(location: StringJS, weight: integer): $JigsawBuilder
+public "build"(modId: StringJS, terrainAdjustment: $TerrainAdjustment$$Type): void
+public static "builder"(key: $ResourceKey$$Type<($StructureTemplatePool)>, folder: StringJS, context: $BootstrapContext$$Type<($StructureTemplatePool$$Type)>, elementFunction: $JigsawBuilder$ElementFunction$$Type): $JigsawBuilder
 public static "builder"(key: $ResourceKey$$Type<($StructureTemplatePool)>, context: $BootstrapContext$$Type<($StructureTemplatePool$$Type)>, elementFunction: $JigsawBuilder$ElementFunction$$Type): $JigsawBuilder
-public "element"(location: string, weight: integer): $JigsawBuilder
-public "element"(location: string, weight: integer, terrainAdjustment: $TerrainAdjustment$$Type): $JigsawBuilder
-public "element"(location: string, terrainAdjustment: $TerrainAdjustment$$Type): $JigsawBuilder
-public "element"(location: string): $JigsawBuilder
-public "build"(modId: string, terrainAdjustment: $TerrainAdjustment$$Type): void
 public "processors"(processors: $ResourceKey$$Type<($StructureProcessorList)>): $JigsawBuilder
 public "projection"(projection: $StructureTemplatePool$Projection$$Type): $JigsawBuilder
 }
@@ -334,24 +363,24 @@ import {$ModelTemplate, $ModelTemplate$$Type} from "net.minecraft.data.models.mo
 
 export interface $CurtainPart {
 
- "getName"(): string
- "isBottomOrSingle"(): boolean
+ "getName"(): StringJS
+ "getTopTexture"(): StringJS
  "isTopOrSingle"(): boolean
  "isSingleRow"(): boolean
  "isSingle"(): boolean
- "getModelName"(): string
- "getTopTexture"(): string
- "getBottomTexture"(): string
+ "getModelName"(): StringJS
+ "isBottomOrSingle"(): boolean
  "getModelTemplate"(): $ModelTemplate
-get "name"(): string
-get "bottomOrSingle"(): boolean
+ "getBottomTexture"(): StringJS
+get "name"(): StringJS
+get "topTexture"(): StringJS
 get "topOrSingle"(): boolean
 get "singleRow"(): boolean
 get "single"(): boolean
-get "modelName"(): string
-get "topTexture"(): string
-get "bottomTexture"(): string
+get "modelName"(): StringJS
+get "bottomOrSingle"(): boolean
 get "modelTemplate"(): $ModelTemplate
+get "bottomTexture"(): StringJS
 }
 
 export namespace $CurtainPart {
@@ -360,15 +389,15 @@ const probejs$$marker: never
 export class $CurtainPart$$Static implements $CurtainPart {
 
 
- "getName"(): string
- "isBottomOrSingle"(): boolean
+ "getName"(): StringJS
+ "getTopTexture"(): StringJS
  "isTopOrSingle"(): boolean
  "isSingleRow"(): boolean
  "isSingle"(): boolean
- "getModelName"(): string
- "getTopTexture"(): string
- "getBottomTexture"(): string
+ "getModelName"(): StringJS
+ "isBottomOrSingle"(): boolean
  "getModelTemplate"(): $ModelTemplate
+ "getBottomTexture"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -393,8 +422,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$DyeColor, $DyeColor$$Type} from "net.minecraft.world.item.DyeColor"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
@@ -402,8 +431,8 @@ import {$Map, $Map$$Type} from "java.util.Map"
 import {$RenderShape, $RenderShape$$Type} from "net.minecraft.world.level.block.RenderShape"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$AbstractCurtainBlock, $AbstractCurtainBlock$$Type} from "net.valhelsia.valhelsia_furniture.common.block.AbstractCurtainBlock"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
@@ -420,7 +449,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "BRACKET_SHAPES": $Map<($Direction), ($VoxelShape)>
 static "PART": $EnumProperty<($OpenCurtainPart)>
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -441,11 +470,11 @@ static readonly "FACING": $DirectionProperty
 constructor(color: $DyeColor$$Type, properties: $BlockBehaviour$Properties$$Type)
 
 public "getShape"(state: $BlockState$$Type, level: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
 public "onRemove"(state: $BlockState$$Type, level: $Level$$Type, pos: $BlockPos$$Type, newState: $BlockState$$Type, isMoving: boolean): void
-public "getCloneItemStack"(level: $LevelReader$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type): $ItemStack
-public "getCollisionShape"(state: $BlockState$$Type, level: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
+public "getRenderShape"(state: $BlockState$$Type): $RenderShape
 public "getClosedBlock"(): $ClosedCurtainBlock
+public "getCollisionShape"(state: $BlockState$$Type, level: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
+public "getCloneItemStack"(level: $LevelReader$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type): $ItemStack
 public "asHolder"(): $Holder<(any)>
 get "closedBlock"(): $ClosedCurtainBlock
 }
@@ -469,14 +498,14 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$DyeColor, $DyeColor$$Type} from "net.minecraft.world.item.DyeColor"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
@@ -496,7 +525,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -509,9 +538,9 @@ constructor(woodType: $WoodType$$Type, properties: $BlockBehaviour$Properties$$T
 constructor(woodType: $WoodType$$Type, color: $DyeColor$$Type, properties: $BlockBehaviour$Properties$$Type)
 
 public "getShape"(state: $BlockState$$Type, level: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public "getDescriptionId"(): string
+public "getDescriptionId"(): StringJS
 public "asHolder"(): $Holder<(any)>
-get "descriptionId"(): string
+get "descriptionId"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -526,8 +555,8 @@ declare global {
 export type $UpholsteredChairBlock_ = $UpholsteredChairBlock$$Type;
 }}
 declare module "net.valhelsia.valhelsia_furniture.common.block.StoolBlock" {
-import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$WoodType, $WoodType$$Type} from "net.minecraft.world.level.block.state.properties.WoodType"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
@@ -542,18 +571,18 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$DyeColor, $DyeColor$$Type} from "net.minecraft.world.item.DyeColor"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$SeatableBlock, $SeatableBlock$$Type} from "net.valhelsia.valhelsia_furniture.common.block.SeatableBlock"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
@@ -563,8 +592,8 @@ import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.Liv
 import {$EntityGetter, $EntityGetter$$Type} from "net.minecraft.world.level.EntityGetter"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $StoolBlock extends $Block implements $SimpleWaterloggedBlock, $SeatableBlock {
 static readonly "UPDATE_IMMEDIATE": integer
@@ -581,7 +610,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -593,34 +622,34 @@ constructor(woodType: $WoodType$$Type, properties: $BlockBehaviour$Properties$$T
 constructor(woodType: $WoodType$$Type, color: $DyeColor$$Type, properties: $BlockBehaviour$Properties$$Type)
 
 public "getShape"(state: $BlockState$$Type, level: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public "useShapeForLightOcclusion"(state: $BlockState$$Type): boolean
-public "updateShape"(state: $BlockState$$Type, direction: $Direction$$Type, neighborState: $BlockState$$Type, level: $LevelAccessor$$Type, currentPos: $BlockPos$$Type, neighborPos: $BlockPos$$Type): $BlockState
 public "useWithoutItem"(state: $BlockState$$Type, level: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
+public "updateShape"(state: $BlockState$$Type, direction: $Direction$$Type, neighborState: $BlockState$$Type, level: $LevelAccessor$$Type, currentPos: $BlockPos$$Type, neighborPos: $BlockPos$$Type): $BlockState
 public "getWoodType"(): $WoodType
-public "getColor"(): $DyeColor
 public "entityInside"(state: $BlockState$$Type, level: $Level$$Type, pos: $BlockPos$$Type, entity: $Entity$$Type): void
 public "getFluidState"(state: $BlockState$$Type): $FluidState
+public "getColor"(): $DyeColor
+public "getEjectType"(): $SeatEntity$EjectType
+public "getStateForPlacement"(context: $BlockPlaceContext$$Type): $BlockState
 public "hasAnalogOutputSignal"(state: $BlockState$$Type): boolean
 public "neighborChanged"(state: $BlockState$$Type, level: $Level$$Type, pos: $BlockPos$$Type, block: $Block$$Type, fromPos: $BlockPos$$Type, isMoving: boolean): void
-public "getStateForPlacement"(context: $BlockPlaceContext$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, list: $List$$Type<($Component$$Type)>, flag: $TooltipFlag$$Type): void
 public "getAnalogOutputSignal"(state: $BlockState$$Type, level: $Level$$Type, pos: $BlockPos$$Type): integer
-public "getDescriptionId"(): string
-public "getEjectType"(): $SeatEntity$EjectType
+public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, list: $List$$Type<($Component$$Type)>, flag: $TooltipFlag$$Type): void
+public "getDescriptionId"(): StringJS
+public "useShapeForLightOcclusion"(state: $BlockState$$Type): boolean
 public "getPickupSound"(): $Optional<($SoundEvent)>
 public "canPlaceLiquid"(arg0: $Player$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $Fluid$$Type): boolean
 public "placeLiquid"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $FluidState$$Type): boolean
 public "pickupBlock"(arg0: $Player$$Type, arg1: $LevelAccessor$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type): $ItemStack
-public "trySitEntityOnBlock"(level: $Level$$Type, pos: $BlockPos$$Type, entity: $Entity$$Type): void
-public "getRidingOffset"(): double
 public "sitOnBlock"(level: $Level$$Type, pos: $BlockPos$$Type, entity: $LivingEntity$$Type): void
 public "isSeatOccupied"(entityGetter: $EntityGetter$$Type, pos: $BlockPos$$Type): boolean
+public "trySitEntityOnBlock"(level: $Level$$Type, pos: $BlockPos$$Type, entity: $Entity$$Type): void
+public "getRidingOffset"(): double
 public "asHolder"(): $Holder<(any)>
 public "getPickupSound"(arg0: $BlockState$$Type): $Optional<($SoundEvent)>
 get "woodType"(): $WoodType
 get "color"(): $DyeColor
-get "descriptionId"(): string
 get "ejectType"(): $SeatEntity$EjectType
+get "descriptionId"(): StringJS
 get "pickupSound"(): $Optional<($SoundEvent)>
 get "ridingOffset"(): double
 }
@@ -637,8 +666,8 @@ declare global {
 export type $StoolBlock_ = $StoolBlock$$Type;
 }}
 declare module "net.valhelsia.valhelsia_furniture.common.block.ChairBlock" {
-import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$WoodType, $WoodType$$Type} from "net.minecraft.world.level.block.state.properties.WoodType"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Mirror, $Mirror$$Type} from "net.minecraft.world.level.block.Mirror"
@@ -654,18 +683,18 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$DyeColor, $DyeColor$$Type} from "net.minecraft.world.item.DyeColor"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$SeatableBlock, $SeatableBlock$$Type} from "net.valhelsia.valhelsia_furniture.common.block.SeatableBlock"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
@@ -676,8 +705,8 @@ import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.Liv
 import {$EntityGetter, $EntityGetter$$Type} from "net.minecraft.world.level.EntityGetter"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $ChairBlock extends $Block implements $SimpleWaterloggedBlock, $SeatableBlock {
@@ -694,7 +723,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -708,35 +737,35 @@ constructor(woodType: $WoodType$$Type, color: $DyeColor$$Type, properties: $Bloc
 
 public "rotate"(state: $BlockState$$Type, rotation: $Rotation$$Type): $BlockState
 public "getShape"(state: $BlockState$$Type, level: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public "useShapeForLightOcclusion"(state: $BlockState$$Type): boolean
-public "updateShape"(state: $BlockState$$Type, direction: $Direction$$Type, neighborState: $BlockState$$Type, level: $LevelAccessor$$Type, currentPos: $BlockPos$$Type, neighborPos: $BlockPos$$Type): $BlockState
+public "mirror"(state: $BlockState$$Type, mirror: $Mirror$$Type): $BlockState
 public "useWithoutItem"(state: $BlockState$$Type, level: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hitResult: $BlockHitResult$$Type): $InteractionResult
+public "updateShape"(state: $BlockState$$Type, direction: $Direction$$Type, neighborState: $BlockState$$Type, level: $LevelAccessor$$Type, currentPos: $BlockPos$$Type, neighborPos: $BlockPos$$Type): $BlockState
 public "getWoodType"(): $WoodType
-public "getColor"(): $DyeColor
 public "entityInside"(state: $BlockState$$Type, level: $Level$$Type, pos: $BlockPos$$Type, entity: $Entity$$Type): void
 public "getFluidState"(state: $BlockState$$Type): $FluidState
-public "mirror"(state: $BlockState$$Type, mirror: $Mirror$$Type): $BlockState
+public "getColor"(): $DyeColor
+public "getEjectType"(): $SeatEntity$EjectType
+public "getStateForPlacement"(context: $BlockPlaceContext$$Type): $BlockState
 public "hasAnalogOutputSignal"(state: $BlockState$$Type): boolean
 public "neighborChanged"(state: $BlockState$$Type, level: $Level$$Type, pos: $BlockPos$$Type, block: $Block$$Type, fromPos: $BlockPos$$Type, isMoving: boolean): void
-public "getStateForPlacement"(context: $BlockPlaceContext$$Type): $BlockState
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, list: $List$$Type<($Component$$Type)>, flag: $TooltipFlag$$Type): void
 public "getAnalogOutputSignal"(state: $BlockState$$Type, level: $Level$$Type, pos: $BlockPos$$Type): integer
-public "getDescriptionId"(): string
-public "getEjectType"(): $SeatEntity$EjectType
+public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, list: $List$$Type<($Component$$Type)>, flag: $TooltipFlag$$Type): void
+public "getDescriptionId"(): StringJS
+public "useShapeForLightOcclusion"(state: $BlockState$$Type): boolean
 public "getPickupSound"(): $Optional<($SoundEvent)>
 public "canPlaceLiquid"(arg0: $Player$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $Fluid$$Type): boolean
 public "placeLiquid"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $FluidState$$Type): boolean
 public "pickupBlock"(arg0: $Player$$Type, arg1: $LevelAccessor$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type): $ItemStack
-public "trySitEntityOnBlock"(level: $Level$$Type, pos: $BlockPos$$Type, entity: $Entity$$Type): void
-public "getRidingOffset"(): double
 public "sitOnBlock"(level: $Level$$Type, pos: $BlockPos$$Type, entity: $LivingEntity$$Type): void
 public "isSeatOccupied"(entityGetter: $EntityGetter$$Type, pos: $BlockPos$$Type): boolean
+public "trySitEntityOnBlock"(level: $Level$$Type, pos: $BlockPos$$Type, entity: $Entity$$Type): void
+public "getRidingOffset"(): double
 public "asHolder"(): $Holder<(any)>
 public "getPickupSound"(arg0: $BlockState$$Type): $Optional<($SoundEvent)>
 get "woodType"(): $WoodType
 get "color"(): $DyeColor
-get "descriptionId"(): string
 get "ejectType"(): $SeatEntity$EjectType
+get "descriptionId"(): StringJS
 get "pickupSound"(): $Optional<($SoundEvent)>
 get "ridingOffset"(): double
 }
@@ -751,6 +780,41 @@ export type $ChairBlock$$Type = ($ChairBlock);
  */
 declare global {
 export type $ChairBlock_ = $ChairBlock$$Type;
+}}
+declare module "net.valhelsia.valhelsia_core.api.common.registry.helper.MappedRegistryHelper" {
+import {$Collection, $Collection$$Type} from "java.util.Collection"
+import {$Registry, $Registry$$Type} from "net.minecraft.core.Registry"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
+import {$ImmutableList, $ImmutableList$$Type} from "com.google.common.collect.ImmutableList"
+import {$Class, $Class$$Type} from "java.lang.Class"
+import {$RegistryClass, $RegistryClass$$Type} from "net.valhelsia.valhelsia_core.api.common.registry.RegistryClass"
+import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
+import {$RegistryEntry, $RegistryEntry$$Type} from "net.valhelsia.valhelsia_core.api.common.registry.RegistryEntry"
+import {$RegistryHelper, $RegistryHelper$$Type} from "net.valhelsia.valhelsia_core.api.common.registry.helper.RegistryHelper"
+
+export class $MappedRegistryHelper<T> extends $RegistryHelper<(T), ($RegistryClass)> {
+
+constructor(registry: $ResourceKey$$Type<($Registry<(T)>)>, modId: StringJS, registryClasses: $ImmutableList$$Type<($Class$$Type<(any)>)>)
+
+public "register"<O extends T>(name: StringJS, object: $Supplier$$Type<(O)>): $RegistryEntry<(T), (O)>
+public "getRegistryClasses"(): $ImmutableList<($Class<(any)>)>
+public "getRegistryEntries"(): $Collection<($RegistryEntry<(T), (T)>)>
+public "internalRegister"(): void
+public "registerInternal"<O extends T, E extends $RegistryEntry<(T), (O)>>(name: StringJS, object: $Supplier$$Type<(O)>): E
+get "registryClasses"(): $ImmutableList<($Class<(any)>)>
+get "registryEntries"(): $Collection<($RegistryEntry<(T), (T)>)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $MappedRegistryHelper$$Type<T> = ($MappedRegistryHelper<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $MappedRegistryHelper_<T> = $MappedRegistryHelper$$Type<(T)>;
 }}
 declare module "net.valhelsia.valhelsia_core.api.common.util.ItemStackListGetter" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
@@ -812,38 +876,38 @@ static readonly "LEFT_SIDE_BOTTOM": $OpenCurtainPart
 static readonly "RIGHT_SIDE_BOTTOM": $OpenCurtainPart
 
 
-public "getName"(): string
+public "getName"(): StringJS
 public static "values"(): ($OpenCurtainPart)[]
-public static "valueOf"(name: string): $OpenCurtainPart
-public static "getTypeForConnections"(connectUp: boolean, connectDown: boolean): $OpenCurtainPart
-public "isBottomOrSingle"(): boolean
-public "getSerializedName"(): string
+public static "valueOf"(name: StringJS): $OpenCurtainPart
+public "getTopTexture"(): StringJS
 public "isTopOrSingle"(): boolean
 public "isSingleRow"(): boolean
 public "isSingle"(): boolean
 public "isMiddle"(): boolean
-public "getModelName"(): string
-public "getTopTexture"(): string
-public "getBottomTexture"(): string
+public "getModelName"(): StringJS
+public "isBottomOrSingle"(): boolean
+public static "getTypeForConnections"(connectUp: boolean, connectDown: boolean): $OpenCurtainPart
+public "getSerializedName"(): StringJS
 public "getModelTemplate"(): $ModelTemplate
+public "getBottomTexture"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "name"(): string
-get "bottomOrSingle"(): boolean
-get "serializedName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "name"(): StringJS
+get "topTexture"(): StringJS
 get "topOrSingle"(): boolean
 get "singleRow"(): boolean
 get "single"(): boolean
 get "middle"(): boolean
-get "modelName"(): string
-get "topTexture"(): string
-get "bottomTexture"(): string
+get "modelName"(): StringJS
+get "bottomOrSingle"(): boolean
+get "serializedName"(): StringJS
 get "modelTemplate"(): $ModelTemplate
-get "remappedEnumConstantName"(): string
+get "bottomTexture"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -869,12 +933,12 @@ static readonly "NORTH": $SeatEntity$EjectType
 static readonly "ENTITY_HEAD_ROTATION": $SeatEntity$EjectType
 
 
-public "getName"(): string
+public "getName"(): StringJS
 public static "values"(): ($SeatEntity$EjectType)[]
-public static "valueOf"(name: string): $SeatEntity$EjectType
+public static "valueOf"(name: StringJS): $SeatEntity$EjectType
+public static "fromName"(name: StringJS): $SeatEntity$EjectType
 public "getPreferredDirection"(state: $BlockState$$Type, livingEntity: $LivingEntity$$Type): $Direction
-public static "fromName"(name: string): $SeatEntity$EjectType
-get "name"(): string
+get "name"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -901,22 +965,22 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $FabricDeskLampBlock extends $Block implements $SimpleWaterloggedBlock {
 static readonly "UPDATE_IMMEDIATE": integer
@@ -934,7 +998,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -945,11 +1009,11 @@ static readonly "UPDATE_CLIENTS": integer
 constructor(properties: $BlockBehaviour$Properties$$Type)
 
 public "getShape"(state: $BlockState$$Type, level: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public "updateShape"(state: $BlockState$$Type, direction: $Direction$$Type, neighborState: $BlockState$$Type, level: $LevelAccessor$$Type, currentPos: $BlockPos$$Type, neighborPos: $BlockPos$$Type): $BlockState
 public "useWithoutItem"(state: $BlockState$$Type, level: $Level$$Type, pos: $BlockPos$$Type, player: $Player$$Type, hit: $BlockHitResult$$Type): $InteractionResult
+public "updateShape"(state: $BlockState$$Type, direction: $Direction$$Type, neighborState: $BlockState$$Type, level: $LevelAccessor$$Type, currentPos: $BlockPos$$Type, neighborPos: $BlockPos$$Type): $BlockState
 public "getFluidState"(state: $BlockState$$Type): $FluidState
-public "neighborChanged"(state: $BlockState$$Type, level: $Level$$Type, pos: $BlockPos$$Type, block: $Block$$Type, fromPos: $BlockPos$$Type, isMoving: boolean): void
 public "getStateForPlacement"(context: $BlockPlaceContext$$Type): $BlockState
+public "neighborChanged"(state: $BlockState$$Type, level: $Level$$Type, pos: $BlockPos$$Type, block: $Block$$Type, fromPos: $BlockPos$$Type, isMoving: boolean): void
 public "getPickupSound"(): $Optional<($SoundEvent)>
 public "canPlaceLiquid"(arg0: $Player$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $Fluid$$Type): boolean
 public "placeLiquid"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $FluidState$$Type): boolean
@@ -969,6 +1033,33 @@ export type $FabricDeskLampBlock$$Type = ($FabricDeskLampBlock);
  */
 declare global {
 export type $FabricDeskLampBlock_ = $FabricDeskLampBlock$$Type;
+}}
+declare module "net.valhelsia.valhelsia_core.api.common.registry.RegistryClass" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $RegistryClass {
+
+ "load"(): void
+}
+
+export namespace $RegistryClass {
+const probejs$$marker: never
+}
+export class $RegistryClass$$Static implements $RegistryClass {
+
+
+ "load"(): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $RegistryClass$$Type = ($RegistryClass);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $RegistryClass_ = $RegistryClass$$Type;
 }}
 declare module "net.valhelsia.valhelsia_furniture.common.block.FurnitureBlock" {
 import {$FurnitureBlock$Type, $FurnitureBlock$Type$$Type} from "net.valhelsia.valhelsia_furniture.common.block.FurnitureBlock$Type"
@@ -1011,8 +1102,8 @@ import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$Rotation, $Rotation$$Type} from "net.minecraft.world.level.block.Rotation"
@@ -1034,7 +1125,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "BRACKET_SHAPES": $Map<($Direction), ($VoxelShape)>
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -1054,8 +1145,8 @@ static readonly "FACING": $DirectionProperty
 constructor(color: $DyeColor$$Type, properties: $BlockBehaviour$Properties$$Type)
 
 public "rotate"(state: $BlockState$$Type, rotation: $Rotation$$Type): $BlockState
-public "getColor"(): $DyeColor
 public "mirror"(state: $BlockState$$Type, mirror: $Mirror$$Type): $BlockState
+public "getColor"(): $DyeColor
 public "neighborChanged"(state: $BlockState$$Type, level: $Level$$Type, pos: $BlockPos$$Type, block: $Block$$Type, fromPos: $BlockPos$$Type, isMoving: boolean): void
 public "getBlockSupportShape"(state: $BlockState$$Type, blockGetter: $BlockGetter$$Type, pos: $BlockPos$$Type): $VoxelShape
 public "asHolder"(): $Holder<(any)>
@@ -1126,22 +1217,22 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$FurnitureBlock, $FurnitureBlock$$Type} from "net.valhelsia.valhelsia_furniture.common.block.FurnitureBlock"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$Rotation, $Rotation$$Type} from "net.minecraft.world.level.block.Rotation"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $TableBlock extends $Block implements $SimpleWaterloggedBlock, $FurnitureBlock {
 static readonly "WEST": $BooleanProperty
@@ -1151,7 +1242,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -1171,18 +1262,18 @@ static readonly "UPDATE_CLIENTS": integer
 
 constructor(woodType: $WoodType$$Type, properties: $BlockBehaviour$Properties$$Type)
 
-public "getType"(): $FurnitureBlock$Type
 public "rotate"(state: $BlockState$$Type, rotation: $Rotation$$Type): $BlockState
 public "getShape"(state: $BlockState$$Type, level: $BlockGetter$$Type, pos: $BlockPos$$Type, context: $CollisionContext$$Type): $VoxelShape
-public "useShapeForLightOcclusion"(state: $BlockState$$Type): boolean
+public "getType"(): $FurnitureBlock$Type
+public "mirror"(state: $BlockState$$Type, mirror: $Mirror$$Type): $BlockState
 public "updateShape"(state: $BlockState$$Type, direction: $Direction$$Type, neighborState: $BlockState$$Type, level: $LevelAccessor$$Type, currentPos: $BlockPos$$Type, neighborPos: $BlockPos$$Type): $BlockState
 public "getWoodType"(): $WoodType
 public "getFluidState"(state: $BlockState$$Type): $FluidState
-public "mirror"(state: $BlockState$$Type, mirror: $Mirror$$Type): $BlockState
-public "getStateForPlacement"(context: $BlockPlaceContext$$Type): $BlockState
-public "playerWillDestroy"(level: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
 public "isValidTable"(state: $BlockState$$Type): boolean
 public "isSameRotation"(state1: $BlockState$$Type, state2: $BlockState$$Type): boolean
+public "getStateForPlacement"(context: $BlockPlaceContext$$Type): $BlockState
+public "playerWillDestroy"(level: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, player: $Player$$Type): $BlockState
+public "useShapeForLightOcclusion"(state: $BlockState$$Type): boolean
 public "getPickupSound"(): $Optional<($SoundEvent)>
 public "canPlaceLiquid"(arg0: $Player$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $Fluid$$Type): boolean
 public "placeLiquid"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $FluidState$$Type): boolean
@@ -1223,36 +1314,36 @@ static readonly "BOTTOM": $ClosedCurtainPart
 static readonly "MIDDLE": $ClosedCurtainPart
 
 
-public "getName"(): string
+public "getName"(): StringJS
 public static "values"(): ($ClosedCurtainPart)[]
-public static "valueOf"(name: string): $ClosedCurtainPart
-public static "getTypeForConnections"(connectUp: boolean, connectDown: boolean): $ClosedCurtainPart
-public "isBottomOrSingle"(): boolean
-public "getSerializedName"(): string
+public static "valueOf"(name: StringJS): $ClosedCurtainPart
+public "getTopTexture"(): StringJS
 public "isTopOrSingle"(): boolean
 public "isSingleRow"(): boolean
 public "isSingle"(): boolean
-public "getTopTexture"(): string
-public "getBottomTexture"(): string
+public "isBottomOrSingle"(): boolean
+public static "getTypeForConnections"(connectUp: boolean, connectDown: boolean): $ClosedCurtainPart
+public "getSerializedName"(): StringJS
 public "getModelTemplate"(): $ModelTemplate
+public "getBottomTexture"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-public "getModelName"(): string
-get "name"(): string
-get "bottomOrSingle"(): boolean
-get "serializedName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+public "getModelName"(): StringJS
+get "name"(): StringJS
+get "topTexture"(): StringJS
 get "topOrSingle"(): boolean
 get "singleRow"(): boolean
 get "single"(): boolean
-get "topTexture"(): string
-get "bottomTexture"(): string
+get "bottomOrSingle"(): boolean
+get "serializedName"(): StringJS
 get "modelTemplate"(): $ModelTemplate
-get "remappedEnumConstantName"(): string
-get "modelName"(): string
+get "bottomTexture"(): StringJS
+get "remappedEnumConstantName"(): StringJS
+get "modelName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1266,6 +1357,63 @@ export type $ClosedCurtainPart$$Type = (("single") | ("top") | ("middle") | ("bo
 declare global {
 export type $ClosedCurtainPart_ = $ClosedCurtainPart$$Type;
 }}
+declare module "net.valhelsia.valhelsia_core.api.common.registry.RegistryEntry" {
+import {$Optional, $Optional$$Type} from "java.util.Optional"
+import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
+import {$HolderLookup$RegistryLookup, $HolderLookup$RegistryLookup$$Type} from "net.minecraft.core.HolderLookup$RegistryLookup"
+import {$HolderOwner, $HolderOwner$$Type} from "net.minecraft.core.HolderOwner"
+import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
+import {$Either, $Either$$Type} from "com.mojang.datafixers.util.Either"
+import {$DataMapType, $DataMapType$$Type} from "net.neoforged.neoforge.registries.datamaps.DataMapType"
+import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
+import {$Stream, $Stream$$Type} from "java.util.stream.Stream"
+import {$Holder$Kind, $Holder$Kind$$Type} from "net.minecraft.core.Holder$Kind"
+
+export class $RegistryEntry<R, T extends R> implements $Holder<(R)>, $Supplier<(T)> {
+
+constructor(key: $ResourceKey$$Type<(R)>)
+
+public "unwrap"(): $Either<($ResourceKey<(R)>), (R)>
+public "is"(holder: $Holder$$Type<(R)>): boolean
+public "is"(resourceKey: $ResourceKey$$Type<(R)>): boolean
+public "is"(predicate: $Predicate$$Type<($ResourceKey<(R)>)>): boolean
+public "is"(tagKey: $TagKey$$Type<(R)>): boolean
+public "is"(location: $ResourceLocation$$Type): boolean
+public "tags"(): $Stream<($TagKey<(R)>)>
+public "get"(): T
+public "value"(): T
+public "equals"(obj: any): boolean
+public "hashCode"(): integer
+public "kind"(): $Holder$Kind
+public "canSerializeIn"(owner: $HolderOwner$$Type<(R)>): boolean
+public "unwrapKey"(): $Optional<($ResourceKey<(R)>)>
+public "isBound"(): boolean
+public static "direct"<T>(arg0: R): $Holder<(R)>
+public "getRegisteredName"(): StringJS
+public "getKey"(): $ResourceKey<(R)>
+public "unwrapLookup"(): $HolderLookup$RegistryLookup<(R)>
+public "getDelegate"(): $Holder<(R)>
+public "getData"<T>(arg0: $DataMapType$$Type<(R), (T)>): T
+get "bound"(): boolean
+get "registeredName"(): StringJS
+get "key"(): $ResourceKey<(R)>
+get "delegate"(): $Holder<(R)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $RegistryEntry$$Type<R, T> = ($RegistryEntry<(R), (T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $RegistryEntry_<R, T> = $RegistryEntry$$Type<(R), (T)>;
+}}
 declare module "net.valhelsia.valhelsia_furniture.common.block.TableclothTableBlock" {
 import {$WoodType, $WoodType$$Type} from "net.minecraft.world.level.block.state.properties.WoodType"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
@@ -1273,20 +1421,20 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$EnumMap, $EnumMap$$Type} from "java.util.EnumMap"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$TableBlock, $TableBlock$$Type} from "net.valhelsia.valhelsia_furniture.common.block.TableBlock"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$DyeColor, $DyeColor$$Type} from "net.minecraft.world.item.DyeColor"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -1298,7 +1446,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -1320,10 +1468,10 @@ constructor(baseTable: $Supplier$$Type<($TableBlock$$Type)>, color: $DyeColor$$T
 
 public "getColor"(): $DyeColor
 public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, list: $List$$Type<($Component$$Type)>, flag: $TooltipFlag$$Type): void
-public "getDescriptionId"(): string
+public "getDescriptionId"(): StringJS
 public "asHolder"(): $Holder<(any)>
 get "color"(): $DyeColor
-get "descriptionId"(): string
+get "descriptionId"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1342,8 +1490,8 @@ import {$RotatedPillarBlock, $RotatedPillarBlock$$Type} from "net.minecraft.worl
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$ItemAbility, $ItemAbility$$Type} from "net.neoforged.neoforge.common.ItemAbility"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
+import {$ItemAbility, $ItemAbility$$Type} from "net.neoforged.neoforge.common.ItemAbility"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Direction$Axis, $Direction$Axis$$Type} from "net.minecraft.core.Direction$Axis"
@@ -1369,7 +1517,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1396,8 +1544,8 @@ export type $StrippableRotatedPillarBlock_ = $StrippableRotatedPillarBlock$$Type
 }}
 declare module "net.valhelsia.valhelsia_furniture.common.block.FurnitureBlock$Type" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -1408,16 +1556,16 @@ static readonly "TABLE": $FurnitureBlock$Type
 
 
 public static "values"(): ($FurnitureBlock$Type)[]
-public static "valueOf"(name: string): $FurnitureBlock$Type
-public "getSerializedName"(): string
+public static "valueOf"(name: StringJS): $FurnitureBlock$Type
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

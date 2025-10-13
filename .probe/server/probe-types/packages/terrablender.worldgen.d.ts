@@ -72,15 +72,15 @@ import {$RegistryAccess, $RegistryAccess$$Type} from "net.minecraft.core.Registr
 
 export interface $IExtendedParameterList<T> extends $Cloneable {
 
- "clone"(): $Climate$ParameterList<(T)>
- "getTree"(arg0: integer): $Climate$RTree<(any)>
  "getRegion"(arg0: integer): $Region
- "initializeForTerraBlender"(arg0: $RegistryAccess$$Type, arg1: $RegionType$$Type, arg2: long): void
+ "getTree"(arg0: integer): $Climate$RTree<(any)>
+ "clone"(): $Climate$ParameterList<(T)>
  "isInitialized"(): boolean
- "findValuePositional"(arg0: $Climate$TargetPoint$$Type, arg1: integer, arg2: integer, arg3: integer): T
- "recreateUniqueness"(): void
  "getUniqueness"(arg0: integer, arg1: integer, arg2: integer): integer
  "getTreeCount"(): integer
+ "findValuePositional"(arg0: $Climate$TargetPoint$$Type, arg1: integer, arg2: integer, arg3: integer): T
+ "recreateUniqueness"(): void
+ "initializeForTerraBlender"(arg0: $RegistryAccess$$Type, arg1: $RegionType$$Type, arg2: long): void
 get "initialized"(): boolean
 get "treeCount"(): integer
 }
@@ -91,15 +91,15 @@ const probejs$$marker: never
 export class $IExtendedParameterList$$Static<T> implements $IExtendedParameterList {
 
 
- "clone"(): $Climate$ParameterList<(T)>
- "getTree"(arg0: integer): $Climate$RTree<(any)>
  "getRegion"(arg0: integer): $Region
- "initializeForTerraBlender"(arg0: $RegistryAccess$$Type, arg1: $RegionType$$Type, arg2: long): void
+ "getTree"(arg0: integer): $Climate$RTree<(any)>
+ "clone"(): $Climate$ParameterList<(T)>
  "isInitialized"(): boolean
- "findValuePositional"(arg0: $Climate$TargetPoint$$Type, arg1: integer, arg2: integer, arg3: integer): T
- "recreateUniqueness"(): void
  "getUniqueness"(arg0: integer, arg1: integer, arg2: integer): integer
  "getTreeCount"(): integer
+ "findValuePositional"(arg0: $Climate$TargetPoint$$Type, arg1: integer, arg2: integer, arg3: integer): T
+ "recreateUniqueness"(): void
+ "initializeForTerraBlender"(arg0: $RegistryAccess$$Type, arg1: $RegionType$$Type, arg2: long): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

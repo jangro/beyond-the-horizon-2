@@ -108,9 +108,9 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export interface $BlockViewMixin extends $FabricBlockView {
 
- "getBlockEntityRenderData"(arg0: $BlockPos$$Type): any
  "hasBiomes"(): boolean
  "getBiomeFabric"(arg0: $BlockPos$$Type): $Holder<($Biome)>
+ "getBlockEntityRenderData"(arg0: $BlockPos$$Type): any
 }
 
 export namespace $BlockViewMixin {
@@ -119,9 +119,9 @@ const probejs$$marker: never
 export class $BlockViewMixin$$Static implements $BlockViewMixin {
 
 
- "getBlockEntityRenderData"(arg0: $BlockPos$$Type): any
  "hasBiomes"(): boolean
  "getBiomeFabric"(arg0: $BlockPos$$Type): $Holder<($Biome)>
+ "getBlockEntityRenderData"(arg0: $BlockPos$$Type): any
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -146,11 +146,11 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$BlockAndTintGetter, $BlockAndTintGetter$$Type} from "net.minecraft.world.level.BlockAndTintGetter"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
+import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$ModelData, $ModelData$$Type} from "net.neoforged.neoforge.client.model.data.ModelData"
 import {$Biome, $Biome$$Type} from "net.minecraft.world.level.biome.Biome"
-import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$Stream, $Stream$$Type} from "java.util.stream.Stream"
 import {$ClipBlockStateContext, $ClipBlockStateContext$$Type} from "net.minecraft.world.level.ClipBlockStateContext"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -175,50 +175,50 @@ export interface $RenderAttachedBlockView extends $BlockAndTintGetter {
  * @deprecated
  */
  "getBlockEntityRenderAttachment"(arg0: $BlockPos$$Type): any
- "getLightEngine"(): $LevelLightEngine
- "canSeeSky"(arg0: $BlockPos$$Type): boolean
  "getBlockTint"(arg0: $BlockPos$$Type, arg1: $ColorResolver$$Type): integer
  "getBrightness"(arg0: $LightLayer$$Type, arg1: $BlockPos$$Type): integer
  "getShade"(arg0: $Direction$$Type, arg1: boolean): float
+ "getLightEngine"(): $LevelLightEngine
+ "canSeeSky"(arg0: $BlockPos$$Type): boolean
  "getRawBrightness"(arg0: $BlockPos$$Type, arg1: integer): integer
- "clipWithInteractionOverride"(arg0: $Vec3$$Type, arg1: $Vec3$$Type, arg2: $BlockPos$$Type, arg3: $VoxelShape$$Type, arg4: $BlockState$$Type): $BlockHitResult
- "getBlockState"(arg0: $BlockPos$$Type): $BlockState
- "getBlockEntity"(arg0: $BlockPos$$Type): $BlockEntity
- "getBlockEntity"<T extends $BlockEntity>(arg0: $BlockPos$$Type, arg1: $BlockEntityType$$Type<(T)>): $Optional<(T)>
+ "clip"(arg0: $ClipContext$$Type): $BlockHitResult
  "getBlockStates"(arg0: $AABB$$Type): $Stream<($BlockState)>
  "isBlockInLine"(arg0: $ClipBlockStateContext$$Type): $BlockHitResult
  "getFluidState"(arg0: $BlockPos$$Type): $FluidState
- "clip"(arg0: $ClipContext$$Type): $BlockHitResult
+ "getBlockState"(arg0: $BlockPos$$Type): $BlockState
+ "getBlockEntity"<T extends $BlockEntity>(arg0: $BlockPos$$Type, arg1: $BlockEntityType$$Type<(T)>): $Optional<(T)>
+ "getBlockEntity"(arg0: $BlockPos$$Type): $BlockEntity
  "getLightEmission"(arg0: $BlockPos$$Type): integer
  "getMaxLightLevel"(): integer
- "getBlockFloorHeight"(arg0: $BlockPos$$Type): double
  "getBlockFloorHeight"(arg0: $VoxelShape$$Type, arg1: $Supplier$$Type<($VoxelShape$$Type)>): double
+ "getBlockFloorHeight"(arg0: $BlockPos$$Type): double
+ "clipWithInteractionOverride"(arg0: $Vec3$$Type, arg1: $Vec3$$Type, arg2: $BlockPos$$Type, arg3: $VoxelShape$$Type, arg4: $BlockState$$Type): $BlockHitResult
  "getShade"(arg0: float, arg1: float, arg2: float, arg3: boolean): float
  "getHeight"(): integer
- "getSectionIndexFromSectionY"(arg0: integer): integer
- "getSectionYFromSectionIndex"(arg0: integer): integer
  "getMaxSection"(): integer
  "getMinSection"(): integer
- "getMinBuildHeight"(): integer
  "getMaxBuildHeight"(): integer
  "isOutsideBuildHeight"(arg0: $BlockPos$$Type): boolean
  "isOutsideBuildHeight"(arg0: integer): boolean
  "getSectionIndex"(arg0: integer): integer
  "getSectionsCount"(): integer
+ "getMinBuildHeight"(): integer
+ "getSectionIndexFromSectionY"(arg0: integer): integer
+ "getSectionYFromSectionIndex"(arg0: integer): integer
  "getModelData"(arg0: $BlockPos$$Type): $ModelData
  "getAuxLightManager"(arg0: $ChunkPos$$Type): $AuxiliaryLightManager
  "getAuxLightManager"(arg0: $BlockPos$$Type): $AuxiliaryLightManager
- "getBlockEntityRenderData"(arg0: $BlockPos$$Type): any
  "hasBiomes"(): boolean
  "getBiomeFabric"(arg0: $BlockPos$$Type): $Holder<($Biome)>
+ "getBlockEntityRenderData"(arg0: $BlockPos$$Type): any
 get "lightEngine"(): $LevelLightEngine
 get "maxLightLevel"(): integer
 get "height"(): integer
 get "maxSection"(): integer
 get "minSection"(): integer
-get "minBuildHeight"(): integer
 get "maxBuildHeight"(): integer
 get "sectionsCount"(): integer
+get "minBuildHeight"(): integer
 }
 
 export namespace $RenderAttachedBlockView {
@@ -234,44 +234,44 @@ export class $RenderAttachedBlockView$$Static implements $RenderAttachedBlockVie
  * @deprecated
  */
  "getBlockEntityRenderAttachment"(arg0: $BlockPos$$Type): any
- "getLightEngine"(): $LevelLightEngine
- "canSeeSky"(arg0: $BlockPos$$Type): boolean
  "getBlockTint"(arg0: $BlockPos$$Type, arg1: $ColorResolver$$Type): integer
  "getBrightness"(arg0: $LightLayer$$Type, arg1: $BlockPos$$Type): integer
  "getShade"(arg0: $Direction$$Type, arg1: boolean): float
+ "getLightEngine"(): $LevelLightEngine
+ "canSeeSky"(arg0: $BlockPos$$Type): boolean
  "getRawBrightness"(arg0: $BlockPos$$Type, arg1: integer): integer
- "clipWithInteractionOverride"(arg0: $Vec3$$Type, arg1: $Vec3$$Type, arg2: $BlockPos$$Type, arg3: $VoxelShape$$Type, arg4: $BlockState$$Type): $BlockHitResult
- "getBlockState"(arg0: $BlockPos$$Type): $BlockState
- "getBlockEntity"(arg0: $BlockPos$$Type): $BlockEntity
- "getBlockEntity"<T extends $BlockEntity>(arg0: $BlockPos$$Type, arg1: $BlockEntityType$$Type<(T)>): $Optional<(T)>
+ "clip"(arg0: $ClipContext$$Type): $BlockHitResult
  "getBlockStates"(arg0: $AABB$$Type): $Stream<($BlockState)>
  "isBlockInLine"(arg0: $ClipBlockStateContext$$Type): $BlockHitResult
 static "traverseBlocks"<T, C>(arg0: $Vec3$$Type, arg1: $Vec3$$Type, arg2: C, arg3: $BiFunction$$Type<(C), ($BlockPos), (T)>, arg4: $Function$$Type<(C), (T)>): T
  "getFluidState"(arg0: $BlockPos$$Type): $FluidState
- "clip"(arg0: $ClipContext$$Type): $BlockHitResult
+ "getBlockState"(arg0: $BlockPos$$Type): $BlockState
+ "getBlockEntity"<T extends $BlockEntity>(arg0: $BlockPos$$Type, arg1: $BlockEntityType$$Type<(T)>): $Optional<(T)>
+ "getBlockEntity"(arg0: $BlockPos$$Type): $BlockEntity
  "getLightEmission"(arg0: $BlockPos$$Type): integer
  "getMaxLightLevel"(): integer
- "getBlockFloorHeight"(arg0: $BlockPos$$Type): double
  "getBlockFloorHeight"(arg0: $VoxelShape$$Type, arg1: $Supplier$$Type<($VoxelShape$$Type)>): double
+ "getBlockFloorHeight"(arg0: $BlockPos$$Type): double
+ "clipWithInteractionOverride"(arg0: $Vec3$$Type, arg1: $Vec3$$Type, arg2: $BlockPos$$Type, arg3: $VoxelShape$$Type, arg4: $BlockState$$Type): $BlockHitResult
  "getShade"(arg0: float, arg1: float, arg2: float, arg3: boolean): float
- "getHeight"(): integer
 static "create"(arg0: integer, arg1: integer): $LevelHeightAccessor
- "getSectionIndexFromSectionY"(arg0: integer): integer
- "getSectionYFromSectionIndex"(arg0: integer): integer
+ "getHeight"(): integer
  "getMaxSection"(): integer
  "getMinSection"(): integer
- "getMinBuildHeight"(): integer
  "getMaxBuildHeight"(): integer
  "isOutsideBuildHeight"(arg0: $BlockPos$$Type): boolean
  "isOutsideBuildHeight"(arg0: integer): boolean
  "getSectionIndex"(arg0: integer): integer
  "getSectionsCount"(): integer
+ "getMinBuildHeight"(): integer
+ "getSectionIndexFromSectionY"(arg0: integer): integer
+ "getSectionYFromSectionIndex"(arg0: integer): integer
  "getModelData"(arg0: $BlockPos$$Type): $ModelData
  "getAuxLightManager"(arg0: $ChunkPos$$Type): $AuxiliaryLightManager
  "getAuxLightManager"(arg0: $BlockPos$$Type): $AuxiliaryLightManager
- "getBlockEntityRenderData"(arg0: $BlockPos$$Type): any
  "hasBiomes"(): boolean
  "getBiomeFabric"(arg0: $BlockPos$$Type): $Holder<($Biome)>
+ "getBlockEntityRenderData"(arg0: $BlockPos$$Type): any
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -288,8 +288,8 @@ export type $RenderAttachedBlockView_ = $RenderAttachedBlockView$$Type;
 declare module "net.fabricmc.fabric.impl.renderer.SpriteFinderImpl" {
 import {$TextureAtlasSprite, $TextureAtlasSprite$$Type} from "net.minecraft.client.renderer.texture.TextureAtlasSprite"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$Map, $Map$$Type} from "java.util.Map"
 import {$SpriteFinder, $SpriteFinder$$Type} from "net.fabricmc.fabric.api.renderer.v1.model.SpriteFinder"
+import {$Map, $Map$$Type} from "java.util.Map"
 import {$TextureAtlas, $TextureAtlas$$Type} from "net.minecraft.client.renderer.texture.TextureAtlas"
 import {$QuadView, $QuadView$$Type} from "net.fabricmc.fabric.api.renderer.v1.mesh.QuadView"
 
@@ -392,8 +392,8 @@ export type $SpriteFinderImpl$SpriteFinderAccess_ = $SpriteFinderImpl$SpriteFind
 }}
 declare module "net.fabricmc.fabric.api.renderer.v1.material.RenderMaterial" {
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$MaterialView, $MaterialView$$Type} from "net.fabricmc.fabric.api.renderer.v1.material.MaterialView"
 import {$ShadeMode, $ShadeMode$$Type} from "net.fabricmc.fabric.api.renderer.v1.material.ShadeMode"
+import {$MaterialView, $MaterialView$$Type} from "net.fabricmc.fabric.api.renderer.v1.material.MaterialView"
 import {$TriState, $TriState$$Type} from "net.fabricmc.fabric.api.util.TriState"
 import {$BlendMode, $BlendMode$$Type} from "net.fabricmc.fabric.api.renderer.v1.material.BlendMode"
 
@@ -405,12 +405,12 @@ export interface $RenderMaterial extends $MaterialView {
  */
  "spriteDepth"(): integer
  "glint"(): $TriState
- "ambientOcclusion"(): $TriState
- "disableColorIndex"(): boolean
  "emissive"(): boolean
  "blendMode"(): $BlendMode
  "disableDiffuse"(): boolean
  "shadeMode"(): $ShadeMode
+ "disableColorIndex"(): boolean
+ "ambientOcclusion"(): $TriState
 }
 
 export namespace $RenderMaterial {
@@ -427,12 +427,12 @@ static readonly "MATERIAL_STANDARD": $ResourceLocation
  */
  "spriteDepth"(): integer
  "glint"(): $TriState
- "ambientOcclusion"(): $TriState
- "disableColorIndex"(): boolean
  "emissive"(): boolean
  "blendMode"(): $BlendMode
  "disableDiffuse"(): boolean
  "shadeMode"(): $ShadeMode
+ "disableColorIndex"(): boolean
+ "ambientOcclusion"(): $TriState
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -483,8 +483,8 @@ import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Vector3fc, $Vector3fc$$Type} from "org.joml.Vector3fc"
 import {$RenderMaterial, $RenderMaterial$$Type} from "net.fabricmc.fabric.api.renderer.v1.material.RenderMaterial"
 import {$Vector3f, $Vector3f$$Type} from "org.joml.Vector3f"
-import {$Vector2f, $Vector2f$$Type} from "org.joml.Vector2f"
 import {$QuadView, $QuadView$$Type} from "net.fabricmc.fabric.api.renderer.v1.mesh.QuadView"
+import {$Vector2f, $Vector2f$$Type} from "org.joml.Vector2f"
 import {$BakedQuad, $BakedQuad$$Type} from "net.minecraft.client.renderer.block.model.BakedQuad"
 
 export interface $MutableQuadView extends $QuadView {
@@ -492,16 +492,13 @@ export interface $MutableQuadView extends $QuadView {
  "pos"(arg0: integer, arg1: $Vector3fc$$Type): $MutableQuadView
  "pos"(arg0: integer, arg1: $Vector3f$$Type): $MutableQuadView
  "pos"(arg0: integer, arg1: float, arg2: float, arg3: float): $MutableQuadView
- "color"(arg0: integer, arg1: integer, arg2: integer, arg3: integer): $MutableQuadView
- "color"(arg0: integer, arg1: integer): $MutableQuadView
- "normal"(arg0: integer, arg1: $Vector3fc$$Type): $MutableQuadView
- "normal"(arg0: integer, arg1: float, arg2: float, arg3: float): $MutableQuadView
- "normal"(arg0: integer, arg1: $Vector3f$$Type): $MutableQuadView
  "tag"(arg0: integer): $MutableQuadView
  "copyFrom"(arg0: $QuadView$$Type): $MutableQuadView
- "uv"(arg0: integer, arg1: $Vector2fc$$Type): $MutableQuadView
- "uv"(arg0: integer, arg1: float, arg2: float): $MutableQuadView
- "uv"(arg0: integer, arg1: $Vector2f$$Type): $MutableQuadView
+ "color"(arg0: integer, arg1: integer, arg2: integer, arg3: integer): $MutableQuadView
+ "color"(arg0: integer, arg1: integer): $MutableQuadView
+ "normal"(arg0: integer, arg1: $Vector3f$$Type): $MutableQuadView
+ "normal"(arg0: integer, arg1: float, arg2: float, arg3: float): $MutableQuadView
+ "normal"(arg0: integer, arg1: $Vector3fc$$Type): $MutableQuadView
 /**
  * 
  * @deprecated
@@ -512,6 +509,11 @@ export interface $MutableQuadView extends $QuadView {
  * @deprecated
  */
  "sprite"(arg0: integer, arg1: integer, arg2: $Vec2$$Type): $MutableQuadView
+ "uv"(arg0: integer, arg1: float, arg2: float): $MutableQuadView
+ "uv"(arg0: integer, arg1: $Vector2fc$$Type): $MutableQuadView
+ "uv"(arg0: integer, arg1: $Vector2f$$Type): $MutableQuadView
+ "cullFace"(arg0: $Direction$$Type): $MutableQuadView
+ "colorIndex"(arg0: integer): $MutableQuadView
 /**
  * 
  * @deprecated
@@ -522,69 +524,67 @@ export interface $MutableQuadView extends $QuadView {
  * @deprecated
  */
  "spriteColor"(arg0: integer, arg1: integer, arg2: integer): $MutableQuadView
- "lightmap"(arg0: integer, arg1: integer): $MutableQuadView
  "lightmap"(arg0: integer, arg1: integer, arg2: integer, arg3: integer): $MutableQuadView
- "material"(arg0: $RenderMaterial$$Type): $MutableQuadView
- "fromVanilla"(arg0: $BakedQuad$$Type, arg1: $RenderMaterial$$Type, arg2: $Direction$$Type): $MutableQuadView
+ "lightmap"(arg0: integer, arg1: integer): $MutableQuadView
 /**
  * 
  * @deprecated
  */
  "fromVanilla"(arg0: (integer)[], arg1: integer, arg2: boolean): $MutableQuadView
+ "fromVanilla"(arg0: $BakedQuad$$Type, arg1: $RenderMaterial$$Type, arg2: $Direction$$Type): $MutableQuadView
  "fromVanilla"(arg0: (integer)[], arg1: integer): $MutableQuadView
- "colorIndex"(arg0: integer): $MutableQuadView
- "cullFace"(arg0: $Direction$$Type): $MutableQuadView
- "nominalFace"(arg0: $Direction$$Type): $MutableQuadView
+ "material"(arg0: $RenderMaterial$$Type): $MutableQuadView
 /**
  * 
  * @deprecated
  */
  "spriteBake"(arg0: integer, arg1: $TextureAtlasSprite$$Type, arg2: integer): $MutableQuadView
  "spriteBake"(arg0: $TextureAtlasSprite$$Type, arg1: integer): $MutableQuadView
+ "nominalFace"(arg0: $Direction$$Type): $MutableQuadView
+ "normalX"(arg0: integer): float
+ "normalY"(arg0: integer): float
 /**
  * 
  * @deprecated
  */
  "copyTo"(arg0: $MutableQuadView$$Type): void
+ "u"(arg0: integer): float
+ "y"(arg0: integer): float
+ "tag"(): integer
+ "color"(arg0: integer): integer
  "x"(arg0: integer): float
  "v"(arg0: integer): float
  "z"(arg0: integer): float
- "u"(arg0: integer): float
- "y"(arg0: integer): float
- "color"(arg0: integer): integer
- "tag"(): integer
- "normalX"(arg0: integer): float
- "normalY"(arg0: integer): float
  "toVanilla"(arg0: (integer)[], arg1: integer): void
 /**
  * 
  * @deprecated
  */
  "toVanilla"(arg0: integer, arg1: (integer)[], arg2: integer, arg3: boolean): void
+ "cullFace"(): $Direction
  "normalZ"(arg0: integer): float
- "copyUv"(arg0: integer, arg1: $Vector2f$$Type): $Vector2f
+ "lightFace"(): $Direction
+ "colorIndex"(): integer
 /**
  * 
  * @deprecated
  */
  "spriteColor"(arg0: integer, arg1: integer): integer
  "faceNormal"(): $Vector3f
- "lightmap"(arg0: integer): integer
  "hasNormal"(arg0: integer): boolean
+ "lightmap"(arg0: integer): integer
  "material"(): $RenderMaterial
- "colorIndex"(): integer
- "lightFace"(): $Direction
- "cullFace"(): $Direction
+ "copyUv"(arg0: integer, arg1: $Vector2f$$Type): $Vector2f
  "posByIndex"(arg0: integer, arg1: integer): float
  "copyPos"(arg0: integer, arg1: $Vector3f$$Type): $Vector3f
- "nominalFace"(): $Direction
  "copyNormal"(arg0: integer, arg1: $Vector3f$$Type): $Vector3f
- "toBakedQuad"(arg0: $TextureAtlasSprite$$Type): $BakedQuad
 /**
  * 
  * @deprecated
  */
  "toBakedQuad"(arg0: integer, arg1: $TextureAtlasSprite$$Type, arg2: boolean): $BakedQuad
+ "toBakedQuad"(arg0: $TextureAtlasSprite$$Type): $BakedQuad
+ "nominalFace"(): $Direction
 /**
  * 
  * @deprecated
@@ -622,16 +622,13 @@ static readonly "BAKE_ROTATE_270": integer
  "pos"(arg0: integer, arg1: $Vector3fc$$Type): $MutableQuadView
  "pos"(arg0: integer, arg1: $Vector3f$$Type): $MutableQuadView
  "pos"(arg0: integer, arg1: float, arg2: float, arg3: float): $MutableQuadView
- "color"(arg0: integer, arg1: integer, arg2: integer, arg3: integer): $MutableQuadView
- "color"(arg0: integer, arg1: integer): $MutableQuadView
- "normal"(arg0: integer, arg1: $Vector3fc$$Type): $MutableQuadView
- "normal"(arg0: integer, arg1: float, arg2: float, arg3: float): $MutableQuadView
- "normal"(arg0: integer, arg1: $Vector3f$$Type): $MutableQuadView
  "tag"(arg0: integer): $MutableQuadView
  "copyFrom"(arg0: $QuadView$$Type): $MutableQuadView
- "uv"(arg0: integer, arg1: $Vector2fc$$Type): $MutableQuadView
- "uv"(arg0: integer, arg1: float, arg2: float): $MutableQuadView
- "uv"(arg0: integer, arg1: $Vector2f$$Type): $MutableQuadView
+ "color"(arg0: integer, arg1: integer, arg2: integer, arg3: integer): $MutableQuadView
+ "color"(arg0: integer, arg1: integer): $MutableQuadView
+ "normal"(arg0: integer, arg1: $Vector3f$$Type): $MutableQuadView
+ "normal"(arg0: integer, arg1: float, arg2: float, arg3: float): $MutableQuadView
+ "normal"(arg0: integer, arg1: $Vector3fc$$Type): $MutableQuadView
 /**
  * 
  * @deprecated
@@ -642,6 +639,11 @@ static readonly "BAKE_ROTATE_270": integer
  * @deprecated
  */
  "sprite"(arg0: integer, arg1: integer, arg2: $Vec2$$Type): $MutableQuadView
+ "uv"(arg0: integer, arg1: float, arg2: float): $MutableQuadView
+ "uv"(arg0: integer, arg1: $Vector2fc$$Type): $MutableQuadView
+ "uv"(arg0: integer, arg1: $Vector2f$$Type): $MutableQuadView
+ "cullFace"(arg0: $Direction$$Type): $MutableQuadView
+ "colorIndex"(arg0: integer): $MutableQuadView
 /**
  * 
  * @deprecated
@@ -652,69 +654,67 @@ static readonly "BAKE_ROTATE_270": integer
  * @deprecated
  */
  "spriteColor"(arg0: integer, arg1: integer, arg2: integer): $MutableQuadView
- "lightmap"(arg0: integer, arg1: integer): $MutableQuadView
  "lightmap"(arg0: integer, arg1: integer, arg2: integer, arg3: integer): $MutableQuadView
- "material"(arg0: $RenderMaterial$$Type): $MutableQuadView
- "fromVanilla"(arg0: $BakedQuad$$Type, arg1: $RenderMaterial$$Type, arg2: $Direction$$Type): $MutableQuadView
+ "lightmap"(arg0: integer, arg1: integer): $MutableQuadView
 /**
  * 
  * @deprecated
  */
  "fromVanilla"(arg0: (integer)[], arg1: integer, arg2: boolean): $MutableQuadView
+ "fromVanilla"(arg0: $BakedQuad$$Type, arg1: $RenderMaterial$$Type, arg2: $Direction$$Type): $MutableQuadView
  "fromVanilla"(arg0: (integer)[], arg1: integer): $MutableQuadView
- "colorIndex"(arg0: integer): $MutableQuadView
- "cullFace"(arg0: $Direction$$Type): $MutableQuadView
- "nominalFace"(arg0: $Direction$$Type): $MutableQuadView
+ "material"(arg0: $RenderMaterial$$Type): $MutableQuadView
 /**
  * 
  * @deprecated
  */
  "spriteBake"(arg0: integer, arg1: $TextureAtlasSprite$$Type, arg2: integer): $MutableQuadView
  "spriteBake"(arg0: $TextureAtlasSprite$$Type, arg1: integer): $MutableQuadView
+ "nominalFace"(arg0: $Direction$$Type): $MutableQuadView
+ "normalX"(arg0: integer): float
+ "normalY"(arg0: integer): float
 /**
  * 
  * @deprecated
  */
  "copyTo"(arg0: $MutableQuadView$$Type): void
+ "u"(arg0: integer): float
+ "y"(arg0: integer): float
+ "tag"(): integer
+ "color"(arg0: integer): integer
  "x"(arg0: integer): float
  "v"(arg0: integer): float
  "z"(arg0: integer): float
- "u"(arg0: integer): float
- "y"(arg0: integer): float
- "color"(arg0: integer): integer
- "tag"(): integer
- "normalX"(arg0: integer): float
- "normalY"(arg0: integer): float
  "toVanilla"(arg0: (integer)[], arg1: integer): void
 /**
  * 
  * @deprecated
  */
  "toVanilla"(arg0: integer, arg1: (integer)[], arg2: integer, arg3: boolean): void
+ "cullFace"(): $Direction
  "normalZ"(arg0: integer): float
- "copyUv"(arg0: integer, arg1: $Vector2f$$Type): $Vector2f
+ "lightFace"(): $Direction
+ "colorIndex"(): integer
 /**
  * 
  * @deprecated
  */
  "spriteColor"(arg0: integer, arg1: integer): integer
  "faceNormal"(): $Vector3f
- "lightmap"(arg0: integer): integer
  "hasNormal"(arg0: integer): boolean
+ "lightmap"(arg0: integer): integer
  "material"(): $RenderMaterial
- "colorIndex"(): integer
- "lightFace"(): $Direction
- "cullFace"(): $Direction
+ "copyUv"(arg0: integer, arg1: $Vector2f$$Type): $Vector2f
  "posByIndex"(arg0: integer, arg1: integer): float
  "copyPos"(arg0: integer, arg1: $Vector3f$$Type): $Vector3f
- "nominalFace"(): $Direction
  "copyNormal"(arg0: integer, arg1: $Vector3f$$Type): $Vector3f
- "toBakedQuad"(arg0: $TextureAtlasSprite$$Type): $BakedQuad
 /**
  * 
  * @deprecated
  */
  "toBakedQuad"(arg0: integer, arg1: $TextureAtlasSprite$$Type, arg2: boolean): $BakedQuad
+ "toBakedQuad"(arg0: $TextureAtlasSprite$$Type): $BakedQuad
+ "nominalFace"(): $Direction
 /**
  * 
  * @deprecated
@@ -745,9 +745,9 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 
 export interface $FabricBlockView {
 
- "getBlockEntityRenderData"(arg0: $BlockPos$$Type): any
  "hasBiomes"(): boolean
  "getBiomeFabric"(arg0: $BlockPos$$Type): $Holder<($Biome)>
+ "getBlockEntityRenderData"(arg0: $BlockPos$$Type): any
 }
 
 export namespace $FabricBlockView {
@@ -756,9 +756,9 @@ const probejs$$marker: never
 export class $FabricBlockView$$Static implements $FabricBlockView {
 
 
- "getBlockEntityRenderData"(arg0: $BlockPos$$Type): any
  "hasBiomes"(): boolean
  "getBiomeFabric"(arg0: $BlockPos$$Type): $Holder<($Biome)>
+ "getBlockEntityRenderData"(arg0: $BlockPos$$Type): any
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -783,50 +783,50 @@ import {$BakedQuad, $BakedQuad$$Type} from "net.minecraft.client.renderer.block.
 
 export interface $QuadView {
 
+ "normalX"(arg0: integer): float
+ "normalY"(arg0: integer): float
 /**
  * 
  * @deprecated
  */
  "copyTo"(arg0: $MutableQuadView$$Type): void
+ "u"(arg0: integer): float
+ "y"(arg0: integer): float
+ "tag"(): integer
+ "color"(arg0: integer): integer
  "x"(arg0: integer): float
  "v"(arg0: integer): float
  "z"(arg0: integer): float
- "u"(arg0: integer): float
- "y"(arg0: integer): float
- "color"(arg0: integer): integer
- "tag"(): integer
- "normalX"(arg0: integer): float
- "normalY"(arg0: integer): float
  "toVanilla"(arg0: (integer)[], arg1: integer): void
 /**
  * 
  * @deprecated
  */
  "toVanilla"(arg0: integer, arg1: (integer)[], arg2: integer, arg3: boolean): void
+ "cullFace"(): $Direction
  "normalZ"(arg0: integer): float
- "copyUv"(arg0: integer, arg1: $Vector2f$$Type): $Vector2f
+ "lightFace"(): $Direction
+ "colorIndex"(): integer
 /**
  * 
  * @deprecated
  */
  "spriteColor"(arg0: integer, arg1: integer): integer
  "faceNormal"(): $Vector3f
- "lightmap"(arg0: integer): integer
  "hasNormal"(arg0: integer): boolean
+ "lightmap"(arg0: integer): integer
  "material"(): $RenderMaterial
- "colorIndex"(): integer
- "lightFace"(): $Direction
- "cullFace"(): $Direction
+ "copyUv"(arg0: integer, arg1: $Vector2f$$Type): $Vector2f
  "posByIndex"(arg0: integer, arg1: integer): float
  "copyPos"(arg0: integer, arg1: $Vector3f$$Type): $Vector3f
- "nominalFace"(): $Direction
  "copyNormal"(arg0: integer, arg1: $Vector3f$$Type): $Vector3f
- "toBakedQuad"(arg0: $TextureAtlasSprite$$Type): $BakedQuad
 /**
  * 
  * @deprecated
  */
  "toBakedQuad"(arg0: integer, arg1: $TextureAtlasSprite$$Type, arg2: boolean): $BakedQuad
+ "toBakedQuad"(arg0: $TextureAtlasSprite$$Type): $BakedQuad
+ "nominalFace"(): $Direction
 /**
  * 
  * @deprecated
@@ -849,50 +849,50 @@ static readonly "VANILLA_QUAD_STRIDE": integer
 static readonly "VANILLA_VERTEX_STRIDE": integer
 
 
+ "normalX"(arg0: integer): float
+ "normalY"(arg0: integer): float
 /**
  * 
  * @deprecated
  */
  "copyTo"(arg0: $MutableQuadView$$Type): void
+ "u"(arg0: integer): float
+ "y"(arg0: integer): float
+ "tag"(): integer
+ "color"(arg0: integer): integer
  "x"(arg0: integer): float
  "v"(arg0: integer): float
  "z"(arg0: integer): float
- "u"(arg0: integer): float
- "y"(arg0: integer): float
- "color"(arg0: integer): integer
- "tag"(): integer
- "normalX"(arg0: integer): float
- "normalY"(arg0: integer): float
  "toVanilla"(arg0: (integer)[], arg1: integer): void
 /**
  * 
  * @deprecated
  */
  "toVanilla"(arg0: integer, arg1: (integer)[], arg2: integer, arg3: boolean): void
+ "cullFace"(): $Direction
  "normalZ"(arg0: integer): float
- "copyUv"(arg0: integer, arg1: $Vector2f$$Type): $Vector2f
+ "lightFace"(): $Direction
+ "colorIndex"(): integer
 /**
  * 
  * @deprecated
  */
  "spriteColor"(arg0: integer, arg1: integer): integer
  "faceNormal"(): $Vector3f
- "lightmap"(arg0: integer): integer
  "hasNormal"(arg0: integer): boolean
+ "lightmap"(arg0: integer): integer
  "material"(): $RenderMaterial
- "colorIndex"(): integer
- "lightFace"(): $Direction
- "cullFace"(): $Direction
+ "copyUv"(arg0: integer, arg1: $Vector2f$$Type): $Vector2f
  "posByIndex"(arg0: integer, arg1: integer): float
  "copyPos"(arg0: integer, arg1: $Vector3f$$Type): $Vector3f
- "nominalFace"(): $Direction
  "copyNormal"(arg0: integer, arg1: $Vector3f$$Type): $Vector3f
- "toBakedQuad"(arg0: $TextureAtlasSprite$$Type): $BakedQuad
 /**
  * 
  * @deprecated
  */
  "toBakedQuad"(arg0: integer, arg1: $TextureAtlasSprite$$Type, arg2: boolean): $BakedQuad
+ "toBakedQuad"(arg0: $TextureAtlasSprite$$Type): $BakedQuad
+ "nominalFace"(): $Direction
 /**
  * 
  * @deprecated
@@ -969,7 +969,7 @@ static readonly "VANILLA": $ShadeMode
 
 
 public static "values"(): ($ShadeMode)[]
-public static "valueOf"(arg0: string): $ShadeMode
+public static "valueOf"(arg0: StringJS): $ShadeMode
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1051,9 +1051,9 @@ static readonly "DEFAULT_PHASE": $ResourceLocation
 
 constructor()
 
-public "register"(arg0: $ResourceLocation$$Type, arg1: T): void
-public "register"(arg0: T): void
 public "invoker"(): T
+public "register"(arg0: T): void
+public "register"(arg0: $ResourceLocation$$Type, arg1: T): void
 public "addPhaseOrdering"(arg0: $ResourceLocation$$Type, arg1: $ResourceLocation$$Type): void
 }
 /**
@@ -1082,10 +1082,8 @@ import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 
 export interface $RenderContext {
 
- "getRenderType"(): $RenderType
  "getModelData"(): $ModelData
- "getEmitter"(): $QuadEmitter
- "hasTransform"(): boolean
+ "getRenderType"(): $RenderType
  "isFaceCulled"(arg0: $Direction$$Type): boolean
 /**
  * 
@@ -1094,6 +1092,8 @@ export interface $RenderContext {
  "meshConsumer"(): $Consumer<($Mesh)>
  "pushTransform"(arg0: $RenderContext$QuadTransform$$Type): void
  "popTransform"(): void
+ "hasTransform"(): boolean
+ "getEmitter"(): $QuadEmitter
  "itemTransformationMode"(): $ItemDisplayContext
 /**
  * 
@@ -1105,8 +1105,8 @@ export interface $RenderContext {
  * @deprecated
  */
  "fallbackConsumer"(): $Consumer<($BakedModel)>
-get "renderType"(): $RenderType
 get "modelData"(): $ModelData
+get "renderType"(): $RenderType
 get "emitter"(): $QuadEmitter
 }
 
@@ -1116,10 +1116,8 @@ const probejs$$marker: never
 export class $RenderContext$$Static implements $RenderContext {
 
 
- "getRenderType"(): $RenderType
  "getModelData"(): $ModelData
- "getEmitter"(): $QuadEmitter
- "hasTransform"(): boolean
+ "getRenderType"(): $RenderType
  "isFaceCulled"(arg0: $Direction$$Type): boolean
 /**
  * 
@@ -1128,6 +1126,8 @@ export class $RenderContext$$Static implements $RenderContext {
  "meshConsumer"(): $Consumer<($Mesh)>
  "pushTransform"(arg0: $RenderContext$QuadTransform$$Type): void
  "popTransform"(): void
+ "hasTransform"(): boolean
+ "getEmitter"(): $QuadEmitter
  "itemTransformationMode"(): $ItemDisplayContext
 /**
  * 
@@ -1162,11 +1162,11 @@ import {$ColorResolver, $ColorResolver$$Type} from "net.minecraft.world.level.Co
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
+import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$ModelData, $ModelData$$Type} from "net.neoforged.neoforge.client.model.data.ModelData"
 import {$Biome, $Biome$$Type} from "net.minecraft.world.level.biome.Biome"
-import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$Stream, $Stream$$Type} from "java.util.stream.Stream"
 import {$ClipBlockStateContext, $ClipBlockStateContext$$Type} from "net.minecraft.world.level.ClipBlockStateContext"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -1188,50 +1188,50 @@ export interface $WorldViewMixin extends $RenderAttachedBlockView {
  * @deprecated
  */
  "getBlockEntityRenderAttachment"(arg0: $BlockPos$$Type): any
- "getLightEngine"(): $LevelLightEngine
- "canSeeSky"(arg0: $BlockPos$$Type): boolean
  "getBlockTint"(arg0: $BlockPos$$Type, arg1: $ColorResolver$$Type): integer
  "getBrightness"(arg0: $LightLayer$$Type, arg1: $BlockPos$$Type): integer
  "getShade"(arg0: $Direction$$Type, arg1: boolean): float
+ "getLightEngine"(): $LevelLightEngine
+ "canSeeSky"(arg0: $BlockPos$$Type): boolean
  "getRawBrightness"(arg0: $BlockPos$$Type, arg1: integer): integer
- "clipWithInteractionOverride"(arg0: $Vec3$$Type, arg1: $Vec3$$Type, arg2: $BlockPos$$Type, arg3: $VoxelShape$$Type, arg4: $BlockState$$Type): $BlockHitResult
- "getBlockState"(arg0: $BlockPos$$Type): $BlockState
- "getBlockEntity"(arg0: $BlockPos$$Type): $BlockEntity
- "getBlockEntity"<T extends $BlockEntity>(arg0: $BlockPos$$Type, arg1: $BlockEntityType$$Type<(T)>): $Optional<(T)>
+ "clip"(arg0: $ClipContext$$Type): $BlockHitResult
  "getBlockStates"(arg0: $AABB$$Type): $Stream<($BlockState)>
  "isBlockInLine"(arg0: $ClipBlockStateContext$$Type): $BlockHitResult
  "getFluidState"(arg0: $BlockPos$$Type): $FluidState
- "clip"(arg0: $ClipContext$$Type): $BlockHitResult
+ "getBlockState"(arg0: $BlockPos$$Type): $BlockState
+ "getBlockEntity"<T extends $BlockEntity>(arg0: $BlockPos$$Type, arg1: $BlockEntityType$$Type<(T)>): $Optional<(T)>
+ "getBlockEntity"(arg0: $BlockPos$$Type): $BlockEntity
  "getLightEmission"(arg0: $BlockPos$$Type): integer
  "getMaxLightLevel"(): integer
- "getBlockFloorHeight"(arg0: $BlockPos$$Type): double
  "getBlockFloorHeight"(arg0: $VoxelShape$$Type, arg1: $Supplier$$Type<($VoxelShape$$Type)>): double
+ "getBlockFloorHeight"(arg0: $BlockPos$$Type): double
+ "clipWithInteractionOverride"(arg0: $Vec3$$Type, arg1: $Vec3$$Type, arg2: $BlockPos$$Type, arg3: $VoxelShape$$Type, arg4: $BlockState$$Type): $BlockHitResult
  "getShade"(arg0: float, arg1: float, arg2: float, arg3: boolean): float
  "getHeight"(): integer
- "getSectionIndexFromSectionY"(arg0: integer): integer
- "getSectionYFromSectionIndex"(arg0: integer): integer
  "getMaxSection"(): integer
  "getMinSection"(): integer
- "getMinBuildHeight"(): integer
  "getMaxBuildHeight"(): integer
  "isOutsideBuildHeight"(arg0: $BlockPos$$Type): boolean
  "isOutsideBuildHeight"(arg0: integer): boolean
  "getSectionIndex"(arg0: integer): integer
  "getSectionsCount"(): integer
+ "getMinBuildHeight"(): integer
+ "getSectionIndexFromSectionY"(arg0: integer): integer
+ "getSectionYFromSectionIndex"(arg0: integer): integer
  "getModelData"(arg0: $BlockPos$$Type): $ModelData
  "getAuxLightManager"(arg0: $ChunkPos$$Type): $AuxiliaryLightManager
  "getAuxLightManager"(arg0: $BlockPos$$Type): $AuxiliaryLightManager
- "getBlockEntityRenderData"(arg0: $BlockPos$$Type): any
  "hasBiomes"(): boolean
  "getBiomeFabric"(arg0: $BlockPos$$Type): $Holder<($Biome)>
+ "getBlockEntityRenderData"(arg0: $BlockPos$$Type): any
 get "lightEngine"(): $LevelLightEngine
 get "maxLightLevel"(): integer
 get "height"(): integer
 get "maxSection"(): integer
 get "minSection"(): integer
-get "minBuildHeight"(): integer
 get "maxBuildHeight"(): integer
 get "sectionsCount"(): integer
+get "minBuildHeight"(): integer
 }
 
 export namespace $WorldViewMixin {
@@ -1247,44 +1247,44 @@ export class $WorldViewMixin$$Static implements $WorldViewMixin {
  * @deprecated
  */
  "getBlockEntityRenderAttachment"(arg0: $BlockPos$$Type): any
- "getLightEngine"(): $LevelLightEngine
- "canSeeSky"(arg0: $BlockPos$$Type): boolean
  "getBlockTint"(arg0: $BlockPos$$Type, arg1: $ColorResolver$$Type): integer
  "getBrightness"(arg0: $LightLayer$$Type, arg1: $BlockPos$$Type): integer
  "getShade"(arg0: $Direction$$Type, arg1: boolean): float
+ "getLightEngine"(): $LevelLightEngine
+ "canSeeSky"(arg0: $BlockPos$$Type): boolean
  "getRawBrightness"(arg0: $BlockPos$$Type, arg1: integer): integer
- "clipWithInteractionOverride"(arg0: $Vec3$$Type, arg1: $Vec3$$Type, arg2: $BlockPos$$Type, arg3: $VoxelShape$$Type, arg4: $BlockState$$Type): $BlockHitResult
- "getBlockState"(arg0: $BlockPos$$Type): $BlockState
- "getBlockEntity"(arg0: $BlockPos$$Type): $BlockEntity
- "getBlockEntity"<T extends $BlockEntity>(arg0: $BlockPos$$Type, arg1: $BlockEntityType$$Type<(T)>): $Optional<(T)>
+ "clip"(arg0: $ClipContext$$Type): $BlockHitResult
  "getBlockStates"(arg0: $AABB$$Type): $Stream<($BlockState)>
  "isBlockInLine"(arg0: $ClipBlockStateContext$$Type): $BlockHitResult
 static "traverseBlocks"<T, C>(arg0: $Vec3$$Type, arg1: $Vec3$$Type, arg2: C, arg3: $BiFunction$$Type<(C), ($BlockPos), (T)>, arg4: $Function$$Type<(C), (T)>): T
  "getFluidState"(arg0: $BlockPos$$Type): $FluidState
- "clip"(arg0: $ClipContext$$Type): $BlockHitResult
+ "getBlockState"(arg0: $BlockPos$$Type): $BlockState
+ "getBlockEntity"<T extends $BlockEntity>(arg0: $BlockPos$$Type, arg1: $BlockEntityType$$Type<(T)>): $Optional<(T)>
+ "getBlockEntity"(arg0: $BlockPos$$Type): $BlockEntity
  "getLightEmission"(arg0: $BlockPos$$Type): integer
  "getMaxLightLevel"(): integer
- "getBlockFloorHeight"(arg0: $BlockPos$$Type): double
  "getBlockFloorHeight"(arg0: $VoxelShape$$Type, arg1: $Supplier$$Type<($VoxelShape$$Type)>): double
+ "getBlockFloorHeight"(arg0: $BlockPos$$Type): double
+ "clipWithInteractionOverride"(arg0: $Vec3$$Type, arg1: $Vec3$$Type, arg2: $BlockPos$$Type, arg3: $VoxelShape$$Type, arg4: $BlockState$$Type): $BlockHitResult
  "getShade"(arg0: float, arg1: float, arg2: float, arg3: boolean): float
- "getHeight"(): integer
 static "create"(arg0: integer, arg1: integer): $LevelHeightAccessor
- "getSectionIndexFromSectionY"(arg0: integer): integer
- "getSectionYFromSectionIndex"(arg0: integer): integer
+ "getHeight"(): integer
  "getMaxSection"(): integer
  "getMinSection"(): integer
- "getMinBuildHeight"(): integer
  "getMaxBuildHeight"(): integer
  "isOutsideBuildHeight"(arg0: $BlockPos$$Type): boolean
  "isOutsideBuildHeight"(arg0: integer): boolean
  "getSectionIndex"(arg0: integer): integer
  "getSectionsCount"(): integer
+ "getMinBuildHeight"(): integer
+ "getSectionIndexFromSectionY"(arg0: integer): integer
+ "getSectionYFromSectionIndex"(arg0: integer): integer
  "getModelData"(arg0: $BlockPos$$Type): $ModelData
  "getAuxLightManager"(arg0: $ChunkPos$$Type): $AuxiliaryLightManager
  "getAuxLightManager"(arg0: $BlockPos$$Type): $AuxiliaryLightManager
- "getBlockEntityRenderData"(arg0: $BlockPos$$Type): any
  "hasBiomes"(): boolean
  "getBiomeFabric"(arg0: $BlockPos$$Type): $Holder<($Biome)>
+ "getBlockEntityRenderData"(arg0: $BlockPos$$Type): any
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1306,12 +1306,12 @@ import {$BlendMode, $BlendMode$$Type} from "net.fabricmc.fabric.api.renderer.v1.
 export interface $MaterialView {
 
  "glint"(): $TriState
- "ambientOcclusion"(): $TriState
- "disableColorIndex"(): boolean
  "emissive"(): boolean
  "blendMode"(): $BlendMode
  "disableDiffuse"(): boolean
  "shadeMode"(): $ShadeMode
+ "disableColorIndex"(): boolean
+ "ambientOcclusion"(): $TriState
 }
 
 export namespace $MaterialView {
@@ -1321,12 +1321,12 @@ export class $MaterialView$$Static implements $MaterialView {
 
 
  "glint"(): $TriState
- "ambientOcclusion"(): $TriState
- "disableColorIndex"(): boolean
  "emissive"(): boolean
  "blendMode"(): $BlendMode
  "disableDiffuse"(): boolean
  "shadeMode"(): $ShadeMode
+ "disableColorIndex"(): boolean
+ "ambientOcclusion"(): $TriState
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1354,7 +1354,7 @@ readonly "blockRenderLayer": $RenderType
 
 
 public static "values"(): ($BlendMode)[]
-public static "valueOf"(arg0: string): $BlendMode
+public static "valueOf"(arg0: StringJS): $BlendMode
 public static "fromRenderLayer"(arg0: $RenderType$$Type): $BlendMode
 }
 /**
@@ -1371,8 +1371,8 @@ export type $BlendMode_ = $BlendMode$$Type;
 }}
 declare module "net.fabricmc.fabric.api.renderer.v1.render.RenderContext$BakedModelConsumer" {
 import {$BakedModel, $BakedModel$$Type} from "net.minecraft.client.resources.model.BakedModel"
-import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
+import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 
 /**
  * 
@@ -1414,8 +1414,8 @@ import {$BooleanFunction, $BooleanFunction$$Type} from "net.fabricmc.fabric.api.
 import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
-import {$Throwable, $Throwable$$Type} from "java.lang.Throwable"
 import {$BooleanSupplier, $BooleanSupplier$$Type} from "java.util.function.BooleanSupplier"
+import {$Throwable, $Throwable$$Type} from "java.lang.Throwable"
 
 export class $TriState extends $Enum<($TriState)> {
 static readonly "TRUE": $TriState
@@ -1423,15 +1423,15 @@ static readonly "FALSE": $TriState
 static readonly "DEFAULT": $TriState
 
 
+public "orElseGet"(arg0: $BooleanSupplier$$Type): boolean
+public "orElseThrow"<X extends $Throwable>(arg0: $Supplier$$Type<(X)>): boolean
 public "get"(): boolean
 public static "values"(): ($TriState)[]
-public static "valueOf"(arg0: string): $TriState
+public static "valueOf"(arg0: StringJS): $TriState
 public "map"<T>(arg0: $BooleanFunction$$Type<(T)>): $Optional<(T)>
 public static "of"(arg0: boolean): $TriState
 public static "of"(arg0: boolean): $TriState
 public "orElse"(arg0: boolean): boolean
-public "orElseThrow"<X extends $Throwable>(arg0: $Supplier$$Type<(X)>): boolean
-public "orElseGet"(arg0: $BooleanSupplier$$Type): boolean
 public "getBoxed"(): boolean
 get "boxed"(): boolean
 }
@@ -1495,116 +1495,116 @@ import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Vector3fc, $Vector3fc$$Type} from "org.joml.Vector3fc"
 import {$RenderMaterial, $RenderMaterial$$Type} from "net.fabricmc.fabric.api.renderer.v1.material.RenderMaterial"
 import {$Vector3f, $Vector3f$$Type} from "org.joml.Vector3f"
-import {$Vector2f, $Vector2f$$Type} from "org.joml.Vector2f"
 import {$QuadView, $QuadView$$Type} from "net.fabricmc.fabric.api.renderer.v1.mesh.QuadView"
+import {$Vector2f, $Vector2f$$Type} from "org.joml.Vector2f"
 import {$BakedQuad, $BakedQuad$$Type} from "net.minecraft.client.renderer.block.model.BakedQuad"
 
 export interface $QuadEmitter extends $MutableQuadView {
 
- "emit"(): $QuadEmitter
  "pos"(arg0: integer, arg1: $Vector3f$$Type): $MutableQuadView
- "pos"(arg0: integer, arg1: float, arg2: float, arg3: float): $MutableQuadView
  "pos"(arg0: integer, arg1: $Vector3fc$$Type): $MutableQuadView
- "color"(arg0: integer, arg1: integer, arg2: integer, arg3: integer): $MutableQuadView
- "color"(arg0: integer, arg1: integer): $QuadEmitter
- "normal"(arg0: integer, arg1: $Vector3f$$Type): $QuadEmitter
- "normal"(arg0: integer, arg1: $Vector3fc$$Type): $QuadEmitter
- "normal"(arg0: integer, arg1: float, arg2: float, arg3: float): $MutableQuadView
- "square"(arg0: $Direction$$Type, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float): $QuadEmitter
+ "pos"(arg0: integer, arg1: float, arg2: float, arg3: float): $MutableQuadView
  "tag"(arg0: integer): $MutableQuadView
- "copyFrom"(arg0: $QuadView$$Type): $MutableQuadView
+ "copyFrom"(arg0: $QuadView$$Type): $QuadEmitter
+ "color"(arg0: integer, arg1: integer): $QuadEmitter
+ "color"(arg0: integer, arg1: integer, arg2: integer, arg3: integer): $MutableQuadView
+ "normal"(arg0: integer, arg1: $Vector3f$$Type): $MutableQuadView
+ "normal"(arg0: integer, arg1: $Vector3fc$$Type): $MutableQuadView
+ "normal"(arg0: integer, arg1: float, arg2: float, arg3: float): $QuadEmitter
+ "square"(arg0: $Direction$$Type, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float): $QuadEmitter
+ "emit"(): $QuadEmitter
+/**
+ * 
+ * @deprecated
+ */
+ "sprite"(arg0: integer, arg1: integer, arg2: $Vec2$$Type): $QuadEmitter
+/**
+ * 
+ * @deprecated
+ */
+ "sprite"(arg0: integer, arg1: integer, arg2: float, arg3: float): $QuadEmitter
+ "uv"(arg0: integer, arg1: $Vector2fc$$Type): $MutableQuadView
  "uv"(arg0: integer, arg1: float, arg2: float): $MutableQuadView
- "uv"(arg0: integer, arg1: $Vector2fc$$Type): $QuadEmitter
- "uv"(arg0: integer, arg1: $Vector2f$$Type): $QuadEmitter
+ "uv"(arg0: integer, arg1: $Vector2f$$Type): $MutableQuadView
+ "cullFace"(arg0: $Direction$$Type): $MutableQuadView
+ "colorIndex"(arg0: integer): $QuadEmitter
 /**
  * 
  * @deprecated
  */
- "sprite"(arg0: integer, arg1: integer, arg2: float, arg3: float): $MutableQuadView
-/**
- * 
- * @deprecated
- */
- "sprite"(arg0: integer, arg1: integer, arg2: $Vec2$$Type): $MutableQuadView
+ "spriteColor"(arg0: integer, arg1: integer, arg2: integer): $QuadEmitter
 /**
  * 
  * @deprecated
  */
  "spriteColor"(arg0: integer, arg1: integer, arg2: integer, arg3: integer, arg4: integer): $QuadEmitter
-/**
- * 
- * @deprecated
- */
- "spriteColor"(arg0: integer, arg1: integer, arg2: integer): $MutableQuadView
- "lightmap"(arg0: integer, arg1: integer): $MutableQuadView
- "lightmap"(arg0: integer, arg1: integer, arg2: integer, arg3: integer): $QuadEmitter
- "material"(arg0: $RenderMaterial$$Type): $MutableQuadView
- "fromVanilla"(arg0: (integer)[], arg1: integer): $QuadEmitter
+ "lightmap"(arg0: integer, arg1: integer, arg2: integer, arg3: integer): $MutableQuadView
+ "lightmap"(arg0: integer, arg1: integer): $QuadEmitter
  "fromVanilla"(arg0: $BakedQuad$$Type, arg1: $RenderMaterial$$Type, arg2: $Direction$$Type): $MutableQuadView
 /**
  * 
  * @deprecated
  */
  "fromVanilla"(arg0: (integer)[], arg1: integer, arg2: boolean): $MutableQuadView
- "colorIndex"(arg0: integer): $MutableQuadView
- "cullFace"(arg0: $Direction$$Type): $MutableQuadView
+ "fromVanilla"(arg0: (integer)[], arg1: integer): $QuadEmitter
+ "material"(arg0: $RenderMaterial$$Type): $MutableQuadView
  "uvUnitSquare"(): $QuadEmitter
- "nominalFace"(arg0: $Direction$$Type): $MutableQuadView
- "spriteBake"(arg0: $TextureAtlasSprite$$Type, arg1: integer): $QuadEmitter
 /**
  * 
  * @deprecated
  */
- "spriteBake"(arg0: integer, arg1: $TextureAtlasSprite$$Type, arg2: integer): $MutableQuadView
+ "spriteBake"(arg0: integer, arg1: $TextureAtlasSprite$$Type, arg2: integer): $QuadEmitter
+ "spriteBake"(arg0: $TextureAtlasSprite$$Type, arg1: integer): $QuadEmitter
+ "nominalFace"(arg0: $Direction$$Type): $QuadEmitter
 /**
  * 
  * @deprecated
  */
  "spriteUnitSquare"(arg0: integer): $QuadEmitter
+ "normalX"(arg0: integer): float
+ "normalY"(arg0: integer): float
 /**
  * 
  * @deprecated
  */
  "copyTo"(arg0: $MutableQuadView$$Type): void
+ "u"(arg0: integer): float
+ "y"(arg0: integer): float
+ "tag"(): integer
+ "color"(arg0: integer): integer
  "x"(arg0: integer): float
  "v"(arg0: integer): float
  "z"(arg0: integer): float
- "u"(arg0: integer): float
- "y"(arg0: integer): float
- "color"(arg0: integer): integer
- "tag"(): integer
- "normalX"(arg0: integer): float
- "normalY"(arg0: integer): float
  "toVanilla"(arg0: (integer)[], arg1: integer): void
 /**
  * 
  * @deprecated
  */
  "toVanilla"(arg0: integer, arg1: (integer)[], arg2: integer, arg3: boolean): void
+ "cullFace"(): $Direction
  "normalZ"(arg0: integer): float
- "copyUv"(arg0: integer, arg1: $Vector2f$$Type): $Vector2f
+ "lightFace"(): $Direction
+ "colorIndex"(): integer
 /**
  * 
  * @deprecated
  */
  "spriteColor"(arg0: integer, arg1: integer): integer
  "faceNormal"(): $Vector3f
- "lightmap"(arg0: integer): integer
  "hasNormal"(arg0: integer): boolean
+ "lightmap"(arg0: integer): integer
  "material"(): $RenderMaterial
- "colorIndex"(): integer
- "lightFace"(): $Direction
- "cullFace"(): $Direction
+ "copyUv"(arg0: integer, arg1: $Vector2f$$Type): $Vector2f
  "posByIndex"(arg0: integer, arg1: integer): float
  "copyPos"(arg0: integer, arg1: $Vector3f$$Type): $Vector3f
- "nominalFace"(): $Direction
  "copyNormal"(arg0: integer, arg1: $Vector3f$$Type): $Vector3f
- "toBakedQuad"(arg0: $TextureAtlasSprite$$Type): $BakedQuad
 /**
  * 
  * @deprecated
  */
  "toBakedQuad"(arg0: integer, arg1: $TextureAtlasSprite$$Type, arg2: boolean): $BakedQuad
+ "toBakedQuad"(arg0: $TextureAtlasSprite$$Type): $BakedQuad
+ "nominalFace"(): $Direction
 /**
  * 
  * @deprecated
@@ -1625,110 +1625,110 @@ export class $QuadEmitter$$Static implements $QuadEmitter {
 static readonly "CULL_FACE_EPSILON": float
 
 
- "emit"(): $QuadEmitter
  "pos"(arg0: integer, arg1: $Vector3f$$Type): $MutableQuadView
- "pos"(arg0: integer, arg1: float, arg2: float, arg3: float): $MutableQuadView
  "pos"(arg0: integer, arg1: $Vector3fc$$Type): $MutableQuadView
- "color"(arg0: integer, arg1: integer, arg2: integer, arg3: integer): $MutableQuadView
- "color"(arg0: integer, arg1: integer): $QuadEmitter
- "normal"(arg0: integer, arg1: $Vector3f$$Type): $QuadEmitter
- "normal"(arg0: integer, arg1: $Vector3fc$$Type): $QuadEmitter
- "normal"(arg0: integer, arg1: float, arg2: float, arg3: float): $MutableQuadView
- "square"(arg0: $Direction$$Type, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float): $QuadEmitter
+ "pos"(arg0: integer, arg1: float, arg2: float, arg3: float): $MutableQuadView
  "tag"(arg0: integer): $MutableQuadView
- "copyFrom"(arg0: $QuadView$$Type): $MutableQuadView
+ "copyFrom"(arg0: $QuadView$$Type): $QuadEmitter
+ "color"(arg0: integer, arg1: integer): $QuadEmitter
+ "color"(arg0: integer, arg1: integer, arg2: integer, arg3: integer): $MutableQuadView
+ "normal"(arg0: integer, arg1: $Vector3f$$Type): $MutableQuadView
+ "normal"(arg0: integer, arg1: $Vector3fc$$Type): $MutableQuadView
+ "normal"(arg0: integer, arg1: float, arg2: float, arg3: float): $QuadEmitter
+ "square"(arg0: $Direction$$Type, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float): $QuadEmitter
+ "emit"(): $QuadEmitter
+/**
+ * 
+ * @deprecated
+ */
+ "sprite"(arg0: integer, arg1: integer, arg2: $Vec2$$Type): $QuadEmitter
+/**
+ * 
+ * @deprecated
+ */
+ "sprite"(arg0: integer, arg1: integer, arg2: float, arg3: float): $QuadEmitter
+ "uv"(arg0: integer, arg1: $Vector2fc$$Type): $MutableQuadView
  "uv"(arg0: integer, arg1: float, arg2: float): $MutableQuadView
- "uv"(arg0: integer, arg1: $Vector2fc$$Type): $QuadEmitter
- "uv"(arg0: integer, arg1: $Vector2f$$Type): $QuadEmitter
+ "uv"(arg0: integer, arg1: $Vector2f$$Type): $MutableQuadView
+ "cullFace"(arg0: $Direction$$Type): $MutableQuadView
+ "colorIndex"(arg0: integer): $QuadEmitter
 /**
  * 
  * @deprecated
  */
- "sprite"(arg0: integer, arg1: integer, arg2: float, arg3: float): $MutableQuadView
-/**
- * 
- * @deprecated
- */
- "sprite"(arg0: integer, arg1: integer, arg2: $Vec2$$Type): $MutableQuadView
+ "spriteColor"(arg0: integer, arg1: integer, arg2: integer): $QuadEmitter
 /**
  * 
  * @deprecated
  */
  "spriteColor"(arg0: integer, arg1: integer, arg2: integer, arg3: integer, arg4: integer): $QuadEmitter
-/**
- * 
- * @deprecated
- */
- "spriteColor"(arg0: integer, arg1: integer, arg2: integer): $MutableQuadView
- "lightmap"(arg0: integer, arg1: integer): $MutableQuadView
- "lightmap"(arg0: integer, arg1: integer, arg2: integer, arg3: integer): $QuadEmitter
- "material"(arg0: $RenderMaterial$$Type): $MutableQuadView
- "fromVanilla"(arg0: (integer)[], arg1: integer): $QuadEmitter
+ "lightmap"(arg0: integer, arg1: integer, arg2: integer, arg3: integer): $MutableQuadView
+ "lightmap"(arg0: integer, arg1: integer): $QuadEmitter
  "fromVanilla"(arg0: $BakedQuad$$Type, arg1: $RenderMaterial$$Type, arg2: $Direction$$Type): $MutableQuadView
 /**
  * 
  * @deprecated
  */
  "fromVanilla"(arg0: (integer)[], arg1: integer, arg2: boolean): $MutableQuadView
- "colorIndex"(arg0: integer): $MutableQuadView
- "cullFace"(arg0: $Direction$$Type): $MutableQuadView
+ "fromVanilla"(arg0: (integer)[], arg1: integer): $QuadEmitter
+ "material"(arg0: $RenderMaterial$$Type): $MutableQuadView
  "uvUnitSquare"(): $QuadEmitter
- "nominalFace"(arg0: $Direction$$Type): $MutableQuadView
- "spriteBake"(arg0: $TextureAtlasSprite$$Type, arg1: integer): $QuadEmitter
 /**
  * 
  * @deprecated
  */
- "spriteBake"(arg0: integer, arg1: $TextureAtlasSprite$$Type, arg2: integer): $MutableQuadView
+ "spriteBake"(arg0: integer, arg1: $TextureAtlasSprite$$Type, arg2: integer): $QuadEmitter
+ "spriteBake"(arg0: $TextureAtlasSprite$$Type, arg1: integer): $QuadEmitter
+ "nominalFace"(arg0: $Direction$$Type): $QuadEmitter
 /**
  * 
  * @deprecated
  */
  "spriteUnitSquare"(arg0: integer): $QuadEmitter
+ "normalX"(arg0: integer): float
+ "normalY"(arg0: integer): float
 /**
  * 
  * @deprecated
  */
  "copyTo"(arg0: $MutableQuadView$$Type): void
+ "u"(arg0: integer): float
+ "y"(arg0: integer): float
+ "tag"(): integer
+ "color"(arg0: integer): integer
  "x"(arg0: integer): float
  "v"(arg0: integer): float
  "z"(arg0: integer): float
- "u"(arg0: integer): float
- "y"(arg0: integer): float
- "color"(arg0: integer): integer
- "tag"(): integer
- "normalX"(arg0: integer): float
- "normalY"(arg0: integer): float
  "toVanilla"(arg0: (integer)[], arg1: integer): void
 /**
  * 
  * @deprecated
  */
  "toVanilla"(arg0: integer, arg1: (integer)[], arg2: integer, arg3: boolean): void
+ "cullFace"(): $Direction
  "normalZ"(arg0: integer): float
- "copyUv"(arg0: integer, arg1: $Vector2f$$Type): $Vector2f
+ "lightFace"(): $Direction
+ "colorIndex"(): integer
 /**
  * 
  * @deprecated
  */
  "spriteColor"(arg0: integer, arg1: integer): integer
  "faceNormal"(): $Vector3f
- "lightmap"(arg0: integer): integer
  "hasNormal"(arg0: integer): boolean
+ "lightmap"(arg0: integer): integer
  "material"(): $RenderMaterial
- "colorIndex"(): integer
- "lightFace"(): $Direction
- "cullFace"(): $Direction
+ "copyUv"(arg0: integer, arg1: $Vector2f$$Type): $Vector2f
  "posByIndex"(arg0: integer, arg1: integer): float
  "copyPos"(arg0: integer, arg1: $Vector3f$$Type): $Vector3f
- "nominalFace"(): $Direction
  "copyNormal"(arg0: integer, arg1: $Vector3f$$Type): $Vector3f
- "toBakedQuad"(arg0: $TextureAtlasSprite$$Type): $BakedQuad
 /**
  * 
  * @deprecated
  */
  "toBakedQuad"(arg0: integer, arg1: $TextureAtlasSprite$$Type, arg2: boolean): $BakedQuad
+ "toBakedQuad"(arg0: $TextureAtlasSprite$$Type): $BakedQuad
+ "nominalFace"(): $Direction
 /**
  * 
  * @deprecated

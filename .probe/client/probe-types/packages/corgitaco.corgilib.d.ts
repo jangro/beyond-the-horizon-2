@@ -10,18 +10,18 @@ constructor(world: $Level$$Type, entity: $LivingEntity$$Type, isDeadOrDying: boo
 
 public "entity"(): $LivingEntity
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "previousConditionsPassed"(): integer
-public "isDeadOrDying"(): boolean
 public "world"(): $Level
+public "isDeadOrDying"(): boolean
+public "previousConditionsPassed"(): integer
 get "deadOrDying"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ConditionContext$$Type = ({"previousConditionsPassed"?: integer, "world"?: $Level$$Type, "entity"?: $LivingEntity$$Type, "isDeadOrDying"?: boolean}) | ([previousConditionsPassed?: integer, world?: $Level$$Type, entity?: $LivingEntity$$Type, isDeadOrDying?: boolean]);
+export type $ConditionContext$$Type = ({"world"?: $Level$$Type, "entity"?: $LivingEntity$$Type, "isDeadOrDying"?: boolean, "previousConditionsPassed"?: integer}) | ([world?: $Level$$Type, entity?: $LivingEntity$$Type, isDeadOrDying?: boolean, previousConditionsPassed?: integer]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -35,13 +35,13 @@ import {$ConditionContext, $ConditionContext$$Type} from "corgitaco.corgilib.ent
 
 export interface $Condition {
 
- "passes"(arg0: $ConditionContext$$Type): boolean
  "codec"(): $Codec<($Condition)>
+ "passes"(arg0: $ConditionContext$$Type): boolean
 }
 
 export namespace $Condition {
 const CODEC: $Codec<($Condition)>
-function register(id: string, codec: $Codec$$Type<($Condition$$Type)>): void
+function register(id: StringJS, codec: $Codec$$Type<($Condition$$Type)>): void
 function register(): void
 const probejs$$marker: never
 }
@@ -49,10 +49,10 @@ export class $Condition$$Static implements $Condition {
 static readonly "CODEC": $Codec<($Condition)>
 
 
-static "register"(id: string, codec: $Codec$$Type<($Condition$$Type)>): void
+static "register"(id: StringJS, codec: $Codec$$Type<($Condition$$Type)>): void
 static "register"(): void
- "passes"(arg0: $ConditionContext$$Type): boolean
  "codec"(): $Codec<($Condition)>
+ "passes"(arg0: $ConditionContext$$Type): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -193,8 +193,8 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 
 export interface $RandomTickScheduler {
 
- "getScheduledRandomTicks"(): $List<($BlockPos)>
  "scheduleRandomTick"(arg0: $BlockPos$$Type): void
+ "getScheduledRandomTicks"(): $List<($BlockPos)>
 get "scheduledRandomTicks"(): $List<($BlockPos)>
 }
 
@@ -204,8 +204,8 @@ const probejs$$marker: never
 export class $RandomTickScheduler$$Static implements $RandomTickScheduler {
 
 
- "getScheduledRandomTicks"(): $List<($BlockPos)>
  "scheduleRandomTick"(arg0: $BlockPos$$Type): void
+ "getScheduledRandomTicks"(): $List<($BlockPos)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

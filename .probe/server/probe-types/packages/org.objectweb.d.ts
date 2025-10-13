@@ -32,49 +32,49 @@ static readonly "LONG": integer
 static readonly "INT_TYPE": $Type
 
 
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public static "getDescriptor"(arg0: $Class$$Type<(any)>): string
-public "getDescriptor"(): string
-public static "getReturnType"(arg0: string): $Type
-public static "getReturnType"(arg0: $Method$$Type): $Type
-public "getReturnType"(): $Type
-public static "getType"(arg0: string): $Type
-public static "getType"(arg0: $Class$$Type<(any)>): $Type
-public static "getType"(arg0: $Method$$Type): $Type
-public static "getType"(arg0: $Constructor$$Type<(any)>): $Type
-public "getSize"(): integer
-public static "getMethodType"(arg0: string): $Type
+public static "getMethodDescriptor"(arg0: $Method$$Type): StringJS
+public static "getMethodDescriptor"(arg0: $Type$$Type, ...arg1: ($Type$$Type)[]): StringJS
+public "getClassName"(): StringJS
+public static "getMethodType"(arg0: StringJS): $Type
 public static "getMethodType"(arg0: $Type$$Type, ...arg1: ($Type$$Type)[]): $Type
-public static "getMethodDescriptor"(arg0: $Type$$Type, ...arg1: ($Type$$Type)[]): string
-public static "getMethodDescriptor"(arg0: $Method$$Type): string
-public "getClassName"(): string
-public static "getInternalName"(arg0: $Class$$Type<(any)>): string
-public "getInternalName"(): string
-public "getSort"(): integer
-public static "getObjectType"(arg0: string): $Type
-public "getArgumentTypes"(): ($Type)[]
-public static "getArgumentTypes"(arg0: $Method$$Type): ($Type)[]
-public static "getArgumentTypes"(arg0: string): ($Type)[]
-public static "getArgumentsAndReturnSizes"(arg0: string): integer
+public "getSize"(): integer
 public "getArgumentsAndReturnSizes"(): integer
-public static "getConstructorDescriptor"(arg0: $Constructor$$Type<(any)>): string
+public static "getArgumentsAndReturnSizes"(arg0: StringJS): integer
+public "getArgumentTypes"(): ($Type)[]
+public static "getArgumentTypes"(arg0: StringJS): ($Type)[]
+public static "getArgumentTypes"(arg0: $Method$$Type): ($Type)[]
+public static "getConstructorDescriptor"(arg0: $Constructor$$Type<(any)>): StringJS
 public "getDimensions"(): integer
 public "getElementType"(): $Type
+public static "getObjectType"(arg0: StringJS): $Type
 public "getOpcode"(arg0: integer): integer
-public static "getArgumentCount"(arg0: string): integer
+public static "getInternalName"(arg0: $Class$$Type<(any)>): StringJS
+public "getInternalName"(): StringJS
+public "getSort"(): integer
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+public static "getDescriptor"(arg0: $Class$$Type<(any)>): StringJS
+public "getDescriptor"(): StringJS
+public static "getReturnType"(arg0: $Method$$Type): $Type
+public "getReturnType"(): $Type
+public static "getReturnType"(arg0: StringJS): $Type
+public static "getType"(arg0: $Class$$Type<(any)>): $Type
+public static "getType"(arg0: StringJS): $Type
+public static "getType"(arg0: $Method$$Type): $Type
+public static "getType"(arg0: $Constructor$$Type<(any)>): $Type
 public "getArgumentCount"(): integer
-get "descriptor"(): string
-get "returnType"(): $Type
+public static "getArgumentCount"(arg0: StringJS): integer
+get "className"(): StringJS
 get "size"(): integer
-get "className"(): string
-get "internalName"(): string
-get "sort"(): integer
-get "argumentTypes"(): ($Type)[]
 get "argumentsAndReturnSizes"(): integer
+get "argumentTypes"(): ($Type)[]
 get "dimensions"(): integer
 get "elementType"(): $Type
+get "internalName"(): StringJS
+get "sort"(): integer
+get "descriptor"(): StringJS
+get "returnType"(): $Type
 get "argumentCount"(): integer
 }
 /**

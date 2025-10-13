@@ -1,23 +1,84 @@
+declare module "dev.ftb.mods.ftblibrary.config.ui.resource.SelectableResource" {
+import {$Icon, $Icon$$Type} from "dev.ftb.mods.ftblibrary.icon.Icon"
+import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$FluidStack, $FluidStack$$Type} from "dev.architectury.fluid.FluidStack"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+
+export interface $SelectableResource<T> {
+
+ "resource"(): T
+ "getName"(): $Component
+ "isEmpty"(): boolean
+ "getCount"(): long
+ "copyWithCount"(arg0: long): $SelectableResource<(T)>
+ "setCount"(arg0: integer): void
+ "getIcon"(): $Icon
+ "getComponentsTag"(): $CompoundTag
+ "applyComponentsTag"(tag: $CompoundTag$$Type): void
+get "name"(): $Component
+get "empty"(): boolean
+get "count"(): long
+set "count"(value: integer)
+get "icon"(): $Icon
+get "componentsTag"(): $CompoundTag
+}
+
+export namespace $SelectableResource {
+function item(stack: $ItemStack$$Type): $SelectableResource<($ItemStack)>
+function fluid(stack: $FluidStack$$Type): $SelectableResource<($FluidStack)>
+const probejs$$marker: never
+}
+export class $SelectableResource$$Static<T> implements $SelectableResource {
+
+
+static "item"(stack: $ItemStack$$Type): $SelectableResource<($ItemStack)>
+ "resource"(): T
+ "getName"(): $Component
+ "isEmpty"(): boolean
+ "getCount"(): long
+static "fluid"(stack: $FluidStack$$Type): $SelectableResource<($FluidStack)>
+ "copyWithCount"(arg0: long): $SelectableResource<(T)>
+ "setCount"(arg0: integer): void
+ "getIcon"(): $Icon
+ "getComponentsTag"(): $CompoundTag
+ "applyComponentsTag"(tag: $CompoundTag$$Type): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SelectableResource$$Type<T> = ($SelectableResource<(T)>);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SelectableResource_<T> = $SelectableResource$$Type<(T)>;
+}}
 declare module "dev.ftb.mods.ftbquests.item.CustomIconItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Icon, $Icon$$Type} from "dev.ftb.mods.ftblibrary.icon.Icon"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$EntityType, $EntityType$$Type} from "net.minecraft.world.entity.EntityType"
 
 export class $CustomIconItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -26,9 +87,13 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(level: $Level$$Type, player: $Player$$Type, interactionHand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "getName"(stack: $ItemStack$$Type): $Component
 public static "setIcon"(stack: $ItemStack$$Type, texture: $ResourceLocation$$Type): void
 public static "getIcon"(stack: $ItemStack$$Type): $Icon
+public static "setFaceIcon"(stack: $ItemStack$$Type, value: $EntityType$$Type<(any)>): void
+public static "setFaceIcon"(stack: $ItemStack$$Type, value: $ResourceLocation$$Type): void
 public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, flagIn: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -58,21 +123,23 @@ export interface $TeamManager {
  "getId"(): $UUID
  "markDirty"(): void
  "getServer"(): $MinecraftServer
- "arePlayersInSameTeam"(arg0: $UUID$$Type, arg1: $UUID$$Type): boolean
- "getTeamForPlayerID"(arg0: $UUID$$Type): $Optional<($Team)>
- "getTeamForPlayer"(arg0: $ServerPlayer$$Type): $Optional<($Team)>
- "getKnownPlayerTeams"(): $Map<($UUID), ($Team)>
- "createPartyTeam"(arg0: $ServerPlayer$$Type, arg1: string, arg2: string, arg3: $Color4I$$Type): $Team
  "getTeams"(): $Collection<($Team)>
- "getTeamByName"(arg0: string): $Optional<($Team)>
+ "getTeamByName"(arg0: StringJS): $Optional<($Team)>
  "getTeamByID"(arg0: $UUID$$Type): $Optional<($Team)>
  "getExtraData"(): $CompoundTag
+ "arePlayersInSameTeam"(arg0: $UUID$$Type, arg1: $UUID$$Type): boolean
+ "getTeamForPlayerID"(arg0: $UUID$$Type): $Optional<($Team)>
+ "getKnownPlayerTeams"(): $Map<($UUID), ($Team)>
+ "createPartyTeam"(arg0: $ServerPlayer$$Type, arg1: StringJS, arg2: StringJS, arg3: $Color4I$$Type): $Team
+ "setChatRedirected"(arg0: $ServerPlayer$$Type, arg1: boolean): void
+ "isChatRedirected"(arg0: $ServerPlayer$$Type): boolean
+ "getTeamForPlayer"(arg0: $ServerPlayer$$Type): $Optional<($Team)>
  "getPlayerTeamForPlayerID"(arg0: $UUID$$Type): $Optional<($Team)>
 get "id"(): $UUID
 get "server"(): $MinecraftServer
-get "knownPlayerTeams"(): $Map<($UUID), ($Team)>
 get "teams"(): $Collection<($Team)>
 get "extraData"(): $CompoundTag
+get "knownPlayerTeams"(): $Map<($UUID), ($Team)>
 }
 
 export namespace $TeamManager {
@@ -84,15 +151,17 @@ export class $TeamManager$$Static implements $TeamManager {
  "getId"(): $UUID
  "markDirty"(): void
  "getServer"(): $MinecraftServer
- "arePlayersInSameTeam"(arg0: $UUID$$Type, arg1: $UUID$$Type): boolean
- "getTeamForPlayerID"(arg0: $UUID$$Type): $Optional<($Team)>
- "getTeamForPlayer"(arg0: $ServerPlayer$$Type): $Optional<($Team)>
- "getKnownPlayerTeams"(): $Map<($UUID), ($Team)>
- "createPartyTeam"(arg0: $ServerPlayer$$Type, arg1: string, arg2: string, arg3: $Color4I$$Type): $Team
  "getTeams"(): $Collection<($Team)>
- "getTeamByName"(arg0: string): $Optional<($Team)>
+ "getTeamByName"(arg0: StringJS): $Optional<($Team)>
  "getTeamByID"(arg0: $UUID$$Type): $Optional<($Team)>
  "getExtraData"(): $CompoundTag
+ "arePlayersInSameTeam"(arg0: $UUID$$Type, arg1: $UUID$$Type): boolean
+ "getTeamForPlayerID"(arg0: $UUID$$Type): $Optional<($Team)>
+ "getKnownPlayerTeams"(): $Map<($UUID), ($Team)>
+ "createPartyTeam"(arg0: $ServerPlayer$$Type, arg1: StringJS, arg2: StringJS, arg3: $Color4I$$Type): $Team
+ "setChatRedirected"(arg0: $ServerPlayer$$Type, arg1: boolean): void
+ "isChatRedirected"(arg0: $ServerPlayer$$Type): boolean
+ "getTeamForPlayer"(arg0: $ServerPlayer$$Type): $Optional<($Team)>
  "getPlayerTeamForPlayerID"(arg0: $UUID$$Type): $Optional<($Team)>
 }
 /**
@@ -108,8 +177,8 @@ declare global {
 export type $TeamManager_ = $TeamManager$$Type;
 }}
 declare module "dev.ftb.mods.ftblibrary.config.ItemStackConfig" {
+import {$SelectableResource, $SelectableResource$$Type} from "dev.ftb.mods.ftblibrary.config.ui.resource.SelectableResource"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$SelectableResource, $SelectableResource$$Type} from "dev.ftb.mods.ftblibrary.config.ui.SelectableResource"
 import {$ConfigCallback, $ConfigCallback$$Type} from "dev.ftb.mods.ftblibrary.config.ConfigCallback"
 import {$OptionalLong, $OptionalLong$$Type} from "java.util.OptionalLong"
 import {$MouseButton, $MouseButton$$Type} from "dev.ftb.mods.ftblibrary.ui.input.MouseButton"
@@ -118,7 +187,7 @@ import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component
 import {$ResourceConfigValue, $ResourceConfigValue$$Type} from "dev.ftb.mods.ftblibrary.config.ResourceConfigValue"
 
 export class $ItemStackConfig extends $ResourceConfigValue<($ItemStack)> {
- "id": string
+ "id": StringJS
 static readonly "NULL_TEXT": $Component
 
 constructor(single: boolean, empty: boolean)
@@ -129,12 +198,12 @@ public "isEmpty"(): boolean
 public "getResource"(): $SelectableResource<($ItemStack)>
 public "copy"(arg0: any): any
 public "copy"(value: $ItemStack$$Type): $ItemStack
+public "onClicked"(clickedWidget: $Widget$$Type, button: $MouseButton$$Type, callback: $ConfigCallback$$Type): void
+public "setResource"(selectable: $SelectableResource$$Type<($ItemStack$$Type)>): boolean
+public "fixedResourceSize"(): $OptionalLong
+public "allowEmptyResource"(): boolean
 public "getStringForGUI"(v: $ItemStack$$Type): $Component
 public "getStringForGUI"(arg0: any): $Component
-public "allowEmptyResource"(): boolean
-public "fixedResourceSize"(): $OptionalLong
-public "onClicked"(clickedWidget: $Widget$$Type, button: $MouseButton$$Type, callback: $ConfigCallback$$Type): void
-public "setResource"(selectedStack: $SelectableResource$$Type<($ItemStack$$Type)>): boolean
 get "value"(): $ItemStack
 get "empty"(): boolean
 get "resource"(): $SelectableResource<($ItemStack)>
@@ -198,17 +267,17 @@ export class $DoubleConfig extends $NumberConfig<(double)> {
 readonly "min": T
 readonly "max": T
 static readonly "COLOR": $Color4I
- "id": string
+ "id": StringJS
 static readonly "NULL_TEXT": $Component
 
 constructor(mn: double, mx: double)
 
-public "parse"(callback: $Consumer$$Type<(double)>, string: string): boolean
-public "getStringFromValue"(arg0: any): string
-public "getStringFromValue"(v: double): string
-public "scrollValue"(currentValue: double, forward: boolean): $Optional<(double)>
+public "parse"(callback: $Consumer$$Type<(double)>, string: StringJS): boolean
 public "scrollValue"(arg0: any, arg1: boolean): $Optional<(any)>
+public "scrollValue"(currentValue: double, forward: boolean): $Optional<(double)>
 public "addInfo"(list: $TooltipList$$Type): void
+public "getStringFromValue"(arg0: any): StringJS
+public "getStringFromValue"(v: double): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -228,9 +297,9 @@ import {$Icon, $Icon$$Type} from "dev.ftb.mods.ftblibrary.icon.Icon"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$IResourceIcon, $IResourceIcon$$Type} from "dev.ftb.mods.ftblibrary.icon.IResourceIcon"
 import {$Color4I, $Color4I$$Type} from "dev.ftb.mods.ftblibrary.icon.Color4I"
+import {$GuiGraphics, $GuiGraphics$$Type} from "net.minecraft.client.gui.GuiGraphics"
 import {$FriendlyByteBuf, $FriendlyByteBuf$$Type} from "net.minecraft.network.FriendlyByteBuf"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
-import {$GuiGraphics, $GuiGraphics$$Type} from "net.minecraft.client.gui.GuiGraphics"
 import {$PixelBuffer, $PixelBuffer$$Type} from "dev.ftb.mods.ftblibrary.math.PixelBuffer"
 
 export class $ImageIcon extends $Icon implements $IResourceIcon {
@@ -243,23 +312,24 @@ readonly "texture": $ResourceLocation
 static readonly "MISSING_IMAGE": $ResourceLocation
  "minV": float
  "tileSize": double
+static readonly "STRING_CODEC": $Codec<($Icon)>
 static readonly "STREAM_CODEC": $StreamCodec<($FriendlyByteBuf), ($Icon)>
 
 constructor(tex: $ResourceLocation$$Type)
 
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "copy"(): $ImageIcon
-public "withColor"(arg0: $Color4I$$Type): $Icon
 public "draw"(graphics: $GuiGraphics$$Type, x: integer, y: integer, w: integer, h: integer): void
+public "withColor"(arg0: $Color4I$$Type): $Icon
 public "withUV"(arg0: float, arg1: float, arg2: float, arg3: float): $Icon
-public "getResourceLocation"(): $ResourceLocation
-public "createPixelBuffer"(): $PixelBuffer
+public "aspectRatio"(): double
 public "withTint"(c: $Color4I$$Type): $ImageIcon
 public "hasPixelBuffer"(): boolean
-public "aspectRatio"(): double
 public "bindTexture"(): void
+public "getResourceLocation"(): $ResourceLocation
+public "createPixelBuffer"(): $PixelBuffer
 get "resourceLocation"(): $ResourceLocation
 }
 /**
@@ -287,12 +357,12 @@ import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component
 import {$IScreenWrapper, $IScreenWrapper$$Type} from "dev.ftb.mods.ftblibrary.ui.IScreenWrapper"
 import {$Panel, $Panel$$Type} from "dev.ftb.mods.ftblibrary.ui.Panel"
 import {$TooltipList, $TooltipList$$Type} from "dev.ftb.mods.ftblibrary.util.TooltipList"
-import {$Window, $Window$$Type} from "com.mojang.blaze3d.platform.Window"
 import {$GuiGraphics, $GuiGraphics$$Type} from "net.minecraft.client.gui.GuiGraphics"
+import {$Window, $Window$$Type} from "com.mojang.blaze3d.platform.Window"
 import {$CursorType, $CursorType$$Type} from "dev.ftb.mods.ftblibrary.ui.CursorType"
+import {$Theme, $Theme$$Type} from "dev.ftb.mods.ftblibrary.ui.Theme"
 import {$BaseScreen, $BaseScreen$$Type} from "dev.ftb.mods.ftblibrary.ui.BaseScreen"
 import {$Widget$DrawLayer, $Widget$DrawLayer$$Type} from "dev.ftb.mods.ftblibrary.ui.Widget$DrawLayer"
-import {$Theme, $Theme$$Type} from "dev.ftb.mods.ftblibrary.ui.Theme"
 
 export class $Widget implements $IScreenWrapper, $Comparable<($Widget)> {
  "posX": integer
@@ -302,94 +372,94 @@ export class $Widget implements $IScreenWrapper, $Comparable<($Widget)> {
 
 constructor(p: $Panel$$Type)
 
+public "tick"(): void
+public "setSize"(w: integer, h: integer): void
 public "getWidth"(): integer
 public "getHeight"(): integer
-public "getY"(): integer
-public "toString"(): string
+public "toString"(): StringJS
 public "compareTo"(widget: $Widget$$Type): integer
 public "compareTo"(arg0: any): integer
 public "isEnabled"(): boolean
 public "getParent"(): $Panel
-public "tick"(): void
-public "setSize"(w: integer, h: integer): void
+public "getY"(): integer
+public "getX"(): integer
+public "setPos"(x: integer, y: integer): void
+public "setX"(v: integer): void
+public "setY"(v: integer): void
+public "draw"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, x: integer, y: integer, w: integer, h: integer): void
+public "keyPressed"(key: $Key$$Type): boolean
+public static "isKeyDown"(key: integer): boolean
+public "isMouseOver"(): boolean
+public "getScreen"(): $Window
 public "setWidth"(v: integer): void
 public "setHeight"(v: integer): void
 public "onClosed"(): void
 public static "isShiftKeyDown"(): boolean
-public static "isKeyDown"(key: integer): boolean
-public "keyPressed"(key: $Key$$Type): boolean
-public "isMouseOver"(): boolean
 public "mouseReleased"(button: $MouseButton$$Type): void
 public "mouseDragged"(button: integer, dragX: double, dragY: double): boolean
 public "mouseScrolled"(scroll: double): boolean
 public "keyReleased"(key: $Key$$Type): void
 public "charTyped"(c: character, modifiers: $KeyModifiers$$Type): boolean
-public "getScreen"(): $Window
-public "getCursor"(): $CursorType
-public "getTitle"(): $Component
-public "draw"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, x: integer, y: integer, w: integer, h: integer): void
-public "getGui"(): $BaseScreen
-public "setX"(v: integer): void
-public "setY"(v: integer): void
-public "getX"(): integer
-public "setPos"(x: integer, y: integer): void
-public "getPartialTicks"(): float
-public static "getClipboardString"(): string
-public static "setClipboardString"(string: string): void
-public "acceptGhostIngredient"(ingredient: any): void
-public "shouldAddMouseOverText"(): boolean
-public "updateMouseOver"(mouseX: integer, mouseY: integer): void
-public "mouseDoubleClicked"(button: $MouseButton$$Type): boolean
-public "addMouseOverText"(list: $TooltipList$$Type): void
-public static "isMouseButtonDown"(button: $MouseButton$$Type): boolean
-public "shouldDraw"(): boolean
-public "getWidgetType"(): $WidgetType
-public "playClickSound"(): void
-public static "isCtrlKeyDown"(): boolean
-public "setPosAndSize"(x: integer, y: integer, w: integer, h: integer): $Widget
-public "collidesWith"(x: integer, y: integer, w: integer, h: integer): boolean
-public "checkMouseOver"(mouseX: integer, mouseY: integer): boolean
-public "getDrawLayer"(): $Widget$DrawLayer
-public "setDrawLayer"(drawLayer: $Widget$DrawLayer$$Type): void
-public "handleClick"(click: string): boolean
-public "handleClick"(scheme: string, path: string): boolean
 public "getMouseX"(): integer
 public "getMouseY"(): integer
+public "getCursor"(): $CursorType
+public "getTitle"(): $Component
+public "getGui"(): $BaseScreen
+public static "isCtrlKeyDown"(): boolean
+public "collidesWith"(x: integer, y: integer, w: integer, h: integer): boolean
+public "getWidgetType"(): $WidgetType
+public "getDrawLayer"(): $Widget$DrawLayer
+public "setDrawLayer"(drawLayer: $Widget$DrawLayer$$Type): void
+public "playClickSound"(): void
+public "setPosAndSize"(x: integer, y: integer, w: integer, h: integer): $Widget
+public "checkMouseOver"(mouseX: integer, mouseY: integer): boolean
+public "shouldDraw"(): boolean
+public "handleClick"(scheme: StringJS, path: StringJS): boolean
+public "handleClick"(click: StringJS): boolean
 public "getPosX"(): integer
 public "getPosY"(): integer
 public "mousePressed"(button: $MouseButton$$Type): boolean
+public "getPartialTicks"(): float
+public static "isMouseButtonDown"(button: $MouseButton$$Type): boolean
+public static "getClipboardString"(): StringJS
+public static "setClipboardString"(string: StringJS): void
+public "acceptGhostIngredient"(ingredient: any): void
+public "updateMouseOver"(mouseX: integer, mouseY: integer): void
+public "mouseDoubleClicked"(button: $MouseButton$$Type): boolean
+public "shouldAddMouseOverText"(): boolean
+public "addMouseOverText"(list: $TooltipList$$Type): void
 public "getIngredientUnderMouse"(): $Optional<($PositionedIngredient)>
 public "isGhostIngredientTarget"(ingredient: any): boolean
 public "closeGui"(openPrevScreen: boolean): void
 public "openGui"(): void
 public "run"(): void
-public "closeContextMenu"(): void
-public "closeGui"(): void
 public "openGuiLater"(): void
 public "openAfter"(runnable: $Runnable$$Type): $Runnable
+public "closeGui"(): void
+public "closeContextMenu"(): void
 get "width"(): integer
 get "height"(): integer
-get "y"(): integer
 get "enabled"(): boolean
 get "parent"(): $Panel
-set "width"(value: integer)
-set "height"(value: integer)
+get "y"(): integer
+get "x"(): integer
+set "x"(value: integer)
+set "y"(value: integer)
 get "mouseOver"(): boolean
 get "screen"(): $Window
+set "width"(value: integer)
+set "height"(value: integer)
+get "mouseX"(): integer
+get "mouseY"(): integer
 get "cursor"(): $CursorType
 get "title"(): $Component
 get "gui"(): $BaseScreen
-set "x"(value: integer)
-set "y"(value: integer)
-get "x"(): integer
-get "partialTicks"(): float
 get "widgetType"(): $WidgetType
 get "drawLayer"(): $Widget$DrawLayer
 set "drawLayer"(value: $Widget$DrawLayer$$Type)
-get "mouseX"(): integer
-get "mouseY"(): integer
 get "posX"(): integer
 get "posY"(): integer
+get "partialTicks"(): float
 get "ingredientUnderMouse"(): $Optional<($PositionedIngredient)>
 }
 /**
@@ -405,15 +475,17 @@ declare global {
 export type $Widget_ = $Widget$$Type;
 }}
 declare module "dev.ftb.mods.ftbquests.item.QuestBookItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
@@ -422,7 +494,7 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 export class $QuestBookItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -432,6 +504,7 @@ constructor()
 
 public "use"(world: $Level$$Type, player: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
 public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, flagIn: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -456,8 +529,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$QuestBarrierBlock, $QuestBarrierBlock$$Type} from "dev.ftb.mods.ftbquests.block.QuestBarrierBlock"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -478,7 +551,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -507,8 +580,8 @@ export type $StageBarrierBlock_ = $StageBarrierBlock$$Type;
 declare module "dev.ftb.mods.ftblibrary.ui.Button" {
 import {$Icon, $Icon$$Type} from "dev.ftb.mods.ftblibrary.icon.Icon"
 import {$Panel, $Panel$$Type} from "dev.ftb.mods.ftblibrary.ui.Panel"
-import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$GuiGraphics, $GuiGraphics$$Type} from "net.minecraft.client.gui.GuiGraphics"
+import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$PositionedIngredient, $PositionedIngredient$$Type} from "dev.ftb.mods.ftblibrary.util.client.PositionedIngredient"
 import {$CursorType, $CursorType$$Type} from "dev.ftb.mods.ftblibrary.ui.CursorType"
 import {$MouseButton, $MouseButton$$Type} from "dev.ftb.mods.ftblibrary.ui.input.MouseButton"
@@ -525,16 +598,16 @@ export class $Button extends $Widget {
 constructor(panel: $Panel$$Type, t: $Component$$Type, i: $Icon$$Type)
 constructor(panel: $Panel$$Type)
 
+public "draw"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, x: integer, y: integer, w: integer, h: integer): void
+public "drawIcon"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, x: integer, y: integer, w: integer, h: integer): void
 public "setIcon"(i: $Icon$$Type): $Button
 public "setTitle"(s: $Component$$Type): $Button
-public "drawIcon"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, x: integer, y: integer, w: integer, h: integer): void
 public "getCursor"(): $CursorType
 public "getTitle"(): $Component
-public "draw"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, x: integer, y: integer, w: integer, h: integer): void
-public "setForceButtonSize"(forceButtonSize: boolean): $Button
 public "onClicked"(arg0: $MouseButton$$Type): void
 public "drawBackground"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, x: integer, y: integer, w: integer, h: integer): void
 public "mousePressed"(button: $MouseButton$$Type): boolean
+public "setForceButtonSize"(forceButtonSize: boolean): $Button
 public "getIngredientUnderMouse"(): $Optional<($PositionedIngredient)>
 set "icon"(value: $Icon$$Type)
 set "title"(value: $Component$$Type)
@@ -569,27 +642,28 @@ import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component
 export class $RewardType {
  "intId": integer
 
+constructor(typeId: $ResourceLocation$$Type, provider: $RewardType$Provider$$Type, iconSupplier: $Supplier$$Type<($Icon$$Type)>, availableByDefault: boolean)
 constructor(typeId: $ResourceLocation$$Type, provider: $RewardType$Provider$$Type, iconSupplier: $Supplier$$Type<($Icon$$Type)>)
 
 public "getDisplayName"(): $Component
-public "getIconSupplier"(): $Icon
-public "createReward"(id: long, quest: $Quest$$Type): $Reward
-public static "createReward"(id: long, quest: $Quest$$Type, typeId: string): $Reward
-public "makeExtraNBT"(): $CompoundTag
-public "getGuiProvider"(): $RewardType$GuiProvider
-public "setGuiProvider"(p: $RewardType$GuiProvider$$Type): $RewardType
-public "getTypeForNBT"(): string
-public "getTypeId"(): $ResourceLocation
 public "setDisplayName"(name: $Component$$Type): $RewardType
+public "getTypeForNBT"(): StringJS
+public "makeExtraNBT"(): $CompoundTag
+public "setGuiProvider"(p: $RewardType$GuiProvider$$Type): $RewardType
+public "getGuiProvider"(): $RewardType$GuiProvider
+public static "createReward"(id: long, quest: $Quest$$Type, typeId: StringJS): $Reward
+public "createReward"(id: long, quest: $Quest$$Type): $Reward
+public "getTypeId"(): $ResourceLocation
+public "getIconSupplier"(): $Icon
 public "setExcludeFromListRewards"(v: boolean): $RewardType
 public "getExcludeFromListRewards"(): boolean
 get "displayName"(): $Component
-get "iconSupplier"(): $Icon
-get "guiProvider"(): $RewardType$GuiProvider
-set "guiProvider"(value: $RewardType$GuiProvider$$Type)
-get "typeForNBT"(): string
-get "typeId"(): $ResourceLocation
 set "displayName"(value: $Component$$Type)
+get "typeForNBT"(): StringJS
+set "guiProvider"(value: $RewardType$GuiProvider$$Type)
+get "guiProvider"(): $RewardType$GuiProvider
+get "typeId"(): $ResourceLocation
+get "iconSupplier"(): $Icon
 set "excludeFromListRewards"(value: boolean)
 get "excludeFromListRewards"(): boolean
 }
@@ -621,26 +695,26 @@ export class $LootCrate {
 constructor(table: $RewardTable$$Type, initFromTable: boolean)
 
 public "getTable"(): $RewardTable
-public "getItemName"(): string
 public "getDrops"(): $EntityWeight
+public "getItemName"(): StringJS
 public "getColor"(): $Color4I
 public "isGlow"(): boolean
-public "fillConfigGroup"(config: $ConfigGroup$$Type): void
-public "getStringID"(): string
-public static "getLootCrates"(isClient: boolean): $Map<(string), ($LootCrate)>
+public "readNetData"(data: $FriendlyByteBuf$$Type): void
+public "getStringID"(): StringJS
+public static "getLootCrates"(isClient: boolean): $Map<(StringJS), ($LootCrate)>
 public static "allCrateStacks"(isClientSide: boolean): $Collection<($ItemStack)>
 public "writeNetData"(data: $FriendlyByteBuf$$Type): void
-public "readNetData"(data: $FriendlyByteBuf$$Type): void
 public "writeData"(nbt: $CompoundTag$$Type): void
-public "createStack"(): $ItemStack
 public "readData"(nbt: $CompoundTag$$Type): void
+public "createStack"(): $ItemStack
+public "fillConfigGroup"(config: $ConfigGroup$$Type): void
 public "initFromTable"(): void
 get "table"(): $RewardTable
-get "itemName"(): string
 get "drops"(): $EntityWeight
+get "itemName"(): StringJS
 get "color"(): $Color4I
 get "glow"(): boolean
-get "stringID"(): string
+get "stringID"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -662,14 +736,14 @@ import {$SNBTCompoundTag, $SNBTCompoundTag$$Type} from "dev.ftb.mods.ftblibrary.
 
 export class $IntValue extends $NumberValue<(integer)> {
 readonly "parent": $SNBTConfig
-readonly "key": string
+readonly "key": StringJS
 
 
+public "range"(max: integer): $NumberValue<(integer)>
 public "set"(arg0: any): void
 public "set"(v: integer): void
 public "write"(tag: $SNBTCompoundTag$$Type): void
 public "read"(tag: $SNBTCompoundTag$$Type): void
-public "range"(max: integer): $NumberValue<(integer)>
 public "createClientConfig"(group: $ConfigGroup$$Type): void
 }
 /**
@@ -688,14 +762,14 @@ declare module "dev.ftb.mods.ftblibrary.snbt.config.SNBTConfig" {
 import {$ConfigGroup, $ConfigGroup$$Type} from "dev.ftb.mods.ftblibrary.config.ConfigGroup"
 import {$StringValue, $StringValue$$Type} from "dev.ftb.mods.ftblibrary.snbt.config.StringValue"
 import {$FriendlyByteBuf, $FriendlyByteBuf$$Type} from "net.minecraft.network.FriendlyByteBuf"
-import {$List, $List$$Type} from "java.util.List"
 import {$BooleanValue, $BooleanValue$$Type} from "dev.ftb.mods.ftblibrary.snbt.config.BooleanValue"
+import {$List, $List$$Type} from "java.util.List"
 import {$SNBTCompoundTag, $SNBTCompoundTag$$Type} from "dev.ftb.mods.ftblibrary.snbt.SNBTCompoundTag"
 import {$LongValue, $LongValue$$Type} from "dev.ftb.mods.ftblibrary.snbt.config.LongValue"
 import {$IntValue, $IntValue$$Type} from "dev.ftb.mods.ftblibrary.snbt.config.IntValue"
 import {$IntArrayValue, $IntArrayValue$$Type} from "dev.ftb.mods.ftblibrary.snbt.config.IntArrayValue"
-import {$NameMap, $NameMap$$Type} from "dev.ftb.mods.ftblibrary.config.NameMap"
 import {$StringListValue, $StringListValue$$Type} from "dev.ftb.mods.ftblibrary.snbt.config.StringListValue"
+import {$NameMap, $NameMap$$Type} from "dev.ftb.mods.ftblibrary.config.NameMap"
 import {$BaseValue, $BaseValue$$Type} from "dev.ftb.mods.ftblibrary.snbt.config.BaseValue"
 import {$EnumValue, $EnumValue$$Type} from "dev.ftb.mods.ftblibrary.snbt.config.EnumValue"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
@@ -704,34 +778,34 @@ import {$Path, $Path$$Type} from "java.nio.file.Path"
 
 export class $SNBTConfig extends $BaseValue<($List<($BaseValue<(any)>)>)> {
 readonly "parent": $SNBTConfig
-readonly "key": string
+readonly "key": StringJS
 
 
+public static "create"(name: StringJS): $SNBTConfig
 public "load"(path: $Path$$Type): void
-public "load"(path: $Path$$Type, defaultPath: $Path$$Type, comment: $Supplier$$Type<((string)[])>): void
+public "load"(path: $Path$$Type, defaultPath: $Path$$Type, comment: $Supplier$$Type<((StringJS)[])>): void
 public "add"<T extends $BaseValue<(any)>>(value: T): T
 public "write"(tag: $SNBTCompoundTag$$Type): void
 public "write"(buf: $FriendlyByteBuf$$Type): void
-public "read"(tag: $SNBTCompoundTag$$Type): void
 public "read"(buf: $FriendlyByteBuf$$Type): void
+public "read"(tag: $SNBTCompoundTag$$Type): void
 public "save"(path: $Path$$Type): void
-public static "create"(name: string): $SNBTConfig
 public "saveNow"(path: $Path$$Type): void
-public "addInt"(key: string, def: integer, min: integer, max: integer): $IntValue
-public "addInt"(key: string, def: integer): $IntValue
+public "addInt"(key: StringJS, def: integer, min: integer, max: integer): $IntValue
+public "addInt"(key: StringJS, def: integer): $IntValue
+public "addIntArray"(key: StringJS, def: (integer)[]): $IntArrayValue
+public "addLong"(key: StringJS, def: long): $LongValue
+public "addLong"(key: StringJS, def: long, min: long, max: long): $LongValue
+public "addDouble"(key: StringJS, def: double): $DoubleValue
+public "addDouble"(key: StringJS, def: double, min: double, max: double): $DoubleValue
+public "addString"(key: StringJS, def: StringJS): $StringValue
+public "addStringList"(key: StringJS, def: $List$$Type<(StringJS)>): $StringListValue
+public "addBoolean"(key: StringJS, def: boolean): $BooleanValue
+public "addEnum"<T>(key: StringJS, nameMap: $NameMap$$Type<(T)>, def: T): $EnumValue<(T)>
+public "addEnum"<T>(key: StringJS, nameMap: $NameMap$$Type<(T)>): $EnumValue<(T)>
+public "addGroup"(key: StringJS): $SNBTConfig
+public "addGroup"(key: StringJS, displayOrder: integer): $SNBTConfig
 public "createClientConfig"(group: $ConfigGroup$$Type): void
-public "addLong"(key: string, def: long): $LongValue
-public "addLong"(key: string, def: long, min: long, max: long): $LongValue
-public "addDouble"(key: string, def: double): $DoubleValue
-public "addDouble"(key: string, def: double, min: double, max: double): $DoubleValue
-public "addString"(key: string, def: string): $StringValue
-public "addStringList"(key: string, def: $List$$Type<(string)>): $StringListValue
-public "addBoolean"(key: string, def: boolean): $BooleanValue
-public "addIntArray"(key: string, def: (integer)[]): $IntArrayValue
-public "addEnum"<T>(key: string, nameMap: $NameMap$$Type<(T)>, def: T): $EnumValue<(T)>
-public "addEnum"<T>(key: string, nameMap: $NameMap$$Type<(T)>): $EnumValue<(T)>
-public "addGroup"(key: string, displayOrder: integer): $SNBTConfig
-public "addGroup"(key: string): $SNBTConfig
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -746,8 +820,8 @@ declare global {
 export type $SNBTConfig_ = $SNBTConfig$$Type;
 }}
 declare module "dev.ftb.mods.ftblibrary.util.TooltipList" {
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$ChatFormatting, $ChatFormatting$$Type} from "net.minecraft.ChatFormatting"
 
@@ -761,16 +835,16 @@ export class $TooltipList {
 
 constructor()
 
+public "string"(text: StringJS): void
 public "reset"(): void
 public "add"(component: $Component$$Type): void
-public "string"(text: string): void
-public "translate"(key: string, ...objects: (any)[]): void
 public "shouldRender"(): boolean
+public "translate"(key: StringJS, ...objects: (any)[]): void
 public "getLines"(): $List<($Component)>
 public "blankLine"(): void
-public "styledString"(text: string, style: $Style$$Type): void
-public "styledString"(text: string, color: $ChatFormatting$$Type): void
-public "styledTranslate"(key: string, style: $Style$$Type, ...objects: (any)[]): void
+public "styledString"(text: StringJS, style: $Style$$Type): void
+public "styledString"(text: StringJS, color: $ChatFormatting$$Type): void
+public "styledTranslate"(key: StringJS, style: $Style$$Type, ...objects: (any)[]): void
 get "lines"(): $List<($Component)>
 }
 /**
@@ -797,21 +871,21 @@ export class $QuestProgressEventData<T extends $QuestObject> {
 
 constructor(date: $Date$$Type, teamData: $TeamData$$Type, object: T, online: $Collection$$Type<($ServerPlayer$$Type)>, notified: $Collection$$Type<($ServerPlayer$$Type)>)
 
-public "getObject"(): T
 public "getTime"(): $Date
+public "getObject"(): T
 public "setCompleted"(id: long): void
 public "setStarted"(id: long): void
-public "getOnlineMembers"(): $List<($ServerPlayer)>
 public "withObject"<N extends $QuestObject>(o: N): $QuestProgressEventData<(N)>
 public "notifyPlayers"(id: long): void
 public "getTeamData"(): $TeamData
+public "getOnlineMembers"(): $List<($ServerPlayer)>
 public "getNotifiedPlayers"(): $List<($ServerPlayer)>
-get "object"(): T
 get "time"(): $Date
+get "object"(): T
 set "completed"(value: long)
 set "started"(value: long)
-get "onlineMembers"(): $List<($ServerPlayer)>
 get "teamData"(): $TeamData
+get "onlineMembers"(): $List<($ServerPlayer)>
 get "notifiedPlayers"(): $List<($ServerPlayer)>
 }
 /**
@@ -836,7 +910,7 @@ static readonly "NORMAL": $WidgetType
 
 
 public static "values"(): ($WidgetType)[]
-public static "valueOf"(name: string): $WidgetType
+public static "valueOf"(name: StringJS): $WidgetType
 public static "mouseOver"(mouseOver: boolean): $WidgetType
 }
 /**
@@ -858,8 +932,8 @@ import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$UUID, $UUID$$Type} from "java.util.UUID"
 import {$List, $List$$Type} from "java.util.List"
 import {$TeamRank, $TeamRank$$Type} from "dev.ftb.mods.ftbteams.api.TeamRank"
-import {$SNBTCompoundTag, $SNBTCompoundTag$$Type} from "dev.ftb.mods.ftblibrary.snbt.SNBTCompoundTag"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$SNBTCompoundTag, $SNBTCompoundTag$$Type} from "dev.ftb.mods.ftblibrary.snbt.SNBTCompoundTag"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$TeamProperty, $TeamProperty$$Type} from "dev.ftb.mods.ftbteams.api.property.TeamProperty"
 import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
@@ -871,20 +945,21 @@ export class $AbstractTeam extends $AbstractTeamBase {
 
 constructor(manager: $TeamManagerImpl$$Type, id: $UUID$$Type)
 
-public "settings"<T>(source: $CommandSourceStack$$Type, key: $TeamProperty$$Type<(T)>, value: string): integer
 public "getOwner"(): $UUID
+public "settings"<T>(source: $CommandSourceStack$$Type, key: $TeamProperty$$Type<(T)>, value: StringJS): integer
 public "markDirty"(): void
-public "sendMessage"(senderId: $UUID$$Type, message: string): void
 public "deserializeNBT"(tag: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
 public "serializeNBT"(provider: $HolderLookup$Provider$$Type): $SNBTCompoundTag
-public "getOnlineMembers"(): $Collection<(any)>
-public "updatePropertiesFrom"(newProperties: $TeamPropertyCollection$$Type): void
 public "getTeamInfo"(): $List<($Component)>
+public "sendMessage"(from: $UUID$$Type, text: $Component$$Type): void
+public "sendMessage"(senderId: $UUID$$Type, message: StringJS): void
+public "updatePropertiesFrom"(newProperties: $TeamPropertyCollection$$Type): void
+public "getOnlineMembers"(): $Collection<(any)>
 public "declineInvitation"(source: $CommandSourceStack$$Type): integer
 public "getOnlineRanked"(rank: $TeamRank$$Type): $List<($ServerPlayer)>
 get "owner"(): $UUID
-get "onlineMembers"(): $Collection<(any)>
 get "teamInfo"(): $List<($Component)>
+get "onlineMembers"(): $Collection<(any)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -953,16 +1028,16 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
 import {$RenderShape, $RenderShape$$Type} from "net.minecraft.world.level.block.RenderShape"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
@@ -984,7 +1059,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -994,16 +1069,16 @@ static readonly "PROPS": $BlockBehaviour$Properties
 
 constructor(props: $BlockBehaviour$Properties$$Type)
 
+public "getVisualShape"(state: $BlockState$$Type, blockGetter: $BlockGetter$$Type, pos: $BlockPos$$Type, ctx: $CollisionContext$$Type): $VoxelShape
 public "skipRendering"(state: $BlockState$$Type, state2: $BlockState$$Type, dir: $Direction$$Type): boolean
 public "setPlacedBy"(level: $Level$$Type, pos: $BlockPos$$Type, state: $BlockState$$Type, entity: $LivingEntity$$Type, stack: $ItemStack$$Type): void
-public "getVisualShape"(state: $BlockState$$Type, blockGetter: $BlockGetter$$Type, pos: $BlockPos$$Type, ctx: $CollisionContext$$Type): $VoxelShape
 public "newBlockEntity"(blockPos: $BlockPos$$Type, blockState: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
 public "getTicker"<T extends $BlockEntity>(level: $Level$$Type, blockState: $BlockState$$Type, blockEntityType: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
-public "propagatesSkylightDown"(state: $BlockState$$Type, bg: $BlockGetter$$Type, pos: $BlockPos$$Type): boolean
+public "getRenderShape"(state: $BlockState$$Type): $RenderShape
 public "getShadeBrightness"(blockState: $BlockState$$Type, blockGetter: $BlockGetter$$Type, blockPos: $BlockPos$$Type): float
-public "getCloneItemStack"(levelReader: $LevelReader$$Type, blockPos: $BlockPos$$Type, blockState: $BlockState$$Type): $ItemStack
+public "propagatesSkylightDown"(state: $BlockState$$Type, bg: $BlockGetter$$Type, pos: $BlockPos$$Type): boolean
 public "getCollisionShape"(state: $BlockState$$Type, bg: $BlockGetter$$Type, pos: $BlockPos$$Type, ctx: $CollisionContext$$Type): $VoxelShape
+public "getCloneItemStack"(levelReader: $LevelReader$$Type, blockPos: $BlockPos$$Type, blockState: $BlockState$$Type): $ItemStack
 public static "questBlockEntityProvider"(): $BlockEntityType$BlockEntitySupplier<($QuestBarrierBlockEntity)>
 public "asHolder"(): $Holder<(any)>
 }
@@ -1031,15 +1106,15 @@ static readonly "STREAM_CODEC": $StreamCodec<($FriendlyByteBuf), ($TranslationTa
 
 constructor()
 
-public "remove"(key: string): void
+public "remove"(key: StringJS): void
 public "size"(): integer
-public "put"(key: string, message: string): void
-public "put"(key: string, message: $List$$Type<(string)>): void
-public "contains"(key: string): boolean
-public "getStringTranslation"(key: string): $Optional<(string)>
+public "put"(key: StringJS, message: StringJS): void
+public "put"(key: StringJS, message: $List$$Type<(StringJS)>): void
+public "contains"(key: StringJS): boolean
 public "saveToNBT"(): $CompoundTag
 public static "fromNBT"(tag: $CompoundTag$$Type): $TranslationTable
-public "getStringListTranslation"(key: string): $Optional<($List<(string)>)>
+public "getStringTranslation"(key: StringJS): $Optional<(StringJS)>
+public "getStringListTranslation"(key: StringJS): $Optional<($List<(StringJS)>)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1060,13 +1135,13 @@ import {$BaseValue, $BaseValue$$Type} from "dev.ftb.mods.ftblibrary.snbt.config.
 import {$List, $List$$Type} from "java.util.List"
 import {$SNBTCompoundTag, $SNBTCompoundTag$$Type} from "dev.ftb.mods.ftblibrary.snbt.SNBTCompoundTag"
 
-export class $StringListValue extends $BaseValue<($List<(string)>)> {
+export class $StringListValue extends $BaseValue<($List<(StringJS)>)> {
 readonly "parent": $SNBTConfig
-readonly "key": string
+readonly "key": StringJS
 
 
 public "set"(arg0: any): void
-public "set"(v: $List$$Type<(string)>): void
+public "set"(v: $List$$Type<(StringJS)>): void
 public "write"(tag: $SNBTCompoundTag$$Type): void
 public "read"(tag: $SNBTCompoundTag$$Type): void
 public "createClientConfig"(group: $ConfigGroup$$Type): void
@@ -1095,27 +1170,27 @@ import {$Tag, $Tag$$Type} from "net.minecraft.nbt.Tag"
 export class $TeamProperty<T> {
 
 
+public "config"(config: $ConfigGroup$$Type, value: $TeamPropertyValue$$Type<(T)>): void
+public "readValue"(buf: $RegistryFriendlyByteBuf$$Type): T
+public "getDefaultValue"(): T
 public "equals"(o: any): boolean
-public "toString"(value: T): string
-public "toString"(): string
+public "toString"(): StringJS
+public "toString"(value: T): StringJS
 public "hashCode"(): integer
 public "write"(arg0: $RegistryFriendlyByteBuf$$Type): void
 public "getId"(): $ResourceLocation
 public "getType"(): $TeamPropertyType<(T)>
-public "getDefaultValue"(): T
-public "config"(config: $ConfigGroup$$Type, value: $TeamPropertyValue$$Type<(T)>): void
-public "readValue"(buf: $RegistryFriendlyByteBuf$$Type): T
-public "fromString"(arg0: string): $Optional<(T)>
-public "writeValue"(buf: $RegistryFriendlyByteBuf$$Type, value: T): void
 public "toNBT"(value: T): $Tag
+public "fromString"(arg0: StringJS): $Optional<(T)>
+public "writeValue"(buf: $RegistryFriendlyByteBuf$$Type, value: T): void
+public "fromNBT"(tag: $Tag$$Type): $Optional<(T)>
 public "createDefaultValue"(): $TeamPropertyValue<(T)>
-public "getTranslationKey"(prefix: string): string
+public "getTranslationKey"(prefix: StringJS): StringJS
 public "createValueFromNetwork"(buf: $RegistryFriendlyByteBuf$$Type): $TeamPropertyValue<(T)>
 public "createValueFromNBT"(tag: $Tag$$Type): $TeamPropertyValue<(T)>
-public "fromNBT"(tag: $Tag$$Type): $Optional<(T)>
+get "defaultValue"(): T
 get "id"(): $ResourceLocation
 get "type"(): $TeamPropertyType<(T)>
-get "defaultValue"(): T
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1152,74 +1227,74 @@ export class $Panel extends $Widget {
 
 constructor(panel: $Panel$$Type)
 
-public "getY"(): integer
+public "tick"(): void
+public "setOffset"(flag: boolean): void
 public "add"(widget: $Widget$$Type): void
 public "addAll"(list: $Iterable$$Type<($Widget$$Type)>): void
-public "setOffset"(flag: boolean): void
-public "tick"(): void
-public "onClosed"(): void
-public "getWidgets"(): $List<($Widget)>
+public "getY"(): integer
+public "getX"(): integer
+public "draw"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, x: integer, y: integer, w: integer, h: integer): void
+public "align"(layout: $WidgetLayout$$Type): integer
+public "getWidget"(index: integer): $Widget
 public "keyPressed"(key: $Key$$Type): boolean
 public "clearWidgets"(): void
+public "onClosed"(): void
 public "mouseReleased"(button: $MouseButton$$Type): void
 public "mouseDragged"(button: integer, dragX: double, dragY: double): boolean
 public "mouseScrolled"(scroll: double): boolean
 public "keyReleased"(key: $Key$$Type): void
 public "charTyped"(c: character, modifiers: $KeyModifiers$$Type): boolean
-public "getWidget"(index: integer): $Widget
+public "getWidgets"(): $List<($Widget)>
 public "getCursor"(): $CursorType
-public "draw"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, x: integer, y: integer, w: integer, h: integer): void
-public "align"(layout: $WidgetLayout$$Type): integer
-public "getX"(): integer
-public "getContentHeight"(): integer
-public "getContentWidth"(): integer
-public "drawOffsetBackground"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, x: integer, y: integer, w: integer, h: integer): void
-public "updateMouseOver"(mouseX: integer, mouseY: integer): void
-public "mouseDoubleClicked"(button: $MouseButton$$Type): boolean
-public "movePanelScroll"(dx: double, dy: double): boolean
-public "isMouseOverAnyWidget"(): boolean
-public "addMouseOverText"(list: $TooltipList$$Type): void
+public "setScrollStep"(s: double): void
+public "refreshWidgets"(): void
+public "drawBackground"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, x: integer, y: integer, w: integer, h: integer): void
 public "addWidgets"(): void
 public "alignWidgets"(): void
-public "refreshWidgets"(): void
-public "isOffset"(): boolean
 public "getScrollX"(): double
 public "setScrollX"(scroll: double): void
 public "getScrollY"(): double
 public "setScrollY"(scroll: double): void
-public "drawBackground"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, x: integer, y: integer, w: integer, h: integer): void
+public "isOffset"(): boolean
 public "drawWidget"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, widget: $Widget$$Type, x: integer, y: integer, w: integer, h: integer): void
 public "scrollPanel"(scroll: double): boolean
 public "getScrollStep"(): double
-public "setScrollStep"(s: double): void
 public "mousePressed"(button: $MouseButton$$Type): boolean
-public "getOnlyRenderWidgetsInside"(): boolean
-public "setOnlyRenderWidgetsInside"(value: boolean): void
-public "isDefaultScrollVertical"(): boolean
-public "getIngredientUnderMouse"(): $Optional<($PositionedIngredient)>
-public "getOnlyInteractWithWidgetsInside"(): boolean
+public "getContentHeight"(): integer
 public "setOnlyInteractWithWidgetsInside"(value: boolean): void
-get "y"(): integer
+public "getOnlyInteractWithWidgetsInside"(): boolean
+public "getContentWidth"(): integer
+public "drawOffsetBackground"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, x: integer, y: integer, w: integer, h: integer): void
+public "movePanelScroll"(dx: double, dy: double): boolean
+public "isMouseOverAnyWidget"(): boolean
+public "updateMouseOver"(mouseX: integer, mouseY: integer): void
+public "mouseDoubleClicked"(button: $MouseButton$$Type): boolean
+public "addMouseOverText"(list: $TooltipList$$Type): void
+public "setOnlyRenderWidgetsInside"(value: boolean): void
+public "getOnlyRenderWidgetsInside"(): boolean
+public "getIngredientUnderMouse"(): $Optional<($PositionedIngredient)>
+public "isDefaultScrollVertical"(): boolean
 set "offset"(value: boolean)
+get "y"(): integer
+get "x"(): integer
 get "widgets"(): $List<($Widget)>
 get "cursor"(): $CursorType
-get "x"(): integer
-get "contentHeight"(): integer
-get "contentWidth"(): integer
-get "mouseOverAnyWidget"(): boolean
-get "offset"(): boolean
+set "scrollStep"(value: double)
 get "scrollX"(): double
 set "scrollX"(value: double)
 get "scrollY"(): double
 set "scrollY"(value: double)
+get "offset"(): boolean
 get "scrollStep"(): double
-set "scrollStep"(value: double)
-get "onlyRenderWidgetsInside"(): boolean
-set "onlyRenderWidgetsInside"(value: boolean)
-get "defaultScrollVertical"(): boolean
-get "ingredientUnderMouse"(): $Optional<($PositionedIngredient)>
-get "onlyInteractWithWidgetsInside"(): boolean
+get "contentHeight"(): integer
 set "onlyInteractWithWidgetsInside"(value: boolean)
+get "onlyInteractWithWidgetsInside"(): boolean
+get "contentWidth"(): integer
+get "mouseOverAnyWidget"(): boolean
+set "onlyRenderWidgetsInside"(value: boolean)
+get "onlyRenderWidgetsInside"(): boolean
+get "ingredientUnderMouse"(): $Optional<($PositionedIngredient)>
+get "defaultScrollVertical"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1253,73 +1328,74 @@ import {$Team, $Team$$Type} from "dev.ftb.mods.ftbteams.api.Team"
 export class $AbstractTeamBase implements $Team {
 
 
-public "getDescription"(): string
+public "getDisplayName"(): StringJS
+public "getDescription"(): StringJS
+public "isValid"(): boolean
 public "getName"(): $Component
 public "getProperty"<T>(property: $TeamProperty$$Type<(T)>): T
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "setProperty"<T>(property: $TeamProperty$$Type<(T)>, value: T): void
 public "getProperties"(): $TeamPropertyCollection
 public "getId"(): $UUID
 public "getType"(): $TeamType
-public "getDisplayName"(): string
-public "isValid"(): boolean
 public "markDirty"(): void
-public "getMembers"(): $Set<($UUID)>
 public "addMember"(id: $UUID$$Type, rank: $TeamRank$$Type): void
+public "getMembers"(): $Set<($UUID)>
 public "getColor"(): integer
 public "removeMember"(id: $UUID$$Type): void
-public "getShortName"(): string
+public "getShortName"(): StringJS
 public "addMessage"(message: $TeamMessage$$Type): void
-public "isOfficerOrBetter"(profile: $UUID$$Type): boolean
-public "getMessageHistory"(): $List<($TeamMessage)>
-public "getRankForPlayer"(playerId: $UUID$$Type): $TeamRank
-public "getPlayersByRank"(minRank: $TeamRank$$Type): $Map<($UUID), ($TeamRank)>
-public "getTypeTranslationKey"(): string
-public "getTeamId"(): $UUID
 public "getColoredName"(): $Component
-public "createParty"(description: string, color: $Color4I$$Type): $Team
+public "createParty"(description: StringJS, color: $Color4I$$Type): $Team
 public "isFreeToJoin"(): boolean
 public "isAllyOrBetter"(profile: $UUID$$Type): boolean
 public "isInvited"(profile: $UUID$$Type): boolean
 public "addMessages"(messages: $Collection$$Type<($TeamMessage$$Type)>): void
 public "invalidateTeam"(): void
-public "getExtraData"(): $CompoundTag
+public "getTeamId"(): $UUID
 public "isMember"(uuid: $UUID$$Type): boolean
+public "getExtraData"(): $CompoundTag
+public "getMessageHistory"(): $List<($TeamMessage)>
+public "getRankForPlayer"(playerId: $UUID$$Type): $TeamRank
+public "getPlayersByRank"(minRank: $TeamRank$$Type): $Map<($UUID), ($TeamRank)>
+public "getTypeTranslationKey"(): StringJS
+public "isOfficerOrBetter"(profile: $UUID$$Type): boolean
 public "getMaxMessageHistorySize"(): integer
 public "getOwner"(): $UUID
-public "sendMessage"(arg0: $UUID$$Type, arg1: string): void
-public "getOnlineMembers"(): $Collection<($ServerPlayer)>
 public "isPlayerTeam"(): boolean
 public "isPartyTeam"(): boolean
 public "isServerTeam"(): boolean
 public "getTeamInfo"(): $List<($Component)>
 public "isClientTeam"(): boolean
-get "description"(): string
+public "sendMessage"(arg0: $UUID$$Type, arg1: StringJS): void
+public "sendMessage"(arg0: $UUID$$Type, arg1: $Component$$Type): void
+public "getOnlineMembers"(): $Collection<($ServerPlayer)>
+get "displayName"(): StringJS
+get "description"(): StringJS
+get "valid"(): boolean
 get "name"(): $Component
 get "properties"(): $TeamPropertyCollection
 get "id"(): $UUID
 get "type"(): $TeamType
-get "displayName"(): string
-get "valid"(): boolean
 get "members"(): $Set<($UUID)>
 get "color"(): integer
-get "shortName"(): string
-get "messageHistory"(): $List<($TeamMessage)>
-get "typeTranslationKey"(): string
-get "teamId"(): $UUID
+get "shortName"(): StringJS
 get "coloredName"(): $Component
 get "freeToJoin"(): boolean
+get "teamId"(): $UUID
 get "extraData"(): $CompoundTag
+get "messageHistory"(): $List<($TeamMessage)>
+get "typeTranslationKey"(): StringJS
 get "maxMessageHistorySize"(): integer
 get "owner"(): $UUID
-get "onlineMembers"(): $Collection<($ServerPlayer)>
 get "playerTeam"(): boolean
 get "partyTeam"(): boolean
 get "serverTeam"(): boolean
 get "teamInfo"(): $List<($Component)>
 get "clientTeam"(): boolean
+get "onlineMembers"(): $Collection<($ServerPlayer)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1363,11 +1439,53 @@ export type $IEditable$$Type = ((arg0: $Player) => boolean);
 declare global {
 export type $IEditable_ = $IEditable$$Type;
 }}
+declare module "dev.ftb.mods.ftblibrary.config.EntityFaceConfig" {
+import {$SelectableResource, $SelectableResource$$Type} from "dev.ftb.mods.ftblibrary.config.ui.resource.SelectableResource"
+import {$TooltipList, $TooltipList$$Type} from "dev.ftb.mods.ftblibrary.util.TooltipList"
+import {$ConfigCallback, $ConfigCallback$$Type} from "dev.ftb.mods.ftblibrary.config.ConfigCallback"
+import {$OptionalLong, $OptionalLong$$Type} from "java.util.OptionalLong"
+import {$MouseButton, $MouseButton$$Type} from "dev.ftb.mods.ftblibrary.ui.input.MouseButton"
+import {$Widget, $Widget$$Type} from "dev.ftb.mods.ftblibrary.ui.Widget"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$ResourceConfigValue, $ResourceConfigValue$$Type} from "dev.ftb.mods.ftblibrary.config.ResourceConfigValue"
+import {$EntityType, $EntityType$$Type} from "net.minecraft.world.entity.EntityType"
+
+export class $EntityFaceConfig extends $ResourceConfigValue<($EntityType<(any)>)> {
+ "id": StringJS
+static readonly "NONE": $EntityType<(any)>
+static readonly "NULL_TEXT": $Component
+
+constructor()
+
+public "isEmpty"(): boolean
+public "getResource"(): $SelectableResource<($EntityType<(any)>)>
+public "addInfo"(list: $TooltipList$$Type): void
+public "onClicked"(clickedWidget: $Widget$$Type, button: $MouseButton$$Type, callback: $ConfigCallback$$Type): void
+public "setResource"(selectable: $SelectableResource$$Type<($EntityType$$Type<(any)>)>): boolean
+public "fixedResourceSize"(): $OptionalLong
+public "getStringForGUI"(arg0: any): $Component
+public "getStringForGUI"(v: $EntityType$$Type<(any)>): $Component
+get "empty"(): boolean
+get "resource"(): $SelectableResource<($EntityType<(any)>)>
+set "resource"(value: $SelectableResource$$Type<($EntityType$$Type<(any)>)>)
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $EntityFaceConfig$$Type = ($EntityFaceConfig);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $EntityFaceConfig_ = $EntityFaceConfig$$Type;
+}}
 declare module "dev.ftb.mods.ftblibrary.ui.DropDownMenu" {
 import {$Panel, $Panel$$Type} from "dev.ftb.mods.ftblibrary.ui.Panel"
 import {$GuiGraphics, $GuiGraphics$$Type} from "net.minecraft.client.gui.GuiGraphics"
-import {$List, $List$$Type} from "java.util.List"
 import {$ContextMenuItem, $ContextMenuItem$$Type} from "dev.ftb.mods.ftblibrary.ui.ContextMenuItem"
+import {$List, $List$$Type} from "java.util.List"
 import {$PopupMenu, $PopupMenu$$Type} from "dev.ftb.mods.ftblibrary.ui.PopupMenu"
 import {$MouseButton, $MouseButton$$Type} from "dev.ftb.mods.ftblibrary.ui.input.MouseButton"
 import {$Theme, $Theme$$Type} from "dev.ftb.mods.ftblibrary.ui.Theme"
@@ -1382,10 +1500,10 @@ export class $DropDownMenu extends $ModalPanel implements $PopupMenu {
 constructor(panel: $Panel$$Type, i: $List$$Type<($ContextMenuItem$$Type)>)
 
 public "draw"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, x: integer, y: integer, w: integer, h: integer): void
-public "getModalPanel"(): $ModalPanel
+public "drawBackground"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, x: integer, y: integer, w: integer, h: integer): void
 public "addWidgets"(): void
 public "alignWidgets"(): void
-public "drawBackground"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, x: integer, y: integer, w: integer, h: integer): void
+public "getModalPanel"(): $ModalPanel
 public "scrollPanel"(scroll: double): boolean
 public "mousePressed"(button: $MouseButton$$Type): boolean
 public "setMaxHeightPercent"(maxHeightPercent: float): void
@@ -1420,25 +1538,25 @@ export class $SNBTCompoundTag extends $CompoundTag {
 static readonly "CODEC": $Codec<($CompoundTag)>
 static readonly "TYPE": $TagType<($CompoundTag)>
 static readonly "STREAM_CODEC": $StreamCodec<($FriendlyByteBuf), ($SNBTCompoundTag)>
-readonly "tags": $Map<(string), ($Tag)>
+readonly "tags": $Map<(StringJS), ($Tag)>
 
 constructor()
 
-public "putNull"(key: string): void
-public "putBoolean"(key: string, value: boolean): void
+public "getComment"(key: StringJS): StringJS
+public "putNull"(key: StringJS): void
+public "putBoolean"(key: StringJS, value: boolean): void
 public static "of"(tag: $Tag$$Type): $SNBTCompoundTag
 public "merge"(other: $CompoundTag$$Type, overwrite: boolean): $CompoundTag
-public "comment"(key: string, comment: string): void
-public "comment"(key: string, ...comment: (string)[]): void
+public "comment"(key: StringJS, ...comment: (StringJS)[]): void
+public "comment"(key: StringJS, comment: StringJS): void
 public "copy"(): $Tag
-public "getComment"(key: string): string
-public "getCompound"(arg0: string): $CompoundTag
-public "isBoolean"(key: string): boolean
-public "getList"<T extends $Tag>(key: string, type: $Class$$Type<(T)>): $List<(T)>
-public "getNullableList"(key: string, type: byte): $ListTag
+public "getCompound"(arg0: StringJS): $CompoundTag
+public "getList"<T extends $Tag>(key: StringJS, type: $Class$$Type<(T)>): $List<(T)>
+public "isBoolean"(key: StringJS): boolean
 public "singleLine"(): void
-public "singleLine"(key: string): void
-public "putNumber"(key: string, number: number): void
+public "singleLine"(key: StringJS): void
+public "putNumber"(key: StringJS, number: number): void
+public "getNullableList"(key: StringJS, type: byte): $ListTag
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1455,8 +1573,8 @@ export type $SNBTCompoundTag_ = $SNBTCompoundTag$$Type;
 declare module "dev.ftb.mods.ftblibrary.ui.ContextMenu" {
 import {$Panel, $Panel$$Type} from "dev.ftb.mods.ftblibrary.ui.Panel"
 import {$GuiGraphics, $GuiGraphics$$Type} from "net.minecraft.client.gui.GuiGraphics"
-import {$List, $List$$Type} from "java.util.List"
 import {$ContextMenuItem, $ContextMenuItem$$Type} from "dev.ftb.mods.ftblibrary.ui.ContextMenuItem"
+import {$List, $List$$Type} from "java.util.List"
 import {$PopupMenu, $PopupMenu$$Type} from "dev.ftb.mods.ftblibrary.ui.PopupMenu"
 import {$MouseButton, $MouseButton$$Type} from "dev.ftb.mods.ftblibrary.ui.input.MouseButton"
 import {$Theme, $Theme$$Type} from "dev.ftb.mods.ftblibrary.ui.Theme"
@@ -1471,16 +1589,16 @@ export class $ContextMenu extends $ModalPanel implements $PopupMenu {
 constructor(panel: $Panel$$Type, i: $List$$Type<($ContextMenuItem$$Type)>)
 
 public "draw"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, x: integer, y: integer, w: integer, h: integer): void
-public "getModalPanel"(): $ModalPanel
+public "setMaxRows"(maxRows: integer): void
+public "drawBackground"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, x: integer, y: integer, w: integer, h: integer): void
 public "addWidgets"(): void
 public "alignWidgets"(): void
-public "drawBackground"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, x: integer, y: integer, w: integer, h: integer): void
+public "getModalPanel"(): $ModalPanel
 public "mousePressed"(button: $MouseButton$$Type): boolean
-public "setMaxRows"(maxRows: integer): void
 public "hasIcons"(): boolean
 public "setDrawVerticalSeparators"(drawVerticalSeparators: boolean): void
-get "modalPanel"(): $ModalPanel
 set "maxRows"(value: integer)
+get "modalPanel"(): $ModalPanel
 set "drawVerticalSeparators"(value: boolean)
 }
 /**
@@ -1542,24 +1660,24 @@ constructor(id: long)
 
 public "getChildren"(): $Collection<($QuestObject)>
 public "isVisible"(data: $TeamData$$Type): boolean
-public "fillConfigGroup"(config: $ConfigGroup$$Type): void
-public "hasUnclaimedRewardsRaw"(teamData: $TeamData$$Type, player: $UUID$$Type): boolean
-public "getProgressColor"(data: $TeamData$$Type): $Color4I
-public "getProgressColor"(data: $TeamData$$Type, dim: boolean): $Color4I
-public "getRelatedQuest"(): $Quest
-public "forceProgress"(teamData: $TeamData$$Type, progressChange: $ProgressChange$$Type): void
-public "cacheProgress"(): boolean
 public "isSearchable"(data: $TeamData$$Type): boolean
 public "isCompletedRaw"(data: $TeamData$$Type): boolean
+public "readNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
+public "forceProgress"(teamData: $TeamData$$Type, progressChange: $ProgressChange$$Type): void
+public "cacheProgress"(): boolean
 public "onStarted"(data: $QuestProgressEventData$$Type<(any)>): void
 public "onCompleted"(data: $QuestProgressEventData$$Type<(any)>): void
 public "writeNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
-public "readNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
 public "writeData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
 public "readData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
-public "isOptionalForProgression"(): boolean
-public static "getRelativeProgressFromChildren"(progressSum: integer, count: integer): integer
 public "getRelativeProgressFromChildren"(arg0: $TeamData$$Type): integer
+public static "getRelativeProgressFromChildren"(progressSum: integer, count: integer): integer
+public "getProgressColor"(data: $TeamData$$Type, dim: boolean): $Color4I
+public "getProgressColor"(data: $TeamData$$Type): $Color4I
+public "getRelatedQuest"(): $Quest
+public "fillConfigGroup"(config: $ConfigGroup$$Type): void
+public "hasUnclaimedRewardsRaw"(teamData: $TeamData$$Type, player: $UUID$$Type): boolean
+public "isOptionalForProgression"(): boolean
 get "children"(): $Collection<($QuestObject)>
 get "relatedQuest"(): $Quest
 get "optionalForProgression"(): boolean
@@ -1611,53 +1729,53 @@ readonly "id": long
 
 constructor(id: long, q: $Quest$$Type)
 
-public "claim"(arg0: $ServerPlayer$$Type, arg1: boolean): void
-public "getType"(): $RewardType
 public "getObjectType"(): $QuestObjectType
-public "getQuestChapter"(): $Chapter
-public "fillConfigGroup"(config: $ConfigGroup$$Type): void
-public "componentsToRefresh"(): $Set<($RecipeModHelper$Components)>
+public "getType"(): $RewardType
+public "claim"(arg0: $ServerPlayer$$Type, arg1: boolean): void
+public "getQuestFile"(): $BaseQuestFile
+public "isTeamReward"(): boolean
+public "readNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
+public "getAltTitle"(): $Component
+public "getAltIcon"(): $Icon
+public "getParentID"(): long
+public "editedFromGUI"(): void
+public "createSubGroup"(group: $ConfigGroup$$Type): $ConfigGroup
+public "forceProgress"(teamData: $TeamData$$Type, progressChange: $ProgressChange$$Type): void
+public "deleteSelf"(): void
+public "deleteChildren"(): void
+public "getQuest"(): $Quest
+public "writeNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
+public "getButtonText"(): StringJS
+public "writeData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
+public "onCreated"(): void
+public "readData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
+public "getIngredient"(widget: $Widget$$Type): $Optional<($PositionedIngredient)>
+public "onButtonClicked"(button: $Button$$Type, canClick: boolean): void
 public "addMouseOverText"(list: $TooltipList$$Type): void
 public "ignoreRewardBlocking"(): boolean
+public "getQuestChapter"(): $Chapter
 public "getExcludeFromClaimAll"(): boolean
 public "isClaimAllHardcoded"(): boolean
 public "automatedClaimPre"(blockEntity: $BlockEntity$$Type, items: $List$$Type<($ItemStack$$Type)>, random: $RandomSource$$Type, playerId: $UUID$$Type, player: $ServerPlayer$$Type): boolean
 public "automatedClaimPost"(blockEntity: $BlockEntity$$Type, playerId: $UUID$$Type, player: $ServerPlayer$$Type): void
 public "getAutoClaimType"(): $RewardAutoClaim
-public "onButtonClicked"(button: $Button$$Type, canClick: boolean): void
-public "onCreated"(): void
-public "forceProgress"(teamData: $TeamData$$Type, progressChange: $ProgressChange$$Type): void
-public "editedFromGUI"(): void
-public "createSubGroup"(group: $ConfigGroup$$Type): $ConfigGroup
-public "getQuestFile"(): $BaseQuestFile
-public "deleteSelf"(): void
-public "deleteChildren"(): void
-public "getQuest"(): $Quest
-public "writeNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
-public "readNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
-public "getParentID"(): long
-public "getAltTitle"(): $Component
-public "getAltIcon"(): $Icon
-public "isTeamReward"(): boolean
-public "writeData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
-public "getButtonText"(): string
-public "readData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
-public "getIngredient"(widget: $Widget$$Type): $Optional<($PositionedIngredient)>
+public "fillConfigGroup"(config: $ConfigGroup$$Type): void
+public "componentsToRefresh"(): $Set<($RecipeModHelper$Components)>
 public "addTitleInMouseOverText"(): boolean
 public "addAnyProtoTranslations"(tag: $CompoundTag$$Type): void
-get "type"(): $RewardType
 get "objectType"(): $QuestObjectType
+get "type"(): $RewardType
+get "questFile"(): $BaseQuestFile
+get "teamReward"(): boolean
+get "altTitle"(): $Component
+get "altIcon"(): $Icon
+get "parentID"(): long
+get "quest"(): $Quest
+get "buttonText"(): StringJS
 get "questChapter"(): $Chapter
 get "excludeFromClaimAll"(): boolean
 get "claimAllHardcoded"(): boolean
 get "autoClaimType"(): $RewardAutoClaim
-get "questFile"(): $BaseQuestFile
-get "quest"(): $Quest
-get "parentID"(): long
-get "altTitle"(): $Component
-get "altIcon"(): $Icon
-get "teamReward"(): boolean
-get "buttonText"(): string
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1685,20 +1803,20 @@ export class $ListConfig<E, CV extends $ConfigValue<(E)>> extends $ConfigValue<(
 static readonly "COLOR": $Color4I
 static readonly "EMPTY_LIST": $Component
 static readonly "NON_EMPTY_LIST": $Component
- "id": string
+ "id": StringJS
 static readonly "NULL_TEXT": $Component
 
 constructor(t: CV)
 
 public "getType"(): CV
-public "copy"(arg0: any): any
 public "copy"(v: $List$$Type<(E)>): $List<(E)>
+public "copy"(arg0: any): any
 public "getColor"(arg0: any): $Color4I
 public "getColor"(v: $List$$Type<(E)>): $Color4I
+public "addInfo"(l: $TooltipList$$Type): void
+public "onClicked"(clickedWidget: $Widget$$Type, button: $MouseButton$$Type, callback: $ConfigCallback$$Type): void
 public "getStringForGUI"(arg0: any): $Component
 public "getStringForGUI"(v: $List$$Type<(E)>): $Component
-public "onClicked"(clickedWidget: $Widget$$Type, button: $MouseButton$$Type, callback: $ConfigCallback$$Type): void
-public "addInfo"(l: $TooltipList$$Type): void
 get "type"(): CV
 }
 /**
@@ -1767,23 +1885,23 @@ import {$SNBTCompoundTag, $SNBTCompoundTag$$Type} from "dev.ftb.mods.ftblibrary.
 
 export class $BaseValue<T> implements $Comparable<($BaseValue<(T)>)> {
 readonly "parent": $SNBTConfig
-readonly "key": string
+readonly "key": StringJS
 
 
 public "excluded"<E extends $BaseValue<(T)>>(): E
 public "get"(): T
-public "toString"(): string
+public "toString"(): StringJS
 public "compareTo"(o: $BaseValue$$Type<(T)>): integer
 public "compareTo"(arg0: any): integer
-public "getKey"(): string
+public "getKey"(): StringJS
 public "enabled"<E extends $BaseValue<(T)>>(e: $BooleanSupplier$$Type): E
 public "set"(v: T): void
 public "write"(arg0: $SNBTCompoundTag$$Type): void
 public "read"(arg0: $SNBTCompoundTag$$Type): void
-public "comment"<E extends $BaseValue<(T)>>(...s: (string)[]): E
-public "withDisplayOrder"(order: integer): $BaseValue<(T)>
+public "comment"<E extends $BaseValue<(T)>>(...s: (StringJS)[]): E
 public "createClientConfig"(group: $ConfigGroup$$Type): void
-get "key"(): string
+public "withDisplayOrder"(order: integer): $BaseValue<(T)>
+get "key"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1811,13 +1929,13 @@ import {$CommandSourceStack, $CommandSourceStack$$Type} from "net.minecraft.comm
 export class $TeamPropertyArgument implements $ArgumentType<($TeamProperty<(any)>)> {
 
 
-public static "get"(context: $CommandContext$$Type<($CommandSourceStack$$Type)>, name: string): $TeamProperty<(any)>
-public "parse"(reader: $StringReader$$Type): $TeamProperty<(any)>
 public static "create"(): $TeamPropertyArgument
+public static "get"(context: $CommandContext$$Type<($CommandSourceStack$$Type)>, name: StringJS): $TeamProperty<(any)>
+public "parse"(arg0: $StringReader$$Type): any
 public "listSuggestions"<S>(context: $CommandContext$$Type<(S)>, builder: $SuggestionsBuilder$$Type): $CompletableFuture<($Suggestions)>
-public "getExamples"(): $Collection<(string)>
 public "parse"<S>(arg0: $StringReader$$Type, arg1: S): $TeamProperty<(any)>
-get "examples"(): $Collection<(string)>
+public "getExamples"(): $Collection<(StringJS)>
+get "examples"(): $Collection<(StringJS)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1873,13 +1991,13 @@ import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component
 import {$ConfigValue, $ConfigValue$$Type} from "dev.ftb.mods.ftblibrary.config.ConfigValue"
 
 export class $ConfigWithVariants<T> extends $ConfigValue<(T)> {
- "id": string
+ "id": StringJS
 static readonly "NULL_TEXT": $Component
 
 constructor()
 
-public "onClicked"(clickedWidget: $Widget$$Type, button: $MouseButton$$Type, callback: $ConfigCallback$$Type): void
 public "getIteration"(arg0: T, arg1: boolean): T
+public "onClicked"(clickedWidget: $Widget$$Type, button: $MouseButton$$Type, callback: $ConfigCallback$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1906,59 +2024,59 @@ import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 
 export class $ConfigValue<T> implements $Comparable<($ConfigValue<(T)>)> {
- "id": string
+ "id": StringJS
 static readonly "NULL_TEXT": $Component
 
 constructor()
 
-public "getName"(): string
+public "getPath"(): StringJS
+public "isEqual"(v1: T, v2: T): boolean
+public "getDefaultValue"(): T
+public "getName"(): StringJS
 public "compareTo"(o: $ConfigValue$$Type<(T)>): integer
 public "compareTo"(arg0: any): integer
 public "getValue"(): T
-public static "info"(key: string, value: any): $Component
-public "init"(group: $ConfigGroup$$Type, id: string, value: T, setter: $Consumer$$Type<(T)>, defaultValue: T): $ConfigValue<(T)>
+public static "info"(key: StringJS, value: any): $Component
+public "init"(group: $ConfigGroup$$Type, id: StringJS, value: T, setter: $Consumer$$Type<(T)>, defaultValue: T): $ConfigValue<(T)>
 public "setValue"(value: T): void
 public "copy"(value: T): T
-public "getDefaultValue"(): T
-public "getPath"(): string
-public "isEqual"(v1: T, v2: T): boolean
 public "setIcon"(i: $Icon$$Type): $ConfigValue<(T)>
 public "getColor"(): $Color4I
 public "getColor"(v: T): $Color4I
-public "getTooltip"(): string
+public "getTooltip"(): StringJS
 public "getGroup"(): $ConfigGroup
-public "getIcon"(): $Icon
 public "getIcon"(v: T): $Icon
-public "getNameKey"(): string
-public "setCurrentValue"(v: T): boolean
-public "getStringForGUI"(): $Component
-public "getStringForGUI"(v: T): $Component
-public "setDefaultValue"(defaultValue: T): void
-public "setCanEdit"(e: boolean): $ConfigValue<(T)>
-public "onClicked"(arg0: $Widget$$Type, arg1: $MouseButton$$Type, arg2: $ConfigCallback$$Type): void
-public "getCanEdit"(): boolean
-public "setNameKey"(key: string): $ConfigValue<(T)>
+public "getIcon"(): $Icon
+public "getNameKey"(): StringJS
 public "addInfo"(list: $TooltipList$$Type): void
+public "onClicked"(arg0: $Widget$$Type, arg1: $MouseButton$$Type, arg2: $ConfigCallback$$Type): void
+public "setNameKey"(key: StringJS): $ConfigValue<(T)>
+public "getCanEdit"(): boolean
+public "setCanEdit"(e: boolean): $ConfigValue<(T)>
 public "applyValue"(): void
 public "setOrder"(o: integer): $ConfigValue<(T)>
-get "name"(): string
+public "setDefaultValue"(defaultValue: T): void
+public "setCurrentValue"(v: T): boolean
+public "getStringForGUI"(v: T): $Component
+public "getStringForGUI"(): $Component
+get "path"(): StringJS
+get "defaultValue"(): T
+get "name"(): StringJS
 get "value"(): T
 set "value"(value: T)
-get "defaultValue"(): T
-get "path"(): string
 set "icon"(value: $Icon$$Type)
 get "color"(): $Color4I
-get "tooltip"(): string
+get "tooltip"(): StringJS
 get "group"(): $ConfigGroup
 get "icon"(): $Icon
-get "nameKey"(): string
+get "nameKey"(): StringJS
+set "nameKey"(value: StringJS)
+get "canEdit"(): boolean
+set "canEdit"(value: boolean)
+set "order"(value: integer)
+set "defaultValue"(value: T)
 set "currentValue"(value: T)
 get "stringForGUI"(): $Component
-set "defaultValue"(value: T)
-set "canEdit"(value: boolean)
-get "canEdit"(): boolean
-set "nameKey"(value: string)
-set "order"(value: integer)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2004,14 +2122,14 @@ static readonly "API_OVERRIDE": $SimpleCommandExceptionType
 static readonly "ALREADY_IN_PARTY": $SimpleCommandExceptionType
 
 
-public static "get"(context: $CommandContext$$Type<($CommandSourceStack$$Type)>, name: string): $Team
-public "parse"(arg0: $StringReader$$Type): any
 public static "create"(): $TeamArgument
 public static "create"(type: $TeamType$$Type): $TeamArgument
+public static "get"(context: $CommandContext$$Type<($CommandSourceStack$$Type)>, name: StringJS): $Team
+public "parse"(arg0: $StringReader$$Type): any
 public "listSuggestions"<S>(commandContext: $CommandContext$$Type<(S)>, builder: $SuggestionsBuilder$$Type): $CompletableFuture<($Suggestions)>
-public "getExamples"(): $Collection<(string)>
 public "parse"<S>(arg0: $StringReader$$Type, arg1: S): $TeamArgumentProvider
-get "examples"(): $Collection<(string)>
+public "getExamples"(): $Collection<(StringJS)>
+get "examples"(): $Collection<(StringJS)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2063,11 +2181,11 @@ import {$SNBTCompoundTag, $SNBTCompoundTag$$Type} from "dev.ftb.mods.ftblibrary.
 
 export class $NumberValue<T extends number> extends $BaseValue<(T)> {
 readonly "parent": $SNBTConfig
-readonly "key": string
+readonly "key": StringJS
 
 
-public "write"(tag: $SNBTCompoundTag$$Type): void
 public "range"<E extends $BaseValue<(T)>>(min: T, max: T): E
+public "write"(tag: $SNBTCompoundTag$$Type): void
 public "fader"<E extends $BaseValue<(T)>>(): E
 }
 /**
@@ -2091,14 +2209,14 @@ export class $NumberConfig<T extends number> extends $ConfigFromString<(T)> {
 readonly "min": T
 readonly "max": T
 static readonly "COLOR": $Color4I
- "id": string
+ "id": StringJS
 static readonly "NULL_TEXT": $Component
 
 constructor(mn: T, mx: T)
 
 public "canScroll"(): boolean
-public "getColor"(v: T): $Color4I
 public "getColor"(arg0: any): $Color4I
+public "getColor"(v: T): $Color4I
 public "fader"(v: boolean): $NumberConfig<(T)>
 public "getStringForGUI"(arg0: any): $Component
 public "getStringForGUI"(v: T): $Component
@@ -2159,17 +2277,17 @@ import {$NameMap, $NameMap$$Type} from "dev.ftb.mods.ftblibrary.config.NameMap"
 
 export class $EnumConfig<E> extends $ConfigWithVariants<(E)> {
 readonly "nameMap": $NameMap<(E)>
- "id": string
+ "id": StringJS
 static readonly "NULL_TEXT": $Component
 
 constructor(nm: $NameMap$$Type<(E)>)
 
 public "getColor"(v: E): $Color4I
 public "getIcon"(v: E): $Icon
-public "getStringForGUI"(v: E): $Component
-public "onClicked"(clickedWidget: $Widget$$Type, button: $MouseButton$$Type, callback: $ConfigCallback$$Type): void
-public "getIteration"(currentValue: E, next: boolean): E
 public "addInfo"(list: $TooltipList$$Type): void
+public "getIteration"(currentValue: E, next: boolean): E
+public "onClicked"(clickedWidget: $Widget$$Type, button: $MouseButton$$Type, callback: $ConfigCallback$$Type): void
+public "getStringForGUI"(v: E): $Component
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2194,11 +2312,11 @@ export class $ModalPanel extends $Panel {
 
 constructor(panel: $Panel$$Type)
 
-public "getExtraZlevel"(): integer
-public "checkMouseOver"(mouseX: integer, mouseY: integer): boolean
 public "setExtraZlevel"(extraZlevel: integer): void
-get "extraZlevel"(): integer
+public "checkMouseOver"(mouseX: integer, mouseY: integer): boolean
+public "getExtraZlevel"(): integer
 set "extraZlevel"(value: integer)
+get "extraZlevel"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2219,14 +2337,14 @@ import {$SNBTConfig, $SNBTConfig$$Type} from "dev.ftb.mods.ftblibrary.snbt.confi
 import {$BaseValue, $BaseValue$$Type} from "dev.ftb.mods.ftblibrary.snbt.config.BaseValue"
 import {$SNBTCompoundTag, $SNBTCompoundTag$$Type} from "dev.ftb.mods.ftblibrary.snbt.SNBTCompoundTag"
 
-export class $StringValue extends $BaseValue<(string)> {
+export class $StringValue extends $BaseValue<(StringJS)> {
 readonly "parent": $SNBTConfig
-readonly "key": string
+readonly "key": StringJS
 
 
 public "pattern"(p: $Pattern$$Type): $StringValue
 public "set"(arg0: any): void
-public "set"(v: string): void
+public "set"(v: StringJS): void
 public "write"(tag: $SNBTCompoundTag$$Type): void
 public "read"(tag: $SNBTCompoundTag$$Type): void
 public "createClientConfig"(group: $ConfigGroup$$Type): void
@@ -2256,8 +2374,8 @@ import {$TeamData, $TeamData$$Type} from "dev.ftb.mods.ftbquests.quest.TeamData"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$QuestObject, $QuestObject$$Type} from "dev.ftb.mods.ftbquests.quest.QuestObject"
 import {$GuiGraphics, $GuiGraphics$$Type} from "net.minecraft.client.gui.GuiGraphics"
-import {$Quest, $Quest$$Type} from "dev.ftb.mods.ftbquests.quest.Quest"
 import {$BaseQuestFile, $BaseQuestFile$$Type} from "dev.ftb.mods.ftbquests.quest.BaseQuestFile"
+import {$Quest, $Quest$$Type} from "dev.ftb.mods.ftbquests.quest.Quest"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Excludable, $Excludable$$Type} from "dev.ftb.mods.ftbquests.quest.Excludable"
 
@@ -2268,53 +2386,53 @@ constructor(id: long, chapter: $Chapter$$Type, linkId: long)
 
 public "getWidth"(): double
 public "getHeight"(): double
-public "getY"(): double
-public "getShape"(): string
+public "getShape"(): StringJS
 public "getObjectType"(): $QuestObjectType
-public "onMoved"(newX: double, newY: double, newChapterId: long): void
-public "isVisible"(data: $TeamData$$Type): boolean
-public "setPosition"(qx: double, qy: double): void
+public "getY"(): double
 public "getX"(): double
-public "fillConfigGroup"(config: $ConfigGroup$$Type): void
-public "getRelatedQuest"(): $Quest
-public "initiateMoveClientSide"(to: $Chapter$$Type, x: double, y: double): void
-public "isQuestObjectExcluded"(teamData: $TeamData$$Type): boolean
-public "onCreated"(): void
-public "editedFromGUI"(): void
+public "onMoved"(newX: double, newY: double, newChapterId: long): void
+public "setPosition"(qx: double, qy: double): void
+public "isVisible"(data: $TeamData$$Type): boolean
 public "getQuestFile"(): $BaseQuestFile
+public "readNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
+public "getAltTitle"(): $Component
+public "getAltIcon"(): $Icon
+public "getParentID"(): long
+public "editedFromGUI"(): void
+public "getMovableID"(): long
+public "linksTo"(quest: $Quest$$Type): boolean
 public "deleteSelf"(): void
 public "getQuest"(): $Optional<($Quest)>
 public "writeNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
-public "readNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
-public "getParentID"(): long
-public "getAltTitle"(): $Component
-public "getAltIcon"(): $Icon
-public "getMovableID"(): long
-public "linksTo"(quest: $Quest$$Type): boolean
-public "writeData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
 public "getChapter"(): $Chapter
+public "writeData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
+public "onCreated"(): void
 public "readData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
 public "copyToClipboard"(): void
 public "getRelativeProgressFromChildren"(data: $TeamData$$Type): integer
+public "initiateMoveClientSide"(to: $Chapter$$Type, x: double, y: double): void
+public "getRelatedQuest"(): $Quest
+public "fillConfigGroup"(config: $ConfigGroup$$Type): void
+public "isQuestObjectExcluded"(teamData: $TeamData$$Type): boolean
 public "getRotation"(): double
 public "getTitle"(): $Component
-public "isAlignToCorner"(): boolean
 public "drawMoved"(graphics: $GuiGraphics$$Type): void
+public "isAlignToCorner"(): boolean
 public "getId"(): long
 get "width"(): double
 get "height"(): double
-get "y"(): double
-get "shape"(): string
+get "shape"(): StringJS
 get "objectType"(): $QuestObjectType
+get "y"(): double
 get "x"(): double
-get "relatedQuest"(): $Quest
 get "questFile"(): $BaseQuestFile
-get "quest"(): $Optional<($Quest)>
-get "parentID"(): long
 get "altTitle"(): $Component
 get "altIcon"(): $Icon
+get "parentID"(): long
 get "movableID"(): long
+get "quest"(): $Optional<($Quest)>
 get "chapter"(): $Chapter
+get "relatedQuest"(): $Quest
 get "rotation"(): double
 get "title"(): $Component
 get "alignToCorner"(): boolean
@@ -2367,7 +2485,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2406,8 +2524,8 @@ import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} fr
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
 import {$Team, $Team$$Type} from "dev.ftb.mods.ftbteams.api.Team"
-import {$TeamManagerImpl, $TeamManagerImpl$$Type} from "dev.ftb.mods.ftbteams.data.TeamManagerImpl"
 import {$ChatFormatting, $ChatFormatting$$Type} from "net.minecraft.ChatFormatting"
+import {$TeamManagerImpl, $TeamManagerImpl$$Type} from "dev.ftb.mods.ftbteams.data.TeamManagerImpl"
 
 export class $TeamType extends $Enum<($TeamType)> implements $StringRepresentable {
 static readonly "PLAYER": $TeamType
@@ -2416,20 +2534,20 @@ static readonly "SERVER": $TeamType
 
 
 public static "values"(): ($TeamType)[]
-public static "valueOf"(name: string): $TeamType
+public static "valueOf"(name: StringJS): $TeamType
 public "matches"(team: $Team$$Type): boolean
 public "getColor"(): $ChatFormatting
-public "getSerializedName"(): string
 public "createTeam"(manager: $TeamManagerImpl$$Type, id: $UUID$$Type): $AbstractTeam
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
 get "color"(): $ChatFormatting
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2445,17 +2563,17 @@ export type $TeamType_ = $TeamType$$Type;
 }}
 declare module "dev.ftb.mods.ftbteams.api.property.TeamPropertyType" {
 import {$Color4I, $Color4I$$Type} from "dev.ftb.mods.ftblibrary.icon.Color4I"
-import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$TeamProperty, $TeamProperty$$Type} from "dev.ftb.mods.ftbteams.api.property.TeamProperty"
+import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$List, $List$$Type} from "java.util.List"
 import {$PrivacyMode, $PrivacyMode$$Type} from "dev.ftb.mods.ftbteams.api.property.PrivacyMode"
 
 export class $TeamPropertyType<T> {
-static readonly "STRING_LIST": $TeamPropertyType<($List<(string)>)>
-static readonly "ENUM": $TeamPropertyType<(string)>
+static readonly "STRING_LIST": $TeamPropertyType<($List<(StringJS)>)>
+static readonly "ENUM": $TeamPropertyType<(StringJS)>
 static readonly "PRIVACY_MODE": $TeamPropertyType<($PrivacyMode)>
 static readonly "COLOR": $TeamPropertyType<($Color4I)>
-static readonly "STRING": $TeamPropertyType<(string)>
+static readonly "STRING": $TeamPropertyType<(StringJS)>
 static readonly "DOUBLE": $TeamPropertyType<(double)>
 static readonly "BOOLEAN": $TeamPropertyType<(boolean)>
 static readonly "INT": $TeamPropertyType<(integer)>
@@ -2520,18 +2638,18 @@ import {$BaseBarrierBlockEntity, $BaseBarrierBlockEntity$$Type} from "dev.ftb.mo
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $QuestBarrierBlockEntity extends $BaseBarrierBlockEntity {
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 constructor(blockPos: $BlockPos$$Type, blockState: $BlockState$$Type)
 
 public "isOpen"(player: $Player$$Type): boolean
-public "updateFromString"(objStr: string): void
-public "getQuest"(): $Quest
 public "setQuest"(quest: $Quest$$Type): void
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+public "getQuest"(): $Quest
+public "updateFromString"(objStr: StringJS): void
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
-get "quest"(): $Quest
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 set "quest"(value: $Quest$$Type)
+get "quest"(): $Quest
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2556,9 +2674,9 @@ readonly "scanCode": integer
 
 constructor(k: integer, s: integer, m: integer)
 
+public "is"(k: integer): boolean
 public "enter"(): boolean
 public "copy"(): boolean
-public "is"(k: integer): boolean
 public "cut"(): boolean
 public "esc"(): boolean
 public "paste"(): boolean
@@ -2590,8 +2708,8 @@ import {$UUID, $UUID$$Type} from "java.util.UUID"
 import {$ServerTeam, $ServerTeam$$Type} from "dev.ftb.mods.ftbteams.data.ServerTeam"
 import {$PlayerTeam, $PlayerTeam$$Type} from "dev.ftb.mods.ftbteams.data.PlayerTeam"
 import {$PartyTeam, $PartyTeam$$Type} from "dev.ftb.mods.ftbteams.data.PartyTeam"
-import {$SNBTCompoundTag, $SNBTCompoundTag$$Type} from "dev.ftb.mods.ftblibrary.snbt.SNBTCompoundTag"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$SNBTCompoundTag, $SNBTCompoundTag$$Type} from "dev.ftb.mods.ftblibrary.snbt.SNBTCompoundTag"
 import {$AbstractTeam, $AbstractTeam$$Type} from "dev.ftb.mods.ftbteams.data.AbstractTeam"
 import {$TeamManager, $TeamManager$$Type} from "dev.ftb.mods.ftbteams.api.TeamManager"
 import {$LevelResource, $LevelResource$$Type} from "net.minecraft.world.level.storage.LevelResource"
@@ -2610,38 +2728,40 @@ constructor(s: $MinecraftServer$$Type)
 
 public "load"(): void
 public "getId"(): $UUID
-public "syncAllToPlayer"(player: $ServerPlayer$$Type, selfTeam: $AbstractTeam$$Type): void
 public "markDirty"(): void
-public "getServer"(): $MinecraftServer
 public "serializeNBT"(): $SNBTCompoundTag
+public "getServer"(): $MinecraftServer
 public "syncToAll"(...teams: ($Team$$Type)[]): void
 public "saveNow"(): void
+public "getTeamMap"(): $Map<($UUID), ($AbstractTeam)>
+public "createParty"(playerId: $UUID$$Type, player: $ServerPlayer$$Type, name: StringJS, description: StringJS, color: $Color4I$$Type): $Pair<(integer), ($PartyTeam)>
+public "createParty"(player: $ServerPlayer$$Type, name: StringJS): $Pair<(integer), ($PartyTeam)>
+public "getTeams"(): $Collection<($Team)>
+public "getTeamByName"(name: StringJS): $Optional<($Team)>
+public "getTeamByID"(teamId: $UUID$$Type): $Optional<($Team)>
+public "getPlayerName"(id: $UUID$$Type): $Component
+public "getExtraData"(): $CompoundTag
+public "playerLoggedIn"(player: $ServerPlayer$$Type, id: $UUID$$Type, name: StringJS): void
+public "playerLoggedOut"(player: $ServerPlayer$$Type): void
+public "getTeamNameMap"(): $Map<(StringJS), ($Team)>
+public "createServer"(source: $CommandSourceStack$$Type, name: StringJS): $Pair<(integer), ($ServerTeam)>
 public "arePlayersInSameTeam"(id1: $UUID$$Type, id2: $UUID$$Type): boolean
 public "getTeamForPlayerID"(uuid: $UUID$$Type): $Optional<($Team)>
-public "getTeamForPlayer"(player: $ServerPlayer$$Type): $Optional<($Team)>
 public "getKnownPlayerTeams"(): $Map<($UUID), ($Team)>
-public "createPartyTeam"(player: $ServerPlayer$$Type, name: string, description: string, color: $Color4I$$Type): $Team
-public "playerLoggedOut"(player: $ServerPlayer$$Type): void
-public "createParty"(player: $ServerPlayer$$Type, name: string): $Pair<(integer), ($PartyTeam)>
-public "createParty"(playerId: $UUID$$Type, player: $ServerPlayer$$Type, name: string, description: string, color: $Color4I$$Type): $Pair<(integer), ($PartyTeam)>
-public "getTeams"(): $Collection<($Team)>
-public "getTeamByName"(name: string): $Optional<($Team)>
-public "getTeamByID"(teamId: $UUID$$Type): $Optional<($Team)>
-public "getTeamMap"(): $Map<($UUID), ($AbstractTeam)>
-public "getExtraData"(): $CompoundTag
-public "playerLoggedIn"(player: $ServerPlayer$$Type, id: $UUID$$Type, name: string): void
-public "getPlayerName"(id: $UUID$$Type): $Component
+public "createPartyTeam"(player: $ServerPlayer$$Type, name: StringJS, description: StringJS, color: $Color4I$$Type): $Team
+public "setChatRedirected"(player: $ServerPlayer$$Type, redirect: boolean): void
+public "isChatRedirected"(player: $ServerPlayer$$Type): boolean
+public "getTeamForPlayer"(player: $ServerPlayer$$Type): $Optional<($Team)>
+public "syncAllToPlayer"(player: $ServerPlayer$$Type, selfTeam: $AbstractTeam$$Type): void
 public "getPlayerTeamForPlayerID"(uuid: $UUID$$Type): $Optional<($Team)>
-public "getTeamNameMap"(): $Map<(string), ($Team)>
-public "createServer"(source: $CommandSourceStack$$Type, name: string): $Pair<(integer), ($ServerTeam)>
 public "getPersonalTeamForPlayerID"(uuid: $UUID$$Type): $PlayerTeam
 get "id"(): $UUID
 get "server"(): $MinecraftServer
-get "knownPlayerTeams"(): $Map<($UUID), ($Team)>
-get "teams"(): $Collection<($Team)>
 get "teamMap"(): $Map<($UUID), ($AbstractTeam)>
+get "teams"(): $Collection<($Team)>
 get "extraData"(): $CompoundTag
-get "teamNameMap"(): $Map<(string), ($Team)>
+get "teamNameMap"(): $Map<(StringJS), ($Team)>
+get "knownPlayerTeams"(): $Map<($UUID), ($Team)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2664,7 +2784,7 @@ import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component
 export class $BooleanConfig extends $ConfigWithVariants<(boolean)> {
 static readonly "TRUE_TEXT": $Component
 static readonly "FALSE_TEXT": $Component
- "id": string
+ "id": StringJS
 static readonly "NULL_TEXT": $Component
 
 constructor()
@@ -2673,10 +2793,10 @@ public "getColor"(arg0: any): $Color4I
 public "getColor"(v: boolean): $Color4I
 public "getIcon"(arg0: any): $Icon
 public "getIcon"(v: boolean): $Icon
-public "getStringForGUI"(arg0: any): $Component
-public "getStringForGUI"(v: boolean): $Component
 public "getIteration"(arg0: any, arg1: boolean): any
 public "getIteration"(currentValue: boolean, next: boolean): boolean
+public "getStringForGUI"(arg0: any): $Component
+public "getStringForGUI"(v: boolean): $Component
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2695,14 +2815,15 @@ import {$Drawable, $Drawable$$Type} from "dev.ftb.mods.ftblibrary.icon.Drawable"
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Color4I, $Color4I$$Type} from "dev.ftb.mods.ftblibrary.icon.Color4I"
+import {$GuiGraphics, $GuiGraphics$$Type} from "net.minecraft.client.gui.GuiGraphics"
 import {$FriendlyByteBuf, $FriendlyByteBuf$$Type} from "net.minecraft.network.FriendlyByteBuf"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
-import {$GuiGraphics, $GuiGraphics$$Type} from "net.minecraft.client.gui.GuiGraphics"
 import {$JsonElement, $JsonElement$$Type} from "com.google.gson.JsonElement"
 import {$PixelBuffer, $PixelBuffer$$Type} from "dev.ftb.mods.ftblibrary.math.PixelBuffer"
 
 export class $Icon implements $Drawable {
 static readonly "CODEC": $Codec<($Icon)>
+static readonly "STRING_CODEC": $Codec<($Icon)>
 static readonly "STREAM_CODEC": $StreamCodec<($FriendlyByteBuf), ($Icon)>
 
 constructor()
@@ -2713,21 +2834,21 @@ public "isEmpty"(): boolean
 public static "empty"(): $Color4I
 public "copy"(): $Icon
 public "withColor"(color: $Color4I$$Type): $Icon
-public static "getIcon"(id: $ResourceLocation$$Type): $Icon
 public static "getIcon"(json: $JsonElement$$Type): $Icon
-public static "getIcon"(id: string): $Icon
+public static "getIcon"(id: StringJS): $Icon
+public static "getIcon"(id: $ResourceLocation$$Type): $Icon
 public "getJson"(): $JsonElement
-public "withUV"(x: float, y: float, w: float, h: float, tw: float, th: float): $Icon
 public "withUV"(u0: float, v0: float, u1: float, v1: float): $Icon
-public "createPixelBuffer"(): $PixelBuffer
+public "withUV"(x: float, y: float, w: float, h: float, tw: float, th: float): $Icon
+public "aspectRatio"(): double
 public "withTint"(color: $Color4I$$Type): $Icon
 public "withBorder"(color: $Color4I$$Type, roundEdges: boolean): $Icon
 public "hasPixelBuffer"(): boolean
-public "aspectRatio"(): double
 public "withPadding"(padding: integer): $Icon
 public "combineWith"(...icons: ($Icon$$Type)[]): $Icon
 public "combineWith"(icon: $Icon$$Type): $Icon
 public "getIngredient"(): any
+public "createPixelBuffer"(): $PixelBuffer
 public "getPixelBufferFrameCount"(): integer
 public "draw"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer): void
 public "draw3D"(graphics: $GuiGraphics$$Type): void
@@ -2749,16 +2870,18 @@ declare global {
 export type $Icon_ = $Icon$$Type;
 }}
 declare module "dev.ftb.mods.ftbquests.item.TaskScreenConfiguratorItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -2771,7 +2894,7 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 export class $TaskScreenConfiguratorItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -2780,10 +2903,11 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(level: $Level$$Type, player: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public static "readBlockPos"(stack: $ItemStack$$Type): $Optional<($GlobalPos)>
 public "useOn"(ctx: $UseOnContext$$Type): $InteractionResult
-public "appendHoverText"(itemStack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, list: $List$$Type<($Component$$Type)>, tooltipFlag: $TooltipFlag$$Type): void
+public static "readBlockPos"(stack: $ItemStack$$Type): $Optional<($GlobalPos)>
 public static "storeBlockPos"(stack: $ItemStack$$Type, level: $Level$$Type, clickedPos: $BlockPos$$Type): void
+public "appendHoverText"(itemStack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, list: $List$$Type<($Component$$Type)>, tooltipFlag: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2805,7 +2929,7 @@ import {$SNBTCompoundTag, $SNBTCompoundTag$$Type} from "dev.ftb.mods.ftblibrary.
 
 export class $BooleanValue extends $BaseValue<(boolean)> {
 readonly "parent": $SNBTConfig
-readonly "key": string
+readonly "key": StringJS
 
 
 public "write"(tag: $SNBTCompoundTag$$Type): void
@@ -2833,8 +2957,8 @@ import {$MouseButton, $MouseButton$$Type} from "dev.ftb.mods.ftblibrary.ui.input
 import {$Widget, $Widget$$Type} from "dev.ftb.mods.ftblibrary.ui.Widget"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
-import {$Button, $Button$$Type} from "dev.ftb.mods.ftblibrary.ui.Button"
 import {$Panel, $Panel$$Type} from "dev.ftb.mods.ftblibrary.ui.Panel"
+import {$Button, $Button$$Type} from "dev.ftb.mods.ftblibrary.ui.Button"
 import {$TooltipList, $TooltipList$$Type} from "dev.ftb.mods.ftblibrary.util.TooltipList"
 import {$GuiGraphics, $GuiGraphics$$Type} from "net.minecraft.client.gui.GuiGraphics"
 import {$ContextMenu, $ContextMenu$$Type} from "dev.ftb.mods.ftblibrary.ui.ContextMenu"
@@ -2845,21 +2969,21 @@ static readonly "SEPARATOR": $ContextMenuItem
 
 constructor(title: $Component$$Type, icon: $Icon$$Type, callback: $Consumer$$Type<($Button)>)
 
+public static "separator"(): $ContextMenuItem
 public "compareTo"(o: $ContextMenuItem$$Type): integer
 public "compareTo"(arg0: any): integer
 public "isEnabled"(): boolean
-public static "separator"(): $ContextMenuItem
+public static "title"(title: $Component$$Type): $ContextMenuItem
 public "drawIcon"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, x: integer, y: integer, w: integer, h: integer): void
 public "setEnabled"(enabled: boolean): $ContextMenuItem
 public "getIcon"(): $Icon
 public "getTitle"(): $Component
-public static "title"(title: $Component$$Type): $ContextMenuItem
-public "addMouseOverText"(list: $TooltipList$$Type): void
-public "onClicked"(button: $Button$$Type, panel: $Panel$$Type, mouseButton: $MouseButton$$Type): void
 public static "subMenu"(title: $Component$$Type, icon: $Icon$$Type, subItems: $List$$Type<($ContextMenuItem$$Type)>): $ContextMenuItem
+public "onClicked"(button: $Button$$Type, panel: $Panel$$Type, mouseButton: $MouseButton$$Type): void
 public "getYesNoText"(): $Component
 public "isClickable"(): boolean
 public "createWidget"(panel: $ContextMenu$$Type): $Widget
+public "addMouseOverText"(list: $TooltipList$$Type): void
 public "setCloseMenu"(v: boolean): $ContextMenuItem
 public "setYesNoText"(s: $Component$$Type): $ContextMenuItem
 get "enabled"(): boolean
@@ -2899,9 +3023,9 @@ import {$TeamData, $TeamData$$Type} from "dev.ftb.mods.ftbquests.quest.TeamData"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$QuestObject, $QuestObject$$Type} from "dev.ftb.mods.ftbquests.quest.QuestObject"
 import {$QuestLink, $QuestLink$$Type} from "dev.ftb.mods.ftbquests.quest.QuestLink"
+import {$BaseQuestFile, $BaseQuestFile$$Type} from "dev.ftb.mods.ftbquests.quest.BaseQuestFile"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Quest, $Quest$$Type} from "dev.ftb.mods.ftbquests.quest.Quest"
-import {$BaseQuestFile, $BaseQuestFile$$Type} from "dev.ftb.mods.ftbquests.quest.BaseQuestFile"
 import {$QuestProgressEventData, $QuestProgressEventData$$Type} from "dev.ftb.mods.ftbquests.events.QuestProgressEventData"
 import {$ChapterImage, $ChapterImage$$Type} from "dev.ftb.mods.ftbquests.quest.ChapterImage"
 
@@ -2910,32 +3034,28 @@ readonly "file": $BaseQuestFile
 readonly "id": long
 
 constructor(id: long, file: $BaseQuestFile$$Type, group: $ChapterGroup$$Type)
-constructor(id: long, file: $BaseQuestFile$$Type, group: $ChapterGroup$$Type, filename: string)
+constructor(id: long, file: $BaseQuestFile$$Type, group: $ChapterGroup$$Type, filename: StringJS)
 
-public "getPath"(): $Optional<(string)>
+public "getPath"(): $Optional<(StringJS)>
 public "getIndex"(): integer
 public "getChildren"(): $Collection<($QuestObject)>
 public "getObjectType"(): $QuestObjectType
 public "isVisible"(data: $TeamData$$Type): boolean
 public "getGroup"(): $ChapterGroup
-public "getQuestChapter"(): $Chapter
-public "isAlwaysInvisible"(): boolean
-public "clearCachedData"(): void
-public "fillConfigGroup"(config: $ConfigGroup$$Type): void
-public "getDefaultQuestShape"(): string
-public "hasUnclaimedRewardsRaw"(teamData: $TeamData$$Type, player: $UUID$$Type): boolean
-public "getProgressionMode"(): $ProgressionMode
-public "getDefaultQuestSize"(): double
-public "isDefaultRepeatable"(): boolean
-public "setDefaultQuestShape"(defaultQuestShape: string): void
-public "getDefaultMinWidth"(): integer
-public "removeQuestLink"(link: $QuestLink$$Type): void
-public "hasAnyVisibleChildren"(): boolean
-public "hasGroup"(): boolean
-public "onCreated"(): void
-public "getRawSubtitle"(): $List<(string)>
-public "setRawSubtitle"(rawSubtitle: $List$$Type<(string)>): void
 public "getQuestFile"(): $BaseQuestFile
+public "addImage"(image: $ChapterImage$$Type): void
+public "removeImage"(image: $ChapterImage$$Type): void
+public "getAutofocus"(): $Optional<($Movable)>
+public "setAutofocus"(id: long): void
+public "isAutofocus"(id: long): boolean
+public "readNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
+public "getAltTitle"(): $Component
+public "getAltIcon"(): $Icon
+public "addQuestLink"(link: $QuestLink$$Type): void
+public "addQuest"(quest: $Quest$$Type): void
+public "getRawSubtitle"(): $List<(StringJS)>
+public "setRawSubtitle"(rawSubtitle: $List$$Type<(StringJS)>): void
+public "removeQuest"(quest: $Quest$$Type): void
 public "consumeItems"(): boolean
 public "onStarted"(data: $QuestProgressEventData$$Type<(any)>): void
 public "onCompleted"(data: $QuestProgressEventData$$Type<(any)>): void
@@ -2943,51 +3063,55 @@ public "deleteSelf"(): void
 public "deleteChildren"(): void
 public "getQuests"(): $List<($Quest)>
 public "getQuestLinks"(): $List<($QuestLink)>
-public "getFilename"(): string
 public "writeNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
-public "readNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
-public "addQuest"(quest: $Quest$$Type): void
-public "addQuestLink"(link: $QuestLink$$Type): void
-public "getAltTitle"(): $Component
-public "getAltIcon"(): $Icon
-public "removeQuest"(quest: $Quest$$Type): void
-public "addImage"(image: $ChapterImage$$Type): void
-public "removeImage"(image: $ChapterImage$$Type): void
-public "getAutofocus"(): $Optional<($Movable)>
-public "setAutofocus"(id: long): void
-public "isAutofocus"(id: long): boolean
 public "writeData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
+public "hasGroup"(): boolean
+public "onCreated"(): void
 public "readData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
 public "getImages"(): $List<($ChapterImage)>
+public "getFilename"(): StringJS
+public "getRelativeProgressFromChildren"(data: $TeamData$$Type): integer
+public "getDefaultQuestSize"(): double
+public "isDefaultRepeatable"(): boolean
+public "clearCachedData"(): void
+public "getQuestChapter"(): $Chapter
+public "isAlwaysInvisible"(): boolean
+public "fillConfigGroup"(config: $ConfigGroup$$Type): void
+public "getDefaultQuestShape"(): StringJS
+public "hasUnclaimedRewardsRaw"(teamData: $TeamData$$Type, player: $UUID$$Type): boolean
+public "getProgressionMode"(): $ProgressionMode
+public "setDefaultQuestShape"(defaultQuestShape: StringJS): void
+public "getDefaultMinWidth"(): integer
+public "removeQuestLink"(link: $QuestLink$$Type): void
+public "hasAnyVisibleChildren"(): boolean
 public "isRequireSequentialTasks"(): boolean
 public "hideQuestUntilDepsComplete"(): boolean
 public "isHideQuestUntilDepsVisible"(): boolean
 public "hideQuestDetailsUntilStartable"(): boolean
-public "getRelativeProgressFromChildren"(data: $TeamData$$Type): integer
-get "path"(): $Optional<(string)>
+get "path"(): $Optional<(StringJS)>
 get "index"(): integer
 get "children"(): $Collection<($QuestObject)>
 get "objectType"(): $QuestObjectType
 get "group"(): $ChapterGroup
-get "questChapter"(): $Chapter
-get "alwaysInvisible"(): boolean
-get "defaultQuestShape"(): string
-get "progressionMode"(): $ProgressionMode
-get "defaultQuestSize"(): double
-get "defaultRepeatable"(): boolean
-set "defaultQuestShape"(value: string)
-get "defaultMinWidth"(): integer
-get "rawSubtitle"(): $List<(string)>
-set "rawSubtitle"(value: $List$$Type<(string)>)
 get "questFile"(): $BaseQuestFile
-get "quests"(): $List<($Quest)>
-get "questLinks"(): $List<($QuestLink)>
-get "filename"(): string
-get "altTitle"(): $Component
-get "altIcon"(): $Icon
 get "autofocus"(): $Optional<($Movable)>
 set "autofocus"(value: long)
+get "altTitle"(): $Component
+get "altIcon"(): $Icon
+get "rawSubtitle"(): $List<(StringJS)>
+set "rawSubtitle"(value: $List$$Type<(StringJS)>)
+get "quests"(): $List<($Quest)>
+get "questLinks"(): $List<($QuestLink)>
 get "images"(): $List<($ChapterImage)>
+get "filename"(): StringJS
+get "defaultQuestSize"(): double
+get "defaultRepeatable"(): boolean
+get "questChapter"(): $Chapter
+get "alwaysInvisible"(): boolean
+get "defaultQuestShape"(): StringJS
+get "progressionMode"(): $ProgressionMode
+set "defaultQuestShape"(value: StringJS)
+get "defaultMinWidth"(): integer
 get "requireSequentialTasks"(): boolean
 get "hideQuestUntilDepsVisible"(): boolean
 }
@@ -3008,8 +3132,8 @@ import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$UUID, $UUID$$Type} from "java.util.UUID"
 import {$List, $List$$Type} from "java.util.List"
 import {$TeamRank, $TeamRank$$Type} from "dev.ftb.mods.ftbteams.api.TeamRank"
-import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$AbstractTeam, $AbstractTeam$$Type} from "dev.ftb.mods.ftbteams.data.AbstractTeam"
+import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$TeamType, $TeamType$$Type} from "dev.ftb.mods.ftbteams.data.TeamType"
 import {$Set, $Set$$Type} from "java.util.Set"
 import {$KnownClientPlayer, $KnownClientPlayer$$Type} from "dev.ftb.mods.ftbteams.api.client.KnownClientPlayer"
@@ -3025,29 +3149,29 @@ constructor(manager: $TeamManagerImpl$$Type, id: $UUID$$Type)
 public "getType"(): $TeamType
 public "getPlayer"(): $ServerPlayer
 public "deserializeNBT"(tag: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
-public "getRankForPlayer"(playerId: $UUID$$Type): $TeamRank
-public "getOnlineMembers"(): $List<($ServerPlayer)>
-public "createClientPlayer"(): $KnownClientPlayer
-public "getTeamId"(): $UUID
-public "isPlayerTeam"(): boolean
-public "createParty"(playerId: $UUID$$Type, player: $ServerPlayer$$Type, name: string, description: string, color: integer, invited: $Set$$Type<($GameProfile$$Type)>): $Team
+public "hasTeam"(): boolean
 public "updatePresence"(): void
+public "isPlayerTeam"(): boolean
+public "createParty"(playerId: $UUID$$Type, player: $ServerPlayer$$Type, name: StringJS, description: StringJS, color: integer, invited: $Set$$Type<($GameProfile$$Type)>): $Team
 public "isOnline"(): boolean
 public "setOnline"(online: boolean): void
-public "getPlayerName"(): string
-public "hasTeam"(): boolean
-public "setPlayerName"(playerName: string): void
+public "getTeamId"(): $UUID
+public "getPlayerName"(): StringJS
+public "setPlayerName"(playerName: StringJS): void
+public "createClientPlayer"(): $KnownClientPlayer
+public "getRankForPlayer"(playerId: $UUID$$Type): $TeamRank
+public "getOnlineMembers"(): $List<($ServerPlayer)>
 public "getEffectiveTeam"(): $AbstractTeam
 public "setEffectiveTeam"(effectiveTeam: $AbstractTeam$$Type): void
 get "type"(): $TeamType
 get "player"(): $ServerPlayer
-get "onlineMembers"(): $List<($ServerPlayer)>
-get "teamId"(): $UUID
 get "playerTeam"(): boolean
 get "online"(): boolean
 set "online"(value: boolean)
-get "playerName"(): string
-set "playerName"(value: string)
+get "teamId"(): $UUID
+get "playerName"(): StringJS
+set "playerName"(value: StringJS)
+get "onlineMembers"(): $List<($ServerPlayer)>
 get "effectiveTeam"(): $AbstractTeam
 set "effectiveTeam"(value: $AbstractTeam$$Type)
 }
@@ -3074,10 +3198,10 @@ export interface $IScreenWrapper extends $IOpenableScreen {
  "closeGui"(openPrevScreen: boolean): void
  "openGui"(): void
  "run"(): void
- "closeContextMenu"(): void
- "closeGui"(): void
  "openGuiLater"(): void
  "openAfter"(runnable: $Runnable$$Type): $Runnable
+ "closeGui"(): void
+ "closeContextMenu"(): void
 
 (): $BaseScreen$$Type
 get "gui"(): $BaseScreen
@@ -3093,10 +3217,10 @@ export class $IScreenWrapper$$Static implements $IScreenWrapper {
  "closeGui"(openPrevScreen: boolean): void
  "openGui"(): void
  "run"(): void
- "closeContextMenu"(): void
- "closeGui"(): void
  "openGuiLater"(): void
  "openAfter"(runnable: $Runnable$$Type): $Runnable
+ "closeGui"(): void
+ "closeContextMenu"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3119,7 +3243,7 @@ static readonly "QUESTS": $RecipeModHelper$Components
 
 
 public static "values"(): ($RecipeModHelper$Components)[]
-public static "valueOf"(name: string): $RecipeModHelper$Components
+public static "valueOf"(name: StringJS): $RecipeModHelper$Components
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3164,76 +3288,40 @@ import {$QuestProgressEventData, $QuestProgressEventData$$Type} from "dev.ftb.mo
 
 export class $Quest extends $QuestObject implements $Movable, $Excludable {
 readonly "id": long
-static readonly "PAGEBREAK_CODE": string
+static readonly "PAGEBREAK_CODE": StringJS
 
 constructor(id: long, chapter: $Chapter$$Type)
 
+public "setSize"(size: double): void
+public "getDescription"(): $List<($Component)>
+public "getChildren"(): $Collection<($QuestObject)>
 public "getWidth"(): double
 public "getHeight"(): double
-public "getY"(): double
-public "getDescription"(): $List<($Component)>
+public "getShape"(): StringJS
 public "getSize"(): double
-public "setSize"(size: double): void
-public "getShape"(): string
-public "getChildren"(): $Collection<($QuestObject)>
 public "getObjectType"(): $QuestObjectType
-public "onMoved"(newX: double, newY: double, newChapterId: long): void
-public "isOptional"(): boolean
-public "isVisible"(data: $TeamData$$Type): boolean
-public "addDependency"(object: $QuestObject$$Type): void
+public "getY"(): double
+public "getX"(): double
 public "setX"(x: double): void
 public "setY"(y: double): void
-public "getX"(): double
-public "getQuestChapter"(): $Chapter
-public "clearCachedData"(): void
-public "fillConfigGroup"(config: $ConfigGroup$$Type): void
-public "componentsToRefresh"(): $Set<($RecipeModHelper$Components)>
-public "hasUnclaimedRewardsRaw"(teamData: $TeamData$$Type, player: $UUID$$Type): boolean
-public "getProgressionMode"(): $ProgressionMode
-public "verifyDependencies"(autofix: boolean): boolean
-public "removeDependency"(object: $QuestObject$$Type): void
-public "getRelatedQuest"(): $Quest
-public "ignoreRewardBlocking"(): boolean
-public "showInRecipeMod"(): boolean
-public "getRawDescription"(): $List<(string)>
-public "setRawDescription"(rawDescription: $List$$Type<(string)>): void
-public "hasDependencies"(): boolean
-public "clearDependencies"(): void
-public "shouldHideLockIcon"(): boolean
-public "initiateMoveClientSide"(to: $Chapter$$Type, x: double, y: double): void
-public "areDependenciesVisible"(teamData: $TeamData$$Type): boolean
-public "streamDependencies"(): $Stream<($QuestObject)>
-public "isProgressionIgnored"(data: $TeamData$$Type): boolean
-public "checkRepeatable"(data: $TeamData$$Type, player: $UUID$$Type): void
-public "allTasksCompleted"(teamData: $TeamData$$Type): boolean
-public "buildDescriptionIndex"(): $List<($Pair<(integer), (integer)>)>
-public "isQuestObjectExcluded"(teamData: $TeamData$$Type): boolean
-public "isExclusiveQuest"(): boolean
-public "moveRewardRight"(reward: $Reward$$Type): void
-public "onCreated"(): void
-public "getTasksAsList"(): $List<($Task)>
-public "getGuidePage"(): string
-public "getRawSubtitle"(): string
-public "setRawSubtitle"(rawSubtitle: string): void
-public "forceProgress"(teamData: $TeamData$$Type, progressChange: $ProgressChange$$Type): void
-public "editedFromGUI"(): void
+public "onMoved"(newX: double, newY: double, newChapterId: long): void
+public "addTask"(task: $Task$$Type): void
+public "isVisible"(data: $TeamData$$Type): boolean
+public "addDependency"(object: $QuestObject$$Type): void
+public "isOptional"(): boolean
+public "getQuestFile"(): $BaseQuestFile
 public "isSearchable"(data: $TeamData$$Type): boolean
 public "isCompletedRaw"(data: $TeamData$$Type): boolean
-public "getQuestFile"(): $BaseQuestFile
-public "onStarted"(data: $QuestProgressEventData$$Type<(any)>): void
-public "onCompleted"(data: $QuestProgressEventData$$Type<(any)>): void
-public "deleteSelf"(): void
-public "deleteChildren"(): void
-public "writeTasks"(tag: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
-public "getRewards"(): $Collection<($Reward)>
-public "writeRewards"(tag: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
-public "writeNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
 public "readNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
-public "addTask"(task: $Task$$Type): void
 public "addReward"(reward: $Reward$$Type): void
-public "getParentID"(): long
 public "getAltTitle"(): $Component
 public "getAltIcon"(): $Icon
+public "getParentID"(): long
+public "editedFromGUI"(): void
+public "getTasksAsList"(): $List<($Task)>
+public "getGuidePage"(): StringJS
+public "getRawSubtitle"(): StringJS
+public "setRawSubtitle"(rawSubtitle: StringJS): void
 public "getMinWidth"(): integer
 public "canBeRepeated"(): boolean
 public "getIconScale"(): double
@@ -3247,12 +3335,50 @@ public "setRewardList"(rewards: $List$$Type<($Reward$$Type)>): void
 public "moveTaskLeft"(task: $Task$$Type): void
 public "moveTaskRight"(task: $Task$$Type): void
 public "moveRewardLeft"(reward: $Reward$$Type): void
-public "getSubtitle"(): $Component
-public "writeData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
+public "forceProgress"(teamData: $TeamData$$Type, progressChange: $ProgressChange$$Type): void
+public "onStarted"(data: $QuestProgressEventData$$Type<(any)>): void
+public "onCompleted"(data: $QuestProgressEventData$$Type<(any)>): void
+public "deleteSelf"(): void
+public "deleteChildren"(): void
+public "writeTasks"(tag: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
+public "getRewards"(): $Collection<($Reward)>
+public "writeRewards"(tag: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
+public "writeNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
 public "getChapter"(): $Chapter
-public "getTasks"(): $Collection<($Task)>
+public "writeData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
+public "getSubtitle"(): $Component
+public "onCreated"(): void
 public "readData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
+public "getTasks"(): $Collection<($Task)>
 public "copyToClipboard"(): void
+public "getRelativeProgressFromChildren"(data: $TeamData$$Type): integer
+public "ignoreRewardBlocking"(): boolean
+public "showInRecipeMod"(): boolean
+public "getRawDescription"(): $List<(StringJS)>
+public "setRawDescription"(rawDescription: $List$$Type<(StringJS)>): void
+public "hasDependencies"(): boolean
+public "clearDependencies"(): void
+public "shouldHideLockIcon"(): boolean
+public "initiateMoveClientSide"(to: $Chapter$$Type, x: double, y: double): void
+public "areDependenciesVisible"(teamData: $TeamData$$Type): boolean
+public "streamDependencies"(): $Stream<($QuestObject)>
+public "isProgressionIgnored"(data: $TeamData$$Type): boolean
+public "checkRepeatable"(data: $TeamData$$Type, player: $UUID$$Type): void
+public "allTasksCompleted"(teamData: $TeamData$$Type): boolean
+public "buildDescriptionIndex"(): $List<($Pair<(integer), (integer)>)>
+public "clearCachedData"(): void
+public "getQuestChapter"(): $Chapter
+public "getRelatedQuest"(): $Quest
+public "fillConfigGroup"(config: $ConfigGroup$$Type): void
+public "componentsToRefresh"(): $Set<($RecipeModHelper$Components)>
+public "hasUnclaimedRewardsRaw"(teamData: $TeamData$$Type, player: $UUID$$Type): boolean
+public "getProgressionMode"(): $ProgressionMode
+public "verifyDependencies"(autofix: boolean): boolean
+public "removeDependency"(object: $QuestObject$$Type): void
+public "isQuestObjectExcluded"(teamData: $TeamData$$Type): boolean
+public "isExclusiveQuest"(): boolean
+public "moveRewardRight"(reward: $Reward$$Type): void
+public "isOptionalForProgression"(): boolean
 public "removeInvalidDependencies"(): void
 public "hideDetailsUntilStartable"(): boolean
 public "getMinRequiredDependencies"(): integer
@@ -3261,54 +3387,52 @@ public "getHideTextUntilComplete"(): $Tristate
 public "getRequireSequentialTasks"(): boolean
 public "areDependenciesComplete"(teamData: $TeamData$$Type): boolean
 public "shouldHideDependencyLines"(): boolean
-public "isOptionalForProgression"(): boolean
-public "getRelativeProgressFromChildren"(data: $TeamData$$Type): integer
 public "getRotation"(): double
 public "getTitle"(): $Component
-public "isAlignToCorner"(): boolean
 public "drawMoved"(graphics: $GuiGraphics$$Type): void
+public "isAlignToCorner"(): boolean
 public "getId"(): long
+set "size"(value: double)
+get "description"(): $List<($Component)>
+get "children"(): $Collection<($QuestObject)>
 get "width"(): double
 get "height"(): double
-get "y"(): double
-get "description"(): $List<($Component)>
+get "shape"(): StringJS
 get "size"(): double
-set "size"(value: double)
-get "shape"(): string
-get "children"(): $Collection<($QuestObject)>
 get "objectType"(): $QuestObjectType
-get "optional"(): boolean
+get "y"(): double
+get "x"(): double
 set "x"(value: double)
 set "y"(value: double)
-get "x"(): double
-get "questChapter"(): $Chapter
-get "progressionMode"(): $ProgressionMode
-get "relatedQuest"(): $Quest
-get "rawDescription"(): $List<(string)>
-set "rawDescription"(value: $List$$Type<(string)>)
-get "exclusiveQuest"(): boolean
-get "tasksAsList"(): $List<($Task)>
-get "guidePage"(): string
-get "rawSubtitle"(): string
-set "rawSubtitle"(value: string)
+get "optional"(): boolean
 get "questFile"(): $BaseQuestFile
-get "rewards"(): $Collection<($Reward)>
-get "parentID"(): long
 get "altTitle"(): $Component
 get "altIcon"(): $Icon
+get "parentID"(): long
+get "tasksAsList"(): $List<($Task)>
+get "guidePage"(): StringJS
+get "rawSubtitle"(): StringJS
+set "rawSubtitle"(value: StringJS)
 get "minWidth"(): integer
 get "iconScale"(): double
 get "dependants"(): $Collection<($QuestObject)>
 get "movableID"(): long
 set "taskList"(value: $List$$Type<($Task$$Type)>)
 set "rewardList"(value: $List$$Type<($Reward$$Type)>)
-get "subtitle"(): $Component
+get "rewards"(): $Collection<($Reward)>
 get "chapter"(): $Chapter
+get "subtitle"(): $Component
 get "tasks"(): $Collection<($Task)>
+get "rawDescription"(): $List<(StringJS)>
+set "rawDescription"(value: $List$$Type<(StringJS)>)
+get "questChapter"(): $Chapter
+get "relatedQuest"(): $Quest
+get "progressionMode"(): $ProgressionMode
+get "exclusiveQuest"(): boolean
+get "optionalForProgression"(): boolean
 get "minRequiredDependencies"(): integer
 get "hideTextUntilComplete"(): $Tristate
 get "requireSequentialTasks"(): boolean
-get "optionalForProgression"(): boolean
 get "rotation"(): double
 get "title"(): $Component
 get "alignToCorner"(): boolean
@@ -3330,8 +3454,8 @@ declare module "dev.ftb.mods.ftbquests.quest.ChapterGroup" {
 import {$ConfigGroup, $ConfigGroup$$Type} from "dev.ftb.mods.ftblibrary.config.ConfigGroup"
 import {$Icon, $Icon$$Type} from "dev.ftb.mods.ftblibrary.icon.Icon"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
-import {$QuestObjectType, $QuestObjectType$$Type} from "dev.ftb.mods.ftbquests.quest.QuestObjectType"
 import {$UUID, $UUID$$Type} from "java.util.UUID"
+import {$QuestObjectType, $QuestObjectType$$Type} from "dev.ftb.mods.ftbquests.quest.QuestObjectType"
 import {$Comparator, $Comparator$$Type} from "java.util.Comparator"
 import {$Chapter, $Chapter$$Type} from "dev.ftb.mods.ftbquests.quest.Chapter"
 import {$List, $List$$Type} from "java.util.List"
@@ -3350,41 +3474,41 @@ public "getFile"(): $BaseQuestFile
 public "getChildren"(): $Collection<($QuestObject)>
 public "getObjectType"(): $QuestObjectType
 public "isVisible"(data: $TeamData$$Type): boolean
-public "clearCachedData"(): void
-public "fillConfigGroup"(config: $ConfigGroup$$Type): void
-public "getVisibleChapters"(data: $TeamData$$Type): $List<($Chapter)>
-public "getFirstVisibleChapter"(data: $TeamData$$Type): $Chapter
-public "hasUnclaimedRewardsRaw"(teamData: $TeamData$$Type, player: $UUID$$Type): boolean
-public "moveChapterWithinGroup"(chapter: $Chapter$$Type, movingUp: boolean): boolean
-public "toggleCollapsed"(): void
-public "onCreated"(): void
-public "editedFromGUI"(): void
 public "getQuestFile"(): $BaseQuestFile
+public "isFirstGroup"(): boolean
+public "isLastGroup"(): boolean
+public "isGuiCollapsed"(): boolean
+public "removeChapter"(chapter: $Chapter$$Type): void
+public "getAltTitle"(): $Component
+public "getAltIcon"(): $Icon
+public "addChapter"(chapter: $Chapter$$Type): void
+public "editedFromGUI"(): void
 public "onCompleted"(data: $QuestProgressEventData$$Type<(any)>): void
 public "deleteSelf"(): void
 public "clearChapters"(): void
 public "getChapters"(): $List<($Chapter)>
 public "isDefaultGroup"(): boolean
 public "sortChapters"(c: $Comparator$$Type<($Chapter)>): void
-public "addChapter"(chapter: $Chapter$$Type): void
-public "getAltTitle"(): $Component
-public "getAltIcon"(): $Icon
-public "removeChapter"(chapter: $Chapter$$Type): void
-public "isFirstGroup"(): boolean
-public "isLastGroup"(): boolean
-public "isGuiCollapsed"(): boolean
+public "onCreated"(): void
 public "getRelativeProgressFromChildren"(data: $TeamData$$Type): integer
+public "toggleCollapsed"(): void
+public "moveChapterWithinGroup"(chapter: $Chapter$$Type, movingUp: boolean): boolean
+public "clearCachedData"(): void
+public "fillConfigGroup"(config: $ConfigGroup$$Type): void
+public "getVisibleChapters"(data: $TeamData$$Type): $List<($Chapter)>
+public "getFirstVisibleChapter"(data: $TeamData$$Type): $Chapter
+public "hasUnclaimedRewardsRaw"(teamData: $TeamData$$Type, player: $UUID$$Type): boolean
 get "file"(): $BaseQuestFile
 get "children"(): $Collection<($QuestObject)>
 get "objectType"(): $QuestObjectType
 get "questFile"(): $BaseQuestFile
-get "chapters"(): $List<($Chapter)>
-get "defaultGroup"(): boolean
-get "altTitle"(): $Component
-get "altIcon"(): $Icon
 get "firstGroup"(): boolean
 get "lastGroup"(): boolean
 get "guiCollapsed"(): boolean
+get "altTitle"(): $Component
+get "altIcon"(): $Icon
+get "chapters"(): $List<($Chapter)>
+get "defaultGroup"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3399,14 +3523,14 @@ declare global {
 export type $ChapterGroup_ = $ChapterGroup$$Type;
 }}
 declare module "dev.ftb.mods.ftblibrary.config.ResourceConfigValue" {
-import {$SelectableResource, $SelectableResource$$Type} from "dev.ftb.mods.ftblibrary.config.ui.SelectableResource"
+import {$SelectableResource, $SelectableResource$$Type} from "dev.ftb.mods.ftblibrary.config.ui.resource.SelectableResource"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$OptionalLong, $OptionalLong$$Type} from "java.util.OptionalLong"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$ConfigValue, $ConfigValue$$Type} from "dev.ftb.mods.ftblibrary.config.ConfigValue"
 
 export class $ResourceConfigValue<T> extends $ConfigValue<(T)> {
- "id": string
+ "id": StringJS
 static readonly "NULL_TEXT": $Component
 
 constructor()
@@ -3414,16 +3538,17 @@ constructor()
 public "isEmpty"(): boolean
 public "getResource"(): $SelectableResource<(T)>
 public "withFilter"(filter: $Predicate$$Type<(T)>): $ResourceConfigValue<(T)>
-public "allowEmptyResource"(): boolean
-public "fixedResourceSize"(): $OptionalLong
-public "setAllowNBTEdit"(allow: boolean): $ResourceConfigValue<(T)>
-public "canHaveNBT"(): boolean
-public "allowResource"(resource: T): boolean
 public "setResource"(arg0: $SelectableResource$$Type<(T)>): boolean
+public "canHaveNBT"(): boolean
+public "withAllowEmpty"(allowEmpty: boolean): $ResourceConfigValue<(T)>
+public "allowResource"(resource: T): boolean
+public "fixedResourceSize"(): $OptionalLong
+public "allowEmptyResource"(): boolean
+public "setAllowNBTEdit"(allow: boolean): $ResourceConfigValue<(T)>
 get "empty"(): boolean
 get "resource"(): $SelectableResource<(T)>
-set "allowNBTEdit"(value: boolean)
 set "resource"(value: $SelectableResource$$Type<(T)>)
+set "allowNBTEdit"(value: boolean)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3438,8 +3563,8 @@ declare global {
 export type $ResourceConfigValue_<T> = $ResourceConfigValue$$Type<(T)>;
 }}
 declare module "dev.ftb.mods.ftbquests.quest.DefaultChapterGroup" {
-import {$ChapterGroup, $ChapterGroup$$Type} from "dev.ftb.mods.ftbquests.quest.ChapterGroup"
 import {$Icon, $Icon$$Type} from "dev.ftb.mods.ftblibrary.icon.Icon"
+import {$ChapterGroup, $ChapterGroup$$Type} from "dev.ftb.mods.ftbquests.quest.ChapterGroup"
 import {$BaseQuestFile, $BaseQuestFile$$Type} from "dev.ftb.mods.ftbquests.quest.BaseQuestFile"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 
@@ -3468,21 +3593,21 @@ export type $DefaultChapterGroup_ = $DefaultChapterGroup$$Type;
 declare module "dev.ftb.mods.ftblibrary.ui.BaseScreen" {
 import {$Key, $Key$$Type} from "dev.ftb.mods.ftblibrary.ui.input.Key"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$KeyModifiers, $KeyModifiers$$Type} from "dev.ftb.mods.ftblibrary.ui.input.KeyModifiers"
 import {$Screen, $Screen$$Type} from "net.minecraft.client.gui.screens.Screen"
 import {$DropDownMenu, $DropDownMenu$$Type} from "dev.ftb.mods.ftblibrary.ui.DropDownMenu"
+import {$KeyModifiers, $KeyModifiers$$Type} from "dev.ftb.mods.ftblibrary.ui.input.KeyModifiers"
 import {$ContextMenuItem, $ContextMenuItem$$Type} from "dev.ftb.mods.ftblibrary.ui.ContextMenuItem"
 import {$List, $List$$Type} from "java.util.List"
-import {$MouseButton, $MouseButton$$Type} from "dev.ftb.mods.ftblibrary.ui.input.MouseButton"
 import {$BooleanConsumer, $BooleanConsumer$$Type} from "dev.ftb.mods.ftblibrary.util.BooleanConsumer"
+import {$MouseButton, $MouseButton$$Type} from "dev.ftb.mods.ftblibrary.ui.input.MouseButton"
 import {$Runnable, $Runnable$$Type} from "java.lang.Runnable"
 import {$Widget, $Widget$$Type} from "dev.ftb.mods.ftblibrary.ui.Widget"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$ModalPanel, $ModalPanel$$Type} from "dev.ftb.mods.ftblibrary.ui.ModalPanel"
 import {$Panel, $Panel$$Type} from "dev.ftb.mods.ftblibrary.ui.Panel"
 import {$TooltipList, $TooltipList$$Type} from "dev.ftb.mods.ftblibrary.util.TooltipList"
-import {$Window, $Window$$Type} from "com.mojang.blaze3d.platform.Window"
 import {$GuiGraphics, $GuiGraphics$$Type} from "net.minecraft.client.gui.GuiGraphics"
+import {$Window, $Window$$Type} from "com.mojang.blaze3d.platform.Window"
 import {$ContextMenu, $ContextMenu$$Type} from "dev.ftb.mods.ftblibrary.ui.ContextMenu"
 import {$PopupMenu, $PopupMenu$$Type} from "dev.ftb.mods.ftblibrary.ui.PopupMenu"
 import {$Theme, $Theme$$Type} from "dev.ftb.mods.ftblibrary.ui.Theme"
@@ -3496,83 +3621,83 @@ export class $BaseScreen extends $Panel {
 constructor()
 
 public "getY"(): integer
-public "onClosed"(): void
+public "getX"(): integer
+public "onInit"(): boolean
+public "draw"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, x: integer, y: integer, w: integer, h: integer): void
 public "keyPressed"(key: $Key$$Type): boolean
-public "isMouseOver"(x: integer, y: integer, w: integer, h: integer): boolean
 public "isMouseOver"(widget: $Widget$$Type): boolean
+public "isMouseOver"(x: integer, y: integer, w: integer, h: integer): boolean
+public "getScreen"(): $Window
+public "onClosed"(): void
 public "mouseReleased"(button: $MouseButton$$Type): void
 public "mouseDragged"(button: integer, dragX: double, dragY: double): boolean
 public "mouseScrolled"(scroll: double): boolean
 public "keyReleased"(key: $Key$$Type): void
 public "charTyped"(c: character, modifiers: $KeyModifiers$$Type): boolean
-public "getScreen"(): $Window
-public "onInit"(): boolean
-public "draw"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, x: integer, y: integer, w: integer, h: integer): void
-public "getGui"(): $BaseScreen
+public "getMouseX"(): integer
+public "getMouseY"(): integer
 public "onBack"(): void
-public "getX"(): integer
-public "getPartialTicks"(): float
-public "shouldCloseOnEsc"(): boolean
-public "shouldAddMouseOverText"(): boolean
-public "updateMouseOver"(mouseX: integer, mouseY: integer): void
-public "mouseDoubleClicked"(button: $MouseButton$$Type): boolean
-public "closeContextMenu"(): void
-public "addMouseOverText"(list: $TooltipList$$Type): void
-public "shouldRenderBlur"(): boolean
-public "closeModalPanel"(panel: $ModalPanel$$Type): void
-public "anyModalPanelOpen"(): boolean
-public "doesGuiPauseGame"(): boolean
-public "openContextMenu"(menuItems: $List$$Type<($ContextMenuItem$$Type)>): $ContextMenu
-public "openContextMenu"(newContextMenu: $ContextMenu$$Type): void
-public "openDropdownMenu"(menuItems: $List$$Type<($ContextMenuItem$$Type)>): $DropDownMenu
-public "openDropdownMenu"(dropDownMenu: $DropDownMenu$$Type): void
-public "drawDefaultBackground"(graphics: $GuiGraphics$$Type): boolean
-public "setFocusedWidget"(widget: $Widget$$Type): void
-public "initGui"(): void
+public "getGui"(): $BaseScreen
 public "getTheme"(): $Theme
-public "setRenderBlur"(renderBlur: boolean): void
-public "popModalPanel"(): $ModalPanel
-public "getPrevScreen"(): $Screen
-public "onClosedByKey"(key: $Key$$Type): boolean
-public "updateGui"(mx: integer, my: integer, pt: float): void
-public "getContextMenu"(): $Optional<($ModalPanel)>
-public "openPopupMenu"(popupMenu: $PopupMenu$$Type): void
-public "drawForeground"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, x: integer, y: integer, w: integer, h: integer): void
-public "getMaxZLevel"(): integer
-public "openYesNoFull"(title: $Component$$Type, desc: $Component$$Type, callback: $BooleanConsumer$$Type): void
-public "openYesNo"(title: $Component$$Type, desc: $Component$$Type, callback: $Runnable$$Type): void
-public "pushModalPanel"(modalPanel: $ModalPanel$$Type): void
-public "closeGui"(openPrevScreen: boolean): void
-public "alignWidgets"(): void
 public "refreshWidgets"(): void
+public "drawBackground"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, x: integer, y: integer, w: integer, h: integer): void
+public "drawForeground"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, x: integer, y: integer, w: integer, h: integer): void
+public "alignWidgets"(): void
+public "initGui"(): void
 public "getScrollX"(): double
 public "setScrollX"(scroll: double): void
 public "getScrollY"(): double
 public "setScrollY"(scroll: double): void
-public "drawBackground"(graphics: $GuiGraphics$$Type, theme: $Theme$$Type, x: integer, y: integer, w: integer, h: integer): void
-public "handleClick"(scheme: string, path: string): boolean
-public "getMouseX"(): integer
-public "getMouseY"(): integer
-public "onPostInit"(): void
+public "setRenderBlur"(renderBlur: boolean): void
+public "pushModalPanel"(modalPanel: $ModalPanel$$Type): void
+public "popModalPanel"(): $ModalPanel
+public "getPrevScreen"(): $Screen
+public "closeGui"(openPrevScreen: boolean): void
+public "onClosedByKey"(key: $Key$$Type): boolean
+public "updateGui"(mx: integer, my: integer, pt: float): void
+public "getContextMenu"(): $Optional<($ModalPanel)>
+public "openPopupMenu"(popupMenu: $PopupMenu$$Type): void
+public "getMaxZLevel"(): integer
+public "openYesNoFull"(title: $Component$$Type, desc: $Component$$Type, callback: $BooleanConsumer$$Type): void
+public "openYesNo"(title: $Component$$Type, desc: $Component$$Type, callback: $Runnable$$Type): void
+public "handleClick"(scheme: StringJS, path: StringJS): boolean
 public "mousePressed"(button: $MouseButton$$Type): boolean
+public "onPostInit"(): void
 public "openGui"(): void
+public "getPartialTicks"(): float
+public "shouldCloseOnEsc"(): boolean
+public "shouldRenderBlur"(): boolean
+public "closeModalPanel"(panel: $ModalPanel$$Type): void
+public "anyModalPanelOpen"(): boolean
+public "doesGuiPauseGame"(): boolean
+public "updateMouseOver"(mouseX: integer, mouseY: integer): void
+public "openContextMenu"(menuItems: $List$$Type<($ContextMenuItem$$Type)>): $ContextMenu
+public "openContextMenu"(newContextMenu: $ContextMenu$$Type): void
+public "openDropdownMenu"(menuItems: $List$$Type<($ContextMenuItem$$Type)>): $DropDownMenu
+public "openDropdownMenu"(dropDownMenu: $DropDownMenu$$Type): void
+public "closeContextMenu"(): void
+public "drawDefaultBackground"(graphics: $GuiGraphics$$Type): boolean
+public "mouseDoubleClicked"(button: $MouseButton$$Type): boolean
+public "shouldAddMouseOverText"(): boolean
+public "addMouseOverText"(list: $TooltipList$$Type): void
+public "setFocusedWidget"(widget: $Widget$$Type): void
 get "y"(): integer
-get "screen"(): $Window
-get "gui"(): $BaseScreen
 get "x"(): integer
-get "partialTicks"(): float
-set "focusedWidget"(value: $Widget$$Type)
+get "screen"(): $Window
+get "mouseX"(): integer
+get "mouseY"(): integer
+get "gui"(): $BaseScreen
 get "theme"(): $Theme
-set "renderBlur"(value: boolean)
-get "prevScreen"(): $Screen
-get "contextMenu"(): $Optional<($ModalPanel)>
-get "maxZLevel"(): integer
 get "scrollX"(): double
 set "scrollX"(value: double)
 get "scrollY"(): double
 set "scrollY"(value: double)
-get "mouseX"(): integer
-get "mouseY"(): integer
+set "renderBlur"(value: boolean)
+get "prevScreen"(): $Screen
+get "contextMenu"(): $Optional<($ModalPanel)>
+get "maxZLevel"(): integer
+get "partialTicks"(): float
+set "focusedWidget"(value: $Widget$$Type)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3610,38 +3735,38 @@ static readonly "NONE": $TeamRank
 static readonly "MEMBER": $TeamRank
 
 
-public static "values"(): ($TeamRank)[]
-public static "valueOf"(name: string): $TeamRank
 public "getDisplayName"(): $Component
+public static "values"(): ($TeamRank)[]
+public static "valueOf"(name: StringJS): $TeamRank
 public "isAtLeast"(rank: $TeamRank$$Type): boolean
 public "getIcon"(): $Optional<($Icon)>
-public "getSerializedName"(): string
-public "isMemberOrBetter"(): boolean
-public "isOfficerOrBetter"(): boolean
-public "isInvitedOrBetter"(): boolean
 public "isAllyOrBetter"(): boolean
 public "isOwner"(): boolean
 public "getPower"(): integer
+public "getSerializedName"(): StringJS
 public "isEnemyOrWorse"(): boolean
 public "isNoneOrBetter"(): boolean
+public "isMemberOrBetter"(): boolean
+public "isOfficerOrBetter"(): boolean
+public "isInvitedOrBetter"(): boolean
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
 get "displayName"(): $Component
 get "icon"(): $Optional<($Icon)>
-get "serializedName"(): string
-get "memberOrBetter"(): boolean
-get "officerOrBetter"(): boolean
-get "invitedOrBetter"(): boolean
 get "allyOrBetter"(): boolean
 get "owner"(): boolean
 get "power"(): integer
+get "serializedName"(): StringJS
 get "enemyOrWorse"(): boolean
 get "noneOrBetter"(): boolean
-get "remappedEnumConstantName"(): string
+get "memberOrBetter"(): boolean
+get "officerOrBetter"(): boolean
+get "invitedOrBetter"(): boolean
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3659,9 +3784,9 @@ declare module "dev.ftb.mods.ftblibrary.icon.Color4I" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
 import {$Icon, $Icon$$Type} from "dev.ftb.mods.ftblibrary.icon.Icon"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
+import {$GuiGraphics, $GuiGraphics$$Type} from "net.minecraft.client.gui.GuiGraphics"
 import {$FriendlyByteBuf, $FriendlyByteBuf$$Type} from "net.minecraft.network.FriendlyByteBuf"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
-import {$GuiGraphics, $GuiGraphics$$Type} from "net.minecraft.client.gui.GuiGraphics"
 import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$JsonElement, $JsonElement$$Type} from "com.google.gson.JsonElement"
 import {$MutableColor4I, $MutableColor4I$$Type} from "dev.ftb.mods.ftblibrary.icon.MutableColor4I"
@@ -3669,61 +3794,62 @@ import {$PixelBuffer, $PixelBuffer$$Type} from "dev.ftb.mods.ftblibrary.math.Pix
 import {$ChatFormatting, $ChatFormatting$$Type} from "net.minecraft.ChatFormatting"
 
 export class $Color4I extends $Icon {
-static readonly "RED": $Color4I
 static readonly "GRAY": $Color4I
 static readonly "WHITE": $Color4I
 static readonly "LIGHT_RED": $Color4I
 static readonly "CODEC": $Codec<($Icon)>
 static readonly "BLUE": $Color4I
-static readonly "LIGHT_BLUE": $Color4I
 static readonly "LIGHT_GREEN": $Color4I
-static readonly "BLACK": $Color4I
-static readonly "DARK_GRAY": $Color4I
 static readonly "GREEN": $Color4I
 static readonly "STREAM_CODEC": $StreamCodec<($FriendlyByteBuf), ($Icon)>
+static readonly "RED": $Color4I
+static readonly "LIGHT_BLUE": $Color4I
+static readonly "BLACK": $Color4I
+static readonly "DARK_GRAY": $Color4I
+static readonly "STRING_CODEC": $Codec<($Icon)>
 
 
 public static "rgb"(color: $Vec3$$Type): $Color4I
 public static "rgb"(col: integer): $Color4I
 public "rgb"(): integer
 public static "rgb"(r: integer, g: integer, b: integer): $Color4I
-public static "RGBtoHSB"(r: integer, g: integer, b: integer, hsbvals: (float)[]): (float)[]
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "copy"(): $Color4I
-public "isMutable"(): boolean
-public "mutable"(): $MutableColor4I
-public "withColor"(color: $Color4I$$Type): $Icon
-public static "fromString"(s: string): $Color4I
-public static "fromJson"(element: $JsonElement$$Type): $Color4I
-public "getJson"(): $JsonElement
-public static "rgba"(r: integer, g: integer, b: integer, a: integer): $Color4I
-public "rgba"(): integer
-public static "rgba"(col: integer): $Color4I
+public "copy"(): $Icon
+public static "HSBtoRGB"(hue: float, saturation: float, brightness: float): integer
+public static "RGBtoHSB"(r: integer, g: integer, b: integer, hsbvals: (float)[]): (float)[]
 public static "hsb"(h: float, s: float, b: float): $Color4I
+public "rgba"(): integer
+public static "rgba"(r: integer, g: integer, b: integer, a: integer): $Color4I
+public static "rgba"(col: integer): $Color4I
+public "lerp"(col: $Color4I$$Type, m: float): $Color4I
 public "redf"(): float
 public "greenf"(): float
 public "bluef"(): float
 public "draw"(graphics: $GuiGraphics$$Type, x: integer, y: integer, w: integer, h: integer): void
+public "isMutable"(): boolean
+public "mutable"(): $MutableColor4I
+public "withColor"(color: $Color4I$$Type): $Icon
+public "getJson"(): $JsonElement
+public static "fromJson"(element: $JsonElement$$Type): $Color4I
+public static "fromString"(s: StringJS): $Color4I
+public static "get256"(id: integer): $Color4I
+public "redi"(): integer
+public "greeni"(): integer
 public "bluei"(): integer
 public "alphai"(): integer
 public "alphaf"(): float
-public "redi"(): integer
-public static "get256"(id: integer): $Color4I
-public "greeni"(): integer
-public "lerp"(col: $Color4I$$Type, m: float): $Color4I
-public static "getChatFormattingColor"(id: integer): $Color4I
-public static "getChatFormattingColor"(formatting: $ChatFormatting$$Type): $Color4I
-public "createPixelBuffer"(): $PixelBuffer
-public "withTint"(col: $Color4I$$Type): $Color4I
+public "withTint"(arg0: $Color4I$$Type): $Icon
 public "hasPixelBuffer"(): boolean
 public "whiteIfEmpty"(): $Color4I
 public "withAlphaf"(alpha: float): $Color4I
 public "addBrightness"(percent: float): $Color4I
 public "toStyle"(): $Style
-public static "HSBtoRGB"(hue: float, saturation: float, brightness: float): integer
 public "withAlpha"(a: integer): $Color4I
+public static "getChatFormattingColor"(id: integer): $Color4I
+public static "getChatFormattingColor"(formatting: $ChatFormatting$$Type): $Color4I
+public "createPixelBuffer"(): $PixelBuffer
 get "json"(): $JsonElement
 }
 /**
@@ -3744,30 +3870,30 @@ import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$BaseQuestFile, $BaseQuestFile$$Type} from "dev.ftb.mods.ftbquests.quest.BaseQuestFile"
 import {$TranslationTable, $TranslationTable$$Type} from "dev.ftb.mods.ftbquests.quest.translation.TranslationTable"
 import {$List, $List$$Type} from "java.util.List"
-import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 import {$QuestObjectBase, $QuestObjectBase$$Type} from "dev.ftb.mods.ftbquests.quest.QuestObjectBase"
+import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 import {$Path, $Path$$Type} from "java.nio.file.Path"
 import {$TranslationKey, $TranslationKey$$Type} from "dev.ftb.mods.ftbquests.quest.translation.TranslationKey"
 
 export class $TranslationManager {
-static readonly "DEFAULT_FALLBACK_LOCALE": string
+static readonly "DEFAULT_FALLBACK_LOCALE": StringJS
 
 constructor()
 
-public "addTranslation"(object: $QuestObjectBase$$Type, locale: string, subKey: $TranslationKey$$Type, message: string): void
-public "addTranslation"(object: $QuestObjectBase$$Type, locale: string, subKey: $TranslationKey$$Type, message: $List$$Type<(string)>): void
-public "removeAllTranslations"(obj: $QuestObjectBase$$Type): void
-public "addInitialTranslation"(extra: $CompoundTag$$Type, locale: string, translationKey: $TranslationKey$$Type, value: string): void
-public "getStringTranslation"(object: $QuestObjectBase$$Type, locale: string, subKey: $TranslationKey$$Type): $Optional<(string)>
-public "sendTableToPlayer"(player: $ServerPlayer$$Type, locale: string): void
-public "syncTableFromServer"(locale: string, table: $TranslationTable$$Type): void
 public "saveToNBT"(langFolder: $Path$$Type, force: boolean): void
 public "loadFromNBT"(file: $BaseQuestFile$$Type, langFolder: $Path$$Type): void
-public static "syncTable"(player: $ServerPlayer$$Type, language: string): void
-public "getStringListTranslation"(object: $QuestObjectBase$$Type, locale: string, subKey: $TranslationKey$$Type): $Optional<($List<(string)>)>
-public "sendTranslationsToPlayer"(player: $ServerPlayer$$Type): void
-public "processInitialTranslation"(extra: $CompoundTag$$Type, object: $QuestObjectBase$$Type): void
+public static "syncTable"(player: $ServerPlayer$$Type, language: StringJS): void
+public "addTranslation"(object: $QuestObjectBase$$Type, locale: StringJS, subKey: $TranslationKey$$Type, message: StringJS): void
+public "addTranslation"(object: $QuestObjectBase$$Type, locale: StringJS, subKey: $TranslationKey$$Type, message: $List$$Type<(StringJS)>): void
+public "syncTableFromServer"(locale: StringJS, table: $TranslationTable$$Type): void
+public "sendTableToPlayer"(player: $ServerPlayer$$Type, locale: StringJS): void
+public "removeAllTranslations"(obj: $QuestObjectBase$$Type): void
+public "getStringTranslation"(object: $QuestObjectBase$$Type, locale: StringJS, subKey: $TranslationKey$$Type): $Optional<(StringJS)>
+public "addInitialTranslation"(extra: $CompoundTag$$Type, locale: StringJS, translationKey: $TranslationKey$$Type, value: StringJS): void
 public "hasMissingTranslation"(object: $QuestObjectBase$$Type, key: $TranslationKey$$Type): boolean
+public "processInitialTranslation"(extra: $CompoundTag$$Type, object: $QuestObjectBase$$Type): void
+public "getStringListTranslation"(object: $QuestObjectBase$$Type, locale: StringJS, subKey: $TranslationKey$$Type): $Optional<($List<(StringJS)>)>
+public "sendTranslationsToPlayer"(player: $ServerPlayer$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3782,16 +3908,18 @@ declare global {
 export type $TranslationManager_ = $TranslationManager$$Type;
 }}
 declare module "dev.ftb.mods.ftbquests.item.LootCrateItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$LootCrate, $LootCrate$$Type} from "dev.ftb.mods.ftbquests.quest.loot.LootCrate"
-import {$List, $List$$Type} from "java.util.List"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
@@ -3800,7 +3928,7 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 export class $LootCrateItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3808,12 +3936,13 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "getName"(stack: $ItemStack$$Type): $Component
 public "use"(world: $Level$$Type, player: $Player$$Type, hand: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "getName"(stack: $ItemStack$$Type): $Component
 public "isFoil"(stack: $ItemStack$$Type): boolean
-public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, flag: $TooltipFlag$$Type): void
-public static "getCrate"(stack: $ItemStack$$Type, isClientSide: boolean): $LootCrate
 public static "getCrate"(stack: $ItemStack$$Type): $LootCrate
+public static "getCrate"(stack: $ItemStack$$Type, isClientSide: boolean): $LootCrate
+public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, flag: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3882,6 +4011,7 @@ static readonly "TEMP": $Color4I
 static readonly "LIGHT_BLUE": $Color4I
 static readonly "BLACK": $Color4I
 static readonly "DARK_GRAY": $Color4I
+static readonly "STRING_CODEC": $Codec<($Icon)>
 
 
 public "set"(r: integer, g: integer, b: integer, a: integer): $Color4I
@@ -3890,12 +4020,13 @@ public "set"(col: $Color4I$$Type): $Color4I
 public "set"(col: integer, a: integer): $Color4I
 public "set"(col: integer): $Color4I
 public "copy"(): $Icon
+public "setAlpha"(a: integer): $Color4I
 public "isMutable"(): boolean
 public "mutable"(): $MutableColor4I
-public "setAlpha"(a: integer): $Color4I
 public "getJson"(): $JsonElement
 public "addBrightness"(b: integer): $Color4I
 public "setFromHSB"(h: float, s: float, b: float): $Color4I
+public "withTint"(arg0: $Color4I$$Type): $Icon
 set "alpha"(value: integer)
 get "json"(): $JsonElement
 }
@@ -3912,21 +4043,24 @@ declare global {
 export type $MutableColor4I_ = $MutableColor4I$$Type;
 }}
 declare module "dev.ftb.mods.ftbquests.item.ScreenBlockItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$ScreenBlockItem$ScreenSize, $ScreenBlockItem$ScreenSize$$Type} from "dev.ftb.mods.ftbquests.item.ScreenBlockItem$ScreenSize"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$ScreenBlockItem$ScreenSize, $ScreenBlockItem$ScreenSize$$Type} from "dev.ftb.mods.ftbquests.item.ScreenBlockItem$ScreenSize"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $ScreenBlockItem extends $BlockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3945,6 +4079,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4005,8 +4140,8 @@ export class $EntityWeight {
 constructor()
 
 public "getWeight"(entity: $Entity$$Type): integer
-public "writeNetData"(data: $FriendlyByteBuf$$Type): void
 public "readNetData"(data: $FriendlyByteBuf$$Type): void
+public "writeNetData"(data: $FriendlyByteBuf$$Type): void
 public "writeData"(nbt: $CompoundTag$$Type): void
 public "readData"(nbt: $CompoundTag$$Type): void
 }
@@ -4032,10 +4167,10 @@ static readonly "CANT_CLAIM": $RewardClaimType
 
 
 public static "values"(): ($RewardClaimType)[]
-public static "valueOf"(name: string): $RewardClaimType
+public static "valueOf"(name: StringJS): $RewardClaimType
 public "isClaimed"(): boolean
-public "cantClaim"(): boolean
 public "canClaim"(): boolean
+public "cantClaim"(): boolean
 get "claimed"(): boolean
 }
 /**
@@ -4063,9 +4198,9 @@ static readonly "FLEXIBLE": $ProgressionMode
 
 
 public static "values"(): ($ProgressionMode)[]
-public static "valueOf"(name: string): $ProgressionMode
-public "getId"(): string
-get "id"(): string
+public static "valueOf"(name: StringJS): $ProgressionMode
+public "getId"(): StringJS
+get "id"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4111,18 +4246,18 @@ declare global {
 export type $PopupMenu_ = $PopupMenu$$Type;
 }}
 declare module "dev.ftb.mods.ftbquests.quest.TeamData" {
-import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
 import {$Reward, $Reward$$Type} from "dev.ftb.mods.ftbquests.quest.reward.Reward"
+import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$FriendlyByteBuf, $FriendlyByteBuf$$Type} from "net.minecraft.network.FriendlyByteBuf"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$UUID, $UUID$$Type} from "java.util.UUID"
 import {$LongSet, $LongSet$$Type} from "it.unimi.dsi.fastutil.longs.LongSet"
+import {$UUID, $UUID$$Type} from "java.util.UUID"
 import {$SNBTCompoundTag, $SNBTCompoundTag$$Type} from "dev.ftb.mods.ftblibrary.snbt.SNBTCompoundTag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$QuestObject, $QuestObject$$Type} from "dev.ftb.mods.ftbquests.quest.QuestObject"
-import {$Quest, $Quest$$Type} from "dev.ftb.mods.ftbquests.quest.Quest"
 import {$BaseQuestFile, $BaseQuestFile$$Type} from "dev.ftb.mods.ftbquests.quest.BaseQuestFile"
+import {$Quest, $Quest$$Type} from "dev.ftb.mods.ftbquests.quest.Quest"
 import {$Task, $Task$$Type} from "dev.ftb.mods.ftbquests.quest.task.Task"
 import {$Date, $Date$$Type} from "java.util.Date"
 import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
@@ -4133,68 +4268,68 @@ static readonly "AUTO_PIN_ID": integer
 static readonly "VERSION": integer
 static readonly "STREAM_CODEC": $StreamCodec<($FriendlyByteBuf), ($TeamData)>
 
-constructor(teamId: $UUID$$Type, file: $BaseQuestFile$$Type, name: string)
 constructor(teamId: $UUID$$Type, file: $BaseQuestFile$$Type)
+constructor(teamId: $UUID$$Type, file: $BaseQuestFile$$Type, name: StringJS)
 
-public "copyData"(from: $TeamData$$Type): void
-public "getName"(): string
-public static "get"(player: $Player$$Type): $TeamData
-public "toString"(): string
-public "setName"(name: string): void
-public "isStarted"(object: $QuestObject$$Type): boolean
 public "getFile"(): $BaseQuestFile
 public "isLocked"(): boolean
 public "setCompleted"(id: long, time: $Date$$Type): boolean
 public "isCompleted"(object: $QuestObject$$Type): boolean
+public "copyData"(from: $TeamData$$Type): void
+public "isStarted"(object: $QuestObject$$Type): boolean
+public "getName"(): StringJS
+public static "get"(player: $Player$$Type): $TeamData
+public "toString"(): StringJS
+public "setName"(name: StringJS): void
 public "markDirty"(): void
 public "deserializeNBT"(nbt: $SNBTCompoundTag$$Type): void
 public "serializeNBT"(): $SNBTCompoundTag
-public "getProgress"(taskId: long): long
-public "getProgress"(task: $Task$$Type): long
 public "setProgress"(task: $Task$$Type, progress: long): void
+public "getProgress"(task: $Task$$Type): long
+public "getProgress"(taskId: long): long
 public "setStarted"(questId: long, time: $Date$$Type): boolean
-public "mergeClaimedRewards"(from: $TeamData$$Type): void
-public "checkAutoCompletion"(quest: $Quest$$Type): void
-public "clearCachedProgress"(): void
-public "hasUnclaimedRewards"(player: $UUID$$Type, object: $QuestObject$$Type): boolean
-public "getRelativeProgress"(object: $QuestObject$$Type): integer
-public "areDependenciesVisible"(quest: $Quest$$Type): boolean
-public "isRewardBlocked"(reward: $Reward$$Type): boolean
-public "isRewardClaimed"(player: $UUID$$Type, reward: $Reward$$Type): boolean
-public "markTaskCompleted"(task: $Task$$Type): void
+public "canStartTasks"(quest: $Quest$$Type): boolean
+public "deleteReward"(reward: $Reward$$Type): void
+public "resetReward"(player: $UUID$$Type, reward: $Reward$$Type): boolean
+public "claimReward"(player: $UUID$$Type, reward: $Reward$$Type, date: long): boolean
+public "claimReward"(player: $ServerPlayer$$Type, reward: $Reward$$Type, notify: boolean): void
+public "isQuestPinned"(player: $Player$$Type, id: long): boolean
+public "setQuestPinned"(player: $Player$$Type, id: long, pinned: boolean): void
+public "getStartedTime"(questId: long): $Optional<($Date)>
+public "resetProgress"(task: $Task$$Type): void
+public "setLocked"(newLocked: boolean): boolean
+public "getClaimType"(player: $UUID$$Type, reward: $Reward$$Type): $RewardClaimType
+public "addProgress"(task: $Task$$Type, progress: long): void
+public "getTeamId"(): $UUID
+public "mergeData"(from: $TeamData$$Type): void
+public "getCanEdit"(player: $Player$$Type): boolean
+public "setCanEdit"(player: $Player$$Type, newCanEdit: boolean): boolean
+public "saveIfChanged"(): void
 public "getCompletedTime"(questId: long): $Optional<($Date)>
 public "getRewardClaimTime"(player: $UUID$$Type, reward: $Reward$$Type): $Optional<($Date)>
 public "areRewardsBlocked"(): boolean
 public "setRewardsBlocked"(rewardsBlocked: boolean): boolean
 public "getPinnedQuestIds"(player: $Player$$Type): $LongSet
+public "areDependenciesVisible"(quest: $Quest$$Type): boolean
+public "isRewardBlocked"(reward: $Reward$$Type): boolean
 public "getOnlineMembers"(): $Collection<($ServerPlayer)>
-public "setCanEdit"(player: $Player$$Type, newCanEdit: boolean): boolean
-public "getTeamId"(): $UUID
-public "addProgress"(task: $Task$$Type, progress: long): void
-public "resetProgress"(task: $Task$$Type): void
-public "getCanEdit"(player: $Player$$Type): boolean
-public "mergeData"(from: $TeamData$$Type): void
-public "canStartTasks"(quest: $Quest$$Type): boolean
-public "getClaimType"(player: $UUID$$Type, reward: $Reward$$Type): $RewardClaimType
-public "deleteReward"(reward: $Reward$$Type): void
-public "resetReward"(player: $UUID$$Type, reward: $Reward$$Type): boolean
-public "claimReward"(player: $ServerPlayer$$Type, reward: $Reward$$Type, notify: boolean): void
-public "claimReward"(player: $UUID$$Type, reward: $Reward$$Type, date: long): boolean
-public "isQuestPinned"(player: $Player$$Type, id: long): boolean
-public "setQuestPinned"(player: $Player$$Type, id: long, pinned: boolean): void
-public "getStartedTime"(questId: long): $Optional<($Date)>
-public "setLocked"(newLocked: boolean): boolean
-public "saveIfChanged"(): void
-public "areDependenciesComplete"(quest: $Quest$$Type): boolean
+public "mergeClaimedRewards"(from: $TeamData$$Type): void
+public "checkAutoCompletion"(quest: $Quest$$Type): void
+public "clearCachedProgress"(): void
+public "hasUnclaimedRewards"(player: $UUID$$Type, object: $QuestObject$$Type): boolean
+public "getRelativeProgress"(object: $QuestObject$$Type): integer
+public "isRewardClaimed"(player: $UUID$$Type, reward: $Reward$$Type): boolean
+public "markTaskCompleted"(task: $Task$$Type): void
 public "isExcludedByOtherQuestline"(qo: $QuestObject$$Type): boolean
-get "name"(): string
-set "name"(value: string)
+public "areDependenciesComplete"(quest: $Quest$$Type): boolean
 get "file"(): $BaseQuestFile
 get "locked"(): boolean
+get "name"(): StringJS
+set "name"(value: StringJS)
+set "locked"(value: boolean)
+get "teamId"(): $UUID
 set "rewardsBlocked"(value: boolean)
 get "onlineMembers"(): $Collection<($ServerPlayer)>
-get "teamId"(): $UUID
-set "locked"(value: boolean)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4216,27 +4351,27 @@ import {$Record, $Record$$Type} from "java.lang.Record"
 
 export class $KnownClientPlayer extends $Record {
 
-constructor(id: $UUID$$Type, name: string, online: boolean, teamId: $UUID$$Type, profile: $GameProfile$$Type, extraData: $CompoundTag$$Type)
+constructor(id: $UUID$$Type, name: StringJS, online: boolean, teamId: $UUID$$Type, profile: $GameProfile$$Type, extraData: $CompoundTag$$Type)
 
-public "extraData"(): $CompoundTag
-public "name"(): string
+public "name"(): StringJS
 public "profile"(): $GameProfile
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "id"(): $UUID
+public "extraData"(): $CompoundTag
 public "teamId"(): $UUID
 public "online"(): boolean
-public "isOnlineAndNotInParty"(): boolean
 public "isInternalTeam"(): boolean
-get "onlineAndNotInParty"(): boolean
+public "isOnlineAndNotInParty"(): boolean
 get "internalTeam"(): boolean
+get "onlineAndNotInParty"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $KnownClientPlayer$$Type = ({"id"?: $UUID$$Type, "profile"?: $GameProfile$$Type, "online"?: boolean, "extraData"?: $CompoundTag$$Type, "name"?: string, "teamId"?: $UUID$$Type}) | ([id?: $UUID$$Type, profile?: $GameProfile$$Type, online?: boolean, extraData?: $CompoundTag$$Type, name?: string, teamId?: $UUID$$Type]);
+export type $KnownClientPlayer$$Type = ({"name"?: StringJS, "teamId"?: $UUID$$Type, "id"?: $UUID$$Type, "profile"?: $GameProfile$$Type, "online"?: boolean, "extraData"?: $CompoundTag$$Type}) | ([name?: StringJS, teamId?: $UUID$$Type, id?: $UUID$$Type, profile?: $GameProfile$$Type, online?: boolean, extraData?: $CompoundTag$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -4294,31 +4429,31 @@ import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $TaskScreenAuxBlockEntity extends $BlockEntity implements $ITaskScreen, $Nameable {
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 constructor(blockPos: $BlockPos$$Type, blockState: $BlockState$$Type)
 
 public "getName"(): $Component
-public "loadAdditional"(compoundTag: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
 public "getSkin"(): $ItemStack
-public "hasPermissionToEdit"(player: $Player$$Type): boolean
-public "isIndestructible"(): boolean
-public "getTeamId"(): $UUID
+public "loadAdditional"(compoundTag: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
+public "isInputOnly"(): boolean
 public "getCoreScreen"(): $Optional<($TaskScreenBlockEntity)>
 public "setCoreScreen"(coreScreen: $TaskScreenBlockEntity$$Type): void
-public "isInputOnly"(): boolean
+public "getTeamId"(): $UUID
+public "isIndestructible"(): boolean
+public "hasPermissionToEdit"(player: $Player$$Type): boolean
 public "getDisplayName"(): $Component
-public "hasCustomName"(): boolean
 public "getCustomName"(): $Component
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+public "hasCustomName"(): boolean
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "name"(): $Component
 get "skin"(): $ItemStack
-get "indestructible"(): boolean
-get "teamId"(): $UUID
+get "inputOnly"(): boolean
 get "coreScreen"(): $Optional<($TaskScreenBlockEntity)>
 set "coreScreen"(value: $TaskScreenBlockEntity$$Type)
-get "inputOnly"(): boolean
+get "teamId"(): $UUID
+get "indestructible"(): boolean
 get "displayName"(): $Component
 get "customName"(): $Component
 }
@@ -4342,14 +4477,14 @@ import {$SNBTCompoundTag, $SNBTCompoundTag$$Type} from "dev.ftb.mods.ftblibrary.
 
 export class $LongValue extends $NumberValue<(long)> {
 readonly "parent": $SNBTConfig
-readonly "key": string
+readonly "key": StringJS
 
 
+public "range"(max: long): $NumberValue<(long)>
 public "set"(arg0: any): void
 public "set"(v: long): void
 public "write"(tag: $SNBTCompoundTag$$Type): void
 public "read"(tag: $SNBTCompoundTag$$Type): void
-public "range"(max: long): $NumberValue<(long)>
 public "createClientConfig"(group: $ConfigGroup$$Type): void
 }
 /**
@@ -4369,15 +4504,14 @@ import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.Stre
 import {$Reward, $Reward$$Type} from "dev.ftb.mods.ftbquests.quest.reward.Reward"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
+import {$UUID, $UUID$$Type} from "java.util.UUID"
 import {$ProgressionMode, $ProgressionMode$$Type} from "dev.ftb.mods.ftbquests.quest.ProgressionMode"
 import {$LootCrate, $LootCrate$$Type} from "dev.ftb.mods.ftbquests.quest.loot.LootCrate"
-import {$UUID, $UUID$$Type} from "java.util.UUID"
 import {$DefaultChapterGroup, $DefaultChapterGroup$$Type} from "dev.ftb.mods.ftbquests.quest.DefaultChapterGroup"
 import {$List, $List$$Type} from "java.util.List"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$QuestFile, $QuestFile$$Type} from "dev.ftb.mods.ftbquests.api.QuestFile"
-import {$TaskType, $TaskType$$Type} from "dev.ftb.mods.ftbquests.quest.task.TaskType"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$TaskType, $TaskType$$Type} from "dev.ftb.mods.ftbquests.quest.task.TaskType"
 import {$QuestObject, $QuestObject$$Type} from "dev.ftb.mods.ftbquests.quest.QuestObject"
 import {$QuestLink, $QuestLink$$Type} from "dev.ftb.mods.ftbquests.quest.QuestLink"
 import {$RewardType, $RewardType$$Type} from "dev.ftb.mods.ftbquests.quest.reward.RewardType"
@@ -4406,10 +4540,11 @@ import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.mine
 import {$RecipeModHelper$Components, $RecipeModHelper$Components$$Type} from "dev.ftb.mods.ftbquests.integration.RecipeModHelper$Components"
 import {$RewardAutoClaim, $RewardAutoClaim$$Type} from "dev.ftb.mods.ftbquests.quest.reward.RewardAutoClaim"
 import {$Task, $Task$$Type} from "dev.ftb.mods.ftbquests.quest.task.Task"
+import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
 import {$QuestProgressEventData, $QuestProgressEventData$$Type} from "dev.ftb.mods.ftbquests.events.QuestProgressEventData"
 import {$Tag, $Tag$$Type} from "net.minecraft.nbt.Tag"
-import {$Path, $Path$$Type} from "java.nio.file.Path"
 import {$QuestObjectBase, $QuestObjectBase$$Type} from "dev.ftb.mods.ftbquests.quest.QuestObjectBase"
+import {$Path, $Path$$Type} from "java.nio.file.Path"
 import {$CommandSourceStack, $CommandSourceStack$$Type} from "net.minecraft.commands.CommandSourceStack"
 
 export class $BaseQuestFile extends $QuestObject implements $QuestFile {
@@ -4419,30 +4554,72 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($BaseQ
 
 constructor()
 
-public "getTask"(id: long): $Task
 public "newID"(): long
+public "getTask"(id: long): $Task
+public "getLocale"(): StringJS
+public "create"(id: long, type: $QuestObjectType$$Type, parent: long, extra: $CompoundTag$$Type): $QuestObjectBase
+public "getID"(obj: any): long
+public "getChildren"(): $Collection<($QuestObject)>
+public "getBase"(id: long): $QuestObjectBase
+public "getObjectType"(): $QuestObjectType
+public "isLoading"(): boolean
+public "getFallbackLocale"(): StringJS
 public "remove"(id: long): $QuestObjectBase
 public "get"(id: long): $QuestObject
-public "collect"<T extends $QuestObjectBase>(filter: $Predicate$$Type<($QuestObjectBase)>): $List<(T)>
 public "collect"<T extends $QuestObjectBase>(clazz: $Class$$Type<(T)>): $List<(T)>
-public "create"(id: long, type: $QuestObjectType$$Type, parent: long, extra: $CompoundTag$$Type): $QuestObjectBase
-public "getLocale"(): string
-public "getID"(obj: any): long
-public "getFallbackLocale"(): string
-public "getBase"(id: long): $QuestObjectBase
-public "getChildren"(): $Collection<($QuestObject)>
-public "isLoading"(): boolean
-public "getObjectType"(): $QuestObjectType
+public "collect"<T extends $QuestObjectBase>(filter: $Predicate$$Type<($QuestObjectBase)>): $List<(T)>
 public "markDirty"(): void
-public "isVisible"(data: $TeamData$$Type): boolean
 public "holderLookup"(): $HolderLookup$Provider
-public "getSide"(): $Env
+public "isVisible"(data: $TeamData$$Type): boolean
 public "deleteObject"(arg0: long): void
+public "getSide"(): $Env
 public "readID"(id: long): long
 public "readID"(tag: $Tag$$Type): long
+public "getQuestFile"(): $BaseQuestFile
+public "isPlayerOnTeam"(arg0: $Player$$Type, arg1: $TeamData$$Type): boolean
+public "readNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
+public "getSubmitTasks"(): $List<($Task)>
+public "getGridScale"(): double
+public "isPauseGame"(): boolean
+public "refreshGui"(): void
+public "isDisableGui"(): boolean
+public "getAllTasks"(): $List<($Task)>
+public "getAllChapters"(): $List<($Chapter)>
+public "getAllTeamData"(): $Collection<($TeamData)>
+public "getAltTitle"(): $MutableComponent
+public "getAltIcon"(): $Icon
+public "getParentID"(): long
+public "getTaskType"(typeId: integer): $TaskType
+public "showLockIcons"(): boolean
+public "isServerSide"(): boolean
+public "forAllChapters"(consumer: $Consumer$$Type<($Chapter)>): void
+public "onStarted"(data: $QuestProgressEventData$$Type<(any)>): void
+public "onCompleted"(data: $QuestProgressEventData$$Type<(any)>): void
+public "deleteSelf"(): void
+public "deleteChildren"(): void
+public "forAllQuests"(consumer: $Consumer$$Type<($Quest)>): void
+public "refreshIDMap"(): void
+public "getQuest"(id: long): $Quest
+public "getReward"(id: long): $Reward
+public "getRewardTable"(id: long): $RewardTable
+public "getLootCrate"(id: StringJS): $LootCrate
+public "writeDataFull"(folder: $Path$$Type, provider: $HolderLookup$Provider$$Type): void
+public "readDataFull"(folder: $Path$$Type, provider: $HolderLookup$Provider$$Type): void
+public "getAllObjects"(): $Collection<($QuestObjectBase)>
+public "writeNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
+public "addRewardTable"(rewardTable: $RewardTable$$Type): void
+public "getRewardType"(typeId: integer): $RewardType
+public "getTeamData"(player: $Player$$Type): $Optional<($TeamData)>
+public "getChapter"(id: long): $Chapter
+public "writeData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
+public "getFolder"(): $Path
+public "addData"(data: $TeamData$$Type, override: boolean): void
+public "readData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
+public "canEdit"(): boolean
 public "isDropLootCrates"(): boolean
 public "makeRandomLootCrate"(entity: $Entity$$Type, random: $RandomSource$$Type): $Optional<($LootCrate)>
 public "dropBookOnDeath"(): boolean
+public "getRelativeProgressFromChildren"(data: $TeamData$$Type): integer
 public "getTranslationManager"(): $TranslationManager
 public "getQuestObjectOrThrow"<T extends $QuestObjectBase>(id: long, cls: $Class$$Type<(T)>): T
 public "getChapterOrThrow"(id: long): $Chapter
@@ -4453,15 +4630,15 @@ public "writeNetDataFull"(buffer: $RegistryFriendlyByteBuf$$Type): void
 public "readNetDataFull"(buffer: $RegistryFriendlyByteBuf$$Type): void
 public "getNullableTeamData"(id: $UUID$$Type): $TeamData
 public "getOrCreateTeamData"(teamId: $UUID$$Type): $TeamData
-public "getOrCreateTeamData"(team: $Team$$Type): $TeamData
 public "getOrCreateTeamData"(player: $Entity$$Type): $TeamData
+public "getOrCreateTeamData"(team: $Team$$Type): $TeamData
 public "fillConfigGroup"(config: $ConfigGroup$$Type): void
 public "clearCachedProgress"(): void
 public "componentsToRefresh"(): $Set<($RecipeModHelper$Components)>
 public "getCraftingTasks"(): $List<($Task)>
 public "getVisibleChapters"(data: $TeamData$$Type): $List<($Chapter)>
 public "getFirstVisibleChapter"(data: $TeamData$$Type): $Chapter
-public "getDefaultQuestShape"(): string
+public "getDefaultQuestShape"(): StringJS
 public "hasUnclaimedRewardsRaw"(teamData: $TeamData$$Type, player: $UUID$$Type): boolean
 public "getProgressionMode"(): $ProgressionMode
 public "getDetectionDelay"(): integer
@@ -4476,64 +4653,36 @@ public "forAllChapterGroups"(consumer: $Consumer$$Type<($ChapterGroup)>): void
 public "forAllQuestLinks"(consumer: $Consumer$$Type<($QuestLink)>): void
 public "moveChapterGroup"(id: long, movingUp: boolean): boolean
 public "getLootCrateNoDrop"(): $EntityWeight
-public "getQuestFile"(): $BaseQuestFile
-public "showLockIcons"(): boolean
-public "isServerSide"(): boolean
-public "forAllChapters"(consumer: $Consumer$$Type<($Chapter)>): void
-public "onStarted"(data: $QuestProgressEventData$$Type<(any)>): void
-public "onCompleted"(data: $QuestProgressEventData$$Type<(any)>): void
-public "deleteSelf"(): void
-public "deleteChildren"(): void
-public "forAllQuests"(consumer: $Consumer$$Type<($Quest)>): void
-public "refreshIDMap"(): void
-public "getQuest"(id: long): $Quest
-public "getReward"(id: long): $Reward
-public "getRewardTable"(id: long): $RewardTable
-public "getLootCrate"(id: string): $LootCrate
-public "writeDataFull"(folder: $Path$$Type, provider: $HolderLookup$Provider$$Type): void
-public "readDataFull"(folder: $Path$$Type, provider: $HolderLookup$Provider$$Type): void
-public "getAllObjects"(): $Collection<($QuestObjectBase)>
-public "writeNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
-public "readNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
-public "getParentID"(): long
-public "getAllTeamData"(): $Collection<($TeamData)>
-public "getAltTitle"(): $Component
-public "getAltIcon"(): $Icon
-public "getAllChapters"(): $List<($Chapter)>
-public "getAllTasks"(): $List<($Task)>
-public "getSubmitTasks"(): $List<($Task)>
-public "refreshGui"(): void
-public "isPauseGame"(): boolean
-public "isDisableGui"(): boolean
-public "getGridScale"(): double
-public "isPlayerOnTeam"(arg0: $Player$$Type, arg1: $TeamData$$Type): boolean
-public "getTaskType"(typeId: integer): $TaskType
-public "getRewardType"(typeId: integer): $RewardType
-public "addRewardTable"(rewardTable: $RewardTable$$Type): void
-public "addData"(data: $TeamData$$Type, override: boolean): void
-public "writeData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
-public "getFolder"(): $Path
-public "getTeamData"(player: $Player$$Type): $Optional<($TeamData)>
-public "getChapter"(id: long): $Chapter
-public "canEdit"(): boolean
-public "readData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
 public "refreshRewardTableRewardIDs"(): void
 public "isDefaultTeamConsumeItems"(): boolean
 public "getDefaultRewardAutoClaim"(): $RewardAutoClaim
 public "getEmergencyItemsCooldown"(): integer
 public "isDefaultQuestDisableJEI"(): boolean
 public "removeEmptyRewardTables"(source: $CommandSourceStack$$Type): integer
-public "getRelativeProgressFromChildren"(data: $TeamData$$Type): integer
-get "locale"(): string
-get "fallbackLocale"(): string
+get "locale"(): StringJS
 get "children"(): $Collection<($QuestObject)>
-get "loading"(): boolean
 get "objectType"(): $QuestObjectType
+get "loading"(): boolean
+get "fallbackLocale"(): StringJS
 get "side"(): $Env
+get "questFile"(): $BaseQuestFile
+get "submitTasks"(): $List<($Task)>
+get "gridScale"(): double
+get "pauseGame"(): boolean
+get "disableGui"(): boolean
+get "allTasks"(): $List<($Task)>
+get "allChapters"(): $List<($Chapter)>
+get "allTeamData"(): $Collection<($TeamData)>
+get "altTitle"(): $MutableComponent
+get "altIcon"(): $Icon
+get "parentID"(): long
+get "serverSide"(): boolean
+get "allObjects"(): $Collection<($QuestObjectBase)>
+get "folder"(): $Path
 get "dropLootCrates"(): boolean
 get "translationManager"(): $TranslationManager
 get "craftingTasks"(): $List<($Task)>
-get "defaultQuestShape"(): string
+get "defaultQuestShape"(): StringJS
 get "progressionMode"(): $ProgressionMode
 get "detectionDelay"(): integer
 get "hideExcludedQuests"(): boolean
@@ -4543,20 +4692,6 @@ get "defaultChapterGroup"(): $DefaultChapterGroup
 get "rewardTables"(): $List<($RewardTable)>
 get "chapterGroups"(): $List<($ChapterGroup)>
 get "lootCrateNoDrop"(): $EntityWeight
-get "questFile"(): $BaseQuestFile
-get "serverSide"(): boolean
-get "allObjects"(): $Collection<($QuestObjectBase)>
-get "parentID"(): long
-get "allTeamData"(): $Collection<($TeamData)>
-get "altTitle"(): $Component
-get "altIcon"(): $Icon
-get "allChapters"(): $List<($Chapter)>
-get "allTasks"(): $List<($Task)>
-get "submitTasks"(): $List<($Task)>
-get "pauseGame"(): boolean
-get "disableGui"(): boolean
-get "gridScale"(): double
-get "folder"(): $Path
 get "defaultTeamConsumeItems"(): boolean
 get "defaultRewardAutoClaim"(): $RewardAutoClaim
 get "emergencyItemsCooldown"(): integer
@@ -4575,24 +4710,27 @@ declare global {
 export type $BaseQuestFile_ = $BaseQuestFile$$Type;
 }}
 declare module "dev.ftb.mods.ftbquests.item.QuestBarrierBlockItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $QuestBarrierBlockItem extends $BlockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4611,6 +4749,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4685,7 +4824,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -4715,8 +4854,8 @@ declare module "dev.ftb.mods.ftbquests.quest.loot.RewardTable" {
 import {$ConfigGroup, $ConfigGroup$$Type} from "dev.ftb.mods.ftblibrary.config.ConfigGroup"
 import {$Icon, $Icon$$Type} from "dev.ftb.mods.ftblibrary.icon.Icon"
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$LootCrate, $LootCrate$$Type} from "dev.ftb.mods.ftbquests.quest.loot.LootCrate"
 import {$QuestObjectType, $QuestObjectType$$Type} from "dev.ftb.mods.ftbquests.quest.QuestObjectType"
@@ -4727,9 +4866,9 @@ import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
 import {$TooltipList, $TooltipList$$Type} from "dev.ftb.mods.ftblibrary.util.TooltipList"
+import {$BaseQuestFile, $BaseQuestFile$$Type} from "dev.ftb.mods.ftbquests.quest.BaseQuestFile"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Quest, $Quest$$Type} from "dev.ftb.mods.ftbquests.quest.Quest"
-import {$BaseQuestFile, $BaseQuestFile$$Type} from "dev.ftb.mods.ftbquests.quest.BaseQuestFile"
 import {$RecipeModHelper$Components, $RecipeModHelper$Components$$Type} from "dev.ftb.mods.ftbquests.integration.RecipeModHelper$Components"
 import {$Set, $Set$$Type} from "java.util.Set"
 import {$QuestObjectBase, $QuestObjectBase$$Type} from "dev.ftb.mods.ftbquests.quest.QuestObjectBase"
@@ -4737,53 +4876,53 @@ import {$QuestObjectBase, $QuestObjectBase$$Type} from "dev.ftb.mods.ftbquests.q
 export class $RewardTable extends $QuestObjectBase {
 readonly "id": long
 
+constructor(id: long, file: $BaseQuestFile$$Type, filename: StringJS)
 constructor(id: long, file: $BaseQuestFile$$Type)
-constructor(id: long, file: $BaseQuestFile$$Type, filename: string)
 
-public "copy"(): $RewardTable
 public "getFile"(): $BaseQuestFile
-public "getPath"(): $Optional<(string)>
+public "getPath"(): $Optional<(StringJS)>
 public "getObjectType"(): $QuestObjectType
-public "clearCachedData"(): void
-public static "createRewardForTable"(id: long, type: string, file: $BaseQuestFile$$Type): $QuestObjectBase
-public "fillConfigGroup"(config: $ConfigGroup$$Type): void
-public "componentsToRefresh"(): $Set<($RecipeModHelper$Components)>
-public "getWeightedRewards"(): $List<($WeightedReward)>
-public "editedFromGUIOnServer"(): void
-public "onEditButtonClicked"(gui: $Runnable$$Type): void
-public "addMouseOverText"(list: $TooltipList$$Type, includeWeight: boolean, includeEmpty: boolean): void
-public "makeWeightedItemReward"(stack: $ItemStack$$Type, weight: float): $WeightedReward
-public "toggleLootCrate"(): $LootCrate
-public "shouldShowTooltip"(): boolean
-public "onCreated"(): void
-public "editedFromGUI"(): void
+public "copy"(): $RewardTable
+public "getTitleOrElse"(def: $Component$$Type): $Component
 public "getQuestFile"(): $BaseQuestFile
-public "deleteSelf"(): void
-public "getLootCrate"(): $LootCrate
-public static "isFakeQuestId"(id: long): boolean
-public "getFilename"(): string
-public "writeNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
+public "getFakeQuest"(): $Quest
 public "readNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
 public "addReward"(weightedReward: $WeightedReward$$Type): void
 public "getAltTitle"(): $Component
 public "getAltIcon"(): $Icon
+public "editedFromGUI"(): void
 public "removeReward"(weightedReward: $WeightedReward$$Type): void
-public "getTitleOrElse"(def: $Component$$Type): $Component
-public "getFakeQuest"(): $Quest
+public "deleteSelf"(): void
+public "getLootCrate"(): $LootCrate
+public static "isFakeQuestId"(id: long): boolean
+public "writeNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
 public "writeData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
+public "onCreated"(): void
 public "readData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
+public "getFilename"(): StringJS
 public "getTotalWeight"(includeEmpty: boolean): float
+public "addMouseOverText"(list: $TooltipList$$Type, includeWeight: boolean, includeEmpty: boolean): void
+public "makeWeightedItemReward"(stack: $ItemStack$$Type, weight: float): $WeightedReward
+public "toggleLootCrate"(): $LootCrate
+public "shouldShowTooltip"(): boolean
+public "clearCachedData"(): void
+public static "createRewardForTable"(id: long, type: StringJS, file: $BaseQuestFile$$Type): $QuestObjectBase
+public "editedFromGUIOnServer"(): void
+public "onEditButtonClicked"(gui: $Runnable$$Type): void
+public "fillConfigGroup"(config: $ConfigGroup$$Type): void
+public "componentsToRefresh"(): $Set<($RecipeModHelper$Components)>
+public "getWeightedRewards"(): $List<($WeightedReward)>
 public "generateWeightedRandomRewards"(random: $RandomSource$$Type, nAttempts: integer, includeEmpty: boolean): $Collection<($WeightedReward)>
 get "file"(): $BaseQuestFile
-get "path"(): $Optional<(string)>
+get "path"(): $Optional<(StringJS)>
 get "objectType"(): $QuestObjectType
-get "weightedRewards"(): $List<($WeightedReward)>
 get "questFile"(): $BaseQuestFile
-get "lootCrate"(): $LootCrate
-get "filename"(): string
+get "fakeQuest"(): $Quest
 get "altTitle"(): $Component
 get "altIcon"(): $Icon
-get "fakeQuest"(): $Quest
+get "lootCrate"(): $LootCrate
+get "filename"(): StringJS
+get "weightedRewards"(): $List<($WeightedReward)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4799,13 +4938,13 @@ export type $RewardTable_ = $RewardTable$$Type;
 }}
 declare module "dev.ftb.mods.ftblibrary.config.ConfigGroup" {
 import {$EnumConfig, $EnumConfig$$Type} from "dev.ftb.mods.ftblibrary.config.EnumConfig"
-import {$Pattern, $Pattern$$Type} from "java.util.regex.Pattern"
 import {$LongConfig, $LongConfig$$Type} from "dev.ftb.mods.ftblibrary.config.LongConfig"
+import {$Pattern, $Pattern$$Type} from "java.util.regex.Pattern"
 import {$DoubleConfig, $DoubleConfig$$Type} from "dev.ftb.mods.ftblibrary.config.DoubleConfig"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Comparable, $Comparable$$Type} from "java.lang.Comparable"
-import {$ConfigCallback, $ConfigCallback$$Type} from "dev.ftb.mods.ftblibrary.config.ConfigCallback"
 import {$List, $List$$Type} from "java.util.List"
+import {$ConfigCallback, $ConfigCallback$$Type} from "dev.ftb.mods.ftblibrary.config.ConfigCallback"
 import {$ItemStackConfig, $ItemStackConfig$$Type} from "dev.ftb.mods.ftblibrary.config.ItemStackConfig"
 import {$Tristate, $Tristate$$Type} from "dev.ftb.mods.ftblibrary.config.Tristate"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
@@ -4814,6 +4953,7 @@ import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resource
 import {$ColorConfig, $ColorConfig$$Type} from "dev.ftb.mods.ftblibrary.config.ColorConfig"
 import {$BooleanConfig, $BooleanConfig$$Type} from "dev.ftb.mods.ftblibrary.config.BooleanConfig"
 import {$FluidStack, $FluidStack$$Type} from "dev.architectury.fluid.FluidStack"
+import {$EntityType, $EntityType$$Type} from "net.minecraft.world.entity.EntityType"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$SNBTConfig, $SNBTConfig$$Type} from "dev.ftb.mods.ftblibrary.snbt.config.SNBTConfig"
 import {$FluidConfig, $FluidConfig$$Type} from "dev.ftb.mods.ftblibrary.config.FluidConfig"
@@ -4823,56 +4963,58 @@ import {$StringConfig, $StringConfig$$Type} from "dev.ftb.mods.ftblibrary.config
 import {$Color4I, $Color4I$$Type} from "dev.ftb.mods.ftblibrary.icon.Color4I"
 import {$ImageResourceConfig, $ImageResourceConfig$$Type} from "dev.ftb.mods.ftblibrary.config.ImageResourceConfig"
 import {$ListConfig, $ListConfig$$Type} from "dev.ftb.mods.ftblibrary.config.ListConfig"
+import {$EntityFaceConfig, $EntityFaceConfig$$Type} from "dev.ftb.mods.ftblibrary.config.EntityFaceConfig"
 import {$ConfigValue, $ConfigValue$$Type} from "dev.ftb.mods.ftblibrary.config.ConfigValue"
 
 export class $ConfigGroup implements $Comparable<($ConfigGroup)> {
 
-constructor(id: string, savedCallback: $ConfigCallback$$Type)
-constructor(id: string)
+constructor(id: StringJS)
+constructor(id: StringJS, savedCallback: $ConfigCallback$$Type)
 
+public "getPath"(): StringJS
 public "getName"(): $Component
-public "compareTo"(arg0: any): integer
 public "compareTo"(o: $ConfigGroup$$Type): integer
-public "add"<T, CV extends $ConfigValue<(T)>>(id: string, type: CV, value: T, setter: $Consumer$$Type<(T)>, defaultValue: T): CV
+public "compareTo"(arg0: any): integer
+public "add"<T, CV extends $ConfigValue<(T)>>(id: StringJS, type: CV, value: T, setter: $Consumer$$Type<(T)>, defaultValue: T): CV
 public "getParent"(): $ConfigGroup
-public "getId"(): string
+public "getId"(): StringJS
 public "save"(accepted: boolean): void
-public "getPath"(): string
+public "addItemStack"(id: StringJS, value: $ItemStack$$Type, setter: $Consumer$$Type<($ItemStack)>, def: $ItemStack$$Type, singleItem: boolean, allowEmpty: boolean): $ItemStackConfig
+public "addItemStack"(id: StringJS, value: $ItemStack$$Type, setter: $Consumer$$Type<($ItemStack)>, def: $ItemStack$$Type, fixedSize: integer): $ItemStackConfig
 public "getTooltip"(): $Component
-public "addItemStack"(id: string, value: $ItemStack$$Type, setter: $Consumer$$Type<($ItemStack)>, def: $ItemStack$$Type, singleItem: boolean, allowEmpty: boolean): $ItemStackConfig
-public "addItemStack"(id: string, value: $ItemStack$$Type, setter: $Consumer$$Type<($ItemStack)>, def: $ItemStack$$Type, fixedSize: integer): $ItemStackConfig
+public "addList"<E, CV extends $ConfigValue<(E)>>(id: StringJS, value: $List$$Type<(E)>, type: CV, def: E): $ListConfig<(E), (CV)>
+public "addList"<E, CV extends $ConfigValue<(E)>>(id: StringJS, value: $List$$Type<(E)>, type: CV, setter: $Consumer$$Type<($List<(E)>)>, def: E): $ListConfig<(E), (CV)>
+public "getNameKey"(): StringJS
 public "getValues"(): $Collection<($ConfigValue<(any)>)>
-public "addList"<E, CV extends $ConfigValue<(E)>>(id: string, value: $List$$Type<(E)>, type: CV, setter: $Consumer$$Type<($List<(E)>)>, def: E): $ListConfig<(E), (CV)>
-public "addList"<E, CV extends $ConfigValue<(E)>>(id: string, value: $List$$Type<(E)>, type: CV, def: E): $ListConfig<(E), (CV)>
-public "getNameKey"(): string
-public "addInt"(id: string, value: integer, setter: $Consumer$$Type<(integer)>, def: integer, min: integer, max: integer): $IntConfig
-public "getOrCreateSubgroup"(id: string, displayOrder: integer): $ConfigGroup
-public "getOrCreateSubgroup"(id: string): $ConfigGroup
-public "addLong"(id: string, value: long, setter: $Consumer$$Type<(long)>, def: long, min: long, max: long): $LongConfig
-public "addDouble"(id: string, value: double, setter: $Consumer$$Type<(double)>, def: double, min: double, max: double): $DoubleConfig
-public "addString"(id: string, value: string, setter: $Consumer$$Type<(string)>, def: string): $StringConfig
-public "addString"(id: string, value: string, setter: $Consumer$$Type<(string)>, def: string, pattern: $Pattern$$Type): $StringConfig
-public "addEnum"<E>(id: string, value: E, setter: $Consumer$$Type<(E)>, nameMap: $NameMap$$Type<(E)>, def: E): $EnumConfig<(E)>
-public "addEnum"<E>(id: string, value: E, setter: $Consumer$$Type<(E)>, nameMap: $NameMap$$Type<(E)>): $EnumConfig<(E)>
-public "addBool"(id: string, value: boolean, setter: $Consumer$$Type<(boolean)>, def: boolean): $BooleanConfig
-public "setNameKey"(key: string): $ConfigGroup
-public "addTristate"(id: string, value: $Tristate$$Type, setter: $Consumer$$Type<($Tristate)>): $EnumConfig<($Tristate)>
-public "addTristate"(id: string, value: $Tristate$$Type, setter: $Consumer$$Type<($Tristate)>, def: $Tristate$$Type): $EnumConfig<($Tristate)>
-public static "createEditable"(config: $SNBTConfig$$Type, groupName: string, serverConfig: boolean): $ConfigGroup
-public "addFluidStack"(id: string, value: $FluidStack$$Type, setter: $Consumer$$Type<($FluidStack)>, def: $FluidStack$$Type, allowEmpty: boolean): $FluidConfig
-public "addFluidStack"(id: string, value: $FluidStack$$Type, setter: $Consumer$$Type<($FluidStack)>, def: $FluidStack$$Type, fixedSize: long): $FluidConfig
-public "addImage"(id: string, value: $ResourceLocation$$Type, setter: $Consumer$$Type<($ResourceLocation)>, def: $ResourceLocation$$Type): $ImageResourceConfig
+public "addInt"(id: StringJS, value: integer, setter: $Consumer$$Type<(integer)>, def: integer, min: integer, max: integer): $IntConfig
+public static "createEditable"(config: $SNBTConfig$$Type, groupName: StringJS, serverConfig: boolean): $ConfigGroup
+public "addFluidStack"(id: StringJS, value: $FluidStack$$Type, setter: $Consumer$$Type<($FluidStack)>, def: $FluidStack$$Type, fixedSize: long): $FluidConfig
+public "addFluidStack"(id: StringJS, value: $FluidStack$$Type, setter: $Consumer$$Type<($FluidStack)>, def: $FluidStack$$Type, allowEmpty: boolean): $FluidConfig
+public "addImage"(id: StringJS, value: $ResourceLocation$$Type, setter: $Consumer$$Type<($ResourceLocation)>, def: $ResourceLocation$$Type): $ImageResourceConfig
+public "addEntityFace"(id: StringJS, value: $EntityType$$Type<(any)>, setter: $Consumer$$Type<($EntityType<(any)>)>, def: $EntityType$$Type<(any)>): $EntityFaceConfig
 public "getSubgroups"(): $Collection<($ConfigGroup)>
-public "addColor"(id: string, value: $Color4I$$Type, setter: $Consumer$$Type<($Color4I)>, def: $Color4I$$Type): $ColorConfig
+public "addLong"(id: StringJS, value: long, setter: $Consumer$$Type<(long)>, def: long, min: long, max: long): $LongConfig
+public "addDouble"(id: StringJS, value: double, setter: $Consumer$$Type<(double)>, def: double, min: double, max: double): $DoubleConfig
+public "addString"(id: StringJS, value: StringJS, setter: $Consumer$$Type<(StringJS)>, def: StringJS): $StringConfig
+public "addString"(id: StringJS, value: StringJS, setter: $Consumer$$Type<(StringJS)>, def: StringJS, pattern: $Pattern$$Type): $StringConfig
+public "addBool"(id: StringJS, value: boolean, setter: $Consumer$$Type<(boolean)>, def: boolean): $BooleanConfig
+public "addTristate"(id: StringJS, value: $Tristate$$Type, setter: $Consumer$$Type<($Tristate)>, def: $Tristate$$Type): $EnumConfig<($Tristate)>
+public "addTristate"(id: StringJS, value: $Tristate$$Type, setter: $Consumer$$Type<($Tristate)>): $EnumConfig<($Tristate)>
+public "addColor"(id: StringJS, value: $Color4I$$Type, setter: $Consumer$$Type<($Color4I)>, def: $Color4I$$Type): $ColorConfig
+public "addEnum"<E>(id: StringJS, value: E, setter: $Consumer$$Type<(E)>, nameMap: $NameMap$$Type<(E)>): $EnumConfig<(E)>
+public "addEnum"<E>(id: StringJS, value: E, setter: $Consumer$$Type<(E)>, nameMap: $NameMap$$Type<(E)>, def: E): $EnumConfig<(E)>
+public "setNameKey"(key: StringJS): $ConfigGroup
+public "getOrCreateSubgroup"(id: StringJS, displayOrder: integer): $ConfigGroup
+public "getOrCreateSubgroup"(id: StringJS): $ConfigGroup
+get "path"(): StringJS
 get "name"(): $Component
 get "parent"(): $ConfigGroup
-get "id"(): string
-get "path"(): string
+get "id"(): StringJS
 get "tooltip"(): $Component
+get "nameKey"(): StringJS
 get "values"(): $Collection<($ConfigValue<(any)>)>
-get "nameKey"(): string
-set "nameKey"(value: string)
 get "subgroups"(): $Collection<($ConfigGroup)>
+set "nameKey"(value: StringJS)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4899,8 +5041,8 @@ import {$List, $List$$Type} from "java.util.List"
 import {$Runnable, $Runnable$$Type} from "java.lang.Runnable"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$TeamData, $TeamData$$Type} from "dev.ftb.mods.ftbquests.quest.TeamData"
-import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$TranslationKey, $TranslationKey$$Type} from "dev.ftb.mods.ftbquests.quest.translation.TranslationKey"
+import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$ProgressChange, $ProgressChange$$Type} from "dev.ftb.mods.ftbquests.util.ProgressChange"
 import {$BaseQuestFile, $BaseQuestFile$$Type} from "dev.ftb.mods.ftbquests.quest.BaseQuestFile"
@@ -4908,84 +5050,84 @@ import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.mine
 import {$RecipeModHelper$Components, $RecipeModHelper$Components$$Type} from "dev.ftb.mods.ftbquests.integration.RecipeModHelper$Components"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
-import {$Set, $Set$$Type} from "java.util.Set"
 import {$Tag, $Tag$$Type} from "net.minecraft.nbt.Tag"
+import {$Set, $Set$$Type} from "java.util.Set"
 
 export class $QuestObjectBase implements $Comparable<($QuestObjectBase)> {
 readonly "id": long
 
 constructor(id: long)
 
-public "equals"(object: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "compareTo"(other: $QuestObjectBase$$Type): integer
-public "compareTo"(arg0: any): integer
-public "getId"(): long
-public static "copy"<T extends $QuestObjectBase>(orig: T, factory: $Supplier$$Type<(T)>): T
-public "getPath"(): $Optional<(string)>
+public "getPath"(): $Optional<(StringJS)>
+public "isValid"(): boolean
 public static "isNull"(object: $QuestObjectBase$$Type): boolean
 public static "getID"(object: $QuestObjectBase$$Type): long
-public "isValid"(): boolean
 public "getObjectType"(): $QuestObjectType
-public "getTags"(): $Set<(string)>
+public "equals"(object: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+public "compareTo"(arg0: any): integer
+public "compareTo"(other: $QuestObjectBase$$Type): integer
+public "getId"(): long
+public static "copy"<T extends $QuestObjectBase>(orig: T, factory: $Supplier$$Type<(T)>): T
+public "hasTag"(tag: StringJS): boolean
+public "getTags"(): $Set<(StringJS)>
 public "holderLookup"(): $HolderLookup$Provider
 public "getIcon"(): $Icon
 public "getTitle"(): $Component
-public "hasTag"(tag: string): boolean
-public "getQuestChapter"(): $Chapter
+public "getQuestFile"(): $BaseQuestFile
+public "setRawTitle"(rawTitle: StringJS): void
+public "readNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
+public "getAltTitle"(): $Component
+public "getAltIcon"(): $Icon
+public "getParentID"(): long
+public "setRawIcon"(rawIcon: $ItemStack$$Type): void
+public "getRawTitle"(): StringJS
+public static "parseHexId"(id: StringJS): $Optional<(long)>
+public static "titleToID"(s: StringJS): $Optional<(StringJS)>
+public "editedFromGUI"(): void
+public "createSubGroup"(group: $ConfigGroup$$Type): $ConfigGroup
+public "forceProgress"(teamData: $TeamData$$Type, progressChange: $ProgressChange$$Type): void
+public "deleteSelf"(): void
+public "deleteChildren"(): void
+public "writeNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
+public "writeData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
+public "getCodeString"(): StringJS
+public static "getCodeString"(object: $QuestObjectBase$$Type): StringJS
+public static "getCodeString"(id: long): StringJS
+public "onCreated"(): void
+public "readData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
 public "clearCachedData"(): void
 public static "itemOrMissingFromNBT"(tag: $Tag$$Type, provider: $HolderLookup$Provider$$Type): $ItemStack
-public "fillConfigGroup"(config: $ConfigGroup$$Type): void
-public static "parseCodeString"(id: string): long
-public "componentsToRefresh"(): $Set<($RecipeModHelper$Components)>
+public "getQuestChapter"(): $Chapter
+public "getProtoTranslation"(key: $TranslationKey$$Type): StringJS
 public "forceProgressRaw"(teamData: $TeamData$$Type, progressChange: $ProgressChange$$Type): void
 public "getMutableTitle"(): $MutableComponent
 public "editedFromGUIOnServer"(): void
 public "onEditButtonClicked"(gui: $Runnable$$Type): void
-public "getProtoTranslation"(key: $TranslationKey$$Type): string
-public "onCreated"(): void
-public "setRawIcon"(rawIcon: $ItemStack$$Type): void
-public "getRawTitle"(): string
-public "forceProgress"(teamData: $TeamData$$Type, progressChange: $ProgressChange$$Type): void
-public static "parseHexId"(id: string): $Optional<(long)>
-public static "titleToID"(s: string): $Optional<(string)>
-public "editedFromGUI"(): void
-public "createSubGroup"(group: $ConfigGroup$$Type): $ConfigGroup
-public "getQuestFile"(): $BaseQuestFile
-public "deleteSelf"(): void
-public "deleteChildren"(): void
-public "getCodeString"(): string
-public static "getCodeString"(id: long): string
-public static "getCodeString"(object: $QuestObjectBase$$Type): string
-public "writeNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
-public "readNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
-public "getParentID"(): long
-public "getAltTitle"(): $Component
-public "getAltIcon"(): $Icon
-public "setRawTitle"(rawTitle: string): void
-public "writeData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
-public "readData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
-public "modifyTranslatableListValue"(translationKey: $TranslationKey$$Type, setter: $Consumer$$Type<($List<(string)>)>): void
+public "fillConfigGroup"(config: $ConfigGroup$$Type): void
+public static "parseCodeString"(id: StringJS): long
+public "componentsToRefresh"(): $Set<($RecipeModHelper$Components)>
 public static "shouldSendNotifications"(): boolean
 public static "singleItemOrMissingFromNBT"(tag: $Tag$$Type, provider: $HolderLookup$Provider$$Type): $ItemStack
-get "id"(): long
-get "path"(): $Optional<(string)>
+public "modifyTranslatableListValue"(translationKey: $TranslationKey$$Type, setter: $Consumer$$Type<($List<(StringJS)>)>): void
+get "path"(): $Optional<(StringJS)>
 get "valid"(): boolean
 get "objectType"(): $QuestObjectType
-get "tags"(): $Set<(string)>
+get "id"(): long
+get "tags"(): $Set<(StringJS)>
 get "icon"(): $Icon
 get "title"(): $Component
-get "questChapter"(): $Chapter
-get "mutableTitle"(): $MutableComponent
-set "rawIcon"(value: $ItemStack$$Type)
-get "rawTitle"(): string
 get "questFile"(): $BaseQuestFile
-get "codeString"(): string
-get "parentID"(): long
+set "rawTitle"(value: StringJS)
 get "altTitle"(): $Component
 get "altIcon"(): $Icon
-set "rawTitle"(value: string)
+get "parentID"(): long
+set "rawIcon"(value: $ItemStack$$Type)
+get "rawTitle"(): StringJS
+get "codeString"(): StringJS
+get "questChapter"(): $Chapter
+get "mutableTitle"(): $MutableComponent
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5007,7 +5149,7 @@ import {$SNBTCompoundTag, $SNBTCompoundTag$$Type} from "dev.ftb.mods.ftblibrary.
 
 export class $EnumValue<T> extends $BaseValue<(T)> {
 readonly "parent": $SNBTConfig
-readonly "key": string
+readonly "key": StringJS
 
 
 public "set"(v: T): void
@@ -5038,19 +5180,19 @@ export class $PositionedIngredient extends $Record {
 constructor(ingredient: any, area: $Rect2i$$Type, tooltip: boolean)
 
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public static "of"(ingredient: any, widget: $Widget$$Type): $Optional<($PositionedIngredient)>
 public static "of"(ingredient: any, widget: $Widget$$Type, tooltip: boolean): $Optional<($PositionedIngredient)>
+public "area"(): $Rect2i
 public "ingredient"(): any
 public "tooltip"(): boolean
-public "area"(): $Rect2i
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $PositionedIngredient$$Type = ({"area"?: $Rect2i$$Type, "ingredient"?: any, "tooltip"?: boolean}) | ([area?: $Rect2i$$Type, ingredient?: any, tooltip?: boolean]);
+export type $PositionedIngredient$$Type = ({"ingredient"?: any, "tooltip"?: boolean, "area"?: $Rect2i$$Type}) | ([ingredient?: any, tooltip?: boolean, area?: $Rect2i$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -5104,49 +5246,50 @@ import {$TeamPropertyCollection, $TeamPropertyCollection$$Type} from "dev.ftb.mo
 
 export interface $Team {
 
+ "getOwner"(): $UUID
+ "isValid"(): boolean
  "getName"(): $Component
  "getProperty"<T>(arg0: $TeamProperty$$Type<(T)>): T
  "setProperty"<T>(arg0: $TeamProperty$$Type<(T)>, arg1: T): void
  "getProperties"(): $TeamPropertyCollection
  "getId"(): $UUID
- "getOwner"(): $UUID
- "isValid"(): boolean
  "markDirty"(): void
- "sendMessage"(arg0: $UUID$$Type, arg1: string): void
  "getMembers"(): $Set<($UUID)>
- "getShortName"(): string
- "getMessageHistory"(): $List<($TeamMessage)>
- "getRankForPlayer"(arg0: $UUID$$Type): $TeamRank
- "getPlayersByRank"(arg0: $TeamRank$$Type): $Map<($UUID), ($TeamRank)>
- "getTypeTranslationKey"(): string
- "getOnlineMembers"(): $Collection<($ServerPlayer)>
- "getTeamId"(): $UUID
+ "getShortName"(): StringJS
  "isPlayerTeam"(): boolean
  "isPartyTeam"(): boolean
  "isServerTeam"(): boolean
  "getTeamInfo"(): $List<($Component)>
  "isClientTeam"(): boolean
  "getColoredName"(): $Component
- "createParty"(arg0: string, arg1: $Color4I$$Type): $Team
+ "createParty"(arg0: StringJS, arg1: $Color4I$$Type): $Team
+ "getTeamId"(): $UUID
  "getExtraData"(): $CompoundTag
+ "sendMessage"(arg0: $UUID$$Type, arg1: StringJS): void
+ "sendMessage"(arg0: $UUID$$Type, arg1: $Component$$Type): void
+ "getMessageHistory"(): $List<($TeamMessage)>
+ "getRankForPlayer"(arg0: $UUID$$Type): $TeamRank
+ "getPlayersByRank"(arg0: $TeamRank$$Type): $Map<($UUID), ($TeamRank)>
+ "getTypeTranslationKey"(): StringJS
+ "getOnlineMembers"(): $Collection<($ServerPlayer)>
+get "owner"(): $UUID
+get "valid"(): boolean
 get "name"(): $Component
 get "properties"(): $TeamPropertyCollection
 get "id"(): $UUID
-get "owner"(): $UUID
-get "valid"(): boolean
 get "members"(): $Set<($UUID)>
-get "shortName"(): string
-get "messageHistory"(): $List<($TeamMessage)>
-get "typeTranslationKey"(): string
-get "onlineMembers"(): $Collection<($ServerPlayer)>
-get "teamId"(): $UUID
+get "shortName"(): StringJS
 get "playerTeam"(): boolean
 get "partyTeam"(): boolean
 get "serverTeam"(): boolean
 get "teamInfo"(): $List<($Component)>
 get "clientTeam"(): boolean
 get "coloredName"(): $Component
+get "teamId"(): $UUID
 get "extraData"(): $CompoundTag
+get "messageHistory"(): $List<($TeamMessage)>
+get "typeTranslationKey"(): StringJS
+get "onlineMembers"(): $Collection<($ServerPlayer)>
 }
 
 export namespace $Team {
@@ -5155,31 +5298,32 @@ const probejs$$marker: never
 export class $Team$$Static implements $Team {
 
 
+ "getOwner"(): $UUID
+ "isValid"(): boolean
  "getName"(): $Component
  "getProperty"<T>(arg0: $TeamProperty$$Type<(T)>): T
  "setProperty"<T>(arg0: $TeamProperty$$Type<(T)>, arg1: T): void
  "getProperties"(): $TeamPropertyCollection
  "getId"(): $UUID
- "getOwner"(): $UUID
- "isValid"(): boolean
  "markDirty"(): void
- "sendMessage"(arg0: $UUID$$Type, arg1: string): void
  "getMembers"(): $Set<($UUID)>
- "getShortName"(): string
- "getMessageHistory"(): $List<($TeamMessage)>
- "getRankForPlayer"(arg0: $UUID$$Type): $TeamRank
- "getPlayersByRank"(arg0: $TeamRank$$Type): $Map<($UUID), ($TeamRank)>
- "getTypeTranslationKey"(): string
- "getOnlineMembers"(): $Collection<($ServerPlayer)>
- "getTeamId"(): $UUID
+ "getShortName"(): StringJS
  "isPlayerTeam"(): boolean
  "isPartyTeam"(): boolean
  "isServerTeam"(): boolean
  "getTeamInfo"(): $List<($Component)>
  "isClientTeam"(): boolean
  "getColoredName"(): $Component
- "createParty"(arg0: string, arg1: $Color4I$$Type): $Team
+ "createParty"(arg0: StringJS, arg1: $Color4I$$Type): $Team
+ "getTeamId"(): $UUID
  "getExtraData"(): $CompoundTag
+ "sendMessage"(arg0: $UUID$$Type, arg1: StringJS): void
+ "sendMessage"(arg0: $UUID$$Type, arg1: $Component$$Type): void
+ "getMessageHistory"(): $List<($TeamMessage)>
+ "getRankForPlayer"(arg0: $UUID$$Type): $TeamRank
+ "getPlayersByRank"(arg0: $TeamRank$$Type): $Map<($UUID), ($TeamRank)>
+ "getTypeTranslationKey"(): StringJS
+ "getOnlineMembers"(): $Collection<($ServerPlayer)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5227,13 +5371,13 @@ export type $ServerTeam_ = $ServerTeam$$Type;
 }}
 declare module "dev.ftb.mods.ftbquests.quest.QuestObjectType" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$FriendlyByteBuf, $FriendlyByteBuf$$Type} from "net.minecraft.network.FriendlyByteBuf"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$QuestObjectBase, $QuestObjectBase$$Type} from "dev.ftb.mods.ftbquests.quest.QuestObjectBase"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$ChatFormatting, $ChatFormatting$$Type} from "net.minecraft.ChatFormatting"
 import {$NameMap, $NameMap$$Type} from "dev.ftb.mods.ftblibrary.config.NameMap"
+import {$ChatFormatting, $ChatFormatting$$Type} from "net.minecraft.ChatFormatting"
 
 export class $QuestObjectType extends $Enum<($QuestObjectType)> implements $Predicate<($QuestObjectBase)> {
 static readonly "TASK": $QuestObjectType
@@ -5252,18 +5396,18 @@ static readonly "QUEST": $QuestObjectType
 
 
 public static "values"(): ($QuestObjectType)[]
-public "test"(object: $QuestObjectBase$$Type): boolean
 public "test"(arg0: any): boolean
-public static "valueOf"(name: string): $QuestObjectType
-public "getId"(): string
+public "test"(object: $QuestObjectBase$$Type): boolean
+public static "valueOf"(name: StringJS): $QuestObjectType
+public "getId"(): StringJS
 public "getColor"(): $ChatFormatting
 public "getCompletedMessage"(): $Component
 public "or"(arg0: $Predicate$$Type<($QuestObjectBase)>): $Predicate<($QuestObjectBase)>
+public static "not"<T>(arg0: $Predicate$$Type<($QuestObjectBase)>): $Predicate<($QuestObjectBase)>
 public "negate"(): $Predicate<($QuestObjectBase)>
 public "and"(arg0: $Predicate$$Type<($QuestObjectBase)>): $Predicate<($QuestObjectBase)>
-public static "not"<T>(arg0: $Predicate$$Type<($QuestObjectBase)>): $Predicate<($QuestObjectBase)>
 public static "isEqual"<T>(arg0: any): $Predicate<($QuestObjectBase)>
-get "id"(): string
+get "id"(): StringJS
 get "color"(): $ChatFormatting
 get "completedMessage"(): $Component
 }
@@ -5280,24 +5424,27 @@ declare global {
 export type $QuestObjectType_ = $QuestObjectType$$Type;
 }}
 declare module "dev.ftb.mods.ftbquests.item.StageBarrierBlockItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $StageBarrierBlockItem extends $BlockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -5316,6 +5463,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5330,20 +5478,24 @@ declare global {
 export type $StageBarrierBlockItem_ = $StageBarrierBlockItem$$Type;
 }}
 declare module "dev.ftb.mods.ftbquests.item.MissingItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export class $MissingItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -5353,6 +5505,7 @@ constructor()
 
 public "getName"(stack: $ItemStack$$Type): $Component
 public "appendHoverText"(stack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, tooltip: $List$$Type<($Component$$Type)>, flagIn: $TooltipFlag$$Type): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5375,7 +5528,7 @@ static readonly "BACKGROUND": $Widget$DrawLayer
 
 
 public static "values"(): ($Widget$DrawLayer)[]
-public static "valueOf"(name: string): $Widget$DrawLayer
+public static "valueOf"(name: StringJS): $Widget$DrawLayer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5398,7 +5551,7 @@ constructor(property: $TeamProperty$$Type<(T)>, value: T)
 constructor(k: $TeamProperty$$Type<(T)>)
 
 public "getProperty"(): $TeamProperty<(T)>
-public "toString"(): string
+public "toString"(): StringJS
 public "getValue"(): T
 public "setValue"(value: T): void
 public "copy"(): $TeamPropertyValue<(T)>
@@ -5480,64 +5633,6 @@ export type $TeamArgumentProvider$$Type = ((arg0: $CommandSourceStack) => $Team$
 declare global {
 export type $TeamArgumentProvider_ = $TeamArgumentProvider$$Type;
 }}
-declare module "dev.ftb.mods.ftblibrary.config.ui.SelectableResource" {
-import {$Icon, $Icon$$Type} from "dev.ftb.mods.ftblibrary.icon.Icon"
-import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$FluidStack, $FluidStack$$Type} from "dev.architectury.fluid.FluidStack"
-import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-
-export interface $SelectableResource<T> {
-
- "getName"(): $Component
- "stack"(): T
- "isEmpty"(): boolean
- "getCount"(): long
- "copyWithCount"(arg0: long): $SelectableResource<(T)>
- "setCount"(arg0: integer): void
- "getIcon"(): $Icon
- "getComponentsTag"(): $CompoundTag
- "applyComponentsTag"(arg0: $CompoundTag$$Type): void
-get "name"(): $Component
-get "empty"(): boolean
-get "count"(): long
-set "count"(value: integer)
-get "icon"(): $Icon
-get "componentsTag"(): $CompoundTag
-}
-
-export namespace $SelectableResource {
-function item(stack: $ItemStack$$Type): $SelectableResource<($ItemStack)>
-function fluid(stack: $FluidStack$$Type): $SelectableResource<($FluidStack)>
-const probejs$$marker: never
-}
-export class $SelectableResource$$Static<T> implements $SelectableResource {
-
-
- "getName"(): $Component
- "stack"(): T
- "isEmpty"(): boolean
- "getCount"(): long
-static "item"(stack: $ItemStack$$Type): $SelectableResource<($ItemStack)>
- "copyWithCount"(arg0: long): $SelectableResource<(T)>
- "setCount"(arg0: integer): void
- "getIcon"(): $Icon
-static "fluid"(stack: $FluidStack$$Type): $SelectableResource<($FluidStack)>
- "getComponentsTag"(): $CompoundTag
- "applyComponentsTag"(arg0: $CompoundTag$$Type): void
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $SelectableResource$$Type<T> = ($SelectableResource<(T)>);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $SelectableResource_<T> = $SelectableResource$$Type<(T)>;
-}}
 declare module "dev.ftb.mods.ftblibrary.config.ColorConfig" {
 import {$Color4I, $Color4I$$Type} from "dev.ftb.mods.ftblibrary.icon.Color4I"
 import {$ConfigCallback, $ConfigCallback$$Type} from "dev.ftb.mods.ftblibrary.config.ConfigCallback"
@@ -5547,14 +5642,14 @@ import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component
 import {$ConfigValue, $ConfigValue$$Type} from "dev.ftb.mods.ftblibrary.config.ConfigValue"
 
 export class $ColorConfig extends $ConfigValue<($Color4I)> {
- "id": string
+ "id": StringJS
 static readonly "NULL_TEXT": $Component
 
 constructor()
 
-public "getStringForGUI"(v: $Color4I$$Type): $Component
-public "getStringForGUI"(arg0: any): $Component
 public "onClicked"(clicked: $Widget$$Type, button: $MouseButton$$Type, callback: $ConfigCallback$$Type): void
+public "getStringForGUI"(arg0: any): $Component
+public "getStringForGUI"(v: $Color4I$$Type): $Component
 public "withAlphaEditing"(): $ColorConfig
 public "isAllowAlphaEdit"(): boolean
 get "allowAlphaEdit"(): boolean
@@ -5573,9 +5668,9 @@ export type $ColorConfig_ = $ColorConfig$$Type;
 }}
 declare module "dev.ftb.mods.ftblibrary.config.ImageResourceConfig" {
 import {$Icon, $Icon$$Type} from "dev.ftb.mods.ftblibrary.icon.Icon"
+import {$SelectableResource, $SelectableResource$$Type} from "dev.ftb.mods.ftblibrary.config.ui.resource.SelectableResource"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$TooltipList, $TooltipList$$Type} from "dev.ftb.mods.ftblibrary.util.TooltipList"
-import {$SelectableResource, $SelectableResource$$Type} from "dev.ftb.mods.ftblibrary.config.ui.SelectableResource"
 import {$ConfigCallback, $ConfigCallback$$Type} from "dev.ftb.mods.ftblibrary.config.ConfigCallback"
 import {$OptionalLong, $OptionalLong$$Type} from "java.util.OptionalLong"
 import {$MouseButton, $MouseButton$$Type} from "dev.ftb.mods.ftblibrary.ui.input.MouseButton"
@@ -5584,7 +5679,7 @@ import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component
 import {$ResourceConfigValue, $ResourceConfigValue$$Type} from "dev.ftb.mods.ftblibrary.config.ResourceConfigValue"
 
 export class $ImageResourceConfig extends $ResourceConfigValue<($ResourceLocation)> {
- "id": string
+ "id": StringJS
 static readonly "NONE": $ResourceLocation
 static readonly "NULL_TEXT": $Component
 
@@ -5592,17 +5687,13 @@ constructor()
 
 public "isEmpty"(): boolean
 public "getResource"(): $SelectableResource<($ResourceLocation)>
-public static "getResourceLocation"(icon: $Icon$$Type): $ResourceLocation
-public "allowEmptyResource"(): boolean
-public "fixedResourceSize"(): $OptionalLong
-public "onClicked"(clicked: $Widget$$Type, button: $MouseButton$$Type, callback: $ConfigCallback$$Type): void
-public "canHaveNBT"(): boolean
-public "setAllowEmpty"(allowEmpty: boolean): void
 public "addInfo"(list: $TooltipList$$Type): void
-public "setResource"(selectedStack: $SelectableResource$$Type<($ResourceLocation$$Type)>): boolean
+public "onClicked"(clicked: $Widget$$Type, button: $MouseButton$$Type, callback: $ConfigCallback$$Type): void
+public "setResource"(selectable: $SelectableResource$$Type<($ResourceLocation$$Type)>): boolean
+public static "getResourceLocation"(icon: $Icon$$Type): $ResourceLocation
+public "fixedResourceSize"(): $OptionalLong
 get "empty"(): boolean
 get "resource"(): $SelectableResource<($ResourceLocation)>
-set "allowEmpty"(value: boolean)
 set "resource"(value: $SelectableResource$$Type<($ResourceLocation$$Type)>)
 }
 /**
@@ -5650,61 +5741,61 @@ readonly "id": long
 
 constructor(id: long, quest: $Quest$$Type)
 
-public "getType"(): $TaskType
 public "getObjectType"(): $QuestObjectType
-public "getQuestChapter"(): $Chapter
-public "fillConfigGroup"(config: $ConfigGroup$$Type): void
-public "componentsToRefresh"(): $Set<($RecipeModHelper$Components)>
-public "getRelatedQuest"(): $Quest
-public "formatMaxProgress"(): string
-public "consumesResources"(): boolean
-public "hideProgressNumbers"(): boolean
-public "addMouseOverHeader"(list: $TooltipList$$Type, teamData: $TeamData$$Type, advanced: boolean): void
-public "addMouseOverText"(list: $TooltipList$$Type, teamData: $TeamData$$Type): void
-public "autoSubmitOnPlayerTick"(): integer
-public "onButtonClicked"(button: $Button$$Type, canClick: boolean): void
-public "getMaxProgress"(): long
-public "onCreated"(): void
-public "forceProgress"(teamData: $TeamData$$Type, progressChange: $ProgressChange$$Type): void
-public "editedFromGUI"(): void
-public "createSubGroup"(group: $ConfigGroup$$Type): $ConfigGroup
-public "formatProgress"(teamData: $TeamData$$Type, progress: long): string
+public "getType"(): $TaskType
+public "submitTask"(teamData: $TeamData$$Type, player: $ServerPlayer$$Type, craftedItem: $ItemStack$$Type): void
+public "submitTask"(teamData: $TeamData$$Type, player: $ServerPlayer$$Type): void
+public "getQuestFile"(): $BaseQuestFile
+public "checkOnLogin"(): boolean
+public "formatProgress"(teamData: $TeamData$$Type, progress: long): StringJS
 public "drawGUI"(teamData: $TeamData$$Type, graphics: $GuiGraphics$$Type, x: integer, y: integer, w: integer, h: integer): void
 public "canInsertItem"(): boolean
+public "readNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
+public "getAltTitle"(): $Component
+public "getAltIcon"(): $Icon
+public "getParentID"(): long
+public "editedFromGUI"(): void
+public "createSubGroup"(group: $ConfigGroup$$Type): $ConfigGroup
+public "getMaxProgress"(): long
+public "forceProgress"(teamData: $TeamData$$Type, progressChange: $ProgressChange$$Type): void
 public "cacheProgress"(): boolean
-public "checkOnLogin"(): boolean
-public "submitTask"(teamData: $TeamData$$Type, player: $ServerPlayer$$Type): void
-public "submitTask"(teamData: $TeamData$$Type, player: $ServerPlayer$$Type, craftedItem: $ItemStack$$Type): void
-public "getQuestFile"(): $BaseQuestFile
 public "onStarted"(data: $QuestProgressEventData$$Type<(any)>): void
 public "onCompleted"(data: $QuestProgressEventData$$Type<(any)>): void
 public "deleteSelf"(): void
 public "deleteChildren"(): void
 public "getQuest"(): $Quest
 public "writeNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
-public "readNetData"(buffer: $RegistryFriendlyByteBuf$$Type): void
-public "getParentID"(): long
-public "getAltTitle"(): $Component
-public "getAltIcon"(): $Icon
-public "writeData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
 public "getButtonText"(): $MutableComponent
+public "writeData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
+public "onCreated"(): void
 public "readData"(nbt: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
 public "getIngredient"(widget: $Widget$$Type): $Optional<($PositionedIngredient)>
-public "addTitleInMouseOverText"(): boolean
+public "onButtonClicked"(button: $Button$$Type, canClick: boolean): void
+public "getRelativeProgressFromChildren"(data: $TeamData$$Type): integer
+public "addMouseOverText"(list: $TooltipList$$Type, teamData: $TeamData$$Type): void
+public "getQuestChapter"(): $Chapter
+public "getRelatedQuest"(): $Quest
+public "fillConfigGroup"(config: $ConfigGroup$$Type): void
+public "componentsToRefresh"(): $Set<($RecipeModHelper$Components)>
+public "formatMaxProgress"(): StringJS
+public "consumesResources"(): boolean
+public "hideProgressNumbers"(): boolean
+public "addMouseOverHeader"(list: $TooltipList$$Type, teamData: $TeamData$$Type, advanced: boolean): void
+public "autoSubmitOnPlayerTick"(): integer
 public "isOptionalForProgression"(): boolean
 public "submitItemsOnInventoryChange"(): boolean
-public "getRelativeProgressFromChildren"(data: $TeamData$$Type): integer
-get "type"(): $TaskType
+public "addTitleInMouseOverText"(): boolean
 get "objectType"(): $QuestObjectType
-get "questChapter"(): $Chapter
-get "relatedQuest"(): $Quest
-get "maxProgress"(): long
+get "type"(): $TaskType
 get "questFile"(): $BaseQuestFile
-get "quest"(): $Quest
-get "parentID"(): long
 get "altTitle"(): $Component
 get "altIcon"(): $Icon
+get "parentID"(): long
+get "maxProgress"(): long
+get "quest"(): $Quest
 get "buttonText"(): $MutableComponent
+get "questChapter"(): $Chapter
+get "relatedQuest"(): $Quest
 get "optionalForProgression"(): boolean
 }
 /**
@@ -5762,31 +5853,31 @@ import {$NameMap$Builder, $NameMap$Builder$$Type} from "dev.ftb.mods.ftblibrary.
 
 export class $NameMap<E> implements $Iterable<(E)> {
 readonly "defaultValue": E
-readonly "keys": $List<(string)>
+readonly "keys": $List<(StringJS)>
 readonly "values": $List<(E)>
-readonly "map": $Map<(string), (E)>
+readonly "map": $Map<(StringJS), (E)>
 
 
 public "getNext"(value: E): E
 public "getRandom"(rand: $Random$$Type): E
-public "getName"(value: E): string
+public "getIndex"(e: E): integer
+public "getDisplayName"(value: E): $Component
+public "getName"(value: E): StringJS
 public "size"(): integer
 public "get"(index: integer): E
-public "get"(s: string): E
+public "get"(s: StringJS): E
 public "iterator"(): $Iterator<(E)>
-public static "of"<T>(defaultValue: T, values: (T)[]): $NameMap$Builder<(T)>
 public static "of"<T>(defaultValue: T, values: $List$$Type<(T)>): $NameMap$Builder<(T)>
+public static "of"<T>(defaultValue: T, values: (T)[]): $NameMap$Builder<(T)>
 public "offset"(value: E, index: integer): E
 public "write"(data: $FriendlyByteBuf$$Type, object: E): void
 public "read"(data: $FriendlyByteBuf$$Type): E
-public "getIndex"(e: E): integer
-public "getDisplayName"(value: E): $Component
 public "getColor"(value: E): $Color4I
 public "getIcon"(v: E): $Icon
 public "getPrevious"(value: E): E
-public "getStringIndex"(s: string): integer
+public "getStringIndex"(s: StringJS): integer
 public "withDefault"(def: E): $NameMap<(E)>
-public "getNullable"(s: string): E
+public "getNullable"(s: StringJS): E
 public "spliterator"(): $Spliterator<(E)>
 public "forEach"(arg0: $Consumer$$Type<(E)>): void
 [Symbol.iterator](): IterableIterator<E>;
@@ -5816,7 +5907,7 @@ static readonly "HAND": $CursorType
 
 
 public static "values"(): ($CursorType)[]
-public static "valueOf"(name: string): $CursorType
+public static "valueOf"(name: StringJS): $CursorType
 public static "set"(type: $CursorType$$Type): void
 }
 /**
@@ -5840,28 +5931,28 @@ export interface $Movable {
 
  "getWidth"(): double
  "getHeight"(): double
+ "getShape"(): StringJS
  "getY"(): double
- "getShape"(): string
+ "getX"(): double
  "onMoved"(arg0: double, arg1: double, arg2: long): void
  "getRotation"(): double
  "getTitle"(): $Component
- "getX"(): double
- "isAlignToCorner"(): boolean
- "initiateMoveClientSide"(arg0: $Chapter$$Type, arg1: double, arg2: double): void
  "drawMoved"(graphics: $GuiGraphics$$Type): void
  "getMovableID"(): long
  "getChapter"(): $Chapter
  "copyToClipboard"(): void
+ "initiateMoveClientSide"(arg0: $Chapter$$Type, arg1: double, arg2: double): void
+ "isAlignToCorner"(): boolean
 get "width"(): double
 get "height"(): double
+get "shape"(): StringJS
 get "y"(): double
-get "shape"(): string
+get "x"(): double
 get "rotation"(): double
 get "title"(): $Component
-get "x"(): double
-get "alignToCorner"(): boolean
 get "movableID"(): long
 get "chapter"(): $Chapter
+get "alignToCorner"(): boolean
 }
 
 export namespace $Movable {
@@ -5872,18 +5963,18 @@ export class $Movable$$Static implements $Movable {
 
  "getWidth"(): double
  "getHeight"(): double
+ "getShape"(): StringJS
  "getY"(): double
- "getShape"(): string
+ "getX"(): double
  "onMoved"(arg0: double, arg1: double, arg2: long): void
  "getRotation"(): double
  "getTitle"(): $Component
- "getX"(): double
- "isAlignToCorner"(): boolean
- "initiateMoveClientSide"(arg0: $Chapter$$Type, arg1: double, arg2: double): void
  "drawMoved"(graphics: $GuiGraphics$$Type): void
  "getMovableID"(): long
  "getChapter"(): $Chapter
  "copyToClipboard"(): void
+ "initiateMoveClientSide"(arg0: $Chapter$$Type, arg1: double, arg2: double): void
+ "isAlignToCorner"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5909,12 +6000,12 @@ export class $LongConfig extends $NumberConfig<(long)> {
 readonly "min": T
 readonly "max": T
 static readonly "COLOR": $Color4I
- "id": string
+ "id": StringJS
 static readonly "NULL_TEXT": $Component
 
 constructor(mn: long, mx: long)
 
-public "parse"(callback: $Consumer$$Type<(long)>, string: string): boolean
+public "parse"(callback: $Consumer$$Type<(long)>, string: StringJS): boolean
 public "scrollValue"(currentValue: long, forward: boolean): $Optional<(long)>
 public "scrollValue"(arg0: any, arg1: boolean): $Optional<(any)>
 public "addInfo"(list: $TooltipList$$Type): void
@@ -5942,16 +6033,16 @@ import {$TaskScreenBlockEntity, $TaskScreenBlockEntity$$Type} from "dev.ftb.mods
 export interface $ITaskScreen extends $IEditable {
 
  "getSkin"(): $ItemStack
- "isIndestructible"(): boolean
- "getTeamId"(): $UUID
- "getCoreScreen"(): $Optional<($TaskScreenBlockEntity)>
  "isInputOnly"(): boolean
+ "getCoreScreen"(): $Optional<($TaskScreenBlockEntity)>
+ "getTeamId"(): $UUID
+ "isIndestructible"(): boolean
  "hasPermissionToEdit"(arg0: $Player$$Type): boolean
 get "skin"(): $ItemStack
-get "indestructible"(): boolean
-get "teamId"(): $UUID
-get "coreScreen"(): $Optional<($TaskScreenBlockEntity)>
 get "inputOnly"(): boolean
+get "coreScreen"(): $Optional<($TaskScreenBlockEntity)>
+get "teamId"(): $UUID
+get "indestructible"(): boolean
 }
 
 export namespace $ITaskScreen {
@@ -5961,10 +6052,10 @@ export class $ITaskScreen$$Static implements $ITaskScreen {
 
 
  "getSkin"(): $ItemStack
- "isIndestructible"(): boolean
- "getTeamId"(): $UUID
- "getCoreScreen"(): $Optional<($TaskScreenBlockEntity)>
  "isInputOnly"(): boolean
+ "getCoreScreen"(): $Optional<($TaskScreenBlockEntity)>
+ "getTeamId"(): $UUID
+ "isIndestructible"(): boolean
  "hasPermissionToEdit"(arg0: $Player$$Type): boolean
 }
 /**
@@ -5993,15 +6084,15 @@ static readonly "QUEST_SUBTITLE": $TranslationKey
 static readonly "CHAPTER_SUBTITLE": $TranslationKey
 
 
-public "getName"(): string
+public "getName"(): StringJS
 public static "values"(): ($TranslationKey)[]
-public static "valueOf"(name: string): $TranslationKey
-public "validate"(either: $Either$$Type<(string), ($List$$Type<(string)>)>): $Either<(string), ($List<(string)>)>
-public "getTranslationKey"(): string
+public static "valueOf"(name: StringJS): $TranslationKey
+public "validate"(either: $Either$$Type<(StringJS), ($List$$Type<(StringJS)>)>): $Either<(StringJS), ($List<(StringJS)>)>
 public "isListVal"(): boolean
-get "name"(): string
-get "translationKey"(): string
+public "getTranslationKey"(): StringJS
+get "name"(): StringJS
 get "listVal"(): boolean
+get "translationKey"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6038,32 +6129,32 @@ static readonly "DEFAULT": $Theme
 
 constructor()
 
-public "drawString"(graphics: $GuiGraphics$$Type, text: any, x: integer, y: integer, color: $Color4I$$Type, flags: integer): integer
-public "drawString"(graphics: $GuiGraphics$$Type, text: any, x: integer, y: integer, flags: integer): integer
-public "drawString"(graphics: $GuiGraphics$$Type, text: any, x: integer, y: integer): integer
 public "getFont"(): $Font
-public "drawPanelBackground"(graphics: $GuiGraphics$$Type, x: integer, y: integer, w: integer, h: integer): void
-public "trimStringToWidth"(text: string, width: integer): string
-public "trimStringToWidth"(text: $FormattedText$$Type, width: integer): $FormattedText
-public "getContentColor"(type: $WidgetType$$Type): $Color4I
+public "drawString"(graphics: $GuiGraphics$$Type, text: any, x: integer, y: integer, flags: integer): integer
+public "drawString"(graphics: $GuiGraphics$$Type, text: any, x: integer, y: integer, color: $Color4I$$Type, flags: integer): integer
+public "drawString"(graphics: $GuiGraphics$$Type, text: any, x: integer, y: integer): integer
 public "drawGui"(graphics: $GuiGraphics$$Type, x: integer, y: integer, w: integer, h: integer, type: $WidgetType$$Type): void
-public "drawButton"(graphics: $GuiGraphics$$Type, x: integer, y: integer, w: integer, h: integer, type: $WidgetType$$Type): void
-public "getFontHeight"(): integer
-public "drawScrollBar"(graphics: $GuiGraphics$$Type, x: integer, y: integer, w: integer, h: integer, type: $WidgetType$$Type, vertical: boolean): void
 public "drawWidget"(graphics: $GuiGraphics$$Type, x: integer, y: integer, w: integer, h: integer, type: $WidgetType$$Type): void
 public "drawTextBox"(graphics: $GuiGraphics$$Type, x: integer, y: integer, w: integer, h: integer): void
-public "drawSlot"(graphics: $GuiGraphics$$Type, x: integer, y: integer, w: integer, h: integer, type: $WidgetType$$Type): void
+public "getFontHeight"(): integer
 public "getStringWidth"(text: $FormattedCharSequence$$Type): integer
-public "getStringWidth"(text: string): integer
 public "getStringWidth"(text: $FormattedText$$Type): integer
-public "drawScrollBarBackground"(graphics: $GuiGraphics$$Type, x: integer, y: integer, w: integer, h: integer, type: $WidgetType$$Type): void
-public "drawContextMenuBackground"(graphics: $GuiGraphics$$Type, x: integer, y: integer, w: integer, h: integer): void
+public "getStringWidth"(text: StringJS): integer
+public "drawButton"(graphics: $GuiGraphics$$Type, x: integer, y: integer, w: integer, h: integer, type: $WidgetType$$Type): void
+public "drawScrollBar"(graphics: $GuiGraphics$$Type, x: integer, y: integer, w: integer, h: integer, type: $WidgetType$$Type, vertical: boolean): void
+public "drawSlot"(graphics: $GuiGraphics$$Type, x: integer, y: integer, w: integer, h: integer, type: $WidgetType$$Type): void
 public "drawCheckbox"(graphics: $GuiGraphics$$Type, x: integer, y: integer, w: integer, h: integer, type: $WidgetType$$Type, selected: boolean, radioButton: boolean): void
-public "drawCheckboxBackground"(graphics: $GuiGraphics$$Type, x: integer, y: integer, w: integer, h: integer, radioButton: boolean): void
+public "drawPanelBackground"(graphics: $GuiGraphics$$Type, x: integer, y: integer, w: integer, h: integer): void
+public "trimStringToWidth"(text: $FormattedText$$Type, width: integer): $FormattedText
+public "trimStringToWidth"(text: StringJS, width: integer): StringJS
+public "getContentColor"(type: $WidgetType$$Type): $Color4I
+public "drawContextMenuBackground"(graphics: $GuiGraphics$$Type, x: integer, y: integer, w: integer, h: integer): void
+public "drawScrollBarBackground"(graphics: $GuiGraphics$$Type, x: integer, y: integer, w: integer, h: integer, type: $WidgetType$$Type): void
 public "drawContainerSlot"(graphics: $GuiGraphics$$Type, x: integer, y: integer, w: integer, h: integer): void
+public "drawCheckboxBackground"(graphics: $GuiGraphics$$Type, x: integer, y: integer, w: integer, h: integer, radioButton: boolean): void
 public "drawHorizontalTab"(graphics: $GuiGraphics$$Type, x: integer, y: integer, w: integer, h: integer, selected: boolean): void
 public "getInvertedContentColor"(): $Color4I
-public "trimStringToWidthReverse"(text: string, width: integer): string
+public "trimStringToWidthReverse"(text: StringJS, width: integer): StringJS
 public "listFormattedStringToWidth"(text: $FormattedText$$Type, width: integer): $List<($FormattedText)>
 get "font"(): $Font
 get "fontHeight"(): integer
@@ -6082,8 +6173,8 @@ declare global {
 export type $Theme_ = $Theme$$Type;
 }}
 declare module "dev.ftb.mods.ftbquests.quest.ChapterImage" {
-import {$ConfigGroup, $ConfigGroup$$Type} from "dev.ftb.mods.ftblibrary.config.ConfigGroup"
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
+import {$ConfigGroup, $ConfigGroup$$Type} from "dev.ftb.mods.ftblibrary.config.ConfigGroup"
 import {$Icon, $Icon$$Type} from "dev.ftb.mods.ftblibrary.icon.Icon"
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$FriendlyByteBuf, $FriendlyByteBuf$$Type} from "net.minecraft.network.FriendlyByteBuf"
@@ -6097,7 +6188,7 @@ import {$TooltipList, $TooltipList$$Type} from "dev.ftb.mods.ftblibrary.util.Too
 import {$GuiGraphics, $GuiGraphics$$Type} from "net.minecraft.client.gui.GuiGraphics"
 
 export class $ChapterImage implements $Movable {
-static readonly "FTBQ_IMAGE": string
+static readonly "FTBQ_IMAGE": StringJS
 static "clipboard": $WeakReference<($ChapterImage)>
 static "STREAM_CODEC": $StreamCodec<($FriendlyByteBuf), ($ChapterImage)>
 
@@ -6105,54 +6196,54 @@ constructor(c: $Chapter$$Type)
 
 public "getWidth"(): double
 public "getHeight"(): double
-public "getY"(): double
+public "getShape"(): StringJS
 public "getOrder"(): integer
 public "copy"(newChapter: $Chapter$$Type, newX: double, newY: double): $ChapterImage
-public "getShape"(): string
+public "getY"(): double
+public "getX"(): double
 public "onMoved"(x: double, y: double, chapterId: long): void
-public "getRotation"(): double
-public "getColor"(): $Color4I
 public "getAlpha"(): integer
 public "setPosition"(x: double, y: double): $ChapterImage
+public "getColor"(): $Color4I
+public "getRotation"(): double
 public "getImage"(): $Icon
 public "getTitle"(): $Component
-public "getX"(): double
-public "isAlignToCorner"(): boolean
-public "fillConfigGroup"(config: $ConfigGroup$$Type): void
-public "initiateMoveClientSide"(to: $Chapter$$Type, _x: double, _y: double): void
-public "isAspectRatioOff"(): boolean
-public "fixupAspectRatio"(adjustWidth: boolean): void
-public "shouldShowImage"(teamData: $TeamData$$Type): boolean
-public static "isImageInClipboard"(): boolean
-public static "fromNet"(parent: $Chapter$$Type, buf: $FriendlyByteBuf$$Type): $ChapterImage
-public "drawMoved"(graphics: $GuiGraphics$$Type): void
-public "writeNetData"(buffer: $FriendlyByteBuf$$Type): void
-public "readNetData"(buffer: $FriendlyByteBuf$$Type): void
-public "getMovableID"(): long
-public "getClick"(): string
+public "getClick"(): StringJS
 public "addHoverText"(list: $TooltipList$$Type): void
+public "readNetData"(buffer: $FriendlyByteBuf$$Type): void
+public "drawMoved"(graphics: $GuiGraphics$$Type): void
+public "getMovableID"(): long
+public "writeNetData"(buffer: $FriendlyByteBuf$$Type): void
+public "getChapter"(): $Chapter
 public "writeData"(nbt: $CompoundTag$$Type): $CompoundTag
 public "setImage"(image: $Icon$$Type): $ChapterImage
-public "getChapter"(): $Chapter
+public static "fromNet"(parent: $Chapter$$Type, buf: $FriendlyByteBuf$$Type): $ChapterImage
 public "readData"(nbt: $CompoundTag$$Type): void
 public "copyToClipboard"(): void
+public "shouldShowImage"(teamData: $TeamData$$Type): boolean
+public static "isImageInClipboard"(): boolean
+public "initiateMoveClientSide"(to: $Chapter$$Type, _x: double, _y: double): void
+public "isAlignToCorner"(): boolean
+public "fillConfigGroup"(config: $ConfigGroup$$Type): void
+public "isAspectRatioOff"(): boolean
+public "fixupAspectRatio"(adjustWidth: boolean): void
 get "width"(): double
 get "height"(): double
-get "y"(): double
+get "shape"(): StringJS
 get "order"(): integer
-get "shape"(): string
-get "rotation"(): double
-get "color"(): $Color4I
+get "y"(): double
+get "x"(): double
 get "alpha"(): integer
+get "color"(): $Color4I
+get "rotation"(): double
 get "image"(): $Icon
 get "title"(): $Component
-get "x"(): double
+get "click"(): StringJS
+get "movableID"(): long
+get "chapter"(): $Chapter
+set "image"(value: $Icon$$Type)
 get "alignToCorner"(): boolean
 get "aspectRatioOff"(): boolean
-get "movableID"(): long
-get "click"(): string
-set "image"(value: $Icon$$Type)
-get "chapter"(): $Chapter
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6177,12 +6268,12 @@ static readonly "INVISIBLE": $RewardAutoClaim
 static readonly "NAME_MAP": $NameMap<($RewardAutoClaim)>
 static readonly "NAME_MAP_NO_DEFAULT": $NameMap<($RewardAutoClaim)>
 static readonly "ENABLED": $RewardAutoClaim
- "id": string
+ "id": StringJS
 static readonly "DEFAULT": $RewardAutoClaim
 
 
 public static "values"(): ($RewardAutoClaim)[]
-public static "valueOf"(name: string): $RewardAutoClaim
+public static "valueOf"(name: StringJS): $RewardAutoClaim
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6202,21 +6293,21 @@ import {$ConfigCallback, $ConfigCallback$$Type} from "dev.ftb.mods.ftblibrary.co
 import {$MouseButton, $MouseButton$$Type} from "dev.ftb.mods.ftblibrary.ui.input.MouseButton"
 import {$Widget, $Widget$$Type} from "dev.ftb.mods.ftblibrary.ui.Widget"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$ConfigValue, $ConfigValue$$Type} from "dev.ftb.mods.ftblibrary.config.ConfigValue"
+import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 
 export class $ConfigFromString<T> extends $ConfigValue<(T)> {
- "id": string
+ "id": StringJS
 static readonly "NULL_TEXT": $Component
 
 constructor()
 
-public "parse"(arg0: $Consumer$$Type<(T)>, arg1: string): boolean
+public "parse"(arg0: $Consumer$$Type<(T)>, arg1: StringJS): boolean
 public "canScroll"(): boolean
-public "getStringFromValue"(v: T): string
-public "getStringForGUI"(v: T): $Component
-public "onClicked"(clicked: $Widget$$Type, button: $MouseButton$$Type, callback: $ConfigCallback$$Type): void
 public "scrollValue"(currentValue: T, forward: boolean): $Optional<(T)>
+public "onClicked"(clicked: $Widget$$Type, button: $MouseButton$$Type, callback: $ConfigCallback$$Type): void
+public "getStringForGUI"(v: T): $Component
+public "getStringFromValue"(v: T): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6231,8 +6322,8 @@ declare global {
 export type $ConfigFromString_<T> = $ConfigFromString$$Type<(T)>;
 }}
 declare module "dev.ftb.mods.ftblibrary.config.Tristate" {
-import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$Icon, $Icon$$Type} from "dev.ftb.mods.ftblibrary.icon.Icon"
+import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$Color4I, $Color4I$$Type} from "dev.ftb.mods.ftblibrary.icon.Color4I"
 import {$Enum, $Enum$$Type} from "java.lang.Enum"
@@ -6243,7 +6334,7 @@ export class $Tristate extends $Enum<($Tristate)> {
 readonly "result": $InteractionResult
 readonly "color": $Color4I
 static readonly "NAME_MAP": $NameMap<($Tristate)>
-readonly "displayName": string
+readonly "displayName": StringJS
 readonly "icon": $Icon
 static readonly "TRUE": $Tristate
 static readonly "FALSE": $Tristate
@@ -6251,22 +6342,22 @@ static readonly "VALUES": ($Tristate)[]
 static readonly "DEFAULT": $Tristate
 
 
+public "isDefault"(): boolean
 public "isFalse"(): boolean
 public "get"(def: boolean): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public static "values"(): ($Tristate)[]
-public static "valueOf"(name: string): $Tristate
-public "write"(nbt: $CompoundTag$$Type, key: string): void
+public static "valueOf"(name: StringJS): $Tristate
+public "write"(nbt: $CompoundTag$$Type, key: StringJS): void
 public "write"(buffer: $FriendlyByteBuf$$Type): void
-public static "read"(nbt: $CompoundTag$$Type, key: string): $Tristate
+public static "read"(nbt: $CompoundTag$$Type, key: StringJS): $Tristate
 public static "read"(buffer: $FriendlyByteBuf$$Type): $Tristate
-public "isDefault"(): boolean
-public "getOpposite"(): $Tristate
 public "isTrue"(): boolean
-get "false"(): boolean
+public "getOpposite"(): $Tristate
 get "default"(): boolean
-get "opposite"(): $Tristate
+get "false"(): boolean
 get "true"(): boolean
+get "opposite"(): $Tristate
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6288,14 +6379,14 @@ import {$SNBTCompoundTag, $SNBTCompoundTag$$Type} from "dev.ftb.mods.ftblibrary.
 
 export class $DoubleValue extends $NumberValue<(double)> {
 readonly "parent": $SNBTConfig
-readonly "key": string
+readonly "key": StringJS
 
 
+public "range"(max: double): $NumberValue<(double)>
 public "set"(arg0: any): void
 public "set"(v: double): void
 public "write"(tag: $SNBTCompoundTag$$Type): void
 public "read"(tag: $SNBTCompoundTag$$Type): void
-public "range"(max: double): $NumberValue<(double)>
 public "createClientConfig"(group: $ConfigGroup$$Type): void
 }
 /**
@@ -6318,13 +6409,13 @@ readonly "modifiers": integer
 
 constructor(m: integer)
 
-public "start"(): boolean
 public "shift"(): boolean
 public "control"(): boolean
+public "start"(): boolean
 public "alt"(): boolean
+public "onlyControl"(): boolean
 public "numLock"(): boolean
 public "capsLock"(): boolean
-public "onlyControl"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6337,6 +6428,61 @@ export type $KeyModifiers$$Type = ($KeyModifiers);
  */
 declare global {
 export type $KeyModifiers_ = $KeyModifiers$$Type;
+}}
+declare module "dev.ftb.mods.ftbquests.block.entity.BaseBarrierBlockEntity$TeleportData" {
+import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
+import {$Optional, $Optional$$Type} from "java.util.Optional"
+import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
+import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
+import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$MinecraftServer, $MinecraftServer$$Type} from "net.minecraft.server.MinecraftServer"
+import {$Record, $Record$$Type} from "java.lang.Record"
+
+export class $BaseBarrierBlockEntity$TeleportData extends $Record {
+static readonly "CODEC": $Codec<($BaseBarrierBlockEntity$TeleportData)>
+static readonly "NONE": $BaseBarrierBlockEntity$TeleportData
+static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($BaseBarrierBlockEntity$TeleportData)>
+
+constructor(enabled: boolean, relative: boolean, dest: $BlockPos$$Type, pitch: float, yaw: float, dimId: $Optional$$Type<($ResourceKey$$Type<($Level$$Type)>)>)
+
+public "relative"(): boolean
+public "getLevel"(server: $MinecraftServer$$Type): $Level
+public "dest"(): $BlockPos
+public "equals"(o: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+public "enabled"(): boolean
+public "pitch"(): float
+public "yaw"(): float
+public "dimId"(): $Optional<($ResourceKey<($Level)>)>
+public "withDestPos"(pos: $BlockPos$$Type): $BaseBarrierBlockEntity$TeleportData
+public "teleportPlayer"(player: $ServerPlayer$$Type): void
+public "effectiveDest"(basePos: $BlockPos$$Type): $BaseBarrierBlockEntity$TeleportData
+public "withDestZ"(z: integer): $BaseBarrierBlockEntity$TeleportData
+public "withDimId"(dimId: $ResourceKey$$Type<($Level)>): $BaseBarrierBlockEntity$TeleportData
+public "withDimId"(dimStr: StringJS): $BaseBarrierBlockEntity$TeleportData
+public "withDestX"(x: integer): $BaseBarrierBlockEntity$TeleportData
+public "withDestY"(y: integer): $BaseBarrierBlockEntity$TeleportData
+public "withPitch"(pitch: float): $BaseBarrierBlockEntity$TeleportData
+public "withYaw"(yaw: float): $BaseBarrierBlockEntity$TeleportData
+public "withRelative"(relative: boolean): $BaseBarrierBlockEntity$TeleportData
+public "withEnabled"(enabled: boolean): $BaseBarrierBlockEntity$TeleportData
+public "dimStr"(): StringJS
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $BaseBarrierBlockEntity$TeleportData$$Type = ({"dest"?: $BlockPos$$Type, "dimId"?: ($ResourceKey$$Type<($Level$$Type)>)?, "pitch"?: float, "enabled"?: boolean, "yaw"?: float, "relative"?: boolean}) | ([dest?: $BlockPos$$Type, dimId?: ($ResourceKey$$Type<($Level$$Type)>)?, pitch?: float, enabled?: boolean, yaw?: float, relative?: boolean]);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $BaseBarrierBlockEntity$TeleportData_ = $BaseBarrierBlockEntity$TeleportData$$Type;
 }}
 declare module "dev.ftb.mods.ftblibrary.util.BooleanConsumer" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
@@ -6379,12 +6525,12 @@ export class $IntConfig extends $NumberConfig<(integer)> {
 readonly "min": T
 readonly "max": T
 static readonly "COLOR": $Color4I
- "id": string
+ "id": StringJS
 static readonly "NULL_TEXT": $Component
 
 constructor(mn: integer, mx: integer)
 
-public "parse"(callback: $Consumer$$Type<(integer)>, string: string): boolean
+public "parse"(callback: $Consumer$$Type<(integer)>, string: StringJS): boolean
 public "scrollValue"(currentValue: integer, forward: boolean): $Optional<(integer)>
 public "scrollValue"(arg0: any, arg1: boolean): $Optional<(any)>
 public "addInfo"(list: $TooltipList$$Type): void
@@ -6409,21 +6555,21 @@ import {$TooltipList, $TooltipList$$Type} from "dev.ftb.mods.ftblibrary.util.Too
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 
-export class $StringConfig extends $ConfigFromString<(string)> {
+export class $StringConfig extends $ConfigFromString<(StringJS)> {
 static readonly "COLOR": $Color4I
 readonly "pattern": $Pattern
- "id": string
+ "id": StringJS
 static readonly "NULL_TEXT": $Component
 
 constructor(p: $Pattern$$Type)
 constructor()
 
-public "parse"(callback: $Consumer$$Type<(string)>, string: string): boolean
+public "parse"(callback: $Consumer$$Type<(StringJS)>, string: StringJS): boolean
 public "getColor"(arg0: any): $Color4I
-public "getColor"(v: string): $Color4I
-public "getStringForGUI"(v: string): $Component
-public "getStringForGUI"(arg0: any): $Component
+public "getColor"(v: StringJS): $Color4I
 public "addInfo"(list: $TooltipList$$Type): void
+public "getStringForGUI"(v: StringJS): $Component
+public "getStringForGUI"(arg0: any): $Component
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6443,12 +6589,12 @@ import {$Runnable, $Runnable$$Type} from "java.lang.Runnable"
 export interface $IOpenableScreen extends $Runnable {
 
  "run"(): void
- "closeContextMenu"(): void
- "closeGui"(openPrevScreen: boolean): void
- "closeGui"(): void
  "openGuiLater"(): void
  "openAfter"(runnable: $Runnable$$Type): $Runnable
+ "closeGui"(openPrevScreen: boolean): void
+ "closeGui"(): void
  "openGui"(): void
+ "closeContextMenu"(): void
 
 (): void
 }
@@ -6460,12 +6606,12 @@ export class $IOpenableScreen$$Static implements $IOpenableScreen {
 
 
  "run"(): void
- "closeContextMenu"(): void
- "closeGui"(openPrevScreen: boolean): void
- "closeGui"(): void
  "openGuiLater"(): void
  "openAfter"(runnable: $Runnable$$Type): $Runnable
+ "closeGui"(openPrevScreen: boolean): void
+ "closeGui"(): void
  "openGui"(): void
+ "closeContextMenu"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6492,13 +6638,13 @@ static "STREAM_CODEC": $StreamCodec<($FriendlyByteBuf), ($ProgressChange)>
 constructor(origin: $QuestObjectBase$$Type, playerId: $UUID$$Type)
 
 public "getDate"(): $Date
+public "setReset"(reset: boolean): $ProgressChange
+public "shouldReset"(): boolean
+public "getPlayerId"(): $UUID
+public "shouldNotify"(): boolean
 public "maybeForceProgress"(teamId: $UUID$$Type): void
 public static "createServerSide"(origin: long, reset: boolean, playerId: $UUID$$Type, notifications: boolean): $ProgressChange
 public "withNotifications"(): $ProgressChange
-public "shouldReset"(): boolean
-public "shouldNotify"(): boolean
-public "setReset"(reset: boolean): $ProgressChange
-public "getPlayerId"(): $UUID
 get "date"(): $Date
 set "reset"(value: boolean)
 get "playerId"(): $UUID
@@ -6525,9 +6671,9 @@ static readonly "SEVEN_X_SEVEN": $ScreenBlockItem$ScreenSize
 static readonly "ONE_X_ONE": $ScreenBlockItem$ScreenSize
 
 
-public static "values"(): ($ScreenBlockItem$ScreenSize)[]
-public static "valueOf"(name: string): $ScreenBlockItem$ScreenSize
 public "getSize"(): integer
+public static "values"(): ($ScreenBlockItem$ScreenSize)[]
+public static "valueOf"(name: StringJS): $ScreenBlockItem$ScreenSize
 get "size"(): integer
 }
 /**
@@ -6555,13 +6701,13 @@ export class $TeamArgument$Info implements $ArgumentTypeInfo<($TeamArgument), ($
 
 constructor()
 
-public "unpack"(argumentType: $TeamArgument$$Type): $TeamArgument$Info$Template
 public "unpack"(arg0: $ArgumentType$$Type<(any)>): $ArgumentTypeInfo$Template<(any)>
+public "unpack"(argumentType: $TeamArgument$$Type): $TeamArgument$Info$Template
 public "serializeToNetwork"(template: $TeamArgument$Info$Template$$Type, buf: $FriendlyByteBuf$$Type): void
 public "serializeToNetwork"(arg0: $ArgumentTypeInfo$Template$$Type<(any)>, arg1: $FriendlyByteBuf$$Type): void
-public "deserializeFromNetwork"(arg0: $FriendlyByteBuf$$Type): $ArgumentTypeInfo$Template<(any)>
-public "serializeToJson"(template: $TeamArgument$Info$Template$$Type, jsonObject: $JsonObject$$Type): void
+public "deserializeFromNetwork"(buf: $FriendlyByteBuf$$Type): $TeamArgument$Info$Template
 public "serializeToJson"(arg0: $ArgumentTypeInfo$Template$$Type<(any)>, arg1: $JsonObject$$Type): void
+public "serializeToJson"(template: $TeamArgument$Info$Template$$Type, jsonObject: $JsonObject$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6608,7 +6754,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -6638,8 +6784,8 @@ export type $DetectorBlock_ = $DetectorBlock$$Type;
 }}
 declare module "dev.ftb.mods.ftbteams.api.property.PrivacyMode" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -6655,16 +6801,16 @@ static readonly "PRIVATE": $PrivacyMode
 
 
 public static "values"(): ($PrivacyMode)[]
-public static "valueOf"(name: string): $PrivacyMode
-public "getSerializedName"(): string
+public static "valueOf"(name: StringJS): $PrivacyMode
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6682,14 +6828,16 @@ declare module "dev.ftb.mods.ftbquests.block.entity.BaseBarrierBlockEntity" {
 import {$ConfigGroup, $ConfigGroup$$Type} from "dev.ftb.mods.ftblibrary.config.ConfigGroup"
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$TrackedData, $TrackedData$$Type} from "dev.corgitaco.dataanchor.data.TrackedData"
 import {$TrackedDataContainer, $TrackedDataContainer$$Type} from "dev.corgitaco.dataanchor.data.TrackedDataContainer"
 import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.dataanchor.data.registry.TrackedDataRegistry"
 import {$EditableBlockEntity, $EditableBlockEntity$$Type} from "dev.ftb.mods.ftbquests.block.entity.EditableBlockEntity"
-import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$ClientGamePacketListener, $ClientGamePacketListener$$Type} from "net.minecraft.network.protocol.game.ClientGamePacketListener"
+import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BaseBarrierBlockEntity$TeleportData, $BaseBarrierBlockEntity$TeleportData$$Type} from "dev.ftb.mods.ftbquests.block.entity.BaseBarrierBlockEntity$TeleportData"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Packet, $Packet$$Type} from "net.minecraft.network.protocol.Packet"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -6697,34 +6845,35 @@ import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $BaseBarrierBlockEntity extends $EditableBlockEntity {
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 constructor(blockEntityType: $BlockEntityType$$Type<(any)>, blockPos: $BlockPos$$Type, blockState: $BlockState$$Type)
 
-public "isOpen"(arg0: $Player$$Type): boolean
 public static "tick"(level: $Level$$Type, blockPos: $BlockPos$$Type, blockState: $BlockState$$Type, blockEntity: $BlockEntity$$Type): void
-public "loadAdditional"(tag: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
+public "isOpen"(arg0: $Player$$Type): boolean
 public "saveAdditional"(compoundTag: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
-public "getUpdateTag"(provider: $HolderLookup$Provider$$Type): $CompoundTag
-public "getSkin"(): $ItemStack
 public "setChanged"(): void
+public "getSkin"(): $ItemStack
+public "loadAdditional"(tag: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
+public "setSkin"(skin: $ItemStack$$Type): void
+public "getUpdateTag"(provider: $HolderLookup$Provider$$Type): $CompoundTag
 public "getUpdatePacket"(): $Packet<($ClientGamePacketListener)>
-public "fillConfigGroup"(): $ConfigGroup
-public "hasPermissionToEdit"(player: $Player$$Type): boolean
 public "forceAppearanceUpdate"(): void
 public "setInvisibleWhenOpen"(invisibleWhenOpen: boolean): void
 public "isInvisibleWhenOpen"(): boolean
 public "getClientAppearance"(): $BlockState
-public "updateFromString"(objStr: string): void
-public "setSkin"(skin: $ItemStack$$Type): void
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+public "updateFromString"(objStr: StringJS): void
+public "optionalTeleportData"(): $Optional<($BaseBarrierBlockEntity$TeleportData)>
+public "hasPermissionToEdit"(player: $Player$$Type): boolean
+public "fillConfigGroup"(): $ConfigGroup
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "skin"(): $ItemStack
+set "skin"(value: $ItemStack$$Type)
 get "updatePacket"(): $Packet<($ClientGamePacketListener)>
 set "invisibleWhenOpen"(value: boolean)
 get "invisibleWhenOpen"(): boolean
 get "clientAppearance"(): $BlockState
-set "skin"(value: $ItemStack$$Type)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6748,10 +6897,10 @@ import {$UUID, $UUID$$Type} from "java.util.UUID"
 import {$TrackedData, $TrackedData$$Type} from "dev.corgitaco.dataanchor.data.TrackedData"
 import {$TrackedDataContainer, $TrackedDataContainer$$Type} from "dev.corgitaco.dataanchor.data.TrackedDataContainer"
 import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.dataanchor.data.registry.TrackedDataRegistry"
-import {$TeamData, $TeamData$$Type} from "dev.ftb.mods.ftbquests.quest.TeamData"
 import {$EditableBlockEntity, $EditableBlockEntity$$Type} from "dev.ftb.mods.ftbquests.block.entity.EditableBlockEntity"
-import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
+import {$TeamData, $TeamData$$Type} from "dev.ftb.mods.ftbquests.quest.TeamData"
 import {$ClientGamePacketListener, $ClientGamePacketListener$$Type} from "net.minecraft.network.protocol.game.ClientGamePacketListener"
+import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Task, $Task$$Type} from "dev.ftb.mods.ftbquests.quest.task.Task"
 import {$Packet, $Packet$$Type} from "net.minecraft.network.protocol.Packet"
@@ -6760,53 +6909,53 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 
 export class $TaskScreenBlockEntity extends $EditableBlockEntity implements $ITaskScreen {
  "fakeTextureUV": (float)[]
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 constructor(blockPos: $BlockPos$$Type, blockState: $BlockState$$Type)
 
 public "getTask"(): $Task
-public "loadAdditional"(compoundTag: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
-public "getUpdateTag"(provider: $HolderLookup$Provider$$Type): $CompoundTag
 public "getSkin"(): $ItemStack
+public "loadAdditional"(compoundTag: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
+public "setTask"(task: $Task$$Type): void
+public "isInputOnly"(): boolean
+public "setInputOnly"(inputOnly: boolean): void
+public "getCoreScreen"(): $Optional<($TaskScreenBlockEntity)>
+public "setTeamId"(teamId: $UUID$$Type): void
+public "setSkin"(skin: $ItemStack$$Type): void
+public "getTeamId"(): $UUID
+public "isTextShadow"(): boolean
+public "setTextShadow"(textShadow: boolean): void
+public "getUpdateTag"(provider: $HolderLookup$Provider$$Type): $CompoundTag
 public "getUpdatePacket"(): $Packet<($ClientGamePacketListener)>
-public "fillConfigGroup"(data: $TeamData$$Type): $ConfigGroup
-public "hasPermissionToEdit"(player: $Player$$Type): boolean
-public "isIndestructible"(): boolean
-public "removeAllAuxScreens"(): void
 public "getInputModeIcon"(): $ItemStack
 public "setInputModeIcon"(inputModeIcon: $ItemStack$$Type): void
 public "setIndestructible"(indestructible: boolean): void
 public "getCachedTeamData"(): $TeamData
 public "getFakeTextureUV"(): (float)[]
-public "getTeamId"(): $UUID
-public "getCoreScreen"(): $Optional<($TaskScreenBlockEntity)>
-public "setTeamId"(teamId: $UUID$$Type): void
-public "setSkin"(skin: $ItemStack$$Type): void
-public "setTask"(task: $Task$$Type): void
-public "isInputOnly"(): boolean
-public "setInputOnly"(inputOnly: boolean): void
-public "setTextShadow"(textShadow: boolean): void
-public "isTextShadow"(): boolean
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+public "isIndestructible"(): boolean
+public "removeAllAuxScreens"(): void
+public "hasPermissionToEdit"(player: $Player$$Type): boolean
+public "fillConfigGroup"(data: $TeamData$$Type): $ConfigGroup
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "task"(): $Task
 get "skin"(): $ItemStack
+set "task"(value: $Task$$Type)
+get "inputOnly"(): boolean
+set "inputOnly"(value: boolean)
+get "coreScreen"(): $Optional<($TaskScreenBlockEntity)>
+set "teamId"(value: $UUID$$Type)
+set "skin"(value: $ItemStack$$Type)
+get "teamId"(): $UUID
+get "textShadow"(): boolean
+set "textShadow"(value: boolean)
 get "updatePacket"(): $Packet<($ClientGamePacketListener)>
-get "indestructible"(): boolean
 get "inputModeIcon"(): $ItemStack
 set "inputModeIcon"(value: $ItemStack$$Type)
 set "indestructible"(value: boolean)
 get "cachedTeamData"(): $TeamData
 get "fakeTextureUV"(): (float)[]
-get "teamId"(): $UUID
-get "coreScreen"(): $Optional<($TaskScreenBlockEntity)>
-set "teamId"(value: $UUID$$Type)
-set "skin"(value: $ItemStack$$Type)
-set "task"(value: $Task$$Type)
-get "inputOnly"(): boolean
-set "inputOnly"(value: boolean)
-set "textShadow"(value: boolean)
-get "textShadow"(): boolean
+get "indestructible"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6829,35 +6978,35 @@ import {$TeamRank, $TeamRank$$Type} from "dev.ftb.mods.ftbteams.api.TeamRank"
 import {$GameProfile, $GameProfile$$Type} from "com.mojang.authlib.GameProfile"
 import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 import {$AbstractTeam, $AbstractTeam$$Type} from "dev.ftb.mods.ftbteams.data.AbstractTeam"
-import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$CommandSourceStack, $CommandSourceStack$$Type} from "net.minecraft.commands.CommandSourceStack"
+import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$TeamManagerImpl, $TeamManagerImpl$$Type} from "dev.ftb.mods.ftbteams.data.TeamManagerImpl"
 
 export class $PartyTeam extends $AbstractTeam {
 
 constructor(manager: $TeamManagerImpl$$Type, id: $UUID$$Type)
 
+public "getOwner"(): $UUID
 public "join"(player: $ServerPlayer$$Type): integer
 public "getType"(): $TeamType
-public "getOwner"(): $UUID
+public "leave"(id: $UUID$$Type): integer
+public "kick"(from: $CommandSourceStack$$Type, players: $Collection$$Type<($GameProfile$$Type)>): integer
 public "deserializeNBT"(tag: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
 public "demote"(from: $ServerPlayer$$Type, players: $Collection$$Type<($GameProfile$$Type)>): integer
 public "invite"(inviter: $ServerPlayer$$Type, profiles: $Collection$$Type<($GameProfile$$Type)>): integer
-public "leave"(id: $UUID$$Type): integer
-public "kick"(from: $CommandSourceStack$$Type, players: $Collection$$Type<($GameProfile$$Type)>): integer
+public "promote"(from: $ServerPlayer$$Type, players: $Collection$$Type<($GameProfile$$Type)>): integer
+public "removeAlly"(source: $CommandSourceStack$$Type, players: $Collection$$Type<($GameProfile$$Type)>): integer
+public "addAlly"(source: $CommandSourceStack$$Type, players: $Collection$$Type<($GameProfile$$Type)>): integer
+public "isPartyTeam"(): boolean
+public "isOwner"(profile: $UUID$$Type): boolean
+public "listAllies"(source: $CommandSourceStack$$Type): integer
+public "forceDisband"(from: $CommandSourceStack$$Type): integer
 public "getRankForPlayer"(playerId: $UUID$$Type): $TeamRank
 public "transferOwnership"(from: $CommandSourceStack$$Type, toProfiles: $Collection$$Type<($GameProfile$$Type)>): integer
 public "transferOwnership"(from: $CommandSourceStack$$Type, toProfile: $GameProfile$$Type): integer
-public "isPartyTeam"(): boolean
-public "addAlly"(source: $CommandSourceStack$$Type, players: $Collection$$Type<($GameProfile$$Type)>): integer
-public "promote"(from: $ServerPlayer$$Type, players: $Collection$$Type<($GameProfile$$Type)>): integer
-public "removeAlly"(source: $CommandSourceStack$$Type, players: $Collection$$Type<($GameProfile$$Type)>): integer
-public "isOwner"(profile: $UUID$$Type): boolean
-public "forceDisband"(from: $CommandSourceStack$$Type): integer
-public "listAllies"(source: $CommandSourceStack$$Type): integer
 public "getOnlineMembers"(): $Collection<(any)>
-get "type"(): $TeamType
 get "owner"(): $UUID
+get "type"(): $TeamType
 get "partyTeam"(): boolean
 get "onlineMembers"(): $Collection<(any)>
 }
@@ -6885,9 +7034,9 @@ public "compareTo"(o: $WeightedReward$$Type): integer
 public "compareTo"(arg0: any): integer
 public "copy"(): $WeightedReward
 public "getWeight"(): float
+public static "chanceString"(weight: float, totalWeight: float): StringJS
+public static "chanceString"(weight: float, totalWeight: float, empty: boolean): StringJS
 public "getReward"(): $Reward
-public static "chanceString"(weight: float, totalWeight: float): string
-public static "chanceString"(weight: float, totalWeight: float, empty: boolean): string
 public "setWeight"(weight: float): void
 get "weight"(): float
 get "reward"(): $Reward
@@ -6906,7 +7055,7 @@ declare global {
 export type $WeightedReward_ = $WeightedReward$$Type;
 }}
 declare module "dev.ftb.mods.ftblibrary.config.FluidConfig" {
-import {$SelectableResource, $SelectableResource$$Type} from "dev.ftb.mods.ftblibrary.config.ui.SelectableResource"
+import {$SelectableResource, $SelectableResource$$Type} from "dev.ftb.mods.ftblibrary.config.ui.resource.SelectableResource"
 import {$ConfigCallback, $ConfigCallback$$Type} from "dev.ftb.mods.ftblibrary.config.ConfigCallback"
 import {$OptionalLong, $OptionalLong$$Type} from "java.util.OptionalLong"
 import {$FluidStack, $FluidStack$$Type} from "dev.architectury.fluid.FluidStack"
@@ -6916,7 +7065,7 @@ import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component
 import {$ResourceConfigValue, $ResourceConfigValue$$Type} from "dev.ftb.mods.ftblibrary.config.ResourceConfigValue"
 
 export class $FluidConfig extends $ResourceConfigValue<($FluidStack)> {
- "id": string
+ "id": StringJS
 static readonly "NULL_TEXT": $Component
 
 constructor(allowEmpty: boolean)
@@ -6924,13 +7073,13 @@ constructor(fixedSize: long)
 
 public "isEmpty"(): boolean
 public "getResource"(): $SelectableResource<($FluidStack)>
-public "getStringForGUI"(arg0: any): $Component
-public "getStringForGUI"(v: $FluidStack$$Type): $Component
-public "allowEmptyResource"(): boolean
-public "fixedResourceSize"(): $OptionalLong
 public "onClicked"(clickedWidget: $Widget$$Type, button: $MouseButton$$Type, callback: $ConfigCallback$$Type): void
-public "setResource"(selectedStack: $SelectableResource$$Type<($FluidStack$$Type)>): boolean
+public "setResource"(selectable: $SelectableResource$$Type<($FluidStack$$Type)>): boolean
 public "showAmount"(show: boolean): $FluidConfig
+public "fixedResourceSize"(): $OptionalLong
+public "allowEmptyResource"(): boolean
+public "getStringForGUI"(v: $FluidStack$$Type): $Component
+public "getStringForGUI"(arg0: any): $Component
 get "empty"(): boolean
 get "resource"(): $SelectableResource<($FluidStack)>
 set "resource"(value: $SelectableResource$$Type<($FluidStack$$Type)>)
@@ -6962,23 +7111,23 @@ import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 
 export interface $QuestFile {
 
+ "getAllTeamData"(): $Collection<($TeamData)>
+ "isServerSide"(): boolean
+ "forAllChapters"(arg0: $Consumer$$Type<($Chapter)>): void
+ "forAllQuests"(arg0: $Consumer$$Type<($Quest)>): void
+ "getTeamData"(arg0: $Player$$Type): $Optional<($TeamData)>
+ "canEdit"(): boolean
  "getNullableTeamData"(arg0: $UUID$$Type): $TeamData
- "getOrCreateTeamData"(arg0: $Team$$Type): $TeamData
  "getOrCreateTeamData"(arg0: $UUID$$Type): $TeamData
+ "getOrCreateTeamData"(arg0: $Team$$Type): $TeamData
 /**
  * 
  * @deprecated
  */
  "getOrCreateTeamData"(arg0: $Entity$$Type): $TeamData
  "forAllQuestLinks"(arg0: $Consumer$$Type<($QuestLink)>): void
- "isServerSide"(): boolean
- "forAllChapters"(arg0: $Consumer$$Type<($Chapter)>): void
- "forAllQuests"(arg0: $Consumer$$Type<($Quest)>): void
- "getAllTeamData"(): $Collection<($TeamData)>
- "getTeamData"(arg0: $Player$$Type): $Optional<($TeamData)>
- "canEdit"(): boolean
-get "serverSide"(): boolean
 get "allTeamData"(): $Collection<($TeamData)>
+get "serverSide"(): boolean
 }
 
 export namespace $QuestFile {
@@ -6987,21 +7136,21 @@ const probejs$$marker: never
 export class $QuestFile$$Static implements $QuestFile {
 
 
+ "getAllTeamData"(): $Collection<($TeamData)>
+ "isServerSide"(): boolean
+ "forAllChapters"(arg0: $Consumer$$Type<($Chapter)>): void
+ "forAllQuests"(arg0: $Consumer$$Type<($Quest)>): void
+ "getTeamData"(arg0: $Player$$Type): $Optional<($TeamData)>
+ "canEdit"(): boolean
  "getNullableTeamData"(arg0: $UUID$$Type): $TeamData
- "getOrCreateTeamData"(arg0: $Team$$Type): $TeamData
  "getOrCreateTeamData"(arg0: $UUID$$Type): $TeamData
+ "getOrCreateTeamData"(arg0: $Team$$Type): $TeamData
 /**
  * 
  * @deprecated
  */
  "getOrCreateTeamData"(arg0: $Entity$$Type): $TeamData
  "forAllQuestLinks"(arg0: $Consumer$$Type<($QuestLink)>): void
- "isServerSide"(): boolean
- "forAllChapters"(arg0: $Consumer$$Type<($Chapter)>): void
- "forAllQuests"(arg0: $Consumer$$Type<($Quest)>): void
- "getAllTeamData"(): $Collection<($TeamData)>
- "getTeamData"(arg0: $Player$$Type): $Optional<($TeamData)>
- "canEdit"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7079,12 +7228,12 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$TaskScreenBlockEntity, $TaskScreenBlockEntity$$Type} from "dev.ftb.mods.ftbquests.block.entity.TaskScreenBlockEntity"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $TaskScreenBlock extends $BaseEntityBlock {
@@ -7101,7 +7250,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -7115,14 +7264,14 @@ constructor(props: $BlockBehaviour$Properties$$Type, size: integer)
 public "getSize"(): integer
 public "setPlacedBy"(level: $Level$$Type, blockPos: $BlockPos$$Type, blockState: $BlockState$$Type, livingEntity: $LivingEntity$$Type, itemStack: $ItemStack$$Type): void
 public "newBlockEntity"(blockPos: $BlockPos$$Type, blockState: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(state: $BlockState$$Type): $RenderShape
 public "onRemove"(blockState: $BlockState$$Type, level: $Level$$Type, blockPos: $BlockPos$$Type, newState: $BlockState$$Type, isMoving: boolean): void
-public "getStateForPlacement"(blockPlaceContext: $BlockPlaceContext$$Type): $BlockState
-public "appendHoverText"(itemStack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, list: $List$$Type<($Component$$Type)>, tooltipFlag: $TooltipFlag$$Type): void
-public "getDestroyProgress"(blockState: $BlockState$$Type, player: $Player$$Type, blockGetter: $BlockGetter$$Type, blockPos: $BlockPos$$Type): float
-public static "blockEntityProvider"(): $BlockEntityType$BlockEntitySupplier<($TaskScreenBlockEntity)>
-public static "blockEntityAuxProvider"(): $BlockEntityType$BlockEntitySupplier<($TaskScreenAuxBlockEntity)>
+public "getRenderShape"(state: $BlockState$$Type): $RenderShape
 public static "getMultiblockBounds"(corePos: $BlockPos$$Type, size: integer, facing: $Direction$$Type): $BoundingBox
+public static "blockEntityProvider"(): $BlockEntityType$BlockEntitySupplier<($TaskScreenBlockEntity)>
+public "getStateForPlacement"(blockPlaceContext: $BlockPlaceContext$$Type): $BlockState
+public "getDestroyProgress"(blockState: $BlockState$$Type, player: $Player$$Type, blockGetter: $BlockGetter$$Type, blockPos: $BlockPos$$Type): float
+public "appendHoverText"(itemStack: $ItemStack$$Type, context: $Item$TooltipContext$$Type, list: $List$$Type<($Component$$Type)>, tooltipFlag: $TooltipFlag$$Type): void
+public static "blockEntityAuxProvider"(): $BlockEntityType$BlockEntitySupplier<($TaskScreenAuxBlockEntity)>
 public "asHolder"(): $Holder<(any)>
 get "size"(): integer
 }
@@ -7152,22 +7301,22 @@ export class $TaskType {
 
 
 public "getDisplayName"(): $Component
-public "getIconSupplier"(): $Icon
-public "makeExtraNBT"(): $CompoundTag
-public "getGuiProvider"(): $TaskType$GuiProvider
-public "setGuiProvider"(p: $TaskType$GuiProvider$$Type): $TaskType
-public "getTypeForNBT"(): string
-public "getTypeId"(): $ResourceLocation
-public "createTask"(id: long, quest: $Quest$$Type): $Task
-public static "createTask"(id: long, quest: $Quest$$Type, typeId: string): $Task
 public "setDisplayName"(name: $Component$$Type): $TaskType
+public "getTypeForNBT"(): StringJS
+public "makeExtraNBT"(): $CompoundTag
+public "setGuiProvider"(p: $TaskType$GuiProvider$$Type): $TaskType
+public "getGuiProvider"(): $TaskType$GuiProvider
+public "createTask"(id: long, quest: $Quest$$Type): $Task
+public static "createTask"(id: long, quest: $Quest$$Type, typeId: StringJS): $Task
+public "getTypeId"(): $ResourceLocation
+public "getIconSupplier"(): $Icon
 get "displayName"(): $Component
-get "iconSupplier"(): $Icon
-get "guiProvider"(): $TaskType$GuiProvider
-set "guiProvider"(value: $TaskType$GuiProvider$$Type)
-get "typeForNBT"(): string
-get "typeId"(): $ResourceLocation
 set "displayName"(value: $Component$$Type)
+get "typeForNBT"(): StringJS
+set "guiProvider"(value: $TaskType$GuiProvider$$Type)
+get "guiProvider"(): $TaskType$GuiProvider
+get "typeId"(): $ResourceLocation
+get "iconSupplier"(): $Icon
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7191,13 +7340,13 @@ import {$NameMap, $NameMap$$Type} from "dev.ftb.mods.ftblibrary.config.NameMap"
 export class $NameMap$Builder<T> {
 
 
-public "name"(p: $Function$$Type<(T), ($Component$$Type)>): $NameMap$Builder<(T)>
-public "id"(p: $Function$$Type<(T), (string)>): $NameMap$Builder<(T)>
-public "create"(): $NameMap<(T)>
 public "color"(p: $Function$$Type<(T), ($Color4I$$Type)>): $NameMap$Builder<(T)>
-public "nameKey"(p: $Function$$Type<(T), (string)>): $NameMap$Builder<(T)>
+public "create"(): $NameMap<(T)>
+public "name"(p: $Function$$Type<(T), ($Component$$Type)>): $NameMap$Builder<(T)>
+public "id"(p: $Function$$Type<(T), (StringJS)>): $NameMap$Builder<(T)>
 public "icon"(p: $Function$$Type<(T), ($Icon$$Type)>): $NameMap$Builder<(T)>
-public "baseNameKey"(key: string): $NameMap$Builder<(T)>
+public "nameKey"(p: $Function$$Type<(T), (StringJS)>): $NameMap$Builder<(T)>
+public "baseNameKey"(key: StringJS): $NameMap$Builder<(T)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7225,14 +7374,14 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 import {$RegistryAccess, $RegistryAccess$$Type} from "net.minecraft.core.RegistryAccess"
 
 export class $EditableBlockEntity extends $BlockEntity implements $IEditable {
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 constructor(blockEntityType: $BlockEntityType$$Type<(any)>, blockPos: $BlockPos$$Type, blockState: $BlockState$$Type)
 
 public "readPayload"(tag: $CompoundTag$$Type, registryAccess: $RegistryAccess$$Type): void
 public "hasPermissionToEdit"(arg0: $Player$$Type): boolean
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7254,7 +7403,7 @@ import {$SNBTCompoundTag, $SNBTCompoundTag$$Type} from "dev.ftb.mods.ftblibrary.
 
 export class $IntArrayValue extends $BaseValue<((integer)[])> {
 readonly "parent": $SNBTConfig
-readonly "key": string
+readonly "key": StringJS
 
 
 public "write"(tag: $SNBTCompoundTag$$Type): void
@@ -7318,7 +7467,7 @@ import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraf
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $LootCrateOpenerBlockEntity extends $BlockEntity {
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 constructor(blockPos: $BlockPos$$Type, blockState: $BlockState$$Type)
 
@@ -7326,8 +7475,8 @@ public "getOwner"(): $UUID
 public "setOwner"(owner: $UUID$$Type): void
 public "loadAdditional"(compoundTag: $CompoundTag$$Type, provider: $HolderLookup$Provider$$Type): void
 public "getOutputCount"(): integer
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "owner"(): $UUID
 set "owner"(value: $UUID$$Type)
 get "outputCount"(): integer

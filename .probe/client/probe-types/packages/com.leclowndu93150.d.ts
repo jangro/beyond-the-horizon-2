@@ -149,10 +149,10 @@ import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.Liv
 export class $LivingDeathEvent extends $Event {
 
 
-public "getEntity"(): $LivingEntity
 public "getSource"(): $DamageSource
-get "entity"(): $LivingEntity
+public "getEntity"(): $LivingEntity
 get "source"(): $DamageSource
+get "entity"(): $LivingEntity
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -175,16 +175,16 @@ export class $CreativeFlightEvent$Toggle extends $CreativeFlightEvent implements
 
 constructor(arg0: $Player$$Type, arg1: boolean)
 
-public "isEnablingFlight"(): boolean
-public "isDisablingFlight"(): boolean
 public "getFlightState"(): boolean
 public "setFlightState"(arg0: boolean): void
+public "isEnablingFlight"(): boolean
+public "isDisablingFlight"(): boolean
 public "isCanceled"(): boolean
 public "setCanceled"(arg0: boolean): void
-get "enablingFlight"(): boolean
-get "disablingFlight"(): boolean
 get "flightState"(): boolean
 set "flightState"(value: boolean)
+get "enablingFlight"(): boolean
+get "disablingFlight"(): boolean
 get "canceled"(): boolean
 set "canceled"(value: boolean)
 }
@@ -259,12 +259,12 @@ export class $CreativeFlightEvent$Changed extends $CreativeFlightEvent {
 
 constructor(arg0: $Player$$Type, arg1: boolean, arg2: boolean)
 
-public "getPreviousFlightState"(): boolean
-public "getNewFlightState"(): boolean
 public "wasFlightEnabled"(): boolean
+public "getNewFlightState"(): boolean
+public "getPreviousFlightState"(): boolean
 public "wasFlightDisabled"(): boolean
-get "previousFlightState"(): boolean
 get "newFlightState"(): boolean
+get "previousFlightState"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

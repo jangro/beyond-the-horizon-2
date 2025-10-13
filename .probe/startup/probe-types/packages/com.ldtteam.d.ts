@@ -1,25 +1,28 @@
 declare module "com.ldtteam.domumornamentum.item.decoration.TimberFrameBlockItem" {
 import {$IDoItem, $IDoItem$$Type} from "com.ldtteam.domumornamentum.item.interfaces.IDoItem"
 import {$BlockItemWithClientBePlacement, $BlockItemWithClientBePlacement$$Type} from "com.ldtteam.domumornamentum.item.BlockItemWithClientBePlacement"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$TimberFrameBlock, $TimberFrameBlock$$Type} from "com.ldtteam.domumornamentum.block.decorative.TimberFrameBlock"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $TimberFrameBlockItem extends $BlockItemWithClientBePlacement implements $IDoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -34,14 +37,15 @@ constructor(arg0: $TimberFrameBlock$$Type, arg1: $Item$Properties$$Type)
 
 public "getName"(arg0: $ItemStack$$Type): $Component
 public "getGroup"(): $ResourceLocation
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getInputIds"(): $List<($ResourceLocation)>
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "renderPreview"(): boolean
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
 public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "group"(): $ResourceLocation
 get "inputIds"(): $List<($ResourceLocation)>
 }
@@ -73,15 +77,15 @@ static readonly "MIDDLE_LEFT": $Alignment
 
 
 public static "values"(): ($Alignment)[]
-public static "valueOf"(arg0: string): $Alignment
+public static "valueOf"(arg0: StringJS): $Alignment
+public "isRightAligned"(): boolean
 public "isHorizontalCentered"(): boolean
 public "isBottomAligned"(): boolean
 public "isVerticalCentered"(): boolean
-public "isRightAligned"(): boolean
+get "rightAligned"(): boolean
 get "horizontalCentered"(): boolean
 get "bottomAligned"(): boolean
 get "verticalCentered"(): boolean
-get "rightAligned"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -101,8 +105,8 @@ import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 
 export interface $ICachedItemGroupBlock {
 
- "fillItemCategory"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
  "resetCache"(): void
+ "fillItemCategory"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
 }
 
 export namespace $ICachedItemGroupBlock {
@@ -111,8 +115,8 @@ const probejs$$marker: never
 export class $ICachedItemGroupBlock$$Static implements $ICachedItemGroupBlock {
 
 
- "fillItemCategory"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
  "resetCache"(): void
+ "fillItemCategory"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -140,8 +144,8 @@ import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resource
 import {$IronBarsBlock, $IronBarsBlock$$Type} from "net.minecraft.world.level.block.IronBarsBlock"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -155,7 +159,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -195,8 +199,8 @@ export type $AbstractBlockPane_<B> = $AbstractBlockPane$$Type<(B)>;
 }}
 declare module "com.ldtteam.domumornamentum.block.types.DoorType" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -210,20 +214,20 @@ static readonly "PORT_MANTEAU": $DoorType
 
 
 public static "values"(): ($DoorType)[]
-public static "valueOf"(arg0: string): $DoorType
-public "getTranslationKeySuffix"(): string
-public "getDefaultEnglishTranslation"(): string
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $DoorType
+public "getSerializedName"(): StringJS
+public "getDefaultEnglishTranslation"(): StringJS
+public "getTranslationKeySuffix"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "translationKeySuffix"(): string
-get "defaultEnglishTranslation"(): string
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "serializedName"(): StringJS
+get "defaultEnglishTranslation"(): StringJS
+get "translationKeySuffix"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -251,35 +255,34 @@ import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelR
 import {$Explosion, $Explosion$$Type} from "net.minecraft.world.level.Explosion"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$PillarShapeType, $PillarShapeType$$Type} from "com.ldtteam.domumornamentum.block.types.PillarShapeType"
-import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
+import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
-import {$Collection, $Collection$$Type} from "java.util.Collection"
-import {$SoundType, $SoundType$$Type} from "net.minecraft.world.level.block.SoundType"
 import {$AbstractBlock, $AbstractBlock$$Type} from "com.ldtteam.domumornamentum.block.AbstractBlock"
+import {$SoundType, $SoundType$$Type} from "net.minecraft.world.level.block.SoundType"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$HitResult, $HitResult$$Type} from "net.minecraft.world.phys.HitResult"
-import {$MaterialTextureData, $MaterialTextureData$$Type} from "com.ldtteam.domumornamentum.client.model.data.MaterialTextureData"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
+import {$MaterialTextureData, $MaterialTextureData$$Type} from "com.ldtteam.domumornamentum.client.model.data.MaterialTextureData"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$ICachedItemGroupBlock, $ICachedItemGroupBlock$$Type} from "com.ldtteam.domumornamentum.block.ICachedItemGroupBlock"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
+import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$IMateriallyTexturedBlockComponent, $IMateriallyTexturedBlockComponent$$Type} from "com.ldtteam.domumornamentum.block.IMateriallyTexturedBlockComponent"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $PillarBlock extends $AbstractBlock<($PillarBlock)> implements $IMateriallyTexturedBlock, $ICachedItemGroupBlock, $EntityBlock {
 static readonly "UPDATE_IMMEDIATE": integer
@@ -297,7 +300,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -306,32 +309,32 @@ static readonly "UPDATE_CLIENTS": integer
 
 constructor()
 
-public "destroy"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): void
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "buildRecipes"(arg0: $RecipeOutput$$Type): void
+public "destroy"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): void
 public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
+public "buildRecipes"(arg0: $RecipeOutput$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getSoundType"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): $SoundType
-public "getComponents"(): $Collection<(any)>
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
-public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
-public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
-public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
-public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
+public "getComponents"(): $List<($IMateriallyTexturedBlockComponent)>
+public "resetCache"(): void
 public "fillItemCategory"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
 public "getMainComponent"(): $IMateriallyTexturedBlockComponent
-public "resetCache"(): void
-public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
-public "usesWorldSpecificTinting"(): boolean
-public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
+public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
+public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
+public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "getRandomMaterials"(): $MaterialTextureData
 public "getDODestroyProgress"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($Player), ($BlockGetter), ($BlockPos), (float)>, arg1: $BlockState$$Type, arg2: $Player$$Type, arg3: $BlockGetter$$Type, arg4: $BlockPos$$Type): float
 public "fillDOItemCategory"(arg0: $Block$$Type, arg1: $NonNullList$$Type<($ItemStack$$Type)>, arg2: $List$$Type<($ItemStack$$Type)>): void
-public "getRandomMaterials"(): $MaterialTextureData
-public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "usesWorldSpecificTinting"(): boolean
+public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
-get "components"(): $Collection<(any)>
+get "components"(): $List<($IMateriallyTexturedBlockComponent)>
 get "mainComponent"(): $IMateriallyTexturedBlockComponent
 get "randomMaterials"(): $MaterialTextureData
 }
@@ -348,13 +351,15 @@ declare global {
 export type $PillarBlock_ = $PillarBlock$$Type;
 }}
 declare module "com.ldtteam.structurize.items.ItemCaliper" {
-import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
-import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$AbstractItemWithPosSelector, $AbstractItemWithPosSelector$$Type} from "com.ldtteam.structurize.items.AbstractItemWithPosSelector"
@@ -362,7 +367,7 @@ import {$AbstractItemWithPosSelector, $AbstractItemWithPosSelector$$Type} from "
 export class $ItemCaliper extends $AbstractItemWithPosSelector {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -372,6 +377,7 @@ constructor()
 
 public "onAirRightClick"(arg0: $BlockPos$$Type, arg1: $BlockPos$$Type, arg2: $Level$$Type, arg3: $Player$$Type, arg4: $ItemStack$$Type): $InteractionResult
 public "getRegisteredItemInstance"(): $AbstractItemWithPosSelector
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "registeredItemInstance"(): $AbstractItemWithPosSelector
 }
 /**
@@ -442,7 +448,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -501,25 +507,28 @@ export type $BlueprintPositionInfo_ = $BlueprintPositionInfo$$Type;
 declare module "com.ldtteam.domumornamentum.item.decoration.FramedLightBlockItem" {
 import {$IDoItem, $IDoItem$$Type} from "com.ldtteam.domumornamentum.item.interfaces.IDoItem"
 import {$BlockItemWithClientBePlacement, $BlockItemWithClientBePlacement$$Type} from "com.ldtteam.domumornamentum.item.BlockItemWithClientBePlacement"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$FramedLightBlock, $FramedLightBlock$$Type} from "com.ldtteam.domumornamentum.block.decorative.FramedLightBlock"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $FramedLightBlockItem extends $BlockItemWithClientBePlacement implements $IDoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -534,14 +543,15 @@ constructor(arg0: $FramedLightBlock$$Type, arg1: $Item$Properties$$Type)
 
 public "getName"(arg0: $ItemStack$$Type): $Component
 public "getGroup"(): $ResourceLocation
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getInputIds"(): $List<($ResourceLocation)>
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "renderPreview"(): boolean
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
 public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "group"(): $ResourceLocation
 get "inputIds"(): $List<($ResourceLocation)>
 }
@@ -559,8 +569,8 @@ export type $FramedLightBlockItem_ = $FramedLightBlockItem$$Type;
 }}
 declare module "com.ldtteam.domumornamentum.block.types.FramedLightType" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -576,21 +586,21 @@ static readonly "FOUR": $FramedLightType
 static readonly "HORIZONTAL": $FramedLightType
 
 
-public "getName"(): string
+public "getName"(): StringJS
 public static "values"(): ($FramedLightType)[]
-public static "valueOf"(arg0: string): $FramedLightType
-public "getSerializedName"(): string
-public "getLangName"(): string
+public static "valueOf"(arg0: StringJS): $FramedLightType
+public "getLangName"(): StringJS
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "name"(): string
-get "serializedName"(): string
-get "langName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "name"(): StringJS
+get "langName"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -605,10 +615,10 @@ declare global {
 export type $FramedLightType_ = $FramedLightType$$Type;
 }}
 declare module "com.ldtteam.blockui.BOGuiGraphics" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$MultiBufferSource, $MultiBufferSource$$Type} from "net.minecraft.client.renderer.MultiBufferSource"
-import {$GuiGraphics, $GuiGraphics$$Type} from "net.minecraft.client.gui.GuiGraphics"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$MultiBufferSource$BufferSource, $MultiBufferSource$BufferSource$$Type} from "net.minecraft.client.renderer.MultiBufferSource$BufferSource"
+import {$GuiGraphics, $GuiGraphics$$Type} from "net.minecraft.client.gui.GuiGraphics"
 import {$PoseStack, $PoseStack$$Type} from "com.mojang.blaze3d.vertex.PoseStack"
 import {$BlockStateRenderingData, $BlockStateRenderingData$$Type} from "com.ldtteam.blockui.mod.item.BlockStateRenderingData"
 import {$Minecraft, $Minecraft$$Type} from "net.minecraft.client.Minecraft"
@@ -621,15 +631,15 @@ static readonly "MAX_GUI_Z": float
 
 constructor(arg0: $Minecraft$$Type, arg1: $PoseStack$$Type, arg2: $MultiBufferSource$BufferSource$$Type)
 
-public "drawString"(arg0: string, arg1: float, arg2: float, arg3: integer): integer
-public "drawString"(arg0: string, arg1: float, arg2: float, arg3: integer, arg4: boolean): integer
 public "setCursor"(arg0: $Cursor$$Type): void
+public "drawString"(arg0: StringJS, arg1: float, arg2: float, arg3: integer, arg4: boolean): integer
+public "drawString"(arg0: StringJS, arg1: float, arg2: float, arg3: integer): integer
 public "renderItemDecorations"(arg0: $ItemStack$$Type, arg1: integer, arg2: integer): void
-public "renderItemDecorations"(arg0: $ItemStack$$Type, arg1: integer, arg2: integer, arg3: string): void
+public "renderItemDecorations"(arg0: $ItemStack$$Type, arg1: integer, arg2: integer, arg3: StringJS): void
 public "applyCursor"(arg0: integer): void
+public "popMvPose"(): void
 public "renderBlockStateAsItem"(arg0: $BlockStateRenderingData$$Type, arg1: $ItemStack$$Type): void
 public static "getAltSpeedFactor"(): double
-public "popMvPose"(): void
 public "pushMvApplyPose"(): void
 public static "bufferSource"(arg0: $GuiGraphics$$Type): $MultiBufferSource
 set "cursor"(value: $Cursor$$Type)
@@ -686,7 +696,7 @@ static readonly "STRAIGHT": $ShingleShapeType
 
 
 public static "values"(): ($ShingleShapeType)[]
-public static "valueOf"(arg0: string): $ShingleShapeType
+public static "valueOf"(arg0: StringJS): $ShingleShapeType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -716,23 +726,23 @@ import {$Explosion, $Explosion$$Type} from "net.minecraft.world.level.Explosion"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
-import {$AbstractPostBlock, $AbstractPostBlock$$Type} from "com.ldtteam.domumornamentum.block.AbstractPostBlock"
 import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
+import {$AbstractPostBlock, $AbstractPostBlock$$Type} from "com.ldtteam.domumornamentum.block.AbstractPostBlock"
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
 import {$SoundType, $SoundType$$Type} from "net.minecraft.world.level.block.SoundType"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$HitResult, $HitResult$$Type} from "net.minecraft.world.phys.HitResult"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$MaterialTextureData, $MaterialTextureData$$Type} from "com.ldtteam.domumornamentum.client.model.data.MaterialTextureData"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
-import {$PostType, $PostType$$Type} from "com.ldtteam.domumornamentum.block.types.PostType"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ICachedItemGroupBlock, $ICachedItemGroupBlock$$Type} from "com.ldtteam.domumornamentum.block.ICachedItemGroupBlock"
+import {$PostType, $PostType$$Type} from "com.ldtteam.domumornamentum.block.types.PostType"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
@@ -748,7 +758,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -774,19 +784,19 @@ public "buildRecipes"(arg0: $RecipeOutput$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getSoundType"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): $SoundType
 public "getComponents"(): $List<($IMateriallyTexturedBlockComponent)>
-public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
-public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
-public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "resetCache"(): void
 public "fillItemCategory"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
 public "getMainComponent"(): $IMateriallyTexturedBlockComponent
-public "resetCache"(): void
-public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
-public "usesWorldSpecificTinting"(): boolean
-public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
+public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
+public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "getRandomMaterials"(): $MaterialTextureData
 public "getDODestroyProgress"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($Player), ($BlockGetter), ($BlockPos), (float)>, arg1: $BlockState$$Type, arg2: $Player$$Type, arg3: $BlockGetter$$Type, arg4: $BlockPos$$Type): float
 public "fillDOItemCategory"(arg0: $Block$$Type, arg1: $NonNullList$$Type<($ItemStack$$Type)>, arg2: $List$$Type<($ItemStack$$Type)>): void
-public "getRandomMaterials"(): $MaterialTextureData
-public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "usesWorldSpecificTinting"(): boolean
+public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
@@ -810,9 +820,9 @@ declare module "com.ldtteam.blockui.views.BOWindow" {
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$BOWindow$WindowRenderType, $BOWindow$WindowRenderType$$Type} from "com.ldtteam.blockui.views.BOWindow$WindowRenderType"
 import {$View, $View$$Type} from "com.ldtteam.blockui.views.View"
-import {$BOGuiGraphics, $BOGuiGraphics$$Type} from "com.ldtteam.blockui.BOGuiGraphics"
-import {$BOScreen, $BOScreen$$Type} from "com.ldtteam.blockui.BOScreen"
 import {$PaneParams, $PaneParams$$Type} from "com.ldtteam.blockui.PaneParams"
+import {$BOScreen, $BOScreen$$Type} from "com.ldtteam.blockui.BOScreen"
+import {$BOGuiGraphics, $BOGuiGraphics$$Type} from "com.ldtteam.blockui.BOGuiGraphics"
 
 export class $BOWindow extends $View {
 static readonly "DEFAULT_HEIGHT": integer
@@ -825,21 +835,21 @@ constructor(arg0: $ResourceLocation$$Type)
 
 public "close"(): void
 public "open"(): void
+public "getScreen"(): $BOScreen
 public "onClosed"(): void
 public "getRenderType"(): $BOWindow$WindowRenderType
-public "getScreen"(): $BOScreen
-public "onMouseReleased"(arg0: double, arg1: double): boolean
-public "getXmlResourceLocation"(): $ResourceLocation
-public "doesWindowPauseGame"(): boolean
-public "onUnhandledKeyTyped"(arg0: integer, arg1: integer): boolean
+public "openAsLayer"(): void
+public "drawSelf"(arg0: $BOGuiGraphics$$Type, arg1: double, arg2: double): void
+public "onKeyTyped"(arg0: character, arg1: integer): boolean
 public "loadParams"(arg0: $PaneParams$$Type): void
 public "hasLightbox"(): boolean
 public "onOpened"(): void
-public "onKeyTyped"(arg0: character, arg1: integer): boolean
-public "openAsLayer"(): void
-public "drawSelf"(arg0: $BOGuiGraphics$$Type, arg1: double, arg2: double): void
-get "renderType"(): $BOWindow$WindowRenderType
+public "doesWindowPauseGame"(): boolean
+public "onUnhandledKeyTyped"(arg0: integer, arg1: integer): boolean
+public "getXmlResourceLocation"(): $ResourceLocation
+public "onMouseReleased"(arg0: double, arg1: double): boolean
 get "screen"(): $BOScreen
+get "renderType"(): $BOWindow$WindowRenderType
 get "xmlResourceLocation"(): $ResourceLocation
 }
 /**
@@ -857,9 +867,9 @@ export type $BOWindow_ = $BOWindow$$Type;
 declare module "com.ldtteam.structurize.placement.structure.IStructureHandler" {
 import {$Blueprint, $Blueprint$$Type} from "com.ldtteam.structurize.blueprints.v1.Blueprint"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
-import {$RotationMirror, $RotationMirror$$Type} from "com.ldtteam.structurize.api.RotationMirror"
 import {$Function, $Function$$Type} from "java.util.function.Function"
+import {$RotationMirror, $RotationMirror$$Type} from "com.ldtteam.structurize.api.RotationMirror"
+import {$List, $List$$Type} from "java.util.List"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
@@ -867,28 +877,25 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 
 export interface $IStructureHandler {
 
- "onCompletion"(): void
  "consume"(arg0: $List$$Type<($ItemStack$$Type)>): void
+ "onCompletion"(): void
  "isCreative"(): boolean
  "getInventory"(): $IItemHandler
  "isReady"(): boolean
- "setMd5"(arg0: string): void
- "getMd5"(): string
- "getRotationMirror"(): $RotationMirror
- "setBlueprint"(arg0: $Blueprint$$Type): void
- "fancyPlacement"(): boolean
- "getWorld"(): $Level
- "getHeldItem"(): $ItemStack
- "getWorldPos"(): $BlockPos
  "getBluePrint"(): $Blueprint
  "triggerSuccess"(arg0: $BlockPos$$Type, arg1: $List$$Type<($ItemStack$$Type)>, arg2: boolean): void
  "hasBluePrint"(): boolean
- "isCorrectMD5"(arg0: string): boolean
+ "isCorrectMD5"(arg0: StringJS): boolean
  "isStackFree"(arg0: $ItemStack$$Type): boolean
  "allowReplace"(): boolean
- "getMaxBlocksCheckedPerCall"(): integer
- "shouldBlocksBeConsideredEqual"(arg0: $BlockState$$Type, arg1: $BlockState$$Type): boolean
- "getStructurePosFromWorld"(arg0: $BlockPos$$Type): $BlockPos
+ "fancyPlacement"(): boolean
+ "setBlueprint"(arg0: $Blueprint$$Type): void
+ "getWorld"(): $Level
+ "getHeldItem"(): $ItemStack
+ "getWorldPos"(): $BlockPos
+ "getRotationMirror"(): $RotationMirror
+ "setMd5"(arg0: StringJS): void
+ "getMd5"(): StringJS
  "getProgressPosInWorld"(arg0: $BlockPos$$Type): $BlockPos
  "triggerEntitySuccess"(arg0: $BlockPos$$Type, arg1: $List$$Type<($ItemStack$$Type)>, arg2: boolean): void
  "getStepsPerCall"(): integer
@@ -896,19 +903,22 @@ export interface $IStructureHandler {
  "hasRequiredItems"(arg0: $List$$Type<($ItemStack$$Type)>): boolean
  "prePlacementLogic"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type, arg2: $List$$Type<($ItemStack$$Type)>): void
  "getSolidBlockForPos"(arg0: $BlockPos$$Type, arg1: $Function$$Type<($BlockPos), ($BlockState$$Type)>): $BlockState
+ "getMaxBlocksCheckedPerCall"(): integer
+ "shouldBlocksBeConsideredEqual"(arg0: $BlockState$$Type, arg1: $BlockState$$Type): boolean
+ "getStructurePosFromWorld"(arg0: $BlockPos$$Type): $BlockPos
 get "creative"(): boolean
 get "inventory"(): $IItemHandler
 get "ready"(): boolean
-set "md5"(value: string)
-get "md5"(): string
-get "rotationMirror"(): $RotationMirror
+get "bluePrint"(): $Blueprint
 set "blueprint"(value: $Blueprint$$Type)
 get "world"(): $Level
 get "heldItem"(): $ItemStack
 get "worldPos"(): $BlockPos
-get "bluePrint"(): $Blueprint
-get "maxBlocksCheckedPerCall"(): integer
+get "rotationMirror"(): $RotationMirror
+set "md5"(value: StringJS)
+get "md5"(): StringJS
 get "stepsPerCall"(): integer
+get "maxBlocksCheckedPerCall"(): integer
 }
 
 export namespace $IStructureHandler {
@@ -917,28 +927,25 @@ const probejs$$marker: never
 export class $IStructureHandler$$Static implements $IStructureHandler {
 
 
- "onCompletion"(): void
  "consume"(arg0: $List$$Type<($ItemStack$$Type)>): void
+ "onCompletion"(): void
  "isCreative"(): boolean
  "getInventory"(): $IItemHandler
  "isReady"(): boolean
- "setMd5"(arg0: string): void
- "getMd5"(): string
- "getRotationMirror"(): $RotationMirror
- "setBlueprint"(arg0: $Blueprint$$Type): void
- "fancyPlacement"(): boolean
- "getWorld"(): $Level
- "getHeldItem"(): $ItemStack
- "getWorldPos"(): $BlockPos
  "getBluePrint"(): $Blueprint
  "triggerSuccess"(arg0: $BlockPos$$Type, arg1: $List$$Type<($ItemStack$$Type)>, arg2: boolean): void
  "hasBluePrint"(): boolean
- "isCorrectMD5"(arg0: string): boolean
+ "isCorrectMD5"(arg0: StringJS): boolean
  "isStackFree"(arg0: $ItemStack$$Type): boolean
  "allowReplace"(): boolean
- "getMaxBlocksCheckedPerCall"(): integer
- "shouldBlocksBeConsideredEqual"(arg0: $BlockState$$Type, arg1: $BlockState$$Type): boolean
- "getStructurePosFromWorld"(arg0: $BlockPos$$Type): $BlockPos
+ "fancyPlacement"(): boolean
+ "setBlueprint"(arg0: $Blueprint$$Type): void
+ "getWorld"(): $Level
+ "getHeldItem"(): $ItemStack
+ "getWorldPos"(): $BlockPos
+ "getRotationMirror"(): $RotationMirror
+ "setMd5"(arg0: StringJS): void
+ "getMd5"(): StringJS
  "getProgressPosInWorld"(arg0: $BlockPos$$Type): $BlockPos
  "triggerEntitySuccess"(arg0: $BlockPos$$Type, arg1: $List$$Type<($ItemStack$$Type)>, arg2: boolean): void
  "getStepsPerCall"(): integer
@@ -946,6 +953,9 @@ export class $IStructureHandler$$Static implements $IStructureHandler {
  "hasRequiredItems"(arg0: $List$$Type<($ItemStack$$Type)>): boolean
  "prePlacementLogic"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type, arg2: $List$$Type<($ItemStack$$Type)>): void
  "getSolidBlockForPos"(arg0: $BlockPos$$Type, arg1: $Function$$Type<($BlockPos), ($BlockState$$Type)>): $BlockState
+ "getMaxBlocksCheckedPerCall"(): integer
+ "shouldBlocksBeConsideredEqual"(arg0: $BlockState$$Type, arg1: $BlockState$$Type): boolean
+ "getStructurePosFromWorld"(arg0: $BlockPos$$Type): $BlockPos
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -986,26 +996,26 @@ static readonly "MIR_NONE": $RotationMirror
 static readonly "MIR_R180": $RotationMirror
 
 
+public "rotate"(arg0: $Rotation$$Type): $RotationMirror
+public "isMirrored"(): boolean
 public static "values"(): ($RotationMirror)[]
-public static "valueOf"(arg0: string): $RotationMirror
+public static "valueOf"(arg0: StringJS): $RotationMirror
 public "add"(arg0: $RotationMirror$$Type): $RotationMirror
 public static "of"(arg0: $Rotation$$Type, arg1: $Mirror$$Type): $RotationMirror
-public "isMirrored"(): boolean
-public "rotate"(arg0: $Rotation$$Type): $RotationMirror
-public "rotation"(): $Rotation
 public "mirror"(): $Mirror
+public "rotation"(): $Rotation
+public "mirrorate"(): $RotationMirror
+public "mirrorate"(arg0: $Mirror$$Type): $RotationMirror
+public "applyToBlockState"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type): $BlockState
 /**
  * 
  * @deprecated
  */
 public "applyToBlockState"(arg0: $BlockState$$Type): $BlockState
-public "applyToBlockState"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type): $BlockState
-public "mirrorate"(arg0: $Mirror$$Type): $RotationMirror
-public "mirrorate"(): $RotationMirror
-public "applyToPos"(arg0: $BlockPos$$Type): $BlockPos
-public "applyToPos"(arg0: $BlockPos$$Type, arg1: $BlockPos$$Type): $BlockPos
-public "applyToPos"(arg0: $Vec3$$Type, arg1: $BlockPos$$Type): $Vec3
 public "applyToPos"(arg0: $Vec3$$Type): $Vec3
+public "applyToPos"(arg0: $BlockPos$$Type, arg1: $BlockPos$$Type): $BlockPos
+public "applyToPos"(arg0: $BlockPos$$Type): $BlockPos
+public "applyToPos"(arg0: $Vec3$$Type, arg1: $BlockPos$$Type): $Vec3
 public "calcDifferenceTowards"(arg0: $RotationMirror$$Type): $RotationMirror
 get "mirrored"(): boolean
 }
@@ -1035,8 +1045,8 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -1049,7 +1059,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -1071,8 +1081,8 @@ static readonly "UPDATE_CLIENTS": integer
 
 constructor(arg0: $BlockBehaviour$Properties$$Type)
 
-public static "getDirectionalProperties"(): $Map<($Direction), ($BooleanProperty)>
 public "getRegistryName"(): $ResourceLocation
+public static "getDirectionalProperties"(): $Map<($Direction), ($BooleanProperty)>
 public "getRegistryName"(arg0: $Block$$Type): $ResourceLocation
 public "asHolder"(): $Holder<(any)>
 get "registryName"(): $ResourceLocation
@@ -1107,11 +1117,11 @@ import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.leve
 import {$BlockSubstitution, $BlockSubstitution$$Type} from "com.ldtteam.structurize.blocks.schematic.BlockSubstitution"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
-import {$IAnchorBlock, $IAnchorBlock$$Type} from "com.ldtteam.structurize.blocks.interfaces.IAnchorBlock"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$IAnchorBlock, $IAnchorBlock$$Type} from "com.ldtteam.structurize.blocks.interfaces.IAnchorBlock"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $BlockTagSubstitution extends $BlockSubstitution implements $IAnchorBlock, $EntityBlock {
@@ -1128,7 +1138,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1173,8 +1183,8 @@ import {$Explosion, $Explosion$$Type} from "net.minecraft.world.level.Explosion"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
@@ -1186,8 +1196,8 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$HitResult, $HitResult$$Type} from "net.minecraft.world.phys.HitResult"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$MaterialTextureData, $MaterialTextureData$$Type} from "com.ldtteam.domumornamentum.client.model.data.MaterialTextureData"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$FenceGateBlock as $FenceGateBlock$0, $FenceGateBlock$$Type as $FenceGateBlock$0$$Type} from "net.minecraft.world.level.block.FenceGateBlock"
 import {$ICachedItemGroupBlock, $ICachedItemGroupBlock$$Type} from "com.ldtteam.domumornamentum.block.ICachedItemGroupBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -1206,7 +1216,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "UPDATE_IMMEDIATE": integer
@@ -1231,19 +1241,19 @@ public "buildRecipes"(arg0: $RecipeOutput$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getSoundType"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): $SoundType
 public "getComponents"(): $Collection<(any)>
-public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
-public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
-public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "resetCache"(): void
 public "fillItemCategory"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
 public "getMainComponent"(): $IMateriallyTexturedBlockComponent
-public "resetCache"(): void
-public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
-public "usesWorldSpecificTinting"(): boolean
-public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
+public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
+public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "getRandomMaterials"(): $MaterialTextureData
 public "getDODestroyProgress"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($Player), ($BlockGetter), ($BlockPos), (float)>, arg1: $BlockState$$Type, arg2: $Player$$Type, arg3: $BlockGetter$$Type, arg4: $BlockPos$$Type): float
 public "fillDOItemCategory"(arg0: $Block$$Type, arg1: $NonNullList$$Type<($ItemStack$$Type)>, arg2: $List$$Type<($ItemStack$$Type)>): void
-public "getRandomMaterials"(): $MaterialTextureData
-public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "usesWorldSpecificTinting"(): boolean
+public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
@@ -1282,28 +1292,28 @@ public static "fill"(arg0: $PoseStack$$Type, arg1: integer, arg2: integer, arg3:
 public static "fill"(arg0: $PoseStack$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer): void
 public static "line"(arg0: $PoseStack$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer, arg6: integer, arg7: integer, arg8: integer): void
 public static "line"(arg0: $PoseStack$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer): void
-public static "blitSprite"(arg0: $PoseStack$$Type, arg1: $TextureAtlasSprite$$Type, arg2: integer, arg3: integer, arg4: integer, arg5: integer): void
-public static "blitSprite"(arg0: $PoseStack$$Type, arg1: $TextureAtlasSprite$$Type, arg2: $GuiSpriteScaling$$Type, arg3: integer, arg4: integer, arg5: integer, arg6: integer): void
-public static "fillGradient"(arg0: $PoseStack$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer, arg6: integer): void
-public static "fillGradient"(arg0: $PoseStack$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer, arg6: integer, arg7: integer, arg8: integer, arg9: integer, arg10: integer, arg11: integer, arg12: integer): void
 public static "blit"(arg0: $PoseStack$$Type, arg1: $ResourceLocation$$Type, arg2: integer, arg3: integer, arg4: integer, arg5: integer, arg6: integer, arg7: integer, arg8: integer, arg9: integer): void
 public static "blit"(arg0: $PoseStack$$Type, arg1: $ResourceLocation$$Type, arg2: integer, arg3: integer, arg4: integer, arg5: integer, arg6: integer, arg7: integer, arg8: integer, arg9: integer, arg10: integer, arg11: integer): void
 public static "blit"(arg0: $PoseStack$$Type, arg1: $ResourceLocation$$Type, arg2: integer, arg3: integer, arg4: integer, arg5: integer): void
 public static "blit"(arg0: $PoseStack$$Type, arg1: $ResourceLocation$$Type, arg2: integer, arg3: integer, arg4: integer, arg5: integer, arg6: float, arg7: float, arg8: float, arg9: float): void
-public static "hLine"(arg0: $PoseStack$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer): void
 public static "hLine"(arg0: $PoseStack$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer, arg6: integer, arg7: integer): void
+public static "hLine"(arg0: $PoseStack$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer): void
 public static "vLine"(arg0: $PoseStack$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer): void
 public static "vLine"(arg0: $PoseStack$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer, arg6: integer, arg7: integer): void
-public static "drawLineRectGradient"(arg0: $PoseStack$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer, arg6: integer): void
-public static "drawLineRectGradient"(arg0: $PoseStack$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer, arg6: integer, arg7: integer): void
-public static "drawLineRectGradient"(arg0: $PoseStack$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer, arg6: integer, arg7: integer, arg8: integer, arg9: integer, arg10: integer, arg11: integer, arg12: integer, arg13: integer): void
-public static "populateBlitTriangles"(arg0: $BufferBuilder$$Type, arg1: $Matrix4f$$Type, arg2: float, arg3: float, arg4: float, arg5: float, arg6: float, arg7: float, arg8: float, arg9: float): void
-public static "populateFillTriangles"(arg0: $Matrix4f$$Type, arg1: $BufferBuilder$$Type, arg2: integer, arg3: integer, arg4: integer, arg5: integer, arg6: integer, arg7: integer, arg8: integer, arg9: integer): void
-public static "drawLineRect"(arg0: $PoseStack$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer, arg6: integer): void
-public static "drawLineRect"(arg0: $PoseStack$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer): void
-public static "drawLineRect"(arg0: $PoseStack$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer, arg6: integer, arg7: integer, arg8: integer, arg9: integer): void
+public static "fillGradient"(arg0: $PoseStack$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer, arg6: integer, arg7: integer, arg8: integer, arg9: integer, arg10: integer, arg11: integer, arg12: integer): void
+public static "fillGradient"(arg0: $PoseStack$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer, arg6: integer): void
+public static "blitSprite"(arg0: $PoseStack$$Type, arg1: $TextureAtlasSprite$$Type, arg2: integer, arg3: integer, arg4: integer, arg5: integer): void
+public static "blitSprite"(arg0: $PoseStack$$Type, arg1: $TextureAtlasSprite$$Type, arg2: $GuiSpriteScaling$$Type, arg3: integer, arg4: integer, arg5: integer, arg6: integer): void
 public static "drawEntity"(arg0: $PoseStack$$Type, arg1: integer, arg2: integer, arg3: double, arg4: float, arg5: float, arg6: float, arg7: $Entity$$Type): void
 public static "resolveSprite"(arg0: $TextureAtlasSprite$$Type, arg1: $GuiSpriteScaling$$Type): $UiRenderMacros$ResolvedBlit
+public static "drawLineRect"(arg0: $PoseStack$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer, arg6: integer, arg7: integer, arg8: integer, arg9: integer): void
+public static "drawLineRect"(arg0: $PoseStack$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer): void
+public static "drawLineRect"(arg0: $PoseStack$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer, arg6: integer): void
+public static "drawLineRectGradient"(arg0: $PoseStack$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer, arg6: integer, arg7: integer, arg8: integer, arg9: integer, arg10: integer, arg11: integer, arg12: integer, arg13: integer): void
+public static "drawLineRectGradient"(arg0: $PoseStack$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer, arg6: integer, arg7: integer): void
+public static "drawLineRectGradient"(arg0: $PoseStack$$Type, arg1: integer, arg2: integer, arg3: integer, arg4: integer, arg5: integer, arg6: integer): void
+public static "populateBlitTriangles"(arg0: $BufferBuilder$$Type, arg1: $Matrix4f$$Type, arg2: float, arg3: float, arg4: float, arg5: float, arg6: float, arg7: float, arg8: float, arg9: float): void
+public static "populateFillTriangles"(arg0: $Matrix4f$$Type, arg1: $BufferBuilder$$Type, arg2: integer, arg3: integer, arg4: integer, arg5: integer, arg6: integer, arg7: integer, arg8: integer, arg9: integer): void
 public static "populateFillGradientTriangles"(arg0: $Matrix4f$$Type, arg1: $BufferBuilder$$Type, arg2: integer, arg3: integer, arg4: integer, arg5: integer, arg6: integer, arg7: integer, arg8: integer, arg9: integer, arg10: integer, arg11: integer, arg12: integer, arg13: integer): void
 }
 /**
@@ -1343,7 +1353,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1375,12 +1385,12 @@ import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ModelData, $ModelData$$Type} from "net.neoforged.neoforge.client.model.data.ModelData"
-import {$Biome, $Biome$$Type} from "net.minecraft.world.level.biome.Biome"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Biome, $Biome$$Type} from "net.minecraft.world.level.biome.Biome"
 import {$Stream, $Stream$$Type} from "java.util.stream.Stream"
 import {$ClipBlockStateContext, $ClipBlockStateContext$$Type} from "net.minecraft.world.level.ClipBlockStateContext"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -1404,80 +1414,78 @@ import {$CrashReportCategory, $CrashReportCategory$$Type} from "net.minecraft.Cr
 
 export class $Blueprint implements $IFakeLevelBlockGetter {
 
-constructor(arg0: short, arg1: short, arg2: short, arg3: short, arg4: $List$$Type<($BlockState$$Type)>, arg5: (((short)[])[])[], arg6: ($CompoundTag$$Type)[], arg7: $List$$Type<(string)>, arg8: $HolderLookup$Provider$$Type)
+constructor(arg0: short, arg1: short, arg2: short, arg3: short, arg4: $List$$Type<($BlockState$$Type)>, arg5: (((short)[])[])[], arg6: ($CompoundTag$$Type)[], arg7: $List$$Type<(StringJS)>, arg8: $HolderLookup$Provider$$Type)
 constructor(arg0: short, arg1: short, arg2: short, arg3: $HolderLookup$Provider$$Type)
 
-public "getHeight"(): integer
 public "getEntities"(): ($CompoundTag)[]
-public "getName"(): string
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "setName"(arg0: string): $Blueprint
-public "getFileName"(): string
+public "getFileName"(): StringJS
+public "getHeight"(): integer
 /**
  * 
  * @deprecated
  */
 public "getItem"(arg0: $BlockPos$$Type): $Item
+public "getName"(): StringJS
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+public "setName"(arg0: StringJS): $Blueprint
+public "getStructure"(): (((short)[])[])[]
+public "getPackName"(): StringJS
 public "getBlockState"(arg0: $BlockPos$$Type): $BlockState
 public "getBlockEntity"(arg0: $BlockPos$$Type): $BlockEntity
-public "getStructure"(): (((short)[])[])[]
 public "getPalette"(): ($BlockState)[]
-public "setFileName"(arg0: string): $Blueprint
 public "getFilePath"(): $Path
-public "getRegistryAccess"(): $HolderLookup$Provider
-public "getBlockInfoAsMap"(): $Map<($BlockPos), ($BlockInfo)>
-public "getPrimaryBlockOffset"(): $BlockPos
-public "getBlockInfoAsList"(): $List<($BlockInfo)>
-public "getTileEntities"(): ((($CompoundTag)[])[])[]
-public "setCachePrimaryOffset"(arg0: $BlockPos$$Type): void
-public "getTileEntityData"(arg0: $BlockPos$$Type, arg1: $BlockPos$$Type): $CompoundTag
-public "setRotationMirror"(arg0: $RotationMirror$$Type, arg1: $Level$$Type): void
-public "getRotationMirror"(): $RotationMirror
-public "setPackName"(arg0: string): $Blueprint
-public "getPackName"(): string
+public "setFileName"(arg0: StringJS): $Blueprint
+public "setEntities"(arg0: ($CompoundTag$$Type)[]): void
+public "getSizeY"(): short
 public "getSizeX"(): integer
 public "getSizeZ"(): integer
-public "getSizeY"(): short
+public "setPackName"(arg0: StringJS): $Blueprint
 public "addBlockState"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): void
 public "getPalleteSize"(): short
+public "getPrimaryBlockOffset"(): $BlockPos
+public "getBlockInfoAsList"(): $List<($BlockInfo)>
+public "getTileEntityData"(arg0: $BlockPos$$Type, arg1: $BlockPos$$Type): $CompoundTag
+public "getTileEntities"(): ((($CompoundTag)[])[])[]
+public "setCachePrimaryOffset"(arg0: $BlockPos$$Type): void
+public "getRequiredMods"(): $List<(StringJS)>
+public "getRegistryAccess"(): $HolderLookup$Provider
+public "setRotationMirror"(arg0: $RotationMirror$$Type, arg1: $Level$$Type): void
+public "getRotationMirror"(): $RotationMirror
+public "getArchitects"(): (StringJS)[]
+public "getMissingMods"(): (StringJS)[]
+public "setMissingMods"(...arg0: (StringJS)[]): $Blueprint
+public "setArchitects"(arg0: (StringJS)[]): void
 public "setFilePath"(arg0: $Path$$Type): $Blueprint
+public "getBlockInfoAsMap"(): $Map<($BlockPos), ($BlockInfo)>
 public "setRotationMirrorRelative"(arg0: $RotationMirror$$Type, arg1: $Level$$Type): void
-public "setMissingMods"(...arg0: (string)[]): $Blueprint
-public "setEntities"(arg0: ($CompoundTag$$Type)[]): void
-public "setArchitects"(arg0: (string)[]): void
-public "getArchitects"(): (string)[]
-public "getMissingMods"(): (string)[]
 public "getCachedEntitiesAsMap"(): $Map<($BlockPos), (($CompoundTag)[])>
-public "getRequiredMods"(): $List<(string)>
 public "getEntitiesAsList"(): $List<($CompoundTag)>
 public "getBluePrintPositionInfo"(arg0: $BlockPos$$Type, arg1: boolean): $BlueprintPositionInfo
 public "describeSelfInCrashReport"(arg0: $CrashReportCategory$$Type): void
 public "getMinX"(): integer
 public "getFluidState"(arg0: $BlockPos$$Type): $FluidState
-public "getMinBuildHeight"(): integer
 public "getAABB"(): $AABB
 public "getMaxX"(): integer
 public "getMinZ"(): integer
 public "getMaxZ"(): integer
+public "getMinBuildHeight"(): integer
 public "isPosInside"(arg0: $BlockPos$$Type): boolean
 public "isPosOutside"(arg0: $BlockPos$$Type): boolean
 public "getRawBlockState"(arg0: $BlockPos$$Type): $BlockState
 public "getRawBlockStateFunction"(): $Function<($BlockPos), ($BlockState)>
-public "clipWithInteractionOverride"(arg0: $Vec3$$Type, arg1: $Vec3$$Type, arg2: $BlockPos$$Type, arg3: $VoxelShape$$Type, arg4: $BlockState$$Type): $BlockHitResult
-public "getBlockEntity"<T extends $BlockEntity>(arg0: $BlockPos$$Type, arg1: $BlockEntityType$$Type<(T)>): $Optional<(T)>
+public "clip"(arg0: $ClipContext$$Type): $BlockHitResult
 public "getBlockStates"(arg0: $AABB$$Type): $Stream<($BlockState)>
 public "isBlockInLine"(arg0: $ClipBlockStateContext$$Type): $BlockHitResult
 public static "traverseBlocks"<T, C>(arg0: $Vec3$$Type, arg1: $Vec3$$Type, arg2: C, arg3: $BiFunction$$Type<(C), ($BlockPos), (T)>, arg4: $Function$$Type<(C), (T)>): T
-public "clip"(arg0: $ClipContext$$Type): $BlockHitResult
+public "getBlockEntity"<T extends $BlockEntity>(arg0: $BlockPos$$Type, arg1: $BlockEntityType$$Type<(T)>): $Optional<(T)>
 public "getLightEmission"(arg0: $BlockPos$$Type): integer
 public "getMaxLightLevel"(): integer
-public "getBlockFloorHeight"(arg0: $BlockPos$$Type): double
 public "getBlockFloorHeight"(arg0: $VoxelShape$$Type, arg1: $Supplier$$Type<($VoxelShape$$Type)>): double
+public "getBlockFloorHeight"(arg0: $BlockPos$$Type): double
+public "clipWithInteractionOverride"(arg0: $Vec3$$Type, arg1: $Vec3$$Type, arg2: $BlockPos$$Type, arg3: $VoxelShape$$Type, arg4: $BlockState$$Type): $BlockHitResult
 public static "create"(arg0: integer, arg1: integer): $LevelHeightAccessor
-public "getSectionIndexFromSectionY"(arg0: integer): integer
-public "getSectionYFromSectionIndex"(arg0: integer): integer
 public "getMaxSection"(): integer
 public "getMinSection"(): integer
 public "getMaxBuildHeight"(): integer
@@ -1485,49 +1493,51 @@ public "isOutsideBuildHeight"(arg0: $BlockPos$$Type): boolean
 public "isOutsideBuildHeight"(arg0: integer): boolean
 public "getSectionIndex"(arg0: integer): integer
 public "getSectionsCount"(): integer
+public "getSectionIndexFromSectionY"(arg0: integer): integer
+public "getSectionYFromSectionIndex"(arg0: integer): integer
 public "getModelData"(arg0: $BlockPos$$Type): $ModelData
 public "getAuxLightManager"(arg0: $ChunkPos$$Type): $AuxiliaryLightManager
 public "getAuxLightManager"(arg0: $BlockPos$$Type): $AuxiliaryLightManager
-public "getBlockEntityRenderData"(arg0: $BlockPos$$Type): any
 public "hasBiomes"(): boolean
 public "getBiomeFabric"(arg0: $BlockPos$$Type): $Holder<($Biome)>
-get "height"(): integer
+public "getBlockEntityRenderData"(arg0: $BlockPos$$Type): any
 get "entities"(): ($CompoundTag)[]
-get "name"(): string
-set "name"(value: string)
-get "fileName"(): string
+get "fileName"(): StringJS
+get "height"(): integer
+get "name"(): StringJS
+set "name"(value: StringJS)
 get "structure"(): (((short)[])[])[]
+get "packName"(): StringJS
 get "palette"(): ($BlockState)[]
-set "fileName"(value: string)
 get "filePath"(): $Path
-get "registryAccess"(): $HolderLookup$Provider
-get "blockInfoAsMap"(): $Map<($BlockPos), ($BlockInfo)>
+set "fileName"(value: StringJS)
+set "entities"(value: ($CompoundTag$$Type)[])
+get "sizeY"(): short
+get "sizeX"(): integer
+get "sizeZ"(): integer
+set "packName"(value: StringJS)
+get "palleteSize"(): short
 get "primaryBlockOffset"(): $BlockPos
 get "blockInfoAsList"(): $List<($BlockInfo)>
 get "tileEntities"(): ((($CompoundTag)[])[])[]
 set "cachePrimaryOffset"(value: $BlockPos$$Type)
+get "requiredMods"(): $List<(StringJS)>
+get "registryAccess"(): $HolderLookup$Provider
 get "rotationMirror"(): $RotationMirror
-set "packName"(value: string)
-get "packName"(): string
-get "sizeX"(): integer
-get "sizeZ"(): integer
-get "sizeY"(): short
-get "palleteSize"(): short
+get "architects"(): (StringJS)[]
+get "missingMods"(): (StringJS)[]
+set "missingMods"(value: (StringJS)[])
+set "architects"(value: (StringJS)[])
 set "filePath"(value: $Path$$Type)
-set "missingMods"(value: (string)[])
-set "entities"(value: ($CompoundTag$$Type)[])
-set "architects"(value: (string)[])
-get "architects"(): (string)[]
-get "missingMods"(): (string)[]
+get "blockInfoAsMap"(): $Map<($BlockPos), ($BlockInfo)>
 get "cachedEntitiesAsMap"(): $Map<($BlockPos), (($CompoundTag)[])>
-get "requiredMods"(): $List<(string)>
 get "entitiesAsList"(): $List<($CompoundTag)>
 get "minX"(): integer
-get "minBuildHeight"(): integer
 get "aABB"(): $AABB
 get "maxX"(): integer
 get "minZ"(): integer
 get "maxZ"(): integer
+get "minBuildHeight"(): integer
 get "rawBlockStateFunction"(): $Function<($BlockPos), ($BlockState)>
 get "maxLightLevel"(): integer
 get "maxSection"(): integer
@@ -1580,20 +1590,20 @@ static readonly "HEADER_SEPARATOR": $ResourceLocation
 
 constructor(arg0: $BOWindow$$Type)
 
-public "removed"(): void
 public "tick"(): void
+public "removed"(): void
+public "render"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: float): void
 public "isPauseScreen"(): boolean
-public "getWindow"(): $BOWindow
 public "keyPressed"(arg0: integer, arg1: integer, arg2: integer): boolean
+public "getWindow"(): $BOWindow
 public "mouseClicked"(arg0: double, arg1: double, arg2: integer): boolean
 public "mouseReleased"(arg0: double, arg1: double, arg2: integer): boolean
 public "mouseDragged"(arg0: double, arg1: double, arg2: integer, arg3: double, arg4: double): boolean
 public "mouseScrolled"(arg0: double, arg1: double, arg2: double, arg3: double): boolean
 public "charTyped"(arg0: character, arg1: integer): boolean
-public "render"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: float): void
+public "getRenderScale"(): double
 public "getFramebufferWidth"(): integer
 public "getFramebufferHeight"(): integer
-public "getRenderScale"(): double
 public "getAbsoluteMouseX"(): integer
 public "getVanillaGuiScale"(): double
 public "getAbsoluteMouseY"(): integer
@@ -1601,13 +1611,13 @@ public static "cumulus$getCubeMap"(): $CubeMap
 public static "cumulus$setCubeMap"(arg0: $CubeMap$$Type): void
 public static "cumulus$getPanorama"(): $PanoramaRenderer
 public static "cumulus$setPanorama"(arg0: $PanoramaRenderer$$Type): void
-public static "owo$ROTATING_PANORAMA_RENDERER"(): $PanoramaRenderer
 public static "owo$PANORAMA_RENDERER"(): $CubeMap
+public static "owo$ROTATING_PANORAMA_RENDERER"(): $PanoramaRenderer
 get "pauseScreen"(): boolean
 get "window"(): $BOWindow
+get "renderScale"(): double
 get "framebufferWidth"(): integer
 get "framebufferHeight"(): integer
-get "renderScale"(): double
 get "absoluteMouseX"(): integer
 get "vanillaGuiScale"(): double
 get "absoluteMouseY"(): integer
@@ -1712,7 +1722,7 @@ static readonly "NORTH_WALL": $EnumProperty<($WallSide)>
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -1738,19 +1748,19 @@ public "buildRecipes"(arg0: $RecipeOutput$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getSoundType"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): $SoundType
 public "getComponents"(): $Collection<(any)>
-public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
-public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
-public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "resetCache"(): void
 public "fillItemCategory"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
 public "getMainComponent"(): $IMateriallyTexturedBlockComponent
-public "resetCache"(): void
-public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
-public "usesWorldSpecificTinting"(): boolean
-public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
+public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
+public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "getRandomMaterials"(): $MaterialTextureData
 public "getDODestroyProgress"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($Player), ($BlockGetter), ($BlockPos), (float)>, arg1: $BlockState$$Type, arg2: $Player$$Type, arg3: $BlockGetter$$Type, arg4: $BlockPos$$Type): float
 public "fillDOItemCategory"(arg0: $Block$$Type, arg1: $NonNullList$$Type<($ItemStack$$Type)>, arg2: $List$$Type<($ItemStack$$Type)>): void
-public "getRandomMaterials"(): $MaterialTextureData
-public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "usesWorldSpecificTinting"(): boolean
+public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
@@ -1784,7 +1794,7 @@ public "setType"(arg0: $PlacementError$PlacementErrorType$$Type): void
 public "getType"(): $PlacementError$PlacementErrorType
 public "setPos"(arg0: $BlockPos$$Type): void
 public "getPos"(): $BlockPos
-public static "blockListToCommaSeparatedString"(arg0: $List$$Type<($BlockPos$$Type)>): string
+public static "blockListToCommaSeparatedString"(arg0: $List$$Type<($BlockPos$$Type)>): StringJS
 public static "partitionPlacementErrorsByErrorType"(arg0: $List$$Type<($PlacementError$$Type)>): $Map<($PlacementError$PlacementErrorType), ($List<($BlockPos)>)>
 set "type"(value: $PlacementError$PlacementErrorType$$Type)
 get "type"(): $PlacementError$PlacementErrorType
@@ -1810,11 +1820,11 @@ import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$ModelData, $ModelData$$Type} from "net.neoforged.neoforge.client.model.data.ModelData"
-import {$Biome, $Biome$$Type} from "net.minecraft.world.level.biome.Biome"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Biome, $Biome$$Type} from "net.minecraft.world.level.biome.Biome"
 import {$Stream, $Stream$$Type} from "java.util.stream.Stream"
 import {$ClipBlockStateContext, $ClipBlockStateContext$$Type} from "net.minecraft.world.level.ClipBlockStateContext"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -1833,32 +1843,30 @@ export interface $IFakeLevelBlockGetter extends $BlockGetter {
 
  "getMinX"(): integer
  "getFluidState"(arg0: $BlockPos$$Type): $FluidState
- "getMinBuildHeight"(): integer
+ "getAABB"(): $AABB
  "getSizeX"(): integer
  "getSizeZ"(): integer
- "getAABB"(): $AABB
  "getMaxX"(): integer
  "getMinZ"(): integer
  "getMaxZ"(): integer
+ "getMinBuildHeight"(): integer
  "isPosInside"(arg0: $BlockPos$$Type): boolean
  "isPosOutside"(arg0: $BlockPos$$Type): boolean
  "getRawBlockState"(arg0: $BlockPos$$Type): $BlockState
  "describeSelfInCrashReport"(arg0: $CrashReportCategory$$Type): void
  "getRawBlockStateFunction"(): $Function<($BlockPos), ($BlockState)>
- "clipWithInteractionOverride"(arg0: $Vec3$$Type, arg1: $Vec3$$Type, arg2: $BlockPos$$Type, arg3: $VoxelShape$$Type, arg4: $BlockState$$Type): $BlockHitResult
- "getBlockState"(arg0: $BlockPos$$Type): $BlockState
- "getBlockEntity"(arg0: $BlockPos$$Type): $BlockEntity
- "getBlockEntity"<T extends $BlockEntity>(arg0: $BlockPos$$Type, arg1: $BlockEntityType$$Type<(T)>): $Optional<(T)>
+ "clip"(arg0: $ClipContext$$Type): $BlockHitResult
  "getBlockStates"(arg0: $AABB$$Type): $Stream<($BlockState)>
  "isBlockInLine"(arg0: $ClipBlockStateContext$$Type): $BlockHitResult
- "clip"(arg0: $ClipContext$$Type): $BlockHitResult
+ "getBlockState"(arg0: $BlockPos$$Type): $BlockState
+ "getBlockEntity"<T extends $BlockEntity>(arg0: $BlockPos$$Type, arg1: $BlockEntityType$$Type<(T)>): $Optional<(T)>
+ "getBlockEntity"(arg0: $BlockPos$$Type): $BlockEntity
  "getLightEmission"(arg0: $BlockPos$$Type): integer
  "getMaxLightLevel"(): integer
- "getBlockFloorHeight"(arg0: $BlockPos$$Type): double
  "getBlockFloorHeight"(arg0: $VoxelShape$$Type, arg1: $Supplier$$Type<($VoxelShape$$Type)>): double
+ "getBlockFloorHeight"(arg0: $BlockPos$$Type): double
+ "clipWithInteractionOverride"(arg0: $Vec3$$Type, arg1: $Vec3$$Type, arg2: $BlockPos$$Type, arg3: $VoxelShape$$Type, arg4: $BlockState$$Type): $BlockHitResult
  "getHeight"(): integer
- "getSectionIndexFromSectionY"(arg0: integer): integer
- "getSectionYFromSectionIndex"(arg0: integer): integer
  "getMaxSection"(): integer
  "getMinSection"(): integer
  "getMaxBuildHeight"(): integer
@@ -1866,20 +1874,22 @@ export interface $IFakeLevelBlockGetter extends $BlockGetter {
  "isOutsideBuildHeight"(arg0: integer): boolean
  "getSectionIndex"(arg0: integer): integer
  "getSectionsCount"(): integer
+ "getSectionIndexFromSectionY"(arg0: integer): integer
+ "getSectionYFromSectionIndex"(arg0: integer): integer
  "getModelData"(arg0: $BlockPos$$Type): $ModelData
  "getAuxLightManager"(arg0: $ChunkPos$$Type): $AuxiliaryLightManager
  "getAuxLightManager"(arg0: $BlockPos$$Type): $AuxiliaryLightManager
- "getBlockEntityRenderData"(arg0: $BlockPos$$Type): any
  "hasBiomes"(): boolean
  "getBiomeFabric"(arg0: $BlockPos$$Type): $Holder<($Biome)>
+ "getBlockEntityRenderData"(arg0: $BlockPos$$Type): any
 get "minX"(): integer
-get "minBuildHeight"(): integer
+get "aABB"(): $AABB
 get "sizeX"(): integer
 get "sizeZ"(): integer
-get "aABB"(): $AABB
 get "maxX"(): integer
 get "minZ"(): integer
 get "maxZ"(): integer
+get "minBuildHeight"(): integer
 get "rawBlockStateFunction"(): $Function<($BlockPos), ($BlockState)>
 get "maxLightLevel"(): integer
 get "height"(): integer
@@ -1899,34 +1909,32 @@ export class $IFakeLevelBlockGetter$$Static implements $IFakeLevelBlockGetter {
 
  "getMinX"(): integer
  "getFluidState"(arg0: $BlockPos$$Type): $FluidState
- "getMinBuildHeight"(): integer
+ "getAABB"(): $AABB
  "getSizeX"(): integer
  "getSizeZ"(): integer
- "getAABB"(): $AABB
  "getMaxX"(): integer
  "getMinZ"(): integer
  "getMaxZ"(): integer
+ "getMinBuildHeight"(): integer
  "isPosInside"(arg0: $BlockPos$$Type): boolean
  "isPosOutside"(arg0: $BlockPos$$Type): boolean
  "getRawBlockState"(arg0: $BlockPos$$Type): $BlockState
  "describeSelfInCrashReport"(arg0: $CrashReportCategory$$Type): void
  "getRawBlockStateFunction"(): $Function<($BlockPos), ($BlockState)>
- "clipWithInteractionOverride"(arg0: $Vec3$$Type, arg1: $Vec3$$Type, arg2: $BlockPos$$Type, arg3: $VoxelShape$$Type, arg4: $BlockState$$Type): $BlockHitResult
- "getBlockState"(arg0: $BlockPos$$Type): $BlockState
- "getBlockEntity"(arg0: $BlockPos$$Type): $BlockEntity
- "getBlockEntity"<T extends $BlockEntity>(arg0: $BlockPos$$Type, arg1: $BlockEntityType$$Type<(T)>): $Optional<(T)>
+ "clip"(arg0: $ClipContext$$Type): $BlockHitResult
  "getBlockStates"(arg0: $AABB$$Type): $Stream<($BlockState)>
  "isBlockInLine"(arg0: $ClipBlockStateContext$$Type): $BlockHitResult
 static "traverseBlocks"<T, C>(arg0: $Vec3$$Type, arg1: $Vec3$$Type, arg2: C, arg3: $BiFunction$$Type<(C), ($BlockPos), (T)>, arg4: $Function$$Type<(C), (T)>): T
- "clip"(arg0: $ClipContext$$Type): $BlockHitResult
+ "getBlockState"(arg0: $BlockPos$$Type): $BlockState
+ "getBlockEntity"<T extends $BlockEntity>(arg0: $BlockPos$$Type, arg1: $BlockEntityType$$Type<(T)>): $Optional<(T)>
+ "getBlockEntity"(arg0: $BlockPos$$Type): $BlockEntity
  "getLightEmission"(arg0: $BlockPos$$Type): integer
  "getMaxLightLevel"(): integer
- "getBlockFloorHeight"(arg0: $BlockPos$$Type): double
  "getBlockFloorHeight"(arg0: $VoxelShape$$Type, arg1: $Supplier$$Type<($VoxelShape$$Type)>): double
- "getHeight"(): integer
+ "getBlockFloorHeight"(arg0: $BlockPos$$Type): double
+ "clipWithInteractionOverride"(arg0: $Vec3$$Type, arg1: $Vec3$$Type, arg2: $BlockPos$$Type, arg3: $VoxelShape$$Type, arg4: $BlockState$$Type): $BlockHitResult
 static "create"(arg0: integer, arg1: integer): $LevelHeightAccessor
- "getSectionIndexFromSectionY"(arg0: integer): integer
- "getSectionYFromSectionIndex"(arg0: integer): integer
+ "getHeight"(): integer
  "getMaxSection"(): integer
  "getMinSection"(): integer
  "getMaxBuildHeight"(): integer
@@ -1934,12 +1942,14 @@ static "create"(arg0: integer, arg1: integer): $LevelHeightAccessor
  "isOutsideBuildHeight"(arg0: integer): boolean
  "getSectionIndex"(arg0: integer): integer
  "getSectionsCount"(): integer
+ "getSectionIndexFromSectionY"(arg0: integer): integer
+ "getSectionYFromSectionIndex"(arg0: integer): integer
  "getModelData"(arg0: $BlockPos$$Type): $ModelData
  "getAuxLightManager"(arg0: $ChunkPos$$Type): $AuxiliaryLightManager
  "getAuxLightManager"(arg0: $BlockPos$$Type): $AuxiliaryLightManager
- "getBlockEntityRenderData"(arg0: $BlockPos$$Type): any
  "hasBiomes"(): boolean
  "getBiomeFabric"(arg0: $BlockPos$$Type): $Holder<($Biome)>
+ "getBlockEntityRenderData"(arg0: $BlockPos$$Type): any
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1955,6 +1965,7 @@ export type $IFakeLevelBlockGetter_ = $IFakeLevelBlockGetter$$Type;
 }}
 declare module "com.ldtteam.domumornamentum.item.vanilla.DoorBlockItem" {
 import {$IDoItem, $IDoItem$$Type} from "com.ldtteam.domumornamentum.item.interfaces.IDoItem"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$DoubleHighBlockItemWithClientBePlacement, $DoubleHighBlockItemWithClientBePlacement$$Type} from "com.ldtteam.domumornamentum.item.DoubleHighBlockItemWithClientBePlacement"
 import {$DoorBlock, $DoorBlock$$Type} from "com.ldtteam.domumornamentum.block.vanilla.DoorBlock"
 import {$Map, $Map$$Type} from "java.util.Map"
@@ -1962,19 +1973,21 @@ import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $DoorBlockItem extends $DoubleHighBlockItemWithClientBePlacement implements $IDoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1997,6 +2010,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "group"(): $ResourceLocation
 get "inputIds"(): $List<($ResourceLocation)>
 }
@@ -2049,25 +2063,28 @@ export type $IDOBlock_<B> = $IDOBlock$$Type<(B)>;
 declare module "com.ldtteam.domumornamentum.item.vanilla.WallBlockItem" {
 import {$IDoItem, $IDoItem$$Type} from "com.ldtteam.domumornamentum.item.interfaces.IDoItem"
 import {$BlockItemWithClientBePlacement, $BlockItemWithClientBePlacement$$Type} from "com.ldtteam.domumornamentum.item.BlockItemWithClientBePlacement"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$WallBlock, $WallBlock$$Type} from "com.ldtteam.domumornamentum.block.vanilla.WallBlock"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $WallBlockItem extends $BlockItemWithClientBePlacement implements $IDoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -2090,6 +2107,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "group"(): $ResourceLocation
 get "inputIds"(): $List<($ResourceLocation)>
 }
@@ -2121,22 +2139,21 @@ import {$Explosion, $Explosion$$Type} from "net.minecraft.world.level.Explosion"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$AbstractBlockTrapdoor, $AbstractBlockTrapdoor$$Type} from "com.ldtteam.domumornamentum.block.AbstractBlockTrapdoor"
 import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
-import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
 import {$SoundType, $SoundType$$Type} from "net.minecraft.world.level.block.SoundType"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$HitResult, $HitResult$$Type} from "net.minecraft.world.phys.HitResult"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$MaterialTextureData, $MaterialTextureData$$Type} from "com.ldtteam.domumornamentum.client.model.data.MaterialTextureData"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ICachedItemGroupBlock, $ICachedItemGroupBlock$$Type} from "com.ldtteam.domumornamentum.block.ICachedItemGroupBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$TrapdoorType, $TrapdoorType$$Type} from "com.ldtteam.domumornamentum.block.types.TrapdoorType"
@@ -2156,7 +2173,7 @@ static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "HALF": $EnumProperty<($Half)>
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -2181,24 +2198,24 @@ constructor()
 public "buildRecipes"(arg0: $RecipeOutput$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getSoundType"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): $SoundType
-public "getComponents"(): $Collection<(any)>
-public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
-public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
-public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "getComponents"(): $List<($IMateriallyTexturedBlockComponent)>
+public "resetCache"(): void
 public "fillItemCategory"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
 public "getMainComponent"(): $IMateriallyTexturedBlockComponent
-public "resetCache"(): void
-public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
-public "usesWorldSpecificTinting"(): boolean
-public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
+public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
+public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "getRandomMaterials"(): $MaterialTextureData
 public "getDODestroyProgress"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($Player), ($BlockGetter), ($BlockPos), (float)>, arg1: $BlockState$$Type, arg2: $Player$$Type, arg3: $BlockGetter$$Type, arg4: $BlockPos$$Type): float
 public "fillDOItemCategory"(arg0: $Block$$Type, arg1: $NonNullList$$Type<($ItemStack$$Type)>, arg2: $List$$Type<($ItemStack$$Type)>): void
-public "getRandomMaterials"(): $MaterialTextureData
-public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "usesWorldSpecificTinting"(): boolean
+public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
-get "components"(): $Collection<(any)>
+get "components"(): $List<($IMateriallyTexturedBlockComponent)>
 get "mainComponent"(): $IMateriallyTexturedBlockComponent
 get "randomMaterials"(): $MaterialTextureData
 }
@@ -2215,15 +2232,17 @@ declare global {
 export type $TrapdoorBlock_ = $TrapdoorBlock$$Type;
 }}
 declare module "com.ldtteam.structurize.items.ItemScanTool" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BoxPreviewData, $BoxPreviewData$$Type} from "com.ldtteam.structurize.storage.rendering.types.BoxPreviewData"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ScanToolData$Slot, $ScanToolData$Slot$$Type} from "com.ldtteam.structurize.util.ScanToolData$Slot"
@@ -2240,7 +2259,7 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 export class $ItemScanTool extends $AbstractItemWithPosSelector implements $IScrollableItem, $ISpecialBlockPickItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -2249,23 +2268,9 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 constructor(arg0: $Item$Properties$$Type)
 
-public static "saveStructure"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ScanToolData$Slot$$Type, arg3: boolean): void
 public "canAttackBlock"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): boolean
 public "loadSlot"(arg0: $ScanToolData$$Type, arg1: $ItemStack$$Type): $ScanToolData$Slot
 public static "getBox"(arg0: $ItemStack$$Type, arg1: $Player$$Type): $BoxPreviewData
-public "getHighlightTip"(arg0: $ItemStack$$Type, arg1: $Component$$Type): $Component
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-/**
- * 
- * @deprecated
- */
-public static "getStructureName"(arg0: $ItemStack$$Type): string
-/**
- * 
- * @deprecated
- */
-public static "setStructureName"(arg0: $ItemStack$$Type, arg1: string): void
-public "onAirRightClick"(arg0: $BlockPos$$Type, arg1: $BlockPos$$Type, arg2: $Level$$Type, arg3: $Player$$Type, arg4: $ItemStack$$Type): $InteractionResult
 public "onBlockPick"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: $BlockPos$$Type, arg3: boolean): $InteractionResult
 public "onTeleport"(arg0: $Player$$Type, arg1: $ItemStack$$Type): boolean
 /**
@@ -2279,7 +2284,22 @@ public static "getAnchorPos"(arg0: $ItemStack$$Type): $BlockPos
  */
 public static "setAnchorPos"(arg0: $ItemStack$$Type, arg1: $BlockPos$$Type): void
 public "onMouseScroll"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: double, arg3: double, arg4: boolean): $InteractionResult
+public static "saveStructure"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $ScanToolData$Slot$$Type, arg3: boolean): void
+public "onAirRightClick"(arg0: $BlockPos$$Type, arg1: $BlockPos$$Type, arg2: $Level$$Type, arg3: $Player$$Type, arg4: $ItemStack$$Type): $InteractionResult
+/**
+ * 
+ * @deprecated
+ */
+public static "getStructureName"(arg0: $ItemStack$$Type): StringJS
+/**
+ * 
+ * @deprecated
+ */
+public static "setStructureName"(arg0: $ItemStack$$Type, arg1: StringJS): void
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "getHighlightTip"(arg0: $ItemStack$$Type, arg1: $Component$$Type): $Component
 public "getRegisteredItemInstance"(): $AbstractItemWithPosSelector
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "registeredItemInstance"(): $AbstractItemWithPosSelector
 }
 /**
@@ -2298,24 +2318,27 @@ declare module "com.ldtteam.domumornamentum.item.vanilla.TrapdoorBlockItem" {
 import {$IDoItem, $IDoItem$$Type} from "com.ldtteam.domumornamentum.item.interfaces.IDoItem"
 import {$BlockItemWithClientBePlacement, $BlockItemWithClientBePlacement$$Type} from "com.ldtteam.domumornamentum.item.BlockItemWithClientBePlacement"
 import {$TrapdoorBlock, $TrapdoorBlock$$Type} from "com.ldtteam.domumornamentum.block.vanilla.TrapdoorBlock"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $TrapdoorBlockItem extends $BlockItemWithClientBePlacement implements $IDoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -2338,6 +2361,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "group"(): $ResourceLocation
 get "inputIds"(): $List<($ResourceLocation)>
 }
@@ -2378,7 +2402,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2420,22 +2444,21 @@ import {$Explosion, $Explosion$$Type} from "net.minecraft.world.level.Explosion"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$StairsShape, $StairsShape$$Type} from "net.minecraft.world.level.block.state.properties.StairsShape"
 import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
-import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
 import {$SoundType, $SoundType$$Type} from "net.minecraft.world.level.block.SoundType"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$HitResult, $HitResult$$Type} from "net.minecraft.world.phys.HitResult"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$MaterialTextureData, $MaterialTextureData$$Type} from "com.ldtteam.domumornamentum.client.model.data.MaterialTextureData"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ICachedItemGroupBlock, $ICachedItemGroupBlock$$Type} from "com.ldtteam.domumornamentum.block.ICachedItemGroupBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
@@ -2453,7 +2476,7 @@ static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "HALF": $EnumProperty<($Half)>
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -2476,28 +2499,28 @@ constructor()
 public "buildRecipes"(arg0: $RecipeOutput$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getSoundType"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): $SoundType
-public "getComponents"(): $Collection<(any)>
-public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
-public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
-public "getRegistryName"(): $ResourceLocation
-public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "getComponents"(): $List<($IMateriallyTexturedBlockComponent)>
+public "resetCache"(): void
 public "fillItemCategory"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
 public "getMainComponent"(): $IMateriallyTexturedBlockComponent
-public "resetCache"(): void
-public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
-public "usesWorldSpecificTinting"(): boolean
-public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
+public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
+public "getRegistryName"(): $ResourceLocation
+public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "getRandomMaterials"(): $MaterialTextureData
 public "getDODestroyProgress"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($Player), ($BlockGetter), ($BlockPos), (float)>, arg1: $BlockState$$Type, arg2: $Player$$Type, arg3: $BlockGetter$$Type, arg4: $BlockPos$$Type): float
 public "fillDOItemCategory"(arg0: $Block$$Type, arg1: $NonNullList$$Type<($ItemStack$$Type)>, arg2: $List$$Type<($ItemStack$$Type)>): void
-public "getRandomMaterials"(): $MaterialTextureData
-public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "usesWorldSpecificTinting"(): boolean
+public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getRegistryName"(arg0: $Block$$Type): $ResourceLocation
 public "asHolder"(): $Holder<(any)>
-get "components"(): $Collection<(any)>
-get "registryName"(): $ResourceLocation
+get "components"(): $List<($IMateriallyTexturedBlockComponent)>
 get "mainComponent"(): $IMateriallyTexturedBlockComponent
+get "registryName"(): $ResourceLocation
 get "randomMaterials"(): $MaterialTextureData
 }
 /**
@@ -2514,8 +2537,8 @@ export type $StairBlock_ = $StairBlock$$Type;
 }}
 declare module "com.ldtteam.domumornamentum.block.types.TimberFrameType" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -2534,25 +2557,25 @@ static readonly "UP_GATED": $TimberFrameType
 static readonly "SIDE_FRAMED_HORIZONTAL": $TimberFrameType
 
 
-public "getName"(): string
+public "getName"(): StringJS
 public static "values"(): ($TimberFrameType)[]
-public static "valueOf"(arg0: string): $TimberFrameType
+public static "valueOf"(arg0: StringJS): $TimberFrameType
 public "getPrevious"(): $TimberFrameType
-public "getSerializedName"(): string
 public "isRotatable"(): boolean
-public "getLangName"(): string
+public "getLangName"(): StringJS
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "name"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "name"(): StringJS
 get "previous"(): $TimberFrameType
-get "serializedName"(): string
 get "rotatable"(): boolean
-get "langName"(): string
-get "remappedEnumConstantName"(): string
+get "langName"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2581,22 +2604,22 @@ import {$Explosion, $Explosion$$Type} from "net.minecraft.world.level.Explosion"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
-import {$SoundType, $SoundType$$Type} from "net.minecraft.world.level.block.SoundType"
 import {$AbstractBlock, $AbstractBlock$$Type} from "com.ldtteam.domumornamentum.block.AbstractBlock"
+import {$SoundType, $SoundType$$Type} from "net.minecraft.world.level.block.SoundType"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$HitResult, $HitResult$$Type} from "net.minecraft.world.phys.HitResult"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$MaterialTextureData, $MaterialTextureData$$Type} from "com.ldtteam.domumornamentum.client.model.data.MaterialTextureData"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ICachedItemGroupBlock, $ICachedItemGroupBlock$$Type} from "com.ldtteam.domumornamentum.block.ICachedItemGroupBlock"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$IMateriallyTexturedBlockComponent, $IMateriallyTexturedBlockComponent$$Type} from "com.ldtteam.domumornamentum.block.IMateriallyTexturedBlockComponent"
@@ -2618,7 +2641,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2631,19 +2654,19 @@ public "buildRecipes"(arg0: $RecipeOutput$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getSoundType"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): $SoundType
 public "getComponents"(): $Collection<(any)>
-public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
-public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
-public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "resetCache"(): void
 public "fillItemCategory"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
 public "getMainComponent"(): $IMateriallyTexturedBlockComponent
-public "resetCache"(): void
-public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
-public "usesWorldSpecificTinting"(): boolean
-public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
+public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
+public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "getRandomMaterials"(): $MaterialTextureData
 public "getDODestroyProgress"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($Player), ($BlockGetter), ($BlockPos), (float)>, arg1: $BlockState$$Type, arg2: $Player$$Type, arg3: $BlockGetter$$Type, arg4: $BlockPos$$Type): float
 public "fillDOItemCategory"(arg0: $Block$$Type, arg1: $NonNullList$$Type<($ItemStack$$Type)>, arg2: $List$$Type<($ItemStack$$Type)>): void
-public "getRandomMaterials"(): $MaterialTextureData
-public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "usesWorldSpecificTinting"(): boolean
+public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
@@ -2677,23 +2700,23 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$HorizontalDirectionalBlock, $HorizontalDirectionalBlock$$Type} from "net.minecraft.world.level.block.HorizontalDirectionalBlock"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $AbstractPanelBlockTrapdoor<B extends $AbstractPanelBlockTrapdoor<(B)>> extends $HorizontalDirectionalBlock implements $IDOBlock<(B)>, $SimpleWaterloggedBlock {
@@ -2712,7 +2735,7 @@ static readonly "HALF": $EnumProperty<($Half)>
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -2792,14 +2815,14 @@ import {$RecipeType, $RecipeType$$Type} from "net.minecraft.world.item.crafting.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
-import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$ArchitectsCutterRecipeInput, $ArchitectsCutterRecipeInput$$Type} from "com.ldtteam.domumornamentum.recipe.architectscutter.ArchitectsCutterRecipeInput"
 import {$DataComponentPatch, $DataComponentPatch$$Type} from "net.minecraft.core.component.DataComponentPatch"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
 import {$Recipe, $Recipe$$Type} from "net.minecraft.world.item.crafting.Recipe"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
+import {$RecipeInput, $RecipeInput$$Type} from "net.minecraft.world.item.crafting.RecipeInput"
 import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.item.crafting.RecipeSerializer"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 
@@ -2815,28 +2838,28 @@ public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "matches"(arg0: $ArchitectsCutterRecipeInput$$Type, arg1: $Level$$Type): boolean
 public "getCount"(): integer
 public "getType"(): $RecipeType<(any)>
-public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "assemble"(arg0: $ArchitectsCutterRecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
+public "getBlockName"(): $ResourceLocation
 public "getSerializer"(): $RecipeSerializer<(any)>
+public "assemble"(arg0: $ArchitectsCutterRecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
 public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "getComponentPatch"(): $DataComponentPatch
-public "getBlockName"(): $ResourceLocation
-public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
 public "getIngredients"(): $NonNullList<($Ingredient)>
-public "getGroup"(): string
+public "getGroup"(): StringJS
 public "isSpecial"(): boolean
-public "showNotification"(): boolean
-public "getRemainingItems"(arg0: $ArchitectsCutterRecipeInput$$Type): $NonNullList<($ItemStack)>
 public "isIncomplete"(): boolean
 public "getToastSymbol"(): $ItemStack
+public "showNotification"(): boolean
+public "getRemainingItems"(arg0: $ArchitectsCutterRecipeInput$$Type): $NonNullList<($ItemStack)>
 get "block"(): $Block
 get "count"(): integer
 get "type"(): $RecipeType<(any)>
+get "blockName"(): $ResourceLocation
 get "serializer"(): $RecipeSerializer<(any)>
 get "componentPatch"(): $DataComponentPatch
-get "blockName"(): $ResourceLocation
 get "ingredients"(): $NonNullList<($Ingredient)>
-get "group"(): string
+get "group"(): StringJS
 get "special"(): boolean
 get "incomplete"(): boolean
 get "toastSymbol"(): $ItemStack
@@ -2865,9 +2888,9 @@ export class $ArchitectsCutterRecipeSerializer implements $RecipeSerializer<($Ar
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($ArchitectsCutterRecipe)>
 public "codec"(): $MapCodec<($ArchitectsCutterRecipe)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($ArchitectsCutterRecipe)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2899,8 +2922,8 @@ import {$Explosion, $Explosion$$Type} from "net.minecraft.world.level.Explosion"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
@@ -2913,8 +2936,8 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$HitResult, $HitResult$$Type} from "net.minecraft.world.phys.HitResult"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$MaterialTextureData, $MaterialTextureData$$Type} from "com.ldtteam.domumornamentum.client.model.data.MaterialTextureData"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$ICachedItemGroupBlock, $ICachedItemGroupBlock$$Type} from "com.ldtteam.domumornamentum.block.ICachedItemGroupBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -2932,7 +2955,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -2959,19 +2982,19 @@ public "buildRecipes"(arg0: $RecipeOutput$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getSoundType"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): $SoundType
 public "getComponents"(): $Collection<(any)>
-public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
-public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
-public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "resetCache"(): void
 public "fillItemCategory"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
 public "getMainComponent"(): $IMateriallyTexturedBlockComponent
-public "resetCache"(): void
-public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
-public "usesWorldSpecificTinting"(): boolean
-public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
+public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
+public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "getRandomMaterials"(): $MaterialTextureData
 public "getDODestroyProgress"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($Player), ($BlockGetter), ($BlockPos), (float)>, arg1: $BlockState$$Type, arg2: $Player$$Type, arg3: $BlockGetter$$Type, arg4: $BlockPos$$Type): float
 public "fillDOItemCategory"(arg0: $Block$$Type, arg1: $NonNullList$$Type<($ItemStack$$Type)>, arg2: $List$$Type<($ItemStack$$Type)>): void
-public "getRandomMaterials"(): $MaterialTextureData
-public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "usesWorldSpecificTinting"(): boolean
+public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
@@ -3003,8 +3026,8 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$FenceGateBlock, $FenceGateBlock$$Type} from "net.minecraft.world.level.block.FenceGateBlock"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -3018,7 +3041,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "UPDATE_IMMEDIATE": integer
@@ -3131,25 +3154,28 @@ export type $IDoItem_ = $IDoItem$$Type;
 declare module "com.ldtteam.domumornamentum.item.decoration.PillarBlockItem" {
 import {$IDoItem, $IDoItem$$Type} from "com.ldtteam.domumornamentum.item.interfaces.IDoItem"
 import {$BlockItemWithClientBePlacement, $BlockItemWithClientBePlacement$$Type} from "com.ldtteam.domumornamentum.item.BlockItemWithClientBePlacement"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$PillarBlock, $PillarBlock$$Type} from "com.ldtteam.domumornamentum.block.decorative.PillarBlock"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $PillarBlockItem extends $BlockItemWithClientBePlacement implements $IDoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3172,6 +3198,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "group"(): $ResourceLocation
 get "inputIds"(): $List<($ResourceLocation)>
 }
@@ -3189,22 +3216,25 @@ export type $PillarBlockItem_ = $PillarBlockItem$$Type;
 }}
 declare module "com.ldtteam.domumornamentum.item.decoration.ExtraBlockItem" {
 import {$BlockItemWithClientBePlacement, $BlockItemWithClientBePlacement$$Type} from "com.ldtteam.domumornamentum.item.BlockItemWithClientBePlacement"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$ExtraBlock, $ExtraBlock$$Type} from "com.ldtteam.domumornamentum.block.decorative.ExtraBlock"
 
 export class $ExtraBlockItem extends $BlockItemWithClientBePlacement {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3223,6 +3253,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3268,8 +3299,8 @@ export type $MouseEventCallback_ = $MouseEventCallback$$Type;
 }}
 declare module "com.ldtteam.domumornamentum.block.types.FancyTrapdoorType" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -3281,20 +3312,20 @@ static readonly "FULL": $FancyTrapdoorType
 
 
 public static "values"(): ($FancyTrapdoorType)[]
-public static "valueOf"(arg0: string): $FancyTrapdoorType
-public "getTranslationKeySuffix"(): string
-public "getDefaultEnglishTranslation"(): string
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $FancyTrapdoorType
+public "getSerializedName"(): StringJS
+public "getDefaultEnglishTranslation"(): StringJS
+public "getTranslationKeySuffix"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "translationKeySuffix"(): string
-get "defaultEnglishTranslation"(): string
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "serializedName"(): StringJS
+get "defaultEnglishTranslation"(): StringJS
+get "translationKeySuffix"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3311,25 +3342,28 @@ export type $FancyTrapdoorType_ = $FancyTrapdoorType$$Type;
 declare module "com.ldtteam.domumornamentum.item.decoration.DynamicTimberFrameBlockItem" {
 import {$IDoItem, $IDoItem$$Type} from "com.ldtteam.domumornamentum.item.interfaces.IDoItem"
 import {$BlockItemWithClientBePlacement, $BlockItemWithClientBePlacement$$Type} from "com.ldtteam.domumornamentum.item.BlockItemWithClientBePlacement"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
-import {$DynamicTimberFrameBlock, $DynamicTimberFrameBlock$$Type} from "com.ldtteam.domumornamentum.block.decorative.DynamicTimberFrameBlock"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
+import {$DynamicTimberFrameBlock, $DynamicTimberFrameBlock$$Type} from "com.ldtteam.domumornamentum.block.decorative.DynamicTimberFrameBlock"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $DynamicTimberFrameBlockItem extends $BlockItemWithClientBePlacement implements $IDoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -3344,14 +3378,15 @@ constructor(arg0: $DynamicTimberFrameBlock$$Type, arg1: $Item$Properties$$Type)
 
 public "getName"(arg0: $ItemStack$$Type): $Component
 public "getGroup"(): $ResourceLocation
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getInputIds"(): $List<($ResourceLocation)>
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "renderPreview"(): boolean
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
 public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "group"(): $ResourceLocation
 get "inputIds"(): $List<($ResourceLocation)>
 }
@@ -3381,16 +3416,16 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$StairsShape, $StairsShape$$Type} from "net.minecraft.world.level.block.state.properties.StairsShape"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PathComputationType, $PathComputationType$$Type} from "net.minecraft.world.level.pathfinder.PathComputationType"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$Rotation, $Rotation$$Type} from "net.minecraft.world.level.block.Rotation"
@@ -3398,8 +3433,8 @@ import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.leve
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $DOStairBlock extends $Block implements $SimpleWaterloggedBlock {
@@ -3418,7 +3453,7 @@ static readonly "SHAPE": $EnumProperty<($StairsShape)>
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -3431,13 +3466,13 @@ constructor(arg0: $Supplier$$Type<($BlockState$$Type)>, arg1: $BlockBehaviour$Pr
 
 public "rotate"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $BlockState
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "useShapeForLightOcclusion"(arg0: $BlockState$$Type): boolean
-public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
-public "isPathfindable"(arg0: $BlockState$$Type, arg1: $PathComputationType$$Type): boolean
-public "isStairs"(arg0: $BlockState$$Type): boolean
-public "getFluidState"(arg0: $BlockState$$Type): $FluidState
 public "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
+public "isPathfindable"(arg0: $BlockState$$Type, arg1: $PathComputationType$$Type): boolean
+public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
+public "getFluidState"(arg0: $BlockState$$Type): $FluidState
+public "isStairs"(arg0: $BlockState$$Type): boolean
 public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "useShapeForLightOcclusion"(arg0: $BlockState$$Type): boolean
 public "getPickupSound"(): $Optional<($SoundEvent)>
 public "canPlaceLiquid"(arg0: $Player$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $Fluid$$Type): boolean
 public "placeLiquid"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $FluidState$$Type): boolean
@@ -3472,8 +3507,8 @@ import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$RecipeOutput, $RecipeOutput$$Type} from "net.minecraft.data.recipes.RecipeOutput"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$Explosion, $Explosion$$Type} from "net.minecraft.world.level.Explosion"
-import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockAndTintGetter, $BlockAndTintGetter$$Type} from "net.minecraft.world.level.BlockAndTintGetter"
+import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -3498,8 +3533,8 @@ import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.Serve
 import {$IMateriallyTexturedBlockComponent, $IMateriallyTexturedBlockComponent$$Type} from "com.ldtteam.domumornamentum.block.IMateriallyTexturedBlockComponent"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $TimberFrameBlock extends $AbstractBlock<($TimberFrameBlock)> implements $IMateriallyTexturedBlock, $ICachedItemGroupBlock, $EntityBlock {
@@ -3517,7 +3552,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3527,35 +3562,35 @@ static readonly "FACING": $DirectionProperty
 
 constructor(arg0: $TimberFrameType$$Type)
 
-public static "getName"(arg0: $TimberFrameType$$Type): string
 public "rotate"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $BlockState
-public "shouldDisplayFluidOverlay"(arg0: $BlockState$$Type, arg1: $BlockAndTintGetter$$Type, arg2: $BlockPos$$Type, arg3: $FluidState$$Type): boolean
+public static "getName"(arg0: $TimberFrameType$$Type): StringJS
+public "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
 public "buildRecipes"(arg0: $RecipeOutput$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getSoundType"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): $SoundType
 public "getComponents"(): $Collection<(any)>
-public "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
-public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
-public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
-public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
-public "fillItemCategory"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
-public "getMainComponent"(): $IMateriallyTexturedBlockComponent
-public "getTimberFrameType"(): $TimberFrameType
 public "resetCache"(): void
-public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
-public "usesWorldSpecificTinting"(): boolean
-public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "fillItemCategory"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
+public "getTimberFrameType"(): $TimberFrameType
+public "getMainComponent"(): $IMateriallyTexturedBlockComponent
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
+public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
+public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "shouldDisplayFluidOverlay"(arg0: $BlockState$$Type, arg1: $BlockAndTintGetter$$Type, arg2: $BlockPos$$Type, arg3: $FluidState$$Type): boolean
+public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "getRandomMaterials"(): $MaterialTextureData
 public "getDODestroyProgress"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($Player), ($BlockGetter), ($BlockPos), (float)>, arg1: $BlockState$$Type, arg2: $Player$$Type, arg3: $BlockGetter$$Type, arg4: $BlockPos$$Type): float
 public "fillDOItemCategory"(arg0: $Block$$Type, arg1: $NonNullList$$Type<($ItemStack$$Type)>, arg2: $List$$Type<($ItemStack$$Type)>): void
-public "getRandomMaterials"(): $MaterialTextureData
-public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "usesWorldSpecificTinting"(): boolean
+public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
 get "components"(): $Collection<(any)>
-get "mainComponent"(): $IMateriallyTexturedBlockComponent
 get "timberFrameType"(): $TimberFrameType
+get "mainComponent"(): $IMateriallyTexturedBlockComponent
 get "randomMaterials"(): $MaterialTextureData
 }
 /**
@@ -3574,8 +3609,8 @@ declare module "com.ldtteam.blockui.Pane" {
 import {$UiRenderMacros, $UiRenderMacros$$Type} from "com.ldtteam.blockui.UiRenderMacros"
 import {$View, $View$$Type} from "com.ldtteam.blockui.views.View"
 import {$Class, $Class$$Type} from "java.lang.Class"
-import {$BOGuiGraphics, $BOGuiGraphics$$Type} from "com.ldtteam.blockui.BOGuiGraphics"
 import {$PaneParams, $PaneParams$$Type} from "com.ldtteam.blockui.PaneParams"
+import {$BOGuiGraphics, $BOGuiGraphics$$Type} from "com.ldtteam.blockui.BOGuiGraphics"
 import {$Cursor, $Cursor$$Type} from "com.ldtteam.blockui.util.cursor.Cursor"
 import {$Alignment, $Alignment$$Type} from "com.ldtteam.blockui.Alignment"
 import {$BOWindow, $BOWindow$$Type} from "com.ldtteam.blockui.views.BOWindow"
@@ -3586,48 +3621,42 @@ static readonly "HALF_BIAS": double
 constructor()
 constructor(arg0: $PaneParams$$Type)
 
+public "setSize"(arg0: integer, arg1: integer): void
+public "setID"(arg0: StringJS): void
+public "getID"(): StringJS
 public "getWidth"(): integer
 public "getHeight"(): integer
-public "getY"(): integer
+public "enable"(): void
 public "off"(): void
 public "isEnabled"(): boolean
 public "getParent"(): $View
 public "on"(): void
-public "enable"(): void
-public "getID"(): string
-public "setID"(arg0: string): void
-public "setSize"(arg0: integer, arg1: integer): void
+public "getY"(): integer
+public "click"(arg0: double, arg1: double): boolean
+public "getX"(): integer
+public "hide"(): void
+public "show"(): void
+public "draw"(arg0: $BOGuiGraphics$$Type, arg1: double, arg2: double): void
+public "setPosition"(arg0: integer, arg1: integer): void
+public "setVisible"(arg0: boolean): void
+public "setCursor"(arg0: $Cursor$$Type): void
+public static "clearFocus"(): void
+public "setEnabled"(arg0: boolean): void
 public "getWindow"(): $BOWindow
 public "setWindow"(arg0: $BOWindow$$Type): void
-public "setCursor"(arg0: $Cursor$$Type): void
 public "isVisible"(): boolean
-public static "clearFocus"(): void
-public "setPosition"(arg0: integer, arg1: integer): void
 public "getCursor"(): $Cursor
-public "setVisible"(arg0: boolean): void
-public "setEnabled"(arg0: boolean): void
-public "drawSelfLast"(arg0: $BOGuiGraphics$$Type, arg1: double, arg2: double): void
-public "findPaneByID"(arg0: string): $Pane
-public "findPaneByType"<T extends $Pane>(arg0: $Class$$Type<(T)>): T
 public "disable"(): void
 public "getAlignment"(): $Alignment
-public "draw"(arg0: $BOGuiGraphics$$Type, arg1: double, arg2: double): void
-public "show"(): void
 public "moveBy"(arg0: integer, arg1: integer): void
-public "getX"(): integer
-public "click"(arg0: double, arg1: double): boolean
-public "hide"(): void
-public "handleRightClick"(arg0: double, arg1: double): boolean
-public "findFirstPaneByType"<T extends $Pane>(arg0: $Class$$Type<(T)>): T
-public "findPaneOfTypeByID"<T extends $Pane>(arg0: string, arg1: $Class$$Type<(T)>): T
-public "wasCursorInPane"(): boolean
-public static "setFocus"(arg0: $Pane$$Type): void
+public "drawSelf"(arg0: $BOGuiGraphics$$Type, arg1: double, arg2: double): void
 public "setFocus"(): void
+public static "setFocus"(arg0: $Pane$$Type): void
 public "isPointInPane"(arg0: double, arg1: double): boolean
 public "shouldDraw"(): boolean
-public "isFocus"(): boolean
-public static "getFocus"(): $Pane
-public "onUpdate"(): void
+public "drawSelfLast"(arg0: $BOGuiGraphics$$Type, arg1: double, arg2: double): void
+public "findPaneByID"(arg0: StringJS): $Pane
+public "findPaneByType"<T extends $Pane>(arg0: $Class$$Type<(T)>): T
 public "setHoverPane"(arg0: $Pane$$Type): $Pane
 public "putInside"(arg0: $View$$Type): void
 public "parseChildren"(arg0: $PaneParams$$Type): void
@@ -3637,37 +3666,43 @@ public "drawLast"(arg0: $BOGuiGraphics$$Type, arg1: double, arg2: double): void
 public "isClickable"(): boolean
 public "canHandleClick"(arg0: double, arg1: double): boolean
 public "onKeyTyped"(arg0: character, arg1: integer): boolean
+public "onUpdate"(): void
 public "scrollInput"(arg0: double, arg1: double, arg2: double, arg3: double): boolean
 public "setParentView"(arg0: $View$$Type): void
 public "getHoverPane"(): $Pane
 public "handleClick"(arg0: double, arg1: double): boolean
-public "drawSelf"(arg0: $BOGuiGraphics$$Type, arg1: double, arg2: double): void
+public "isFocus"(): boolean
+public static "getFocus"(): $Pane
 public "onMouseDrag"(arg0: double, arg1: double, arg2: integer, arg3: double, arg4: double): boolean
 public "onFocusLost"(): void
 public "onFocus"(): void
 public "rightClick"(arg0: double, arg1: double): boolean
+public "findPaneOfTypeByID"<T extends $Pane>(arg0: StringJS, arg1: $Class$$Type<(T)>): T
+public "wasCursorInPane"(): boolean
+public "findFirstPaneByType"<T extends $Pane>(arg0: $Class$$Type<(T)>): T
+public "handleRightClick"(arg0: double, arg1: double): boolean
+set "iD"(value: StringJS)
+get "iD"(): StringJS
 get "width"(): integer
 get "height"(): integer
-get "y"(): integer
 get "enabled"(): boolean
 get "parent"(): $View
-get "iD"(): string
-set "iD"(value: string)
+get "y"(): integer
+get "x"(): integer
+set "visible"(value: boolean)
+set "cursor"(value: $Cursor$$Type)
+set "enabled"(value: boolean)
 get "window"(): $BOWindow
 set "window"(value: $BOWindow$$Type)
-set "cursor"(value: $Cursor$$Type)
 get "visible"(): boolean
 get "cursor"(): $Cursor
-set "visible"(value: boolean)
-set "enabled"(value: boolean)
 get "alignment"(): $Alignment
-get "x"(): integer
-get "focus"(): boolean
 set "hoverPane"(value: $Pane$$Type)
 set "alignment"(value: $Alignment$$Type)
 get "clickable"(): boolean
 set "parentView"(value: $View$$Type)
 get "hoverPane"(): $Pane
+get "focus"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3690,14 +3725,14 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$Rotation, $Rotation$$Type} from "net.minecraft.world.level.block.Rotation"
 import {$PostType, $PostType$$Type} from "com.ldtteam.domumornamentum.block.types.PostType"
@@ -3705,8 +3740,8 @@ import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.leve
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $AbstractPostBlock<B extends $AbstractPostBlock<(B)>> extends $DirectionalBlock implements $IDOBlock<(B)> {
@@ -3723,7 +3758,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -3802,21 +3837,21 @@ static readonly "CODEC": $Codec<($ScanToolData$Slot)>
 static readonly "EMPTY": $ScanToolData$Slot
 static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($ScanToolData$Slot)>
 
-constructor(name: string, box: $BoxPreviewData$$Type)
+constructor(name: StringJS, box: $BoxPreviewData$$Type)
 
-public "name"(): string
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "box"(): $BoxPreviewData
-public "withName"(arg0: string): $ScanToolData$Slot
+public "name"(): StringJS
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+public "withName"(arg0: StringJS): $ScanToolData$Slot
 public "withBox"(arg0: $BoxPreviewData$$Type): $ScanToolData$Slot
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ScanToolData$Slot$$Type = ({"name"?: string, "box"?: $BoxPreviewData$$Type}) | ([name?: string, box?: $BoxPreviewData$$Type]);
+export type $ScanToolData$Slot$$Type = ({"name"?: StringJS, "box"?: $BoxPreviewData$$Type}) | ([name?: StringJS, box?: $BoxPreviewData$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -3932,7 +3967,7 @@ static readonly "SHAPE": $EnumProperty<($ShingleSlabShapeType)>
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -3945,31 +3980,31 @@ constructor()
 constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "buildRecipes"(arg0: $RecipeOutput$$Type): void
-public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
 public "isPathfindable"(arg0: $BlockState$$Type, arg1: $PathComputationType$$Type): boolean
+public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
+public "buildRecipes"(arg0: $RecipeOutput$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getSoundType"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): $SoundType
 public "getFluidState"(arg0: $BlockState$$Type): $FluidState
 public "getComponents"(): $List<($IMateriallyTexturedBlockComponent)>
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
-public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
-public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
-public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "resetCache"(): void
 public "fillItemCategory"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
 public "getMainComponent"(): $IMateriallyTexturedBlockComponent
-public "resetCache"(): void
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
+public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
+public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
 public "getPickupSound"(): $Optional<($SoundEvent)>
 public "canPlaceLiquid"(arg0: $Player$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $Fluid$$Type): boolean
 public "placeLiquid"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $FluidState$$Type): boolean
 public "pickupBlock"(arg0: $Player$$Type, arg1: $LevelAccessor$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type): $ItemStack
-public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
-public "usesWorldSpecificTinting"(): boolean
-public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "getRandomMaterials"(): $MaterialTextureData
 public "getDODestroyProgress"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($Player), ($BlockGetter), ($BlockPos), (float)>, arg1: $BlockState$$Type, arg2: $Player$$Type, arg3: $BlockGetter$$Type, arg4: $BlockPos$$Type): float
 public "fillDOItemCategory"(arg0: $Block$$Type, arg1: $NonNullList$$Type<($ItemStack$$Type)>, arg2: $List$$Type<($ItemStack$$Type)>): void
-public "getRandomMaterials"(): $MaterialTextureData
-public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "usesWorldSpecificTinting"(): boolean
+public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "getPickupSound"(arg0: $BlockState$$Type): $Optional<($SoundEvent)>
@@ -3993,8 +4028,8 @@ export type $ShingleSlabBlock_ = $ShingleSlabBlock$$Type;
 }}
 declare module "com.ldtteam.domumornamentum.block.types.PillarShapeType" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -4007,19 +4042,19 @@ static readonly "PILLAR_BASE": $PillarShapeType
 static readonly "FULL_PILLAR": $PillarShapeType
 
 
-public "getSpecificationName"(): string
+public "getSpecificationName"(): StringJS
 public static "values"(): ($PillarShapeType)[]
-public static "valueOf"(arg0: string): $PillarShapeType
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $PillarShapeType
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "specificationName"(): string
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "specificationName"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4055,25 +4090,25 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Mater
 constructor(getTexturedComponents: $Map$$Type<($ResourceLocation$$Type), ($Block$$Type)>)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "isEmpty"(): boolean
 public static "builder"(): $MaterialTextureData$Builder
-public "retainComponentsFromBlock"(arg0: $IMateriallyTexturedBlock$$Type): $MaterialTextureData
 /**
  * 
  * @deprecated
  */
 public "serializeNBT"(): $CompoundTag
-public "writeToItemStack"(arg0: $ItemStack$$Type): void
-public static "updateItemStack"(arg0: $ItemStack$$Type, arg1: $UnaryOperator$$Type<($MaterialTextureData)>): void
-public static "readFromItemStack"(arg0: $ItemStack$$Type): $MaterialTextureData
-public "getTexturedComponents"(): $Map<($ResourceLocation), ($Block)>
 /**
  * 
  * @deprecated
  */
 public static "deserializeFromNBT"(arg0: $CompoundTag$$Type): $MaterialTextureData
+public "getTexturedComponents"(): $Map<($ResourceLocation), ($Block)>
+public static "readFromItemStack"(arg0: $ItemStack$$Type): $MaterialTextureData
+public "writeToItemStack"(arg0: $ItemStack$$Type): void
+public static "updateItemStack"(arg0: $ItemStack$$Type, arg1: $UnaryOperator$$Type<($MaterialTextureData)>): void
+public "retainComponentsFromBlock"(arg0: $IMateriallyTexturedBlock$$Type): $MaterialTextureData
 get "empty"(): boolean
 get "texturedComponents"(): $Map<($ResourceLocation), ($Block)>
 }
@@ -4091,26 +4126,29 @@ export type $MaterialTextureData_ = $MaterialTextureData$$Type;
 }}
 declare module "com.ldtteam.domumornamentum.item.decoration.FancyDoorBlockItem" {
 import {$IDoItem, $IDoItem$$Type} from "com.ldtteam.domumornamentum.item.interfaces.IDoItem"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$DoubleHighBlockItemWithClientBePlacement, $DoubleHighBlockItemWithClientBePlacement$$Type} from "com.ldtteam.domumornamentum.item.DoubleHighBlockItemWithClientBePlacement"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$FancyDoorBlock, $FancyDoorBlock$$Type} from "com.ldtteam.domumornamentum.block.decorative.FancyDoorBlock"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $FancyDoorBlockItem extends $DoubleHighBlockItemWithClientBePlacement implements $IDoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4125,14 +4163,15 @@ constructor(arg0: $FancyDoorBlock$$Type, arg1: $Item$Properties$$Type)
 
 public "getName"(arg0: $ItemStack$$Type): $Component
 public "getGroup"(): $ResourceLocation
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getInputIds"(): $List<($ResourceLocation)>
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "renderPreview"(): boolean
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
 public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "group"(): $ResourceLocation
 get "inputIds"(): $List<($ResourceLocation)>
 }
@@ -4153,8 +4192,8 @@ import {$MaterialTextureData, $MaterialTextureData$$Type} from "com.ldtteam.domu
 
 export interface $IMateriallyTexturedBlockEntity {
 
- "updateTextureDataWith"(arg0: $MaterialTextureData$$Type): void
  "getTextureData"(): $MaterialTextureData
+ "updateTextureDataWith"(arg0: $MaterialTextureData$$Type): void
 get "textureData"(): $MaterialTextureData
 }
 
@@ -4164,8 +4203,8 @@ const probejs$$marker: never
 export class $IMateriallyTexturedBlockEntity$$Static implements $IMateriallyTexturedBlockEntity {
 
 
- "updateTextureDataWith"(arg0: $MaterialTextureData$$Type): void
  "getTextureData"(): $MaterialTextureData
+ "updateTextureDataWith"(arg0: $MaterialTextureData$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4212,25 +4251,28 @@ export type $IInvisibleBlueprintAnchorBlock_ = $IInvisibleBlueprintAnchorBlock$$
 declare module "com.ldtteam.domumornamentum.item.decoration.PostBlockItem" {
 import {$IDoItem, $IDoItem$$Type} from "com.ldtteam.domumornamentum.item.interfaces.IDoItem"
 import {$BlockItemWithClientBePlacement, $BlockItemWithClientBePlacement$$Type} from "com.ldtteam.domumornamentum.item.BlockItemWithClientBePlacement"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$PostBlock, $PostBlock$$Type} from "com.ldtteam.domumornamentum.block.decorative.PostBlock"
 
 export class $PostBlockItem extends $BlockItemWithClientBePlacement implements $IDoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4245,14 +4287,15 @@ constructor(arg0: $PostBlock$$Type, arg1: $Item$Properties$$Type)
 
 public "getName"(arg0: $ItemStack$$Type): $Component
 public "getGroup"(): $ResourceLocation
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "renderPreview"(): boolean
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getInputIds"(): $List<($ResourceLocation)>
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
 public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "group"(): $ResourceLocation
 get "inputIds"(): $List<($ResourceLocation)>
 }
@@ -4271,25 +4314,28 @@ export type $PostBlockItem_ = $PostBlockItem$$Type;
 declare module "com.ldtteam.domumornamentum.item.decoration.AllBrickBlockItem" {
 import {$IDoItem, $IDoItem$$Type} from "com.ldtteam.domumornamentum.item.interfaces.IDoItem"
 import {$BlockItemWithClientBePlacement, $BlockItemWithClientBePlacement$$Type} from "com.ldtteam.domumornamentum.item.BlockItemWithClientBePlacement"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$AllBrickBlock, $AllBrickBlock$$Type} from "com.ldtteam.domumornamentum.block.decorative.AllBrickBlock"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $AllBrickBlockItem extends $BlockItemWithClientBePlacement implements $IDoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4312,6 +4358,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "group"(): $ResourceLocation
 get "inputIds"(): $List<($ResourceLocation)>
 }
@@ -4338,7 +4385,7 @@ export class $BlockInfo extends $Record {
 constructor(getPos: $BlockPos$$Type, getState: $BlockState$$Type, getTileEntityData: $CompoundTag$$Type)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "getState"(): $BlockState
 public "getPos"(): $BlockPos
@@ -4363,25 +4410,28 @@ export type $BlockInfo_ = $BlockInfo$$Type;
 declare module "com.ldtteam.domumornamentum.item.decoration.PaperwallBlockItem" {
 import {$IDoItem, $IDoItem$$Type} from "com.ldtteam.domumornamentum.item.interfaces.IDoItem"
 import {$BlockItemWithClientBePlacement, $BlockItemWithClientBePlacement$$Type} from "com.ldtteam.domumornamentum.item.BlockItemWithClientBePlacement"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$PaperWallBlock, $PaperWallBlock$$Type} from "com.ldtteam.domumornamentum.block.decorative.PaperWallBlock"
 
 export class $PaperwallBlockItem extends $BlockItemWithClientBePlacement implements $IDoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4396,14 +4446,15 @@ constructor(arg0: $PaperWallBlock$$Type, arg1: $Item$Properties$$Type)
 
 public "getName"(arg0: $ItemStack$$Type): $Component
 public "getGroup"(): $ResourceLocation
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getInputIds"(): $List<($ResourceLocation)>
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "renderPreview"(): boolean
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
 public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "group"(): $ResourceLocation
 get "inputIds"(): $List<($ResourceLocation)>
 }
@@ -4422,25 +4473,28 @@ export type $PaperwallBlockItem_ = $PaperwallBlockItem$$Type;
 declare module "com.ldtteam.domumornamentum.item.decoration.FancyTrapdoorBlockItem" {
 import {$IDoItem, $IDoItem$$Type} from "com.ldtteam.domumornamentum.item.interfaces.IDoItem"
 import {$BlockItemWithClientBePlacement, $BlockItemWithClientBePlacement$$Type} from "com.ldtteam.domumornamentum.item.BlockItemWithClientBePlacement"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$FancyTrapdoorBlock, $FancyTrapdoorBlock$$Type} from "com.ldtteam.domumornamentum.block.decorative.FancyTrapdoorBlock"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $FancyTrapdoorBlockItem extends $BlockItemWithClientBePlacement implements $IDoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4455,14 +4509,15 @@ constructor(arg0: $FancyTrapdoorBlock$$Type, arg1: $Item$Properties$$Type)
 
 public "getName"(arg0: $ItemStack$$Type): $Component
 public "getGroup"(): $ResourceLocation
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getInputIds"(): $List<($ResourceLocation)>
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "renderPreview"(): boolean
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
 public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "group"(): $ResourceLocation
 get "inputIds"(): $List<($ResourceLocation)>
 }
@@ -4482,9 +4537,9 @@ declare module "com.ldtteam.blockui.views.View" {
 import {$Pos2i$ImmutablePos2i, $Pos2i$ImmutablePos2i$$Type} from "com.ldtteam.blockui.util.records.Pos2i$ImmutablePos2i"
 import {$List, $List$$Type} from "java.util.List"
 import {$Class, $Class$$Type} from "java.lang.Class"
+import {$PaneParams, $PaneParams$$Type} from "com.ldtteam.blockui.PaneParams"
 import {$Pane, $Pane$$Type} from "com.ldtteam.blockui.Pane"
 import {$BOGuiGraphics, $BOGuiGraphics$$Type} from "com.ldtteam.blockui.BOGuiGraphics"
-import {$PaneParams, $PaneParams$$Type} from "com.ldtteam.blockui.PaneParams"
 import {$MouseEventCallback, $MouseEventCallback$$Type} from "com.ldtteam.blockui.MouseEventCallback"
 import {$BOWindow, $BOWindow$$Type} from "com.ldtteam.blockui.views.BOWindow"
 
@@ -4494,28 +4549,28 @@ static readonly "HALF_BIAS": double
 constructor()
 constructor(arg0: $PaneParams$$Type)
 
-public "addChild"(arg0: $Pane$$Type): void
-public "addChild"(arg0: $Pane$$Type, arg1: integer): void
 public "removeChild"(arg0: $Pane$$Type): void
 public "setSize"(arg0: integer, arg1: integer): void
 public "getChildren"(): $List<($Pane)>
-public "setWindow"(arg0: $BOWindow$$Type): void
-public "drawSelfLast"(arg0: $BOGuiGraphics$$Type, arg1: double, arg2: double): void
-public "findPaneByID"(arg0: string): $Pane
-public "findPaneByType"<T extends $Pane>(arg0: $Class$$Type<(T)>): T
+public "addChild"(arg0: $Pane$$Type): void
+public "addChild"(arg0: $Pane$$Type, arg1: integer): void
 public "click"(arg0: double, arg1: double): boolean
+public "setWindow"(arg0: $BOWindow$$Type): void
+public "drawSelf"(arg0: $BOGuiGraphics$$Type, arg1: double, arg2: double): void
+public "drawSelfLast"(arg0: $BOGuiGraphics$$Type, arg1: double, arg2: double): void
+public "findPaneByID"(arg0: StringJS): $Pane
+public "findPaneByType"<T extends $Pane>(arg0: $Class$$Type<(T)>): T
+public "parseChildren"(arg0: $PaneParams$$Type): void
+public "drawHidden"(): void
+public "onUpdate"(): void
+public "scrollInput"(arg0: double, arg1: double, arg2: double, arg3: double): boolean
+public "onMouseDrag"(arg0: double, arg1: double, arg2: integer, arg3: double, arg4: double): boolean
+public "rightClick"(arg0: double, arg1: double): boolean
 public "getInteriorWidth"(): integer
 public "getInteriorHeight"(): integer
 public "mouseEventProcessor"(arg0: double, arg1: double, arg2: $MouseEventCallback$$Type, arg3: $MouseEventCallback$$Type, arg4: $MouseEventCallback$$Type): boolean
 public "findPaneForClick"(arg0: double, arg1: double): $Pane
 public "getAccumulatedPosition"(): $Pos2i$ImmutablePos2i
-public "onUpdate"(): void
-public "parseChildren"(arg0: $PaneParams$$Type): void
-public "drawHidden"(): void
-public "scrollInput"(arg0: double, arg1: double, arg2: double, arg3: double): boolean
-public "drawSelf"(arg0: $BOGuiGraphics$$Type, arg1: double, arg2: double): void
-public "onMouseDrag"(arg0: double, arg1: double, arg2: integer, arg3: double, arg4: double): boolean
-public "rightClick"(arg0: double, arg1: double): boolean
 public "mousePointableEventHandler"(arg0: double, arg1: double, arg2: $MouseEventCallback$$Type, arg3: $MouseEventCallback$$Type): boolean
 public "mouseClickableEventHandler"(arg0: double, arg1: double, arg2: $MouseEventCallback$$Type): boolean
 get "children"(): $List<($Pane)>
@@ -4539,25 +4594,28 @@ export type $View_ = $View$$Type;
 declare module "com.ldtteam.domumornamentum.item.decoration.ShingleBlockItem" {
 import {$IDoItem, $IDoItem$$Type} from "com.ldtteam.domumornamentum.item.interfaces.IDoItem"
 import {$BlockItemWithClientBePlacement, $BlockItemWithClientBePlacement$$Type} from "com.ldtteam.domumornamentum.item.BlockItemWithClientBePlacement"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$ShingleBlock, $ShingleBlock$$Type} from "com.ldtteam.domumornamentum.block.decorative.ShingleBlock"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $ShingleBlockItem extends $BlockItemWithClientBePlacement implements $IDoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4572,14 +4630,15 @@ constructor(arg0: $ShingleBlock$$Type, arg1: $Item$Properties$$Type)
 
 public "getName"(arg0: $ItemStack$$Type): $Component
 public "getGroup"(): $ResourceLocation
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getInputIds"(): $List<($ResourceLocation)>
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "renderPreview"(): boolean
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
 public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "group"(): $ResourceLocation
 get "inputIds"(): $List<($ResourceLocation)>
 }
@@ -4622,7 +4681,6 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
-import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$DoorBlock, $DoorBlock$$Type} from "net.minecraft.world.level.block.DoorBlock"
 import {$SoundType, $SoundType$$Type} from "net.minecraft.world.level.block.SoundType"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
@@ -4651,7 +4709,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "HALF": $EnumProperty<($DoubleBlockHalf)>
 static readonly "UPDATE_ALL": integer
 static readonly "HINGE": $EnumProperty<($DoorHingeSide)>
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "TYPE": $EnumProperty<($FancyDoorType)>
@@ -4672,29 +4730,29 @@ static readonly "FACING": $DirectionProperty
 
 constructor()
 
-public "buildRecipes"(arg0: $RecipeOutput$$Type): void
 public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
+public "buildRecipes"(arg0: $RecipeOutput$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getSoundType"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): $SoundType
-public "getComponents"(): $Collection<(any)>
-public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
-public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
-public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "getComponents"(): $List<($IMateriallyTexturedBlockComponent)>
+public "resetCache"(): void
 public "fillItemCategory"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
 public "getMainComponent"(): $IMateriallyTexturedBlockComponent
-public "resetCache"(): void
-public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
-public "usesWorldSpecificTinting"(): boolean
-public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
+public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
+public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "getRandomMaterials"(): $MaterialTextureData
 public "getDODestroyProgress"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($Player), ($BlockGetter), ($BlockPos), (float)>, arg1: $BlockState$$Type, arg2: $Player$$Type, arg3: $BlockGetter$$Type, arg4: $BlockPos$$Type): float
 public "fillDOItemCategory"(arg0: $Block$$Type, arg1: $NonNullList$$Type<($ItemStack$$Type)>, arg2: $List$$Type<($ItemStack$$Type)>): void
-public "getRandomMaterials"(): $MaterialTextureData
-public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "usesWorldSpecificTinting"(): boolean
+public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public static "createDoorBlock"(arg0: $BlockSetType$$Type, arg1: $BlockBehaviour$Properties$$Type): $DoorBlock
 public "asHolder"(): $Holder<(any)>
-get "components"(): $Collection<(any)>
+get "components"(): $List<($IMateriallyTexturedBlockComponent)>
 get "mainComponent"(): $IMateriallyTexturedBlockComponent
 get "randomMaterials"(): $MaterialTextureData
 }
@@ -4723,17 +4781,17 @@ export class $ArchitectsCutterRecipeInput extends $Record implements $RecipeInpu
 constructor(items: $Container$$Type)
 
 public "items"(): $Container
+public "getItem"(arg0: integer): $ItemStack
 public "size"(): integer
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "getItem"(arg0: integer): $ItemStack
 public "isEmpty"(): boolean
 public "find"(arg0: $SlotFilter$$Type): $ItemStack
 public "find"(arg0: $SlotFilter$$Type, arg1: integer): $ItemStack
-public "findAll"(): $List<($ItemStack)>
-public "findAll"(arg0: $SlotFilter$$Type): $List<($ItemStack)>
 public "self"(): $RecipeInput
+public "findAll"(arg0: $SlotFilter$$Type): $List<($ItemStack)>
+public "findAll"(): $List<($ItemStack)>
 get "empty"(): boolean
 }
 /**
@@ -4758,7 +4816,7 @@ import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 
 export interface $ISpecialCreativeHandlerAnchorBlock {
 
- "setup"(arg0: $ServerPlayer$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Blueprint$$Type, arg4: $RotationMirror$$Type, arg5: boolean, arg6: string, arg7: string): boolean
+ "setup"(arg0: $ServerPlayer$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Blueprint$$Type, arg4: $RotationMirror$$Type, arg5: boolean, arg6: StringJS, arg7: StringJS): boolean
  "getStructureHandler"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $Blueprint$$Type, arg3: $RotationMirror$$Type, arg4: boolean): $AbstractStructureHandler
 }
 
@@ -4768,7 +4826,7 @@ const probejs$$marker: never
 export class $ISpecialCreativeHandlerAnchorBlock$$Static implements $ISpecialCreativeHandlerAnchorBlock {
 
 
- "setup"(arg0: $ServerPlayer$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Blueprint$$Type, arg4: $RotationMirror$$Type, arg5: boolean, arg6: string, arg7: string): boolean
+ "setup"(arg0: $ServerPlayer$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Blueprint$$Type, arg4: $RotationMirror$$Type, arg5: boolean, arg6: StringJS, arg7: StringJS): boolean
  "getStructureHandler"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $Blueprint$$Type, arg3: $RotationMirror$$Type, arg4: boolean): $AbstractStructureHandler
 }
 /**
@@ -4784,11 +4842,13 @@ declare global {
 export type $ISpecialCreativeHandlerAnchorBlock_ = $ISpecialCreativeHandlerAnchorBlock$$Type;
 }}
 declare module "com.ldtteam.structurize.items.AbstractItemWithPosSelector" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Tuple, $Tuple$$Type} from "net.minecraft.util.Tuple"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
@@ -4803,7 +4863,7 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 export class $AbstractItemWithPosSelector extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4811,22 +4871,23 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Item$Properties$$Type)
 
+public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
 /**
  * 
  * @deprecated
  */
 public static "getBounds"(arg0: $ItemStack$$Type): $Tuple<($BlockPos), ($BlockPos)>
-public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "canAttackBlock"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): boolean
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
-public "getDestroySpeed"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type): float
-public "onAirRightClick"(arg0: $BlockPos$$Type, arg1: $BlockPos$$Type, arg2: $Level$$Type, arg3: $Player$$Type, arg4: $ItemStack$$Type): $InteractionResult
+public "canAttackBlock"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): boolean
 /**
  * 
  * @deprecated
  */
 public static "setBounds"(arg0: $ItemStack$$Type, arg1: $BlockPos$$Type, arg2: $BlockPos$$Type): void
+public "onAirRightClick"(arg0: $BlockPos$$Type, arg1: $BlockPos$$Type, arg2: $Level$$Type, arg3: $Player$$Type, arg4: $ItemStack$$Type): $InteractionResult
+public "getDestroySpeed"(arg0: $ItemStack$$Type, arg1: $BlockState$$Type): float
 public "getRegisteredItemInstance"(): $AbstractItemWithPosSelector
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "registeredItemInstance"(): $AbstractItemWithPosSelector
 }
 /**
@@ -4855,8 +4916,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
@@ -4871,7 +4932,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "HALF": $EnumProperty<($DoubleBlockHalf)>
 static readonly "UPDATE_ALL": integer
 static readonly "HINGE": $EnumProperty<($DoorHingeSide)>
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "UPDATE_IMMEDIATE": integer
@@ -4917,8 +4978,8 @@ import {$RenderShape, $RenderShape$$Type} from "net.minecraft.world.level.block.
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
@@ -4943,7 +5004,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -4954,8 +5015,8 @@ constructor()
 
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
 public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
 public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "asHolder"(): $Holder<(any)>
@@ -4981,11 +5042,11 @@ export class $Pos2i$ImmutablePos2i extends $Record implements $Pos2i {
 
 constructor(x: integer, y: integer)
 
+public "y"(): integer
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "x"(): integer
-public "y"(): integer
 public "toImmutable"(): $Pos2i$ImmutablePos2i
 public "toMutable"(): $Pos2i$MutablePos2i
 }
@@ -4993,7 +5054,7 @@ public "toMutable"(): $Pos2i$MutablePos2i
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $Pos2i$ImmutablePos2i$$Type = ({"x"?: integer, "y"?: integer}) | ([x?: integer, y?: integer]);
+export type $Pos2i$ImmutablePos2i$$Type = ({"y"?: integer, "x"?: integer}) | ([y?: integer, x?: integer]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -5029,7 +5090,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -5058,25 +5119,28 @@ export type $AbstractBlock_<B> = $AbstractBlock$$Type<(B)>;
 declare module "com.ldtteam.domumornamentum.item.vanilla.StairsBlockItem" {
 import {$IDoItem, $IDoItem$$Type} from "com.ldtteam.domumornamentum.item.interfaces.IDoItem"
 import {$BlockItemWithClientBePlacement, $BlockItemWithClientBePlacement$$Type} from "com.ldtteam.domumornamentum.item.BlockItemWithClientBePlacement"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$StairBlock, $StairBlock$$Type} from "com.ldtteam.domumornamentum.block.vanilla.StairBlock"
 
 export class $StairsBlockItem extends $BlockItemWithClientBePlacement implements $IDoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -5099,6 +5163,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "group"(): $ResourceLocation
 get "inputIds"(): $List<($ResourceLocation)>
 }
@@ -5116,8 +5181,8 @@ export type $StairsBlockItem_ = $StairsBlockItem$$Type;
 }}
 declare module "com.ldtteam.domumornamentum.block.types.PostType" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -5133,20 +5198,20 @@ static readonly "DOUBLE": $PostType
 
 
 public static "values"(): ($PostType)[]
-public static "valueOf"(arg0: string): $PostType
-public "getTranslationKeySuffix"(): string
-public "getDefaultEnglishTranslation"(): string
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $PostType
+public "getSerializedName"(): StringJS
+public "getDefaultEnglishTranslation"(): StringJS
+public "getTranslationKeySuffix"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "translationKeySuffix"(): string
-get "defaultEnglishTranslation"(): string
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "serializedName"(): StringJS
+get "defaultEnglishTranslation"(): StringJS
+get "translationKeySuffix"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5177,8 +5242,8 @@ import {$Explosion, $Explosion$$Type} from "net.minecraft.world.level.Explosion"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
@@ -5190,8 +5255,8 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$HitResult, $HitResult$$Type} from "net.minecraft.world.phys.HitResult"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$MaterialTextureData, $MaterialTextureData$$Type} from "com.ldtteam.domumornamentum.client.model.data.MaterialTextureData"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ICachedItemGroupBlock, $ICachedItemGroupBlock$$Type} from "com.ldtteam.domumornamentum.block.ICachedItemGroupBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$TrapdoorType, $TrapdoorType$$Type} from "com.ldtteam.domumornamentum.block.types.TrapdoorType"
@@ -5200,8 +5265,8 @@ import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.Serve
 import {$AbstractPanelBlockTrapdoor, $AbstractPanelBlockTrapdoor$$Type} from "com.ldtteam.domumornamentum.block.AbstractPanelBlockTrapdoor"
 import {$IMateriallyTexturedBlockComponent, $IMateriallyTexturedBlockComponent$$Type} from "com.ldtteam.domumornamentum.block.IMateriallyTexturedBlockComponent"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $PanelBlock extends $AbstractPanelBlockTrapdoor<($PanelBlock)> implements $IMateriallyTexturedBlock, $ICachedItemGroupBlock, $EntityBlock {
@@ -5212,7 +5277,7 @@ static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "HALF": $EnumProperty<($Half)>
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -5238,20 +5303,20 @@ public "buildRecipes"(arg0: $RecipeOutput$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getSoundType"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): $SoundType
 public "getComponents"(): $Collection<(any)>
-public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
-public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
-public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
-public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "resetCache"(): void
 public "fillItemCategory"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
 public "getMainComponent"(): $IMateriallyTexturedBlockComponent
-public "resetCache"(): void
-public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
-public "usesWorldSpecificTinting"(): boolean
-public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
+public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
+public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "getRandomMaterials"(): $MaterialTextureData
 public "getDODestroyProgress"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($Player), ($BlockGetter), ($BlockPos), (float)>, arg1: $BlockState$$Type, arg2: $Player$$Type, arg3: $BlockGetter$$Type, arg4: $BlockPos$$Type): float
 public "fillDOItemCategory"(arg0: $Block$$Type, arg1: $NonNullList$$Type<($ItemStack$$Type)>, arg2: $List$$Type<($ItemStack$$Type)>): void
-public "getRandomMaterials"(): $MaterialTextureData
-public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "usesWorldSpecificTinting"(): boolean
+public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
@@ -5274,25 +5339,28 @@ export type $PanelBlock_ = $PanelBlock$$Type;
 declare module "com.ldtteam.domumornamentum.item.vanilla.SlabBlockItem" {
 import {$IDoItem, $IDoItem$$Type} from "com.ldtteam.domumornamentum.item.interfaces.IDoItem"
 import {$BlockItemWithClientBePlacement, $BlockItemWithClientBePlacement$$Type} from "com.ldtteam.domumornamentum.item.BlockItemWithClientBePlacement"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$SlabBlock, $SlabBlock$$Type} from "com.ldtteam.domumornamentum.block.vanilla.SlabBlock"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $SlabBlockItem extends $BlockItemWithClientBePlacement implements $IDoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -5315,6 +5383,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "group"(): $ResourceLocation
 get "inputIds"(): $List<($ResourceLocation)>
 }
@@ -5347,8 +5416,8 @@ import {$Explosion, $Explosion$$Type} from "net.minecraft.world.level.Explosion"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
@@ -5361,8 +5430,8 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$HitResult, $HitResult$$Type} from "net.minecraft.world.phys.HitResult"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$MaterialTextureData, $MaterialTextureData$$Type} from "com.ldtteam.domumornamentum.client.model.data.MaterialTextureData"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$AbstractBlockPane, $AbstractBlockPane$$Type} from "com.ldtteam.domumornamentum.block.AbstractBlockPane"
 import {$IronBarsBlock, $IronBarsBlock$$Type} from "net.minecraft.world.level.block.IronBarsBlock"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
@@ -5383,7 +5452,7 @@ static readonly "UPDATE_INVISIBLE": integer
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
@@ -5410,19 +5479,19 @@ public "buildRecipes"(arg0: $RecipeOutput$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getSoundType"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): $SoundType
 public "getComponents"(): $Collection<(any)>
-public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
-public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
-public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "resetCache"(): void
 public "fillItemCategory"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
 public "getMainComponent"(): $IMateriallyTexturedBlockComponent
-public "resetCache"(): void
-public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
-public "usesWorldSpecificTinting"(): boolean
-public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
+public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
+public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "getRandomMaterials"(): $MaterialTextureData
 public "getDODestroyProgress"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($Player), ($BlockGetter), ($BlockPos), (float)>, arg1: $BlockState$$Type, arg2: $Player$$Type, arg3: $BlockGetter$$Type, arg4: $BlockPos$$Type): float
 public "fillDOItemCategory"(arg0: $Block$$Type, arg1: $NonNullList$$Type<($ItemStack$$Type)>, arg2: $List$$Type<($ItemStack$$Type)>): void
-public "getRandomMaterials"(): $MaterialTextureData
-public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "usesWorldSpecificTinting"(): boolean
+public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
@@ -5451,8 +5520,8 @@ export class $Pos2i$MutablePos2i implements $Pos2i {
 constructor(arg0: integer, arg1: integer)
 constructor()
 
-public "x"(): integer
 public "y"(): integer
+public "x"(): integer
 public "toImmutable"(): $Pos2i$ImmutablePos2i
 public "toMutable"(): $Pos2i$MutablePos2i
 }
@@ -5478,8 +5547,8 @@ import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$MenuProvider, $MenuProvider$$Type} from "net.minecraft.world.MenuProvider"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
@@ -5487,13 +5556,13 @@ import {$RenderShape, $RenderShape$$Type} from "net.minecraft.world.level.block.
 import {$AbstractBlock, $AbstractBlock$$Type} from "com.ldtteam.domumornamentum.block.AbstractBlock"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PathComputationType, $PathComputationType$$Type} from "net.minecraft.world.level.pathfinder.PathComputationType"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$Rotation, $Rotation$$Type} from "net.minecraft.world.level.block.Rotation"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $ArchitectsCutterBlock extends $AbstractBlock<($ArchitectsCutterBlock)> {
@@ -5510,7 +5579,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -5522,14 +5591,14 @@ constructor()
 
 public "rotate"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $BlockState
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "useShapeForLightOcclusion"(arg0: $BlockState$$Type): boolean
+public "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
 public "isPathfindable"(arg0: $BlockState$$Type, arg1: $PathComputationType$$Type): boolean
 public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: $BlockHitResult$$Type): $InteractionResult
 public "getRenderShape"(arg0: $BlockState$$Type): $RenderShape
-public "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
 public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "getMenuProvider"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type): $MenuProvider
 public "getRegistryName"(): $ResourceLocation
+public "useShapeForLightOcclusion"(arg0: $BlockState$$Type): boolean
 public "asHolder"(): $Holder<(any)>
 get "registryName"(): $ResourceLocation
 }
@@ -5546,11 +5615,13 @@ declare global {
 export type $ArchitectsCutterBlock_ = $ArchitectsCutterBlock$$Type;
 }}
 declare module "com.ldtteam.structurize.items.ItemBuildTool" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$AbstractItemStructurize, $AbstractItemStructurize$$Type} from "com.ldtteam.structurize.items.AbstractItemStructurize"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
@@ -5562,7 +5633,7 @@ import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.conte
 export class $ItemBuildTool extends $AbstractItemStructurize {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -5571,9 +5642,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
 public "getCraftingRemainingItem"(arg0: $ItemStack$$Type): $ItemStack
 public "hasCraftingRemainingItem"(arg0: $ItemStack$$Type): boolean
-public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5590,25 +5662,28 @@ export type $ItemBuildTool_ = $ItemBuildTool$$Type;
 declare module "com.ldtteam.domumornamentum.item.decoration.ShingleSlabBlockItem" {
 import {$IDoItem, $IDoItem$$Type} from "com.ldtteam.domumornamentum.item.interfaces.IDoItem"
 import {$BlockItemWithClientBePlacement, $BlockItemWithClientBePlacement$$Type} from "com.ldtteam.domumornamentum.item.BlockItemWithClientBePlacement"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ShingleSlabBlock, $ShingleSlabBlock$$Type} from "com.ldtteam.domumornamentum.block.decorative.ShingleSlabBlock"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $ShingleSlabBlockItem extends $BlockItemWithClientBePlacement implements $IDoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -5623,14 +5698,15 @@ constructor(arg0: $ShingleSlabBlock$$Type, arg1: $Item$Properties$$Type)
 
 public "getName"(arg0: $ItemStack$$Type): $Component
 public "getGroup"(): $ResourceLocation
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getInputIds"(): $List<($ResourceLocation)>
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "renderPreview"(): boolean
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
 public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "group"(): $ResourceLocation
 get "inputIds"(): $List<($ResourceLocation)>
 }
@@ -5659,8 +5735,8 @@ import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
 import {$WallBlock, $WallBlock$$Type} from "net.minecraft.world.level.block.WallBlock"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -5676,7 +5752,7 @@ static readonly "NORTH_WALL": $EnumProperty<($WallSide)>
 static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -5730,8 +5806,8 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockAndTintGetter, $BlockAndTintGetter$$Type} from "net.minecraft.world.level.BlockAndTintGetter"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
@@ -5739,14 +5815,14 @@ import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from
 import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
 import {$FramedLightType, $FramedLightType$$Type} from "com.ldtteam.domumornamentum.block.types.FramedLightType"
-import {$SoundType, $SoundType$$Type} from "net.minecraft.world.level.block.SoundType"
 import {$AbstractBlock, $AbstractBlock$$Type} from "com.ldtteam.domumornamentum.block.AbstractBlock"
+import {$SoundType, $SoundType$$Type} from "net.minecraft.world.level.block.SoundType"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$HitResult, $HitResult$$Type} from "net.minecraft.world.phys.HitResult"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$MaterialTextureData, $MaterialTextureData$$Type} from "com.ldtteam.domumornamentum.client.model.data.MaterialTextureData"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ICachedItemGroupBlock, $ICachedItemGroupBlock$$Type} from "com.ldtteam.domumornamentum.block.ICachedItemGroupBlock"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$IMateriallyTexturedBlockComponent, $IMateriallyTexturedBlockComponent$$Type} from "com.ldtteam.domumornamentum.block.IMateriallyTexturedBlockComponent"
@@ -5769,7 +5845,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -5778,32 +5854,32 @@ static readonly "UPDATE_CLIENTS": integer
 
 constructor(arg0: $FramedLightType$$Type)
 
-public static "getName"(arg0: $FramedLightType$$Type): string
-public "shouldDisplayFluidOverlay"(arg0: $BlockState$$Type, arg1: $BlockAndTintGetter$$Type, arg2: $BlockPos$$Type, arg3: $FluidState$$Type): boolean
+public static "getName"(arg0: $FramedLightType$$Type): StringJS
 public "buildRecipes"(arg0: $RecipeOutput$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getSoundType"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): $SoundType
 public "getComponents"(): $Collection<(any)>
-public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
-public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
-public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "resetCache"(): void
+public "getFramedLightType"(): $FramedLightType
 public "fillItemCategory"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
 public "getMainComponent"(): $IMateriallyTexturedBlockComponent
-public "getFramedLightType"(): $FramedLightType
-public "resetCache"(): void
-public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
-public "usesWorldSpecificTinting"(): boolean
-public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
+public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
+public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "shouldDisplayFluidOverlay"(arg0: $BlockState$$Type, arg1: $BlockAndTintGetter$$Type, arg2: $BlockPos$$Type, arg3: $FluidState$$Type): boolean
+public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "getRandomMaterials"(): $MaterialTextureData
 public "getDODestroyProgress"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($Player), ($BlockGetter), ($BlockPos), (float)>, arg1: $BlockState$$Type, arg2: $Player$$Type, arg3: $BlockGetter$$Type, arg4: $BlockPos$$Type): float
 public "fillDOItemCategory"(arg0: $Block$$Type, arg1: $NonNullList$$Type<($ItemStack$$Type)>, arg2: $List$$Type<($ItemStack$$Type)>): void
-public "getRandomMaterials"(): $MaterialTextureData
-public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "usesWorldSpecificTinting"(): boolean
+public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
 get "components"(): $Collection<(any)>
-get "mainComponent"(): $IMateriallyTexturedBlockComponent
 get "framedLightType"(): $FramedLightType
+get "mainComponent"(): $IMateriallyTexturedBlockComponent
 get "randomMaterials"(): $MaterialTextureData
 }
 /**
@@ -5846,25 +5922,28 @@ export type $IAnchorBlock_ = $IAnchorBlock$$Type;
 declare module "com.ldtteam.domumornamentum.item.vanilla.FenceBlockItem" {
 import {$IDoItem, $IDoItem$$Type} from "com.ldtteam.domumornamentum.item.interfaces.IDoItem"
 import {$BlockItemWithClientBePlacement, $BlockItemWithClientBePlacement$$Type} from "com.ldtteam.domumornamentum.item.BlockItemWithClientBePlacement"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$FenceBlock, $FenceBlock$$Type} from "com.ldtteam.domumornamentum.block.vanilla.FenceBlock"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $FenceBlockItem extends $BlockItemWithClientBePlacement implements $IDoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -5887,6 +5966,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "group"(): $ResourceLocation
 get "inputIds"(): $List<($ResourceLocation)>
 }
@@ -5929,7 +6009,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -5960,8 +6040,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$AbstractBlock, $AbstractBlock$$Type} from "com.ldtteam.domumornamentum.block.AbstractBlock"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$DyeColor, $DyeColor$$Type} from "net.minecraft.world.item.DyeColor"
@@ -5985,7 +6065,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -6013,8 +6093,8 @@ export type $FloatingCarpetBlock_ = $FloatingCarpetBlock$$Type;
 }}
 declare module "com.ldtteam.domumornamentum.block.types.FancyDoorType" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -6026,20 +6106,20 @@ static readonly "FULL": $FancyDoorType
 
 
 public static "values"(): ($FancyDoorType)[]
-public static "valueOf"(arg0: string): $FancyDoorType
-public "getTranslationKeySuffix"(): string
-public "getDefaultEnglishTranslation"(): string
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $FancyDoorType
+public "getSerializedName"(): StringJS
+public "getDefaultEnglishTranslation"(): StringJS
+public "getTranslationKeySuffix"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "translationKeySuffix"(): string
-get "defaultEnglishTranslation"(): string
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "serializedName"(): StringJS
+get "defaultEnglishTranslation"(): StringJS
+get "translationKeySuffix"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6059,8 +6139,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
@@ -6083,7 +6163,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -6093,8 +6173,8 @@ static readonly "UPDATE_CLIENTS": integer
 constructor()
 
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public static "defaultSubstitutionProperties"(): $BlockBehaviour$Properties
 public "getCollisionShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
+public static "defaultSubstitutionProperties"(): $BlockBehaviour$Properties
 public "asHolder"(): $Holder<(any)>
 }
 /**
@@ -6112,25 +6192,28 @@ export type $BlockSubstitution_ = $BlockSubstitution$$Type;
 declare module "com.ldtteam.domumornamentum.item.decoration.PanelBlockItem" {
 import {$IDoItem, $IDoItem$$Type} from "com.ldtteam.domumornamentum.item.interfaces.IDoItem"
 import {$BlockItemWithClientBePlacement, $BlockItemWithClientBePlacement$$Type} from "com.ldtteam.domumornamentum.item.BlockItemWithClientBePlacement"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$PanelBlock, $PanelBlock$$Type} from "com.ldtteam.domumornamentum.block.decorative.PanelBlock"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $PanelBlockItem extends $BlockItemWithClientBePlacement implements $IDoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -6145,14 +6228,15 @@ constructor(arg0: $PanelBlock$$Type, arg1: $Item$Properties$$Type)
 
 public "getName"(arg0: $ItemStack$$Type): $Component
 public "getGroup"(): $ResourceLocation
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "renderPreview"(): boolean
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
 public "getInputIds"(): $List<($ResourceLocation)>
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
 public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "group"(): $ResourceLocation
 get "inputIds"(): $List<($ResourceLocation)>
 }
@@ -6179,7 +6263,7 @@ static readonly "NOT_WATER": $PlacementError$PlacementErrorType
 
 
 public static "values"(): ($PlacementError$PlacementErrorType)[]
-public static "valueOf"(arg0: string): $PlacementError$PlacementErrorType
+public static "valueOf"(arg0: StringJS): $PlacementError$PlacementErrorType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6209,8 +6293,8 @@ import {$Explosion, $Explosion$$Type} from "net.minecraft.world.level.Explosion"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$StairsShape, $StairsShape$$Type} from "net.minecraft.world.level.block.state.properties.StairsShape"
@@ -6224,8 +6308,8 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$HitResult, $HitResult$$Type} from "net.minecraft.world.phys.HitResult"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$MaterialTextureData, $MaterialTextureData$$Type} from "com.ldtteam.domumornamentum.client.model.data.MaterialTextureData"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ICachedItemGroupBlock, $ICachedItemGroupBlock$$Type} from "com.ldtteam.domumornamentum.block.ICachedItemGroupBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
@@ -6243,7 +6327,7 @@ static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "HALF": $EnumProperty<($Half)>
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -6267,19 +6351,19 @@ public "buildRecipes"(arg0: $RecipeOutput$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getSoundType"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): $SoundType
 public "getComponents"(): $Collection<(any)>
-public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
-public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
-public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "resetCache"(): void
 public "fillItemCategory"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
 public "getMainComponent"(): $IMateriallyTexturedBlockComponent
-public "resetCache"(): void
-public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
-public "usesWorldSpecificTinting"(): boolean
-public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
+public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
+public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "getRandomMaterials"(): $MaterialTextureData
 public "getDODestroyProgress"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($Player), ($BlockGetter), ($BlockPos), (float)>, arg1: $BlockState$$Type, arg2: $Player$$Type, arg3: $BlockGetter$$Type, arg4: $BlockPos$$Type): float
 public "fillDOItemCategory"(arg0: $Block$$Type, arg1: $NonNullList$$Type<($ItemStack$$Type)>, arg2: $List$$Type<($ItemStack$$Type)>): void
-public "getRandomMaterials"(): $MaterialTextureData
-public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "usesWorldSpecificTinting"(): boolean
+public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
@@ -6305,8 +6389,8 @@ import {$Pos2i$MutablePos2i, $Pos2i$MutablePos2i$$Type} from "com.ldtteam.blocku
 
 export interface $Pos2i {
 
- "x"(): integer
  "y"(): integer
+ "x"(): integer
  "toImmutable"(): $Pos2i$ImmutablePos2i
  "toMutable"(): $Pos2i$MutablePos2i
 }
@@ -6317,8 +6401,8 @@ const probejs$$marker: never
 export class $Pos2i$$Static implements $Pos2i {
 
 
- "x"(): integer
  "y"(): integer
+ "x"(): integer
  "toImmutable"(): $Pos2i$ImmutablePos2i
  "toMutable"(): $Pos2i$MutablePos2i
 }
@@ -6336,8 +6420,8 @@ export type $Pos2i_ = $Pos2i$$Type;
 }}
 declare module "com.ldtteam.domumornamentum.block.types.TrapdoorType" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -6362,20 +6446,20 @@ static readonly "PORT_MANTEAU": $TrapdoorType
 
 
 public static "values"(): ($TrapdoorType)[]
-public static "valueOf"(arg0: string): $TrapdoorType
-public "getTranslationKeySuffix"(): string
-public "getDefaultEnglishTranslation"(): string
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $TrapdoorType
+public "getSerializedName"(): StringJS
+public "getDefaultEnglishTranslation"(): StringJS
+public "getTranslationKeySuffix"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "translationKeySuffix"(): string
-get "defaultEnglishTranslation"(): string
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "serializedName"(): StringJS
+get "defaultEnglishTranslation"(): StringJS
+get "translationKeySuffix"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6406,8 +6490,8 @@ import {$Explosion, $Explosion$$Type} from "net.minecraft.world.level.Explosion"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
@@ -6420,16 +6504,16 @@ import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$HitResult, $HitResult$$Type} from "net.minecraft.world.phys.HitResult"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$MaterialTextureData, $MaterialTextureData$$Type} from "com.ldtteam.domumornamentum.client.model.data.MaterialTextureData"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ICachedItemGroupBlock, $ICachedItemGroupBlock$$Type} from "com.ldtteam.domumornamentum.block.ICachedItemGroupBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$IMateriallyTexturedBlockComponent, $IMateriallyTexturedBlockComponent$$Type} from "com.ldtteam.domumornamentum.block.IMateriallyTexturedBlockComponent"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $SlabBlock extends $AbstractBlockSlab<($SlabBlock)> implements $IMateriallyTexturedBlock, $EntityBlock, $ICachedItemGroupBlock {
 static readonly "UPDATE_IMMEDIATE": integer
@@ -6446,7 +6530,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -6462,19 +6546,19 @@ public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockE
 public "getSoundType"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): $SoundType
 public "canBeReplaced"(arg0: $BlockState$$Type, arg1: $BlockPlaceContext$$Type): boolean
 public "getComponents"(): $Collection<(any)>
-public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
-public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
-public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "resetCache"(): void
 public "fillItemCategory"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
 public "getMainComponent"(): $IMateriallyTexturedBlockComponent
-public "resetCache"(): void
-public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
-public "usesWorldSpecificTinting"(): boolean
-public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
+public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
+public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "getRandomMaterials"(): $MaterialTextureData
 public "getDODestroyProgress"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($Player), ($BlockGetter), ($BlockPos), (float)>, arg1: $BlockState$$Type, arg2: $Player$$Type, arg3: $BlockGetter$$Type, arg4: $BlockPos$$Type): float
 public "fillDOItemCategory"(arg0: $Block$$Type, arg1: $NonNullList$$Type<($ItemStack$$Type)>, arg2: $List$$Type<($ItemStack$$Type)>): void
-public "getRandomMaterials"(): $MaterialTextureData
-public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "usesWorldSpecificTinting"(): boolean
+public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
@@ -6508,8 +6592,8 @@ import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resource
 import {$DOStairBlock, $DOStairBlock$$Type} from "com.ldtteam.domumornamentum.block.DOStairBlock"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
@@ -6531,7 +6615,7 @@ static readonly "SHAPE": $EnumProperty<($StairsShape)>
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -6560,21 +6644,24 @@ declare global {
 export type $AbstractBlockStairs_<B> = $AbstractBlockStairs$$Type<(B)>;
 }}
 declare module "com.ldtteam.domumornamentum.item.SelfUpgradingBlockItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $SelfUpgradingBlockItem extends $BlockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -6593,6 +6680,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6621,8 +6709,8 @@ import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelR
 import {$Explosion, $Explosion$$Type} from "net.minecraft.world.level.Explosion"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
@@ -6658,7 +6746,7 @@ static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "HALF": $EnumProperty<($Half)>
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -6681,23 +6769,23 @@ constructor()
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
 public "buildRecipes"(arg0: $RecipeOutput$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
-public "isStairs"(arg0: $BlockState$$Type): boolean
 public "getSoundType"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): $SoundType
 public "getComponents"(): $List<($IMateriallyTexturedBlockComponent)>
-public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
-public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
-public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "resetCache"(): void
+public "isStairs"(arg0: $BlockState$$Type): boolean
 public "fillItemCategory"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
 public "getMainComponent"(): $IMateriallyTexturedBlockComponent
 public static "getTypeFromShape"(arg0: $StairsShape$$Type): $ShingleShapeType
-public "resetCache"(): void
-public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
-public "usesWorldSpecificTinting"(): boolean
-public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
+public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
+public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "getRandomMaterials"(): $MaterialTextureData
 public "getDODestroyProgress"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($Player), ($BlockGetter), ($BlockPos), (float)>, arg1: $BlockState$$Type, arg2: $Player$$Type, arg3: $BlockGetter$$Type, arg4: $BlockPos$$Type): float
 public "fillDOItemCategory"(arg0: $Block$$Type, arg1: $NonNullList$$Type<($ItemStack$$Type)>, arg2: $List$$Type<($ItemStack$$Type)>): void
-public "getRandomMaterials"(): $MaterialTextureData
-public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "usesWorldSpecificTinting"(): boolean
+public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
@@ -6733,23 +6821,22 @@ import {$Explosion, $Explosion$$Type} from "net.minecraft.world.level.Explosion"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$FancyTrapdoorType, $FancyTrapdoorType$$Type} from "com.ldtteam.domumornamentum.block.types.FancyTrapdoorType"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$AbstractBlockTrapdoor, $AbstractBlockTrapdoor$$Type} from "com.ldtteam.domumornamentum.block.AbstractBlockTrapdoor"
 import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
-import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
 import {$SoundType, $SoundType$$Type} from "net.minecraft.world.level.block.SoundType"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$HitResult, $HitResult$$Type} from "net.minecraft.world.phys.HitResult"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$MaterialTextureData, $MaterialTextureData$$Type} from "com.ldtteam.domumornamentum.client.model.data.MaterialTextureData"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ICachedItemGroupBlock, $ICachedItemGroupBlock$$Type} from "com.ldtteam.domumornamentum.block.ICachedItemGroupBlock"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
@@ -6768,7 +6855,7 @@ static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "HALF": $EnumProperty<($Half)>
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -6793,24 +6880,24 @@ constructor()
 public "buildRecipes"(arg0: $RecipeOutput$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getSoundType"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): $SoundType
-public "getComponents"(): $Collection<(any)>
-public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
-public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
-public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "getComponents"(): $List<($IMateriallyTexturedBlockComponent)>
+public "resetCache"(): void
 public "fillItemCategory"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
 public "getMainComponent"(): $IMateriallyTexturedBlockComponent
-public "resetCache"(): void
-public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
-public "usesWorldSpecificTinting"(): boolean
-public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
+public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
+public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "getRandomMaterials"(): $MaterialTextureData
 public "getDODestroyProgress"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($Player), ($BlockGetter), ($BlockPos), (float)>, arg1: $BlockState$$Type, arg2: $Player$$Type, arg3: $BlockGetter$$Type, arg4: $BlockPos$$Type): float
 public "fillDOItemCategory"(arg0: $Block$$Type, arg1: $NonNullList$$Type<($ItemStack$$Type)>, arg2: $List$$Type<($ItemStack$$Type)>): void
-public "getRandomMaterials"(): $MaterialTextureData
-public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "usesWorldSpecificTinting"(): boolean
+public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
-get "components"(): $Collection<(any)>
+get "components"(): $List<($IMateriallyTexturedBlockComponent)>
 get "mainComponent"(): $IMateriallyTexturedBlockComponent
 get "randomMaterials"(): $MaterialTextureData
 }
@@ -6827,8 +6914,8 @@ declare global {
 export type $FancyTrapdoorBlock_ = $FancyTrapdoorBlock$$Type;
 }}
 declare module "com.ldtteam.blockui.views.BOWindow$WindowRenderType" {
-import {$Window, $Window$$Type} from "com.mojang.blaze3d.platform.Window"
 import {$Enum, $Enum$$Type} from "java.lang.Enum"
+import {$Window, $Window$$Type} from "com.mojang.blaze3d.platform.Window"
 import {$BOWindow, $BOWindow$$Type} from "com.ldtteam.blockui.views.BOWindow"
 
 export class $BOWindow$WindowRenderType extends $Enum<($BOWindow$WindowRenderType)> {
@@ -6842,7 +6929,7 @@ static readonly "OVERSIZED": $BOWindow$WindowRenderType
 
 
 public static "values"(): ($BOWindow$WindowRenderType)[]
-public static "valueOf"(arg0: string): $BOWindow$WindowRenderType
+public static "valueOf"(arg0: StringJS): $BOWindow$WindowRenderType
 public "calcRenderScale"(arg0: $Window$$Type, arg1: $BOWindow$$Type): double
 }
 /**
@@ -6858,27 +6945,29 @@ declare global {
 export type $BOWindow$WindowRenderType_ = $BOWindow$WindowRenderType$$Type;
 }}
 declare module "com.ldtteam.structurize.items.ItemTagSubstitution" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
-import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$TooltipComponent, $TooltipComponent$$Type} from "net.minecraft.world.inventory.tooltip.TooltipComponent"
+import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
-import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$ISpecialBlockPickItem, $ISpecialBlockPickItem$$Type} from "com.ldtteam.structurize.api.ISpecialBlockPickItem"
 
 export class $ItemTagSubstitution extends $BlockItem implements $ISpecialBlockPickItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -6891,15 +6980,16 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "getHighlightTip"(arg0: $ItemStack$$Type, arg1: $Component$$Type): $Component
-public "getTooltipImage"(arg0: $ItemStack$$Type): $Optional<($TooltipComponent)>
 public "onBlockPick"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: $BlockPos$$Type, arg3: boolean): $InteractionResult
 public "onAbsorbBlock"(arg0: $ServerPlayer$$Type, arg1: $ItemStack$$Type, arg2: $BlockPos$$Type, arg3: $ItemStack$$Type): void
+public "getHighlightTip"(arg0: $ItemStack$$Type, arg1: $Component$$Type): $Component
+public "getTooltipImage"(arg0: $ItemStack$$Type): $Optional<($TooltipComponent)>
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
 public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6915,8 +7005,8 @@ export type $ItemTagSubstitution_ = $ItemTagSubstitution$$Type;
 }}
 declare module "com.ldtteam.domumornamentum.block.types.ShingleSlabShapeType" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -6931,19 +7021,19 @@ static readonly "FOUR_WAY": $ShingleSlabShapeType
 static readonly "CURVED": $ShingleSlabShapeType
 
 
-public "getName"(): string
+public "getName"(): StringJS
 public static "values"(): ($ShingleSlabShapeType)[]
-public static "valueOf"(arg0: string): $ShingleSlabShapeType
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $ShingleSlabShapeType
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "name"(): string
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "name"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6979,28 +7069,28 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($ScanT
 
 constructor(slots: $List$$Type<($ScanToolData$Slot$$Type)>, currentSlotId: integer, commandPos: $BlockPos$$Type, dimension: $ResourceKey$$Type<($Level)>)
 
-public "dimension"(): $ResourceKey<($Level)>
-public "nextSlot"(): $ScanToolData
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "slots"(): $List<($ScanToolData$Slot)>
+public "nextSlot"(): $ScanToolData
+public "dimension"(): $ResourceKey<($Level)>
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
 public "moveTo"(arg0: integer): $ScanToolData
-public "writeToItemStack"(arg0: $ItemStack$$Type): void
-public static "updateItemStack"(arg0: $ItemStack$$Type, arg1: $UnaryOperator$$Type<($ScanToolData)>): $ScanToolData
-public "withCurrentSlot"(arg0: $ScanToolData$Slot$$Type): $ScanToolData
-public "withCommandBlock"(arg0: $CommandBlockEntity$$Type): $ScanToolData
-public static "readFromItemStack"(arg0: $ItemStack$$Type): $ScanToolData
 public "currentSlotId"(): integer
 public "commandPos"(): $BlockPos
 public "currentSlot"(): $ScanToolData$Slot
 public "prevSlot"(): $ScanToolData
+public static "readFromItemStack"(arg0: $ItemStack$$Type): $ScanToolData
+public "writeToItemStack"(arg0: $ItemStack$$Type): void
+public static "updateItemStack"(arg0: $ItemStack$$Type, arg1: $UnaryOperator$$Type<($ScanToolData)>): $ScanToolData
+public "withCurrentSlot"(arg0: $ScanToolData$Slot$$Type): $ScanToolData
+public "withCommandBlock"(arg0: $CommandBlockEntity$$Type): $ScanToolData
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ScanToolData$$Type = ({"slots"?: $List$$Type<($ScanToolData$Slot$$Type)>, "dimension"?: $ResourceKey$$Type<($Level)>, "commandPos"?: $BlockPos$$Type, "currentSlotId"?: integer}) | ([slots?: $List$$Type<($ScanToolData$Slot$$Type)>, dimension?: $ResourceKey$$Type<($Level)>, commandPos?: $BlockPos$$Type, currentSlotId?: integer]);
+export type $ScanToolData$$Type = ({"currentSlotId"?: integer, "slots"?: $List$$Type<($ScanToolData$Slot$$Type)>, "dimension"?: $ResourceKey$$Type<($Level)>, "commandPos"?: $BlockPos$$Type}) | ([currentSlotId?: integer, slots?: $List$$Type<($ScanToolData$Slot$$Type)>, dimension?: $ResourceKey$$Type<($Level)>, commandPos?: $BlockPos$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -7019,90 +7109,90 @@ import {$Tuple, $Tuple$$Type} from "net.minecraft.util.Tuple"
 
 export interface $IBlueprintDataProviderBE {
 
- "removeTag"(arg0: $BlockPos$$Type, arg1: string): void
- "addTag"(arg0: $BlockPos$$Type, arg1: string): void
- "getUpdatePacket"(): $ClientboundBlockEntityDataPacket
- "getSchematicName"(): string
+ "addTag"(arg0: $BlockPos$$Type, arg1: StringJS): void
+ "getPackName"(): StringJS
+ "removeTag"(arg0: $BlockPos$$Type, arg1: StringJS): void
+ "getTilePos"(): $BlockPos
+ "setPackName"(arg0: StringJS): void
+ "getSchematicName"(): StringJS
  "getInWorldCorners"(): $Tuple<($BlockPos), ($BlockPos)>
- "getPositionedTags"(): $Map<($BlockPos), ($List<(string)>)>
- "getWorldTagPosMap"(): $Map<($BlockPos), ($List<(string)>)>
- "getWorldTagNamePosMap"(): $Map<(string), ($Set<($BlockPos)>)>
- "getRealWorldPos"(arg0: $BlockPos$$Type): $BlockPos
- "setSchematicName"(arg0: string): void
- "setPositionedTags"(arg0: $Map$$Type<($BlockPos$$Type), ($List$$Type<(string)>)>): void
+ "getPositionedTags"(): $Map<($BlockPos), ($List<(StringJS)>)>
+ "getUpdatePacket"(): $ClientboundBlockEntityDataPacket
+ "setSchematicName"(arg0: StringJS): void
+ "setPositionedTags"(arg0: $Map$$Type<($BlockPos$$Type), ($List$$Type<(StringJS)>)>): void
  "getSchematicCorners"(): $Tuple<($BlockPos), ($BlockPos)>
  "setSchematicCorners"(arg0: $BlockPos$$Type, arg1: $BlockPos$$Type): void
- "setBlueprintPath"(arg0: string): void
- "getBlueprintPath"(): string
- "setPackName"(arg0: string): void
- "getPackName"(): string
- "getTilePos"(): $BlockPos
+ "setBlueprintPath"(arg0: StringJS): void
+ "getBlueprintPath"(): StringJS
+ "getWorldTagPosMap"(): $Map<($BlockPos), ($List<(StringJS)>)>
+ "getWorldTagNamePosMap"(): $Map<(StringJS), ($Set<($BlockPos)>)>
+ "getRealWorldPos"(arg0: $BlockPos$$Type): $BlockPos
  "readSchematicDataFromNBT"(arg0: $CompoundTag$$Type): void
  "writeSchematicDataToNBT"(arg0: $CompoundTag$$Type): void
-get "updatePacket"(): $ClientboundBlockEntityDataPacket
-get "schematicName"(): string
-get "inWorldCorners"(): $Tuple<($BlockPos), ($BlockPos)>
-get "positionedTags"(): $Map<($BlockPos), ($List<(string)>)>
-get "worldTagPosMap"(): $Map<($BlockPos), ($List<(string)>)>
-get "worldTagNamePosMap"(): $Map<(string), ($Set<($BlockPos)>)>
-set "schematicName"(value: string)
-set "positionedTags"(value: $Map$$Type<($BlockPos$$Type), ($List$$Type<(string)>)>)
-get "schematicCorners"(): $Tuple<($BlockPos), ($BlockPos)>
-set "blueprintPath"(value: string)
-get "blueprintPath"(): string
-set "packName"(value: string)
-get "packName"(): string
+get "packName"(): StringJS
 get "tilePos"(): $BlockPos
+set "packName"(value: StringJS)
+get "schematicName"(): StringJS
+get "inWorldCorners"(): $Tuple<($BlockPos), ($BlockPos)>
+get "positionedTags"(): $Map<($BlockPos), ($List<(StringJS)>)>
+get "updatePacket"(): $ClientboundBlockEntityDataPacket
+set "schematicName"(value: StringJS)
+set "positionedTags"(value: $Map$$Type<($BlockPos$$Type), ($List$$Type<(StringJS)>)>)
+get "schematicCorners"(): $Tuple<($BlockPos), ($BlockPos)>
+set "blueprintPath"(value: StringJS)
+get "blueprintPath"(): StringJS
+get "worldTagPosMap"(): $Map<($BlockPos), ($List<(StringJS)>)>
+get "worldTagNamePosMap"(): $Map<(StringJS), ($Set<($BlockPos)>)>
 }
 
 export namespace $IBlueprintDataProviderBE {
-const TAG_SCHEMATIC_NAME: string
-const TAG_TAG_NAME_LIST: string
-const TAG_PACK: string
-const TAG_PATH: string
-const TAG_CORNER_ONE: string
-const TAG_POS_TAG_MAP: string
-const TAG_BLUEPRINTDATA: string
-const TAG_TAG_NAME: string
-const TAG_TAG_POS: string
-const TAG_CORNER_TWO: string
-function writeMapToCompound(arg0: $CompoundTag$$Type, arg1: $Map$$Type<($BlockPos$$Type), ($List$$Type<(string)>)>): void
-function readTagPosMapFrom(arg0: $CompoundTag$$Type): $Map<($BlockPos), ($List<(string)>)>
+const TAG_SCHEMATIC_NAME: StringJS
+const TAG_TAG_NAME_LIST: StringJS
+const TAG_PACK: StringJS
+const TAG_PATH: StringJS
+const TAG_CORNER_ONE: StringJS
+const TAG_POS_TAG_MAP: StringJS
+const TAG_BLUEPRINTDATA: StringJS
+const TAG_TAG_NAME: StringJS
+const TAG_TAG_POS: StringJS
+const TAG_CORNER_TWO: StringJS
+function writeMapToCompound(arg0: $CompoundTag$$Type, arg1: $Map$$Type<($BlockPos$$Type), ($List$$Type<(StringJS)>)>): void
+function readTagPosMapFrom(arg0: $CompoundTag$$Type): $Map<($BlockPos), ($List<(StringJS)>)>
 const probejs$$marker: never
 }
 export class $IBlueprintDataProviderBE$$Static implements $IBlueprintDataProviderBE {
-static readonly "TAG_SCHEMATIC_NAME": string
-static readonly "TAG_TAG_NAME_LIST": string
-static readonly "TAG_PACK": string
-static readonly "TAG_PATH": string
-static readonly "TAG_CORNER_ONE": string
-static readonly "TAG_POS_TAG_MAP": string
-static readonly "TAG_BLUEPRINTDATA": string
-static readonly "TAG_TAG_NAME": string
-static readonly "TAG_TAG_POS": string
-static readonly "TAG_CORNER_TWO": string
+static readonly "TAG_SCHEMATIC_NAME": StringJS
+static readonly "TAG_TAG_NAME_LIST": StringJS
+static readonly "TAG_PACK": StringJS
+static readonly "TAG_PATH": StringJS
+static readonly "TAG_CORNER_ONE": StringJS
+static readonly "TAG_POS_TAG_MAP": StringJS
+static readonly "TAG_BLUEPRINTDATA": StringJS
+static readonly "TAG_TAG_NAME": StringJS
+static readonly "TAG_TAG_POS": StringJS
+static readonly "TAG_CORNER_TWO": StringJS
 
 
- "removeTag"(arg0: $BlockPos$$Type, arg1: string): void
- "addTag"(arg0: $BlockPos$$Type, arg1: string): void
- "getUpdatePacket"(): $ClientboundBlockEntityDataPacket
- "getSchematicName"(): string
+ "addTag"(arg0: $BlockPos$$Type, arg1: StringJS): void
+ "getPackName"(): StringJS
+ "removeTag"(arg0: $BlockPos$$Type, arg1: StringJS): void
+ "getTilePos"(): $BlockPos
+ "setPackName"(arg0: StringJS): void
+ "getSchematicName"(): StringJS
  "getInWorldCorners"(): $Tuple<($BlockPos), ($BlockPos)>
- "getPositionedTags"(): $Map<($BlockPos), ($List<(string)>)>
-static "writeMapToCompound"(arg0: $CompoundTag$$Type, arg1: $Map$$Type<($BlockPos$$Type), ($List$$Type<(string)>)>): void
-static "readTagPosMapFrom"(arg0: $CompoundTag$$Type): $Map<($BlockPos), ($List<(string)>)>
- "getWorldTagPosMap"(): $Map<($BlockPos), ($List<(string)>)>
- "getWorldTagNamePosMap"(): $Map<(string), ($Set<($BlockPos)>)>
- "getRealWorldPos"(arg0: $BlockPos$$Type): $BlockPos
- "setSchematicName"(arg0: string): void
- "setPositionedTags"(arg0: $Map$$Type<($BlockPos$$Type), ($List$$Type<(string)>)>): void
+ "getPositionedTags"(): $Map<($BlockPos), ($List<(StringJS)>)>
+ "getUpdatePacket"(): $ClientboundBlockEntityDataPacket
+ "setSchematicName"(arg0: StringJS): void
+ "setPositionedTags"(arg0: $Map$$Type<($BlockPos$$Type), ($List$$Type<(StringJS)>)>): void
  "getSchematicCorners"(): $Tuple<($BlockPos), ($BlockPos)>
  "setSchematicCorners"(arg0: $BlockPos$$Type, arg1: $BlockPos$$Type): void
- "setBlueprintPath"(arg0: string): void
- "getBlueprintPath"(): string
- "setPackName"(arg0: string): void
- "getPackName"(): string
- "getTilePos"(): $BlockPos
+ "setBlueprintPath"(arg0: StringJS): void
+ "getBlueprintPath"(): StringJS
+static "writeMapToCompound"(arg0: $CompoundTag$$Type, arg1: $Map$$Type<($BlockPos$$Type), ($List$$Type<(StringJS)>)>): void
+static "readTagPosMapFrom"(arg0: $CompoundTag$$Type): $Map<($BlockPos), ($List<(StringJS)>)>
+ "getWorldTagPosMap"(): $Map<($BlockPos), ($List<(StringJS)>)>
+ "getWorldTagNamePosMap"(): $Map<(StringJS), ($Set<($BlockPos)>)>
+ "getRealWorldPos"(arg0: $BlockPos$$Type): $BlockPos
  "readSchematicDataFromNBT"(arg0: $CompoundTag$$Type): void
  "writeSchematicDataToNBT"(arg0: $CompoundTag$$Type): void
 }
@@ -7120,6 +7210,7 @@ export type $IBlueprintDataProviderBE_ = $IBlueprintDataProviderBE$$Type;
 }}
 declare module "com.ldtteam.domumornamentum.item.decoration.AllBrickStairBlockItem" {
 import {$IDoItem, $IDoItem$$Type} from "com.ldtteam.domumornamentum.item.interfaces.IDoItem"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$AllBrickStairBlock, $AllBrickStairBlock$$Type} from "com.ldtteam.domumornamentum.block.decorative.AllBrickStairBlock"
@@ -7127,19 +7218,21 @@ import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $AllBrickStairBlockItem extends $BlockItem implements $IDoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -7162,6 +7255,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "group"(): $ResourceLocation
 get "inputIds"(): $List<($ResourceLocation)>
 }
@@ -7179,8 +7273,8 @@ export type $AllBrickStairBlockItem_ = $AllBrickStairBlockItem$$Type;
 }}
 declare module "com.ldtteam.structurize.storage.rendering.types.BoxPreviewData" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
-import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$Record, $Record$$Type} from "java.lang.Record"
@@ -7191,12 +7285,12 @@ static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($BoxPr
 
 constructor(pos1: $BlockPos$$Type, pos2: $BlockPos$$Type, anchor: $Optional$$Type<($BlockPos$$Type)>)
 
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "anchor"(): $Optional<($BlockPos)>
 public "pos1"(): $BlockPos
 public "pos2"(): $BlockPos
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
 public "withCorners"(arg0: $BlockPos$$Type, arg1: $BlockPos$$Type): $BoxPreviewData
 public "withAnchor"(arg0: $Optional$$Type<($BlockPos$$Type)>): $BoxPreviewData
 }
@@ -7204,7 +7298,7 @@ public "withAnchor"(arg0: $Optional$$Type<($BlockPos$$Type)>): $BoxPreviewData
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $BoxPreviewData$$Type = ({"pos2"?: $BlockPos$$Type, "anchor"?: ($BlockPos$$Type)?, "pos1"?: $BlockPos$$Type}) | ([pos2?: $BlockPos$$Type, anchor?: ($BlockPos$$Type)?, pos1?: $BlockPos$$Type]);
+export type $BoxPreviewData$$Type = ({"pos1"?: $BlockPos$$Type, "pos2"?: $BlockPos$$Type, "anchor"?: ($BlockPos$$Type)?}) | ([pos1?: $BlockPos$$Type, pos2?: $BlockPos$$Type, anchor?: ($BlockPos$$Type)?]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -7307,8 +7401,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
 import {$TrapDoorBlock, $TrapDoorBlock$$Type} from "net.minecraft.world.level.block.TrapDoorBlock"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -7323,7 +7417,7 @@ static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "HALF": $EnumProperty<($Half)>
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -7365,9 +7459,9 @@ import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Function, $Function$$Type} from "java.util.function.Function"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$Lazy, $Lazy$$Type} from "net.neoforged.neoforge.common.util.Lazy"
 import {$ModelData, $ModelData$$Type} from "net.neoforged.neoforge.client.model.data.ModelData"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Lazy, $Lazy$$Type} from "net.neoforged.neoforge.common.util.Lazy"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Record, $Record$$Type} from "java.lang.Record"
@@ -7378,25 +7472,25 @@ static readonly "ILLEGAL_BLOCK_ENTITY_POS": $BlockPos
 constructor(blockState: $BlockState$$Type, blockEntity: $BlockEntity$$Type, modelData: $ModelData$$Type, modelNeedsRotationFix: boolean, playerPickedItemStack: $Lazy$$Type<($ItemStack$$Type)>)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
+public static "of"(arg0: $BlockState$$Type): $BlockStateRenderingData
 public static "of"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $Player$$Type): $BlockStateRenderingData
 public static "of"(arg0: $BlockState$$Type, arg1: $BlockEntity$$Type): $BlockStateRenderingData
-public static "of"(arg0: $BlockState$$Type): $BlockStateRenderingData
 public "modelData"(): $ModelData
-public "itemStack"(): $ItemStack
-public "blockState"(): $BlockState
 public "blockEntity"(): $BlockEntity
+public "blockState"(): $BlockState
+public "itemStack"(): $ItemStack
+public "modelNeedsRotationFix"(): boolean
 public "playerPickedItemStack"(): $Lazy<($ItemStack)>
 public static "checkModelForYrotation"(arg0: $BlockState$$Type): boolean
 public "updateBlockEntity"(arg0: $Function$$Type<($BlockEntity), ($BlockEntity$$Type)>): $BlockStateRenderingData
-public "modelNeedsRotationFix"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $BlockStateRenderingData$$Type = ({"blockEntity"?: $BlockEntity$$Type, "modelNeedsRotationFix"?: boolean, "modelData"?: $ModelData$$Type, "blockState"?: $BlockState$$Type, "playerPickedItemStack"?: $Lazy$$Type<($ItemStack$$Type)>}) | ([blockEntity?: $BlockEntity$$Type, modelNeedsRotationFix?: boolean, modelData?: $ModelData$$Type, blockState?: $BlockState$$Type, playerPickedItemStack?: $Lazy$$Type<($ItemStack$$Type)>]);
+export type $BlockStateRenderingData$$Type = ({"blockState"?: $BlockState$$Type, "playerPickedItemStack"?: $Lazy$$Type<($ItemStack$$Type)>, "blockEntity"?: $BlockEntity$$Type, "modelNeedsRotationFix"?: boolean, "modelData"?: $ModelData$$Type}) | ([blockState?: $BlockState$$Type, playerPickedItemStack?: $Lazy$$Type<($ItemStack$$Type)>, blockEntity?: $BlockEntity$$Type, modelNeedsRotationFix?: boolean, modelData?: $ModelData$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -7405,11 +7499,13 @@ declare global {
 export type $BlockStateRenderingData_ = $BlockStateRenderingData$$Type;
 }}
 declare module "com.ldtteam.structurize.items.ItemTagTool" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -7424,7 +7520,7 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 export class $ItemTagTool extends $AbstractItemWithPosSelector {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -7434,10 +7530,11 @@ constructor()
 constructor(arg0: $Item$Properties$$Type)
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "canAttackBlock"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): boolean
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public "canAttackBlock"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): boolean
 public "onAirRightClick"(arg0: $BlockPos$$Type, arg1: $BlockPos$$Type, arg2: $Level$$Type, arg3: $Player$$Type, arg4: $ItemStack$$Type): $InteractionResult
 public "getRegisteredItemInstance"(): $AbstractItemWithPosSelector
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "registeredItemInstance"(): $AbstractItemWithPosSelector
 }
 /**
@@ -7453,14 +7550,17 @@ declare global {
 export type $ItemTagTool_ = $ItemTagTool$$Type;
 }}
 declare module "com.ldtteam.domumornamentum.item.DoubleHighBlockItemWithClientBePlacement" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$SelfUpgradingDoubleHighBlockItem, $SelfUpgradingDoubleHighBlockItem$$Type} from "com.ldtteam.domumornamentum.item.SelfUpgradingDoubleHighBlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
@@ -7471,7 +7571,7 @@ import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehv
 export class $DoubleHighBlockItemWithClientBePlacement extends $SelfUpgradingDoubleHighBlockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -7489,6 +7589,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7513,23 +7614,23 @@ import {$SimpleWaterloggedBlock, $SimpleWaterloggedBlock$$Type} from "net.minecr
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$AbstractBlock, $AbstractBlock$$Type} from "com.ldtteam.domumornamentum.block.AbstractBlock"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$Rotation, $Rotation$$Type} from "net.minecraft.world.level.block.Rotation"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $BarrelBlock extends $AbstractBlock<($BarrelBlock)> implements $SimpleWaterloggedBlock {
 static readonly "UPDATE_IMMEDIATE": integer
@@ -7545,7 +7646,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -7557,9 +7658,9 @@ constructor()
 
 public "rotate"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $BlockState
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
+public "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
 public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
 public "getFluidState"(arg0: $BlockState$$Type): $FluidState
-public "mirror"(arg0: $BlockState$$Type, arg1: $Mirror$$Type): $BlockState
 public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "getPickupSound"(): $Optional<($SoundEvent)>
 public "canPlaceLiquid"(arg0: $Player$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $Fluid$$Type): boolean
@@ -7582,13 +7683,16 @@ declare global {
 export type $BarrelBlock_ = $BarrelBlock$$Type;
 }}
 declare module "com.ldtteam.domumornamentum.item.BlockItemWithClientBePlacement" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$SelfUpgradingBlockItem, $SelfUpgradingBlockItem$$Type} from "com.ldtteam.domumornamentum.item.SelfUpgradingBlockItem"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$SelfUpgradingBlockItem, $SelfUpgradingBlockItem$$Type} from "com.ldtteam.domumornamentum.item.SelfUpgradingBlockItem"
+import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
@@ -7600,7 +7704,7 @@ import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehv
 export class $BlockItemWithClientBePlacement extends $SelfUpgradingBlockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -7618,6 +7722,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7637,8 +7742,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$AbstractBlock, $AbstractBlock$$Type} from "com.ldtteam.domumornamentum.block.AbstractBlock"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ExtraBlockType, $ExtraBlockType$$Type} from "com.ldtteam.domumornamentum.block.types.ExtraBlockType"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
@@ -7662,7 +7767,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -7690,8 +7795,8 @@ export type $ExtraBlock_ = $ExtraBlock$$Type;
 }}
 declare module "com.ldtteam.domumornamentum.block.types.BrickType" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -7700,7 +7805,7 @@ import {$StringRepresentable, $StringRepresentable$$Type} from "net.minecraft.ut
 
 export class $BrickType extends $Enum<($BrickType)> implements $StringRepresentable {
 static readonly "BROWN_STONE": $BrickType
-static readonly "SUFFIX": string
+static readonly "SUFFIX": StringJS
 static readonly "SAND": $BrickType
 static readonly "SAND_STONE": $BrickType
 static readonly "CREAM": $BrickType
@@ -7713,20 +7818,20 @@ static readonly "BROWN": $BrickType
 
 
 public static "values"(): ($BrickType)[]
-public static "valueOf"(arg0: string): $BrickType
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $BrickType
 public "getIngredient2"(): $Item
 public "getIngredient"(): $Item
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "serializedName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
 get "ingredient2"(): $Item
 get "ingredient"(): $Item
-get "remappedEnumConstantName"(): string
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7741,12 +7846,15 @@ declare global {
 export type $BrickType_ = $BrickType$$Type;
 }}
 declare module "com.ldtteam.domumornamentum.item.SelfUpgradingDoubleHighBlockItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$DoubleHighBlockItem, $DoubleHighBlockItem$$Type} from "net.minecraft.world.item.DoubleHighBlockItem"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
@@ -7755,7 +7863,7 @@ import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehv
 export class $SelfUpgradingDoubleHighBlockItem extends $DoubleHighBlockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -7774,6 +7882,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7813,7 +7922,6 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
-import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$DoorBlock as $DoorBlock$0, $DoorBlock$$Type as $DoorBlock$0$$Type} from "net.minecraft.world.level.block.DoorBlock"
 import {$SoundType, $SoundType$$Type} from "net.minecraft.world.level.block.SoundType"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
@@ -7843,7 +7951,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "HALF": $EnumProperty<($DoubleBlockHalf)>
 static readonly "UPDATE_ALL": integer
 static readonly "HINGE": $EnumProperty<($DoorHingeSide)>
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "TYPE": $EnumProperty<($DoorType)>
@@ -7864,29 +7972,29 @@ static readonly "FACING": $DirectionProperty
 
 constructor()
 
-public "buildRecipes"(arg0: $RecipeOutput$$Type): void
 public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
+public "buildRecipes"(arg0: $RecipeOutput$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getSoundType"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): $SoundType
-public "getComponents"(): $Collection<(any)>
-public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
-public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
-public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "getComponents"(): $List<($IMateriallyTexturedBlockComponent)>
+public "resetCache"(): void
 public "fillItemCategory"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
 public "getMainComponent"(): $IMateriallyTexturedBlockComponent
-public "resetCache"(): void
-public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
-public "usesWorldSpecificTinting"(): boolean
-public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
+public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
+public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "getRandomMaterials"(): $MaterialTextureData
 public "getDODestroyProgress"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($Player), ($BlockGetter), ($BlockPos), (float)>, arg1: $BlockState$$Type, arg2: $Player$$Type, arg3: $BlockGetter$$Type, arg4: $BlockPos$$Type): float
 public "fillDOItemCategory"(arg0: $Block$$Type, arg1: $NonNullList$$Type<($ItemStack$$Type)>, arg2: $List$$Type<($ItemStack$$Type)>): void
-public "getRandomMaterials"(): $MaterialTextureData
-public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "usesWorldSpecificTinting"(): boolean
+public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public static "createDoorBlock"(arg0: $BlockSetType$$Type, arg1: $BlockBehaviour$Properties$$Type): $DoorBlock$0
 public "asHolder"(): $Holder<(any)>
-get "components"(): $Collection<(any)>
+get "components"(): $List<($IMateriallyTexturedBlockComponent)>
 get "mainComponent"(): $IMateriallyTexturedBlockComponent
 get "randomMaterials"(): $MaterialTextureData
 }
@@ -7914,8 +8022,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -7934,7 +8042,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -7963,11 +8071,13 @@ declare global {
 export type $AbstractBlockSlab_<B> = $AbstractBlockSlab$$Type<(B)>;
 }}
 declare module "com.ldtteam.structurize.items.ItemShapeTool" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$AbstractItemStructurize, $AbstractItemStructurize$$Type} from "com.ldtteam.structurize.items.AbstractItemStructurize"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
@@ -7979,7 +8089,7 @@ import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.conte
 export class $ItemShapeTool extends $AbstractItemStructurize {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -7988,9 +8098,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
 public "getCraftingRemainingItem"(arg0: $ItemStack$$Type): $ItemStack
 public "hasCraftingRemainingItem"(arg0: $ItemStack$$Type): boolean
-public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8007,9 +8118,9 @@ export type $ItemShapeTool_ = $ItemShapeTool$$Type;
 declare module "com.ldtteam.structurize.placement.structure.AbstractStructureHandler" {
 import {$Blueprint, $Blueprint$$Type} from "com.ldtteam.structurize.blueprints.v1.Blueprint"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$List, $List$$Type} from "java.util.List"
-import {$RotationMirror, $RotationMirror$$Type} from "com.ldtteam.structurize.api.RotationMirror"
 import {$Function, $Function$$Type} from "java.util.function.Function"
+import {$RotationMirror, $RotationMirror$$Type} from "com.ldtteam.structurize.api.RotationMirror"
+import {$List, $List$$Type} from "java.util.List"
 import {$Future, $Future$$Type} from "java.util.concurrent.Future"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$IStructureHandler, $IStructureHandler$$Type} from "com.ldtteam.structurize.placement.structure.IStructureHandler"
@@ -8023,27 +8134,24 @@ constructor(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $Future$$Type<($Blu
 constructor(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $Blueprint$$Type, arg3: $RotationMirror$$Type)
 
 public "isReady"(): boolean
-public "setMd5"(arg0: string): void
-public "getMd5"(): string
-public "getRotationMirror"(): $RotationMirror
-public "setBlueprint"(arg0: $Blueprint$$Type): void
-public "getWorld"(): $Level
-public "getWorldPos"(): $BlockPos
 public "getBluePrint"(): $Blueprint
 public "triggerSuccess"(arg0: $BlockPos$$Type, arg1: $List$$Type<($ItemStack$$Type)>, arg2: boolean): void
 public "hasBluePrint"(): boolean
-public "onCompletion"(): void
+public "setBlueprint"(arg0: $Blueprint$$Type): void
+public "getWorld"(): $Level
+public "getWorldPos"(): $BlockPos
+public "getRotationMirror"(): $RotationMirror
+public "setMd5"(arg0: StringJS): void
+public "getMd5"(): StringJS
 public "consume"(arg0: $List$$Type<($ItemStack$$Type)>): void
+public "onCompletion"(): void
 public "isCreative"(): boolean
 public "getInventory"(): $IItemHandler
-public "fancyPlacement"(): boolean
-public "getHeldItem"(): $ItemStack
-public "isCorrectMD5"(arg0: string): boolean
+public "isCorrectMD5"(arg0: StringJS): boolean
 public "isStackFree"(arg0: $ItemStack$$Type): boolean
 public "allowReplace"(): boolean
-public "getMaxBlocksCheckedPerCall"(): integer
-public "shouldBlocksBeConsideredEqual"(arg0: $BlockState$$Type, arg1: $BlockState$$Type): boolean
-public "getStructurePosFromWorld"(arg0: $BlockPos$$Type): $BlockPos
+public "fancyPlacement"(): boolean
+public "getHeldItem"(): $ItemStack
 public "getProgressPosInWorld"(arg0: $BlockPos$$Type): $BlockPos
 public "triggerEntitySuccess"(arg0: $BlockPos$$Type, arg1: $List$$Type<($ItemStack$$Type)>, arg2: boolean): void
 public "getStepsPerCall"(): integer
@@ -8051,19 +8159,22 @@ public "replaceWithSolidBlock"(arg0: $BlockState$$Type): boolean
 public "hasRequiredItems"(arg0: $List$$Type<($ItemStack$$Type)>): boolean
 public "prePlacementLogic"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type, arg2: $List$$Type<($ItemStack$$Type)>): void
 public "getSolidBlockForPos"(arg0: $BlockPos$$Type, arg1: $Function$$Type<($BlockPos), ($BlockState$$Type)>): $BlockState
+public "getMaxBlocksCheckedPerCall"(): integer
+public "shouldBlocksBeConsideredEqual"(arg0: $BlockState$$Type, arg1: $BlockState$$Type): boolean
+public "getStructurePosFromWorld"(arg0: $BlockPos$$Type): $BlockPos
 get "ready"(): boolean
-set "md5"(value: string)
-get "md5"(): string
-get "rotationMirror"(): $RotationMirror
+get "bluePrint"(): $Blueprint
 set "blueprint"(value: $Blueprint$$Type)
 get "world"(): $Level
 get "worldPos"(): $BlockPos
-get "bluePrint"(): $Blueprint
+get "rotationMirror"(): $RotationMirror
+set "md5"(value: StringJS)
+get "md5"(): StringJS
 get "creative"(): boolean
 get "inventory"(): $IItemHandler
 get "heldItem"(): $ItemStack
-get "maxBlocksCheckedPerCall"(): integer
 get "stepsPerCall"(): integer
+get "maxBlocksCheckedPerCall"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8078,23 +8189,28 @@ declare global {
 export type $AbstractStructureHandler_ = $AbstractStructureHandler$$Type;
 }}
 declare module "com.ldtteam.structurize.items.AbstractItemStructurize" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $AbstractItemStructurize extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
 static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
-constructor(arg0: string, arg1: $Item$Properties$$Type)
+constructor(arg0: StringJS, arg1: $Item$Properties$$Type)
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8115,32 +8231,36 @@ import {$Path, $Path$$Type} from "java.nio.file.Path"
 
 export class $StructurePackMeta {
 
-constructor(arg0: $JsonObject$$Type, arg1: $Path$$Type, arg2: string)
+constructor(arg0: $JsonObject$$Type, arg1: $Path$$Type, arg2: StringJS)
 
 public "setImmutable"(arg0: boolean): void
-public "getName"(): string
 public "getPath"(): $Path
-public "getOwner"(): string
+public "getOwner"(): StringJS
 public "getVersion"(): double
 public "isImmutable"(): boolean
-public "getDesc"(): string
-public "getModList"(): $List<(string)>
-public "getNormalizedSubPath"(arg0: string): string
+public "getDesc"(): StringJS
+public "getName"(): StringJS
+public "getModList"(): $List<(StringJS)>
+public "getAuthors"(): $List<(StringJS)>
+public "getSubPath"(arg0: $Path$$Type): StringJS
+public "isDisabled"(): boolean
+public "setDisabled"(arg0: boolean): void
+public "getIconPath"(): StringJS
 public "getPackFormat"(): integer
-public "getIconPath"(): string
-public "getAuthors"(): $List<(string)>
-public "getSubPath"(arg0: $Path$$Type): string
+public "getNormalizedSubPath"(arg0: StringJS): StringJS
 set "immutable"(value: boolean)
-get "name"(): string
 get "path"(): $Path
-get "owner"(): string
+get "owner"(): StringJS
 get "version"(): double
 get "immutable"(): boolean
-get "desc"(): string
-get "modList"(): $List<(string)>
+get "desc"(): StringJS
+get "name"(): StringJS
+get "modList"(): $List<(StringJS)>
+get "authors"(): $List<(StringJS)>
+get "disabled"(): boolean
+set "disabled"(value: boolean)
+get "iconPath"(): StringJS
 get "packFormat"(): integer
-get "iconPath"(): string
-get "authors"(): $List<(string)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8158,8 +8278,8 @@ declare module "com.ldtteam.blockui.PaneParams" {
 import {$Node, $Node$$Type} from "org.w3c.dom.Node"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Enum, $Enum$$Type} from "java.lang.Enum"
-import {$List, $List$$Type} from "java.util.List"
 import {$Function, $Function$$Type} from "java.util.function.Function"
+import {$List, $List$$Type} from "java.util.List"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
 import {$View, $View$$Type} from "com.ldtteam.blockui.views.View"
 import {$Class, $Class$$Type} from "java.lang.Class"
@@ -8169,44 +8289,44 @@ export class $PaneParams {
 
 constructor(arg0: $Node$$Type)
 
-public "hasAttribute"(arg0: string): boolean
-public "getProperty"<T>(arg0: string, arg1: $Function$$Type<(string), (T)>, arg2: T): T
-public "getBoolean"(arg0: string, arg1: boolean): boolean
-public "getFloat"(arg0: string, arg1: float): float
-public "getDouble"(arg0: string, arg1: double): double
-public "getResource"(arg0: string, arg1: $Consumer$$Type<($ResourceLocation)>): $ResourceLocation
-public "getResource"(arg0: string): $ResourceLocation
-public "getResource"(arg0: string, arg1: $ResourceLocation$$Type): $ResourceLocation
-public "getType"(): string
-public "getInteger"(arg0: string, arg1: integer): integer
-public "getString"(arg0: string): string
-public "getString"(arg0: string, arg1: string): string
-public "getText"(): string
+public "hasAttribute"(arg0: StringJS): boolean
+public "getInteger"(arg0: StringJS, arg1: integer): integer
+public "getString"(arg0: StringJS, arg1: StringJS): StringJS
+public "getString"(arg0: StringJS): StringJS
 public "getChildren"(): $List<($PaneParams)>
-public "getColor"(arg0: string, arg1: integer): integer
-public "getEnum"<T extends $Enum<(T)>>(arg0: string, arg1: $Class$$Type<(T)>, arg2: T): T
-public "hasAnyAttribute"(arg0: string, ...arg1: (string)[]): string
-public "getMultilineText"(arg0: string, arg1: $List$$Type<($MutableComponent$$Type)>): $List<($MutableComponent)>
-public "getMultilineText"(arg0: string): $List<($MutableComponent)>
-public "getParentHeight"(): integer
-public "getScaledInteger"(arg0: string, arg1: integer, arg2: integer, arg3: $Consumer$$Type<($List<(integer)>)>): void
-public "getScaledInteger"(arg0: string, arg1: integer, arg2: integer): integer
-public "getTextComponent"(arg0: string, arg1: $MutableComponent$$Type): $MutableComponent
-public "applyShorthand"<T>(arg0: string, arg1: $Function$$Type<(string), (T)>, arg2: integer, arg3: $Consumer$$Type<($List<(T)>)>): void
+public "getProperty"<T>(arg0: StringJS, arg1: $Function$$Type<(StringJS), (T)>, arg2: T): T
+public "getBoolean"(arg0: StringJS, arg1: boolean): boolean
+public "getFloat"(arg0: StringJS, arg1: float): float
+public "getDouble"(arg0: StringJS, arg1: double): double
+public "getResource"(arg0: StringJS): $ResourceLocation
+public "getResource"(arg0: StringJS, arg1: $ResourceLocation$$Type): $ResourceLocation
+public "getResource"(arg0: StringJS, arg1: $Consumer$$Type<($ResourceLocation)>): $ResourceLocation
+public "getType"(): StringJS
+public "getColor"(arg0: StringJS, arg1: integer): integer
+public "getEnum"<T extends $Enum<(T)>>(arg0: StringJS, arg1: $Class$$Type<(T)>, arg2: T): T
+public "getText"(): StringJS
+public "applyShorthand"<T>(arg0: StringJS, arg1: $Function$$Type<(StringJS), (T)>, arg2: integer, arg3: $Consumer$$Type<($List<(T)>)>): void
 public "getParentWidth"(): integer
 public "getParentLeft"(): integer
 public "getParentTop"(): integer
-public "getParentView"(): $View
 public "setParentView"(arg0: $View$$Type): void
-get "type"(): string
-get "text"(): string
+public "getParentView"(): $View
+public "hasAnyAttribute"(arg0: StringJS, ...arg1: (StringJS)[]): StringJS
+public "getMultilineText"(arg0: StringJS): $List<($MutableComponent)>
+public "getMultilineText"(arg0: StringJS, arg1: $List$$Type<($MutableComponent$$Type)>): $List<($MutableComponent)>
+public "getParentHeight"(): integer
+public "getScaledInteger"(arg0: StringJS, arg1: integer, arg2: integer, arg3: $Consumer$$Type<($List<(integer)>)>): void
+public "getScaledInteger"(arg0: StringJS, arg1: integer, arg2: integer): integer
+public "getTextComponent"(arg0: StringJS, arg1: $MutableComponent$$Type): $MutableComponent
 get "children"(): $List<($PaneParams)>
-get "parentHeight"(): integer
+get "type"(): StringJS
+get "text"(): StringJS
 get "parentWidth"(): integer
 get "parentLeft"(): integer
 get "parentTop"(): integer
-get "parentView"(): $View
 set "parentView"(value: $View$$Type)
+get "parentView"(): $View
+get "parentHeight"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8234,7 +8354,7 @@ static readonly "SLATE": $ExtraBlockCategory
 
 
 public static "values"(): ($ExtraBlockCategory)[]
-public static "valueOf"(arg0: string): $ExtraBlockCategory
+public static "valueOf"(arg0: StringJS): $ExtraBlockCategory
 public "getMineableTag"(): $TagKey<($Block)>
 get "mineableTag"(): $TagKey<($Block)>
 }
@@ -8253,25 +8373,28 @@ export type $ExtraBlockCategory_ = $ExtraBlockCategory$$Type;
 declare module "com.ldtteam.domumornamentum.item.vanilla.FenceGateBlockItem" {
 import {$IDoItem, $IDoItem$$Type} from "com.ldtteam.domumornamentum.item.interfaces.IDoItem"
 import {$BlockItemWithClientBePlacement, $BlockItemWithClientBePlacement$$Type} from "com.ldtteam.domumornamentum.item.BlockItemWithClientBePlacement"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$FenceGateBlock, $FenceGateBlock$$Type} from "com.ldtteam.domumornamentum.block.vanilla.FenceGateBlock"
 
 export class $FenceGateBlockItem extends $BlockItemWithClientBePlacement implements $IDoItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -8294,6 +8417,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "group"(): $ResourceLocation
 get "inputIds"(): $List<($ResourceLocation)>
 }
@@ -8325,22 +8449,21 @@ import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockAndTintGetter, $BlockAndTintGetter$$Type} from "net.minecraft.world.level.BlockAndTintGetter"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
-import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
-import {$SoundType, $SoundType$$Type} from "net.minecraft.world.level.block.SoundType"
 import {$AbstractBlock, $AbstractBlock$$Type} from "com.ldtteam.domumornamentum.block.AbstractBlock"
+import {$SoundType, $SoundType$$Type} from "net.minecraft.world.level.block.SoundType"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$HitResult, $HitResult$$Type} from "net.minecraft.world.phys.HitResult"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$MaterialTextureData, $MaterialTextureData$$Type} from "com.ldtteam.domumornamentum.client.model.data.MaterialTextureData"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Rotation, $Rotation$$Type} from "net.minecraft.world.level.block.Rotation"
 import {$ICachedItemGroupBlock, $ICachedItemGroupBlock$$Type} from "com.ldtteam.domumornamentum.block.ICachedItemGroupBlock"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
@@ -8367,7 +8490,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -8379,30 +8502,30 @@ constructor()
 
 public "rotate"(arg0: $BlockState$$Type, arg1: $LevelAccessor$$Type, arg2: $BlockPos$$Type, arg3: $Rotation$$Type): $BlockState
 public "rotate"(arg0: $BlockState$$Type, arg1: $Rotation$$Type): $BlockState
-public "shouldDisplayFluidOverlay"(arg0: $BlockState$$Type, arg1: $BlockAndTintGetter$$Type, arg2: $BlockPos$$Type, arg3: $FluidState$$Type): boolean
-public "buildRecipes"(arg0: $RecipeOutput$$Type): void
 public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
+public "buildRecipes"(arg0: $RecipeOutput$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getSoundType"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type, arg3: $Entity$$Type): $SoundType
 public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
-public "getComponents"(): $Collection<(any)>
-public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
-public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
-public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "getComponents"(): $List<($IMateriallyTexturedBlockComponent)>
+public "resetCache"(): void
 public "fillItemCategory"(arg0: $NonNullList$$Type<($ItemStack$$Type)>): void
 public "getMainComponent"(): $IMateriallyTexturedBlockComponent
-public "resetCache"(): void
-public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
-public "usesWorldSpecificTinting"(): boolean
-public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "getDestroyProgress"(arg0: $BlockState$$Type, arg1: $Player$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): float
+public "getExplosionResistance"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Explosion$$Type): float
+public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
+public "shouldDisplayFluidOverlay"(arg0: $BlockState$$Type, arg1: $BlockAndTintGetter$$Type, arg2: $BlockPos$$Type, arg3: $FluidState$$Type): boolean
+public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "getRandomMaterials"(): $MaterialTextureData
 public "getDODestroyProgress"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($Player), ($BlockGetter), ($BlockPos), (float)>, arg1: $BlockState$$Type, arg2: $Player$$Type, arg3: $BlockGetter$$Type, arg4: $BlockPos$$Type): float
 public "fillDOItemCategory"(arg0: $Block$$Type, arg1: $NonNullList$$Type<($ItemStack$$Type)>, arg2: $List$$Type<($ItemStack$$Type)>): void
-public "getRandomMaterials"(): $MaterialTextureData
-public "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+public "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+public "usesWorldSpecificTinting"(): boolean
+public "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
-get "components"(): $Collection<(any)>
+get "components"(): $List<($IMateriallyTexturedBlockComponent)>
 get "mainComponent"(): $IMateriallyTexturedBlockComponent
 get "randomMaterials"(): $MaterialTextureData
 }
@@ -8419,12 +8542,12 @@ declare global {
 export type $DynamicTimberFrameBlock_ = $DynamicTimberFrameBlock$$Type;
 }}
 declare module "com.ldtteam.domumornamentum.block.IMateriallyTexturedBlock" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$SoundType, $SoundType$$Type} from "net.minecraft.world.level.block.SoundType"
-import {$PropertyDispatch$QuadFunction, $PropertyDispatch$QuadFunction$$Type} from "net.minecraft.data.models.blockstates.PropertyDispatch$QuadFunction"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$PropertyDispatch$QuadFunction, $PropertyDispatch$QuadFunction$$Type} from "net.minecraft.data.models.blockstates.PropertyDispatch$QuadFunction"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$MaterialTextureData, $MaterialTextureData$$Type} from "com.ldtteam.domumornamentum.client.model.data.MaterialTextureData"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
@@ -8432,26 +8555,26 @@ import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockG
 import {$RecipeOutput, $RecipeOutput$$Type} from "net.minecraft.data.recipes.RecipeOutput"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$Explosion, $Explosion$$Type} from "net.minecraft.world.level.Explosion"
+import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$IMateriallyTexturedBlockComponent, $IMateriallyTexturedBlockComponent$$Type} from "com.ldtteam.domumornamentum.block.IMateriallyTexturedBlockComponent"
-import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export interface $IMateriallyTexturedBlock {
 
- "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
- "usesWorldSpecificTinting"(): boolean
  "buildRecipes"(arg0: $RecipeOutput$$Type): void
  "getComponents"(): $Collection<($IMateriallyTexturedBlockComponent)>
- "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+ "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+ "getRandomMaterials"(): $MaterialTextureData
  "getDODestroyProgress"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($Player), ($BlockGetter), ($BlockPos), (float)>, arg1: $BlockState$$Type, arg2: $Player$$Type, arg3: $BlockGetter$$Type, arg4: $BlockPos$$Type): float
  "fillDOItemCategory"(arg0: $Block$$Type, arg1: $NonNullList$$Type<($ItemStack$$Type)>, arg2: $List$$Type<($ItemStack$$Type)>): void
  "getMainComponent"(): $IMateriallyTexturedBlockComponent
- "getRandomMaterials"(): $MaterialTextureData
- "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+ "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+ "usesWorldSpecificTinting"(): boolean
+ "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
 get "components"(): $Collection<($IMateriallyTexturedBlockComponent)>
-get "mainComponent"(): $IMateriallyTexturedBlockComponent
 get "randomMaterials"(): $MaterialTextureData
+get "mainComponent"(): $IMateriallyTexturedBlockComponent
 }
 
 export namespace $IMateriallyTexturedBlock {
@@ -8460,16 +8583,16 @@ const probejs$$marker: never
 export class $IMateriallyTexturedBlock$$Static implements $IMateriallyTexturedBlock {
 
 
- "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
- "usesWorldSpecificTinting"(): boolean
  "buildRecipes"(arg0: $RecipeOutput$$Type): void
  "getComponents"(): $Collection<($IMateriallyTexturedBlockComponent)>
- "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+ "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+ "getRandomMaterials"(): $MaterialTextureData
  "getDODestroyProgress"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($Player), ($BlockGetter), ($BlockPos), (float)>, arg1: $BlockState$$Type, arg2: $Player$$Type, arg3: $BlockGetter$$Type, arg4: $BlockPos$$Type): float
  "fillDOItemCategory"(arg0: $Block$$Type, arg1: $NonNullList$$Type<($ItemStack$$Type)>, arg2: $List$$Type<($ItemStack$$Type)>): void
  "getMainComponent"(): $IMateriallyTexturedBlockComponent
- "getRandomMaterials"(): $MaterialTextureData
- "getDOSoundType"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($LevelReader), ($BlockPos), ($Entity), ($SoundType$$Type)>, arg1: $BlockState$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Entity$$Type): $SoundType
+ "isCorrectToolForDrops"(arg0: $BlockState$$Type, arg1: $ItemStack$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type): boolean
+ "usesWorldSpecificTinting"(): boolean
+ "getDOExplosionResistance"(arg0: $PropertyDispatch$QuadFunction$$Type<($BlockState), ($BlockGetter), ($BlockPos), ($Explosion), (float)>, arg1: $BlockState$$Type, arg2: $BlockGetter$$Type, arg3: $BlockPos$$Type, arg4: $Explosion$$Type): float
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -8528,27 +8651,27 @@ static readonly "BASE_PAPER": $ExtraBlockType
 
 
 public static "values"(): ($ExtraBlockType)[]
-public static "valueOf"(arg0: string): $ExtraBlockType
-public "getColor"(): $DyeColor
+public static "valueOf"(arg0: StringJS): $ExtraBlockType
 public "getSoundType"(): $SoundType
 public "getMaterial"(): $Item
+public "getColor"(): $DyeColor
 public "getCategory"(): $ExtraBlockCategory
-public "getSerializedName"(): string
-public "adjustProperties"(arg0: $BlockBehaviour$Properties$$Type): $BlockBehaviour$Properties
 public "isTranslucent"(): boolean
+public "adjustProperties"(arg0: $BlockBehaviour$Properties$$Type): $BlockBehaviour$Properties
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "color"(): $DyeColor
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
 get "soundType"(): $SoundType
 get "material"(): $Item
+get "color"(): $DyeColor
 get "category"(): $ExtraBlockCategory
-get "serializedName"(): string
 get "translucent"(): boolean
-get "remappedEnumConstantName"(): string
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

@@ -10,14 +10,17 @@ import {$ListTag, $ListTag$$Type} from "net.minecraft.nbt.ListTag"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$BiFunction, $BiFunction$$Type} from "java.util.function.BiFunction"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
-import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$BiConsumer, $BiConsumer$$Type} from "java.util.function.BiConsumer"
 import {$Stream, $Stream$$Type} from "java.util.stream.Stream"
 
 export class $Couple<T> extends $Pair<(T), (T)> implements $Iterable<(T)> {
 
 
+public static "create"<T>(arg0: $Supplier$$Type<(T)>): $Couple<(T)>
+public static "create"<T>(arg0: T, arg1: T): $Couple<(T)>
+public "swap"(): $Couple<(T)>
 public "get"(arg0: boolean): T
 public "replace"(arg0: $Function$$Type<(T), (T)>): void
 public "iterator"(): $Iterator<(T)>
@@ -26,24 +29,21 @@ public "stream"(): $Stream<(T)>
 public "set"(arg0: boolean, arg1: T): void
 public "forEach"(arg0: $Consumer$$Type<(T)>): void
 public "copy"(): $Pair<(any), (any)>
-public static "create"<T>(arg0: T, arg1: T): $Couple<(T)>
-public static "create"<T>(arg0: $Supplier$$Type<(T)>): $Couple<(T)>
-public "swap"(): $Pair<(any), (any)>
-public static "streamCodec"<B, T>(arg0: $StreamCodec$$Type<(B), (T)>): $StreamCodec<(B), ($Couple<(T)>)>
-public "both"(arg0: $Predicate$$Type<(T)>): boolean
-public static "codec"<T>(arg0: $Codec$$Type<(T)>): $Codec<($Couple<(T)>)>
 public "either"(arg0: $Predicate$$Type<(T)>): boolean
+public static "codec"<T>(arg0: $Codec$$Type<(T)>): $Codec<($Couple<(T)>)>
+public "both"(arg0: $Predicate$$Type<(T)>): boolean
+public static "streamCodec"<B, T>(arg0: $StreamCodec$$Type<(B), (T)>): $StreamCodec<(B), ($Couple<(T)>)>
+public "serializeEach"(arg0: $Function$$Type<(T), ($CompoundTag$$Type)>): $ListTag
+public "mapWithContext"<S>(arg0: $BiFunction$$Type<(T), (boolean), (S)>): $Couple<(S)>
+public "mapWithParams"<S, R>(arg0: $BiFunction$$Type<(T), (R), (S)>, arg1: $Couple$$Type<(R)>): $Couple<(S)>
+public "mapNotNull"<S>(arg0: $Function$$Type<(T), (S)>): $Couple<(S)>
+public "forEachWithContext"(arg0: $BiConsumer$$Type<(T), (boolean)>): void
 public static "createWithContext"<T>(arg0: $Function$$Type<(boolean), (T)>): $Couple<(T)>
-public static "deserializeEach"<S>(arg0: $ListTag$$Type, arg1: $Function$$Type<($CompoundTag), (S)>): $Couple<(S)>
 public "mapNotNullWithParam"<S, R>(arg0: $BiFunction$$Type<(T), (R), (S)>, arg1: R): $Couple<(S)>
 public "replaceWithContext"(arg0: $BiFunction$$Type<(T), (boolean), (T)>): void
 public "replaceWithParams"<S>(arg0: $BiFunction$$Type<(T), (S), (T)>, arg1: $Couple$$Type<(S)>): void
 public "forEachWithParams"<S>(arg0: $BiConsumer$$Type<(T), (S)>, arg1: $Couple$$Type<(S)>): void
-public "forEachWithContext"(arg0: $BiConsumer$$Type<(T), (boolean)>): void
-public "mapWithContext"<S>(arg0: $BiFunction$$Type<(T), (boolean), (S)>): $Couple<(S)>
-public "mapWithParams"<S, R>(arg0: $BiFunction$$Type<(T), (R), (S)>, arg1: $Couple$$Type<(R)>): $Couple<(S)>
-public "serializeEach"(arg0: $Function$$Type<(T), ($CompoundTag$$Type)>): $ListTag
-public "mapNotNull"<S>(arg0: $Function$$Type<(T), (S)>): $Couple<(S)>
+public static "deserializeEach"<S>(arg0: $ListTag$$Type, arg1: $Function$$Type<($CompoundTag), (S)>): $Couple<(S)>
 public "spliterator"(): $Spliterator<(T)>
 [Symbol.iterator](): IterableIterator<T>;
 }
@@ -103,17 +103,17 @@ static "STREAM_CODEC": $StreamCodec<($ByteBuf), ($BlockFace)>
 
 constructor(arg0: $BlockPos$$Type, arg1: $Direction$$Type)
 
+public "getPos"(): $BlockPos
 public "getFace"(): $Direction
 public "serializeNBT"(): $CompoundTag
 public "getOpposite"(): $BlockFace
 public "isEquivalent"(arg0: $BlockFace$$Type): boolean
-public "getPos"(): $BlockPos
+public static "fromNBT"(arg0: $CompoundTag$$Type): $BlockFace
 public "getConnectedPos"(): $BlockPos
 public "getOppositeFace"(): $Direction
-public static "fromNBT"(arg0: $CompoundTag$$Type): $BlockFace
+get "pos"(): $BlockPos
 get "face"(): $Direction
 get "opposite"(): $BlockFace
-get "pos"(): $BlockPos
 get "connectedPos"(): $BlockPos
 get "oppositeFace"(): $Direction
 }
@@ -136,22 +136,22 @@ import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 export class $Pair<F, S> {
 
 
+public "getFirst"(): F
+public "getSecond"(): S
+public "swap"(): $Pair<(S), (F)>
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public static "of"<F, S>(arg0: F, arg1: S): $Pair<(F), (S)>
 public "copy"(): $Pair<(F), (S)>
-public "getFirst"(): F
-public "swap"(): $Pair<(S), (F)>
-public "getSecond"(): S
-public static "streamCodec"<B, F, S>(arg0: $StreamCodec$$Type<(B), (F)>, arg1: $StreamCodec$$Type<(B), (S)>): $StreamCodec<(B), ($Pair<(F), (S)>)>
 public static "codec"<F, S>(arg0: $Codec$$Type<(F)>, arg1: $Codec$$Type<(S)>): $Codec<($Pair<(F), (S)>)>
-public "setFirst"(arg0: F): void
+public static "streamCodec"<B, F, S>(arg0: $StreamCodec$$Type<(B), (F)>, arg1: $StreamCodec$$Type<(B), (S)>): $StreamCodec<(B), ($Pair<(F), (S)>)>
 public "setSecond"(arg0: S): void
+public "setFirst"(arg0: F): void
 get "first"(): F
 get "second"(): S
-set "first"(value: F)
 set "second"(value: S)
+set "first"(value: F)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -238,13 +238,13 @@ static "EMPTY": $RenderElement
 constructor()
 constructor(arg0: $FadableScreenElement$$Type, arg1: $FadableScreenElement$$Type)
 
+public "renderElement"(arg0: $GuiGraphics$$Type): void
 public "withElementRenderer"<T extends $DelegatedStencilElement>(arg0: $FadableScreenElement$$Type): T
 public "withStencilRenderer"<T extends $DelegatedStencilElement>(arg0: $FadableScreenElement$$Type): T
-public "renderElement"(arg0: $GuiGraphics$$Type): void
 public "renderStencil"(arg0: $GuiGraphics$$Type): void
 public "transform"(arg0: $GuiGraphics$$Type): void
-public "cleanUp"(arg0: $GuiGraphics$$Type): void
 public "render"(arg0: $GuiGraphics$$Type): void
+public "cleanUp"(arg0: $GuiGraphics$$Type): void
 public "prepareStencil"(arg0: $GuiGraphics$$Type): void
 public "prepareElement"(arg0: $GuiGraphics$$Type): void
 public static "of"(arg0: $ScreenElement$$Type): $RenderElement
@@ -300,7 +300,7 @@ import {$ModConfigSpec$BooleanValue, $ModConfigSpec$BooleanValue$$Type} from "ne
 
 export class $ConfigBase$ConfigBool extends $ConfigBase$CValue<(boolean), ($ModConfigSpec$BooleanValue)> {
 
-constructor(arg0: $ConfigBase$$Type, arg1: string, arg2: boolean, ...arg3: (string)[])
+constructor(arg0: $ConfigBase$$Type, arg1: StringJS, arg2: boolean, ...arg3: (StringJS)[])
 
 }
 /**
@@ -323,7 +323,7 @@ import {$ModConfigSpec$Builder, $ModConfigSpec$Builder$$Type} from "net.neoforge
 
 export class $ConfigBase$ConfigGroup extends $ConfigBase$CValue<(boolean), ($ModConfigSpec$BooleanValue)> {
 
-constructor(arg0: $ConfigBase$$Type, arg1: string, arg2: integer, ...arg3: (string)[])
+constructor(arg0: $ConfigBase$$Type, arg1: StringJS, arg2: integer, ...arg3: (StringJS)[])
 
 public "register"(arg0: $ModConfigSpec$Builder$$Type): void
 }
@@ -365,15 +365,15 @@ export interface $ClientboundPacketPayload extends $BasePacketPayload {
  "handleInternal"(arg0: $Player$$Type): void
  "type"(): $CustomPacketPayload$Type<($CustomPacketPayload)>
  "getTypeProvider"(): $BasePacketPayload$PacketTypeProvider
- "toVanillaServerbound"(): $ServerboundCustomPayloadPacket
  "toVanillaClientbound"(): $ClientboundCustomPayloadPacket
+ "toVanillaServerbound"(): $ServerboundCustomPayloadPacket
 get "typeProvider"(): $BasePacketPayload$PacketTypeProvider
 }
 
 export namespace $ClientboundPacketPayload {
-function createType<T extends $CustomPacketPayload>(arg0: string): $CustomPacketPayload$Type<(T)>
 function codec<B extends $FriendlyByteBuf>(arg0: $CustomPacketPayload$FallbackProvider$$Type<(B)>, arg1: $List$$Type<($CustomPacketPayload$TypeAndCodec$$Type<(B), (any)>)>, arg2: $ConnectionProtocol$$Type, arg3: $PacketFlow$$Type): $StreamCodec<(B), ($CustomPacketPayload)>
 function codec<B extends $ByteBuf, T extends $CustomPacketPayload>(arg0: $StreamMemberEncoder$$Type<(B), (T)>, arg1: $StreamDecoder$$Type<(B), (T)>): $StreamCodec<(B), (T)>
+function createType<T extends $CustomPacketPayload>(arg0: StringJS): $CustomPacketPayload$Type<(T)>
 const probejs$$marker: never
 }
 export class $ClientboundPacketPayload$$Static implements $ClientboundPacketPayload {
@@ -383,11 +383,11 @@ export class $ClientboundPacketPayload$$Static implements $ClientboundPacketPayl
  "handleInternal"(arg0: $Player$$Type): void
  "type"(): $CustomPacketPayload$Type<($CustomPacketPayload)>
  "getTypeProvider"(): $BasePacketPayload$PacketTypeProvider
-static "createType"<T extends $CustomPacketPayload>(arg0: string): $CustomPacketPayload$Type<(T)>
 static "codec"<B extends $FriendlyByteBuf>(arg0: $CustomPacketPayload$FallbackProvider$$Type<(B)>, arg1: $List$$Type<($CustomPacketPayload$TypeAndCodec$$Type<(B), (any)>)>, arg2: $ConnectionProtocol$$Type, arg3: $PacketFlow$$Type): $StreamCodec<(B), ($CustomPacketPayload)>
 static "codec"<B extends $ByteBuf, T extends $CustomPacketPayload>(arg0: $StreamMemberEncoder$$Type<(B), (T)>, arg1: $StreamDecoder$$Type<(B), (T)>): $StreamCodec<(B), (T)>
- "toVanillaServerbound"(): $ServerboundCustomPayloadPacket
+static "createType"<T extends $CustomPacketPayload>(arg0: StringJS): $CustomPacketPayload$Type<(T)>
  "toVanillaClientbound"(): $ClientboundCustomPayloadPacket
+ "toVanillaServerbound"(): $ServerboundCustomPayloadPacket
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -410,13 +410,13 @@ export class $VoxelShaper {
 
 constructor()
 
-public "get"(arg0: $Direction$Axis$$Type): $VoxelShape
 public "get"(arg0: $Direction$$Type): $VoxelShape
+public "get"(arg0: $Direction$Axis$$Type): $VoxelShape
+public static "forAxis"(arg0: $VoxelShape$$Type, arg1: $Direction$Axis$$Type): $VoxelShaper
+public "withShape"(arg0: $VoxelShape$$Type, arg1: $Direction$$Type): $VoxelShaper
+public static "forHorizontal"(arg0: $VoxelShape$$Type, arg1: $Direction$$Type): $VoxelShaper
 public static "forDirectional"(arg0: $VoxelShape$$Type, arg1: $Direction$$Type): $VoxelShaper
 public static "axisAsFace"(arg0: $Direction$Axis$$Type): $Direction
-public static "forAxis"(arg0: $VoxelShape$$Type, arg1: $Direction$Axis$$Type): $VoxelShaper
-public static "forHorizontal"(arg0: $VoxelShape$$Type, arg1: $Direction$$Type): $VoxelShaper
-public "withShape"(arg0: $VoxelShape$$Type, arg1: $Direction$$Type): $VoxelShaper
 public static "forHorizontalAxis"(arg0: $VoxelShape$$Type, arg1: $Direction$Axis$$Type): $VoxelShaper
 public "withVerticalShapes"(arg0: $VoxelShape$$Type): $VoxelShaper
 }
@@ -441,15 +441,15 @@ static readonly "FALSE": $TriState
 static readonly "DEFAULT": $TriState
 
 
+public "isDefault"(): boolean
 public "isFalse"(): boolean
 public static "values"(): ($TriState)[]
-public static "valueOf"(arg0: string): $TriState
+public static "valueOf"(arg0: StringJS): $TriState
 public "getValue"(): boolean
-public "isDefault"(): boolean
 public "isTrue"(): boolean
+get "default"(): boolean
 get "false"(): boolean
 get "value"(): boolean
-get "default"(): boolean
 get "true"(): boolean
 }
 /**
@@ -503,11 +503,11 @@ export class $ConfigBase {
 
 constructor()
 
-public "getName"(): string
+public "getName"(): StringJS
 public "onLoad"(): void
-public "onReload"(): void
 public "registerAll"(arg0: $ModConfigSpec$Builder$$Type): void
-get "name"(): string
+public "onReload"(): void
+get "name"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -539,19 +539,19 @@ static readonly "UP": $Pointing
 
 
 public static "values"(): ($Pointing)[]
-public static "valueOf"(arg0: string): $Pointing
-public "getSerializedName"(): string
-public "getCombinedDirection"(arg0: $Direction$$Type): $Direction
+public static "valueOf"(arg0: StringJS): $Pointing
 public "getXRotation"(): integer
+public "getCombinedDirection"(arg0: $Direction$$Type): $Direction
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "serializedName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
 get "xRotation"(): integer
-get "remappedEnumConstantName"(): string
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -576,29 +576,29 @@ import {$ChatFormatting, $ChatFormatting$$Type} from "net.minecraft.ChatFormatti
 export class $LangBuilder {
 static readonly "DEFAULT_SPACE_WIDTH": float
 
-constructor(arg0: string)
+constructor(arg0: StringJS)
 
+public "string"(): StringJS
+public "text"(arg0: integer, arg1: StringJS): $LangBuilder
+public "text"(arg0: StringJS): $LangBuilder
+public "text"(arg0: $ChatFormatting$$Type, arg1: StringJS): $LangBuilder
+public "color"(arg0: $Color$$Type): $LangBuilder
+public "color"(arg0: integer): $LangBuilder
+public "addTo"(arg0: $List$$Type<($MutableComponent$$Type)>): void
+public "space"(): $LangBuilder
+public "add"(arg0: $Component$$Type): $LangBuilder
 public "add"(arg0: $LangBuilder$$Type): $LangBuilder
 public "add"(arg0: $MutableComponent$$Type): $LangBuilder
-public "add"(arg0: $Component$$Type): $LangBuilder
 public "component"(): $MutableComponent
 public "newLine"(): $LangBuilder
-public "color"(arg0: integer): $LangBuilder
-public "color"(arg0: $Color$$Type): $LangBuilder
-public "string"(): string
-public "text"(arg0: $ChatFormatting$$Type, arg1: string): $LangBuilder
-public "text"(arg0: string): $LangBuilder
-public "text"(arg0: integer, arg1: string): $LangBuilder
-public "space"(): $LangBuilder
+public "json"(): StringJS
 public "style"(arg0: $ChatFormatting$$Type): $LangBuilder
-public "addTo"(arg0: $List$$Type<($MutableComponent$$Type)>): void
-public "translate"(arg0: string, ...arg1: (any)[]): $LangBuilder
-public "sendChat"(arg0: $Player$$Type): void
 public "sendStatus"(arg0: $Player$$Type): void
-public "json"(): string
-public static "resolveBuilders"(arg0: (any)[]): (any)[]
-public "forGoggles"(arg0: $List$$Type<($MutableComponent$$Type)>): void
+public "sendChat"(arg0: $Player$$Type): void
+public "translate"(arg0: StringJS, ...arg1: (any)[]): $LangBuilder
 public "forGoggles"(arg0: $List$$Type<($MutableComponent$$Type)>, arg1: integer): void
+public "forGoggles"(arg0: $List$$Type<($MutableComponent$$Type)>): void
+public static "resolveBuilders"(arg0: (any)[]): (any)[]
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -633,17 +633,17 @@ export interface $BasePacketPayload extends $CustomPacketPayload {
 
  "type"(): $CustomPacketPayload$Type<($CustomPacketPayload)>
  "getTypeProvider"(): $BasePacketPayload$PacketTypeProvider
- "toVanillaServerbound"(): $ServerboundCustomPayloadPacket
  "toVanillaClientbound"(): $ClientboundCustomPayloadPacket
+ "toVanillaServerbound"(): $ServerboundCustomPayloadPacket
 
 (): $BasePacketPayload$PacketTypeProvider$$Type
 get "typeProvider"(): $BasePacketPayload$PacketTypeProvider
 }
 
 export namespace $BasePacketPayload {
-function createType<T extends $CustomPacketPayload>(arg0: string): $CustomPacketPayload$Type<(T)>
 function codec<B extends $FriendlyByteBuf>(arg0: $CustomPacketPayload$FallbackProvider$$Type<(B)>, arg1: $List$$Type<($CustomPacketPayload$TypeAndCodec$$Type<(B), (any)>)>, arg2: $ConnectionProtocol$$Type, arg3: $PacketFlow$$Type): $StreamCodec<(B), ($CustomPacketPayload)>
 function codec<B extends $ByteBuf, T extends $CustomPacketPayload>(arg0: $StreamMemberEncoder$$Type<(B), (T)>, arg1: $StreamDecoder$$Type<(B), (T)>): $StreamCodec<(B), (T)>
+function createType<T extends $CustomPacketPayload>(arg0: StringJS): $CustomPacketPayload$Type<(T)>
 const probejs$$marker: never
 }
 export class $BasePacketPayload$$Static implements $BasePacketPayload {
@@ -651,11 +651,11 @@ export class $BasePacketPayload$$Static implements $BasePacketPayload {
 
  "type"(): $CustomPacketPayload$Type<($CustomPacketPayload)>
  "getTypeProvider"(): $BasePacketPayload$PacketTypeProvider
-static "createType"<T extends $CustomPacketPayload>(arg0: string): $CustomPacketPayload$Type<(T)>
 static "codec"<B extends $FriendlyByteBuf>(arg0: $CustomPacketPayload$FallbackProvider$$Type<(B)>, arg1: $List$$Type<($CustomPacketPayload$TypeAndCodec$$Type<(B), (any)>)>, arg2: $ConnectionProtocol$$Type, arg3: $PacketFlow$$Type): $StreamCodec<(B), ($CustomPacketPayload)>
 static "codec"<B extends $ByteBuf, T extends $CustomPacketPayload>(arg0: $StreamMemberEncoder$$Type<(B), (T)>, arg1: $StreamDecoder$$Type<(B), (T)>): $StreamCodec<(B), (T)>
- "toVanillaServerbound"(): $ServerboundCustomPayloadPacket
+static "createType"<T extends $CustomPacketPayload>(arg0: StringJS): $CustomPacketPayload$Type<(T)>
  "toVanillaClientbound"(): $ClientboundCustomPayloadPacket
+ "toVanillaServerbound"(): $ServerboundCustomPayloadPacket
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -697,8 +697,8 @@ import {$TickRateManager, $TickRateManager$$Type} from "net.minecraft.world.Tick
 import {$MapItemSavedData, $MapItemSavedData$$Type} from "net.minecraft.world.level.saveddata.maps.MapItemSavedData"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$ArrayList, $ArrayList$$Type} from "java.util.ArrayList"
-import {$TickingBlockEntity, $TickingBlockEntity$$Type} from "net.minecraft.world.level.block.entity.TickingBlockEntity"
 import {$GameEvent$Context, $GameEvent$Context$$Type} from "net.minecraft.world.level.gameevent.GameEvent$Context"
+import {$TickingBlockEntity, $TickingBlockEntity$$Type} from "net.minecraft.world.level.block.entity.TickingBlockEntity"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$RecipeManager, $RecipeManager$$Type} from "net.minecraft.world.item.crafting.RecipeManager"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
@@ -718,7 +718,7 @@ export class $WrappedLevel extends $Level {
  "restoringBlockSnapshots": boolean
  "oThunderLevel": float
 static readonly "LONG_PARTICLE_CLIP_RANGE": integer
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 readonly "thread": $Thread
  "thunderLevel": float
 readonly "random": $RandomSource
@@ -740,43 +740,38 @@ readonly "blockEntityTickers": $List<($TickingBlockEntity)>
 
 constructor(arg0: $Level$$Type)
 
-public "getEntity"(arg0: integer): $Entity
 public "getLevel"(): $Level
-public "updateNeighbourForOutputSignal"(arg0: $BlockPos$$Type, arg1: $Block$$Type): void
-public "getMaxLocalRawBrightness"(arg0: $BlockPos$$Type): integer
-public "getSectionIndexFromSectionY"(arg0: integer): integer
-public "getSectionYFromSectionIndex"(arg0: integer): integer
-public "getBlockState"(arg0: $BlockPos$$Type): $BlockState
-public "getBlockEntity"(arg0: $BlockPos$$Type): $BlockEntity
-public "registryAccess"(): $RegistryAccess
-public "getChunkSource"(): $ChunkSource
-public "gameEvent"(arg0: $Holder$$Type<($GameEvent)>, arg1: $Vec3$$Type, arg2: $GameEvent$Context$$Type): void
-public "gameEvent"(arg0: $Entity$$Type, arg1: $Holder$$Type<($GameEvent)>, arg2: $Vec3$$Type): void
-public "getScoreboard"(): $Scoreboard
+public "getEntity"(arg0: integer): $Entity
+public "levelEvent"(arg0: $Player$$Type, arg1: integer, arg2: $BlockPos$$Type, arg3: integer): void
 public "playSound"(arg0: $Player$$Type, arg1: double, arg2: double, arg3: double, arg4: $SoundEvent$$Type, arg5: $SoundSource$$Type, arg6: float, arg7: float): void
 public "playSound"(arg0: $Player$$Type, arg1: $Entity$$Type, arg2: $SoundEvent$$Type, arg3: $SoundSource$$Type, arg4: float, arg5: float): void
 public "addFreshEntity"(arg0: $Entity$$Type): boolean
-public "levelEvent"(arg0: $Player$$Type, arg1: integer, arg2: $BlockPos$$Type, arg3: integer): void
+public "getBlockTicks"(): $LevelTickAccess<($Block)>
+public "getFluidTicks"(): $LevelTickAccess<($Fluid)>
+public "getShade"(arg0: $Direction$$Type, arg1: boolean): float
+public "getMaxSection"(): integer
+public "getMinSection"(): integer
 public "getLightEngine"(): $LevelLightEngine
 public "getMapData"(arg0: $MapId$$Type): $MapItemSavedData
 public "setMapData"(arg0: $MapId$$Type, arg1: $MapItemSavedData$$Type): void
 public "getFreeMapId"(): $MapId
 public "potionBrewing"(): $PotionBrewing
 public "players"(): $List<($Player)>
-public "getBlockTicks"(): $LevelTickAccess<($Block)>
-public "getFluidTicks"(): $LevelTickAccess<($Fluid)>
-public "getShade"(arg0: $Direction$$Type, arg1: boolean): float
-public "getMaxSection"(): integer
-public "getMinSection"(): integer
+public "getChunkSource"(): $ChunkSource
+public "getBlockState"(arg0: $BlockPos$$Type): $BlockState
+public "getBlockEntity"(arg0: $BlockPos$$Type): $BlockEntity
+public "registryAccess"(): $RegistryAccess
+public "gameEvent"(arg0: $Holder$$Type<($GameEvent)>, arg1: $Vec3$$Type, arg2: $GameEvent$Context$$Type): void
+public "gameEvent"(arg0: $Entity$$Type, arg1: $Holder$$Type<($GameEvent)>, arg2: $Vec3$$Type): void
+public "getScoreboard"(): $Scoreboard
 public "setBlock"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type, arg2: integer): boolean
-public "playSeededSound"(arg0: $Player$$Type, arg1: $Entity$$Type, arg2: $Holder$$Type<($SoundEvent)>, arg3: $SoundSource$$Type, arg4: float, arg5: float, arg6: long): void
-public "playSeededSound"(arg0: $Player$$Type, arg1: double, arg2: double, arg3: double, arg4: $Holder$$Type<($SoundEvent)>, arg5: $SoundSource$$Type, arg6: float, arg7: float, arg8: long): void
-public "getMaxBuildHeight"(): integer
+public "setChunkSource"(arg0: $ChunkSource$$Type): void
 public "getDayTimeFraction"(): float
-public "isOutsideBuildHeight"(arg0: $BlockPos$$Type): boolean
+public "getMaxBuildHeight"(): integer
 public "isOutsideBuildHeight"(arg0: integer): boolean
+public "isOutsideBuildHeight"(arg0: $BlockPos$$Type): boolean
 public "sendBlockUpdated"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type, arg2: $BlockState$$Type, arg3: integer): void
-public "gatherChunkSourceStats"(): string
+public "gatherChunkSourceStats"(): StringJS
 public "destroyBlockProgress"(arg0: integer, arg1: $BlockPos$$Type, arg2: integer): void
 public "isStateAtPosition"(arg0: $BlockPos$$Type, arg1: $Predicate$$Type<($BlockState)>): boolean
 public "getRecipeManager"(): $RecipeManager
@@ -788,31 +783,36 @@ public "getUncachedNoiseBiome"(arg0: integer, arg1: integer, arg2: integer): $Ho
 public "getSectionsCount"(): integer
 public "enabledFeatures"(): $FeatureFlagSet
 public "tickRateManager"(): $TickRateManager
-public "setChunkSource"(arg0: $ChunkSource$$Type): void
-public "getHeight"(): integer
+public "playSeededSound"(arg0: $Player$$Type, arg1: $Entity$$Type, arg2: $Holder$$Type<($SoundEvent)>, arg3: $SoundSource$$Type, arg4: float, arg5: float, arg6: long): void
+public "playSeededSound"(arg0: $Player$$Type, arg1: double, arg2: double, arg3: double, arg4: $Holder$$Type<($SoundEvent)>, arg5: $SoundSource$$Type, arg6: float, arg7: float, arg8: long): void
+public "getMaxLocalRawBrightness"(arg0: $BlockPos$$Type): integer
+public "getSectionIndexFromSectionY"(arg0: integer): integer
+public "getSectionYFromSectionIndex"(arg0: integer): integer
+public "updateNeighbourForOutputSignal"(arg0: $BlockPos$$Type, arg1: $Block$$Type): void
 public static "create"(arg0: integer, arg1: integer): $LevelHeightAccessor
+public "getHeight"(): integer
 public "getMinBuildHeight"(): integer
 public static "getAllLoadedEntities"(level: $Level$$Type): $Iterable<($Entity)>
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "traverseBlocks"<T, C>(arg0: $Vec3$$Type, arg1: $Vec3$$Type, arg2: C, arg3: $BiFunction$$Type<(C), ($BlockPos), (T)>, arg4: $Function$$Type<(C), (T)>): T
 get "level"(): $Level
-get "chunkSource"(): $ChunkSource
-get "scoreboard"(): $Scoreboard
-get "lightEngine"(): $LevelLightEngine
-get "freeMapId"(): $MapId
 get "blockTicks"(): $LevelTickAccess<($Block)>
 get "fluidTicks"(): $LevelTickAccess<($Fluid)>
 get "maxSection"(): integer
 get "minSection"(): integer
-get "maxBuildHeight"(): integer
+get "lightEngine"(): $LevelLightEngine
+get "freeMapId"(): $MapId
+get "chunkSource"(): $ChunkSource
+get "scoreboard"(): $Scoreboard
+set "chunkSource"(value: $ChunkSource$$Type)
 get "dayTimeFraction"(): float
+get "maxBuildHeight"(): integer
 get "recipeManager"(): $RecipeManager
 set "dayTimeFraction"(value: float)
 get "dayTimePerTick"(): float
 set "dayTimePerTick"(value: float)
 get "sectionsCount"(): integer
-set "chunkSource"(value: $ChunkSource$$Type)
 get "height"(): integer
 get "minBuildHeight"(): integer
 }
@@ -833,11 +833,12 @@ import {$NarrationElementOutput, $NarrationElementOutput$$Type} from "net.minecr
 import {$PositionedRectangle, $PositionedRectangle$$Type} from "io.wispforest.owo.ui.core.PositionedRectangle"
 import {$List, $List$$Type} from "java.util.List"
 import {$AbstractWidget, $AbstractWidget$$Type} from "net.minecraft.client.gui.components.AbstractWidget"
+import {$Font, $Font$$Type} from "net.minecraft.client.gui.Font"
 import {$Runnable, $Runnable$$Type} from "java.lang.Runnable"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$Component as $Component$0, $Component$$Type as $Component$0$$Type} from "io.wispforest.owo.ui.core.Component"
-import {$TickableGuiEventListener, $TickableGuiEventListener$$Type} from "net.createmod.catnip.gui.TickableGuiEventListener"
 import {$GuiGraphics, $GuiGraphics$$Type} from "net.minecraft.client.gui.GuiGraphics"
+import {$TickableGuiEventListener, $TickableGuiEventListener$$Type} from "net.createmod.catnip.gui.TickableGuiEventListener"
 import {$Color, $Color$$Type} from "net.createmod.catnip.theme.Color"
 import {$BiConsumer, $BiConsumer$$Type} from "java.util.function.BiConsumer"
 import {$Couple, $Couple$$Type} from "net.createmod.catnip.data.Couple"
@@ -861,17 +862,18 @@ static readonly "COLOR_FAIL": $Couple<($Color)>
 
 
 public "tick"(): void
+public "render"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: float): void
 public "setHeight"(arg0: integer): void
 public "setActive"<T extends $AbstractSimiWidget>(arg0: boolean): T
-public "render"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: float): void
-public "updateWidgetNarration"(arg0: $NarrationElementOutput$$Type): void
 public "onClick"(arg0: double, arg1: double): void
 public "getToolTip"(): $List<($Component)>
 public "withCallback"<T extends $AbstractSimiWidget>(arg0: $Runnable$$Type): T
 public "withCallback"<T extends $AbstractSimiWidget>(arg0: $BiConsumer$$Type<(integer), (integer)>): T
+public "updateWidgetNarration"(arg0: $NarrationElementOutput$$Type): void
 public "atZLevel"<T extends $AbstractSimiWidget>(arg0: float): T
 public "runCallback"(arg0: double, arg1: double): void
 public static "bypassCheck"(component: $Component$0$$Type, runnable: $Runnable$$Type): void
+public static "bookshelf$renderScrollingString"(arg0: $GuiGraphics$$Type, arg1: $Font$$Type, arg2: $Component$$Type, arg3: integer, arg4: integer, arg5: integer, arg6: integer, arg7: integer): void
 public static "of"(x: integer, y: integer, size: $Size$$Type): $PositionedRectangle
 public static "of"(x: integer, y: integer, width: integer, height: integer): $PositionedRectangle
 set "height"(value: integer)
@@ -1029,19 +1031,19 @@ export class $SpriteShiftEntry {
 
 constructor()
 
-public "set"(arg0: $ResourceLocation$$Type, arg1: $ResourceLocation$$Type): void
 public "getTarget"(): $TextureAtlasSprite
-public "getOriginalResourceLocation"(): $ResourceLocation
-public "getTargetResourceLocation"(): $ResourceLocation
-public static "getUnInterpolatedU"(arg0: $TextureAtlasSprite$$Type, arg1: float): float
-public static "getUnInterpolatedV"(arg0: $TextureAtlasSprite$$Type, arg1: float): float
-public "getOriginal"(): $TextureAtlasSprite
+public "set"(arg0: $ResourceLocation$$Type, arg1: $ResourceLocation$$Type): void
 public "getTargetU"(arg0: float): float
 public "getTargetV"(arg0: float): float
+public "getOriginal"(): $TextureAtlasSprite
+public static "getUnInterpolatedU"(arg0: $TextureAtlasSprite$$Type, arg1: float): float
+public static "getUnInterpolatedV"(arg0: $TextureAtlasSprite$$Type, arg1: float): float
+public "getOriginalResourceLocation"(): $ResourceLocation
+public "getTargetResourceLocation"(): $ResourceLocation
 get "target"(): $TextureAtlasSprite
+get "original"(): $TextureAtlasSprite
 get "originalResourceLocation"(): $ResourceLocation
 get "targetResourceLocation"(): $ResourceLocation
-get "original"(): $TextureAtlasSprite
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1067,21 +1069,21 @@ import {$ByteBuf, $ByteBuf$$Type} from "io.netty.buffer.ByteBuf"
 export class $IntAttached<V> extends $Pair<(integer), (V)> {
 
 
+public static "comparator"(): $Comparator<($IntAttached<(any)>)>
+public "decrement"(): void
+public "isZero"(): boolean
 public "getValue"(): V
 public "increment"(): void
 public static "read"<T>(arg0: $CompoundTag$$Type, arg1: $Function$$Type<($CompoundTag), (T)>): $IntAttached<(T)>
 public static "with"<V>(arg0: integer, arg1: V): $IntAttached<(V)>
-public static "comparator"(): $Comparator<($IntAttached<(any)>)>
-public "isZero"(): boolean
-public "decrement"(): void
+public static "codec"<T>(arg0: $Codec$$Type<(T)>): $Codec<($IntAttached<(T)>)>
 public "serializeNBT"(arg0: $Function$$Type<(V), ($CompoundTag$$Type)>): $CompoundTag
 public static "streamCodec"<B extends $ByteBuf, T>(arg0: $StreamCodec$$Type<(B), (T)>): $StreamCodec<(B), ($IntAttached<(T)>)>
 public "exceeds"(arg0: integer): boolean
-public static "codec"<T>(arg0: $Codec$$Type<(T)>): $Codec<($IntAttached<(T)>)>
 public static "withZero"<V>(arg0: V): $IntAttached<(V)>
 public "isOrBelowZero"(): boolean
-get "value"(): V
 get "zero"(): boolean
+get "value"(): V
 get "orBelowZero"(): boolean
 }
 /**
@@ -1106,8 +1108,8 @@ export interface $TextureSheetSegment extends $BindableTexture {
  "getHeight"(): integer
  "getStartX"(): integer
  "getStartY"(): integer
- "getLocation"(): $ResourceLocation
  "bind"(): void
+ "getLocation"(): $ResourceLocation
 get "width"(): integer
 get "height"(): integer
 get "startX"(): integer
@@ -1125,8 +1127,8 @@ export class $TextureSheetSegment$$Static implements $TextureSheetSegment {
  "getHeight"(): integer
  "getStartX"(): integer
  "getStartY"(): integer
- "getLocation"(): $ResourceLocation
  "bind"(): void
+ "getLocation"(): $ResourceLocation
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1148,20 +1150,20 @@ import {$GuiGraphics, $GuiGraphics$$Type} from "net.minecraft.client.gui.GuiGrap
 export interface $StencilElement extends $RenderElement {
 
  "transform"(arg0: $GuiGraphics$$Type): void
- "cleanUp"(arg0: $GuiGraphics$$Type): void
  "render"(arg0: $GuiGraphics$$Type): void
+ "cleanUp"(arg0: $GuiGraphics$$Type): void
  "renderElement"(arg0: $GuiGraphics$$Type): void
- "renderStencil"(arg0: $GuiGraphics$$Type): void
  "prepareStencil"(arg0: $GuiGraphics$$Type): void
  "prepareElement"(arg0: $GuiGraphics$$Type): void
+ "renderStencil"(arg0: $GuiGraphics$$Type): void
+ "at"<T extends $RenderElement>(arg0: float, arg1: float, arg2: float): T
+ "at"<T extends $RenderElement>(arg0: float, arg1: float): T
  "getWidth"(): integer
  "getHeight"(): integer
  "getY"(): float
- "at"<T extends $RenderElement>(arg0: float, arg1: float, arg2: float): T
- "at"<T extends $RenderElement>(arg0: float, arg1: float): T
- "render"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: float): void
  "getX"(): float
  "getZ"(): float
+ "render"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: float): void
  "withBounds"<T extends $RenderElement>(arg0: integer, arg1: integer): T
  "withAlpha"<T extends $RenderElement>(arg0: float): T
  "render"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer): void
@@ -1180,21 +1182,21 @@ export class $StencilElement$$Static implements $StencilElement {
 
 
  "transform"(arg0: $GuiGraphics$$Type): void
- "cleanUp"(arg0: $GuiGraphics$$Type): void
  "render"(arg0: $GuiGraphics$$Type): void
+ "cleanUp"(arg0: $GuiGraphics$$Type): void
  "renderElement"(arg0: $GuiGraphics$$Type): void
- "renderStencil"(arg0: $GuiGraphics$$Type): void
  "prepareStencil"(arg0: $GuiGraphics$$Type): void
  "prepareElement"(arg0: $GuiGraphics$$Type): void
- "getWidth"(): integer
- "getHeight"(): integer
- "getY"(): float
-static "of"(arg0: $ScreenElement$$Type): $RenderElement
+ "renderStencil"(arg0: $GuiGraphics$$Type): void
  "at"<T extends $RenderElement>(arg0: float, arg1: float, arg2: float): T
  "at"<T extends $RenderElement>(arg0: float, arg1: float): T
- "render"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: float): void
+ "getWidth"(): integer
+ "getHeight"(): integer
+static "of"(arg0: $ScreenElement$$Type): $RenderElement
+ "getY"(): float
  "getX"(): float
  "getZ"(): float
+ "render"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: float): void
  "withBounds"<T extends $RenderElement>(arg0: integer, arg1: integer): T
  "withAlpha"<T extends $RenderElement>(arg0: float): T
  "render"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer): void
@@ -1218,7 +1220,7 @@ import {$ModConfigSpec$IntValue, $ModConfigSpec$IntValue$$Type} from "net.neofor
 
 export class $ConfigBase$ConfigInt extends $ConfigBase$CValue<(integer), ($ModConfigSpec$IntValue)> {
 
-constructor(arg0: $ConfigBase$$Type, arg1: string, arg2: integer, arg3: integer, arg4: integer, ...arg5: (string)[])
+constructor(arg0: $ConfigBase$$Type, arg1: StringJS, arg2: integer, arg3: integer, arg4: integer, ...arg5: (StringJS)[])
 
 }
 /**
@@ -1242,28 +1244,28 @@ export class $LerpedFloat {
 
 constructor(arg0: $LerpedFloat$Interpolator$$Type)
 
-public "getValue"(): float
 public "getValue"(arg0: float): float
+public "getValue"(): float
 public "setValue"(arg0: double): void
-public "disableSmartAngleChasing"(): $LerpedFloat
 public static "linear"(): $LerpedFloat
 public "chase"(arg0: double, arg1: double, arg2: $LerpedFloat$Chaser$$Type): $LerpedFloat
-public "setValueNoUpdate"(arg0: double): void
-public "updateChaseSpeed"(arg0: double): boolean
-public "updateChaseTarget"(arg0: float): void
-public "forceNextSync"(): void
+public "settled"(): boolean
 public "chaseTimed"(arg0: double, arg1: integer): $LerpedFloat
+public "forceNextSync"(): void
+public "readNBT"(arg0: $CompoundTag$$Type, arg1: boolean): void
 public static "angular"(): $LerpedFloat
 public "startWithValue"(arg0: double): $LerpedFloat
 public "tickChaser"(): void
-public "settled"(): boolean
 public "getChaseTarget"(): float
-public "readNBT"(arg0: $CompoundTag$$Type, arg1: boolean): void
 public "writeNBT"(): $CompoundTag
+public "updateChaseTarget"(arg0: float): void
+public "setValueNoUpdate"(arg0: double): void
+public "updateChaseSpeed"(arg0: double): boolean
+public "disableSmartAngleChasing"(): $LerpedFloat
 get "value"(): float
 set "value"(value: double)
-set "valueNoUpdate"(value: double)
 get "chaseTarget"(): float
+set "valueNoUpdate"(value: double)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1381,14 +1383,14 @@ import {$ModConfigSpec$Builder, $ModConfigSpec$Builder$$Type} from "net.neoforge
 
 export class $ConfigBase$CValue<V, T extends $ModConfigSpec$ConfigValue<(V)>> {
 
-constructor(arg0: $ConfigBase$$Type, arg1: string, arg2: $ConfigBase$IValueProvider$$Type<(V), (T)>, ...arg3: (string)[])
+constructor(arg0: $ConfigBase$$Type, arg1: StringJS, arg2: $ConfigBase$IValueProvider$$Type<(V), (T)>, ...arg3: (StringJS)[])
 
-public "getName"(): string
+public "getName"(): StringJS
 public "get"(): V
 public "register"(arg0: $ModConfigSpec$Builder$$Type): void
 public "set"(arg0: V): void
-public "addComments"(arg0: $ModConfigSpec$Builder$$Type, ...arg1: (string)[]): void
-get "name"(): string
+public "addComments"(arg0: $ModConfigSpec$Builder$$Type, ...arg1: (StringJS)[]): void
+get "name"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1442,13 +1444,13 @@ export interface $RenderTypeAccessor {
 }
 
 export namespace $RenderTypeAccessor {
-function catnip$create(arg0: string, arg1: $VertexFormat$$Type, arg2: $VertexFormat$Mode$$Type, arg3: integer, arg4: boolean, arg5: boolean, arg6: $RenderType$CompositeState$$Type): $RenderType$CompositeRenderType
+function catnip$create(arg0: StringJS, arg1: $VertexFormat$$Type, arg2: $VertexFormat$Mode$$Type, arg3: integer, arg4: boolean, arg5: boolean, arg6: $RenderType$CompositeState$$Type): $RenderType$CompositeRenderType
 const probejs$$marker: never
 }
 export class $RenderTypeAccessor$$Static implements $RenderTypeAccessor {
 
 
-static "catnip$create"(arg0: string, arg1: $VertexFormat$$Type, arg2: $VertexFormat$Mode$$Type, arg3: integer, arg4: boolean, arg5: boolean, arg6: $RenderType$CompositeState$$Type): $RenderType$CompositeRenderType
+static "catnip$create"(arg0: StringJS, arg1: $VertexFormat$$Type, arg2: $VertexFormat$Mode$$Type, arg3: integer, arg4: boolean, arg5: boolean, arg6: $RenderType$CompositeState$$Type): $RenderType$CompositeRenderType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1499,11 +1501,11 @@ import {$ModConfigSpec$Builder, $ModConfigSpec$Builder$$Type} from "net.neoforge
 
 export interface $ConfigBase$IValueProvider<V, T extends $ModConfigSpec$ConfigValue<(V)>> extends $Function<($ModConfigSpec$Builder), (T)> {
 
- "apply"(arg0: $ModConfigSpec$Builder$$Type): T
- "compose"<V>(arg0: $Function$$Type<(V), ($ModConfigSpec$Builder$$Type)>): $Function<(V), (T)>
- "andThen"<V>(arg0: $Function$$Type<(T), (V)>): $Function<($ModConfigSpec$Builder), (V)>
+ "compose"<V>(arg0: $Function$$Type<(V), ($ModConfigSpec$Builder$$Type)>): $Function<(V), ($ModConfigSpec$Builder)>
+ "andThen"<V>(arg0: $Function$$Type<($ModConfigSpec$Builder), (V)>): $Function<($ModConfigSpec$Builder), (V)>
+ "apply"(arg0: $ModConfigSpec$Builder$$Type): $ModConfigSpec$Builder
 
-(arg0: $ModConfigSpec$Builder): T
+(arg0: $ModConfigSpec$Builder): $ModConfigSpec$Builder$$Type
 }
 
 export namespace $ConfigBase$IValueProvider {
@@ -1513,16 +1515,16 @@ const probejs$$marker: never
 export class $ConfigBase$IValueProvider$$Static<V, T extends $ModConfigSpec$ConfigValue<(V)>> implements $ConfigBase$IValueProvider {
 
 
- "apply"(arg0: $ModConfigSpec$Builder$$Type): T
+ "compose"<V>(arg0: $Function$$Type<(V), ($ModConfigSpec$Builder$$Type)>): $Function<(V), ($ModConfigSpec$Builder)>
+ "andThen"<V>(arg0: $Function$$Type<($ModConfigSpec$Builder), (V)>): $Function<($ModConfigSpec$Builder), (V)>
+ "apply"(arg0: $ModConfigSpec$Builder$$Type): $ModConfigSpec$Builder
 static "identity"<T>(): $Function<($ModConfigSpec$Builder), ($ModConfigSpec$Builder)>
- "compose"<V>(arg0: $Function$$Type<(V), ($ModConfigSpec$Builder$$Type)>): $Function<(V), (T)>
- "andThen"<V>(arg0: $Function$$Type<(T), (V)>): $Function<($ModConfigSpec$Builder), (V)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ConfigBase$IValueProvider$$Type<V, T> = ((arg0: $ModConfigSpec$Builder) => T);
+export type $ConfigBase$IValueProvider$$Type<V, T> = ((arg0: $ModConfigSpec$Builder) => $ModConfigSpec$Builder$$Type);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1537,15 +1539,15 @@ import {$FadableScreenElement, $FadableScreenElement$$Type} from "net.createmod.
 
 export interface $RenderElement extends $FadableScreenElement {
 
+ "at"<T extends $RenderElement>(arg0: float, arg1: float, arg2: float): T
+ "at"<T extends $RenderElement>(arg0: float, arg1: float): T
  "getWidth"(): integer
  "getHeight"(): integer
  "getY"(): float
- "at"<T extends $RenderElement>(arg0: float, arg1: float, arg2: float): T
- "at"<T extends $RenderElement>(arg0: float, arg1: float): T
- "render"(arg0: $GuiGraphics$$Type): void
- "render"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: float): void
  "getX"(): float
  "getZ"(): float
+ "render"(arg0: $GuiGraphics$$Type): void
+ "render"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: float): void
  "withBounds"<T extends $RenderElement>(arg0: integer, arg1: integer): T
  "withAlpha"<T extends $RenderElement>(arg0: float): T
  "render"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer): void
@@ -1563,16 +1565,16 @@ const probejs$$marker: never
 export class $RenderElement$$Static implements $RenderElement {
 
 
- "getWidth"(): integer
- "getHeight"(): integer
- "getY"(): float
-static "of"(arg0: $ScreenElement$$Type): $RenderElement
  "at"<T extends $RenderElement>(arg0: float, arg1: float, arg2: float): T
  "at"<T extends $RenderElement>(arg0: float, arg1: float): T
- "render"(arg0: $GuiGraphics$$Type): void
- "render"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: float): void
+ "getWidth"(): integer
+ "getHeight"(): integer
+static "of"(arg0: $ScreenElement$$Type): $RenderElement
+ "getY"(): float
  "getX"(): float
  "getZ"(): float
+ "render"(arg0: $GuiGraphics$$Type): void
+ "render"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer, arg3: float): void
  "withBounds"<T extends $RenderElement>(arg0: integer, arg1: integer): T
  "withAlpha"<T extends $RenderElement>(arg0: float): T
  "render"(arg0: $GuiGraphics$$Type, arg1: integer, arg2: integer): void
@@ -1761,25 +1763,19 @@ constructor(arg0: integer, arg1: integer, arg2: integer, arg3: integer)
 constructor(arg0: float, arg1: float, arg2: float, arg3: float)
 constructor(arg0: integer)
 
-public "getRGB"(): integer
 public "setImmutable"(): $Color
+public "getRGB"(): integer
 public "setValue"(arg0: integer): $Color
 public "copy"(arg0: boolean): $Color
 public "copy"(): $Color
-public "getGreen"(): integer
-public "getBlue"(): integer
+public "setRed"(arg0: float): $Color
+public "setRed"(arg0: integer): $Color
+public "getRed"(): integer
 public "getAlpha"(): integer
 public static "rainbowColor"(arg0: integer): $Color
 public "setAlpha"(arg0: float): $Color
 public "setAlpha"(arg0: integer): $Color
-public "getRed"(): integer
-public "setRed"(arg0: integer): $Color
-public "setRed"(arg0: float): $Color
 public "darker"(): $Color
-public "getGreenAsFloat"(): float
-public "getAlphaAsFloat"(): float
-public "scaleAlphaForText"(arg0: float): $Color
-public static "generateFromLong"(arg0: long): $Color
 public "getRedAsFloat"(): float
 public "getBlueAsFloat"(): float
 public "asVector"(): $Vec3
@@ -1787,34 +1783,40 @@ public "asVectorF"(): $Vector3f
 public "asStyle"(): $Style
 public "ensureMutable"(): $Color
 public "scaleAlpha"(arg0: float): $Color
-public "mixWith"(arg0: $Color$$Type, arg1: float): $Color
 public "brighter"(): $Color
 public "modifyValue"(arg0: $UnaryOperator$$Type<(integer)>): $Color
-public static "mixColors"(arg0: $Couple$$Type<($Color$$Type)>, arg1: float): $Color
 public static "mixColors"(arg0: $Color$$Type, arg1: $Color$$Type, arg2: float): $Color
 public static "mixColors"(arg0: integer, arg1: integer, arg2: float): integer
-public "setGreen"(arg0: integer): $Color
+public static "mixColors"(arg0: $Couple$$Type<($Color$$Type)>, arg1: float): $Color
+public "mixWith"(arg0: $Color$$Type, arg1: float): $Color
 public "setGreen"(arg0: float): $Color
-public "setBlue"(arg0: float): $Color
+public "setGreen"(arg0: integer): $Color
 public "setBlue"(arg0: integer): $Color
+public "setBlue"(arg0: float): $Color
+public "getGreen"(): integer
+public "getBlue"(): integer
+public "getGreenAsFloat"(): float
+public "getAlphaAsFloat"(): float
+public "scaleAlphaForText"(arg0: float): $Color
+public static "generateFromLong"(arg0: long): $Color
 get "rGB"(): integer
 set "value"(value: integer)
-get "green"(): integer
-get "blue"(): integer
+set "red"(value: float)
+set "red"(value: integer)
+get "red"(): integer
 get "alpha"(): integer
 set "alpha"(value: float)
 set "alpha"(value: integer)
-get "red"(): integer
-set "red"(value: integer)
-set "red"(value: float)
-get "greenAsFloat"(): float
-get "alphaAsFloat"(): float
 get "redAsFloat"(): float
 get "blueAsFloat"(): float
-set "green"(value: integer)
 set "green"(value: float)
-set "blue"(value: float)
+set "green"(value: integer)
 set "blue"(value: integer)
+set "blue"(value: float)
+get "green"(): integer
+get "blue"(): integer
+get "greenAsFloat"(): float
+get "alphaAsFloat"(): float
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1835,41 +1837,41 @@ import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$VertexConsumer, $VertexConsumer$$Type} from "com.mojang.blaze3d.vertex.VertexConsumer"
 import {$TransformStack, $TransformStack$$Type} from "dev.engine_room.flywheel.lib.transform.TransformStack"
 import {$Matrix4f, $Matrix4f$$Type} from "org.joml.Matrix4f"
-import {$PoseStack$Pose, $PoseStack$Pose$$Type} from "com.mojang.blaze3d.vertex.PoseStack$Pose"
 import {$Direction$Axis, $Direction$Axis$$Type} from "net.minecraft.core.Direction$Axis"
+import {$PoseStack$Pose, $PoseStack$Pose$$Type} from "com.mojang.blaze3d.vertex.PoseStack$Pose"
+import {$Matrix4fc, $Matrix4fc$$Type} from "org.joml.Matrix4fc"
 import {$Vector3ic, $Vector3ic$$Type} from "org.joml.Vector3ic"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
-import {$Matrix4fc, $Matrix4fc$$Type} from "org.joml.Matrix4fc"
+import {$Matrix3fc, $Matrix3fc$$Type} from "org.joml.Matrix3fc"
 import {$Axis, $Axis$$Type} from "com.mojang.math.Axis"
 import {$Vec3i, $Vec3i$$Type} from "net.minecraft.core.Vec3i"
-import {$Matrix3fc, $Matrix3fc$$Type} from "org.joml.Matrix3fc"
 import {$BlockAndTintGetter, $BlockAndTintGetter$$Type} from "net.minecraft.world.level.BlockAndTintGetter"
-import {$SpriteShiftEntry, $SpriteShiftEntry$$Type} from "net.createmod.catnip.render.SpriteShiftEntry"
 import {$Color, $Color$$Type} from "net.createmod.catnip.theme.Color"
+import {$SpriteShiftEntry, $SpriteShiftEntry$$Type} from "net.createmod.catnip.render.SpriteShiftEntry"
 import {$Vector3fc, $Vector3fc$$Type} from "org.joml.Vector3fc"
 import {$PoseTransformStack, $PoseTransformStack$$Type} from "dev.engine_room.flywheel.lib.transform.PoseTransformStack"
 import {$AxisAngle4f, $AxisAngle4f$$Type} from "org.joml.AxisAngle4f"
 
 export interface $SuperByteBuffer extends $TransformStack<($SuperByteBuffer)> {
 
+ "rotate"<Self extends $SuperByteBuffer>(arg0: $Direction$Axis$$Type, arg1: float): Self
  "getTransforms"(): $PoseStack
+ "color"<Self extends $SuperByteBuffer>(arg0: integer, arg1: integer, arg2: integer, arg3: integer): Self
+ "color"<Self extends $SuperByteBuffer>(arg0: integer): Self
+ "color"<Self extends $SuperByteBuffer>(arg0: $Color$$Type): Self
  "reset"<Self extends $SuperByteBuffer>(): Self
  "isEmpty"(): boolean
  "delete"(): void
- "color"<Self extends $SuperByteBuffer>(arg0: integer): Self
- "color"<Self extends $SuperByteBuffer>(arg0: integer, arg1: integer, arg2: integer, arg3: integer): Self
- "color"<Self extends $SuperByteBuffer>(arg0: $Color$$Type): Self
- "rotate"<Self extends $SuperByteBuffer>(arg0: $Direction$Axis$$Type, arg1: float): Self
- "shiftUVScrolling"<Self extends $SuperByteBuffer>(arg0: $SpriteShiftEntry$$Type, arg1: float): Self
- "shiftUVScrolling"<Self extends $SuperByteBuffer>(arg0: $SpriteShiftEntry$$Type, arg1: float, arg2: float): Self
- "overlay"<Self extends $SuperByteBuffer>(arg0: integer): Self
  "light"<Self extends $SuperByteBuffer>(arg0: integer): Self
+ "overlay"<Self extends $SuperByteBuffer>(arg0: integer): Self
  "useLevelLight"<Self extends $SuperByteBuffer>(arg0: $BlockAndTintGetter$$Type): Self
  "useLevelLight"<Self extends $SuperByteBuffer>(arg0: $BlockAndTintGetter$$Type, arg1: $Matrix4f$$Type): Self
  "renderInto"(arg0: $PoseStack$$Type, arg1: $VertexConsumer$$Type): void
  "disableDiffuse"<Self extends $SuperByteBuffer>(): Self
  "shiftUV"<Self extends $SuperByteBuffer>(arg0: $SpriteShiftEntry$$Type): Self
  "shiftUVtoSheet"<Self extends $SuperByteBuffer>(arg0: $SpriteShiftEntry$$Type, arg1: float, arg2: float, arg3: integer): Self
+ "shiftUVScrolling"<Self extends $SuperByteBuffer>(arg0: $SpriteShiftEntry$$Type, arg1: float): Self
+ "shiftUVScrolling"<Self extends $SuperByteBuffer>(arg0: $SpriteShiftEntry$$Type, arg1: float, arg2: float): Self
  "pushPose"(): $SuperByteBuffer
  "popPose"(): $SuperByteBuffer
  "transform"(pose: $PoseStack$Pose$$Type): $SuperByteBuffer
@@ -1877,25 +1879,26 @@ export interface $SuperByteBuffer extends $TransformStack<($SuperByteBuffer)> {
  "transform"(pose: $Matrix4fc$$Type, normal: $Matrix3fc$$Type): $SuperByteBuffer
  "mulPose"(arg0: $Matrix4fc$$Type): $SuperByteBuffer
  "mulNormal"(arg0: $Matrix3fc$$Type): $SuperByteBuffer
+ "rotateAround"(quaternion: $Quaternionfc$$Type, x: float, y: float, z: float): $SuperByteBuffer
+ "rotateAround"(quaternion: $Quaternionfc$$Type, vec: $Vector3fc$$Type): $SuperByteBuffer
+ "rotateCentered"(radians: float, axis: $Direction$Axis$$Type): $SuperByteBuffer
+ "rotateCentered"(radians: float, axis: $Vector3fc$$Type): $SuperByteBuffer
+ "rotateCentered"(radians: float, axis: $Direction$$Type): $SuperByteBuffer
+ "rotateCentered"(q: $Quaternionfc$$Type): $SuperByteBuffer
+ "rotateCentered"(radians: float, axisX: float, axisY: float, axisZ: float): $SuperByteBuffer
+ "rotateCentered"(radians: float, axis: $Axis$$Type): $SuperByteBuffer
  "rotateXCentered"(radians: float): $SuperByteBuffer
  "rotateYCentered"(radians: float): $SuperByteBuffer
  "rotateZCentered"(radians: float): $SuperByteBuffer
  "rotateCenteredDegrees"(degrees: float, axis: $Direction$Axis$$Type): $SuperByteBuffer
- "rotateCenteredDegrees"(degrees: float, axis: $Direction$$Type): $SuperByteBuffer
- "rotateCenteredDegrees"(degrees: float, axis: $Vector3fc$$Type): $SuperByteBuffer
  "rotateCenteredDegrees"(degrees: float, axisX: float, axisY: float, axisZ: float): $SuperByteBuffer
  "rotateCenteredDegrees"(degrees: float, axis: $Axis$$Type): $SuperByteBuffer
+ "rotateCenteredDegrees"(degrees: float, axis: $Vector3fc$$Type): $SuperByteBuffer
+ "rotateCenteredDegrees"(degrees: float, axis: $Direction$$Type): $SuperByteBuffer
  "rotateXCenteredDegrees"(degrees: float): $SuperByteBuffer
  "rotateYCenteredDegrees"(degrees: float): $SuperByteBuffer
  "rotateZCenteredDegrees"(degrees: float): $SuperByteBuffer
- "rotateAround"(quaternion: $Quaternionfc$$Type, vec: $Vector3fc$$Type): $SuperByteBuffer
- "rotateAround"(quaternion: $Quaternionfc$$Type, x: float, y: float, z: float): $SuperByteBuffer
- "rotateCentered"(radians: float, axis: $Axis$$Type): $SuperByteBuffer
- "rotateCentered"(radians: float, axis: $Direction$$Type): $SuperByteBuffer
- "rotateCentered"(q: $Quaternionfc$$Type): $SuperByteBuffer
- "rotateCentered"(radians: float, axisX: float, axisY: float, axisZ: float): $SuperByteBuffer
- "rotateCentered"(radians: float, axis: $Direction$Axis$$Type): $SuperByteBuffer
- "rotateCentered"(radians: float, axis: $Vector3fc$$Type): $SuperByteBuffer
+ "center"(): $SuperByteBuffer
  "translate"(vec: $Vector3fc$$Type): $SuperByteBuffer
  "translate"(vec: $Vec3$$Type): $SuperByteBuffer
  "translate"(vec: $Vec3i$$Type): $SuperByteBuffer
@@ -1903,48 +1906,47 @@ export interface $SuperByteBuffer extends $TransformStack<($SuperByteBuffer)> {
  "translate"(x: double, y: double, z: double): $SuperByteBuffer
  "translate"(v: float): $SuperByteBuffer
  "translate"(arg0: float, arg1: float, arg2: float): $SuperByteBuffer
- "center"(): $SuperByteBuffer
- "nudge"(seed: integer): $SuperByteBuffer
  "uncenter"(): $SuperByteBuffer
- "translateZ"(z: float): $SuperByteBuffer
- "translateBack"(vec: $Vector3ic$$Type): $SuperByteBuffer
- "translateBack"(vec: $Vector3fc$$Type): $SuperByteBuffer
- "translateBack"(vec: $Vec3$$Type): $SuperByteBuffer
- "translateBack"(x: float, y: float, z: float): $SuperByteBuffer
- "translateBack"(vec: $Vec3i$$Type): $SuperByteBuffer
- "translateBack"(v: float): $SuperByteBuffer
- "translateBack"(x: double, y: double, z: double): $SuperByteBuffer
+ "nudge"(seed: integer): $SuperByteBuffer
  "translateX"(x: float): $SuperByteBuffer
  "translateY"(y: float): $SuperByteBuffer
- "self"(): $SuperByteBuffer
+ "translateZ"(z: float): $SuperByteBuffer
+ "translateBack"(x: float, y: float, z: float): $SuperByteBuffer
+ "translateBack"(vec: $Vec3$$Type): $SuperByteBuffer
+ "translateBack"(vec: $Vector3fc$$Type): $SuperByteBuffer
+ "translateBack"(x: double, y: double, z: double): $SuperByteBuffer
+ "translateBack"(v: float): $SuperByteBuffer
+ "translateBack"(vec: $Vec3i$$Type): $SuperByteBuffer
+ "translateBack"(vec: $Vector3ic$$Type): $SuperByteBuffer
+ "rotate"(radians: float, axis: $Axis$$Type): $SuperByteBuffer
  "rotate"(radians: float, axis: $Vector3fc$$Type): $SuperByteBuffer
  "rotate"(radians: float, axis: $Direction$$Type): $SuperByteBuffer
  "rotate"(radians: float, axis: $Direction$Axis$$Type): $SuperByteBuffer
  "rotate"(arg0: $Quaternionfc$$Type): $SuperByteBuffer
  "rotate"(axisAngle: $AxisAngle4f$$Type): $SuperByteBuffer
  "rotate"(radians: float, axisX: float, axisY: float, axisZ: float): $SuperByteBuffer
- "rotate"(radians: float, axis: $Axis$$Type): $SuperByteBuffer
+ "self"(): $SuperByteBuffer
  "rotateTo"(fromX: float, fromY: float, fromZ: float, toX: float, toY: float, toZ: float): $SuperByteBuffer
- "rotateTo"(from: $Direction$$Type, to: $Direction$$Type): $SuperByteBuffer
  "rotateTo"(from: $Vector3fc$$Type, to: $Vector3fc$$Type): $SuperByteBuffer
- "rotateX"(radians: float): $SuperByteBuffer
+ "rotateTo"(from: $Direction$$Type, to: $Direction$$Type): $SuperByteBuffer
  "rotateY"(radians: float): $SuperByteBuffer
  "rotateZ"(radians: float): $SuperByteBuffer
+ "rotateX"(radians: float): $SuperByteBuffer
+ "rotateZDegrees"(degrees: float): $SuperByteBuffer
  "rotateDegrees"(degrees: float, axis: $Direction$Axis$$Type): $SuperByteBuffer
- "rotateDegrees"(degrees: float, axis: $Vector3fc$$Type): $SuperByteBuffer
  "rotateDegrees"(degrees: float, axis: $Axis$$Type): $SuperByteBuffer
+ "rotateDegrees"(degrees: float, axis: $Vector3fc$$Type): $SuperByteBuffer
  "rotateDegrees"(degrees: float, axisX: float, axisY: float, axisZ: float): $SuperByteBuffer
  "rotateDegrees"(degrees: float, axis: $Direction$$Type): $SuperByteBuffer
  "rotateToFace"(facing: $Direction$$Type): $SuperByteBuffer
  "rotateYDegrees"(degrees: float): $SuperByteBuffer
- "rotateZDegrees"(degrees: float): $SuperByteBuffer
  "rotateXDegrees"(degrees: float): $SuperByteBuffer
  "scale"(factors: $Vector3fc$$Type): $SuperByteBuffer
  "scale"(factor: float): $SuperByteBuffer
  "scale"(arg0: float, arg1: float, arg2: float): $SuperByteBuffer
- "scaleZ"(factor: float): $SuperByteBuffer
  "scaleX"(factor: float): $SuperByteBuffer
  "scaleY"(factor: float): $SuperByteBuffer
+ "scaleZ"(factor: float): $SuperByteBuffer
 get "transforms"(): $PoseStack
 get "empty"(): boolean
 }
@@ -1957,25 +1959,25 @@ const probejs$$marker: never
 export class $SuperByteBuffer$$Static implements $SuperByteBuffer {
 
 
+ "rotate"<Self extends $SuperByteBuffer>(arg0: $Direction$Axis$$Type, arg1: float): Self
  "getTransforms"(): $PoseStack
+ "color"<Self extends $SuperByteBuffer>(arg0: integer, arg1: integer, arg2: integer, arg3: integer): Self
+ "color"<Self extends $SuperByteBuffer>(arg0: integer): Self
+ "color"<Self extends $SuperByteBuffer>(arg0: $Color$$Type): Self
  "reset"<Self extends $SuperByteBuffer>(): Self
  "isEmpty"(): boolean
  "delete"(): void
- "color"<Self extends $SuperByteBuffer>(arg0: integer): Self
- "color"<Self extends $SuperByteBuffer>(arg0: integer, arg1: integer, arg2: integer, arg3: integer): Self
- "color"<Self extends $SuperByteBuffer>(arg0: $Color$$Type): Self
- "rotate"<Self extends $SuperByteBuffer>(arg0: $Direction$Axis$$Type, arg1: float): Self
- "shiftUVScrolling"<Self extends $SuperByteBuffer>(arg0: $SpriteShiftEntry$$Type, arg1: float): Self
- "shiftUVScrolling"<Self extends $SuperByteBuffer>(arg0: $SpriteShiftEntry$$Type, arg1: float, arg2: float): Self
- "overlay"<Self extends $SuperByteBuffer>(arg0: integer): Self
  "light"<Self extends $SuperByteBuffer>(arg0: integer): Self
+ "overlay"<Self extends $SuperByteBuffer>(arg0: integer): Self
+static "maxLight"(arg0: integer, arg1: integer): integer
  "useLevelLight"<Self extends $SuperByteBuffer>(arg0: $BlockAndTintGetter$$Type): Self
  "useLevelLight"<Self extends $SuperByteBuffer>(arg0: $BlockAndTintGetter$$Type, arg1: $Matrix4f$$Type): Self
  "renderInto"(arg0: $PoseStack$$Type, arg1: $VertexConsumer$$Type): void
-static "maxLight"(arg0: integer, arg1: integer): integer
  "disableDiffuse"<Self extends $SuperByteBuffer>(): Self
  "shiftUV"<Self extends $SuperByteBuffer>(arg0: $SpriteShiftEntry$$Type): Self
  "shiftUVtoSheet"<Self extends $SuperByteBuffer>(arg0: $SpriteShiftEntry$$Type, arg1: float, arg2: float, arg3: integer): Self
+ "shiftUVScrolling"<Self extends $SuperByteBuffer>(arg0: $SpriteShiftEntry$$Type, arg1: float): Self
+ "shiftUVScrolling"<Self extends $SuperByteBuffer>(arg0: $SpriteShiftEntry$$Type, arg1: float, arg2: float): Self
 static "of"(stack: $PoseStack$$Type): $PoseTransformStack
  "pushPose"(): $SuperByteBuffer
  "popPose"(): $SuperByteBuffer
@@ -1984,25 +1986,26 @@ static "of"(stack: $PoseStack$$Type): $PoseTransformStack
  "transform"(pose: $Matrix4fc$$Type, normal: $Matrix3fc$$Type): $SuperByteBuffer
  "mulPose"(arg0: $Matrix4fc$$Type): $SuperByteBuffer
  "mulNormal"(arg0: $Matrix3fc$$Type): $SuperByteBuffer
+ "rotateAround"(quaternion: $Quaternionfc$$Type, x: float, y: float, z: float): $SuperByteBuffer
+ "rotateAround"(quaternion: $Quaternionfc$$Type, vec: $Vector3fc$$Type): $SuperByteBuffer
+ "rotateCentered"(radians: float, axis: $Direction$Axis$$Type): $SuperByteBuffer
+ "rotateCentered"(radians: float, axis: $Vector3fc$$Type): $SuperByteBuffer
+ "rotateCentered"(radians: float, axis: $Direction$$Type): $SuperByteBuffer
+ "rotateCentered"(q: $Quaternionfc$$Type): $SuperByteBuffer
+ "rotateCentered"(radians: float, axisX: float, axisY: float, axisZ: float): $SuperByteBuffer
+ "rotateCentered"(radians: float, axis: $Axis$$Type): $SuperByteBuffer
  "rotateXCentered"(radians: float): $SuperByteBuffer
  "rotateYCentered"(radians: float): $SuperByteBuffer
  "rotateZCentered"(radians: float): $SuperByteBuffer
  "rotateCenteredDegrees"(degrees: float, axis: $Direction$Axis$$Type): $SuperByteBuffer
- "rotateCenteredDegrees"(degrees: float, axis: $Direction$$Type): $SuperByteBuffer
- "rotateCenteredDegrees"(degrees: float, axis: $Vector3fc$$Type): $SuperByteBuffer
  "rotateCenteredDegrees"(degrees: float, axisX: float, axisY: float, axisZ: float): $SuperByteBuffer
  "rotateCenteredDegrees"(degrees: float, axis: $Axis$$Type): $SuperByteBuffer
+ "rotateCenteredDegrees"(degrees: float, axis: $Vector3fc$$Type): $SuperByteBuffer
+ "rotateCenteredDegrees"(degrees: float, axis: $Direction$$Type): $SuperByteBuffer
  "rotateXCenteredDegrees"(degrees: float): $SuperByteBuffer
  "rotateYCenteredDegrees"(degrees: float): $SuperByteBuffer
  "rotateZCenteredDegrees"(degrees: float): $SuperByteBuffer
- "rotateAround"(quaternion: $Quaternionfc$$Type, vec: $Vector3fc$$Type): $SuperByteBuffer
- "rotateAround"(quaternion: $Quaternionfc$$Type, x: float, y: float, z: float): $SuperByteBuffer
- "rotateCentered"(radians: float, axis: $Axis$$Type): $SuperByteBuffer
- "rotateCentered"(radians: float, axis: $Direction$$Type): $SuperByteBuffer
- "rotateCentered"(q: $Quaternionfc$$Type): $SuperByteBuffer
- "rotateCentered"(radians: float, axisX: float, axisY: float, axisZ: float): $SuperByteBuffer
- "rotateCentered"(radians: float, axis: $Direction$Axis$$Type): $SuperByteBuffer
- "rotateCentered"(radians: float, axis: $Vector3fc$$Type): $SuperByteBuffer
+ "center"(): $SuperByteBuffer
  "translate"(vec: $Vector3fc$$Type): $SuperByteBuffer
  "translate"(vec: $Vec3$$Type): $SuperByteBuffer
  "translate"(vec: $Vec3i$$Type): $SuperByteBuffer
@@ -2010,48 +2013,47 @@ static "of"(stack: $PoseStack$$Type): $PoseTransformStack
  "translate"(x: double, y: double, z: double): $SuperByteBuffer
  "translate"(v: float): $SuperByteBuffer
  "translate"(arg0: float, arg1: float, arg2: float): $SuperByteBuffer
- "center"(): $SuperByteBuffer
- "nudge"(seed: integer): $SuperByteBuffer
  "uncenter"(): $SuperByteBuffer
- "translateZ"(z: float): $SuperByteBuffer
- "translateBack"(vec: $Vector3ic$$Type): $SuperByteBuffer
- "translateBack"(vec: $Vector3fc$$Type): $SuperByteBuffer
- "translateBack"(vec: $Vec3$$Type): $SuperByteBuffer
- "translateBack"(x: float, y: float, z: float): $SuperByteBuffer
- "translateBack"(vec: $Vec3i$$Type): $SuperByteBuffer
- "translateBack"(v: float): $SuperByteBuffer
- "translateBack"(x: double, y: double, z: double): $SuperByteBuffer
+ "nudge"(seed: integer): $SuperByteBuffer
  "translateX"(x: float): $SuperByteBuffer
  "translateY"(y: float): $SuperByteBuffer
- "self"(): $SuperByteBuffer
+ "translateZ"(z: float): $SuperByteBuffer
+ "translateBack"(x: float, y: float, z: float): $SuperByteBuffer
+ "translateBack"(vec: $Vec3$$Type): $SuperByteBuffer
+ "translateBack"(vec: $Vector3fc$$Type): $SuperByteBuffer
+ "translateBack"(x: double, y: double, z: double): $SuperByteBuffer
+ "translateBack"(v: float): $SuperByteBuffer
+ "translateBack"(vec: $Vec3i$$Type): $SuperByteBuffer
+ "translateBack"(vec: $Vector3ic$$Type): $SuperByteBuffer
+ "rotate"(radians: float, axis: $Axis$$Type): $SuperByteBuffer
  "rotate"(radians: float, axis: $Vector3fc$$Type): $SuperByteBuffer
  "rotate"(radians: float, axis: $Direction$$Type): $SuperByteBuffer
  "rotate"(radians: float, axis: $Direction$Axis$$Type): $SuperByteBuffer
  "rotate"(arg0: $Quaternionfc$$Type): $SuperByteBuffer
  "rotate"(axisAngle: $AxisAngle4f$$Type): $SuperByteBuffer
  "rotate"(radians: float, axisX: float, axisY: float, axisZ: float): $SuperByteBuffer
- "rotate"(radians: float, axis: $Axis$$Type): $SuperByteBuffer
+ "self"(): $SuperByteBuffer
  "rotateTo"(fromX: float, fromY: float, fromZ: float, toX: float, toY: float, toZ: float): $SuperByteBuffer
- "rotateTo"(from: $Direction$$Type, to: $Direction$$Type): $SuperByteBuffer
  "rotateTo"(from: $Vector3fc$$Type, to: $Vector3fc$$Type): $SuperByteBuffer
- "rotateX"(radians: float): $SuperByteBuffer
+ "rotateTo"(from: $Direction$$Type, to: $Direction$$Type): $SuperByteBuffer
  "rotateY"(radians: float): $SuperByteBuffer
  "rotateZ"(radians: float): $SuperByteBuffer
+ "rotateX"(radians: float): $SuperByteBuffer
+ "rotateZDegrees"(degrees: float): $SuperByteBuffer
  "rotateDegrees"(degrees: float, axis: $Direction$Axis$$Type): $SuperByteBuffer
- "rotateDegrees"(degrees: float, axis: $Vector3fc$$Type): $SuperByteBuffer
  "rotateDegrees"(degrees: float, axis: $Axis$$Type): $SuperByteBuffer
+ "rotateDegrees"(degrees: float, axis: $Vector3fc$$Type): $SuperByteBuffer
  "rotateDegrees"(degrees: float, axisX: float, axisY: float, axisZ: float): $SuperByteBuffer
  "rotateDegrees"(degrees: float, axis: $Direction$$Type): $SuperByteBuffer
  "rotateToFace"(facing: $Direction$$Type): $SuperByteBuffer
  "rotateYDegrees"(degrees: float): $SuperByteBuffer
- "rotateZDegrees"(degrees: float): $SuperByteBuffer
  "rotateXDegrees"(degrees: float): $SuperByteBuffer
  "scale"(factors: $Vector3fc$$Type): $SuperByteBuffer
  "scale"(factor: float): $SuperByteBuffer
  "scale"(arg0: float, arg1: float, arg2: float): $SuperByteBuffer
- "scaleZ"(factor: float): $SuperByteBuffer
  "scaleX"(factor: float): $SuperByteBuffer
  "scaleY"(factor: float): $SuperByteBuffer
+ "scaleZ"(factor: float): $SuperByteBuffer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2075,11 +2077,11 @@ static "EMPTY": $RenderElement
 
 constructor()
 
+public "at"<T extends $RenderElement>(arg0: float, arg1: float, arg2: float): T
+public "at"<T extends $RenderElement>(arg0: float, arg1: float): T
 public "getWidth"(): integer
 public "getHeight"(): integer
 public "getY"(): float
-public "at"<T extends $RenderElement>(arg0: float, arg1: float, arg2: float): T
-public "at"<T extends $RenderElement>(arg0: float, arg1: float): T
 public "getX"(): float
 public "getZ"(): float
 public "withBounds"<T extends $RenderElement>(arg0: integer, arg1: integer): T

@@ -33,18 +33,18 @@ import {$LevelRenderer, $LevelRenderer$$Type} from "net.minecraft.client.rendere
 
 export interface $DynamicLightSource {
 
- "sodiumdynamiclights$scheduleTrackedChunksRebuild"(arg0: $LevelRenderer$$Type): void
- "sodiumdynamiclights$updateDynamicLight"(arg0: $LevelRenderer$$Type): boolean
- "sdl$getDynamicLightLevel"(): $Level
- "sdl$isDynamicLightEnabled"(): boolean
- "sdl$setDynamicLightEnabled"(enabled: boolean): void
- "sdl$shouldUpdateDynamicLight"(): boolean
  "sdl$getDynamicLightX"(): double
  "sdl$getDynamicLightY"(): double
  "sdl$getDynamicLightZ"(): double
  "sdl$resetDynamicLight"(): void
  "sdl$dynamicLightTick"(): void
  "sdl$getLuminance"(): integer
+ "sodiumdynamiclights$updateDynamicLight"(arg0: $LevelRenderer$$Type): boolean
+ "sdl$getDynamicLightLevel"(): $Level
+ "sdl$isDynamicLightEnabled"(): boolean
+ "sdl$setDynamicLightEnabled"(enabled: boolean): void
+ "sdl$shouldUpdateDynamicLight"(): boolean
+ "sodiumdynamiclights$scheduleTrackedChunksRebuild"(arg0: $LevelRenderer$$Type): void
 }
 
 export namespace $DynamicLightSource {
@@ -53,18 +53,18 @@ const probejs$$marker: never
 export class $DynamicLightSource$$Static implements $DynamicLightSource {
 
 
- "sodiumdynamiclights$scheduleTrackedChunksRebuild"(arg0: $LevelRenderer$$Type): void
- "sodiumdynamiclights$updateDynamicLight"(arg0: $LevelRenderer$$Type): boolean
- "sdl$getDynamicLightLevel"(): $Level
- "sdl$isDynamicLightEnabled"(): boolean
- "sdl$setDynamicLightEnabled"(enabled: boolean): void
- "sdl$shouldUpdateDynamicLight"(): boolean
  "sdl$getDynamicLightX"(): double
  "sdl$getDynamicLightY"(): double
  "sdl$getDynamicLightZ"(): double
  "sdl$resetDynamicLight"(): void
  "sdl$dynamicLightTick"(): void
  "sdl$getLuminance"(): integer
+ "sodiumdynamiclights$updateDynamicLight"(arg0: $LevelRenderer$$Type): boolean
+ "sdl$getDynamicLightLevel"(): $Level
+ "sdl$isDynamicLightEnabled"(): boolean
+ "sdl$setDynamicLightEnabled"(enabled: boolean): void
+ "sdl$shouldUpdateDynamicLight"(): boolean
+ "sodiumdynamiclights$scheduleTrackedChunksRebuild"(arg0: $LevelRenderer$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -88,10 +88,10 @@ import {$EntityType, $EntityType$$Type} from "net.minecraft.world.entity.EntityT
 
 export interface $DynamicLightHandlerHolder<T> {
 
- "sodiumdynamiclights$getDynamicLightHandler"(): $DynamicLightHandler<(T)>
- "sodiumdynamiclights$setDynamicLightHandler"(arg0: $DynamicLightHandler$$Type<(T)>): void
  "sodiumdynamiclights$getSetting"(): boolean
  "sodiumdynamiclights$getName"(): $Component
+ "sodiumdynamiclights$getDynamicLightHandler"(): $DynamicLightHandler<(T)>
+ "sodiumdynamiclights$setDynamicLightHandler"(arg0: $DynamicLightHandler$$Type<(T)>): void
 }
 
 export namespace $DynamicLightHandlerHolder {
@@ -104,10 +104,10 @@ export class $DynamicLightHandlerHolder$$Static<T> implements $DynamicLightHandl
 
 static "cast"<T extends $BlockEntity>(entityType: $BlockEntityType$$Type<(T)>): $DynamicLightHandlerHolder<(T)>
 static "cast"<T extends $Entity>(entityType: $EntityType$$Type<(T)>): $DynamicLightHandlerHolder<(T)>
- "sodiumdynamiclights$getDynamicLightHandler"(): $DynamicLightHandler<(T)>
- "sodiumdynamiclights$setDynamicLightHandler"(arg0: $DynamicLightHandler$$Type<(T)>): void
  "sodiumdynamiclights$getSetting"(): boolean
  "sodiumdynamiclights$getName"(): $Component
+ "sodiumdynamiclights$getDynamicLightHandler"(): $DynamicLightHandler<(T)>
+ "sodiumdynamiclights$setDynamicLightHandler"(arg0: $DynamicLightHandler$$Type<(T)>): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

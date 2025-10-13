@@ -34,8 +34,8 @@ declare module "snownee.jade.gui.JadeFont" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $JadeFont {
 
- "jade$setGlintStrength"(arg0: float, arg1: float): void
  "jade$setGlint"(arg0: float, arg1: float): void
+ "jade$setGlintStrength"(arg0: float, arg1: float): void
 }
 
 export namespace $JadeFont {
@@ -44,8 +44,8 @@ const probejs$$marker: never
 export class $JadeFont$$Static implements $JadeFont {
 
 
- "jade$setGlintStrength"(arg0: float, arg1: float): void
  "jade$setGlint"(arg0: float, arg1: float): void
+ "jade$setGlintStrength"(arg0: float, arg1: float): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

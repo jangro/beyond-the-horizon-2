@@ -70,13 +70,23 @@ static readonly "MIDNIGHT": $Time
 static readonly "LUNAR_CYCLE_TICKS": integer
 static readonly "LUNAR_CYCLE_LENGTH": $Time
 
+constructor()
 constructor(arg0: long, arg1: double)
 constructor(arg0: double)
 constructor(arg0: long)
-constructor()
 
+public "negate"(): $Time
+public "getDay"(): long
+public "timeOfDay"(): $Time
+public static "timeOfDay"(arg0: long): long
+public "subtract"(arg0: long): $Time
+public "subtract"(arg0: $Time$$Type): $Time
+public "subtract"(arg0: double): $Time
+public "divide"(arg0: double): double
+public "divide"(arg0: long): double
+public "divide"(arg0: $Time$$Type): double
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "abs"(): $Time
 public "compareTo"(arg0: $Time$$Type): integer
@@ -85,23 +95,13 @@ public "intValue"(): integer
 public "longValue"(): long
 public "floatValue"(): float
 public "doubleValue"(): double
-public "add"(arg0: long): $Time
 public "add"(arg0: double): $Time
 public "add"(arg0: $Time$$Type): $Time
+public "add"(arg0: long): $Time
 public "mod"(arg0: long): $Time
-public "subtract"(arg0: long): $Time
-public "subtract"(arg0: $Time$$Type): $Time
-public "subtract"(arg0: double): $Time
-public "negate"(): $Time
-public "divide"(arg0: $Time$$Type): double
-public "divide"(arg0: double): double
-public "divide"(arg0: long): double
-public "getDay"(): long
-public static "timeOfDay"(arg0: long): long
-public "timeOfDay"(): $Time
-public "fractionalValue"(): double
 public static "crossedMorning"(arg0: $Time$$Type, arg1: $Time$$Type): boolean
 public "betweenMod"(arg0: $Time$$Type, arg1: $Time$$Type): boolean
+public "fractionalValue"(): double
 get "day"(): long
 }
 /**
@@ -198,8 +198,8 @@ constructor(arg0: $ServerLevelWrapper$$Type)
 public "tick"(): void
 public "getDayTime"(): $Time
 public "setDayTime"(arg0: $Time$$Type): $Time
-public "broadcastTime"(): void
 public "getTimeSpeed"(arg0: $Time$$Type): double
+public "broadcastTime"(): void
 public "managesLevel"(arg0: $ServerLevelWrapper$$Type): boolean
 get "dayTime"(): $Time
 set "dayTime"(value: $Time$$Type)
@@ -218,8 +218,8 @@ export type $TimeService_ = $TimeService$$Type;
 }}
 declare module "betterdays.time.SleepStatus" {
 import {$SleepStatus as $SleepStatus$0, $SleepStatus$$Type as $SleepStatus$0$$Type} from "net.minecraft.server.players.SleepStatus"
-import {$List, $List$$Type} from "java.util.List"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
+import {$List, $List$$Type} from "java.util.List"
 import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 
 export class $SleepStatus extends $SleepStatus$0 {
@@ -227,17 +227,17 @@ export class $SleepStatus extends $SleepStatus$0 {
 constructor(arg0: $Supplier$$Type<(boolean)>)
 
 public "update"(arg0: $List$$Type<($ServerPlayer$$Type)>): boolean
+public "ratio"(): double
 public "amountSleeping"(): integer
 public "sleepersNeeded"(arg0: integer): integer
 public "percentage"(): integer
-public "ratio"(): double
+public "allAwake"(): boolean
 public "areEnoughSleeping"(arg0: integer): boolean
 public "areEnoughDeepSleeping"(arg0: integer, arg1: $List$$Type<($ServerPlayer$$Type)>): boolean
 public "removeAllSleepers"(): void
-public "allAwake"(): boolean
-public "allAsleep"(): boolean
 public "amountActive"(): integer
 public "updatePlayerCounts"(arg0: $List$$Type<($ServerPlayer$$Type)>): void
+public "allAsleep"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

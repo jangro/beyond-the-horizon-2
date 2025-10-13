@@ -1,6 +1,43 @@
+declare module "com.almostreliable.kubeio.recipe.TankKubeRecipe" {
+import {$RecipeComponentValueMap, $RecipeComponentValueMap$$Type} from "dev.latvian.mods.kubejs.recipe.component.RecipeComponentValueMap"
+import {$KubeRecipe, $KubeRecipe$$Type} from "dev.latvian.mods.kubejs.recipe.KubeRecipe"
+import {$RecipeTypeFunction, $RecipeTypeFunction$$Type} from "dev.latvian.mods.kubejs.recipe.RecipeTypeFunction"
+import {$KubeRecipeFactory, $KubeRecipeFactory$$Type} from "dev.latvian.mods.kubejs.recipe.schema.KubeRecipeFactory"
+import {$JsonObject, $JsonObject$$Type} from "com.google.gson.JsonObject"
+import {$SourceLine, $SourceLine$$Type} from "dev.latvian.mods.kubejs.script.SourceLine"
+
+export class $TankKubeRecipe extends $KubeRecipe {
+ "newRecipe": boolean
+ "type": $RecipeTypeFunction
+ "sourceLine": $SourceLine
+ "originalJson": $JsonObject
+ "removed": boolean
+ "creationError": boolean
+ "valueMap": $RecipeComponentValueMap
+ "json": $JsonObject
+static readonly "CHANGED_MARKER": StringJS
+static readonly "FACTORY": $KubeRecipeFactory
+ "changed": boolean
+
+constructor()
+
+public "emptying"(): $TankKubeRecipe
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $TankKubeRecipe$$Type = ($TankKubeRecipe);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $TankKubeRecipe_ = $TankKubeRecipe$$Type;
+}}
 declare module "com.almostreliable.morejs.features.teleport.EntityTeleportsEventJS" {
-import {$TeleportType, $TeleportType$$Type} from "com.almostreliable.morejs.features.teleport.TeleportType"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$TeleportType, $TeleportType$$Type} from "com.almostreliable.morejs.features.teleport.TeleportType"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$KubeEntityEvent, $KubeEntityEvent$$Type} from "dev.latvian.mods.kubejs.entity.KubeEntityEvent"
@@ -12,42 +49,18 @@ export class $EntityTeleportsEventJS implements $KubeEntityEvent {
 constructor(arg0: $Entity$$Type, arg1: double, arg2: double, arg3: double, arg4: $TeleportType$$Type)
 constructor(arg0: $Entity$$Type, arg1: double, arg2: double, arg3: double, arg4: $Level$$Type, arg5: $TeleportType$$Type)
 
+public "getType"(): $TeleportType
 public "getEntity"(): $Entity
 public "getY"(): double
-public "getType"(): $TeleportType
+public "getX"(): double
+public "getZ"(): double
 public "setX"(arg0: double): void
 public "setY"(arg0: double): void
 public "setZ"(arg0: double): void
-public "getX"(): double
-public "getZ"(): double
 public "getLevel"(): $Level
 public "getPlayer"(): $Player
-public "getRegistries"(): $RegistryAccess
 public "getServer"(): $MinecraftServer
-/**
- * Stops the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(arg1: any): any
-/**
- * Stops the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(): any
-/**
- * Cancels the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(arg1: any): any
-/**
- * Cancels the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(): any
+public "getRegistries"(): $RegistryAccess
 /**
  * Stops the event with default exit value. Execution will be stopped **immediately**.
  * 
@@ -60,18 +73,42 @@ public "success"(): any
  * `success` denotes a `true` outcome.
  */
 public "success"(arg1: any): any
+/**
+ * Stops the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(): any
+/**
+ * Stops the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(arg1: any): any
+/**
+ * Cancels the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(arg1: any): any
+/**
+ * Cancels the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(): any
+get "type"(): $TeleportType
 get "entity"(): $Entity
 get "y"(): double
-get "type"(): $TeleportType
+get "x"(): double
+get "z"(): double
 set "x"(value: double)
 set "y"(value: double)
 set "z"(value: double)
-get "x"(): double
-get "z"(): double
 get "level"(): $Level
 get "player"(): $Player
-get "registries"(): $RegistryAccess
 get "server"(): $MinecraftServer
+get "registries"(): $RegistryAccess
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -151,12 +188,12 @@ import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resource
 import {$Structure, $Structure$$Type} from "net.minecraft.world.level.levelgen.structure.Structure"
 import {$DistancePredicate, $DistancePredicate$$Type} from "net.minecraft.advancements.critereon.DistancePredicate"
 import {$EquipmentSlot, $EquipmentSlot$$Type} from "net.minecraft.world.entity.EquipmentSlot"
-import {$HolderSet, $HolderSet$$Type} from "net.minecraft.core.HolderSet"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$HolderSet, $HolderSet$$Type} from "net.minecraft.core.HolderSet"
 import {$JsonObject, $JsonObject$$Type} from "com.google.gson.JsonObject"
+import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$Biome, $Biome$$Type} from "net.minecraft.world.level.biome.Biome"
-import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$TagLootEntry, $TagLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.TagLootEntry"
 import {$TableReferenceLootEntry, $TableReferenceLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.TableReferenceLootEntry"
 import {$ItemLootEntry, $ItemLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.ItemLootEntry"
@@ -179,44 +216,28 @@ import {$LootItemCondition, $LootItemCondition$$Type} from "net.minecraft.world.
 
 export interface $LootEntry extends $LootConditionsContainer<($LootEntry)> {
 
- "getConditions"(): $LootConditionList
  "isDynamic"(): boolean
+ "when"(arg0: $Consumer$$Type<($LootConditionList)>): $LootEntry
+ "getConditions"(): $LootConditionList
  "isEmpty"(): boolean
  "getType"(): $ResourceLocation
- "when"(arg0: $Consumer$$Type<($LootConditionList)>): $LootEntry
- "getVanillaEntry"(): $LootPoolEntryContainer
+ "isTag"(): boolean
  "isReference"(): boolean
  "isSimple"(): boolean
- "isTag"(): boolean
  "isItem"(): boolean
- "collectDebugInfo"(arg0: $DebugInfo$$Type): void
  "getVanillaType"(): $LootPoolEntryType
  "isComposite"(): boolean
  "isAlternative"(): boolean
  "isSequence"(): boolean
  "isGroup"(): boolean
+ "collectDebugInfo"(arg0: $DebugInfo$$Type): void
+ "getVanillaEntry"(): $LootPoolEntryContainer
  "matchLocation"(arg0: $BlockPos$$Type, arg1: $LocationPredicate$$Type): $LootEntry
  "matchLocation"(arg0: $LocationPredicate$$Type): $LootEntry
- "matchPlayerCustom"(arg0: $Predicate$$Type<($ServerPlayer)>): $LootEntry
- "matchAnyInventorySlot"(arg0: $ItemFilter$$Type): $LootEntry
- "matchAnyHotbarSlot"(arg0: $ItemFilter$$Type): $LootEntry
- "randomTableBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootEntry
- "matchDirectAttacker"(arg0: $EntityPredicate$$Type): $LootEntry
- "matchDamageSource"(arg0: $DamageSourcePredicate$$Type): $LootEntry
- "matchEntityCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
- "matchAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
- "matchCustomCondition"(arg0: $JsonObject$$Type): $LootEntry
- "blockEntity"(arg0: $Predicate$$Type<($BlockEntity)>): $LootEntry
  "luck"(arg0: $MinMaxBounds$Doubles$$Type): $LootEntry
- "survivesExplosion"(): $LootEntry
- "matchBlock"(arg0: $Block$$Type, arg1: $StatePropertiesPredicate$$Type): $LootEntry
- "matchBlock"(arg0: $Block$$Type): $LootEntry
- "matchTool"(arg0: $ItemPredicate$$Type): $LootEntry
- "matchPlayer"(arg0: $EntityPredicate$$Type): $LootEntry
- "randomChance"(arg0: $NumberProvider$$Type): $LootEntry
- "killedByPlayer"(): $LootEntry
- "matchTime"(arg0: long, arg1: integer, arg2: integer): $LootEntry
+ "blockEntity"(arg0: $Predicate$$Type<($BlockEntity)>): $LootEntry
  "matchTime"(arg0: integer, arg1: integer): $LootEntry
+ "matchTime"(arg0: long, arg1: integer, arg2: integer): $LootEntry
  "matchMainHand"(arg0: $ItemFilter$$Type): $LootEntry
  "matchOffHand"(arg0: $ItemFilter$$Type): $LootEntry
  "matchHead"(arg0: $ItemFilter$$Type): $LootEntry
@@ -230,41 +251,57 @@ export interface $LootEntry extends $LootConditionsContainer<($LootEntry)> {
  "matchStructure"(arg0: $HolderSet$$Type<($Structure)>): $LootEntry
  "matchStructure"(arg0: $HolderSet$$Type<($Structure)>, arg1: boolean): $LootEntry
  "isLightLevel"(arg0: integer, arg1: integer): $LootEntry
+ "matchBlock"(arg0: $Block$$Type): $LootEntry
+ "matchBlock"(arg0: $Block$$Type, arg1: $StatePropertiesPredicate$$Type): $LootEntry
  "matchEntity"(arg0: $EntityPredicate$$Type): $LootEntry
  "matchAttacker"(arg0: $EntityPredicate$$Type): $LootEntry
  "matchDistance"(arg0: $DistancePredicate$$Type): $LootEntry
- "hasAnyStage"(...arg0: (string)[]): $LootEntry
+ "hasAnyStage"(...arg0: (StringJS)[]): $LootEntry
  "matchAnyOf"(...arg0: ($LootItemCondition$$Type)[]): $LootEntry
  "matchAllOf"(...arg0: ($LootItemCondition$$Type)[]): $LootEntry
+ "matchPlayer"(arg0: $EntityPredicate$$Type): $LootEntry
+ "matchTool"(arg0: $ItemPredicate$$Type): $LootEntry
+ "killedByPlayer"(): $LootEntry
+ "randomChance"(arg0: $NumberProvider$$Type): $LootEntry
+ "survivesExplosion"(): $LootEntry
+ "matchPlayerCustom"(arg0: $Predicate$$Type<($ServerPlayer)>): $LootEntry
+ "matchAnyInventorySlot"(arg0: $ItemFilter$$Type): $LootEntry
+ "matchAnyHotbarSlot"(arg0: $ItemFilter$$Type): $LootEntry
+ "randomTableBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootEntry
+ "matchDirectAttacker"(arg0: $EntityPredicate$$Type): $LootEntry
+ "matchDamageSource"(arg0: $DamageSourcePredicate$$Type): $LootEntry
+ "matchEntityCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
+ "matchAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
+ "matchCustomCondition"(arg0: $JsonObject$$Type): $LootEntry
  "randomChanceWithEnchantment"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootEntry
  "matchDirectAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
-get "conditions"(): $LootConditionList
 get "dynamic"(): boolean
+get "conditions"(): $LootConditionList
 get "type"(): $ResourceLocation
-get "vanillaEntry"(): $LootPoolEntryContainer
 get "simple"(): boolean
 get "item"(): boolean
 get "vanillaType"(): $LootPoolEntryType
 get "composite"(): boolean
+get "vanillaEntry"(): $LootPoolEntryContainer
 }
 
 export namespace $LootEntry {
 const EMPTY_CONDITIONS: $List<($LootItemCondition)>
 const EMPTY_FUNCTIONS: $List<($LootItemFunction)>
+function sequence(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
+function tag(arg0: StringJS): $TagLootEntry
+function tag(arg0: StringJS, arg1: boolean): $TagLootEntry
 function group(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
 function of(arg0: $ItemStack$$Type): $ItemLootEntry
 function of(arg0: $Item$$Type, arg1: $NumberProvider$$Type): $ItemLootEntry
 function empty(): $EmptyLootEntry
 function reference(arg0: $ResourceLocation$$Type): $TableReferenceLootEntry
-function sequence(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
-function tag(arg0: string): $TagLootEntry
-function tag(arg0: string, arg1: boolean): $TagLootEntry
+function ofItem(arg0: $Item$$Type): $ItemLootEntry
 function alternative(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
 function ep(arg0: $EntityPredicate$$Type): $EntityPredicate
-function ofItem(arg0: $Item$$Type): $ItemLootEntry
-function testItem(arg0: string): $ItemLootEntry
 function ofIngredient(arg0: $Ingredient$$Type): $CompositeLootEntry
 function ofVanilla(arg0: $LootPoolEntryContainer$$Type): $LootEntry
+function testItem(arg0: StringJS): $ItemLootEntry
 const probejs$$marker: never
 }
 export class $LootEntry$$Static implements $LootEntry {
@@ -272,8 +309,12 @@ static readonly "EMPTY_CONDITIONS": $List<($LootItemCondition)>
 static readonly "EMPTY_FUNCTIONS": $List<($LootItemFunction)>
 
 
- "getConditions"(): $LootConditionList
+static "sequence"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
+static "tag"(arg0: StringJS): $TagLootEntry
+static "tag"(arg0: StringJS, arg1: boolean): $TagLootEntry
  "isDynamic"(): boolean
+ "when"(arg0: $Consumer$$Type<($LootConditionList)>): $LootEntry
+ "getConditions"(): $LootConditionList
 static "group"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
  "isEmpty"(): boolean
 static "of"(arg0: $ItemStack$$Type): $ItemLootEntry
@@ -281,20 +322,13 @@ static "of"(arg0: $Item$$Type, arg1: $NumberProvider$$Type): $ItemLootEntry
 static "empty"(): $EmptyLootEntry
 static "reference"(arg0: $ResourceLocation$$Type): $TableReferenceLootEntry
  "getType"(): $ResourceLocation
-static "sequence"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
-static "tag"(arg0: string): $TagLootEntry
-static "tag"(arg0: string, arg1: boolean): $TagLootEntry
- "when"(arg0: $Consumer$$Type<($LootConditionList)>): $LootEntry
- "getVanillaEntry"(): $LootPoolEntryContainer
+static "ofItem"(arg0: $Item$$Type): $ItemLootEntry
+ "isTag"(): boolean
  "isReference"(): boolean
 static "alternative"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
  "isSimple"(): boolean
- "isTag"(): boolean
 static "ep"(arg0: $EntityPredicate$$Type): $EntityPredicate
-static "ofItem"(arg0: $Item$$Type): $ItemLootEntry
  "isItem"(): boolean
- "collectDebugInfo"(arg0: $DebugInfo$$Type): void
-static "testItem"(arg0: string): $ItemLootEntry
  "getVanillaType"(): $LootPoolEntryType
  "isComposite"(): boolean
  "isAlternative"(): boolean
@@ -302,28 +336,15 @@ static "testItem"(arg0: string): $ItemLootEntry
  "isGroup"(): boolean
 static "ofIngredient"(arg0: $Ingredient$$Type): $CompositeLootEntry
 static "ofVanilla"(arg0: $LootPoolEntryContainer$$Type): $LootEntry
+static "testItem"(arg0: StringJS): $ItemLootEntry
+ "collectDebugInfo"(arg0: $DebugInfo$$Type): void
+ "getVanillaEntry"(): $LootPoolEntryContainer
  "matchLocation"(arg0: $BlockPos$$Type, arg1: $LocationPredicate$$Type): $LootEntry
  "matchLocation"(arg0: $LocationPredicate$$Type): $LootEntry
- "matchPlayerCustom"(arg0: $Predicate$$Type<($ServerPlayer)>): $LootEntry
- "matchAnyInventorySlot"(arg0: $ItemFilter$$Type): $LootEntry
- "matchAnyHotbarSlot"(arg0: $ItemFilter$$Type): $LootEntry
- "randomTableBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootEntry
- "matchDirectAttacker"(arg0: $EntityPredicate$$Type): $LootEntry
- "matchDamageSource"(arg0: $DamageSourcePredicate$$Type): $LootEntry
- "matchEntityCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
- "matchAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
- "matchCustomCondition"(arg0: $JsonObject$$Type): $LootEntry
- "blockEntity"(arg0: $Predicate$$Type<($BlockEntity)>): $LootEntry
  "luck"(arg0: $MinMaxBounds$Doubles$$Type): $LootEntry
- "survivesExplosion"(): $LootEntry
- "matchBlock"(arg0: $Block$$Type, arg1: $StatePropertiesPredicate$$Type): $LootEntry
- "matchBlock"(arg0: $Block$$Type): $LootEntry
- "matchTool"(arg0: $ItemPredicate$$Type): $LootEntry
- "matchPlayer"(arg0: $EntityPredicate$$Type): $LootEntry
- "randomChance"(arg0: $NumberProvider$$Type): $LootEntry
- "killedByPlayer"(): $LootEntry
- "matchTime"(arg0: long, arg1: integer, arg2: integer): $LootEntry
+ "blockEntity"(arg0: $Predicate$$Type<($BlockEntity)>): $LootEntry
  "matchTime"(arg0: integer, arg1: integer): $LootEntry
+ "matchTime"(arg0: long, arg1: integer, arg2: integer): $LootEntry
  "matchMainHand"(arg0: $ItemFilter$$Type): $LootEntry
  "matchOffHand"(arg0: $ItemFilter$$Type): $LootEntry
  "matchHead"(arg0: $ItemFilter$$Type): $LootEntry
@@ -337,12 +358,28 @@ static "ofVanilla"(arg0: $LootPoolEntryContainer$$Type): $LootEntry
  "matchStructure"(arg0: $HolderSet$$Type<($Structure)>): $LootEntry
  "matchStructure"(arg0: $HolderSet$$Type<($Structure)>, arg1: boolean): $LootEntry
  "isLightLevel"(arg0: integer, arg1: integer): $LootEntry
+ "matchBlock"(arg0: $Block$$Type): $LootEntry
+ "matchBlock"(arg0: $Block$$Type, arg1: $StatePropertiesPredicate$$Type): $LootEntry
  "matchEntity"(arg0: $EntityPredicate$$Type): $LootEntry
  "matchAttacker"(arg0: $EntityPredicate$$Type): $LootEntry
  "matchDistance"(arg0: $DistancePredicate$$Type): $LootEntry
- "hasAnyStage"(...arg0: (string)[]): $LootEntry
+ "hasAnyStage"(...arg0: (StringJS)[]): $LootEntry
  "matchAnyOf"(...arg0: ($LootItemCondition$$Type)[]): $LootEntry
  "matchAllOf"(...arg0: ($LootItemCondition$$Type)[]): $LootEntry
+ "matchPlayer"(arg0: $EntityPredicate$$Type): $LootEntry
+ "matchTool"(arg0: $ItemPredicate$$Type): $LootEntry
+ "killedByPlayer"(): $LootEntry
+ "randomChance"(arg0: $NumberProvider$$Type): $LootEntry
+ "survivesExplosion"(): $LootEntry
+ "matchPlayerCustom"(arg0: $Predicate$$Type<($ServerPlayer)>): $LootEntry
+ "matchAnyInventorySlot"(arg0: $ItemFilter$$Type): $LootEntry
+ "matchAnyHotbarSlot"(arg0: $ItemFilter$$Type): $LootEntry
+ "randomTableBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootEntry
+ "matchDirectAttacker"(arg0: $EntityPredicate$$Type): $LootEntry
+ "matchDamageSource"(arg0: $DamageSourcePredicate$$Type): $LootEntry
+ "matchEntityCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
+ "matchAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
+ "matchCustomCondition"(arg0: $JsonObject$$Type): $LootEntry
  "randomChanceWithEnchantment"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootEntry
  "matchDirectAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
 }
@@ -361,10 +398,11 @@ export type $LootEntry_ = $LootEntry$$Type;
 declare module "com.almostreliable.morejs.features.misc.PiglinPlayerBehaviorEventJS" {
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$PiglinPlayerBehaviorEventJS$PiglinBehavior, $PiglinPlayerBehaviorEventJS$PiglinBehavior$$Type} from "com.almostreliable.morejs.features.misc.PiglinPlayerBehaviorEventJS$PiglinBehavior"
-import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$KubePlayerEvent, $KubePlayerEvent$$Type} from "dev.latvian.mods.kubejs.player.KubePlayerEvent"
+import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Piglin, $Piglin$$Type} from "net.minecraft.world.entity.monster.piglin.Piglin"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$MinecraftServer, $MinecraftServer$$Type} from "net.minecraft.server.MinecraftServer"
 import {$RegistryAccess, $RegistryAccess$$Type} from "net.minecraft.core.RegistryAccess"
 
@@ -372,42 +410,18 @@ export class $PiglinPlayerBehaviorEventJS implements $KubePlayerEvent {
 
 constructor(arg0: $Piglin$$Type, arg1: $Player$$Type, arg2: $Optional$$Type<($Player$$Type)>)
 
-public "getEntity"(): $Player
-public "ignoreHoldingCheck"(): void
-public "isIgnoreHoldingCheck"(): boolean
+public "getEntity"(): $LivingEntity
 public "setBehavior"(arg0: $PiglinPlayerBehaviorEventJS$PiglinBehavior$$Type): void
 public "getBehavior"(): $PiglinPlayerBehaviorEventJS$PiglinBehavior
+public "ignoreHoldingCheck"(): void
+public "isIgnoreHoldingCheck"(): boolean
 public "getPiglin"(): $Piglin
 public "isAggressiveAlready"(): boolean
 public "getPreviousTargetPlayer"(): $Player
 public "getPlayer"(): $Player
 public "getLevel"(): $Level
-public "getRegistries"(): $RegistryAccess
 public "getServer"(): $MinecraftServer
-/**
- * Stops the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(arg1: any): any
-/**
- * Stops the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(): any
-/**
- * Cancels the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(arg1: any): any
-/**
- * Cancels the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(): any
+public "getRegistries"(): $RegistryAccess
 /**
  * Stops the event with default exit value. Execution will be stopped **immediately**.
  * 
@@ -420,7 +434,31 @@ public "success"(): any
  * `success` denotes a `true` outcome.
  */
 public "success"(arg1: any): any
-get "entity"(): $Player
+/**
+ * Stops the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(): any
+/**
+ * Stops the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(arg1: any): any
+/**
+ * Cancels the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(arg1: any): any
+/**
+ * Cancels the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(): any
+get "entity"(): $LivingEntity
 set "behavior"(value: $PiglinPlayerBehaviorEventJS$PiglinBehavior$$Type)
 get "behavior"(): $PiglinPlayerBehaviorEventJS$PiglinBehavior
 get "piglin"(): $Piglin
@@ -428,8 +466,8 @@ get "aggressiveAlready"(): boolean
 get "previousTargetPlayer"(): $Player
 get "player"(): $Player
 get "level"(): $Level
-get "registries"(): $RegistryAccess
 get "server"(): $MinecraftServer
+get "registries"(): $RegistryAccess
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -443,6 +481,78 @@ export type $PiglinPlayerBehaviorEventJS$$Type = ($PiglinPlayerBehaviorEventJS);
 declare global {
 export type $PiglinPlayerBehaviorEventJS_ = $PiglinPlayerBehaviorEventJS$$Type;
 }}
+declare module "com.almostreliable.kubeio.mixin.FireCraftingResultMixin" {
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$FireCraftingRecipe$Result, $FireCraftingRecipe$Result$$Type} from "com.enderio.base.common.recipe.FireCraftingRecipe$Result"
+import {$FireCraftingResult, $FireCraftingResult$$Type} from "com.almostreliable.kubeio.binding.FireCraftingResult"
+
+export interface $FireCraftingResultMixin extends $FireCraftingResult {
+
+}
+
+export namespace $FireCraftingResultMixin {
+function of(arg0: $ItemStack$$Type, arg1: integer, arg2: integer, arg3: float): $FireCraftingRecipe$Result
+function of(arg0: $ItemStack$$Type, arg1: integer, arg2: integer): $FireCraftingRecipe$Result
+function of(arg0: $ItemStack$$Type, arg1: integer): $FireCraftingRecipe$Result
+function of(arg0: $ItemStack$$Type): $FireCraftingRecipe$Result
+const probejs$$marker: never
+}
+export class $FireCraftingResultMixin$$Static implements $FireCraftingResultMixin {
+
+
+static "of"(arg0: $ItemStack$$Type, arg1: integer, arg2: integer, arg3: float): $FireCraftingRecipe$Result
+static "of"(arg0: $ItemStack$$Type, arg1: integer, arg2: integer): $FireCraftingRecipe$Result
+static "of"(arg0: $ItemStack$$Type, arg1: integer): $FireCraftingRecipe$Result
+static "of"(arg0: $ItemStack$$Type): $FireCraftingRecipe$Result
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $FireCraftingResultMixin$$Type = ($FireCraftingResultMixin);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $FireCraftingResultMixin_ = $FireCraftingResultMixin$$Type;
+}}
+declare module "com.almostreliable.merequester.requester.StorageManager$Storage" {
+import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
+import {$Tag, $Tag$$Type} from "net.minecraft.nbt.Tag"
+import {$AEKey, $AEKey$$Type} from "appeng.api.stacks.AEKey"
+import {$INBTSerializable, $INBTSerializable$$Type} from "net.neoforged.neoforge.common.util.INBTSerializable"
+import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
+
+export class $StorageManager$Storage implements $INBTSerializable<($CompoundTag)> {
+
+constructor()
+
+public "getKey"(): $AEKey
+public "compute"(arg0: long): boolean
+public "deserializeNBT"(arg0: $HolderLookup$Provider$$Type, arg1: $Tag$$Type): void
+public "deserializeNBT"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): void
+public "serializeNBT"(arg0: $HolderLookup$Provider$$Type): $Tag
+public "setTotalAmount"(arg0: long): void
+public "getKnownAmount"(): long
+public "getBufferAmount"(): long
+get "key"(): $AEKey
+set "totalAmount"(value: long)
+get "knownAmount"(): long
+get "bufferAmount"(): long
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $StorageManager$Storage$$Type = ($StorageManager$Storage);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $StorageManager$Storage_ = $StorageManager$Storage$$Type;
+}}
 declare module "com.almostreliable.morejs.features.enchantment.EnchantmentState" {
 import {$Enum, $Enum$$Type} from "java.lang.Enum"
 
@@ -453,7 +563,7 @@ static readonly "USE_STORED_ENCHANTMENTS": $EnchantmentState
 
 
 public static "values"(): ($EnchantmentState)[]
-public static "valueOf"(arg0: string): $EnchantmentState
+public static "valueOf"(arg0: StringJS): $EnchantmentState
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -474,10 +584,10 @@ import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 
 export interface $IdFilter extends $Predicate<($ResourceLocation)> {
 
- "test"(arg0: $ResourceLocation$$Type): boolean
  "or"(arg0: $Predicate$$Type<($ResourceLocation)>): $Predicate<($ResourceLocation)>
  "negate"(): $Predicate<($ResourceLocation)>
  "and"(arg0: $Predicate$$Type<($ResourceLocation)>): $Predicate<($ResourceLocation)>
+ "test"(arg0: $ResourceLocation$$Type): boolean
 
 (arg0: $ResourceLocation): boolean
 }
@@ -490,18 +600,18 @@ const probejs$$marker: never
 export class $IdFilter$$Static implements $IdFilter {
 
 
- "test"(arg0: $ResourceLocation$$Type): boolean
  "or"(arg0: $Predicate$$Type<($ResourceLocation)>): $Predicate<($ResourceLocation)>
+static "not"<T>(arg0: $Predicate$$Type<($ResourceLocation)>): $Predicate<($ResourceLocation)>
  "negate"(): $Predicate<($ResourceLocation)>
  "and"(arg0: $Predicate$$Type<($ResourceLocation)>): $Predicate<($ResourceLocation)>
-static "not"<T>(arg0: $Predicate$$Type<($ResourceLocation)>): $Predicate<($ResourceLocation)>
 static "isEqual"<T>(arg0: any): $Predicate<($ResourceLocation)>
+ "test"(arg0: $ResourceLocation$$Type): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $IdFilter$$Type = ((arg0: $ResourceLocation) => boolean) | ((string) | ($Pattern$$Type));
+export type $IdFilter$$Type = ((arg0: $ResourceLocation) => boolean) | ((StringJS) | ($Pattern$$Type));
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -559,10 +669,10 @@ import {$IdFilter, $IdFilter$$Type} from "com.almostreliable.lootjs.core.filters
 
 export interface $ItemFilter {
 
- "test"(arg0: $ItemStack$$Type): boolean
  "or"(arg0: $ItemFilter$$Type): $ItemFilter
  "negate"(): $ItemFilter
  "and"(arg0: $ItemFilter$$Type): $ItemFilter
+ "test"(arg0: $ItemStack$$Type): boolean
 
 (arg0: $ItemStack): boolean
 }
@@ -577,21 +687,21 @@ const ENCHANTED: $ItemFilter
 const EMPTY: $ItemFilter
 const DAMAGEABLE: $ItemFilter
 const EDIBLE: $ItemFilter
-function anyOf(...arg0: ($ItemFilter$$Type)[]): $ItemFilter
+function tag(arg0: StringJS): $ItemFilter
 function not(arg0: $ItemFilter$$Type): $ItemFilter
-function tag(arg0: string): $ItemFilter
-function item(arg0: $ItemStack$$Type, arg1: boolean): $ItemFilter
 function allOf(...arg0: ($ItemFilter$$Type)[]): $ItemFilter
-function equipmentSlot(arg0: $EquipmentSlot$$Type): $ItemFilter
-function custom(arg0: $Predicate$$Type<($ItemStack)>, arg1: string): $ItemFilter
+function anyOf(...arg0: ($ItemFilter$$Type)[]): $ItemFilter
+function item(arg0: $ItemStack$$Type, arg1: boolean): $ItemFilter
+function custom(arg0: $Predicate$$Type<($ItemStack)>, arg1: StringJS): $ItemFilter
 function custom(arg0: $Predicate$$Type<($ItemStack)>): $ItemFilter
-function equipmentSlotGroup(arg0: $EquipmentSlotGroup$$Type): $ItemFilter
-function hasStoredEnchantment(arg0: $IdFilter$$Type, arg1: $MinMaxBounds$Ints$$Type): $ItemFilter
-function hasStoredEnchantment(arg0: $IdFilter$$Type): $ItemFilter
+function equipmentSlot(arg0: $EquipmentSlot$$Type): $ItemFilter
 function hasEnchantment(arg0: $IdFilter$$Type): $ItemFilter
 function hasEnchantment(arg0: $IdFilter$$Type, arg1: $MinMaxBounds$Ints$$Type): $ItemFilter
-function anyToolAction(...arg0: (string)[]): $ItemFilter
-function toolAction(...arg0: (string)[]): $ItemFilter
+function anyToolAction(...arg0: (StringJS)[]): $ItemFilter
+function toolAction(...arg0: (StringJS)[]): $ItemFilter
+function hasStoredEnchantment(arg0: $IdFilter$$Type, arg1: $MinMaxBounds$Ints$$Type): $ItemFilter
+function hasStoredEnchantment(arg0: $IdFilter$$Type): $ItemFilter
+function equipmentSlotGroup(arg0: $EquipmentSlotGroup$$Type): $ItemFilter
 const probejs$$marker: never
 }
 export class $ItemFilter$$Static implements $ItemFilter {
@@ -606,25 +716,25 @@ static readonly "DAMAGEABLE": $ItemFilter
 static readonly "EDIBLE": $ItemFilter
 
 
-static "anyOf"(...arg0: ($ItemFilter$$Type)[]): $ItemFilter
- "test"(arg0: $ItemStack$$Type): boolean
  "or"(arg0: $ItemFilter$$Type): $ItemFilter
+static "tag"(arg0: StringJS): $ItemFilter
+static "not"(arg0: $ItemFilter$$Type): $ItemFilter
  "negate"(): $ItemFilter
  "and"(arg0: $ItemFilter$$Type): $ItemFilter
-static "not"(arg0: $ItemFilter$$Type): $ItemFilter
-static "tag"(arg0: string): $ItemFilter
-static "item"(arg0: $ItemStack$$Type, arg1: boolean): $ItemFilter
 static "allOf"(...arg0: ($ItemFilter$$Type)[]): $ItemFilter
-static "equipmentSlot"(arg0: $EquipmentSlot$$Type): $ItemFilter
-static "custom"(arg0: $Predicate$$Type<($ItemStack)>, arg1: string): $ItemFilter
+static "anyOf"(...arg0: ($ItemFilter$$Type)[]): $ItemFilter
+static "item"(arg0: $ItemStack$$Type, arg1: boolean): $ItemFilter
+ "test"(arg0: $ItemStack$$Type): boolean
+static "custom"(arg0: $Predicate$$Type<($ItemStack)>, arg1: StringJS): $ItemFilter
 static "custom"(arg0: $Predicate$$Type<($ItemStack)>): $ItemFilter
-static "equipmentSlotGroup"(arg0: $EquipmentSlotGroup$$Type): $ItemFilter
-static "hasStoredEnchantment"(arg0: $IdFilter$$Type, arg1: $MinMaxBounds$Ints$$Type): $ItemFilter
-static "hasStoredEnchantment"(arg0: $IdFilter$$Type): $ItemFilter
+static "equipmentSlot"(arg0: $EquipmentSlot$$Type): $ItemFilter
 static "hasEnchantment"(arg0: $IdFilter$$Type): $ItemFilter
 static "hasEnchantment"(arg0: $IdFilter$$Type, arg1: $MinMaxBounds$Ints$$Type): $ItemFilter
-static "anyToolAction"(...arg0: (string)[]): $ItemFilter
-static "toolAction"(...arg0: (string)[]): $ItemFilter
+static "anyToolAction"(...arg0: (StringJS)[]): $ItemFilter
+static "toolAction"(...arg0: (StringJS)[]): $ItemFilter
+static "hasStoredEnchantment"(arg0: $IdFilter$$Type, arg1: $MinMaxBounds$Ints$$Type): $ItemFilter
+static "hasStoredEnchantment"(arg0: $IdFilter$$Type): $ItemFilter
+static "equipmentSlotGroup"(arg0: $EquipmentSlotGroup$$Type): $ItemFilter
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -642,8 +752,8 @@ declare module "com.almostreliable.morejs.MoreJSBinding" {
 import {$Structure, $Structure$$Type} from "net.minecraft.world.level.levelgen.structure.Structure"
 import {$TradeItem, $TradeItem$$Type} from "com.almostreliable.morejs.features.villager.TradeItem"
 import {$HolderSet, $HolderSet$$Type} from "net.minecraft.core.HolderSet"
-import {$IntRange, $IntRange$$Type} from "com.almostreliable.morejs.features.villager.IntRange"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
+import {$IntRange, $IntRange$$Type} from "com.almostreliable.morejs.features.villager.IntRange"
 import {$Biome, $Biome$$Type} from "net.minecraft.world.level.biome.Biome"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$WeightedList$Builder, $WeightedList$Builder$$Type} from "com.almostreliable.morejs.util.WeightedList$Builder"
@@ -655,11 +765,11 @@ export class $MoreJSBinding {
 constructor()
 
 public static "range"(arg0: any): $IntRange
-public static "weightedList"(): $WeightedList$Builder<(any)>
-public static "ofTradeItem"(arg0: $RegistryAccessContainer$$Type, arg1: any): $TradeItem
-public static "ofWeightedList"(arg0: any): $WeightedList<(any)>
 public static "findStructure"(arg0: $BlockPos$$Type, arg1: $ServerLevel$$Type, arg2: $HolderSet$$Type<($Structure)>, arg3: integer): $BlockPos
 public static "findBiome"(arg0: $BlockPos$$Type, arg1: $ServerLevel$$Type, arg2: $HolderSet$$Type<($Biome)>, arg3: integer): $BlockPos
+public static "ofTradeItem"(arg0: $RegistryAccessContainer$$Type, arg1: any): $TradeItem
+public static "ofWeightedList"(arg0: any): $WeightedList<(any)>
+public static "weightedList"(): $WeightedList$Builder<(any)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -673,9 +783,49 @@ export type $MoreJSBinding$$Type = ($MoreJSBinding);
 declare global {
 export type $MoreJSBinding_ = $MoreJSBinding$$Type;
 }}
+declare module "com.almostreliable.merequester.requester.abstraction.RequestHost" {
+import {$RequestManager, $RequestManager$$Type} from "com.almostreliable.merequester.requester.RequestManager"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+
+export interface $RequestHost {
+
+ "isClientSide"(): boolean
+ "requestChanged"(arg0: integer): void
+ "saveChanges"(): void
+ "getRequestManager"(): $RequestManager
+ "getTerminalName"(): $Component
+get "clientSide"(): boolean
+get "requestManager"(): $RequestManager
+get "terminalName"(): $Component
+}
+
+export namespace $RequestHost {
+const probejs$$marker: never
+}
+export class $RequestHost$$Static implements $RequestHost {
+
+
+ "isClientSide"(): boolean
+ "requestChanged"(arg0: integer): void
+ "saveChanges"(): void
+ "getRequestManager"(): $RequestManager
+ "getTerminalName"(): $Component
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $RequestHost$$Type = ($RequestHost);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $RequestHost_ = $RequestHost$$Type;
+}}
 declare module "com.almostreliable.morejs.mixin.villager.MerchantOfferAccessor" {
-import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$MerchantOffer, $MerchantOffer$$Type} from "net.minecraft.world.item.trading.MerchantOffer"
+import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 
 export interface $MerchantOfferAccessor {
 
@@ -717,13 +867,13 @@ export class $AddAttributesFunction$Builder implements $LootItemFunction$Builder
 
 constructor()
 
+public "build"(): $AddAttributesFunction
 public "add"(arg0: $AddAttributesFunction$Modifier$$Type): $AddAttributesFunction$Builder
 public "add"(arg0: $Attribute$$Type, arg1: $ResourceLocation$$Type, arg2: $NumberProvider$$Type, arg3: $Consumer$$Type<($AddAttributesFunction$Modifier$Builder)>): $AddAttributesFunction$Builder
-public "build"(): $AddAttributesFunction
 public "simple"(arg0: $Attribute$$Type, arg1: $ResourceLocation$$Type, arg2: $NumberProvider$$Type): $AddAttributesFunction$Builder
 public "simple"(arg0: float, arg1: $Attribute$$Type, arg2: $ResourceLocation$$Type, arg3: $NumberProvider$$Type): $AddAttributesFunction$Builder
-public "forSlots"(arg0: $Attribute$$Type, arg1: $ResourceLocation$$Type, arg2: $NumberProvider$$Type, arg3: ($EquipmentSlotGroup$$Type)[]): $AddAttributesFunction$Builder
 public "forSlots"(arg0: float, arg1: $Attribute$$Type, arg2: $ResourceLocation$$Type, arg3: $NumberProvider$$Type, arg4: ($EquipmentSlotGroup$$Type)[]): $AddAttributesFunction$Builder
+public "forSlots"(arg0: $Attribute$$Type, arg1: $ResourceLocation$$Type, arg2: $NumberProvider$$Type, arg3: ($EquipmentSlotGroup$$Type)[]): $AddAttributesFunction$Builder
 public "preserveDefaults"(arg0: boolean): $AddAttributesFunction$Builder
 }
 /**
@@ -738,6 +888,47 @@ export type $AddAttributesFunction$Builder$$Type = ($AddAttributesFunction$Build
 declare global {
 export type $AddAttributesFunction$Builder_ = $AddAttributesFunction$Builder$$Type;
 }}
+declare module "com.almostreliable.merequester.compat.wtlib.ReqWirelessTerminalItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ItemMenuHost, $ItemMenuHost$$Type} from "appeng.api.implementations.menuobjects.ItemMenuHost"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$ItemMenuHostLocator, $ItemMenuHostLocator$$Type} from "appeng.menu.locator.ItemMenuHostLocator"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ItemWT, $ItemWT$$Type} from "de.mari_023.ae2wtlib.api.terminal.ItemWT"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$IGridLinkableHandler, $IGridLinkableHandler$$Type} from "appeng.api.features.IGridLinkableHandler"
+
+export class $ReqWirelessTerminalItem extends $ItemWT {
+static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
+static readonly "LINKABLE_HANDLER": $IGridLinkableHandler
+static readonly "DEFAULT_MAX_STACK_SIZE": integer
+ "descriptionId": StringJS
+static readonly "MAX_BAR_WIDTH": integer
+static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
+static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
+static readonly "BY_BLOCK": $Map<($Block), ($Item)>
+
+
+public "getMenuHost"(arg0: $Player$$Type, arg1: $ItemMenuHostLocator$$Type, arg2: $BlockHitResult$$Type): $ItemMenuHost<(any)>
+public "asItem"(): $Item
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ReqWirelessTerminalItem$$Type = ($ReqWirelessTerminalItem);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ReqWirelessTerminalItem_ = $ReqWirelessTerminalItem$$Type;
+}}
 declare module "com.almostreliable.lootjs.loot.LootModificationEvent" {
 import {$LootType, $LootType$$Type} from "com.almostreliable.lootjs.core.LootType"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -748,15 +939,15 @@ import {$HolderSet, $HolderSet$$Type} from "net.minecraft.core.HolderSet"
 import {$BlockFilter, $BlockFilter$$Type} from "com.almostreliable.lootjs.util.BlockFilter"
 import {$LootModifier$Builder, $LootModifier$Builder$$Type} from "com.almostreliable.lootjs.loot.modifier.LootModifier$Builder"
 import {$IGlobalLootModifier, $IGlobalLootModifier$$Type} from "net.neoforged.neoforge.common.loot.IGlobalLootModifier"
-import {$EntityType, $EntityType$$Type} from "net.minecraft.world.entity.EntityType"
 import {$LootTableFilter, $LootTableFilter$$Type} from "com.almostreliable.lootjs.core.filters.LootTableFilter"
+import {$EntityType, $EntityType$$Type} from "net.minecraft.world.entity.EntityType"
 
 export class $LootModificationEvent {
 
 constructor(arg0: $Map$$Type<($ResourceLocation$$Type), ($IGlobalLootModifier$$Type)>)
 
 public "enableLogging"(): void
-public "getGlobalModifiers"(): $List<(string)>
+public "getGlobalModifiers"(): $List<(StringJS)>
 public "removeGlobalModifiers"(...arg0: ($IdFilter$$Type)[]): void
 public "addTableModifier"(...arg0: ($LootTableFilter$$Type)[]): $LootModifier$Builder
 /**
@@ -766,12 +957,12 @@ public "addTableModifier"(...arg0: ($LootTableFilter$$Type)[]): $LootModifier$Bu
 public "addTypeModifier"(...arg0: ($LootType$$Type)[]): $LootModifier$Builder
 public "addBlockModifier"(arg0: $BlockFilter$$Type): $LootModifier$Builder
 public "addEntityModifier"(arg0: $HolderSet$$Type<($EntityType<(any)>)>): $LootModifier$Builder
+public "disableZombieHeadDrop"(): void
 public "disableWitherStarDrop"(): void
 public "disableCreeperHeadDrop"(): void
-public "disableZombieHeadDrop"(): void
 public "disableLootModification"(...arg0: ($IdFilter$$Type)[]): void
 public "disableSkeletonHeadDrop"(): void
-get "globalModifiers"(): $List<(string)>
+get "globalModifiers"(): $List<(StringJS)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -785,6 +976,47 @@ export type $LootModificationEvent$$Type = ($LootModificationEvent);
 declare global {
 export type $LootModificationEvent_ = $LootModificationEvent$$Type;
 }}
+declare module "com.almostreliable.kubeio.recipe.FireCraftingKubeRecipe" {
+import {$RecipeComponentValueMap, $RecipeComponentValueMap$$Type} from "dev.latvian.mods.kubejs.recipe.component.RecipeComponentValueMap"
+import {$KubeRecipe, $KubeRecipe$$Type} from "dev.latvian.mods.kubejs.recipe.KubeRecipe"
+import {$RecipeTypeFunction, $RecipeTypeFunction$$Type} from "dev.latvian.mods.kubejs.recipe.RecipeTypeFunction"
+import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$KubeRecipeFactory, $KubeRecipeFactory$$Type} from "dev.latvian.mods.kubejs.recipe.schema.KubeRecipeFactory"
+import {$JsonObject, $JsonObject$$Type} from "com.google.gson.JsonObject"
+import {$SourceLine, $SourceLine$$Type} from "dev.latvian.mods.kubejs.script.SourceLine"
+
+export class $FireCraftingKubeRecipe extends $KubeRecipe {
+ "newRecipe": boolean
+ "type": $RecipeTypeFunction
+ "sourceLine": $SourceLine
+ "originalJson": $JsonObject
+ "removed": boolean
+ "creationError": boolean
+ "valueMap": $RecipeComponentValueMap
+ "json": $JsonObject
+static readonly "CHANGED_MARKER": StringJS
+static readonly "FACTORY": $KubeRecipeFactory
+ "changed": boolean
+
+constructor()
+
+public "block"(arg0: $Block$$Type): $FireCraftingKubeRecipe
+public "serialize"(): void
+public "blockTag"(arg0: $TagKey$$Type<($Block)>): $FireCraftingKubeRecipe
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $FireCraftingKubeRecipe$$Type = ($FireCraftingKubeRecipe);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $FireCraftingKubeRecipe_ = $FireCraftingKubeRecipe$$Type;
+}}
 declare module "com.almostreliable.lootjs.loot.LootFunctionList" {
 import {$Potion, $Potion$$Type} from "net.minecraft.world.item.alchemy.Potion"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
@@ -793,8 +1025,8 @@ import {$List, $List$$Type} from "java.util.List"
 import {$IdFilter, $IdFilter$$Type} from "com.almostreliable.lootjs.core.filters.IdFilter"
 import {$LootItemFunctionType, $LootItemFunctionType$$Type} from "net.minecraft.world.level.storage.loot.functions.LootItemFunctionType"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$NumberProvider, $NumberProvider$$Type} from "net.minecraft.world.level.storage.loot.providers.number.NumberProvider"
+import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Function, $Function$$Type} from "java.util.function.Function"
 import {$HolderSet, $HolderSet$$Type} from "net.minecraft.core.HolderSet"
 import {$JsonObject, $JsonObject$$Type} from "com.google.gson.JsonObject"
@@ -824,30 +1056,30 @@ public "iterator"(): $Iterator<($LootItemFunction)>
 public "apply"(arg0: $ItemStack$$Type, arg1: $LootContext$$Type): $ItemStack
 public "apply"(arg0: any, arg1: any): any
 public "contains"(arg0: $LootItemFunctionType$$Type<(any)>): boolean
+public "addFunction"(arg0: $LootItemFunction$$Type): any
 public "collectDebugInfo"(arg0: $DebugInfo$$Type): void
-public "addFunction"(arg0: $LootItemFunction$$Type): $LootFunctionList
-public "setName"(arg0: $Component$$Type): $LootFunctionList
 public "addAttributes"(arg0: $Consumer$$Type<($AddAttributesFunction$Builder)>): $LootFunctionList
+public "setName"(arg0: $Component$$Type): $LootFunctionList
+public "damage"(arg0: $NumberProvider$$Type): $LootFunctionList
+public "enchant"(arg0: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $LootFunctionList
+public "enchant"(arg0: boolean, arg1: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $LootFunctionList
+public "setCount"(arg0: $NumberProvider$$Type): $LootFunctionList
+public "smelt"(): $LootFunctionList
+public "applyOreBonus"(arg0: $Holder$$Type<($Enchantment)>): $LootFunctionList
+public "applyBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: integer): $LootFunctionList
+public "addLore"(...arg0: ($Component$$Type)[]): $LootFunctionList
+public "replaceLore"(...arg0: ($Component$$Type)[]): $LootFunctionList
+public "toggleTooltips"(arg0: $Map$$Type<(StringJS), (boolean)>): $LootFunctionList
+public "jsonFunction"(arg0: $JsonObject$$Type): $LootFunctionList
+public "addPotion"(arg0: $Potion$$Type): $LootFunctionList
+public "setCustomData"(arg0: $CompoundTag$$Type): $LootFunctionList
+public "limitCount"(arg0: $NumberProvider$$Type, arg1: $NumberProvider$$Type): $LootFunctionList
+public "enchantWithLevels"(arg0: $NumberProvider$$Type): $LootFunctionList
 public "enchantRandomly"(): $LootFunctionList
 public "enchantRandomly"(arg0: $HolderSet$$Type<($Enchantment)>): $LootFunctionList
 public "applyEnchantmentBonus"(arg0: $NumberProvider$$Type): $LootFunctionList
 public "applyEnchantmentBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: $NumberProvider$$Type): $LootFunctionList
 public "simulateExplosionDecay"(): $LootFunctionList
-public "enchant"(arg0: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $LootFunctionList
-public "enchant"(arg0: boolean, arg1: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $LootFunctionList
-public "setCount"(arg0: $NumberProvider$$Type): $LootFunctionList
-public "smelt"(): $LootFunctionList
-public "damage"(arg0: $NumberProvider$$Type): $LootFunctionList
-public "enchantWithLevels"(arg0: $NumberProvider$$Type): $LootFunctionList
-public "addPotion"(arg0: $Potion$$Type): $LootFunctionList
-public "setCustomData"(arg0: $CompoundTag$$Type): $LootFunctionList
-public "limitCount"(arg0: $NumberProvider$$Type, arg1: $NumberProvider$$Type): $LootFunctionList
-public "applyOreBonus"(arg0: $Holder$$Type<($Enchantment)>): $LootFunctionList
-public "applyBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: integer): $LootFunctionList
-public "addLore"(...arg0: ($Component$$Type)[]): $LootFunctionList
-public "replaceLore"(...arg0: ($Component$$Type)[]): $LootFunctionList
-public "toggleTooltips"(arg0: $Map$$Type<(string), (boolean)>): $LootFunctionList
-public "jsonFunction"(arg0: $JsonObject$$Type): $LootFunctionList
 public "applyBinomialDistributionBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: float, arg2: integer): $LootFunctionList
 public "andThen"<V>(arg0: $Function$$Type<($ItemStack), (V)>): $BiFunction<($ItemStack), ($LootContext), (V)>
 set "name"(value: $Component$$Type)
@@ -884,7 +1116,7 @@ static readonly "ItemsAndEmeraldsToItems": $TradeTypes
 
 
 public static "values"(): ($TradeTypes)[]
-public static "valueOf"(arg0: string): $TradeTypes
+public static "valueOf"(arg0: StringJS): $TradeTypes
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -908,13 +1140,13 @@ import {$LootContextParamSet, $LootContextParamSet$$Type} from "net.minecraft.wo
 
 export interface $LootTableExtension {
 
- "lootjs$createFunctionList"(): $LootFunctionList
- "lootjs$setRandomSequence"(arg0: $ResourceLocation$$Type): void
- "lootjs$getRandomSequence"(): $ResourceLocation
  "lootjs$getPools"(): $List<($LootPool)>
  "lootjs$setPools"(arg0: $List$$Type<($LootPool$$Type)>): void
  "lootjs$setParamSet"(arg0: $LootContextParamSet$$Type): void
  "lootjs$getParamSet"(): $LootContextParamSet
+ "lootjs$createFunctionList"(): $LootFunctionList
+ "lootjs$setRandomSequence"(arg0: $ResourceLocation$$Type): void
+ "lootjs$getRandomSequence"(): $ResourceLocation
 }
 
 export namespace $LootTableExtension {
@@ -925,13 +1157,13 @@ export class $LootTableExtension$$Static implements $LootTableExtension {
 
 
 static "cast"(arg0: $LootTable$$Type): $LootTableExtension
- "lootjs$createFunctionList"(): $LootFunctionList
- "lootjs$setRandomSequence"(arg0: $ResourceLocation$$Type): void
- "lootjs$getRandomSequence"(): $ResourceLocation
  "lootjs$getPools"(): $List<($LootPool)>
  "lootjs$setPools"(arg0: $List$$Type<($LootPool$$Type)>): void
  "lootjs$setParamSet"(arg0: $LootContextParamSet$$Type): void
  "lootjs$getParamSet"(): $LootContextParamSet
+ "lootjs$createFunctionList"(): $LootFunctionList
+ "lootjs$setRandomSequence"(arg0: $ResourceLocation$$Type): void
+ "lootjs$getRandomSequence"(): $ResourceLocation
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -982,6 +1214,7 @@ import {$MerchantOffers, $MerchantOffers$$Type} from "net.minecraft.world.item.t
 import {$UpdateOfferEventJS, $UpdateOfferEventJS$$Type} from "com.almostreliable.morejs.features.villager.events.UpdateOfferEventJS"
 import {$List, $List$$Type} from "java.util.List"
 import {$AbstractVillager, $AbstractVillager$$Type} from "net.minecraft.world.entity.npc.AbstractVillager"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$VillagerTrades$ItemListing, $VillagerTrades$ItemListing$$Type} from "net.minecraft.world.entity.npc.VillagerTrades$ItemListing"
 
 export class $SingleUpdateOfferEventJS extends $UpdateOfferEventJS {
@@ -993,10 +1226,12 @@ public "getUsedTrades"(): $List<($VillagerTrades$ItemListing)>
 public "setOffer"(arg0: $VillagerTrades$ItemListing$$Type): void
 public "setOffer"(arg0: $MerchantOffer$$Type): void
 public "createRandomOffer"(): $MerchantOffer
+public "getEntity"(): $Entity
 get "offer"(): $MerchantOffer
 get "usedTrades"(): $List<($VillagerTrades$ItemListing)>
 set "offer"(value: $VillagerTrades$ItemListing$$Type)
 set "offer"(value: $MerchantOffer$$Type)
+get "entity"(): $Entity
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1018,8 +1253,7 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export interface $OfferExtension {
 
- "setVillagerExperience"(arg0: integer): void
- "setPriceMultiplier"(arg0: float): void
+ "self"(): $MerchantOffer
  "replaceEmeralds"(arg0: $Item$$Type): void
  "replaceItems"(arg0: $Ingredient$$Type, arg1: $ItemStack$$Type): void
  "isDisabled"(): boolean
@@ -1034,9 +1268,8 @@ export interface $OfferExtension {
  "setDemand"(arg0: integer): void
  "setRewardExp"(arg0: boolean): void
  "isRewardingExp"(): boolean
- "self"(): $MerchantOffer
-set "villagerExperience"(value: integer)
-set "priceMultiplier"(value: float)
+ "setVillagerExperience"(arg0: integer): void
+ "setPriceMultiplier"(arg0: float): void
 get "disabled"(): boolean
 set "disabled"(value: boolean)
 get "firstCost"(): $ItemStack
@@ -1049,6 +1282,8 @@ set "maxUses"(value: integer)
 set "demand"(value: integer)
 set "rewardExp"(value: boolean)
 get "rewardingExp"(): boolean
+set "villagerExperience"(value: integer)
+set "priceMultiplier"(value: float)
 }
 
 export namespace $OfferExtension {
@@ -1057,8 +1292,7 @@ const probejs$$marker: never
 export class $OfferExtension$$Static implements $OfferExtension {
 
 
- "setVillagerExperience"(arg0: integer): void
- "setPriceMultiplier"(arg0: float): void
+ "self"(): $MerchantOffer
  "replaceEmeralds"(arg0: $Item$$Type): void
  "replaceItems"(arg0: $Ingredient$$Type, arg1: $ItemStack$$Type): void
  "isDisabled"(): boolean
@@ -1073,7 +1307,8 @@ export class $OfferExtension$$Static implements $OfferExtension {
  "setDemand"(arg0: integer): void
  "setRewardExp"(arg0: boolean): void
  "isRewardingExp"(): boolean
- "self"(): $MerchantOffer
+ "setVillagerExperience"(arg0: integer): void
+ "setPriceMultiplier"(arg0: float): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1089,8 +1324,8 @@ export type $OfferExtension_ = $OfferExtension$$Type;
 }}
 declare module "com.almostreliable.morejs.features.enchantment.EnchantmentTableTooltipEventJS" {
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$EnchantmentInstance, $EnchantmentInstance$$Type} from "net.minecraft.world.item.enchantment.EnchantmentInstance"
 import {$EnchantmentMenu, $EnchantmentMenu$$Type} from "net.minecraft.world.inventory.EnchantmentMenu"
 import {$List, $List$$Type} from "java.util.List"
@@ -1103,18 +1338,18 @@ export class $EnchantmentTableTooltipEventJS extends $EnchantmentTableEventJS {
 constructor(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: $Level$$Type, arg3: $Player$$Type, arg4: $EnchantmentMenu$$Type, arg5: integer, arg6: $List$$Type<($Component$$Type)>)
 
 public "getSlot"(): integer
-public "clearComponents"(): void
 public "getComponents"(): $List<($Component)>
-public "addComponent"(arg0: integer, arg1: $Component$$Type): void
 public "addComponent"(arg0: $Component$$Type): void
+public "addComponent"(arg0: integer, arg1: $Component$$Type): void
 public "removeComponent"(arg0: integer): void
-public "getClue"(): $EnchantmentInstance
+public "clearComponents"(): void
 public "getClueId"(): $ResourceLocation
+public "getClue"(): $EnchantmentInstance
 public "getRequiredLevel"(): integer
 get "slot"(): integer
 get "components"(): $List<($Component)>
-get "clue"(): $EnchantmentInstance
 get "clueId"(): $ResourceLocation
+get "clue"(): $EnchantmentInstance
 get "requiredLevel"(): integer
 }
 /**
@@ -1129,15 +1364,45 @@ export type $EnchantmentTableTooltipEventJS$$Type = ($EnchantmentTableTooltipEve
 declare global {
 export type $EnchantmentTableTooltipEventJS_ = $EnchantmentTableTooltipEventJS$$Type;
 }}
+declare module "com.almostreliable.kubeio.mixin.IngredientAccessor" {
+import {$Ingredient$Value, $Ingredient$Value$$Type} from "net.minecraft.world.item.crafting.Ingredient$Value"
+
+export interface $IngredientAccessor {
+
+ "kubeio$getValues"(): ($Ingredient$Value)[]
+
+(): ($Ingredient$Value$$Type)[]
+}
+
+export namespace $IngredientAccessor {
+const probejs$$marker: never
+}
+export class $IngredientAccessor$$Static implements $IngredientAccessor {
+
+
+ "kubeio$getValues"(): ($Ingredient$Value)[]
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $IngredientAccessor$$Type = (() => ($Ingredient$Value$$Type)[]);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $IngredientAccessor_ = $IngredientAccessor$$Type;
+}}
 declare module "com.almostreliable.lootjs.loot.LootFunctionsContainer" {
-import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$Potion, $Potion$$Type} from "net.minecraft.world.item.alchemy.Potion"
+import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$LootItemFunction, $LootItemFunction$$Type} from "net.minecraft.world.level.storage.loot.functions.LootItemFunction"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$AddAttributesFunction$Builder, $AddAttributesFunction$Builder$$Type} from "com.almostreliable.lootjs.loot.AddAttributesFunction$Builder"
-import {$NumberProvider, $NumberProvider$$Type} from "net.minecraft.world.level.storage.loot.providers.number.NumberProvider"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$NumberProvider, $NumberProvider$$Type} from "net.minecraft.world.level.storage.loot.providers.number.NumberProvider"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$SetEnchantmentsFunction$Builder, $SetEnchantmentsFunction$Builder$$Type} from "net.minecraft.world.level.storage.loot.functions.SetEnchantmentsFunction$Builder"
 import {$Enchantment, $Enchantment$$Type} from "net.minecraft.world.item.enchantment.Enchantment"
@@ -1146,29 +1411,29 @@ import {$JsonObject, $JsonObject$$Type} from "com.google.gson.JsonObject"
 
 export interface $LootFunctionsContainer<F> {
 
- "setName"(arg0: $Component$$Type): F
  "addAttributes"(arg0: $Consumer$$Type<($AddAttributesFunction$Builder)>): F
+ "setName"(arg0: $Component$$Type): F
+ "damage"(arg0: $NumberProvider$$Type): F
+ "enchant"(arg0: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): F
+ "enchant"(arg0: boolean, arg1: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): F
+ "setCount"(arg0: $NumberProvider$$Type): F
+ "smelt"(): F
+ "applyOreBonus"(arg0: $Holder$$Type<($Enchantment)>): F
+ "applyBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: integer): F
+ "addLore"(...arg0: ($Component$$Type)[]): F
+ "replaceLore"(...arg0: ($Component$$Type)[]): F
+ "toggleTooltips"(arg0: $Map$$Type<(StringJS), (boolean)>): F
+ "jsonFunction"(arg0: $JsonObject$$Type): F
+ "addFunction"(arg0: $LootItemFunction$$Type): F
+ "addPotion"(arg0: $Potion$$Type): F
+ "setCustomData"(arg0: $CompoundTag$$Type): F
+ "limitCount"(arg0: $NumberProvider$$Type, arg1: $NumberProvider$$Type): F
+ "enchantWithLevels"(arg0: $NumberProvider$$Type): F
  "enchantRandomly"(): F
  "enchantRandomly"(arg0: $HolderSet$$Type<($Enchantment)>): F
  "applyEnchantmentBonus"(arg0: $NumberProvider$$Type): F
  "applyEnchantmentBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: $NumberProvider$$Type): F
  "simulateExplosionDecay"(): F
- "enchant"(arg0: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): F
- "enchant"(arg0: boolean, arg1: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): F
- "setCount"(arg0: $NumberProvider$$Type): F
- "smelt"(): F
- "damage"(arg0: $NumberProvider$$Type): F
- "enchantWithLevels"(arg0: $NumberProvider$$Type): F
- "addPotion"(arg0: $Potion$$Type): F
- "setCustomData"(arg0: $CompoundTag$$Type): F
- "limitCount"(arg0: $NumberProvider$$Type, arg1: $NumberProvider$$Type): F
- "addFunction"(arg0: $LootItemFunction$$Type): F
- "applyOreBonus"(arg0: $Holder$$Type<($Enchantment)>): F
- "applyBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: integer): F
- "addLore"(...arg0: ($Component$$Type)[]): F
- "replaceLore"(...arg0: ($Component$$Type)[]): F
- "toggleTooltips"(arg0: $Map$$Type<(string), (boolean)>): F
- "jsonFunction"(arg0: $JsonObject$$Type): F
  "applyBinomialDistributionBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: float, arg2: integer): F
 
 (arg0: $LootItemFunction): F
@@ -1183,29 +1448,29 @@ const probejs$$marker: never
 export class $LootFunctionsContainer$$Static<F> implements $LootFunctionsContainer {
 
 
- "setName"(arg0: $Component$$Type): F
  "addAttributes"(arg0: $Consumer$$Type<($AddAttributesFunction$Builder)>): F
+ "setName"(arg0: $Component$$Type): F
+ "damage"(arg0: $NumberProvider$$Type): F
+ "enchant"(arg0: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): F
+ "enchant"(arg0: boolean, arg1: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): F
+ "setCount"(arg0: $NumberProvider$$Type): F
+ "smelt"(): F
+ "applyOreBonus"(arg0: $Holder$$Type<($Enchantment)>): F
+ "applyBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: integer): F
+ "addLore"(...arg0: ($Component$$Type)[]): F
+ "replaceLore"(...arg0: ($Component$$Type)[]): F
+ "toggleTooltips"(arg0: $Map$$Type<(StringJS), (boolean)>): F
+ "jsonFunction"(arg0: $JsonObject$$Type): F
+ "addFunction"(arg0: $LootItemFunction$$Type): F
+ "addPotion"(arg0: $Potion$$Type): F
+ "setCustomData"(arg0: $CompoundTag$$Type): F
+ "limitCount"(arg0: $NumberProvider$$Type, arg1: $NumberProvider$$Type): F
+ "enchantWithLevels"(arg0: $NumberProvider$$Type): F
  "enchantRandomly"(): F
  "enchantRandomly"(arg0: $HolderSet$$Type<($Enchantment)>): F
  "applyEnchantmentBonus"(arg0: $NumberProvider$$Type): F
  "applyEnchantmentBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: $NumberProvider$$Type): F
  "simulateExplosionDecay"(): F
- "enchant"(arg0: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): F
- "enchant"(arg0: boolean, arg1: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): F
- "setCount"(arg0: $NumberProvider$$Type): F
- "smelt"(): F
- "damage"(arg0: $NumberProvider$$Type): F
- "enchantWithLevels"(arg0: $NumberProvider$$Type): F
- "addPotion"(arg0: $Potion$$Type): F
- "setCustomData"(arg0: $CompoundTag$$Type): F
- "limitCount"(arg0: $NumberProvider$$Type, arg1: $NumberProvider$$Type): F
- "addFunction"(arg0: $LootItemFunction$$Type): F
- "applyOreBonus"(arg0: $Holder$$Type<($Enchantment)>): F
- "applyBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: integer): F
- "addLore"(...arg0: ($Component$$Type)[]): F
- "replaceLore"(...arg0: ($Component$$Type)[]): F
- "toggleTooltips"(arg0: $Map$$Type<(string), (boolean)>): F
- "jsonFunction"(arg0: $JsonObject$$Type): F
  "applyBinomialDistributionBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: float, arg2: integer): F
 }
 /**
@@ -1232,12 +1497,12 @@ export class $ExperiencePlayerEventJS implements $KubePlayerEvent {
 constructor(arg0: $Player$$Type, arg1: integer)
 
 public "getEntity"(): $Player
+public "getAmount"(): integer
+public "setAmount"(arg0: integer): void
+public "getXpNeededForNextLevel"(): integer
 public "getExperienceProgress"(): float
 public "getTotalExperience"(): integer
 public "getExperienceLevel"(): integer
-public "getXpNeededForNextLevel"(): integer
-public "setAmount"(arg0: integer): void
-public "getAmount"(): integer
 public "willLevelUp"(): boolean
 public "setExperienceProgress"(arg0: float): void
 public "setExperienceLevel"(arg0: integer): void
@@ -1245,32 +1510,8 @@ public "setTotalExperience"(arg0: integer): void
 public "getRemainingExperience"(): integer
 public "getPlayer"(): $Player
 public "getLevel"(): $Level
-public "getRegistries"(): $RegistryAccess
 public "getServer"(): $MinecraftServer
-/**
- * Stops the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(arg1: any): any
-/**
- * Stops the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(): any
-/**
- * Cancels the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(arg1: any): any
-/**
- * Cancels the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(): any
+public "getRegistries"(): $RegistryAccess
 /**
  * Stops the event with default exit value. Execution will be stopped **immediately**.
  * 
@@ -1283,21 +1524,45 @@ public "success"(): any
  * `success` denotes a `true` outcome.
  */
 public "success"(arg1: any): any
+/**
+ * Stops the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(): any
+/**
+ * Stops the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(arg1: any): any
+/**
+ * Cancels the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(arg1: any): any
+/**
+ * Cancels the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(): any
 get "entity"(): $Player
+get "amount"(): integer
+set "amount"(value: integer)
+get "xpNeededForNextLevel"(): integer
 get "experienceProgress"(): float
 get "totalExperience"(): integer
 get "experienceLevel"(): integer
-get "xpNeededForNextLevel"(): integer
-set "amount"(value: integer)
-get "amount"(): integer
 set "experienceProgress"(value: float)
 set "experienceLevel"(value: integer)
 set "totalExperience"(value: integer)
 get "remainingExperience"(): integer
 get "player"(): $Player
 get "level"(): $Level
-get "registries"(): $RegistryAccess
 get "server"(): $MinecraftServer
+get "registries"(): $RegistryAccess
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1339,16 +1604,16 @@ import {$ItemLootEntry, $ItemLootEntry$$Type} from "com.almostreliable.lootjs.co
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$LootEntry, $LootEntry$$Type} from "com.almostreliable.lootjs.core.entry.LootEntry"
-import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$LootPoolEntryContainer, $LootPoolEntryContainer$$Type} from "net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer"
+import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$LocationPredicate, $LocationPredicate$$Type} from "net.minecraft.advancements.critereon.LocationPredicate"
 import {$LootFunctionList, $LootFunctionList$$Type} from "com.almostreliable.lootjs.loot.LootFunctionList"
 import {$AddAttributesFunction$Builder, $AddAttributesFunction$Builder$$Type} from "com.almostreliable.lootjs.loot.AddAttributesFunction$Builder"
 import {$DebugInfo, $DebugInfo$$Type} from "com.almostreliable.lootjs.util.DebugInfo"
-import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$ItemPredicate, $ItemPredicate$$Type} from "net.minecraft.advancements.critereon.ItemPredicate"
+import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$CompositeLootEntry, $CompositeLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.CompositeLootEntry"
 import {$SetEnchantmentsFunction$Builder, $SetEnchantmentsFunction$Builder$$Type} from "net.minecraft.world.level.storage.loot.functions.SetEnchantmentsFunction$Builder"
 import {$Enchantment, $Enchantment$$Type} from "net.minecraft.world.item.enchantment.Enchantment"
@@ -1362,76 +1627,60 @@ import {$LootItemCondition, $LootItemCondition$$Type} from "net.minecraft.world.
 
 export interface $SimpleLootEntry extends $LootEntry, $LootFunctionsContainer<($SimpleLootEntry)> {
 
- "apply"(arg0: $Consumer$$Type<($LootFunctionList)>): $SimpleLootEntry
  "when"(arg0: $Consumer$$Type<(any)>): $LootEntry
+ "apply"(arg0: $Consumer$$Type<($LootFunctionList)>): $SimpleLootEntry
  "setCount"(arg0: $NumberProvider$$Type): $SimpleLootEntry
  "getWeight"(): integer
  "getFunctions"(): $LootFunctionList
- "setWeight"(arg0: integer): void
- "setQuality"(arg0: integer): void
- "addFunction"(arg0: $LootItemFunction$$Type): any
  "withWeight"(arg0: integer): $SimpleLootEntry
  "withQuality"(arg0: integer): $SimpleLootEntry
  "getQuality"(): integer
- "getConditions"(): $LootConditionList
+ "addFunction"(arg0: $LootItemFunction$$Type): any
+ "setQuality"(arg0: integer): void
+ "setWeight"(arg0: integer): void
  "isDynamic"(): boolean
+ "getConditions"(): $LootConditionList
  "isEmpty"(): boolean
  "getType"(): $ResourceLocation
- "getVanillaEntry"(): $LootPoolEntryContainer
+ "isTag"(): boolean
  "isReference"(): boolean
  "isSimple"(): boolean
- "isTag"(): boolean
  "isItem"(): boolean
- "collectDebugInfo"(arg0: $DebugInfo$$Type): void
  "getVanillaType"(): $LootPoolEntryType
  "isComposite"(): boolean
  "isAlternative"(): boolean
  "isSequence"(): boolean
  "isGroup"(): boolean
- "setName"(arg0: $Component$$Type): $SimpleLootEntry
+ "collectDebugInfo"(arg0: $DebugInfo$$Type): void
+ "getVanillaEntry"(): $LootPoolEntryContainer
  "addAttributes"(arg0: $Consumer$$Type<($AddAttributesFunction$Builder)>): $SimpleLootEntry
+ "setName"(arg0: $Component$$Type): $SimpleLootEntry
+ "damage"(arg0: $NumberProvider$$Type): $SimpleLootEntry
+ "enchant"(arg0: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $SimpleLootEntry
+ "enchant"(arg0: boolean, arg1: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $SimpleLootEntry
+ "smelt"(): $SimpleLootEntry
+ "applyOreBonus"(arg0: $Holder$$Type<($Enchantment)>): $SimpleLootEntry
+ "applyBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: integer): $SimpleLootEntry
+ "addLore"(...arg0: ($Component$$Type)[]): $SimpleLootEntry
+ "replaceLore"(...arg0: ($Component$$Type)[]): $SimpleLootEntry
+ "toggleTooltips"(arg0: $Map$$Type<(StringJS), (boolean)>): $SimpleLootEntry
+ "jsonFunction"(arg0: $JsonObject$$Type): $SimpleLootEntry
+ "addPotion"(arg0: $Potion$$Type): $SimpleLootEntry
+ "setCustomData"(arg0: $CompoundTag$$Type): $SimpleLootEntry
+ "limitCount"(arg0: $NumberProvider$$Type, arg1: $NumberProvider$$Type): $SimpleLootEntry
+ "enchantWithLevels"(arg0: $NumberProvider$$Type): $SimpleLootEntry
  "enchantRandomly"(): $SimpleLootEntry
  "enchantRandomly"(arg0: $HolderSet$$Type<($Enchantment)>): $SimpleLootEntry
  "applyEnchantmentBonus"(arg0: $NumberProvider$$Type): $SimpleLootEntry
  "applyEnchantmentBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: $NumberProvider$$Type): $SimpleLootEntry
  "simulateExplosionDecay"(): $SimpleLootEntry
- "enchant"(arg0: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $SimpleLootEntry
- "enchant"(arg0: boolean, arg1: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $SimpleLootEntry
- "smelt"(): $SimpleLootEntry
- "damage"(arg0: $NumberProvider$$Type): $SimpleLootEntry
- "enchantWithLevels"(arg0: $NumberProvider$$Type): $SimpleLootEntry
- "addPotion"(arg0: $Potion$$Type): $SimpleLootEntry
- "setCustomData"(arg0: $CompoundTag$$Type): $SimpleLootEntry
- "limitCount"(arg0: $NumberProvider$$Type, arg1: $NumberProvider$$Type): $SimpleLootEntry
- "applyOreBonus"(arg0: $Holder$$Type<($Enchantment)>): $SimpleLootEntry
- "applyBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: integer): $SimpleLootEntry
- "addLore"(...arg0: ($Component$$Type)[]): $SimpleLootEntry
- "replaceLore"(...arg0: ($Component$$Type)[]): $SimpleLootEntry
- "toggleTooltips"(arg0: $Map$$Type<(string), (boolean)>): $SimpleLootEntry
- "jsonFunction"(arg0: $JsonObject$$Type): $SimpleLootEntry
  "applyBinomialDistributionBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: float, arg2: integer): $SimpleLootEntry
  "matchLocation"(arg0: $BlockPos$$Type, arg1: $LocationPredicate$$Type): $LootEntry
  "matchLocation"(arg0: $LocationPredicate$$Type): $LootEntry
- "matchPlayerCustom"(arg0: $Predicate$$Type<($ServerPlayer)>): $LootEntry
- "matchAnyInventorySlot"(arg0: $ItemFilter$$Type): $LootEntry
- "matchAnyHotbarSlot"(arg0: $ItemFilter$$Type): $LootEntry
- "randomTableBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootEntry
- "matchDirectAttacker"(arg0: $EntityPredicate$$Type): $LootEntry
- "matchDamageSource"(arg0: $DamageSourcePredicate$$Type): $LootEntry
- "matchEntityCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
- "matchAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
- "matchCustomCondition"(arg0: $JsonObject$$Type): $LootEntry
- "blockEntity"(arg0: $Predicate$$Type<($BlockEntity)>): $LootEntry
  "luck"(arg0: $MinMaxBounds$Doubles$$Type): $LootEntry
- "survivesExplosion"(): $LootEntry
- "matchBlock"(arg0: $Block$$Type, arg1: $StatePropertiesPredicate$$Type): $LootEntry
- "matchBlock"(arg0: $Block$$Type): $LootEntry
- "matchTool"(arg0: $ItemPredicate$$Type): $LootEntry
- "matchPlayer"(arg0: $EntityPredicate$$Type): $LootEntry
- "randomChance"(arg0: $NumberProvider$$Type): $LootEntry
- "killedByPlayer"(): $LootEntry
- "matchTime"(arg0: long, arg1: integer, arg2: integer): $LootEntry
+ "blockEntity"(arg0: $Predicate$$Type<($BlockEntity)>): $LootEntry
  "matchTime"(arg0: integer, arg1: integer): $LootEntry
+ "matchTime"(arg0: long, arg1: integer, arg2: integer): $LootEntry
  "matchMainHand"(arg0: $ItemFilter$$Type): $LootEntry
  "matchOffHand"(arg0: $ItemFilter$$Type): $LootEntry
  "matchHead"(arg0: $ItemFilter$$Type): $LootEntry
@@ -1445,65 +1694,84 @@ export interface $SimpleLootEntry extends $LootEntry, $LootFunctionsContainer<($
  "matchStructure"(arg0: $HolderSet$$Type<($Structure)>): $LootEntry
  "matchStructure"(arg0: $HolderSet$$Type<($Structure)>, arg1: boolean): $LootEntry
  "isLightLevel"(arg0: integer, arg1: integer): $LootEntry
+ "matchBlock"(arg0: $Block$$Type): $LootEntry
+ "matchBlock"(arg0: $Block$$Type, arg1: $StatePropertiesPredicate$$Type): $LootEntry
  "matchEntity"(arg0: $EntityPredicate$$Type): $LootEntry
  "matchAttacker"(arg0: $EntityPredicate$$Type): $LootEntry
  "matchDistance"(arg0: $DistancePredicate$$Type): $LootEntry
- "hasAnyStage"(...arg0: (string)[]): $LootEntry
+ "hasAnyStage"(...arg0: (StringJS)[]): $LootEntry
  "matchAnyOf"(...arg0: ($LootItemCondition$$Type)[]): $LootEntry
  "matchAllOf"(...arg0: ($LootItemCondition$$Type)[]): $LootEntry
+ "matchPlayer"(arg0: $EntityPredicate$$Type): $LootEntry
+ "matchTool"(arg0: $ItemPredicate$$Type): $LootEntry
+ "killedByPlayer"(): $LootEntry
+ "randomChance"(arg0: $NumberProvider$$Type): $LootEntry
+ "survivesExplosion"(): $LootEntry
+ "matchPlayerCustom"(arg0: $Predicate$$Type<($ServerPlayer)>): $LootEntry
+ "matchAnyInventorySlot"(arg0: $ItemFilter$$Type): $LootEntry
+ "matchAnyHotbarSlot"(arg0: $ItemFilter$$Type): $LootEntry
+ "randomTableBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootEntry
+ "matchDirectAttacker"(arg0: $EntityPredicate$$Type): $LootEntry
+ "matchDamageSource"(arg0: $DamageSourcePredicate$$Type): $LootEntry
+ "matchEntityCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
+ "matchAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
+ "matchCustomCondition"(arg0: $JsonObject$$Type): $LootEntry
  "randomChanceWithEnchantment"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootEntry
  "matchDirectAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
 set "count"(value: $NumberProvider$$Type)
 get "weight"(): integer
 get "functions"(): $LootFunctionList
-set "weight"(value: integer)
-set "quality"(value: integer)
 get "quality"(): integer
-get "conditions"(): $LootConditionList
+set "quality"(value: integer)
+set "weight"(value: integer)
 get "dynamic"(): boolean
+get "conditions"(): $LootConditionList
 get "type"(): $ResourceLocation
-get "vanillaEntry"(): $LootPoolEntryContainer
 get "simple"(): boolean
 get "item"(): boolean
 get "vanillaType"(): $LootPoolEntryType
 get "composite"(): boolean
+get "vanillaEntry"(): $LootPoolEntryContainer
 set "name"(value: $Component$$Type)
 set "customData"(value: $CompoundTag$$Type)
 }
 
 export namespace $SimpleLootEntry {
+function sequence(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
+function tag(arg0: StringJS): $TagLootEntry
+function tag(arg0: StringJS, arg1: boolean): $TagLootEntry
 function group(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
 function of(arg0: $ItemStack$$Type): $ItemLootEntry
 function of(arg0: $Item$$Type, arg1: $NumberProvider$$Type): $ItemLootEntry
 function empty(): $EmptyLootEntry
 function reference(arg0: $ResourceLocation$$Type): $TableReferenceLootEntry
-function sequence(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
-function tag(arg0: string): $TagLootEntry
-function tag(arg0: string, arg1: boolean): $TagLootEntry
+function ofItem(arg0: $Item$$Type): $ItemLootEntry
 function alternative(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
 function ep(arg0: $EntityPredicate$$Type): $EntityPredicate
-function ofItem(arg0: $Item$$Type): $ItemLootEntry
-function testItem(arg0: string): $ItemLootEntry
 function ofIngredient(arg0: $Ingredient$$Type): $CompositeLootEntry
 function ofVanilla(arg0: $LootPoolEntryContainer$$Type): $LootEntry
+function testItem(arg0: StringJS): $ItemLootEntry
 const probejs$$marker: never
 }
 export class $SimpleLootEntry$$Static implements $SimpleLootEntry {
 
 
- "apply"(arg0: $Consumer$$Type<($LootFunctionList)>): $SimpleLootEntry
  "when"(arg0: $Consumer$$Type<(any)>): $LootEntry
+ "apply"(arg0: $Consumer$$Type<($LootFunctionList)>): $SimpleLootEntry
  "setCount"(arg0: $NumberProvider$$Type): $SimpleLootEntry
  "getWeight"(): integer
  "getFunctions"(): $LootFunctionList
- "setWeight"(arg0: integer): void
- "setQuality"(arg0: integer): void
- "addFunction"(arg0: $LootItemFunction$$Type): any
  "withWeight"(arg0: integer): $SimpleLootEntry
  "withQuality"(arg0: integer): $SimpleLootEntry
  "getQuality"(): integer
- "getConditions"(): $LootConditionList
+ "addFunction"(arg0: $LootItemFunction$$Type): any
+ "setQuality"(arg0: integer): void
+ "setWeight"(arg0: integer): void
+static "sequence"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
+static "tag"(arg0: StringJS): $TagLootEntry
+static "tag"(arg0: StringJS, arg1: boolean): $TagLootEntry
  "isDynamic"(): boolean
+ "getConditions"(): $LootConditionList
 static "group"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
  "isEmpty"(): boolean
 static "of"(arg0: $ItemStack$$Type): $ItemLootEntry
@@ -1511,19 +1779,13 @@ static "of"(arg0: $Item$$Type, arg1: $NumberProvider$$Type): $ItemLootEntry
 static "empty"(): $EmptyLootEntry
 static "reference"(arg0: $ResourceLocation$$Type): $TableReferenceLootEntry
  "getType"(): $ResourceLocation
-static "sequence"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
-static "tag"(arg0: string): $TagLootEntry
-static "tag"(arg0: string, arg1: boolean): $TagLootEntry
- "getVanillaEntry"(): $LootPoolEntryContainer
+static "ofItem"(arg0: $Item$$Type): $ItemLootEntry
+ "isTag"(): boolean
  "isReference"(): boolean
 static "alternative"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
  "isSimple"(): boolean
- "isTag"(): boolean
 static "ep"(arg0: $EntityPredicate$$Type): $EntityPredicate
-static "ofItem"(arg0: $Item$$Type): $ItemLootEntry
  "isItem"(): boolean
- "collectDebugInfo"(arg0: $DebugInfo$$Type): void
-static "testItem"(arg0: string): $ItemLootEntry
  "getVanillaType"(): $LootPoolEntryType
  "isComposite"(): boolean
  "isAlternative"(): boolean
@@ -1531,50 +1793,37 @@ static "testItem"(arg0: string): $ItemLootEntry
  "isGroup"(): boolean
 static "ofIngredient"(arg0: $Ingredient$$Type): $CompositeLootEntry
 static "ofVanilla"(arg0: $LootPoolEntryContainer$$Type): $LootEntry
- "setName"(arg0: $Component$$Type): $SimpleLootEntry
+static "testItem"(arg0: StringJS): $ItemLootEntry
+ "collectDebugInfo"(arg0: $DebugInfo$$Type): void
+ "getVanillaEntry"(): $LootPoolEntryContainer
  "addAttributes"(arg0: $Consumer$$Type<($AddAttributesFunction$Builder)>): $SimpleLootEntry
+ "setName"(arg0: $Component$$Type): $SimpleLootEntry
+ "damage"(arg0: $NumberProvider$$Type): $SimpleLootEntry
+ "enchant"(arg0: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $SimpleLootEntry
+ "enchant"(arg0: boolean, arg1: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $SimpleLootEntry
+ "smelt"(): $SimpleLootEntry
+ "applyOreBonus"(arg0: $Holder$$Type<($Enchantment)>): $SimpleLootEntry
+ "applyBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: integer): $SimpleLootEntry
+ "addLore"(...arg0: ($Component$$Type)[]): $SimpleLootEntry
+ "replaceLore"(...arg0: ($Component$$Type)[]): $SimpleLootEntry
+ "toggleTooltips"(arg0: $Map$$Type<(StringJS), (boolean)>): $SimpleLootEntry
+ "jsonFunction"(arg0: $JsonObject$$Type): $SimpleLootEntry
+ "addPotion"(arg0: $Potion$$Type): $SimpleLootEntry
+ "setCustomData"(arg0: $CompoundTag$$Type): $SimpleLootEntry
+ "limitCount"(arg0: $NumberProvider$$Type, arg1: $NumberProvider$$Type): $SimpleLootEntry
+ "enchantWithLevels"(arg0: $NumberProvider$$Type): $SimpleLootEntry
  "enchantRandomly"(): $SimpleLootEntry
  "enchantRandomly"(arg0: $HolderSet$$Type<($Enchantment)>): $SimpleLootEntry
  "applyEnchantmentBonus"(arg0: $NumberProvider$$Type): $SimpleLootEntry
  "applyEnchantmentBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: $NumberProvider$$Type): $SimpleLootEntry
  "simulateExplosionDecay"(): $SimpleLootEntry
- "enchant"(arg0: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $SimpleLootEntry
- "enchant"(arg0: boolean, arg1: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $SimpleLootEntry
- "smelt"(): $SimpleLootEntry
- "damage"(arg0: $NumberProvider$$Type): $SimpleLootEntry
- "enchantWithLevels"(arg0: $NumberProvider$$Type): $SimpleLootEntry
- "addPotion"(arg0: $Potion$$Type): $SimpleLootEntry
- "setCustomData"(arg0: $CompoundTag$$Type): $SimpleLootEntry
- "limitCount"(arg0: $NumberProvider$$Type, arg1: $NumberProvider$$Type): $SimpleLootEntry
- "applyOreBonus"(arg0: $Holder$$Type<($Enchantment)>): $SimpleLootEntry
- "applyBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: integer): $SimpleLootEntry
- "addLore"(...arg0: ($Component$$Type)[]): $SimpleLootEntry
- "replaceLore"(...arg0: ($Component$$Type)[]): $SimpleLootEntry
- "toggleTooltips"(arg0: $Map$$Type<(string), (boolean)>): $SimpleLootEntry
- "jsonFunction"(arg0: $JsonObject$$Type): $SimpleLootEntry
  "applyBinomialDistributionBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: float, arg2: integer): $SimpleLootEntry
  "matchLocation"(arg0: $BlockPos$$Type, arg1: $LocationPredicate$$Type): $LootEntry
  "matchLocation"(arg0: $LocationPredicate$$Type): $LootEntry
- "matchPlayerCustom"(arg0: $Predicate$$Type<($ServerPlayer)>): $LootEntry
- "matchAnyInventorySlot"(arg0: $ItemFilter$$Type): $LootEntry
- "matchAnyHotbarSlot"(arg0: $ItemFilter$$Type): $LootEntry
- "randomTableBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootEntry
- "matchDirectAttacker"(arg0: $EntityPredicate$$Type): $LootEntry
- "matchDamageSource"(arg0: $DamageSourcePredicate$$Type): $LootEntry
- "matchEntityCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
- "matchAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
- "matchCustomCondition"(arg0: $JsonObject$$Type): $LootEntry
- "blockEntity"(arg0: $Predicate$$Type<($BlockEntity)>): $LootEntry
  "luck"(arg0: $MinMaxBounds$Doubles$$Type): $LootEntry
- "survivesExplosion"(): $LootEntry
- "matchBlock"(arg0: $Block$$Type, arg1: $StatePropertiesPredicate$$Type): $LootEntry
- "matchBlock"(arg0: $Block$$Type): $LootEntry
- "matchTool"(arg0: $ItemPredicate$$Type): $LootEntry
- "matchPlayer"(arg0: $EntityPredicate$$Type): $LootEntry
- "randomChance"(arg0: $NumberProvider$$Type): $LootEntry
- "killedByPlayer"(): $LootEntry
- "matchTime"(arg0: long, arg1: integer, arg2: integer): $LootEntry
+ "blockEntity"(arg0: $Predicate$$Type<($BlockEntity)>): $LootEntry
  "matchTime"(arg0: integer, arg1: integer): $LootEntry
+ "matchTime"(arg0: long, arg1: integer, arg2: integer): $LootEntry
  "matchMainHand"(arg0: $ItemFilter$$Type): $LootEntry
  "matchOffHand"(arg0: $ItemFilter$$Type): $LootEntry
  "matchHead"(arg0: $ItemFilter$$Type): $LootEntry
@@ -1588,12 +1837,28 @@ static "ofVanilla"(arg0: $LootPoolEntryContainer$$Type): $LootEntry
  "matchStructure"(arg0: $HolderSet$$Type<($Structure)>): $LootEntry
  "matchStructure"(arg0: $HolderSet$$Type<($Structure)>, arg1: boolean): $LootEntry
  "isLightLevel"(arg0: integer, arg1: integer): $LootEntry
+ "matchBlock"(arg0: $Block$$Type): $LootEntry
+ "matchBlock"(arg0: $Block$$Type, arg1: $StatePropertiesPredicate$$Type): $LootEntry
  "matchEntity"(arg0: $EntityPredicate$$Type): $LootEntry
  "matchAttacker"(arg0: $EntityPredicate$$Type): $LootEntry
  "matchDistance"(arg0: $DistancePredicate$$Type): $LootEntry
- "hasAnyStage"(...arg0: (string)[]): $LootEntry
+ "hasAnyStage"(...arg0: (StringJS)[]): $LootEntry
  "matchAnyOf"(...arg0: ($LootItemCondition$$Type)[]): $LootEntry
  "matchAllOf"(...arg0: ($LootItemCondition$$Type)[]): $LootEntry
+ "matchPlayer"(arg0: $EntityPredicate$$Type): $LootEntry
+ "matchTool"(arg0: $ItemPredicate$$Type): $LootEntry
+ "killedByPlayer"(): $LootEntry
+ "randomChance"(arg0: $NumberProvider$$Type): $LootEntry
+ "survivesExplosion"(): $LootEntry
+ "matchPlayerCustom"(arg0: $Predicate$$Type<($ServerPlayer)>): $LootEntry
+ "matchAnyInventorySlot"(arg0: $ItemFilter$$Type): $LootEntry
+ "matchAnyHotbarSlot"(arg0: $ItemFilter$$Type): $LootEntry
+ "randomTableBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootEntry
+ "matchDirectAttacker"(arg0: $EntityPredicate$$Type): $LootEntry
+ "matchDamageSource"(arg0: $DamageSourcePredicate$$Type): $LootEntry
+ "matchEntityCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
+ "matchAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
+ "matchCustomCondition"(arg0: $JsonObject$$Type): $LootEntry
  "randomChanceWithEnchantment"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootEntry
  "matchDirectAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
 }
@@ -1618,8 +1883,8 @@ import {$StatePropertiesPredicate, $StatePropertiesPredicate$$Type} from "net.mi
 import {$MinMaxBounds$Doubles, $MinMaxBounds$Doubles$$Type} from "net.minecraft.advancements.critereon.MinMaxBounds$Doubles"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$LootConditionsContainer, $LootConditionsContainer$$Type} from "com.almostreliable.lootjs.loot.LootConditionsContainer"
-import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$NumberProvider, $NumberProvider$$Type} from "net.minecraft.world.level.storage.loot.providers.number.NumberProvider"
+import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ItemFilter, $ItemFilter$$Type} from "com.almostreliable.lootjs.core.filters.ItemFilter"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Structure, $Structure$$Type} from "net.minecraft.world.level.levelgen.structure.Structure"
@@ -1627,9 +1892,9 @@ import {$DistancePredicate, $DistancePredicate$$Type} from "net.minecraft.advanc
 import {$EquipmentSlot, $EquipmentSlot$$Type} from "net.minecraft.world.entity.EquipmentSlot"
 import {$HolderSet, $HolderSet$$Type} from "net.minecraft.core.HolderSet"
 import {$JsonObject, $JsonObject$$Type} from "com.google.gson.JsonObject"
+import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$Biome, $Biome$$Type} from "net.minecraft.world.level.biome.Biome"
-import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$ItemLootEntry, $ItemLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.ItemLootEntry"
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$Map, $Map$$Type} from "java.util.Map"
@@ -1660,32 +1925,16 @@ constructor()
 
 public "build"(): $GroupedLootAction
 public "rolls"(arg0: $NumberProvider$$Type): $GroupedLootAction$Builder
-public "addFunction"(arg0: $LootItemFunction$$Type): $GroupedLootAction$Builder
-public "addAction"(arg0: $LootAction$$Type): $LootActionContainer<(any)>
+public "addAction"(arg0: $LootAction$$Type): $GroupedLootAction$Builder
+public "addFunction"(arg0: $LootItemFunction$$Type): any
 public "containsLoot"(arg0: $ItemFilter$$Type, arg1: boolean): $GroupedLootAction$Builder
 public "containsLoot"(arg0: $ItemFilter$$Type): $GroupedLootAction$Builder
 public "matchLocation"(arg0: $BlockPos$$Type, arg1: $LocationPredicate$$Type): $GroupedLootAction$Builder
 public "matchLocation"(arg0: $LocationPredicate$$Type): $GroupedLootAction$Builder
-public "matchPlayerCustom"(arg0: $Predicate$$Type<($ServerPlayer)>): $GroupedLootAction$Builder
-public "matchAnyInventorySlot"(arg0: $ItemFilter$$Type): $GroupedLootAction$Builder
-public "matchAnyHotbarSlot"(arg0: $ItemFilter$$Type): $GroupedLootAction$Builder
-public "randomTableBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $GroupedLootAction$Builder
-public "matchDirectAttacker"(arg0: $EntityPredicate$$Type): $GroupedLootAction$Builder
-public "matchDamageSource"(arg0: $DamageSourcePredicate$$Type): $GroupedLootAction$Builder
-public "matchEntityCustom"(arg0: $Predicate$$Type<($Entity)>): $GroupedLootAction$Builder
-public "matchAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $GroupedLootAction$Builder
-public "matchCustomCondition"(arg0: $JsonObject$$Type): $GroupedLootAction$Builder
-public "blockEntity"(arg0: $Predicate$$Type<($BlockEntity)>): $GroupedLootAction$Builder
 public "luck"(arg0: $MinMaxBounds$Doubles$$Type): $GroupedLootAction$Builder
-public "survivesExplosion"(): $GroupedLootAction$Builder
-public "matchBlock"(arg0: $Block$$Type, arg1: $StatePropertiesPredicate$$Type): $GroupedLootAction$Builder
-public "matchBlock"(arg0: $Block$$Type): $GroupedLootAction$Builder
-public "matchTool"(arg0: $ItemPredicate$$Type): $GroupedLootAction$Builder
-public "matchPlayer"(arg0: $EntityPredicate$$Type): $GroupedLootAction$Builder
-public "randomChance"(arg0: $NumberProvider$$Type): $GroupedLootAction$Builder
-public "killedByPlayer"(): $GroupedLootAction$Builder
-public "matchTime"(arg0: long, arg1: integer, arg2: integer): $GroupedLootAction$Builder
+public "blockEntity"(arg0: $Predicate$$Type<($BlockEntity)>): $GroupedLootAction$Builder
 public "matchTime"(arg0: integer, arg1: integer): $GroupedLootAction$Builder
+public "matchTime"(arg0: long, arg1: integer, arg2: integer): $GroupedLootAction$Builder
 public "matchMainHand"(arg0: $ItemFilter$$Type): $GroupedLootAction$Builder
 public "matchOffHand"(arg0: $ItemFilter$$Type): $GroupedLootAction$Builder
 public "matchHead"(arg0: $ItemFilter$$Type): $GroupedLootAction$Builder
@@ -1699,45 +1948,61 @@ public "matchDimension"(...arg0: ($ResourceLocation$$Type)[]): $GroupedLootActio
 public "matchStructure"(arg0: $HolderSet$$Type<($Structure)>): $GroupedLootAction$Builder
 public "matchStructure"(arg0: $HolderSet$$Type<($Structure)>, arg1: boolean): $GroupedLootAction$Builder
 public "isLightLevel"(arg0: integer, arg1: integer): $GroupedLootAction$Builder
+public "matchBlock"(arg0: $Block$$Type): $GroupedLootAction$Builder
+public "matchBlock"(arg0: $Block$$Type, arg1: $StatePropertiesPredicate$$Type): $GroupedLootAction$Builder
 public "matchEntity"(arg0: $EntityPredicate$$Type): $GroupedLootAction$Builder
 public "matchAttacker"(arg0: $EntityPredicate$$Type): $GroupedLootAction$Builder
 public "matchDistance"(arg0: $DistancePredicate$$Type): $GroupedLootAction$Builder
-public "hasAnyStage"(...arg0: (string)[]): $GroupedLootAction$Builder
+public "hasAnyStage"(...arg0: (StringJS)[]): $GroupedLootAction$Builder
 public "matchAnyOf"(...arg0: ($LootItemCondition$$Type)[]): $GroupedLootAction$Builder
 public "matchAllOf"(...arg0: ($LootItemCondition$$Type)[]): $GroupedLootAction$Builder
+public "matchPlayer"(arg0: $EntityPredicate$$Type): $GroupedLootAction$Builder
+public "matchTool"(arg0: $ItemPredicate$$Type): $GroupedLootAction$Builder
+public "killedByPlayer"(): $GroupedLootAction$Builder
+public "randomChance"(arg0: $NumberProvider$$Type): $GroupedLootAction$Builder
+public "survivesExplosion"(): $GroupedLootAction$Builder
+public "matchPlayerCustom"(arg0: $Predicate$$Type<($ServerPlayer)>): $GroupedLootAction$Builder
+public "matchAnyInventorySlot"(arg0: $ItemFilter$$Type): $GroupedLootAction$Builder
+public "matchAnyHotbarSlot"(arg0: $ItemFilter$$Type): $GroupedLootAction$Builder
+public "randomTableBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $GroupedLootAction$Builder
+public "matchDirectAttacker"(arg0: $EntityPredicate$$Type): $GroupedLootAction$Builder
+public "matchDamageSource"(arg0: $DamageSourcePredicate$$Type): $GroupedLootAction$Builder
+public "matchEntityCustom"(arg0: $Predicate$$Type<($Entity)>): $GroupedLootAction$Builder
+public "matchAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $GroupedLootAction$Builder
+public "matchCustomCondition"(arg0: $JsonObject$$Type): $GroupedLootAction$Builder
 public "randomChanceWithEnchantment"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $GroupedLootAction$Builder
 public "matchDirectAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $GroupedLootAction$Builder
-public "setName"(arg0: $Component$$Type): $GroupedLootAction$Builder
 public "addAttributes"(arg0: $Consumer$$Type<($AddAttributesFunction$Builder)>): $GroupedLootAction$Builder
+public "setName"(arg0: $Component$$Type): $GroupedLootAction$Builder
+public "damage"(arg0: $NumberProvider$$Type): $GroupedLootAction$Builder
+public "enchant"(arg0: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $GroupedLootAction$Builder
+public "enchant"(arg0: boolean, arg1: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $GroupedLootAction$Builder
+public "setCount"(arg0: $NumberProvider$$Type): $GroupedLootAction$Builder
+public "smelt"(): $GroupedLootAction$Builder
+public "applyOreBonus"(arg0: $Holder$$Type<($Enchantment)>): $GroupedLootAction$Builder
+public "applyBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: integer): $GroupedLootAction$Builder
+public "addLore"(...arg0: ($Component$$Type)[]): $GroupedLootAction$Builder
+public "replaceLore"(...arg0: ($Component$$Type)[]): $GroupedLootAction$Builder
+public "toggleTooltips"(arg0: $Map$$Type<(StringJS), (boolean)>): $GroupedLootAction$Builder
+public "jsonFunction"(arg0: $JsonObject$$Type): $GroupedLootAction$Builder
+public "addPotion"(arg0: $Potion$$Type): $GroupedLootAction$Builder
+public "setCustomData"(arg0: $CompoundTag$$Type): $GroupedLootAction$Builder
+public "limitCount"(arg0: $NumberProvider$$Type, arg1: $NumberProvider$$Type): $GroupedLootAction$Builder
+public "enchantWithLevels"(arg0: $NumberProvider$$Type): $GroupedLootAction$Builder
 public "enchantRandomly"(): $GroupedLootAction$Builder
 public "enchantRandomly"(arg0: $HolderSet$$Type<($Enchantment)>): $GroupedLootAction$Builder
 public "applyEnchantmentBonus"(arg0: $NumberProvider$$Type): $GroupedLootAction$Builder
 public "applyEnchantmentBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: $NumberProvider$$Type): $GroupedLootAction$Builder
 public "simulateExplosionDecay"(): $GroupedLootAction$Builder
-public "enchant"(arg0: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $GroupedLootAction$Builder
-public "enchant"(arg0: boolean, arg1: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $GroupedLootAction$Builder
-public "setCount"(arg0: $NumberProvider$$Type): $GroupedLootAction$Builder
-public "smelt"(): $GroupedLootAction$Builder
-public "damage"(arg0: $NumberProvider$$Type): $GroupedLootAction$Builder
-public "enchantWithLevels"(arg0: $NumberProvider$$Type): $GroupedLootAction$Builder
-public "addPotion"(arg0: $Potion$$Type): $GroupedLootAction$Builder
-public "setCustomData"(arg0: $CompoundTag$$Type): $GroupedLootAction$Builder
-public "limitCount"(arg0: $NumberProvider$$Type, arg1: $NumberProvider$$Type): $GroupedLootAction$Builder
-public "applyOreBonus"(arg0: $Holder$$Type<($Enchantment)>): $GroupedLootAction$Builder
-public "applyBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: integer): $GroupedLootAction$Builder
-public "addLore"(...arg0: ($Component$$Type)[]): $GroupedLootAction$Builder
-public "replaceLore"(...arg0: ($Component$$Type)[]): $GroupedLootAction$Builder
-public "toggleTooltips"(arg0: $Map$$Type<(string), (boolean)>): $GroupedLootAction$Builder
-public "jsonFunction"(arg0: $JsonObject$$Type): $GroupedLootAction$Builder
 public "applyBinomialDistributionBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: float, arg2: integer): $GroupedLootAction$Builder
 public "group"(arg0: $Consumer$$Type<($GroupedLootAction$Builder)>): $GroupedLootAction$Builder
 public "group"(arg0: $ItemFilter$$Type, arg1: $Consumer$$Type<($GroupedLootAction$Builder)>): $GroupedLootAction$Builder
 public "pool"(arg0: $Consumer$$Type<($MutableLootPool)>): $GroupedLootAction$Builder
 public "modifyLoot"(arg0: $ItemFilter$$Type, arg1: $ModifyLootAction$Callback$$Type): $GroupedLootAction$Builder
 public "dropExperience"(arg0: $NumberProvider$$Type): $GroupedLootAction$Builder
-public "addLoot"(...arg0: ($LootEntry$$Type)[]): $GroupedLootAction$Builder
 public "replaceLoot"(arg0: $ItemFilter$$Type, arg1: $ItemLootEntry$$Type, arg2: boolean): $GroupedLootAction$Builder
 public "replaceLoot"(arg0: $ItemFilter$$Type, arg1: $ItemLootEntry$$Type): $GroupedLootAction$Builder
+public "addLoot"(...arg0: ($LootEntry$$Type)[]): $GroupedLootAction$Builder
 public "removeLoot"(arg0: $ItemFilter$$Type): $GroupedLootAction$Builder
 public "customAction"(arg0: $LootAction$$Type): $GroupedLootAction$Builder
 public "playerAction"(arg0: $Consumer$$Type<($ServerPlayer)>): $GroupedLootAction$Builder
@@ -1775,9 +2040,9 @@ import {$DistancePredicate, $DistancePredicate$$Type} from "net.minecraft.advanc
 import {$EquipmentSlot, $EquipmentSlot$$Type} from "net.minecraft.world.entity.EquipmentSlot"
 import {$HolderSet, $HolderSet$$Type} from "net.minecraft.core.HolderSet"
 import {$JsonObject, $JsonObject$$Type} from "com.google.gson.JsonObject"
+import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$Biome, $Biome$$Type} from "net.minecraft.world.level.biome.Biome"
-import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$LocationPredicate, $LocationPredicate$$Type} from "net.minecraft.advancements.critereon.LocationPredicate"
@@ -1795,26 +2060,10 @@ constructor()
 
 public "matchLocation"(arg0: $BlockPos$$Type, arg1: $LocationPredicate$$Type): $LootItemCondition
 public "matchLocation"(arg0: $LocationPredicate$$Type): $LootItemCondition
-public "matchPlayerCustom"(arg0: $Predicate$$Type<($ServerPlayer)>): $LootItemCondition
-public "matchAnyInventorySlot"(arg0: $ItemFilter$$Type): $LootItemCondition
-public "matchAnyHotbarSlot"(arg0: $ItemFilter$$Type): $LootItemCondition
-public "randomTableBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootItemCondition
-public "matchDirectAttacker"(arg0: $EntityPredicate$$Type): $LootItemCondition
-public "matchDamageSource"(arg0: $DamageSourcePredicate$$Type): $LootItemCondition
-public "matchEntityCustom"(arg0: $Predicate$$Type<($Entity)>): $LootItemCondition
-public "matchAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootItemCondition
-public "matchCustomCondition"(arg0: $JsonObject$$Type): $LootItemCondition
-public "blockEntity"(arg0: $Predicate$$Type<($BlockEntity)>): $LootItemCondition
 public "luck"(arg0: $MinMaxBounds$Doubles$$Type): $LootItemCondition
-public "survivesExplosion"(): $LootItemCondition
-public "matchBlock"(arg0: $Block$$Type, arg1: $StatePropertiesPredicate$$Type): $LootItemCondition
-public "matchBlock"(arg0: $Block$$Type): $LootItemCondition
-public "matchTool"(arg0: $ItemPredicate$$Type): $LootItemCondition
-public "matchPlayer"(arg0: $EntityPredicate$$Type): $LootItemCondition
-public "randomChance"(arg0: $NumberProvider$$Type): $LootItemCondition
-public "killedByPlayer"(): $LootItemCondition
-public "matchTime"(arg0: long, arg1: integer, arg2: integer): $LootItemCondition
+public "blockEntity"(arg0: $Predicate$$Type<($BlockEntity)>): $LootItemCondition
 public "matchTime"(arg0: integer, arg1: integer): $LootItemCondition
+public "matchTime"(arg0: long, arg1: integer, arg2: integer): $LootItemCondition
 public "matchMainHand"(arg0: $ItemFilter$$Type): $LootItemCondition
 public "matchOffHand"(arg0: $ItemFilter$$Type): $LootItemCondition
 public "matchHead"(arg0: $ItemFilter$$Type): $LootItemCondition
@@ -1828,12 +2077,28 @@ public "matchDimension"(...arg0: ($ResourceLocation$$Type)[]): $LootItemConditio
 public "matchStructure"(arg0: $HolderSet$$Type<($Structure)>): $LootItemCondition
 public "matchStructure"(arg0: $HolderSet$$Type<($Structure)>, arg1: boolean): $LootItemCondition
 public "isLightLevel"(arg0: integer, arg1: integer): $LootItemCondition
+public "matchBlock"(arg0: $Block$$Type): $LootItemCondition
+public "matchBlock"(arg0: $Block$$Type, arg1: $StatePropertiesPredicate$$Type): $LootItemCondition
 public "matchEntity"(arg0: $EntityPredicate$$Type): $LootItemCondition
 public "matchAttacker"(arg0: $EntityPredicate$$Type): $LootItemCondition
 public "matchDistance"(arg0: $DistancePredicate$$Type): $LootItemCondition
-public "hasAnyStage"(...arg0: (string)[]): $LootItemCondition
+public "hasAnyStage"(...arg0: (StringJS)[]): $LootItemCondition
 public "matchAnyOf"(...arg0: ($LootItemCondition$$Type)[]): $LootItemCondition
 public "matchAllOf"(...arg0: ($LootItemCondition$$Type)[]): $LootItemCondition
+public "matchPlayer"(arg0: $EntityPredicate$$Type): $LootItemCondition
+public "matchTool"(arg0: $ItemPredicate$$Type): $LootItemCondition
+public "killedByPlayer"(): $LootItemCondition
+public "randomChance"(arg0: $NumberProvider$$Type): $LootItemCondition
+public "survivesExplosion"(): $LootItemCondition
+public "matchPlayerCustom"(arg0: $Predicate$$Type<($ServerPlayer)>): $LootItemCondition
+public "matchAnyInventorySlot"(arg0: $ItemFilter$$Type): $LootItemCondition
+public "matchAnyHotbarSlot"(arg0: $ItemFilter$$Type): $LootItemCondition
+public "randomTableBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootItemCondition
+public "matchDirectAttacker"(arg0: $EntityPredicate$$Type): $LootItemCondition
+public "matchDamageSource"(arg0: $DamageSourcePredicate$$Type): $LootItemCondition
+public "matchEntityCustom"(arg0: $Predicate$$Type<($Entity)>): $LootItemCondition
+public "matchAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootItemCondition
+public "matchCustomCondition"(arg0: $JsonObject$$Type): $LootItemCondition
 public "randomChanceWithEnchantment"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootItemCondition
 public "matchDirectAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootItemCondition
 }
@@ -1862,12 +2127,12 @@ export class $TransformableTrade<T extends $VillagerTrades$ItemListing> implemen
 constructor(arg0: ($TradeItem$$Type)[])
 
 public "transform"(arg0: $TransformableTrade$Transformer$$Type): T
-public "priceMultiplier"(arg0: float): T
-public "villagerExperience"(arg0: integer): T
-public "maxUses"(arg0: integer): T
-public "getOffer"(arg0: $Entity$$Type, arg1: $RandomSource$$Type): $MerchantOffer
 public "getFirstInput"(): $TradeItem
 public "getSecondInput"(): $TradeItem
+public "maxUses"(arg0: integer): T
+public "getOffer"(arg0: $Entity$$Type, arg1: $RandomSource$$Type): $MerchantOffer
+public "priceMultiplier"(arg0: float): T
+public "villagerExperience"(arg0: integer): T
 get "firstInput"(): $TradeItem
 get "secondInput"(): $TradeItem
 }
@@ -1925,9 +2190,9 @@ declare global {
 export type $AddAttributesFunction_ = $AddAttributesFunction$$Type;
 }}
 declare module "com.almostreliable.lootjs.loot.table.MutableLootTable" {
+import {$SimpleLootEntry, $SimpleLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.SimpleLootEntry"
 import {$LootType, $LootType$$Type} from "com.almostreliable.lootjs.core.LootType"
 import {$UnaryOperator, $UnaryOperator$$Type} from "java.util.function.UnaryOperator"
-import {$SimpleLootEntry, $SimpleLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.SimpleLootEntry"
 import {$List, $List$$Type} from "java.util.List"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$IdFilter, $IdFilter$$Type} from "com.almostreliable.lootjs.core.filters.IdFilter"
@@ -1945,49 +2210,49 @@ import {$ItemLootEntry, $ItemLootEntry$$Type} from "com.almostreliable.lootjs.co
 
 export class $MutableLootTable implements $LootEntriesTransformer {
 
-constructor(arg0: $LootContextParamSet$$Type, arg1: $ResourceLocation$$Type)
-constructor(arg0: $LootTable$$Type, arg1: $ResourceLocation$$Type)
 constructor(arg0: $LootTable$$Type)
+constructor(arg0: $LootTable$$Type, arg1: $ResourceLocation$$Type)
+constructor(arg0: $LootContextParamSet$$Type, arg1: $ResourceLocation$$Type)
 
+public "removeEntry"(arg0: $Predicate$$Type<(any)>, arg1: boolean): $LootEntriesTransformer
 public "clear"(): $MutableLootTable
 public "apply"(arg0: $Consumer$$Type<($LootFunctionList)>): $MutableLootTable
 public "getLocation"(): $ResourceLocation
 public "print"(): void
 public "getPool"(arg0: integer): $MutableLootPool
-public "removeEntry"(arg0: $Predicate$$Type<($SimpleLootEntry)>, arg1: boolean): $MutableLootTable
-public "getFunctions"(): $LootFunctionList
 public "onDrop"(arg0: $PostLootAction$$Type): $MutableLootTable
-public "setRandomSequence"(arg0: $ResourceLocation$$Type): void
-public "getRandomSequence"(): $ResourceLocation
+public "getFunctions"(): $LootFunctionList
+public "modifyEntry"(arg0: $UnaryOperator$$Type<(any)>, arg1: boolean): $LootEntriesTransformer
 public "getPools"(): $List<($MutableLootPool)>
 public "getLootType"(): $LootType
-public "modifyEntry"(arg0: $UnaryOperator$$Type<($SimpleLootEntry)>, arg1: boolean): $MutableLootTable
+public "setRandomSequence"(arg0: $ResourceLocation$$Type): void
+public "getRandomSequence"(): $ResourceLocation
+public "getPoolByName"(arg0: StringJS): $MutableLootPool
 public "firstPool"(arg0: $Consumer$$Type<($MutableLootPool)>): $MutableLootTable
 public "firstPool"(): $MutableLootPool
 public "createPool"(): $MutableLootPool
 public "createPool"(arg0: $Consumer$$Type<($MutableLootPool)>): $MutableLootTable
-public "getPoolByName"(arg0: string): $MutableLootPool
 public "modifyPool"(arg0: integer, arg1: $Consumer$$Type<($MutableLootPool)>): $MutableLootTable
-public "modifyPoolByName"(arg0: string, arg1: $Consumer$$Type<($MutableLootPool)>): $MutableLootTable
+public "modifyPoolByName"(arg0: StringJS, arg1: $Consumer$$Type<($MutableLootPool)>): $MutableLootTable
 public "writeToVanillaTable"(): void
-public "removeItem"(arg0: $ItemFilter$$Type): $LootEntriesTransformer
 public "removeItem"(arg0: $ItemFilter$$Type, arg1: boolean): $LootEntriesTransformer
-public "hasItem"(arg0: $ItemFilter$$Type): boolean
+public "removeItem"(arg0: $ItemFilter$$Type): $LootEntriesTransformer
+public "removeEntry"(arg0: $Predicate$$Type<($SimpleLootEntry)>): $LootEntriesTransformer
 public "removeReference"(arg0: $IdFilter$$Type): $LootEntriesTransformer
 public "removeReference"(arg0: $IdFilter$$Type, arg1: boolean): $LootEntriesTransformer
-public "removeEntry"(arg0: $Predicate$$Type<($SimpleLootEntry)>): $LootEntriesTransformer
-public "modifyItemEntry"(arg0: $UnaryOperator$$Type<($ItemLootEntry)>): $LootEntriesTransformer
-public "removeTag"(arg0: string): $LootEntriesTransformer
-public "removeTag"(arg0: string, arg1: boolean): $LootEntriesTransformer
-public "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type): $LootEntriesTransformer
-public "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type, arg2: boolean): $LootEntriesTransformer
+public "hasItem"(arg0: $ItemFilter$$Type): boolean
+public "removeTag"(arg0: StringJS, arg1: boolean): $LootEntriesTransformer
+public "removeTag"(arg0: StringJS): $LootEntriesTransformer
 public "modifyEntry"(arg0: $UnaryOperator$$Type<($SimpleLootEntry)>): $LootEntriesTransformer
+public "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type, arg2: boolean): $LootEntriesTransformer
+public "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type): $LootEntriesTransformer
+public "modifyItemEntry"(arg0: $UnaryOperator$$Type<($ItemLootEntry)>): $LootEntriesTransformer
 get "location"(): $ResourceLocation
 get "functions"(): $LootFunctionList
-set "randomSequence"(value: $ResourceLocation$$Type)
-get "randomSequence"(): $ResourceLocation
 get "pools"(): $List<($MutableLootPool)>
 get "lootType"(): $LootType
+set "randomSequence"(value: $ResourceLocation$$Type)
+get "randomSequence"(): $ResourceLocation
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2007,10 +2272,10 @@ export class $DebugInfo {
 
 constructor()
 
-public "add"(arg0: string): void
-public "release"(): void
 public "push"(): void
 public "pop"(): void
+public "release"(): void
+public "add"(arg0: StringJS): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2036,17 +2301,29 @@ export class $LootModificationEventJS extends $LootModificationEvent implements 
 constructor(arg0: $Map$$Type<($ResourceLocation$$Type), ($IGlobalLootModifier$$Type)>)
 
 /**
+ * Stops the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `success` denotes a `true` outcome.
+ */
+public "success"(): any
+/**
  * Stops the event with the given exit value. Execution will be stopped **immediately**.
  * 
- * `exit` denotes a `default` outcome.
+ * `success` denotes a `true` outcome.
  */
-public "exit"(arg1: any): any
+public "success"(arg1: any): any
 /**
  * Stops the event with default exit value. Execution will be stopped **immediately**.
  * 
  * `exit` denotes a `default` outcome.
  */
 public "exit"(): any
+/**
+ * Stops the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(arg1: any): any
 /**
  * Cancels the event with the given exit value. Execution will be stopped **immediately**.
  * 
@@ -2059,18 +2336,6 @@ public "cancel"(arg1: any): any
  * `cancel` denotes a `false` outcome.
  */
 public "cancel"(): any
-/**
- * Stops the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `success` denotes a `true` outcome.
- */
-public "success"(): any
-/**
- * Stops the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `success` denotes a `true` outcome.
- */
-public "success"(arg1: any): any
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2086,8 +2351,8 @@ export type $LootModificationEventJS_ = $LootModificationEventJS$$Type;
 }}
 declare module "com.almostreliable.lootjs.loot.modifier.GroupedLootAction" {
 import {$ItemFilter, $ItemFilter$$Type} from "com.almostreliable.lootjs.core.filters.ItemFilter"
-import {$LootContext, $LootContext$$Type} from "net.minecraft.world.level.storage.loot.LootContext"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
+import {$LootContext, $LootContext$$Type} from "net.minecraft.world.level.storage.loot.LootContext"
 import {$LootItemFunction, $LootItemFunction$$Type} from "net.minecraft.world.level.storage.loot.functions.LootItemFunction"
 import {$LootBucket, $LootBucket$$Type} from "com.almostreliable.lootjs.core.LootBucket"
 import {$List, $List$$Type} from "java.util.List"
@@ -2099,12 +2364,12 @@ export class $GroupedLootAction implements $LootAction {
 
 constructor(arg0: $NumberProvider$$Type, arg1: $List$$Type<($LootItemCondition$$Type)>, arg2: $List$$Type<($LootItemFunction$$Type)>, arg3: $Collection$$Type<($LootAction$$Type)>, arg4: $ItemFilter$$Type, arg5: boolean)
 
-public "apply"(arg0: $LootContext$$Type, arg1: $LootBucket$$Type): void
 public "exact"(): boolean
 public "actions"(): $List<($LootAction)>
 public "functions"(): $List<($LootItemFunction)>
-public "conditions"(): $List<($LootItemCondition)>
+public "apply"(arg0: $LootContext$$Type, arg1: $LootBucket$$Type): void
 public "rolls"(): $NumberProvider
+public "conditions"(): $List<($LootItemCondition)>
 public "containsLootFilter"(): $ItemFilter
 }
 /**
@@ -2120,12 +2385,12 @@ declare global {
 export type $GroupedLootAction_ = $GroupedLootAction$$Type;
 }}
 declare module "com.almostreliable.lootjs.loot.table.MutableLootPool" {
-import {$UnaryOperator, $UnaryOperator$$Type} from "java.util.function.UnaryOperator"
 import {$SimpleLootEntry, $SimpleLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.SimpleLootEntry"
+import {$UnaryOperator, $UnaryOperator$$Type} from "java.util.function.UnaryOperator"
 import {$LootEntry, $LootEntry$$Type} from "com.almostreliable.lootjs.core.entry.LootEntry"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
-import {$LootPool, $LootPool$$Type} from "net.minecraft.world.level.storage.loot.LootPool"
 import {$IdFilter, $IdFilter$$Type} from "com.almostreliable.lootjs.core.filters.IdFilter"
+import {$LootPool, $LootPool$$Type} from "net.minecraft.world.level.storage.loot.LootPool"
 import {$LootFunctionList, $LootFunctionList$$Type} from "com.almostreliable.lootjs.loot.LootFunctionList"
 import {$LootEntryList, $LootEntryList$$Type} from "com.almostreliable.lootjs.loot.LootEntryList"
 import {$LootEntryAppender, $LootEntryAppender$$Type} from "com.almostreliable.lootjs.loot.table.LootEntryAppender"
@@ -2142,34 +2407,34 @@ export class $MutableLootPool implements $LootEntriesTransformer, $LootEntryAppe
 
 constructor(arg0: $LootPool$$Type)
 
-public "getConditions"(): $LootConditionList
-public "getName"(): string
-public "name"(arg0: string): $MutableLootPool
-public "apply"(arg0: $Consumer$$Type<($LootFunctionList)>): $MutableLootPool
-public "addEntry"(arg0: $LootEntry$$Type): $LootEntryAppender
 public "getEntries"(): $LootEntryList
-public "when"(arg0: $Consumer$$Type<($LootConditionList)>): $MutableLootPool
 public "removeEntry"(arg0: $Predicate$$Type<(any)>, arg1: boolean): $LootEntriesTransformer
-public "getFunctions"(): $LootFunctionList
+public "when"(arg0: $Consumer$$Type<($LootConditionList)>): $MutableLootPool
+public "getConditions"(): $LootConditionList
+public "getName"(): StringJS
+public "name"(arg0: StringJS): $MutableLootPool
+public "apply"(arg0: $Consumer$$Type<($LootFunctionList)>): $MutableLootPool
+public "addEntry"(arg0: $LootEntry$$Type): $MutableLootPool
 public "rolls"(arg0: $NumberProvider$$Type): $MutableLootPool
-public "bonusRolls"(arg0: $NumberProvider$$Type): $MutableLootPool
+public "getFunctions"(): $LootFunctionList
 public "modifyEntry"(arg0: $UnaryOperator$$Type<(any)>, arg1: boolean): $LootEntriesTransformer
+public "bonusRolls"(arg0: $NumberProvider$$Type): $MutableLootPool
 public "getVanillaPool"(): $LootPool
-public "removeItem"(arg0: $ItemFilter$$Type): $LootEntriesTransformer
 public "removeItem"(arg0: $ItemFilter$$Type, arg1: boolean): $LootEntriesTransformer
-public "hasItem"(arg0: $ItemFilter$$Type): boolean
+public "removeItem"(arg0: $ItemFilter$$Type): $LootEntriesTransformer
+public "removeEntry"(arg0: $Predicate$$Type<($SimpleLootEntry)>): $LootEntriesTransformer
 public "removeReference"(arg0: $IdFilter$$Type): $LootEntriesTransformer
 public "removeReference"(arg0: $IdFilter$$Type, arg1: boolean): $LootEntriesTransformer
-public "removeEntry"(arg0: $Predicate$$Type<($SimpleLootEntry)>): $LootEntriesTransformer
-public "modifyItemEntry"(arg0: $UnaryOperator$$Type<($ItemLootEntry)>): $LootEntriesTransformer
-public "removeTag"(arg0: string): $LootEntriesTransformer
-public "removeTag"(arg0: string, arg1: boolean): $LootEntriesTransformer
-public "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type): $LootEntriesTransformer
-public "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type, arg2: boolean): $LootEntriesTransformer
+public "hasItem"(arg0: $ItemFilter$$Type): boolean
+public "removeTag"(arg0: StringJS, arg1: boolean): $LootEntriesTransformer
+public "removeTag"(arg0: StringJS): $LootEntriesTransformer
 public "modifyEntry"(arg0: $UnaryOperator$$Type<($SimpleLootEntry)>): $LootEntriesTransformer
+public "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type, arg2: boolean): $LootEntriesTransformer
+public "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type): $LootEntriesTransformer
+public "modifyItemEntry"(arg0: $UnaryOperator$$Type<($ItemLootEntry)>): $LootEntriesTransformer
 public "addCustomEntry"(arg0: $JsonObject$$Type): $LootEntryAppender
-get "conditions"(): $LootConditionList
 get "entries"(): $LootEntryList
+get "conditions"(): $LootConditionList
 get "functions"(): $LootFunctionList
 get "vanillaPool"(): $LootPool
 }
@@ -2186,14 +2451,14 @@ declare global {
 export type $MutableLootPool_ = $MutableLootPool$$Type;
 }}
 declare module "com.almostreliable.lootjs.loot.LootFunction" {
-import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$Potion, $Potion$$Type} from "net.minecraft.world.item.alchemy.Potion"
+import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$LootItemFunction, $LootItemFunction$$Type} from "net.minecraft.world.level.storage.loot.functions.LootItemFunction"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$AddAttributesFunction$Builder, $AddAttributesFunction$Builder$$Type} from "com.almostreliable.lootjs.loot.AddAttributesFunction$Builder"
-import {$NumberProvider, $NumberProvider$$Type} from "net.minecraft.world.level.storage.loot.providers.number.NumberProvider"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$NumberProvider, $NumberProvider$$Type} from "net.minecraft.world.level.storage.loot.providers.number.NumberProvider"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$SetEnchantmentsFunction$Builder, $SetEnchantmentsFunction$Builder$$Type} from "net.minecraft.world.level.storage.loot.functions.SetEnchantmentsFunction$Builder"
 import {$Enchantment, $Enchantment$$Type} from "net.minecraft.world.item.enchantment.Enchantment"
@@ -2207,31 +2472,31 @@ export class $LootFunction extends $Record implements $LootFunctionsContainer<($
 constructor()
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "addFunction"(arg0: $LootItemFunction$$Type): $LootItemFunction
-public "setName"(arg0: $Component$$Type): $LootItemFunction
 public "addAttributes"(arg0: $Consumer$$Type<($AddAttributesFunction$Builder)>): $LootItemFunction
+public "setName"(arg0: $Component$$Type): $LootItemFunction
+public "damage"(arg0: $NumberProvider$$Type): $LootItemFunction
+public "enchant"(arg0: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $LootItemFunction
+public "enchant"(arg0: boolean, arg1: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $LootItemFunction
+public "setCount"(arg0: $NumberProvider$$Type): $LootItemFunction
+public "smelt"(): $LootItemFunction
+public "applyOreBonus"(arg0: $Holder$$Type<($Enchantment)>): $LootItemFunction
+public "applyBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: integer): $LootItemFunction
+public "addLore"(...arg0: ($Component$$Type)[]): $LootItemFunction
+public "replaceLore"(...arg0: ($Component$$Type)[]): $LootItemFunction
+public "toggleTooltips"(arg0: $Map$$Type<(StringJS), (boolean)>): $LootItemFunction
+public "jsonFunction"(arg0: $JsonObject$$Type): $LootItemFunction
+public "addPotion"(arg0: $Potion$$Type): $LootItemFunction
+public "setCustomData"(arg0: $CompoundTag$$Type): $LootItemFunction
+public "limitCount"(arg0: $NumberProvider$$Type, arg1: $NumberProvider$$Type): $LootItemFunction
+public "enchantWithLevels"(arg0: $NumberProvider$$Type): $LootItemFunction
 public "enchantRandomly"(): $LootItemFunction
 public "enchantRandomly"(arg0: $HolderSet$$Type<($Enchantment)>): $LootItemFunction
 public "applyEnchantmentBonus"(arg0: $NumberProvider$$Type): $LootItemFunction
 public "applyEnchantmentBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: $NumberProvider$$Type): $LootItemFunction
 public "simulateExplosionDecay"(): $LootItemFunction
-public "enchant"(arg0: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $LootItemFunction
-public "enchant"(arg0: boolean, arg1: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $LootItemFunction
-public "setCount"(arg0: $NumberProvider$$Type): $LootItemFunction
-public "smelt"(): $LootItemFunction
-public "damage"(arg0: $NumberProvider$$Type): $LootItemFunction
-public "enchantWithLevels"(arg0: $NumberProvider$$Type): $LootItemFunction
-public "addPotion"(arg0: $Potion$$Type): $LootItemFunction
-public "setCustomData"(arg0: $CompoundTag$$Type): $LootItemFunction
-public "limitCount"(arg0: $NumberProvider$$Type, arg1: $NumberProvider$$Type): $LootItemFunction
-public "applyOreBonus"(arg0: $Holder$$Type<($Enchantment)>): $LootItemFunction
-public "applyBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: integer): $LootItemFunction
-public "addLore"(...arg0: ($Component$$Type)[]): $LootItemFunction
-public "replaceLore"(...arg0: ($Component$$Type)[]): $LootItemFunction
-public "toggleTooltips"(arg0: $Map$$Type<(string), (boolean)>): $LootItemFunction
-public "jsonFunction"(arg0: $JsonObject$$Type): $LootItemFunction
 public "applyBinomialDistributionBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: float, arg2: integer): $LootItemFunction
 set "name"(value: $Component$$Type)
 set "count"(value: $NumberProvider$$Type)
@@ -2272,49 +2537,25 @@ export class $StructureAfterPlaceEventJS implements $KubeLevelEvent {
 
 constructor(arg0: $Structure$$Type, arg1: $WorldGenLevel$$Type, arg2: $StructureManager$$Type, arg3: $ChunkGenerator$$Type, arg4: $RandomSource$$Type, arg5: $BoundingBox$$Type, arg6: $ChunkPos$$Type, arg7: $PiecesContainer$$Type)
 
+public "getLevel"(): $Level
 public "getId"(): $ResourceLocation
 public "getType"(): $ResourceLocation
-public "getLevel"(): $Level
 public "getChunkPos"(): $ChunkPos
 public "getStructure"(): $Structure
 public "getRandomSource"(): $RandomSource
 public "getStructureManager"(): $StructureManager
 public "getPieceType"(arg0: $StructurePieceType$$Type): $ResourceLocation
-public "getGenStep"(): string
+public "getGenStep"(): StringJS
 public "getIntersectionMap"(): $Map<($StructurePiece), ($BoundingBox)>
+public "getPiecesContainer"(): $PiecesContainer
 public "getChunkGenerator"(): $ChunkGenerator
 public "getChunkBoundingBox"(): $BoundingBox
-public "getPiecesContainer"(): $PiecesContainer
 public "getWorldGenLevel"(): $WorldGenLevel
-public "getIntersectionBoxes"(): $Collection<($BoundingBox)>
 public "getIntersectionPieces"(): $Collection<($StructurePiece)>
+public "getIntersectionBoxes"(): $Collection<($BoundingBox)>
 public "getStructureBoundingBox"(): $BoundingBox
-public "getRegistries"(): $RegistryAccess
 public "getServer"(): $MinecraftServer
-/**
- * Stops the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(arg1: any): any
-/**
- * Stops the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(): any
-/**
- * Cancels the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(arg1: any): any
-/**
- * Cancels the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(): any
+public "getRegistries"(): $RegistryAccess
 /**
  * Stops the event with default exit value. Execution will be stopped **immediately**.
  * 
@@ -2327,24 +2568,48 @@ public "success"(): any
  * `success` denotes a `true` outcome.
  */
 public "success"(arg1: any): any
+/**
+ * Stops the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(): any
+/**
+ * Stops the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(arg1: any): any
+/**
+ * Cancels the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(arg1: any): any
+/**
+ * Cancels the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(): any
+get "level"(): $Level
 get "id"(): $ResourceLocation
 get "type"(): $ResourceLocation
-get "level"(): $Level
 get "chunkPos"(): $ChunkPos
 get "structure"(): $Structure
 get "randomSource"(): $RandomSource
 get "structureManager"(): $StructureManager
-get "genStep"(): string
+get "genStep"(): StringJS
 get "intersectionMap"(): $Map<($StructurePiece), ($BoundingBox)>
+get "piecesContainer"(): $PiecesContainer
 get "chunkGenerator"(): $ChunkGenerator
 get "chunkBoundingBox"(): $BoundingBox
-get "piecesContainer"(): $PiecesContainer
 get "worldGenLevel"(): $WorldGenLevel
-get "intersectionBoxes"(): $Collection<($BoundingBox)>
 get "intersectionPieces"(): $Collection<($StructurePiece)>
+get "intersectionBoxes"(): $Collection<($BoundingBox)>
 get "structureBoundingBox"(): $BoundingBox
-get "registries"(): $RegistryAccess
 get "server"(): $MinecraftServer
+get "registries"(): $RegistryAccess
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2360,17 +2625,17 @@ export type $StructureAfterPlaceEventJS_ = $StructureAfterPlaceEventJS$$Type;
 }}
 declare module "com.almostreliable.lootjs.loot.LootTableEvent" {
 import {$LootType, $LootType$$Type} from "com.almostreliable.lootjs.core.LootType"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$IdFilter, $IdFilter$$Type} from "com.almostreliable.lootjs.core.filters.IdFilter"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$LootTable, $LootTable$$Type} from "net.minecraft.world.level.storage.loot.LootTable"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Set, $Set$$Type} from "java.util.Set"
 import {$MutableLootTable, $MutableLootTable$$Type} from "com.almostreliable.lootjs.loot.table.MutableLootTable"
 import {$WritableRegistry, $WritableRegistry$$Type} from "net.minecraft.core.WritableRegistry"
-import {$EntityType, $EntityType$$Type} from "net.minecraft.world.entity.EntityType"
-import {$LootTableFilter, $LootTableFilter$$Type} from "com.almostreliable.lootjs.core.filters.LootTableFilter"
 import {$LootTableList, $LootTableList$$Type} from "com.almostreliable.lootjs.loot.table.LootTableList"
+import {$LootTableFilter, $LootTableFilter$$Type} from "com.almostreliable.lootjs.core.filters.LootTableFilter"
+import {$EntityType, $EntityType$$Type} from "net.minecraft.world.entity.EntityType"
 
 export class $LootTableEvent {
 
@@ -2379,10 +2644,10 @@ constructor(arg0: $WritableRegistry$$Type<($LootTable$$Type)>)
 public "create"(arg0: $ResourceLocation$$Type): $MutableLootTable
 public "create"(arg0: $ResourceLocation$$Type, arg1: $LootType$$Type): $MutableLootTable
 public "getLootTable"(arg0: $ResourceLocation$$Type): $MutableLootTable
-public "forEachTable"(arg0: $IdFilter$$Type, arg1: $Consumer$$Type<($MutableLootTable)>): void
-public "forEachTable"(arg0: $Consumer$$Type<($MutableLootTable)>): void
 public "hasLootTable"(arg0: $ResourceLocation$$Type): boolean
 public "getEntityTable"(arg0: $EntityType$$Type<(any)>): $MutableLootTable
+public "forEachTable"(arg0: $IdFilter$$Type, arg1: $Consumer$$Type<($MutableLootTable)>): void
+public "forEachTable"(arg0: $Consumer$$Type<($MutableLootTable)>): void
 public "getBlockTable"(arg0: $Block$$Type): $MutableLootTable
 public "getLootTableIds"(arg0: $IdFilter$$Type): $Set<($ResourceLocation)>
 public "getLootTableIds"(): $Set<($ResourceLocation)>
@@ -2423,9 +2688,9 @@ export class $WandererTradingEventJS implements $KubeEvent {
 
 constructor(arg0: $Int2ObjectMap$$Type<($List$$Type<($VillagerTrades$ItemListing$$Type)>)>)
 
-public "addTrade"<T extends $VillagerTrades$ItemListing>(arg0: integer, arg1: T): T
-public "addTrade"(arg0: integer, arg1: ($TradeItem$$Type)[], arg2: $TradeItem$$Type): $SimpleTrade
 public "removeTrades"(arg0: $TradeFilter$$Type): void
+public "addTrade"(arg0: integer, arg1: ($TradeItem$$Type)[], arg2: $TradeItem$$Type): $SimpleTrade
+public "addTrade"<T extends $VillagerTrades$ItemListing>(arg0: integer, arg1: T): T
 public "getTrades"(arg0: integer): $List<($VillagerTrades$ItemListing)>
 public "addCustomTrade"(arg0: integer, arg1: $TransformableTrade$Transformer$$Type): void
 /**
@@ -2448,34 +2713,10 @@ public "removeModdedTrades"(arg0: integer): void
  * @deprecated
  */
 public "removeModdedTrades"(): void
-public "removeVanillaTypedTrades"(arg0: integer): void
 public "removeVanillaTypedTrades"(): void
-public "removeModdedTypedTrades"(): void
+public "removeVanillaTypedTrades"(arg0: integer): void
 public "removeModdedTypedTrades"(arg0: integer): void
-/**
- * Stops the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(arg1: any): any
-/**
- * Stops the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(): any
-/**
- * Cancels the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(arg1: any): any
-/**
- * Cancels the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(): any
+public "removeModdedTypedTrades"(): void
 /**
  * Stops the event with default exit value. Execution will be stopped **immediately**.
  * 
@@ -2488,6 +2729,30 @@ public "success"(): any
  * `success` denotes a `true` outcome.
  */
 public "success"(arg1: any): any
+/**
+ * Stops the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(): any
+/**
+ * Stops the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(arg1: any): any
+/**
+ * Cancels the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(arg1: any): any
+/**
+ * Cancels the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(): any
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2533,20 +2798,19 @@ declare global {
 export type $CompositeEntryBaseExtension_ = $CompositeEntryBaseExtension$$Type;
 }}
 declare module "com.almostreliable.lootjs.loot.modifier.LootModifier$Builder" {
-import {$LootContext, $LootContext$$Type} from "net.minecraft.world.level.storage.loot.LootContext"
 import {$GroupedLootAction$Builder, $GroupedLootAction$Builder$$Type} from "com.almostreliable.lootjs.loot.modifier.GroupedLootAction$Builder"
-import {$LootActionContainer, $LootActionContainer$$Type} from "com.almostreliable.lootjs.loot.LootActionContainer"
+import {$LootContext, $LootContext$$Type} from "net.minecraft.world.level.storage.loot.LootContext"
+import {$LootItemFunction, $LootItemFunction$$Type} from "net.minecraft.world.level.storage.loot.functions.LootItemFunction"
 import {$GroupedLootAction, $GroupedLootAction$$Type} from "com.almostreliable.lootjs.loot.modifier.GroupedLootAction"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
-import {$LootAction, $LootAction$$Type} from "com.almostreliable.lootjs.loot.modifier.LootAction"
 
 export class $LootModifier$Builder extends $GroupedLootAction$Builder {
 
-constructor(arg0: $Predicate$$Type<($LootContext)>, arg1: string)
+constructor(arg0: $Predicate$$Type<($LootContext)>, arg1: StringJS)
 
-public "name"(arg0: string): $LootModifier$Builder
 public "build"(): $GroupedLootAction
-public "addAction"(arg0: $LootAction$$Type): $LootActionContainer<(any)>
+public "name"(arg0: StringJS): $LootModifier$Builder
+public "addFunction"(arg0: $LootItemFunction$$Type): any
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2570,7 +2834,7 @@ static readonly "IGNORE": $PiglinPlayerBehaviorEventJS$PiglinBehavior
 
 
 public static "values"(): ($PiglinPlayerBehaviorEventJS$PiglinBehavior)[]
-public static "valueOf"(arg0: string): $PiglinPlayerBehaviorEventJS$PiglinBehavior
+public static "valueOf"(arg0: StringJS): $PiglinPlayerBehaviorEventJS$PiglinBehavior
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2584,6 +2848,57 @@ export type $PiglinPlayerBehaviorEventJS$PiglinBehavior$$Type = (("attack") | ("
 declare global {
 export type $PiglinPlayerBehaviorEventJS$PiglinBehavior_ = $PiglinPlayerBehaviorEventJS$PiglinBehavior$$Type;
 }}
+declare module "com.almostreliable.merequester.requester.status.RequestStatus" {
+import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
+import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
+import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
+import {$Function, $Function$$Type} from "java.util.function.Function"
+import {$StringRepresentable, $StringRepresentable$$Type} from "net.minecraft.util.StringRepresentable"
+import {$ByteBuf, $ByteBuf$$Type} from "io.netty.buffer.ByteBuf"
+import {$IntFunction, $IntFunction$$Type} from "java.util.function.IntFunction"
+
+export class $RequestStatus extends $Enum<($RequestStatus)> implements $StringRepresentable {
+static readonly "CODEC": $Codec<($RequestStatus)>
+static readonly "REQUEST": $RequestStatus
+static readonly "IDLE": $RequestStatus
+static readonly "EXPORT": $RequestStatus
+static readonly "BY_ID": $IntFunction<($RequestStatus)>
+static readonly "CPU": $RequestStatus
+static readonly "LINK": $RequestStatus
+static readonly "MISSING": $RequestStatus
+static readonly "PLAN": $RequestStatus
+static readonly "STREAM_CODEC": $StreamCodec<($ByteBuf), ($RequestStatus)>
+
+
+public static "values"(): ($RequestStatus)[]
+public static "valueOf"(arg0: StringJS): $RequestStatus
+public "locksRequest"(): boolean
+public "getSerializedName"(): StringJS
+public "translateToClient"(): $RequestStatus
+public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
+public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $RequestStatus$$Type = (("idle") | ("missing") | ("cpu") | ("request") | ("plan") | ("link") | ("export"));
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $RequestStatus_ = $RequestStatus$$Type;
+}}
 declare module "com.almostreliable.morejs.features.potion.CustomBrewingFilter" {
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
@@ -2595,25 +2910,25 @@ export class $CustomBrewingFilter extends $Record implements $Predicate<($Brewin
 
 constructor(ingredient: $Optional$$Type<($Ingredient$$Type)>, input: $Optional$$Type<($Ingredient$$Type)>, output: $Optional$$Type<($Ingredient$$Type)>)
 
+public "input"(): $Optional<($Ingredient)>
+public "output"(): $Optional<($Ingredient)>
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "test"(arg0: $BrewingRecipe$$Type): boolean
 public "test"(arg0: any): boolean
-public "input"(): $Optional<($Ingredient)>
-public "output"(): $Optional<($Ingredient)>
 public "ingredient"(): $Optional<($Ingredient)>
 public "or"(arg0: $Predicate$$Type<($BrewingRecipe)>): $Predicate<($BrewingRecipe)>
+public static "not"<T>(arg0: $Predicate$$Type<($BrewingRecipe)>): $Predicate<($BrewingRecipe)>
 public "negate"(): $Predicate<($BrewingRecipe)>
 public "and"(arg0: $Predicate$$Type<($BrewingRecipe)>): $Predicate<($BrewingRecipe)>
-public static "not"<T>(arg0: $Predicate$$Type<($BrewingRecipe)>): $Predicate<($BrewingRecipe)>
 public static "isEqual"<T>(arg0: any): $Predicate<($BrewingRecipe)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $CustomBrewingFilter$$Type = ({"output"?: ($Ingredient$$Type)?, "input"?: ($Ingredient$$Type)?, "ingredient"?: ($Ingredient$$Type)?}) | ([output?: ($Ingredient$$Type)?, input?: ($Ingredient$$Type)?, ingredient?: ($Ingredient$$Type)?]);
+export type $CustomBrewingFilter$$Type = ({"input"?: ($Ingredient$$Type)?, "ingredient"?: ($Ingredient$$Type)?, "output"?: ($Ingredient$$Type)?}) | ([input?: ($Ingredient$$Type)?, ingredient?: ($Ingredient$$Type)?, output?: ($Ingredient$$Type)?]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -2626,6 +2941,7 @@ import {$MerchantOffer, $MerchantOffer$$Type} from "net.minecraft.world.item.tra
 import {$MerchantOffers, $MerchantOffers$$Type} from "net.minecraft.world.item.trading.MerchantOffers"
 import {$UpdateOfferEventJS, $UpdateOfferEventJS$$Type} from "com.almostreliable.morejs.features.villager.events.UpdateOfferEventJS"
 import {$AbstractVillager, $AbstractVillager$$Type} from "net.minecraft.world.entity.npc.AbstractVillager"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$VillagerTrades$ItemListing, $VillagerTrades$ItemListing$$Type} from "net.minecraft.world.entity.npc.VillagerTrades$ItemListing"
 
 export class $PostUpdateOfferEventJS extends $UpdateOfferEventJS {
@@ -2635,6 +2951,8 @@ constructor(arg0: $AbstractVillager$$Type, arg1: $MerchantOffers$$Type)
 public static "invoke"(arg0: $AbstractVillager$$Type, arg1: $MerchantOffers$$Type): void
 public "addTrade"(arg0: $VillagerTrades$ItemListing$$Type): void
 public "addOffer"(arg0: $MerchantOffer$$Type): void
+public "getEntity"(): $Entity
+get "entity"(): $Entity
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2657,12 +2975,12 @@ import {$EnchantmentMenuState, $EnchantmentMenuState$$Type} from "com.almostreli
 
 export interface $EnchantmentMenuExtension {
 
- "morejs$getEnchantmentClues"(): (integer)[]
  "morejs$getState"(): $Optional<($EnchantmentMenuState)>
  "morejs$getContainer"(): $Container
  "morejs$getCosts"(): (integer)[]
  "morejs$getLevelClues"(): (integer)[]
  "morejs$getRandom"(): $RandomSource
+ "morejs$getEnchantmentClues"(): (integer)[]
 }
 
 export namespace $EnchantmentMenuExtension {
@@ -2672,13 +2990,13 @@ const probejs$$marker: never
 export class $EnchantmentMenuExtension$$Static implements $EnchantmentMenuExtension {
 
 
- "morejs$getEnchantmentClues"(): (integer)[]
 static "morejs$cast"(arg0: $EnchantmentMenu$$Type): $EnchantmentMenuExtension
  "morejs$getState"(): $Optional<($EnchantmentMenuState)>
  "morejs$getContainer"(): $Container
  "morejs$getCosts"(): (integer)[]
  "morejs$getLevelClues"(): (integer)[]
  "morejs$getRandom"(): $RandomSource
+ "morejs$getEnchantmentClues"(): (integer)[]
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2691,6 +3009,96 @@ export type $EnchantmentMenuExtension$$Type = ($EnchantmentMenuExtension);
  */
 declare global {
 export type $EnchantmentMenuExtension_ = $EnchantmentMenuExtension$$Type;
+}}
+declare module "com.almostreliable.merequester.requester.RequesterBlockEntity" {
+import {$DataComponentMap, $DataComponentMap$$Type} from "net.minecraft.core.component.DataComponentMap"
+import {$IGridTickable, $IGridTickable$$Type} from "appeng.api.networking.ticking.IGridTickable"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$List, $List$$Type} from "java.util.List"
+import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
+import {$ImmutableSet, $ImmutableSet$$Type} from "com.google.common.collect.ImmutableSet"
+import {$IActionSource, $IActionSource$$Type} from "appeng.api.networking.security.IActionSource"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$Actionable, $Actionable$$Type} from "appeng.api.config.Actionable"
+import {$StorageManager, $StorageManager$$Type} from "com.almostreliable.merequester.requester.StorageManager"
+import {$TrackedDataContainer, $TrackedDataContainer$$Type} from "dev.corgitaco.dataanchor.data.TrackedDataContainer"
+import {$DataComponentMap$Builder, $DataComponentMap$Builder$$Type} from "net.minecraft.core.component.DataComponentMap$Builder"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$ICraftingLink, $ICraftingLink$$Type} from "appeng.api.networking.crafting.ICraftingLink"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockOrientation, $BlockOrientation$$Type} from "appeng.api.orientation.BlockOrientation"
+import {$ICraftingRequester, $ICraftingRequester$$Type} from "appeng.api.networking.crafting.ICraftingRequester"
+import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
+import {$Set, $Set$$Type} from "java.util.Set"
+import {$AEKey, $AEKey$$Type} from "appeng.api.stacks.AEKey"
+import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
+import {$TickRateModulation, $TickRateModulation$$Type} from "appeng.api.networking.ticking.TickRateModulation"
+import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
+import {$TrackedData, $TrackedData$$Type} from "dev.corgitaco.dataanchor.data.TrackedData"
+import {$AENetworkedBlockEntity, $AENetworkedBlockEntity$$Type} from "appeng.blockentity.grid.AENetworkedBlockEntity"
+import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.dataanchor.data.registry.TrackedDataRegistry"
+import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
+import {$IGridNode, $IGridNode$$Type} from "appeng.api.networking.IGridNode"
+import {$RequestManager, $RequestManager$$Type} from "com.almostreliable.merequester.requester.RequestManager"
+import {$SettingsFrom, $SettingsFrom$$Type} from "appeng.util.SettingsFrom"
+import {$RequestHost, $RequestHost$$Type} from "com.almostreliable.merequester.requester.abstraction.RequestHost"
+import {$IGrid, $IGrid$$Type} from "appeng.api.networking.IGrid"
+import {$TickingRequest, $TickingRequest$$Type} from "appeng.api.networking.ticking.TickingRequest"
+
+export class $RequesterBlockEntity extends $AENetworkedBlockEntity implements $RequestHost, $IGridTickable, $ICraftingRequester {
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
+
+constructor(arg0: $BlockPos$$Type, arg1: $BlockState$$Type)
+constructor(arg0: $BlockEntityType$$Type<(any)>, arg1: $BlockPos$$Type, arg2: $BlockState$$Type)
+
+public "saveAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "loadTag"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "requestChanged"(arg0: integer): void
+public "jobStateChange"(arg0: $ICraftingLink$$Type): void
+public "tickingRequest"(arg0: $IGridNode$$Type, arg1: integer): $TickRateModulation
+public "getSortValue"(): long
+public "onReady"(): void
+public "exportSettings"(arg0: $SettingsFrom$$Type, arg1: $DataComponentMap$Builder$$Type, arg2: $Player$$Type): void
+public "importSettings"(arg0: $SettingsFrom$$Type, arg1: $DataComponentMap$$Type, arg2: $Player$$Type): void
+public "getStorageManager"(): $StorageManager
+public "addAdditionalDrops"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $List$$Type<($ItemStack$$Type)>): void
+public "getRequestManager"(): $RequestManager
+public "getTerminalName"(): $Component
+public "getMainNodeGrid"(): $IGrid
+public "getRequestedJobs"(): $ImmutableSet<($ICraftingLink)>
+public "insertCraftedItems"(arg0: $ICraftingLink$$Type, arg1: $AEKey$$Type, arg2: long, arg3: $Actionable$$Type): long
+public "getTickingRequest"(arg0: $IGridNode$$Type): $TickingRequest
+public "getActionSource"(): $IActionSource
+public "onOrientationChanged"(arg0: $BlockOrientation$$Type): void
+public "getGridConnectableSides"(arg0: $BlockOrientation$$Type): $Set<($Direction)>
+public "isClientSide"(): boolean
+public "saveChanges"(): void
+public "getActionableNode"(): $IGridNode
+public static "tryClear"(arg0: any): void
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+get "sortValue"(): long
+get "storageManager"(): $StorageManager
+get "requestManager"(): $RequestManager
+get "terminalName"(): $Component
+get "mainNodeGrid"(): $IGrid
+get "requestedJobs"(): $ImmutableSet<($ICraftingLink)>
+get "actionSource"(): $IActionSource
+get "clientSide"(): boolean
+get "actionableNode"(): $IGridNode
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $RequesterBlockEntity$$Type = ($RequesterBlockEntity);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $RequesterBlockEntity_ = $RequesterBlockEntity$$Type;
 }}
 declare module "com.almostreliable.lootjs.loot.extension.LootContextExtension" {
 import {$LootType, $LootType$$Type} from "com.almostreliable.lootjs.core.LootType"
@@ -2706,32 +3114,32 @@ import {$MinecraftServer, $MinecraftServer$$Type} from "net.minecraft.server.Min
 
 export interface $LootContextExtension {
 
- "getAttackingEntity"(): $Entity
- "getExplosionRadius"(): float
- "getEntity"(): $Entity
- "getPosition"(): $Vec3
- "getKillerPlayer"(): $ServerPlayer
- "getDamageSource"(): $DamageSource
- "isExploded"(): boolean
- "getServer"(): $MinecraftServer
  "self"(): $LootContext
- "getData"(): $Map<(string), (any)>
+ "getData"(): $Map<(StringJS), (any)>
  "getType"(): $LootType
  "getId"(): $ResourceLocation
  "isType"(arg0: $LootType$$Type): boolean
  "getTool"(): $ItemStack
-get "attackingEntity"(): $Entity
-get "explosionRadius"(): float
-get "entity"(): $Entity
-get "position"(): $Vec3
-get "killerPlayer"(): $ServerPlayer
-get "damageSource"(): $DamageSource
-get "exploded"(): boolean
-get "server"(): $MinecraftServer
-get "data"(): $Map<(string), (any)>
+ "getDamageSource"(): $DamageSource
+ "getEntity"(): $Entity
+ "getPosition"(): $Vec3
+ "getKillerPlayer"(): $ServerPlayer
+ "isExploded"(): boolean
+ "getServer"(): $MinecraftServer
+ "getAttackingEntity"(): $Entity
+ "getExplosionRadius"(): float
+get "data"(): $Map<(StringJS), (any)>
 get "type"(): $LootType
 get "id"(): $ResourceLocation
 get "tool"(): $ItemStack
+get "damageSource"(): $DamageSource
+get "entity"(): $Entity
+get "position"(): $Vec3
+get "killerPlayer"(): $ServerPlayer
+get "exploded"(): boolean
+get "server"(): $MinecraftServer
+get "attackingEntity"(): $Entity
+get "explosionRadius"(): float
 }
 
 export namespace $LootContextExtension {
@@ -2742,20 +3150,20 @@ export class $LootContextExtension$$Static implements $LootContextExtension {
 
 
 static "cast"(arg0: $LootContext$$Type): $LootContextExtension
- "getAttackingEntity"(): $Entity
- "getExplosionRadius"(): float
- "getEntity"(): $Entity
- "getPosition"(): $Vec3
- "getKillerPlayer"(): $ServerPlayer
- "getDamageSource"(): $DamageSource
- "isExploded"(): boolean
- "getServer"(): $MinecraftServer
  "self"(): $LootContext
- "getData"(): $Map<(string), (any)>
+ "getData"(): $Map<(StringJS), (any)>
  "getType"(): $LootType
  "getId"(): $ResourceLocation
  "isType"(arg0: $LootType$$Type): boolean
  "getTool"(): $ItemStack
+ "getDamageSource"(): $DamageSource
+ "getEntity"(): $Entity
+ "getPosition"(): $Vec3
+ "getKillerPlayer"(): $ServerPlayer
+ "isExploded"(): boolean
+ "getServer"(): $MinecraftServer
+ "getAttackingEntity"(): $Entity
+ "getExplosionRadius"(): float
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2772,8 +3180,8 @@ export type $LootContextExtension_ = $LootContextExtension$$Type;
 declare module "com.almostreliable.lootjs.loot.LootConditionsContainer" {
 import {$StatePropertiesPredicate, $StatePropertiesPredicate$$Type} from "net.minecraft.advancements.critereon.StatePropertiesPredicate"
 import {$MinMaxBounds$Doubles, $MinMaxBounds$Doubles$$Type} from "net.minecraft.advancements.critereon.MinMaxBounds$Doubles"
-import {$NumberProvider, $NumberProvider$$Type} from "net.minecraft.world.level.storage.loot.providers.number.NumberProvider"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$NumberProvider, $NumberProvider$$Type} from "net.minecraft.world.level.storage.loot.providers.number.NumberProvider"
 import {$ItemFilter, $ItemFilter$$Type} from "com.almostreliable.lootjs.core.filters.ItemFilter"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Structure, $Structure$$Type} from "net.minecraft.world.level.levelgen.structure.Structure"
@@ -2781,9 +3189,9 @@ import {$DistancePredicate, $DistancePredicate$$Type} from "net.minecraft.advanc
 import {$EquipmentSlot, $EquipmentSlot$$Type} from "net.minecraft.world.entity.EquipmentSlot"
 import {$HolderSet, $HolderSet$$Type} from "net.minecraft.core.HolderSet"
 import {$JsonObject, $JsonObject$$Type} from "com.google.gson.JsonObject"
-import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$Biome, $Biome$$Type} from "net.minecraft.world.level.biome.Biome"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$LocationPredicate, $LocationPredicate$$Type} from "net.minecraft.advancements.critereon.LocationPredicate"
@@ -2799,26 +3207,10 @@ export interface $LootConditionsContainer<C> {
 
  "matchLocation"(arg0: $BlockPos$$Type, arg1: $LocationPredicate$$Type): C
  "matchLocation"(arg0: $LocationPredicate$$Type): C
- "matchPlayerCustom"(arg0: $Predicate$$Type<($ServerPlayer)>): C
- "matchAnyInventorySlot"(arg0: $ItemFilter$$Type): C
- "matchAnyHotbarSlot"(arg0: $ItemFilter$$Type): C
- "randomTableBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): C
- "matchDirectAttacker"(arg0: $EntityPredicate$$Type): C
- "matchDamageSource"(arg0: $DamageSourcePredicate$$Type): C
- "matchEntityCustom"(arg0: $Predicate$$Type<($Entity)>): C
- "matchAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): C
- "matchCustomCondition"(arg0: $JsonObject$$Type): C
- "blockEntity"(arg0: $Predicate$$Type<($BlockEntity)>): C
  "luck"(arg0: $MinMaxBounds$Doubles$$Type): C
- "survivesExplosion"(): C
- "matchBlock"(arg0: $Block$$Type, arg1: $StatePropertiesPredicate$$Type): C
- "matchBlock"(arg0: $Block$$Type): C
- "matchTool"(arg0: $ItemPredicate$$Type): C
- "matchPlayer"(arg0: $EntityPredicate$$Type): C
- "randomChance"(arg0: $NumberProvider$$Type): C
- "killedByPlayer"(): C
- "matchTime"(arg0: long, arg1: integer, arg2: integer): C
+ "blockEntity"(arg0: $Predicate$$Type<($BlockEntity)>): C
  "matchTime"(arg0: integer, arg1: integer): C
+ "matchTime"(arg0: long, arg1: integer, arg2: integer): C
  "matchMainHand"(arg0: $ItemFilter$$Type): C
  "matchOffHand"(arg0: $ItemFilter$$Type): C
  "matchHead"(arg0: $ItemFilter$$Type): C
@@ -2832,12 +3224,28 @@ export interface $LootConditionsContainer<C> {
  "matchStructure"(arg0: $HolderSet$$Type<($Structure)>): C
  "matchStructure"(arg0: $HolderSet$$Type<($Structure)>, arg1: boolean): C
  "isLightLevel"(arg0: integer, arg1: integer): C
+ "matchBlock"(arg0: $Block$$Type): C
+ "matchBlock"(arg0: $Block$$Type, arg1: $StatePropertiesPredicate$$Type): C
  "matchEntity"(arg0: $EntityPredicate$$Type): C
  "matchAttacker"(arg0: $EntityPredicate$$Type): C
  "matchDistance"(arg0: $DistancePredicate$$Type): C
- "hasAnyStage"(...arg0: (string)[]): C
+ "hasAnyStage"(...arg0: (StringJS)[]): C
  "matchAnyOf"(...arg0: ($LootItemCondition$$Type)[]): C
  "matchAllOf"(...arg0: ($LootItemCondition$$Type)[]): C
+ "matchPlayer"(arg0: $EntityPredicate$$Type): C
+ "matchTool"(arg0: $ItemPredicate$$Type): C
+ "killedByPlayer"(): C
+ "randomChance"(arg0: $NumberProvider$$Type): C
+ "survivesExplosion"(): C
+ "matchPlayerCustom"(arg0: $Predicate$$Type<($ServerPlayer)>): C
+ "matchAnyInventorySlot"(arg0: $ItemFilter$$Type): C
+ "matchAnyHotbarSlot"(arg0: $ItemFilter$$Type): C
+ "randomTableBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): C
+ "matchDirectAttacker"(arg0: $EntityPredicate$$Type): C
+ "matchDamageSource"(arg0: $DamageSourcePredicate$$Type): C
+ "matchEntityCustom"(arg0: $Predicate$$Type<($Entity)>): C
+ "matchAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): C
+ "matchCustomCondition"(arg0: $JsonObject$$Type): C
  "randomChanceWithEnchantment"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): C
  "matchDirectAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): C
 }
@@ -2850,26 +3258,10 @@ export class $LootConditionsContainer$$Static<C> implements $LootConditionsConta
 
  "matchLocation"(arg0: $BlockPos$$Type, arg1: $LocationPredicate$$Type): C
  "matchLocation"(arg0: $LocationPredicate$$Type): C
- "matchPlayerCustom"(arg0: $Predicate$$Type<($ServerPlayer)>): C
- "matchAnyInventorySlot"(arg0: $ItemFilter$$Type): C
- "matchAnyHotbarSlot"(arg0: $ItemFilter$$Type): C
- "randomTableBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): C
- "matchDirectAttacker"(arg0: $EntityPredicate$$Type): C
- "matchDamageSource"(arg0: $DamageSourcePredicate$$Type): C
- "matchEntityCustom"(arg0: $Predicate$$Type<($Entity)>): C
- "matchAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): C
- "matchCustomCondition"(arg0: $JsonObject$$Type): C
- "blockEntity"(arg0: $Predicate$$Type<($BlockEntity)>): C
  "luck"(arg0: $MinMaxBounds$Doubles$$Type): C
- "survivesExplosion"(): C
- "matchBlock"(arg0: $Block$$Type, arg1: $StatePropertiesPredicate$$Type): C
- "matchBlock"(arg0: $Block$$Type): C
- "matchTool"(arg0: $ItemPredicate$$Type): C
- "matchPlayer"(arg0: $EntityPredicate$$Type): C
- "randomChance"(arg0: $NumberProvider$$Type): C
- "killedByPlayer"(): C
- "matchTime"(arg0: long, arg1: integer, arg2: integer): C
+ "blockEntity"(arg0: $Predicate$$Type<($BlockEntity)>): C
  "matchTime"(arg0: integer, arg1: integer): C
+ "matchTime"(arg0: long, arg1: integer, arg2: integer): C
  "matchMainHand"(arg0: $ItemFilter$$Type): C
  "matchOffHand"(arg0: $ItemFilter$$Type): C
  "matchHead"(arg0: $ItemFilter$$Type): C
@@ -2883,12 +3275,28 @@ export class $LootConditionsContainer$$Static<C> implements $LootConditionsConta
  "matchStructure"(arg0: $HolderSet$$Type<($Structure)>): C
  "matchStructure"(arg0: $HolderSet$$Type<($Structure)>, arg1: boolean): C
  "isLightLevel"(arg0: integer, arg1: integer): C
+ "matchBlock"(arg0: $Block$$Type): C
+ "matchBlock"(arg0: $Block$$Type, arg1: $StatePropertiesPredicate$$Type): C
  "matchEntity"(arg0: $EntityPredicate$$Type): C
  "matchAttacker"(arg0: $EntityPredicate$$Type): C
  "matchDistance"(arg0: $DistancePredicate$$Type): C
- "hasAnyStage"(...arg0: (string)[]): C
+ "hasAnyStage"(...arg0: (StringJS)[]): C
  "matchAnyOf"(...arg0: ($LootItemCondition$$Type)[]): C
  "matchAllOf"(...arg0: ($LootItemCondition$$Type)[]): C
+ "matchPlayer"(arg0: $EntityPredicate$$Type): C
+ "matchTool"(arg0: $ItemPredicate$$Type): C
+ "killedByPlayer"(): C
+ "randomChance"(arg0: $NumberProvider$$Type): C
+ "survivesExplosion"(): C
+ "matchPlayerCustom"(arg0: $Predicate$$Type<($ServerPlayer)>): C
+ "matchAnyInventorySlot"(arg0: $ItemFilter$$Type): C
+ "matchAnyHotbarSlot"(arg0: $ItemFilter$$Type): C
+ "randomTableBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): C
+ "matchDirectAttacker"(arg0: $EntityPredicate$$Type): C
+ "matchDamageSource"(arg0: $DamageSourcePredicate$$Type): C
+ "matchEntityCustom"(arg0: $Predicate$$Type<($Entity)>): C
+ "matchAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): C
+ "matchCustomCondition"(arg0: $JsonObject$$Type): C
  "randomChanceWithEnchantment"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): C
  "matchDirectAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): C
 }
@@ -2913,12 +3321,12 @@ import {$DebugInfo, $DebugInfo$$Type} from "com.almostreliable.lootjs.util.Debug
 
 export interface $LootPoolExtension {
 
- "lootjs$collectDebugInfo"(arg0: $DebugInfo$$Type): void
+ "lootjs$setName"(arg0: StringJS): void
  "lootjs$asVanillaPool"(): $LootPool
  "lootjs$getEntries"(): $LootEntryList
  "lootjs$getConditions"(): $LootConditionList
  "lootjs$getFunctions"(): $LootFunctionList
- "lootjs$setName"(arg0: string): void
+ "lootjs$collectDebugInfo"(arg0: $DebugInfo$$Type): void
 }
 
 export namespace $LootPoolExtension {
@@ -2929,12 +3337,12 @@ export class $LootPoolExtension$$Static implements $LootPoolExtension {
 
 
 static "cast"(arg0: $LootPool$$Type): $LootPoolExtension
- "lootjs$collectDebugInfo"(arg0: $DebugInfo$$Type): void
+ "lootjs$setName"(arg0: StringJS): void
  "lootjs$asVanillaPool"(): $LootPool
  "lootjs$getEntries"(): $LootEntryList
  "lootjs$getConditions"(): $LootConditionList
  "lootjs$getFunctions"(): $LootFunctionList
- "lootjs$setName"(arg0: string): void
+ "lootjs$collectDebugInfo"(arg0: $DebugInfo$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3020,7 +3428,7 @@ static readonly "ENDER_PEARL": $TeleportType
 
 
 public static "values"(): ($TeleportType)[]
-public static "valueOf"(arg0: string): $TeleportType
+public static "valueOf"(arg0: StringJS): $TeleportType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3034,10 +3442,39 @@ export type $TeleportType$$Type = (("chorus_fruit") | ("ender_pearl"));
 declare global {
 export type $TeleportType_ = $TeleportType$$Type;
 }}
+declare module "com.almostreliable.kubeio.mixin.SagMillOutputItemAccessor" {
+import {$SagMillingRecipe$OutputItem, $SagMillingRecipe$OutputItem$$Type} from "com.enderio.machines.common.blocks.sag_mill.SagMillingRecipe$OutputItem"
+import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+
+export interface $SagMillOutputItemAccessor {
+
+}
+
+export namespace $SagMillOutputItemAccessor {
+function getCodec(): $Codec<($SagMillingRecipe$OutputItem)>
+const probejs$$marker: never
+}
+export class $SagMillOutputItemAccessor$$Static implements $SagMillOutputItemAccessor {
+
+
+static "getCodec"(): $Codec<($SagMillingRecipe$OutputItem)>
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SagMillOutputItemAccessor$$Type = ($SagMillOutputItemAccessor);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SagMillOutputItemAccessor_ = $SagMillOutputItemAccessor$$Type;
+}}
 declare module "com.almostreliable.lootjs.loot.AddAttributesFunction$Modifier" {
 import {$AttributeModifier, $AttributeModifier$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeModifier"
-import {$LootContext, $LootContext$$Type} from "net.minecraft.world.level.storage.loot.LootContext"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$LootContext, $LootContext$$Type} from "net.minecraft.world.level.storage.loot.LootContext"
 import {$AttributeModifier$Operation, $AttributeModifier$Operation$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation"
 import {$EquipmentSlotGroup, $EquipmentSlotGroup$$Type} from "net.minecraft.world.entity.EquipmentSlotGroup"
 import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
@@ -3073,23 +3510,23 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 
 export interface $StructureBlockInfoModification {
 
- "getPosition"(): $BlockPos
  "getBlock"(): $Block
- "getProperties"(): $Map<(string), (any)>
- "getId"(): string
- "setBlock"(arg0: $ResourceLocation$$Type, arg1: $Map$$Type<(string), (any)>): void
- "setBlock"(arg0: $ResourceLocation$$Type): void
- "setNbt"(arg0: $CompoundTag$$Type): void
- "hasNbt"(): boolean
+ "getPosition"(): $BlockPos
+ "getProperties"(): $Map<(StringJS), (any)>
+ "getId"(): StringJS
  "getNbt"(): $CompoundTag
+ "setBlock"(arg0: $ResourceLocation$$Type): void
+ "setBlock"(arg0: $ResourceLocation$$Type, arg1: $Map$$Type<(StringJS), (any)>): void
+ "hasNbt"(): boolean
+ "setNbt"(arg0: $CompoundTag$$Type): void
  "setVanillaBlockState"(arg0: $BlockState$$Type): void
-get "position"(): $BlockPos
 get "block"(): $Block
-get "properties"(): $Map<(string), (any)>
-get "id"(): string
+get "position"(): $BlockPos
+get "properties"(): $Map<(StringJS), (any)>
+get "id"(): StringJS
+get "nbt"(): $CompoundTag
 set "block"(value: $ResourceLocation$$Type)
 set "nbt"(value: $CompoundTag$$Type)
-get "nbt"(): $CompoundTag
 set "vanillaBlockState"(value: $BlockState$$Type)
 }
 
@@ -3099,15 +3536,15 @@ const probejs$$marker: never
 export class $StructureBlockInfoModification$$Static implements $StructureBlockInfoModification {
 
 
- "getPosition"(): $BlockPos
  "getBlock"(): $Block
- "getProperties"(): $Map<(string), (any)>
- "getId"(): string
- "setBlock"(arg0: $ResourceLocation$$Type, arg1: $Map$$Type<(string), (any)>): void
- "setBlock"(arg0: $ResourceLocation$$Type): void
- "setNbt"(arg0: $CompoundTag$$Type): void
- "hasNbt"(): boolean
+ "getPosition"(): $BlockPos
+ "getProperties"(): $Map<(StringJS), (any)>
+ "getId"(): StringJS
  "getNbt"(): $CompoundTag
+ "setBlock"(arg0: $ResourceLocation$$Type): void
+ "setBlock"(arg0: $ResourceLocation$$Type, arg1: $Map$$Type<(StringJS), (any)>): void
+ "hasNbt"(): boolean
+ "setNbt"(arg0: $CompoundTag$$Type): void
  "setVanillaBlockState"(arg0: $BlockState$$Type): void
 }
 /**
@@ -3153,11 +3590,11 @@ declare global {
 export type $ModifyLootAction$Callback_ = $ModifyLootAction$Callback$$Type;
 }}
 declare module "com.almostreliable.lootjs.loot.Predicates" {
-import {$MinMaxBounds$Ints, $MinMaxBounds$Ints$$Type} from "net.minecraft.advancements.critereon.MinMaxBounds$Ints"
 import {$ItemEnchantmentsPredicate, $ItemEnchantmentsPredicate$$Type} from "net.minecraft.advancements.critereon.ItemEnchantmentsPredicate"
+import {$MinMaxBounds$Ints, $MinMaxBounds$Ints$$Type} from "net.minecraft.advancements.critereon.MinMaxBounds$Ints"
 import {$EnchantmentPredicate, $EnchantmentPredicate$$Type} from "net.minecraft.advancements.critereon.EnchantmentPredicate"
-import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$NbtPredicate, $NbtPredicate$$Type} from "net.minecraft.advancements.critereon.NbtPredicate"
+import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$IdFilter, $IdFilter$$Type} from "com.almostreliable.lootjs.core.filters.IdFilter"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 
@@ -3167,9 +3604,9 @@ export interface $Predicates {
 
 export namespace $Predicates {
 function lookup(): $HolderLookup$Provider
+function nbt(arg0: $CompoundTag$$Type): $NbtPredicate
 function enchantment(arg0: $IdFilter$$Type, arg1: $MinMaxBounds$Ints$$Type): $EnchantmentPredicate
 function enchantment(arg0: $IdFilter$$Type): $EnchantmentPredicate
-function nbt(arg0: $CompoundTag$$Type): $NbtPredicate
 function storedEnchantments(arg0: ($EnchantmentPredicate$$Type)[]): $ItemEnchantmentsPredicate
 function itemEnchantments(arg0: ($EnchantmentPredicate$$Type)[]): $ItemEnchantmentsPredicate
 const probejs$$marker: never
@@ -3178,9 +3615,9 @@ export class $Predicates$$Static implements $Predicates {
 
 
 static "lookup"(): $HolderLookup$Provider
+static "nbt"(arg0: $CompoundTag$$Type): $NbtPredicate
 static "enchantment"(arg0: $IdFilter$$Type, arg1: $MinMaxBounds$Ints$$Type): $EnchantmentPredicate
 static "enchantment"(arg0: $IdFilter$$Type): $EnchantmentPredicate
-static "nbt"(arg0: $CompoundTag$$Type): $NbtPredicate
 static "storedEnchantments"(arg0: ($EnchantmentPredicate$$Type)[]): $ItemEnchantmentsPredicate
 static "itemEnchantments"(arg0: ($EnchantmentPredicate$$Type)[]): $ItemEnchantmentsPredicate
 }
@@ -3198,8 +3635,8 @@ export type $Predicates_ = $Predicates$$Type;
 }}
 declare module "com.almostreliable.morejs.features.enchantment.PlayerEnchantEventJS" {
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$EnchantmentInstance, $EnchantmentInstance$$Type} from "net.minecraft.world.item.enchantment.EnchantmentInstance"
 import {$List, $List$$Type} from "java.util.List"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
@@ -3236,8 +3673,8 @@ declare module "com.almostreliable.morejs.features.potion.PotionBrewingRegisterE
 import {$KubeEvent, $KubeEvent$$Type} from "dev.latvian.mods.kubejs.event.KubeEvent"
 import {$Potion, $Potion$$Type} from "net.minecraft.world.item.alchemy.Potion"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$PotionBrewingFilter, $PotionBrewingFilter$$Type} from "com.almostreliable.morejs.features.potion.PotionBrewingFilter"
+import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$List, $List$$Type} from "java.util.List"
 import {$CustomBrewingFilter, $CustomBrewingFilter$$Type} from "com.almostreliable.morejs.features.potion.CustomBrewingFilter"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
@@ -3248,8 +3685,8 @@ export class $PotionBrewingRegisterEvent implements $KubeEvent {
 
 constructor(arg0: $PotionBrewing$Builder$$Type)
 
-public "removeContainer"(arg0: $Ingredient$$Type): void
 public "addContainerRecipe"(arg0: $Ingredient$$Type, arg1: $Item$$Type, arg2: $Item$$Type): void
+public "removeContainer"(arg0: $Ingredient$$Type): void
 public "addPotionBrewing"(arg0: $Ingredient$$Type, arg1: $Potion$$Type): void
 public "addPotionBrewing"(arg0: $Ingredient$$Type, arg1: $Potion$$Type, arg2: $Potion$$Type): void
 public "validateContainer"(arg0: $Ingredient$$Type, arg1: $Item$$Type, arg2: $Item$$Type): void
@@ -3257,30 +3694,6 @@ public "addCustomBrewing"(arg0: $Ingredient$$Type, arg1: $Ingredient$$Type, arg2
 public "removePotionBrewing"(arg0: $PotionBrewingFilter$$Type): void
 public "removeCustomBrewing"(arg0: $CustomBrewingFilter$$Type): void
 public "getCustomBrewingRecipes"(): $List<($IBrewingRecipe)>
-/**
- * Stops the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(arg1: any): any
-/**
- * Stops the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(): any
-/**
- * Cancels the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(arg1: any): any
-/**
- * Cancels the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(): any
 /**
  * Stops the event with default exit value. Execution will be stopped **immediately**.
  * 
@@ -3293,6 +3706,30 @@ public "success"(): any
  * `success` denotes a `true` outcome.
  */
 public "success"(arg1: any): any
+/**
+ * Stops the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(): any
+/**
+ * Stops the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(arg1: any): any
+/**
+ * Cancels the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(arg1: any): any
+/**
+ * Cancels the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(): any
 get "customBrewingRecipes"(): $List<($IBrewingRecipe)>
 }
 /**
@@ -3306,6 +3743,102 @@ export type $PotionBrewingRegisterEvent$$Type = ($PotionBrewingRegisterEvent);
  */
 declare global {
 export type $PotionBrewingRegisterEvent_ = $PotionBrewingRegisterEvent$$Type;
+}}
+declare module "com.almostreliable.merequester.requester.Request$Component" {
+import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
+import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Optional, $Optional$$Type} from "java.util.Optional"
+import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
+import {$AEKey, $AEKey$$Type} from "appeng.api.stacks.AEKey"
+import {$Record, $Record$$Type} from "java.lang.Record"
+import {$RequestStatus, $RequestStatus$$Type} from "com.almostreliable.merequester.requester.status.RequestStatus"
+
+export class $Request$Component extends $Record {
+static readonly "CODEC": $Codec<($Request$Component)>
+static readonly "STREAM_CODEC": $StreamCodec<($RegistryFriendlyByteBuf), ($Request$Component)>
+
+constructor(state: boolean, key: $Optional$$Type<($AEKey$$Type)>, amount: long, batch: long, clientStatus: $RequestStatus$$Type)
+
+public "batch"(): long
+public "amount"(): long
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+public "key"(): $Optional<($AEKey)>
+public "state"(): boolean
+public "clientStatus"(): $RequestStatus
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Request$Component$$Type = ({"amount"?: long, "batch"?: long, "state"?: boolean, "key"?: ($AEKey$$Type)?, "clientStatus"?: $RequestStatus$$Type}) | ([amount?: long, batch?: long, state?: boolean, key?: ($AEKey$$Type)?, clientStatus?: $RequestStatus$$Type]);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Request$Component_ = $Request$Component$$Type;
+}}
+declare module "com.almostreliable.merequester.requester.RequesterBlock" {
+import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
+import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.minecraft.world.level.block.Block$BlockStatePairKey"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$AEBaseEntityBlock, $AEBaseEntityBlock$$Type} from "appeng.block.AEBaseEntityBlock"
+import {$List, $List$$Type} from "java.util.List"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
+import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
+import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$RequesterBlockEntity, $RequesterBlockEntity$$Type} from "com.almostreliable.merequester.requester.RequesterBlockEntity"
+import {$IOrientationStrategy, $IOrientationStrategy$$Type} from "appeng.api.orientation.IOrientationStrategy"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
+
+export class $RequesterBlock extends $AEBaseEntityBlock<($RequesterBlockEntity)> {
+static readonly "UPDATE_IMMEDIATE": integer
+ "item": $Item
+static readonly "CODEC": $MapCodec<($Block)>
+static readonly "UPDATE_NEIGHBORS": integer
+static readonly "INDESTRUCTIBLE": float
+static readonly "OCCLUSION_CACHE": $ThreadLocal<($Object2ByteLinkedOpenHashMap<($Block$BlockStatePairKey)>)>
+static readonly "UPDATE_NONE": integer
+static readonly "UPDATE_INVISIBLE": integer
+static readonly "UPDATE_MOVE_BY_PISTON": integer
+static readonly "UPDATE_LIMIT": integer
+static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
+static readonly "UPDATE_ALL": integer
+static readonly "UPDATE_ALL_IMMEDIATE": integer
+ "descriptionId": StringJS
+static readonly "UPDATE_KNOWN_SHAPE": integer
+static readonly "UPDATE_SUPPRESS_DROPS": integer
+static readonly "INSTANT": float
+static readonly "UPDATE_CLIENTS": integer
+ "hasCollision": boolean
+
+constructor(arg0: $BlockBehaviour$Properties$$Type)
+
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "getOrientationStrategy"(): $IOrientationStrategy
+public "asHolder"(): $Holder<(any)>
+get "orientationStrategy"(): $IOrientationStrategy
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $RequesterBlock$$Type = ($RequesterBlock);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $RequesterBlock_ = $RequesterBlock$$Type;
 }}
 declare module "com.almostreliable.morejs.features.structure.StructureLoadEventJS" {
 import {$KubeEvent, $KubeEvent$$Type} from "dev.latvian.mods.kubejs.event.KubeEvent"
@@ -3323,37 +3856,13 @@ constructor(arg0: $StructureTemplateAccess$$Type, arg1: $ResourceLocation$$Type)
 
 public "getEntities"(): $EntityInfoWrapper
 public static "invoke"(arg0: $StructureTemplate$$Type, arg1: $ResourceLocation$$Type): void
-public "getId"(): string
+public "getId"(): StringJS
 public "getPalette"(arg0: integer): $PaletteWrapper
 public "getStructureSize"(): $Vec3i
 public "removePalette"(arg0: integer): void
 public "getPalettesSize"(): integer
 public "getEntitiesSize"(): integer
 public "forEachPalettes"(arg0: $Consumer$$Type<($PaletteWrapper)>): void
-/**
- * Stops the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(arg1: any): any
-/**
- * Stops the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(): any
-/**
- * Cancels the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(arg1: any): any
-/**
- * Cancels the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(): any
 /**
  * Stops the event with default exit value. Execution will be stopped **immediately**.
  * 
@@ -3366,8 +3875,32 @@ public "success"(): any
  * `success` denotes a `true` outcome.
  */
 public "success"(arg1: any): any
+/**
+ * Stops the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(): any
+/**
+ * Stops the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(arg1: any): any
+/**
+ * Cancels the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(arg1: any): any
+/**
+ * Cancels the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(): any
 get "entities"(): $EntityInfoWrapper
-get "id"(): string
+get "id"(): StringJS
 get "structureSize"(): $Vec3i
 get "palettesSize"(): integer
 get "entitiesSize"(): integer
@@ -3383,6 +3916,67 @@ export type $StructureLoadEventJS$$Type = ($StructureLoadEventJS);
  */
 declare global {
 export type $StructureLoadEventJS_ = $StructureLoadEventJS$$Type;
+}}
+declare module "com.almostreliable.kubeio.event.ConduitRegistryEvent" {
+import {$KubeEvent, $KubeEvent$$Type} from "dev.latvian.mods.kubejs.event.KubeEvent"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+
+export class $ConduitRegistryEvent implements $KubeEvent {
+
+constructor()
+
+public "registerEnergyConduit"(arg0: StringJS, arg1: $Component$$Type, arg2: integer): void
+public "registerFluidConduit"(arg0: StringJS, arg1: $Component$$Type, arg2: integer, arg3: boolean, arg4: boolean): void
+public "registerMeConduit"(arg0: StringJS, arg1: $Component$$Type, arg2: StringJS, arg3: boolean): void
+public "registerChemicalConduit"(arg0: StringJS, arg1: $Component$$Type, arg2: integer, arg3: boolean): void
+/**
+ * Stops the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `success` denotes a `true` outcome.
+ */
+public "success"(): any
+/**
+ * Stops the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `success` denotes a `true` outcome.
+ */
+public "success"(arg1: any): any
+/**
+ * Stops the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(): any
+/**
+ * Stops the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(arg1: any): any
+/**
+ * Cancels the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(arg1: any): any
+/**
+ * Cancels the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(): any
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $ConduitRegistryEvent$$Type = ($ConduitRegistryEvent);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $ConduitRegistryEvent_ = $ConduitRegistryEvent$$Type;
 }}
 declare module "com.almostreliable.lootjs.util.NullableFunction" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
@@ -3424,17 +4018,29 @@ export class $LootTableEventJS extends $LootTableEvent implements $KubeEvent {
 constructor(arg0: $WritableRegistry$$Type<($LootTable$$Type)>)
 
 /**
+ * Stops the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `success` denotes a `true` outcome.
+ */
+public "success"(): any
+/**
  * Stops the event with the given exit value. Execution will be stopped **immediately**.
  * 
- * `exit` denotes a `default` outcome.
+ * `success` denotes a `true` outcome.
  */
-public "exit"(arg1: any): any
+public "success"(arg1: any): any
 /**
  * Stops the event with default exit value. Execution will be stopped **immediately**.
  * 
  * `exit` denotes a `default` outcome.
  */
 public "exit"(): any
+/**
+ * Stops the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(arg1: any): any
 /**
  * Cancels the event with the given exit value. Execution will be stopped **immediately**.
  * 
@@ -3447,18 +4053,6 @@ public "cancel"(arg1: any): any
  * `cancel` denotes a `false` outcome.
  */
 public "cancel"(): any
-/**
- * Stops the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `success` denotes a `true` outcome.
- */
-public "success"(): any
-/**
- * Stops the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `success` denotes a `true` outcome.
- */
-public "success"(arg1: any): any
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3507,8 +4101,8 @@ export class $TreasureMapTrade extends $TransformableTrade<($TreasureMapTrade)> 
 
 constructor(arg0: ($TradeItem$$Type)[], arg1: $BlockPosFinder$$Type)
 
-public "scale"(arg0: byte): $TreasureMapTrade
 public "displayName"(arg0: $Component$$Type): $TreasureMapTrade
+public "scale"(arg0: byte): $TreasureMapTrade
 public "marker"(arg0: $Holder$$Type<($MapDecorationType)>): $TreasureMapTrade
 public "noPreview"(): $TreasureMapTrade
 }
@@ -3533,8 +4127,8 @@ import {$LootPoolEntryContainer, $LootPoolEntryContainer$$Type} from "net.minecr
 import {$SingleLootEntry, $SingleLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.SingleLootEntry"
 import {$TagEntry, $TagEntry$$Type} from "net.minecraft.world.level.storage.loot.entries.TagEntry"
 import {$EmptyLootEntry, $EmptyLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.EmptyLootEntry"
-import {$NumberProvider, $NumberProvider$$Type} from "net.minecraft.world.level.storage.loot.providers.number.NumberProvider"
 import {$DebugInfo, $DebugInfo$$Type} from "com.almostreliable.lootjs.util.DebugInfo"
+import {$NumberProvider, $NumberProvider$$Type} from "net.minecraft.world.level.storage.loot.providers.number.NumberProvider"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$CompositeLootEntry, $CompositeLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.CompositeLootEntry"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -3550,28 +4144,28 @@ export class $TagLootEntry extends $AbstractSimpleLootEntry<($TagEntry)> impleme
 constructor(arg0: $TagEntry$$Type)
 constructor(arg0: $TagKey$$Type<($Item)>, arg1: boolean)
 
-public "getTag"(): string
-public "setTag"(arg0: string): void
-public "isTag"(arg0: string): boolean
-public "collectDebugInfo"(arg0: $DebugInfo$$Type): void
+public "getTag"(): StringJS
+public "isTag"(arg0: StringJS): boolean
+public "setTag"(arg0: StringJS): void
 public "getExpand"(): boolean
 public "setExpand"(arg0: boolean): void
+public "collectDebugInfo"(arg0: $DebugInfo$$Type): void
 public "when"(arg0: $Consumer$$Type<(any)>): $LootEntry
 public "addFunction"(arg0: $LootItemFunction$$Type): any
+public static "sequence"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
+public static "tag"(arg0: StringJS): $TagLootEntry
+public static "tag"(arg0: StringJS, arg1: boolean): $TagLootEntry
 public static "group"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
 public static "of"(arg0: $ItemStack$$Type): $ItemLootEntry
 public static "of"(arg0: $Item$$Type, arg1: $NumberProvider$$Type): $ItemLootEntry
 public static "empty"(): $EmptyLootEntry
 public static "reference"(arg0: $ResourceLocation$$Type): $TableReferenceLootEntry
-public static "sequence"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
-public static "tag"(arg0: string): $TagLootEntry
-public static "tag"(arg0: string, arg1: boolean): $TagLootEntry
+public static "ofItem"(arg0: $Item$$Type): $ItemLootEntry
 public static "alternative"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
 public static "ep"(arg0: $EntityPredicate$$Type): $EntityPredicate
-public static "ofItem"(arg0: $Item$$Type): $ItemLootEntry
-public static "testItem"(arg0: string): $ItemLootEntry
 public static "ofIngredient"(arg0: $Ingredient$$Type): $CompositeLootEntry
 public static "ofVanilla"(arg0: $LootPoolEntryContainer$$Type): $LootEntry
+public static "testItem"(arg0: StringJS): $ItemLootEntry
 get "expand"(): boolean
 set "expand"(value: boolean)
 }
@@ -3617,8 +4211,8 @@ import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$EnchantmentState, $EnchantmentState$$Type} from "com.almostreliable.morejs.features.enchantment.EnchantmentState"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$EnchantmentInstance, $EnchantmentInstance$$Type} from "net.minecraft.world.item.enchantment.EnchantmentInstance"
-import {$EnchantmentMenu, $EnchantmentMenu$$Type} from "net.minecraft.world.inventory.EnchantmentMenu"
 import {$List, $List$$Type} from "java.util.List"
+import {$EnchantmentMenu, $EnchantmentMenu$$Type} from "net.minecraft.world.inventory.EnchantmentMenu"
 
 export class $EnchantmentMenuState {
 
@@ -3628,14 +4222,14 @@ public "reset"(arg0: $ItemStack$$Type): void
 public "getState"(): $EnchantmentState
 public "setState"(arg0: $EnchantmentState$$Type): void
 public "getPlayer"(): $Player
-public "prepareEvent"(arg0: $ItemStack$$Type): void
 public "getMenu"(): $EnchantmentMenu
+public "prepareEvent"(arg0: $ItemStack$$Type): void
 public "storeItemIsEnchantable"(arg0: boolean): boolean
 public "setEnchantments"(arg0: integer, arg1: $List$$Type<($EnchantmentInstance$$Type)>): void
 public "getEnchantments"(arg0: integer): $List<($EnchantmentInstance)>
 public "matchesCurrentItem"(arg0: $ItemStack$$Type): boolean
-public "setCurrentItem"(arg0: $ItemStack$$Type): void
 public "getCurrentItem"(): $ItemStack
+public "setCurrentItem"(arg0: $ItemStack$$Type): void
 public "clearEnchantments"(): void
 public "setFreezeBroadcast"(arg0: boolean): void
 public "isFreezeBroadcast"(): boolean
@@ -3643,8 +4237,8 @@ get "state"(): $EnchantmentState
 set "state"(value: $EnchantmentState$$Type)
 get "player"(): $Player
 get "menu"(): $EnchantmentMenu
-set "currentItem"(value: $ItemStack$$Type)
 get "currentItem"(): $ItemStack
+set "currentItem"(value: $ItemStack$$Type)
 set "freezeBroadcast"(value: boolean)
 get "freezeBroadcast"(): boolean
 }
@@ -3661,13 +4255,13 @@ declare global {
 export type $EnchantmentMenuState_ = $EnchantmentMenuState$$Type;
 }}
 declare module "com.almostreliable.lootjs.loot.LootEntryList" {
+import {$SimpleLootEntry, $SimpleLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.SimpleLootEntry"
 import {$Iterator, $Iterator$$Type} from "java.util.Iterator"
 import {$UnaryOperator, $UnaryOperator$$Type} from "java.util.function.UnaryOperator"
-import {$SimpleLootEntry, $SimpleLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.SimpleLootEntry"
 import {$LootEntry, $LootEntry$$Type} from "com.almostreliable.lootjs.core.entry.LootEntry"
 import {$LootPoolEntryContainer, $LootPoolEntryContainer$$Type} from "net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer"
-import {$List, $List$$Type} from "java.util.List"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
+import {$List, $List$$Type} from "java.util.List"
 import {$IdFilter, $IdFilter$$Type} from "com.almostreliable.lootjs.core.filters.IdFilter"
 import {$LootEntryAppender, $LootEntryAppender$$Type} from "com.almostreliable.lootjs.loot.table.LootEntryAppender"
 import {$DebugInfo, $DebugInfo$$Type} from "com.almostreliable.lootjs.util.DebugInfo"
@@ -3676,38 +4270,38 @@ import {$LootPoolEntryType, $LootPoolEntryType$$Type} from "net.minecraft.world.
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$JsonObject, $JsonObject$$Type} from "com.google.gson.JsonObject"
 import {$LootEntriesTransformer, $LootEntriesTransformer$$Type} from "com.almostreliable.lootjs.loot.table.LootEntriesTransformer"
-import {$ListHolder, $ListHolder$$Type} from "com.almostreliable.lootjs.util.ListHolder"
 import {$ItemLootEntry, $ItemLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.ItemLootEntry"
+import {$ListHolder, $ListHolder$$Type} from "com.almostreliable.lootjs.util.ListHolder"
 
 export class $LootEntryList extends $ListHolder<($LootEntry), ($LootPoolEntryContainer)> implements $LootEntriesTransformer, $LootEntryAppender {
 
+constructor()
 constructor(arg0: $List$$Type<($LootPoolEntryContainer$$Type)>)
 constructor(...arg0: ($LootEntry$$Type)[])
-constructor()
 
+public "removeEntry"(arg0: $Predicate$$Type<($SimpleLootEntry)>, arg1: boolean): $LootEntryList
 public "remove"(arg0: $IdFilter$$Type): boolean
 public "indexOf"(arg0: $LootPoolEntryType$$Type): integer
 public "lastIndexOf"(arg0: $LootPoolEntryType$$Type): integer
 public "iterator"(): $Iterator<(any)>
 public "contains"(arg0: $LootPoolEntryType$$Type): boolean
 public "addEntry"(arg0: $LootEntry$$Type): $LootEntryAppender
-public "removeEntry"(arg0: $Predicate$$Type<($SimpleLootEntry)>, arg1: boolean): $LootEntryList
 public "modify"(arg0: $UnaryOperator$$Type<($LootEntry)>): void
-public "collectDebugInfo"(arg0: $DebugInfo$$Type): void
 public "modifyEntry"(arg0: $UnaryOperator$$Type<(any)>, arg1: boolean): $LootEntriesTransformer
+public "collectDebugInfo"(arg0: $DebugInfo$$Type): void
 public "createVanillaArray"(): $List<($LootPoolEntryContainer)>
-public "removeItem"(arg0: $ItemFilter$$Type): $LootEntriesTransformer
 public "removeItem"(arg0: $ItemFilter$$Type, arg1: boolean): $LootEntriesTransformer
-public "hasItem"(arg0: $ItemFilter$$Type): boolean
+public "removeItem"(arg0: $ItemFilter$$Type): $LootEntriesTransformer
+public "removeEntry"(arg0: $Predicate$$Type<($SimpleLootEntry)>): $LootEntriesTransformer
 public "removeReference"(arg0: $IdFilter$$Type): $LootEntriesTransformer
 public "removeReference"(arg0: $IdFilter$$Type, arg1: boolean): $LootEntriesTransformer
-public "removeEntry"(arg0: $Predicate$$Type<($SimpleLootEntry)>): $LootEntriesTransformer
-public "modifyItemEntry"(arg0: $UnaryOperator$$Type<($ItemLootEntry)>): $LootEntriesTransformer
-public "removeTag"(arg0: string): $LootEntriesTransformer
-public "removeTag"(arg0: string, arg1: boolean): $LootEntriesTransformer
-public "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type): $LootEntriesTransformer
-public "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type, arg2: boolean): $LootEntriesTransformer
+public "hasItem"(arg0: $ItemFilter$$Type): boolean
+public "removeTag"(arg0: StringJS, arg1: boolean): $LootEntriesTransformer
+public "removeTag"(arg0: StringJS): $LootEntriesTransformer
 public "modifyEntry"(arg0: $UnaryOperator$$Type<($SimpleLootEntry)>): $LootEntriesTransformer
+public "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type, arg2: boolean): $LootEntriesTransformer
+public "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type): $LootEntriesTransformer
+public "modifyItemEntry"(arg0: $UnaryOperator$$Type<($ItemLootEntry)>): $LootEntriesTransformer
 public "addCustomEntry"(arg0: $JsonObject$$Type): $LootEntryAppender
 }
 /**
@@ -3732,8 +4326,8 @@ import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 
 export class $ListHolder<W, T> implements $Iterable<(W)> {
 
-constructor(arg0: $List$$Type<(T)>)
 constructor()
+constructor(arg0: $List$$Type<(T)>)
 
 public "remove"(arg0: integer): W
 public "size"(): integer
@@ -3763,9 +4357,9 @@ declare global {
 export type $ListHolder_<W, T> = $ListHolder$$Type<(W), (T)>;
 }}
 declare module "com.almostreliable.lootjs.loot.table.LootEntriesTransformer" {
-import {$UnaryOperator, $UnaryOperator$$Type} from "java.util.function.UnaryOperator"
-import {$ItemFilter, $ItemFilter$$Type} from "com.almostreliable.lootjs.core.filters.ItemFilter"
 import {$SimpleLootEntry, $SimpleLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.SimpleLootEntry"
+import {$ItemFilter, $ItemFilter$$Type} from "com.almostreliable.lootjs.core.filters.ItemFilter"
+import {$UnaryOperator, $UnaryOperator$$Type} from "java.util.function.UnaryOperator"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$IdFilter, $IdFilter$$Type} from "com.almostreliable.lootjs.core.filters.IdFilter"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
@@ -3773,20 +4367,20 @@ import {$ItemLootEntry, $ItemLootEntry$$Type} from "com.almostreliable.lootjs.co
 
 export interface $LootEntriesTransformer {
 
- "removeItem"(arg0: $ItemFilter$$Type): $LootEntriesTransformer
  "removeItem"(arg0: $ItemFilter$$Type, arg1: boolean): $LootEntriesTransformer
- "hasItem"(arg0: $ItemFilter$$Type): boolean
- "removeReference"(arg0: $IdFilter$$Type): $LootEntriesTransformer
- "removeReference"(arg0: $IdFilter$$Type, arg1: boolean): $LootEntriesTransformer
+ "removeItem"(arg0: $ItemFilter$$Type): $LootEntriesTransformer
  "removeEntry"(arg0: $Predicate$$Type<($SimpleLootEntry)>): $LootEntriesTransformer
  "removeEntry"(arg0: $Predicate$$Type<($SimpleLootEntry)>, arg1: boolean): $LootEntriesTransformer
- "modifyItemEntry"(arg0: $UnaryOperator$$Type<($ItemLootEntry)>): $LootEntriesTransformer
- "removeTag"(arg0: string): $LootEntriesTransformer
- "removeTag"(arg0: string, arg1: boolean): $LootEntriesTransformer
- "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type): $LootEntriesTransformer
- "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type, arg2: boolean): $LootEntriesTransformer
- "modifyEntry"(arg0: $UnaryOperator$$Type<($SimpleLootEntry)>): $LootEntriesTransformer
+ "removeReference"(arg0: $IdFilter$$Type): $LootEntriesTransformer
+ "removeReference"(arg0: $IdFilter$$Type, arg1: boolean): $LootEntriesTransformer
+ "hasItem"(arg0: $ItemFilter$$Type): boolean
+ "removeTag"(arg0: StringJS, arg1: boolean): $LootEntriesTransformer
+ "removeTag"(arg0: StringJS): $LootEntriesTransformer
  "modifyEntry"(arg0: $UnaryOperator$$Type<($SimpleLootEntry)>, arg1: boolean): $LootEntriesTransformer
+ "modifyEntry"(arg0: $UnaryOperator$$Type<($SimpleLootEntry)>): $LootEntriesTransformer
+ "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type, arg2: boolean): $LootEntriesTransformer
+ "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type): $LootEntriesTransformer
+ "modifyItemEntry"(arg0: $UnaryOperator$$Type<($ItemLootEntry)>): $LootEntriesTransformer
 }
 
 export namespace $LootEntriesTransformer {
@@ -3795,20 +4389,20 @@ const probejs$$marker: never
 export class $LootEntriesTransformer$$Static implements $LootEntriesTransformer {
 
 
- "removeItem"(arg0: $ItemFilter$$Type): $LootEntriesTransformer
  "removeItem"(arg0: $ItemFilter$$Type, arg1: boolean): $LootEntriesTransformer
- "hasItem"(arg0: $ItemFilter$$Type): boolean
- "removeReference"(arg0: $IdFilter$$Type): $LootEntriesTransformer
- "removeReference"(arg0: $IdFilter$$Type, arg1: boolean): $LootEntriesTransformer
+ "removeItem"(arg0: $ItemFilter$$Type): $LootEntriesTransformer
  "removeEntry"(arg0: $Predicate$$Type<($SimpleLootEntry)>): $LootEntriesTransformer
  "removeEntry"(arg0: $Predicate$$Type<($SimpleLootEntry)>, arg1: boolean): $LootEntriesTransformer
- "modifyItemEntry"(arg0: $UnaryOperator$$Type<($ItemLootEntry)>): $LootEntriesTransformer
- "removeTag"(arg0: string): $LootEntriesTransformer
- "removeTag"(arg0: string, arg1: boolean): $LootEntriesTransformer
- "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type): $LootEntriesTransformer
- "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type, arg2: boolean): $LootEntriesTransformer
- "modifyEntry"(arg0: $UnaryOperator$$Type<($SimpleLootEntry)>): $LootEntriesTransformer
+ "removeReference"(arg0: $IdFilter$$Type): $LootEntriesTransformer
+ "removeReference"(arg0: $IdFilter$$Type, arg1: boolean): $LootEntriesTransformer
+ "hasItem"(arg0: $ItemFilter$$Type): boolean
+ "removeTag"(arg0: StringJS, arg1: boolean): $LootEntriesTransformer
+ "removeTag"(arg0: StringJS): $LootEntriesTransformer
  "modifyEntry"(arg0: $UnaryOperator$$Type<($SimpleLootEntry)>, arg1: boolean): $LootEntriesTransformer
+ "modifyEntry"(arg0: $UnaryOperator$$Type<($SimpleLootEntry)>): $LootEntriesTransformer
+ "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type, arg2: boolean): $LootEntriesTransformer
+ "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type): $LootEntriesTransformer
+ "modifyItemEntry"(arg0: $UnaryOperator$$Type<($ItemLootEntry)>): $LootEntriesTransformer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3821,6 +4415,147 @@ export type $LootEntriesTransformer$$Type = ($LootEntriesTransformer);
  */
 declare global {
 export type $LootEntriesTransformer_ = $LootEntriesTransformer$$Type;
+}}
+declare module "com.almostreliable.merequester.requester.RequestManager" {
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$Spliterator, $Spliterator$$Type} from "java.util.Spliterator"
+import {$List, $List$$Type} from "java.util.List"
+import {$IActionSource, $IActionSource$$Type} from "appeng.api.networking.security.IActionSource"
+import {$ItemTransfer, $ItemTransfer$$Type} from "appeng.api.inventories.ItemTransfer"
+import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$InternalInventory, $InternalInventory$$Type} from "appeng.api.inventories.InternalInventory"
+import {$Actionable, $Actionable$$Type} from "appeng.api.config.Actionable"
+import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
+import {$INBTSerializable, $INBTSerializable$$Type} from "net.neoforged.neoforge.common.util.INBTSerializable"
+import {$KeyCounter, $KeyCounter$$Type} from "appeng.api.stacks.KeyCounter"
+import {$Request$Component, $Request$Component$$Type} from "com.almostreliable.merequester.requester.Request$Component"
+import {$GenericInternalInventory, $GenericInternalInventory$$Type} from "appeng.api.behaviors.GenericInternalInventory"
+import {$AEKey, $AEKey$$Type} from "appeng.api.stacks.AEKey"
+import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$GenericStack, $GenericStack$$Type} from "appeng.api.stacks.GenericStack"
+import {$Iterator, $Iterator$$Type} from "java.util.Iterator"
+import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
+import {$MEStorage, $MEStorage$$Type} from "appeng.api.storage.MEStorage"
+import {$AEKeyType, $AEKeyType$$Type} from "appeng.api.stacks.AEKeyType"
+import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
+import {$FuzzyMode, $FuzzyMode$$Type} from "appeng.api.config.FuzzyMode"
+import {$Request, $Request$$Type} from "com.almostreliable.merequester.requester.Request"
+import {$IItemHandler, $IItemHandler$$Type} from "net.neoforged.neoforge.items.IItemHandler"
+import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
+import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
+import {$Container, $Container$$Type} from "net.minecraft.world.Container"
+import {$RequestHost, $RequestHost$$Type} from "com.almostreliable.merequester.requester.abstraction.RequestHost"
+import {$Tag, $Tag$$Type} from "net.minecraft.nbt.Tag"
+
+export class $RequestManager implements $MEStorage, $GenericInternalInventory, $InternalInventory, $INBTSerializable<($CompoundTag)> {
+
+constructor(arg0: $RequestHost$$Type)
+constructor()
+
+public "getStack"(arg0: integer): $GenericStack
+public "getDescription"(): $Component
+public "getCapacity"(arg0: $AEKeyType$$Type): long
+public "size"(): integer
+public "get"(arg0: integer): $Request
+public "extract"(arg0: integer, arg1: $AEKey$$Type, arg2: long, arg3: $Actionable$$Type): long
+public "insert"(arg0: integer, arg1: $AEKey$$Type, arg2: long, arg3: $Actionable$$Type): long
+public "getKey"(arg0: integer): $AEKey
+public "deserializeNBT"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): void
+public "deserializeNBT"(arg0: $HolderLookup$Provider$$Type, arg1: $Tag$$Type): void
+public "serializeNBT"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
+public "getAmount"(arg0: integer): long
+public "getSlotLimit"(arg0: integer): integer
+public "isItemValid"(arg0: integer, arg1: $ItemStack$$Type): boolean
+public "toComponent"(): $List<($Request$Component)>
+public "getStackInSlot"(arg0: integer): $ItemStack
+public "endBatch"(): void
+public "setStack"(arg0: integer, arg1: $GenericStack$$Type): void
+public "onChange"(): void
+public "fromComponent"(arg0: $List$$Type<($Request$Component$$Type)>): void
+public "isAllowedIn"(arg0: integer, arg1: $AEKey$$Type): boolean
+public "beginBatch"(): void
+public "getMaxAmount"(arg0: $AEKey$$Type): long
+public "setItemDirect"(arg0: integer, arg1: $ItemStack$$Type): void
+public "canInsert"(): boolean
+public "canExtract"(): boolean
+public "firstAvailableIndex"(): integer
+public "isSupportedType"(arg0: $AEKeyType$$Type): boolean
+public "endBatchSuppressed"(): void
+public "extract"(arg0: $AEKey$$Type, arg1: long, arg2: $Actionable$$Type, arg3: $IActionSource$$Type): long
+public "insert"(arg0: $AEKey$$Type, arg1: long, arg2: $Actionable$$Type, arg3: $IActionSource$$Type): long
+public "isPreferredStorageFor"(arg0: $AEKey$$Type, arg1: $IActionSource$$Type): boolean
+public static "checkPreconditions"(arg0: $AEKey$$Type, arg1: long, arg2: $Actionable$$Type, arg3: $IActionSource$$Type): void
+public "getAvailableStacks"(): $KeyCounter
+public "getAvailableStacks"(arg0: $KeyCounter$$Type): void
+public "isSupportedType"(arg0: $AEKey$$Type): boolean
+public "clear"(): void
+public "isEmpty"(): boolean
+public "iterator"(): $Iterator<($ItemStack)>
+public static "empty"(): $InternalInventory
+public "insertItem"(arg0: integer, arg1: $ItemStack$$Type, arg2: boolean): $ItemStack
+public "extractItem"(arg0: integer, arg1: integer, arg2: boolean): $ItemStack
+public static "wrapExternal"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $Direction$$Type): $ItemTransfer
+public "toItemHandler"(): $IItemHandler
+public "toContainer"(): $Container
+public "getSlotInv"(arg0: integer): $InternalInventory
+public "simulateAdd"(arg0: $ItemStack$$Type): $ItemStack
+public "removeItems"(arg0: integer, arg1: $ItemStack$$Type, arg2: $Predicate$$Type<($ItemStack)>): $ItemStack
+public "simulateRemove"(arg0: integer, arg1: $ItemStack$$Type, arg2: $Predicate$$Type<($ItemStack)>): $ItemStack
+public "addItems"(arg0: $ItemStack$$Type): $ItemStack
+public "addItems"(arg0: $ItemStack$$Type, arg1: boolean): $ItemStack
+public "getRedstoneSignal"(): integer
+public "removeSimilarItems"(arg0: integer, arg1: $ItemStack$$Type, arg2: $FuzzyMode$$Type, arg3: $Predicate$$Type<($ItemStack)>): $ItemStack
+public "simulateSimilarRemove"(arg0: integer, arg1: $ItemStack$$Type, arg2: $FuzzyMode$$Type, arg3: $Predicate$$Type<($ItemStack)>): $ItemStack
+public "sendChangeNotification"(arg0: integer): void
+public "getSubInventory"(arg0: integer, arg1: integer): $InternalInventory
+public "spliterator"(): $Spliterator<($ItemStack)>
+public "forEach"(arg0: $Consumer$$Type<($ItemStack)>): void
+[Symbol.iterator](): IterableIterator<$ItemStack>;
+get "description"(): $Component
+get "availableStacks"(): $KeyCounter
+get "redstoneSignal"(): integer
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $RequestManager$$Type = ($RequestManager);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $RequestManager_ = $RequestManager$$Type;
+}}
+declare module "com.almostreliable.merequester.mixin.accessors.EditBoxMixin" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $EditBoxMixin {
+
+ "merequester$isEditable"(): boolean
+
+(): boolean
+}
+
+export namespace $EditBoxMixin {
+const probejs$$marker: never
+}
+export class $EditBoxMixin$$Static implements $EditBoxMixin {
+
+
+ "merequester$isEditable"(): boolean
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $EditBoxMixin$$Type = (() => boolean);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $EditBoxMixin_ = $EditBoxMixin$$Type;
 }}
 declare module "com.almostreliable.morejs.features.enchantment.EnchantmentTableServerEventJS" {
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
@@ -3836,8 +4571,8 @@ export class $EnchantmentTableServerEventJS extends $EnchantmentTableEventJS {
 constructor(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: $Level$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type, arg5: $EnchantmentMenuState$$Type)
 
 public "getPosition"(): $BlockPos
-public "get"(arg0: integer): $EnchantmentData
 public "getSize"(): integer
+public "get"(arg0: integer): $EnchantmentData
 public "setItem"(arg0: $ItemStack$$Type): void
 public "itemWasChanged"(): boolean
 get "position"(): $BlockPos
@@ -3898,24 +4633,24 @@ export class $TradeFilter extends $Record {
 
 constructor(first: $Optional$$Type<($Ingredient$$Type)>, second: $Optional$$Type<($Ingredient$$Type)>, output: $Optional$$Type<($Ingredient$$Type)>, firstCount: $Optional$$Type<($IntRange$$Type)>, secondCount: $Optional$$Type<($IntRange$$Type)>, outputCount: $Optional$$Type<($IntRange$$Type)>, level: $Optional$$Type<($IntRange$$Type)>, types: $Optional$$Type<($List$$Type<($TradeTypes$$Type)>)>, professions: $Optional$$Type<($HolderSet$$Type<($VillagerProfession$$Type)>)>)
 
+public "types"(): $Optional<($List<($TradeTypes)>)>
+public "output"(): $Optional<($Ingredient)>
+public "level"(): $Optional<($IntRange)>
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "first"(): $Optional<($Ingredient)>
 public "second"(): $Optional<($Ingredient)>
-public "types"(): $Optional<($List<($TradeTypes)>)>
-public "level"(): $Optional<($IntRange)>
-public "output"(): $Optional<($Ingredient)>
 public "professions"(): $Optional<($HolderSet<($VillagerProfession)>)>
 public "outputCount"(): $Optional<($IntRange)>
-public "firstCount"(): $Optional<($IntRange)>
 public "secondCount"(): $Optional<($IntRange)>
+public "firstCount"(): $Optional<($IntRange)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $TradeFilter$$Type = ({"level"?: ($IntRange$$Type)?, "professions"?: ($HolderSet$$Type<($VillagerProfession$$Type)>)?, "secondCount"?: ($IntRange$$Type)?, "firstCount"?: ($IntRange$$Type)?, "second"?: ($Ingredient$$Type)?, "first"?: ($Ingredient$$Type)?, "output"?: ($Ingredient$$Type)?, "outputCount"?: ($IntRange$$Type)?, "types"?: ($List$$Type<($TradeTypes$$Type)>)?}) | ([level?: ($IntRange$$Type)?, professions?: ($HolderSet$$Type<($VillagerProfession$$Type)>)?, secondCount?: ($IntRange$$Type)?, firstCount?: ($IntRange$$Type)?, second?: ($Ingredient$$Type)?, first?: ($Ingredient$$Type)?, output?: ($Ingredient$$Type)?, outputCount?: ($IntRange$$Type)?, types?: ($List$$Type<($TradeTypes$$Type)>)?]);
+export type $TradeFilter$$Type = ({"first"?: ($Ingredient$$Type)?, "output"?: ($Ingredient$$Type)?, "outputCount"?: ($IntRange$$Type)?, "types"?: ($List$$Type<($TradeTypes$$Type)>)?, "level"?: ($IntRange$$Type)?, "professions"?: ($HolderSet$$Type<($VillagerProfession$$Type)>)?, "secondCount"?: ($IntRange$$Type)?, "firstCount"?: ($IntRange$$Type)?, "second"?: ($Ingredient$$Type)?}) | ([first?: ($Ingredient$$Type)?, output?: ($Ingredient$$Type)?, outputCount?: ($IntRange$$Type)?, types?: ($List$$Type<($TradeTypes$$Type)>)?, level?: ($IntRange$$Type)?, professions?: ($HolderSet$$Type<($VillagerProfession$$Type)>)?, secondCount?: ($IntRange$$Type)?, firstCount?: ($IntRange$$Type)?, second?: ($Ingredient$$Type)?]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -3926,11 +4661,11 @@ export type $TradeFilter_ = $TradeFilter$$Type;
 declare module "com.almostreliable.morejs.features.villager.VillagerUtils" {
 import {$EnchantedItemTrade, $EnchantedItemTrade$$Type} from "com.almostreliable.morejs.features.villager.trades.EnchantedItemTrade"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$TreasureMapTrade, $TreasureMapTrade$$Type} from "com.almostreliable.morejs.features.villager.trades.TreasureMapTrade"
-import {$PotionTrade, $PotionTrade$$Type} from "com.almostreliable.morejs.features.villager.trades.PotionTrade"
 import {$TradeItem, $TradeItem$$Type} from "com.almostreliable.morejs.features.villager.TradeItem"
+import {$PotionTrade, $PotionTrade$$Type} from "com.almostreliable.morejs.features.villager.trades.PotionTrade"
 import {$List, $List$$Type} from "java.util.List"
 import {$TransformableTrade$Transformer, $TransformableTrade$Transformer$$Type} from "com.almostreliable.morejs.features.villager.trades.TransformableTrade$Transformer"
 import {$VillagerTrades$ItemListing, $VillagerTrades$ItemListing$$Type} from "net.minecraft.world.entity.npc.VillagerTrades$ItemListing"
@@ -3953,6 +4688,10 @@ static readonly "VANILLA_TRADE_TYPES": $Set<($Class<($VillagerTrades$ItemListing
 
 constructor()
 
+public static "getProfession"(arg0: $ResourceLocation$$Type): $VillagerProfession
+public static "getProfessions"(): $Collection<($VillagerProfession)>
+public static "getVillagerTrades"(arg0: $VillagerProfession$$Type): $List<($VillagerTrades$ItemListing)>
+public static "getVillagerTrades"(arg0: $VillagerProfession$$Type, arg1: integer): $List<($VillagerTrades$ItemListing)>
 public static "isVanillaTypedTrade"(arg0: $VillagerTrades$ItemListing$$Type): boolean
 public static "isCustomTypedTrade"(arg0: $VillagerTrades$ItemListing$$Type): boolean
 public static "getWandererTrades"(arg0: integer): $List<($VillagerTrades$ItemListing)>
@@ -3968,13 +4707,9 @@ public static "getAbstractTrades"(arg0: $Map$$Type<(integer), (($VillagerTrades$
 public static "getRandomVillagerTrade"(arg0: $VillagerProfession$$Type, arg1: integer): $VillagerTrades$ItemListing
 public static "getRandomVillagerTrade"(arg0: $VillagerProfession$$Type): $VillagerTrades$ItemListing
 public static "getRandomWandererTrade"(arg0: integer): $VillagerTrades$ItemListing
-public static "getProfession"(arg0: $ResourceLocation$$Type): $VillagerProfession
-public static "getVillagerTrades"(arg0: $VillagerProfession$$Type): $List<($VillagerTrades$ItemListing)>
-public static "getVillagerTrades"(arg0: $VillagerProfession$$Type, arg1: integer): $List<($VillagerTrades$ItemListing)>
-public static "getProfessions"(): $Collection<($VillagerProfession)>
 public static "createStructureMapTrade"(arg0: ($TradeItem$$Type)[], arg1: $HolderSet$$Type<($Structure)>): $TreasureMapTrade
-public static "createEnchantedItemTrade"(arg0: ($TradeItem$$Type)[], arg1: $ItemStack$$Type, arg2: $HolderSet$$Type<($Enchantment)>): $EnchantedItemTrade
 public static "createEnchantedItemTrade"(arg0: ($TradeItem$$Type)[], arg1: $ItemStack$$Type): $EnchantedItemTrade
+public static "createEnchantedItemTrade"(arg0: ($TradeItem$$Type)[], arg1: $ItemStack$$Type, arg2: $HolderSet$$Type<($Enchantment)>): $EnchantedItemTrade
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3995,12 +4730,12 @@ import {$List, $List$$Type} from "java.util.List"
 import {$AbstractVillager, $AbstractVillager$$Type} from "net.minecraft.world.entity.npc.AbstractVillager"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$VillagerTrades$ItemListing, $VillagerTrades$ItemListing$$Type} from "net.minecraft.world.entity.npc.VillagerTrades$ItemListing"
-import {$VillagerProfession, $VillagerProfession$$Type} from "net.minecraft.world.entity.npc.VillagerProfession"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$VillagerProfession, $VillagerProfession$$Type} from "net.minecraft.world.entity.npc.VillagerProfession"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
 import {$MerchantOffer, $MerchantOffer$$Type} from "net.minecraft.world.item.trading.MerchantOffer"
 import {$KubeLivingEntityEvent, $KubeLivingEntityEvent$$Type} from "dev.latvian.mods.kubejs.entity.KubeLivingEntityEvent"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
+import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$MinecraftServer, $MinecraftServer$$Type} from "net.minecraft.server.MinecraftServer"
 import {$RegistryAccess, $RegistryAccess$$Type} from "net.minecraft.core.RegistryAccess"
 
@@ -4009,48 +4744,24 @@ export class $UpdateOfferEventJS implements $KubeLivingEntityEvent {
 constructor(arg0: $AbstractVillager$$Type, arg1: $MerchantOffers$$Type)
 
 public "getRandom"(): $RandomSource
-public "getEntity"(): $LivingEntity
-public "getVillagerLevel"(): integer
-public "getWandererTrades"(): $List<($VillagerTrades$ItemListing)>
-public "getWandererTrades"(arg0: integer): $List<($VillagerTrades$ItemListing)>
+public "getEntity"(): $Entity
 public "getProfession"(): $VillagerProfession
-public "getVillagerData"(): $VillagerData
-public "getVillagerTrades"(arg0: $VillagerProfession$$Type, arg1: integer): $List<($VillagerTrades$ItemListing)>
 public "getVillagerTrades"(arg0: $VillagerProfession$$Type): $List<($VillagerTrades$ItemListing)>
+public "getVillagerTrades"(arg0: $VillagerProfession$$Type, arg1: integer): $List<($VillagerTrades$ItemListing)>
+public "getVillagerData"(): $VillagerData
+public "getWandererTrades"(arg0: integer): $List<($VillagerTrades$ItemListing)>
+public "getWandererTrades"(): $List<($VillagerTrades$ItemListing)>
+public "getVillagerLevel"(): integer
 public "isVillager"(): boolean
 public "isWanderer"(): boolean
 public "isProfession"(arg0: $VillagerProfession$$Type): boolean
 public "getAllOffers"(): $MerchantOffers
-public "isUnknownTrader"(): boolean
 public "createRandomOffer"(arg0: $List$$Type<($VillagerTrades$ItemListing$$Type)>): $MerchantOffer
+public "isUnknownTrader"(): boolean
 public "getLevel"(): $Level
 public "getPlayer"(): $Player
-public "getRegistries"(): $RegistryAccess
 public "getServer"(): $MinecraftServer
-/**
- * Stops the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(arg1: any): any
-/**
- * Stops the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(): any
-/**
- * Cancels the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(arg1: any): any
-/**
- * Cancels the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(): any
+public "getRegistries"(): $RegistryAccess
 /**
  * Stops the event with default exit value. Execution will be stopped **immediately**.
  * 
@@ -4063,20 +4774,44 @@ public "success"(): any
  * `success` denotes a `true` outcome.
  */
 public "success"(arg1: any): any
+/**
+ * Stops the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(): any
+/**
+ * Stops the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(arg1: any): any
+/**
+ * Cancels the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(arg1: any): any
+/**
+ * Cancels the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(): any
 get "random"(): $RandomSource
-get "entity"(): $LivingEntity
-get "villagerLevel"(): integer
-get "wandererTrades"(): $List<($VillagerTrades$ItemListing)>
+get "entity"(): $Entity
 get "profession"(): $VillagerProfession
 get "villagerData"(): $VillagerData
+get "wandererTrades"(): $List<($VillagerTrades$ItemListing)>
+get "villagerLevel"(): integer
 get "villager"(): boolean
 get "wanderer"(): boolean
 get "allOffers"(): $MerchantOffers
 get "unknownTrader"(): boolean
 get "level"(): $Level
 get "player"(): $Player
-get "registries"(): $RegistryAccess
 get "server"(): $MinecraftServer
+get "registries"(): $RegistryAccess
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4099,14 +4834,14 @@ import {$LootPoolEntryContainer, $LootPoolEntryContainer$$Type} from "net.minecr
 import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$SingleLootEntry, $SingleLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.SingleLootEntry"
 import {$EmptyLootEntry, $EmptyLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.EmptyLootEntry"
-import {$NumberProvider, $NumberProvider$$Type} from "net.minecraft.world.level.storage.loot.providers.number.NumberProvider"
 import {$DebugInfo, $DebugInfo$$Type} from "com.almostreliable.lootjs.util.DebugInfo"
+import {$NumberProvider, $NumberProvider$$Type} from "net.minecraft.world.level.storage.loot.providers.number.NumberProvider"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$ItemFilter, $ItemFilter$$Type} from "com.almostreliable.lootjs.core.filters.ItemFilter"
 import {$CompositeLootEntry, $CompositeLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.CompositeLootEntry"
 import {$LootItem, $LootItem$$Type} from "net.minecraft.world.level.storage.loot.entries.LootItem"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$LootPoolEntryType, $LootPoolEntryType$$Type} from "net.minecraft.world.level.storage.loot.entries.LootPoolEntryType"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$EntityPredicate, $EntityPredicate$$Type} from "net.minecraft.advancements.critereon.EntityPredicate"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$AbstractSimpleLootEntry, $AbstractSimpleLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.AbstractSimpleLootEntry"
@@ -4115,32 +4850,32 @@ import {$TableReferenceLootEntry, $TableReferenceLootEntry$$Type} from "com.almo
 
 export class $ItemLootEntry extends $AbstractSimpleLootEntry<($LootItem)> implements $SingleLootEntry {
 
+constructor(arg0: $LootItem$$Type)
 constructor(arg0: $Item$$Type, arg1: $NumberProvider$$Type)
 constructor(arg0: $ItemStack$$Type)
-constructor(arg0: $LootItem$$Type)
 
-public "test"(arg0: $ItemFilter$$Type): boolean
 public "create"(arg0: $LootContext$$Type): $ItemStack
 public "getItem"(): $Item
+public "test"(arg0: $ItemFilter$$Type): boolean
 public "setItem"(arg0: $Item$$Type): void
-public "collectDebugInfo"(arg0: $DebugInfo$$Type): void
 public "getVanillaType"(): $LootPoolEntryType
+public "collectDebugInfo"(arg0: $DebugInfo$$Type): void
 public "when"(arg0: $Consumer$$Type<(any)>): $LootEntry
 public "addFunction"(arg0: $LootItemFunction$$Type): any
+public static "sequence"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
+public static "tag"(arg0: StringJS): $TagLootEntry
+public static "tag"(arg0: StringJS, arg1: boolean): $TagLootEntry
 public static "group"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
 public static "of"(arg0: $ItemStack$$Type): $ItemLootEntry
 public static "of"(arg0: $Item$$Type, arg1: $NumberProvider$$Type): $ItemLootEntry
 public static "empty"(): $EmptyLootEntry
 public static "reference"(arg0: $ResourceLocation$$Type): $TableReferenceLootEntry
-public static "sequence"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
-public static "tag"(arg0: string): $TagLootEntry
-public static "tag"(arg0: string, arg1: boolean): $TagLootEntry
+public static "ofItem"(arg0: $Item$$Type): $ItemLootEntry
 public static "alternative"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
 public static "ep"(arg0: $EntityPredicate$$Type): $EntityPredicate
-public static "ofItem"(arg0: $Item$$Type): $ItemLootEntry
-public static "testItem"(arg0: string): $ItemLootEntry
 public static "ofIngredient"(arg0: $Ingredient$$Type): $CompositeLootEntry
 public static "ofVanilla"(arg0: $LootPoolEntryContainer$$Type): $LootEntry
+public static "testItem"(arg0: StringJS): $ItemLootEntry
 get "item"(): $Item
 set "item"(value: $Item$$Type)
 get "vanillaType"(): $LootPoolEntryType
@@ -4182,14 +4917,14 @@ export type $StewTrade_ = $StewTrade$$Type;
 }}
 declare module "com.almostreliable.lootjs.core.entry.EmptyLootEntry" {
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$EmptyLootItem, $EmptyLootItem$$Type} from "net.minecraft.world.level.storage.loot.entries.EmptyLootItem"
 import {$LootItemFunction, $LootItemFunction$$Type} from "net.minecraft.world.level.storage.loot.functions.LootItemFunction"
 import {$LootEntry, $LootEntry$$Type} from "com.almostreliable.lootjs.core.entry.LootEntry"
-import {$EmptyLootItem, $EmptyLootItem$$Type} from "net.minecraft.world.level.storage.loot.entries.EmptyLootItem"
 import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$LootPoolEntryContainer, $LootPoolEntryContainer$$Type} from "net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer"
 import {$SingleLootEntry, $SingleLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.SingleLootEntry"
-import {$NumberProvider, $NumberProvider$$Type} from "net.minecraft.world.level.storage.loot.providers.number.NumberProvider"
 import {$DebugInfo, $DebugInfo$$Type} from "com.almostreliable.lootjs.util.DebugInfo"
+import {$NumberProvider, $NumberProvider$$Type} from "net.minecraft.world.level.storage.loot.providers.number.NumberProvider"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$CompositeLootEntry, $CompositeLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.CompositeLootEntry"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -4208,20 +4943,20 @@ constructor()
 public "collectDebugInfo"(arg0: $DebugInfo$$Type): void
 public "when"(arg0: $Consumer$$Type<(any)>): $LootEntry
 public "addFunction"(arg0: $LootItemFunction$$Type): any
+public static "sequence"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
+public static "tag"(arg0: StringJS): $TagLootEntry
+public static "tag"(arg0: StringJS, arg1: boolean): $TagLootEntry
 public static "group"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
 public static "of"(arg0: $ItemStack$$Type): $ItemLootEntry
 public static "of"(arg0: $Item$$Type, arg1: $NumberProvider$$Type): $ItemLootEntry
 public static "empty"(): $EmptyLootEntry
 public static "reference"(arg0: $ResourceLocation$$Type): $TableReferenceLootEntry
-public static "sequence"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
-public static "tag"(arg0: string): $TagLootEntry
-public static "tag"(arg0: string, arg1: boolean): $TagLootEntry
+public static "ofItem"(arg0: $Item$$Type): $ItemLootEntry
 public static "alternative"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
 public static "ep"(arg0: $EntityPredicate$$Type): $EntityPredicate
-public static "ofItem"(arg0: $Item$$Type): $ItemLootEntry
-public static "testItem"(arg0: string): $ItemLootEntry
 public static "ofIngredient"(arg0: $Ingredient$$Type): $CompositeLootEntry
 public static "ofVanilla"(arg0: $LootPoolEntryContainer$$Type): $LootEntry
+public static "testItem"(arg0: StringJS): $ItemLootEntry
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4242,19 +4977,19 @@ import {$Vec3i, $Vec3i$$Type} from "net.minecraft.core.Vec3i"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$StructureTemplate$StructureBlockInfo, $StructureTemplate$StructureBlockInfo$$Type} from "net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
-import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
+import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 
 export class $PaletteWrapper {
 
 constructor(arg0: $StructureTemplate$Palette$$Type, arg1: $Vec3i$$Type)
 
+public "removeIf"(arg0: $Predicate$$Type<($StructureTemplate$StructureBlockInfo)>): void
 public "get"(arg0: $BlockPos$$Type): $StructureTemplate$StructureBlockInfo
 public "clear"(): void
 public "add"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type, arg2: $CompoundTag$$Type): void
 public "add"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): void
 public "forEach"(arg0: $Consumer$$Type<($StructureTemplate$StructureBlockInfo)>): void
-public "removeIf"(arg0: $Predicate$$Type<($StructureTemplate$StructureBlockInfo)>): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4281,11 +5016,11 @@ export class $AddAttributesFunction$Modifier$Builder {
 constructor(arg0: $Attribute$$Type, arg1: $ResourceLocation$$Type, arg2: $NumberProvider$$Type)
 
 public "build"(): $AddAttributesFunction$Modifier
-public "setOperation"(arg0: $AttributeModifier$Operation$$Type): void
 public "setSlots"(arg0: ($EquipmentSlotGroup$$Type)[]): void
+public "setOperation"(arg0: $AttributeModifier$Operation$$Type): void
 public "setProbability"(arg0: float): void
-set "operation"(value: $AttributeModifier$Operation$$Type)
 set "slots"(value: ($EquipmentSlotGroup$$Type)[])
+set "operation"(value: $AttributeModifier$Operation$$Type)
 set "probability"(value: float)
 }
 /**
@@ -4302,12 +5037,12 @@ export type $AddAttributesFunction$Modifier$Builder_ = $AddAttributesFunction$Mo
 }}
 declare module "com.almostreliable.lootjs.loot.table.LootTableList" {
 import {$Iterable, $Iterable$$Type} from "java.lang.Iterable"
+import {$SimpleLootEntry, $SimpleLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.SimpleLootEntry"
 import {$Iterator, $Iterator$$Type} from "java.util.Iterator"
 import {$UnaryOperator, $UnaryOperator$$Type} from "java.util.function.UnaryOperator"
-import {$SimpleLootEntry, $SimpleLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.SimpleLootEntry"
 import {$Spliterator, $Spliterator$$Type} from "java.util.Spliterator"
-import {$List, $List$$Type} from "java.util.List"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
+import {$List, $List$$Type} from "java.util.List"
 import {$IdFilter, $IdFilter$$Type} from "com.almostreliable.lootjs.core.filters.IdFilter"
 import {$LootFunctionList, $LootFunctionList$$Type} from "com.almostreliable.lootjs.loot.LootFunctionList"
 import {$MutableLootPool, $MutableLootPool$$Type} from "com.almostreliable.lootjs.loot.table.MutableLootPool"
@@ -4323,27 +5058,27 @@ export class $LootTableList implements $LootEntriesTransformer, $Iterable<($Muta
 
 constructor(arg0: $List$$Type<($MutableLootTable$$Type)>)
 
+public "removeEntry"(arg0: $Predicate$$Type<(any)>, arg1: boolean): $LootEntriesTransformer
 public "clear"(): $LootTableList
 public "iterator"(): $Iterator<($MutableLootTable)>
 public "apply"(arg0: $Consumer$$Type<($LootFunctionList)>): $LootTableList
-public "removeEntry"(arg0: $Predicate$$Type<($SimpleLootEntry)>, arg1: boolean): $LootTableList
-public "getTables"(): $List<($MutableLootTable)>
 public "onDrop"(arg0: $PostLootAction$$Type): $LootTableList
+public "getTables"(): $List<($MutableLootTable)>
 public "modifyEntry"(arg0: $UnaryOperator$$Type<(any)>, arg1: boolean): $LootEntriesTransformer
 public "firstPool"(arg0: $Consumer$$Type<($MutableLootPool)>): $LootTableList
 public "createPool"(arg0: $Consumer$$Type<($MutableLootPool)>): $LootTableList
-public "removeItem"(arg0: $ItemFilter$$Type): $LootEntriesTransformer
 public "removeItem"(arg0: $ItemFilter$$Type, arg1: boolean): $LootEntriesTransformer
-public "hasItem"(arg0: $ItemFilter$$Type): boolean
+public "removeItem"(arg0: $ItemFilter$$Type): $LootEntriesTransformer
+public "removeEntry"(arg0: $Predicate$$Type<($SimpleLootEntry)>): $LootEntriesTransformer
 public "removeReference"(arg0: $IdFilter$$Type): $LootEntriesTransformer
 public "removeReference"(arg0: $IdFilter$$Type, arg1: boolean): $LootEntriesTransformer
-public "removeEntry"(arg0: $Predicate$$Type<($SimpleLootEntry)>): $LootEntriesTransformer
-public "modifyItemEntry"(arg0: $UnaryOperator$$Type<($ItemLootEntry)>): $LootEntriesTransformer
-public "removeTag"(arg0: string): $LootEntriesTransformer
-public "removeTag"(arg0: string, arg1: boolean): $LootEntriesTransformer
-public "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type): $LootEntriesTransformer
-public "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type, arg2: boolean): $LootEntriesTransformer
+public "hasItem"(arg0: $ItemFilter$$Type): boolean
+public "removeTag"(arg0: StringJS, arg1: boolean): $LootEntriesTransformer
+public "removeTag"(arg0: StringJS): $LootEntriesTransformer
 public "modifyEntry"(arg0: $UnaryOperator$$Type<($SimpleLootEntry)>): $LootEntriesTransformer
+public "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type, arg2: boolean): $LootEntriesTransformer
+public "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type): $LootEntriesTransformer
+public "modifyItemEntry"(arg0: $UnaryOperator$$Type<($ItemLootEntry)>): $LootEntriesTransformer
 public "spliterator"(): $Spliterator<($MutableLootTable)>
 public "forEach"(arg0: $Consumer$$Type<($MutableLootTable)>): void
 [Symbol.iterator](): IterableIterator<$MutableLootTable>;
@@ -4360,6 +5095,36 @@ export type $LootTableList$$Type = ($LootTableList);
  */
 declare global {
 export type $LootTableList_ = $LootTableList$$Type;
+}}
+declare module "com.almostreliable.kubeio.binding.DataComponents" {
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
+import {$GrindingBallData, $GrindingBallData$$Type} from "com.enderio.base.api.grindingball.GrindingBallData"
+import {$DataComponentType, $DataComponentType$$Type} from "net.minecraft.core.component.DataComponentType"
+
+export interface $DataComponents {
+
+}
+
+export namespace $DataComponents {
+const GRINDING_BALL: $Supplier<($DataComponentType<($GrindingBallData)>)>
+const probejs$$marker: never
+}
+export class $DataComponents$$Static implements $DataComponents {
+static readonly "GRINDING_BALL": $Supplier<($DataComponentType<($GrindingBallData)>)>
+
+
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $DataComponents$$Type = ($DataComponents);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $DataComponents_ = $DataComponents$$Type;
 }}
 declare module "com.almostreliable.lootjs.loot.table.PostLootAction" {
 import {$LootContext, $LootContext$$Type} from "net.minecraft.world.level.storage.loot.LootContext"
@@ -4399,9 +5164,9 @@ import {$Function, $Function$$Type} from "java.util.function.Function"
 export class $WeightedList<T> {
 
 
-public "map"<T2>(arg0: $Function$$Type<(T), (T2)>): $WeightedList<(T2)>
-public "roll"(): T
 public "roll"(arg0: $RandomSource$$Type): T
+public "roll"(): T
+public "map"<T2>(arg0: $Function$$Type<(T), (T2)>): $WeightedList<(T2)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4430,25 +5195,25 @@ export class $EnchantmentData {
 
 constructor(arg0: $List$$Type<($EnchantmentInstance$$Type)>, arg1: integer, arg2: $EnchantmentMenu$$Type, arg3: $Level$$Type)
 
-public "getEnchantments"(): $List<($EnchantmentInstance)>
-public "hasEnchantment"(arg0: $ResourceLocation$$Type): boolean
 public "hasEnchantment"(arg0: $ResourceLocation$$Type, arg1: $IntRange$$Type): boolean
+public "hasEnchantment"(arg0: $ResourceLocation$$Type): boolean
+public "getEnchantments"(): $List<($EnchantmentInstance)>
 public "clearClue"(): void
-public "getClue"(): $EnchantmentInstance
-public "setClue"(arg0: $Holder$$Type<($Enchantment)>, arg1: integer): void
-public "setClue"(arg0: $EnchantmentInstance$$Type): void
-public "randomClue"(): void
 public "addEnchantment"(arg0: $Holder$$Type<($Enchantment)>, arg1: integer): void
-public "setRequiredLevel"(arg0: integer): void
+public "randomClue"(): void
+public "setClue"(arg0: $EnchantmentInstance$$Type): void
+public "setClue"(arg0: $Holder$$Type<($Enchantment)>, arg1: integer): void
+public "getClue"(): $EnchantmentInstance
 public "getRequiredLevel"(): integer
 public "getEnchantmentIds"(): $List<($ResourceLocation)>
+public "setRequiredLevel"(arg0: integer): void
 public "removeEnchantments"(arg0: $BiPredicate$$Type<($Holder<($Enchantment)>), (integer)>): void
 get "enchantments"(): $List<($EnchantmentInstance)>
-get "clue"(): $EnchantmentInstance
 set "clue"(value: $EnchantmentInstance$$Type)
-set "requiredLevel"(value: integer)
+get "clue"(): $EnchantmentInstance
 get "requiredLevel"(): integer
 get "enchantmentIds"(): $List<($ResourceLocation)>
+set "requiredLevel"(value: integer)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4525,8 +5290,8 @@ import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Stream, $Stream$$Type} from "java.util.stream.Stream"
 import {$BlockStatePredicate, $BlockStatePredicate$$Type} from "dev.latvian.mods.kubejs.block.state.BlockStatePredicate"
-import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
+import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 
 export interface $BlockFilter extends $Iterable<($Block)>, $Predicate<($BlockState)> {
 
@@ -4534,10 +5299,10 @@ export interface $BlockFilter extends $Iterable<($Block)>, $Predicate<($BlockSta
  "iterator"(): $Iterator<($Block)>
  "spliterator"(): $Spliterator<($Block)>
  "forEach"(arg0: $Consumer$$Type<($Block)>): void
- "test"(arg0: $BlockState$$Type): boolean
  "or"(arg0: $Predicate$$Type<($BlockState)>): $Predicate<($BlockState)>
  "negate"(): $Predicate<($BlockState)>
  "and"(arg0: $Predicate$$Type<($BlockState)>): $Predicate<($BlockState)>
+ "test"(arg0: $BlockState$$Type): boolean
 [Symbol.iterator](): IterableIterator<$Block>;
 }
 
@@ -4553,12 +5318,12 @@ export class $BlockFilter$$Static implements $BlockFilter {
  "iterator"(): $Iterator<($Block)>
  "spliterator"(): $Spliterator<($Block)>
  "forEach"(arg0: $Consumer$$Type<($Block)>): void
- "test"(arg0: $BlockState$$Type): boolean
  "or"(arg0: $Predicate$$Type<($BlockState)>): $Predicate<($BlockState)>
+static "not"<T>(arg0: $Predicate$$Type<($BlockState)>): $Predicate<($BlockState)>
  "negate"(): $Predicate<($BlockState)>
  "and"(arg0: $Predicate$$Type<($BlockState)>): $Predicate<($BlockState)>
-static "not"<T>(arg0: $Predicate$$Type<($BlockState)>): $Predicate<($BlockState)>
 static "isEqual"<T>(arg0: any): $Predicate<($BlockState)>
+ "test"(arg0: $BlockState$$Type): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4598,7 +5363,7 @@ static readonly "SHEARING": $LootType
 
 
 public static "values"(): ($LootType)[]
-public static "valueOf"(arg0: string): $LootType
+public static "valueOf"(arg0: StringJS): $LootType
 public "getParamSet"(): $LootContextParamSet
 public static "getLootType"(arg0: $LootContextParamSet$$Type): $LootType
 get "paramSet"(): $LootContextParamSet
@@ -4701,20 +5466,23 @@ constructor(arg0: E)
 constructor(arg0: E, arg1: $LootConditionList$$Type, arg2: $LootFunctionList$$Type)
 
 public "getConditions"(): $LootConditionList
-public "getVanillaEntry"(): E
 public "getWeight"(): integer
 public "getFunctions"(): $LootFunctionList
-public "collectDebugInfo"(arg0: $DebugInfo$$Type): void
-public "setWeight"(arg0: integer): void
-public "setQuality"(arg0: integer): void
 public "getQuality"(): integer
 public "getVanillaType"(): $LootPoolEntryType
-public "apply"(arg0: $Consumer$$Type<($LootFunctionList)>): $SimpleLootEntry
+public "setQuality"(arg0: integer): void
+public "setWeight"(arg0: integer): void
+public "collectDebugInfo"(arg0: $DebugInfo$$Type): void
+public "getVanillaEntry"(): E
 public "when"(arg0: $Consumer$$Type<(any)>): $LootEntry
+public "apply"(arg0: $Consumer$$Type<($LootFunctionList)>): $SimpleLootEntry
 public "setCount"(arg0: $NumberProvider$$Type): $SimpleLootEntry
-public "addFunction"(arg0: $LootItemFunction$$Type): any
 public "withWeight"(arg0: integer): $SimpleLootEntry
 public "withQuality"(arg0: integer): $SimpleLootEntry
+public "addFunction"(arg0: $LootItemFunction$$Type): any
+public static "sequence"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
+public static "tag"(arg0: StringJS): $TagLootEntry
+public static "tag"(arg0: StringJS, arg1: boolean): $TagLootEntry
 public "isDynamic"(): boolean
 public static "group"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
 public "isEmpty"(): boolean
@@ -4723,67 +5491,48 @@ public static "of"(arg0: $Item$$Type, arg1: $NumberProvider$$Type): $ItemLootEnt
 public static "empty"(): $EmptyLootEntry
 public static "reference"(arg0: $ResourceLocation$$Type): $TableReferenceLootEntry
 public "getType"(): $ResourceLocation
-public static "sequence"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
-public static "tag"(arg0: string): $TagLootEntry
-public static "tag"(arg0: string, arg1: boolean): $TagLootEntry
+public static "ofItem"(arg0: $Item$$Type): $ItemLootEntry
+public "isTag"(): boolean
 public "isReference"(): boolean
 public static "alternative"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
 public "isSimple"(): boolean
-public "isTag"(): boolean
 public static "ep"(arg0: $EntityPredicate$$Type): $EntityPredicate
-public static "ofItem"(arg0: $Item$$Type): $ItemLootEntry
 public "isItem"(): boolean
-public static "testItem"(arg0: string): $ItemLootEntry
 public "isComposite"(): boolean
 public "isAlternative"(): boolean
 public "isSequence"(): boolean
 public "isGroup"(): boolean
 public static "ofIngredient"(arg0: $Ingredient$$Type): $CompositeLootEntry
 public static "ofVanilla"(arg0: $LootPoolEntryContainer$$Type): $LootEntry
-public "setName"(arg0: $Component$$Type): $SimpleLootEntry
+public static "testItem"(arg0: StringJS): $ItemLootEntry
 public "addAttributes"(arg0: $Consumer$$Type<($AddAttributesFunction$Builder)>): $SimpleLootEntry
+public "setName"(arg0: $Component$$Type): $SimpleLootEntry
+public "damage"(arg0: $NumberProvider$$Type): $SimpleLootEntry
+public "enchant"(arg0: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $SimpleLootEntry
+public "enchant"(arg0: boolean, arg1: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $SimpleLootEntry
+public "smelt"(): $SimpleLootEntry
+public "applyOreBonus"(arg0: $Holder$$Type<($Enchantment)>): $SimpleLootEntry
+public "applyBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: integer): $SimpleLootEntry
+public "addLore"(...arg0: ($Component$$Type)[]): $SimpleLootEntry
+public "replaceLore"(...arg0: ($Component$$Type)[]): $SimpleLootEntry
+public "toggleTooltips"(arg0: $Map$$Type<(StringJS), (boolean)>): $SimpleLootEntry
+public "jsonFunction"(arg0: $JsonObject$$Type): $SimpleLootEntry
+public "addPotion"(arg0: $Potion$$Type): $SimpleLootEntry
+public "setCustomData"(arg0: $CompoundTag$$Type): $SimpleLootEntry
+public "limitCount"(arg0: $NumberProvider$$Type, arg1: $NumberProvider$$Type): $SimpleLootEntry
+public "enchantWithLevels"(arg0: $NumberProvider$$Type): $SimpleLootEntry
 public "enchantRandomly"(): $SimpleLootEntry
 public "enchantRandomly"(arg0: $HolderSet$$Type<($Enchantment)>): $SimpleLootEntry
 public "applyEnchantmentBonus"(arg0: $NumberProvider$$Type): $SimpleLootEntry
 public "applyEnchantmentBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: $NumberProvider$$Type): $SimpleLootEntry
 public "simulateExplosionDecay"(): $SimpleLootEntry
-public "enchant"(arg0: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $SimpleLootEntry
-public "enchant"(arg0: boolean, arg1: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $SimpleLootEntry
-public "smelt"(): $SimpleLootEntry
-public "damage"(arg0: $NumberProvider$$Type): $SimpleLootEntry
-public "enchantWithLevels"(arg0: $NumberProvider$$Type): $SimpleLootEntry
-public "addPotion"(arg0: $Potion$$Type): $SimpleLootEntry
-public "setCustomData"(arg0: $CompoundTag$$Type): $SimpleLootEntry
-public "limitCount"(arg0: $NumberProvider$$Type, arg1: $NumberProvider$$Type): $SimpleLootEntry
-public "applyOreBonus"(arg0: $Holder$$Type<($Enchantment)>): $SimpleLootEntry
-public "applyBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: integer): $SimpleLootEntry
-public "addLore"(...arg0: ($Component$$Type)[]): $SimpleLootEntry
-public "replaceLore"(...arg0: ($Component$$Type)[]): $SimpleLootEntry
-public "toggleTooltips"(arg0: $Map$$Type<(string), (boolean)>): $SimpleLootEntry
-public "jsonFunction"(arg0: $JsonObject$$Type): $SimpleLootEntry
 public "applyBinomialDistributionBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: float, arg2: integer): $SimpleLootEntry
 public "matchLocation"(arg0: $BlockPos$$Type, arg1: $LocationPredicate$$Type): $LootEntry
 public "matchLocation"(arg0: $LocationPredicate$$Type): $LootEntry
-public "matchPlayerCustom"(arg0: $Predicate$$Type<($ServerPlayer)>): $LootEntry
-public "matchAnyInventorySlot"(arg0: $ItemFilter$$Type): $LootEntry
-public "matchAnyHotbarSlot"(arg0: $ItemFilter$$Type): $LootEntry
-public "randomTableBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootEntry
-public "matchDirectAttacker"(arg0: $EntityPredicate$$Type): $LootEntry
-public "matchDamageSource"(arg0: $DamageSourcePredicate$$Type): $LootEntry
-public "matchEntityCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
-public "matchAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
-public "matchCustomCondition"(arg0: $JsonObject$$Type): $LootEntry
-public "blockEntity"(arg0: $Predicate$$Type<($BlockEntity)>): $LootEntry
 public "luck"(arg0: $MinMaxBounds$Doubles$$Type): $LootEntry
-public "survivesExplosion"(): $LootEntry
-public "matchBlock"(arg0: $Block$$Type, arg1: $StatePropertiesPredicate$$Type): $LootEntry
-public "matchBlock"(arg0: $Block$$Type): $LootEntry
-public "matchTool"(arg0: $ItemPredicate$$Type): $LootEntry
-public "matchPlayer"(arg0: $EntityPredicate$$Type): $LootEntry
-public "randomChance"(arg0: $NumberProvider$$Type): $LootEntry
-public "killedByPlayer"(): $LootEntry
-public "matchTime"(arg0: long, arg1: integer, arg2: integer): $LootEntry
+public "blockEntity"(arg0: $Predicate$$Type<($BlockEntity)>): $LootEntry
 public "matchTime"(arg0: integer, arg1: integer): $LootEntry
+public "matchTime"(arg0: long, arg1: integer, arg2: integer): $LootEntry
 public "matchMainHand"(arg0: $ItemFilter$$Type): $LootEntry
 public "matchOffHand"(arg0: $ItemFilter$$Type): $LootEntry
 public "matchHead"(arg0: $ItemFilter$$Type): $LootEntry
@@ -4797,22 +5546,38 @@ public "matchDimension"(...arg0: ($ResourceLocation$$Type)[]): $LootEntry
 public "matchStructure"(arg0: $HolderSet$$Type<($Structure)>): $LootEntry
 public "matchStructure"(arg0: $HolderSet$$Type<($Structure)>, arg1: boolean): $LootEntry
 public "isLightLevel"(arg0: integer, arg1: integer): $LootEntry
+public "matchBlock"(arg0: $Block$$Type): $LootEntry
+public "matchBlock"(arg0: $Block$$Type, arg1: $StatePropertiesPredicate$$Type): $LootEntry
 public "matchEntity"(arg0: $EntityPredicate$$Type): $LootEntry
 public "matchAttacker"(arg0: $EntityPredicate$$Type): $LootEntry
 public "matchDistance"(arg0: $DistancePredicate$$Type): $LootEntry
-public "hasAnyStage"(...arg0: (string)[]): $LootEntry
+public "hasAnyStage"(...arg0: (StringJS)[]): $LootEntry
 public "matchAnyOf"(...arg0: ($LootItemCondition$$Type)[]): $LootEntry
 public "matchAllOf"(...arg0: ($LootItemCondition$$Type)[]): $LootEntry
+public "matchPlayer"(arg0: $EntityPredicate$$Type): $LootEntry
+public "matchTool"(arg0: $ItemPredicate$$Type): $LootEntry
+public "killedByPlayer"(): $LootEntry
+public "randomChance"(arg0: $NumberProvider$$Type): $LootEntry
+public "survivesExplosion"(): $LootEntry
+public "matchPlayerCustom"(arg0: $Predicate$$Type<($ServerPlayer)>): $LootEntry
+public "matchAnyInventorySlot"(arg0: $ItemFilter$$Type): $LootEntry
+public "matchAnyHotbarSlot"(arg0: $ItemFilter$$Type): $LootEntry
+public "randomTableBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootEntry
+public "matchDirectAttacker"(arg0: $EntityPredicate$$Type): $LootEntry
+public "matchDamageSource"(arg0: $DamageSourcePredicate$$Type): $LootEntry
+public "matchEntityCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
+public "matchAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
+public "matchCustomCondition"(arg0: $JsonObject$$Type): $LootEntry
 public "randomChanceWithEnchantment"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootEntry
 public "matchDirectAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
 get "conditions"(): $LootConditionList
-get "vanillaEntry"(): E
 get "weight"(): integer
 get "functions"(): $LootFunctionList
-set "weight"(value: integer)
-set "quality"(value: integer)
 get "quality"(): integer
 get "vanillaType"(): $LootPoolEntryType
+set "quality"(value: integer)
+set "weight"(value: integer)
+get "vanillaEntry"(): E
 set "count"(value: $NumberProvider$$Type)
 get "dynamic"(): boolean
 get "type"(): $ResourceLocation
@@ -4850,9 +5615,9 @@ public static "of"(arg0: $ItemStack$$Type): $TradeItem
 public static "of"(arg0: $ItemStack$$Type, arg1: integer): $TradeItem
 public static "of"(arg0: $ItemStack$$Type, arg1: integer, arg2: integer): $TradeItem
 public "getItemStack"(): $ItemStack
-public "createItemStack"(arg0: $RandomSource$$Type): $ItemStack
 public "createItemCost"(arg0: $RandomSource$$Type): $ItemCost
 public "getCountRange"(): $IntRange
+public "createItemStack"(arg0: $RandomSource$$Type): $ItemStack
 get "empty"(): boolean
 get "itemStack"(): $ItemStack
 get "countRange"(): $IntRange
@@ -4882,31 +5647,219 @@ export class $PotionBrewingFilter extends $Record implements $Predicate<($Potion
 
 constructor(ingredient: $Optional$$Type<($Ingredient$$Type)>, input: $Optional$$Type<($HolderSet$$Type<($Potion$$Type)>)>, output: $Optional$$Type<($HolderSet$$Type<($Potion$$Type)>)>)
 
+public "input"(): $Optional<($HolderSet<($Potion)>)>
+public "output"(): $Optional<($HolderSet<($Potion)>)>
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "test"(arg0: $PotionBrewing$Mix$$Type<($Potion$$Type)>): boolean
 public "test"(arg0: any): boolean
-public "input"(): $Optional<($HolderSet<($Potion)>)>
-public "output"(): $Optional<($HolderSet<($Potion)>)>
 public "ingredient"(): $Optional<($Ingredient)>
 public "or"(arg0: $Predicate$$Type<($PotionBrewing$Mix<($Potion)>)>): $Predicate<($PotionBrewing$Mix<($Potion)>)>
+public static "not"<T>(arg0: $Predicate$$Type<($PotionBrewing$Mix<($Potion)>)>): $Predicate<($PotionBrewing$Mix<($Potion)>)>
 public "negate"(): $Predicate<($PotionBrewing$Mix<($Potion)>)>
 public "and"(arg0: $Predicate$$Type<($PotionBrewing$Mix<($Potion)>)>): $Predicate<($PotionBrewing$Mix<($Potion)>)>
-public static "not"<T>(arg0: $Predicate$$Type<($PotionBrewing$Mix<($Potion)>)>): $Predicate<($PotionBrewing$Mix<($Potion)>)>
 public static "isEqual"<T>(arg0: any): $Predicate<($PotionBrewing$Mix<($Potion)>)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $PotionBrewingFilter$$Type = ({"output"?: ($HolderSet$$Type<($Potion$$Type)>)?, "input"?: ($HolderSet$$Type<($Potion$$Type)>)?, "ingredient"?: ($Ingredient$$Type)?}) | ([output?: ($HolderSet$$Type<($Potion$$Type)>)?, input?: ($HolderSet$$Type<($Potion$$Type)>)?, ingredient?: ($Ingredient$$Type)?]);
+export type $PotionBrewingFilter$$Type = ({"input"?: ($HolderSet$$Type<($Potion$$Type)>)?, "ingredient"?: ($Ingredient$$Type)?, "output"?: ($HolderSet$$Type<($Potion$$Type)>)?}) | ([input?: ($HolderSet$$Type<($Potion$$Type)>)?, ingredient?: ($Ingredient$$Type)?, output?: ($HolderSet$$Type<($Potion$$Type)>)?]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
  */
 declare global {
 export type $PotionBrewingFilter_ = $PotionBrewingFilter$$Type;
+}}
+declare module "com.almostreliable.kubeio.recipe.AlloySmelterKubeRecipe" {
+import {$RecipeComponentValueMap, $RecipeComponentValueMap$$Type} from "dev.latvian.mods.kubejs.recipe.component.RecipeComponentValueMap"
+import {$KubeRecipe, $KubeRecipe$$Type} from "dev.latvian.mods.kubejs.recipe.KubeRecipe"
+import {$RecipeTypeFunction, $RecipeTypeFunction$$Type} from "dev.latvian.mods.kubejs.recipe.RecipeTypeFunction"
+import {$KubeRecipeFactory, $KubeRecipeFactory$$Type} from "dev.latvian.mods.kubejs.recipe.schema.KubeRecipeFactory"
+import {$JsonObject, $JsonObject$$Type} from "com.google.gson.JsonObject"
+import {$SourceLine, $SourceLine$$Type} from "dev.latvian.mods.kubejs.script.SourceLine"
+
+export class $AlloySmelterKubeRecipe extends $KubeRecipe {
+ "newRecipe": boolean
+ "type": $RecipeTypeFunction
+ "sourceLine": $SourceLine
+ "originalJson": $JsonObject
+ "removed": boolean
+ "creationError": boolean
+ "valueMap": $RecipeComponentValueMap
+ "json": $JsonObject
+static readonly "CHANGED_MARKER": StringJS
+static readonly "FACTORY": $KubeRecipeFactory
+ "changed": boolean
+
+constructor()
+
+public "smelting"(): $AlloySmelterKubeRecipe
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $AlloySmelterKubeRecipe$$Type = ($AlloySmelterKubeRecipe);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $AlloySmelterKubeRecipe_ = $AlloySmelterKubeRecipe$$Type;
+}}
+declare module "com.almostreliable.merequester.requester.StorageManager" {
+import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
+import {$IStorageWatcherNode, $IStorageWatcherNode$$Type} from "appeng.api.networking.storage.IStorageWatcherNode"
+import {$StorageManager$Storage, $StorageManager$Storage$$Type} from "com.almostreliable.merequester.requester.StorageManager$Storage"
+import {$Tag, $Tag$$Type} from "net.minecraft.nbt.Tag"
+import {$IStackWatcher, $IStackWatcher$$Type} from "appeng.api.networking.IStackWatcher"
+import {$AEKey, $AEKey$$Type} from "appeng.api.stacks.AEKey"
+import {$INBTSerializable, $INBTSerializable$$Type} from "net.neoforged.neoforge.common.util.INBTSerializable"
+import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
+
+export class $StorageManager implements $IStorageWatcherNode, $INBTSerializable<($CompoundTag)> {
+
+
+public "get"(arg0: integer): $StorageManager$Storage
+public "deserializeNBT"(arg0: $HolderLookup$Provider$$Type, arg1: $Tag$$Type): void
+public "deserializeNBT"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): void
+public "serializeNBT"(arg0: $HolderLookup$Provider$$Type): $Tag
+public "onStackChange"(arg0: $AEKey$$Type, arg1: long): void
+public "updateWatcher"(arg0: $IStackWatcher$$Type): void
+public "computeAmountToCraft"(arg0: integer): long
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $StorageManager$$Type = ($StorageManager);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $StorageManager_ = $StorageManager$$Type;
+}}
+declare module "com.almostreliable.merequester.requester.Request" {
+import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
+import {$Request$Component, $Request$Component$$Type} from "com.almostreliable.merequester.requester.Request$Component"
+import {$RequestHost, $RequestHost$$Type} from "com.almostreliable.merequester.requester.abstraction.RequestHost"
+import {$Tag, $Tag$$Type} from "net.minecraft.nbt.Tag"
+import {$AEKey, $AEKey$$Type} from "appeng.api.stacks.AEKey"
+import {$INBTSerializable, $INBTSerializable$$Type} from "net.neoforged.neoforge.common.util.INBTSerializable"
+import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
+import {$RequestStatus, $RequestStatus$$Type} from "com.almostreliable.merequester.requester.status.RequestStatus"
+
+export class $Request implements $INBTSerializable<($CompoundTag)> {
+
+
+public "getIndex"(): integer
+public "updateState"(arg0: boolean): void
+public "toString"(): StringJS
+public "getKey"(): $AEKey
+public "getState"(): boolean
+public "deserializeNBT"(arg0: $HolderLookup$Provider$$Type, arg1: $Tag$$Type): void
+public "deserializeNBT"(arg0: $HolderLookup$Provider$$Type, arg1: $CompoundTag$$Type): void
+public "serializeNBT"(arg0: $HolderLookup$Provider$$Type): $Tag
+public "getAmount"(): long
+public "toComponent"(): $Request$Component
+public "updateBatch"(arg0: long): void
+public "getBatch"(): long
+public "fromComponent"(arg0: $Request$Component$$Type): void
+public "updateAmount"(arg0: long): void
+public "isRequesting"(): boolean
+public "isDifferent"(arg0: $Request$$Type): boolean
+public "getRequesterReference"(): $RequestHost
+public "getClientStatus"(): $RequestStatus
+get "index"(): integer
+get "key"(): $AEKey
+get "state"(): boolean
+get "amount"(): long
+get "batch"(): long
+get "requesting"(): boolean
+get "requesterReference"(): $RequestHost
+get "clientStatus"(): $RequestStatus
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $Request$$Type = ($Request);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $Request_ = $Request$$Type;
+}}
+declare module "com.almostreliable.merequester.mixin.accessors.SlotMixin" {
+export {} // Mark the file as a module, do not remove unless there are other import/exports!
+export interface $SlotMixin {
+
+ "merequester$setX"(arg0: integer): void
+ "merequester$setY"(arg0: integer): void
+}
+
+export namespace $SlotMixin {
+const probejs$$marker: never
+}
+export class $SlotMixin$$Static implements $SlotMixin {
+
+
+ "merequester$setX"(arg0: integer): void
+ "merequester$setY"(arg0: integer): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SlotMixin$$Type = ($SlotMixin);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SlotMixin_ = $SlotMixin$$Type;
+}}
+declare module "com.almostreliable.kubeio.recipe.SlicerKubeRecipe" {
+import {$RecipeComponentValueMap, $RecipeComponentValueMap$$Type} from "dev.latvian.mods.kubejs.recipe.component.RecipeComponentValueMap"
+import {$KubeRecipe, $KubeRecipe$$Type} from "dev.latvian.mods.kubejs.recipe.KubeRecipe"
+import {$RecipeTypeFunction, $RecipeTypeFunction$$Type} from "dev.latvian.mods.kubejs.recipe.RecipeTypeFunction"
+import {$KubeRecipeFactory, $KubeRecipeFactory$$Type} from "dev.latvian.mods.kubejs.recipe.schema.KubeRecipeFactory"
+import {$JsonObject, $JsonObject$$Type} from "com.google.gson.JsonObject"
+import {$SourceLine, $SourceLine$$Type} from "dev.latvian.mods.kubejs.script.SourceLine"
+
+export class $SlicerKubeRecipe extends $KubeRecipe {
+ "newRecipe": boolean
+ "type": $RecipeTypeFunction
+ "sourceLine": $SourceLine
+ "originalJson": $JsonObject
+ "removed": boolean
+ "creationError": boolean
+ "valueMap": $RecipeComponentValueMap
+ "json": $JsonObject
+static readonly "CHANGED_MARKER": StringJS
+static readonly "FACTORY": $KubeRecipeFactory
+ "changed": boolean
+
+constructor()
+
+public "afterLoaded"(): void
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SlicerKubeRecipe$$Type = ($SlicerKubeRecipe);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SlicerKubeRecipe_ = $SlicerKubeRecipe$$Type;
 }}
 declare module "com.almostreliable.morejs.features.villager.trades.PotionTrade" {
 import {$Potion, $Potion$$Type} from "net.minecraft.world.item.alchemy.Potion"
@@ -4919,9 +5872,9 @@ export class $PotionTrade extends $TransformableTrade<($PotionTrade)> {
 constructor(arg0: ($TradeItem$$Type)[])
 
 public "item"(arg0: $Item$$Type): $PotionTrade
+public "potions"(...arg0: ($Potion$$Type)[]): $PotionTrade
 public "onlyBrewablePotion"(): $PotionTrade
 public "noBrewablePotion"(): $PotionTrade
-public "potions"(...arg0: ($Potion$$Type)[]): $PotionTrade
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4962,16 +5915,16 @@ import {$TableReferenceLootEntry, $TableReferenceLootEntry$$Type} from "com.almo
 import {$ItemLootEntry, $ItemLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.ItemLootEntry"
 import {$UnaryOperator, $UnaryOperator$$Type} from "java.util.function.UnaryOperator"
 import {$LootEntry, $LootEntry$$Type} from "com.almostreliable.lootjs.core.entry.LootEntry"
-import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$LootPoolEntryContainer, $LootPoolEntryContainer$$Type} from "net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer"
+import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$LocationPredicate, $LocationPredicate$$Type} from "net.minecraft.advancements.critereon.LocationPredicate"
 import {$LootEntryList, $LootEntryList$$Type} from "com.almostreliable.lootjs.loot.LootEntryList"
 import {$LootEntryAppender, $LootEntryAppender$$Type} from "com.almostreliable.lootjs.loot.table.LootEntryAppender"
 import {$DebugInfo, $DebugInfo$$Type} from "com.almostreliable.lootjs.util.DebugInfo"
-import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$ItemPredicate, $ItemPredicate$$Type} from "net.minecraft.advancements.critereon.ItemPredicate"
+import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$Enchantment, $Enchantment$$Type} from "net.minecraft.world.item.enchantment.Enchantment"
 import {$LootConditionList, $LootConditionList$$Type} from "com.almostreliable.lootjs.loot.LootConditionList"
 import {$EntityPredicate, $EntityPredicate$$Type} from "net.minecraft.advancements.critereon.EntityPredicate"
@@ -4986,16 +5939,19 @@ export class $CompositeLootEntry implements $LootEntry, $LootEntriesTransformer,
 constructor(arg0: $CompositeEntryBase$$Type)
 constructor(arg0: $CompositeEntryBase$$Type, arg1: $LootEntryList$$Type, arg2: $LootConditionList$$Type)
 
+public "getEntries"(): $LootEntryList
+public "removeEntry"(arg0: $Predicate$$Type<($SimpleLootEntry)>, arg1: boolean): $CompositeLootEntry
+public "when"(arg0: $Consumer$$Type<($LootConditionList)>): $CompositeLootEntry
 public "getConditions"(): $LootConditionList
 public "entries"(arg0: $Consumer$$Type<($LootEntryList)>): $CompositeLootEntry
 public "addEntry"(arg0: $LootEntry$$Type): $CompositeLootEntry
-public "getEntries"(): $LootEntryList
-public "when"(arg0: $Consumer$$Type<($LootConditionList)>): $CompositeLootEntry
-public "removeEntry"(arg0: $Predicate$$Type<($SimpleLootEntry)>, arg1: boolean): $CompositeLootEntry
-public "getVanillaEntry"(): $LootPoolEntryContainer
-public "collectDebugInfo"(arg0: $DebugInfo$$Type): void
-public "getVanillaType"(): $LootPoolEntryType
 public "modifyEntry"(arg0: $UnaryOperator$$Type<(any)>, arg1: boolean): $LootEntriesTransformer
+public "getVanillaType"(): $LootPoolEntryType
+public "collectDebugInfo"(arg0: $DebugInfo$$Type): void
+public "getVanillaEntry"(): $LootPoolEntryContainer
+public static "sequence"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
+public static "tag"(arg0: StringJS): $TagLootEntry
+public static "tag"(arg0: StringJS, arg1: boolean): $TagLootEntry
 public "isDynamic"(): boolean
 public static "group"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
 public "isEmpty"(): boolean
@@ -5004,58 +5960,39 @@ public static "of"(arg0: $Item$$Type, arg1: $NumberProvider$$Type): $ItemLootEnt
 public static "empty"(): $EmptyLootEntry
 public static "reference"(arg0: $ResourceLocation$$Type): $TableReferenceLootEntry
 public "getType"(): $ResourceLocation
-public static "sequence"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
-public static "tag"(arg0: string): $TagLootEntry
-public static "tag"(arg0: string, arg1: boolean): $TagLootEntry
+public static "ofItem"(arg0: $Item$$Type): $ItemLootEntry
+public "isTag"(): boolean
 public "isReference"(): boolean
 public static "alternative"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
 public "isSimple"(): boolean
-public "isTag"(): boolean
 public static "ep"(arg0: $EntityPredicate$$Type): $EntityPredicate
-public static "ofItem"(arg0: $Item$$Type): $ItemLootEntry
 public "isItem"(): boolean
-public static "testItem"(arg0: string): $ItemLootEntry
 public "isComposite"(): boolean
 public "isAlternative"(): boolean
 public "isSequence"(): boolean
 public "isGroup"(): boolean
 public static "ofIngredient"(arg0: $Ingredient$$Type): $CompositeLootEntry
 public static "ofVanilla"(arg0: $LootPoolEntryContainer$$Type): $LootEntry
-public "removeItem"(arg0: $ItemFilter$$Type): $LootEntriesTransformer
+public static "testItem"(arg0: StringJS): $ItemLootEntry
 public "removeItem"(arg0: $ItemFilter$$Type, arg1: boolean): $LootEntriesTransformer
-public "hasItem"(arg0: $ItemFilter$$Type): boolean
+public "removeItem"(arg0: $ItemFilter$$Type): $LootEntriesTransformer
+public "removeEntry"(arg0: $Predicate$$Type<($SimpleLootEntry)>): $LootEntriesTransformer
 public "removeReference"(arg0: $IdFilter$$Type): $LootEntriesTransformer
 public "removeReference"(arg0: $IdFilter$$Type, arg1: boolean): $LootEntriesTransformer
-public "removeEntry"(arg0: $Predicate$$Type<($SimpleLootEntry)>): $LootEntriesTransformer
-public "modifyItemEntry"(arg0: $UnaryOperator$$Type<($ItemLootEntry)>): $LootEntriesTransformer
-public "removeTag"(arg0: string): $LootEntriesTransformer
-public "removeTag"(arg0: string, arg1: boolean): $LootEntriesTransformer
-public "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type): $LootEntriesTransformer
-public "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type, arg2: boolean): $LootEntriesTransformer
+public "hasItem"(arg0: $ItemFilter$$Type): boolean
+public "removeTag"(arg0: StringJS, arg1: boolean): $LootEntriesTransformer
+public "removeTag"(arg0: StringJS): $LootEntriesTransformer
 public "modifyEntry"(arg0: $UnaryOperator$$Type<($SimpleLootEntry)>): $LootEntriesTransformer
+public "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type, arg2: boolean): $LootEntriesTransformer
+public "replaceItem"(arg0: $ItemFilter$$Type, arg1: $Item$$Type): $LootEntriesTransformer
+public "modifyItemEntry"(arg0: $UnaryOperator$$Type<($ItemLootEntry)>): $LootEntriesTransformer
 public "addCustomEntry"(arg0: $JsonObject$$Type): $LootEntryAppender
 public "matchLocation"(arg0: $BlockPos$$Type, arg1: $LocationPredicate$$Type): $LootEntry
 public "matchLocation"(arg0: $LocationPredicate$$Type): $LootEntry
-public "matchPlayerCustom"(arg0: $Predicate$$Type<($ServerPlayer)>): $LootEntry
-public "matchAnyInventorySlot"(arg0: $ItemFilter$$Type): $LootEntry
-public "matchAnyHotbarSlot"(arg0: $ItemFilter$$Type): $LootEntry
-public "randomTableBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootEntry
-public "matchDirectAttacker"(arg0: $EntityPredicate$$Type): $LootEntry
-public "matchDamageSource"(arg0: $DamageSourcePredicate$$Type): $LootEntry
-public "matchEntityCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
-public "matchAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
-public "matchCustomCondition"(arg0: $JsonObject$$Type): $LootEntry
-public "blockEntity"(arg0: $Predicate$$Type<($BlockEntity)>): $LootEntry
 public "luck"(arg0: $MinMaxBounds$Doubles$$Type): $LootEntry
-public "survivesExplosion"(): $LootEntry
-public "matchBlock"(arg0: $Block$$Type, arg1: $StatePropertiesPredicate$$Type): $LootEntry
-public "matchBlock"(arg0: $Block$$Type): $LootEntry
-public "matchTool"(arg0: $ItemPredicate$$Type): $LootEntry
-public "matchPlayer"(arg0: $EntityPredicate$$Type): $LootEntry
-public "randomChance"(arg0: $NumberProvider$$Type): $LootEntry
-public "killedByPlayer"(): $LootEntry
-public "matchTime"(arg0: long, arg1: integer, arg2: integer): $LootEntry
+public "blockEntity"(arg0: $Predicate$$Type<($BlockEntity)>): $LootEntry
 public "matchTime"(arg0: integer, arg1: integer): $LootEntry
+public "matchTime"(arg0: long, arg1: integer, arg2: integer): $LootEntry
 public "matchMainHand"(arg0: $ItemFilter$$Type): $LootEntry
 public "matchOffHand"(arg0: $ItemFilter$$Type): $LootEntry
 public "matchHead"(arg0: $ItemFilter$$Type): $LootEntry
@@ -5069,17 +6006,33 @@ public "matchDimension"(...arg0: ($ResourceLocation$$Type)[]): $LootEntry
 public "matchStructure"(arg0: $HolderSet$$Type<($Structure)>): $LootEntry
 public "matchStructure"(arg0: $HolderSet$$Type<($Structure)>, arg1: boolean): $LootEntry
 public "isLightLevel"(arg0: integer, arg1: integer): $LootEntry
+public "matchBlock"(arg0: $Block$$Type): $LootEntry
+public "matchBlock"(arg0: $Block$$Type, arg1: $StatePropertiesPredicate$$Type): $LootEntry
 public "matchEntity"(arg0: $EntityPredicate$$Type): $LootEntry
 public "matchAttacker"(arg0: $EntityPredicate$$Type): $LootEntry
 public "matchDistance"(arg0: $DistancePredicate$$Type): $LootEntry
-public "hasAnyStage"(...arg0: (string)[]): $LootEntry
+public "hasAnyStage"(...arg0: (StringJS)[]): $LootEntry
 public "matchAnyOf"(...arg0: ($LootItemCondition$$Type)[]): $LootEntry
 public "matchAllOf"(...arg0: ($LootItemCondition$$Type)[]): $LootEntry
+public "matchPlayer"(arg0: $EntityPredicate$$Type): $LootEntry
+public "matchTool"(arg0: $ItemPredicate$$Type): $LootEntry
+public "killedByPlayer"(): $LootEntry
+public "randomChance"(arg0: $NumberProvider$$Type): $LootEntry
+public "survivesExplosion"(): $LootEntry
+public "matchPlayerCustom"(arg0: $Predicate$$Type<($ServerPlayer)>): $LootEntry
+public "matchAnyInventorySlot"(arg0: $ItemFilter$$Type): $LootEntry
+public "matchAnyHotbarSlot"(arg0: $ItemFilter$$Type): $LootEntry
+public "randomTableBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootEntry
+public "matchDirectAttacker"(arg0: $EntityPredicate$$Type): $LootEntry
+public "matchDamageSource"(arg0: $DamageSourcePredicate$$Type): $LootEntry
+public "matchEntityCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
+public "matchAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
+public "matchCustomCondition"(arg0: $JsonObject$$Type): $LootEntry
 public "randomChanceWithEnchantment"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootEntry
 public "matchDirectAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
 get "conditions"(): $LootConditionList
-get "vanillaEntry"(): $LootPoolEntryContainer
 get "vanillaType"(): $LootPoolEntryType
+get "vanillaEntry"(): $LootPoolEntryContainer
 get "dynamic"(): boolean
 get "type"(): $ResourceLocation
 get "simple"(): boolean
@@ -5115,32 +6068,8 @@ public "getLevel"(): $Level
 public "getItem"(): $ItemStack
 public "getPlayer"(): $Player
 public "getSecondItem"(): $ItemStack
-public "getRegistries"(): $RegistryAccess
 public "getServer"(): $MinecraftServer
-/**
- * Stops the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(arg1: any): any
-/**
- * Stops the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(): any
-/**
- * Cancels the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(arg1: any): any
-/**
- * Cancels the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(): any
+public "getRegistries"(): $RegistryAccess
 /**
  * Stops the event with default exit value. Execution will be stopped **immediately**.
  * 
@@ -5153,12 +6082,36 @@ public "success"(): any
  * `success` denotes a `true` outcome.
  */
 public "success"(arg1: any): any
+/**
+ * Stops the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(): any
+/**
+ * Stops the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(arg1: any): any
+/**
+ * Cancels the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(arg1: any): any
+/**
+ * Cancels the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(): any
 get "level"(): $Level
 get "item"(): $ItemStack
 get "player"(): $Player
 get "secondItem"(): $ItemStack
-get "registries"(): $RegistryAccess
 get "server"(): $MinecraftServer
+get "registries"(): $RegistryAccess
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5188,9 +6141,9 @@ import {$DistancePredicate, $DistancePredicate$$Type} from "net.minecraft.advanc
 import {$EquipmentSlot, $EquipmentSlot$$Type} from "net.minecraft.world.entity.EquipmentSlot"
 import {$HolderSet, $HolderSet$$Type} from "net.minecraft.core.HolderSet"
 import {$JsonObject, $JsonObject$$Type} from "com.google.gson.JsonObject"
+import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$Biome, $Biome$$Type} from "net.minecraft.world.level.biome.Biome"
-import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$Iterator, $Iterator$$Type} from "java.util.Iterator"
 import {$LootContext, $LootContext$$Type} from "net.minecraft.world.level.storage.loot.LootContext"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
@@ -5221,26 +6174,10 @@ public "contains"(arg0: $LootItemConditionType$$Type): boolean
 public "collectDebugInfo"(arg0: $DebugInfo$$Type): void
 public "matchLocation"(arg0: $BlockPos$$Type, arg1: $LocationPredicate$$Type): $LootConditionList
 public "matchLocation"(arg0: $LocationPredicate$$Type): $LootConditionList
-public "matchPlayerCustom"(arg0: $Predicate$$Type<($ServerPlayer)>): $LootConditionList
-public "matchAnyInventorySlot"(arg0: $ItemFilter$$Type): $LootConditionList
-public "matchAnyHotbarSlot"(arg0: $ItemFilter$$Type): $LootConditionList
-public "randomTableBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootConditionList
-public "matchDirectAttacker"(arg0: $EntityPredicate$$Type): $LootConditionList
-public "matchDamageSource"(arg0: $DamageSourcePredicate$$Type): $LootConditionList
-public "matchEntityCustom"(arg0: $Predicate$$Type<($Entity)>): $LootConditionList
-public "matchAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootConditionList
-public "matchCustomCondition"(arg0: $JsonObject$$Type): $LootConditionList
-public "blockEntity"(arg0: $Predicate$$Type<($BlockEntity)>): $LootConditionList
 public "luck"(arg0: $MinMaxBounds$Doubles$$Type): $LootConditionList
-public "survivesExplosion"(): $LootConditionList
-public "matchBlock"(arg0: $Block$$Type, arg1: $StatePropertiesPredicate$$Type): $LootConditionList
-public "matchBlock"(arg0: $Block$$Type): $LootConditionList
-public "matchTool"(arg0: $ItemPredicate$$Type): $LootConditionList
-public "matchPlayer"(arg0: $EntityPredicate$$Type): $LootConditionList
-public "randomChance"(arg0: $NumberProvider$$Type): $LootConditionList
-public "killedByPlayer"(): $LootConditionList
-public "matchTime"(arg0: long, arg1: integer, arg2: integer): $LootConditionList
+public "blockEntity"(arg0: $Predicate$$Type<($BlockEntity)>): $LootConditionList
 public "matchTime"(arg0: integer, arg1: integer): $LootConditionList
+public "matchTime"(arg0: long, arg1: integer, arg2: integer): $LootConditionList
 public "matchMainHand"(arg0: $ItemFilter$$Type): $LootConditionList
 public "matchOffHand"(arg0: $ItemFilter$$Type): $LootConditionList
 public "matchHead"(arg0: $ItemFilter$$Type): $LootConditionList
@@ -5254,18 +6191,34 @@ public "matchDimension"(...arg0: ($ResourceLocation$$Type)[]): $LootConditionLis
 public "matchStructure"(arg0: $HolderSet$$Type<($Structure)>): $LootConditionList
 public "matchStructure"(arg0: $HolderSet$$Type<($Structure)>, arg1: boolean): $LootConditionList
 public "isLightLevel"(arg0: integer, arg1: integer): $LootConditionList
+public "matchBlock"(arg0: $Block$$Type): $LootConditionList
+public "matchBlock"(arg0: $Block$$Type, arg1: $StatePropertiesPredicate$$Type): $LootConditionList
 public "matchEntity"(arg0: $EntityPredicate$$Type): $LootConditionList
 public "matchAttacker"(arg0: $EntityPredicate$$Type): $LootConditionList
 public "matchDistance"(arg0: $DistancePredicate$$Type): $LootConditionList
-public "hasAnyStage"(...arg0: (string)[]): $LootConditionList
+public "hasAnyStage"(...arg0: (StringJS)[]): $LootConditionList
 public "matchAnyOf"(...arg0: ($LootItemCondition$$Type)[]): $LootConditionList
 public "matchAllOf"(...arg0: ($LootItemCondition$$Type)[]): $LootConditionList
+public "matchPlayer"(arg0: $EntityPredicate$$Type): $LootConditionList
+public "matchTool"(arg0: $ItemPredicate$$Type): $LootConditionList
+public "killedByPlayer"(): $LootConditionList
+public "randomChance"(arg0: $NumberProvider$$Type): $LootConditionList
+public "survivesExplosion"(): $LootConditionList
+public "matchPlayerCustom"(arg0: $Predicate$$Type<($ServerPlayer)>): $LootConditionList
+public "matchAnyInventorySlot"(arg0: $ItemFilter$$Type): $LootConditionList
+public "matchAnyHotbarSlot"(arg0: $ItemFilter$$Type): $LootConditionList
+public "randomTableBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootConditionList
+public "matchDirectAttacker"(arg0: $EntityPredicate$$Type): $LootConditionList
+public "matchDamageSource"(arg0: $DamageSourcePredicate$$Type): $LootConditionList
+public "matchEntityCustom"(arg0: $Predicate$$Type<($Entity)>): $LootConditionList
+public "matchAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootConditionList
+public "matchCustomCondition"(arg0: $JsonObject$$Type): $LootConditionList
 public "randomChanceWithEnchantment"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootConditionList
 public "matchDirectAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootConditionList
 public "or"(arg0: $Predicate$$Type<($LootContext)>): $Predicate<($LootContext)>
+public static "not"<T>(arg0: $Predicate$$Type<($LootContext)>): $Predicate<($LootContext)>
 public "negate"(): $Predicate<($LootContext)>
 public "and"(arg0: $Predicate$$Type<($LootContext)>): $Predicate<($LootContext)>
-public static "not"<T>(arg0: $Predicate$$Type<($LootContext)>): $Predicate<($LootContext)>
 public static "isEqual"<T>(arg0: any): $Predicate<($LootContext)>
 }
 /**
@@ -5289,11 +6242,11 @@ import {$List, $List$$Type} from "java.util.List"
 export interface $StructureTemplateAccess {
 
  "getEntities"(): $List<($StructureTemplate$StructureEntityInfo)>
- "getPalettes"(): $List<($StructureTemplate$Palette)>
  "getBorderSize"(): $Vec3i
+ "getPalettes"(): $List<($StructureTemplate$Palette)>
 get "entities"(): $List<($StructureTemplate$StructureEntityInfo)>
-get "palettes"(): $List<($StructureTemplate$Palette)>
 get "borderSize"(): $Vec3i
+get "palettes"(): $List<($StructureTemplate$Palette)>
 }
 
 export namespace $StructureTemplateAccess {
@@ -5303,8 +6256,8 @@ export class $StructureTemplateAccess$$Static implements $StructureTemplateAcces
 
 
  "getEntities"(): $List<($StructureTemplate$StructureEntityInfo)>
- "getPalettes"(): $List<($StructureTemplate$Palette)>
  "getBorderSize"(): $Vec3i
+ "getPalettes"(): $List<($StructureTemplate$Palette)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5359,16 +6312,16 @@ export class $IntRange implements $IntPredicate {
 constructor(arg0: integer, arg1: integer)
 constructor(arg0: integer)
 
+public static "all"(): $IntRange
 public "getRandom"(arg0: $RandomSource$$Type): integer
 public "test"(arg0: integer): boolean
-public static "all"(): $IntRange
-public "getMin"(): integer
 public "getMax"(): integer
+public "getMin"(): integer
 public "or"(arg0: $IntPredicate$$Type): $IntPredicate
 public "negate"(): $IntPredicate
 public "and"(arg0: $IntPredicate$$Type): $IntPredicate
-get "min"(): integer
 get "max"(): integer
+get "min"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5387,10 +6340,10 @@ import {$LootType, $LootType$$Type} from "com.almostreliable.lootjs.core.LootTyp
 
 export interface $LootParamsExtension {
 
- "setType"(arg0: $LootType$$Type): void
  "getType"(): $LootType
-set "type"(value: $LootType$$Type)
+ "setType"(arg0: $LootType$$Type): void
 get "type"(): $LootType
+set "type"(value: $LootType$$Type)
 }
 
 export namespace $LootParamsExtension {
@@ -5399,8 +6352,8 @@ const probejs$$marker: never
 export class $LootParamsExtension$$Static implements $LootParamsExtension {
 
 
- "setType"(arg0: $LootType$$Type): void
  "getType"(): $LootType
+ "setType"(arg0: $LootType$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5413,6 +6366,41 @@ export type $LootParamsExtension$$Type = ($LootParamsExtension);
  */
 declare global {
 export type $LootParamsExtension_ = $LootParamsExtension$$Type;
+}}
+declare module "com.almostreliable.kubeio.binding.FireCraftingResult" {
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$FireCraftingRecipe$Result, $FireCraftingRecipe$Result$$Type} from "com.enderio.base.common.recipe.FireCraftingRecipe$Result"
+
+export interface $FireCraftingResult {
+
+}
+
+export namespace $FireCraftingResult {
+function of(arg0: $ItemStack$$Type, arg1: integer, arg2: integer, arg3: float): $FireCraftingRecipe$Result
+function of(arg0: $ItemStack$$Type, arg1: integer, arg2: integer): $FireCraftingRecipe$Result
+function of(arg0: $ItemStack$$Type, arg1: integer): $FireCraftingRecipe$Result
+function of(arg0: $ItemStack$$Type): $FireCraftingRecipe$Result
+const probejs$$marker: never
+}
+export class $FireCraftingResult$$Static implements $FireCraftingResult {
+
+
+static "of"(arg0: $ItemStack$$Type, arg1: integer, arg2: integer, arg3: float): $FireCraftingRecipe$Result
+static "of"(arg0: $ItemStack$$Type, arg1: integer, arg2: integer): $FireCraftingRecipe$Result
+static "of"(arg0: $ItemStack$$Type, arg1: integer): $FireCraftingRecipe$Result
+static "of"(arg0: $ItemStack$$Type): $FireCraftingRecipe$Result
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $FireCraftingResult$$Type = ($FireCraftingResult);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $FireCraftingResult_ = $FireCraftingResult$$Type;
 }}
 declare module "com.almostreliable.lootjs.loot.table.LootEntryAppender" {
 import {$LootEntry, $LootEntry$$Type} from "com.almostreliable.lootjs.core.entry.LootEntry"
@@ -5454,8 +6442,8 @@ import {$LootEntry, $LootEntry$$Type} from "com.almostreliable.lootjs.core.entry
 import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$LootPoolEntryContainer, $LootPoolEntryContainer$$Type} from "net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer"
 import {$EmptyLootEntry, $EmptyLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.EmptyLootEntry"
-import {$NumberProvider, $NumberProvider$$Type} from "net.minecraft.world.level.storage.loot.providers.number.NumberProvider"
 import {$DebugInfo, $DebugInfo$$Type} from "com.almostreliable.lootjs.util.DebugInfo"
+import {$NumberProvider, $NumberProvider$$Type} from "net.minecraft.world.level.storage.loot.providers.number.NumberProvider"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$CompositeLootEntry, $CompositeLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.CompositeLootEntry"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -5476,20 +6464,20 @@ public "setLocation"(arg0: $ResourceLocation$$Type): void
 public "collectDebugInfo"(arg0: $DebugInfo$$Type): void
 public "when"(arg0: $Consumer$$Type<(any)>): $LootEntry
 public "addFunction"(arg0: $LootItemFunction$$Type): any
+public static "sequence"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
+public static "tag"(arg0: StringJS): $TagLootEntry
+public static "tag"(arg0: StringJS, arg1: boolean): $TagLootEntry
 public static "group"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
 public static "of"(arg0: $ItemStack$$Type): $ItemLootEntry
 public static "of"(arg0: $Item$$Type, arg1: $NumberProvider$$Type): $ItemLootEntry
 public static "empty"(): $EmptyLootEntry
 public static "reference"(arg0: $ResourceLocation$$Type): $TableReferenceLootEntry
-public static "sequence"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
-public static "tag"(arg0: string): $TagLootEntry
-public static "tag"(arg0: string, arg1: boolean): $TagLootEntry
+public static "ofItem"(arg0: $Item$$Type): $ItemLootEntry
 public static "alternative"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
 public static "ep"(arg0: $EntityPredicate$$Type): $EntityPredicate
-public static "ofItem"(arg0: $Item$$Type): $ItemLootEntry
-public static "testItem"(arg0: string): $ItemLootEntry
 public static "ofIngredient"(arg0: $Ingredient$$Type): $CompositeLootEntry
 public static "ofVanilla"(arg0: $LootPoolEntryContainer$$Type): $LootEntry
+public static "testItem"(arg0: StringJS): $ItemLootEntry
 get "location"(): $ResourceLocation
 set "location"(value: $ResourceLocation$$Type)
 }
@@ -5544,8 +6532,8 @@ export class $WeightedList$Builder<T> {
 
 constructor()
 
-public "add"(arg0: integer, arg1: T): $WeightedList$Builder<(T)>
 public "build"(): $WeightedList<(T)>
+public "add"(arg0: integer, arg1: T): $WeightedList$Builder<(T)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5561,19 +6549,19 @@ export type $WeightedList$Builder_<T> = $WeightedList$Builder$$Type<(T)>;
 }}
 declare module "com.almostreliable.morejs.features.structure.EntityInfoWrapper" {
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
-import {$Vec3i, $Vec3i$$Type} from "net.minecraft.core.Vec3i"
 import {$StructureTemplate$StructureEntityInfo, $StructureTemplate$StructureEntityInfo$$Type} from "net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureEntityInfo"
-import {$List, $List$$Type} from "java.util.List"
+import {$Vec3i, $Vec3i$$Type} from "net.minecraft.core.Vec3i"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
+import {$List, $List$$Type} from "java.util.List"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 
 export class $EntityInfoWrapper {
 
 constructor(arg0: $List$$Type<($StructureTemplate$StructureEntityInfo$$Type)>, arg1: $Vec3i$$Type)
 
+public "removeIf"(arg0: $Predicate$$Type<($StructureTemplate$StructureEntityInfo)>): void
 public "add"(arg0: $CompoundTag$$Type): void
 public "forEach"(arg0: $Consumer$$Type<($StructureTemplate$StructureEntityInfo)>): void
-public "removeIf"(arg0: $Predicate$$Type<($StructureTemplate$StructureEntityInfo)>): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5587,6 +6575,43 @@ export type $EntityInfoWrapper$$Type = ($EntityInfoWrapper);
 declare global {
 export type $EntityInfoWrapper_ = $EntityInfoWrapper$$Type;
 }}
+declare module "com.almostreliable.kubeio.binding.SagMillOutputItem" {
+import {$SagMillingRecipe$OutputItem, $SagMillingRecipe$OutputItem$$Type} from "com.enderio.machines.common.blocks.sag_mill.SagMillingRecipe$OutputItem"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+
+export interface $SagMillOutputItem {
+
+}
+
+export namespace $SagMillOutputItem {
+function of(arg0: $ItemStack$$Type): $SagMillingRecipe$OutputItem
+function of(arg0: $ItemStack$$Type, arg1: float): $SagMillingRecipe$OutputItem
+function ofTag(arg0: $TagKey$$Type<($Item)>, arg1: integer, arg2: float): $SagMillingRecipe$OutputItem
+function ofTag(arg0: $TagKey$$Type<($Item)>, arg1: integer): $SagMillingRecipe$OutputItem
+const probejs$$marker: never
+}
+export class $SagMillOutputItem$$Static implements $SagMillOutputItem {
+
+
+static "of"(arg0: $ItemStack$$Type): $SagMillingRecipe$OutputItem
+static "of"(arg0: $ItemStack$$Type, arg1: float): $SagMillingRecipe$OutputItem
+static "ofTag"(arg0: $TagKey$$Type<($Item)>, arg1: integer, arg2: float): $SagMillingRecipe$OutputItem
+static "ofTag"(arg0: $TagKey$$Type<($Item)>, arg1: integer): $SagMillingRecipe$OutputItem
+}
+/**
+ * Class-specific type exported by ProbeJS, use global Type_
+ * types for convenience unless there's a naming conflict.
+ */
+export type $SagMillOutputItem$$Type = ($SagMillOutputItem);
+/**
+ * Global type exported for convenience, use class-specific
+ * types if there's a naming conflict.
+ */
+declare global {
+export type $SagMillOutputItem_ = $SagMillOutputItem$$Type;
+}}
 declare module "com.almostreliable.morejs.features.villager.events.StartTradingEventJS" {
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Merchant, $Merchant$$Type} from "net.minecraft.world.item.trading.Merchant"
@@ -5595,8 +6620,8 @@ import {$BiConsumer, $BiConsumer$$Type} from "java.util.function.BiConsumer"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$MinecraftServer, $MinecraftServer$$Type} from "net.minecraft.server.MinecraftServer"
-import {$OfferExtension, $OfferExtension$$Type} from "com.almostreliable.morejs.features.villager.OfferExtension"
 import {$RegistryAccess, $RegistryAccess$$Type} from "net.minecraft.core.RegistryAccess"
+import {$OfferExtension, $OfferExtension$$Type} from "com.almostreliable.morejs.features.villager.OfferExtension"
 
 export class $StartTradingEventJS implements $KubePlayerEvent {
 
@@ -5607,32 +6632,8 @@ public "getMerchant"(): $Merchant
 public "forEachOffers"(arg0: $BiConsumer$$Type<($OfferExtension), (integer)>): void
 public "getPlayer"(): $Player
 public "getLevel"(): $Level
-public "getRegistries"(): $RegistryAccess
 public "getServer"(): $MinecraftServer
-/**
- * Stops the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(arg1: any): any
-/**
- * Stops the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(): any
-/**
- * Cancels the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(arg1: any): any
-/**
- * Cancels the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(): any
+public "getRegistries"(): $RegistryAccess
 /**
  * Stops the event with default exit value. Execution will be stopped **immediately**.
  * 
@@ -5645,12 +6646,36 @@ public "success"(): any
  * `success` denotes a `true` outcome.
  */
 public "success"(arg1: any): any
+/**
+ * Stops the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(): any
+/**
+ * Stops the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(arg1: any): any
+/**
+ * Cancels the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(arg1: any): any
+/**
+ * Cancels the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(): any
 get "entity"(): $LivingEntity
 get "merchant"(): $Merchant
 get "player"(): $Player
 get "level"(): $Level
-get "registries"(): $RegistryAccess
 get "server"(): $MinecraftServer
+get "registries"(): $RegistryAccess
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5673,8 +6698,8 @@ import {$Explosion$BlockInteraction, $Explosion$BlockInteraction$$Type} from "ne
 import {$ModifyLootAction$Callback, $ModifyLootAction$Callback$$Type} from "com.almostreliable.lootjs.loot.modifier.handler.ModifyLootAction$Callback"
 import {$ServerPlayer, $ServerPlayer$$Type} from "net.minecraft.server.level.ServerPlayer"
 import {$MutableLootPool, $MutableLootPool$$Type} from "com.almostreliable.lootjs.loot.table.MutableLootPool"
-import {$NumberProvider, $NumberProvider$$Type} from "net.minecraft.world.level.storage.loot.providers.number.NumberProvider"
 import {$ItemLootEntry, $ItemLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.ItemLootEntry"
+import {$NumberProvider, $NumberProvider$$Type} from "net.minecraft.world.level.storage.loot.providers.number.NumberProvider"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 
 export interface $LootActionContainer<A extends $LootActionContainer<(any)>> {
@@ -5684,10 +6709,10 @@ export interface $LootActionContainer<A extends $LootActionContainer<(any)>> {
  "pool"(arg0: $Consumer$$Type<($MutableLootPool)>): A
  "modifyLoot"(arg0: $ItemFilter$$Type, arg1: $ModifyLootAction$Callback$$Type): A
  "dropExperience"(arg0: $NumberProvider$$Type): A
- "addLoot"(...arg0: ($LootEntry$$Type)[]): A
+ "addAction"(arg0: $LootAction$$Type): A
  "replaceLoot"(arg0: $ItemFilter$$Type, arg1: $ItemLootEntry$$Type, arg2: boolean): A
  "replaceLoot"(arg0: $ItemFilter$$Type, arg1: $ItemLootEntry$$Type): A
- "addAction"(arg0: $LootAction$$Type): A
+ "addLoot"(...arg0: ($LootEntry$$Type)[]): A
  "removeLoot"(arg0: $ItemFilter$$Type): A
  "customAction"(arg0: $LootAction$$Type): A
  "playerAction"(arg0: $Consumer$$Type<($ServerPlayer)>): A
@@ -5711,10 +6736,10 @@ export class $LootActionContainer$$Static<A extends $LootActionContainer<(any)>>
  "pool"(arg0: $Consumer$$Type<($MutableLootPool)>): A
  "modifyLoot"(arg0: $ItemFilter$$Type, arg1: $ModifyLootAction$Callback$$Type): A
  "dropExperience"(arg0: $NumberProvider$$Type): A
- "addLoot"(...arg0: ($LootEntry$$Type)[]): A
+ "addAction"(arg0: $LootAction$$Type): A
  "replaceLoot"(arg0: $ItemFilter$$Type, arg1: $ItemLootEntry$$Type, arg2: boolean): A
  "replaceLoot"(arg0: $ItemFilter$$Type, arg1: $ItemLootEntry$$Type): A
- "addAction"(arg0: $LootAction$$Type): A
+ "addLoot"(...arg0: ($LootEntry$$Type)[]): A
  "removeLoot"(arg0: $ItemFilter$$Type): A
  "customAction"(arg0: $LootAction$$Type): A
  "playerAction"(arg0: $Consumer$$Type<($ServerPlayer)>): A
@@ -5737,8 +6762,8 @@ declare global {
 export type $LootActionContainer_<A> = $LootActionContainer$$Type<(A)>;
 }}
 declare module "com.almostreliable.morejs.features.villager.events.VillagerTradingEventJS" {
-import {$KubeEvent, $KubeEvent$$Type} from "dev.latvian.mods.kubejs.event.KubeEvent"
 import {$VillagerTradingEventJS$ForEachCallback, $VillagerTradingEventJS$ForEachCallback$$Type} from "com.almostreliable.morejs.features.villager.events.VillagerTradingEventJS$ForEachCallback"
+import {$KubeEvent, $KubeEvent$$Type} from "dev.latvian.mods.kubejs.event.KubeEvent"
 import {$TradeItem, $TradeItem$$Type} from "com.almostreliable.morejs.features.villager.TradeItem"
 import {$List, $List$$Type} from "java.util.List"
 import {$TradeFilter, $TradeFilter$$Type} from "com.almostreliable.morejs.features.villager.TradeFilter"
@@ -5755,43 +6780,19 @@ export class $VillagerTradingEventJS implements $KubeEvent {
 
 constructor(arg0: $Table$$Type<($VillagerProfession$$Type), (integer), ($List$$Type<($VillagerTrades$ItemListing$$Type)>)>)
 
+public "removeTrades"(arg0: $TradeFilter$$Type): void
 public "addTrade"<T extends $VillagerTrades$ItemListing>(arg0: $Holder$$Type<($VillagerProfession)>, arg1: integer, arg2: T): T
 public "addTrade"(arg0: $Holder$$Type<($VillagerProfession)>, arg1: integer, arg2: ($TradeItem$$Type)[], arg3: $TradeItem$$Type): $SimpleTrade
-public "removeTrades"(arg0: $TradeFilter$$Type): void
 public "getTrades"(arg0: $Holder$$Type<($VillagerProfession)>, arg1: integer): $List<($VillagerTrades$ItemListing)>
 public "forEachTrades"(arg0: $List$$Type<($Holder$$Type<($VillagerProfession$$Type)>)>, arg1: $IntRange$$Type, arg2: $Consumer$$Type<($List<($VillagerTrades$ItemListing)>)>): void
 public "forEachTrades"(arg0: $VillagerTradingEventJS$ForEachCallback$$Type): void
 public "addCustomTrade"(arg0: $Holder$$Type<($VillagerProfession)>, arg1: integer, arg2: $TransformableTrade$Transformer$$Type): void
-public "removeVanillaTypedTrades"(): void
-public "removeVanillaTypedTrades"(arg0: $List$$Type<($Holder$$Type<($VillagerProfession$$Type)>)>): void
 public "removeVanillaTypedTrades"(arg0: $List$$Type<($Holder$$Type<($VillagerProfession$$Type)>)>, arg1: $IntRange$$Type): void
+public "removeVanillaTypedTrades"(arg0: $List$$Type<($Holder$$Type<($VillagerProfession$$Type)>)>): void
+public "removeVanillaTypedTrades"(): void
 public "removeModdedTypedTrades"(arg0: $List$$Type<($Holder$$Type<($VillagerProfession$$Type)>)>): void
 public "removeModdedTypedTrades"(arg0: $List$$Type<($Holder$$Type<($VillagerProfession$$Type)>)>, arg1: $IntRange$$Type): void
 public "removeModdedTypedTrades"(): void
-/**
- * Stops the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(arg1: any): any
-/**
- * Stops the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `exit` denotes a `default` outcome.
- */
-public "exit"(): any
-/**
- * Cancels the event with the given exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(arg1: any): any
-/**
- * Cancels the event with default exit value. Execution will be stopped **immediately**.
- * 
- * `cancel` denotes a `false` outcome.
- */
-public "cancel"(): any
 /**
  * Stops the event with default exit value. Execution will be stopped **immediately**.
  * 
@@ -5804,6 +6805,30 @@ public "success"(): any
  * `success` denotes a `true` outcome.
  */
 public "success"(arg1: any): any
+/**
+ * Stops the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(): any
+/**
+ * Stops the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `exit` denotes a `default` outcome.
+ */
+public "exit"(arg1: any): any
+/**
+ * Cancels the event with the given exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(arg1: any): any
+/**
+ * Cancels the event with default exit value. Execution will be stopped **immediately**.
+ * 
+ * `cancel` denotes a `false` outcome.
+ */
+public "cancel"(): any
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5846,16 +6871,16 @@ import {$ItemLootEntry, $ItemLootEntry$$Type} from "com.almostreliable.lootjs.co
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$LootEntry, $LootEntry$$Type} from "com.almostreliable.lootjs.core.entry.LootEntry"
-import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$LootPoolEntryContainer, $LootPoolEntryContainer$$Type} from "net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer"
+import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$LocationPredicate, $LocationPredicate$$Type} from "net.minecraft.advancements.critereon.LocationPredicate"
 import {$LootFunctionList, $LootFunctionList$$Type} from "com.almostreliable.lootjs.loot.LootFunctionList"
 import {$AddAttributesFunction$Builder, $AddAttributesFunction$Builder$$Type} from "com.almostreliable.lootjs.loot.AddAttributesFunction$Builder"
 import {$DebugInfo, $DebugInfo$$Type} from "com.almostreliable.lootjs.util.DebugInfo"
-import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$ItemPredicate, $ItemPredicate$$Type} from "net.minecraft.advancements.critereon.ItemPredicate"
+import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$CompositeLootEntry, $CompositeLootEntry$$Type} from "com.almostreliable.lootjs.core.entry.CompositeLootEntry"
 import {$SetEnchantmentsFunction$Builder, $SetEnchantmentsFunction$Builder$$Type} from "net.minecraft.world.level.storage.loot.functions.SetEnchantmentsFunction$Builder"
 import {$Enchantment, $Enchantment$$Type} from "net.minecraft.world.item.enchantment.Enchantment"
@@ -5868,76 +6893,60 @@ import {$LootItemCondition, $LootItemCondition$$Type} from "net.minecraft.world.
 
 export interface $SingleLootEntry extends $SimpleLootEntry {
 
- "apply"(arg0: $Consumer$$Type<($LootFunctionList)>): $SimpleLootEntry
  "when"(arg0: $Consumer$$Type<(any)>): $LootEntry
+ "apply"(arg0: $Consumer$$Type<($LootFunctionList)>): $SimpleLootEntry
  "setCount"(arg0: $NumberProvider$$Type): $SimpleLootEntry
  "getWeight"(): integer
  "getFunctions"(): $LootFunctionList
- "setWeight"(arg0: integer): void
- "setQuality"(arg0: integer): void
- "addFunction"(arg0: $LootItemFunction$$Type): any
  "withWeight"(arg0: integer): $SimpleLootEntry
  "withQuality"(arg0: integer): $SimpleLootEntry
  "getQuality"(): integer
- "getConditions"(): $LootConditionList
+ "addFunction"(arg0: $LootItemFunction$$Type): any
+ "setQuality"(arg0: integer): void
+ "setWeight"(arg0: integer): void
  "isDynamic"(): boolean
+ "getConditions"(): $LootConditionList
  "isEmpty"(): boolean
  "getType"(): $ResourceLocation
- "getVanillaEntry"(): $LootPoolEntryContainer
+ "isTag"(): boolean
  "isReference"(): boolean
  "isSimple"(): boolean
- "isTag"(): boolean
  "isItem"(): boolean
- "collectDebugInfo"(arg0: $DebugInfo$$Type): void
  "getVanillaType"(): $LootPoolEntryType
  "isComposite"(): boolean
  "isAlternative"(): boolean
  "isSequence"(): boolean
  "isGroup"(): boolean
- "setName"(arg0: $Component$$Type): $SimpleLootEntry
+ "collectDebugInfo"(arg0: $DebugInfo$$Type): void
+ "getVanillaEntry"(): $LootPoolEntryContainer
  "addAttributes"(arg0: $Consumer$$Type<($AddAttributesFunction$Builder)>): $SimpleLootEntry
+ "setName"(arg0: $Component$$Type): $SimpleLootEntry
+ "damage"(arg0: $NumberProvider$$Type): $SimpleLootEntry
+ "enchant"(arg0: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $SimpleLootEntry
+ "enchant"(arg0: boolean, arg1: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $SimpleLootEntry
+ "smelt"(): $SimpleLootEntry
+ "applyOreBonus"(arg0: $Holder$$Type<($Enchantment)>): $SimpleLootEntry
+ "applyBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: integer): $SimpleLootEntry
+ "addLore"(...arg0: ($Component$$Type)[]): $SimpleLootEntry
+ "replaceLore"(...arg0: ($Component$$Type)[]): $SimpleLootEntry
+ "toggleTooltips"(arg0: $Map$$Type<(StringJS), (boolean)>): $SimpleLootEntry
+ "jsonFunction"(arg0: $JsonObject$$Type): $SimpleLootEntry
+ "addPotion"(arg0: $Potion$$Type): $SimpleLootEntry
+ "setCustomData"(arg0: $CompoundTag$$Type): $SimpleLootEntry
+ "limitCount"(arg0: $NumberProvider$$Type, arg1: $NumberProvider$$Type): $SimpleLootEntry
+ "enchantWithLevels"(arg0: $NumberProvider$$Type): $SimpleLootEntry
  "enchantRandomly"(): $SimpleLootEntry
  "enchantRandomly"(arg0: $HolderSet$$Type<($Enchantment)>): $SimpleLootEntry
  "applyEnchantmentBonus"(arg0: $NumberProvider$$Type): $SimpleLootEntry
  "applyEnchantmentBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: $NumberProvider$$Type): $SimpleLootEntry
  "simulateExplosionDecay"(): $SimpleLootEntry
- "enchant"(arg0: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $SimpleLootEntry
- "enchant"(arg0: boolean, arg1: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $SimpleLootEntry
- "smelt"(): $SimpleLootEntry
- "damage"(arg0: $NumberProvider$$Type): $SimpleLootEntry
- "enchantWithLevels"(arg0: $NumberProvider$$Type): $SimpleLootEntry
- "addPotion"(arg0: $Potion$$Type): $SimpleLootEntry
- "setCustomData"(arg0: $CompoundTag$$Type): $SimpleLootEntry
- "limitCount"(arg0: $NumberProvider$$Type, arg1: $NumberProvider$$Type): $SimpleLootEntry
- "applyOreBonus"(arg0: $Holder$$Type<($Enchantment)>): $SimpleLootEntry
- "applyBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: integer): $SimpleLootEntry
- "addLore"(...arg0: ($Component$$Type)[]): $SimpleLootEntry
- "replaceLore"(...arg0: ($Component$$Type)[]): $SimpleLootEntry
- "toggleTooltips"(arg0: $Map$$Type<(string), (boolean)>): $SimpleLootEntry
- "jsonFunction"(arg0: $JsonObject$$Type): $SimpleLootEntry
  "applyBinomialDistributionBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: float, arg2: integer): $SimpleLootEntry
  "matchLocation"(arg0: $BlockPos$$Type, arg1: $LocationPredicate$$Type): $LootEntry
  "matchLocation"(arg0: $LocationPredicate$$Type): $LootEntry
- "matchPlayerCustom"(arg0: $Predicate$$Type<($ServerPlayer)>): $LootEntry
- "matchAnyInventorySlot"(arg0: $ItemFilter$$Type): $LootEntry
- "matchAnyHotbarSlot"(arg0: $ItemFilter$$Type): $LootEntry
- "randomTableBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootEntry
- "matchDirectAttacker"(arg0: $EntityPredicate$$Type): $LootEntry
- "matchDamageSource"(arg0: $DamageSourcePredicate$$Type): $LootEntry
- "matchEntityCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
- "matchAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
- "matchCustomCondition"(arg0: $JsonObject$$Type): $LootEntry
- "blockEntity"(arg0: $Predicate$$Type<($BlockEntity)>): $LootEntry
  "luck"(arg0: $MinMaxBounds$Doubles$$Type): $LootEntry
- "survivesExplosion"(): $LootEntry
- "matchBlock"(arg0: $Block$$Type, arg1: $StatePropertiesPredicate$$Type): $LootEntry
- "matchBlock"(arg0: $Block$$Type): $LootEntry
- "matchTool"(arg0: $ItemPredicate$$Type): $LootEntry
- "matchPlayer"(arg0: $EntityPredicate$$Type): $LootEntry
- "randomChance"(arg0: $NumberProvider$$Type): $LootEntry
- "killedByPlayer"(): $LootEntry
- "matchTime"(arg0: long, arg1: integer, arg2: integer): $LootEntry
+ "blockEntity"(arg0: $Predicate$$Type<($BlockEntity)>): $LootEntry
  "matchTime"(arg0: integer, arg1: integer): $LootEntry
+ "matchTime"(arg0: long, arg1: integer, arg2: integer): $LootEntry
  "matchMainHand"(arg0: $ItemFilter$$Type): $LootEntry
  "matchOffHand"(arg0: $ItemFilter$$Type): $LootEntry
  "matchHead"(arg0: $ItemFilter$$Type): $LootEntry
@@ -5951,65 +6960,84 @@ export interface $SingleLootEntry extends $SimpleLootEntry {
  "matchStructure"(arg0: $HolderSet$$Type<($Structure)>): $LootEntry
  "matchStructure"(arg0: $HolderSet$$Type<($Structure)>, arg1: boolean): $LootEntry
  "isLightLevel"(arg0: integer, arg1: integer): $LootEntry
+ "matchBlock"(arg0: $Block$$Type): $LootEntry
+ "matchBlock"(arg0: $Block$$Type, arg1: $StatePropertiesPredicate$$Type): $LootEntry
  "matchEntity"(arg0: $EntityPredicate$$Type): $LootEntry
  "matchAttacker"(arg0: $EntityPredicate$$Type): $LootEntry
  "matchDistance"(arg0: $DistancePredicate$$Type): $LootEntry
- "hasAnyStage"(...arg0: (string)[]): $LootEntry
+ "hasAnyStage"(...arg0: (StringJS)[]): $LootEntry
  "matchAnyOf"(...arg0: ($LootItemCondition$$Type)[]): $LootEntry
  "matchAllOf"(...arg0: ($LootItemCondition$$Type)[]): $LootEntry
+ "matchPlayer"(arg0: $EntityPredicate$$Type): $LootEntry
+ "matchTool"(arg0: $ItemPredicate$$Type): $LootEntry
+ "killedByPlayer"(): $LootEntry
+ "randomChance"(arg0: $NumberProvider$$Type): $LootEntry
+ "survivesExplosion"(): $LootEntry
+ "matchPlayerCustom"(arg0: $Predicate$$Type<($ServerPlayer)>): $LootEntry
+ "matchAnyInventorySlot"(arg0: $ItemFilter$$Type): $LootEntry
+ "matchAnyHotbarSlot"(arg0: $ItemFilter$$Type): $LootEntry
+ "randomTableBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootEntry
+ "matchDirectAttacker"(arg0: $EntityPredicate$$Type): $LootEntry
+ "matchDamageSource"(arg0: $DamageSourcePredicate$$Type): $LootEntry
+ "matchEntityCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
+ "matchAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
+ "matchCustomCondition"(arg0: $JsonObject$$Type): $LootEntry
  "randomChanceWithEnchantment"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootEntry
  "matchDirectAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
 set "count"(value: $NumberProvider$$Type)
 get "weight"(): integer
 get "functions"(): $LootFunctionList
-set "weight"(value: integer)
-set "quality"(value: integer)
 get "quality"(): integer
-get "conditions"(): $LootConditionList
+set "quality"(value: integer)
+set "weight"(value: integer)
 get "dynamic"(): boolean
+get "conditions"(): $LootConditionList
 get "type"(): $ResourceLocation
-get "vanillaEntry"(): $LootPoolEntryContainer
 get "simple"(): boolean
 get "item"(): boolean
 get "vanillaType"(): $LootPoolEntryType
 get "composite"(): boolean
+get "vanillaEntry"(): $LootPoolEntryContainer
 set "name"(value: $Component$$Type)
 set "customData"(value: $CompoundTag$$Type)
 }
 
 export namespace $SingleLootEntry {
+function sequence(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
+function tag(arg0: StringJS): $TagLootEntry
+function tag(arg0: StringJS, arg1: boolean): $TagLootEntry
 function group(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
 function of(arg0: $ItemStack$$Type): $ItemLootEntry
 function of(arg0: $Item$$Type, arg1: $NumberProvider$$Type): $ItemLootEntry
 function empty(): $EmptyLootEntry
 function reference(arg0: $ResourceLocation$$Type): $TableReferenceLootEntry
-function sequence(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
-function tag(arg0: string): $TagLootEntry
-function tag(arg0: string, arg1: boolean): $TagLootEntry
+function ofItem(arg0: $Item$$Type): $ItemLootEntry
 function alternative(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
 function ep(arg0: $EntityPredicate$$Type): $EntityPredicate
-function ofItem(arg0: $Item$$Type): $ItemLootEntry
-function testItem(arg0: string): $ItemLootEntry
 function ofIngredient(arg0: $Ingredient$$Type): $CompositeLootEntry
 function ofVanilla(arg0: $LootPoolEntryContainer$$Type): $LootEntry
+function testItem(arg0: StringJS): $ItemLootEntry
 const probejs$$marker: never
 }
 export class $SingleLootEntry$$Static implements $SingleLootEntry {
 
 
- "apply"(arg0: $Consumer$$Type<($LootFunctionList)>): $SimpleLootEntry
  "when"(arg0: $Consumer$$Type<(any)>): $LootEntry
+ "apply"(arg0: $Consumer$$Type<($LootFunctionList)>): $SimpleLootEntry
  "setCount"(arg0: $NumberProvider$$Type): $SimpleLootEntry
  "getWeight"(): integer
  "getFunctions"(): $LootFunctionList
- "setWeight"(arg0: integer): void
- "setQuality"(arg0: integer): void
- "addFunction"(arg0: $LootItemFunction$$Type): any
  "withWeight"(arg0: integer): $SimpleLootEntry
  "withQuality"(arg0: integer): $SimpleLootEntry
  "getQuality"(): integer
- "getConditions"(): $LootConditionList
+ "addFunction"(arg0: $LootItemFunction$$Type): any
+ "setQuality"(arg0: integer): void
+ "setWeight"(arg0: integer): void
+static "sequence"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
+static "tag"(arg0: StringJS): $TagLootEntry
+static "tag"(arg0: StringJS, arg1: boolean): $TagLootEntry
  "isDynamic"(): boolean
+ "getConditions"(): $LootConditionList
 static "group"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
  "isEmpty"(): boolean
 static "of"(arg0: $ItemStack$$Type): $ItemLootEntry
@@ -6017,19 +7045,13 @@ static "of"(arg0: $Item$$Type, arg1: $NumberProvider$$Type): $ItemLootEntry
 static "empty"(): $EmptyLootEntry
 static "reference"(arg0: $ResourceLocation$$Type): $TableReferenceLootEntry
  "getType"(): $ResourceLocation
-static "sequence"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
-static "tag"(arg0: string): $TagLootEntry
-static "tag"(arg0: string, arg1: boolean): $TagLootEntry
- "getVanillaEntry"(): $LootPoolEntryContainer
+static "ofItem"(arg0: $Item$$Type): $ItemLootEntry
+ "isTag"(): boolean
  "isReference"(): boolean
 static "alternative"(...arg0: ($LootEntry$$Type)[]): $CompositeLootEntry
  "isSimple"(): boolean
- "isTag"(): boolean
 static "ep"(arg0: $EntityPredicate$$Type): $EntityPredicate
-static "ofItem"(arg0: $Item$$Type): $ItemLootEntry
  "isItem"(): boolean
- "collectDebugInfo"(arg0: $DebugInfo$$Type): void
-static "testItem"(arg0: string): $ItemLootEntry
  "getVanillaType"(): $LootPoolEntryType
  "isComposite"(): boolean
  "isAlternative"(): boolean
@@ -6037,50 +7059,37 @@ static "testItem"(arg0: string): $ItemLootEntry
  "isGroup"(): boolean
 static "ofIngredient"(arg0: $Ingredient$$Type): $CompositeLootEntry
 static "ofVanilla"(arg0: $LootPoolEntryContainer$$Type): $LootEntry
- "setName"(arg0: $Component$$Type): $SimpleLootEntry
+static "testItem"(arg0: StringJS): $ItemLootEntry
+ "collectDebugInfo"(arg0: $DebugInfo$$Type): void
+ "getVanillaEntry"(): $LootPoolEntryContainer
  "addAttributes"(arg0: $Consumer$$Type<($AddAttributesFunction$Builder)>): $SimpleLootEntry
+ "setName"(arg0: $Component$$Type): $SimpleLootEntry
+ "damage"(arg0: $NumberProvider$$Type): $SimpleLootEntry
+ "enchant"(arg0: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $SimpleLootEntry
+ "enchant"(arg0: boolean, arg1: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $SimpleLootEntry
+ "smelt"(): $SimpleLootEntry
+ "applyOreBonus"(arg0: $Holder$$Type<($Enchantment)>): $SimpleLootEntry
+ "applyBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: integer): $SimpleLootEntry
+ "addLore"(...arg0: ($Component$$Type)[]): $SimpleLootEntry
+ "replaceLore"(...arg0: ($Component$$Type)[]): $SimpleLootEntry
+ "toggleTooltips"(arg0: $Map$$Type<(StringJS), (boolean)>): $SimpleLootEntry
+ "jsonFunction"(arg0: $JsonObject$$Type): $SimpleLootEntry
+ "addPotion"(arg0: $Potion$$Type): $SimpleLootEntry
+ "setCustomData"(arg0: $CompoundTag$$Type): $SimpleLootEntry
+ "limitCount"(arg0: $NumberProvider$$Type, arg1: $NumberProvider$$Type): $SimpleLootEntry
+ "enchantWithLevels"(arg0: $NumberProvider$$Type): $SimpleLootEntry
  "enchantRandomly"(): $SimpleLootEntry
  "enchantRandomly"(arg0: $HolderSet$$Type<($Enchantment)>): $SimpleLootEntry
  "applyEnchantmentBonus"(arg0: $NumberProvider$$Type): $SimpleLootEntry
  "applyEnchantmentBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: $NumberProvider$$Type): $SimpleLootEntry
  "simulateExplosionDecay"(): $SimpleLootEntry
- "enchant"(arg0: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $SimpleLootEntry
- "enchant"(arg0: boolean, arg1: $Consumer$$Type<($SetEnchantmentsFunction$Builder)>): $SimpleLootEntry
- "smelt"(): $SimpleLootEntry
- "damage"(arg0: $NumberProvider$$Type): $SimpleLootEntry
- "enchantWithLevels"(arg0: $NumberProvider$$Type): $SimpleLootEntry
- "addPotion"(arg0: $Potion$$Type): $SimpleLootEntry
- "setCustomData"(arg0: $CompoundTag$$Type): $SimpleLootEntry
- "limitCount"(arg0: $NumberProvider$$Type, arg1: $NumberProvider$$Type): $SimpleLootEntry
- "applyOreBonus"(arg0: $Holder$$Type<($Enchantment)>): $SimpleLootEntry
- "applyBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: integer): $SimpleLootEntry
- "addLore"(...arg0: ($Component$$Type)[]): $SimpleLootEntry
- "replaceLore"(...arg0: ($Component$$Type)[]): $SimpleLootEntry
- "toggleTooltips"(arg0: $Map$$Type<(string), (boolean)>): $SimpleLootEntry
- "jsonFunction"(arg0: $JsonObject$$Type): $SimpleLootEntry
  "applyBinomialDistributionBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: float, arg2: integer): $SimpleLootEntry
  "matchLocation"(arg0: $BlockPos$$Type, arg1: $LocationPredicate$$Type): $LootEntry
  "matchLocation"(arg0: $LocationPredicate$$Type): $LootEntry
- "matchPlayerCustom"(arg0: $Predicate$$Type<($ServerPlayer)>): $LootEntry
- "matchAnyInventorySlot"(arg0: $ItemFilter$$Type): $LootEntry
- "matchAnyHotbarSlot"(arg0: $ItemFilter$$Type): $LootEntry
- "randomTableBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootEntry
- "matchDirectAttacker"(arg0: $EntityPredicate$$Type): $LootEntry
- "matchDamageSource"(arg0: $DamageSourcePredicate$$Type): $LootEntry
- "matchEntityCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
- "matchAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
- "matchCustomCondition"(arg0: $JsonObject$$Type): $LootEntry
- "blockEntity"(arg0: $Predicate$$Type<($BlockEntity)>): $LootEntry
  "luck"(arg0: $MinMaxBounds$Doubles$$Type): $LootEntry
- "survivesExplosion"(): $LootEntry
- "matchBlock"(arg0: $Block$$Type, arg1: $StatePropertiesPredicate$$Type): $LootEntry
- "matchBlock"(arg0: $Block$$Type): $LootEntry
- "matchTool"(arg0: $ItemPredicate$$Type): $LootEntry
- "matchPlayer"(arg0: $EntityPredicate$$Type): $LootEntry
- "randomChance"(arg0: $NumberProvider$$Type): $LootEntry
- "killedByPlayer"(): $LootEntry
- "matchTime"(arg0: long, arg1: integer, arg2: integer): $LootEntry
+ "blockEntity"(arg0: $Predicate$$Type<($BlockEntity)>): $LootEntry
  "matchTime"(arg0: integer, arg1: integer): $LootEntry
+ "matchTime"(arg0: long, arg1: integer, arg2: integer): $LootEntry
  "matchMainHand"(arg0: $ItemFilter$$Type): $LootEntry
  "matchOffHand"(arg0: $ItemFilter$$Type): $LootEntry
  "matchHead"(arg0: $ItemFilter$$Type): $LootEntry
@@ -6094,12 +7103,28 @@ static "ofVanilla"(arg0: $LootPoolEntryContainer$$Type): $LootEntry
  "matchStructure"(arg0: $HolderSet$$Type<($Structure)>): $LootEntry
  "matchStructure"(arg0: $HolderSet$$Type<($Structure)>, arg1: boolean): $LootEntry
  "isLightLevel"(arg0: integer, arg1: integer): $LootEntry
+ "matchBlock"(arg0: $Block$$Type): $LootEntry
+ "matchBlock"(arg0: $Block$$Type, arg1: $StatePropertiesPredicate$$Type): $LootEntry
  "matchEntity"(arg0: $EntityPredicate$$Type): $LootEntry
  "matchAttacker"(arg0: $EntityPredicate$$Type): $LootEntry
  "matchDistance"(arg0: $DistancePredicate$$Type): $LootEntry
- "hasAnyStage"(...arg0: (string)[]): $LootEntry
+ "hasAnyStage"(...arg0: (StringJS)[]): $LootEntry
  "matchAnyOf"(...arg0: ($LootItemCondition$$Type)[]): $LootEntry
  "matchAllOf"(...arg0: ($LootItemCondition$$Type)[]): $LootEntry
+ "matchPlayer"(arg0: $EntityPredicate$$Type): $LootEntry
+ "matchTool"(arg0: $ItemPredicate$$Type): $LootEntry
+ "killedByPlayer"(): $LootEntry
+ "randomChance"(arg0: $NumberProvider$$Type): $LootEntry
+ "survivesExplosion"(): $LootEntry
+ "matchPlayerCustom"(arg0: $Predicate$$Type<($ServerPlayer)>): $LootEntry
+ "matchAnyInventorySlot"(arg0: $ItemFilter$$Type): $LootEntry
+ "matchAnyHotbarSlot"(arg0: $ItemFilter$$Type): $LootEntry
+ "randomTableBonus"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootEntry
+ "matchDirectAttacker"(arg0: $EntityPredicate$$Type): $LootEntry
+ "matchDamageSource"(arg0: $DamageSourcePredicate$$Type): $LootEntry
+ "matchEntityCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
+ "matchAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
+ "matchCustomCondition"(arg0: $JsonObject$$Type): $LootEntry
  "randomChanceWithEnchantment"(arg0: $Holder$$Type<($Enchantment)>, arg1: (float)[]): $LootEntry
  "matchDirectAttackerCustom"(arg0: $Predicate$$Type<($Entity)>): $LootEntry
 }

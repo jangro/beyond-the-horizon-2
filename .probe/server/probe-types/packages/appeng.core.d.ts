@@ -17,17 +17,17 @@ static readonly "AnnihilationPlane": $TickRates
 
 
 public static "values"(): ($TickRates)[]
-public static "valueOf"(arg0: string): $TickRates
-public "getMin"(): integer
-public "getMax"(): integer
+public static "valueOf"(arg0: StringJS): $TickRates
 public "setMin"(arg0: integer): void
 public "setMax"(arg0: integer): void
+public "getMax"(): integer
+public "getMin"(): integer
 public "getDefaultMin"(): integer
 public "getDefaultMax"(): integer
-get "min"(): integer
-get "max"(): integer
 set "min"(value: integer)
 set "max"(value: integer)
+get "max"(): integer
+get "min"(): integer
 get "defaultMin"(): integer
 get "defaultMax"(): integer
 }

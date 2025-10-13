@@ -9,75 +9,75 @@ import {$TypeInfo, $TypeInfo$$Type} from "org.w3c.dom.TypeInfo"
 
 export interface $Attr extends $Node {
 
- "getSpecified"(): boolean
  "getSchemaTypeInfo"(): $TypeInfo
  "isId"(): boolean
+ "getName"(): StringJS
+ "getValue"(): StringJS
+ "setValue"(arg0: StringJS): void
  "getOwnerElement"(): $Element
- "getName"(): string
- "getValue"(): string
- "setValue"(arg0: string): void
- "hasAttributes"(): boolean
- "getLocalName"(): string
- "getFeature"(arg0: string, arg1: string): any
+ "getSpecified"(): boolean
+ "setUserData"(arg0: StringJS, arg1: any, arg2: $UserDataHandler$$Type): any
+ "getNodeType"(): short
+ "appendChild"(arg0: $Node$$Type): $Node
  "getLastChild"(): $Node
- "getNodeName"(): string
+ "getNodeName"(): StringJS
  "removeChild"(arg0: $Node$$Type): $Node
- "setNodeValue"(arg0: string): void
+ "setNodeValue"(arg0: StringJS): void
  "getParentNode"(): $Node
  "getFirstChild"(): $Node
  "cloneNode"(arg0: boolean): $Node
  "getNextSibling"(): $Node
  "getPreviousSibling"(): $Node
- "getNodeValue"(): string
+ "getNodeValue"(): StringJS
  "insertBefore"(arg0: $Node$$Type, arg1: $Node$$Type): $Node
- "getBaseURI"(): string
+ "getBaseURI"(): StringJS
+ "getAttributes"(): $NamedNodeMap
+ "getLocalName"(): StringJS
+ "normalize"(): void
+ "hasAttributes"(): boolean
+ "getFeature"(arg0: StringJS, arg1: StringJS): any
  "getOwnerDocument"(): $Document
  "replaceChild"(arg0: $Node$$Type, arg1: $Node$$Type): $Node
  "hasChildNodes"(): boolean
- "getNamespaceURI"(): string
- "setPrefix"(arg0: string): void
+ "getNamespaceURI"(): StringJS
+ "setPrefix"(arg0: StringJS): void
  "compareDocumentPosition"(arg0: $Node$$Type): short
- "getTextContent"(): string
- "setTextContent"(arg0: string): void
+ "getTextContent"(): StringJS
+ "setTextContent"(arg0: StringJS): void
  "isSameNode"(arg0: $Node$$Type): boolean
- "lookupPrefix"(arg0: string): string
- "isDefaultNamespace"(arg0: string): boolean
- "lookupNamespaceURI"(arg0: string): string
+ "lookupPrefix"(arg0: StringJS): StringJS
+ "isDefaultNamespace"(arg0: StringJS): boolean
+ "lookupNamespaceURI"(arg0: StringJS): StringJS
  "isEqualNode"(arg0: $Node$$Type): boolean
- "getUserData"(arg0: string): any
- "getNodeType"(): short
- "appendChild"(arg0: $Node$$Type): $Node
- "setUserData"(arg0: string, arg1: any, arg2: $UserDataHandler$$Type): any
- "isSupported"(arg0: string, arg1: string): boolean
- "getAttributes"(): $NamedNodeMap
- "normalize"(): void
- "getPrefix"(): string
+ "getUserData"(arg0: StringJS): any
+ "isSupported"(arg0: StringJS, arg1: StringJS): boolean
+ "getPrefix"(): StringJS
  "getChildNodes"(): $NodeList
-get "specified"(): boolean
 get "schemaTypeInfo"(): $TypeInfo
 get "id"(): boolean
+get "name"(): StringJS
+get "value"(): StringJS
+set "value"(value: StringJS)
 get "ownerElement"(): $Element
-get "name"(): string
-get "value"(): string
-set "value"(value: string)
-get "localName"(): string
+get "specified"(): boolean
+get "nodeType"(): short
 get "lastChild"(): $Node
-get "nodeName"(): string
-set "nodeValue"(value: string)
+get "nodeName"(): StringJS
+set "nodeValue"(value: StringJS)
 get "parentNode"(): $Node
 get "firstChild"(): $Node
 get "nextSibling"(): $Node
 get "previousSibling"(): $Node
-get "nodeValue"(): string
-get "baseURI"(): string
-get "ownerDocument"(): $Document
-get "namespaceURI"(): string
-set "prefix"(value: string)
-get "textContent"(): string
-set "textContent"(value: string)
-get "nodeType"(): short
+get "nodeValue"(): StringJS
+get "baseURI"(): StringJS
 get "attributes"(): $NamedNodeMap
-get "prefix"(): string
+get "localName"(): StringJS
+get "ownerDocument"(): $Document
+get "namespaceURI"(): StringJS
+set "prefix"(value: StringJS)
+get "textContent"(): StringJS
+set "textContent"(value: StringJS)
+get "prefix"(): StringJS
 get "childNodes"(): $NodeList
 }
 
@@ -87,49 +87,49 @@ const probejs$$marker: never
 export class $Attr$$Static implements $Attr {
 
 
- "getSpecified"(): boolean
  "getSchemaTypeInfo"(): $TypeInfo
  "isId"(): boolean
+ "getName"(): StringJS
+ "getValue"(): StringJS
+ "setValue"(arg0: StringJS): void
  "getOwnerElement"(): $Element
- "getName"(): string
- "getValue"(): string
- "setValue"(arg0: string): void
- "hasAttributes"(): boolean
- "getLocalName"(): string
- "getFeature"(arg0: string, arg1: string): any
+ "getSpecified"(): boolean
+ "setUserData"(arg0: StringJS, arg1: any, arg2: $UserDataHandler$$Type): any
+ "getNodeType"(): short
+ "appendChild"(arg0: $Node$$Type): $Node
  "getLastChild"(): $Node
- "getNodeName"(): string
+ "getNodeName"(): StringJS
  "removeChild"(arg0: $Node$$Type): $Node
- "setNodeValue"(arg0: string): void
+ "setNodeValue"(arg0: StringJS): void
  "getParentNode"(): $Node
  "getFirstChild"(): $Node
  "cloneNode"(arg0: boolean): $Node
  "getNextSibling"(): $Node
  "getPreviousSibling"(): $Node
- "getNodeValue"(): string
+ "getNodeValue"(): StringJS
  "insertBefore"(arg0: $Node$$Type, arg1: $Node$$Type): $Node
- "getBaseURI"(): string
+ "getBaseURI"(): StringJS
+ "getAttributes"(): $NamedNodeMap
+ "getLocalName"(): StringJS
+ "normalize"(): void
+ "hasAttributes"(): boolean
+ "getFeature"(arg0: StringJS, arg1: StringJS): any
  "getOwnerDocument"(): $Document
  "replaceChild"(arg0: $Node$$Type, arg1: $Node$$Type): $Node
  "hasChildNodes"(): boolean
- "getNamespaceURI"(): string
- "setPrefix"(arg0: string): void
+ "getNamespaceURI"(): StringJS
+ "setPrefix"(arg0: StringJS): void
  "compareDocumentPosition"(arg0: $Node$$Type): short
- "getTextContent"(): string
- "setTextContent"(arg0: string): void
+ "getTextContent"(): StringJS
+ "setTextContent"(arg0: StringJS): void
  "isSameNode"(arg0: $Node$$Type): boolean
- "lookupPrefix"(arg0: string): string
- "isDefaultNamespace"(arg0: string): boolean
- "lookupNamespaceURI"(arg0: string): string
+ "lookupPrefix"(arg0: StringJS): StringJS
+ "isDefaultNamespace"(arg0: StringJS): boolean
+ "lookupNamespaceURI"(arg0: StringJS): StringJS
  "isEqualNode"(arg0: $Node$$Type): boolean
- "getUserData"(arg0: string): any
- "getNodeType"(): short
- "appendChild"(arg0: $Node$$Type): $Node
- "setUserData"(arg0: string, arg1: any, arg2: $UserDataHandler$$Type): any
- "isSupported"(arg0: string, arg1: string): boolean
- "getAttributes"(): $NamedNodeMap
- "normalize"(): void
- "getPrefix"(): string
+ "getUserData"(arg0: StringJS): any
+ "isSupported"(arg0: StringJS, arg1: StringJS): boolean
+ "getPrefix"(): StringJS
  "getChildNodes"(): $NodeList
 }
 /**
@@ -163,106 +163,106 @@ import {$DocumentFragment, $DocumentFragment$$Type} from "org.w3c.dom.DocumentFr
 
 export interface $Document extends $Node {
 
+ "createEntityReference"(arg0: StringJS): $EntityReference
+ "setXmlVersion"(arg0: StringJS): void
+ "createComment"(arg0: StringJS): $Comment
+ "createProcessingInstruction"(arg0: StringJS, arg1: StringJS): $ProcessingInstruction
+ "setStrictErrorChecking"(arg0: boolean): void
+ "setDocumentURI"(arg0: StringJS): void
+ "setXmlStandalone"(arg0: boolean): void
+ "createCDATASection"(arg0: StringJS): $CDATASection
+ "createTextNode"(arg0: StringJS): $Text
+ "getDocumentURI"(): StringJS
+ "createAttributeNS"(arg0: StringJS, arg1: StringJS): $Attr
+ "createAttribute"(arg0: StringJS): $Attr
+ "createElementNS"(arg0: StringJS, arg1: StringJS): $Element
+ "createElement"(arg0: StringJS): $Element
+ "getImplementation"(): $DOMImplementation
  "importNode"(arg0: $Node$$Type, arg1: boolean): $Node
- "getXmlEncoding"(): string
- "getXmlVersion"(): string
+ "getXmlEncoding"(): StringJS
+ "getXmlVersion"(): StringJS
  "getXmlStandalone"(): boolean
  "normalizeDocument"(): void
  "createDocumentFragment"(): $DocumentFragment
  "getDoctype"(): $DocumentType
- "getElementsByTagName"(arg0: string): $NodeList
+ "getElementsByTagName"(arg0: StringJS): $NodeList
  "getStrictErrorChecking"(): boolean
- "getInputEncoding"(): string
- "renameNode"(arg0: $Node$$Type, arg1: string, arg2: string): $Node
+ "getInputEncoding"(): StringJS
+ "renameNode"(arg0: $Node$$Type, arg1: StringJS, arg2: StringJS): $Node
  "getDomConfig"(): $DOMConfiguration
  "adoptNode"(arg0: $Node$$Type): $Node
- "getElementById"(arg0: string): $Element
- "getElementsByTagNameNS"(arg0: string, arg1: string): $NodeList
- "setXmlVersion"(arg0: string): void
- "createComment"(arg0: string): $Comment
- "createProcessingInstruction"(arg0: string, arg1: string): $ProcessingInstruction
- "setStrictErrorChecking"(arg0: boolean): void
- "setDocumentURI"(arg0: string): void
- "setXmlStandalone"(arg0: boolean): void
- "createCDATASection"(arg0: string): $CDATASection
- "createTextNode"(arg0: string): $Text
- "getDocumentURI"(): string
- "createAttributeNS"(arg0: string, arg1: string): $Attr
- "createAttribute"(arg0: string): $Attr
- "createElementNS"(arg0: string, arg1: string): $Element
- "createElement"(arg0: string): $Element
- "getImplementation"(): $DOMImplementation
- "createEntityReference"(arg0: string): $EntityReference
+ "getElementById"(arg0: StringJS): $Element
+ "getElementsByTagNameNS"(arg0: StringJS, arg1: StringJS): $NodeList
  "getDocumentElement"(): $Element
- "hasAttributes"(): boolean
- "getLocalName"(): string
- "getFeature"(arg0: string, arg1: string): any
+ "setUserData"(arg0: StringJS, arg1: any, arg2: $UserDataHandler$$Type): any
+ "getNodeType"(): short
+ "appendChild"(arg0: $Node$$Type): $Node
  "getLastChild"(): $Node
- "getNodeName"(): string
+ "getNodeName"(): StringJS
  "removeChild"(arg0: $Node$$Type): $Node
- "setNodeValue"(arg0: string): void
+ "setNodeValue"(arg0: StringJS): void
  "getParentNode"(): $Node
  "getFirstChild"(): $Node
  "cloneNode"(arg0: boolean): $Node
  "getNextSibling"(): $Node
  "getPreviousSibling"(): $Node
- "getNodeValue"(): string
+ "getNodeValue"(): StringJS
  "insertBefore"(arg0: $Node$$Type, arg1: $Node$$Type): $Node
- "getBaseURI"(): string
+ "getBaseURI"(): StringJS
+ "getAttributes"(): $NamedNodeMap
+ "getLocalName"(): StringJS
+ "normalize"(): void
+ "hasAttributes"(): boolean
+ "getFeature"(arg0: StringJS, arg1: StringJS): any
  "getOwnerDocument"(): $Document
  "replaceChild"(arg0: $Node$$Type, arg1: $Node$$Type): $Node
  "hasChildNodes"(): boolean
- "getNamespaceURI"(): string
- "setPrefix"(arg0: string): void
+ "getNamespaceURI"(): StringJS
+ "setPrefix"(arg0: StringJS): void
  "compareDocumentPosition"(arg0: $Node$$Type): short
- "getTextContent"(): string
- "setTextContent"(arg0: string): void
+ "getTextContent"(): StringJS
+ "setTextContent"(arg0: StringJS): void
  "isSameNode"(arg0: $Node$$Type): boolean
- "lookupPrefix"(arg0: string): string
- "isDefaultNamespace"(arg0: string): boolean
- "lookupNamespaceURI"(arg0: string): string
+ "lookupPrefix"(arg0: StringJS): StringJS
+ "isDefaultNamespace"(arg0: StringJS): boolean
+ "lookupNamespaceURI"(arg0: StringJS): StringJS
  "isEqualNode"(arg0: $Node$$Type): boolean
- "getUserData"(arg0: string): any
- "getNodeType"(): short
- "appendChild"(arg0: $Node$$Type): $Node
- "setUserData"(arg0: string, arg1: any, arg2: $UserDataHandler$$Type): any
- "isSupported"(arg0: string, arg1: string): boolean
- "getAttributes"(): $NamedNodeMap
- "normalize"(): void
- "getPrefix"(): string
+ "getUserData"(arg0: StringJS): any
+ "isSupported"(arg0: StringJS, arg1: StringJS): boolean
+ "getPrefix"(): StringJS
  "getChildNodes"(): $NodeList
-get "xmlEncoding"(): string
-get "xmlVersion"(): string
+set "xmlVersion"(value: StringJS)
+set "strictErrorChecking"(value: boolean)
+set "documentURI"(value: StringJS)
+set "xmlStandalone"(value: boolean)
+get "documentURI"(): StringJS
+get "implementation"(): $DOMImplementation
+get "xmlEncoding"(): StringJS
+get "xmlVersion"(): StringJS
 get "xmlStandalone"(): boolean
 get "doctype"(): $DocumentType
 get "strictErrorChecking"(): boolean
-get "inputEncoding"(): string
+get "inputEncoding"(): StringJS
 get "domConfig"(): $DOMConfiguration
-set "xmlVersion"(value: string)
-set "strictErrorChecking"(value: boolean)
-set "documentURI"(value: string)
-set "xmlStandalone"(value: boolean)
-get "documentURI"(): string
-get "implementation"(): $DOMImplementation
 get "documentElement"(): $Element
-get "localName"(): string
+get "nodeType"(): short
 get "lastChild"(): $Node
-get "nodeName"(): string
-set "nodeValue"(value: string)
+get "nodeName"(): StringJS
+set "nodeValue"(value: StringJS)
 get "parentNode"(): $Node
 get "firstChild"(): $Node
 get "nextSibling"(): $Node
 get "previousSibling"(): $Node
-get "nodeValue"(): string
-get "baseURI"(): string
-get "ownerDocument"(): $Document
-get "namespaceURI"(): string
-set "prefix"(value: string)
-get "textContent"(): string
-set "textContent"(value: string)
-get "nodeType"(): short
+get "nodeValue"(): StringJS
+get "baseURI"(): StringJS
 get "attributes"(): $NamedNodeMap
-get "prefix"(): string
+get "localName"(): StringJS
+get "ownerDocument"(): $Document
+get "namespaceURI"(): StringJS
+set "prefix"(value: StringJS)
+get "textContent"(): StringJS
+set "textContent"(value: StringJS)
+get "prefix"(): StringJS
 get "childNodes"(): $NodeList
 }
 
@@ -272,73 +272,73 @@ const probejs$$marker: never
 export class $Document$$Static implements $Document {
 
 
+ "createEntityReference"(arg0: StringJS): $EntityReference
+ "setXmlVersion"(arg0: StringJS): void
+ "createComment"(arg0: StringJS): $Comment
+ "createProcessingInstruction"(arg0: StringJS, arg1: StringJS): $ProcessingInstruction
+ "setStrictErrorChecking"(arg0: boolean): void
+ "setDocumentURI"(arg0: StringJS): void
+ "setXmlStandalone"(arg0: boolean): void
+ "createCDATASection"(arg0: StringJS): $CDATASection
+ "createTextNode"(arg0: StringJS): $Text
+ "getDocumentURI"(): StringJS
+ "createAttributeNS"(arg0: StringJS, arg1: StringJS): $Attr
+ "createAttribute"(arg0: StringJS): $Attr
+ "createElementNS"(arg0: StringJS, arg1: StringJS): $Element
+ "createElement"(arg0: StringJS): $Element
+ "getImplementation"(): $DOMImplementation
  "importNode"(arg0: $Node$$Type, arg1: boolean): $Node
- "getXmlEncoding"(): string
- "getXmlVersion"(): string
+ "getXmlEncoding"(): StringJS
+ "getXmlVersion"(): StringJS
  "getXmlStandalone"(): boolean
  "normalizeDocument"(): void
  "createDocumentFragment"(): $DocumentFragment
  "getDoctype"(): $DocumentType
- "getElementsByTagName"(arg0: string): $NodeList
+ "getElementsByTagName"(arg0: StringJS): $NodeList
  "getStrictErrorChecking"(): boolean
- "getInputEncoding"(): string
- "renameNode"(arg0: $Node$$Type, arg1: string, arg2: string): $Node
+ "getInputEncoding"(): StringJS
+ "renameNode"(arg0: $Node$$Type, arg1: StringJS, arg2: StringJS): $Node
  "getDomConfig"(): $DOMConfiguration
  "adoptNode"(arg0: $Node$$Type): $Node
- "getElementById"(arg0: string): $Element
- "getElementsByTagNameNS"(arg0: string, arg1: string): $NodeList
- "setXmlVersion"(arg0: string): void
- "createComment"(arg0: string): $Comment
- "createProcessingInstruction"(arg0: string, arg1: string): $ProcessingInstruction
- "setStrictErrorChecking"(arg0: boolean): void
- "setDocumentURI"(arg0: string): void
- "setXmlStandalone"(arg0: boolean): void
- "createCDATASection"(arg0: string): $CDATASection
- "createTextNode"(arg0: string): $Text
- "getDocumentURI"(): string
- "createAttributeNS"(arg0: string, arg1: string): $Attr
- "createAttribute"(arg0: string): $Attr
- "createElementNS"(arg0: string, arg1: string): $Element
- "createElement"(arg0: string): $Element
- "getImplementation"(): $DOMImplementation
- "createEntityReference"(arg0: string): $EntityReference
+ "getElementById"(arg0: StringJS): $Element
+ "getElementsByTagNameNS"(arg0: StringJS, arg1: StringJS): $NodeList
  "getDocumentElement"(): $Element
- "hasAttributes"(): boolean
- "getLocalName"(): string
- "getFeature"(arg0: string, arg1: string): any
+ "setUserData"(arg0: StringJS, arg1: any, arg2: $UserDataHandler$$Type): any
+ "getNodeType"(): short
+ "appendChild"(arg0: $Node$$Type): $Node
  "getLastChild"(): $Node
- "getNodeName"(): string
+ "getNodeName"(): StringJS
  "removeChild"(arg0: $Node$$Type): $Node
- "setNodeValue"(arg0: string): void
+ "setNodeValue"(arg0: StringJS): void
  "getParentNode"(): $Node
  "getFirstChild"(): $Node
  "cloneNode"(arg0: boolean): $Node
  "getNextSibling"(): $Node
  "getPreviousSibling"(): $Node
- "getNodeValue"(): string
+ "getNodeValue"(): StringJS
  "insertBefore"(arg0: $Node$$Type, arg1: $Node$$Type): $Node
- "getBaseURI"(): string
+ "getBaseURI"(): StringJS
+ "getAttributes"(): $NamedNodeMap
+ "getLocalName"(): StringJS
+ "normalize"(): void
+ "hasAttributes"(): boolean
+ "getFeature"(arg0: StringJS, arg1: StringJS): any
  "getOwnerDocument"(): $Document
  "replaceChild"(arg0: $Node$$Type, arg1: $Node$$Type): $Node
  "hasChildNodes"(): boolean
- "getNamespaceURI"(): string
- "setPrefix"(arg0: string): void
+ "getNamespaceURI"(): StringJS
+ "setPrefix"(arg0: StringJS): void
  "compareDocumentPosition"(arg0: $Node$$Type): short
- "getTextContent"(): string
- "setTextContent"(arg0: string): void
+ "getTextContent"(): StringJS
+ "setTextContent"(arg0: StringJS): void
  "isSameNode"(arg0: $Node$$Type): boolean
- "lookupPrefix"(arg0: string): string
- "isDefaultNamespace"(arg0: string): boolean
- "lookupNamespaceURI"(arg0: string): string
+ "lookupPrefix"(arg0: StringJS): StringJS
+ "isDefaultNamespace"(arg0: StringJS): boolean
+ "lookupNamespaceURI"(arg0: StringJS): StringJS
  "isEqualNode"(arg0: $Node$$Type): boolean
- "getUserData"(arg0: string): any
- "getNodeType"(): short
- "appendChild"(arg0: $Node$$Type): $Node
- "setUserData"(arg0: string, arg1: any, arg2: $UserDataHandler$$Type): any
- "isSupported"(arg0: string, arg1: string): boolean
- "getAttributes"(): $NamedNodeMap
- "normalize"(): void
- "getPrefix"(): string
+ "getUserData"(arg0: StringJS): any
+ "isSupported"(arg0: StringJS, arg1: StringJS): boolean
+ "getPrefix"(): StringJS
  "getChildNodes"(): $NodeList
 }
 /**
@@ -357,11 +357,11 @@ declare module "org.w3c.dom.TypeInfo" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $TypeInfo {
 
- "getTypeNamespace"(): string
- "isDerivedFrom"(arg0: string, arg1: string, arg2: integer): boolean
- "getTypeName"(): string
-get "typeNamespace"(): string
-get "typeName"(): string
+ "getTypeNamespace"(): StringJS
+ "isDerivedFrom"(arg0: StringJS, arg1: StringJS, arg2: integer): boolean
+ "getTypeName"(): StringJS
+get "typeNamespace"(): StringJS
+get "typeName"(): StringJS
 }
 
 export namespace $TypeInfo {
@@ -378,9 +378,9 @@ static readonly "DERIVATION_RESTRICTION": integer
 static readonly "DERIVATION_LIST": integer
 
 
- "getTypeNamespace"(): string
- "isDerivedFrom"(arg0: string, arg1: string, arg2: integer): boolean
- "getTypeName"(): string
+ "getTypeNamespace"(): StringJS
+ "isDerivedFrom"(arg0: StringJS, arg1: StringJS, arg2: integer): boolean
+ "getTypeName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -399,14 +399,14 @@ import {$Node, $Node$$Type} from "org.w3c.dom.Node"
 
 export interface $NamedNodeMap {
 
- "getNamedItemNS"(arg0: string, arg1: string): $Node
- "removeNamedItemNS"(arg0: string, arg1: string): $Node
+ "getNamedItem"(arg0: StringJS): $Node
  "setNamedItem"(arg0: $Node$$Type): $Node
  "setNamedItemNS"(arg0: $Node$$Type): $Node
- "getNamedItem"(arg0: string): $Node
- "getLength"(): integer
+ "getNamedItemNS"(arg0: StringJS, arg1: StringJS): $Node
+ "removeNamedItemNS"(arg0: StringJS, arg1: StringJS): $Node
  "item"(arg0: integer): $Node
- "removeNamedItem"(arg0: string): $Node
+ "getLength"(): integer
+ "removeNamedItem"(arg0: StringJS): $Node
 set "namedItem"(value: $Node$$Type)
 set "namedItemNS"(value: $Node$$Type)
 get "length"(): integer
@@ -418,14 +418,14 @@ const probejs$$marker: never
 export class $NamedNodeMap$$Static implements $NamedNodeMap {
 
 
- "getNamedItemNS"(arg0: string, arg1: string): $Node
- "removeNamedItemNS"(arg0: string, arg1: string): $Node
+ "getNamedItem"(arg0: StringJS): $Node
  "setNamedItem"(arg0: $Node$$Type): $Node
  "setNamedItemNS"(arg0: $Node$$Type): $Node
- "getNamedItem"(arg0: string): $Node
- "getLength"(): integer
+ "getNamedItemNS"(arg0: StringJS, arg1: StringJS): $Node
+ "removeNamedItemNS"(arg0: StringJS, arg1: StringJS): $Node
  "item"(arg0: integer): $Node
- "removeNamedItem"(arg0: string): $Node
+ "getLength"(): integer
+ "removeNamedItem"(arg0: StringJS): $Node
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -447,61 +447,61 @@ import {$NodeList, $NodeList$$Type} from "org.w3c.dom.NodeList"
 
 export interface $Node {
 
- "hasAttributes"(): boolean
- "getLocalName"(): string
- "getFeature"(arg0: string, arg1: string): any
+ "setUserData"(arg0: StringJS, arg1: any, arg2: $UserDataHandler$$Type): any
+ "getNodeType"(): short
+ "appendChild"(arg0: $Node$$Type): $Node
  "getLastChild"(): $Node
- "getNodeName"(): string
+ "getNodeName"(): StringJS
  "removeChild"(arg0: $Node$$Type): $Node
- "setNodeValue"(arg0: string): void
+ "setNodeValue"(arg0: StringJS): void
  "getParentNode"(): $Node
  "getFirstChild"(): $Node
  "cloneNode"(arg0: boolean): $Node
  "getNextSibling"(): $Node
  "getPreviousSibling"(): $Node
- "getNodeValue"(): string
+ "getNodeValue"(): StringJS
  "insertBefore"(arg0: $Node$$Type, arg1: $Node$$Type): $Node
- "getBaseURI"(): string
+ "getBaseURI"(): StringJS
+ "getAttributes"(): $NamedNodeMap
+ "getLocalName"(): StringJS
+ "normalize"(): void
+ "hasAttributes"(): boolean
+ "getFeature"(arg0: StringJS, arg1: StringJS): any
  "getOwnerDocument"(): $Document
  "replaceChild"(arg0: $Node$$Type, arg1: $Node$$Type): $Node
  "hasChildNodes"(): boolean
- "getNamespaceURI"(): string
- "setPrefix"(arg0: string): void
+ "getNamespaceURI"(): StringJS
+ "setPrefix"(arg0: StringJS): void
  "compareDocumentPosition"(arg0: $Node$$Type): short
- "getTextContent"(): string
- "setTextContent"(arg0: string): void
+ "getTextContent"(): StringJS
+ "setTextContent"(arg0: StringJS): void
  "isSameNode"(arg0: $Node$$Type): boolean
- "lookupPrefix"(arg0: string): string
- "isDefaultNamespace"(arg0: string): boolean
- "lookupNamespaceURI"(arg0: string): string
+ "lookupPrefix"(arg0: StringJS): StringJS
+ "isDefaultNamespace"(arg0: StringJS): boolean
+ "lookupNamespaceURI"(arg0: StringJS): StringJS
  "isEqualNode"(arg0: $Node$$Type): boolean
- "getUserData"(arg0: string): any
- "getNodeType"(): short
- "appendChild"(arg0: $Node$$Type): $Node
- "setUserData"(arg0: string, arg1: any, arg2: $UserDataHandler$$Type): any
- "isSupported"(arg0: string, arg1: string): boolean
- "getAttributes"(): $NamedNodeMap
- "normalize"(): void
- "getPrefix"(): string
+ "getUserData"(arg0: StringJS): any
+ "isSupported"(arg0: StringJS, arg1: StringJS): boolean
+ "getPrefix"(): StringJS
  "getChildNodes"(): $NodeList
-get "localName"(): string
+get "nodeType"(): short
 get "lastChild"(): $Node
-get "nodeName"(): string
-set "nodeValue"(value: string)
+get "nodeName"(): StringJS
+set "nodeValue"(value: StringJS)
 get "parentNode"(): $Node
 get "firstChild"(): $Node
 get "nextSibling"(): $Node
 get "previousSibling"(): $Node
-get "nodeValue"(): string
-get "baseURI"(): string
-get "ownerDocument"(): $Document
-get "namespaceURI"(): string
-set "prefix"(value: string)
-get "textContent"(): string
-set "textContent"(value: string)
-get "nodeType"(): short
+get "nodeValue"(): StringJS
+get "baseURI"(): StringJS
 get "attributes"(): $NamedNodeMap
-get "prefix"(): string
+get "localName"(): StringJS
+get "ownerDocument"(): $Document
+get "namespaceURI"(): StringJS
+set "prefix"(value: StringJS)
+get "textContent"(): StringJS
+set "textContent"(value: StringJS)
+get "prefix"(): StringJS
 get "childNodes"(): $NodeList
 }
 
@@ -547,42 +547,42 @@ static readonly "ATTRIBUTE_NODE": short
 static readonly "DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC": short
 
 
- "hasAttributes"(): boolean
- "getLocalName"(): string
- "getFeature"(arg0: string, arg1: string): any
+ "setUserData"(arg0: StringJS, arg1: any, arg2: $UserDataHandler$$Type): any
+ "getNodeType"(): short
+ "appendChild"(arg0: $Node$$Type): $Node
  "getLastChild"(): $Node
- "getNodeName"(): string
+ "getNodeName"(): StringJS
  "removeChild"(arg0: $Node$$Type): $Node
- "setNodeValue"(arg0: string): void
+ "setNodeValue"(arg0: StringJS): void
  "getParentNode"(): $Node
  "getFirstChild"(): $Node
  "cloneNode"(arg0: boolean): $Node
  "getNextSibling"(): $Node
  "getPreviousSibling"(): $Node
- "getNodeValue"(): string
+ "getNodeValue"(): StringJS
  "insertBefore"(arg0: $Node$$Type, arg1: $Node$$Type): $Node
- "getBaseURI"(): string
+ "getBaseURI"(): StringJS
+ "getAttributes"(): $NamedNodeMap
+ "getLocalName"(): StringJS
+ "normalize"(): void
+ "hasAttributes"(): boolean
+ "getFeature"(arg0: StringJS, arg1: StringJS): any
  "getOwnerDocument"(): $Document
  "replaceChild"(arg0: $Node$$Type, arg1: $Node$$Type): $Node
  "hasChildNodes"(): boolean
- "getNamespaceURI"(): string
- "setPrefix"(arg0: string): void
+ "getNamespaceURI"(): StringJS
+ "setPrefix"(arg0: StringJS): void
  "compareDocumentPosition"(arg0: $Node$$Type): short
- "getTextContent"(): string
- "setTextContent"(arg0: string): void
+ "getTextContent"(): StringJS
+ "setTextContent"(arg0: StringJS): void
  "isSameNode"(arg0: $Node$$Type): boolean
- "lookupPrefix"(arg0: string): string
- "isDefaultNamespace"(arg0: string): boolean
- "lookupNamespaceURI"(arg0: string): string
+ "lookupPrefix"(arg0: StringJS): StringJS
+ "isDefaultNamespace"(arg0: StringJS): boolean
+ "lookupNamespaceURI"(arg0: StringJS): StringJS
  "isEqualNode"(arg0: $Node$$Type): boolean
- "getUserData"(arg0: string): any
- "getNodeType"(): short
- "appendChild"(arg0: $Node$$Type): $Node
- "setUserData"(arg0: string, arg1: any, arg2: $UserDataHandler$$Type): any
- "isSupported"(arg0: string, arg1: string): boolean
- "getAttributes"(): $NamedNodeMap
- "normalize"(): void
- "getPrefix"(): string
+ "getUserData"(arg0: StringJS): any
+ "isSupported"(arg0: StringJS, arg1: StringJS): boolean
+ "getPrefix"(): StringJS
  "getChildNodes"(): $NodeList
 }
 /**
@@ -602,9 +602,9 @@ import {$Node, $Node$$Type} from "org.w3c.dom.Node"
 
 export interface $UserDataHandler {
 
- "handle"(arg0: short, arg1: string, arg2: any, arg3: $Node$$Type, arg4: $Node$$Type): void
+ "handle"(arg0: short, arg1: StringJS, arg2: any, arg3: $Node$$Type, arg4: $Node$$Type): void
 
-(arg0: short, arg1: string, arg2: any, arg3: $Node, arg4: $Node): void
+(arg0: short, arg1: StringJS, arg2: any, arg3: $Node, arg4: $Node): void
 }
 
 export namespace $UserDataHandler {
@@ -623,13 +623,13 @@ static readonly "NODE_RENAMED": short
 static readonly "NODE_CLONED": short
 
 
- "handle"(arg0: short, arg1: string, arg2: any, arg3: $Node$$Type, arg4: $Node$$Type): void
+ "handle"(arg0: short, arg1: StringJS, arg2: any, arg3: $Node$$Type, arg4: $Node$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $UserDataHandler$$Type = ((arg0: short, arg1: string, arg2: any, arg3: $Node, arg4: $Node) => void);
+export type $UserDataHandler$$Type = ((arg0: short, arg1: StringJS, arg2: any, arg3: $Node, arg4: $Node) => void);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -642,8 +642,8 @@ import {$Node, $Node$$Type} from "org.w3c.dom.Node"
 
 export interface $NodeList {
 
- "getLength"(): integer
  "item"(arg0: integer): $Node
+ "getLength"(): integer
 get "length"(): integer
 }
 
@@ -653,8 +653,8 @@ const probejs$$marker: never
 export class $NodeList$$Static implements $NodeList {
 
 
- "getLength"(): integer
  "item"(arg0: integer): $Node
+ "getLength"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -679,85 +679,85 @@ import {$TypeInfo, $TypeInfo$$Type} from "org.w3c.dom.TypeInfo"
 
 export interface $Element extends $Node {
 
- "removeAttributeNode"(arg0: $Attr$$Type): $Attr
- "getElementsByTagName"(arg0: string): $NodeList
- "getElementsByTagNameNS"(arg0: string, arg1: string): $NodeList
- "getAttributeNS"(arg0: string, arg1: string): string
- "removeAttributeNS"(arg0: string, arg1: string): void
- "hasAttribute"(arg0: string): boolean
- "hasAttributeNS"(arg0: string, arg1: string): boolean
- "setIdAttributeNS"(arg0: string, arg1: string, arg2: boolean): void
- "getSchemaTypeInfo"(): $TypeInfo
  "setAttributeNodeNS"(arg0: $Attr$$Type): $Attr
  "setAttributeNode"(arg0: $Attr$$Type): $Attr
  "setIdAttributeNode"(arg0: $Attr$$Type, arg1: boolean): void
- "getAttributeNodeNS"(arg0: string, arg1: string): $Attr
- "getAttributeNode"(arg0: string): $Attr
- "setAttributeNS"(arg0: string, arg1: string, arg2: string): void
- "setIdAttribute"(arg0: string, arg1: boolean): void
- "setAttribute"(arg0: string, arg1: string): void
- "getAttribute"(arg0: string): string
- "removeAttribute"(arg0: string): void
- "getTagName"(): string
- "hasAttributes"(): boolean
- "getLocalName"(): string
- "getFeature"(arg0: string, arg1: string): any
+ "getAttributeNodeNS"(arg0: StringJS, arg1: StringJS): $Attr
+ "getAttributeNode"(arg0: StringJS): $Attr
+ "setAttributeNS"(arg0: StringJS, arg1: StringJS, arg2: StringJS): void
+ "setIdAttribute"(arg0: StringJS, arg1: boolean): void
+ "getAttributeNS"(arg0: StringJS, arg1: StringJS): StringJS
+ "removeAttributeNS"(arg0: StringJS, arg1: StringJS): void
+ "hasAttribute"(arg0: StringJS): boolean
+ "hasAttributeNS"(arg0: StringJS, arg1: StringJS): boolean
+ "setIdAttributeNS"(arg0: StringJS, arg1: StringJS, arg2: boolean): void
+ "getSchemaTypeInfo"(): $TypeInfo
+ "setAttribute"(arg0: StringJS, arg1: StringJS): void
+ "getAttribute"(arg0: StringJS): StringJS
+ "removeAttribute"(arg0: StringJS): void
+ "removeAttributeNode"(arg0: $Attr$$Type): $Attr
+ "getElementsByTagName"(arg0: StringJS): $NodeList
+ "getElementsByTagNameNS"(arg0: StringJS, arg1: StringJS): $NodeList
+ "getTagName"(): StringJS
+ "setUserData"(arg0: StringJS, arg1: any, arg2: $UserDataHandler$$Type): any
+ "getNodeType"(): short
+ "appendChild"(arg0: $Node$$Type): $Node
  "getLastChild"(): $Node
- "getNodeName"(): string
+ "getNodeName"(): StringJS
  "removeChild"(arg0: $Node$$Type): $Node
- "setNodeValue"(arg0: string): void
+ "setNodeValue"(arg0: StringJS): void
  "getParentNode"(): $Node
  "getFirstChild"(): $Node
  "cloneNode"(arg0: boolean): $Node
  "getNextSibling"(): $Node
  "getPreviousSibling"(): $Node
- "getNodeValue"(): string
+ "getNodeValue"(): StringJS
  "insertBefore"(arg0: $Node$$Type, arg1: $Node$$Type): $Node
- "getBaseURI"(): string
+ "getBaseURI"(): StringJS
+ "getAttributes"(): $NamedNodeMap
+ "getLocalName"(): StringJS
+ "normalize"(): void
+ "hasAttributes"(): boolean
+ "getFeature"(arg0: StringJS, arg1: StringJS): any
  "getOwnerDocument"(): $Document
  "replaceChild"(arg0: $Node$$Type, arg1: $Node$$Type): $Node
  "hasChildNodes"(): boolean
- "getNamespaceURI"(): string
- "setPrefix"(arg0: string): void
+ "getNamespaceURI"(): StringJS
+ "setPrefix"(arg0: StringJS): void
  "compareDocumentPosition"(arg0: $Node$$Type): short
- "getTextContent"(): string
- "setTextContent"(arg0: string): void
+ "getTextContent"(): StringJS
+ "setTextContent"(arg0: StringJS): void
  "isSameNode"(arg0: $Node$$Type): boolean
- "lookupPrefix"(arg0: string): string
- "isDefaultNamespace"(arg0: string): boolean
- "lookupNamespaceURI"(arg0: string): string
+ "lookupPrefix"(arg0: StringJS): StringJS
+ "isDefaultNamespace"(arg0: StringJS): boolean
+ "lookupNamespaceURI"(arg0: StringJS): StringJS
  "isEqualNode"(arg0: $Node$$Type): boolean
- "getUserData"(arg0: string): any
- "getNodeType"(): short
- "appendChild"(arg0: $Node$$Type): $Node
- "setUserData"(arg0: string, arg1: any, arg2: $UserDataHandler$$Type): any
- "isSupported"(arg0: string, arg1: string): boolean
- "getAttributes"(): $NamedNodeMap
- "normalize"(): void
- "getPrefix"(): string
+ "getUserData"(arg0: StringJS): any
+ "isSupported"(arg0: StringJS, arg1: StringJS): boolean
+ "getPrefix"(): StringJS
  "getChildNodes"(): $NodeList
-get "schemaTypeInfo"(): $TypeInfo
 set "attributeNodeNS"(value: $Attr$$Type)
 set "attributeNode"(value: $Attr$$Type)
-get "tagName"(): string
-get "localName"(): string
+get "schemaTypeInfo"(): $TypeInfo
+get "tagName"(): StringJS
+get "nodeType"(): short
 get "lastChild"(): $Node
-get "nodeName"(): string
-set "nodeValue"(value: string)
+get "nodeName"(): StringJS
+set "nodeValue"(value: StringJS)
 get "parentNode"(): $Node
 get "firstChild"(): $Node
 get "nextSibling"(): $Node
 get "previousSibling"(): $Node
-get "nodeValue"(): string
-get "baseURI"(): string
-get "ownerDocument"(): $Document
-get "namespaceURI"(): string
-set "prefix"(value: string)
-get "textContent"(): string
-set "textContent"(value: string)
-get "nodeType"(): short
+get "nodeValue"(): StringJS
+get "baseURI"(): StringJS
 get "attributes"(): $NamedNodeMap
-get "prefix"(): string
+get "localName"(): StringJS
+get "ownerDocument"(): $Document
+get "namespaceURI"(): StringJS
+set "prefix"(value: StringJS)
+get "textContent"(): StringJS
+set "textContent"(value: StringJS)
+get "prefix"(): StringJS
 get "childNodes"(): $NodeList
 }
 
@@ -767,62 +767,62 @@ const probejs$$marker: never
 export class $Element$$Static implements $Element {
 
 
- "removeAttributeNode"(arg0: $Attr$$Type): $Attr
- "getElementsByTagName"(arg0: string): $NodeList
- "getElementsByTagNameNS"(arg0: string, arg1: string): $NodeList
- "getAttributeNS"(arg0: string, arg1: string): string
- "removeAttributeNS"(arg0: string, arg1: string): void
- "hasAttribute"(arg0: string): boolean
- "hasAttributeNS"(arg0: string, arg1: string): boolean
- "setIdAttributeNS"(arg0: string, arg1: string, arg2: boolean): void
- "getSchemaTypeInfo"(): $TypeInfo
  "setAttributeNodeNS"(arg0: $Attr$$Type): $Attr
  "setAttributeNode"(arg0: $Attr$$Type): $Attr
  "setIdAttributeNode"(arg0: $Attr$$Type, arg1: boolean): void
- "getAttributeNodeNS"(arg0: string, arg1: string): $Attr
- "getAttributeNode"(arg0: string): $Attr
- "setAttributeNS"(arg0: string, arg1: string, arg2: string): void
- "setIdAttribute"(arg0: string, arg1: boolean): void
- "setAttribute"(arg0: string, arg1: string): void
- "getAttribute"(arg0: string): string
- "removeAttribute"(arg0: string): void
- "getTagName"(): string
- "hasAttributes"(): boolean
- "getLocalName"(): string
- "getFeature"(arg0: string, arg1: string): any
+ "getAttributeNodeNS"(arg0: StringJS, arg1: StringJS): $Attr
+ "getAttributeNode"(arg0: StringJS): $Attr
+ "setAttributeNS"(arg0: StringJS, arg1: StringJS, arg2: StringJS): void
+ "setIdAttribute"(arg0: StringJS, arg1: boolean): void
+ "getAttributeNS"(arg0: StringJS, arg1: StringJS): StringJS
+ "removeAttributeNS"(arg0: StringJS, arg1: StringJS): void
+ "hasAttribute"(arg0: StringJS): boolean
+ "hasAttributeNS"(arg0: StringJS, arg1: StringJS): boolean
+ "setIdAttributeNS"(arg0: StringJS, arg1: StringJS, arg2: boolean): void
+ "getSchemaTypeInfo"(): $TypeInfo
+ "setAttribute"(arg0: StringJS, arg1: StringJS): void
+ "getAttribute"(arg0: StringJS): StringJS
+ "removeAttribute"(arg0: StringJS): void
+ "removeAttributeNode"(arg0: $Attr$$Type): $Attr
+ "getElementsByTagName"(arg0: StringJS): $NodeList
+ "getElementsByTagNameNS"(arg0: StringJS, arg1: StringJS): $NodeList
+ "getTagName"(): StringJS
+ "setUserData"(arg0: StringJS, arg1: any, arg2: $UserDataHandler$$Type): any
+ "getNodeType"(): short
+ "appendChild"(arg0: $Node$$Type): $Node
  "getLastChild"(): $Node
- "getNodeName"(): string
+ "getNodeName"(): StringJS
  "removeChild"(arg0: $Node$$Type): $Node
- "setNodeValue"(arg0: string): void
+ "setNodeValue"(arg0: StringJS): void
  "getParentNode"(): $Node
  "getFirstChild"(): $Node
  "cloneNode"(arg0: boolean): $Node
  "getNextSibling"(): $Node
  "getPreviousSibling"(): $Node
- "getNodeValue"(): string
+ "getNodeValue"(): StringJS
  "insertBefore"(arg0: $Node$$Type, arg1: $Node$$Type): $Node
- "getBaseURI"(): string
+ "getBaseURI"(): StringJS
+ "getAttributes"(): $NamedNodeMap
+ "getLocalName"(): StringJS
+ "normalize"(): void
+ "hasAttributes"(): boolean
+ "getFeature"(arg0: StringJS, arg1: StringJS): any
  "getOwnerDocument"(): $Document
  "replaceChild"(arg0: $Node$$Type, arg1: $Node$$Type): $Node
  "hasChildNodes"(): boolean
- "getNamespaceURI"(): string
- "setPrefix"(arg0: string): void
+ "getNamespaceURI"(): StringJS
+ "setPrefix"(arg0: StringJS): void
  "compareDocumentPosition"(arg0: $Node$$Type): short
- "getTextContent"(): string
- "setTextContent"(arg0: string): void
+ "getTextContent"(): StringJS
+ "setTextContent"(arg0: StringJS): void
  "isSameNode"(arg0: $Node$$Type): boolean
- "lookupPrefix"(arg0: string): string
- "isDefaultNamespace"(arg0: string): boolean
- "lookupNamespaceURI"(arg0: string): string
+ "lookupPrefix"(arg0: StringJS): StringJS
+ "isDefaultNamespace"(arg0: StringJS): boolean
+ "lookupNamespaceURI"(arg0: StringJS): StringJS
  "isEqualNode"(arg0: $Node$$Type): boolean
- "getUserData"(arg0: string): any
- "getNodeType"(): short
- "appendChild"(arg0: $Node$$Type): $Node
- "setUserData"(arg0: string, arg1: any, arg2: $UserDataHandler$$Type): any
- "isSupported"(arg0: string, arg1: string): boolean
- "getAttributes"(): $NamedNodeMap
- "normalize"(): void
- "getPrefix"(): string
+ "getUserData"(arg0: StringJS): any
+ "isSupported"(arg0: StringJS, arg1: StringJS): boolean
+ "getPrefix"(): StringJS
  "getChildNodes"(): $NodeList
 }
 /**

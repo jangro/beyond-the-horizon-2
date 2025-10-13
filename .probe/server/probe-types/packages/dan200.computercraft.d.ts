@@ -35,7 +35,7 @@ import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$List, $List$$Type} from "java.util.List"
 
 export class $ComputerSide extends $Enum<($ComputerSide)> {
-static readonly "NAMES": $List<(string)>
+static readonly "NAMES": $List<(StringJS)>
 static readonly "TOP": $ComputerSide
 static readonly "LEFT": $ComputerSide
 static readonly "BACK": $ComputerSide
@@ -45,12 +45,12 @@ static readonly "COUNT": integer
 static readonly "BOTTOM": $ComputerSide
 
 
-public "getName"(): string
+public "getName"(): StringJS
 public static "values"(): ($ComputerSide)[]
 public static "valueOf"(arg0: integer): $ComputerSide
-public static "valueOf"(arg0: string): $ComputerSide
-public static "valueOfInsensitive"(arg0: string): $ComputerSide
-get "name"(): string
+public static "valueOf"(arg0: StringJS): $ComputerSide
+public static "valueOfInsensitive"(arg0: StringJS): $ComputerSide
+get "name"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -73,7 +73,7 @@ static readonly "ATTACK": $TurtleVerb
 
 
 public static "values"(): ($TurtleVerb)[]
-public static "valueOf"(arg0: string): $TurtleVerb
+public static "valueOf"(arg0: StringJS): $TurtleVerb
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -96,12 +96,12 @@ static readonly "DEFAULT": $Palette
 
 constructor(arg0: boolean)
 
-public "setColour"(arg0: integer, arg1: double, arg2: double, arg3: double): void
-public "setColour"(arg0: integer, arg1: $Colour$$Type): void
-public "getColour"(arg0: integer): (double)[]
 public "resetColours"(): void
 public static "encodeRGB8"(arg0: (double)[]): integer
 public static "decodeRGB8"(arg0: integer): (double)[]
+public "getColour"(arg0: integer): (double)[]
+public "setColour"(arg0: integer, arg1: $Colour$$Type): void
+public "setColour"(arg0: integer, arg1: double, arg2: double, arg3: double): void
 public "getRenderColours"(arg0: integer): integer
 }
 /**
@@ -139,18 +139,18 @@ static readonly "GREY": $Colour
 static readonly "ORANGE": $Colour
 
 
-public "getG"(): float
 public "getB"(): float
 public static "values"(): ($Colour)[]
-public static "valueOf"(arg0: string): $Colour
-public "getHex"(): integer
+public static "valueOf"(arg0: StringJS): $Colour
+public "getG"(): float
 public "getR"(): float
+public "getHex"(): integer
 public static "fromInt"(arg0: integer): $Colour
 public "getARGB"(): integer
-get "g"(): float
 get "b"(): float
-get "hex"(): integer
+get "g"(): float
 get "r"(): float
+get "hex"(): integer
 get "aRGB"(): integer
 }
 /**
@@ -168,25 +168,25 @@ export type $Colour_ = $Colour$$Type;
 declare module "dan200.computercraft.api.peripheral.IDynamicPeripheral" {
 import {$ILuaContext, $ILuaContext$$Type} from "dan200.computercraft.api.lua.ILuaContext"
 import {$MethodResult, $MethodResult$$Type} from "dan200.computercraft.api.lua.MethodResult"
-import {$IComputerAccess, $IComputerAccess$$Type} from "dan200.computercraft.api.peripheral.IComputerAccess"
 import {$IArguments, $IArguments$$Type} from "dan200.computercraft.api.lua.IArguments"
+import {$IComputerAccess, $IComputerAccess$$Type} from "dan200.computercraft.api.peripheral.IComputerAccess"
 import {$Set, $Set$$Type} from "java.util.Set"
 import {$IPeripheral, $IPeripheral$$Type} from "dan200.computercraft.api.peripheral.IPeripheral"
 
 export interface $IDynamicPeripheral extends $IPeripheral {
 
- "getMethodNames"(): (string)[]
+ "getMethodNames"(): (StringJS)[]
  "callMethod"(arg0: $IComputerAccess$$Type, arg1: $ILuaContext$$Type, arg2: integer, arg3: $IArguments$$Type): $MethodResult
- "equals"(arg0: $IPeripheral$$Type): boolean
- "getType"(): string
  "getTarget"(): any
  "attach"(arg0: $IComputerAccess$$Type): void
  "detach"(arg0: $IComputerAccess$$Type): void
- "getAdditionalTypes"(): $Set<(string)>
-get "methodNames"(): (string)[]
-get "type"(): string
+ "equals"(arg0: $IPeripheral$$Type): boolean
+ "getType"(): StringJS
+ "getAdditionalTypes"(): $Set<(StringJS)>
+get "methodNames"(): (StringJS)[]
 get "target"(): any
-get "additionalTypes"(): $Set<(string)>
+get "type"(): StringJS
+get "additionalTypes"(): $Set<(StringJS)>
 }
 
 export namespace $IDynamicPeripheral {
@@ -195,14 +195,14 @@ const probejs$$marker: never
 export class $IDynamicPeripheral$$Static implements $IDynamicPeripheral {
 
 
- "getMethodNames"(): (string)[]
+ "getMethodNames"(): (StringJS)[]
  "callMethod"(arg0: $IComputerAccess$$Type, arg1: $ILuaContext$$Type, arg2: integer, arg3: $IArguments$$Type): $MethodResult
- "equals"(arg0: $IPeripheral$$Type): boolean
- "getType"(): string
  "getTarget"(): any
  "attach"(arg0: $IComputerAccess$$Type): void
  "detach"(arg0: $IComputerAccess$$Type): void
- "getAdditionalTypes"(): $Set<(string)>
+ "equals"(arg0: $IPeripheral$$Type): boolean
+ "getType"(): StringJS
+ "getAdditionalTypes"(): $Set<(StringJS)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -250,21 +250,21 @@ import {$WorkMonitor, $WorkMonitor$$Type} from "dan200.computercraft.api.periphe
 
 export interface $IComputerAccess {
 
- "mount"(arg0: string, arg1: $Mount$$Type): string
- "mount"(arg0: string, arg1: $Mount$$Type, arg2: string): string
- "unmount"(arg0: string): void
  "getID"(): integer
- "getAvailablePeripheral"(arg0: string): $IPeripheral
+ "mount"(arg0: StringJS, arg1: $Mount$$Type): StringJS
+ "mount"(arg0: StringJS, arg1: $Mount$$Type, arg2: StringJS): StringJS
+ "unmount"(arg0: StringJS): void
+ "queueEvent"(arg0: StringJS, ...arg1: (any)[]): void
+ "mountWritable"(arg0: StringJS, arg1: $WritableMount$$Type): StringJS
+ "mountWritable"(arg0: StringJS, arg1: $WritableMount$$Type, arg2: StringJS): StringJS
+ "getAttachmentName"(): StringJS
+ "getAvailablePeripheral"(arg0: StringJS): $IPeripheral
  "getMainThreadMonitor"(): $WorkMonitor
- "getAttachmentName"(): string
- "queueEvent"(arg0: string, ...arg1: (any)[]): void
- "mountWritable"(arg0: string, arg1: $WritableMount$$Type, arg2: string): string
- "mountWritable"(arg0: string, arg1: $WritableMount$$Type): string
- "getAvailablePeripherals"(): $Map<(string), ($IPeripheral)>
+ "getAvailablePeripherals"(): $Map<(StringJS), ($IPeripheral)>
 get "iD"(): integer
+get "attachmentName"(): StringJS
 get "mainThreadMonitor"(): $WorkMonitor
-get "attachmentName"(): string
-get "availablePeripherals"(): $Map<(string), ($IPeripheral)>
+get "availablePeripherals"(): $Map<(StringJS), ($IPeripheral)>
 }
 
 export namespace $IComputerAccess {
@@ -273,17 +273,17 @@ const probejs$$marker: never
 export class $IComputerAccess$$Static implements $IComputerAccess {
 
 
- "mount"(arg0: string, arg1: $Mount$$Type): string
- "mount"(arg0: string, arg1: $Mount$$Type, arg2: string): string
- "unmount"(arg0: string): void
  "getID"(): integer
- "getAvailablePeripheral"(arg0: string): $IPeripheral
+ "mount"(arg0: StringJS, arg1: $Mount$$Type): StringJS
+ "mount"(arg0: StringJS, arg1: $Mount$$Type, arg2: StringJS): StringJS
+ "unmount"(arg0: StringJS): void
+ "queueEvent"(arg0: StringJS, ...arg1: (any)[]): void
+ "mountWritable"(arg0: StringJS, arg1: $WritableMount$$Type): StringJS
+ "mountWritable"(arg0: StringJS, arg1: $WritableMount$$Type, arg2: StringJS): StringJS
+ "getAttachmentName"(): StringJS
+ "getAvailablePeripheral"(arg0: StringJS): $IPeripheral
  "getMainThreadMonitor"(): $WorkMonitor
- "getAttachmentName"(): string
- "queueEvent"(arg0: string, ...arg1: (any)[]): void
- "mountWritable"(arg0: string, arg1: $WritableMount$$Type, arg2: string): string
- "mountWritable"(arg0: string, arg1: $WritableMount$$Type): string
- "getAvailablePeripherals"(): $Map<(string), ($IPeripheral)>
+ "getAvailablePeripherals"(): $Map<(StringJS), ($IPeripheral)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -307,8 +307,8 @@ export class $NetworkedTerminal extends $Terminal {
 constructor(arg0: integer, arg1: integer, arg2: boolean)
 constructor(arg0: integer, arg1: integer, arg2: boolean, arg3: $Runnable$$Type)
 
-public "readFromNBT"(arg0: $CompoundTag$$Type): void
 public "writeToNBT"(arg0: $CompoundTag$$Type): $CompoundTag
+public "readFromNBT"(arg0: $CompoundTag$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -328,15 +328,15 @@ import {$Set, $Set$$Type} from "java.util.Set"
 
 export interface $IPeripheral {
 
- "equals"(arg0: $IPeripheral$$Type): boolean
- "getType"(): string
  "getTarget"(): any
  "attach"(arg0: $IComputerAccess$$Type): void
  "detach"(arg0: $IComputerAccess$$Type): void
- "getAdditionalTypes"(): $Set<(string)>
-get "type"(): string
+ "equals"(arg0: $IPeripheral$$Type): boolean
+ "getType"(): StringJS
+ "getAdditionalTypes"(): $Set<(StringJS)>
 get "target"(): any
-get "additionalTypes"(): $Set<(string)>
+get "type"(): StringJS
+get "additionalTypes"(): $Set<(StringJS)>
 }
 
 export namespace $IPeripheral {
@@ -345,12 +345,12 @@ const probejs$$marker: never
 export class $IPeripheral$$Static implements $IPeripheral {
 
 
- "equals"(arg0: $IPeripheral$$Type): boolean
- "getType"(): string
  "getTarget"(): any
  "attach"(arg0: $IComputerAccess$$Type): void
  "detach"(arg0: $IComputerAccess$$Type): void
- "getAdditionalTypes"(): $Set<(string)>
+ "equals"(arg0: $IPeripheral$$Type): boolean
+ "getType"(): StringJS
+ "getAdditionalTypes"(): $Set<(StringJS)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -373,10 +373,10 @@ export class $TerminalState {
 static readonly "STREAM_CODEC": $StreamCodec<($FriendlyByteBuf), ($TerminalState)>
 
 
-public "size"(): integer
-public "apply"(arg0: $NetworkedTerminal$$Type): void
 public "create"(): $NetworkedTerminal
 public static "create"(arg0: $NetworkedTerminal$$Type): $TerminalState
+public "size"(): integer
+public "apply"(arg0: $NetworkedTerminal$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -397,8 +397,8 @@ import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ItemPredicate, $ItemPredicate$$Type} from "dev.latvian.mods.kubejs.item.ItemPredicate"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$List, $List$$Type} from "java.util.List"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Set, $Set$$Type} from "java.util.Set"
 import {$BlockContainerJS, $BlockContainerJS$$Type} from "dev.latvian.mods.kubejs.level.BlockContainerJS"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
@@ -406,10 +406,10 @@ import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.
 export interface $BasicContainer extends $Container {
 
  "removeItem"(arg0: integer, arg1: integer): $ItemStack
- "isEmpty"(): boolean
  "getItem"(arg0: integer): $ItemStack
- "setItem"(arg0: integer, arg1: $ItemStack$$Type): void
+ "isEmpty"(): boolean
  "getItems"(): $List<($ItemStack)>
+ "setItem"(arg0: integer, arg1: $ItemStack$$Type): void
  "clearContent"(): void
  "getContainerSize"(): integer
  "removeItemNoUpdate"(arg0: integer): $ItemStack
@@ -420,14 +420,13 @@ export interface $BasicContainer extends $Container {
  "hasAnyOf"(arg0: $Set$$Type<($Item$$Type)>): boolean
  "hasAnyMatching"(arg0: $Predicate$$Type<($ItemStack)>): boolean
  "canTakeItem"(arg0: $Container$$Type, arg1: integer, arg2: $ItemStack$$Type): boolean
- "stillValid"(arg0: $Player$$Type): boolean
  "setChanged"(): void
- "getMaxStackSize"(arg0: $ItemStack$$Type): integer
+ "stillValid"(arg0: $Player$$Type): boolean
  "getMaxStackSize"(): integer
- "canReceiveTransferCooldown"(): boolean
+ "getMaxStackSize"(arg0: $ItemStack$$Type): integer
  "setTransferCooldown"(arg0: long): void
+ "canReceiveTransferCooldown"(): boolean
  "lithium$itemInsertionTestRequiresStackSize1"(): boolean
- "self"(): $Container
  "getBlock"(arg0: $Level$$Type): $BlockContainerJS
  "isMutable"(): boolean
  "getSlots"(): integer
@@ -436,19 +435,20 @@ export interface $BasicContainer extends $Container {
  "getWidth"(): integer
  "getHeight"(): integer
  "setChanged"(): void
+ "self"(): $Container
  "setStackInSlot"(arg0: integer, arg1: $ItemStack$$Type): void
  "getStackInSlot"(arg0: integer): $ItemStack
  "extractItem"(arg0: integer, arg1: integer, arg2: boolean): $ItemStack
  "getSlotLimit"(arg0: integer): integer
  "isItemValid"(arg0: integer, arg1: $ItemStack$$Type): boolean
  "asContainer"(): $Container
- "isEmpty"(): boolean
  "insertItem"(arg0: $ItemStack$$Type, arg1: boolean): $ItemStack
  "clear"(arg0: $ItemPredicate$$Type): void
- "find"(arg0: $ItemPredicate$$Type): integer
  "find"(): integer
+ "find"(arg0: $ItemPredicate$$Type): integer
  "count"(): integer
  "count"(arg0: $ItemPredicate$$Type): integer
+ "isEmpty"(): boolean
  "countNonEmpty"(arg0: $ItemPredicate$$Type): integer
  "countNonEmpty"(): integer
  "getAllItems"(): $List<($ItemStack)>
@@ -467,8 +467,8 @@ get "allItems"(): $List<($ItemStack)>
 
 export namespace $BasicContainer {
 function defaultSetItems(arg0: $List$$Type<($ItemStack$$Type)>, arg1: $List$$Type<($ItemStack$$Type)>): void
-function stillValidBlockEntity(arg0: $BlockEntity$$Type, arg1: $Player$$Type, arg2: float): boolean
 function stillValidBlockEntity(arg0: $BlockEntity$$Type, arg1: $Player$$Type): boolean
+function stillValidBlockEntity(arg0: $BlockEntity$$Type, arg1: $Player$$Type, arg2: float): boolean
 function tryClear(arg0: any): void
 const probejs$$marker: never
 }
@@ -476,10 +476,10 @@ export class $BasicContainer$$Static implements $BasicContainer {
 
 
  "removeItem"(arg0: integer, arg1: integer): $ItemStack
- "isEmpty"(): boolean
  "getItem"(arg0: integer): $ItemStack
- "setItem"(arg0: integer, arg1: $ItemStack$$Type): void
+ "isEmpty"(): boolean
  "getItems"(): $List<($ItemStack)>
+ "setItem"(arg0: integer, arg1: $ItemStack$$Type): void
  "clearContent"(): void
  "getContainerSize"(): integer
  "removeItemNoUpdate"(arg0: integer): $ItemStack
@@ -491,17 +491,16 @@ static "defaultSetItems"(arg0: $List$$Type<($ItemStack$$Type)>, arg1: $List$$Typ
  "hasAnyOf"(arg0: $Set$$Type<($Item$$Type)>): boolean
  "hasAnyMatching"(arg0: $Predicate$$Type<($ItemStack)>): boolean
  "canTakeItem"(arg0: $Container$$Type, arg1: integer, arg2: $ItemStack$$Type): boolean
- "stillValid"(arg0: $Player$$Type): boolean
  "setChanged"(): void
-static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type, arg2: float): boolean
+ "stillValid"(arg0: $Player$$Type): boolean
 static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type): boolean
- "getMaxStackSize"(arg0: $ItemStack$$Type): integer
+static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type, arg2: float): boolean
  "getMaxStackSize"(): integer
+ "getMaxStackSize"(arg0: $ItemStack$$Type): integer
 static "tryClear"(arg0: any): void
- "canReceiveTransferCooldown"(): boolean
  "setTransferCooldown"(arg0: long): void
+ "canReceiveTransferCooldown"(): boolean
  "lithium$itemInsertionTestRequiresStackSize1"(): boolean
- "self"(): $Container
  "getBlock"(arg0: $Level$$Type): $BlockContainerJS
  "isMutable"(): boolean
  "getSlots"(): integer
@@ -510,19 +509,20 @@ static "tryClear"(arg0: any): void
  "getWidth"(): integer
  "getHeight"(): integer
  "setChanged"(): void
+ "self"(): $Container
  "setStackInSlot"(arg0: integer, arg1: $ItemStack$$Type): void
  "getStackInSlot"(arg0: integer): $ItemStack
  "extractItem"(arg0: integer, arg1: integer, arg2: boolean): $ItemStack
  "getSlotLimit"(arg0: integer): integer
  "isItemValid"(arg0: integer, arg1: $ItemStack$$Type): boolean
  "asContainer"(): $Container
- "isEmpty"(): boolean
  "insertItem"(arg0: $ItemStack$$Type, arg1: boolean): $ItemStack
  "clear"(arg0: $ItemPredicate$$Type): void
- "find"(arg0: $ItemPredicate$$Type): integer
  "find"(): integer
+ "find"(arg0: $ItemPredicate$$Type): integer
  "count"(): integer
  "count"(arg0: $ItemPredicate$$Type): integer
+ "isEmpty"(): boolean
  "countNonEmpty"(arg0: $ItemPredicate$$Type): integer
  "countNonEmpty"(): integer
  "getAllItems"(): $List<($ItemStack)>
@@ -551,8 +551,8 @@ import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelR
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$LecternBlock, $LecternBlock$$Type} from "net.minecraft.world.level.block.LecternBlock"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$LecternBlock, $LecternBlock$$Type} from "net.minecraft.world.level.block.LecternBlock"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
@@ -580,7 +580,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "SHAPE_POST": $VoxelShape
 static readonly "SHAPE_TOP_PLATE": $VoxelShape
 static readonly "UPDATE_ALL": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "SHAPE_COLLISION": $VoxelShape
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -606,16 +606,16 @@ public "useWithoutItem"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $Bloc
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "onRemove"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: boolean): void
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
+public static "tryPlaceItem"(arg0: $Player$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $ItemStack$$Type): $InteractionResult
 public "getAnalogOutputSignal"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type): integer
-public "getDescriptionId"(): string
+public "getDescriptionId"(): StringJS
 /**
  * 
  * @deprecated
  */
 public "getCloneItemStack"(arg0: $LevelReader$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): $ItemStack
-public static "tryPlaceItem"(arg0: $Player$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $ItemStack$$Type): $InteractionResult
 public "asHolder"(): $Holder<(any)>
-get "descriptionId"(): string
+get "descriptionId"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -630,22 +630,25 @@ declare global {
 export type $CustomLecternBlock_ = $CustomLecternBlock$$Type;
 }}
 declare module "dan200.computercraft.shared.peripheral.modem.wired.CableBlockItem" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$CableBlock, $CableBlock$$Type} from "dan200.computercraft.shared.peripheral.modem.wired.CableBlock"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $CableBlockItem extends $BlockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -658,13 +661,14 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $CableBlock$$Type, arg1: $Item$Properties$$Type)
 
-public "getDescriptionId"(): string
+public "getDescriptionId"(): StringJS
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
 public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
-get "descriptionId"(): string
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
+get "descriptionId"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -700,6 +704,7 @@ declare global {
 export type $ServerMonitor_ = $ServerMonitor$$Type;
 }}
 declare module "dan200.computercraft.shared.turtle.items.TurtleItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ITurtleUpgrade, $ITurtleUpgrade$$Type} from "dan200.computercraft.api.turtle.ITurtleUpgrade"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
@@ -707,21 +712,23 @@ import {$TurtleBlock, $TurtleBlock$$Type} from "dan200.computercraft.shared.turt
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockItem, $BlockItem$$Type} from "net.minecraft.world.item.BlockItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$CauldronInteraction, $CauldronInteraction$$Type} from "net.minecraft.core.cauldron.CauldronInteraction"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$UpgradeData, $UpgradeData$$Type} from "dan200.computercraft.api.upgrades.UpgradeData"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$TurtleOverlay, $TurtleOverlay$$Type} from "dan200.computercraft.shared.turtle.TurtleOverlay"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 
 export class $TurtleItem extends $BlockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -737,14 +744,15 @@ constructor(arg0: $TurtleBlock$$Type, arg1: $Item$Properties$$Type)
 
 public "getName"(arg0: $ItemStack$$Type): $Component
 public static "getOverlay"(arg0: $ItemStack$$Type): $TurtleOverlay
-public "getCreatorModId"(arg0: $ItemStack$$Type): string
-public static "getUpgradeWithData"(arg0: $ItemStack$$Type, arg1: $TurtleSide$$Type): $UpgradeData<($ITurtleUpgrade)>
 public static "getUpgrade"(arg0: $ItemStack$$Type, arg1: $TurtleSide$$Type): $ITurtleUpgrade
+public "getCreatorModId"(arg0: $ItemStack$$Type): StringJS
+public static "getUpgradeWithData"(arg0: $ItemStack$$Type, arg1: $TurtleSide$$Type): $UpgradeData<($ITurtleUpgrade)>
 public static "invokeUpdateBlockEntityComponents"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $ItemStack$$Type): void
 public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -770,39 +778,39 @@ import {$Map$Entry, $Map$Entry$$Type} from "java.util.Map$Entry"
 
 export interface $LuaTable<K, V> extends $Map<(K), (V)> {
 
+ "getTable"(arg0: integer): $Map<(any), (any)>
+ "getTable"(arg0: StringJS): $Map<(any), (any)>
+ "getString"(arg0: integer): StringJS
+ "getString"(arg0: StringJS): StringJS
  "remove"(arg0: any): V
  "put"(arg0: K, arg1: V): V
  "length"(): integer
  "getBoolean"(arg0: integer): boolean
- "getBoolean"(arg0: string): boolean
- "getInt"(arg0: string): integer
+ "getBoolean"(arg0: StringJS): boolean
+ "getInt"(arg0: StringJS): integer
  "getInt"(arg0: integer): integer
  "getLong"(arg0: integer): long
- "getLong"(arg0: string): long
+ "getLong"(arg0: StringJS): long
  "getDouble"(arg0: integer): double
- "getDouble"(arg0: string): double
+ "getDouble"(arg0: StringJS): double
  "clear"(): void
  "putAll"(arg0: $Map$$Type<(K), (V)>): void
- "getTable"(arg0: string): $Map<(any), (any)>
- "getTable"(arg0: integer): $Map<(any), (any)>
- "getString"(arg0: integer): string
- "getString"(arg0: string): string
- "optInt"(arg0: string): $Optional<(integer)>
- "optInt"(arg0: integer): $Optional<(integer)>
- "optBoolean"(arg0: string): $Optional<(boolean)>
+ "optString"(arg0: integer): $Optional<(StringJS)>
+ "optString"(arg0: StringJS): $Optional<(StringJS)>
  "optBoolean"(arg0: integer): $Optional<(boolean)>
- "optString"(arg0: integer): $Optional<(string)>
- "optString"(arg0: string): $Optional<(string)>
+ "optBoolean"(arg0: StringJS): $Optional<(boolean)>
+ "optTable"(arg0: StringJS): $Optional<($Map<(any), (any)>)>
  "optTable"(arg0: integer): $Optional<($Map<(any), (any)>)>
- "optTable"(arg0: string): $Optional<($Map<(any), (any)>)>
- "optLong"(arg0: string): $Optional<(long)>
- "optLong"(arg0: integer): $Optional<(long)>
- "optDouble"(arg0: string): $Optional<(double)>
+ "optInt"(arg0: StringJS): $Optional<(integer)>
+ "optInt"(arg0: integer): $Optional<(integer)>
+ "optDouble"(arg0: StringJS): $Optional<(double)>
  "optDouble"(arg0: integer): $Optional<(double)>
- "optFiniteDouble"(arg0: string): $Optional<(double)>
+ "optLong"(arg0: StringJS): $Optional<(long)>
+ "optLong"(arg0: integer): $Optional<(long)>
+ "optFiniteDouble"(arg0: StringJS): $Optional<(double)>
  "optFiniteDouble"(arg0: integer): $Optional<(double)>
- "getFiniteDouble"(arg0: string): double
  "getFiniteDouble"(arg0: integer): double
+ "getFiniteDouble"(arg0: StringJS): double
  "remove"(arg0: any, arg1: any): boolean
  "size"(): integer
  "get"(arg0: any): V
@@ -848,39 +856,39 @@ const probejs$$marker: never
 export class $LuaTable$$Static<K, V> implements $LuaTable {
 
 
+ "getTable"(arg0: integer): $Map<(any), (any)>
+ "getTable"(arg0: StringJS): $Map<(any), (any)>
+ "getString"(arg0: integer): StringJS
+ "getString"(arg0: StringJS): StringJS
  "remove"(arg0: any): V
  "put"(arg0: K, arg1: V): V
  "length"(): integer
  "getBoolean"(arg0: integer): boolean
- "getBoolean"(arg0: string): boolean
- "getInt"(arg0: string): integer
+ "getBoolean"(arg0: StringJS): boolean
+ "getInt"(arg0: StringJS): integer
  "getInt"(arg0: integer): integer
  "getLong"(arg0: integer): long
- "getLong"(arg0: string): long
+ "getLong"(arg0: StringJS): long
  "getDouble"(arg0: integer): double
- "getDouble"(arg0: string): double
+ "getDouble"(arg0: StringJS): double
  "clear"(): void
  "putAll"(arg0: $Map$$Type<(K), (V)>): void
- "getTable"(arg0: string): $Map<(any), (any)>
- "getTable"(arg0: integer): $Map<(any), (any)>
- "getString"(arg0: integer): string
- "getString"(arg0: string): string
- "optInt"(arg0: string): $Optional<(integer)>
- "optInt"(arg0: integer): $Optional<(integer)>
- "optBoolean"(arg0: string): $Optional<(boolean)>
+ "optString"(arg0: integer): $Optional<(StringJS)>
+ "optString"(arg0: StringJS): $Optional<(StringJS)>
  "optBoolean"(arg0: integer): $Optional<(boolean)>
- "optString"(arg0: integer): $Optional<(string)>
- "optString"(arg0: string): $Optional<(string)>
+ "optBoolean"(arg0: StringJS): $Optional<(boolean)>
+ "optTable"(arg0: StringJS): $Optional<($Map<(any), (any)>)>
  "optTable"(arg0: integer): $Optional<($Map<(any), (any)>)>
- "optTable"(arg0: string): $Optional<($Map<(any), (any)>)>
- "optLong"(arg0: string): $Optional<(long)>
- "optLong"(arg0: integer): $Optional<(long)>
- "optDouble"(arg0: string): $Optional<(double)>
+ "optInt"(arg0: StringJS): $Optional<(integer)>
+ "optInt"(arg0: integer): $Optional<(integer)>
+ "optDouble"(arg0: StringJS): $Optional<(double)>
  "optDouble"(arg0: integer): $Optional<(double)>
- "optFiniteDouble"(arg0: string): $Optional<(double)>
+ "optLong"(arg0: StringJS): $Optional<(long)>
+ "optLong"(arg0: integer): $Optional<(long)>
+ "optFiniteDouble"(arg0: StringJS): $Optional<(double)>
  "optFiniteDouble"(arg0: integer): $Optional<(double)>
- "getFiniteDouble"(arg0: string): double
  "getFiniteDouble"(arg0: integer): double
+ "getFiniteDouble"(arg0: StringJS): double
  "remove"(arg0: any, arg1: any): boolean
  "size"(): integer
  "get"(arg0: any): V
@@ -941,32 +949,29 @@ import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraf
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$AbstractContainerMenu, $AbstractContainerMenu$$Type} from "net.minecraft.world.inventory.AbstractContainerMenu"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$Packet, $Packet$$Type} from "net.minecraft.network.protocol.Packet"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$IPeripheral, $IPeripheral$$Type} from "dan200.computercraft.api.peripheral.IPeripheral"
 import {$ComputerFamily, $ComputerFamily$$Type} from "dan200.computercraft.shared.computer.core.ComputerFamily"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $ComputerBlockEntity extends $AbstractComputerBlockEntity {
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 constructor(arg0: $BlockEntityType$$Type<($ComputerBlockEntity$$Type)>, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $ComputerFamily$$Type)
 
+public "createMenu"(arg0: integer, arg1: $Inventory$$Type, arg2: $Player$$Type): $AbstractContainerMenu
+public "saveAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "getDirection"(): $Direction
+public "peripheral"(): $IPeripheral
+public "getUpdateTag"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
 /**
  * 
  * @deprecated
  */
 public "removeComponentsFromTag"(arg0: $CompoundTag$$Type): void
-public "createMenu"(arg0: integer, arg1: $Inventory$$Type, arg2: $Player$$Type): $AbstractContainerMenu
-public "saveAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "getUpdateTag"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
-public "getDirection"(): $Direction
-public "peripheral"(): $IPeripheral
-public "getUpdatePacket"(): $Packet<(any)>
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "direction"(): $Direction
-get "updatePacket"(): $Packet<(any)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -989,8 +994,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$HorizontalContainerBlock, $HorizontalContainerBlock$$Type} from "dan200.computercraft.shared.common.HorizontalContainerBlock"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
@@ -1012,7 +1017,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "TOP": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -1108,7 +1113,7 @@ constructor(model: $ResourceLocation$$Type, showElfOverlay: boolean)
 
 public "model"(): $ResourceLocation
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public static "showElfOverlay"(arg0: $TurtleOverlay$$Type, arg1: boolean): boolean
 public "showElfOverlay"(): boolean
@@ -1138,7 +1143,7 @@ import {$Metric, $Metric$$Type} from "dan200.computercraft.core.metrics.Metric"
 
 export class $Metric$Counter extends $Metric {
 
-constructor(arg0: string)
+constructor(arg0: StringJS)
 
 }
 /**
@@ -1154,21 +1159,23 @@ declare global {
 export type $Metric$Counter_ = $Metric$Counter$$Type;
 }}
 declare module "dan200.computercraft.shared.media.items.PrintoutItem" {
-import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
-import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
+import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export class $PrintoutItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1177,6 +1184,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type)
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1225,7 +1233,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1259,24 +1267,24 @@ import {$Record, $Record$$Type} from "java.lang.Record"
 
 export class $UpgradeData<T extends $UpgradeBase> extends $Record {
 
-constructor(holder: $Holder$Reference$$Type<(T)>, data: $DataComponentPatch$$Type)
+constructor(holder: $Holder$Reference$$Type<(any)>, data: $DataComponentPatch$$Type)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public static "of"<T extends $UpgradeBase>(arg0: $Holder$Reference$$Type<(T)>, arg1: $DataComponentPatch$$Type): $UpgradeData<(T)>
 public "data"(): $DataComponentPatch
 public "holder"(): $Holder$Reference<(T)>
 public "upgrade"(): T
-public "getUpgradeItem"(): $ItemStack
 public static "ofDefault"<T extends $UpgradeBase>(arg0: $Holder$Reference$$Type<(T)>): $UpgradeData<(T)>
+public "getUpgradeItem"(): $ItemStack
 get "upgradeItem"(): $ItemStack
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $UpgradeData$$Type<T> = ({"holder"?: $Holder$Reference$$Type<(any)>, "data"?: $DataComponentPatch$$Type}) | ([holder?: $Holder$Reference$$Type<(any)>, data?: $DataComponentPatch$$Type]);
+export type $UpgradeData$$Type<T> = ({"data"?: $DataComponentPatch$$Type, "holder"?: $Holder$Reference$$Type<(any)>}) | ([data?: $DataComponentPatch$$Type, holder?: $Holder$Reference$$Type<(any)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1295,10 +1303,10 @@ constructor()
 
 public "get"(arg0: $UUID$$Type): $ServerComputer
 public "get"(arg0: integer, arg1: $UUID$$Type): $ServerComputer
-public "getComputers"(): $Collection<($ServerComputer)>
 public "getSessionID"(): integer
-get "computers"(): $Collection<($ServerComputer)>
+public "getComputers"(): $Collection<($ServerComputer)>
 get "sessionID"(): integer
+get "computers"(): $Collection<($ServerComputer)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1335,25 +1343,30 @@ static readonly "METRICS": $ComputerComponent<($MetricsObserver)>
 
 constructor(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type, arg2: $ServerComputer$Properties$$Type)
 
+public "keepAlive"(): void
+public "getFamily"(): $ComputerFamily
+public "getTimeOfDay"(): double
+public "getLevel"(): $ServerLevel
+public "getID"(): integer
+public "getDay"(): integer
 public "getPosition"(): $BlockPos
-public "setLabel"(arg0: string): void
-public "getLabel"(): string
+public "getLabel"(): StringJS
+public "setLabel"(arg0: StringJS): void
 public "shutdown"(): void
 public "register"(): $UUID
 public static "properties"(arg0: integer, arg1: $ComputerFamily$$Type): $ServerComputer$Properties
 public "isOn"(): boolean
 public "getState"(): $ComputerState
 public "close"(): void
-public "getFamily"(): $ComputerFamily
-public "getID"(): integer
-public "getDay"(): integer
-public "keepAlive"(): void
-public "getLevel"(): $ServerLevel
-public "getTimeOfDay"(): double
-public "getBundledRedstoneOutput"(arg0: $ComputerSide$$Type): integer
+public "reboot"(): void
 public "setPosition"(arg0: $ServerLevel$$Type, arg1: $BlockPos$$Type): void
 public "turnOn"(): void
-public "reboot"(): void
+public "queueEvent"(arg0: StringJS, arg1: (any)[]): void
+public "queueEvent"(arg0: StringJS): void
+public "checkUsable"(arg0: $Player$$Type): boolean
+public "setPeripheral"(arg0: $ComputerSide$$Type, arg1: $IPeripheral$$Type): void
+public "getMetrics"(): $MetricsObserver
+public "getPeripheral"(arg0: $ComputerSide$$Type): $IPeripheral
 public "getMainThreadMonitor"(): $WorkMonitor
 public "pollRedstoneChanges"(): integer
 public "getTerminalState"(): $TerminalState
@@ -1361,26 +1374,21 @@ public "getRedstoneOutput"(arg0: $ComputerSide$$Type): integer
 public "setRedstoneInput"(arg0: $ComputerSide$$Type, arg1: integer, arg2: integer): void
 public "createRootMount"(): $WritableMount
 public "getInstanceUUID"(): $UUID
-public "queueEvent"(arg0: string): void
-public "queueEvent"(arg0: string, arg1: (any)[]): void
-public "getPeripheral"(arg0: $ComputerSide$$Type): $IPeripheral
-public "checkUsable"(arg0: $Player$$Type): boolean
-public "setPeripheral"(arg0: $ComputerSide$$Type, arg1: $IPeripheral$$Type): void
-public "getMetrics"(): $MetricsObserver
-get "position"(): $BlockPos
-set "label"(value: string)
-get "label"(): string
-get "on"(): boolean
-get "state"(): $ComputerState
+public "getBundledRedstoneOutput"(arg0: $ComputerSide$$Type): integer
 get "family"(): $ComputerFamily
+get "timeOfDay"(): double
+get "level"(): $ServerLevel
 get "iD"(): integer
 get "day"(): integer
-get "level"(): $ServerLevel
-get "timeOfDay"(): double
+get "position"(): $BlockPos
+get "label"(): StringJS
+set "label"(value: StringJS)
+get "on"(): boolean
+get "state"(): $ComputerState
+get "metrics"(): $MetricsObserver
 get "mainThreadMonitor"(): $WorkMonitor
 get "terminalState"(): $TerminalState
 get "instanceUUID"(): $UUID
-get "metrics"(): $MetricsObserver
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1423,7 +1431,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1480,15 +1488,15 @@ import {$Map, $Map$$Type} from "java.util.Map"
 export class $Metric {
 
 
-public static "formatBytes"(arg0: long): string
-public "name"(): string
-public "toString"(): string
-public "format"(arg0: long): string
+public "unit"(): StringJS
+public static "metrics"(): $Map<(StringJS), ($Metric)>
+public "name"(): StringJS
+public "toString"(): StringJS
+public "format"(arg0: long): StringJS
 public "id"(): integer
-public "unit"(): string
-public static "metrics"(): $Map<(string), ($Metric)>
-public static "formatDefault"(arg0: long): string
-public static "formatTime"(arg0: long): string
+public static "formatBytes"(arg0: long): StringJS
+public static "formatDefault"(arg0: long): StringJS
+public static "formatTime"(arg0: long): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1508,15 +1516,15 @@ import {$ILuaCallback, $ILuaCallback$$Type} from "dan200.computercraft.api.lua.I
 export class $MethodResult {
 
 
+public "getResult"(): (any)[]
+public static "of"(arg0: any): $MethodResult
 public static "of"(): $MethodResult
 public static "of"(...arg0: (any)[]): $MethodResult
-public static "of"(arg0: any): $MethodResult
 public static "yield"(arg0: (any)[], arg1: $ILuaCallback$$Type): $MethodResult
-public "getResult"(): (any)[]
 public "getCallback"(): $ILuaCallback
-public static "pullEvent"(arg0: string, arg1: $ILuaCallback$$Type): $MethodResult
 public "getErrorAdjust"(): integer
-public static "pullEventRaw"(arg0: string, arg1: $ILuaCallback$$Type): $MethodResult
+public static "pullEvent"(arg0: StringJS, arg1: $ILuaCallback$$Type): $MethodResult
+public static "pullEventRaw"(arg0: StringJS, arg1: $ILuaCallback$$Type): $MethodResult
 public "adjustError"(arg0: integer): $MethodResult
 get "result"(): (any)[]
 get "callback"(): $ILuaCallback
@@ -1536,8 +1544,8 @@ export type $MethodResult_ = $MethodResult$$Type;
 }}
 declare module "dan200.computercraft.shared.computer.core.ComputerState" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -1549,20 +1557,20 @@ static readonly "OFF": $ComputerState
 static readonly "ON": $ComputerState
 
 
-public "toString"(): string
+public "toString"(): StringJS
 public static "values"(): ($ComputerState)[]
-public static "valueOf"(arg0: string): $ComputerState
-public "getTexture"(): string
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $ComputerState
+public "getTexture"(): StringJS
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "texture"(): string
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "texture"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1577,18 +1585,22 @@ declare global {
 export type $ComputerState_ = $ComputerState$$Type;
 }}
 declare module "dan200.computercraft.shared.media.items.DiskItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $DiskItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1597,6 +1609,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type)
 
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1622,8 +1635,8 @@ import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelR
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$IBundledRedstoneBlock, $IBundledRedstoneBlock$$Type} from "dan200.computercraft.shared.common.IBundledRedstoneBlock"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$IBundledRedstoneBlock, $IBundledRedstoneBlock$$Type} from "dan200.computercraft.shared.common.IBundledRedstoneBlock"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
@@ -1651,7 +1664,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1660,12 +1673,12 @@ static readonly "FACING": $DirectionProperty
  "hasCollision": boolean
 
 
-public "getBundledRedstoneOutput"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $Direction$$Type): integer
 public "playerDestroy"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $BlockEntity$$Type, arg5: $ItemStack$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 public "getTicker"<U extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(U)>): $BlockEntityTicker<(U)>
 public "playerWillDestroy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $Player$$Type): $BlockState
 public "getCloneItemStack"(arg0: $LevelReader$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): $ItemStack
+public "getBundledRedstoneOutput"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $Direction$$Type): integer
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "asHolder"(): $Holder<(any)>
 }
@@ -1715,8 +1728,8 @@ import {$DataComponentPatch, $DataComponentPatch$$Type} from "net.minecraft.core
 import {$ITurtleUpgrade, $ITurtleUpgrade$$Type} from "dan200.computercraft.api.turtle.ITurtleUpgrade"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$ModelLocation, $ModelLocation$$Type} from "dan200.computercraft.api.client.ModelLocation"
-import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$ITurtleAccess, $ITurtleAccess$$Type} from "dan200.computercraft.api.turtle.ITurtleAccess"
+import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$Stream, $Stream$$Type} from "java.util.stream.Stream"
 import {$TransformedModel, $TransformedModel$$Type} from "dan200.computercraft.api.client.TransformedModel"
 
@@ -1730,19 +1743,19 @@ get "dependencies"(): $Stream<($ResourceLocation)>
 }
 
 export namespace $TurtleUpgradeModeller {
-function sided<T extends $ITurtleUpgrade>(arg0: $ResourceLocation$$Type, arg1: $ResourceLocation$$Type): $TurtleUpgradeModeller<(T)>
 function sided<T extends $ITurtleUpgrade>(arg0: $ModelLocation$$Type, arg1: $ModelLocation$$Type): $TurtleUpgradeModeller<(T)>
+function sided<T extends $ITurtleUpgrade>(arg0: $ResourceLocation$$Type, arg1: $ResourceLocation$$Type): $TurtleUpgradeModeller<(T)>
 function flatItem<T extends $ITurtleUpgrade>(): $TurtleUpgradeModeller<(T)>
 const probejs$$marker: never
 }
 export class $TurtleUpgradeModeller$$Static<T extends $ITurtleUpgrade> implements $TurtleUpgradeModeller {
 
 
- "getModel"(arg0: T, arg1: $ITurtleAccess$$Type, arg2: $TurtleSide$$Type, arg3: $DataComponentPatch$$Type): $TransformedModel
-static "sided"<T extends $ITurtleUpgrade>(arg0: $ResourceLocation$$Type, arg1: $ResourceLocation$$Type): $TurtleUpgradeModeller<(T)>
 static "sided"<T extends $ITurtleUpgrade>(arg0: $ModelLocation$$Type, arg1: $ModelLocation$$Type): $TurtleUpgradeModeller<(T)>
- "getDependencies"(): $Stream<($ResourceLocation)>
+static "sided"<T extends $ITurtleUpgrade>(arg0: $ResourceLocation$$Type, arg1: $ResourceLocation$$Type): $TurtleUpgradeModeller<(T)>
+ "getModel"(arg0: T, arg1: $ITurtleAccess$$Type, arg2: $TurtleSide$$Type, arg3: $DataComponentPatch$$Type): $TransformedModel
 static "flatItem"<T extends $ITurtleUpgrade>(): $TurtleUpgradeModeller<(T)>
+ "getDependencies"(): $Stream<($ResourceLocation)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1768,13 +1781,13 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
-import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $WiredModemFullBlock extends $Block implements $EntityBlock {
@@ -1792,7 +1805,7 @@ static readonly "PERIPHERAL_ON": $BooleanProperty
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MODEM_ON": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -1833,7 +1846,7 @@ static readonly "STREAM_CODEC": $StreamCodec<($ByteBuf), ($TerminalSize)>
 constructor(width: integer, height: integer)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "width"(): integer
 public "height"(): integer
@@ -1842,7 +1855,7 @@ public "height"(): integer
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $TerminalSize$$Type = ({"height"?: integer, "width"?: integer}) | ([height?: integer, width?: integer]);
+export type $TerminalSize$$Type = ({"width"?: integer, "height"?: integer}) | ([width?: integer, height?: integer]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1854,25 +1867,25 @@ declare module "dan200.computercraft.api.filesystem.WritableMount" {
 import {$SeekableByteChannel, $SeekableByteChannel$$Type} from "java.nio.channels.SeekableByteChannel"
 import {$Mount, $Mount$$Type} from "dan200.computercraft.api.filesystem.Mount"
 import {$List, $List$$Type} from "java.util.List"
-import {$Set, $Set$$Type} from "java.util.Set"
 import {$OpenOption, $OpenOption$$Type} from "java.nio.file.OpenOption"
+import {$Set, $Set$$Type} from "java.util.Set"
 import {$BasicFileAttributes, $BasicFileAttributes$$Type} from "java.nio.file.attribute.BasicFileAttributes"
 
 export interface $WritableMount extends $Mount {
 
+ "isReadOnly"(arg0: StringJS): boolean
  "getCapacity"(): long
- "delete"(arg0: string): void
- "isReadOnly"(arg0: string): boolean
- "rename"(arg0: string, arg1: string): void
- "makeDirectory"(arg0: string): void
- "openFile"(arg0: string, arg1: $Set$$Type<($OpenOption$$Type)>): $SeekableByteChannel
+ "makeDirectory"(arg0: StringJS): void
+ "rename"(arg0: StringJS, arg1: StringJS): void
+ "delete"(arg0: StringJS): void
+ "openFile"(arg0: StringJS, arg1: $Set$$Type<($OpenOption$$Type)>): $SeekableByteChannel
  "getRemainingSpace"(): long
- "list"(arg0: string, arg1: $List$$Type<(string)>): void
- "getSize"(arg0: string): long
- "getAttributes"(arg0: string): $BasicFileAttributes
- "exists"(arg0: string): boolean
- "isDirectory"(arg0: string): boolean
- "openForRead"(arg0: string): $SeekableByteChannel
+ "getAttributes"(arg0: StringJS): $BasicFileAttributes
+ "exists"(arg0: StringJS): boolean
+ "getSize"(arg0: StringJS): long
+ "isDirectory"(arg0: StringJS): boolean
+ "list"(arg0: StringJS, arg1: $List$$Type<(StringJS)>): void
+ "openForRead"(arg0: StringJS): $SeekableByteChannel
 get "capacity"(): long
 get "remainingSpace"(): long
 }
@@ -1883,19 +1896,19 @@ const probejs$$marker: never
 export class $WritableMount$$Static implements $WritableMount {
 
 
+ "isReadOnly"(arg0: StringJS): boolean
  "getCapacity"(): long
- "delete"(arg0: string): void
- "isReadOnly"(arg0: string): boolean
- "rename"(arg0: string, arg1: string): void
- "makeDirectory"(arg0: string): void
- "openFile"(arg0: string, arg1: $Set$$Type<($OpenOption$$Type)>): $SeekableByteChannel
+ "makeDirectory"(arg0: StringJS): void
+ "rename"(arg0: StringJS, arg1: StringJS): void
+ "delete"(arg0: StringJS): void
+ "openFile"(arg0: StringJS, arg1: $Set$$Type<($OpenOption$$Type)>): $SeekableByteChannel
  "getRemainingSpace"(): long
- "list"(arg0: string, arg1: $List$$Type<(string)>): void
- "getSize"(arg0: string): long
- "getAttributes"(arg0: string): $BasicFileAttributes
- "exists"(arg0: string): boolean
- "isDirectory"(arg0: string): boolean
- "openForRead"(arg0: string): $SeekableByteChannel
+ "getAttributes"(arg0: StringJS): $BasicFileAttributes
+ "exists"(arg0: StringJS): boolean
+ "getSize"(arg0: StringJS): long
+ "isDirectory"(arg0: StringJS): boolean
+ "list"(arg0: StringJS, arg1: $List$$Type<(StringJS)>): void
+ "openForRead"(arg0: StringJS): $SeekableByteChannel
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1916,12 +1929,12 @@ import {$BasicFileAttributes, $BasicFileAttributes$$Type} from "java.nio.file.at
 
 export interface $Mount {
 
- "list"(arg0: string, arg1: $List$$Type<(string)>): void
- "getSize"(arg0: string): long
- "getAttributes"(arg0: string): $BasicFileAttributes
- "exists"(arg0: string): boolean
- "isDirectory"(arg0: string): boolean
- "openForRead"(arg0: string): $SeekableByteChannel
+ "getAttributes"(arg0: StringJS): $BasicFileAttributes
+ "exists"(arg0: StringJS): boolean
+ "getSize"(arg0: StringJS): long
+ "isDirectory"(arg0: StringJS): boolean
+ "list"(arg0: StringJS, arg1: $List$$Type<(StringJS)>): void
+ "openForRead"(arg0: StringJS): $SeekableByteChannel
 }
 
 export namespace $Mount {
@@ -1930,12 +1943,12 @@ const probejs$$marker: never
 export class $Mount$$Static implements $Mount {
 
 
- "list"(arg0: string, arg1: $List$$Type<(string)>): void
- "getSize"(arg0: string): long
- "getAttributes"(arg0: string): $BasicFileAttributes
- "exists"(arg0: string): boolean
- "isDirectory"(arg0: string): boolean
- "openForRead"(arg0: string): $SeekableByteChannel
+ "getAttributes"(arg0: StringJS): $BasicFileAttributes
+ "exists"(arg0: StringJS): boolean
+ "getSize"(arg0: StringJS): long
+ "isDirectory"(arg0: StringJS): boolean
+ "list"(arg0: StringJS, arg1: $List$$Type<(StringJS)>): void
+ "openForRead"(arg0: StringJS): $SeekableByteChannel
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1953,9 +1966,9 @@ declare module "dan200.computercraft.core.computer.ComputerEvents$Receiver" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $ComputerEvents$Receiver {
 
- "queueEvent"(arg0: string, arg1: (any)[]): void
+ "queueEvent"(arg0: StringJS, arg1: (any)[]): void
 
-(arg0: string, arg1: (any)[]): void
+(arg0: StringJS, arg1: (any)[]): void
 }
 
 export namespace $ComputerEvents$Receiver {
@@ -1964,13 +1977,13 @@ const probejs$$marker: never
 export class $ComputerEvents$Receiver$$Static implements $ComputerEvents$Receiver {
 
 
- "queueEvent"(arg0: string, arg1: (any)[]): void
+ "queueEvent"(arg0: StringJS, arg1: (any)[]): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ComputerEvents$Receiver$$Type = ((arg0: string, arg1: (any)[]) => void);
+export type $ComputerEvents$Receiver$$Type = ((arg0: StringJS, arg1: (any)[]) => void);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1987,8 +2000,8 @@ import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$TurtleVerb, $TurtleVerb$$Type} from "dan200.computercraft.api.turtle.TurtleVerb"
 import {$TurtleCommandResult, $TurtleCommandResult$$Type} from "dan200.computercraft.api.turtle.TurtleCommandResult"
 import {$UpgradeType, $UpgradeType$$Type} from "dan200.computercraft.api.upgrades.UpgradeType"
-import {$DataComponentPatch, $DataComponentPatch$$Type} from "net.minecraft.core.component.DataComponentPatch"
 import {$AbstractTurtleUpgrade, $AbstractTurtleUpgrade$$Type} from "dan200.computercraft.api.turtle.AbstractTurtleUpgrade"
+import {$DataComponentPatch, $DataComponentPatch$$Type} from "net.minecraft.core.component.DataComponentPatch"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Registry, $Registry$$Type} from "net.minecraft.core.Registry"
 import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
@@ -2007,7 +2020,7 @@ public "isItemSuitable"(arg0: $ItemStack$$Type): boolean
 public "getUpgradeData"(arg0: $ItemStack$$Type): $DataComponentPatch
 public static "createKey"(arg0: $ResourceLocation$$Type): $ResourceKey<($ITurtleUpgrade)>
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($ITurtleUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 get "type"(): $UpgradeType<($TurtleTool)>
 }
 /**
@@ -2023,8 +2036,8 @@ declare global {
 export type $TurtleTool_ = $TurtleTool$$Type;
 }}
 declare module "dan200.computercraft.api.turtle.ITurtleUpgrade" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$TurtleUpgradeType, $TurtleUpgradeType$$Type} from "dan200.computercraft.api.turtle.TurtleUpgradeType"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ITurtleAccess, $ITurtleAccess$$Type} from "dan200.computercraft.api.turtle.ITurtleAccess"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$TurtleVerb, $TurtleVerb$$Type} from "dan200.computercraft.api.turtle.TurtleVerb"
@@ -2043,19 +2056,19 @@ export interface $ITurtleUpgrade extends $UpgradeBase {
 
  "update"(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type): void
  "getType"(): $UpgradeType<($ITurtleUpgrade)>
+ "getUpgradeType"(): $TurtleUpgradeType
+ "useTool"(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type, arg2: $TurtleVerb$$Type, arg3: $Direction$$Type): $TurtleCommandResult
  "createPeripheral"(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type): $IPeripheral
  "getPersistedData"(arg0: $DataComponentPatch$$Type): $DataComponentPatch
- "useTool"(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type, arg2: $TurtleVerb$$Type, arg3: $Direction$$Type): $TurtleCommandResult
- "getUpgradeType"(): $TurtleUpgradeType
- "getCraftingItem"(): $ItemStack
  "getAdjective"(): $Component
  "getUpgradeItem"(arg0: $DataComponentPatch$$Type): $ItemStack
  "isItemSuitable"(arg0: $ItemStack$$Type): boolean
  "getUpgradeData"(arg0: $ItemStack$$Type): $DataComponentPatch
+ "getCraftingItem"(): $ItemStack
 get "type"(): $UpgradeType<($ITurtleUpgrade)>
 get "upgradeType"(): $TurtleUpgradeType
-get "craftingItem"(): $ItemStack
 get "adjective"(): $Component
+get "craftingItem"(): $ItemStack
 /**
  * This field is a type stub generated by ProbeJS and shall not be used in any sense.
  */
@@ -2070,7 +2083,7 @@ export namespace $ITurtleUpgrade {
 const REGISTRY: $ResourceKey<($Registry<($ITurtleUpgrade)>)>
 function createKey(arg0: $ResourceLocation$$Type): $ResourceKey<($ITurtleUpgrade)>
 function typeRegistry(): $ResourceKey<($Registry<($UpgradeType<($ITurtleUpgrade)>)>)>
-function getDefaultAdjective(arg0: $ResourceLocation$$Type): string
+function getDefaultAdjective(arg0: $ResourceLocation$$Type): StringJS
 const probejs$$marker: never
 }
 export class $ITurtleUpgrade$$Static implements $ITurtleUpgrade {
@@ -2080,17 +2093,17 @@ static readonly "REGISTRY": $ResourceKey<($Registry<($ITurtleUpgrade)>)>
  "update"(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type): void
  "getType"(): $UpgradeType<($ITurtleUpgrade)>
 static "createKey"(arg0: $ResourceLocation$$Type): $ResourceKey<($ITurtleUpgrade)>
- "createPeripheral"(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type): $IPeripheral
- "getPersistedData"(arg0: $DataComponentPatch$$Type): $DataComponentPatch
+ "getUpgradeType"(): $TurtleUpgradeType
  "useTool"(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type, arg2: $TurtleVerb$$Type, arg3: $Direction$$Type): $TurtleCommandResult
 static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($ITurtleUpgrade)>)>)>
- "getUpgradeType"(): $TurtleUpgradeType
- "getCraftingItem"(): $ItemStack
-static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+ "createPeripheral"(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type): $IPeripheral
+ "getPersistedData"(arg0: $DataComponentPatch$$Type): $DataComponentPatch
  "getAdjective"(): $Component
  "getUpgradeItem"(arg0: $DataComponentPatch$$Type): $ItemStack
  "isItemSuitable"(arg0: $ItemStack$$Type): boolean
  "getUpgradeData"(arg0: $ItemStack$$Type): $DataComponentPatch
+ "getCraftingItem"(): $ItemStack
+static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2106,8 +2119,8 @@ export type $ITurtleUpgrade_ = $ITurtleUpgrade$$Type;
 }}
 declare module "dan200.computercraft.api.client.ModelLocation" {
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$BakedModel, $BakedModel$$Type} from "net.minecraft.client.resources.model.BakedModel"
 import {$ModelResourceLocation, $ModelResourceLocation$$Type} from "net.minecraft.client.resources.model.ModelResourceLocation"
+import {$BakedModel, $BakedModel$$Type} from "net.minecraft.client.resources.model.BakedModel"
 import {$Stream, $Stream$$Type} from "java.util.stream.Stream"
 import {$ModelManager, $ModelManager$$Type} from "net.minecraft.client.resources.model.ModelManager"
 
@@ -2115,9 +2128,9 @@ export class $ModelLocation {
 
 
 public "getModel"(arg0: $ModelManager$$Type): $BakedModel
-public "getDependencies"(): $Stream<($ResourceLocation)>
 public static "ofResource"(arg0: $ResourceLocation$$Type): $ModelLocation
 public static "ofModel"(arg0: $ModelResourceLocation$$Type): $ModelLocation
+public "getDependencies"(): $Stream<($ResourceLocation)>
 get "dependencies"(): $Stream<($ResourceLocation)>
 }
 /**
@@ -2164,24 +2177,27 @@ declare global {
 export type $TurtleCommand_ = $TurtleCommand$$Type;
 }}
 declare module "dan200.computercraft.shared.peripheral.modem.wired.CableBlockItem$Cable" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$CableBlock, $CableBlock$$Type} from "dan200.computercraft.shared.peripheral.modem.wired.CableBlock"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$CableBlockItem, $CableBlockItem$$Type} from "dan200.computercraft.shared.peripheral.modem.wired.CableBlockItem"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $CableBlockItem$Cable extends $CableBlockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -2200,6 +2216,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2249,8 +2266,8 @@ export type $MetricsObserver_ = $MetricsObserver$$Type;
 declare module "dan200.computercraft.core.methods.PeripheralMethod" {
 import {$ILuaContext, $ILuaContext$$Type} from "dan200.computercraft.api.lua.ILuaContext"
 import {$MethodResult, $MethodResult$$Type} from "dan200.computercraft.api.lua.MethodResult"
-import {$IComputerAccess, $IComputerAccess$$Type} from "dan200.computercraft.api.peripheral.IComputerAccess"
 import {$IArguments, $IArguments$$Type} from "dan200.computercraft.api.lua.IArguments"
+import {$IComputerAccess, $IComputerAccess$$Type} from "dan200.computercraft.api.peripheral.IComputerAccess"
 
 export interface $PeripheralMethod {
 
@@ -2281,8 +2298,8 @@ export type $PeripheralMethod_ = $PeripheralMethod$$Type;
 }}
 declare module "dan200.computercraft.api.turtle.TurtleToolDurability" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -2296,16 +2313,16 @@ static readonly "ALWAYS": $TurtleToolDurability
 
 
 public static "values"(): ($TurtleToolDurability)[]
-public static "valueOf"(arg0: string): $TurtleToolDurability
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $TurtleToolDurability
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2343,8 +2360,8 @@ import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$HitResult, $HitResult$$Type} from "net.minecraft.world.phys.HitResult"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
@@ -2353,8 +2370,8 @@ import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.Serve
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $CableBlock extends $Block implements $SimpleWaterloggedBlock, $EntityBlock {
 static readonly "DOWN": $BooleanProperty
@@ -2366,7 +2383,7 @@ static readonly "UPDATE_MOVE_BY_PISTON": integer
 static readonly "UPDATE_LIMIT": integer
 static readonly "UPDATE_ALL": integer
 static readonly "CABLE": $BooleanProperty
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "NORTH": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -2389,14 +2406,14 @@ constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "setPlacedBy"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $LivingEntity$$Type, arg4: $ItemStack$$Type): void
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
+public static "canConnectIn"(arg0: $BlockState$$Type, arg1: $Direction$$Type): boolean
 public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 public "onDestroyedByPlayer"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type, arg4: boolean, arg5: $FluidState$$Type): boolean
-public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
 public "getCloneItemStack"(arg0: $LevelReader$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): $ItemStack
+public "getCloneItemStack"(arg0: $BlockState$$Type, arg1: $HitResult$$Type, arg2: $LevelReader$$Type, arg3: $BlockPos$$Type, arg4: $Player$$Type): $ItemStack
 public "onCustomDestroyBlock"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Player$$Type): boolean
 public static "correctConnections"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type): $BlockState
 public static "doesConnectVisually"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): boolean
-public static "canConnectIn"(arg0: $BlockState$$Type, arg1: $Direction$$Type): boolean
 public "getPickupSound"(): $Optional<($SoundEvent)>
 public "canPlaceLiquid"(arg0: $Player$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $Fluid$$Type): boolean
 public "placeLiquid"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $FluidState$$Type): boolean
@@ -2428,8 +2445,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$IBundledRedstoneBlock, $IBundledRedstoneBlock$$Type} from "dan200.computercraft.shared.common.IBundledRedstoneBlock"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$IBundledRedstoneBlock, $IBundledRedstoneBlock$$Type} from "dan200.computercraft.shared.common.IBundledRedstoneBlock"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.EntityBlock"
@@ -2437,13 +2454,13 @@ import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$HorizontalDirectionalBlock, $HorizontalDirectionalBlock$$Type} from "net.minecraft.world.level.block.HorizontalDirectionalBlock"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $RedstoneRelayBlock extends $HorizontalDirectionalBlock implements $EntityBlock, $IBundledRedstoneBlock {
@@ -2460,7 +2477,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2475,7 +2492,6 @@ constructor(arg0: $BlockBehaviour$Properties$$Type)
  * @deprecated
  */
 public "tick"(arg0: $BlockState$$Type, arg1: $ServerLevel$$Type, arg2: $BlockPos$$Type, arg3: $RandomSource$$Type): void
-public "getBundledRedstoneOutput"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $Direction$$Type): integer
 public "newBlockEntity"(arg0: $BlockPos$$Type, arg1: $BlockState$$Type): $BlockEntity
 /**
  * 
@@ -2487,17 +2503,18 @@ public "isSignalSource"(arg0: $BlockState$$Type): boolean
  * @deprecated
  */
 public "getSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
-/**
- * 
- * @deprecated
- */
-public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
 public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
 /**
  * 
  * @deprecated
  */
+public "neighborChanged"(arg0: $BlockState$$Type, arg1: $Level$$Type, arg2: $BlockPos$$Type, arg3: $Block$$Type, arg4: $BlockPos$$Type, arg5: boolean): void
+/**
+ * 
+ * @deprecated
+ */
 public "getDirectSignal"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $Direction$$Type): integer
+public "getBundledRedstoneOutput"(arg0: $Level$$Type, arg1: $BlockPos$$Type, arg2: $Direction$$Type): integer
 public "getListener"<T extends $BlockEntity>(arg0: $ServerLevel$$Type, arg1: T): $GameEventListener
 public "getTicker"<T extends $BlockEntity>(arg0: $Level$$Type, arg1: $BlockState$$Type, arg2: $BlockEntityType$$Type<(T)>): $BlockEntityTicker<(T)>
 public "asHolder"(): $Holder<(any)>
@@ -2532,7 +2549,7 @@ static readonly "SHORT_WAIT": $TurtleAnimation
 
 
 public static "values"(): ($TurtleAnimation)[]
-public static "valueOf"(arg0: string): $TurtleAnimation
+public static "valueOf"(arg0: StringJS): $TurtleAnimation
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2562,19 +2579,19 @@ import {$UpgradeType, $UpgradeType$$Type} from "dan200.computercraft.api.upgrade
 export class $AbstractPocketUpgrade implements $IPocketUpgrade {
 
 
-public "getCraftingItem"(): $ItemStack
 public "getAdjective"(): $Component
+public "getCraftingItem"(): $ItemStack
 public "update"(arg0: $IPocketAccess$$Type, arg1: $IPeripheral$$Type): void
 public "getType"(): $UpgradeType<($IPocketUpgrade)>
-public "createPeripheral"(arg0: $IPocketAccess$$Type): $IPeripheral
 public "onRightClick"(arg0: $Level$$Type, arg1: $IPocketAccess$$Type, arg2: $IPeripheral$$Type): boolean
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($IPocketUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public "createPeripheral"(arg0: $IPocketAccess$$Type): $IPeripheral
 public "getUpgradeItem"(arg0: $DataComponentPatch$$Type): $ItemStack
 public "isItemSuitable"(arg0: $ItemStack$$Type): boolean
 public "getUpgradeData"(arg0: $ItemStack$$Type): $DataComponentPatch
-get "craftingItem"(): $ItemStack
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 get "adjective"(): $Component
+get "craftingItem"(): $ItemStack
 get "type"(): $UpgradeType<($IPocketUpgrade)>
 }
 /**
@@ -2595,8 +2612,8 @@ import {$IPocketAccess, $IPocketAccess$$Type} from "dan200.computercraft.api.poc
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Registry, $Registry$$Type} from "net.minecraft.core.Registry"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$UpgradeBase, $UpgradeBase$$Type} from "dan200.computercraft.api.upgrades.UpgradeBase"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$IPeripheral, $IPeripheral$$Type} from "dan200.computercraft.api.peripheral.IPeripheral"
@@ -2606,16 +2623,16 @@ export interface $IPocketUpgrade extends $UpgradeBase {
 
  "update"(arg0: $IPocketAccess$$Type, arg1: $IPeripheral$$Type): void
  "getType"(): $UpgradeType<($IPocketUpgrade)>
- "createPeripheral"(arg0: $IPocketAccess$$Type): $IPeripheral
  "onRightClick"(arg0: $Level$$Type, arg1: $IPocketAccess$$Type, arg2: $IPeripheral$$Type): boolean
- "getCraftingItem"(): $ItemStack
+ "createPeripheral"(arg0: $IPocketAccess$$Type): $IPeripheral
  "getAdjective"(): $Component
  "getUpgradeItem"(arg0: $DataComponentPatch$$Type): $ItemStack
  "isItemSuitable"(arg0: $ItemStack$$Type): boolean
  "getUpgradeData"(arg0: $ItemStack$$Type): $DataComponentPatch
+ "getCraftingItem"(): $ItemStack
 get "type"(): $UpgradeType<($IPocketUpgrade)>
-get "craftingItem"(): $ItemStack
 get "adjective"(): $Component
+get "craftingItem"(): $ItemStack
 /**
  * This field is a type stub generated by ProbeJS and shall not be used in any sense.
  */
@@ -2629,7 +2646,7 @@ get "adjective"(): $Component
 export namespace $IPocketUpgrade {
 const REGISTRY: $ResourceKey<($Registry<($IPocketUpgrade)>)>
 function typeRegistry(): $ResourceKey<($Registry<($UpgradeType<($IPocketUpgrade)>)>)>
-function getDefaultAdjective(arg0: $ResourceLocation$$Type): string
+function getDefaultAdjective(arg0: $ResourceLocation$$Type): StringJS
 const probejs$$marker: never
 }
 export class $IPocketUpgrade$$Static implements $IPocketUpgrade {
@@ -2638,15 +2655,15 @@ static readonly "REGISTRY": $ResourceKey<($Registry<($IPocketUpgrade)>)>
 
  "update"(arg0: $IPocketAccess$$Type, arg1: $IPeripheral$$Type): void
  "getType"(): $UpgradeType<($IPocketUpgrade)>
- "createPeripheral"(arg0: $IPocketAccess$$Type): $IPeripheral
  "onRightClick"(arg0: $Level$$Type, arg1: $IPocketAccess$$Type, arg2: $IPeripheral$$Type): boolean
 static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($IPocketUpgrade)>)>)>
- "getCraftingItem"(): $ItemStack
-static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+ "createPeripheral"(arg0: $IPocketAccess$$Type): $IPeripheral
  "getAdjective"(): $Component
  "getUpgradeItem"(arg0: $DataComponentPatch$$Type): $ItemStack
  "isItemSuitable"(arg0: $ItemStack$$Type): boolean
  "getUpgradeData"(arg0: $ItemStack$$Type): $DataComponentPatch
+ "getCraftingItem"(): $ItemStack
+static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2672,11 +2689,10 @@ import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.da
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $WirelessModemBlockEntity extends $BlockEntity {
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 constructor(arg0: $BlockEntityType$$Type<($WirelessModemBlockEntity$$Type)>, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: boolean)
 
-public "clearRemoved"(): void
 public "setRemoved"(): void
 /**
  * 
@@ -2684,8 +2700,9 @@ public "setRemoved"(): void
  */
 public "setBlockState"(arg0: $BlockState$$Type): void
 public "getPeripheral"(arg0: $Direction$$Type): $IPeripheral
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+public "clearRemoved"(): void
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 set "blockState"(value: $BlockState$$Type)
 }
 /**
@@ -2706,8 +2723,8 @@ import {$TagKey, $TagKey$$Type} from "net.minecraft.tags.TagKey"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TurtleToolDurability, $TurtleToolDurability$$Type} from "dan200.computercraft.api.turtle.TurtleToolDurability"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$TurtleToolDurability, $TurtleToolDurability$$Type} from "dan200.computercraft.api.turtle.TurtleToolDurability"
 import {$Record, $Record$$Type} from "java.lang.Record"
 
 export class $TurtleToolSpec extends $Record {
@@ -2716,21 +2733,21 @@ static readonly "CODEC": $MapCodec<($TurtleToolSpec)>
 
 constructor(adjective: $Component$$Type, item: $Item$$Type, damageMultiplier: float, allowEnchantments: boolean, consumeDurability: $TurtleToolDurability$$Type, breakable: $Optional$$Type<($TagKey$$Type<($Block$$Type)>)>)
 
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
 public "item"(): $Item
-public "consumeDurability"(): $TurtleToolDurability
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
 public "breakable"(): $Optional<($TagKey<($Block)>)>
-public "damageMultiplier"(): float
 public "adjective"(): $Component
+public "damageMultiplier"(): float
+public "consumeDurability"(): $TurtleToolDurability
 public "allowEnchantments"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $TurtleToolSpec$$Type = ({"consumeDurability"?: $TurtleToolDurability$$Type, "item"?: $Item$$Type, "breakable"?: ($TagKey$$Type<($Block$$Type)>)?, "damageMultiplier"?: float, "allowEnchantments"?: boolean, "adjective"?: $Component$$Type}) | ([consumeDurability?: $TurtleToolDurability$$Type, item?: $Item$$Type, breakable?: ($TagKey$$Type<($Block$$Type)>)?, damageMultiplier?: float, allowEnchantments?: boolean, adjective?: $Component$$Type]);
+export type $TurtleToolSpec$$Type = ({"damageMultiplier"?: float, "allowEnchantments"?: boolean, "adjective"?: $Component$$Type, "consumeDurability"?: $TurtleToolDurability$$Type, "item"?: $Item$$Type, "breakable"?: ($TagKey$$Type<($Block$$Type)>)?}) | ([damageMultiplier?: float, allowEnchantments?: boolean, adjective?: $Component$$Type, consumeDurability?: $TurtleToolDurability$$Type, item?: $Item$$Type, breakable?: ($TagKey$$Type<($Block$$Type)>)?]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -2743,8 +2760,8 @@ export {} // Mark the file as a module, do not remove unless there are other imp
 export class $ComputerComponent<T> {
 
 
-public "toString"(): string
-public static "create"<T>(arg0: string, arg1: string): $ComputerComponent<(T)>
+public static "create"<T>(arg0: StringJS, arg1: StringJS): $ComputerComponent<(T)>
+public "toString"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2764,16 +2781,16 @@ import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 export class $TextBuffer {
 
 constructor(arg0: character, arg1: integer)
-constructor(arg0: string)
+constructor(arg0: StringJS)
 
 public "length"(): integer
-public "toString"(): string
+public "toString"(): StringJS
 public "charAt"(arg0: integer): character
 public "fill"(arg0: character): void
 public "fill"(arg0: character, arg1: integer, arg2: integer): void
 public "write"(arg0: $TextBuffer$$Type): void
-public "write"(arg0: string, arg1: integer): void
-public "write"(arg0: string): void
+public "write"(arg0: StringJS, arg1: integer): void
+public "write"(arg0: StringJS): void
 public "write"(arg0: $ByteBuffer$$Type, arg1: integer): void
 public "setChar"(arg0: integer, arg1: character): void
 }
@@ -2792,14 +2809,17 @@ export type $TextBuffer_ = $TextBuffer$$Type;
 declare module "dan200.computercraft.api.lua.IArguments" {
 import {$LuaTable, $LuaTable$$Type} from "dan200.computercraft.api.lua.LuaTable"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Class, $Class$$Type} from "java.lang.Class"
 import {$ByteBuffer, $ByteBuffer$$Type} from "java.nio.ByteBuffer"
 
 export interface $IArguments {
 
+ "getTable"(arg0: integer): $Map<(any), (any)>
+ "getString"(arg0: integer): StringJS
  "drop"(arg0: integer): $IArguments
+ "getAll"(): (any)[]
  "get"(arg0: integer): any
  "getBoolean"(arg0: integer): boolean
  "getInt"(arg0: integer): integer
@@ -2807,29 +2827,26 @@ export interface $IArguments {
  "getDouble"(arg0: integer): double
  "getBytes"(arg0: integer): $ByteBuffer
  "count"(): integer
- "getType"(arg0: integer): string
- "getTable"(arg0: integer): $Map<(any), (any)>
- "getAll"(): (any)[]
- "getString"(arg0: integer): string
+ "getType"(arg0: integer): StringJS
  "escapes"(): void
  "getEnum"<T extends $Enum<(T)>>(arg0: integer, arg1: $Class$$Type<(T)>): T
+ "optString"(arg0: integer, arg1: StringJS): StringJS
+ "optString"(arg0: integer): $Optional<(StringJS)>
+ "optBoolean"(arg0: integer, arg1: boolean): boolean
+ "optBoolean"(arg0: integer): $Optional<(boolean)>
+ "optTable"(arg0: integer): $Optional<($Map<(any), (any)>)>
+ "optTable"(arg0: integer, arg1: $Map$$Type<(any), (any)>): $Map<(any), (any)>
  "optInt"(arg0: integer): $Optional<(integer)>
  "optInt"(arg0: integer, arg1: integer): integer
- "optBoolean"(arg0: integer): $Optional<(boolean)>
- "optBoolean"(arg0: integer, arg1: boolean): boolean
- "optString"(arg0: integer): $Optional<(string)>
- "optString"(arg0: integer, arg1: string): string
- "optTable"(arg0: integer, arg1: $Map$$Type<(any), (any)>): $Map<(any), (any)>
- "optTable"(arg0: integer): $Optional<($Map<(any), (any)>)>
+ "optDouble"(arg0: integer, arg1: double): double
+ "optDouble"(arg0: integer): $Optional<(double)>
  "optLong"(arg0: integer, arg1: long): long
  "optLong"(arg0: integer): $Optional<(long)>
- "optDouble"(arg0: integer): $Optional<(double)>
- "optDouble"(arg0: integer, arg1: double): double
  "optEnum"<T extends $Enum<(T)>>(arg0: integer, arg1: $Class$$Type<(T)>): $Optional<(T)>
  "getTableUnsafe"(arg0: integer): $LuaTable<(any), (any)>
  "optBytes"(arg0: integer): $Optional<($ByteBuffer)>
  "optTableUnsafe"(arg0: integer): $Optional<($LuaTable<(any), (any)>)>
- "getStringCoerced"(arg0: integer): string
+ "getStringCoerced"(arg0: integer): StringJS
  "getBytesCoerced"(arg0: integer): $ByteBuffer
  "optFiniteDouble"(arg0: integer, arg1: double): double
  "optFiniteDouble"(arg0: integer): $Optional<(double)>
@@ -2843,7 +2860,10 @@ const probejs$$marker: never
 export class $IArguments$$Static implements $IArguments {
 
 
+ "getTable"(arg0: integer): $Map<(any), (any)>
+ "getString"(arg0: integer): StringJS
  "drop"(arg0: integer): $IArguments
+ "getAll"(): (any)[]
  "get"(arg0: integer): any
  "getBoolean"(arg0: integer): boolean
  "getInt"(arg0: integer): integer
@@ -2851,29 +2871,26 @@ export class $IArguments$$Static implements $IArguments {
  "getDouble"(arg0: integer): double
  "getBytes"(arg0: integer): $ByteBuffer
  "count"(): integer
- "getType"(arg0: integer): string
- "getTable"(arg0: integer): $Map<(any), (any)>
- "getAll"(): (any)[]
- "getString"(arg0: integer): string
+ "getType"(arg0: integer): StringJS
  "escapes"(): void
  "getEnum"<T extends $Enum<(T)>>(arg0: integer, arg1: $Class$$Type<(T)>): T
+ "optString"(arg0: integer, arg1: StringJS): StringJS
+ "optString"(arg0: integer): $Optional<(StringJS)>
+ "optBoolean"(arg0: integer, arg1: boolean): boolean
+ "optBoolean"(arg0: integer): $Optional<(boolean)>
+ "optTable"(arg0: integer): $Optional<($Map<(any), (any)>)>
+ "optTable"(arg0: integer, arg1: $Map$$Type<(any), (any)>): $Map<(any), (any)>
  "optInt"(arg0: integer): $Optional<(integer)>
  "optInt"(arg0: integer, arg1: integer): integer
- "optBoolean"(arg0: integer): $Optional<(boolean)>
- "optBoolean"(arg0: integer, arg1: boolean): boolean
- "optString"(arg0: integer): $Optional<(string)>
- "optString"(arg0: integer, arg1: string): string
- "optTable"(arg0: integer, arg1: $Map$$Type<(any), (any)>): $Map<(any), (any)>
- "optTable"(arg0: integer): $Optional<($Map<(any), (any)>)>
+ "optDouble"(arg0: integer, arg1: double): double
+ "optDouble"(arg0: integer): $Optional<(double)>
  "optLong"(arg0: integer, arg1: long): long
  "optLong"(arg0: integer): $Optional<(long)>
- "optDouble"(arg0: integer): $Optional<(double)>
- "optDouble"(arg0: integer, arg1: double): double
  "optEnum"<T extends $Enum<(T)>>(arg0: integer, arg1: $Class$$Type<(T)>): $Optional<(T)>
  "getTableUnsafe"(arg0: integer): $LuaTable<(any), (any)>
  "optBytes"(arg0: integer): $Optional<($ByteBuffer)>
  "optTableUnsafe"(arg0: integer): $Optional<($LuaTable<(any), (any)>)>
- "getStringCoerced"(arg0: integer): string
+ "getStringCoerced"(arg0: integer): StringJS
  "getBytesCoerced"(arg0: integer): $ByteBuffer
  "optFiniteDouble"(arg0: integer, arg1: double): double
  "optFiniteDouble"(arg0: integer): $Optional<(double)>
@@ -2893,8 +2910,8 @@ export type $IArguments_ = $IArguments$$Type;
 }}
 declare module "dan200.computercraft.api.turtle.AbstractTurtleUpgrade" {
 import {$ITurtleUpgrade, $ITurtleUpgrade$$Type} from "dan200.computercraft.api.turtle.ITurtleUpgrade"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$TurtleUpgradeType, $TurtleUpgradeType$$Type} from "dan200.computercraft.api.turtle.TurtleUpgradeType"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ITurtleAccess, $ITurtleAccess$$Type} from "dan200.computercraft.api.turtle.ITurtleAccess"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$TurtleVerb, $TurtleVerb$$Type} from "dan200.computercraft.api.turtle.TurtleVerb"
@@ -2911,23 +2928,23 @@ import {$IPeripheral, $IPeripheral$$Type} from "dan200.computercraft.api.periphe
 export class $AbstractTurtleUpgrade implements $ITurtleUpgrade {
 
 
-public "getCraftingItem"(): $ItemStack
-public "getAdjective"(): $Component
 public "getUpgradeType"(): $TurtleUpgradeType
+public "getAdjective"(): $Component
+public "getCraftingItem"(): $ItemStack
 public "update"(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type): void
 public "getType"(): $UpgradeType<($ITurtleUpgrade)>
 public static "createKey"(arg0: $ResourceLocation$$Type): $ResourceKey<($ITurtleUpgrade)>
-public "createPeripheral"(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type): $IPeripheral
-public "getPersistedData"(arg0: $DataComponentPatch$$Type): $DataComponentPatch
 public "useTool"(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type, arg2: $TurtleVerb$$Type, arg3: $Direction$$Type): $TurtleCommandResult
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($ITurtleUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public "createPeripheral"(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type): $IPeripheral
+public "getPersistedData"(arg0: $DataComponentPatch$$Type): $DataComponentPatch
 public "getUpgradeItem"(arg0: $DataComponentPatch$$Type): $ItemStack
 public "isItemSuitable"(arg0: $ItemStack$$Type): boolean
 public "getUpgradeData"(arg0: $ItemStack$$Type): $DataComponentPatch
-get "craftingItem"(): $ItemStack
-get "adjective"(): $Component
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 get "upgradeType"(): $TurtleUpgradeType
+get "adjective"(): $Component
+get "craftingItem"(): $ItemStack
 get "type"(): $UpgradeType<($ITurtleUpgrade)>
 }
 /**
@@ -2943,11 +2960,11 @@ declare global {
 export type $AbstractTurtleUpgrade_ = $AbstractTurtleUpgrade$$Type;
 }}
 declare module "dan200.computercraft.shared.command.arguments.RepeatArgumentType" {
-import {$CommandContext, $CommandContext$$Type} from "com.mojang.brigadier.context.CommandContext"
 import {$SimpleCommandExceptionType, $SimpleCommandExceptionType$$Type} from "com.mojang.brigadier.exceptions.SimpleCommandExceptionType"
+import {$CommandContext, $CommandContext$$Type} from "com.mojang.brigadier.context.CommandContext"
 import {$ArgumentType, $ArgumentType$$Type} from "com.mojang.brigadier.arguments.ArgumentType"
-import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$Suggestions, $Suggestions$$Type} from "com.mojang.brigadier.suggestion.Suggestions"
+import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$CompletableFuture, $CompletableFuture$$Type} from "java.util.concurrent.CompletableFuture"
 import {$StringReader, $StringReader$$Type} from "com.mojang.brigadier.StringReader"
 import {$List, $List$$Type} from "java.util.List"
@@ -2956,13 +2973,13 @@ import {$SuggestionsBuilder, $SuggestionsBuilder$$Type} from "com.mojang.brigadi
 export class $RepeatArgumentType<T, U> implements $ArgumentType<($List<(T)>)> {
 
 
-public "getExamples"(): $Collection<(string)>
 public "parse"(arg0: $StringReader$$Type): any
+public "getExamples"(): $Collection<(StringJS)>
 public static "some"<T>(arg0: $ArgumentType$$Type<(T)>, arg1: $SimpleCommandExceptionType$$Type): $RepeatArgumentType<(T), (T)>
-public "listSuggestions"<S>(arg0: $CommandContext$$Type<(S)>, arg1: $SuggestionsBuilder$$Type): $CompletableFuture<($Suggestions)>
 public static "someFlat"<T>(arg0: $ArgumentType$$Type<($List$$Type<(T)>)>, arg1: $SimpleCommandExceptionType$$Type): $RepeatArgumentType<(T), ($List<(T)>)>
+public "listSuggestions"<S>(arg0: $CommandContext$$Type<(S)>, arg1: $SuggestionsBuilder$$Type): $CompletableFuture<($Suggestions)>
 public "parse"<S>(arg0: $StringReader$$Type, arg1: S): $List<(T)>
-get "examples"(): $Collection<(string)>
+get "examples"(): $Collection<(StringJS)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2988,8 +3005,8 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$Explosion, $Explosion$$Type} from "net.minecraft.world.level.Explosion"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$TurtleBlockEntity, $TurtleBlockEntity$$Type} from "dan200.computercraft.shared.turtle.blocks.TurtleBlockEntity"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
+import {$TurtleBlockEntity, $TurtleBlockEntity$$Type} from "dan200.computercraft.shared.turtle.blocks.TurtleBlockEntity"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -2997,16 +3014,16 @@ import {$AbstractComputerBlock, $AbstractComputerBlock$$Type} from "dan200.compu
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$RegistryEntry, $RegistryEntry$$Type} from "dan200.computercraft.shared.platform.RegistryEntry"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
-import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
+import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $TurtleBlock extends $AbstractComputerBlock<($TurtleBlockEntity)> implements $SimpleWaterloggedBlock {
@@ -3024,7 +3041,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3070,42 +3087,42 @@ export class $Terminal {
 constructor(arg0: integer, arg1: integer, arg2: boolean)
 constructor(arg0: integer, arg1: integer, arg2: boolean, arg3: $Runnable$$Type)
 
+public "resize"(arg0: integer, arg1: integer): void
 public "getWidth"(): integer
 public "getHeight"(): integer
 public "reset"(): void
 public "clear"(): void
-public "write"(arg0: string): void
-public "resize"(arg0: integer, arg1: integer): void
+public "write"(arg0: StringJS): void
+public "scroll"(arg0: integer): void
+public "blit"(arg0: $ByteBuffer$$Type, arg1: $ByteBuffer$$Type, arg2: $ByteBuffer$$Type): void
 public "setChanged"(): void
 public "getPalette"(): $Palette
-public "setLine"(arg0: integer, arg1: string, arg2: string, arg3: string): void
+public "setLine"(arg0: integer, arg1: StringJS, arg2: StringJS, arg3: StringJS): void
 public "getLine"(arg0: integer): $TextBuffer
-public "blit"(arg0: $ByteBuffer$$Type, arg1: $ByteBuffer$$Type, arg2: $ByteBuffer$$Type): void
-public "scroll"(arg0: integer): void
-public "getTextColourLine"(arg0: integer): $TextBuffer
-public "setTextColour"(arg0: integer): void
-public "getTextColour"(): integer
-public static "getColour"(arg0: character, arg1: $Colour$$Type): integer
-public "setCursorPos"(arg0: integer, arg1: integer): void
 public "isColour"(): boolean
 public "setCursorBlink"(arg0: boolean): void
 public "getCursorX"(): integer
 public "getCursorY"(): integer
 public "getCursorBlink"(): boolean
+public "getTextColour"(): integer
+public "setTextColour"(arg0: integer): void
 public "clearLine"(): void
-public "getBackgroundColourLine"(arg0: integer): $TextBuffer
+public "setCursorPos"(arg0: integer, arg1: integer): void
+public static "getColour"(arg0: character, arg1: $Colour$$Type): integer
 public "setBackgroundColour"(arg0: integer): void
 public "getBackgroundColour"(): integer
+public "getTextColourLine"(arg0: integer): $TextBuffer
+public "getBackgroundColourLine"(arg0: integer): $TextBuffer
 get "width"(): integer
 get "height"(): integer
 get "palette"(): $Palette
-set "textColour"(value: integer)
-get "textColour"(): integer
 get "colour"(): boolean
 set "cursorBlink"(value: boolean)
 get "cursorX"(): integer
 get "cursorY"(): integer
 get "cursorBlink"(): boolean
+get "textColour"(): integer
+set "textColour"(value: integer)
 set "backgroundColour"(value: integer)
 get "backgroundColour"(): integer
 }
@@ -3127,8 +3144,8 @@ import {$ITurtleUpgrade, $ITurtleUpgrade$$Type} from "dan200.computercraft.api.t
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Registry, $Registry$$Type} from "net.minecraft.core.Registry"
-import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$ITurtleAccess, $ITurtleAccess$$Type} from "dan200.computercraft.api.turtle.ITurtleAccess"
+import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
 import {$IPeripheral, $IPeripheral$$Type} from "dan200.computercraft.api.peripheral.IPeripheral"
 import {$UpgradeType, $UpgradeType$$Type} from "dan200.computercraft.api.upgrades.UpgradeType"
@@ -3141,7 +3158,7 @@ public "getType"(): $UpgradeType<($TurtleCraftingTable)>
 public "createPeripheral"(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type): $IPeripheral
 public static "createKey"(arg0: $ResourceLocation$$Type): $ResourceKey<($ITurtleUpgrade)>
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($ITurtleUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 get "type"(): $UpgradeType<($TurtleCraftingTable)>
 }
 /**
@@ -3213,8 +3230,8 @@ import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.Liv
 import {$EnumProperty, $EnumProperty$$Type} from "net.minecraft.world.level.block.state.properties.EnumProperty"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MonitorBlockEntity, $MonitorBlockEntity$$Type} from "dan200.computercraft.shared.peripheral.monitor.MonitorBlockEntity"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
@@ -3233,7 +3250,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "ORIENTATION": $DirectionProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -3302,35 +3319,35 @@ declare module "dan200.computercraft.api.pocket.IPocketAccess" {
 import {$UpgradeData, $UpgradeData$$Type} from "dan200.computercraft.api.upgrades.UpgradeData"
 import {$DataComponentPatch, $DataComponentPatch$$Type} from "net.minecraft.core.component.DataComponentPatch"
 import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
-import {$IPocketUpgrade, $IPocketUpgrade$$Type} from "dan200.computercraft.api.pocket.IPocketUpgrade"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
+import {$IPocketUpgrade, $IPocketUpgrade$$Type} from "dan200.computercraft.api.pocket.IPocketUpgrade"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 
 export interface $IPocketAccess {
 
+ "getLevel"(): $ServerLevel
  "getPosition"(): $Vec3
  "getEntity"(): $Entity
- "getLevel"(): $ServerLevel
  "setLight"(arg0: integer): void
- "setColour"(arg0: integer): void
- "setUpgrade"(arg0: $UpgradeData$$Type<($IPocketUpgrade$$Type)>): void
+ "setUpgradeData"(arg0: $DataComponentPatch$$Type): void
  "getUpgrade"(): $UpgradeData<($IPocketUpgrade)>
+ "setUpgrade"(arg0: $UpgradeData$$Type<($IPocketUpgrade$$Type)>): void
  "getColour"(): integer
+ "setColour"(arg0: integer): void
  "getLight"(): integer
  "getUpgradeData"(): $DataComponentPatch
- "setUpgradeData"(arg0: $DataComponentPatch$$Type): void
  "invalidatePeripheral"(): void
+get "level"(): $ServerLevel
 get "position"(): $Vec3
 get "entity"(): $Entity
-get "level"(): $ServerLevel
 set "light"(value: integer)
-set "colour"(value: integer)
-set "upgrade"(value: $UpgradeData$$Type<($IPocketUpgrade$$Type)>)
+set "upgradeData"(value: $DataComponentPatch$$Type)
 get "upgrade"(): $UpgradeData<($IPocketUpgrade)>
+set "upgrade"(value: $UpgradeData$$Type<($IPocketUpgrade$$Type)>)
 get "colour"(): integer
+set "colour"(value: integer)
 get "light"(): integer
 get "upgradeData"(): $DataComponentPatch
-set "upgradeData"(value: $DataComponentPatch$$Type)
 }
 
 export namespace $IPocketAccess {
@@ -3339,17 +3356,17 @@ const probejs$$marker: never
 export class $IPocketAccess$$Static implements $IPocketAccess {
 
 
+ "getLevel"(): $ServerLevel
  "getPosition"(): $Vec3
  "getEntity"(): $Entity
- "getLevel"(): $ServerLevel
  "setLight"(arg0: integer): void
- "setColour"(arg0: integer): void
- "setUpgrade"(arg0: $UpgradeData$$Type<($IPocketUpgrade$$Type)>): void
+ "setUpgradeData"(arg0: $DataComponentPatch$$Type): void
  "getUpgrade"(): $UpgradeData<($IPocketUpgrade)>
+ "setUpgrade"(arg0: $UpgradeData$$Type<($IPocketUpgrade$$Type)>): void
  "getColour"(): integer
+ "setColour"(arg0: integer): void
  "getLight"(): integer
  "getUpgradeData"(): $DataComponentPatch
- "setUpgradeData"(arg0: $DataComponentPatch$$Type): void
  "invalidatePeripheral"(): void
 }
 /**
@@ -3369,14 +3386,14 @@ export {} // Mark the file as a module, do not remove unless there are other imp
 export class $TurtleCommandResult {
 
 
-public static "failure"(): $TurtleCommandResult
-public static "failure"(arg0: string): $TurtleCommandResult
 public static "success"(): $TurtleCommandResult
 public static "success"(arg0: (any)[]): $TurtleCommandResult
-public "getErrorMessage"(): string
-public "isSuccess"(): boolean
+public "getErrorMessage"(): StringJS
+public static "failure"(arg0: StringJS): $TurtleCommandResult
+public static "failure"(): $TurtleCommandResult
 public "getResults"(): (any)[]
-get "errorMessage"(): string
+public "isSuccess"(): boolean
+get "errorMessage"(): StringJS
 get "results"(): (any)[]
 }
 /**
@@ -3411,7 +3428,7 @@ import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.st
 
 export class $MonitorBlockEntity extends $BlockEntity {
 static readonly "RENDER_PIXEL_SCALE": double
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 static readonly "RENDER_MARGIN": double
 static readonly "RENDER_BORDER": double
 
@@ -3420,38 +3437,38 @@ constructor(arg0: $BlockEntityType$$Type<($MonitorBlockEntity$$Type)>, arg1: $Bl
 public "getWidth"(): integer
 public "getHeight"(): integer
 public "read"(arg0: $TerminalState$$Type): void
-public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
 public "saveAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "getUpdateTag"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
-public "clearRemoved"(): void
-public "getDirection"(): $Direction
 public "setRemoved"(): void
+public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "getDirection"(): $Direction
 public "getRight"(): $Direction
-public "getUpdatePacket"(): $ClientboundBlockEntityDataPacket
-public "getRenderBoundingBox"(): $AABB
-public "getCachedServerMonitor"(): $ServerMonitor
-public "getOriginClientMonitor"(): $ClientMonitor
 public "getXIndex"(): integer
 public "getYIndex"(): integer
 public "getFront"(): $Direction
 public "peripheral"(): $IPeripheral
 public "getDown"(): $Direction
 public "getOrientation"(): $Direction
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+public "getUpdateTag"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
+public "clearRemoved"(): void
+public "getRenderBoundingBox"(): $AABB
+public "getUpdatePacket"(): $ClientboundBlockEntityDataPacket
+public "getCachedServerMonitor"(): $ServerMonitor
+public "getOriginClientMonitor"(): $ClientMonitor
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "width"(): integer
 get "height"(): integer
 get "direction"(): $Direction
 get "right"(): $Direction
-get "updatePacket"(): $ClientboundBlockEntityDataPacket
-get "renderBoundingBox"(): $AABB
-get "cachedServerMonitor"(): $ServerMonitor
-get "originClientMonitor"(): $ClientMonitor
 get "xIndex"(): integer
 get "yIndex"(): integer
 get "front"(): $Direction
 get "down"(): $Direction
 get "orientation"(): $Direction
+get "renderBoundingBox"(): $AABB
+get "updatePacket"(): $ClientboundBlockEntityDataPacket
+get "cachedServerMonitor"(): $ServerMonitor
+get "originClientMonitor"(): $ClientMonitor
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3476,8 +3493,8 @@ export interface $PocketHolder {
  "pos"(): $Vec3
  "level"(): $ServerLevel
  "isValid"(arg0: $ServerComputer$$Type): boolean
- "blockPos"(): $BlockPos
  "setChanged"(): void
+ "blockPos"(): $BlockPos
  "isTerminalAlwaysVisible"(): boolean
 get "terminalAlwaysVisible"(): boolean
 }
@@ -3491,8 +3508,8 @@ export class $PocketHolder$$Static implements $PocketHolder {
  "pos"(): $Vec3
  "level"(): $ServerLevel
  "isValid"(arg0: $ServerComputer$$Type): boolean
- "blockPos"(): $BlockPos
  "setChanged"(): void
+ "blockPos"(): $BlockPos
  "isTerminalAlwaysVisible"(): boolean
 }
 /**
@@ -3516,7 +3533,7 @@ static readonly "RIGHT": $TurtleSide
 
 
 public static "values"(): ($TurtleSide)[]
-public static "valueOf"(arg0: string): $TurtleSide
+public static "valueOf"(arg0: StringJS): $TurtleSide
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3552,8 +3569,8 @@ import {$EntityBlock, $EntityBlock$$Type} from "net.minecraft.world.level.block.
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$BlockEntityTicker, $BlockEntityTicker$$Type} from "net.minecraft.world.level.block.entity.BlockEntityTicker"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$RegistryEntry, $RegistryEntry$$Type} from "dan200.computercraft.shared.platform.RegistryEntry"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
@@ -3561,8 +3578,8 @@ import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.Serve
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 
 export class $WirelessModemBlock extends $DirectionalBlock implements $SimpleWaterloggedBlock, $EntityBlock {
@@ -3579,7 +3596,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3649,7 +3666,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -3677,9 +3694,9 @@ declare module "dan200.computercraft.api.client.TransformedModel" {
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ModelLocation, $ModelLocation$$Type} from "dan200.computercraft.api.client.ModelLocation"
-import {$BakedModel, $BakedModel$$Type} from "net.minecraft.client.resources.model.BakedModel"
-import {$Transformation, $Transformation$$Type} from "com.mojang.math.Transformation"
 import {$ModelResourceLocation, $ModelResourceLocation$$Type} from "net.minecraft.client.resources.model.ModelResourceLocation"
+import {$Transformation, $Transformation$$Type} from "com.mojang.math.Transformation"
+import {$BakedModel, $BakedModel$$Type} from "net.minecraft.client.resources.model.BakedModel"
 import {$Record, $Record$$Type} from "java.lang.Record"
 
 export class $TransformedModel extends $Record {
@@ -3689,7 +3706,7 @@ constructor(model: $BakedModel$$Type, matrix: $Transformation$$Type)
 
 public "model"(): $BakedModel
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public static "of"(arg0: $ModelLocation$$Type): $TransformedModel
 public static "of"(arg0: $ModelResourceLocation$$Type): $TransformedModel
@@ -3728,7 +3745,7 @@ public "update"(arg0: $IPocketAccess$$Type, arg1: $IPeripheral$$Type): void
 public "getType"(): $UpgradeType<($PocketSpeaker)>
 public "createPeripheral"(arg0: $IPocketAccess$$Type): $IPeripheral
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($IPocketUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 get "type"(): $UpgradeType<($PocketSpeaker)>
 }
 /**
@@ -3764,7 +3781,7 @@ public "update"(arg0: $IPocketAccess$$Type, arg1: $IPeripheral$$Type): void
 public "getType"(): $UpgradeType<($PocketModem)>
 public "createPeripheral"(arg0: $IPocketAccess$$Type): $IPeripheral
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($IPocketUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 get "type"(): $UpgradeType<($PocketModem)>
 }
 /**
@@ -3780,8 +3797,8 @@ declare global {
 export type $PocketModem_ = $PocketModem$$Type;
 }}
 declare module "dan200.computercraft.shared.peripheral.monitor.ClientMonitor" {
-import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Terminal, $Terminal$$Type} from "dan200.computercraft.core.terminal.Terminal"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$MonitorBlockEntity, $MonitorBlockEntity$$Type} from "dan200.computercraft.shared.peripheral.monitor.MonitorBlockEntity"
 import {$ClientMonitor$RenderState, $ClientMonitor$RenderState$$Type} from "dan200.computercraft.shared.peripheral.monitor.ClientMonitor$RenderState"
 
@@ -3791,8 +3808,8 @@ constructor(arg0: $MonitorBlockEntity$$Type)
 
 public "getOrigin"(): $MonitorBlockEntity
 public "getTerminal"(): $Terminal
-public "pollTerminalChanged"(): boolean
 public "getRenderState"<T extends $ClientMonitor$RenderState>(arg0: $Supplier$$Type<(T)>): T
+public "pollTerminalChanged"(): boolean
 get "origin"(): $MonitorBlockEntity
 get "terminal"(): $Terminal
 }
@@ -3814,12 +3831,12 @@ import {$MetricsObserver, $MetricsObserver$$Type} from "dan200.computercraft.cor
 
 export interface $ComputerEnvironment {
 
- "getDay"(): integer
  "getTimeOfDay"(): double
- "createRootMount"(): $WritableMount
+ "getDay"(): integer
  "getMetrics"(): $MetricsObserver
-get "day"(): integer
+ "createRootMount"(): $WritableMount
 get "timeOfDay"(): double
+get "day"(): integer
 get "metrics"(): $MetricsObserver
 }
 
@@ -3829,10 +3846,10 @@ const probejs$$marker: never
 export class $ComputerEnvironment$$Static implements $ComputerEnvironment {
 
 
- "getDay"(): integer
  "getTimeOfDay"(): double
- "createRootMount"(): $WritableMount
+ "getDay"(): integer
  "getMetrics"(): $MetricsObserver
+ "createRootMount"(): $WritableMount
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3860,7 +3877,7 @@ import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraf
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $CustomLecternBlockEntity extends $BlockEntity {
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 constructor(arg0: $BlockPos$$Type, arg1: $BlockState$$Type)
 
@@ -3868,8 +3885,8 @@ public "getItem"(): $ItemStack
 public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
 public "getUpdateTag"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
 public "getUpdatePacket"(): $Packet<($ClientGamePacketListener)>
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "item"(): $ItemStack
 get "updatePacket"(): $Packet<($ClientGamePacketListener)>
 }
@@ -3898,17 +3915,17 @@ export class $BasicRecipeSerialiser<T extends $Recipe<(any)>> extends $Record im
 constructor(codec: $MapCodec$$Type<(T)>, streamCodec: $StreamCodec$$Type<($RegistryFriendlyByteBuf$$Type), (T)>)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
 public "codec"(): $MapCodec<(T)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $BasicRecipeSerialiser$$Type<T> = ({"streamCodec"?: $StreamCodec$$Type<($RegistryFriendlyByteBuf$$Type), (any)>, "codec"?: $MapCodec$$Type<(any)>}) | ([streamCodec?: $StreamCodec$$Type<($RegistryFriendlyByteBuf$$Type), (any)>, codec?: $MapCodec$$Type<(any)>]);
+export type $BasicRecipeSerialiser$$Type<T> = ({"codec"?: $MapCodec$$Type<(any)>, "streamCodec"?: $StreamCodec$$Type<($RegistryFriendlyByteBuf$$Type), (any)>}) | ([codec?: $MapCodec$$Type<(any)>, streamCodec?: $StreamCodec$$Type<($RegistryFriendlyByteBuf$$Type), (any)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -3926,7 +3943,7 @@ static readonly "TOOL": $TurtleUpgradeType
 
 
 public static "values"(): ($TurtleUpgradeType)[]
-public static "valueOf"(arg0: string): $TurtleUpgradeType
+public static "valueOf"(arg0: StringJS): $TurtleUpgradeType
 public "isTool"(): boolean
 public "isPeripheral"(): boolean
 get "tool"(): boolean
@@ -3982,7 +3999,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -4047,8 +4064,8 @@ import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$TurtleVerb, $TurtleVerb$$Type} from "dan200.computercraft.api.turtle.TurtleVerb"
 import {$TurtleCommandResult, $TurtleCommandResult$$Type} from "dan200.computercraft.api.turtle.TurtleCommandResult"
 import {$UpgradeType, $UpgradeType$$Type} from "dan200.computercraft.api.upgrades.UpgradeType"
-import {$DataComponentPatch, $DataComponentPatch$$Type} from "net.minecraft.core.component.DataComponentPatch"
 import {$AbstractTurtleUpgrade, $AbstractTurtleUpgrade$$Type} from "dan200.computercraft.api.turtle.AbstractTurtleUpgrade"
+import {$DataComponentPatch, $DataComponentPatch$$Type} from "net.minecraft.core.component.DataComponentPatch"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Registry, $Registry$$Type} from "net.minecraft.core.Registry"
 import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
@@ -4064,12 +4081,12 @@ constructor(arg0: $ItemStack$$Type, arg1: boolean)
 public "update"(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type): void
 public "getType"(): $UpgradeType<($TurtleModem)>
 public "advanced"(): boolean
+public "useTool"(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type, arg2: $TurtleVerb$$Type, arg3: $Direction$$Type): $TurtleCommandResult
 public "createPeripheral"(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type): $IPeripheral
 public "getPersistedData"(arg0: $DataComponentPatch$$Type): $DataComponentPatch
-public "useTool"(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type, arg2: $TurtleVerb$$Type, arg3: $Direction$$Type): $TurtleCommandResult
 public static "createKey"(arg0: $ResourceLocation$$Type): $ResourceKey<($ITurtleUpgrade)>
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($ITurtleUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 get "type"(): $UpgradeType<($TurtleModem)>
 }
 /**
@@ -4090,7 +4107,7 @@ import {$Metric, $Metric$$Type} from "dan200.computercraft.core.metrics.Metric"
 
 export class $Metric$Event extends $Metric {
 
-constructor(arg0: string, arg1: string, arg2: $LongFunction$$Type<(string)>)
+constructor(arg0: StringJS, arg1: StringJS, arg2: $LongFunction$$Type<(StringJS)>)
 
 }
 /**
@@ -4140,8 +4157,8 @@ export type $IBundledRedstoneBlock_ = $IBundledRedstoneBlock$$Type;
 declare module "dan200.computercraft.api.turtle.ITurtleAccess" {
 import {$ITurtleUpgrade, $ITurtleUpgrade$$Type} from "dan200.computercraft.api.turtle.ITurtleUpgrade"
 import {$MethodResult, $MethodResult$$Type} from "dan200.computercraft.api.lua.MethodResult"
-import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$TurtleAnimation, $TurtleAnimation$$Type} from "dan200.computercraft.api.turtle.TurtleAnimation"
+import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$TurtleCommand, $TurtleCommand$$Type} from "dan200.computercraft.api.turtle.TurtleCommand"
 import {$UpgradeData, $UpgradeData$$Type} from "dan200.computercraft.api.upgrades.UpgradeData"
@@ -4154,46 +4171,46 @@ import {$IPeripheral, $IPeripheral$$Type} from "dan200.computercraft.api.periphe
 
 export interface $ITurtleAccess {
 
- "getPosition"(): $BlockPos
  "getLevel"(): $Level
- "playAnimation"(arg0: $TurtleAnimation$$Type): void
+ "getPosition"(): $BlockPos
+ "teleportTo"(arg0: $Level$$Type, arg1: $BlockPos$$Type): boolean
  "isRemoved"(): boolean
  "getDirection"(): $Direction
  "getInventory"(): $Container
- "teleportTo"(arg0: $Level$$Type, arg1: $BlockPos$$Type): boolean
- "getUpgradeWithData"(arg0: $TurtleSide$$Type): $UpgradeData<($ITurtleUpgrade)>
- "getSelectedSlot"(): integer
- "setSelectedSlot"(arg0: integer): void
- "setFuelLevel"(arg0: integer): void
- "getFuelLevel"(): integer
- "getFuelLimit"(): integer
- "setColour"(arg0: integer): void
- "setUpgrade"(arg0: $TurtleSide$$Type, arg1: $UpgradeData$$Type<($ITurtleUpgrade$$Type)>): void
- "getUpgrade"(arg0: $TurtleSide$$Type): $ITurtleUpgrade
- "getPeripheral"(arg0: $TurtleSide$$Type): $IPeripheral
- "consumeFuel"(arg0: integer): boolean
- "getColour"(): integer
- "getUpgradeData"(arg0: $TurtleSide$$Type): $DataComponentPatch
- "setDirection"(arg0: $Direction$$Type): void
  "isFuelNeeded"(): boolean
  "addFuel"(arg0: integer): void
  "executeCommand"(arg0: $TurtleCommand$$Type): $MethodResult
  "setUpgradeData"(arg0: $TurtleSide$$Type, arg1: $DataComponentPatch$$Type): void
+ "getFuelLimit"(): integer
+ "setFuelLevel"(arg0: integer): void
+ "getFuelLevel"(): integer
+ "consumeFuel"(arg0: integer): boolean
+ "getUpgrade"(arg0: $TurtleSide$$Type): $ITurtleUpgrade
+ "setUpgrade"(arg0: $TurtleSide$$Type, arg1: $UpgradeData$$Type<($ITurtleUpgrade$$Type)>): void
+ "getColour"(): integer
+ "getPeripheral"(arg0: $TurtleSide$$Type): $IPeripheral
+ "setColour"(arg0: integer): void
+ "getUpgradeData"(arg0: $TurtleSide$$Type): $DataComponentPatch
+ "setDirection"(arg0: $Direction$$Type): void
+ "playAnimation"(arg0: $TurtleAnimation$$Type): void
+ "setSelectedSlot"(arg0: integer): void
+ "getSelectedSlot"(): integer
+ "getUpgradeWithData"(arg0: $TurtleSide$$Type): $UpgradeData<($ITurtleUpgrade)>
  "getOwningPlayer"(): $GameProfile
-get "position"(): $BlockPos
 get "level"(): $Level
+get "position"(): $BlockPos
 get "removed"(): boolean
 get "direction"(): $Direction
 get "inventory"(): $Container
-get "selectedSlot"(): integer
-set "selectedSlot"(value: integer)
+get "fuelNeeded"(): boolean
+get "fuelLimit"(): integer
 set "fuelLevel"(value: integer)
 get "fuelLevel"(): integer
-get "fuelLimit"(): integer
-set "colour"(value: integer)
 get "colour"(): integer
+set "colour"(value: integer)
 set "direction"(value: $Direction$$Type)
-get "fuelNeeded"(): boolean
+set "selectedSlot"(value: integer)
+get "selectedSlot"(): integer
 get "owningPlayer"(): $GameProfile
 }
 
@@ -4203,31 +4220,31 @@ const probejs$$marker: never
 export class $ITurtleAccess$$Static implements $ITurtleAccess {
 
 
- "getPosition"(): $BlockPos
  "getLevel"(): $Level
- "playAnimation"(arg0: $TurtleAnimation$$Type): void
+ "getPosition"(): $BlockPos
+ "teleportTo"(arg0: $Level$$Type, arg1: $BlockPos$$Type): boolean
  "isRemoved"(): boolean
  "getDirection"(): $Direction
  "getInventory"(): $Container
- "teleportTo"(arg0: $Level$$Type, arg1: $BlockPos$$Type): boolean
- "getUpgradeWithData"(arg0: $TurtleSide$$Type): $UpgradeData<($ITurtleUpgrade)>
- "getSelectedSlot"(): integer
- "setSelectedSlot"(arg0: integer): void
- "setFuelLevel"(arg0: integer): void
- "getFuelLevel"(): integer
- "getFuelLimit"(): integer
- "setColour"(arg0: integer): void
- "setUpgrade"(arg0: $TurtleSide$$Type, arg1: $UpgradeData$$Type<($ITurtleUpgrade$$Type)>): void
- "getUpgrade"(arg0: $TurtleSide$$Type): $ITurtleUpgrade
- "getPeripheral"(arg0: $TurtleSide$$Type): $IPeripheral
- "consumeFuel"(arg0: integer): boolean
- "getColour"(): integer
- "getUpgradeData"(arg0: $TurtleSide$$Type): $DataComponentPatch
- "setDirection"(arg0: $Direction$$Type): void
  "isFuelNeeded"(): boolean
  "addFuel"(arg0: integer): void
  "executeCommand"(arg0: $TurtleCommand$$Type): $MethodResult
  "setUpgradeData"(arg0: $TurtleSide$$Type, arg1: $DataComponentPatch$$Type): void
+ "getFuelLimit"(): integer
+ "setFuelLevel"(arg0: integer): void
+ "getFuelLevel"(): integer
+ "consumeFuel"(arg0: integer): boolean
+ "getUpgrade"(arg0: $TurtleSide$$Type): $ITurtleUpgrade
+ "setUpgrade"(arg0: $TurtleSide$$Type, arg1: $UpgradeData$$Type<($ITurtleUpgrade$$Type)>): void
+ "getColour"(): integer
+ "getPeripheral"(arg0: $TurtleSide$$Type): $IPeripheral
+ "setColour"(arg0: integer): void
+ "getUpgradeData"(arg0: $TurtleSide$$Type): $DataComponentPatch
+ "setDirection"(arg0: $Direction$$Type): void
+ "playAnimation"(arg0: $TurtleAnimation$$Type): void
+ "setSelectedSlot"(arg0: integer): void
+ "getSelectedSlot"(): integer
+ "getUpgradeWithData"(arg0: $TurtleSide$$Type): $UpgradeData<($ITurtleUpgrade)>
  "getOwningPlayer"(): $GameProfile
 }
 /**
@@ -4254,8 +4271,8 @@ export class $UpgradeTypeImpl<T extends $UpgradeBase> extends $Record implements
 
 
 public static "create"<T extends $UpgradeBase>(arg0: $MapCodec$$Type<(T)>): $UpgradeType<(T)>
-public "codec"(): $MapCodec<(T)>
 public static "simple"<T extends $UpgradeBase>(arg0: T): $UpgradeType<(T)>
+public "codec"(): $MapCodec<(T)>
 public static "simpleWithCustomItem"<T extends $UpgradeBase>(arg0: $Function$$Type<($ItemStack), (T)>): $UpgradeType<(T)>
 }
 /**
@@ -4272,8 +4289,8 @@ export type $UpgradeTypeImpl_<T> = $UpgradeTypeImpl$$Type<(T)>;
 }}
 declare module "dan200.computercraft.shared.peripheral.diskdrive.DiskDriveState" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -4286,16 +4303,16 @@ static readonly "FULL": $DiskDriveState
 
 
 public static "values"(): ($DiskDriveState)[]
-public static "valueOf"(arg0: string): $DiskDriveState
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $DiskDriveState
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4312,8 +4329,8 @@ export type $DiskDriveState_ = $DiskDriveState$$Type;
 declare module "dan200.computercraft.shared.turtle.blocks.TurtleBlockEntity" {
 import {$AbstractComputerBlockEntity, $AbstractComputerBlockEntity$$Type} from "dan200.computercraft.shared.computer.blocks.AbstractComputerBlockEntity"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$ITurtleAccess, $ITurtleAccess$$Type} from "dan200.computercraft.api.turtle.ITurtleAccess"
 import {$List, $List$$Type} from "java.util.List"
+import {$ITurtleAccess, $ITurtleAccess$$Type} from "dan200.computercraft.api.turtle.ITurtleAccess"
 import {$Direction, $Direction$$Type} from "net.minecraft.core.Direction"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$BlockContainerJS, $BlockContainerJS$$Type} from "dev.latvian.mods.kubejs.level.BlockContainerJS"
@@ -4333,13 +4350,13 @@ import {$ITurtleUpgrade, $ITurtleUpgrade$$Type} from "dan200.computercraft.api.t
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$TrackedData, $TrackedData$$Type} from "dev.corgitaco.dataanchor.data.TrackedData"
+import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.dataanchor.data.registry.TrackedDataRegistry"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
 import {$IntSupplier, $IntSupplier$$Type} from "java.util.function.IntSupplier"
 import {$Container, $Container$$Type} from "net.minecraft.world.Container"
 import {$AbstractContainerMenu, $AbstractContainerMenu$$Type} from "net.minecraft.world.inventory.AbstractContainerMenu"
 import {$TurtleOverlay, $TurtleOverlay$$Type} from "dan200.computercraft.shared.turtle.TurtleOverlay"
-import {$Packet, $Packet$$Type} from "net.minecraft.network.protocol.Packet"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$IPeripheral, $IPeripheral$$Type} from "dan200.computercraft.api.peripheral.IPeripheral"
 import {$ComputerFamily, $ComputerFamily$$Type} from "dan200.computercraft.shared.computer.core.ComputerFamily"
@@ -4348,49 +4365,48 @@ export class $TurtleBlockEntity extends $AbstractComputerBlockEntity implements 
 static readonly "INVENTORY_WIDTH": integer
 static readonly "INVENTORY_HEIGHT": integer
 static readonly "INVENTORY_SIZE": integer
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 constructor(arg0: $BlockEntityType$$Type<($TurtleBlockEntity$$Type)>, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $IntSupplier$$Type, arg4: $ComputerFamily$$Type)
 
+public "getItems"(): $NonNullList<($ItemStack)>
+public "createMenu"(arg0: integer, arg1: $Inventory$$Type, arg2: $Player$$Type): $AbstractContainerMenu
+public "saveAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "setChanged"(): void
+public "stillValid"(arg0: $Player$$Type): boolean
+public "getDirection"(): $Direction
+public "getOverlay"(): $TurtleOverlay
+public "getAccess"(): $ITurtleAccess
+public "getFuelLimit"(): integer
+public "notifyMoveEnd"(): void
+public "getRenderYaw"(arg0: float): float
+public "getUpgrade"(arg0: $TurtleSide$$Type): $ITurtleUpgrade
+public "getColour"(): integer
+public "peripheral"(): $IPeripheral
+public "loadClient"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "loadServer"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "setDirection"(arg0: $Direction$$Type): void
+public "getUpdateTag"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
+public "getRenderOffset"(arg0: float): $Vec3
+public "neighborChanged"(arg0: $BlockPos$$Type): void
 /**
  * 
  * @deprecated
  */
 public "removeComponentsFromTag"(arg0: $CompoundTag$$Type): void
-public "createMenu"(arg0: integer, arg1: $Inventory$$Type, arg2: $Player$$Type): $AbstractContainerMenu
-public "getItems"(): $List<(any)>
-public "saveAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "getUpdateTag"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
-public "getDirection"(): $Direction
-public "getOverlay"(): $TurtleOverlay
-public "stillValid"(arg0: $Player$$Type): boolean
-public "setChanged"(): void
-public "getAccess"(): $ITurtleAccess
-public "getRenderOffset"(arg0: float): $Vec3
-public "neighborChanged"(arg0: $BlockPos$$Type): void
+public "transferStateFrom"(arg0: $TurtleBlockEntity$$Type): void
 public "onTileEntityChange"(): void
 public "getToolRenderAngle"(arg0: $TurtleSide$$Type, arg1: float): float
 public "notifyMoveStart"(): void
 public "getItemSnapshot"(arg0: integer): $ItemStack
-public "transferStateFrom"(arg0: $TurtleBlockEntity$$Type): void
-public "notifyMoveEnd"(): void
-public "getRenderYaw"(arg0: float): float
-public "getFuelLimit"(): integer
-public "peripheral"(): $IPeripheral
-public "getUpgrade"(arg0: $TurtleSide$$Type): $ITurtleUpgrade
-public "getColour"(): integer
-public "loadClient"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "loadServer"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "setDirection"(arg0: $Direction$$Type): void
 public "removeItem"(arg0: integer, arg1: integer): $ItemStack
-public "isEmpty"(): boolean
 public "getItem"(arg0: integer): $ItemStack
+public "isEmpty"(): boolean
 public "setItem"(arg0: integer, arg1: $ItemStack$$Type): void
 public "clearContent"(): void
 public "getContainerSize"(): integer
 public "removeItemNoUpdate"(arg0: integer): $ItemStack
 public static "defaultSetItems"(arg0: $List$$Type<($ItemStack$$Type)>, arg1: $List$$Type<($ItemStack$$Type)>): void
-public "getUpdatePacket"(): $Packet<(any)>
 public "startOpen"(arg0: $Player$$Type): void
 public "stopOpen"(arg0: $Player$$Type): void
 public "canPlaceItem"(arg0: integer, arg1: $ItemStack$$Type): boolean
@@ -4398,15 +4414,14 @@ public "countItem"(arg0: $Item$$Type): integer
 public "hasAnyOf"(arg0: $Set$$Type<($Item$$Type)>): boolean
 public "hasAnyMatching"(arg0: $Predicate$$Type<($ItemStack)>): boolean
 public "canTakeItem"(arg0: $Container$$Type, arg1: integer, arg2: $ItemStack$$Type): boolean
-public static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type, arg2: float): boolean
 public static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type): boolean
-public "getMaxStackSize"(arg0: $ItemStack$$Type): integer
+public static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type, arg2: float): boolean
 public "getMaxStackSize"(): integer
+public "getMaxStackSize"(arg0: $ItemStack$$Type): integer
 public static "tryClear"(arg0: any): void
-public "canReceiveTransferCooldown"(): boolean
 public "setTransferCooldown"(arg0: long): void
+public "canReceiveTransferCooldown"(): boolean
 public "lithium$itemInsertionTestRequiresStackSize1"(): boolean
-public "self"(): $Container
 public "getBlock"(arg0: $Level$$Type): $BlockContainerJS
 public "isMutable"(): boolean
 public "getSlots"(): integer
@@ -4415,25 +4430,26 @@ public "clear"(): void
 public "getWidth"(): integer
 public "getHeight"(): integer
 public "setChanged"(): void
+public "self"(): $Container
 public "setStackInSlot"(arg0: integer, arg1: $ItemStack$$Type): void
 public "getStackInSlot"(arg0: integer): $ItemStack
 public "extractItem"(arg0: integer, arg1: integer, arg2: boolean): $ItemStack
 public "getSlotLimit"(arg0: integer): integer
 public "isItemValid"(arg0: integer, arg1: $ItemStack$$Type): boolean
 public "asContainer"(): $Container
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
-public "isEmpty"(): boolean
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public "insertItem"(arg0: $ItemStack$$Type, arg1: boolean): $ItemStack
 public "clear"(arg0: $ItemPredicate$$Type): void
-public "find"(arg0: $ItemPredicate$$Type): integer
 public "find"(): integer
+public "find"(arg0: $ItemPredicate$$Type): integer
 public "count"(): integer
 public "count"(arg0: $ItemPredicate$$Type): integer
+public "isEmpty"(): boolean
 public "countNonEmpty"(arg0: $ItemPredicate$$Type): integer
 public "countNonEmpty"(): integer
 public "getAllItems"(): $List<($ItemStack)>
-get "items"(): $List<(any)>
+get "items"(): $NonNullList<($ItemStack)>
 get "direction"(): $Direction
 get "overlay"(): $TurtleOverlay
 get "access"(): $ITurtleAccess
@@ -4442,7 +4458,6 @@ get "colour"(): integer
 set "direction"(value: $Direction$$Type)
 get "empty"(): boolean
 get "containerSize"(): integer
-get "updatePacket"(): $Packet<(any)>
 get "maxStackSize"(): integer
 set "transferCooldown"(value: long)
 get "mutable"(): boolean
@@ -4471,10 +4486,10 @@ import {$ComputerComponent, $ComputerComponent$$Type} from "dan200.computercraft
 export class $ServerComputer$Properties {
 
 
-public "label"(arg0: string): $ServerComputer$Properties
+public "label"(arg0: StringJS): $ServerComputer$Properties
 public "addComponent"<T>(arg0: $ComputerComponent$$Type<(T)>, arg1: T): $ServerComputer$Properties
-public "storageCapacity"(arg0: long): $ServerComputer$Properties
 public "terminalSize"(arg0: $TerminalSize$$Type): $ServerComputer$Properties
+public "storageCapacity"(arg0: long): $ServerComputer$Properties
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4502,21 +4517,21 @@ export class $RepeatArgumentType$Template extends $Record implements $ArgumentTy
 
 constructor(info: $RepeatArgumentType$Info$$Type, child: $ArgumentTypeInfo$Template$$Type<(any)>, flatten: boolean, some: $SimpleCommandExceptionType$$Type)
 
-public "type"(): $ArgumentTypeInfo<($RepeatArgumentType<(any), (any)>), (any)>
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "info"(): $RepeatArgumentType$Info
 public "child"(): $ArgumentTypeInfo$Template<(any)>
 public "flatten"(): boolean
-public "instantiate"(arg0: $CommandBuildContext$$Type): $ArgumentType<(any)>
+public "type"(): $ArgumentTypeInfo<($RepeatArgumentType<(any), (any)>), (any)>
+public "equals"(arg0: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+public "info"(): $RepeatArgumentType$Info
 public "some"(): $SimpleCommandExceptionType
+public "instantiate"(arg0: $CommandBuildContext$$Type): $ArgumentType<(any)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $RepeatArgumentType$Template$$Type = ({"some"?: $SimpleCommandExceptionType$$Type, "info"?: $RepeatArgumentType$Info$$Type, "child"?: $ArgumentTypeInfo$Template$$Type<(never)>, "flatten"?: boolean}) | ([some?: $SimpleCommandExceptionType$$Type, info?: $RepeatArgumentType$Info$$Type, child?: $ArgumentTypeInfo$Template$$Type<(never)>, flatten?: boolean]);
+export type $RepeatArgumentType$Template$$Type = ({"flatten"?: boolean, "some"?: $SimpleCommandExceptionType$$Type, "info"?: $RepeatArgumentType$Info$$Type, "child"?: $ArgumentTypeInfo$Template$$Type<(never)>}) | ([flatten?: boolean, some?: $SimpleCommandExceptionType$$Type, info?: $RepeatArgumentType$Info$$Type, child?: $ArgumentTypeInfo$Template$$Type<(never)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -4562,8 +4577,8 @@ import {$Vec3, $Vec3$$Type} from "net.minecraft.world.phys.Vec3"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ServerComputer$Properties, $ServerComputer$Properties$$Type} from "dan200.computercraft.shared.computer.core.ServerComputer$Properties"
 import {$PocketServerComputer, $PocketServerComputer$$Type} from "dan200.computercraft.shared.pocket.core.PocketServerComputer"
-import {$IPocketUpgrade, $IPocketUpgrade$$Type} from "dan200.computercraft.api.pocket.IPocketUpgrade"
 import {$PocketHolder, $PocketHolder$$Type} from "dan200.computercraft.shared.pocket.core.PocketHolder"
+import {$IPocketUpgrade, $IPocketUpgrade$$Type} from "dan200.computercraft.api.pocket.IPocketUpgrade"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 
@@ -4571,32 +4586,32 @@ export class $PocketBrain implements $IPocketAccess {
 
 constructor(arg0: $PocketHolder$$Type, arg1: $UpgradeData$$Type<($IPocketUpgrade$$Type)>, arg2: integer, arg3: $ServerComputer$Properties$$Type)
 
+public "getLevel"(): $ServerLevel
 public "getPosition"(): $Vec3
 public "getEntity"(): $Entity
-public "getLevel"(): $ServerLevel
 public "setLight"(arg0: integer): void
 public "updateItem"(arg0: $ItemStack$$Type): boolean
+public "setUpgradeData"(arg0: $DataComponentPatch$$Type): void
 public "updateHolder"(arg0: $PocketHolder$$Type): void
-public "computer"(): $PocketServerComputer
-public "setColour"(arg0: integer): void
-public "setUpgrade"(arg0: $UpgradeData$$Type<($IPocketUpgrade$$Type)>): void
 public "getUpgrade"(): $UpgradeData<($IPocketUpgrade)>
+public "setUpgrade"(arg0: $UpgradeData$$Type<($IPocketUpgrade$$Type)>): void
 public "getColour"(): integer
+public "setColour"(arg0: integer): void
 public "getLight"(): integer
 public "getUpgradeData"(): $DataComponentPatch
-public "setUpgradeData"(arg0: $DataComponentPatch$$Type): void
+public "computer"(): $PocketServerComputer
 public "invalidatePeripheral"(): void
+get "level"(): $ServerLevel
 get "position"(): $Vec3
 get "entity"(): $Entity
-get "level"(): $ServerLevel
 set "light"(value: integer)
-set "colour"(value: integer)
-set "upgrade"(value: $UpgradeData$$Type<($IPocketUpgrade$$Type)>)
+set "upgradeData"(value: $DataComponentPatch$$Type)
 get "upgrade"(): $UpgradeData<($IPocketUpgrade)>
+set "upgrade"(value: $UpgradeData$$Type<($IPocketUpgrade$$Type)>)
 get "colour"(): integer
+set "colour"(value: integer)
 get "light"(): integer
 get "upgradeData"(): $DataComponentPatch
-set "upgradeData"(value: $DataComponentPatch$$Type)
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4611,6 +4626,7 @@ declare global {
 export type $PocketBrain_ = $PocketBrain$$Type;
 }}
 declare module "dan200.computercraft.shared.pocket.items.PocketComputerItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$PocketServerComputer, $PocketServerComputer$$Type} from "dan200.computercraft.shared.pocket.core.PocketServerComputer"
@@ -4618,6 +4634,7 @@ import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.Inte
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$ItemEntity, $ItemEntity$$Type} from "net.minecraft.world.entity.item.ItemEntity"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$ServerComputerRegistry, $ServerComputerRegistry$$Type} from "dan200.computercraft.shared.computer.core.ServerComputerRegistry"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
@@ -4625,8 +4642,8 @@ import {$UpgradeData, $UpgradeData$$Type} from "dan200.computercraft.api.upgrade
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$ServerComputer, $ServerComputer$$Type} from "dan200.computercraft.shared.computer.core.ServerComputer"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$PocketHolder, $PocketHolder$$Type} from "dan200.computercraft.shared.pocket.core.PocketHolder"
 import {$IPocketUpgrade, $IPocketUpgrade$$Type} from "dan200.computercraft.api.pocket.IPocketUpgrade"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
@@ -4636,7 +4653,7 @@ import {$MinecraftServer, $MinecraftServer$$Type} from "net.minecraft.server.Min
 export class $PocketComputerItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4644,21 +4661,22 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(arg0: $Item$Properties$$Type, arg1: $ComputerFamily$$Type)
 
-public "getName"(arg0: $ItemStack$$Type): $Component
-public "open"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: $PocketHolder$$Type, arg3: boolean): void
+public "tick"(arg0: $ItemStack$$Type, arg1: $PocketHolder$$Type, arg2: boolean): void
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
 public "getFamily"(): $ComputerFamily
-public "tick"(arg0: $ItemStack$$Type, arg1: $PocketHolder$$Type, arg2: boolean): void
+public "getName"(arg0: $ItemStack$$Type): $Component
+public "open"(arg0: $Player$$Type, arg1: $ItemStack$$Type, arg2: $PocketHolder$$Type, arg3: boolean): void
 public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
+public static "getUpgrade"(arg0: $ItemStack$$Type): $IPocketUpgrade
+public static "setUpgrade"(arg0: $ItemStack$$Type, arg1: $UpgradeData$$Type<($IPocketUpgrade$$Type)>): void
 public "onCraftedPostProcess"(arg0: $ItemStack$$Type, arg1: $Level$$Type): void
 public "onEntityItemUpdate"(arg0: $ItemStack$$Type, arg1: $ItemEntity$$Type): boolean
-public "getCreatorModId"(arg0: $ItemStack$$Type): string
+public "getCreatorModId"(arg0: $ItemStack$$Type): StringJS
+public static "getUpgradeWithData"(arg0: $ItemStack$$Type): $UpgradeData<($IPocketUpgrade)>
 public static "getServerComputer"(arg0: $MinecraftServer$$Type, arg1: $ItemStack$$Type): $PocketServerComputer
 public static "getServerComputer"(arg0: $ServerComputerRegistry$$Type, arg1: $ItemStack$$Type): $PocketServerComputer
-public static "getUpgradeWithData"(arg0: $ItemStack$$Type): $UpgradeData<($IPocketUpgrade)>
 public static "isServerComputer"(arg0: $ServerComputer$$Type, arg1: $ItemStack$$Type): boolean
-public static "setUpgrade"(arg0: $ItemStack$$Type, arg1: $UpgradeData$$Type<($IPocketUpgrade$$Type)>): void
-public static "getUpgrade"(arg0: $ItemStack$$Type): $IPocketUpgrade
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "family"(): $ComputerFamily
 }
 /**
@@ -4687,19 +4705,19 @@ export interface $UpgradeType<T extends $UpgradeBase> {
 /**
  * This field is a type stub generated by ProbeJS and shall not be used in any sense.
  */
- "probejsInternal$$Literal": Special.ComputercraftTurtleUpgradeType
-/**
- * This field is a type stub generated by ProbeJS and shall not be used in any sense.
- */
- "probejsInternal$$Tag": Special.ComputercraftTurtleUpgradeTypeTag
-/**
- * This field is a type stub generated by ProbeJS and shall not be used in any sense.
- */
  "probejsInternal$$Literal": Special.ComputercraftPocketUpgradeType
 /**
  * This field is a type stub generated by ProbeJS and shall not be used in any sense.
  */
  "probejsInternal$$Tag": Special.ComputercraftPocketUpgradeTypeTag
+/**
+ * This field is a type stub generated by ProbeJS and shall not be used in any sense.
+ */
+ "probejsInternal$$Literal": Special.ComputercraftTurtleUpgradeType
+/**
+ * This field is a type stub generated by ProbeJS and shall not be used in any sense.
+ */
+ "probejsInternal$$Tag": Special.ComputercraftTurtleUpgradeTypeTag
 }
 
 export namespace $UpgradeType {
@@ -4712,15 +4730,15 @@ export class $UpgradeType$$Static<T extends $UpgradeBase> implements $UpgradeTyp
 
 
 static "create"<T extends $UpgradeBase>(arg0: $MapCodec$$Type<(T)>): $UpgradeType<(T)>
- "codec"(): $MapCodec<(T)>
 static "simple"<T extends $UpgradeBase>(arg0: T): $UpgradeType<(T)>
+ "codec"(): $MapCodec<(T)>
 static "simpleWithCustomItem"<T extends $UpgradeBase>(arg0: $Function$$Type<($ItemStack), (T)>): $UpgradeType<(T)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $UpgradeType$$Type<T> = (Special.ComputercraftTurtleUpgradeType) | (Special.ComputercraftPocketUpgradeType) | (() => $MapCodec$$Type<(T)>);
+export type $UpgradeType$$Type<T> = (Special.ComputercraftPocketUpgradeType) | (Special.ComputercraftTurtleUpgradeType) | (() => $MapCodec$$Type<(T)>);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -4739,7 +4757,7 @@ static readonly "ADVANCED": $ComputerFamily
 
 
 public static "values"(): ($ComputerFamily)[]
-public static "valueOf"(arg0: string): $ComputerFamily
+public static "valueOf"(arg0: StringJS): $ComputerFamily
 public "checkUsable"(arg0: $Player$$Type): boolean
 }
 /**
@@ -4755,24 +4773,27 @@ declare global {
 export type $ComputerFamily_ = $ComputerFamily$$Type;
 }}
 declare module "dan200.computercraft.shared.peripheral.modem.wired.CableBlockItem$WiredModem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$CableBlock, $CableBlock$$Type} from "dan200.computercraft.shared.peripheral.modem.wired.CableBlock"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$CableBlockItem, $CableBlockItem$$Type} from "dan200.computercraft.shared.peripheral.modem.wired.CableBlockItem"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
+import {$AdditionalItemPlacement, $AdditionalItemPlacement$$Type} from "net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement"
 import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 
 export class $CableBlockItem$WiredModem extends $CableBlockItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -4791,6 +4812,7 @@ public "moonlight$getAdditionalBehavior"(): $AdditionalItemPlacement
 public "moonlight$setAdditionalBehavior"(arg0: $AdditionalItemPlacement$$Type): void
 public "moonlight$getClientAnimationExtension"(): any
 public "moonlight$setClientAnimationExtension"(arg0: any): void
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4819,58 +4841,58 @@ import {$Nameable, $Nameable$$Type} from "net.minecraft.world.Nameable"
 import {$AbstractContainerMenu, $AbstractContainerMenu$$Type} from "net.minecraft.world.inventory.AbstractContainerMenu"
 import {$BlockEntityType, $BlockEntityType$$Type} from "net.minecraft.world.level.block.entity.BlockEntityType"
 import {$ServerComputer, $ServerComputer$$Type} from "dan200.computercraft.shared.computer.core.ServerComputer"
-import {$Packet, $Packet$$Type} from "net.minecraft.network.protocol.Packet"
+import {$ClientboundBlockEntityDataPacket, $ClientboundBlockEntityDataPacket$$Type} from "net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$ComputerFamily, $ComputerFamily$$Type} from "dan200.computercraft.shared.computer.core.ComputerFamily"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $AbstractComputerBlockEntity extends $BlockEntity implements $Nameable, $MenuConstructor {
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
 
 constructor(arg0: $BlockEntityType$$Type<($AbstractComputerBlockEntity$$Type)>, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $ComputerFamily$$Type)
 
-public "setLabel"(arg0: string): void
-public "getLabel"(): string
-public "getName"(): $Component
 public "getFamily"(): $ComputerFamily
 public "getDisplayName"(): $Component
+public "getLabel"(): StringJS
+public "setLabel"(arg0: StringJS): void
+public "getName"(): $Component
+public "saveAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "setRemoved"(): void
+public "getCustomName"(): $Component
+public "hasCustomName"(): boolean
+public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
+public "isUsable"(arg0: $Player$$Type): boolean
+public "isAdminOnly"(): boolean
+public "getComputerID"(): integer
+public "setComputerID"(arg0: integer): void
+public "updateRedstone"(): void
+public "getUpdateTag"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
+public "neighborChanged"(arg0: $BlockPos$$Type): void
+public "getUpdatePacket"(): $ClientboundBlockEntityDataPacket
+public "onlyOpCanSetNbt"(): boolean
 /**
  * 
  * @deprecated
  */
 public "removeComponentsFromTag"(arg0: $CompoundTag$$Type): void
-public "loadAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "saveAdditional"(arg0: $CompoundTag$$Type, arg1: $HolderLookup$Provider$$Type): void
-public "getUpdateTag"(arg0: $HolderLookup$Provider$$Type): $CompoundTag
-public "hasCustomName"(): boolean
-public "setRemoved"(): void
-public "getCustomName"(): $Component
-public "isAdminOnly"(): boolean
-public "getComputerID"(): integer
-public "setComputerID"(arg0: integer): void
-public "onlyOpCanSetNbt"(): boolean
-public "neighborChanged"(arg0: $BlockPos$$Type): void
-public "getUpdatePacket"(): $Packet<(any)>
 public "getServerComputer"(): $ServerComputer
 public "createServerComputer"(): $ServerComputer
 public "neighbourShapeChanged"(arg0: $Direction$$Type): void
-public "isUsable"(arg0: $Player$$Type): boolean
-public "updateRedstone"(): void
 public "updateInputsImmediately"(): void
 public "createMenu"(arg0: integer, arg1: $Inventory$$Type, arg2: $Player$$Type): $AbstractContainerMenu
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
-set "label"(value: string)
-get "label"(): string
-get "name"(): $Component
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 get "family"(): $ComputerFamily
 get "displayName"(): $Component
+get "label"(): StringJS
+set "label"(value: StringJS)
+get "name"(): $Component
 get "customName"(): $Component
 get "adminOnly"(): boolean
 get "computerID"(): integer
 set "computerID"(value: integer)
-get "updatePacket"(): $Packet<(any)>
+get "updatePacket"(): $ClientboundBlockEntityDataPacket
 get "serverComputer"(): $ServerComputer
 }
 /**
@@ -4897,10 +4919,10 @@ export class $RecipeFunction$Type<T extends $RecipeFunction> extends $Record {
 constructor(codec: $MapCodec$$Type<(T)>, streamCodec: $StreamCodec$$Type<($RegistryFriendlyByteBuf$$Type), (T)>)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
 public "codec"(): $MapCodec<(T)>
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (T)>
 /**
  * This field is a type stub generated by ProbeJS and shall not be used in any sense.
  */
@@ -4914,7 +4936,7 @@ public "codec"(): $MapCodec<(T)>
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $RecipeFunction$Type$$Type<T> = (Special.ComputercraftRecipeFunction) | ({"streamCodec"?: $StreamCodec$$Type<($RegistryFriendlyByteBuf$$Type), (any)>, "codec"?: $MapCodec$$Type<(any)>}) | ([streamCodec?: $StreamCodec$$Type<($RegistryFriendlyByteBuf$$Type), (any)>, codec?: $MapCodec$$Type<(any)>]);
+export type $RecipeFunction$Type$$Type<T> = (Special.ComputercraftRecipeFunction) | ({"codec"?: $MapCodec$$Type<(any)>, "streamCodec"?: $StreamCodec$$Type<($RegistryFriendlyByteBuf$$Type), (any)>}) | ([codec?: $MapCodec$$Type<(any)>, streamCodec?: $StreamCodec$$Type<($RegistryFriendlyByteBuf$$Type), (any)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -4924,8 +4946,8 @@ export type $RecipeFunction$Type_<T> = $RecipeFunction$Type$$Type<(T)>;
 }}
 declare module "dan200.computercraft.shared.peripheral.monitor.MonitorEdgeState" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -4950,19 +4972,19 @@ static readonly "NONE": $MonitorEdgeState
 static readonly "LRD": $MonitorEdgeState
 
 
-public "toString"(): string
+public "toString"(): StringJS
 public static "values"(): ($MonitorEdgeState)[]
-public static "valueOf"(arg0: string): $MonitorEdgeState
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $MonitorEdgeState
+public "getSerializedName"(): StringJS
 public static "fromConnections"(arg0: boolean, arg1: boolean, arg2: boolean, arg3: boolean): $MonitorEdgeState
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4994,8 +5016,8 @@ import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.Serve
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockEntity, $BlockEntity$$Type} from "net.minecraft.world.level.block.entity.BlockEntity"
 import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$GameEventListener, $GameEventListener$$Type} from "net.minecraft.world.level.gameevent.GameEventListener"
+import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$DirectionProperty, $DirectionProperty$$Type} from "net.minecraft.world.level.block.state.properties.DirectionProperty"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
@@ -5013,7 +5035,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -5047,8 +5069,8 @@ import {$TimeUnit, $TimeUnit$$Type} from "java.util.concurrent.TimeUnit"
 
 export interface $WorkMonitor {
 
- "canWork"(): boolean
  "shouldWork"(): boolean
+ "canWork"(): boolean
  "trackWork"(arg0: long, arg1: $TimeUnit$$Type): void
  "runWork"(arg0: $Runnable$$Type): boolean
 }
@@ -5059,8 +5081,8 @@ const probejs$$marker: never
 export class $WorkMonitor$$Static implements $WorkMonitor {
 
 
- "canWork"(): boolean
  "shouldWork"(): boolean
+ "canWork"(): boolean
  "trackWork"(arg0: long, arg1: $TimeUnit$$Type): void
  "runWork"(arg0: $Runnable$$Type): boolean
 }
@@ -5086,30 +5108,30 @@ import {$UpgradeType, $UpgradeType$$Type} from "dan200.computercraft.api.upgrade
 export interface $UpgradeBase {
 
  "getType"(): $UpgradeType<(any)>
- "getCraftingItem"(): $ItemStack
  "getAdjective"(): $Component
  "getUpgradeItem"(arg0: $DataComponentPatch$$Type): $ItemStack
  "isItemSuitable"(arg0: $ItemStack$$Type): boolean
  "getUpgradeData"(arg0: $ItemStack$$Type): $DataComponentPatch
+ "getCraftingItem"(): $ItemStack
 get "type"(): $UpgradeType<(any)>
-get "craftingItem"(): $ItemStack
 get "adjective"(): $Component
+get "craftingItem"(): $ItemStack
 }
 
 export namespace $UpgradeBase {
-function getDefaultAdjective(arg0: $ResourceLocation$$Type): string
+function getDefaultAdjective(arg0: $ResourceLocation$$Type): StringJS
 const probejs$$marker: never
 }
 export class $UpgradeBase$$Static implements $UpgradeBase {
 
 
  "getType"(): $UpgradeType<(any)>
- "getCraftingItem"(): $ItemStack
-static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
  "getAdjective"(): $Component
  "getUpgradeItem"(arg0: $DataComponentPatch$$Type): $ItemStack
  "isItemSuitable"(arg0: $ItemStack$$Type): boolean
  "getUpgradeData"(arg0: $ItemStack$$Type): $DataComponentPatch
+ "getCraftingItem"(): $ItemStack
+static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5161,26 +5183,26 @@ static readonly "NorthOffPeripheral": $CableModemVariant
 static readonly "None": $CableModemVariant
 
 
-public "toString"(): string
+public "toString"(): StringJS
 public static "values"(): ($CableModemVariant)[]
-public static "valueOf"(arg0: string): $CableModemVariant
+public static "valueOf"(arg0: StringJS): $CableModemVariant
 public static "from"(arg0: $Direction$$Type): $CableModemVariant
 public static "from"(arg0: $Direction$$Type, arg1: boolean, arg2: boolean): $CableModemVariant
-public "getSerializedName"(): string
+public "isModemOn"(): boolean
 public "isPeripheralOn"(): boolean
 public "getFacing"(): $Direction
-public "isModemOn"(): boolean
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "serializedName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "modemOn"(): boolean
 get "peripheralOn"(): boolean
 get "facing"(): $Direction
-get "modemOn"(): boolean
-get "remappedEnumConstantName"(): string
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5233,8 +5255,8 @@ import {$ITurtleUpgrade, $ITurtleUpgrade$$Type} from "dan200.computercraft.api.t
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Registry, $Registry$$Type} from "net.minecraft.core.Registry"
-import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$ITurtleAccess, $ITurtleAccess$$Type} from "dan200.computercraft.api.turtle.ITurtleAccess"
+import {$TurtleSide, $TurtleSide$$Type} from "dan200.computercraft.api.turtle.TurtleSide"
 import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
 import {$IPeripheral, $IPeripheral$$Type} from "dan200.computercraft.api.peripheral.IPeripheral"
 import {$UpgradeType, $UpgradeType$$Type} from "dan200.computercraft.api.upgrades.UpgradeType"
@@ -5248,7 +5270,7 @@ public "getType"(): $UpgradeType<($TurtleSpeaker)>
 public "createPeripheral"(arg0: $ITurtleAccess$$Type, arg1: $TurtleSide$$Type): $IPeripheral
 public static "createKey"(arg0: $ResourceLocation$$Type): $ResourceKey<($ITurtleUpgrade)>
 public static "typeRegistry"(): $ResourceKey<($Registry<($UpgradeType<($ITurtleUpgrade)>)>)>
-public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): string
+public static "getDefaultAdjective"(arg0: $ResourceLocation$$Type): StringJS
 get "type"(): $UpgradeType<($TurtleSpeaker)>
 }
 /**

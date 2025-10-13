@@ -8,10 +8,10 @@ export {} // Mark the file as a module, do not remove unless there are other imp
 export class $Args {
 
 
+public "setAll"(...arg0: (any)[]): void
 public "size"(): integer
 public "get"<T>(arg0: integer): T
 public "set"<T>(arg0: integer, arg1: T): void
-public "setAll"(...arg0: (any)[]): void
 set "all"(value: (any)[])
 }
 /**
@@ -36,16 +36,16 @@ import {$CallbackInfo, $CallbackInfo$$Type} from "org.spongepowered.asm.mixin.in
  */
 export class $CallbackInfoReturnable<R> extends $CallbackInfo {
 
-constructor(arg0: string, arg1: boolean, arg2: float)
-constructor(arg0: string, arg1: boolean, arg2: integer)
-constructor(arg0: string, arg1: boolean, arg2: long)
-constructor(arg0: string, arg1: boolean, arg2: short)
-constructor(arg0: string, arg1: boolean, arg2: boolean)
-constructor(arg0: string, arg1: boolean)
-constructor(arg0: string, arg1: boolean, arg2: R)
-constructor(arg0: string, arg1: boolean, arg2: byte)
-constructor(arg0: string, arg1: boolean, arg2: character)
-constructor(arg0: string, arg1: boolean, arg2: double)
+constructor(arg0: StringJS, arg1: boolean, arg2: float)
+constructor(arg0: StringJS, arg1: boolean, arg2: integer)
+constructor(arg0: StringJS, arg1: boolean, arg2: long)
+constructor(arg0: StringJS, arg1: boolean, arg2: short)
+constructor(arg0: StringJS, arg1: boolean, arg2: boolean)
+constructor(arg0: StringJS, arg1: boolean)
+constructor(arg0: StringJS, arg1: boolean, arg2: R)
+constructor(arg0: StringJS, arg1: boolean, arg2: byte)
+constructor(arg0: StringJS, arg1: boolean, arg2: character)
+constructor(arg0: StringJS, arg1: boolean, arg2: double)
 
 public "setReturnValue"(arg0: R): void
 public "getReturnValue"(): R
@@ -89,8 +89,8 @@ export {} // Mark the file as a module, do not remove unless there are other imp
  */
 export interface $Cancellable {
 
- "cancel"(): void
  "isCancelled"(): boolean
+ "cancel"(): void
  "isCancellable"(): boolean
 get "cancelled"(): boolean
 get "cancellable"(): boolean
@@ -102,8 +102,8 @@ const probejs$$marker: never
 export class $Cancellable$$Static implements $Cancellable {
 
 
- "cancel"(): void
  "isCancelled"(): boolean
+ "cancel"(): void
  "isCancellable"(): boolean
 }
 /**
@@ -129,16 +129,16 @@ import {$Type, $Type$$Type} from "org.objectweb.asm.Type"
  */
 export class $CallbackInfo implements $Cancellable {
 
-constructor(arg0: string, arg1: boolean)
+constructor(arg0: StringJS, arg1: boolean)
 
-public "toString"(): string
-public "getId"(): string
-public "cancel"(): void
 public "isCancelled"(): boolean
+public "toString"(): StringJS
+public "getId"(): StringJS
+public "cancel"(): void
 public "isCancellable"(): boolean
-public static "getCallInfoClassName"(arg0: $Type$$Type): string
-get "id"(): string
+public static "getCallInfoClassName"(arg0: $Type$$Type): StringJS
 get "cancelled"(): boolean
+get "id"(): StringJS
 get "cancellable"(): boolean
 }
 /**

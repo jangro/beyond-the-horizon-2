@@ -1,48 +1,11 @@
-declare module "com.yungnickyoung.minecraft.yungsapi.world.structure.context.StructureContext" {
-import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
-import {$Rotation, $Rotation$$Type} from "net.minecraft.world.level.block.Rotation"
-import {$List, $List$$Type} from "java.util.List"
-import {$RandomState, $RandomState$$Type} from "net.minecraft.world.level.levelgen.RandomState"
-import {$PieceEntry, $PieceEntry$$Type} from "com.yungnickyoung.minecraft.yungsapi.world.structure.jigsaw.PieceEntry"
-import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
-import {$StructureTemplateManager, $StructureTemplateManager$$Type} from "net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager"
-import {$BiomeSource, $BiomeSource$$Type} from "net.minecraft.world.level.biome.BiomeSource"
-
-export class $StructureContext {
-
-
-public "depth"(): integer
-public "pos"(): $BlockPos
-public "random"(): $RandomSource
-public "structureTemplateManager"(): $StructureTemplateManager
-public "randomState"(): $RandomState
-public "rotation"(): $Rotation
-public "pieces"(): $List<($PieceEntry)>
-public "pieceEntry"(): $PieceEntry
-public "pieceMinY"(): integer
-public "pieceMaxY"(): integer
-public "biomeSource"(): $BiomeSource
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $StructureContext$$Type = ($StructureContext);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $StructureContext_ = $StructureContext$$Type;
-}}
 declare module "com.yungnickyoung.minecraft.betterendisland.world.IEndSpike" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $IEndSpike {
 
- "setCrystalYOffsetFromPillarHeight"(arg0: integer): void
  "getCrystalYOffset"(): integer
-set "crystalYOffsetFromPillarHeight"(value: integer)
+ "setCrystalYOffsetFromPillarHeight"(arg0: integer): void
 get "crystalYOffset"(): integer
+set "crystalYOffsetFromPillarHeight"(value: integer)
 }
 
 export namespace $IEndSpike {
@@ -51,8 +14,8 @@ const probejs$$marker: never
 export class $IEndSpike$$Static implements $IEndSpike {
 
 
- "setCrystalYOffsetFromPillarHeight"(arg0: integer): void
  "getCrystalYOffset"(): integer
+ "setCrystalYOffsetFromPillarHeight"(arg0: integer): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -110,11 +73,11 @@ static readonly "CODEC": $Codec<($RibbitsVegetationFeatureConfig)>
 constructor(onSolidStateProvider: $Optional$$Type<($BlockStateProvider$$Type)>, onLiquidStateProvider: $Optional$$Type<($BlockStateProvider$$Type)>, cannotPlaceOn: $List$$Type<($BlockState$$Type)>)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
+public "cannotPlaceOn"(): $List<($BlockState)>
 public "onSolidStateProvider"(): $Optional<($BlockStateProvider)>
 public "onLiquidStateProvider"(): $Optional<($BlockStateProvider)>
-public "cannotPlaceOn"(): $List<($BlockState)>
 public "getFeatures"(): $Stream<($ConfiguredFeature<(any), (any)>)>
 get "features"(): $Stream<($ConfiguredFeature<(any), (any)>)>
 }
@@ -122,7 +85,7 @@ get "features"(): $Stream<($ConfiguredFeature<(any), (any)>)>
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $RibbitsVegetationFeatureConfig$$Type = ({"onSolidStateProvider"?: ($BlockStateProvider$$Type)?, "cannotPlaceOn"?: $List$$Type<($BlockState$$Type)>, "onLiquidStateProvider"?: ($BlockStateProvider$$Type)?}) | ([onSolidStateProvider?: ($BlockStateProvider$$Type)?, cannotPlaceOn?: $List$$Type<($BlockState$$Type)>, onLiquidStateProvider?: ($BlockStateProvider$$Type)?]);
+export type $RibbitsVegetationFeatureConfig$$Type = ({"onLiquidStateProvider"?: ($BlockStateProvider$$Type)?, "onSolidStateProvider"?: ($BlockStateProvider$$Type)?, "cannotPlaceOn"?: $List$$Type<($BlockState$$Type)>}) | ([onLiquidStateProvider?: ($BlockStateProvider$$Type)?, onSolidStateProvider?: ($BlockStateProvider$$Type)?, cannotPlaceOn?: $List$$Type<($BlockState$$Type)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -171,19 +134,19 @@ static readonly "CODEC": $Codec<($EnhancedTerrainAdaptation$Padding)>
 
 constructor(x: integer, top: integer, bottom: integer, z: integer)
 
+public "top"(): integer
 public "bottom"(): integer
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "x"(): integer
 public "z"(): integer
-public "top"(): integer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $EnhancedTerrainAdaptation$Padding$$Type = ({"top"?: integer, "x"?: integer, "z"?: integer, "bottom"?: integer}) | ([top?: integer, x?: integer, z?: integer, bottom?: integer]);
+export type $EnhancedTerrainAdaptation$Padding$$Type = ({"z"?: integer, "bottom"?: integer, "top"?: integer, "x"?: integer}) | ([z?: integer, bottom?: integer, top?: integer, x?: integer]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -192,6 +155,7 @@ declare global {
 export type $EnhancedTerrainAdaptation$Padding_ = $EnhancedTerrainAdaptation$Padding$$Type;
 }}
 declare module "com.yungnickyoung.minecraft.ribbits.item.RibbitSpawnEggItemNeoForge" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$DeferredSpawnEggItem, $DeferredSpawnEggItem$$Type} from "net.neoforged.neoforge.common.DeferredSpawnEggItem"
@@ -200,21 +164,22 @@ import {$Mob, $Mob$$Type} from "net.minecraft.world.entity.Mob"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$SpawnEggItem, $SpawnEggItem$$Type} from "net.minecraft.world.item.SpawnEggItem"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$RibbitProfession, $RibbitProfession$$Type} from "com.yungnickyoung.minecraft.ribbits.data.RibbitProfession"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$RibbitEntity, $RibbitEntity$$Type} from "com.yungnickyoung.minecraft.ribbits.entity.RibbitEntity"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
 import {$EntityType, $EntityType$$Type} from "net.minecraft.world.entity.EntityType"
 
 export class $RibbitSpawnEggItemNeoForge extends $DeferredSpawnEggItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "BY_ID": $Map<($EntityType<($Mob)>), ($SpawnEggItem)>
@@ -225,8 +190,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $EntityType$$Type<($RibbitEntity$$Type)>, arg1: $RibbitProfession$$Type, arg2: integer, arg3: integer, arg4: $Item$Properties$$Type)
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "getProfession"(): $RibbitProfession
 public "useOn"(arg0: $UseOnContext$$Type): $InteractionResult
+public "getProfession"(): $RibbitProfession
+public static "bumblezone$getIdMap"(): $Map<($EntityType<($Mob)>), ($SpawnEggItem)>
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 get "profession"(): $RibbitProfession
 }
 /**
@@ -278,18 +245,18 @@ import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 
 export class $RibbitInstrument {
 
-constructor(arg0: $ResourceLocation$$Type, arg1: $ResourceLocation$$Type, arg2: string, arg3: $SoundEvent$$Type)
+constructor(arg0: $ResourceLocation$$Type, arg1: $ResourceLocation$$Type, arg2: StringJS, arg3: $SoundEvent$$Type)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "getId"(): $ResourceLocation
 public "getSoundEvent"(): $SoundEvent
-public "getAnimationName"(): string
 public "getModelId"(): $ResourceLocation
+public "getAnimationName"(): StringJS
 get "id"(): $ResourceLocation
 get "soundEvent"(): $SoundEvent
-get "animationName"(): string
 get "modelId"(): $ResourceLocation
+get "animationName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -426,8 +393,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$SwampPlantBlock, $SwampPlantBlock$$Type} from "com.yungnickyoung.minecraft.ribbits.block.SwampPlantBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
@@ -450,7 +417,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -486,22 +453,22 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$Object2ByteLinkedOpenHashMap, $Object2ByteLinkedOpenHashMap$$Type} from "it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$PathComputationType, $PathComputationType$$Type} from "net.minecraft.world.level.pathfinder.PathComputationType"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$Fluid, $Fluid$$Type} from "net.minecraft.world.level.material.Fluid"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$BooleanProperty, $BooleanProperty$$Type} from "net.minecraft.world.level.block.state.properties.BooleanProperty"
 import {$LevelAccessor, $LevelAccessor$$Type} from "net.minecraft.world.level.LevelAccessor"
 import {$FluidState, $FluidState$$Type} from "net.minecraft.world.level.material.FluidState"
-import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
+import {$BlockPlaceContext, $BlockPlaceContext$$Type} from "net.minecraft.world.item.context.BlockPlaceContext"
 import {$PushReaction, $PushReaction$$Type} from "net.minecraft.world.level.material.PushReaction"
 
 export class $SwampLanternBlock extends $Block implements $SimpleWaterloggedBlock {
@@ -519,7 +486,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "WATERLOGGED": $BooleanProperty
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
@@ -530,12 +497,12 @@ static readonly "UPDATE_CLIENTS": integer
 constructor(arg0: $BlockBehaviour$Properties$$Type)
 
 public "getShape"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $CollisionContext$$Type): $VoxelShape
-public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
 public "isPathfindable"(arg0: $BlockState$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $PathComputationType$$Type): boolean
+public "updateShape"(arg0: $BlockState$$Type, arg1: $Direction$$Type, arg2: $BlockState$$Type, arg3: $LevelAccessor$$Type, arg4: $BlockPos$$Type, arg5: $BlockPos$$Type): $BlockState
 public "canSurvive"(arg0: $BlockState$$Type, arg1: $LevelReader$$Type, arg2: $BlockPos$$Type): boolean
 public "getFluidState"(arg0: $BlockState$$Type): $FluidState
-public "getPistonPushReaction"(arg0: $BlockState$$Type): $PushReaction
 public "getStateForPlacement"(arg0: $BlockPlaceContext$$Type): $BlockState
+public "getPistonPushReaction"(arg0: $BlockState$$Type): $PushReaction
 public "getPickupSound"(): $Optional<($SoundEvent)>
 public "canPlaceLiquid"(arg0: $Player$$Type, arg1: $BlockGetter$$Type, arg2: $BlockPos$$Type, arg3: $BlockState$$Type, arg4: $Fluid$$Type): boolean
 public "placeLiquid"(arg0: $LevelAccessor$$Type, arg1: $BlockPos$$Type, arg2: $BlockState$$Type, arg3: $FluidState$$Type): boolean
@@ -556,38 +523,6 @@ export type $SwampLanternBlock$$Type = ($SwampLanternBlock);
 declare global {
 export type $SwampLanternBlock_ = $SwampLanternBlock$$Type;
 }}
-declare module "com.yungnickyoung.minecraft.bettermineshafts.world.BetterMineshaftStructure" {
-import {$Structure$GenerationContext, $Structure$GenerationContext$$Type} from "net.minecraft.world.level.levelgen.structure.Structure$GenerationContext"
-import {$Structure$GenerationStub, $Structure$GenerationStub$$Type} from "net.minecraft.world.level.levelgen.structure.Structure$GenerationStub"
-import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
-import {$Structure, $Structure$$Type} from "net.minecraft.world.level.levelgen.structure.Structure"
-import {$BetterMineshaftConfiguration, $BetterMineshaftConfiguration$$Type} from "com.yungnickyoung.minecraft.bettermineshafts.world.config.BetterMineshaftConfiguration"
-import {$StructureType, $StructureType$$Type} from "net.minecraft.world.level.levelgen.structure.StructureType"
-import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
-import {$Structure$StructureSettings, $Structure$StructureSettings$$Type} from "net.minecraft.world.level.levelgen.structure.Structure$StructureSettings"
-
-export class $BetterMineshaftStructure extends $Structure {
-static readonly "CODEC": $MapCodec<($BetterMineshaftStructure)>
-static readonly "DIRECT_CODEC": $Codec<($Structure)>
-
-constructor(arg0: $Structure$StructureSettings$$Type, arg1: $BetterMineshaftConfiguration$$Type)
-
-public "type"(): $StructureType<(any)>
-public "findGenerationPoint"(arg0: $Structure$GenerationContext$$Type): $Optional<($Structure$GenerationStub)>
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $BetterMineshaftStructure$$Type = ($BetterMineshaftStructure);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $BetterMineshaftStructure_ = $BetterMineshaftStructure$$Type;
-}}
 declare module "com.yungnickyoung.minecraft.ribbits.entity.RibbitEntity" {
 import {$MagniaProperties, $MagniaProperties$$Type} from "net.bunten.enderscape.entity.magnia.MagniaProperties"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
@@ -596,19 +531,20 @@ import {$GeoEntity, $GeoEntity$$Type} from "software.bernie.geckolib.animatable.
 import {$SoundEvent, $SoundEvent$$Type} from "net.minecraft.sounds.SoundEvent"
 import {$MobSpawnType, $MobSpawnType$$Type} from "net.minecraft.world.entity.MobSpawnType"
 import {$MoveControl, $MoveControl$$Type} from "net.minecraft.world.entity.ai.control.MoveControl"
-import {$EntityDataAccessor, $EntityDataAccessor$$Type} from "net.minecraft.network.syncher.EntityDataAccessor"
 import {$EquipmentSlot, $EquipmentSlot$$Type} from "net.minecraft.world.entity.EquipmentSlot"
-import {$GoalSelector, $GoalSelector$$Type} from "net.minecraft.world.entity.ai.goal.GoalSelector"
+import {$EntityDataAccessor, $EntityDataAccessor$$Type} from "net.minecraft.network.syncher.EntityDataAccessor"
 import {$Set, $Set$$Type} from "java.util.Set"
+import {$GoalSelector, $GoalSelector$$Type} from "net.minecraft.world.entity.ai.goal.GoalSelector"
 import {$RibbitInstrument, $RibbitInstrument$$Type} from "com.yungnickyoung.minecraft.ribbits.data.RibbitInstrument"
-import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$EntityType, $EntityType$$Type} from "net.minecraft.world.entity.EntityType"
+import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Entity$RemovalReason, $Entity$RemovalReason$$Type} from "net.minecraft.world.entity.Entity$RemovalReason"
 import {$HolderLookup$Provider, $HolderLookup$Provider$$Type} from "net.minecraft.core.HolderLookup$Provider"
-import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$AnimatableManager$ControllerRegistrar, $AnimatableManager$ControllerRegistrar$$Type} from "software.bernie.geckolib.animation.AnimatableManager$ControllerRegistrar"
+import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$ServerLevelAccessor, $ServerLevelAccessor$$Type} from "net.minecraft.world.level.ServerLevelAccessor"
+import {$SpellData, $SpellData$$Type} from "io.redspace.ironsspellbooks.api.spells.SpellData"
 import {$AttributeSupplier$Builder, $AttributeSupplier$Builder$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeSupplier$Builder"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$SerializableDataTicket, $SerializableDataTicket$$Type} from "software.bernie.geckolib.constant.dataticket.SerializableDataTicket"
@@ -630,6 +566,7 @@ import {$SpawnGroupData, $SpawnGroupData$$Type} from "net.minecraft.world.entity
 import {$ChangeSubscriber, $ChangeSubscriber$$Type} from "net.caffeinemc.mods.lithium.common.util.change_tracking.ChangeSubscriber"
 import {$TrackedDataRegistry, $TrackedDataRegistry$$Type} from "dev.corgitaco.dataanchor.data.registry.TrackedDataRegistry"
 import {$AnimatableInstanceCache, $AnimatableInstanceCache$$Type} from "software.bernie.geckolib.animatable.instance.AnimatableInstanceCache"
+import {$HashMap, $HashMap$$Type} from "java.util.HashMap"
 import {$AgeableMob, $AgeableMob$$Type} from "net.minecraft.world.entity.AgeableMob"
 import {$RibbitData, $RibbitData$$Type} from "com.yungnickyoung.minecraft.ribbits.data.RibbitData"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
@@ -660,8 +597,9 @@ static readonly "MAX_PICKUP_LOOT_CHANCE": float
  "zza": float
  "goalSelector": $GoalSelector
  "swingingArm": $InteractionHand
-static readonly "ID_TAG": string
+static readonly "ID_TAG": StringJS
 static readonly "DATA_HEALTH_ID": $EntityDataAccessor<(float)>
+ "persistenceRequired": boolean
 static readonly "DELTA_AFFECTED_BY_BLOCKS_BELOW_1_0": double
  "xRotO": float
  "zo": double
@@ -671,7 +609,7 @@ static readonly "DELTA_AFFECTED_BY_BLOCKS_BELOW_1_0": double
  "yya": float
  "oAttackAnim": float
  "yHeadRotO": float
-static readonly "UUID_TAG": string
+static readonly "UUID_TAG": StringJS
  "hurtDuration": integer
 static readonly "WATER_SPEED_MULTIPLIER": float
 static readonly "DEATH_DURATION": integer
@@ -681,12 +619,12 @@ static readonly "DEATH_DURATION": integer
  "verticalCollisionBelow": boolean
 static readonly "DEFAULT_BABY_SCALE": float
  "eyeHeight": float
-static readonly "ATTRIBUTES_FIELD": string
+static readonly "ATTRIBUTES_FIELD": StringJS
 static readonly "UPDATE_GOAL_SELECTOR_EVERY_N_TICKS": integer
 static readonly "DEFAULT_BB_HEIGHT": float
  "xxa": float
  "flyDist": float
-static readonly "PASSENGERS_TAG": string
+static readonly "PASSENGERS_TAG": StringJS
  "wasOnFire": boolean
  "attackAnim": float
  "zOld": double
@@ -696,13 +634,16 @@ readonly "timeOffs": float
 readonly "rotA": float
  "horizontalCollision": boolean
  "dimensions": $EntityDimensions
+ "castingSpell": $SpellData
 static readonly "DEFAULT_EQUIPMENT_DROP_CHANCE": float
 static readonly "ARMOR_SLOT_OFFSET": integer
  "swingTime": integer
+ "entityJs$builder": any
 static readonly "BODY_ARMOR_OFFSET": integer
  "tickCount": integer
 static readonly "MAX_ENCHANTED_ARMOR_CHANCE": float
 static readonly "MAX_ENCHANTED_WEAPON_CHANCE": float
+ "hasUsedSingleAttack": boolean
 static readonly "BOARDING_COOLDOWN": integer
 static readonly "PRESERVE_ITEM_DROP_CHANCE": integer
 static readonly "SWING_DURATION": integer
@@ -716,6 +657,7 @@ static readonly "BASE_JUMP_POWER": float
  "moveDist": float
  "mainSupportingBlockPos": $Optional<($BlockPos)>
  "targetSelector": $GoalSelector
+ "drinkTime": integer
  "xOld": double
  "wasInPowderSnow": boolean
  "hurtTime": integer
@@ -739,12 +681,13 @@ static readonly "PLAYER_HURT_EXPERIENCE_TIME": integer
 static readonly "HAND_SLOTS": integer
 static readonly "DEFAULT_BB_WIDTH": float
  "minorHorizontalCollision": boolean
+readonly "spells": $HashMap<(any), (any)>
 static readonly "EXTRA_RENDER_CULLING_SIZE_WITH_BIG_HAT": float
  "removeArrowTime": integer
  "walkDistO": float
 static readonly "FREEZE_HURT_FREQUENCY": integer
  "isInPowderSnow": boolean
-static readonly "ATTACHMENTS_NBT_KEY": string
+static readonly "ATTACHMENTS_NBT_KEY": StringJS
  "target": $LivingEntity
  "yBodyRot": float
  "blocksBuilding": boolean
@@ -757,28 +700,41 @@ static readonly "BASE_SAFE_FALL_DISTANCE": integer
 
 constructor(arg0: $EntityType$$Type<($RibbitEntity$$Type)>, arg1: $Level$$Type)
 
-public "remove"(arg0: $Entity$RemovalReason$$Type): void
 public "tick"(): void
-public "addRibbitToPlayingMusic"(arg0: $RibbitEntity$$Type): void
-public "removeRibbitFromPlayingMusic"(arg0: $RibbitEntity$$Type): void
-public "getAnimatableInstanceCache"(): $AnimatableInstanceCache
+public "remove"(arg0: $Entity$RemovalReason$$Type): void
+public "aiStep"(): void
 public "restock"(): void
+public "getMaxHeadXRot"(): integer
+public "getMaxHeadYRot"(): integer
+public "mobInteract"(arg0: $Player$$Type, arg1: $InteractionHand$$Type): $InteractionResult
 public "getRibbitData"(): $RibbitData
 public "setInstrument"(arg0: $RibbitInstrument$$Type): void
-public "isClientSide"(): boolean
-public "getSpeed"(): float
 public "isInRain"(): boolean
-public "mobInteract"(arg0: $Player$$Type, arg1: $InteractionHand$$Type): $InteractionResult
-public "getMaxHeadYRot"(): integer
-public "getMaxHeadXRot"(): integer
+public "getSpeed"(): float
+public "isClientSide"(): boolean
 public "finalizeSpawn"(arg0: $ServerLevelAccessor$$Type, arg1: $DifficultyInstance$$Type, arg2: $MobSpawnType$$Type, arg3: $SpawnGroupData$$Type): $SpawnGroupData
-public "aiStep"(): void
-public "registerControllers"(arg0: $AnimatableManager$ControllerRegistrar$$Type): void
-public "setTradingPlayer"(arg0: $Player$$Type): void
-public "getTradingPlayer"(): $Player
-public "showProgressBar"(): boolean
-public "notifyTradeUpdated"(arg0: $ItemStack$$Type): void
-public "getNotifyTradeSound"(): $SoundEvent
+public "setRibbitData"(arg0: $RibbitData$$Type): void
+public "reassessGoals"(): void
+public "getBuffing"(): boolean
+public "getBandMembers"(): $Set<($RibbitInstrument)>
+public "setBandMembers"(arg0: $Set$$Type<($RibbitInstrument$$Type)>): void
+public "isMasterRibbit"(): boolean
+public "getFishing"(): boolean
+public "getWatering"(): boolean
+public "isPrideRibbit"(): boolean
+public "setWatering"(arg0: boolean): void
+public "setFishing"(arg0: boolean): void
+public "setBuffing"(arg0: boolean): void
+public "isBandFull"(): boolean
+public "addBandMember"(arg0: $RibbitInstrument$$Type): void
+public "getOffers"(): $MerchantOffers
+public "getVillagerXp"(): integer
+public "overrideXp"(arg0: integer): void
+public "notifyTrade"(arg0: $MerchantOffer$$Type): void
+public "overrideOffers"(arg0: $MerchantOffers$$Type): void
+public "isTrading"(): boolean
+public "canRestock"(): boolean
+public "shouldRestock"(): boolean
 public static "createRibbitAttributes"(): $AttributeSupplier$Builder
 public "isUmbrellaFalling"(): boolean
 public "setUmbrellaFalling"(arg0: boolean): void
@@ -798,71 +754,65 @@ public "getWaterCropsCooldown"(): integer
 public "setWaterCropsCooldown"(arg0: integer): void
 public "getHomePosition"(): $BlockPos
 public "setPlayingInstrument"(arg0: boolean): void
+public "getTicksPlayingMusic"(): integer
+public "getRibbitsPlayingMusic"(): $Set<($RibbitEntity)>
+public "registerControllers"(arg0: $AnimatableManager$ControllerRegistrar$$Type): void
+public "getNotifyTradeSound"(): $SoundEvent
+public "notifyTradeUpdated"(arg0: $ItemStack$$Type): void
+public "setTradingPlayer"(arg0: $Player$$Type): void
+public "getTradingPlayer"(): $Player
+public "showProgressBar"(): boolean
+public "getBreedOffspring"(arg0: $ServerLevel$$Type, arg1: $AgeableMob$$Type): $AgeableMob
+public "removeWhenFarAway"(arg0: double): boolean
 public "addAdditionalSaveData"(arg0: $CompoundTag$$Type): void
 public "readAdditionalSaveData"(arg0: $CompoundTag$$Type): void
 public "handleEntityEvent"(arg0: byte): void
 public "onSyncedDataUpdated"(arg0: $EntityDataAccessor$$Type<(any)>): void
-public "removeWhenFarAway"(arg0: double): boolean
-public "getBreedOffspring"(arg0: $ServerLevel$$Type, arg1: $AgeableMob$$Type): $AgeableMob
-public "reassessGoals"(): void
-public "getBuffing"(): boolean
-public "getBandMembers"(): $Set<($RibbitInstrument)>
-public "setBandMembers"(arg0: $Set$$Type<($RibbitInstrument$$Type)>): void
-public "isMasterRibbit"(): boolean
-public "getFishing"(): boolean
-public "getWatering"(): boolean
-public "isPrideRibbit"(): boolean
-public "setWatering"(arg0: boolean): void
-public "setFishing"(arg0: boolean): void
-public "setBuffing"(arg0: boolean): void
-public "isBandFull"(): boolean
-public "addBandMember"(arg0: $RibbitInstrument$$Type): void
-public "setRibbitData"(arg0: $RibbitData$$Type): void
-public "getOffers"(): $MerchantOffers
-public "getVillagerXp"(): integer
-public "isTrading"(): boolean
-public "canRestock"(): boolean
-public "shouldRestock"(): boolean
-public "overrideOffers"(arg0: $MerchantOffers$$Type): void
-public "overrideXp"(arg0: integer): void
-public "notifyTrade"(arg0: $MerchantOffer$$Type): void
-public "getTicksPlayingMusic"(): integer
-public "getRibbitsPlayingMusic"(): $Set<($RibbitEntity)>
-public "stopTriggeredAnim"(arg0: string, arg1: string): void
+public "addRibbitToPlayingMusic"(arg0: $RibbitEntity$$Type): void
+public "removeRibbitFromPlayingMusic"(arg0: $RibbitEntity$$Type): void
+public "getAnimatableInstanceCache"(): $AnimatableInstanceCache
+public "triggerAnim"(arg0: StringJS, arg1: StringJS): void
 public "getTick"(arg0: any): double
-public "triggerAnim"(arg0: string, arg1: string): void
 public "getAnimData"<D>(arg0: $SerializableDataTicket$$Type<(D)>): D
 public "setAnimData"<D>(arg0: $SerializableDataTicket$$Type<(D)>, arg1: D): void
+public "stopTriggeredAnim"(arg0: StringJS, arg1: StringJS): void
 public "openTradingScreen"(arg0: $Player$$Type, arg1: $Component$$Type, arg2: integer): void
+public "getBoneResetTime"(): double
 public "shouldPlayAnimsWhileGamePaused"(): boolean
 public "animatableCacheOverride"(): $AnimatableInstanceCache
-public "getBoneResetTime"(): double
+public static "bumblezone$getDATA_BABY_ID"(): $EntityDataAccessor<(boolean)>
+public "self"(): $LivingEntity
+/**
+ * 
+ * @deprecated
+ */
+public "getItemBySlot"(arg0: $EquipmentSlot$$Type): $ItemStack
 public static "tickLeash"<E extends ($Entity) & ($Leashable)>(arg0: E): void
+public static "getAlternativeStack"(livingEntity: $LivingEntity$$Type, equipmentSlot: $EquipmentSlot$$Type, consumer: $Consumer$$Type<($ItemStack)>): void
 public "setLookupToggle"(value: boolean): void
 public "getLookupToggle"(): boolean
-public static "getAlternativeStack"(livingEntity: $LivingEntity$$Type, equipmentSlot: $EquipmentSlot$$Type, consumer: $Consumer$$Type<($ItemStack)>): void
 public "lithium$onEquipmentReplaced"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type): void
 public static "tickEntity"(entity: $LivingEntity$$Type): void
 public static "getAlpha"(le: $LivingEntity$$Type, partialTicks: float): float
 public "lithium$getCachedFeetBlockState"(): $BlockState
-public "sodiumdynamiclights$scheduleTrackedChunksRebuild"(arg0: $LevelRenderer$$Type): void
-public "sodiumdynamiclights$updateDynamicLight"(arg0: $LevelRenderer$$Type): boolean
-public "sdl$getDynamicLightLevel"(): $Level
-public "sdl$shouldUpdateDynamicLight"(): boolean
-public "sdl$getDynamicLightX"(): double
-public "sdl$getDynamicLightY"(): double
-public "sdl$getDynamicLightZ"(): double
-public "sdl$resetDynamicLight"(): void
 public static "is"(arg0: $Entity$$Type): boolean
 public static "spawnedFromEndTrialSpawner"(arg0: $Entity$$Type): boolean
 public static "setSpawnedFromEndTrialSpawner"(arg0: $Entity$$Type, arg1: boolean): void
 public static "getMagniaProperties"(arg0: $Entity$$Type): $MagniaProperties
 public static "canMagniaAffect"(arg0: $Entity$$Type): boolean
 public static "getMagnetismFactor"(arg0: $Entity$$Type): float
+public static "dashed"(arg0: $Entity$$Type): boolean
 public static "setDashed"(arg0: $Entity$$Type, arg1: boolean): void
 public static "dashTicks"(arg0: $Entity$$Type): integer
 public static "setDashTicks"(arg0: $Entity$$Type, arg1: integer): void
-public static "dashed"(arg0: $Entity$$Type): boolean
+public "sdl$getDynamicLightX"(): double
+public "sdl$getDynamicLightY"(): double
+public "sdl$getDynamicLightZ"(): double
+public "sdl$resetDynamicLight"(): void
+public "sodiumdynamiclights$updateDynamicLight"(arg0: $LevelRenderer$$Type): boolean
+public "sdl$getDynamicLightLevel"(): $Level
+public "sdl$shouldUpdateDynamicLight"(): boolean
+public "sodiumdynamiclights$scheduleTrackedChunksRebuild"(arg0: $LevelRenderer$$Type): void
 /**
  * 
  * @deprecated
@@ -871,25 +821,36 @@ public "serializeNBT"(arg0: $HolderLookup$Provider$$Type): $Tag
 public static "without"<T>(arg0: $ChangeSubscriber$$Type<(T)>, arg1: $ChangeSubscriber$$Type<(T)>, arg2: integer, arg3: boolean): $ChangeSubscriber<(T)>
 public static "without"<T>(arg0: $ChangeSubscriber$$Type<(T)>, arg1: $ChangeSubscriber$$Type<(T)>): $ChangeSubscriber<(T)>
 public static "combine"<T>(arg0: $ChangeSubscriber$$Type<(T)>, arg1: integer, arg2: $ChangeSubscriber$$Type<(T)>, arg3: integer): $ChangeSubscriber<(T)>
+public static "dataOf"(arg0: $ChangeSubscriber$$Type<(any)>, arg1: $ChangeSubscriber$$Type<(any)>, arg2: integer): integer
 public static "dataWithout"<T>(arg0: $ChangeSubscriber$$Type<(T)>, arg1: $ChangeSubscriber$$Type<(T)>, arg2: integer, arg3: integer, arg4: boolean): integer
 public static "dataWithout"<T>(arg0: $ChangeSubscriber$$Type<(T)>, arg1: $ChangeSubscriber$$Type<(T)>, arg2: integer): integer
-public static "dataOf"(arg0: $ChangeSubscriber$$Type<(any)>, arg1: $ChangeSubscriber$$Type<(any)>, arg2: integer): integer
 public static "containsSubscriber"(arg0: $ChangeSubscriber$$Type<($ItemStack$$Type)>, arg1: integer, arg2: $ChangeSubscriber$$Type<($ItemStack$$Type)>, arg3: integer): boolean
-public static "forNameOnly"(arg0: string): $ScoreHolder
+public static "forNameOnly"(arg0: StringJS): $ScoreHolder
 public static "fromGameProfile"(arg0: $GameProfile$$Type): $ScoreHolder
-public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
 public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean, lazyLoad: boolean): $TrackedDataContainer<(O), (T)>
-get "animatableInstanceCache"(): $AnimatableInstanceCache
+public static "makeBasicContainer"<O, T extends $TrackedData<(O)>>(registry: $TrackedDataRegistry$$Type<(O), (T)>, o: O, isClient: boolean): $TrackedDataContainer<(O), (T)>
+get "maxHeadXRot"(): integer
+get "maxHeadYRot"(): integer
 get "ribbitData"(): $RibbitData
 set "instrument"(value: $RibbitInstrument$$Type)
-get "clientSide"(): boolean
-get "speed"(): float
 get "inRain"(): boolean
-get "maxHeadYRot"(): integer
-get "maxHeadXRot"(): integer
-set "tradingPlayer"(value: $Player$$Type)
-get "tradingPlayer"(): $Player
-get "notifyTradeSound"(): $SoundEvent
+get "speed"(): float
+get "clientSide"(): boolean
+set "ribbitData"(value: $RibbitData$$Type)
+get "buffing"(): boolean
+get "bandMembers"(): $Set<($RibbitInstrument)>
+set "bandMembers"(value: $Set$$Type<($RibbitInstrument$$Type)>)
+get "masterRibbit"(): boolean
+get "fishing"(): boolean
+get "watering"(): boolean
+get "prideRibbit"(): boolean
+set "watering"(value: boolean)
+set "fishing"(value: boolean)
+set "buffing"(value: boolean)
+get "bandFull"(): boolean
+get "offers"(): $MerchantOffers
+get "villagerXp"(): integer
+get "trading"(): boolean
 get "umbrellaFalling"(): boolean
 set "umbrellaFalling"(value: boolean)
 get "masterRibbit"(): $RibbitEntity
@@ -905,23 +866,12 @@ get "waterCropsCooldown"(): integer
 set "waterCropsCooldown"(value: integer)
 get "homePosition"(): $BlockPos
 set "playingInstrument"(value: boolean)
-get "buffing"(): boolean
-get "bandMembers"(): $Set<($RibbitInstrument)>
-set "bandMembers"(value: $Set$$Type<($RibbitInstrument$$Type)>)
-get "masterRibbit"(): boolean
-get "fishing"(): boolean
-get "watering"(): boolean
-get "prideRibbit"(): boolean
-set "watering"(value: boolean)
-set "fishing"(value: boolean)
-set "buffing"(value: boolean)
-get "bandFull"(): boolean
-set "ribbitData"(value: $RibbitData$$Type)
-get "offers"(): $MerchantOffers
-get "villagerXp"(): integer
-get "trading"(): boolean
 get "ticksPlayingMusic"(): integer
 get "ribbitsPlayingMusic"(): $Set<($RibbitEntity)>
+get "notifyTradeSound"(): $SoundEvent
+set "tradingPlayer"(value: $Player$$Type)
+get "tradingPlayer"(): $Player
+get "animatableInstanceCache"(): $AnimatableInstanceCache
 get "boneResetTime"(): double
 set "lookupToggle"(value: boolean)
 get "lookupToggle"(): boolean
@@ -940,8 +890,8 @@ export type $RibbitEntity_ = $RibbitEntity$$Type;
 }}
 declare module "com.yungnickyoung.minecraft.yungsapi.world.structure.terrainadaptation.adaptations.EnhancedTerrainAdaptation$TerrainAction" {
 import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
+import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -955,18 +905,18 @@ static readonly "CARVE": $EnhancedTerrainAdaptation$TerrainAction
 
 
 public static "values"(): ($EnhancedTerrainAdaptation$TerrainAction)[]
-public static "valueOf"(arg0: string): $EnhancedTerrainAdaptation$TerrainAction
-public "getSerializedName"(): string
+public static "valueOf"(arg0: StringJS): $EnhancedTerrainAdaptation$TerrainAction
+public "getSerializedName"(): StringJS
 public "getDensityModifier"(): integer
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "serializedName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "serializedName"(): StringJS
 get "densityModifier"(): integer
-get "remappedEnumConstantName"(): string
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1030,8 +980,8 @@ export type $AquiferOverride_ = $AquiferOverride$$Type;
 }}
 declare module "com.yungnickyoung.minecraft.yungsapi.world.structure.terrainadaptation.adaptations.EnhancedTerrainAdaptation" {
 import {$EnhancedTerrainAdaptation$Padding, $EnhancedTerrainAdaptation$Padding$$Type} from "com.yungnickyoung.minecraft.yungsapi.world.structure.terrainadaptation.adaptations.EnhancedTerrainAdaptation$Padding"
-import {$AquiferOverride, $AquiferOverride$$Type} from "com.yungnickyoung.minecraft.yungsapi.world.structure.terrainadaptation.aquiferoverride.AquiferOverride"
 import {$EnhancedTerrainAdaptation$TerrainAction, $EnhancedTerrainAdaptation$TerrainAction$$Type} from "com.yungnickyoung.minecraft.yungsapi.world.structure.terrainadaptation.adaptations.EnhancedTerrainAdaptation$TerrainAction"
+import {$AquiferOverride, $AquiferOverride$$Type} from "com.yungnickyoung.minecraft.yungsapi.world.structure.terrainadaptation.aquiferoverride.AquiferOverride"
 import {$EnhancedTerrainAdaptationType, $EnhancedTerrainAdaptationType$$Type} from "com.yungnickyoung.minecraft.yungsapi.world.structure.terrainadaptation.adaptations.EnhancedTerrainAdaptationType"
 
 export class $EnhancedTerrainAdaptation {
@@ -1039,19 +989,19 @@ static readonly "NONE": $EnhancedTerrainAdaptation
 
 
 public "type"(): $EnhancedTerrainAdaptationType<(any)>
-public "getPadding"(): $EnhancedTerrainAdaptation$Padding
-public "topAction"(): $EnhancedTerrainAdaptation$TerrainAction
-public "bottomAction"(): $EnhancedTerrainAdaptation$TerrainAction
-public "getKernel"(): (float)[]
 public "getKernelSize"(): integer
+public "getKernel"(): (float)[]
+public "bottomAction"(): $EnhancedTerrainAdaptation$TerrainAction
+public "topAction"(): $EnhancedTerrainAdaptation$TerrainAction
+public "getPadding"(): $EnhancedTerrainAdaptation$Padding
 public "getKernelRadius"(): integer
 public "getBottomOffset"(): double
 public "getAquiferOverride"(): $AquiferOverride
 public "getKernelDistance"(): integer
 public "computeDensityFactor"(arg0: integer, arg1: integer, arg2: integer, arg3: integer): double
-get "padding"(): $EnhancedTerrainAdaptation$Padding
-get "kernel"(): (float)[]
 get "kernelSize"(): integer
+get "kernel"(): (float)[]
+get "padding"(): $EnhancedTerrainAdaptation$Padding
 get "kernelRadius"(): integer
 get "bottomOffset"(): double
 get "aquiferOverride"(): $AquiferOverride
@@ -1070,12 +1020,12 @@ declare global {
 export type $EnhancedTerrainAdaptation_ = $EnhancedTerrainAdaptation$$Type;
 }}
 declare module "com.yungnickyoung.minecraft.betterdeserttemples.world.state.TempleStateRegion" {
-import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$Path, $Path$$Type} from "java.nio.file.Path"
+import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 
 export class $TempleStateRegion {
 
-constructor(arg0: $Path$$Type, arg1: string)
+constructor(arg0: $Path$$Type, arg1: StringJS)
 
 public "reset"(): void
 public "isTempleCleared"(arg0: $BlockPos$$Type): boolean
@@ -1101,8 +1051,8 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$WaterlilyBlock, $WaterlilyBlock$$Type} from "net.minecraft.world.level.block.WaterlilyBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$BonemealableBlock$Type, $BonemealableBlock$Type$$Type} from "net.minecraft.world.level.block.BonemealableBlock$Type"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$BonemealableBlock, $BonemealableBlock$$Type} from "net.minecraft.world.level.block.BonemealableBlock"
@@ -1129,7 +1079,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1200,18 +1150,18 @@ import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.
 import {$BushBlock, $BushBlock$$Type} from "net.minecraft.world.level.block.BushBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$BonemealableBlock$Type, $BonemealableBlock$Type$$Type} from "net.minecraft.world.level.block.BonemealableBlock$Type"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
-import {$PlacedFeature, $PlacedFeature$$Type} from "net.minecraft.world.level.levelgen.placement.PlacedFeature"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
+import {$PlacedFeature, $PlacedFeature$$Type} from "net.minecraft.world.level.levelgen.placement.PlacedFeature"
 import {$LevelReader, $LevelReader$$Type} from "net.minecraft.world.level.LevelReader"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$BonemealableBlock, $BonemealableBlock$$Type} from "net.minecraft.world.level.block.BonemealableBlock"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
-import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
+import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
 import {$ServerLevel, $ServerLevel$$Type} from "net.minecraft.server.level.ServerLevel"
+import {$ResourceKey, $ResourceKey$$Type} from "net.minecraft.resources.ResourceKey"
 import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -1230,7 +1180,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1291,79 +1241,6 @@ export type $ChunkGeneratorStructureStateAccessor$$Type = (() => $BiomeSource$$T
 declare global {
 export type $ChunkGeneratorStructureStateAccessor_ = $ChunkGeneratorStructureStateAccessor$$Type;
 }}
-declare module "com.yungnickyoung.minecraft.yungsapi.api.world.randomize.BlockStateRandomizer" {
-import {$BlockStateRandomizer$Entry, $BlockStateRandomizer$Entry$$Type} from "com.yungnickyoung.minecraft.yungsapi.api.world.randomize.BlockStateRandomizer$Entry"
-import {$RandomSource, $RandomSource$$Type} from "net.minecraft.util.RandomSource"
-import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
-import {$Map, $Map$$Type} from "java.util.Map"
-import {$StructureContext, $StructureContext$$Type} from "com.yungnickyoung.minecraft.yungsapi.world.structure.context.StructureContext"
-import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
-import {$List, $List$$Type} from "java.util.List"
-import {$Random, $Random$$Type} from "java.util.Random"
-import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
-
-export class $BlockStateRandomizer {
-static readonly "CODEC": $Codec<($BlockStateRandomizer)>
-
-constructor(arg0: $BlockState$$Type)
-constructor(arg0: $List$$Type<($BlockStateRandomizer$Entry$$Type)>, arg1: $BlockState$$Type)
-constructor(arg0: $Map$$Type<($BlockState$$Type), (float)>, arg1: $BlockState$$Type)
-constructor(arg0: $CompoundTag$$Type)
-constructor()
-
-public "get"(arg0: $RandomSource$$Type): $BlockState
-public "get"(arg0: $RandomSource$$Type, arg1: $StructureContext$$Type): $BlockState
-public "get"(arg0: $Random$$Type): $BlockState
-public static "from"(...arg0: ($BlockState$$Type)[]): $BlockStateRandomizer
-public "getEntries"(): $List<($BlockStateRandomizer$Entry)>
-public "saveTag"(): $CompoundTag
-public "addBlock"(arg0: $BlockState$$Type, arg1: float): $BlockStateRandomizer
-public "setDefaultBlockState"(arg0: $BlockState$$Type): void
-public "getEntriesAsMap"(): $Map<($BlockState), (float)>
-public "getDefaultBlockState"(): $BlockState
-get "entries"(): $List<($BlockStateRandomizer$Entry)>
-set "defaultBlockState"(value: $BlockState$$Type)
-get "entriesAsMap"(): $Map<($BlockState), (float)>
-get "defaultBlockState"(): $BlockState
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $BlockStateRandomizer$$Type = ($BlockStateRandomizer);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $BlockStateRandomizer_ = $BlockStateRandomizer$$Type;
-}}
-declare module "com.yungnickyoung.minecraft.bettermineshafts.world.config.BetterMineshaftConfiguration$MineshaftBlockstateRandomizers" {
-import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
-import {$BlockStateRandomizer, $BlockStateRandomizer$$Type} from "com.yungnickyoung.minecraft.yungsapi.api.world.randomize.BlockStateRandomizer"
-
-export class $BetterMineshaftConfiguration$MineshaftBlockstateRandomizers {
-static readonly "CODEC": $Codec<($BetterMineshaftConfiguration$MineshaftBlockstateRandomizers)>
- "floorRandomizer": $BlockStateRandomizer
- "brickRandomizer": $BlockStateRandomizer
- "mainRandomizer": $BlockStateRandomizer
- "legRandomizer": $BlockStateRandomizer
-
-constructor(arg0: $BlockStateRandomizer$$Type, arg1: $BlockStateRandomizer$$Type, arg2: $BlockStateRandomizer$$Type, arg3: $BlockStateRandomizer$$Type)
-
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $BetterMineshaftConfiguration$MineshaftBlockstateRandomizers$$Type = ($BetterMineshaftConfiguration$MineshaftBlockstateRandomizers);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $BetterMineshaftConfiguration$MineshaftBlockstateRandomizers_ = $BetterMineshaftConfiguration$MineshaftBlockstateRandomizers$$Type;
-}}
 declare module "com.yungnickyoung.minecraft.yungsapi.world.structure.terrainadaptation.aquiferoverride.AquiferOverrideMask" {
 import {$AquiferOverride, $AquiferOverride$$Type} from "com.yungnickyoung.minecraft.yungsapi.world.structure.terrainadaptation.aquiferoverride.AquiferOverride"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
@@ -1398,8 +1275,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$SwampPlantBlock, $SwampPlantBlock$$Type} from "com.yungnickyoung.minecraft.ribbits.block.SwampPlantBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
@@ -1422,7 +1299,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1514,14 +1391,14 @@ import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resource
 
 export class $RibbitUmbrellaType {
 
-constructor(arg0: $ResourceLocation$$Type, arg1: string)
+constructor(arg0: $ResourceLocation$$Type, arg1: StringJS)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "getId"(): $ResourceLocation
-public "getModelLocationSuffix"(): string
+public "getModelLocationSuffix"(): StringJS
 get "id"(): $ResourceLocation
-get "modelLocationSuffix"(): string
+get "modelLocationSuffix"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1574,8 +1451,8 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$GiantLilyPadBlock, $GiantLilyPadBlock$$Type} from "com.yungnickyoung.minecraft.ribbits.block.GiantLilyPadBlock"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
-import {$WaterlilyBlock, $WaterlilyBlock$$Type} from "net.minecraft.world.level.block.WaterlilyBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
+import {$WaterlilyBlock, $WaterlilyBlock$$Type} from "net.minecraft.world.level.block.WaterlilyBlock"
 import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
 
 export class $GiantLilyPadBlockNeoForge extends $GiantLilyPadBlock {
@@ -1592,7 +1469,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -1657,15 +1534,15 @@ import {$StructureType, $StructureType$$Type} from "net.minecraft.world.level.le
 import {$DimensionPadding, $DimensionPadding$$Type} from "net.minecraft.world.level.levelgen.structure.pools.DimensionPadding"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Structure$GenerationStub, $Structure$GenerationStub$$Type} from "net.minecraft.world.level.levelgen.structure.Structure$GenerationStub"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Heightmap$Types, $Heightmap$Types$$Type} from "net.minecraft.world.level.levelgen.Heightmap$Types"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Structure, $Structure$$Type} from "net.minecraft.world.level.levelgen.structure.Structure"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$StructureTemplatePool, $StructureTemplatePool$$Type} from "net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool"
 import {$EnhancedTerrainAdaptation, $EnhancedTerrainAdaptation$$Type} from "com.yungnickyoung.minecraft.yungsapi.world.structure.terrainadaptation.adaptations.EnhancedTerrainAdaptation"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
-import {$HeightProvider, $HeightProvider$$Type} from "net.minecraft.world.level.levelgen.heightproviders.HeightProvider"
 import {$Structure$StructureSettings, $Structure$StructureSettings$$Type} from "net.minecraft.world.level.levelgen.structure.Structure$StructureSettings"
+import {$HeightProvider, $HeightProvider$$Type} from "net.minecraft.world.level.levelgen.heightproviders.HeightProvider"
 
 export class $YungJigsawStructure extends $Structure {
 static readonly "CODEC": $MapCodec<($YungJigsawStructure)>
@@ -1762,7 +1639,7 @@ export class $RibbitProfession {
 constructor(arg0: $ResourceLocation$$Type, arg1: $ResourceLocation$$Type)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "getId"(): $ResourceLocation
 public "getModelLocation"(): $ResourceLocation
 get "id"(): $ResourceLocation
@@ -1780,56 +1657,14 @@ export type $RibbitProfession$$Type = ($RibbitProfession);
 declare global {
 export type $RibbitProfession_ = $RibbitProfession$$Type;
 }}
-declare module "com.yungnickyoung.minecraft.bettermineshafts.world.config.BetterMineshaftConfiguration$LegVariant" {
-import {$Keyable, $Keyable$$Type} from "com.mojang.serialization.Keyable"
-import {$Enum, $Enum$$Type} from "java.lang.Enum"
-import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
-import {$StringRepresentable$EnumCodec, $StringRepresentable$EnumCodec$$Type} from "net.minecraft.util.StringRepresentable$EnumCodec"
-import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
-import {$Function, $Function$$Type} from "java.util.function.Function"
-import {$StringRepresentable, $StringRepresentable$$Type} from "net.minecraft.util.StringRepresentable"
-
-export class $BetterMineshaftConfiguration$LegVariant extends $Enum<($BetterMineshaftConfiguration$LegVariant)> implements $StringRepresentable {
-static readonly "CODEC": $Codec<($BetterMineshaftConfiguration$LegVariant)>
-static readonly "EDGE": $BetterMineshaftConfiguration$LegVariant
-static readonly "INNER": $BetterMineshaftConfiguration$LegVariant
-
-
-public "getName"(): string
-public static "values"(): ($BetterMineshaftConfiguration$LegVariant)[]
-public static "valueOf"(arg0: string): $BetterMineshaftConfiguration$LegVariant
-public static "byId"(arg0: integer): $BetterMineshaftConfiguration$LegVariant
-public "getSerializedName"(): string
-public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
-public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "name"(): string
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $BetterMineshaftConfiguration$LegVariant$$Type = (("edge") | ("inner"));
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $BetterMineshaftConfiguration$LegVariant_ = $BetterMineshaftConfiguration$LegVariant$$Type;
-}}
 declare module "com.yungnickyoung.minecraft.betterdeserttemples.world.state.TempleStateCache" {
 import {$TempleStateRegion, $TempleStateRegion$$Type} from "com.yungnickyoung.minecraft.betterdeserttemples.world.state.TempleStateRegion"
 import {$ConcurrentHashMap, $ConcurrentHashMap$$Type} from "java.util.concurrent.ConcurrentHashMap"
-import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 import {$Path, $Path$$Type} from "java.nio.file.Path"
+import {$BlockPos, $BlockPos$$Type} from "net.minecraft.core.BlockPos"
 
 export class $TempleStateCache {
- "templeStateRegionMap": $ConcurrentHashMap<(string), ($TempleStateRegion)>
+ "templeStateRegionMap": $ConcurrentHashMap<(StringJS), ($TempleStateRegion)>
 
 constructor(arg0: $Path$$Type)
 
@@ -1886,21 +1721,21 @@ import {$DragonRespawnStage, $DragonRespawnStage$$Type} from "com.yungnickyoung.
 export interface $IBetterDragonFight {
 
  "reset"(arg0: boolean): void
+ "tickBellSound"(): void
+ "hasDragonEverSpawned"(): boolean
+ "isFirstExitPortalSpawn"(): boolean
+ "getDragonRespawnStage"(): $DragonRespawnStage
+ "doInitialDragonSpawn"(): void
  "setIsFirstExitPortalSpawn"(arg0: boolean): void
  "setHasDragonEverSpawned"(arg0: boolean): void
  "setNumTimesDragonKilled"(arg0: integer): void
  "getNumTimesDragonKilled"(): integer
- "tickBellSound"(): void
- "doInitialDragonSpawn"(): void
- "getDragonRespawnStage"(): $DragonRespawnStage
- "isFirstExitPortalSpawn"(): boolean
- "hasDragonEverSpawned"(): boolean
  "advanceRespawnStage"(arg0: $DragonRespawnStage$$Type): void
  "setDragonRespawnStage"(arg0: $DragonRespawnStage$$Type): void
+get "firstExitPortalSpawn"(): boolean
+get "dragonRespawnStage"(): $DragonRespawnStage
 set "numTimesDragonKilled"(value: integer)
 get "numTimesDragonKilled"(): integer
-get "dragonRespawnStage"(): $DragonRespawnStage
-get "firstExitPortalSpawn"(): boolean
 set "dragonRespawnStage"(value: $DragonRespawnStage$$Type)
 }
 
@@ -1911,15 +1746,15 @@ export class $IBetterDragonFight$$Static implements $IBetterDragonFight {
 
 
  "reset"(arg0: boolean): void
+ "tickBellSound"(): void
+ "hasDragonEverSpawned"(): boolean
+ "isFirstExitPortalSpawn"(): boolean
+ "getDragonRespawnStage"(): $DragonRespawnStage
+ "doInitialDragonSpawn"(): void
  "setIsFirstExitPortalSpawn"(arg0: boolean): void
  "setHasDragonEverSpawned"(arg0: boolean): void
  "setNumTimesDragonKilled"(arg0: integer): void
  "getNumTimesDragonKilled"(): integer
- "tickBellSound"(): void
- "doInitialDragonSpawn"(): void
- "getDragonRespawnStage"(): $DragonRespawnStage
- "isFirstExitPortalSpawn"(): boolean
- "hasDragonEverSpawned"(): boolean
  "advanceRespawnStage"(arg0: $DragonRespawnStage$$Type): void
  "setDragonRespawnStage"(arg0: $DragonRespawnStage$$Type): void
 }
@@ -1936,11 +1771,13 @@ declare global {
 export type $IBetterDragonFight_ = $IBetterDragonFight$$Type;
 }}
 declare module "com.yungnickyoung.minecraft.ribbits.item.MaracaItem" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$UseAnim, $UseAnim$$Type} from "net.minecraft.world.item.UseAnim"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -1952,7 +1789,7 @@ import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.Liv
 export class $MaracaItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -1961,9 +1798,10 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(arg0: $Item$Properties$$Type)
 
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
-public "getUseDuration"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): integer
 public "releaseUsing"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $LivingEntity$$Type, arg3: integer): void
+public "getUseDuration"(arg0: $ItemStack$$Type, arg1: $LivingEntity$$Type): integer
 public "getUseAnimation"(arg0: $ItemStack$$Type): $UseAnim
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2123,60 +1961,6 @@ export type $ChunkGeneratorStructureStateAccessor$$Type = (() => $BiomeSource$$T
 declare global {
 export type $ChunkGeneratorStructureStateAccessor_ = $ChunkGeneratorStructureStateAccessor$$Type;
 }}
-declare module "com.yungnickyoung.minecraft.yungsapi.world.structure.jigsaw.PieceEntry" {
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$PoolElementStructurePiece, $PoolElementStructurePiece$$Type} from "net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece"
-import {$MutableObject, $MutableObject$$Type} from "org.apache.commons.lang3.mutable.MutableObject"
-import {$JigsawJunction, $JigsawJunction$$Type} from "net.minecraft.world.level.levelgen.structure.pools.JigsawJunction"
-import {$AABB, $AABB$$Type} from "net.minecraft.world.phys.AABB"
-import {$PieceContext, $PieceContext$$Type} from "com.yungnickyoung.minecraft.yungsapi.world.structure.jigsaw.assembler.PieceContext"
-import {$BoxOctree, $BoxOctree$$Type} from "com.yungnickyoung.minecraft.yungsapi.util.BoxOctree"
-
-export class $PieceEntry {
-
-constructor(arg0: $PoolElementStructurePiece$$Type, arg1: $MutableObject$$Type<($BoxOctree$$Type)>, arg2: $AABB$$Type, arg3: integer, arg4: $PieceEntry$$Type, arg5: $PieceContext$$Type, arg6: $JigsawJunction$$Type)
-
-public "equals"(arg0: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "getParentEntry"(): $PieceEntry
-public "hasChildren"(): boolean
-public "getDepth"(): integer
-public "getPiece"(): $PoolElementStructurePiece
-public "getDeadendPool"(): $Optional<($ResourceLocation)>
-public "getBoxOctree"(): $MutableObject<($BoxOctree)>
-public "getPieceAabb"(): $AABB
-public "setPiece"(arg0: $PoolElementStructurePiece$$Type): void
-public "setDelayGeneration"(arg0: boolean): void
-public "addChildEntry"(arg0: $PieceEntry$$Type): void
-public "getSourcePieceContext"(): $PieceContext
-public "getParentJunction"(): $JigsawJunction
-public "isDelayGeneration"(): boolean
-get "parentEntry"(): $PieceEntry
-get "depth"(): integer
-get "piece"(): $PoolElementStructurePiece
-get "deadendPool"(): $Optional<($ResourceLocation)>
-get "boxOctree"(): $MutableObject<($BoxOctree)>
-get "pieceAabb"(): $AABB
-set "piece"(value: $PoolElementStructurePiece$$Type)
-set "delayGeneration"(value: boolean)
-get "sourcePieceContext"(): $PieceContext
-get "parentJunction"(): $JigsawJunction
-get "delayGeneration"(): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $PieceEntry$$Type = ($PieceEntry);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $PieceEntry_ = $PieceEntry$$Type;
-}}
 declare module "com.yungnickyoung.minecraft.betterendisland.world.DragonRespawnStage" {
 import {$IBetterDragonFight, $IBetterDragonFight$$Type} from "com.yungnickyoung.minecraft.betterendisland.world.IBetterDragonFight"
 import {$Enum, $Enum$$Type} from "java.lang.Enum"
@@ -2200,20 +1984,20 @@ static readonly "PREPARING_TO_SUMMON_PILLARS": $DragonRespawnStage
 static readonly "SUMMONING_DRAGON": $DragonRespawnStage
 
 
-public static "values"(): ($DragonRespawnStage)[]
-public static "valueOf"(arg0: string): $DragonRespawnStage
-public "onStart"(arg0: $ServerLevel$$Type, arg1: $IBetterDragonFight$$Type): void
 public "tick"(arg0: $ServerLevel$$Type, arg1: $EndDragonFight$$Type, arg2: $List$$Type<($EndCrystal$$Type)>, arg3: integer): void
-public static "byName"(arg0: string): $DragonRespawnStage
-public "getSerializedName"(): string
+public static "values"(): ($DragonRespawnStage)[]
+public static "valueOf"(arg0: StringJS): $DragonRespawnStage
+public "onStart"(arg0: $ServerLevel$$Type, arg1: $IBetterDragonFight$$Type): void
+public static "byName"(arg0: StringJS): $DragonRespawnStage
+public "getSerializedName"(): StringJS
 public static "keys"(arg0: ($StringRepresentable$$Type)[]): $Keyable
-public "getRemappedEnumConstantName"(): string
-public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
 public static "fromValues"<T extends $StringRepresentable>(arg0: $Supplier$$Type<((T)[])>): $Codec<(T)>
-public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(string), (string)>): $StringRepresentable$EnumCodec<(E)>
-public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(string), (string)>): $Function<(string), (T)>
-get "serializedName"(): string
-get "remappedEnumConstantName"(): string
+public static "fromEnum"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>): $StringRepresentable$EnumCodec<(E)>
+public static "createNameLookup"<T extends $StringRepresentable>(arg0: (T)[], arg1: $Function$$Type<(StringJS), (StringJS)>): $Function<(StringJS), (T)>
+public static "fromEnumWithMapping"<E extends ($Enum<(E)>) & ($StringRepresentable)>(arg0: $Supplier$$Type<((E)[])>, arg1: $Function$$Type<(StringJS), (StringJS)>): $StringRepresentable$EnumCodec<(E)>
+public "getRemappedEnumConstantName"(): StringJS
+get "serializedName"(): StringJS
+get "remappedEnumConstantName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2226,36 +2010,6 @@ export type $DragonRespawnStage$$Type = (("start") | ("preparing_to_summon_pilla
  */
 declare global {
 export type $DragonRespawnStage_ = $DragonRespawnStage$$Type;
-}}
-declare module "com.yungnickyoung.minecraft.bettermineshafts.world.config.BetterMineshaftConfiguration" {
-import {$BetterMineshaftConfiguration$LegVariant, $BetterMineshaftConfiguration$LegVariant$$Type} from "com.yungnickyoung.minecraft.bettermineshafts.world.config.BetterMineshaftConfiguration$LegVariant"
-import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
-import {$BetterMineshaftConfiguration$MineshaftBlockStates, $BetterMineshaftConfiguration$MineshaftBlockStates$$Type} from "com.yungnickyoung.minecraft.bettermineshafts.world.config.BetterMineshaftConfiguration$MineshaftBlockStates"
-import {$BetterMineshaftConfiguration$MineshaftDecorationChances, $BetterMineshaftConfiguration$MineshaftDecorationChances$$Type} from "com.yungnickyoung.minecraft.bettermineshafts.world.config.BetterMineshaftConfiguration$MineshaftDecorationChances"
-import {$BetterMineshaftConfiguration$MineshaftBlockstateRandomizers, $BetterMineshaftConfiguration$MineshaftBlockstateRandomizers$$Type} from "com.yungnickyoung.minecraft.bettermineshafts.world.config.BetterMineshaftConfiguration$MineshaftBlockstateRandomizers"
-
-export class $BetterMineshaftConfiguration {
-static readonly "CODEC": $Codec<($BetterMineshaftConfiguration)>
- "blockStateRandomizers": $BetterMineshaftConfiguration$MineshaftBlockstateRandomizers
- "decorationChances": $BetterMineshaftConfiguration$MineshaftDecorationChances
- "blockStates": $BetterMineshaftConfiguration$MineshaftBlockStates
- "legVariant": $BetterMineshaftConfiguration$LegVariant
- "replacementRate": float
-
-constructor(arg0: float, arg1: $BetterMineshaftConfiguration$LegVariant$$Type, arg2: $BetterMineshaftConfiguration$MineshaftDecorationChances$$Type, arg3: $BetterMineshaftConfiguration$MineshaftBlockStates$$Type, arg4: $BetterMineshaftConfiguration$MineshaftBlockstateRandomizers$$Type)
-
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $BetterMineshaftConfiguration$$Type = ($BetterMineshaftConfiguration);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $BetterMineshaftConfiguration_ = $BetterMineshaftConfiguration$$Type;
 }}
 declare module "com.yungnickyoung.minecraft.yungsapi.world.structure.terrainadaptation.adaptations.NoneAdaptation" {
 import {$EnhancedTerrainAdaptationType, $EnhancedTerrainAdaptationType$$Type} from "com.yungnickyoung.minecraft.yungsapi.world.structure.terrainadaptation.adaptations.EnhancedTerrainAdaptationType"
@@ -2314,37 +2068,6 @@ export type $SinglePoolElementAccessor$$Type = ((arg0: $StructureTemplateManager
 declare global {
 export type $SinglePoolElementAccessor_ = $SinglePoolElementAccessor$$Type;
 }}
-declare module "com.yungnickyoung.minecraft.yungsapi.api.world.randomize.BlockStateRandomizer$Entry" {
-import {$StructureCondition, $StructureCondition$$Type} from "com.yungnickyoung.minecraft.yungsapi.world.structure.condition.StructureCondition"
-import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
-import {$StructureContext, $StructureContext$$Type} from "com.yungnickyoung.minecraft.yungsapi.world.structure.context.StructureContext"
-import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
-
-export class $BlockStateRandomizer$Entry {
- "blockState": $BlockState
- "condition": $Optional<($StructureCondition)>
-static "CODEC": $Codec<($BlockStateRandomizer$Entry)>
- "probability": float
-
-constructor(arg0: $BlockState$$Type, arg1: float)
-constructor(arg0: $BlockState$$Type, arg1: float, arg2: $Optional$$Type<($StructureCondition$$Type)>)
-
-public "equals"(arg0: any): boolean
-public "passesCondition"(arg0: $StructureContext$$Type): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $BlockStateRandomizer$Entry$$Type = ($BlockStateRandomizer$Entry);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $BlockStateRandomizer$Entry_ = $BlockStateRandomizer$Entry$$Type;
-}}
 declare module "com.yungnickyoung.minecraft.betterdungeons.world.structure.SmallNetherDungeonStructure" {
 import {$Structure$GenerationContext, $Structure$GenerationContext$$Type} from "net.minecraft.world.level.levelgen.structure.Structure$GenerationContext"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
@@ -2354,8 +2077,8 @@ import {$StructureType, $StructureType$$Type} from "net.minecraft.world.level.le
 import {$DimensionPadding, $DimensionPadding$$Type} from "net.minecraft.world.level.levelgen.structure.pools.DimensionPadding"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 import {$Structure$GenerationStub, $Structure$GenerationStub$$Type} from "net.minecraft.world.level.levelgen.structure.Structure$GenerationStub"
-import {$Heightmap$Types, $Heightmap$Types$$Type} from "net.minecraft.world.level.levelgen.Heightmap$Types"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$Heightmap$Types, $Heightmap$Types$$Type} from "net.minecraft.world.level.levelgen.Heightmap$Types"
 import {$Structure, $Structure$$Type} from "net.minecraft.world.level.levelgen.structure.Structure"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$StructureTemplatePool, $StructureTemplatePool$$Type} from "net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool"
@@ -2401,8 +2124,8 @@ import {$Block$BlockStatePairKey, $Block$BlockStatePairKey$$Type} from "net.mine
 import {$BlockBehaviour$Properties, $BlockBehaviour$Properties$$Type} from "net.minecraft.world.level.block.state.BlockBehaviour$Properties"
 import {$SwampPlantBlock, $SwampPlantBlock$$Type} from "com.yungnickyoung.minecraft.ribbits.block.SwampPlantBlock"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$BlockGetter, $BlockGetter$$Type} from "net.minecraft.world.level.BlockGetter"
+import {$ThreadLocal, $ThreadLocal$$Type} from "java.lang.ThreadLocal"
 import {$IdMapper, $IdMapper$$Type} from "net.minecraft.core.IdMapper"
 import {$VoxelShape, $VoxelShape$$Type} from "net.minecraft.world.phys.shapes.VoxelShape"
 import {$CollisionContext, $CollisionContext$$Type} from "net.minecraft.world.phys.shapes.CollisionContext"
@@ -2425,7 +2148,7 @@ static readonly "UPDATE_LIMIT": integer
 static readonly "BLOCK_STATE_REGISTRY": $IdMapper<($BlockState)>
 static readonly "UPDATE_ALL": integer
 static readonly "UPDATE_ALL_IMMEDIATE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "UPDATE_KNOWN_SHAPE": integer
 static readonly "UPDATE_SUPPRESS_DROPS": integer
 static readonly "INSTANT": float
@@ -2477,10 +2200,10 @@ declare module "com.yungnickyoung.minecraft.yungsapi.mixin.accessor.PotionAccess
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $PotionAccessor {
 
- "getName"(): string
- "setName"(arg0: string): void
-get "name"(): string
-set "name"(value: string)
+ "getName"(): StringJS
+ "setName"(arg0: StringJS): void
+get "name"(): StringJS
+set "name"(value: StringJS)
 }
 
 export namespace $PotionAccessor {
@@ -2489,8 +2212,8 @@ const probejs$$marker: never
 export class $PotionAccessor$$Static implements $PotionAccessor {
 
 
- "getName"(): string
- "setName"(arg0: string): void
+ "getName"(): StringJS
+ "setName"(arg0: StringJS): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2508,18 +2231,18 @@ declare module "com.yungnickyoung.minecraft.bettermineshafts.mixin.BoundingBoxAc
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $BoundingBoxAccessor {
 
+ "setMinY"(arg0: integer): void
  "setMinX"(arg0: integer): void
  "setMinZ"(arg0: integer): void
  "setMaxX"(arg0: integer): void
  "setMaxY"(arg0: integer): void
  "setMaxZ"(arg0: integer): void
- "setMinY"(arg0: integer): void
+set "minY"(value: integer)
 set "minX"(value: integer)
 set "minZ"(value: integer)
 set "maxX"(value: integer)
 set "maxY"(value: integer)
 set "maxZ"(value: integer)
-set "minY"(value: integer)
 }
 
 export namespace $BoundingBoxAccessor {
@@ -2528,12 +2251,12 @@ const probejs$$marker: never
 export class $BoundingBoxAccessor$$Static implements $BoundingBoxAccessor {
 
 
+ "setMinY"(arg0: integer): void
  "setMinX"(arg0: integer): void
  "setMinZ"(arg0: integer): void
  "setMaxX"(arg0: integer): void
  "setMaxY"(arg0: integer): void
  "setMaxZ"(arg0: integer): void
- "setMinY"(arg0: integer): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2551,12 +2274,12 @@ declare module "com.yungnickyoung.minecraft.betterdungeons.world.structure.spide
 import {$Structure$GenerationContext, $Structure$GenerationContext$$Type} from "net.minecraft.world.level.levelgen.structure.Structure$GenerationContext"
 import {$Structure$GenerationStub, $Structure$GenerationStub$$Type} from "net.minecraft.world.level.levelgen.structure.Structure$GenerationStub"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$Structure, $Structure$$Type} from "net.minecraft.world.level.levelgen.structure.Structure"
+import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
 import {$StructureType, $StructureType$$Type} from "net.minecraft.world.level.levelgen.structure.StructureType"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
-import {$HeightProvider, $HeightProvider$$Type} from "net.minecraft.world.level.levelgen.heightproviders.HeightProvider"
 import {$Structure$StructureSettings, $Structure$StructureSettings$$Type} from "net.minecraft.world.level.levelgen.structure.Structure$StructureSettings"
+import {$HeightProvider, $HeightProvider$$Type} from "net.minecraft.world.level.levelgen.heightproviders.HeightProvider"
 
 export class $SpiderDungeonStructure extends $Structure {
 static readonly "CODEC": $MapCodec<($SpiderDungeonStructure)>
@@ -2609,46 +2332,22 @@ export type $DoorBlockAccessor$$Type = ($DoorBlockAccessor);
 declare global {
 export type $DoorBlockAccessor_ = $DoorBlockAccessor$$Type;
 }}
-declare module "com.yungnickyoung.minecraft.yungsapi.world.structure.condition.StructureCondition" {
-import {$StructureContext, $StructureContext$$Type} from "com.yungnickyoung.minecraft.yungsapi.world.structure.context.StructureContext"
-import {$StructureConditionType, $StructureConditionType$$Type} from "com.yungnickyoung.minecraft.yungsapi.world.structure.condition.StructureConditionType"
-
-export class $StructureCondition {
-static readonly "ALWAYS_TRUE": $StructureCondition
-
-constructor()
-
-public "type"(): $StructureConditionType<(any)>
-public "passes"(arg0: $StructureContext$$Type): boolean
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $StructureCondition$$Type = ($StructureCondition);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $StructureCondition_ = $StructureCondition$$Type;
-}}
 declare module "com.yungnickyoung.minecraft.betterdeserttemples.mixin.accessor.BoundingBoxAccessor" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $BoundingBoxAccessor {
 
+ "setMinY"(arg0: integer): void
  "setMinX"(arg0: integer): void
  "setMinZ"(arg0: integer): void
  "setMaxX"(arg0: integer): void
  "setMaxY"(arg0: integer): void
  "setMaxZ"(arg0: integer): void
- "setMinY"(arg0: integer): void
+set "minY"(value: integer)
 set "minX"(value: integer)
 set "minZ"(value: integer)
 set "maxX"(value: integer)
 set "maxY"(value: integer)
 set "maxZ"(value: integer)
-set "minY"(value: integer)
 }
 
 export namespace $BoundingBoxAccessor {
@@ -2657,12 +2356,12 @@ const probejs$$marker: never
 export class $BoundingBoxAccessor$$Static implements $BoundingBoxAccessor {
 
 
+ "setMinY"(arg0: integer): void
  "setMinX"(arg0: integer): void
  "setMinZ"(arg0: integer): void
  "setMaxX"(arg0: integer): void
  "setMaxY"(arg0: integer): void
  "setMaxZ"(arg0: integer): void
- "setMinY"(arg0: integer): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2680,18 +2379,18 @@ declare module "com.yungnickyoung.minecraft.betterdungeons.mixin.accessor.Boundi
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $BoundingBoxAccessor {
 
+ "setMinY"(arg0: integer): void
  "setMinX"(arg0: integer): void
  "setMinZ"(arg0: integer): void
  "setMaxX"(arg0: integer): void
  "setMaxY"(arg0: integer): void
  "setMaxZ"(arg0: integer): void
- "setMinY"(arg0: integer): void
+set "minY"(value: integer)
 set "minX"(value: integer)
 set "minZ"(value: integer)
 set "maxX"(value: integer)
 set "maxY"(value: integer)
 set "maxZ"(value: integer)
-set "minY"(value: integer)
 }
 
 export namespace $BoundingBoxAccessor {
@@ -2700,12 +2399,12 @@ const probejs$$marker: never
 export class $BoundingBoxAccessor$$Static implements $BoundingBoxAccessor {
 
 
+ "setMinY"(arg0: integer): void
  "setMinX"(arg0: integer): void
  "setMinZ"(arg0: integer): void
  "setMaxX"(arg0: integer): void
  "setMaxY"(arg0: integer): void
  "setMaxZ"(arg0: integer): void
- "setMinY"(arg0: integer): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2798,51 +2497,22 @@ export type $EndDragonFightAccessor$$Type = ($EndDragonFightAccessor);
 declare global {
 export type $EndDragonFightAccessor_ = $EndDragonFightAccessor$$Type;
 }}
-declare module "com.yungnickyoung.minecraft.bettermineshafts.world.config.BetterMineshaftConfiguration$MineshaftDecorationChances" {
-import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
-
-export class $BetterMineshaftConfiguration$MineshaftDecorationChances {
- "vineChance": float
- "mushroomChance": float
- "dripstoneDecorations": boolean
-static readonly "CODEC": $Codec<($BetterMineshaftConfiguration$MineshaftDecorationChances)>
- "cactusChance": float
- "gravelPileChance": float
- "deadBushChance": float
- "lushDecorations": boolean
- "snowChance": float
-
-constructor(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float, arg6: boolean, arg7: boolean)
-
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $BetterMineshaftConfiguration$MineshaftDecorationChances$$Type = ($BetterMineshaftConfiguration$MineshaftDecorationChances);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $BetterMineshaftConfiguration$MineshaftDecorationChances_ = $BetterMineshaftConfiguration$MineshaftDecorationChances$$Type;
-}}
 declare module "com.yungnickyoung.minecraft.yungsapi.mixin.accessor.BoundingBoxAccessor" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $BoundingBoxAccessor {
 
+ "setMinY"(arg0: integer): void
  "setMinX"(arg0: integer): void
  "setMinZ"(arg0: integer): void
  "setMaxX"(arg0: integer): void
  "setMaxY"(arg0: integer): void
  "setMaxZ"(arg0: integer): void
- "setMinY"(arg0: integer): void
+set "minY"(value: integer)
 set "minX"(value: integer)
 set "minZ"(value: integer)
 set "maxX"(value: integer)
 set "maxY"(value: integer)
 set "maxZ"(value: integer)
-set "minY"(value: integer)
 }
 
 export namespace $BoundingBoxAccessor {
@@ -2851,12 +2521,12 @@ const probejs$$marker: never
 export class $BoundingBoxAccessor$$Static implements $BoundingBoxAccessor {
 
 
+ "setMinY"(arg0: integer): void
  "setMinX"(arg0: integer): void
  "setMinZ"(arg0: integer): void
  "setMaxX"(arg0: integer): void
  "setMaxY"(arg0: integer): void
  "setMaxZ"(arg0: integer): void
- "setMinY"(arg0: integer): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2869,36 +2539,6 @@ export type $BoundingBoxAccessor$$Type = ($BoundingBoxAccessor);
  */
 declare global {
 export type $BoundingBoxAccessor_ = $BoundingBoxAccessor$$Type;
-}}
-declare module "com.yungnickyoung.minecraft.bettermineshafts.world.config.BetterMineshaftConfiguration$MineshaftBlockStates" {
-import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
-import {$BlockState, $BlockState$$Type} from "net.minecraft.world.level.block.state.BlockState"
-
-export class $BetterMineshaftConfiguration$MineshaftBlockStates {
- "mainBlockState": $BlockState
- "stoneWallBlockState": $BlockState
- "smallLegBlockState": $BlockState
- "slabBlockState": $BlockState
-static readonly "CODEC": $Codec<($BetterMineshaftConfiguration$MineshaftBlockStates)>
- "trapdoorBlockState": $BlockState
- "gravelBlockState": $BlockState
- "supportBlockState": $BlockState
- "stoneSlabBlockState": $BlockState
-
-constructor(arg0: $BlockState$$Type, arg1: $BlockState$$Type, arg2: $BlockState$$Type, arg3: $BlockState$$Type, arg4: $BlockState$$Type, arg5: $BlockState$$Type, arg6: $BlockState$$Type, arg7: $BlockState$$Type)
-
-}
-/**
- * Class-specific type exported by ProbeJS, use global Type_
- * types for convenience unless there's a naming conflict.
- */
-export type $BetterMineshaftConfiguration$MineshaftBlockStates$$Type = ($BetterMineshaftConfiguration$MineshaftBlockStates);
-/**
- * Global type exported for convenience, use class-specific
- * types if there's a naming conflict.
- */
-declare global {
-export type $BetterMineshaftConfiguration$MineshaftBlockStates_ = $BetterMineshaftConfiguration$MineshaftBlockStates$$Type;
 }}
 declare module "com.yungnickyoung.minecraft.ribbits.data.RibbitData" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
@@ -2919,13 +2559,13 @@ public "write"(arg0: $FriendlyByteBuf$$Type): void
 public "getProfession"(): $RibbitProfession
 public "setInstrument"(arg0: $RibbitInstrument$$Type): void
 public "getInstrument"(): $RibbitInstrument
-public "getUmbrellaType"(): $RibbitUmbrellaType
 public "setProfession"(arg0: $RibbitProfession$$Type): void
+public "getUmbrellaType"(): $RibbitUmbrellaType
 get "profession"(): $RibbitProfession
 set "instrument"(value: $RibbitInstrument$$Type)
 get "instrument"(): $RibbitInstrument
-get "umbrellaType"(): $RibbitUmbrellaType
 set "profession"(value: $RibbitProfession$$Type)
+get "umbrellaType"(): $RibbitUmbrellaType
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3009,8 +2649,8 @@ import {$ReplaceSphereConfiguration, $ReplaceSphereConfiguration$$Type} from "ne
 import {$BlockStateConfiguration, $BlockStateConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration"
 import {$BlockPileConfiguration, $BlockPileConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration"
 import {$NoneFeatureConfiguration, $NoneFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration"
-import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$EndGatewayConfiguration, $EndGatewayConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration"
+import {$UnderwaterMagmaConfiguration, $UnderwaterMagmaConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.UnderwaterMagmaConfiguration"
 import {$LakeFeature$Configuration, $LakeFeature$Configuration$$Type} from "net.minecraft.world.level.levelgen.feature.LakeFeature$Configuration"
 import {$RootSystemConfiguration, $RootSystemConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration"
 import {$BonusChestFeature, $BonusChestFeature$$Type} from "net.minecraft.world.level.levelgen.feature.BonusChestFeature"
@@ -3036,9 +2676,9 @@ import {$FeaturePlaceContext, $FeaturePlaceContext$$Type} from "net.minecraft.wo
 import {$SpikeConfiguration, $SpikeConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.SpikeConfiguration"
 import {$HugeFungusConfiguration, $HugeFungusConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.HugeFungusConfiguration"
 import {$TreeConfiguration, $TreeConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration"
+import {$RibbitsVegetationFeatureConfig, $RibbitsVegetationFeatureConfig$$Type} from "com.yungnickyoung.minecraft.ribbits.world.feature.RibbitsVegetationFeatureConfig"
 import {$DiskConfiguration, $DiskConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.DiskConfiguration"
 import {$PointedDripstoneConfiguration, $PointedDripstoneConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.PointedDripstoneConfiguration"
-import {$RibbitsVegetationFeatureConfig, $RibbitsVegetationFeatureConfig$$Type} from "com.yungnickyoung.minecraft.ribbits.world.feature.RibbitsVegetationFeatureConfig"
 import {$SculkPatchConfiguration, $SculkPatchConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.SculkPatchConfiguration"
 import {$SimpleRandomFeatureConfiguration, $SimpleRandomFeatureConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.SimpleRandomFeatureConfiguration"
 import {$DripstoneClusterConfiguration, $DripstoneClusterConfiguration$$Type} from "net.minecraft.world.level.levelgen.feature.configurations.DripstoneClusterConfiguration"

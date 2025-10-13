@@ -9,7 +9,7 @@ static readonly "CONTENT": $Sizing$Method
 
 
 public static "values"(): ($Sizing$Method)[]
-public static "valueOf"(name: string): $Sizing$Method
+public static "valueOf"(name: StringJS): $Sizing$Method
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -28,53 +28,53 @@ import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$SoundEventData, $SoundEventData$$Type} from "io.wispforest.accessories.api.SoundEventData"
 import {$List, $List$$Type} from "java.util.List"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
 import {$SlotReference, $SlotReference$$Type} from "io.wispforest.accessories.api.slot.SlotReference"
 import {$AccessoryAttributeBuilder, $AccessoryAttributeBuilder$$Type} from "io.wispforest.accessories.api.attributes.AccessoryAttributeBuilder"
-import {$DropRule, $DropRule$$Type} from "io.wispforest.accessories.api.DropRule"
 import {$AccessoryItemAttributeModifiers$Builder, $AccessoryItemAttributeModifiers$Builder$$Type} from "io.wispforest.accessories.api.components.AccessoryItemAttributeModifiers$Builder"
+import {$DropRule, $DropRule$$Type} from "io.wispforest.accessories.api.DropRule"
 import {$DamageSource, $DamageSource$$Type} from "net.minecraft.world.damagesource.DamageSource"
 import {$SlotType, $SlotType$$Type} from "io.wispforest.accessories.api.slot.SlotType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export interface $Accessory {
 
+ "tick"(stack: $ItemStack$$Type, reference: $SlotReference$$Type): void
+ "maxStackSize"(stack: $ItemStack$$Type): integer
 /**
  * 
  * @deprecated
  */
  "getModifiers"(stack: $ItemStack$$Type, reference: $SlotReference$$Type, builder: $AccessoryAttributeBuilder$$Type): void
- "tick"(stack: $ItemStack$$Type, reference: $SlotReference$$Type): void
- "maxStackSize"(stack: $ItemStack$$Type): integer
  "canEquip"(stack: $ItemStack$$Type, reference: $SlotReference$$Type): boolean
  "getEquipSound"(stack: $ItemStack$$Type, reference: $SlotReference$$Type): $SoundEventData
- "getDynamicModifiers"(stack: $ItemStack$$Type, reference: $SlotReference$$Type, builder: $AccessoryAttributeBuilder$$Type): void
- "canEquipFromUse"(stack: $ItemStack$$Type): boolean
-/**
- * 
- * @deprecated
- */
- "canEquipFromUse"(stack: $ItemStack$$Type, reference: $SlotReference$$Type): boolean
- "getStaticModifiers"(item: $Item$$Type, builder: $AccessoryItemAttributeModifiers$Builder$$Type): void
- "getAttributesTooltip"(stack: $ItemStack$$Type, type: $SlotType$$Type, tooltips: $List$$Type<($Component$$Type)>, tooltipContext: $Item$TooltipContext$$Type, tooltipType: $TooltipFlag$$Type): void
-/**
- * 
- * @deprecated
- */
- "getAttributesTooltip"(stack: $ItemStack$$Type, type: $SlotType$$Type, tooltips: $List$$Type<($Component$$Type)>): void
- "getExtraTooltip"(stack: $ItemStack$$Type, tooltips: $List$$Type<($Component$$Type)>, tooltipContext: $Item$TooltipContext$$Type, tooltipType: $TooltipFlag$$Type): void
-/**
- * 
- * @deprecated
- */
- "getExtraTooltip"(stack: $ItemStack$$Type, tooltips: $List$$Type<($Component$$Type)>): void
  "onEquip"(stack: $ItemStack$$Type, reference: $SlotReference$$Type): void
  "onUnequip"(stack: $ItemStack$$Type, reference: $SlotReference$$Type): void
  "canUnequip"(stack: $ItemStack$$Type, reference: $SlotReference$$Type): boolean
  "getDropRule"(stack: $ItemStack$$Type, reference: $SlotReference$$Type, source: $DamageSource$$Type): $DropRule
  "onEquipFromUse"(stack: $ItemStack$$Type, reference: $SlotReference$$Type): void
  "onBreak"(stack: $ItemStack$$Type, reference: $SlotReference$$Type): void
+ "getDynamicModifiers"(stack: $ItemStack$$Type, reference: $SlotReference$$Type, builder: $AccessoryAttributeBuilder$$Type): void
+/**
+ * 
+ * @deprecated
+ */
+ "canEquipFromUse"(stack: $ItemStack$$Type, reference: $SlotReference$$Type): boolean
+ "canEquipFromUse"(stack: $ItemStack$$Type): boolean
+ "getStaticModifiers"(item: $Item$$Type, builder: $AccessoryItemAttributeModifiers$Builder$$Type): void
+/**
+ * 
+ * @deprecated
+ */
+ "getAttributesTooltip"(stack: $ItemStack$$Type, type: $SlotType$$Type, tooltips: $List$$Type<($Component$$Type)>): void
+ "getAttributesTooltip"(stack: $ItemStack$$Type, type: $SlotType$$Type, tooltips: $List$$Type<($Component$$Type)>, tooltipContext: $Item$TooltipContext$$Type, tooltipType: $TooltipFlag$$Type): void
+/**
+ * 
+ * @deprecated
+ */
+ "getExtraTooltip"(stack: $ItemStack$$Type, tooltips: $List$$Type<($Component$$Type)>): void
+ "getExtraTooltip"(stack: $ItemStack$$Type, tooltips: $List$$Type<($Component$$Type)>, tooltipContext: $Item$TooltipContext$$Type, tooltipType: $TooltipFlag$$Type): void
 }
 
 export namespace $Accessory {
@@ -83,41 +83,41 @@ const probejs$$marker: never
 export class $Accessory$$Static implements $Accessory {
 
 
+ "tick"(stack: $ItemStack$$Type, reference: $SlotReference$$Type): void
+ "maxStackSize"(stack: $ItemStack$$Type): integer
 /**
  * 
  * @deprecated
  */
  "getModifiers"(stack: $ItemStack$$Type, reference: $SlotReference$$Type, builder: $AccessoryAttributeBuilder$$Type): void
- "tick"(stack: $ItemStack$$Type, reference: $SlotReference$$Type): void
- "maxStackSize"(stack: $ItemStack$$Type): integer
  "canEquip"(stack: $ItemStack$$Type, reference: $SlotReference$$Type): boolean
  "getEquipSound"(stack: $ItemStack$$Type, reference: $SlotReference$$Type): $SoundEventData
- "getDynamicModifiers"(stack: $ItemStack$$Type, reference: $SlotReference$$Type, builder: $AccessoryAttributeBuilder$$Type): void
- "canEquipFromUse"(stack: $ItemStack$$Type): boolean
-/**
- * 
- * @deprecated
- */
- "canEquipFromUse"(stack: $ItemStack$$Type, reference: $SlotReference$$Type): boolean
- "getStaticModifiers"(item: $Item$$Type, builder: $AccessoryItemAttributeModifiers$Builder$$Type): void
- "getAttributesTooltip"(stack: $ItemStack$$Type, type: $SlotType$$Type, tooltips: $List$$Type<($Component$$Type)>, tooltipContext: $Item$TooltipContext$$Type, tooltipType: $TooltipFlag$$Type): void
-/**
- * 
- * @deprecated
- */
- "getAttributesTooltip"(stack: $ItemStack$$Type, type: $SlotType$$Type, tooltips: $List$$Type<($Component$$Type)>): void
- "getExtraTooltip"(stack: $ItemStack$$Type, tooltips: $List$$Type<($Component$$Type)>, tooltipContext: $Item$TooltipContext$$Type, tooltipType: $TooltipFlag$$Type): void
-/**
- * 
- * @deprecated
- */
- "getExtraTooltip"(stack: $ItemStack$$Type, tooltips: $List$$Type<($Component$$Type)>): void
  "onEquip"(stack: $ItemStack$$Type, reference: $SlotReference$$Type): void
  "onUnequip"(stack: $ItemStack$$Type, reference: $SlotReference$$Type): void
  "canUnequip"(stack: $ItemStack$$Type, reference: $SlotReference$$Type): boolean
  "getDropRule"(stack: $ItemStack$$Type, reference: $SlotReference$$Type, source: $DamageSource$$Type): $DropRule
  "onEquipFromUse"(stack: $ItemStack$$Type, reference: $SlotReference$$Type): void
  "onBreak"(stack: $ItemStack$$Type, reference: $SlotReference$$Type): void
+ "getDynamicModifiers"(stack: $ItemStack$$Type, reference: $SlotReference$$Type, builder: $AccessoryAttributeBuilder$$Type): void
+/**
+ * 
+ * @deprecated
+ */
+ "canEquipFromUse"(stack: $ItemStack$$Type, reference: $SlotReference$$Type): boolean
+ "canEquipFromUse"(stack: $ItemStack$$Type): boolean
+ "getStaticModifiers"(item: $Item$$Type, builder: $AccessoryItemAttributeModifiers$Builder$$Type): void
+/**
+ * 
+ * @deprecated
+ */
+ "getAttributesTooltip"(stack: $ItemStack$$Type, type: $SlotType$$Type, tooltips: $List$$Type<($Component$$Type)>): void
+ "getAttributesTooltip"(stack: $ItemStack$$Type, type: $SlotType$$Type, tooltips: $List$$Type<($Component$$Type)>, tooltipContext: $Item$TooltipContext$$Type, tooltipType: $TooltipFlag$$Type): void
+/**
+ * 
+ * @deprecated
+ */
+ "getExtraTooltip"(stack: $ItemStack$$Type, tooltips: $List$$Type<($Component$$Type)>): void
+ "getExtraTooltip"(stack: $ItemStack$$Type, tooltips: $List$$Type<($Component$$Type)>, tooltipContext: $Item$TooltipContext$$Type, tooltipType: $TooltipFlag$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -175,37 +175,37 @@ static readonly "BLUE": $Color
 static readonly "BLACK": $Color
 static readonly "GREEN": $Color
 
-constructor(red: float, green: float, blue: float)
 constructor(red: float, green: float, blue: float, alpha: float)
+constructor(red: float, green: float, blue: float)
 
+public static "random"(): $Color
 public "rgb"(): integer
+public "red"(): float
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public static "parse"(node: $Node$$Type): $Color
-public static "random"(): $Color
-public "red"(): float
-public "interpolate"(next: $Color$$Type, delta: float): $Color
-public "interpolate"(arg0: $Animatable$$Type<(any)>, arg1: float): $Animatable<(any)>
-public "argb"(): integer
-public static "ofArgb"(argb: integer): $Color
-public "blue"(): float
-public "green"(): float
-public "alpha"(): float
 public static "ofRgb"(rgb: integer): $Color
 public static "ofHsv"(hue: float, saturation: float, value: float): $Color
 public static "ofHsv"(hue: float, saturation: float, value: float, alpha: float): $Color
 public static "ofDye"(dyeColor: $DyeColor$$Type): $Color
+public static "ofArgb"(argb: integer): $Color
+public "argb"(): integer
 public "hsv"(): (float)[]
-public "asHexString"(includeAlpha: boolean): string
+public "blue"(): float
+public "green"(): float
+public "alpha"(): float
+public "interpolate"(arg0: $Animatable$$Type<(any)>, arg1: float): $Animatable<(any)>
+public "interpolate"(next: $Color$$Type, delta: float): $Color
 public static "ofFormatting"(formatting: $ChatFormatting$$Type): $Color
 public static "parseAndPack"(node: $Node$$Type): integer
+public "asHexString"(includeAlpha: boolean): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $Color$$Type = ({"alpha"?: float, "red"?: float, "blue"?: float, "green"?: float}) | ([alpha?: float, red?: float, blue?: float, green?: float]);
+export type $Color$$Type = ({"blue"?: float, "green"?: float, "alpha"?: float, "red"?: float}) | ([blue?: float, green?: float, alpha?: float, red?: float]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -222,20 +222,20 @@ export class $OwoItemGroup$TabTextures extends $Record {
 constructor(topSelected: $ResourceLocation$$Type, topSelectedFirstColumn: $ResourceLocation$$Type, topUnselected: $ResourceLocation$$Type, bottomSelected: $ResourceLocation$$Type, bottomSelectedFirstColumn: $ResourceLocation$$Type, bottomUnselected: $ResourceLocation$$Type)
 
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "topSelectedFirstColumn"(): $ResourceLocation
-public "bottomUnselected"(): $ResourceLocation
 public "topSelected"(): $ResourceLocation
 public "topUnselected"(): $ResourceLocation
 public "bottomSelected"(): $ResourceLocation
+public "topSelectedFirstColumn"(): $ResourceLocation
+public "bottomUnselected"(): $ResourceLocation
 public "bottomSelectedFirstColumn"(): $ResourceLocation
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $OwoItemGroup$TabTextures$$Type = ({"bottomUnselected"?: $ResourceLocation$$Type, "topSelectedFirstColumn"?: $ResourceLocation$$Type, "bottomSelectedFirstColumn"?: $ResourceLocation$$Type, "topSelected"?: $ResourceLocation$$Type, "bottomSelected"?: $ResourceLocation$$Type, "topUnselected"?: $ResourceLocation$$Type}) | ([bottomUnselected?: $ResourceLocation$$Type, topSelectedFirstColumn?: $ResourceLocation$$Type, bottomSelectedFirstColumn?: $ResourceLocation$$Type, topSelected?: $ResourceLocation$$Type, bottomSelected?: $ResourceLocation$$Type, topUnselected?: $ResourceLocation$$Type]);
+export type $OwoItemGroup$TabTextures$$Type = ({"topUnselected"?: $ResourceLocation$$Type, "bottomUnselected"?: $ResourceLocation$$Type, "topSelectedFirstColumn"?: $ResourceLocation$$Type, "bottomSelectedFirstColumn"?: $ResourceLocation$$Type, "topSelected"?: $ResourceLocation$$Type, "bottomSelected"?: $ResourceLocation$$Type}) | ([topUnselected?: $ResourceLocation$$Type, bottomUnselected?: $ResourceLocation$$Type, topSelectedFirstColumn?: $ResourceLocation$$Type, bottomSelectedFirstColumn?: $ResourceLocation$$Type, topSelected?: $ResourceLocation$$Type, bottomSelected?: $ResourceLocation$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -320,36 +320,36 @@ import {$SlotReference, $SlotReference$$Type} from "io.wispforest.accessories.ap
 export class $AccessoryAttributeBuilder {
 
 constructor()
-constructor(slotName: string, slot: integer)
+constructor(slotName: StringJS, slot: integer)
 constructor(slotReference: $SlotReference$$Type)
 
 public "getStacks"(attribute: $Holder$$Type<($Attribute)>, location: $ResourceLocation$$Type): $Collection<($AttributeModificationData)>
 public "equals"(obj: any): boolean
 public "isEmpty"(): boolean
+public "addExclusive"(attribute: $Holder$$Type<($Attribute)>, modifier: $AttributeModifier$$Type): $AccessoryAttributeBuilder
+public "addExclusive"(attribute: $Holder$$Type<($Attribute)>, location: $ResourceLocation$$Type, amount: double, operation: $AttributeModifier$Operation$$Type): $AccessoryAttributeBuilder
 /**
  * 
  * @deprecated
  */
-public static "createSlotPath"(ref: $SlotReference$$Type): string
+public static "createSlotPath"(slotname: StringJS, slot: integer): StringJS
 /**
  * 
  * @deprecated
  */
-public static "createSlotPath"(slotname: string, slot: integer): string
-public "getSlotModifiers"(): $Multimap<(string), ($AttributeModifier)>
-public "getAttributeModifiers"(filterSlots: boolean): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
+public static "createSlotPath"(ref: $SlotReference$$Type): StringJS
 public "addFrom"(builder: $AccessoryAttributeBuilder$$Type): $AccessoryAttributeBuilder
 public "addStackable"(attribute: $Holder$$Type<($Attribute)>, location: $ResourceLocation$$Type, amount: double, operation: $AttributeModifier$Operation$$Type): $AccessoryAttributeBuilder
 public "addStackable"(attribute: $Holder$$Type<($Attribute)>, modifier: $AttributeModifier$$Type): $AccessoryAttributeBuilder
+public "getSlotModifiers"(): $Multimap<(StringJS), ($AttributeModifier)>
+public "getAttributeModifiers"(filterSlots: boolean): $Multimap<($Holder<($Attribute)>), ($AttributeModifier)>
 public "getExclusive"(attribute: $Holder$$Type<($Attribute)>, location: $ResourceLocation$$Type): $AttributeModificationData
-public "addExclusive"(attribute: $Holder$$Type<($Attribute)>, modifier: $AttributeModifier$$Type): $AccessoryAttributeBuilder
-public "addExclusive"(attribute: $Holder$$Type<($Attribute)>, location: $ResourceLocation$$Type, amount: double, operation: $AttributeModifier$Operation$$Type): $AccessoryAttributeBuilder
 public "removeStacks"(attribute: $Holder$$Type<($Attribute)>, location: $ResourceLocation$$Type): $Collection<($AttributeModificationData)>
 public "exclusiveAttributes"(): $Map<($Holder<($Attribute)>), ($Map<($ResourceLocation), ($AttributeModificationData)>)>
 public "stackedAttributes"(): $Multimap<($Holder<($Attribute)>), ($AttributeModificationData)>
 public "removeExclusive"(attribute: $Holder$$Type<($Attribute)>, location: $ResourceLocation$$Type): $AttributeModificationData
 get "empty"(): boolean
-get "slotModifiers"(): $Multimap<(string), ($AttributeModifier)>
+get "slotModifiers"(): $Multimap<(StringJS), ($AttributeModifier)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -372,12 +372,12 @@ import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 
 export interface $OwoItemExtensions {
 
- "owo$shouldTrackUsageStat"(): boolean
  "owo$setGroup"(arg0: $Supplier$$Type<($CreativeModeTab$$Type)>): void
  "owo$setGroup"(group: $CreativeModeTab$$Type): void
  "owo$group"(): $CreativeModeTab
  "owo$tab"(): integer
  "owo$stackGenerator"(): $BiConsumer<($Item), ($CreativeModeTab$Output)>
+ "owo$shouldTrackUsageStat"(): boolean
 }
 
 export namespace $OwoItemExtensions {
@@ -386,12 +386,12 @@ const probejs$$marker: never
 export class $OwoItemExtensions$$Static implements $OwoItemExtensions {
 
 
- "owo$shouldTrackUsageStat"(): boolean
  "owo$setGroup"(arg0: $Supplier$$Type<($CreativeModeTab$$Type)>): void
  "owo$setGroup"(group: $CreativeModeTab$$Type): void
  "owo$group"(): $CreativeModeTab
  "owo$tab"(): integer
  "owo$stackGenerator"(): $BiConsumer<($Item), ($CreativeModeTab$Output)>
+ "owo$shouldTrackUsageStat"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -411,8 +411,8 @@ import {$ModelPart, $ModelPart$$Type} from "net.minecraft.client.model.geom.Mode
 
 export interface $ModelRootAccess {
 
- "accessories$getAnyDescendantWithName"(name: string): $Optional<($ModelPart)>
  "accessories$rootPart"(): $ModelPart
+ "accessories$getAnyDescendantWithName"(name: StringJS): $Optional<($ModelPart)>
 }
 
 export namespace $ModelRootAccess {
@@ -421,8 +421,8 @@ const probejs$$marker: never
 export class $ModelRootAccess$$Static implements $ModelRootAccess {
 
 
- "accessories$getAnyDescendantWithName"(name: string): $Optional<($ModelPart)>
  "accessories$rootPart"(): $ModelPart
+ "accessories$getAnyDescendantWithName"(name: StringJS): $Optional<($ModelPart)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -445,8 +445,8 @@ import {$Runnable, $Runnable$$Type} from "java.lang.Runnable"
 import {$Component as $Component$0, $Component$$Type as $Component$0$$Type} from "net.minecraft.network.chat.Component"
 import {$CharTyped, $CharTyped$$Type} from "io.wispforest.owo.ui.event.CharTyped"
 import {$OwoUIDrawContext, $OwoUIDrawContext$$Type} from "io.wispforest.owo.ui.core.OwoUIDrawContext"
-import {$Component, $Component$$Type} from "io.wispforest.owo.ui.core.Component"
 import {$FocusGained, $FocusGained$$Type} from "io.wispforest.owo.ui.event.FocusGained"
+import {$Component, $Component$$Type} from "io.wispforest.owo.ui.core.Component"
 import {$ParentComponent, $ParentComponent$$Type} from "io.wispforest.owo.ui.core.ParentComponent"
 import {$Positioning, $Positioning$$Type} from "io.wispforest.owo.ui.core.Positioning"
 import {$KeyPress, $KeyPress$$Type} from "io.wispforest.owo.ui.event.KeyPress"
@@ -455,9 +455,9 @@ import {$Insets, $Insets$$Type} from "io.wispforest.owo.ui.core.Insets"
 import {$MouseScroll, $MouseScroll$$Type} from "io.wispforest.owo.ui.event.MouseScroll"
 import {$MouseDown, $MouseDown$$Type} from "io.wispforest.owo.ui.event.MouseDown"
 import {$CursorStyle, $CursorStyle$$Type} from "io.wispforest.owo.ui.core.CursorStyle"
+import {$Map, $Map$$Type} from "java.util.Map"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$Element, $Element$$Type} from "org.w3c.dom.Element"
-import {$Map, $Map$$Type} from "java.util.Map"
 import {$UIModel, $UIModel$$Type} from "io.wispforest.owo.ui.parsing.UIModel"
 import {$Component$FocusSource, $Component$FocusSource$$Type} from "io.wispforest.owo.ui.core.Component$FocusSource"
 import {$MouseUp, $MouseUp$$Type} from "io.wispforest.owo.ui.event.MouseUp"
@@ -476,32 +476,28 @@ import {$Size, $Size$$Type} from "io.wispforest.owo.ui.core.Size"
 export class $BaseComponent implements $Component, $ComponentExtension<(any)> {
 
 
+public "y"(): integer
+public "configure"<C extends $Component>(closure: $Consumer$$Type<(C)>): C
 public "parent"(): $ParentComponent
 public "inflate"(space: $Size$$Type): void
 public "update"(delta: float, mouseX: integer, mouseY: integer): void
 public "x"(): integer
-public "id"(id: string): $Component
-public "id"(): string
+public "id"(id: StringJS): $Component
+public "id"(): StringJS
 public "mount"(parent: $ParentComponent$$Type, x: integer, y: integer): void
-public "y"(): integer
-public "width"(): integer
-public "configure"<C extends $Component>(closure: $Consumer$$Type<(C)>): C
-public "allowIndividualOverdraw"(value: boolean): $BaseComponent
-public "allowIndividualOverdraw"(): boolean
-public "dismount"(reason: $Component$DismountReason$$Type): void
-public "tooltip"(tooltip: $List$$Type<($ClientTooltipComponent$$Type)>): $Component
-public "tooltip"(): $List<($ClientTooltipComponent)>
-public "charTyped"(): $EventSource<($CharTyped)>
-public "height"(): integer
-public "zIndex"(): integer
 public "zIndex"(zIndex: integer): $Component
-public "horizontalSizing"(): $AnimatableProperty<($Sizing)>
-public "horizontalSizing"(horizontalSizing: $Sizing$$Type): $Component
+public "zIndex"(): integer
+public "width"(): integer
+public "height"(): integer
+public "dismount"(reason: $Component$DismountReason$$Type): void
+public "tooltip"(): $List<($ClientTooltipComponent)>
+public "tooltip"(tooltip: $List$$Type<($ClientTooltipComponent$$Type)>): $Component
+public "charTyped"(): $EventSource<($CharTyped)>
 public "focusHandler"(): $FocusHandler
-public "positioning"(positioning: $Positioning$$Type): $BaseComponent
+public "positioning"(arg0: $Positioning$$Type): $Component
 public "positioning"(): $AnimatableProperty<($Positioning)>
-public "margins"(margins: $Insets$$Type): $BaseComponent
 public "margins"(): $AnimatableProperty<($Insets)>
+public "margins"(margins: $Insets$$Type): $BaseComponent
 public "verticalSizing"(verticalSizing: $Sizing$$Type): $Component
 public "verticalSizing"(): $AnimatableProperty<($Sizing)>
 public "mouseDown"(): $EventSource<($MouseDown)>
@@ -525,24 +521,28 @@ public "onFocusGained"(source: $Component$FocusSource$$Type): void
 public "onFocusLost"(): void
 public "updateX"(x: integer): void
 public "updateY"(y: integer): void
+public "horizontalSizing"(horizontalSizing: $Sizing$$Type): $Component
+public "horizontalSizing"(): $AnimatableProperty<($Sizing)>
+public "allowIndividualOverdraw"(value: boolean): $BaseComponent
+public "allowIndividualOverdraw"(): boolean
 public "remove"(): void
 public "root"(): $ParentComponent
-public "tooltip"(tooltip: $Component$0$$Type): $Component
-public "tooltip"(tooltip: $Collection$$Type<($Component$0$$Type)>): $Component
-public "draw"(arg0: $OwoUIDrawContext$$Type, arg1: integer, arg2: integer, arg3: float, arg4: float): void
-public "moveTo"(x: integer, y: integer): void
 public "sizing"(sizing: $Sizing$$Type): $Component
 public "sizing"(horizontalSizing: $Sizing$$Type, verticalSizing: $Sizing$$Type): $Component
 public "baseX"(): integer
 public "baseY"(): integer
-public "shouldDrawTooltip"(mouseX: double, mouseY: double): boolean
-public "parseProperties"(model: $UIModel$$Type, element: $Element$$Type, children: $Map$$Type<(string), ($Element$$Type)>): void
-public "drawFocusHighlight"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
-public "isInBoundingBox"(x: double, y: double): boolean
+public "moveTo"(x: integer, y: integer): void
+public "draw"(arg0: $OwoUIDrawContext$$Type, arg1: integer, arg2: integer, arg3: float, arg4: float): void
+public "tooltip"(tooltip: $Collection$$Type<($Component$0$$Type)>): $Component
+public "tooltip"(tooltip: $Component$0$$Type): $Component
 public "canFocus"(source: $Component$FocusSource$$Type): boolean
 public "drawTooltip"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
 public "hasParent"(): boolean
 public "fullSize"(): $Size
+public "shouldDrawTooltip"(mouseX: double, mouseY: double): boolean
+public "parseProperties"(model: $UIModel$$Type, element: $Element$$Type, children: $Map$$Type<(StringJS), ($Element$$Type)>): void
+public "drawFocusHighlight"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
+public "isInBoundingBox"(x: double, y: double): boolean
 public static "bypassCheck"(component: $Component$$Type, runnable: $Runnable$$Type): void
 public "intersects"(other: $PositionedRectangle$$Type): boolean
 public "intersection"(other: $PositionedRectangle$$Type): $PositionedRectangle
@@ -620,10 +620,10 @@ declare global {
 export type $CursorAdapter_ = $CursorAdapter$$Type;
 }}
 declare module "io.wispforest.accessories.api.client.AccessoryRenderer" {
-import {$HumanoidModel, $HumanoidModel$$Type} from "net.minecraft.client.model.HumanoidModel"
 import {$HumanoidArm, $HumanoidArm$$Type} from "net.minecraft.world.entity.HumanoidArm"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$HumanoidModel, $HumanoidModel$$Type} from "net.minecraft.client.model.HumanoidModel"
 import {$MultiBufferSource, $MultiBufferSource$$Type} from "net.minecraft.client.renderer.MultiBufferSource"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$PoseStack, $PoseStack$$Type} from "com.mojang.blaze3d.vertex.PoseStack"
 import {$EntityModel, $EntityModel$$Type} from "net.minecraft.client.model.EntityModel"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
@@ -634,8 +634,8 @@ import {$SlotReference, $SlotReference$$Type} from "io.wispforest.accessories.ap
 export interface $AccessoryRenderer {
 
  "isEmpty"(): boolean
- "shouldRender"(isRendering: boolean): boolean
  "render"<M extends $LivingEntity>(arg0: $ItemStack$$Type, arg1: $SlotReference$$Type, arg2: $PoseStack$$Type, arg3: $EntityModel$$Type<(M)>, arg4: $MultiBufferSource$$Type, arg5: integer, arg6: float, arg7: float, arg8: float, arg9: float, arg10: float, arg11: float): void
+ "shouldRender"(isRendering: boolean): boolean
  "renderOnFirstPerson"<M extends $LivingEntity>(arm: $HumanoidArm$$Type, stack: $ItemStack$$Type, reference: $SlotReference$$Type, matrices: $PoseStack$$Type, model: $EntityModel$$Type<(M)>, multiBufferSource: $MultiBufferSource$$Type, light: integer): void
  "shouldRenderInFirstPerson"(arm: $HumanoidArm$$Type, stack: $ItemStack$$Type, reference: $SlotReference$$Type): boolean
 
@@ -645,6 +645,7 @@ get "empty"(): boolean
 
 export namespace $AccessoryRenderer {
 function followBodyRotations(entity: $LivingEntity$$Type, model: $HumanoidModel$$Type<($LivingEntity$$Type)>): void
+function translateToChest(poseStack: $PoseStack$$Type, model: $HumanoidModel$$Type<($LivingEntity$$Type)>, livingEntity: $LivingEntity$$Type): void
 function translateToFace(poseStack: $PoseStack$$Type, model: $HumanoidModel$$Type<($LivingEntity$$Type)>, entity: $LivingEntity$$Type): void
 function transformToFace(poseStack: $PoseStack$$Type, part: $ModelPart$$Type, side: $Side$$Type): void
 function transformToModelPart(poseStack: $PoseStack$$Type, part: $ModelPart$$Type): void
@@ -653,22 +654,25 @@ function translateToRightArm(poseStack: $PoseStack$$Type, model: $HumanoidModel$
 function translateToLeftArm(poseStack: $PoseStack$$Type, model: $HumanoidModel$$Type<($LivingEntity$$Type)>, player: $LivingEntity$$Type): void
 function translateToRightLeg(poseStack: $PoseStack$$Type, model: $HumanoidModel$$Type<($LivingEntity$$Type)>, player: $LivingEntity$$Type): void
 function translateToLeftLeg(poseStack: $PoseStack$$Type, model: $HumanoidModel$$Type<($LivingEntity$$Type)>, player: $LivingEntity$$Type): void
-function translateToChest(poseStack: $PoseStack$$Type, model: $HumanoidModel$$Type<($LivingEntity$$Type)>, livingEntity: $LivingEntity$$Type): void
 const probejs$$marker: never
 }
 export class $AccessoryRenderer$$Static implements $AccessoryRenderer {
 
 
  "isEmpty"(): boolean
+ "render"<M extends $LivingEntity>(arg0: $ItemStack$$Type, arg1: $SlotReference$$Type, arg2: $PoseStack$$Type, arg3: $EntityModel$$Type<(M)>, arg4: $MultiBufferSource$$Type, arg5: integer, arg6: float, arg7: float, arg8: float, arg9: float, arg10: float, arg11: float): void
+ "shouldRender"(isRendering: boolean): boolean
 /**
  * 
  * @deprecated
  */
 static "followBodyRotations"(entity: $LivingEntity$$Type, model: $HumanoidModel$$Type<($LivingEntity$$Type)>): void
- "shouldRender"(isRendering: boolean): boolean
- "render"<M extends $LivingEntity>(arg0: $ItemStack$$Type, arg1: $SlotReference$$Type, arg2: $PoseStack$$Type, arg3: $EntityModel$$Type<(M)>, arg4: $MultiBufferSource$$Type, arg5: integer, arg6: float, arg7: float, arg8: float, arg9: float, arg10: float, arg11: float): void
  "renderOnFirstPerson"<M extends $LivingEntity>(arm: $HumanoidArm$$Type, stack: $ItemStack$$Type, reference: $SlotReference$$Type, matrices: $PoseStack$$Type, model: $EntityModel$$Type<(M)>, multiBufferSource: $MultiBufferSource$$Type, light: integer): void
- "shouldRenderInFirstPerson"(arm: $HumanoidArm$$Type, stack: $ItemStack$$Type, reference: $SlotReference$$Type): boolean
+/**
+ * 
+ * @deprecated
+ */
+static "translateToChest"(poseStack: $PoseStack$$Type, model: $HumanoidModel$$Type<($LivingEntity$$Type)>, livingEntity: $LivingEntity$$Type): void
 /**
  * 
  * @deprecated
@@ -697,11 +701,7 @@ static "translateToRightLeg"(poseStack: $PoseStack$$Type, model: $HumanoidModel$
  * @deprecated
  */
 static "translateToLeftLeg"(poseStack: $PoseStack$$Type, model: $HumanoidModel$$Type<($LivingEntity$$Type)>, player: $LivingEntity$$Type): void
-/**
- * 
- * @deprecated
- */
-static "translateToChest"(poseStack: $PoseStack$$Type, model: $HumanoidModel$$Type<($LivingEntity$$Type)>, livingEntity: $LivingEntity$$Type): void
+ "shouldRenderInFirstPerson"(arm: $HumanoidArm$$Type, stack: $ItemStack$$Type, reference: $SlotReference$$Type): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -824,13 +824,13 @@ import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 
 export interface $AbstractContainerScreenAccessor {
 
- "accessories$recalculateQuickCraftRemaining"(): void
+ "accessories$leftPos"(): integer
+ "accessories$topPos"(): integer
  "accessories$getQuickCraftingType"(): integer
  "accessories$getClickedSlot"(): $Slot
  "accessories$getDraggingItem"(): $ItemStack
  "accessories$isSplittingStack"(): boolean
- "accessories$leftPos"(): integer
- "accessories$topPos"(): integer
+ "accessories$recalculateQuickCraftRemaining"(): void
 }
 
 export namespace $AbstractContainerScreenAccessor {
@@ -839,13 +839,13 @@ const probejs$$marker: never
 export class $AbstractContainerScreenAccessor$$Static implements $AbstractContainerScreenAccessor {
 
 
- "accessories$recalculateQuickCraftRemaining"(): void
+ "accessories$leftPos"(): integer
+ "accessories$topPos"(): integer
  "accessories$getQuickCraftingType"(): integer
  "accessories$getClickedSlot"(): $Slot
  "accessories$getDraggingItem"(): $ItemStack
  "accessories$isSplittingStack"(): boolean
- "accessories$leftPos"(): integer
- "accessories$topPos"(): integer
+ "accessories$recalculateQuickCraftRemaining"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -869,7 +869,7 @@ static readonly "MUST_CROUCH": $PlayerEquipControl
 
 
 public static "values"(): ($PlayerEquipControl)[]
-public static "valueOf"(name: string): $PlayerEquipControl
+public static "valueOf"(name: StringJS): $PlayerEquipControl
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -894,40 +894,40 @@ import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.Liv
 export interface $SlotReference {
 
  "entity"(): $LivingEntity
- "slot"(): integer
- "type"(): $SlotType
  "getStack"(): $ItemStack
  "isValid"(): boolean
+ "slot"(): integer
+ "type"(): $SlotType
  "capability"(): $AccessoriesCapability
- "createSlotPath"(): string
- "slotContainer"(): $AccessoriesContainer
  "setStack"(stack: $ItemStack$$Type): boolean
- "slotName"(): string
+ "createSlotPath"(): StringJS
+ "slotContainer"(): $AccessoriesContainer
+ "slotName"(): StringJS
 get "stack"(): $ItemStack
 get "valid"(): boolean
 set "stack"(value: $ItemStack$$Type)
 }
 
 export namespace $SlotReference {
-function of(livingEntity: $LivingEntity$$Type, slotName: string, slot: integer): $SlotReference
-function ofNest(livingEntity: $LivingEntity$$Type, slotName: string, initialHolderSlot: integer, innerSlotIndices: $List$$Type<(integer)>): $SlotReference
+function of(livingEntity: $LivingEntity$$Type, slotName: StringJS, slot: integer): $SlotReference
+function ofNest(livingEntity: $LivingEntity$$Type, slotName: StringJS, initialHolderSlot: integer, innerSlotIndices: $List$$Type<(integer)>): $SlotReference
 const probejs$$marker: never
 }
 export class $SlotReference$$Static implements $SlotReference {
 
 
  "entity"(): $LivingEntity
- "slot"(): integer
- "type"(): $SlotType
-static "of"(livingEntity: $LivingEntity$$Type, slotName: string, slot: integer): $SlotReference
  "getStack"(): $ItemStack
  "isValid"(): boolean
+ "slot"(): integer
+ "type"(): $SlotType
+static "of"(livingEntity: $LivingEntity$$Type, slotName: StringJS, slot: integer): $SlotReference
+static "ofNest"(livingEntity: $LivingEntity$$Type, slotName: StringJS, initialHolderSlot: integer, innerSlotIndices: $List$$Type<(integer)>): $SlotReference
  "capability"(): $AccessoriesCapability
- "createSlotPath"(): string
- "slotContainer"(): $AccessoriesContainer
  "setStack"(stack: $ItemStack$$Type): boolean
-static "ofNest"(livingEntity: $LivingEntity$$Type, slotName: string, initialHolderSlot: integer, innerSlotIndices: $List$$Type<(integer)>): $SlotReference
- "slotName"(): string
+ "createSlotPath"(): StringJS
+ "slotContainer"(): $AccessoriesContainer
+ "slotName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -977,28 +977,28 @@ declare module "io.wispforest.endec.Serializer" {
 import {$Endec, $Endec$$Type} from "io.wispforest.endec.Endec"
 import {$Serializer$Sequence, $Serializer$Sequence$$Type} from "io.wispforest.endec.Serializer$Sequence"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$SerializationContext, $SerializationContext$$Type} from "io.wispforest.endec.SerializationContext"
 import {$Serializer$Map, $Serializer$Map$$Type} from "io.wispforest.endec.Serializer$Map"
+import {$SerializationContext, $SerializationContext$$Type} from "io.wispforest.endec.SerializationContext"
 import {$Serializer$Struct, $Serializer$Struct$$Type} from "io.wispforest.endec.Serializer$Struct"
 
 export interface $Serializer<T> {
 
+ "sequence"<E>(arg0: $SerializationContext$$Type, arg1: $Endec$$Type<(E)>, arg2: integer): $Serializer$Sequence<(E)>
+ "writeBytes"(arg0: $SerializationContext$$Type, arg1: (byte)[]): void
+ "writeShort"(arg0: $SerializationContext$$Type, arg1: short): void
+ "writeBoolean"(arg0: $SerializationContext$$Type, arg1: boolean): void
+ "writeByte"(arg0: $SerializationContext$$Type, arg1: byte): void
+ "writeLong"(arg0: $SerializationContext$$Type, arg1: long): void
+ "writeDouble"(arg0: $SerializationContext$$Type, arg1: double): void
+ "writeString"(arg0: $SerializationContext$$Type, arg1: StringJS): void
+ "writeFloat"(arg0: $SerializationContext$$Type, arg1: float): void
  "map"<V>(arg0: $SerializationContext$$Type, arg1: $Endec$$Type<(V)>, arg2: integer): $Serializer$Map<(V)>
  "result"(): T
  "writeInt"(arg0: $SerializationContext$$Type, arg1: integer): void
- "writeBytes"(arg0: $SerializationContext$$Type, arg1: (byte)[]): void
- "writeFloat"(arg0: $SerializationContext$$Type, arg1: float): void
- "sequence"<E>(arg0: $SerializationContext$$Type, arg1: $Endec$$Type<(E)>, arg2: integer): $Serializer$Sequence<(E)>
- "writeBoolean"(arg0: $SerializationContext$$Type, arg1: boolean): void
- "writeByte"(arg0: $SerializationContext$$Type, arg1: byte): void
- "writeShort"(arg0: $SerializationContext$$Type, arg1: short): void
- "writeLong"(arg0: $SerializationContext$$Type, arg1: long): void
- "writeDouble"(arg0: $SerializationContext$$Type, arg1: double): void
- "writeString"(arg0: $SerializationContext$$Type, arg1: string): void
+ "struct"(): $Serializer$Struct
  "writeVarInt"(arg0: $SerializationContext$$Type, arg1: integer): void
  "writeOptional"<V>(arg0: $SerializationContext$$Type, arg1: $Endec$$Type<(V)>, arg2: $Optional$$Type<(V)>): void
  "writeVarLong"(arg0: $SerializationContext$$Type, arg1: long): void
- "struct"(): $Serializer$Struct
  "setupContext"(arg0: $SerializationContext$$Type): $SerializationContext
 set "upContext"(value: $SerializationContext$$Type)
 }
@@ -1009,22 +1009,22 @@ const probejs$$marker: never
 export class $Serializer$$Static<T> implements $Serializer {
 
 
+ "sequence"<E>(arg0: $SerializationContext$$Type, arg1: $Endec$$Type<(E)>, arg2: integer): $Serializer$Sequence<(E)>
+ "writeBytes"(arg0: $SerializationContext$$Type, arg1: (byte)[]): void
+ "writeShort"(arg0: $SerializationContext$$Type, arg1: short): void
+ "writeBoolean"(arg0: $SerializationContext$$Type, arg1: boolean): void
+ "writeByte"(arg0: $SerializationContext$$Type, arg1: byte): void
+ "writeLong"(arg0: $SerializationContext$$Type, arg1: long): void
+ "writeDouble"(arg0: $SerializationContext$$Type, arg1: double): void
+ "writeString"(arg0: $SerializationContext$$Type, arg1: StringJS): void
+ "writeFloat"(arg0: $SerializationContext$$Type, arg1: float): void
  "map"<V>(arg0: $SerializationContext$$Type, arg1: $Endec$$Type<(V)>, arg2: integer): $Serializer$Map<(V)>
  "result"(): T
  "writeInt"(arg0: $SerializationContext$$Type, arg1: integer): void
- "writeBytes"(arg0: $SerializationContext$$Type, arg1: (byte)[]): void
- "writeFloat"(arg0: $SerializationContext$$Type, arg1: float): void
- "sequence"<E>(arg0: $SerializationContext$$Type, arg1: $Endec$$Type<(E)>, arg2: integer): $Serializer$Sequence<(E)>
- "writeBoolean"(arg0: $SerializationContext$$Type, arg1: boolean): void
- "writeByte"(arg0: $SerializationContext$$Type, arg1: byte): void
- "writeShort"(arg0: $SerializationContext$$Type, arg1: short): void
- "writeLong"(arg0: $SerializationContext$$Type, arg1: long): void
- "writeDouble"(arg0: $SerializationContext$$Type, arg1: double): void
- "writeString"(arg0: $SerializationContext$$Type, arg1: string): void
+ "struct"(): $Serializer$Struct
  "writeVarInt"(arg0: $SerializationContext$$Type, arg1: integer): void
  "writeOptional"<V>(arg0: $SerializationContext$$Type, arg1: $Endec$$Type<(V)>, arg2: $Optional$$Type<(V)>): void
  "writeVarLong"(arg0: $SerializationContext$$Type, arg1: long): void
- "struct"(): $Serializer$Struct
  "setupContext"(arg0: $SerializationContext$$Type): $SerializationContext
 }
 /**
@@ -1060,9 +1060,9 @@ const probejs$$marker: never
 export class $CosmeticArmorLookupTogglable$$Static implements $CosmeticArmorLookupTogglable {
 
 
+static "getAlternativeStack"(livingEntity: $LivingEntity$$Type, equipmentSlot: $EquipmentSlot$$Type, consumer: $Consumer$$Type<($ItemStack)>): void
  "setLookupToggle"(value: boolean): void
  "getLookupToggle"(): boolean
-static "getAlternativeStack"(livingEntity: $LivingEntity$$Type, equipmentSlot: $EquipmentSlot$$Type, consumer: $Consumer$$Type<($ItemStack)>): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1111,8 +1111,8 @@ import {$SerializationContext, $SerializationContext$$Type} from "io.wispforest.
 
 export interface $Deserializer$Struct {
 
- "field"<F>(arg0: string, arg1: $SerializationContext$$Type, arg2: $Endec$$Type<(F)>): F
- "field"<F>(arg0: string, arg1: $SerializationContext$$Type, arg2: $Endec$$Type<(F)>, arg3: F): F
+ "field"<F>(arg0: StringJS, arg1: $SerializationContext$$Type, arg2: $Endec$$Type<(F)>): F
+ "field"<F>(arg0: StringJS, arg1: $SerializationContext$$Type, arg2: $Endec$$Type<(F)>, arg3: F): F
 }
 
 export namespace $Deserializer$Struct {
@@ -1121,8 +1121,8 @@ const probejs$$marker: never
 export class $Deserializer$Struct$$Static implements $Deserializer$Struct {
 
 
- "field"<F>(arg0: string, arg1: $SerializationContext$$Type, arg2: $Endec$$Type<(F)>): F
- "field"<F>(arg0: string, arg1: $SerializationContext$$Type, arg2: $Endec$$Type<(F)>, arg3: F): F
+ "field"<F>(arg0: StringJS, arg1: $SerializationContext$$Type, arg2: $Endec$$Type<(F)>): F
+ "field"<F>(arg0: StringJS, arg1: $SerializationContext$$Type, arg2: $Endec$$Type<(F)>, arg3: F): F
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1145,7 +1145,7 @@ static readonly "COSMETICALLY_OVERRIDABLE": $EquipmentChecking
 
 
 public static "values"(): ($EquipmentChecking)[]
-public static "valueOf"(name: string): $EquipmentChecking
+public static "valueOf"(name: StringJS): $EquipmentChecking
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1164,8 +1164,8 @@ import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 
 export interface $StateHolderAccessor<O, S> {
 
- "accessories$propertiesCodec"(): $MapCodec<(S)>
  "accessories$owner"(): O
+ "accessories$propertiesCodec"(): $MapCodec<(S)>
 }
 
 export namespace $StateHolderAccessor {
@@ -1174,8 +1174,8 @@ const probejs$$marker: never
 export class $StateHolderAccessor$$Static<O, S> implements $StateHolderAccessor {
 
 
- "accessories$propertiesCodec"(): $MapCodec<(S)>
  "accessories$owner"(): O
+ "accessories$propertiesCodec"(): $MapCodec<(S)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1196,22 +1196,22 @@ import {$ContextAwarePredicate, $ContextAwarePredicate$$Type} from "net.minecraf
 import {$List, $List$$Type} from "java.util.List"
 import {$CriterionValidator, $CriterionValidator$$Type} from "net.minecraft.advancements.critereon.CriterionValidator"
 import {$SimpleCriterionTrigger$SimpleInstance, $SimpleCriterionTrigger$SimpleInstance$$Type} from "net.minecraft.advancements.critereon.SimpleCriterionTrigger$SimpleInstance"
-import {$ItemPredicate, $ItemPredicate$$Type} from "net.minecraft.advancements.critereon.ItemPredicate"
 import {$Record, $Record$$Type} from "java.lang.Record"
+import {$ItemPredicate, $ItemPredicate$$Type} from "net.minecraft.advancements.critereon.ItemPredicate"
 
 export class $AccessoryChangedCriterion$Conditions extends $Record implements $SimpleCriterionTrigger$SimpleInstance {
 static readonly "CODEC": $Codec<($AccessoryChangedCriterion$Conditions)>
 
-constructor(player: $Optional$$Type<($ContextAwarePredicate$$Type)>, itemPredicates: $Optional$$Type<($List$$Type<($ItemPredicate$$Type)>)>, groups: $Optional$$Type<($List$$Type<(string)>)>, slots: $Optional$$Type<($List$$Type<(string)>)>, indices: $Optional$$Type<($List$$Type<(integer)>)>, cosmetic: $Optional$$Type<(boolean)>)
+constructor(player: $Optional$$Type<($ContextAwarePredicate$$Type)>, itemPredicates: $Optional$$Type<($List$$Type<($ItemPredicate$$Type)>)>, groups: $Optional$$Type<($List$$Type<(StringJS)>)>, slots: $Optional$$Type<($List$$Type<(StringJS)>)>, indices: $Optional$$Type<($List$$Type<(integer)>)>, cosmetic: $Optional$$Type<(boolean)>)
 
-public "equals"(o: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "groups"(): $Optional<($List<(string)>)>
-public "slots"(): $Optional<($List<(string)>)>
+public "slots"(): $Optional<($List<(StringJS)>)>
 public "indices"(): $Optional<($List<(integer)>)>
-public "cosmetic"(): $Optional<(boolean)>
+public "equals"(o: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+public "groups"(): $Optional<($List<(StringJS)>)>
 public "player"(): $Optional<($ContextAwarePredicate)>
+public "cosmetic"(): $Optional<(boolean)>
 public "itemPredicates"(): $Optional<($List<($ItemPredicate)>)>
 public "validate"(arg0: $CriterionValidator$$Type): void
 }
@@ -1219,7 +1219,7 @@ public "validate"(arg0: $CriterionValidator$$Type): void
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $AccessoryChangedCriterion$Conditions$$Type = ({"groups"?: ($List$$Type<(string)>)?, "indices"?: ($List$$Type<(integer)>)?, "cosmetic"?: (boolean)?, "slots"?: ($List$$Type<(string)>)?, "player"?: ($ContextAwarePredicate$$Type)?, "itemPredicates"?: ($List$$Type<($ItemPredicate$$Type)>)?}) | ([groups?: ($List$$Type<(string)>)?, indices?: ($List$$Type<(integer)>)?, cosmetic?: (boolean)?, slots?: ($List$$Type<(string)>)?, player?: ($ContextAwarePredicate$$Type)?, itemPredicates?: ($List$$Type<($ItemPredicate$$Type)>)?]);
+export type $AccessoryChangedCriterion$Conditions$$Type = ({"itemPredicates"?: ($List$$Type<($ItemPredicate$$Type)>)?, "groups"?: ($List$$Type<(StringJS)>)?, "indices"?: ($List$$Type<(integer)>)?, "cosmetic"?: (boolean)?, "slots"?: ($List$$Type<(StringJS)>)?, "player"?: ($ContextAwarePredicate$$Type)?}) | ([itemPredicates?: ($List$$Type<($ItemPredicate$$Type)>)?, groups?: ($List$$Type<(StringJS)>)?, indices?: ($List$$Type<(integer)>)?, cosmetic?: (boolean)?, slots?: ($List$$Type<(StringJS)>)?, player?: ($ContextAwarePredicate$$Type)?]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1229,15 +1229,15 @@ export type $AccessoryChangedCriterion$Conditions_ = $AccessoryChangedCriterion$
 }}
 declare module "io.wispforest.owo.util.EventStream" {
 import {$EventSource, $EventSource$$Type} from "io.wispforest.owo.util.EventSource"
-import {$List, $List$$Type} from "java.util.List"
 import {$Function, $Function$$Type} from "java.util.function.Function"
+import {$List, $List$$Type} from "java.util.List"
 
 export class $EventStream<T> {
 
 constructor(sinkFactory: $Function$$Type<($List<(T)>), (T)>)
 
-public "source"(): $EventSource<(T)>
 public "sink"(): T
+public "source"(): $EventSource<(T)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1268,9 +1268,9 @@ import {$Insets, $Insets$$Type} from "io.wispforest.owo.ui.core.Insets"
 import {$MouseScroll, $MouseScroll$$Type} from "io.wispforest.owo.ui.event.MouseScroll"
 import {$MouseDown, $MouseDown$$Type} from "io.wispforest.owo.ui.event.MouseDown"
 import {$CursorStyle, $CursorStyle$$Type} from "io.wispforest.owo.ui.core.CursorStyle"
+import {$Map, $Map$$Type} from "java.util.Map"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$Element, $Element$$Type} from "org.w3c.dom.Element"
-import {$Map, $Map$$Type} from "java.util.Map"
 import {$UIModel, $UIModel$$Type} from "io.wispforest.owo.ui.parsing.UIModel"
 import {$Component$FocusSource, $Component$FocusSource$$Type} from "io.wispforest.owo.ui.core.Component$FocusSource"
 import {$MouseUp, $MouseUp$$Type} from "io.wispforest.owo.ui.event.MouseUp"
@@ -1289,27 +1289,24 @@ import {$Size, $Size$$Type} from "io.wispforest.owo.ui.core.Size"
 
 export interface $ComponentStub extends $Component$0 {
 
+ "y"(): integer
+ "configure"<C extends $Component$0>(closure: $Consumer$$Type<(C)>): C
  "parent"(): $ParentComponent
  "inflate"(space: $Size$$Type): void
  "x"(): integer
- "id"(): string
- "id"(id: string): $Component$0
+ "id"(): StringJS
+ "id"(id: StringJS): $Component$0
  "mount"(parent: $ParentComponent$$Type, x: integer, y: integer): void
- "y"(): integer
- "width"(): integer
- "configure"<C extends $Component$0>(closure: $Consumer$$Type<(C)>): C
- "xOffset"(): integer
- "yOffset"(): integer
- "dismount"(reason: $Component$DismountReason$$Type): void
- "tooltip"(tooltip: $List$$Type<($ClientTooltipComponent$$Type)>): $Component$0
- "tooltip"(): $List<($ClientTooltipComponent)>
- "charTyped"(): $EventSource<($CharTyped)>
- "height"(): integer
- "draw"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
  "zIndex"(): integer
  "zIndex"(zIndex: integer): $Component$0
- "horizontalSizing"(): $AnimatableProperty<($Sizing)>
- "horizontalSizing"(horizontalSizing: $Sizing$$Type): $Component$0
+ "draw"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
+ "width"(): integer
+ "height"(): integer
+ "dismount"(reason: $Component$DismountReason$$Type): void
+ "yOffset"(): integer
+ "tooltip"(): $List<($ClientTooltipComponent)>
+ "tooltip"(tooltip: $List$$Type<($ClientTooltipComponent$$Type)>): $Component$0
+ "charTyped"(): $EventSource<($CharTyped)>
  "focusHandler"(): $FocusHandler
  "positioning"(positioning: $Positioning$$Type): $Component$0
  "positioning"(): $AnimatableProperty<($Positioning)>
@@ -1341,24 +1338,27 @@ export interface $ComponentStub extends $Component$0 {
  "heightOffset"(): integer
  "updateX"(x: integer): void
  "updateY"(y: integer): void
+ "xOffset"(): integer
+ "horizontalSizing"(): $AnimatableProperty<($Sizing)>
+ "horizontalSizing"(horizontalSizing: $Sizing$$Type): $Component$0
  "remove"(): void
  "update"(delta: float, mouseX: integer, mouseY: integer): void
  "root"(): $ParentComponent
- "tooltip"(tooltip: $Component$$Type): $Component$0
- "tooltip"(tooltip: $Collection$$Type<($Component$$Type)>): $Component$0
- "moveTo"(x: integer, y: integer): void
  "sizing"(sizing: $Sizing$$Type): $Component$0
  "sizing"(horizontalSizing: $Sizing$$Type, verticalSizing: $Sizing$$Type): $Component$0
  "baseX"(): integer
  "baseY"(): integer
- "shouldDrawTooltip"(mouseX: double, mouseY: double): boolean
- "parseProperties"(model: $UIModel$$Type, element: $Element$$Type, children: $Map$$Type<(string), ($Element$$Type)>): void
- "drawFocusHighlight"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
- "isInBoundingBox"(x: double, y: double): boolean
+ "moveTo"(x: integer, y: integer): void
+ "tooltip"(tooltip: $Collection$$Type<($Component$$Type)>): $Component$0
+ "tooltip"(tooltip: $Component$$Type): $Component$0
  "canFocus"(source: $Component$FocusSource$$Type): boolean
  "drawTooltip"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
  "hasParent"(): boolean
  "fullSize"(): $Size
+ "shouldDrawTooltip"(mouseX: double, mouseY: double): boolean
+ "parseProperties"(model: $UIModel$$Type, element: $Element$$Type, children: $Map$$Type<(StringJS), ($Element$$Type)>): void
+ "drawFocusHighlight"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
+ "isInBoundingBox"(x: double, y: double): boolean
  "intersects"(other: $PositionedRectangle$$Type): boolean
  "intersection"(other: $PositionedRectangle$$Type): $PositionedRectangle
  "interpolate"(arg0: $Animatable$$Type<(any)>, arg1: float): $Animatable<(any)>
@@ -1373,27 +1373,24 @@ const probejs$$marker: never
 export class $ComponentStub$$Static implements $ComponentStub {
 
 
+ "y"(): integer
+ "configure"<C extends $Component$0>(closure: $Consumer$$Type<(C)>): C
  "parent"(): $ParentComponent
  "inflate"(space: $Size$$Type): void
  "x"(): integer
- "id"(): string
- "id"(id: string): $Component$0
+ "id"(): StringJS
+ "id"(id: StringJS): $Component$0
  "mount"(parent: $ParentComponent$$Type, x: integer, y: integer): void
- "y"(): integer
- "width"(): integer
- "configure"<C extends $Component$0>(closure: $Consumer$$Type<(C)>): C
- "xOffset"(): integer
- "yOffset"(): integer
- "dismount"(reason: $Component$DismountReason$$Type): void
- "tooltip"(tooltip: $List$$Type<($ClientTooltipComponent$$Type)>): $Component$0
- "tooltip"(): $List<($ClientTooltipComponent)>
- "charTyped"(): $EventSource<($CharTyped)>
- "height"(): integer
- "draw"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
  "zIndex"(): integer
  "zIndex"(zIndex: integer): $Component$0
- "horizontalSizing"(): $AnimatableProperty<($Sizing)>
- "horizontalSizing"(horizontalSizing: $Sizing$$Type): $Component$0
+ "draw"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
+ "width"(): integer
+ "height"(): integer
+ "dismount"(reason: $Component$DismountReason$$Type): void
+ "yOffset"(): integer
+ "tooltip"(): $List<($ClientTooltipComponent)>
+ "tooltip"(tooltip: $List$$Type<($ClientTooltipComponent$$Type)>): $Component$0
+ "charTyped"(): $EventSource<($CharTyped)>
  "focusHandler"(): $FocusHandler
  "positioning"(positioning: $Positioning$$Type): $Component$0
  "positioning"(): $AnimatableProperty<($Positioning)>
@@ -1425,24 +1422,27 @@ export class $ComponentStub$$Static implements $ComponentStub {
  "heightOffset"(): integer
  "updateX"(x: integer): void
  "updateY"(y: integer): void
+ "xOffset"(): integer
+ "horizontalSizing"(): $AnimatableProperty<($Sizing)>
+ "horizontalSizing"(horizontalSizing: $Sizing$$Type): $Component$0
  "remove"(): void
  "update"(delta: float, mouseX: integer, mouseY: integer): void
  "root"(): $ParentComponent
- "tooltip"(tooltip: $Component$$Type): $Component$0
- "tooltip"(tooltip: $Collection$$Type<($Component$$Type)>): $Component$0
- "moveTo"(x: integer, y: integer): void
  "sizing"(sizing: $Sizing$$Type): $Component$0
  "sizing"(horizontalSizing: $Sizing$$Type, verticalSizing: $Sizing$$Type): $Component$0
  "baseX"(): integer
  "baseY"(): integer
- "shouldDrawTooltip"(mouseX: double, mouseY: double): boolean
- "parseProperties"(model: $UIModel$$Type, element: $Element$$Type, children: $Map$$Type<(string), ($Element$$Type)>): void
- "drawFocusHighlight"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
- "isInBoundingBox"(x: double, y: double): boolean
+ "moveTo"(x: integer, y: integer): void
+ "tooltip"(tooltip: $Collection$$Type<($Component$$Type)>): $Component$0
+ "tooltip"(tooltip: $Component$$Type): $Component$0
  "canFocus"(source: $Component$FocusSource$$Type): boolean
  "drawTooltip"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
  "hasParent"(): boolean
  "fullSize"(): $Size
+ "shouldDrawTooltip"(mouseX: double, mouseY: double): boolean
+ "parseProperties"(model: $UIModel$$Type, element: $Element$$Type, children: $Map$$Type<(StringJS), ($Element$$Type)>): void
+ "drawFocusHighlight"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
+ "isInBoundingBox"(x: double, y: double): boolean
  "intersects"(other: $PositionedRectangle$$Type): boolean
  "intersection"(other: $PositionedRectangle$$Type): $PositionedRectangle
 static "of"(x: integer, y: integer, size: $Size$$Type): $PositionedRectangle
@@ -1467,8 +1467,8 @@ import {$SerializationAttribute, $SerializationAttribute$$Type} from "io.wispfor
 
 export interface $SerializationAttribute$Instance {
 
- "value"(): any
  "attribute"(): $SerializationAttribute
+ "value"(): any
 }
 
 export namespace $SerializationAttribute$Instance {
@@ -1477,8 +1477,8 @@ const probejs$$marker: never
 export class $SerializationAttribute$Instance$$Static implements $SerializationAttribute$Instance {
 
 
- "value"(): any
  "attribute"(): $SerializationAttribute
+ "value"(): any
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1537,7 +1537,7 @@ constructor(groupSup: $Supplier$$Type<($OwoItemGroup$$Type)>, tab: integer)
 
 public "group"(): $OwoItemGroup
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "tab"(): integer
 public "groupSup"(): $Supplier<($OwoItemGroup)>
@@ -1546,7 +1546,7 @@ public "groupSup"(): $Supplier<($OwoItemGroup)>
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ItemGroupReference$$Type = ({"groupSup"?: $Supplier$$Type<($OwoItemGroup$$Type)>, "tab"?: integer}) | ([groupSup?: $Supplier$$Type<($OwoItemGroup$$Type)>, tab?: integer]);
+export type $ItemGroupReference$$Type = ({"tab"?: integer, "groupSup"?: $Supplier$$Type<($OwoItemGroup$$Type)>}) | ([tab?: integer, groupSup?: $Supplier$$Type<($OwoItemGroup$$Type)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1565,7 +1565,7 @@ static readonly "BOTTOM": $Layer$Instance$AnchorSide
 
 
 public static "values"(): ($Layer$Instance$AnchorSide)[]
-public static "valueOf"(name: string): $Layer$Instance$AnchorSide
+public static "valueOf"(name: StringJS): $Layer$Instance$AnchorSide
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1611,8 +1611,8 @@ declare global {
 export type $Endec$Encoder_<T> = $Endec$Encoder$$Type<(T)>;
 }}
 declare module "io.wispforest.owo.serialization.OwoComponentTypeBuilder" {
-import {$Endec, $Endec$$Type} from "io.wispforest.endec.Endec"
 import {$DataComponentType$Builder, $DataComponentType$Builder$$Type} from "net.minecraft.core.component.DataComponentType$Builder"
+import {$Endec, $Endec$$Type} from "io.wispforest.endec.Endec"
 import {$SerializationContext, $SerializationContext$$Type} from "io.wispforest.endec.SerializationContext"
 
 export interface $OwoComponentTypeBuilder<T> {
@@ -1684,12 +1684,12 @@ export class $Size extends $Record {
  */
 constructor(width: integer, height: integer)
 
-public "equals"(o: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public static "of"(width: integer, height: integer): $Size
 public static "zero"(): $Size
 public static "square"(sideLength: integer): $Size
+public "equals"(o: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+public static "of"(width: integer, height: integer): $Size
 public "width"(): integer
 public "height"(): integer
 }
@@ -1697,7 +1697,7 @@ public "height"(): integer
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $Size$$Type = ({"height"?: integer, "width"?: integer}) | ([height?: integer, width?: integer]);
+export type $Size$$Type = ({"width"?: integer, "height"?: integer}) | ([width?: integer, height?: integer]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -1710,10 +1710,10 @@ import {$PositionedRectangle, $PositionedRectangle$$Type} from "io.wispforest.ow
 
 export interface $OwoSlotExtension {
 
- "owo$setDisabledOverride"(arg0: boolean): void
- "owo$getDisabledOverride"(): boolean
  "owo$setScissorArea"(arg0: $PositionedRectangle$$Type): void
  "owo$getScissorArea"(): $PositionedRectangle
+ "owo$setDisabledOverride"(arg0: boolean): void
+ "owo$getDisabledOverride"(): boolean
 }
 
 export namespace $OwoSlotExtension {
@@ -1722,10 +1722,10 @@ const probejs$$marker: never
 export class $OwoSlotExtension$$Static implements $OwoSlotExtension {
 
 
- "owo$setDisabledOverride"(arg0: boolean): void
- "owo$getDisabledOverride"(): boolean
  "owo$setScissorArea"(arg0: $PositionedRectangle$$Type): void
  "owo$getScissorArea"(): $PositionedRectangle
+ "owo$setDisabledOverride"(arg0: boolean): void
+ "owo$getDisabledOverride"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1746,12 +1746,12 @@ import {$Set, $Set$$Type} from "java.util.Set"
 
 export interface $SlotType {
 
- "name"(): string
  "order"(): integer
  "amount"(): integer
- "translation"(): string
- "validators"(): $Set<($ResourceLocation)>
+ "name"(): StringJS
  "icon"(): $ResourceLocation
+ "translation"(): StringJS
+ "validators"(): $Set<($ResourceLocation)>
  "dropRule"(): $DropRule
 }
 
@@ -1763,12 +1763,12 @@ export class $SlotType$$Static implements $SlotType {
 static readonly "EMPTY_SLOT_ICON": $ResourceLocation
 
 
- "name"(): string
  "order"(): integer
  "amount"(): integer
- "translation"(): string
- "validators"(): $Set<($ResourceLocation)>
+ "name"(): StringJS
  "icon"(): $ResourceLocation
+ "translation"(): StringJS
+ "validators"(): $Set<($ResourceLocation)>
  "dropRule"(): $DropRule
 }
 /**
@@ -1852,7 +1852,7 @@ static readonly "KEYBOARD_CYCLE": $Component$FocusSource
 
 
 public static "values"(): ($Component$FocusSource)[]
-public static "valueOf"(name: string): $Component$FocusSource
+public static "valueOf"(name: StringJS): $Component$FocusSource
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -1869,8 +1869,8 @@ export type $Component$FocusSource_ = $Component$FocusSource$$Type;
 declare module "io.wispforest.owo.ui.core.OwoUIDrawContext$UtilityScreen" {
 import {$Screen$DeferredTooltipRendering, $Screen$DeferredTooltipRendering$$Type} from "net.minecraft.client.gui.screens.Screen$DeferredTooltipRendering"
 import {$Screen, $Screen$$Type} from "net.minecraft.client.gui.screens.Screen"
-import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$List, $List$$Type} from "java.util.List"
+import {$Style, $Style$$Type} from "net.minecraft.network.chat.Style"
 import {$CubeMap, $CubeMap$$Type} from "net.minecraft.client.renderer.CubeMap"
 import {$Font, $Font$$Type} from "net.minecraft.client.gui.Font"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
@@ -1897,16 +1897,16 @@ static readonly "HEADER_SEPARATOR": $ResourceLocation
 
 
 public static "get"(): $OwoUIDrawContext$UtilityScreen
-public "handleComponentClicked"(style: $Style$$Type): boolean
 public "getAndClearLinkSource"(): $Screen
+public "handleComponentClicked"(style: $Style$$Type): boolean
 public "setLinkSource"(screen: $Screen$$Type): void
 public "captureLinkSource"(): void
 public static "cumulus$getCubeMap"(): $CubeMap
 public static "cumulus$setCubeMap"(arg0: $CubeMap$$Type): void
 public static "cumulus$getPanorama"(): $PanoramaRenderer
 public static "cumulus$setPanorama"(arg0: $PanoramaRenderer$$Type): void
-public static "owo$ROTATING_PANORAMA_RENDERER"(): $PanoramaRenderer
 public static "owo$PANORAMA_RENDERER"(): $CubeMap
+public static "owo$ROTATING_PANORAMA_RENDERER"(): $PanoramaRenderer
 get "andClearLinkSource"(): $Screen
 set "linkSource"(value: $Screen$$Type)
 }
@@ -1927,9 +1927,9 @@ import {$ModelPart, $ModelPart$$Type} from "net.minecraft.client.model.geom.Mode
 
 export interface $ModelPartLoadingHelper {
 
+ "accessories$pollRoot"(): $ModelPart
  "accessories$pushRoot"(root: $ModelPart$$Type): void
  "accessories$clearQueue"(): void
- "accessories$pollRoot"(): $ModelPart
 }
 
 export namespace $ModelPartLoadingHelper {
@@ -1938,9 +1938,9 @@ const probejs$$marker: never
 export class $ModelPartLoadingHelper$$Static implements $ModelPartLoadingHelper {
 
 
+ "accessories$pollRoot"(): $ModelPart
  "accessories$pushRoot"(root: $ModelPart$$Type): void
  "accessories$clearQueue"(): void
- "accessories$pollRoot"(): $ModelPart
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2023,7 +2023,7 @@ import {$SerializationAttribute, $SerializationAttribute$$Type} from "io.wispfor
 import {$SerializationAttribute$Instance, $SerializationAttribute$Instance$$Type} from "io.wispforest.endec.SerializationAttribute$Instance"
 
 export class $SerializationAttribute$WithValue<T> extends $SerializationAttribute {
-readonly "name": string
+readonly "name": StringJS
 
 
 public "instance"(arg0: T): $SerializationAttribute$Instance
@@ -2041,8 +2041,8 @@ declare global {
 export type $SerializationAttribute$WithValue_<T> = $SerializationAttribute$WithValue$$Type<(T)>;
 }}
 declare module "io.wispforest.accessories.impl.AccessoriesContainerImpl" {
-import {$InstanceEndec, $InstanceEndec$$Type} from "io.wispforest.accessories.impl.InstanceEndec"
 import {$Endec, $Endec$$Type} from "io.wispforest.endec.Endec"
+import {$InstanceEndec, $InstanceEndec$$Type} from "io.wispforest.accessories.impl.InstanceEndec"
 import {$AttributeModifier, $AttributeModifier$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeModifier"
 import {$CompoundTag, $CompoundTag$$Type} from "net.minecraft.nbt.CompoundTag"
 import {$Map, $Map$$Type} from "java.util.Map"
@@ -2068,7 +2068,7 @@ import {$KeyedEndec, $KeyedEndec$$Type} from "io.wispforest.endec.impl.KeyedEnde
 export class $AccessoriesContainerImpl implements $AccessoriesContainer, $InstanceEndec, $ContainerListener {
 static readonly "BASE_SIZE_KEY": $KeyedEndec<(integer)>
 static readonly "COSMETICS_KEY": $KeyedEndec<($ListTag)>
-static readonly "SLOT_NAME_KEY": $KeyedEndec<(string)>
+static readonly "SLOT_NAME_KEY": $KeyedEndec<(StringJS)>
 static readonly "CACHED_MODIFIERS_KEY": $KeyedEndec<($List<($CompoundTag)>)>
 static readonly "PERSISTENT_MODIFIERS_KEY": $KeyedEndec<($List<($CompoundTag)>)>
 static readonly "ITEMS_KEY": $KeyedEndec<($ListTag)>
@@ -2078,45 +2078,45 @@ static readonly "MODIFIERS_KEY": $KeyedEndec<($List<($CompoundTag)>)>
 
 constructor(capability: $AccessoriesCapability$$Type, slotType: $SlotType$$Type)
 
+public "copyFrom"(other: $AccessoriesContainerImpl$$Type): void
+public "getSize"(): integer
 public "getModifiers"(): $Map<($ResourceLocation), ($AttributeModifier)>
 public "update"(): void
 public "write"(carrier: $MapCarrier$$Type, ctx: $SerializationContext$$Type, sync: boolean): void
 public "write"(carrier: $MapCarrier$$Type, ctx: $SerializationContext$$Type): void
-public "read"(carrier: $MapCarrier$$Type, ctx: $SerializationContext$$Type): void
 public "read"(carrier: $MapCarrier$$Type, ctx: $SerializationContext$$Type, sync: boolean): void
-public "getSize"(): integer
-public "copyFrom"(other: $AccessoriesContainerImpl$$Type): void
+public "read"(carrier: $MapCarrier$$Type, ctx: $SerializationContext$$Type): void
 public "markChanged"(resizingUpdate: boolean): void
 public "hasModifier"(location: $ResourceLocation$$Type): boolean
-public "clearModifiers"(): void
-public "getAccessories"(): $ExpandedSimpleContainer
 public "capability"(): $AccessoriesCapability
 public "removeModifier"(location: $ResourceLocation$$Type): void
-public static "copyContainerList"(container: $SimpleContainer$$Type): $SimpleContainer
-public "addTransientModifier"(modifier: $AttributeModifier$$Type): void
-public "getCosmeticAccessories"(): $ExpandedSimpleContainer
-public "containerChanged"(container: $Container$$Type): void
 public "hasChanged"(): boolean
 public static "readContainers"(carrier: $MapCarrier$$Type, ctx: $SerializationContext$$Type, ...keys: ($KeyedEndec$$Type<($ListTag$$Type)>)[]): $List<($SimpleContainer)>
-public "getSlotName"(): string
-public "renderOptions"(): $List<(boolean)>
+public "getSlotName"(): StringJS
+public "getAccessories"(): $ExpandedSimpleContainer
+public "clearModifiers"(): void
+public static "copyContainerList"(container: $SimpleContainer$$Type): $SimpleContainer
+public "getCosmeticAccessories"(): $ExpandedSimpleContainer
+public "containerChanged"(container: $Container$$Type): void
+public "addTransientModifier"(modifier: $AttributeModifier$$Type): void
 public "getBaseSize"(): integer
+public "renderOptions"(): $List<(boolean)>
+public "addPersistentModifier"(modifier: $AttributeModifier$$Type): void
 public "getCachedModifiers"(): $Set<($AttributeModifier)>
 public "clearCachedModifiers"(): void
 public static "readContainer"(carrier: $MapCarrier$$Type, ctx: $SerializationContext$$Type, key: $KeyedEndec$$Type<($ListTag$$Type)>): $SimpleContainer
-public "addPersistentModifier"(modifier: $AttributeModifier$$Type): void
 public "removeCachedModifiers"(modifier: $AttributeModifier$$Type): void
 public "getModifiersForOperation"(operation: $AttributeModifier$Operation$$Type): $Collection<($AttributeModifier)>
 public "markChanged"(): void
 public "shouldRender"(index: integer): boolean
-public "slotType"(): $SlotType
 public "createReference"(index: integer): $SlotReference
+public "slotType"(): $SlotType
 public static "constructed"<T extends $InstanceEndec>(supplier: $Supplier$$Type<(T)>): $Endec<(T)>
-get "modifiers"(): $Map<($ResourceLocation), ($AttributeModifier)>
 get "size"(): integer
+get "modifiers"(): $Map<($ResourceLocation), ($AttributeModifier)>
+get "slotName"(): StringJS
 get "accessories"(): $ExpandedSimpleContainer
 get "cosmeticAccessories"(): $ExpandedSimpleContainer
-get "slotName"(): string
 get "baseSize"(): integer
 get "cachedModifiers"(): $Set<($AttributeModifier)>
 }
@@ -2150,24 +2150,24 @@ export class $RecordArgumentTypeInfo<A extends $ArgumentType<(any)>, T> extends 
 constructor(endec: $StructEndec$$Type<(T)>, toTemplate: $Function$$Type<(A), (T)>, fromTemplate: $BiFunction$$Type<($CommandBuildContext), (T), (A)>)
 
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public static "of"<A extends $ArgumentType<(any)>>(argTypeConstructor: $Function$$Type<($CommandBuildContext), (A)>): $RecordArgumentTypeInfo<(A), (void)>
 public "endec"(): $StructEndec<(T)>
-public "unpack"(arg0: $ArgumentType$$Type<(any)>): $ArgumentTypeInfo$Template<(any)>
+public "unpack"(argument: A): $RecordArgumentTypeInfo$RecordInfoTemplate<(A), (T)>
+public "fromTemplate"(): $BiFunction<($CommandBuildContext), (T), (A)>
+public "toTemplate"(): $Function<(A), (T)>
 public "serializeToNetwork"(arg0: $ArgumentTypeInfo$Template$$Type<(any)>, arg1: $FriendlyByteBuf$$Type): void
 public "serializeToNetwork"(template: $RecordArgumentTypeInfo$RecordInfoTemplate$$Type<(A), (T)>, buffer: $FriendlyByteBuf$$Type): void
 public "deserializeFromNetwork"(arg0: $FriendlyByteBuf$$Type): $ArgumentTypeInfo$Template<(any)>
-public "serializeToJson"(arg0: $ArgumentTypeInfo$Template$$Type<(any)>, arg1: $JsonObject$$Type): void
 public "serializeToJson"(template: $RecordArgumentTypeInfo$RecordInfoTemplate$$Type<(A), (T)>, json: $JsonObject$$Type): void
-public "toTemplate"(): $Function<(A), (T)>
-public "fromTemplate"(): $BiFunction<($CommandBuildContext), (T), (A)>
+public "serializeToJson"(arg0: $ArgumentTypeInfo$Template$$Type<(any)>, arg1: $JsonObject$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $RecordArgumentTypeInfo$$Type<A, T> = ({"fromTemplate"?: $BiFunction$$Type<($CommandBuildContext$$Type), (any), (any)>, "endec"?: $StructEndec$$Type<(any)>, "toTemplate"?: $Function$$Type<(any), (any)>}) | ([fromTemplate?: $BiFunction$$Type<($CommandBuildContext$$Type), (any), (any)>, endec?: $StructEndec$$Type<(any)>, toTemplate?: $Function$$Type<(any), (any)>]);
+export type $RecordArgumentTypeInfo$$Type<A, T> = ({"toTemplate"?: $Function$$Type<(any), (any)>, "fromTemplate"?: $BiFunction$$Type<($CommandBuildContext$$Type), (any), (any)>, "endec"?: $StructEndec$$Type<(any)>}) | ([toTemplate?: $Function$$Type<(any), (any)>, fromTemplate?: $BiFunction$$Type<($CommandBuildContext$$Type), (any), (any)>, endec?: $StructEndec$$Type<(any)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -2176,8 +2176,8 @@ declare global {
 export type $RecordArgumentTypeInfo_<A, T> = $RecordArgumentTypeInfo$$Type<(A), (T)>;
 }}
 declare module "io.wispforest.owo.client.screens.OwoScreenHandler" {
-import {$Endec, $Endec$$Type} from "io.wispforest.endec.Endec"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$Endec, $Endec$$Type} from "io.wispforest.endec.Endec"
 import {$ReflectiveEndecBuilder, $ReflectiveEndecBuilder$$Type} from "io.wispforest.endec.impl.ReflectiveEndecBuilder"
 import {$Class, $Class$$Type} from "java.lang.Class"
 import {$SyncedProperty, $SyncedProperty$$Type} from "io.wispforest.owo.client.screens.SyncedProperty"
@@ -2186,11 +2186,11 @@ import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 
 export interface $OwoScreenHandler {
 
- "endecBuilder"(): $ReflectiveEndecBuilder
- "sendMessage"<R extends $Record>(message: R): void
+ "player"(): $Player
  "createProperty"<T>(clazz: $Class$$Type<(T)>, initial: T): $SyncedProperty<(T)>
  "createProperty"<T>(clazz: $Class$$Type<(T)>, endec: $Endec$$Type<(T)>, initial: T): $SyncedProperty<(T)>
- "player"(): $Player
+ "sendMessage"<R extends $Record>(message: R): void
+ "endecBuilder"(): $ReflectiveEndecBuilder
  "addServerboundMessage"<R extends $Record>(messageClass: $Class$$Type<(R)>, handler: $Consumer$$Type<(R)>): void
  "addServerboundMessage"<R extends $Record>(messageClass: $Class$$Type<(R)>, endec: $Endec$$Type<(R)>, handler: $Consumer$$Type<(R)>): void
  "addClientboundMessage"<R extends $Record>(messageClass: $Class$$Type<(R)>, handler: $Consumer$$Type<(R)>): void
@@ -2203,11 +2203,11 @@ const probejs$$marker: never
 export class $OwoScreenHandler$$Static implements $OwoScreenHandler {
 
 
- "endecBuilder"(): $ReflectiveEndecBuilder
- "sendMessage"<R extends $Record>(message: R): void
+ "player"(): $Player
  "createProperty"<T>(clazz: $Class$$Type<(T)>, initial: T): $SyncedProperty<(T)>
  "createProperty"<T>(clazz: $Class$$Type<(T)>, endec: $Endec$$Type<(T)>, initial: T): $SyncedProperty<(T)>
- "player"(): $Player
+ "sendMessage"<R extends $Record>(message: R): void
+ "endecBuilder"(): $ReflectiveEndecBuilder
  "addServerboundMessage"<R extends $Record>(messageClass: $Class$$Type<(R)>, handler: $Consumer$$Type<(R)>): void
  "addServerboundMessage"<R extends $Record>(messageClass: $Class$$Type<(R)>, endec: $Endec$$Type<(R)>, handler: $Consumer$$Type<(R)>): void
  "addClientboundMessage"<R extends $Record>(messageClass: $Class$$Type<(R)>, handler: $Consumer$$Type<(R)>): void
@@ -2260,14 +2260,14 @@ import {$Size, $Size$$Type} from "io.wispforest.owo.ui.core.Size"
 
 export interface $PositionedRectangle extends $Animatable<($PositionedRectangle)> {
 
+ "y"(): integer
  "intersects"(other: $PositionedRectangle$$Type): boolean
  "intersection"(other: $PositionedRectangle$$Type): $PositionedRectangle
  "x"(): integer
- "y"(): integer
  "width"(): integer
+ "height"(): integer
  "interpolate"(arg0: $Animatable$$Type<(any)>, arg1: float): $Animatable<(any)>
  "interpolate"(next: $PositionedRectangle$$Type, delta: float): $PositionedRectangle
- "height"(): integer
  "isInBoundingBox"(x: double, y: double): boolean
 }
 
@@ -2279,16 +2279,16 @@ const probejs$$marker: never
 export class $PositionedRectangle$$Static implements $PositionedRectangle {
 
 
+ "y"(): integer
  "intersects"(other: $PositionedRectangle$$Type): boolean
  "intersection"(other: $PositionedRectangle$$Type): $PositionedRectangle
 static "of"(x: integer, y: integer, size: $Size$$Type): $PositionedRectangle
 static "of"(x: integer, y: integer, width: integer, height: integer): $PositionedRectangle
  "x"(): integer
- "y"(): integer
  "width"(): integer
+ "height"(): integer
  "interpolate"(arg0: $Animatable$$Type<(any)>, arg1: float): $Animatable<(any)>
  "interpolate"(next: $PositionedRectangle$$Type, delta: float): $PositionedRectangle
- "height"(): integer
  "isInBoundingBox"(x: double, y: double): boolean
 }
 /**
@@ -2309,8 +2309,8 @@ import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 
 export interface $DroppedStacksExtension {
 
- "toBeDroppedStacks"(): $Collection<($ItemStack)>
  "addToBeDroppedStacks"(arg0: $Collection$$Type<($ItemStack$$Type)>): void
+ "toBeDroppedStacks"(): $Collection<($ItemStack)>
 }
 
 export namespace $DroppedStacksExtension {
@@ -2319,8 +2319,8 @@ const probejs$$marker: never
 export class $DroppedStacksExtension$$Static implements $DroppedStacksExtension {
 
 
- "toBeDroppedStacks"(): $Collection<($ItemStack)>
  "addToBeDroppedStacks"(arg0: $Collection$$Type<($ItemStack$$Type)>): void
+ "toBeDroppedStacks"(): $Collection<($ItemStack)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2338,10 +2338,10 @@ declare module "io.wispforest.owo.util.pond.OwoEntityRenderDispatcherExtension" 
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $OwoEntityRenderDispatcherExtension {
 
- "owo$showNametag"(): boolean
- "owo$counterRotate"(): boolean
  "owo$setCounterRotate"(arg0: boolean): void
  "owo$setShowNametag"(arg0: boolean): void
+ "owo$showNametag"(): boolean
+ "owo$counterRotate"(): boolean
 }
 
 export namespace $OwoEntityRenderDispatcherExtension {
@@ -2350,10 +2350,10 @@ const probejs$$marker: never
 export class $OwoEntityRenderDispatcherExtension$$Static implements $OwoEntityRenderDispatcherExtension {
 
 
- "owo$showNametag"(): boolean
- "owo$counterRotate"(): boolean
  "owo$setCounterRotate"(arg0: boolean): void
  "owo$setShowNametag"(arg0: boolean): void
+ "owo$showNametag"(): boolean
+ "owo$counterRotate"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2376,8 +2376,8 @@ import {$Runnable, $Runnable$$Type} from "java.lang.Runnable"
 import {$Component as $Component$0, $Component$$Type as $Component$0$$Type} from "net.minecraft.network.chat.Component"
 import {$CharTyped, $CharTyped$$Type} from "io.wispforest.owo.ui.event.CharTyped"
 import {$OwoUIDrawContext, $OwoUIDrawContext$$Type} from "io.wispforest.owo.ui.core.OwoUIDrawContext"
-import {$Component, $Component$$Type} from "io.wispforest.owo.ui.core.Component"
 import {$FocusGained, $FocusGained$$Type} from "io.wispforest.owo.ui.event.FocusGained"
+import {$Component, $Component$$Type} from "io.wispforest.owo.ui.core.Component"
 import {$Positioning, $Positioning$$Type} from "io.wispforest.owo.ui.core.Positioning"
 import {$HorizontalAlignment, $HorizontalAlignment$$Type} from "io.wispforest.owo.ui.core.HorizontalAlignment"
 import {$KeyPress, $KeyPress$$Type} from "io.wispforest.owo.ui.event.KeyPress"
@@ -2389,15 +2389,15 @@ import {$MouseScroll, $MouseScroll$$Type} from "io.wispforest.owo.ui.event.Mouse
 import {$ArrayList, $ArrayList$$Type} from "java.util.ArrayList"
 import {$MouseDown, $MouseDown$$Type} from "io.wispforest.owo.ui.event.MouseDown"
 import {$CursorStyle, $CursorStyle$$Type} from "io.wispforest.owo.ui.core.CursorStyle"
-import {$Element, $Element$$Type} from "org.w3c.dom.Element"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
+import {$Element, $Element$$Type} from "org.w3c.dom.Element"
 import {$UIModel, $UIModel$$Type} from "io.wispforest.owo.ui.parsing.UIModel"
 import {$Component$FocusSource, $Component$FocusSource$$Type} from "io.wispforest.owo.ui.core.Component$FocusSource"
 import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$MouseUp, $MouseUp$$Type} from "io.wispforest.owo.ui.event.MouseUp"
-import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$ClientTooltipComponent, $ClientTooltipComponent$$Type} from "net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent"
+import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$Component$DismountReason, $Component$DismountReason$$Type} from "io.wispforest.owo.ui.core.Component$DismountReason"
 import {$FocusLost, $FocusLost$$Type} from "io.wispforest.owo.ui.event.FocusLost"
 import {$FocusHandler, $FocusHandler$$Type} from "io.wispforest.owo.ui.util.FocusHandler"
@@ -2410,68 +2410,63 @@ import {$Size, $Size$$Type} from "io.wispforest.owo.ui.core.Size"
 
 export interface $ParentComponent extends $Component {
 
- "padding"(arg0: $Insets$$Type): $ParentComponent
- "padding"(): $AnimatableProperty<($Insets)>
- "alignment"(horizontalAlignment: $HorizontalAlignment$$Type, verticalAlignment: $VerticalAlignment$$Type): $ParentComponent
  "removeChild"(arg0: $Component$$Type): $ParentComponent
+ "padding"(): $AnimatableProperty<($Insets)>
+ "padding"(arg0: $Insets$$Type): $ParentComponent
+ "alignment"(horizontalAlignment: $HorizontalAlignment$$Type, verticalAlignment: $VerticalAlignment$$Type): $ParentComponent
+ "children"(): $List<($Component)>
+ "layout"(arg0: $Size$$Type): void
  "update"(delta: float, mouseX: integer, mouseY: integer): void
  "queue"(arg0: $Runnable$$Type): void
- "layout"(arg0: $Size$$Type): void
- "children"(): $List<($Component)>
- "surface"(arg0: $Surface$$Type): $ParentComponent
  "surface"(): $Surface
- "parseProperties"(model: $UIModel$$Type, element: $Element$$Type, children: $Map$$Type<(string), ($Element$$Type)>): void
- "horizontalAlignment"(arg0: $HorizontalAlignment$$Type): $ParentComponent
- "horizontalAlignment"(): $HorizontalAlignment
- "verticalAlignment"(arg0: $VerticalAlignment$$Type): $ParentComponent
- "verticalAlignment"(): $VerticalAlignment
- "forEachDescendantWhere"(action: $Consumer$$Type<($Component)>, condition: $Predicate$$Type<($Component)>): void
- "collectDescendants"(into: $ArrayList$$Type<($Component$$Type)>): void
- "forEachDescendant"(action: $Consumer$$Type<($Component)>): void
+ "surface"(arg0: $Surface$$Type): $ParentComponent
+ "onChildMutated"(arg0: $Component$$Type): void
+ "childAt"(x: integer, y: integer): $Component
+ "allowOverflow"(): boolean
+ "allowOverflow"(arg0: boolean): $ParentComponent
+ "childById"<T extends $Component>(expectedClass: $Class$$Type<(T)>, id: StringJS): T
  "onMouseDown"(mouseX: double, mouseY: double, button: integer): boolean
  "onMouseScroll"(mouseX: double, mouseY: double, amount: double): boolean
  "drawTooltip"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
- "onChildMutated"(arg0: $Component$$Type): void
- "childById"<T extends $Component>(expectedClass: $Class$$Type<(T)>, id: string): T
- "childAt"(x: integer, y: integer): $Component
- "allowOverflow"(arg0: boolean): $ParentComponent
- "allowOverflow"(): boolean
+ "verticalAlignment"(): $VerticalAlignment
+ "verticalAlignment"(arg0: $VerticalAlignment$$Type): $ParentComponent
+ "forEachDescendantWhere"(action: $Consumer$$Type<($Component)>, condition: $Predicate$$Type<($Component)>): void
+ "collectDescendants"(into: $ArrayList$$Type<($Component$$Type)>): void
+ "forEachDescendant"(action: $Consumer$$Type<($Component)>): void
+ "horizontalAlignment"(): $HorizontalAlignment
+ "horizontalAlignment"(arg0: $HorizontalAlignment$$Type): $ParentComponent
+ "parseProperties"(model: $UIModel$$Type, element: $Element$$Type, children: $Map$$Type<(StringJS), ($Element$$Type)>): void
+ "y"(): integer
+ "configure"<C extends $Component>(arg0: $Consumer$$Type<(C)>): C
  "remove"(): void
  "parent"(): $ParentComponent
  "inflate"(arg0: $Size$$Type): void
  "x"(): integer
- "id"(): string
- "id"(arg0: string): $Component
+ "id"(): StringJS
+ "id"(arg0: StringJS): $Component
  "root"(): $ParentComponent
  "mount"(arg0: $ParentComponent$$Type, arg1: integer, arg2: integer): void
- "y"(): integer
- "width"(): integer
- "configure"<C extends $Component>(arg0: $Consumer$$Type<(C)>): C
- "dismount"(arg0: $Component$DismountReason$$Type): void
- "tooltip"(tooltip: $Component$0$$Type): $Component
- "tooltip"(tooltip: $Collection$$Type<($Component$0$$Type)>): $Component
- "tooltip"(): $List<($ClientTooltipComponent)>
- "tooltip"(arg0: $List$$Type<($ClientTooltipComponent$$Type)>): $Component
- "charTyped"(): $EventSource<($CharTyped)>
- "height"(): integer
- "draw"(arg0: $OwoUIDrawContext$$Type, arg1: integer, arg2: integer, arg3: float, arg4: float): void
- "moveTo"(x: integer, y: integer): void
  "sizing"(sizing: $Sizing$$Type): $Component
  "sizing"(horizontalSizing: $Sizing$$Type, verticalSizing: $Sizing$$Type): $Component
- "zIndex"(arg0: integer): $Component
  "zIndex"(): integer
+ "zIndex"(arg0: integer): $Component
  "baseX"(): integer
  "baseY"(): integer
- "horizontalSizing"(arg0: $Sizing$$Type): $Component
- "horizontalSizing"(): $AnimatableProperty<($Sizing)>
- "shouldDrawTooltip"(mouseX: double, mouseY: double): boolean
- "drawFocusHighlight"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
- "isInBoundingBox"(x: double, y: double): boolean
+ "moveTo"(x: integer, y: integer): void
+ "draw"(arg0: $OwoUIDrawContext$$Type, arg1: integer, arg2: integer, arg3: float, arg4: float): void
+ "width"(): integer
+ "height"(): integer
+ "dismount"(arg0: $Component$DismountReason$$Type): void
+ "tooltip"(arg0: $List$$Type<($ClientTooltipComponent$$Type)>): $Component
+ "tooltip"(tooltip: $Collection$$Type<($Component$0$$Type)>): $Component
+ "tooltip"(tooltip: $Component$0$$Type): $Component
+ "tooltip"(): $List<($ClientTooltipComponent)>
+ "charTyped"(): $EventSource<($CharTyped)>
  "focusHandler"(): $FocusHandler
- "positioning"(): $AnimatableProperty<($Positioning)>
  "positioning"(arg0: $Positioning$$Type): $Component
- "margins"(): $AnimatableProperty<($Insets)>
+ "positioning"(): $AnimatableProperty<($Positioning)>
  "margins"(arg0: $Insets$$Type): $Component
+ "margins"(): $AnimatableProperty<($Insets)>
  "verticalSizing"(arg0: $Sizing$$Type): $Component
  "verticalSizing"(): $AnimatableProperty<($Sizing)>
  "mouseDown"(): $EventSource<($MouseDown)>
@@ -2496,6 +2491,11 @@ export interface $ParentComponent extends $Component {
  "updateY"(arg0: integer): void
  "hasParent"(): boolean
  "fullSize"(): $Size
+ "horizontalSizing"(arg0: $Sizing$$Type): $Component
+ "horizontalSizing"(): $AnimatableProperty<($Sizing)>
+ "shouldDrawTooltip"(mouseX: double, mouseY: double): boolean
+ "drawFocusHighlight"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
+ "isInBoundingBox"(x: double, y: double): boolean
  "intersects"(other: $PositionedRectangle$$Type): boolean
  "intersection"(other: $PositionedRectangle$$Type): $PositionedRectangle
  "interpolate"(arg0: $Animatable$$Type<(any)>, arg1: float): $Animatable<(any)>
@@ -2510,68 +2510,63 @@ const probejs$$marker: never
 export class $ParentComponent$$Static implements $ParentComponent {
 
 
- "padding"(arg0: $Insets$$Type): $ParentComponent
- "padding"(): $AnimatableProperty<($Insets)>
- "alignment"(horizontalAlignment: $HorizontalAlignment$$Type, verticalAlignment: $VerticalAlignment$$Type): $ParentComponent
  "removeChild"(arg0: $Component$$Type): $ParentComponent
+ "padding"(): $AnimatableProperty<($Insets)>
+ "padding"(arg0: $Insets$$Type): $ParentComponent
+ "alignment"(horizontalAlignment: $HorizontalAlignment$$Type, verticalAlignment: $VerticalAlignment$$Type): $ParentComponent
+ "children"(): $List<($Component)>
+ "layout"(arg0: $Size$$Type): void
  "update"(delta: float, mouseX: integer, mouseY: integer): void
  "queue"(arg0: $Runnable$$Type): void
- "layout"(arg0: $Size$$Type): void
- "children"(): $List<($Component)>
- "surface"(arg0: $Surface$$Type): $ParentComponent
  "surface"(): $Surface
- "parseProperties"(model: $UIModel$$Type, element: $Element$$Type, children: $Map$$Type<(string), ($Element$$Type)>): void
- "horizontalAlignment"(arg0: $HorizontalAlignment$$Type): $ParentComponent
- "horizontalAlignment"(): $HorizontalAlignment
- "verticalAlignment"(arg0: $VerticalAlignment$$Type): $ParentComponent
- "verticalAlignment"(): $VerticalAlignment
- "forEachDescendantWhere"(action: $Consumer$$Type<($Component)>, condition: $Predicate$$Type<($Component)>): void
- "collectDescendants"(into: $ArrayList$$Type<($Component$$Type)>): void
- "forEachDescendant"(action: $Consumer$$Type<($Component)>): void
+ "surface"(arg0: $Surface$$Type): $ParentComponent
+ "onChildMutated"(arg0: $Component$$Type): void
+ "childAt"(x: integer, y: integer): $Component
+ "allowOverflow"(): boolean
+ "allowOverflow"(arg0: boolean): $ParentComponent
+ "childById"<T extends $Component>(expectedClass: $Class$$Type<(T)>, id: StringJS): T
  "onMouseDown"(mouseX: double, mouseY: double, button: integer): boolean
  "onMouseScroll"(mouseX: double, mouseY: double, amount: double): boolean
  "drawTooltip"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
- "onChildMutated"(arg0: $Component$$Type): void
- "childById"<T extends $Component>(expectedClass: $Class$$Type<(T)>, id: string): T
- "childAt"(x: integer, y: integer): $Component
- "allowOverflow"(arg0: boolean): $ParentComponent
- "allowOverflow"(): boolean
+ "verticalAlignment"(): $VerticalAlignment
+ "verticalAlignment"(arg0: $VerticalAlignment$$Type): $ParentComponent
+ "forEachDescendantWhere"(action: $Consumer$$Type<($Component)>, condition: $Predicate$$Type<($Component)>): void
+ "collectDescendants"(into: $ArrayList$$Type<($Component$$Type)>): void
+ "forEachDescendant"(action: $Consumer$$Type<($Component)>): void
+ "horizontalAlignment"(): $HorizontalAlignment
+ "horizontalAlignment"(arg0: $HorizontalAlignment$$Type): $ParentComponent
+ "parseProperties"(model: $UIModel$$Type, element: $Element$$Type, children: $Map$$Type<(StringJS), ($Element$$Type)>): void
+ "y"(): integer
+ "configure"<C extends $Component>(arg0: $Consumer$$Type<(C)>): C
  "remove"(): void
  "parent"(): $ParentComponent
  "inflate"(arg0: $Size$$Type): void
  "x"(): integer
- "id"(): string
- "id"(arg0: string): $Component
+ "id"(): StringJS
+ "id"(arg0: StringJS): $Component
  "root"(): $ParentComponent
  "mount"(arg0: $ParentComponent$$Type, arg1: integer, arg2: integer): void
- "y"(): integer
- "width"(): integer
- "configure"<C extends $Component>(arg0: $Consumer$$Type<(C)>): C
- "dismount"(arg0: $Component$DismountReason$$Type): void
- "tooltip"(tooltip: $Component$0$$Type): $Component
- "tooltip"(tooltip: $Collection$$Type<($Component$0$$Type)>): $Component
- "tooltip"(): $List<($ClientTooltipComponent)>
- "tooltip"(arg0: $List$$Type<($ClientTooltipComponent$$Type)>): $Component
- "charTyped"(): $EventSource<($CharTyped)>
- "height"(): integer
- "draw"(arg0: $OwoUIDrawContext$$Type, arg1: integer, arg2: integer, arg3: float, arg4: float): void
- "moveTo"(x: integer, y: integer): void
  "sizing"(sizing: $Sizing$$Type): $Component
  "sizing"(horizontalSizing: $Sizing$$Type, verticalSizing: $Sizing$$Type): $Component
- "zIndex"(arg0: integer): $Component
  "zIndex"(): integer
+ "zIndex"(arg0: integer): $Component
  "baseX"(): integer
  "baseY"(): integer
- "horizontalSizing"(arg0: $Sizing$$Type): $Component
- "horizontalSizing"(): $AnimatableProperty<($Sizing)>
- "shouldDrawTooltip"(mouseX: double, mouseY: double): boolean
- "drawFocusHighlight"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
- "isInBoundingBox"(x: double, y: double): boolean
+ "moveTo"(x: integer, y: integer): void
+ "draw"(arg0: $OwoUIDrawContext$$Type, arg1: integer, arg2: integer, arg3: float, arg4: float): void
+ "width"(): integer
+ "height"(): integer
+ "dismount"(arg0: $Component$DismountReason$$Type): void
+ "tooltip"(arg0: $List$$Type<($ClientTooltipComponent$$Type)>): $Component
+ "tooltip"(tooltip: $Collection$$Type<($Component$0$$Type)>): $Component
+ "tooltip"(tooltip: $Component$0$$Type): $Component
+ "tooltip"(): $List<($ClientTooltipComponent)>
+ "charTyped"(): $EventSource<($CharTyped)>
  "focusHandler"(): $FocusHandler
- "positioning"(): $AnimatableProperty<($Positioning)>
  "positioning"(arg0: $Positioning$$Type): $Component
- "margins"(): $AnimatableProperty<($Insets)>
+ "positioning"(): $AnimatableProperty<($Positioning)>
  "margins"(arg0: $Insets$$Type): $Component
+ "margins"(): $AnimatableProperty<($Insets)>
  "verticalSizing"(arg0: $Sizing$$Type): $Component
  "verticalSizing"(): $AnimatableProperty<($Sizing)>
  "mouseDown"(): $EventSource<($MouseDown)>
@@ -2596,6 +2591,11 @@ export class $ParentComponent$$Static implements $ParentComponent {
  "updateY"(arg0: integer): void
  "hasParent"(): boolean
  "fullSize"(): $Size
+ "horizontalSizing"(arg0: $Sizing$$Type): $Component
+ "horizontalSizing"(): $AnimatableProperty<($Sizing)>
+ "shouldDrawTooltip"(mouseX: double, mouseY: double): boolean
+ "drawFocusHighlight"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
+ "isInBoundingBox"(x: double, y: double): boolean
  "intersects"(other: $PositionedRectangle$$Type): boolean
  "intersection"(other: $PositionedRectangle$$Type): $PositionedRectangle
 static "of"(x: integer, y: integer, size: $Size$$Type): $PositionedRectangle
@@ -2672,20 +2672,20 @@ constructor(packetId: integer, payload: $FriendlyByteBuf$$Type)
 public "payload"(): $FriendlyByteBuf
 public "type"(): $CustomPacketPayload$Type<($CustomPacketPayload)>
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "packetId"(): integer
-public static "createType"<T extends $CustomPacketPayload>(arg0: string): $CustomPacketPayload$Type<(T)>
 public static "codec"<B extends $FriendlyByteBuf>(arg0: $CustomPacketPayload$FallbackProvider$$Type<(B)>, arg1: $List$$Type<($CustomPacketPayload$TypeAndCodec$$Type<(B), (any)>)>, arg2: $ConnectionProtocol$$Type, arg3: $PacketFlow$$Type): $StreamCodec<(B), ($CustomPacketPayload)>
 public static "codec"<B extends $ByteBuf, T extends $CustomPacketPayload>(arg0: $StreamMemberEncoder$$Type<(B), (T)>, arg1: $StreamDecoder$$Type<(B), (T)>): $StreamCodec<(B), (T)>
-public "toVanillaServerbound"(): $ServerboundCustomPayloadPacket
+public static "createType"<T extends $CustomPacketPayload>(arg0: StringJS): $CustomPacketPayload$Type<(T)>
 public "toVanillaClientbound"(): $ClientboundCustomPayloadPacket
+public "toVanillaServerbound"(): $ServerboundCustomPayloadPacket
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ScreenInternals$LocalPacket$$Type = ({"packetId"?: integer, "payload"?: $FriendlyByteBuf$$Type}) | ([packetId?: integer, payload?: $FriendlyByteBuf$$Type]);
+export type $ScreenInternals$LocalPacket$$Type = ({"payload"?: $FriendlyByteBuf$$Type, "packetId"?: integer}) | ([payload?: $FriendlyByteBuf$$Type, packetId?: integer]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -2764,18 +2764,18 @@ export class $SoundEventData extends $Record {
 
 constructor(event: $Holder$$Type<($SoundEvent)>, volume: float, pitch: float)
 
-public "volume"(): float
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "event"(): $Holder<($SoundEvent)>
+public "volume"(): float
 public "pitch"(): float
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $SoundEventData$$Type = ({"volume"?: float, "event"?: $Holder$$Type<($SoundEvent)>, "pitch"?: float}) | ([volume?: float, event?: $Holder$$Type<($SoundEvent)>, pitch?: float]);
+export type $SoundEventData$$Type = ({"pitch"?: float, "volume"?: float, "event"?: $Holder$$Type<($SoundEvent)>}) | ([pitch?: float, volume?: float, event?: $Holder$$Type<($SoundEvent)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -2857,9 +2857,9 @@ import {$ModelPart, $ModelPart$$Type} from "net.minecraft.client.model.geom.Mode
 
 export interface $ModelPartAccessor {
 
- "getChildren"(): $Map<(string), ($ModelPart)>
+ "getChildren"(): $Map<(StringJS), ($ModelPart)>
  "getCubes"(): $List<($ModelPart$Cube)>
-get "children"(): $Map<(string), ($ModelPart)>
+get "children"(): $Map<(StringJS), ($ModelPart)>
 get "cubes"(): $List<($ModelPart$Cube)>
 }
 
@@ -2869,7 +2869,7 @@ const probejs$$marker: never
 export class $ModelPartAccessor$$Static implements $ModelPartAccessor {
 
 
- "getChildren"(): $Map<(string), ($ModelPart)>
+ "getChildren"(): $Map<(StringJS), ($ModelPart)>
  "getCubes"(): $List<($ModelPart$Cube)>
 }
 /**
@@ -2895,8 +2895,8 @@ import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 
 export interface $ItemStackAccessor {
 
- "accessories$addModifierTooltip"(arg0: $Consumer$$Type<($Component)>, arg1: $Player$$Type, arg2: $Holder$$Type<($Attribute)>, arg3: $AttributeModifier$$Type): void
  "accessories$components"(): $PatchedDataComponentMap
+ "accessories$addModifierTooltip"(arg0: $Consumer$$Type<($Component)>, arg1: $Player$$Type, arg2: $Holder$$Type<($Attribute)>, arg3: $AttributeModifier$$Type): void
 }
 
 export namespace $ItemStackAccessor {
@@ -2905,8 +2905,8 @@ const probejs$$marker: never
 export class $ItemStackAccessor$$Static implements $ItemStackAccessor {
 
 
- "accessories$addModifierTooltip"(arg0: $Consumer$$Type<($Component)>, arg1: $Player$$Type, arg2: $Holder$$Type<($Attribute)>, arg3: $AttributeModifier$$Type): void
  "accessories$components"(): $PatchedDataComponentMap
+ "accessories$addModifierTooltip"(arg0: $Consumer$$Type<($Component)>, arg1: $Player$$Type, arg2: $Holder$$Type<($Attribute)>, arg3: $AttributeModifier$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -2937,9 +2937,9 @@ import {$Insets, $Insets$$Type} from "io.wispforest.owo.ui.core.Insets"
 import {$MouseScroll, $MouseScroll$$Type} from "io.wispforest.owo.ui.event.MouseScroll"
 import {$MouseDown, $MouseDown$$Type} from "io.wispforest.owo.ui.event.MouseDown"
 import {$CursorStyle, $CursorStyle$$Type} from "io.wispforest.owo.ui.core.CursorStyle"
+import {$Map, $Map$$Type} from "java.util.Map"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$Element, $Element$$Type} from "org.w3c.dom.Element"
-import {$Map, $Map$$Type} from "java.util.Map"
 import {$UIModel, $UIModel$$Type} from "io.wispforest.owo.ui.parsing.UIModel"
 import {$Component$FocusSource, $Component$FocusSource$$Type} from "io.wispforest.owo.ui.core.Component$FocusSource"
 import {$MouseUp, $MouseUp$$Type} from "io.wispforest.owo.ui.event.MouseUp"
@@ -2957,44 +2957,38 @@ import {$Size, $Size$$Type} from "io.wispforest.owo.ui.core.Size"
 
 export interface $GreedyInputComponent extends $Component$0 {
 
+ "y"(): integer
+ "configure"<C extends $Component$0>(arg0: $Consumer$$Type<(C)>): C
  "remove"(): void
  "parent"(): $ParentComponent
  "inflate"(arg0: $Size$$Type): void
  "update"(delta: float, mouseX: integer, mouseY: integer): void
  "x"(): integer
- "id"(): string
- "id"(arg0: string): $Component$0
+ "id"(): StringJS
+ "id"(arg0: StringJS): $Component$0
  "root"(): $ParentComponent
  "mount"(arg0: $ParentComponent$$Type, arg1: integer, arg2: integer): void
- "y"(): integer
- "width"(): integer
- "configure"<C extends $Component$0>(arg0: $Consumer$$Type<(C)>): C
- "dismount"(arg0: $Component$DismountReason$$Type): void
- "tooltip"(tooltip: $Component$$Type): $Component$0
- "tooltip"(tooltip: $Collection$$Type<($Component$$Type)>): $Component$0
- "tooltip"(): $List<($ClientTooltipComponent)>
- "tooltip"(arg0: $List$$Type<($ClientTooltipComponent$$Type)>): $Component$0
- "charTyped"(): $EventSource<($CharTyped)>
- "height"(): integer
- "draw"(arg0: $OwoUIDrawContext$$Type, arg1: integer, arg2: integer, arg3: float, arg4: float): void
- "moveTo"(x: integer, y: integer): void
  "sizing"(sizing: $Sizing$$Type): $Component$0
  "sizing"(horizontalSizing: $Sizing$$Type, verticalSizing: $Sizing$$Type): $Component$0
- "zIndex"(arg0: integer): $Component$0
  "zIndex"(): integer
+ "zIndex"(arg0: integer): $Component$0
  "baseX"(): integer
  "baseY"(): integer
- "horizontalSizing"(arg0: $Sizing$$Type): $Component$0
- "horizontalSizing"(): $AnimatableProperty<($Sizing)>
- "shouldDrawTooltip"(mouseX: double, mouseY: double): boolean
- "parseProperties"(model: $UIModel$$Type, element: $Element$$Type, children: $Map$$Type<(string), ($Element$$Type)>): void
- "drawFocusHighlight"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
- "isInBoundingBox"(x: double, y: double): boolean
+ "moveTo"(x: integer, y: integer): void
+ "draw"(arg0: $OwoUIDrawContext$$Type, arg1: integer, arg2: integer, arg3: float, arg4: float): void
+ "width"(): integer
+ "height"(): integer
+ "dismount"(arg0: $Component$DismountReason$$Type): void
+ "tooltip"(arg0: $List$$Type<($ClientTooltipComponent$$Type)>): $Component$0
+ "tooltip"(tooltip: $Collection$$Type<($Component$$Type)>): $Component$0
+ "tooltip"(tooltip: $Component$$Type): $Component$0
+ "tooltip"(): $List<($ClientTooltipComponent)>
+ "charTyped"(): $EventSource<($CharTyped)>
  "focusHandler"(): $FocusHandler
- "positioning"(): $AnimatableProperty<($Positioning)>
  "positioning"(arg0: $Positioning$$Type): $Component$0
- "margins"(): $AnimatableProperty<($Insets)>
+ "positioning"(): $AnimatableProperty<($Positioning)>
  "margins"(arg0: $Insets$$Type): $Component$0
+ "margins"(): $AnimatableProperty<($Insets)>
  "verticalSizing"(arg0: $Sizing$$Type): $Component$0
  "verticalSizing"(): $AnimatableProperty<($Sizing)>
  "mouseDown"(): $EventSource<($MouseDown)>
@@ -3022,6 +3016,12 @@ export interface $GreedyInputComponent extends $Component$0 {
  "drawTooltip"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
  "hasParent"(): boolean
  "fullSize"(): $Size
+ "horizontalSizing"(arg0: $Sizing$$Type): $Component$0
+ "horizontalSizing"(): $AnimatableProperty<($Sizing)>
+ "shouldDrawTooltip"(mouseX: double, mouseY: double): boolean
+ "parseProperties"(model: $UIModel$$Type, element: $Element$$Type, children: $Map$$Type<(StringJS), ($Element$$Type)>): void
+ "drawFocusHighlight"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
+ "isInBoundingBox"(x: double, y: double): boolean
  "intersects"(other: $PositionedRectangle$$Type): boolean
  "intersection"(other: $PositionedRectangle$$Type): $PositionedRectangle
  "interpolate"(arg0: $Animatable$$Type<(any)>, arg1: float): $Animatable<(any)>
@@ -3036,44 +3036,38 @@ const probejs$$marker: never
 export class $GreedyInputComponent$$Static implements $GreedyInputComponent {
 
 
+ "y"(): integer
+ "configure"<C extends $Component$0>(arg0: $Consumer$$Type<(C)>): C
  "remove"(): void
  "parent"(): $ParentComponent
  "inflate"(arg0: $Size$$Type): void
  "update"(delta: float, mouseX: integer, mouseY: integer): void
  "x"(): integer
- "id"(): string
- "id"(arg0: string): $Component$0
+ "id"(): StringJS
+ "id"(arg0: StringJS): $Component$0
  "root"(): $ParentComponent
  "mount"(arg0: $ParentComponent$$Type, arg1: integer, arg2: integer): void
- "y"(): integer
- "width"(): integer
- "configure"<C extends $Component$0>(arg0: $Consumer$$Type<(C)>): C
- "dismount"(arg0: $Component$DismountReason$$Type): void
- "tooltip"(tooltip: $Component$$Type): $Component$0
- "tooltip"(tooltip: $Collection$$Type<($Component$$Type)>): $Component$0
- "tooltip"(): $List<($ClientTooltipComponent)>
- "tooltip"(arg0: $List$$Type<($ClientTooltipComponent$$Type)>): $Component$0
- "charTyped"(): $EventSource<($CharTyped)>
- "height"(): integer
- "draw"(arg0: $OwoUIDrawContext$$Type, arg1: integer, arg2: integer, arg3: float, arg4: float): void
- "moveTo"(x: integer, y: integer): void
  "sizing"(sizing: $Sizing$$Type): $Component$0
  "sizing"(horizontalSizing: $Sizing$$Type, verticalSizing: $Sizing$$Type): $Component$0
- "zIndex"(arg0: integer): $Component$0
  "zIndex"(): integer
+ "zIndex"(arg0: integer): $Component$0
  "baseX"(): integer
  "baseY"(): integer
- "horizontalSizing"(arg0: $Sizing$$Type): $Component$0
- "horizontalSizing"(): $AnimatableProperty<($Sizing)>
- "shouldDrawTooltip"(mouseX: double, mouseY: double): boolean
- "parseProperties"(model: $UIModel$$Type, element: $Element$$Type, children: $Map$$Type<(string), ($Element$$Type)>): void
- "drawFocusHighlight"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
- "isInBoundingBox"(x: double, y: double): boolean
+ "moveTo"(x: integer, y: integer): void
+ "draw"(arg0: $OwoUIDrawContext$$Type, arg1: integer, arg2: integer, arg3: float, arg4: float): void
+ "width"(): integer
+ "height"(): integer
+ "dismount"(arg0: $Component$DismountReason$$Type): void
+ "tooltip"(arg0: $List$$Type<($ClientTooltipComponent$$Type)>): $Component$0
+ "tooltip"(tooltip: $Collection$$Type<($Component$$Type)>): $Component$0
+ "tooltip"(tooltip: $Component$$Type): $Component$0
+ "tooltip"(): $List<($ClientTooltipComponent)>
+ "charTyped"(): $EventSource<($CharTyped)>
  "focusHandler"(): $FocusHandler
- "positioning"(): $AnimatableProperty<($Positioning)>
  "positioning"(arg0: $Positioning$$Type): $Component$0
- "margins"(): $AnimatableProperty<($Insets)>
+ "positioning"(): $AnimatableProperty<($Positioning)>
  "margins"(arg0: $Insets$$Type): $Component$0
+ "margins"(): $AnimatableProperty<($Insets)>
  "verticalSizing"(arg0: $Sizing$$Type): $Component$0
  "verticalSizing"(): $AnimatableProperty<($Sizing)>
  "mouseDown"(): $EventSource<($MouseDown)>
@@ -3101,6 +3095,12 @@ export class $GreedyInputComponent$$Static implements $GreedyInputComponent {
  "drawTooltip"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
  "hasParent"(): boolean
  "fullSize"(): $Size
+ "horizontalSizing"(arg0: $Sizing$$Type): $Component$0
+ "horizontalSizing"(): $AnimatableProperty<($Sizing)>
+ "shouldDrawTooltip"(mouseX: double, mouseY: double): boolean
+ "parseProperties"(model: $UIModel$$Type, element: $Element$$Type, children: $Map$$Type<(StringJS), ($Element$$Type)>): void
+ "drawFocusHighlight"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
+ "isInBoundingBox"(x: double, y: double): boolean
  "intersects"(other: $PositionedRectangle$$Type): boolean
  "intersection"(other: $PositionedRectangle$$Type): $PositionedRectangle
 static "of"(x: integer, y: integer, size: $Size$$Type): $PositionedRectangle
@@ -3135,8 +3135,8 @@ constructor()
 
 public "get"(arg0: $Type$$Type): $Endec<(any)>
 public "get"<T>(arg0: $Class$$Type<(T)>): $Endec<(T)>
-public "register"<T>(arg0: $Endec$$Type<(T)>, arg1: $Class$$Type<(T)>): $ReflectiveEndecBuilder
 public "register"<T>(arg0: $Endec$$Type<(T)>, ...arg1: ($Class$$Type<(T)>)[]): $ReflectiveEndecBuilder
+public "register"<T>(arg0: $Endec$$Type<(T)>, arg1: $Class$$Type<(T)>): $ReflectiveEndecBuilder
 public "maybeGet"<T>(arg0: $Class$$Type<(T)>): $Optional<($Endec<(T)>)>
 }
 /**
@@ -3190,32 +3190,32 @@ import {$KeyedEndec, $KeyedEndec$$Type} from "io.wispforest.endec.impl.KeyedEnde
 
 export interface $MapCarrier {
 
- "get"<T>(arg0: $SerializationContext$$Type, arg1: $KeyedEndec$$Type<(T)>): T
+ "has"<T>(arg0: $KeyedEndec$$Type<(T)>): boolean
  "get"<T>(arg0: $KeyedEndec$$Type<(T)>): T
+ "get"<T>(arg0: $SerializationContext$$Type, arg1: $KeyedEndec$$Type<(T)>): T
  "put"<T>(arg0: $KeyedEndec$$Type<(T)>, arg1: T): void
  "put"<T>(arg0: $SerializationContext$$Type, arg1: $KeyedEndec$$Type<(T)>, arg2: T): void
  "delete"<T>(arg0: $KeyedEndec$$Type<(T)>): void
  "copy"<T>(arg0: $KeyedEndec$$Type<(T)>, arg1: $MapCarrier$$Type): void
  "copy"<T>(arg0: $SerializationContext$$Type, arg1: $KeyedEndec$$Type<(T)>, arg2: $MapCarrier$$Type): void
- "has"<T>(arg0: $KeyedEndec$$Type<(T)>): boolean
- "getWithErrors"<T>(arg0: $KeyedEndec$$Type<(T)>): T
- "getWithErrors"<T>(arg0: $SerializationContext$$Type, arg1: $KeyedEndec$$Type<(T)>): T
- "putIfNotNull"<T>(arg0: $SerializationContext$$Type, arg1: $KeyedEndec$$Type<(T)>, arg2: T): void
- "putIfNotNull"<T>(arg0: $KeyedEndec$$Type<(T)>, arg1: T): void
+ "mutate"<T>(arg0: $KeyedEndec$$Type<(T)>, arg1: $Function$$Type<(T), (T)>): void
+ "mutate"<T>(arg0: $SerializationContext$$Type, arg1: $KeyedEndec$$Type<(T)>, arg2: $Function$$Type<(T), (T)>): void
+/**
+ * 
+ * @deprecated
+ */
+ "mutate"<T>(arg0: $KeyedEndec$$Type<(T)>, arg1: $SerializationContext$$Type, arg2: $Function$$Type<(T), (T)>): void
+ "copyIfPresent"<T>(arg0: $KeyedEndec$$Type<(T)>, arg1: $MapCarrier$$Type): void
  "copyIfPresent"<T>(arg0: $SerializationContext$$Type, arg1: $KeyedEndec$$Type<(T)>, arg2: $MapCarrier$$Type): void
 /**
  * 
  * @deprecated
  */
  "copyIfPresent"<T>(arg0: $KeyedEndec$$Type<(T)>, arg1: $SerializationContext$$Type, arg2: $MapCarrier$$Type): void
- "copyIfPresent"<T>(arg0: $KeyedEndec$$Type<(T)>, arg1: $MapCarrier$$Type): void
-/**
- * 
- * @deprecated
- */
- "mutate"<T>(arg0: $KeyedEndec$$Type<(T)>, arg1: $SerializationContext$$Type, arg2: $Function$$Type<(T), (T)>): void
- "mutate"<T>(arg0: $SerializationContext$$Type, arg1: $KeyedEndec$$Type<(T)>, arg2: $Function$$Type<(T), (T)>): void
- "mutate"<T>(arg0: $KeyedEndec$$Type<(T)>, arg1: $Function$$Type<(T), (T)>): void
+ "putIfNotNull"<T>(arg0: $SerializationContext$$Type, arg1: $KeyedEndec$$Type<(T)>, arg2: T): void
+ "putIfNotNull"<T>(arg0: $KeyedEndec$$Type<(T)>, arg1: T): void
+ "getWithErrors"<T>(arg0: $SerializationContext$$Type, arg1: $KeyedEndec$$Type<(T)>): T
+ "getWithErrors"<T>(arg0: $KeyedEndec$$Type<(T)>): T
 }
 
 export namespace $MapCarrier {
@@ -3224,32 +3224,32 @@ const probejs$$marker: never
 export class $MapCarrier$$Static implements $MapCarrier {
 
 
- "get"<T>(arg0: $SerializationContext$$Type, arg1: $KeyedEndec$$Type<(T)>): T
+ "has"<T>(arg0: $KeyedEndec$$Type<(T)>): boolean
  "get"<T>(arg0: $KeyedEndec$$Type<(T)>): T
+ "get"<T>(arg0: $SerializationContext$$Type, arg1: $KeyedEndec$$Type<(T)>): T
  "put"<T>(arg0: $KeyedEndec$$Type<(T)>, arg1: T): void
  "put"<T>(arg0: $SerializationContext$$Type, arg1: $KeyedEndec$$Type<(T)>, arg2: T): void
  "delete"<T>(arg0: $KeyedEndec$$Type<(T)>): void
  "copy"<T>(arg0: $KeyedEndec$$Type<(T)>, arg1: $MapCarrier$$Type): void
  "copy"<T>(arg0: $SerializationContext$$Type, arg1: $KeyedEndec$$Type<(T)>, arg2: $MapCarrier$$Type): void
- "has"<T>(arg0: $KeyedEndec$$Type<(T)>): boolean
- "getWithErrors"<T>(arg0: $KeyedEndec$$Type<(T)>): T
- "getWithErrors"<T>(arg0: $SerializationContext$$Type, arg1: $KeyedEndec$$Type<(T)>): T
- "putIfNotNull"<T>(arg0: $SerializationContext$$Type, arg1: $KeyedEndec$$Type<(T)>, arg2: T): void
- "putIfNotNull"<T>(arg0: $KeyedEndec$$Type<(T)>, arg1: T): void
+ "mutate"<T>(arg0: $KeyedEndec$$Type<(T)>, arg1: $Function$$Type<(T), (T)>): void
+ "mutate"<T>(arg0: $SerializationContext$$Type, arg1: $KeyedEndec$$Type<(T)>, arg2: $Function$$Type<(T), (T)>): void
+/**
+ * 
+ * @deprecated
+ */
+ "mutate"<T>(arg0: $KeyedEndec$$Type<(T)>, arg1: $SerializationContext$$Type, arg2: $Function$$Type<(T), (T)>): void
+ "copyIfPresent"<T>(arg0: $KeyedEndec$$Type<(T)>, arg1: $MapCarrier$$Type): void
  "copyIfPresent"<T>(arg0: $SerializationContext$$Type, arg1: $KeyedEndec$$Type<(T)>, arg2: $MapCarrier$$Type): void
 /**
  * 
  * @deprecated
  */
  "copyIfPresent"<T>(arg0: $KeyedEndec$$Type<(T)>, arg1: $SerializationContext$$Type, arg2: $MapCarrier$$Type): void
- "copyIfPresent"<T>(arg0: $KeyedEndec$$Type<(T)>, arg1: $MapCarrier$$Type): void
-/**
- * 
- * @deprecated
- */
- "mutate"<T>(arg0: $KeyedEndec$$Type<(T)>, arg1: $SerializationContext$$Type, arg2: $Function$$Type<(T), (T)>): void
- "mutate"<T>(arg0: $SerializationContext$$Type, arg1: $KeyedEndec$$Type<(T)>, arg2: $Function$$Type<(T), (T)>): void
- "mutate"<T>(arg0: $KeyedEndec$$Type<(T)>, arg1: $Function$$Type<(T), (T)>): void
+ "putIfNotNull"<T>(arg0: $SerializationContext$$Type, arg1: $KeyedEndec$$Type<(T)>, arg2: T): void
+ "putIfNotNull"<T>(arg0: $KeyedEndec$$Type<(T)>, arg1: T): void
+ "getWithErrors"<T>(arg0: $SerializationContext$$Type, arg1: $KeyedEndec$$Type<(T)>): T
+ "getWithErrors"<T>(arg0: $KeyedEndec$$Type<(T)>): T
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3269,9 +3269,9 @@ import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 
 export interface $Deserializer$Sequence<E> extends $Iterator<(E)> {
 
+ "estimatedSize"(): integer
  "hasNext"(): boolean
  "next"(): E
- "estimatedSize"(): integer
  "remove"(): void
  "forEachRemaining"(arg0: $Consumer$$Type<(E)>): void
 }
@@ -3282,9 +3282,9 @@ const probejs$$marker: never
 export class $Deserializer$Sequence$$Static<E> implements $Deserializer$Sequence {
 
 
+ "estimatedSize"(): integer
  "hasNext"(): boolean
  "next"(): E
- "estimatedSize"(): integer
  "remove"(): void
  "forEachRemaining"(arg0: $Consumer$$Type<(E)>): void
 }
@@ -3311,7 +3311,7 @@ constructor(reference: $SlotReference$$Type, stack: $ItemStack$$Type)
 
 public "stack"(): $ItemStack
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "reference"(): $SlotReference
 }
@@ -3461,7 +3461,7 @@ static readonly "BOTTOM": $VerticalAlignment
 
 
 public static "values"(): ($VerticalAlignment)[]
-public static "valueOf"(name: string): $VerticalAlignment
+public static "valueOf"(name: StringJS): $VerticalAlignment
 public static "parse"(element: $Element$$Type): $VerticalAlignment
 public "align"(componentWidth: integer, span: integer): integer
 }
@@ -3537,11 +3537,11 @@ import {$SerializationAttribute, $SerializationAttribute$$Type} from "io.wispfor
 import {$SerializationAttribute$Instance, $SerializationAttribute$Instance$$Type} from "io.wispforest.endec.SerializationAttribute$Instance"
 
 export class $SerializationAttribute$Marker extends $SerializationAttribute implements $SerializationAttribute$Instance {
-readonly "name": string
+readonly "name": StringJS
 
 
-public "value"(): any
 public "attribute"(): $SerializationAttribute
+public "value"(): any
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3582,13 +3582,13 @@ constructor(payload: $FriendlyByteBuf$$Type)
 public "payload"(): $FriendlyByteBuf
 public "type"(): $CustomPacketPayload$Type<($CustomPacketPayload)>
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public static "createType"<T extends $CustomPacketPayload>(arg0: string): $CustomPacketPayload$Type<(T)>
 public static "codec"<B extends $FriendlyByteBuf>(arg0: $CustomPacketPayload$FallbackProvider$$Type<(B)>, arg1: $List$$Type<($CustomPacketPayload$TypeAndCodec$$Type<(B), (any)>)>, arg2: $ConnectionProtocol$$Type, arg3: $PacketFlow$$Type): $StreamCodec<(B), ($CustomPacketPayload)>
 public static "codec"<B extends $ByteBuf, T extends $CustomPacketPayload>(arg0: $StreamMemberEncoder$$Type<(B), (T)>, arg1: $StreamDecoder$$Type<(B), (T)>): $StreamCodec<(B), (T)>
-public "toVanillaServerbound"(): $ServerboundCustomPayloadPacket
+public static "createType"<T extends $CustomPacketPayload>(arg0: StringJS): $CustomPacketPayload$Type<(T)>
 public "toVanillaClientbound"(): $ClientboundCustomPayloadPacket
+public "toVanillaServerbound"(): $ServerboundCustomPayloadPacket
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3603,9 +3603,9 @@ declare global {
 export type $ScreenInternals$SyncPropertiesPacket_ = $ScreenInternals$SyncPropertiesPacket$$Type;
 }}
 declare module "io.wispforest.accessories.impl.caching.AccessoriesHolderLookupCache" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
-import {$EquipmentLookupCache, $EquipmentLookupCache$$Type} from "io.wispforest.accessories.impl.caching.EquipmentLookupCache"
 import {$AccessoriesHolderImpl, $AccessoriesHolderImpl$$Type} from "io.wispforest.accessories.impl.AccessoriesHolderImpl"
+import {$EquipmentLookupCache, $EquipmentLookupCache$$Type} from "io.wispforest.accessories.impl.caching.EquipmentLookupCache"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ItemStackBasedPredicate, $ItemStackBasedPredicate$$Type} from "io.wispforest.accessories.api.caching.ItemStackBasedPredicate"
 import {$List, $List$$Type} from "java.util.List"
 import {$DataComponentType, $DataComponentType$$Type} from "net.minecraft.core.component.DataComponentType"
@@ -3617,12 +3617,12 @@ export class $AccessoriesHolderLookupCache extends $EquipmentLookupCache {
 constructor(holder: $AccessoriesHolderImpl$$Type)
 
 public "clearCache"(): void
-public "isEquipped"(predicate: $ItemStackBasedPredicate$$Type): boolean
 public "getEquipped"(predicate: $ItemStackBasedPredicate$$Type): $List<($SlotEntryReference)>
-public "invalidateLookupData"(key: string, stack: $ItemStack$$Type, types: $List$$Type<($DataComponentType$$Type<(any)>)>): void
-public "getAllEquipped"(): $List<($SlotEntryReference)>
-public "clearContainerCache"(key: string): void
+public "isEquipped"(predicate: $ItemStackBasedPredicate$$Type): boolean
 public "firstEquipped"(predicate: $ItemStackBasedPredicate$$Type, check: $EquipmentChecking$$Type): $SlotEntryReference
+public "getAllEquipped"(): $List<($SlotEntryReference)>
+public "invalidateLookupData"(key: StringJS, stack: $ItemStack$$Type, types: $List$$Type<($DataComponentType$$Type<(any)>)>): void
+public "clearContainerCache"(key: StringJS): void
 get "allEquipped"(): $List<($SlotEntryReference)>
 }
 /**
@@ -3648,22 +3648,22 @@ import {$SerializationContext, $SerializationContext$$Type} from "io.wispforest.
 
 export interface $Deserializer<T> {
 
- "tryRead"<V>(arg0: $Function$$Type<($Deserializer<(T)>), (V)>): V
- "map"<V>(arg0: $SerializationContext$$Type, arg1: $Endec$$Type<(V)>): $Deserializer$Map<(V)>
- "readInt"(arg0: $SerializationContext$$Type): integer
- "readBytes"(arg0: $SerializationContext$$Type): (byte)[]
- "readFloat"(arg0: $SerializationContext$$Type): float
  "sequence"<E>(arg0: $SerializationContext$$Type, arg1: $Endec$$Type<(E)>): $Deserializer$Sequence<(E)>
+ "readBytes"(arg0: $SerializationContext$$Type): (byte)[]
  "readBoolean"(arg0: $SerializationContext$$Type): boolean
  "readByte"(arg0: $SerializationContext$$Type): byte
  "readShort"(arg0: $SerializationContext$$Type): short
  "readLong"(arg0: $SerializationContext$$Type): long
  "readDouble"(arg0: $SerializationContext$$Type): double
- "readString"(arg0: $SerializationContext$$Type): string
+ "readString"(arg0: $SerializationContext$$Type): StringJS
+ "readFloat"(arg0: $SerializationContext$$Type): float
+ "tryRead"<V>(arg0: $Function$$Type<($Deserializer<(T)>), (V)>): V
+ "map"<V>(arg0: $SerializationContext$$Type, arg1: $Endec$$Type<(V)>): $Deserializer$Map<(V)>
+ "readInt"(arg0: $SerializationContext$$Type): integer
+ "struct"(): $Deserializer$Struct
  "readVarInt"(arg0: $SerializationContext$$Type): integer
  "readOptional"<V>(arg0: $SerializationContext$$Type, arg1: $Endec$$Type<(V)>): $Optional<(V)>
  "readVarLong"(arg0: $SerializationContext$$Type): long
- "struct"(): $Deserializer$Struct
  "setupContext"(arg0: $SerializationContext$$Type): $SerializationContext
 set "upContext"(value: $SerializationContext$$Type)
 }
@@ -3674,22 +3674,22 @@ const probejs$$marker: never
 export class $Deserializer$$Static<T> implements $Deserializer {
 
 
- "tryRead"<V>(arg0: $Function$$Type<($Deserializer<(T)>), (V)>): V
- "map"<V>(arg0: $SerializationContext$$Type, arg1: $Endec$$Type<(V)>): $Deserializer$Map<(V)>
- "readInt"(arg0: $SerializationContext$$Type): integer
- "readBytes"(arg0: $SerializationContext$$Type): (byte)[]
- "readFloat"(arg0: $SerializationContext$$Type): float
  "sequence"<E>(arg0: $SerializationContext$$Type, arg1: $Endec$$Type<(E)>): $Deserializer$Sequence<(E)>
+ "readBytes"(arg0: $SerializationContext$$Type): (byte)[]
  "readBoolean"(arg0: $SerializationContext$$Type): boolean
  "readByte"(arg0: $SerializationContext$$Type): byte
  "readShort"(arg0: $SerializationContext$$Type): short
  "readLong"(arg0: $SerializationContext$$Type): long
  "readDouble"(arg0: $SerializationContext$$Type): double
- "readString"(arg0: $SerializationContext$$Type): string
+ "readString"(arg0: $SerializationContext$$Type): StringJS
+ "readFloat"(arg0: $SerializationContext$$Type): float
+ "tryRead"<V>(arg0: $Function$$Type<($Deserializer<(T)>), (V)>): V
+ "map"<V>(arg0: $SerializationContext$$Type, arg1: $Endec$$Type<(V)>): $Deserializer$Map<(V)>
+ "readInt"(arg0: $SerializationContext$$Type): integer
+ "struct"(): $Deserializer$Struct
  "readVarInt"(arg0: $SerializationContext$$Type): integer
  "readOptional"<V>(arg0: $SerializationContext$$Type, arg1: $Endec$$Type<(V)>): $Optional<(V)>
  "readVarLong"(arg0: $SerializationContext$$Type): long
- "struct"(): $Deserializer$Struct
  "setupContext"(arg0: $SerializationContext$$Type): $SerializationContext
 }
 /**
@@ -3859,40 +3859,40 @@ export class $Insets extends $Record implements $Animatable<($Insets)> {
  */
 constructor(top: integer, bottom: integer, left: integer, right: integer)
 
+public "top"(): integer
+public static "top"(top: integer): $Insets
+public static "left"(left: integer): $Insets
+public "left"(): integer
+public static "right"(right: integer): $Insets
+public "right"(): integer
 public "bottom"(): integer
 public static "bottom"(bottom: integer): $Insets
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "add"(top: integer, bottom: integer, left: integer, right: integer): $Insets
 public static "of"(inset: integer): $Insets
 public static "of"(top: integer, bottom: integer, left: integer, right: integer): $Insets
 public static "parse"(insetsElement: $Element$$Type): $Insets
-public "top"(): integer
-public static "top"(top: integer): $Insets
-public "left"(): integer
-public static "left"(left: integer): $Insets
-public "right"(): integer
-public static "right"(right: integer): $Insets
-public "horizontal"(): integer
-public static "horizontal"(inset: integer): $Insets
-public "vertical"(): integer
+public static "both"(horizontal: integer, vertical: integer): $Insets
+public static "none"(): $Insets
 public static "vertical"(inset: integer): $Insets
+public "vertical"(): integer
+public static "horizontal"(inset: integer): $Insets
+public "horizontal"(): integer
 public "inverted"(): $Insets
 public "interpolate"(next: $Insets$$Type, delta: float): $Insets
 public "interpolate"(arg0: $Animatable$$Type<(any)>, arg1: float): $Animatable<(any)>
-public static "both"(horizontal: integer, vertical: integer): $Insets
-public static "none"(): $Insets
 public "withTop"(top: integer): $Insets
 public "withRight"(right: integer): $Insets
-public "withLeft"(left: integer): $Insets
 public "withBottom"(bottom: integer): $Insets
+public "withLeft"(left: integer): $Insets
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $Insets$$Type = ({"top"?: integer, "left"?: integer, "bottom"?: integer, "right"?: integer}) | ([top?: integer, left?: integer, bottom?: integer, right?: integer]);
+export type $Insets$$Type = ({"bottom"?: integer, "right"?: integer, "top"?: integer, "left"?: integer}) | ([bottom?: integer, right?: integer, top?: integer, left?: integer]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -3939,12 +3939,12 @@ export class $FocusHandler {
 
 constructor(root: $ParentComponent$$Type)
 
-public "focused"(): $Component
-public "cycle"(forwards: boolean): void
 public "focus"(component: $Component$$Type, source: $Component$FocusSource$$Type): void
+public "cycle"(forwards: boolean): void
+public "focused"(): $Component
+public "moveFocus"(keyCode: integer): void
 public "updateClickFocus"(mouseX: double, mouseY: double): void
 public "lastFocusSource"(): $Component$FocusSource
-public "moveFocus"(keyCode: integer): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -3995,7 +3995,7 @@ import {$Endable, $Endable$$Type} from "io.wispforest.endec.util.Endable"
 
 export interface $Serializer$Map<V> extends $Endable {
 
- "entry"(arg0: string, arg1: V): void
+ "entry"(arg0: StringJS, arg1: V): void
  "end"(): void
  "close"(): void
 }
@@ -4006,7 +4006,7 @@ const probejs$$marker: never
 export class $Serializer$Map$$Static<V> implements $Serializer$Map {
 
 
- "entry"(arg0: string, arg1: V): void
+ "entry"(arg0: StringJS, arg1: V): void
  "end"(): void
  "close"(): void
 }
@@ -4028,9 +4028,9 @@ import {$Map, $Map$$Type} from "java.util.Map"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Pair, $Pair$$Type} from "it.unimi.dsi.fastutil.Pair"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
-import {$Multimap, $Multimap$$Type} from "com.google.common.collect.Multimap"
 import {$List, $List$$Type} from "java.util.List"
+import {$Multimap, $Multimap$$Type} from "com.google.common.collect.Multimap"
+import {$Predicate, $Predicate$$Type} from "java.util.function.Predicate"
 import {$AccessoriesContainer, $AccessoriesContainer$$Type} from "io.wispforest.accessories.api.AccessoriesContainer"
 import {$SlotTypeReference, $SlotTypeReference$$Type} from "io.wispforest.accessories.api.slot.SlotTypeReference"
 import {$EquipmentChecking, $EquipmentChecking$$Type} from "io.wispforest.accessories.api.EquipmentChecking"
@@ -4048,51 +4048,27 @@ import {$SlotEntryReference, $SlotEntryReference$$Type} from "io.wispforest.acce
 
 export interface $AccessoriesCapability {
 
- "getContainer"(slotType: $SlotType$$Type): $AccessoriesContainer
- "getContainer"(reference: $SlotTypeReference$$Type): $AccessoriesContainer
  "entity"(): $LivingEntity
+ "getContainer"(reference: $SlotTypeReference$$Type): $AccessoriesContainer
+ "getContainer"(slotType: $SlotType$$Type): $AccessoriesContainer
  "reset"(arg0: boolean): void
- "attemptToEquipAccessory"(stack: $ItemStack$$Type, allowSwapping: boolean): $Pair<($SlotReference), ($Optional<($ItemStack)>)>
- "attemptToEquipAccessory"(stack: $ItemStack$$Type): $SlotReference
- "addTransientSlotModifiers"(arg0: $Multimap$$Type<(string), ($AttributeModifier$$Type)>): void
- "addPersistentSlotModifiers"(arg0: $Multimap$$Type<(string), ($AttributeModifier$$Type)>): void
- "clearCachedSlotModifiers"(): void
- "getHolder"(): $AccessoriesHolder
- "isEquipped"(predicate: $Predicate$$Type<($ItemStack)>, check: $EquipmentChecking$$Type): boolean
- "isEquipped"(predicate: $Predicate$$Type<($ItemStack)>): boolean
- "isEquipped"(predicate: $ItemStackBasedPredicate$$Type, check: $EquipmentChecking$$Type): boolean
- "isEquipped"(item: $Item$$Type, check: $EquipmentChecking$$Type): boolean
- "isEquipped"(item: $Item$$Type): boolean
  "getEquipped"(predicate: $Predicate$$Type<($ItemStack)>): $List<($SlotEntryReference)>
  "getEquipped"(predicate: $ItemStackBasedPredicate$$Type): $List<($SlotEntryReference)>
  "getEquipped"(item: $Item$$Type): $List<($SlotEntryReference)>
- "updateContainers"(): void
- "canEquipAccessory"(arg0: $ItemStack$$Type, arg1: boolean, arg2: $EquipCheck$$Type): $Pair<($SlotReference), ($EquipAction)>
- "canEquipAccessory"(stack: $ItemStack$$Type, allowSwapping: boolean): $Pair<($SlotReference), ($EquipAction)>
- "getFirstEquipped"(item: $Item$$Type, check: $EquipmentChecking$$Type): $SlotEntryReference
- "getFirstEquipped"(item: $Item$$Type): $SlotEntryReference
- "getFirstEquipped"(arg0: $ItemStackBasedPredicate$$Type, arg1: $EquipmentChecking$$Type): $SlotEntryReference
- "getFirstEquipped"(predicate: $Predicate$$Type<($ItemStack)>): $SlotEntryReference
- "getFirstEquipped"(predicate: $Predicate$$Type<($ItemStack)>, check: $EquipmentChecking$$Type): $SlotEntryReference
-/**
- * 
- * @deprecated
- */
- "isAnotherEquipped"(slotReference: $SlotReference$$Type, item: $Item$$Type): boolean
- "isAnotherEquipped"(stack: $ItemStack$$Type, slotReference: $SlotReference$$Type, predicate: $Predicate$$Type<($ItemStack)>): boolean
- "isAnotherEquipped"(stack: $ItemStack$$Type, slotReference: $SlotReference$$Type, item: $Item$$Type): boolean
- "isAnotherEquipped"(stack: $ItemStack$$Type, slotReference: $SlotReference$$Type, predicate: $ItemStackBasedPredicate$$Type): boolean
-/**
- * 
- * @deprecated
- */
- "isAnotherEquipped"(slotReference: $SlotReference$$Type, predicate: $Predicate$$Type<($ItemStack)>): boolean
- "removeSlotModifiers"(arg0: $Multimap$$Type<(string), ($AttributeModifier$$Type)>): void
- "getSlotModifiers"(): $Multimap<(string), ($AttributeModifier)>
- "clearSlotModifiers"(): void
- "getContainers"(): $Map<(string), ($AccessoriesContainer)>
+ "isEquipped"(item: $Item$$Type): boolean
+ "isEquipped"(item: $Item$$Type, check: $EquipmentChecking$$Type): boolean
+ "isEquipped"(predicate: $Predicate$$Type<($ItemStack)>, check: $EquipmentChecking$$Type): boolean
+ "isEquipped"(predicate: $Predicate$$Type<($ItemStack)>): boolean
+ "isEquipped"(predicate: $ItemStackBasedPredicate$$Type, check: $EquipmentChecking$$Type): boolean
+ "getHolder"(): $AccessoriesHolder
+ "getContainers"(): $Map<(StringJS), ($AccessoriesContainer)>
  "getAllEquipped"(arg0: boolean): $List<($SlotEntryReference)>
  "getAllEquipped"(): $List<($SlotEntryReference)>
+/**
+ * 
+ * @deprecated
+ */
+ "equipAccessory"(stack: $ItemStack$$Type): $Pair<($SlotReference), ($List<($ItemStack)>)>
 /**
  * 
  * @deprecated
@@ -4103,15 +4079,39 @@ export interface $AccessoriesCapability {
  * @deprecated
  */
  "equipAccessory"(stack: $ItemStack$$Type, allowSwapping: boolean): $Pair<($SlotReference), ($List<($ItemStack)>)>
+ "updateContainers"(): void
+ "canEquipAccessory"(arg0: $ItemStack$$Type, arg1: boolean, arg2: $EquipCheck$$Type): $Pair<($SlotReference), ($EquipAction)>
+ "canEquipAccessory"(stack: $ItemStack$$Type, allowSwapping: boolean): $Pair<($SlotReference), ($EquipAction)>
+ "getFirstEquipped"(arg0: $ItemStackBasedPredicate$$Type, arg1: $EquipmentChecking$$Type): $SlotEntryReference
+ "getFirstEquipped"(item: $Item$$Type): $SlotEntryReference
+ "getFirstEquipped"(item: $Item$$Type, check: $EquipmentChecking$$Type): $SlotEntryReference
+ "getFirstEquipped"(predicate: $Predicate$$Type<($ItemStack)>): $SlotEntryReference
+ "getFirstEquipped"(predicate: $Predicate$$Type<($ItemStack)>, check: $EquipmentChecking$$Type): $SlotEntryReference
 /**
  * 
  * @deprecated
  */
- "equipAccessory"(stack: $ItemStack$$Type): $Pair<($SlotReference), ($List<($ItemStack)>)>
+ "isAnotherEquipped"(slotReference: $SlotReference$$Type, predicate: $Predicate$$Type<($ItemStack)>): boolean
+ "isAnotherEquipped"(stack: $ItemStack$$Type, slotReference: $SlotReference$$Type, item: $Item$$Type): boolean
+/**
+ * 
+ * @deprecated
+ */
+ "isAnotherEquipped"(slotReference: $SlotReference$$Type, item: $Item$$Type): boolean
+ "isAnotherEquipped"(stack: $ItemStack$$Type, slotReference: $SlotReference$$Type, predicate: $Predicate$$Type<($ItemStack)>): boolean
+ "isAnotherEquipped"(stack: $ItemStack$$Type, slotReference: $SlotReference$$Type, predicate: $ItemStackBasedPredicate$$Type): boolean
+ "removeSlotModifiers"(arg0: $Multimap$$Type<(StringJS), ($AttributeModifier$$Type)>): void
+ "getSlotModifiers"(): $Multimap<(StringJS), ($AttributeModifier)>
+ "clearSlotModifiers"(): void
+ "attemptToEquipAccessory"(stack: $ItemStack$$Type): $SlotReference
+ "attemptToEquipAccessory"(stack: $ItemStack$$Type, allowSwapping: boolean): $Pair<($SlotReference), ($Optional<($ItemStack)>)>
+ "addTransientSlotModifiers"(arg0: $Multimap$$Type<(StringJS), ($AttributeModifier$$Type)>): void
+ "addPersistentSlotModifiers"(arg0: $Multimap$$Type<(StringJS), ($AttributeModifier$$Type)>): void
+ "clearCachedSlotModifiers"(): void
 get "holder"(): $AccessoriesHolder
-get "slotModifiers"(): $Multimap<(string), ($AttributeModifier)>
-get "containers"(): $Map<(string), ($AccessoriesContainer)>
+get "containers"(): $Map<(StringJS), ($AccessoriesContainer)>
 get "allEquipped"(): $List<($SlotEntryReference)>
+get "slotModifiers"(): $Multimap<(StringJS), ($AttributeModifier)>
 }
 
 export namespace $AccessoriesCapability {
@@ -4122,53 +4122,29 @@ const probejs$$marker: never
 export class $AccessoriesCapability$$Static implements $AccessoriesCapability {
 
 
- "getContainer"(slotType: $SlotType$$Type): $AccessoriesContainer
- "getContainer"(reference: $SlotTypeReference$$Type): $AccessoriesContainer
  "entity"(): $LivingEntity
+ "getContainer"(reference: $SlotTypeReference$$Type): $AccessoriesContainer
+ "getContainer"(slotType: $SlotType$$Type): $AccessoriesContainer
  "reset"(arg0: boolean): void
 static "get"(livingEntity: $LivingEntity$$Type): $AccessoriesCapability
- "attemptToEquipAccessory"(stack: $ItemStack$$Type, allowSwapping: boolean): $Pair<($SlotReference), ($Optional<($ItemStack)>)>
- "attemptToEquipAccessory"(stack: $ItemStack$$Type): $SlotReference
- "addTransientSlotModifiers"(arg0: $Multimap$$Type<(string), ($AttributeModifier$$Type)>): void
- "addPersistentSlotModifiers"(arg0: $Multimap$$Type<(string), ($AttributeModifier$$Type)>): void
- "clearCachedSlotModifiers"(): void
- "getHolder"(): $AccessoriesHolder
- "isEquipped"(predicate: $Predicate$$Type<($ItemStack)>, check: $EquipmentChecking$$Type): boolean
- "isEquipped"(predicate: $Predicate$$Type<($ItemStack)>): boolean
- "isEquipped"(predicate: $ItemStackBasedPredicate$$Type, check: $EquipmentChecking$$Type): boolean
- "isEquipped"(item: $Item$$Type, check: $EquipmentChecking$$Type): boolean
- "isEquipped"(item: $Item$$Type): boolean
  "getEquipped"(predicate: $Predicate$$Type<($ItemStack)>): $List<($SlotEntryReference)>
  "getEquipped"(predicate: $ItemStackBasedPredicate$$Type): $List<($SlotEntryReference)>
  "getEquipped"(item: $Item$$Type): $List<($SlotEntryReference)>
- "updateContainers"(): void
- "canEquipAccessory"(arg0: $ItemStack$$Type, arg1: boolean, arg2: $EquipCheck$$Type): $Pair<($SlotReference), ($EquipAction)>
- "canEquipAccessory"(stack: $ItemStack$$Type, allowSwapping: boolean): $Pair<($SlotReference), ($EquipAction)>
- "getFirstEquipped"(item: $Item$$Type, check: $EquipmentChecking$$Type): $SlotEntryReference
- "getFirstEquipped"(item: $Item$$Type): $SlotEntryReference
- "getFirstEquipped"(arg0: $ItemStackBasedPredicate$$Type, arg1: $EquipmentChecking$$Type): $SlotEntryReference
- "getFirstEquipped"(predicate: $Predicate$$Type<($ItemStack)>): $SlotEntryReference
- "getFirstEquipped"(predicate: $Predicate$$Type<($ItemStack)>, check: $EquipmentChecking$$Type): $SlotEntryReference
-/**
- * 
- * @deprecated
- */
- "isAnotherEquipped"(slotReference: $SlotReference$$Type, item: $Item$$Type): boolean
- "isAnotherEquipped"(stack: $ItemStack$$Type, slotReference: $SlotReference$$Type, predicate: $Predicate$$Type<($ItemStack)>): boolean
- "isAnotherEquipped"(stack: $ItemStack$$Type, slotReference: $SlotReference$$Type, item: $Item$$Type): boolean
- "isAnotherEquipped"(stack: $ItemStack$$Type, slotReference: $SlotReference$$Type, predicate: $ItemStackBasedPredicate$$Type): boolean
-/**
- * 
- * @deprecated
- */
- "isAnotherEquipped"(slotReference: $SlotReference$$Type, predicate: $Predicate$$Type<($ItemStack)>): boolean
- "removeSlotModifiers"(arg0: $Multimap$$Type<(string), ($AttributeModifier$$Type)>): void
- "getSlotModifiers"(): $Multimap<(string), ($AttributeModifier)>
- "clearSlotModifiers"(): void
+ "isEquipped"(item: $Item$$Type): boolean
+ "isEquipped"(item: $Item$$Type, check: $EquipmentChecking$$Type): boolean
+ "isEquipped"(predicate: $Predicate$$Type<($ItemStack)>, check: $EquipmentChecking$$Type): boolean
+ "isEquipped"(predicate: $Predicate$$Type<($ItemStack)>): boolean
+ "isEquipped"(predicate: $ItemStackBasedPredicate$$Type, check: $EquipmentChecking$$Type): boolean
+ "getHolder"(): $AccessoriesHolder
 static "getOptionally"(livingEntity: $LivingEntity$$Type): $Optional<($AccessoriesCapability)>
- "getContainers"(): $Map<(string), ($AccessoriesContainer)>
+ "getContainers"(): $Map<(StringJS), ($AccessoriesContainer)>
  "getAllEquipped"(arg0: boolean): $List<($SlotEntryReference)>
  "getAllEquipped"(): $List<($SlotEntryReference)>
+/**
+ * 
+ * @deprecated
+ */
+ "equipAccessory"(stack: $ItemStack$$Type): $Pair<($SlotReference), ($List<($ItemStack)>)>
 /**
  * 
  * @deprecated
@@ -4179,11 +4155,35 @@ static "getOptionally"(livingEntity: $LivingEntity$$Type): $Optional<($Accessori
  * @deprecated
  */
  "equipAccessory"(stack: $ItemStack$$Type, allowSwapping: boolean): $Pair<($SlotReference), ($List<($ItemStack)>)>
+ "updateContainers"(): void
+ "canEquipAccessory"(arg0: $ItemStack$$Type, arg1: boolean, arg2: $EquipCheck$$Type): $Pair<($SlotReference), ($EquipAction)>
+ "canEquipAccessory"(stack: $ItemStack$$Type, allowSwapping: boolean): $Pair<($SlotReference), ($EquipAction)>
+ "getFirstEquipped"(arg0: $ItemStackBasedPredicate$$Type, arg1: $EquipmentChecking$$Type): $SlotEntryReference
+ "getFirstEquipped"(item: $Item$$Type): $SlotEntryReference
+ "getFirstEquipped"(item: $Item$$Type, check: $EquipmentChecking$$Type): $SlotEntryReference
+ "getFirstEquipped"(predicate: $Predicate$$Type<($ItemStack)>): $SlotEntryReference
+ "getFirstEquipped"(predicate: $Predicate$$Type<($ItemStack)>, check: $EquipmentChecking$$Type): $SlotEntryReference
 /**
  * 
  * @deprecated
  */
- "equipAccessory"(stack: $ItemStack$$Type): $Pair<($SlotReference), ($List<($ItemStack)>)>
+ "isAnotherEquipped"(slotReference: $SlotReference$$Type, predicate: $Predicate$$Type<($ItemStack)>): boolean
+ "isAnotherEquipped"(stack: $ItemStack$$Type, slotReference: $SlotReference$$Type, item: $Item$$Type): boolean
+/**
+ * 
+ * @deprecated
+ */
+ "isAnotherEquipped"(slotReference: $SlotReference$$Type, item: $Item$$Type): boolean
+ "isAnotherEquipped"(stack: $ItemStack$$Type, slotReference: $SlotReference$$Type, predicate: $Predicate$$Type<($ItemStack)>): boolean
+ "isAnotherEquipped"(stack: $ItemStack$$Type, slotReference: $SlotReference$$Type, predicate: $ItemStackBasedPredicate$$Type): boolean
+ "removeSlotModifiers"(arg0: $Multimap$$Type<(StringJS), ($AttributeModifier$$Type)>): void
+ "getSlotModifiers"(): $Multimap<(StringJS), ($AttributeModifier)>
+ "clearSlotModifiers"(): void
+ "attemptToEquipAccessory"(stack: $ItemStack$$Type): $SlotReference
+ "attemptToEquipAccessory"(stack: $ItemStack$$Type, allowSwapping: boolean): $Pair<($SlotReference), ($Optional<($ItemStack)>)>
+ "addTransientSlotModifiers"(arg0: $Multimap$$Type<(StringJS), ($AttributeModifier$$Type)>): void
+ "addPersistentSlotModifiers"(arg0: $Multimap$$Type<(StringJS), ($AttributeModifier$$Type)>): void
+ "clearCachedSlotModifiers"(): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4232,23 +4232,23 @@ import {$DataComponentType, $DataComponentType$$Type} from "net.minecraft.core.c
 export class $ItemStackBasedPredicate implements $Predicate<($ItemStack)> {
 
 
-public "name"(): string
+public "name"(): StringJS
 public "equals"(other: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "test"(arg0: $ItemStack$$Type): boolean
 public "test"(arg0: any): boolean
-public static "ofItem"(name: string, item: $Item$$Type): $ItemStackBasedPredicate
+public "test"(arg0: $ItemStack$$Type): boolean
+public static "ofItem"(name: StringJS, item: $Item$$Type): $ItemStackBasedPredicate
 public static "ofItem"(item: $Item$$Type): $ItemStackBasedPredicate
-public static "ofPredicate"(name: string, predicate: $Predicate$$Type<($ItemStack)>): $ItemStackBasedPredicate
+public static "ofPredicate"(name: StringJS, predicate: $Predicate$$Type<($ItemStack)>): $ItemStackBasedPredicate
 public static "ofPredicate"(predicate: $Predicate$$Type<($ItemStack)>): $ItemStackBasedPredicate
 public static "ofComponents"(...dataComponentTypes: ($DataComponentType$$Type<(any)>)[]): $ItemStackBasedPredicate
-public static "ofComponents"(name: string, ...dataComponentTypes: ($DataComponentType$$Type<(any)>)[]): $ItemStackBasedPredicate
-public "extraStringData"(): string
+public static "ofComponents"(name: StringJS, ...dataComponentTypes: ($DataComponentType$$Type<(any)>)[]): $ItemStackBasedPredicate
+public "extraStringData"(): StringJS
 public "or"(arg0: $Predicate$$Type<($ItemStack)>): $Predicate<($ItemStack)>
+public static "not"<T>(arg0: $Predicate$$Type<($ItemStack)>): $Predicate<($ItemStack)>
 public "negate"(): $Predicate<($ItemStack)>
 public "and"(arg0: $Predicate$$Type<($ItemStack)>): $Predicate<($ItemStack)>
-public static "not"<T>(arg0: $Predicate$$Type<($ItemStack)>): $Predicate<($ItemStack)>
 public static "isEqual"<T>(arg0: any): $Predicate<($ItemStack)>
 }
 /**
@@ -4270,11 +4270,11 @@ import {$Matrix4f, $Matrix4f$$Type} from "org.joml.Matrix4f"
 
 export interface $MatrixStackTransformer {
 
- "scale"(x: float, y: float, z: float): $MatrixStackTransformer
- "multiply"(quaternion: $Quaternionf$$Type): $MatrixStackTransformer
- "multiply"(quaternion: $Quaternionf$$Type, originX: float, originY: float, originZ: float): $MatrixStackTransformer
  "push"(): $MatrixStackTransformer
  "pop"(): $MatrixStackTransformer
+ "multiply"(quaternion: $Quaternionf$$Type): $MatrixStackTransformer
+ "multiply"(quaternion: $Quaternionf$$Type, originX: float, originY: float, originZ: float): $MatrixStackTransformer
+ "scale"(x: float, y: float, z: float): $MatrixStackTransformer
  "translate"(x: double, y: double, z: double): $MatrixStackTransformer
  "translate"(x: float, y: float, z: float): $MatrixStackTransformer
  "getMatrixStack"(): $PoseStack
@@ -4288,11 +4288,11 @@ const probejs$$marker: never
 export class $MatrixStackTransformer$$Static implements $MatrixStackTransformer {
 
 
- "scale"(x: float, y: float, z: float): $MatrixStackTransformer
- "multiply"(quaternion: $Quaternionf$$Type): $MatrixStackTransformer
- "multiply"(quaternion: $Quaternionf$$Type, originX: float, originY: float, originZ: float): $MatrixStackTransformer
  "push"(): $MatrixStackTransformer
  "pop"(): $MatrixStackTransformer
+ "multiply"(quaternion: $Quaternionf$$Type): $MatrixStackTransformer
+ "multiply"(quaternion: $Quaternionf$$Type, originX: float, originY: float, originZ: float): $MatrixStackTransformer
+ "scale"(x: float, y: float, z: float): $MatrixStackTransformer
  "translate"(x: double, y: double, z: double): $MatrixStackTransformer
  "translate"(x: float, y: float, z: float): $MatrixStackTransformer
  "getMatrixStack"(): $PoseStack
@@ -4315,11 +4315,11 @@ import {$SerializationAttribute$WithValue, $SerializationAttribute$WithValue$$Ty
 import {$SerializationAttribute$Marker, $SerializationAttribute$Marker$$Type} from "io.wispforest.endec.SerializationAttribute$Marker"
 
 export class $SerializationAttribute {
-readonly "name": string
+readonly "name": StringJS
 
 
-public static "withValue"<T>(arg0: string): $SerializationAttribute$WithValue<(T)>
-public static "marker"(arg0: string): $SerializationAttribute$Marker
+public static "marker"(arg0: StringJS): $SerializationAttribute$Marker
+public static "withValue"<T>(arg0: StringJS): $SerializationAttribute$WithValue<(T)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4375,20 +4375,20 @@ import {$Record, $Record$$Type} from "java.lang.Record"
 
 export class $SlotTypeReference extends $Record {
 
-constructor(slotName: string)
+constructor(slotName: StringJS)
 
 public "get"(level: $Level$$Type): $SlotType
 public "get"(isClientSide: boolean): $SlotType
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
-public "slotName"(): string
+public "slotName"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $SlotTypeReference$$Type = ({"slotName"?: string}) | ([slotName?: string]);
+export type $SlotTypeReference$$Type = ({"slotName"?: StringJS}) | ([slotName?: StringJS]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -4405,7 +4405,7 @@ export class $OwoItemGroup$ScrollerTextures extends $Record {
 constructor(enabled: $ResourceLocation$$Type, disabled: $ResourceLocation$$Type)
 
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "enabled"(): $ResourceLocation
 public "disabled"(): $ResourceLocation
@@ -4414,7 +4414,7 @@ public "disabled"(): $ResourceLocation
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $OwoItemGroup$ScrollerTextures$$Type = ({"disabled"?: $ResourceLocation$$Type, "enabled"?: $ResourceLocation$$Type}) | ([disabled?: $ResourceLocation$$Type, enabled?: $ResourceLocation$$Type]);
+export type $OwoItemGroup$ScrollerTextures$$Type = ({"enabled"?: $ResourceLocation$$Type, "disabled"?: $ResourceLocation$$Type}) | ([enabled?: $ResourceLocation$$Type, disabled?: $ResourceLocation$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -4428,8 +4428,8 @@ import {$Runnable, $Runnable$$Type} from "java.lang.Runnable"
 
 export interface $ComponentExtension<T extends $Component> {
 
- "allowIndividualOverdraw"(arg0: boolean): T
  "allowIndividualOverdraw"(): boolean
+ "allowIndividualOverdraw"(arg0: boolean): T
 }
 
 export namespace $ComponentExtension {
@@ -4439,9 +4439,9 @@ const probejs$$marker: never
 export class $ComponentExtension$$Static<T extends $Component> implements $ComponentExtension {
 
 
- "allowIndividualOverdraw"(arg0: boolean): T
- "allowIndividualOverdraw"(): boolean
 static "bypassCheck"(component: $Component$$Type, runnable: $Runnable$$Type): void
+ "allowIndividualOverdraw"(): boolean
+ "allowIndividualOverdraw"(arg0: boolean): T
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4457,8 +4457,8 @@ export type $ComponentExtension_<T> = $ComponentExtension$$Type<(T)>;
 }}
 declare module "io.wispforest.owo.util.pond.OwoScreenExtension" {
 import {$ParentComponent, $ParentComponent$$Type} from "io.wispforest.owo.ui.core.ParentComponent"
-import {$Layer, $Layer$$Type} from "io.wispforest.owo.ui.layers.Layer"
 import {$Layer$Instance, $Layer$Instance$$Type} from "io.wispforest.owo.ui.layers.Layer$Instance"
+import {$Layer, $Layer$$Type} from "io.wispforest.owo.ui.layers.Layer"
 import {$Screen, $Screen$$Type} from "net.minecraft.client.gui.screens.Screen"
 import {$List, $List$$Type} from "java.util.List"
 
@@ -4586,8 +4586,8 @@ export type $TextFieldWidgetAccessor_ = $TextFieldWidgetAccessor$$Type;
 }}
 declare module "io.wispforest.accessories.api.client.ArmorRenderingExtension" {
 import {$AccessoryRenderer, $AccessoryRenderer$$Type} from "io.wispforest.accessories.api.client.AccessoryRenderer"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$MultiBufferSource, $MultiBufferSource$$Type} from "net.minecraft.client.renderer.MultiBufferSource"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$EquipmentSlot, $EquipmentSlot$$Type} from "net.minecraft.world.entity.EquipmentSlot"
 import {$PoseStack, $PoseStack$$Type} from "com.mojang.blaze3d.vertex.PoseStack"
 import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
@@ -4748,14 +4748,14 @@ declare global {
 export type $EquipAction_ = $EquipAction$$Type;
 }}
 declare module "io.wispforest.accessories.pond.stack.PatchedDataComponentMapExtension" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$ItemStackMutation, $ItemStackMutation$$Type} from "io.wispforest.accessories.utils.ItemStackMutation"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$EventStream, $EventStream$$Type} from "io.wispforest.owo.util.EventStream"
 
 export interface $PatchedDataComponentMapExtension {
 
- "accessories$getMutationEvent"(arg0: $ItemStack$$Type): $EventStream<($ItemStackMutation)>
  "accessories$hasChanged"(): boolean
+ "accessories$getMutationEvent"(arg0: $ItemStack$$Type): $EventStream<($ItemStackMutation)>
 }
 
 export namespace $PatchedDataComponentMapExtension {
@@ -4764,8 +4764,8 @@ const probejs$$marker: never
 export class $PatchedDataComponentMapExtension$$Static implements $PatchedDataComponentMapExtension {
 
 
- "accessories$getMutationEvent"(arg0: $ItemStack$$Type): $EventStream<($ItemStackMutation)>
  "accessories$hasChanged"(): boolean
+ "accessories$getMutationEvent"(arg0: $ItemStack$$Type): $EventStream<($ItemStackMutation)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4793,8 +4793,8 @@ import {$MapCarrier, $MapCarrier$$Type} from "io.wispforest.endec.util.MapCarrie
 import {$PlayerEquipControl, $PlayerEquipControl$$Type} from "io.wispforest.accessories.impl.PlayerEquipControl"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$AccessoriesCapability, $AccessoriesCapability$$Type} from "io.wispforest.accessories.api.AccessoriesCapability"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Set, $Set$$Type} from "java.util.Set"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AccessoriesHolderLookupCache, $AccessoriesHolderLookupCache$$Type} from "io.wispforest.accessories.impl.caching.AccessoriesHolderLookupCache"
 
 export class $AccessoriesHolderImpl implements $AccessoriesHolder, $InstanceEndec {
@@ -4806,9 +4806,21 @@ constructor()
 public static "of"(): $AccessoriesHolderImpl
 public "init"(capability: $AccessoriesCapability$$Type): void
 public "write"(carrier: $MapCarrier$$Type, ctx: $SerializationContext$$Type): void
-public "read"(entity: $LivingEntity$$Type, carrier: $MapCarrier$$Type, ctx: $SerializationContext$$Type): void
 public "read"(capability: $AccessoriesCapability$$Type, entity: $LivingEntity$$Type, carrier: $MapCarrier$$Type, ctx: $SerializationContext$$Type): void
+public "read"(entity: $LivingEntity$$Type, carrier: $MapCarrier$$Type, ctx: $SerializationContext$$Type): void
 public "read"(carrier: $MapCarrier$$Type, context: $SerializationContext$$Type): void
+public "equipControl"(): $PlayerEquipControl
+public "equipControl"(value: $PlayerEquipControl$$Type): $AccessoriesHolder
+public "columnAmount"(): integer
+public "columnAmount"(value: integer): $AccessoriesHolder
+public "widgetType"(): integer
+public "widgetType"(value: integer): $AccessoriesHolder
+public "filteredGroups"(): $Set<(StringJS)>
+public "filteredGroups"(value: $Set$$Type<(StringJS)>): $AccessoriesHolder
+public "setValidTypes"(validTypes: $Set$$Type<(StringJS)>): void
+public "cosmeticsShown"(value: boolean): $AccessoriesHolder
+public "cosmeticsShown"(): boolean
+public "getLookupCache"(): $AccessoriesHolderLookupCache
 public "showAdvancedOptions"(): boolean
 public "showAdvancedOptions"(value: boolean): $AccessoriesHolder
 public "showUnusedSlots"(value: boolean): $AccessoriesHolder
@@ -4819,34 +4831,12 @@ public "mainWidgetPosition"(): boolean
 public "mainWidgetPosition"(value: boolean): $AccessoriesHolder
 public "sideWidgetPosition"(value: boolean): $AccessoriesHolder
 public "sideWidgetPosition"(): boolean
-public "showCraftingGrid"(): boolean
 public "showCraftingGrid"(value: boolean): $AccessoriesHolder
-public "isGroupFiltersOpen"(value: boolean): $AccessoriesHolder
+public "showCraftingGrid"(): boolean
 public "isGroupFiltersOpen"(): boolean
-public "getSlotContainers"(): $Map<(string), ($AccessoriesContainer)>
-public "equipControl"(): $PlayerEquipControl
-public "equipControl"(value: $PlayerEquipControl$$Type): $AccessoriesHolder
-public "columnAmount"(value: integer): $AccessoriesHolder
-public "columnAmount"(): integer
-public "widgetType"(): integer
-public "widgetType"(value: integer): $AccessoriesHolder
-public "filteredGroups"(value: $Set$$Type<(string)>): $AccessoriesHolder
-public "filteredGroups"(): $Set<(string)>
-public "setValidTypes"(validTypes: $Set$$Type<(string)>): void
-public "cosmeticsShown"(value: boolean): $AccessoriesHolder
-public "cosmeticsShown"(): boolean
-public "getLookupCache"(): $AccessoriesHolderLookupCache
+public "isGroupFiltersOpen"(value: boolean): $AccessoriesHolder
+public "getSlotContainers"(): $Map<(StringJS), ($AccessoriesContainer)>
 public static "get"(livingEntity: $LivingEntity$$Type): $AccessoriesHolder
-/**
- * 
- * @deprecated
- */
-public "showUniqueSlots"(): boolean
-/**
- * 
- * @deprecated
- */
-public "showUniqueSlots"(value: boolean): $AccessoriesHolder
 /**
  * 
  * @deprecated
@@ -4858,11 +4848,21 @@ public "linesShown"(): boolean
  */
 public "linesShown"(value: boolean): $AccessoriesHolder
 public static "getOptionally"(livingEntity: $LivingEntity$$Type): $Optional<($AccessoriesHolder)>
+/**
+ * 
+ * @deprecated
+ */
+public "showUniqueSlots"(): boolean
+/**
+ * 
+ * @deprecated
+ */
+public "showUniqueSlots"(value: boolean): $AccessoriesHolder
 public static "constructed"<T extends $InstanceEndec>(supplier: $Supplier$$Type<(T)>): $Endec<(T)>
-get "groupFiltersOpen"(): boolean
-get "slotContainers"(): $Map<(string), ($AccessoriesContainer)>
-set "validTypes"(value: $Set$$Type<(string)>)
+set "validTypes"(value: $Set$$Type<(StringJS)>)
 get "lookupCache"(): $AccessoriesHolderLookupCache
+get "groupFiltersOpen"(): boolean
+get "slotContainers"(): $Map<(StringJS), ($AccessoriesContainer)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4954,7 +4954,7 @@ static readonly "DROP": $DropRule
 
 
 public static "values"(): ($DropRule)[]
-public static "valueOf"(name: string): $DropRule
+public static "valueOf"(name: StringJS): $DropRule
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -4978,10 +4978,10 @@ export class $EquipmentLookupCache {
 
 
 public "clearCache"(): void
-public "isEquipped"(arg0: $ItemStackBasedPredicate$$Type): boolean
 public "getEquipped"(arg0: $ItemStackBasedPredicate$$Type): $List<($SlotEntryReference)>
-public "getAllEquipped"(): $List<($SlotEntryReference)>
+public "isEquipped"(arg0: $ItemStackBasedPredicate$$Type): boolean
 public "firstEquipped"(arg0: $ItemStackBasedPredicate$$Type, arg1: $EquipmentChecking$$Type): $SlotEntryReference
+public "getAllEquipped"(): $List<($SlotEntryReference)>
 get "allEquipped"(): $List<($SlotEntryReference)>
 }
 /**
@@ -5006,22 +5006,22 @@ import {$Record, $Record$$Type} from "java.lang.Record"
 export class $AccessoryItemAttributeModifiers$Entry extends $Record {
 static readonly "ENDEC": $Endec<($AccessoryItemAttributeModifiers$Entry)>
 
-constructor(attribute: $Holder$$Type<($Attribute)>, modifier: $AttributeModifier$$Type, slotName: string, isStackable: boolean)
+constructor(attribute: $Holder$$Type<($Attribute)>, modifier: $AttributeModifier$$Type, slotName: StringJS, isStackable: boolean)
 
-public "equals"(o: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "modifier"(): $AttributeModifier
 public "attribute"(): $Holder<($Attribute)>
+public "modifier"(): $AttributeModifier
+public "equals"(o: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+public "slotName"(): StringJS
 public "isStackable"(): boolean
-public "slotName"(): string
 get "stackable"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $AccessoryItemAttributeModifiers$Entry$$Type = ({"modifier"?: $AttributeModifier$$Type, "isStackable"?: boolean, "slotName"?: string, "attribute"?: $Holder$$Type<($Attribute)>}) | ([modifier?: $AttributeModifier$$Type, isStackable?: boolean, slotName?: string, attribute?: $Holder$$Type<($Attribute)>]);
+export type $AccessoryItemAttributeModifiers$Entry$$Type = ({"attribute"?: $Holder$$Type<($Attribute)>, "modifier"?: $AttributeModifier$$Type, "isStackable"?: boolean, "slotName"?: StringJS}) | ([attribute?: $Holder$$Type<($Attribute)>, modifier?: $AttributeModifier$$Type, isStackable?: boolean, slotName?: StringJS]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -5064,8 +5064,8 @@ export type $OwoTessellatorExtension_ = $OwoTessellatorExtension$$Type;
 declare module "io.wispforest.owo.ui.parsing.UIModel" {
 import {$ParentComponent, $ParentComponent$$Type} from "io.wispforest.owo.ui.core.ParentComponent"
 import {$Component, $Component$$Type} from "io.wispforest.owo.ui.core.Component"
-import {$Map, $Map$$Type} from "java.util.Map"
 import {$Element, $Element$$Type} from "org.w3c.dom.Element"
+import {$Map, $Map$$Type} from "java.util.Map"
 import {$Screen, $Screen$$Type} from "net.minecraft.client.gui.screens.Screen"
 import {$OwoUIAdapter, $OwoUIAdapter$$Type} from "io.wispforest.owo.ui.core.OwoUIAdapter"
 import {$Function, $Function$$Type} from "java.util.function.Function"
@@ -5078,11 +5078,11 @@ export class $UIModel {
 
 public static "load"(stream: $InputStream$$Type): $UIModel
 public static "load"(path: $Path$$Type): $UIModel
-public "createAdapterWithoutScreen"<T extends $ParentComponent>(x: integer, y: integer, width: integer, height: integer, expectedRootComponentClass: $Class$$Type<(T)>): $OwoUIAdapter<(T)>
+public "expandTemplate"<T extends $Component>(expectedClass: $Class$$Type<(T)>, name: StringJS, parameterSupplier: $Function$$Type<(StringJS), (StringJS)>, childSupplier: $Function$$Type<(StringJS), ($Element$$Type)>): T
+public "expandTemplate"<T extends $Component>(expectedClass: $Class$$Type<(T)>, name: StringJS, parameters: $Map$$Type<(StringJS), (StringJS)>): T
 public "createAdapter"<T extends $ParentComponent>(expectedRootComponentClass: $Class$$Type<(T)>, screen: $Screen$$Type): $OwoUIAdapter<(T)>
-public "expandTemplate"<T extends $Component>(expectedClass: $Class$$Type<(T)>, name: string, parameterSupplier: $Function$$Type<(string), (string)>, childSupplier: $Function$$Type<(string), ($Element$$Type)>): T
-public "expandTemplate"<T extends $Component>(expectedClass: $Class$$Type<(T)>, name: string, parameters: $Map$$Type<(string), (string)>): T
 public "parseComponent"<T extends $Component>(expectedClass: $Class$$Type<(T)>, componentElement: $Element$$Type): T
+public "createAdapterWithoutScreen"<T extends $ParentComponent>(x: integer, y: integer, width: integer, height: integer, expectedRootComponentClass: $Class$$Type<(T)>): $OwoUIAdapter<(T)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5103,20 +5103,20 @@ import {$Component, $Component$$Type} from "io.wispforest.owo.ui.core.Component"
 import {$CursorStyle, $CursorStyle$$Type} from "io.wispforest.owo.ui.core.CursorStyle"
 import {$PositionedRectangle, $PositionedRectangle$$Type} from "io.wispforest.owo.ui.core.PositionedRectangle"
 import {$BaseComponent, $BaseComponent$$Type} from "io.wispforest.owo.ui.base.BaseComponent"
+import {$Positioning, $Positioning$$Type} from "io.wispforest.owo.ui.core.Positioning"
 import {$Runnable, $Runnable$$Type} from "java.lang.Runnable"
 import {$Insets, $Insets$$Type} from "io.wispforest.owo.ui.core.Insets"
-import {$Size, $Size$$Type} from "io.wispforest.owo.ui.core.Size"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
+import {$Size, $Size$$Type} from "io.wispforest.owo.ui.core.Size"
 
 export class $VanillaWidgetComponent extends $BaseComponent {
 
 
+public "configure"<C extends $Component>(closure: $Consumer$$Type<(C)>): C
 public "inflate"(space: $Size$$Type): void
 public "mount"(parent: $ParentComponent$$Type, x: integer, y: integer): void
-public "configure"<C extends $Component>(closure: $Consumer$$Type<(C)>): C
 public "draw"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
-public "shouldDrawTooltip"(mouseX: double, mouseY: double): boolean
-public "notifyParentIfMounted"(): void
+public "hovered"(): boolean
 public "margins"(margins: $Insets$$Type): $BaseComponent
 public "onMouseDown"(mouseX: double, mouseY: double, button: integer): boolean
 public "onMouseUp"(mouseX: double, mouseY: double, button: integer): boolean
@@ -5126,7 +5126,9 @@ public "onKeyPress"(keyCode: integer, scanCode: integer, modifiers: integer): bo
 public "onCharTyped"(chr: character, modifiers: integer): boolean
 public "updateX"(x: integer): void
 public "updateY"(y: integer): void
-public "hovered"(): boolean
+public "notifyParentIfMounted"(): void
+public "shouldDrawTooltip"(mouseX: double, mouseY: double): boolean
+public "positioning"(arg0: $Positioning$$Type): $Component
 public "cursorStyle"(arg0: $CursorStyle$$Type): $Component
 public static "bypassCheck"(component: $Component$$Type, runnable: $Runnable$$Type): void
 public static "of"(x: integer, y: integer, size: $Size$$Type): $PositionedRectangle
@@ -5145,9 +5147,9 @@ declare global {
 export type $VanillaWidgetComponent_ = $VanillaWidgetComponent$$Type;
 }}
 declare module "io.wispforest.owo.serialization.EndecRecipeSerializer" {
-import {$Endec, $Endec$$Type} from "io.wispforest.endec.Endec"
-import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
 import {$StructEndec, $StructEndec$$Type} from "io.wispforest.endec.StructEndec"
+import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
+import {$Endec, $Endec$$Type} from "io.wispforest.endec.Endec"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
 import {$Recipe, $Recipe$$Type} from "net.minecraft.world.item.crafting.Recipe"
 import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.item.crafting.RecipeSerializer"
@@ -5158,9 +5160,9 @@ export class $EndecRecipeSerializer<R extends $Recipe<(any)>> implements $Recipe
 constructor(endec: $StructEndec$$Type<(R)>, networkEndec: $Endec$$Type<(R)>)
 constructor(endec: $StructEndec$$Type<(R)>)
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (R)>
 public "codec"(): $MapCodec<(R)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), (R)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5213,25 +5215,25 @@ static readonly "DARK_PANEL_NINE_PATCH_TEXTURE": $ResourceLocation
 static readonly "MAX_GUI_Z": float
 
 
-public "recording"(): boolean
 public static "of"(context: $GuiGraphics$$Type): $OwoUIDrawContext
+public "recording"(): boolean
+public "drawPanel"(x: integer, y: integer, width: integer, height: integer, dark: boolean): void
 public static "utilityScreen"(): $OwoUIDrawContext$UtilityScreen
-public "drawRectOutline"(x: integer, y: integer, width: integer, height: integer, color: integer): void
-public "drawGradientRect"(x: integer, y: integer, width: integer, height: integer, topLeftColor: integer, topRightColor: integer, bottomRightColor: integer, bottomLeftColor: integer): void
 public "drawLine"(x1: integer, y1: integer, x2: integer, y2: integer, thiccness: double, color: $Color$$Type): void
 public "recordQuads"(): void
 public "submitQuads"(): void
-public "drawPanel"(x: integer, y: integer, width: integer, height: integer, dark: boolean): void
 public "drawSpectrum"(x: integer, y: integer, width: integer, height: integer, vertical: boolean): void
-public "drawCircle"(centerX: integer, centerY: integer, angleFrom: double, angleTo: double, segments: integer, radius: double, color: $Color$$Type): void
+public "drawText"(text: $Component$$Type, x: float, y: float, scale: float, color: integer, anchorPoint: $OwoUIDrawContext$TextAnchor$$Type): void
+public "drawText"(text: $Component$$Type, x: float, y: float, scale: float, color: integer): void
 public "drawCircle"(centerX: integer, centerY: integer, segments: integer, radius: double, color: $Color$$Type): void
+public "drawCircle"(centerX: integer, centerY: integer, angleFrom: double, angleTo: double, segments: integer, radius: double, color: $Color$$Type): void
 public "drawRing"(centerX: integer, centerY: integer, segments: integer, innerRadius: double, outerRadius: double, innerColor: $Color$$Type, outerColor: $Color$$Type): void
 public "drawRing"(centerX: integer, centerY: integer, angleFrom: double, angleTo: double, segments: integer, innerRadius: double, outerRadius: double, innerColor: $Color$$Type, outerColor: $Color$$Type): void
 public "drawInsets"(x: integer, y: integer, width: integer, height: integer, insets: $Insets$$Type, color: integer): void
 public "drawInspector"(root: $ParentComponent$$Type, mouseX: double, mouseY: double, onlyHovered: boolean): void
-public "drawText"(text: $Component$$Type, x: float, y: float, scale: float, color: integer): void
-public "drawText"(text: $Component$$Type, x: float, y: float, scale: float, color: integer, anchorPoint: $OwoUIDrawContext$TextAnchor$$Type): void
 public "drawTooltip"(textRenderer: $Font$$Type, x: integer, y: integer, components: $List$$Type<($ClientTooltipComponent$$Type)>): void
+public "drawRectOutline"(x: integer, y: integer, width: integer, height: integer, color: integer): void
+public "drawGradientRect"(x: integer, y: integer, width: integer, height: integer, topLeftColor: integer, topRightColor: integer, bottomRightColor: integer, bottomLeftColor: integer): void
 public static "bufferSource"(arg0: $GuiGraphics$$Type): $MultiBufferSource
 }
 /**
@@ -5247,9 +5249,9 @@ declare global {
 export type $OwoUIDrawContext_ = $OwoUIDrawContext$$Type;
 }}
 declare module "io.wispforest.owo.itemgroup.OwoItemGroup$Builder" {
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$OwoItemGroup$ScrollerTextures, $OwoItemGroup$ScrollerTextures$$Type} from "io.wispforest.owo.itemgroup.OwoItemGroup$ScrollerTextures"
 import {$OwoItemGroup, $OwoItemGroup$$Type} from "io.wispforest.owo.itemgroup.OwoItemGroup"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$OwoItemGroup$TabTextures, $OwoItemGroup$TabTextures$$Type} from "io.wispforest.owo.itemgroup.OwoItemGroup$TabTextures"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 
@@ -5258,12 +5260,12 @@ export class $OwoItemGroup$Builder {
 
 public "build"(): $OwoItemGroup
 public "initializer"(initializer: $Consumer$$Type<($OwoItemGroup)>): $OwoItemGroup$Builder
+public "tabTextures"(tabTextures: $OwoItemGroup$TabTextures$$Type): $OwoItemGroup$Builder
+public "tabStackHeight"(tabStackHeight: integer): $OwoItemGroup$Builder
 public "backgroundTexture"(backgroundTexture: $ResourceLocation$$Type): $OwoItemGroup$Builder
 public "scrollerTextures"(scrollerTextures: $OwoItemGroup$ScrollerTextures$$Type): $OwoItemGroup$Builder
 public "displaySingleTab"(): $OwoItemGroup$Builder
 public "buttonStackHeight"(buttonStackHeight: integer): $OwoItemGroup$Builder
-public "tabTextures"(tabTextures: $OwoItemGroup$TabTextures$$Type): $OwoItemGroup$Builder
-public "tabStackHeight"(tabStackHeight: integer): $OwoItemGroup$Builder
 public "disableDynamicTitle"(): $OwoItemGroup$Builder
 public "withoutMultipleSelection"(): $OwoItemGroup$Builder
 }
@@ -5287,21 +5289,21 @@ import {$Record, $Record$$Type} from "java.lang.Record"
 
 export class $AttributeModificationData extends $Record {
 
+constructor(slotPath: StringJS, attribute: $Holder$$Type<($Attribute)>, modifier: $AttributeModifier$$Type)
 constructor(attribute: $Holder$$Type<($Attribute)>, modifier: $AttributeModifier$$Type)
-constructor(slotPath: string, attribute: $Holder$$Type<($Attribute)>, modifier: $AttributeModifier$$Type)
 
-public "equals"(o: any): boolean
-public "toString"(): string
-public "hashCode"(): integer
-public "modifier"(): $AttributeModifier
 public "attribute"(): $Holder<($Attribute)>
-public "slotPath"(): string
+public "modifier"(): $AttributeModifier
+public "equals"(o: any): boolean
+public "toString"(): StringJS
+public "hashCode"(): integer
+public "slotPath"(): StringJS
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $AttributeModificationData$$Type = ({"modifier"?: $AttributeModifier$$Type, "attribute"?: $Holder$$Type<($Attribute)>, "slotPath"?: string}) | ([modifier?: $AttributeModifier$$Type, attribute?: $Holder$$Type<($Attribute)>, slotPath?: string]);
+export type $AttributeModificationData$$Type = ({"slotPath"?: StringJS, "modifier"?: $AttributeModifier$$Type, "attribute"?: $Holder$$Type<($Attribute)>}) | ([slotPath?: StringJS, modifier?: $AttributeModifier$$Type, attribute?: $Holder$$Type<($Attribute)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -5362,7 +5364,7 @@ readonly "direction": $Direction
 
 
 public static "values"(): ($Side)[]
-public static "valueOf"(name: string): $Side
+public static "valueOf"(name: StringJS): $Side
 public "rotationAxis"(): $Vec3i
 }
 /**
@@ -5418,7 +5420,7 @@ static readonly "BOTTOM_LEFT": $OwoUIDrawContext$TextAnchor
 
 
 public static "values"(): ($OwoUIDrawContext$TextAnchor)[]
-public static "valueOf"(name: string): $OwoUIDrawContext$TextAnchor
+public static "valueOf"(name: StringJS): $OwoUIDrawContext$TextAnchor
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5473,13 +5475,13 @@ export interface $ItemBasedSteerable extends $Saddleable {
 
  "getInstance"(): $ItemBasedSteering
  "isSaddled"(): boolean
- "getSaddleSoundEvent"(): $SoundEvent
  "isSaddleable"(): boolean
  "equipSaddle"(arg0: $ItemStack$$Type, arg1: $SoundSource$$Type): void
+ "getSaddleSoundEvent"(): $SoundEvent
 get "instance"(): $ItemBasedSteering
 get "saddled"(): boolean
-get "saddleSoundEvent"(): $SoundEvent
 get "saddleable"(): boolean
+get "saddleSoundEvent"(): $SoundEvent
 }
 
 export namespace $ItemBasedSteerable {
@@ -5490,9 +5492,9 @@ export class $ItemBasedSteerable$$Static implements $ItemBasedSteerable {
 
  "getInstance"(): $ItemBasedSteering
  "isSaddled"(): boolean
- "getSaddleSoundEvent"(): $SoundEvent
  "isSaddleable"(): boolean
  "equipSaddle"(arg0: $ItemStack$$Type, arg1: $SoundSource$$Type): void
+ "getSaddleSoundEvent"(): $SoundEvent
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5515,7 +5517,7 @@ static readonly "REMOVED": $Component$DismountReason
 
 
 public static "values"(): ($Component$DismountReason)[]
-public static "valueOf"(name: string): $Component$DismountReason
+public static "valueOf"(name: StringJS): $Component$DismountReason
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5544,10 +5546,10 @@ readonly "screen": S
 
 
 public "resize"(width: integer, height: integer): void
-public "alignComponentToHandledScreenCoordinates"(component: $Component$$Type, x: integer, y: integer): void
-public "dispatchLayoutUpdates"(): void
-public "alignComponentToWidget"(locator: $Predicate$$Type<($AbstractWidget)>, anchor: $Layer$Instance$AnchorSide$$Type, justification: float, component: $Component$$Type): void
 public "queryWidget"(locator: $Predicate$$Type<($AbstractWidget)>): $AbstractWidget
+public "dispatchLayoutUpdates"(): void
+public "alignComponentToHandledScreenCoordinates"(component: $Component$$Type, x: integer, y: integer): void
+public "alignComponentToWidget"(locator: $Predicate$$Type<($AbstractWidget)>, anchor: $Layer$Instance$AnchorSide$$Type, justification: float, component: $Component$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5595,19 +5597,19 @@ export type $MouseEnter_ = $MouseEnter$$Type;
 }}
 declare module "io.wispforest.owo.mixin.ui.DrawContextInvoker" {
 import {$GuiGraphics$ScissorStack, $GuiGraphics$ScissorStack$$Type} from "net.minecraft.client.gui.GuiGraphics$ScissorStack"
-import {$List, $List$$Type} from "java.util.List"
 import {$PoseStack, $PoseStack$$Type} from "com.mojang.blaze3d.vertex.PoseStack"
-import {$Font, $Font$$Type} from "net.minecraft.client.gui.Font"
+import {$List, $List$$Type} from "java.util.List"
 import {$ClientTooltipPositioner, $ClientTooltipPositioner$$Type} from "net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipPositioner"
+import {$Font, $Font$$Type} from "net.minecraft.client.gui.Font"
 import {$ClientTooltipComponent, $ClientTooltipComponent$$Type} from "net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent"
 
 export interface $DrawContextInvoker {
 
- "owo$renderTooltipFromComponents"(arg0: $Font$$Type, arg1: $List$$Type<($ClientTooltipComponent$$Type)>, arg2: integer, arg3: integer, arg4: $ClientTooltipPositioner$$Type): void
  "owo$getMatrices"(): $PoseStack
  "owo$setMatrices"(arg0: $PoseStack$$Type): void
  "owo$getScissorStack"(): $GuiGraphics$ScissorStack
  "owo$setScissorStack"(arg0: $GuiGraphics$ScissorStack$$Type): void
+ "owo$renderTooltipFromComponents"(arg0: $Font$$Type, arg1: $List$$Type<($ClientTooltipComponent$$Type)>, arg2: integer, arg3: integer, arg4: $ClientTooltipPositioner$$Type): void
 }
 
 export namespace $DrawContextInvoker {
@@ -5616,11 +5618,11 @@ const probejs$$marker: never
 export class $DrawContextInvoker$$Static implements $DrawContextInvoker {
 
 
- "owo$renderTooltipFromComponents"(arg0: $Font$$Type, arg1: $List$$Type<($ClientTooltipComponent$$Type)>, arg2: integer, arg3: integer, arg4: $ClientTooltipPositioner$$Type): void
  "owo$getMatrices"(): $PoseStack
  "owo$setMatrices"(arg0: $PoseStack$$Type): void
  "owo$getScissorStack"(): $GuiGraphics$ScissorStack
  "owo$setScissorStack"(arg0: $GuiGraphics$ScissorStack$$Type): void
+ "owo$renderTooltipFromComponents"(arg0: $Font$$Type, arg1: $List$$Type<($ClientTooltipComponent$$Type)>, arg2: integer, arg3: integer, arg4: $ClientTooltipPositioner$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5636,23 +5638,23 @@ export type $DrawContextInvoker_ = $DrawContextInvoker$$Type;
 }}
 declare module "io.wispforest.endec.StructEndec" {
 import {$Endec, $Endec$$Type} from "io.wispforest.endec.Endec"
-import {$Endec$Decoder, $Endec$Decoder$$Type} from "io.wispforest.endec.Endec$Decoder"
 import {$SerializationAttribute, $SerializationAttribute$$Type} from "io.wispforest.endec.SerializationAttribute"
+import {$Endec$Decoder, $Endec$Decoder$$Type} from "io.wispforest.endec.Endec$Decoder"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
 import {$List, $List$$Type} from "java.util.List"
 import {$StructField, $StructField$$Type} from "io.wispforest.endec.impl.StructField"
 import {$SerializationContext, $SerializationContext$$Type} from "io.wispforest.endec.SerializationContext"
-import {$Serializer$Struct, $Serializer$Struct$$Type} from "io.wispforest.endec.Serializer$Struct"
 import {$Deserializer, $Deserializer$$Type} from "io.wispforest.endec.Deserializer"
+import {$Serializer$Struct, $Serializer$Struct$$Type} from "io.wispforest.endec.Serializer$Struct"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$AttributeEndecBuilder, $AttributeEndecBuilder$$Type} from "io.wispforest.endec.impl.AttributeEndecBuilder"
 import {$BiFunction, $BiFunction$$Type} from "java.util.function.BiFunction"
 import {$Deserializer$Struct, $Deserializer$Struct$$Type} from "io.wispforest.endec.Deserializer$Struct"
 import {$Serializer, $Serializer$$Type} from "io.wispforest.endec.Serializer"
-import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Endec$Encoder, $Endec$Encoder$$Type} from "io.wispforest.endec.Endec$Encoder"
 import {$Set, $Set$$Type} from "java.util.Set"
 import {$Class, $Class$$Type} from "java.lang.Class"
@@ -5664,77 +5666,77 @@ export interface $StructEndec<T> extends $Endec<(T)> {
  "decode"(arg0: $SerializationContext$$Type, arg1: $Deserializer$$Type<(any)>): T
  "encode"(arg0: $SerializationContext$$Type, arg1: $Serializer$$Type<(any)>, arg2: T): void
  "xmap"<R>(arg0: $Function$$Type<(T), (R)>, arg1: $Function$$Type<(R), (T)>): $StructEndec<(R)>
- "xmapWithContext"(arg0: $BiFunction$$Type<(any), (any), (any)>, arg1: $BiFunction$$Type<(any), (any), (any)>): $Endec<(any)>
  "flatFieldOf"<S>(arg0: $Function$$Type<(S), (T)>): $StructField<(S), (T)>
  "encodeStruct"(arg0: $SerializationContext$$Type, arg1: $Serializer$$Type<(any)>, arg2: $Serializer$Struct$$Type, arg3: T): void
  "decodeStruct"(arg0: $SerializationContext$$Type, arg1: $Deserializer$$Type<(any)>, arg2: $Deserializer$Struct$$Type): T
- "validate"(arg0: $Consumer$$Type<(T)>): $Endec<(T)>
+ "xmapWithContext"<R>(arg0: $BiFunction$$Type<($SerializationContext), (T), (R)>, arg1: $BiFunction$$Type<($SerializationContext), (R), (T)>): $StructEndec<(R)>
  "optionalOf"(): $Endec<($Optional<(T)>)>
- "fieldOf"<S>(arg0: string, arg1: $Function$$Type<(S), (T)>): $StructField<(S), (T)>
+ "validate"(arg0: $Consumer$$Type<(T)>): $Endec<(T)>
+ "keyed"(arg0: StringJS, arg1: $Supplier$$Type<(T)>): $KeyedEndec<(T)>
+ "keyed"(arg0: StringJS, arg1: T): $KeyedEndec<(T)>
+ "setOf"(): $Endec<($Set<(T)>)>
+ "mapOf"(): $Endec<($Map<(StringJS), (T)>)>
+ "listOf"(): $Endec<($List<(T)>)>
+ "fieldOf"<S>(arg0: StringJS, arg1: $Function$$Type<(S), (T)>): $StructField<(S), (T)>
+ "encodeFully"<E>(arg0: $SerializationContext$$Type, arg1: $Supplier$$Type<($Serializer$$Type<(E)>)>, arg2: T): E
+ "encodeFully"<E>(arg0: $Supplier$$Type<($Serializer$$Type<(E)>)>, arg1: T): E
  "decodeFully"<E>(arg0: $Function$$Type<(E), ($Deserializer$$Type<(E)>)>, arg1: E): T
  "decodeFully"<E>(arg0: $SerializationContext$$Type, arg1: $Function$$Type<(E), ($Deserializer$$Type<(E)>)>, arg2: E): T
- "encodeFully"<E>(arg0: $Supplier$$Type<($Serializer$$Type<(E)>)>, arg1: T): E
- "encodeFully"<E>(arg0: $SerializationContext$$Type, arg1: $Supplier$$Type<($Serializer$$Type<(E)>)>, arg2: T): E
- "setOf"(): $Endec<($Set<(T)>)>
- "keyed"(arg0: string, arg1: $Supplier$$Type<(T)>): $KeyedEndec<(T)>
- "keyed"(arg0: string, arg1: T): $KeyedEndec<(T)>
- "listOf"(): $Endec<($List<(T)>)>
- "mapOf"(): $Endec<($Map<(string), (T)>)>
- "optionalFieldOf"<S>(arg0: string, arg1: $Function$$Type<(S), (T)>, arg2: $Supplier$$Type<(T)>): $StructField<(S), (T)>
- "optionalFieldOf"<S>(arg0: string, arg1: $Function$$Type<(S), (T)>, arg2: T): $StructField<(S), (T)>
  "catchErrors"(arg0: $Endec$DecoderWithError$$Type<(T)>): $Endec<(T)>
  "nullableOf"(): $Endec<(T)>
+ "optionalFieldOf"<S>(arg0: StringJS, arg1: $Function$$Type<(S), (T)>, arg2: T): $StructField<(S), (T)>
+ "optionalFieldOf"<S>(arg0: StringJS, arg1: $Function$$Type<(S), (T)>, arg2: $Supplier$$Type<(T)>): $StructField<(S), (T)>
 }
 
 export namespace $StructEndec {
 function unit<T>(arg0: T): $StructEndec<(T)>
 function unit<T>(arg0: $Supplier$$Type<(T)>): $StructEndec<(T)>
 function map<K, V>(arg0: $Endec$$Type<(K)>, arg1: $Endec$$Type<(V)>): $Endec<($Map<(K), (V)>)>
-function map<K, V>(arg0: $Function$$Type<(K), (string)>, arg1: $Function$$Type<(string), (K)>, arg2: $Endec$$Type<(V)>): $Endec<($Map<(K), (V)>)>
+function map<K, V>(arg0: $Function$$Type<(K), (StringJS)>, arg1: $Function$$Type<(StringJS), (K)>, arg2: $Endec$$Type<(V)>): $Endec<($Map<(K), (V)>)>
 function of<T>(arg0: $Endec$Encoder$$Type<(T)>, arg1: $Endec$Decoder$$Type<(T)>): $Endec<(T)>
-function dispatched<T, K>(arg0: $Function$$Type<(K), ($Endec$$Type<(T)>)>, arg1: $Function$$Type<(T), (K)>, arg2: $Endec$$Type<(K)>): $Endec<(T)>
 function ifAttr<T>(arg0: $SerializationAttribute$$Type, arg1: $Endec$$Type<(T)>): $AttributeEndecBuilder<(T)>
-function dispatchedStruct<T, K>(arg0: $Function$$Type<(K), ($StructEndec$$Type<(T)>)>, arg1: $Function$$Type<(T), (K)>, arg2: $Endec$$Type<(K)>, arg3: string): $Endec<(T)>
-function dispatchedStruct<T, K>(arg0: $Function$$Type<(K), ($StructEndec$$Type<(T)>)>, arg1: $Function$$Type<(T), (K)>, arg2: $Endec$$Type<(K)>): $Endec<(T)>
 function forEnum<E extends $Enum<(E)>>(arg0: $Class$$Type<(E)>): $Endec<(E)>
+function dispatched<T, K>(arg0: $Function$$Type<(K), ($Endec$$Type<(T)>)>, arg1: $Function$$Type<(T), (K)>, arg2: $Endec$$Type<(K)>): $Endec<(T)>
+function dispatchedStruct<T, K>(arg0: $Function$$Type<(K), ($StructEndec$$Type<(T)>)>, arg1: $Function$$Type<(T), (K)>, arg2: $Endec$$Type<(K)>, arg3: StringJS): $Endec<(T)>
+function dispatchedStruct<T, K>(arg0: $Function$$Type<(K), ($StructEndec$$Type<(T)>)>, arg1: $Function$$Type<(T), (K)>, arg2: $Endec$$Type<(K)>): $Endec<(T)>
 const probejs$$marker: never
 }
 export class $StructEndec$$Static<T> implements $StructEndec {
 
 
- "decode"(arg0: $SerializationContext$$Type, arg1: $Deserializer$$Type<(any)>): T
- "encode"(arg0: $SerializationContext$$Type, arg1: $Serializer$$Type<(any)>, arg2: T): void
 static "unit"<T>(arg0: T): $StructEndec<(T)>
 static "unit"<T>(arg0: $Supplier$$Type<(T)>): $StructEndec<(T)>
+ "decode"(arg0: $SerializationContext$$Type, arg1: $Deserializer$$Type<(any)>): T
+ "encode"(arg0: $SerializationContext$$Type, arg1: $Serializer$$Type<(any)>, arg2: T): void
  "xmap"<R>(arg0: $Function$$Type<(T), (R)>, arg1: $Function$$Type<(R), (T)>): $StructEndec<(R)>
- "xmapWithContext"(arg0: $BiFunction$$Type<(any), (any), (any)>, arg1: $BiFunction$$Type<(any), (any), (any)>): $Endec<(any)>
  "flatFieldOf"<S>(arg0: $Function$$Type<(S), (T)>): $StructField<(S), (T)>
  "encodeStruct"(arg0: $SerializationContext$$Type, arg1: $Serializer$$Type<(any)>, arg2: $Serializer$Struct$$Type, arg3: T): void
  "decodeStruct"(arg0: $SerializationContext$$Type, arg1: $Deserializer$$Type<(any)>, arg2: $Deserializer$Struct$$Type): T
+ "xmapWithContext"<R>(arg0: $BiFunction$$Type<($SerializationContext), (T), (R)>, arg1: $BiFunction$$Type<($SerializationContext), (R), (T)>): $StructEndec<(R)>
+ "optionalOf"(): $Endec<($Optional<(T)>)>
 static "map"<K, V>(arg0: $Endec$$Type<(K)>, arg1: $Endec$$Type<(V)>): $Endec<($Map<(K), (V)>)>
-static "map"<K, V>(arg0: $Function$$Type<(K), (string)>, arg1: $Function$$Type<(string), (K)>, arg2: $Endec$$Type<(V)>): $Endec<($Map<(K), (V)>)>
+static "map"<K, V>(arg0: $Function$$Type<(K), (StringJS)>, arg1: $Function$$Type<(StringJS), (K)>, arg2: $Endec$$Type<(V)>): $Endec<($Map<(K), (V)>)>
 static "of"<T>(arg0: $Endec$Encoder$$Type<(T)>, arg1: $Endec$Decoder$$Type<(T)>): $Endec<(T)>
  "validate"(arg0: $Consumer$$Type<(T)>): $Endec<(T)>
- "optionalOf"(): $Endec<($Optional<(T)>)>
- "fieldOf"<S>(arg0: string, arg1: $Function$$Type<(S), (T)>): $StructField<(S), (T)>
+ "keyed"(arg0: StringJS, arg1: $Supplier$$Type<(T)>): $KeyedEndec<(T)>
+ "keyed"(arg0: StringJS, arg1: T): $KeyedEndec<(T)>
+static "ifAttr"<T>(arg0: $SerializationAttribute$$Type, arg1: $Endec$$Type<(T)>): $AttributeEndecBuilder<(T)>
+ "setOf"(): $Endec<($Set<(T)>)>
+ "mapOf"(): $Endec<($Map<(StringJS), (T)>)>
+ "listOf"(): $Endec<($List<(T)>)>
+ "fieldOf"<S>(arg0: StringJS, arg1: $Function$$Type<(S), (T)>): $StructField<(S), (T)>
+ "encodeFully"<E>(arg0: $SerializationContext$$Type, arg1: $Supplier$$Type<($Serializer$$Type<(E)>)>, arg2: T): E
+ "encodeFully"<E>(arg0: $Supplier$$Type<($Serializer$$Type<(E)>)>, arg1: T): E
  "decodeFully"<E>(arg0: $Function$$Type<(E), ($Deserializer$$Type<(E)>)>, arg1: E): T
  "decodeFully"<E>(arg0: $SerializationContext$$Type, arg1: $Function$$Type<(E), ($Deserializer$$Type<(E)>)>, arg2: E): T
- "encodeFully"<E>(arg0: $Supplier$$Type<($Serializer$$Type<(E)>)>, arg1: T): E
- "encodeFully"<E>(arg0: $SerializationContext$$Type, arg1: $Supplier$$Type<($Serializer$$Type<(E)>)>, arg2: T): E
-static "dispatched"<T, K>(arg0: $Function$$Type<(K), ($Endec$$Type<(T)>)>, arg1: $Function$$Type<(T), (K)>, arg2: $Endec$$Type<(K)>): $Endec<(T)>
- "setOf"(): $Endec<($Set<(T)>)>
-static "ifAttr"<T>(arg0: $SerializationAttribute$$Type, arg1: $Endec$$Type<(T)>): $AttributeEndecBuilder<(T)>
- "keyed"(arg0: string, arg1: $Supplier$$Type<(T)>): $KeyedEndec<(T)>
- "keyed"(arg0: string, arg1: T): $KeyedEndec<(T)>
- "listOf"(): $Endec<($List<(T)>)>
- "mapOf"(): $Endec<($Map<(string), (T)>)>
-static "dispatchedStruct"<T, K>(arg0: $Function$$Type<(K), ($StructEndec$$Type<(T)>)>, arg1: $Function$$Type<(T), (K)>, arg2: $Endec$$Type<(K)>, arg3: string): $Endec<(T)>
-static "dispatchedStruct"<T, K>(arg0: $Function$$Type<(K), ($StructEndec$$Type<(T)>)>, arg1: $Function$$Type<(T), (K)>, arg2: $Endec$$Type<(K)>): $Endec<(T)>
- "optionalFieldOf"<S>(arg0: string, arg1: $Function$$Type<(S), (T)>, arg2: $Supplier$$Type<(T)>): $StructField<(S), (T)>
- "optionalFieldOf"<S>(arg0: string, arg1: $Function$$Type<(S), (T)>, arg2: T): $StructField<(S), (T)>
  "catchErrors"(arg0: $Endec$DecoderWithError$$Type<(T)>): $Endec<(T)>
  "nullableOf"(): $Endec<(T)>
 static "forEnum"<E extends $Enum<(E)>>(arg0: $Class$$Type<(E)>): $Endec<(E)>
+static "dispatched"<T, K>(arg0: $Function$$Type<(K), ($Endec$$Type<(T)>)>, arg1: $Function$$Type<(T), (K)>, arg2: $Endec$$Type<(K)>): $Endec<(T)>
+static "dispatchedStruct"<T, K>(arg0: $Function$$Type<(K), ($StructEndec$$Type<(T)>)>, arg1: $Function$$Type<(T), (K)>, arg2: $Endec$$Type<(K)>, arg3: StringJS): $Endec<(T)>
+static "dispatchedStruct"<T, K>(arg0: $Function$$Type<(K), ($StructEndec$$Type<(T)>)>, arg1: $Function$$Type<(T), (K)>, arg2: $Endec$$Type<(K)>): $Endec<(T)>
+ "optionalFieldOf"<S>(arg0: StringJS, arg1: $Function$$Type<(S), (T)>, arg2: T): $StructField<(S), (T)>
+ "optionalFieldOf"<S>(arg0: StringJS, arg1: $Function$$Type<(S), (T)>, arg2: $Supplier$$Type<(T)>): $StructField<(S), (T)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5760,19 +5762,19 @@ readonly "value": integer
 
 
 public "isContent"(): boolean
+public static "fixed"(value: integer): $Sizing
+public static "content"(): $Sizing
+public static "content"(padding: integer): $Sizing
 public "equals"(o: any): boolean
 public "hashCode"(): integer
 public static "expand"(percent: integer): $Sizing
 public static "expand"(): $Sizing
 public "inflate"(space: integer, contentSizeFunction: $Function$$Type<($Sizing), (integer)>): integer
-public static "fill"(percent: integer): $Sizing
 public static "fill"(): $Sizing
+public static "fill"(percent: integer): $Sizing
 public static "parse"(sizingElement: $Element$$Type): $Sizing
-public static "fixed"(value: integer): $Sizing
-public static "content"(): $Sizing
-public static "content"(padding: integer): $Sizing
-public "interpolate"(arg0: $Animatable$$Type<(any)>, arg1: float): $Animatable<(any)>
 public "interpolate"(next: $Sizing$$Type, delta: float): $Sizing
+public "interpolate"(arg0: $Animatable$$Type<(any)>, arg1: float): $Animatable<(any)>
 public "contentFactor"(): float
 public "isExpand"(): boolean
 }
@@ -5803,16 +5805,16 @@ export interface $ScreenAccessor {
 }
 
 export namespace $ScreenAccessor {
-function owo$ROTATING_PANORAMA_RENDERER(): $PanoramaRenderer
 function owo$PANORAMA_RENDERER(): $CubeMap
+function owo$ROTATING_PANORAMA_RENDERER(): $PanoramaRenderer
 const probejs$$marker: never
 }
 export class $ScreenAccessor$$Static implements $ScreenAccessor {
 
 
-static "owo$ROTATING_PANORAMA_RENDERER"(): $PanoramaRenderer
  "owo$addDrawableChild"<T extends ($GuiEventListener) & ($Renderable) & ($NarratableEntry)>(arg0: T): T
 static "owo$PANORAMA_RENDERER"(): $CubeMap
+static "owo$ROTATING_PANORAMA_RENDERER"(): $PanoramaRenderer
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5833,9 +5835,9 @@ import {$ScreenInternals$LocalPacket, $ScreenInternals$LocalPacket$$Type} from "
 
 export interface $OwoScreenHandlerExtension {
 
- "owo$attachToPlayer"(arg0: $Player$$Type): void
  "owo$handlePacket"(arg0: $ScreenInternals$LocalPacket$$Type, arg1: boolean): void
  "owo$readPropertySync"(arg0: $ScreenInternals$SyncPropertiesPacket$$Type): void
+ "owo$attachToPlayer"(arg0: $Player$$Type): void
 }
 
 export namespace $OwoScreenHandlerExtension {
@@ -5844,9 +5846,9 @@ const probejs$$marker: never
 export class $OwoScreenHandlerExtension$$Static implements $OwoScreenHandlerExtension {
 
 
- "owo$attachToPlayer"(arg0: $Player$$Type): void
  "owo$handlePacket"(arg0: $ScreenInternals$LocalPacket$$Type, arg1: boolean): void
  "owo$readPropertySync"(arg0: $ScreenInternals$SyncPropertiesPacket$$Type): void
+ "owo$attachToPlayer"(arg0: $Player$$Type): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5869,16 +5871,16 @@ export class $SerializationContext {
 
 
 public "hasAttribute"(arg0: $SerializationAttribute$$Type): boolean
-public "getAttributeValue"<A>(arg0: $SerializationAttribute$WithValue$$Type<(A)>): A
+public "and"(arg0: $SerializationContext$$Type): $SerializationContext
+public static "attributes"(...arg0: ($SerializationAttribute$Instance$$Type)[]): $SerializationContext
 public static "empty"(): $SerializationContext
 public static "suppressed"(...arg0: ($SerializationAttribute$$Type)[]): $SerializationContext
-public static "attributes"(...arg0: ($SerializationAttribute$Instance$$Type)[]): $SerializationContext
-public "and"(arg0: $SerializationContext$$Type): $SerializationContext
+public "getAttributeValue"<A>(arg0: $SerializationAttribute$WithValue$$Type<(A)>): A
 public "withAttributes"(...arg0: ($SerializationAttribute$Instance$$Type)[]): $SerializationContext
+public "withSuppressed"(...arg0: ($SerializationAttribute$$Type)[]): $SerializationContext
 public "withoutAttributes"(...arg0: ($SerializationAttribute$$Type)[]): $SerializationContext
 public "withoutSuppressed"(...arg0: ($SerializationAttribute$$Type)[]): $SerializationContext
 public "requireAttributeValue"<A>(arg0: $SerializationAttribute$WithValue$$Type<(A)>): A
-public "withSuppressed"(...arg0: ($SerializationAttribute$$Type)[]): $SerializationContext
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -5899,7 +5901,7 @@ import {$SerializationContext, $SerializationContext$$Type} from "io.wispforest.
 
 export interface $Serializer$Struct extends $Endable {
 
- "field"<F>(arg0: string, arg1: $SerializationContext$$Type, arg2: $Endec$$Type<(F)>, arg3: F): $Serializer$Struct
+ "field"<F>(arg0: StringJS, arg1: $SerializationContext$$Type, arg2: $Endec$$Type<(F)>, arg3: F): $Serializer$Struct
  "end"(): void
  "close"(): void
 }
@@ -5910,7 +5912,7 @@ const probejs$$marker: never
 export class $Serializer$Struct$$Static implements $Serializer$Struct {
 
 
- "field"<F>(arg0: string, arg1: $SerializationContext$$Type, arg2: $Endec$$Type<(F)>, arg3: F): $Serializer$Struct
+ "field"<F>(arg0: StringJS, arg1: $SerializationContext$$Type, arg2: $Endec$$Type<(F)>, arg3: F): $Serializer$Struct
  "end"(): void
  "close"(): void
 }
@@ -5950,11 +5952,13 @@ readonly "rootComponent": R
  "globalInspector": boolean
 
 
-public "x"(): integer
-public static "create"<R extends $ParentComponent>(screen: $Screen$$Type, rootComponentMaker: $BiFunction$$Type<($Sizing), ($Sizing), (R)>): $OwoUIAdapter<(R)>
 public "y"(): integer
-public "width"(): integer
+public static "create"<R extends $ParentComponent>(screen: $Screen$$Type, rootComponentMaker: $BiFunction$$Type<($Sizing), ($Sizing), (R)>): $OwoUIAdapter<(R)>
 public "dispose"(): void
+public "x"(): integer
+public "width"(): integer
+public "height"(): integer
+public "render"(context: $GuiGraphics$$Type, mouseX: integer, mouseY: integer, partialTicks: float): void
 public "keyPressed"(keyCode: integer, scanCode: integer, modifiers: integer): boolean
 public "isMouseOver"(mouseX: double, mouseY: double): boolean
 public "setFocused"(focused: boolean): void
@@ -5964,14 +5968,12 @@ public "mouseDragged"(mouseX: double, mouseY: double, button: integer, deltaX: d
 public "mouseScrolled"(mouseX: double, mouseY: double, horizontalAmount: double, verticalAmount: double): boolean
 public "charTyped"(chr: character, modifiers: integer): boolean
 public "isFocused"(): boolean
-public "height"(): integer
-public "render"(context: $GuiGraphics$$Type, mouseX: integer, mouseY: integer, partialTicks: float): void
+public "moveAndResize"(x: integer, y: integer, width: integer, height: integer): void
+public static "isRendering"(): boolean
+public static "createWithoutScreen"<R extends $ParentComponent>(x: integer, y: integer, width: integer, height: integer, rootComponentMaker: $BiFunction$$Type<($Sizing), ($Sizing), (R)>): $OwoUIAdapter<(R)>
 public "updateNarration"(builder: $NarrationElementOutput$$Type): void
 public "narrationPriority"(): $NarratableEntry$NarrationPriority
 public "inflateAndMount"(): void
-public static "createWithoutScreen"<R extends $ParentComponent>(x: integer, y: integer, width: integer, height: integer, rootComponentMaker: $BiFunction$$Type<($Sizing), ($Sizing), (R)>): $OwoUIAdapter<(R)>
-public static "isRendering"(): boolean
-public "moveAndResize"(x: integer, y: integer, width: integer, height: integer): void
 public "toggleGlobalInspector"(): boolean
 public "toggleInspector"(): boolean
 public "nextFocusPath"(arg0: $FocusNavigationEvent$$Type): $ComponentPath
@@ -6012,9 +6014,9 @@ import {$Serializer$Struct, $Serializer$Struct$$Type} from "io.wispforest.endec.
 
 export class $StructField<S, F> {
 
-constructor(arg0: string, arg1: $Endec$$Type<(F)>, arg2: $Function$$Type<(S), (F)>)
-constructor(arg0: string, arg1: $Endec$$Type<(F)>, arg2: $Function$$Type<(S), (F)>, arg3: F)
-constructor(arg0: string, arg1: $Endec$$Type<(F)>, arg2: $Function$$Type<(S), (F)>, arg3: $Supplier$$Type<(F)>)
+constructor(arg0: StringJS, arg1: $Endec$$Type<(F)>, arg2: $Function$$Type<(S), (F)>, arg3: $Supplier$$Type<(F)>)
+constructor(arg0: StringJS, arg1: $Endec$$Type<(F)>, arg2: $Function$$Type<(S), (F)>)
+constructor(arg0: StringJS, arg1: $Endec$$Type<(F)>, arg2: $Function$$Type<(S), (F)>, arg3: F)
 
 public "encodeField"(arg0: $SerializationContext$$Type, arg1: $Serializer$$Type<(any)>, arg2: $Serializer$Struct$$Type, arg3: S): void
 public "decodeField"(arg0: $SerializationContext$$Type, arg1: $Deserializer$$Type<(any)>, arg2: $Deserializer$Struct$$Type): F
@@ -6073,16 +6075,16 @@ import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
 export class $AccessoryItemAttributeModifiers$Builder {
 
 
+public "build"(): $AccessoryItemAttributeModifiers
 public "isEmpty"(): boolean
 /**
  * 
  * @deprecated
  */
-public "add"(holder: $Holder$$Type<($Attribute)>, attributeModifier: $AttributeModifier$$Type, slotName: string, isStackable: boolean): $AccessoryItemAttributeModifiers$Builder
-public "build"(): $AccessoryItemAttributeModifiers
+public "add"(holder: $Holder$$Type<($Attribute)>, attributeModifier: $AttributeModifier$$Type, slotName: StringJS, isStackable: boolean): $AccessoryItemAttributeModifiers$Builder
 public "showInTooltip"(value: boolean): $AccessoryItemAttributeModifiers$Builder
+public "addForSlot"(holder: $Holder$$Type<($Attribute)>, attributeModifier: $AttributeModifier$$Type, slotName: StringJS, isStackable: boolean): $AccessoryItemAttributeModifiers$Builder
 public "addForAny"(holder: $Holder$$Type<($Attribute)>, attributeModifier: $AttributeModifier$$Type, isStackable: boolean): $AccessoryItemAttributeModifiers$Builder
-public "addForSlot"(holder: $Holder$$Type<($Attribute)>, attributeModifier: $AttributeModifier$$Type, slotName: string, isStackable: boolean): $AccessoryItemAttributeModifiers$Builder
 get "empty"(): boolean
 }
 /**
@@ -6258,8 +6260,8 @@ export type $Animatable_<T> = $Animatable$$Type<(T)>;
 }}
 declare module "io.wispforest.endec.Endec" {
 import {$StructEndec, $StructEndec$$Type} from "io.wispforest.endec.StructEndec"
-import {$Endec$Decoder, $Endec$Decoder$$Type} from "io.wispforest.endec.Endec$Decoder"
 import {$SerializationAttribute, $SerializationAttribute$$Type} from "io.wispforest.endec.SerializationAttribute"
+import {$Endec$Decoder, $Endec$Decoder$$Type} from "io.wispforest.endec.Endec$Decoder"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Enum, $Enum$$Type} from "java.lang.Enum"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
@@ -6271,8 +6273,8 @@ import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 import {$AttributeEndecBuilder, $AttributeEndecBuilder$$Type} from "io.wispforest.endec.impl.AttributeEndecBuilder"
 import {$BiFunction, $BiFunction$$Type} from "java.util.function.BiFunction"
 import {$Serializer, $Serializer$$Type} from "io.wispforest.endec.Serializer"
-import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Function, $Function$$Type} from "java.util.function.Function"
+import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$Endec$Encoder, $Endec$Encoder$$Type} from "io.wispforest.endec.Endec$Encoder"
 import {$Set, $Set$$Type} from "java.util.Set"
 import {$Class, $Class$$Type} from "java.lang.Class"
@@ -6281,26 +6283,26 @@ import {$KeyedEndec, $KeyedEndec$$Type} from "io.wispforest.endec.impl.KeyedEnde
 
 export interface $Endec<T> {
 
+ "optionalOf"(): $Endec<($Optional<(T)>)>
  "decode"(arg0: $SerializationContext$$Type, arg1: $Deserializer$$Type<(any)>): T
  "encode"(arg0: $SerializationContext$$Type, arg1: $Serializer$$Type<(any)>, arg2: T): void
  "validate"(arg0: $Consumer$$Type<(T)>): $Endec<(T)>
- "optionalOf"(): $Endec<($Optional<(T)>)>
- "fieldOf"<S>(arg0: string, arg1: $Function$$Type<(S), (T)>): $StructField<(S), (T)>
+ "keyed"(arg0: StringJS, arg1: $Supplier$$Type<(T)>): $KeyedEndec<(T)>
+ "keyed"(arg0: StringJS, arg1: T): $KeyedEndec<(T)>
+ "setOf"(): $Endec<($Set<(T)>)>
+ "mapOf"(): $Endec<($Map<(StringJS), (T)>)>
+ "xmap"<R>(arg0: $Function$$Type<(T), (R)>, arg1: $Function$$Type<(R), (T)>): $Endec<(R)>
+ "listOf"(): $Endec<($List<(T)>)>
+ "fieldOf"<S>(arg0: StringJS, arg1: $Function$$Type<(S), (T)>): $StructField<(S), (T)>
+ "encodeFully"<E>(arg0: $SerializationContext$$Type, arg1: $Supplier$$Type<($Serializer$$Type<(E)>)>, arg2: T): E
+ "encodeFully"<E>(arg0: $Supplier$$Type<($Serializer$$Type<(E)>)>, arg1: T): E
  "decodeFully"<E>(arg0: $Function$$Type<(E), ($Deserializer$$Type<(E)>)>, arg1: E): T
  "decodeFully"<E>(arg0: $SerializationContext$$Type, arg1: $Function$$Type<(E), ($Deserializer$$Type<(E)>)>, arg2: E): T
- "encodeFully"<E>(arg0: $Supplier$$Type<($Serializer$$Type<(E)>)>, arg1: T): E
- "encodeFully"<E>(arg0: $SerializationContext$$Type, arg1: $Supplier$$Type<($Serializer$$Type<(E)>)>, arg2: T): E
- "setOf"(): $Endec<($Set<(T)>)>
- "keyed"(arg0: string, arg1: $Supplier$$Type<(T)>): $KeyedEndec<(T)>
- "keyed"(arg0: string, arg1: T): $KeyedEndec<(T)>
- "listOf"(): $Endec<($List<(T)>)>
- "mapOf"(): $Endec<($Map<(string), (T)>)>
- "xmap"<R>(arg0: $Function$$Type<(T), (R)>, arg1: $Function$$Type<(R), (T)>): $Endec<(R)>
- "xmapWithContext"<R>(arg0: $BiFunction$$Type<($SerializationContext), (T), (R)>, arg1: $BiFunction$$Type<($SerializationContext), (R), (T)>): $Endec<(R)>
- "optionalFieldOf"<S>(arg0: string, arg1: $Function$$Type<(S), (T)>, arg2: $Supplier$$Type<(T)>): $StructField<(S), (T)>
- "optionalFieldOf"<S>(arg0: string, arg1: $Function$$Type<(S), (T)>, arg2: T): $StructField<(S), (T)>
  "catchErrors"(arg0: $Endec$DecoderWithError$$Type<(T)>): $Endec<(T)>
  "nullableOf"(): $Endec<(T)>
+ "xmapWithContext"<R>(arg0: $BiFunction$$Type<($SerializationContext), (T), (R)>, arg1: $BiFunction$$Type<($SerializationContext), (R), (T)>): $Endec<(R)>
+ "optionalFieldOf"<S>(arg0: StringJS, arg1: $Function$$Type<(S), (T)>, arg2: T): $StructField<(S), (T)>
+ "optionalFieldOf"<S>(arg0: StringJS, arg1: $Function$$Type<(S), (T)>, arg2: $Supplier$$Type<(T)>): $StructField<(S), (T)>
 }
 
 export namespace $Endec {
@@ -6309,7 +6311,7 @@ const VAR_LONG: $Endec<(long)>
 const FLOAT: $Endec<(float)>
 const VAR_INT: $Endec<(integer)>
 const BYTE: $Endec<(byte)>
-const STRING: $Endec<(string)>
+const STRING: $Endec<(StringJS)>
 const DOUBLE: $Endec<(double)>
 const VOID: $Endec<(void)>
 const BOOLEAN: $Endec<(boolean)>
@@ -6317,13 +6319,13 @@ const INT: $Endec<(integer)>
 const SHORT: $Endec<(short)>
 const LONG: $Endec<(long)>
 function map<K, V>(arg0: $Endec$$Type<(K)>, arg1: $Endec$$Type<(V)>): $Endec<($Map<(K), (V)>)>
-function map<K, V>(arg0: $Function$$Type<(K), (string)>, arg1: $Function$$Type<(string), (K)>, arg2: $Endec$$Type<(V)>): $Endec<($Map<(K), (V)>)>
+function map<K, V>(arg0: $Function$$Type<(K), (StringJS)>, arg1: $Function$$Type<(StringJS), (K)>, arg2: $Endec$$Type<(V)>): $Endec<($Map<(K), (V)>)>
 function of<T>(arg0: $Endec$Encoder$$Type<(T)>, arg1: $Endec$Decoder$$Type<(T)>): $Endec<(T)>
-function dispatched<T, K>(arg0: $Function$$Type<(K), ($Endec$$Type<(T)>)>, arg1: $Function$$Type<(T), (K)>, arg2: $Endec$$Type<(K)>): $Endec<(T)>
 function ifAttr<T>(arg0: $SerializationAttribute$$Type, arg1: $Endec$$Type<(T)>): $AttributeEndecBuilder<(T)>
-function dispatchedStruct<T, K>(arg0: $Function$$Type<(K), ($StructEndec$$Type<(T)>)>, arg1: $Function$$Type<(T), (K)>, arg2: $Endec$$Type<(K)>, arg3: string): $Endec<(T)>
-function dispatchedStruct<T, K>(arg0: $Function$$Type<(K), ($StructEndec$$Type<(T)>)>, arg1: $Function$$Type<(T), (K)>, arg2: $Endec$$Type<(K)>): $Endec<(T)>
 function forEnum<E extends $Enum<(E)>>(arg0: $Class$$Type<(E)>): $Endec<(E)>
+function dispatched<T, K>(arg0: $Function$$Type<(K), ($Endec$$Type<(T)>)>, arg1: $Function$$Type<(T), (K)>, arg2: $Endec$$Type<(K)>): $Endec<(T)>
+function dispatchedStruct<T, K>(arg0: $Function$$Type<(K), ($StructEndec$$Type<(T)>)>, arg1: $Function$$Type<(T), (K)>, arg2: $Endec$$Type<(K)>, arg3: StringJS): $Endec<(T)>
+function dispatchedStruct<T, K>(arg0: $Function$$Type<(K), ($StructEndec$$Type<(T)>)>, arg1: $Function$$Type<(T), (K)>, arg2: $Endec$$Type<(K)>): $Endec<(T)>
 const probejs$$marker: never
 }
 export class $Endec$$Static<T> implements $Endec {
@@ -6332,7 +6334,7 @@ static readonly "VAR_LONG": $Endec<(long)>
 static readonly "FLOAT": $Endec<(float)>
 static readonly "VAR_INT": $Endec<(integer)>
 static readonly "BYTE": $Endec<(byte)>
-static readonly "STRING": $Endec<(string)>
+static readonly "STRING": $Endec<(StringJS)>
 static readonly "DOUBLE": $Endec<(double)>
 static readonly "VOID": $Endec<(void)>
 static readonly "BOOLEAN": $Endec<(boolean)>
@@ -6341,34 +6343,34 @@ static readonly "SHORT": $Endec<(short)>
 static readonly "LONG": $Endec<(long)>
 
 
+ "optionalOf"(): $Endec<($Optional<(T)>)>
  "decode"(arg0: $SerializationContext$$Type, arg1: $Deserializer$$Type<(any)>): T
  "encode"(arg0: $SerializationContext$$Type, arg1: $Serializer$$Type<(any)>, arg2: T): void
 static "map"<K, V>(arg0: $Endec$$Type<(K)>, arg1: $Endec$$Type<(V)>): $Endec<($Map<(K), (V)>)>
-static "map"<K, V>(arg0: $Function$$Type<(K), (string)>, arg1: $Function$$Type<(string), (K)>, arg2: $Endec$$Type<(V)>): $Endec<($Map<(K), (V)>)>
+static "map"<K, V>(arg0: $Function$$Type<(K), (StringJS)>, arg1: $Function$$Type<(StringJS), (K)>, arg2: $Endec$$Type<(V)>): $Endec<($Map<(K), (V)>)>
 static "of"<T>(arg0: $Endec$Encoder$$Type<(T)>, arg1: $Endec$Decoder$$Type<(T)>): $Endec<(T)>
  "validate"(arg0: $Consumer$$Type<(T)>): $Endec<(T)>
- "optionalOf"(): $Endec<($Optional<(T)>)>
- "fieldOf"<S>(arg0: string, arg1: $Function$$Type<(S), (T)>): $StructField<(S), (T)>
+ "keyed"(arg0: StringJS, arg1: $Supplier$$Type<(T)>): $KeyedEndec<(T)>
+ "keyed"(arg0: StringJS, arg1: T): $KeyedEndec<(T)>
+static "ifAttr"<T>(arg0: $SerializationAttribute$$Type, arg1: $Endec$$Type<(T)>): $AttributeEndecBuilder<(T)>
+ "setOf"(): $Endec<($Set<(T)>)>
+ "mapOf"(): $Endec<($Map<(StringJS), (T)>)>
+ "xmap"<R>(arg0: $Function$$Type<(T), (R)>, arg1: $Function$$Type<(R), (T)>): $Endec<(R)>
+ "listOf"(): $Endec<($List<(T)>)>
+ "fieldOf"<S>(arg0: StringJS, arg1: $Function$$Type<(S), (T)>): $StructField<(S), (T)>
+ "encodeFully"<E>(arg0: $SerializationContext$$Type, arg1: $Supplier$$Type<($Serializer$$Type<(E)>)>, arg2: T): E
+ "encodeFully"<E>(arg0: $Supplier$$Type<($Serializer$$Type<(E)>)>, arg1: T): E
  "decodeFully"<E>(arg0: $Function$$Type<(E), ($Deserializer$$Type<(E)>)>, arg1: E): T
  "decodeFully"<E>(arg0: $SerializationContext$$Type, arg1: $Function$$Type<(E), ($Deserializer$$Type<(E)>)>, arg2: E): T
- "encodeFully"<E>(arg0: $Supplier$$Type<($Serializer$$Type<(E)>)>, arg1: T): E
- "encodeFully"<E>(arg0: $SerializationContext$$Type, arg1: $Supplier$$Type<($Serializer$$Type<(E)>)>, arg2: T): E
-static "dispatched"<T, K>(arg0: $Function$$Type<(K), ($Endec$$Type<(T)>)>, arg1: $Function$$Type<(T), (K)>, arg2: $Endec$$Type<(K)>): $Endec<(T)>
- "setOf"(): $Endec<($Set<(T)>)>
-static "ifAttr"<T>(arg0: $SerializationAttribute$$Type, arg1: $Endec$$Type<(T)>): $AttributeEndecBuilder<(T)>
- "keyed"(arg0: string, arg1: $Supplier$$Type<(T)>): $KeyedEndec<(T)>
- "keyed"(arg0: string, arg1: T): $KeyedEndec<(T)>
- "listOf"(): $Endec<($List<(T)>)>
- "mapOf"(): $Endec<($Map<(string), (T)>)>
- "xmap"<R>(arg0: $Function$$Type<(T), (R)>, arg1: $Function$$Type<(R), (T)>): $Endec<(R)>
-static "dispatchedStruct"<T, K>(arg0: $Function$$Type<(K), ($StructEndec$$Type<(T)>)>, arg1: $Function$$Type<(T), (K)>, arg2: $Endec$$Type<(K)>, arg3: string): $Endec<(T)>
-static "dispatchedStruct"<T, K>(arg0: $Function$$Type<(K), ($StructEndec$$Type<(T)>)>, arg1: $Function$$Type<(T), (K)>, arg2: $Endec$$Type<(K)>): $Endec<(T)>
- "xmapWithContext"<R>(arg0: $BiFunction$$Type<($SerializationContext), (T), (R)>, arg1: $BiFunction$$Type<($SerializationContext), (R), (T)>): $Endec<(R)>
- "optionalFieldOf"<S>(arg0: string, arg1: $Function$$Type<(S), (T)>, arg2: $Supplier$$Type<(T)>): $StructField<(S), (T)>
- "optionalFieldOf"<S>(arg0: string, arg1: $Function$$Type<(S), (T)>, arg2: T): $StructField<(S), (T)>
  "catchErrors"(arg0: $Endec$DecoderWithError$$Type<(T)>): $Endec<(T)>
  "nullableOf"(): $Endec<(T)>
 static "forEnum"<E extends $Enum<(E)>>(arg0: $Class$$Type<(E)>): $Endec<(E)>
+static "dispatched"<T, K>(arg0: $Function$$Type<(K), ($Endec$$Type<(T)>)>, arg1: $Function$$Type<(T), (K)>, arg2: $Endec$$Type<(K)>): $Endec<(T)>
+static "dispatchedStruct"<T, K>(arg0: $Function$$Type<(K), ($StructEndec$$Type<(T)>)>, arg1: $Function$$Type<(T), (K)>, arg2: $Endec$$Type<(K)>, arg3: StringJS): $Endec<(T)>
+static "dispatchedStruct"<T, K>(arg0: $Function$$Type<(K), ($StructEndec$$Type<(T)>)>, arg1: $Function$$Type<(T), (K)>, arg2: $Endec$$Type<(K)>): $Endec<(T)>
+ "xmapWithContext"<R>(arg0: $BiFunction$$Type<($SerializationContext), (T), (R)>, arg1: $BiFunction$$Type<($SerializationContext), (R), (T)>): $Endec<(R)>
+ "optionalFieldOf"<S>(arg0: StringJS, arg1: $Function$$Type<(S), (T)>, arg2: T): $StructField<(S), (T)>
+ "optionalFieldOf"<S>(arg0: StringJS, arg1: $Function$$Type<(S), (T)>, arg2: $Supplier$$Type<(T)>): $StructField<(S), (T)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6402,30 +6404,30 @@ export class $ExpandedSimpleContainer extends $SimpleContainer implements $Itera
  "size": integer
  "items": $NonNullList<($ItemStack)>
 
-constructor(container: $AccessoriesContainerImpl$$Type, size: integer, name: string, toggleNewlyConstructed: boolean)
-constructor(container: $AccessoriesContainerImpl$$Type, size: integer, name: string)
+constructor(container: $AccessoriesContainerImpl$$Type, size: integer, name: StringJS, toggleNewlyConstructed: boolean)
+constructor(container: $AccessoriesContainerImpl$$Type, size: integer, name: StringJS)
 
 public "removeItem"(slot: integer, amount: integer): $ItemStack
-public "createTag"(provider: $HolderLookup$Provider$$Type): $ListTag
-public "name"(): string
-public "iterator"(): $Iterator<($Pair<(integer), ($ItemStack)>)>
 public "validIndex"(slot: integer): boolean
+public "createTag"(provider: $HolderLookup$Provider$$Type): $ListTag
 public "getItem"(slot: integer): $ItemStack
+public "name"(): StringJS
+public "iterator"(): $Iterator<($Pair<(integer), ($ItemStack)>)>
 public "setItem"(slot: integer, stack: $ItemStack$$Type): void
-public "fromTag"(containerNbt: $ListTag$$Type, provider: $HolderLookup$Provider$$Type): void
 public "parseOptional"(lookupProvider: $HolderLookup$Provider$$Type, tag: $Tag$$Type): $ItemStack
+public "fromTag"(containerNbt: $ListTag$$Type, provider: $HolderLookup$Provider$$Type): void
+public "isSlotFlagged"(slot: integer): boolean
+public "setFromPrev"(prevContainer: $ExpandedSimpleContainer$$Type): void
+public "copyPrev"(prevContainer: $ExpandedSimpleContainer$$Type): void
 public "wasNewlyConstructed"(): boolean
 public "setPreviousItem"(slot: integer, stack: $ItemStack$$Type): void
 public "getPreviousItem"(slot: integer): $ItemStack
 public "removeItemNoUpdate"(slot: integer): $ItemStack
 public "getMaxStackSize"(itemStack: $ItemStack$$Type): integer
-public "isSlotFlagged"(slot: integer): boolean
-public "setFromPrev"(prevContainer: $ExpandedSimpleContainer$$Type): void
-public "copyPrev"(prevContainer: $ExpandedSimpleContainer$$Type): void
 public "spliterator"(): $Spliterator<($Pair<(integer), ($ItemStack)>)>
 public "forEach"(arg0: $Consumer$$Type<($Pair<(integer), ($ItemStack)>)>): void
-public static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type, arg2: float): boolean
 public static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type): boolean
+public static "stillValidBlockEntity"(arg0: $BlockEntity$$Type, arg1: $Player$$Type, arg2: float): boolean
 public static "tryClear"(arg0: any): void
 [Symbol.iterator](): IterableIterator<$Pair<(integer), ($ItemStack)>>;
 set "fromPrev"(value: $ExpandedSimpleContainer$$Type)
@@ -6453,13 +6455,13 @@ readonly "y": integer
 readonly "type": $Positioning$Type
 
 
-public "equals"(o: any): boolean
-public "hashCode"(): integer
-public static "parse"(positioningElement: $Element$$Type): $Positioning
+public static "relative"(xPercent: integer, yPercent: integer): $Positioning
 public "isRelative"(): boolean
 public static "layout"(): $Positioning
 public static "absolute"(xPixels: integer, yPixels: integer): $Positioning
-public static "relative"(xPercent: integer, yPercent: integer): $Positioning
+public "equals"(o: any): boolean
+public "hashCode"(): integer
+public static "parse"(positioningElement: $Element$$Type): $Positioning
 public "interpolate"(arg0: $Animatable$$Type<(any)>, arg1: float): $Animatable<(any)>
 public "interpolate"(next: $Positioning$$Type, delta: float): $Positioning
 public "withX"(x: integer): $Positioning
@@ -6484,8 +6486,8 @@ import {$MinecraftServer, $MinecraftServer$$Type} from "net.minecraft.server.Min
 
 export interface $ServerCommonNetworkHandlerAccessor {
 
- "owo$getConnection"(): $Connection
  "owo$server"(): $MinecraftServer
+ "owo$getConnection"(): $Connection
 }
 
 export namespace $ServerCommonNetworkHandlerAccessor {
@@ -6494,8 +6496,8 @@ const probejs$$marker: never
 export class $ServerCommonNetworkHandlerAccessor$$Static implements $ServerCommonNetworkHandlerAccessor {
 
 
- "owo$getConnection"(): $Connection
  "owo$server"(): $MinecraftServer
+ "owo$getConnection"(): $Connection
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6520,7 +6522,7 @@ static readonly "RIGHT": $HorizontalAlignment
 
 
 public static "values"(): ($HorizontalAlignment)[]
-public static "valueOf"(name: string): $HorizontalAlignment
+public static "valueOf"(name: StringJS): $HorizontalAlignment
 public static "parse"(element: $Element$$Type): $HorizontalAlignment
 public "align"(componentWidth: integer, span: integer): integer
 }
@@ -6622,9 +6624,9 @@ import {$Insets, $Insets$$Type} from "io.wispforest.owo.ui.core.Insets"
 import {$MouseScroll, $MouseScroll$$Type} from "io.wispforest.owo.ui.event.MouseScroll"
 import {$MouseDown, $MouseDown$$Type} from "io.wispforest.owo.ui.event.MouseDown"
 import {$CursorStyle, $CursorStyle$$Type} from "io.wispforest.owo.ui.core.CursorStyle"
+import {$Map, $Map$$Type} from "java.util.Map"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$Element, $Element$$Type} from "org.w3c.dom.Element"
-import {$Map, $Map$$Type} from "java.util.Map"
 import {$UIModel, $UIModel$$Type} from "io.wispforest.owo.ui.parsing.UIModel"
 import {$Component$FocusSource, $Component$FocusSource$$Type} from "io.wispforest.owo.ui.core.Component$FocusSource"
 import {$MouseUp, $MouseUp$$Type} from "io.wispforest.owo.ui.event.MouseUp"
@@ -6642,44 +6644,38 @@ import {$Size, $Size$$Type} from "io.wispforest.owo.ui.core.Size"
 
 export interface $Component extends $PositionedRectangle {
 
+ "y"(): integer
+ "configure"<C extends $Component>(arg0: $Consumer$$Type<(C)>): C
  "remove"(): void
  "parent"(): $ParentComponent
  "inflate"(arg0: $Size$$Type): void
  "update"(delta: float, mouseX: integer, mouseY: integer): void
  "x"(): integer
- "id"(): string
- "id"(arg0: string): $Component
+ "id"(): StringJS
+ "id"(arg0: StringJS): $Component
  "root"(): $ParentComponent
  "mount"(arg0: $ParentComponent$$Type, arg1: integer, arg2: integer): void
- "y"(): integer
- "width"(): integer
- "configure"<C extends $Component>(arg0: $Consumer$$Type<(C)>): C
- "dismount"(arg0: $Component$DismountReason$$Type): void
- "tooltip"(tooltip: $Component$0$$Type): $Component
- "tooltip"(tooltip: $Collection$$Type<($Component$0$$Type)>): $Component
- "tooltip"(): $List<($ClientTooltipComponent)>
- "tooltip"(arg0: $List$$Type<($ClientTooltipComponent$$Type)>): $Component
- "charTyped"(): $EventSource<($CharTyped)>
- "height"(): integer
- "draw"(arg0: $OwoUIDrawContext$$Type, arg1: integer, arg2: integer, arg3: float, arg4: float): void
- "moveTo"(x: integer, y: integer): void
  "sizing"(sizing: $Sizing$$Type): $Component
  "sizing"(horizontalSizing: $Sizing$$Type, verticalSizing: $Sizing$$Type): $Component
- "zIndex"(arg0: integer): $Component
  "zIndex"(): integer
+ "zIndex"(arg0: integer): $Component
  "baseX"(): integer
  "baseY"(): integer
- "horizontalSizing"(arg0: $Sizing$$Type): $Component
- "horizontalSizing"(): $AnimatableProperty<($Sizing)>
- "shouldDrawTooltip"(mouseX: double, mouseY: double): boolean
- "parseProperties"(model: $UIModel$$Type, element: $Element$$Type, children: $Map$$Type<(string), ($Element$$Type)>): void
- "drawFocusHighlight"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
- "isInBoundingBox"(x: double, y: double): boolean
+ "moveTo"(x: integer, y: integer): void
+ "draw"(arg0: $OwoUIDrawContext$$Type, arg1: integer, arg2: integer, arg3: float, arg4: float): void
+ "width"(): integer
+ "height"(): integer
+ "dismount"(arg0: $Component$DismountReason$$Type): void
+ "tooltip"(arg0: $List$$Type<($ClientTooltipComponent$$Type)>): $Component
+ "tooltip"(tooltip: $Collection$$Type<($Component$0$$Type)>): $Component
+ "tooltip"(tooltip: $Component$0$$Type): $Component
+ "tooltip"(): $List<($ClientTooltipComponent)>
+ "charTyped"(): $EventSource<($CharTyped)>
  "focusHandler"(): $FocusHandler
- "positioning"(): $AnimatableProperty<($Positioning)>
  "positioning"(arg0: $Positioning$$Type): $Component
- "margins"(): $AnimatableProperty<($Insets)>
+ "positioning"(): $AnimatableProperty<($Positioning)>
  "margins"(arg0: $Insets$$Type): $Component
+ "margins"(): $AnimatableProperty<($Insets)>
  "verticalSizing"(arg0: $Sizing$$Type): $Component
  "verticalSizing"(): $AnimatableProperty<($Sizing)>
  "mouseDown"(): $EventSource<($MouseDown)>
@@ -6707,6 +6703,12 @@ export interface $Component extends $PositionedRectangle {
  "drawTooltip"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
  "hasParent"(): boolean
  "fullSize"(): $Size
+ "horizontalSizing"(arg0: $Sizing$$Type): $Component
+ "horizontalSizing"(): $AnimatableProperty<($Sizing)>
+ "shouldDrawTooltip"(mouseX: double, mouseY: double): boolean
+ "parseProperties"(model: $UIModel$$Type, element: $Element$$Type, children: $Map$$Type<(StringJS), ($Element$$Type)>): void
+ "drawFocusHighlight"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
+ "isInBoundingBox"(x: double, y: double): boolean
  "intersects"(other: $PositionedRectangle$$Type): boolean
  "intersection"(other: $PositionedRectangle$$Type): $PositionedRectangle
  "interpolate"(arg0: $Animatable$$Type<(any)>, arg1: float): $Animatable<(any)>
@@ -6721,44 +6723,38 @@ const probejs$$marker: never
 export class $Component$$Static implements $Component {
 
 
+ "y"(): integer
+ "configure"<C extends $Component>(arg0: $Consumer$$Type<(C)>): C
  "remove"(): void
  "parent"(): $ParentComponent
  "inflate"(arg0: $Size$$Type): void
  "update"(delta: float, mouseX: integer, mouseY: integer): void
  "x"(): integer
- "id"(): string
- "id"(arg0: string): $Component
+ "id"(): StringJS
+ "id"(arg0: StringJS): $Component
  "root"(): $ParentComponent
  "mount"(arg0: $ParentComponent$$Type, arg1: integer, arg2: integer): void
- "y"(): integer
- "width"(): integer
- "configure"<C extends $Component>(arg0: $Consumer$$Type<(C)>): C
- "dismount"(arg0: $Component$DismountReason$$Type): void
- "tooltip"(tooltip: $Component$0$$Type): $Component
- "tooltip"(tooltip: $Collection$$Type<($Component$0$$Type)>): $Component
- "tooltip"(): $List<($ClientTooltipComponent)>
- "tooltip"(arg0: $List$$Type<($ClientTooltipComponent$$Type)>): $Component
- "charTyped"(): $EventSource<($CharTyped)>
- "height"(): integer
- "draw"(arg0: $OwoUIDrawContext$$Type, arg1: integer, arg2: integer, arg3: float, arg4: float): void
- "moveTo"(x: integer, y: integer): void
  "sizing"(sizing: $Sizing$$Type): $Component
  "sizing"(horizontalSizing: $Sizing$$Type, verticalSizing: $Sizing$$Type): $Component
- "zIndex"(arg0: integer): $Component
  "zIndex"(): integer
+ "zIndex"(arg0: integer): $Component
  "baseX"(): integer
  "baseY"(): integer
- "horizontalSizing"(arg0: $Sizing$$Type): $Component
- "horizontalSizing"(): $AnimatableProperty<($Sizing)>
- "shouldDrawTooltip"(mouseX: double, mouseY: double): boolean
- "parseProperties"(model: $UIModel$$Type, element: $Element$$Type, children: $Map$$Type<(string), ($Element$$Type)>): void
- "drawFocusHighlight"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
- "isInBoundingBox"(x: double, y: double): boolean
+ "moveTo"(x: integer, y: integer): void
+ "draw"(arg0: $OwoUIDrawContext$$Type, arg1: integer, arg2: integer, arg3: float, arg4: float): void
+ "width"(): integer
+ "height"(): integer
+ "dismount"(arg0: $Component$DismountReason$$Type): void
+ "tooltip"(arg0: $List$$Type<($ClientTooltipComponent$$Type)>): $Component
+ "tooltip"(tooltip: $Collection$$Type<($Component$0$$Type)>): $Component
+ "tooltip"(tooltip: $Component$0$$Type): $Component
+ "tooltip"(): $List<($ClientTooltipComponent)>
+ "charTyped"(): $EventSource<($CharTyped)>
  "focusHandler"(): $FocusHandler
- "positioning"(): $AnimatableProperty<($Positioning)>
  "positioning"(arg0: $Positioning$$Type): $Component
- "margins"(): $AnimatableProperty<($Insets)>
+ "positioning"(): $AnimatableProperty<($Positioning)>
  "margins"(arg0: $Insets$$Type): $Component
+ "margins"(): $AnimatableProperty<($Insets)>
  "verticalSizing"(arg0: $Sizing$$Type): $Component
  "verticalSizing"(): $AnimatableProperty<($Sizing)>
  "mouseDown"(): $EventSource<($MouseDown)>
@@ -6786,6 +6782,12 @@ export class $Component$$Static implements $Component {
  "drawTooltip"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
  "hasParent"(): boolean
  "fullSize"(): $Size
+ "horizontalSizing"(arg0: $Sizing$$Type): $Component
+ "horizontalSizing"(): $AnimatableProperty<($Sizing)>
+ "shouldDrawTooltip"(mouseX: double, mouseY: double): boolean
+ "parseProperties"(model: $UIModel$$Type, element: $Element$$Type, children: $Map$$Type<(StringJS), ($Element$$Type)>): void
+ "drawFocusHighlight"(context: $OwoUIDrawContext$$Type, mouseX: integer, mouseY: integer, partialTicks: float, delta: float): void
+ "isInBoundingBox"(x: double, y: double): boolean
  "intersects"(other: $PositionedRectangle$$Type): boolean
  "intersection"(other: $PositionedRectangle$$Type): $PositionedRectangle
 static "of"(x: integer, y: integer, size: $Size$$Type): $PositionedRectangle
@@ -6841,9 +6843,9 @@ import {$Uniform, $Uniform$$Type} from "com.mojang.blaze3d.shaders.Uniform"
 
 export interface $ShaderProgramAccessor {
 
- "owo$getLoadedUniforms"(): $Map<(string), ($Uniform)>
+ "owo$getLoadedUniforms"(): $Map<(StringJS), ($Uniform)>
 
-(): $Map$$Type<(string), ($Uniform$$Type)>
+(): $Map$$Type<(StringJS), ($Uniform$$Type)>
 }
 
 export namespace $ShaderProgramAccessor {
@@ -6852,13 +6854,13 @@ const probejs$$marker: never
 export class $ShaderProgramAccessor$$Static implements $ShaderProgramAccessor {
 
 
- "owo$getLoadedUniforms"(): $Map<(string), ($Uniform)>
+ "owo$getLoadedUniforms"(): $Map<(StringJS), ($Uniform)>
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ShaderProgramAccessor$$Type = (() => $Map$$Type<(string), ($Uniform$$Type)>);
+export type $ShaderProgramAccessor$$Type = (() => $Map$$Type<(StringJS), ($Uniform$$Type)>);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -6877,19 +6879,19 @@ import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component
 export class $ItemGroupButton implements $OwoItemGroup$ButtonDefinition {
 static readonly "ICONS_TEXTURE": $ResourceLocation
 
-constructor(group: $CreativeModeTab$$Type, icon: $Icon$$Type, name: string, texture: $ResourceLocation$$Type, action: $Runnable$$Type)
-constructor(group: $CreativeModeTab$$Type, icon: $Icon$$Type, name: string, action: $Runnable$$Type)
+constructor(group: $CreativeModeTab$$Type, icon: $Icon$$Type, name: StringJS, texture: $ResourceLocation$$Type, action: $Runnable$$Type)
+constructor(group: $CreativeModeTab$$Type, icon: $Icon$$Type, name: StringJS, action: $Runnable$$Type)
 
+public static "link"(group: $CreativeModeTab$$Type, icon: $Icon$$Type, name: StringJS, url: StringJS): $ItemGroupButton
 public "action"(): $Runnable
-public static "link"(group: $CreativeModeTab$$Type, icon: $Icon$$Type, name: string, url: string): $ItemGroupButton
+public "icon"(): $Icon
 public "tooltip"(): $Component
 public "texture"(): $ResourceLocation
-public "icon"(): $Icon
-public static "github"(group: $CreativeModeTab$$Type, url: string): $ItemGroupButton
-public static "modrinth"(group: $CreativeModeTab$$Type, url: string): $ItemGroupButton
-public static "curseforge"(group: $CreativeModeTab$$Type, url: string): $ItemGroupButton
-public static "discord"(group: $CreativeModeTab$$Type, url: string): $ItemGroupButton
-public static "tooltipFor"(group: $CreativeModeTab$$Type, component: string, componentName: string): $Component
+public static "curseforge"(group: $CreativeModeTab$$Type, url: StringJS): $ItemGroupButton
+public static "github"(group: $CreativeModeTab$$Type, url: StringJS): $ItemGroupButton
+public static "discord"(group: $CreativeModeTab$$Type, url: StringJS): $ItemGroupButton
+public static "modrinth"(group: $CreativeModeTab$$Type, url: StringJS): $ItemGroupButton
+public static "tooltipFor"(group: $CreativeModeTab$$Type, component: StringJS, componentName: StringJS): $Component
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -6919,20 +6921,20 @@ constructor(icon: $Icon$$Type, name: $Component$$Type, contentSupplier: $ItemGro
 
 public "name"(): $Component
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
+public "icon"(): $Icon
 public "tooltip"(): $Component
 public "texture"(): $ResourceLocation
 public "primary"(): boolean
-public "icon"(): $Icon
 public "contentSupplier"(): $ItemGroupTab$ContentSupplier
-public static "tooltipFor"(group: $CreativeModeTab$$Type, component: string, componentName: string): $Component
+public static "tooltipFor"(group: $CreativeModeTab$$Type, component: StringJS, componentName: StringJS): $Component
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ItemGroupTab$$Type = ({"icon"?: $Icon$$Type, "contentSupplier"?: $ItemGroupTab$ContentSupplier$$Type, "name"?: $Component$$Type, "primary"?: boolean, "texture"?: $ResourceLocation$$Type}) | ([icon?: $Icon$$Type, contentSupplier?: $ItemGroupTab$ContentSupplier$$Type, name?: $Component$$Type, primary?: boolean, texture?: $ResourceLocation$$Type]);
+export type $ItemGroupTab$$Type = ({"texture"?: $ResourceLocation$$Type, "icon"?: $Icon$$Type, "contentSupplier"?: $ItemGroupTab$ContentSupplier$$Type, "name"?: $Component$$Type, "primary"?: boolean}) | ([texture?: $ResourceLocation$$Type, icon?: $Icon$$Type, contentSupplier?: $ItemGroupTab$ContentSupplier$$Type, name?: $Component$$Type, primary?: boolean]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -6950,8 +6952,8 @@ import {$ItemGroupButton, $ItemGroupButton$$Type} from "io.wispforest.owo.itemgr
 import {$ItemGroupTab, $ItemGroupTab$$Type} from "io.wispforest.owo.itemgroup.gui.ItemGroupTab"
 import {$CreativeModeTab$ItemDisplayParameters, $CreativeModeTab$ItemDisplayParameters$$Type} from "net.minecraft.world.item.CreativeModeTab$ItemDisplayParameters"
 import {$IntSet, $IntSet$$Type} from "it.unimi.dsi.fastutil.ints.IntSet"
-import {$OwoItemGroup$ScrollerTextures, $OwoItemGroup$ScrollerTextures$$Type} from "io.wispforest.owo.itemgroup.OwoItemGroup$ScrollerTextures"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
+import {$OwoItemGroup$ScrollerTextures, $OwoItemGroup$ScrollerTextures$$Type} from "io.wispforest.owo.itemgroup.OwoItemGroup$ScrollerTextures"
 import {$CreativeModeTab, $CreativeModeTab$$Type} from "net.minecraft.world.item.CreativeModeTab"
 import {$OwoItemGroup$TabTextures, $OwoItemGroup$TabTextures$$Type} from "io.wispforest.owo.itemgroup.OwoItemGroup$TabTextures"
 import {$CreativeModeTab$Output, $CreativeModeTab$Output$$Type} from "net.minecraft.world.item.CreativeModeTab$Output"
@@ -6975,16 +6977,23 @@ static readonly "DEFAULT_STACK_GENERATOR": $BiConsumer<($Item), ($CreativeModeTa
 public static "builder"(id: $ResourceLocation$$Type, iconSupplier: $Supplier$$Type<($Icon$$Type)>): $OwoItemGroup$Builder
 public "initialize"(): void
 public "id"(): $ResourceLocation
-public "shouldDisplay"(): boolean
+public "getTab"(index: integer): $ItemGroupTab
+public "icon"(): $Icon
+public "getButtons"(): $List<($ItemGroupButton)>
 public "buildContents"(context: $CreativeModeTab$ItemDisplayParameters$$Type): void
 public "hasAnyItems"(): boolean
-public "getButtons"(): $List<($ItemGroupButton)>
 public "selectTab"(tab: integer, context: $CreativeModeTab$ItemDisplayParameters$$Type): void
 public "addButton"(button: $ItemGroupButton$$Type): void
-public "icon"(): $Icon
-public "getTab"(index: integer): $ItemGroupTab
-public "addTab"(icon: $Icon$$Type, name: string, contentTag: $TagKey$$Type<($Item)>, primary: boolean): void
-public "addTab"(icon: $Icon$$Type, name: string, contentTag: $TagKey$$Type<($Item)>, texture: $ResourceLocation$$Type, primary: boolean): void
+public "shouldDisplay"(): boolean
+public "addTab"(icon: $Icon$$Type, name: StringJS, contentTag: $TagKey$$Type<($Item)>, primary: boolean): void
+public "addTab"(icon: $Icon$$Type, name: StringJS, contentTag: $TagKey$$Type<($Item)>, texture: $ResourceLocation$$Type, primary: boolean): void
+public "deselectTab"(tab: integer, context: $CreativeModeTab$ItemDisplayParameters$$Type): void
+public "addCustomTab"(icon: $Icon$$Type, name: StringJS, contentSupplier: $ItemGroupTab$ContentSupplier$$Type, primary: boolean): void
+public "addCustomTab"(icon: $Icon$$Type, name: StringJS, contentSupplier: $ItemGroupTab$ContentSupplier$$Type, texture: $ResourceLocation$$Type, primary: boolean): void
+public "getTabTextures"(): $OwoItemGroup$TabTextures
+public "selectedTabs"(): $IntSet
+public "isTabSelected"(tab: integer): boolean
+public "toggleTab"(tab: integer, context: $CreativeModeTab$ItemDisplayParameters$$Type): void
 public "getScrollerTextures"(): $OwoItemGroup$ScrollerTextures
 public "hasDynamicTitle"(): boolean
 public "getTabStackHeight"(): integer
@@ -6992,19 +7001,12 @@ public "shouldDisplaySingleTab"(): boolean
 public "getButtonStackHeight"(): integer
 public "canSelectMultipleTabs"(): boolean
 public "selectSingleTab"(tab: integer, context: $CreativeModeTab$ItemDisplayParameters$$Type): void
-public "addCustomTab"(icon: $Icon$$Type, name: string, contentSupplier: $ItemGroupTab$ContentSupplier$$Type, texture: $ResourceLocation$$Type, primary: boolean): void
-public "addCustomTab"(icon: $Icon$$Type, name: string, contentSupplier: $ItemGroupTab$ContentSupplier$$Type, primary: boolean): void
-public "deselectTab"(tab: integer, context: $CreativeModeTab$ItemDisplayParameters$$Type): void
-public "getTabTextures"(): $OwoItemGroup$TabTextures
-public "selectedTabs"(): $IntSet
-public "isTabSelected"(tab: integer): boolean
-public "toggleTab"(tab: integer, context: $CreativeModeTab$ItemDisplayParameters$$Type): void
 public "owo$getBackgroundTexture"(): $ResourceLocation
 get "buttons"(): $List<($ItemGroupButton)>
+get "tabTextures"(): $OwoItemGroup$TabTextures
 get "scrollerTextures"(): $OwoItemGroup$ScrollerTextures
 get "tabStackHeight"(): integer
 get "buttonStackHeight"(): integer
-get "tabTextures"(): $OwoItemGroup$TabTextures
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7057,22 +7059,22 @@ import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component
 
 export interface $OwoItemGroup$ButtonDefinition {
 
+ "icon"(): $Icon
  "tooltip"(): $Component
  "texture"(): $ResourceLocation
- "icon"(): $Icon
 }
 
 export namespace $OwoItemGroup$ButtonDefinition {
-function tooltipFor(group: $CreativeModeTab$$Type, component: string, componentName: string): $Component
+function tooltipFor(group: $CreativeModeTab$$Type, component: StringJS, componentName: StringJS): $Component
 const probejs$$marker: never
 }
 export class $OwoItemGroup$ButtonDefinition$$Static implements $OwoItemGroup$ButtonDefinition {
 
 
+ "icon"(): $Icon
  "tooltip"(): $Component
  "texture"(): $ResourceLocation
- "icon"(): $Icon
-static "tooltipFor"(group: $CreativeModeTab$$Type, component: string, componentName: string): $Component
+static "tooltipFor"(group: $CreativeModeTab$$Type, component: StringJS, componentName: StringJS): $Component
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7088,8 +7090,8 @@ export type $OwoItemGroup$ButtonDefinition_ = $OwoItemGroup$ButtonDefinition$$Ty
 }}
 declare module "io.wispforest.owo.client.screens.SyncedProperty" {
 import {$Endec, $Endec$$Type} from "io.wispforest.endec.Endec"
-import {$AbstractContainerMenu, $AbstractContainerMenu$$Type} from "net.minecraft.world.inventory.AbstractContainerMenu"
 import {$FriendlyByteBuf, $FriendlyByteBuf$$Type} from "net.minecraft.network.FriendlyByteBuf"
+import {$AbstractContainerMenu, $AbstractContainerMenu$$Type} from "net.minecraft.world.inventory.AbstractContainerMenu"
 import {$Observable, $Observable$$Type} from "io.wispforest.owo.util.Observable"
 
 export class $SyncedProperty<T> extends $Observable<(T)> {
@@ -7128,7 +7130,7 @@ constructor(type: $ArgumentTypeInfo$$Type<(A), (any)>, data: T, fromTemplate: $B
 
 public "type"(): $ArgumentTypeInfo<(A), (any)>
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "data"(): T
 public "instantiate"(ctx: $CommandBuildContext$$Type): A
@@ -7138,7 +7140,7 @@ public "fromTemplate"(): $BiFunction<($CommandBuildContext), (T), (A)>
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $RecordArgumentTypeInfo$RecordInfoTemplate$$Type<A, T> = ({"fromTemplate"?: $BiFunction$$Type<($CommandBuildContext$$Type), (any), (any)>, "type"?: $ArgumentTypeInfo$$Type<(any), (never)>, "data"?: any}) | ([fromTemplate?: $BiFunction$$Type<($CommandBuildContext$$Type), (any), (any)>, type?: $ArgumentTypeInfo$$Type<(any), (never)>, data?: any]);
+export type $RecordArgumentTypeInfo$RecordInfoTemplate$$Type<A, T> = ({"data"?: any, "fromTemplate"?: $BiFunction$$Type<($CommandBuildContext$$Type), (any), (any)>, "type"?: $ArgumentTypeInfo$$Type<(any), (never)>}) | ([data?: any, fromTemplate?: $BiFunction$$Type<($CommandBuildContext$$Type), (any), (any)>, type?: $ArgumentTypeInfo$$Type<(any), (never)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -7149,8 +7151,8 @@ export type $RecordArgumentTypeInfo$RecordInfoTemplate_<A, T> = $RecordArgumentT
 declare module "io.wispforest.owo.ui.core.Surface" {
 import {$OwoUIDrawContext, $OwoUIDrawContext$$Type} from "io.wispforest.owo.ui.core.OwoUIDrawContext"
 import {$ParentComponent, $ParentComponent$$Type} from "io.wispforest.owo.ui.core.ParentComponent"
-import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Element, $Element$$Type} from "org.w3c.dom.Element"
+import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$PanoramaRenderer, $PanoramaRenderer$$Type} from "net.minecraft.client.renderer.PanoramaRenderer"
 
 export interface $Surface {
@@ -7170,12 +7172,12 @@ const TOOLTIP: $Surface
 const PANEL_INSET: $Surface
 const VANILLA_TRANSLUCENT: $Surface
 function parse(surfaceElement: $Element$$Type): $Surface
-function panorama(renderer: $PanoramaRenderer$$Type, alwaysVisible: boolean): $Surface
-function tiled(texture: $ResourceLocation$$Type, textureWidth: integer, textureHeight: integer): $Surface
 function blur(quality: float, size: float): $Surface
 function flat(color: integer): $Surface
-function vanillaPanorama(alwaysVisible: boolean): $Surface
+function panorama(renderer: $PanoramaRenderer$$Type, alwaysVisible: boolean): $Surface
+function tiled(texture: $ResourceLocation$$Type, textureWidth: integer, textureHeight: integer): $Surface
 function outline(color: integer): $Surface
+function vanillaPanorama(alwaysVisible: boolean): $Surface
 function panelWithInset(insetWidth: integer): $Surface
 const probejs$$marker: never
 }
@@ -7189,15 +7191,15 @@ static readonly "PANEL_INSET": $Surface
 static readonly "VANILLA_TRANSLUCENT": $Surface
 
 
-static "parse"(surfaceElement: $Element$$Type): $Surface
  "and"(surface: $Surface$$Type): $Surface
-static "panorama"(renderer: $PanoramaRenderer$$Type, alwaysVisible: boolean): $Surface
- "draw"(arg0: $OwoUIDrawContext$$Type, arg1: $ParentComponent$$Type): void
-static "tiled"(texture: $ResourceLocation$$Type, textureWidth: integer, textureHeight: integer): $Surface
+static "parse"(surfaceElement: $Element$$Type): $Surface
 static "blur"(quality: float, size: float): $Surface
 static "flat"(color: integer): $Surface
-static "vanillaPanorama"(alwaysVisible: boolean): $Surface
+ "draw"(arg0: $OwoUIDrawContext$$Type, arg1: $ParentComponent$$Type): void
+static "panorama"(renderer: $PanoramaRenderer$$Type, alwaysVisible: boolean): $Surface
+static "tiled"(texture: $ResourceLocation$$Type, textureWidth: integer, textureHeight: integer): $Surface
 static "outline"(color: integer): $Surface
+static "vanillaPanorama"(alwaysVisible: boolean): $Surface
 static "panelWithInset"(insetWidth: integer): $Surface
 }
 /**
@@ -7219,11 +7221,11 @@ import {$AttributeModifier, $AttributeModifier$$Type} from "net.minecraft.world.
 import {$AccessoryItemAttributeModifiers$Builder, $AccessoryItemAttributeModifiers$Builder$$Type} from "io.wispforest.accessories.api.components.AccessoryItemAttributeModifiers$Builder"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$List, $List$$Type} from "java.util.List"
-import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$AccessoryItemAttributeModifiers$Entry, $AccessoryItemAttributeModifiers$Entry$$Type} from "io.wispforest.accessories.api.components.AccessoryItemAttributeModifiers$Entry"
+import {$Attribute, $Attribute$$Type} from "net.minecraft.world.entity.ai.attributes.Attribute"
 import {$Holder, $Holder$$Type} from "net.minecraft.core.Holder"
-import {$SlotReference, $SlotReference$$Type} from "io.wispforest.accessories.api.slot.SlotReference"
 import {$Record, $Record$$Type} from "java.lang.Record"
+import {$SlotReference, $SlotReference$$Type} from "io.wispforest.accessories.api.slot.SlotReference"
 
 export class $AccessoryItemAttributeModifiers extends $Record {
 static readonly "ENDEC": $Endec<($AccessoryItemAttributeModifiers)>
@@ -7233,22 +7235,22 @@ constructor(modifiers: $List$$Type<($AccessoryItemAttributeModifiers$Entry$$Type
 
 public "modifiers"(): $List<($AccessoryItemAttributeModifiers$Entry)>
 public "equals"(o: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public static "builder"(): $AccessoryItemAttributeModifiers$Builder
-public "showInTooltip"(): boolean
 public "hasModifier"(holder: $Holder$$Type<($Attribute)>, location: $ResourceLocation$$Type): boolean
 public "getModifier"(holder: $Holder$$Type<($Attribute)>, location: $ResourceLocation$$Type): $AttributeModifier
-public "withModifierAdded"(holder: $Holder$$Type<($Attribute)>, attributeModifier: $AttributeModifier$$Type, slotName: string, isStackable: boolean): $AccessoryItemAttributeModifiers
+public "showInTooltip"(): boolean
+public "withModifierAdded"(holder: $Holder$$Type<($Attribute)>, attributeModifier: $AttributeModifier$$Type, slotName: StringJS, isStackable: boolean): $AccessoryItemAttributeModifiers
 public "gatherAttributes"(slotReference: $SlotReference$$Type): $AccessoryAttributeBuilder
-public "withModifierAddedForAny"(holder: $Holder$$Type<($Attribute)>, attributeModifier: $AttributeModifier$$Type, slotName: string, isStackable: boolean): $AccessoryItemAttributeModifiers
 public "withoutModifier"(holder: $Holder$$Type<($Attribute)>, location: $ResourceLocation$$Type): $AccessoryItemAttributeModifiers
+public "withModifierAddedForAny"(holder: $Holder$$Type<($Attribute)>, attributeModifier: $AttributeModifier$$Type, slotName: StringJS, isStackable: boolean): $AccessoryItemAttributeModifiers
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $AccessoryItemAttributeModifiers$$Type = ({"modifiers"?: $List$$Type<($AccessoryItemAttributeModifiers$Entry$$Type)>, "showInTooltip"?: boolean}) | ([modifiers?: $List$$Type<($AccessoryItemAttributeModifiers$Entry$$Type)>, showInTooltip?: boolean]);
+export type $AccessoryItemAttributeModifiers$$Type = ({"showInTooltip"?: boolean, "modifiers"?: $List$$Type<($AccessoryItemAttributeModifiers$Entry$$Type)>}) | ([showInTooltip?: boolean, modifiers?: $List$$Type<($AccessoryItemAttributeModifiers$Entry$$Type)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -7262,8 +7264,8 @@ import {$Map, $Map$$Type} from "java.util.Map"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
 import {$AttributeModifier$Operation, $AttributeModifier$Operation$$Type} from "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation"
-import {$ExpandedSimpleContainer, $ExpandedSimpleContainer$$Type} from "io.wispforest.accessories.impl.ExpandedSimpleContainer"
 import {$List, $List$$Type} from "java.util.List"
+import {$ExpandedSimpleContainer, $ExpandedSimpleContainer$$Type} from "io.wispforest.accessories.impl.ExpandedSimpleContainer"
 import {$AccessoriesCapability, $AccessoriesCapability$$Type} from "io.wispforest.accessories.api.AccessoriesCapability"
 import {$SlotType, $SlotType$$Type} from "io.wispforest.accessories.api.slot.SlotType"
 import {$Set, $Set$$Type} from "java.util.Set"
@@ -7271,34 +7273,34 @@ import {$SlotReference, $SlotReference$$Type} from "io.wispforest.accessories.ap
 
 export interface $AccessoriesContainer {
 
+ "getSize"(): integer
  "getModifiers"(): $Map<($ResourceLocation), ($AttributeModifier)>
  "update"(): void
- "getSize"(): integer
- "markChanged"(arg0: boolean): void
  "markChanged"(): void
+ "markChanged"(arg0: boolean): void
+ "shouldRender"(index: integer): boolean
  "hasModifier"(arg0: $ResourceLocation$$Type): boolean
- "clearModifiers"(): void
- "getAccessories"(): $ExpandedSimpleContainer
  "capability"(): $AccessoriesCapability
  "removeModifier"(arg0: $ResourceLocation$$Type): void
- "shouldRender"(index: integer): boolean
- "addTransientModifier"(arg0: $AttributeModifier$$Type): void
- "getCosmeticAccessories"(): $ExpandedSimpleContainer
- "hasChanged"(): boolean
- "getSlotName"(): string
- "slotType"(): $SlotType
  "createReference"(index: integer): $SlotReference
+ "hasChanged"(): boolean
+ "getSlotName"(): StringJS
+ "getAccessories"(): $ExpandedSimpleContainer
+ "slotType"(): $SlotType
+ "clearModifiers"(): void
+ "getCosmeticAccessories"(): $ExpandedSimpleContainer
+ "addTransientModifier"(arg0: $AttributeModifier$$Type): void
  "renderOptions"(): $List<(boolean)>
+ "addPersistentModifier"(arg0: $AttributeModifier$$Type): void
  "getCachedModifiers"(): $Set<($AttributeModifier)>
  "clearCachedModifiers"(): void
- "addPersistentModifier"(arg0: $AttributeModifier$$Type): void
  "removeCachedModifiers"(arg0: $AttributeModifier$$Type): void
  "getModifiersForOperation"(arg0: $AttributeModifier$Operation$$Type): $Collection<($AttributeModifier)>
-get "modifiers"(): $Map<($ResourceLocation), ($AttributeModifier)>
 get "size"(): integer
+get "modifiers"(): $Map<($ResourceLocation), ($AttributeModifier)>
+get "slotName"(): StringJS
 get "accessories"(): $ExpandedSimpleContainer
 get "cosmeticAccessories"(): $ExpandedSimpleContainer
-get "slotName"(): string
 get "cachedModifiers"(): $Set<($AttributeModifier)>
 }
 
@@ -7308,27 +7310,27 @@ const probejs$$marker: never
 export class $AccessoriesContainer$$Static implements $AccessoriesContainer {
 
 
+ "getSize"(): integer
  "getModifiers"(): $Map<($ResourceLocation), ($AttributeModifier)>
  "update"(): void
- "getSize"(): integer
- "markChanged"(arg0: boolean): void
  "markChanged"(): void
+ "markChanged"(arg0: boolean): void
+ "shouldRender"(index: integer): boolean
  "hasModifier"(arg0: $ResourceLocation$$Type): boolean
- "clearModifiers"(): void
- "getAccessories"(): $ExpandedSimpleContainer
  "capability"(): $AccessoriesCapability
  "removeModifier"(arg0: $ResourceLocation$$Type): void
- "shouldRender"(index: integer): boolean
- "addTransientModifier"(arg0: $AttributeModifier$$Type): void
- "getCosmeticAccessories"(): $ExpandedSimpleContainer
- "hasChanged"(): boolean
- "getSlotName"(): string
- "slotType"(): $SlotType
  "createReference"(index: integer): $SlotReference
+ "hasChanged"(): boolean
+ "getSlotName"(): StringJS
+ "getAccessories"(): $ExpandedSimpleContainer
+ "slotType"(): $SlotType
+ "clearModifiers"(): void
+ "getCosmeticAccessories"(): $ExpandedSimpleContainer
+ "addTransientModifier"(arg0: $AttributeModifier$$Type): void
  "renderOptions"(): $List<(boolean)>
+ "addPersistentModifier"(arg0: $AttributeModifier$$Type): void
  "getCachedModifiers"(): $Set<($AttributeModifier)>
  "clearCachedModifiers"(): void
- "addPersistentModifier"(arg0: $AttributeModifier$$Type): void
  "removeCachedModifiers"(arg0: $AttributeModifier$$Type): void
  "getModifiersForOperation"(arg0: $AttributeModifier$Operation$$Type): $Collection<($AttributeModifier)>
 }
@@ -7378,44 +7380,20 @@ export type $ClientCommonNetworkHandlerAccessor_ = $ClientCommonNetworkHandlerAc
 declare module "io.wispforest.accessories.api.AccessoriesHolder" {
 import {$PlayerEquipControl, $PlayerEquipControl$$Type} from "io.wispforest.accessories.impl.PlayerEquipControl"
 import {$Optional, $Optional$$Type} from "java.util.Optional"
-import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$Set, $Set$$Type} from "java.util.Set"
+import {$LivingEntity, $LivingEntity$$Type} from "net.minecraft.world.entity.LivingEntity"
 import {$AccessoriesHolderLookupCache, $AccessoriesHolderLookupCache$$Type} from "io.wispforest.accessories.impl.caching.AccessoriesHolderLookupCache"
 
 export interface $AccessoriesHolder {
 
- "showAdvancedOptions"(): boolean
- "showAdvancedOptions"(arg0: boolean): $AccessoriesHolder
- "showUnusedSlots"(arg0: boolean): $AccessoriesHolder
- "showUnusedSlots"(): boolean
- "showGroupFilter"(arg0: boolean): $AccessoriesHolder
- "showGroupFilter"(): boolean
- "mainWidgetPosition"(): boolean
- "mainWidgetPosition"(arg0: boolean): $AccessoriesHolder
- "sideWidgetPosition"(arg0: boolean): $AccessoriesHolder
- "sideWidgetPosition"(): boolean
- "showCraftingGrid"(): boolean
- "showCraftingGrid"(arg0: boolean): $AccessoriesHolder
- "isGroupFiltersOpen"(arg0: boolean): $AccessoriesHolder
- "isGroupFiltersOpen"(): boolean
-/**
- * 
- * @deprecated
- */
- "showUniqueSlots"(): boolean
-/**
- * 
- * @deprecated
- */
- "showUniqueSlots"(value: boolean): $AccessoriesHolder
- "equipControl"(arg0: $PlayerEquipControl$$Type): $AccessoriesHolder
  "equipControl"(): $PlayerEquipControl
- "columnAmount"(arg0: integer): $AccessoriesHolder
+ "equipControl"(arg0: $PlayerEquipControl$$Type): $AccessoriesHolder
  "columnAmount"(): integer
+ "columnAmount"(arg0: integer): $AccessoriesHolder
  "widgetType"(arg0: integer): $AccessoriesHolder
  "widgetType"(): integer
- "filteredGroups"(): $Set<(string)>
- "filteredGroups"(arg0: $Set$$Type<(string)>): $AccessoriesHolder
+ "filteredGroups"(): $Set<(StringJS)>
+ "filteredGroups"(arg0: $Set$$Type<(StringJS)>): $AccessoriesHolder
  "cosmeticsShown"(arg0: boolean): $AccessoriesHolder
  "cosmeticsShown"(): boolean
 /**
@@ -7429,8 +7407,32 @@ export interface $AccessoriesHolder {
  */
  "linesShown"(value: boolean): $AccessoriesHolder
  "getLookupCache"(): $AccessoriesHolderLookupCache
-get "groupFiltersOpen"(): boolean
+ "showAdvancedOptions"(arg0: boolean): $AccessoriesHolder
+ "showAdvancedOptions"(): boolean
+ "showUnusedSlots"(): boolean
+ "showUnusedSlots"(arg0: boolean): $AccessoriesHolder
+ "showGroupFilter"(): boolean
+ "showGroupFilter"(arg0: boolean): $AccessoriesHolder
+ "mainWidgetPosition"(arg0: boolean): $AccessoriesHolder
+ "mainWidgetPosition"(): boolean
+ "sideWidgetPosition"(arg0: boolean): $AccessoriesHolder
+ "sideWidgetPosition"(): boolean
+ "showCraftingGrid"(arg0: boolean): $AccessoriesHolder
+ "showCraftingGrid"(): boolean
+ "isGroupFiltersOpen"(): boolean
+ "isGroupFiltersOpen"(arg0: boolean): $AccessoriesHolder
+/**
+ * 
+ * @deprecated
+ */
+ "showUniqueSlots"(): boolean
+/**
+ * 
+ * @deprecated
+ */
+ "showUniqueSlots"(value: boolean): $AccessoriesHolder
 get "lookupCache"(): $AccessoriesHolderLookupCache
+get "groupFiltersOpen"(): boolean
 }
 
 export namespace $AccessoriesHolder {
@@ -7442,38 +7444,14 @@ export class $AccessoriesHolder$$Static implements $AccessoriesHolder {
 
 
 static "get"(livingEntity: $LivingEntity$$Type): $AccessoriesHolder
- "showAdvancedOptions"(): boolean
- "showAdvancedOptions"(arg0: boolean): $AccessoriesHolder
- "showUnusedSlots"(arg0: boolean): $AccessoriesHolder
- "showUnusedSlots"(): boolean
- "showGroupFilter"(arg0: boolean): $AccessoriesHolder
- "showGroupFilter"(): boolean
- "mainWidgetPosition"(): boolean
- "mainWidgetPosition"(arg0: boolean): $AccessoriesHolder
- "sideWidgetPosition"(arg0: boolean): $AccessoriesHolder
- "sideWidgetPosition"(): boolean
- "showCraftingGrid"(): boolean
- "showCraftingGrid"(arg0: boolean): $AccessoriesHolder
- "isGroupFiltersOpen"(arg0: boolean): $AccessoriesHolder
- "isGroupFiltersOpen"(): boolean
-/**
- * 
- * @deprecated
- */
- "showUniqueSlots"(): boolean
-/**
- * 
- * @deprecated
- */
- "showUniqueSlots"(value: boolean): $AccessoriesHolder
- "equipControl"(arg0: $PlayerEquipControl$$Type): $AccessoriesHolder
  "equipControl"(): $PlayerEquipControl
- "columnAmount"(arg0: integer): $AccessoriesHolder
+ "equipControl"(arg0: $PlayerEquipControl$$Type): $AccessoriesHolder
  "columnAmount"(): integer
+ "columnAmount"(arg0: integer): $AccessoriesHolder
  "widgetType"(arg0: integer): $AccessoriesHolder
  "widgetType"(): integer
- "filteredGroups"(): $Set<(string)>
- "filteredGroups"(arg0: $Set$$Type<(string)>): $AccessoriesHolder
+ "filteredGroups"(): $Set<(StringJS)>
+ "filteredGroups"(arg0: $Set$$Type<(StringJS)>): $AccessoriesHolder
  "cosmeticsShown"(arg0: boolean): $AccessoriesHolder
  "cosmeticsShown"(): boolean
 /**
@@ -7488,6 +7466,30 @@ static "get"(livingEntity: $LivingEntity$$Type): $AccessoriesHolder
  "linesShown"(value: boolean): $AccessoriesHolder
 static "getOptionally"(livingEntity: $LivingEntity$$Type): $Optional<($AccessoriesHolder)>
  "getLookupCache"(): $AccessoriesHolderLookupCache
+ "showAdvancedOptions"(arg0: boolean): $AccessoriesHolder
+ "showAdvancedOptions"(): boolean
+ "showUnusedSlots"(): boolean
+ "showUnusedSlots"(arg0: boolean): $AccessoriesHolder
+ "showGroupFilter"(): boolean
+ "showGroupFilter"(arg0: boolean): $AccessoriesHolder
+ "mainWidgetPosition"(arg0: boolean): $AccessoriesHolder
+ "mainWidgetPosition"(): boolean
+ "sideWidgetPosition"(arg0: boolean): $AccessoriesHolder
+ "sideWidgetPosition"(): boolean
+ "showCraftingGrid"(arg0: boolean): $AccessoriesHolder
+ "showCraftingGrid"(): boolean
+ "isGroupFiltersOpen"(): boolean
+ "isGroupFiltersOpen"(arg0: boolean): $AccessoriesHolder
+/**
+ * 
+ * @deprecated
+ */
+ "showUniqueSlots"(): boolean
+/**
+ * 
+ * @deprecated
+ */
+ "showUniqueSlots"(value: boolean): $AccessoriesHolder
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7537,11 +7539,11 @@ import {$WidgetTooltipHolder, $WidgetTooltipHolder$$Type} from "net.minecraft.cl
 
 export interface $ClickableWidgetAccessor {
 
- "owo$setX"(arg0: integer): void
- "owo$setY"(arg0: integer): void
  "owo$setHeight"(arg0: integer): void
  "owo$setWidth"(arg0: integer): void
  "owo$getTooltip"(): $WidgetTooltipHolder
+ "owo$setX"(arg0: integer): void
+ "owo$setY"(arg0: integer): void
 }
 
 export namespace $ClickableWidgetAccessor {
@@ -7550,11 +7552,11 @@ const probejs$$marker: never
 export class $ClickableWidgetAccessor$$Static implements $ClickableWidgetAccessor {
 
 
- "owo$setX"(arg0: integer): void
- "owo$setY"(arg0: integer): void
  "owo$setHeight"(arg0: integer): void
  "owo$setWidth"(arg0: integer): void
  "owo$getTooltip"(): $WidgetTooltipHolder
+ "owo$setX"(arg0: integer): void
+ "owo$setY"(arg0: integer): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7596,8 +7598,8 @@ export interface $OwoItemSettingsExtension {
  "stackGenerator"(): $BiConsumer<($Item), ($CreativeModeTab$Output)>
  "stackGenerator"(generator: $BiConsumer$$Type<($Item), ($CreativeModeTab$Output)>): $Item$Properties
  "groupSupplier"(): $Supplier<($OwoItemGroup)>
- "shouldTrackUsageStat"(): boolean
  "trackUsageStat"(): $Item$Properties
+ "shouldTrackUsageStat"(): boolean
 }
 
 export namespace $OwoItemSettingsExtension {
@@ -7623,8 +7625,8 @@ export class $OwoItemSettingsExtension$$Static implements $OwoItemSettingsExtens
  "stackGenerator"(): $BiConsumer<($Item), ($CreativeModeTab$Output)>
  "stackGenerator"(generator: $BiConsumer$$Type<($Item), ($CreativeModeTab$Output)>): $Item$Properties
  "groupSupplier"(): $Supplier<($OwoItemGroup)>
- "shouldTrackUsageStat"(): boolean
  "trackUsageStat"(): $Item$Properties
+ "shouldTrackUsageStat"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7643,13 +7645,13 @@ import {$Iterator, $Iterator$$Type} from "java.util.Iterator"
 import {$Map$Entry, $Map$Entry$$Type} from "java.util.Map$Entry"
 import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 
-export interface $Deserializer$Map<E> extends $Iterator<($Map$Entry<(string), (E)>)> {
+export interface $Deserializer$Map<E> extends $Iterator<($Map$Entry<(StringJS), (E)>)> {
 
+ "estimatedSize"(): integer
  "hasNext"(): boolean
  "next"(): any
- "estimatedSize"(): integer
  "remove"(): void
- "forEachRemaining"(arg0: $Consumer$$Type<($Map$Entry<(string), (E)>)>): void
+ "forEachRemaining"(arg0: $Consumer$$Type<($Map$Entry<(StringJS), (E)>)>): void
 }
 
 export namespace $Deserializer$Map {
@@ -7658,11 +7660,11 @@ const probejs$$marker: never
 export class $Deserializer$Map$$Static<E> implements $Deserializer$Map {
 
 
+ "estimatedSize"(): integer
  "hasNext"(): boolean
  "next"(): any
- "estimatedSize"(): integer
  "remove"(): void
- "forEachRemaining"(arg0: $Consumer$$Type<($Map$Entry<(string), (E)>)>): void
+ "forEachRemaining"(arg0: $Consumer$$Type<($Map$Entry<(StringJS), (E)>)>): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7695,7 +7697,7 @@ static readonly "HAND": $CursorStyle
 
 
 public static "values"(): ($CursorStyle)[]
-public static "valueOf"(name: string): $CursorStyle
+public static "valueOf"(name: StringJS): $CursorStyle
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7713,24 +7715,24 @@ declare module "io.wispforest.owo.ui.core.Animation" {
 import {$EventSource, $EventSource$$Type} from "io.wispforest.owo.util.EventSource"
 import {$Animation$Direction, $Animation$Direction$$Type} from "io.wispforest.owo.ui.core.Animation$Direction"
 import {$Animatable, $Animatable$$Type} from "io.wispforest.owo.ui.core.Animatable"
-import {$Animation$Finished, $Animation$Finished$$Type} from "io.wispforest.owo.ui.core.Animation$Finished"
 import {$Easing, $Easing$$Type} from "io.wispforest.owo.ui.core.Easing"
-import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
+import {$Animation$Finished, $Animation$Finished$$Type} from "io.wispforest.owo.ui.core.Animation$Finished"
 import {$Animation$Composed, $Animation$Composed$$Type} from "io.wispforest.owo.ui.core.Animation$Composed"
+import {$Consumer, $Consumer$$Type} from "java.util.function.Consumer"
 
 export class $Animation<A extends $Animatable<(A)>> {
 
 constructor(duration: integer, setter: $Consumer$$Type<(A)>, easing: $Easing$$Type, from: A, to: A)
 
-public "reverse"(): $Animation<(A)>
-public "update"(delta: float): void
 public "loop"(loop: boolean): $Animation<(A)>
 public "direction"(): $Animation$Direction
-public static "compose"(...elements: ($Animation$$Type<(any)>)[]): $Animation$Composed
 public "finished"(): $EventSource<($Animation$Finished)>
-public "looping"(): boolean
+public static "compose"(...elements: ($Animation$$Type<(any)>)[]): $Animation$Composed
+public "reverse"(): $Animation<(A)>
+public "update"(delta: float): void
 public "backwards"(): $Animation<(A)>
 public "forwards"(): $Animation<(A)>
+public "looping"(): boolean
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -7750,10 +7752,10 @@ import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 
 export class $KeyedEndec<F> {
 
-constructor(arg0: string, arg1: $Endec$$Type<(F)>, arg2: $Supplier$$Type<(F)>)
-constructor(arg0: string, arg1: $Endec$$Type<(F)>, arg2: F)
+constructor(arg0: StringJS, arg1: $Endec$$Type<(F)>, arg2: $Supplier$$Type<(F)>)
+constructor(arg0: StringJS, arg1: $Endec$$Type<(F)>, arg2: F)
 
-public "key"(): string
+public "key"(): StringJS
 public "defaultValue"(): F
 public "endec"(): $Endec<(F)>
 }
@@ -7780,7 +7782,7 @@ static readonly "ACROSS": $Positioning$Type
 
 
 public static "values"(): ($Positioning$Type)[]
-public static "valueOf"(name: string): $Positioning$Type
+public static "valueOf"(name: StringJS): $Positioning$Type
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

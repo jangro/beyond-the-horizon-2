@@ -6,25 +6,25 @@ export class $AudioFormat {
 
 constructor(arg0: $AudioFormat$Encoding$$Type, arg1: float, arg2: integer, arg3: integer, arg4: integer, arg5: float, arg6: boolean)
 constructor(arg0: float, arg1: integer, arg2: integer, arg3: boolean, arg4: boolean)
-constructor(arg0: $AudioFormat$Encoding$$Type, arg1: float, arg2: integer, arg3: integer, arg4: integer, arg5: float, arg6: boolean, arg7: $Map$$Type<(string), (any)>)
+constructor(arg0: $AudioFormat$Encoding$$Type, arg1: float, arg2: integer, arg3: integer, arg4: integer, arg5: float, arg6: boolean, arg7: $Map$$Type<(StringJS), (any)>)
 
-public "getFrameRate"(): float
-public "getProperty"(arg0: string): any
-public "toString"(): string
-public "matches"(arg0: $AudioFormat$$Type): boolean
-public "properties"(): $Map<(string), (any)>
 public "isBigEndian"(): boolean
 public "getEncoding"(): $AudioFormat$Encoding
-public "getFrameSize"(): integer
-public "getChannels"(): integer
+public "getFrameRate"(): float
+public "getProperty"(arg0: StringJS): any
+public "toString"(): StringJS
+public "matches"(arg0: $AudioFormat$$Type): boolean
+public "properties"(): $Map<(StringJS), (any)>
 public "getSampleRate"(): float
+public "getChannels"(): integer
+public "getFrameSize"(): integer
 public "getSampleSizeInBits"(): integer
-get "frameRate"(): float
 get "bigEndian"(): boolean
 get "encoding"(): $AudioFormat$Encoding
-get "frameSize"(): integer
-get "channels"(): integer
+get "frameRate"(): float
 get "sampleRate"(): float
+get "channels"(): integer
+get "frameSize"(): integer
 get "sampleSizeInBits"(): integer
 }
 /**
@@ -48,10 +48,10 @@ static readonly "PCM_FLOAT": $AudioFormat$Encoding
 static readonly "PCM_SIGNED": $AudioFormat$Encoding
 static readonly "ALAW": $AudioFormat$Encoding
 
-constructor(arg0: string)
+constructor(arg0: StringJS)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 }
 /**

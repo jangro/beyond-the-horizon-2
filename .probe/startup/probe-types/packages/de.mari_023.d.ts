@@ -1,31 +1,34 @@
 declare module "de.mari_023.ae2wtlib.api.terminal.ItemWUT" {
-import {$Map, $Map$$Type} from "java.util.Map"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
-import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$Component, $Component$$Type} from "net.minecraft.network.chat.Component"
 import {$ItemMenuHostLocator, $ItemMenuHostLocator$$Type} from "appeng.menu.locator.ItemMenuHostLocator"
-import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
-import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
-import {$ItemWT, $ItemWT$$Type} from "de.mari_023.ae2wtlib.api.terminal.ItemWT"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$InteractionResultHolder, $InteractionResultHolder$$Type} from "net.minecraft.world.InteractionResultHolder"
-import {$MenuType, $MenuType$$Type} from "net.minecraft.world.inventory.MenuType"
 import {$IConfigManager, $IConfigManager$$Type} from "appeng.api.util.IConfigManager"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$IUpgradeInventory, $IUpgradeInventory$$Type} from "appeng.api.upgrades.IUpgradeInventory"
 import {$Entity, $Entity$$Type} from "net.minecraft.world.entity.Entity"
 import {$IGridLinkableHandler, $IGridLinkableHandler$$Type} from "appeng.api.features.IGridLinkableHandler"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$ItemMenuHost, $ItemMenuHost$$Type} from "appeng.api.implementations.menuobjects.ItemMenuHost"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$Item$TooltipContext, $Item$TooltipContext$$Type} from "net.minecraft.world.item.Item$TooltipContext"
+import {$TooltipFlag, $TooltipFlag$$Type} from "net.minecraft.world.item.TooltipFlag"
+import {$ItemWT, $ItemWT$$Type} from "de.mari_023.ae2wtlib.api.terminal.ItemWT"
+import {$MenuType, $MenuType$$Type} from "net.minecraft.world.inventory.MenuType"
 
 export class $ItemWUT extends $ItemWT {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "LINKABLE_HANDLER": $IGridLinkableHandler
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -33,17 +36,19 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "open"(arg0: $Player$$Type, arg1: $ItemMenuHostLocator$$Type, arg2: boolean): boolean
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "open"(arg0: $Player$$Type, arg1: $ItemMenuHostLocator$$Type, arg2: boolean): boolean
 public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
-public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
-public "getConfigManager"(arg0: $Supplier$$Type<($ItemStack$$Type)>): $IConfigManager
-public "onUpgradesChanged"(arg0: $ItemStack$$Type, arg1: $IUpgradeInventory$$Type): void
-public "getMenuType"(arg0: $ItemMenuHostLocator$$Type, arg1: $Player$$Type): $MenuType<(any)>
 public "getChargeRate"(arg0: $ItemStack$$Type): double
 public "getUpgrades"(arg0: $ItemStack$$Type): $IUpgradeInventory
+public "getMenuType"(arg0: $ItemMenuHostLocator$$Type, arg1: $Player$$Type): $MenuType<(any)>
+public "appendHoverText"(arg0: $ItemStack$$Type, arg1: $Item$TooltipContext$$Type, arg2: $List$$Type<($Component$$Type)>, arg3: $TooltipFlag$$Type): void
+public "onUpgradesChanged"(arg0: $ItemStack$$Type, arg1: $IUpgradeInventory$$Type): void
+public "getConfigManager"(arg0: $Supplier$$Type<($ItemStack$$Type)>): $IConfigManager
 public "countInstalledTerminals"(arg0: $ItemStack$$Type): integer
+public "getMenuHost"(arg0: $Player$$Type, arg1: $ItemMenuHostLocator$$Type, arg2: $BlockHitResult$$Type): $ItemMenuHost<(any)>
 public "asItem"(): $Item
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -59,20 +64,20 @@ export type $ItemWUT_ = $ItemWUT$$Type;
 }}
 declare module "de.mari_023.ae2wtlib.wut.recipe.UpgradeSerializer" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
-import {$Upgrade, $Upgrade$$Type} from "de.mari_023.ae2wtlib.wut.recipe.Upgrade"
 import {$RegistryFriendlyByteBuf, $RegistryFriendlyByteBuf$$Type} from "net.minecraft.network.RegistryFriendlyByteBuf"
+import {$Upgrade, $Upgrade$$Type} from "de.mari_023.ae2wtlib.wut.recipe.Upgrade"
 import {$Recipe, $Recipe$$Type} from "net.minecraft.world.item.crafting.Recipe"
 import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.item.crafting.RecipeSerializer"
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 
 export class $UpgradeSerializer implements $RecipeSerializer<($Upgrade)> {
-static readonly "NAME": string
+static readonly "NAME": StringJS
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($Upgrade)>
 public "codec"(): $MapCodec<($Upgrade)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($Upgrade)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -123,8 +128,8 @@ import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Ingredient, $Ingredient$$Type} from "net.minecraft.world.item.crafting.Ingredient"
 import {$WTDefinition, $WTDefinition$$Type} from "de.mari_023.ae2wtlib.api.registration.WTDefinition"
 import {$RecipeType, $RecipeType$$Type} from "net.minecraft.world.item.crafting.RecipeType"
-import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CraftingBookCategory, $CraftingBookCategory$$Type} from "net.minecraft.world.item.crafting.CraftingBookCategory"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$CraftingRecipe, $CraftingRecipe$$Type} from "net.minecraft.world.item.crafting.CraftingRecipe"
 import {$NonNullList, $NonNullList$$Type} from "net.minecraft.core.NonNullList"
 import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.item.crafting.RecipeSerializer"
@@ -135,25 +140,25 @@ export class $Common implements $CraftingRecipe {
 constructor()
 
 public "category"(): $CraftingBookCategory
-public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "getResultItem"(arg0: $HolderLookup$Provider$$Type): $ItemStack
 public static "mergeTerminal"(arg0: $ItemStack$$Type, arg1: $ItemStack$$Type, arg2: $WTDefinition$$Type): $ItemStack
+public "canCraftInDimensions"(arg0: integer, arg1: integer): boolean
 public "getType"(): $RecipeType<(any)>
 public "matches"(arg0: $CraftingInput$$Type, arg1: $Level$$Type): boolean
 public "getIngredients"(): $NonNullList<($Ingredient)>
-public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "getSerializer"(): $RecipeSerializer<(any)>
-public "getGroup"(): string
+public "getGroup"(): StringJS
 public "isSpecial"(): boolean
-public "showNotification"(): boolean
-public "getRemainingItems"(arg0: $CraftingInput$$Type): $NonNullList<($ItemStack)>
+public "getSerializer"(): $RecipeSerializer<(any)>
 public "isIncomplete"(): boolean
 public "getToastSymbol"(): $ItemStack
+public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "showNotification"(): boolean
+public "getRemainingItems"(arg0: $CraftingInput$$Type): $NonNullList<($ItemStack)>
 get "type"(): $RecipeType<(any)>
 get "ingredients"(): $NonNullList<($Ingredient)>
-get "serializer"(): $RecipeSerializer<(any)>
-get "group"(): string
+get "group"(): StringJS
 get "special"(): boolean
+get "serializer"(): $RecipeSerializer<(any)>
 get "incomplete"(): boolean
 get "toastSymbol"(): $ItemStack
 }
@@ -170,21 +175,25 @@ declare global {
 export type $Common_ = $Common$$Type;
 }}
 declare module "de.mari_023.ae2wtlib.wet.ItemWET" {
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
+import {$Map, $Map$$Type} from "java.util.Map"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ItemMenuHost, $ItemMenuHost$$Type} from "appeng.api.implementations.menuobjects.ItemMenuHost"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
+import {$ItemMenuHostLocator, $ItemMenuHostLocator$$Type} from "appeng.menu.locator.ItemMenuHostLocator"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ItemWT, $ItemWT$$Type} from "de.mari_023.ae2wtlib.api.terminal.ItemWT"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
-import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$MenuType, $MenuType$$Type} from "net.minecraft.world.inventory.MenuType"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
-import {$ItemMenuHostLocator, $ItemMenuHostLocator$$Type} from "appeng.menu.locator.ItemMenuHostLocator"
 import {$IGridLinkableHandler, $IGridLinkableHandler$$Type} from "appeng.api.features.IGridLinkableHandler"
 
 export class $ItemWET extends $ItemWT {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "LINKABLE_HANDLER": $IGridLinkableHandler
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -193,7 +202,9 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor()
 
 public "getMenuType"(arg0: $ItemMenuHostLocator$$Type, arg1: $Player$$Type): $MenuType<(any)>
+public "getMenuHost"(arg0: $Player$$Type, arg1: $ItemMenuHostLocator$$Type, arg2: $BlockHitResult$$Type): $ItemMenuHost<(any)>
 public "asItem"(): $Item
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -244,8 +255,8 @@ export type $WTDefinition$WTMenuHostFactory_ = $WTDefinition$WTMenuHostFactory$$
 }}
 declare module "de.mari_023.ae2wtlib.api.registration.WTDefinition" {
 import {$StreamCodec, $StreamCodec$$Type} from "net.minecraft.network.codec.StreamCodec"
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Collection, $Collection$$Type} from "java.util.Collection"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$List, $List$$Type} from "java.util.List"
 import {$WTDefinition$WTMenuHostFactory, $WTDefinition$WTMenuHostFactory$$Type} from "de.mari_023.ae2wtlib.api.registration.WTDefinition$WTMenuHostFactory"
 import {$DataComponentType, $DataComponentType$$Type} from "net.minecraft.core.component.DataComponentType"
@@ -255,8 +266,8 @@ import {$Unit, $Unit$$Type} from "com.mojang.datafixers.util.Unit"
 import {$ByteBuf, $ByteBuf$$Type} from "io.netty.buffer.ByteBuf"
 import {$ItemWT, $ItemWT$$Type} from "de.mari_023.ae2wtlib.api.terminal.ItemWT"
 import {$Codec, $Codec$$Type} from "com.mojang.serialization.Codec"
-import {$MenuType, $MenuType$$Type} from "net.minecraft.world.inventory.MenuType"
 import {$MutableComponent, $MutableComponent$$Type} from "net.minecraft.network.chat.MutableComponent"
+import {$MenuType, $MenuType$$Type} from "net.minecraft.world.inventory.MenuType"
 import {$Record, $Record$$Type} from "java.lang.Record"
 
 export class $WTDefinition extends $Record {
@@ -264,34 +275,34 @@ static readonly "CODEC": $Codec<($WTDefinition)>
 static readonly "wirelessTerminalList": $List<($WTDefinition)>
 static readonly "STREAM_CODEC": $StreamCodec<($ByteBuf), ($WTDefinition)>
 
-constructor(terminalName: string, containerOpener: $WTDefinition$ContainerOpener$$Type, wTMenuHostFactory: $WTDefinition$WTMenuHostFactory$$Type, menuType: $MenuType$$Type<(any)>, item: $ItemWT$$Type, universalTerminal: $ItemStack$$Type, formattedName: $MutableComponent$$Type, translationKey: string, hotkeyName: string, componentType: $DataComponentType$$Type<($Unit$$Type)>, upgradeCount: integer, icon: $Icon$$Type)
+constructor(terminalName: StringJS, containerOpener: $WTDefinition$ContainerOpener$$Type, wTMenuHostFactory: $WTDefinition$WTMenuHostFactory$$Type, menuType: $MenuType$$Type<(any)>, item: $ItemWT$$Type, universalTerminal: $ItemStack$$Type, formattedName: $MutableComponent$$Type, translationKey: StringJS, hotkeyName: StringJS, componentType: $DataComponentType$$Type<($Unit$$Type)>, upgradeCount: integer, icon: $Icon$$Type)
 
+public static "exists"(arg0: StringJS): boolean
+public "item"(): $ItemWT
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "componentType"(): $DataComponentType<($Unit)>
+public static "of"(arg0: StringJS): $WTDefinition
 public static "of"(arg0: $ItemStack$$Type): $WTDefinition
-public static "of"(arg0: string): $WTDefinition
-public static "exists"(arg0: string): boolean
-public "item"(): $ItemWT
-public static "wirelessTerminals"(): $Collection<($WTDefinition)>
-public "containerOpener"(): $WTDefinition$ContainerOpener
-public "menuType"(): $MenuType<(any)>
-public "translationKey"(): string
 public "icon"(): $Icon
-public "universalTerminal"(): $ItemStack
-public "wTMenuHostFactory"(): $WTDefinition$WTMenuHostFactory
-public "upgradeCount"(): integer
-public "terminalName"(): string
+public "translationKey"(): StringJS
+public "terminalName"(): StringJS
 public static "ofOrNull"(arg0: $ItemStack$$Type): $WTDefinition
 public "formattedName"(): $MutableComponent
-public "hotkeyName"(): string
+public "hotkeyName"(): StringJS
+public "upgradeCount"(): integer
+public "menuType"(): $MenuType<(any)>
+public "universalTerminal"(): $ItemStack
+public "containerOpener"(): $WTDefinition$ContainerOpener
+public static "wirelessTerminals"(): $Collection<($WTDefinition)>
+public "wTMenuHostFactory"(): $WTDefinition$WTMenuHostFactory
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $WTDefinition$$Type = ({"wTMenuHostFactory"?: $WTDefinition$WTMenuHostFactory$$Type, "containerOpener"?: $WTDefinition$ContainerOpener$$Type, "icon"?: $Icon$$Type, "terminalName"?: string, "componentType"?: $DataComponentType$$Type<($Unit$$Type)>, "translationKey"?: string, "universalTerminal"?: $ItemStack$$Type, "formattedName"?: $MutableComponent$$Type, "menuType"?: $MenuType$$Type<(never)>, "upgradeCount"?: integer, "item"?: $ItemWT$$Type, "hotkeyName"?: string}) | ([wTMenuHostFactory?: $WTDefinition$WTMenuHostFactory$$Type, containerOpener?: $WTDefinition$ContainerOpener$$Type, icon?: $Icon$$Type, terminalName?: string, componentType?: $DataComponentType$$Type<($Unit$$Type)>, translationKey?: string, universalTerminal?: $ItemStack$$Type, formattedName?: $MutableComponent$$Type, menuType?: $MenuType$$Type<(never)>, upgradeCount?: integer, item?: $ItemWT$$Type, hotkeyName?: string]);
+export type $WTDefinition$$Type = ({"translationKey"?: StringJS, "universalTerminal"?: $ItemStack$$Type, "formattedName"?: $MutableComponent$$Type, "menuType"?: $MenuType$$Type<(never)>, "upgradeCount"?: integer, "item"?: $ItemWT$$Type, "hotkeyName"?: StringJS, "wTMenuHostFactory"?: $WTDefinition$WTMenuHostFactory$$Type, "containerOpener"?: $WTDefinition$ContainerOpener$$Type, "icon"?: $Icon$$Type, "terminalName"?: StringJS, "componentType"?: $DataComponentType$$Type<($Unit$$Type)>}) | ([translationKey?: StringJS, universalTerminal?: $ItemStack$$Type, formattedName?: $MutableComponent$$Type, menuType?: $MenuType$$Type<(never)>, upgradeCount?: integer, item?: $ItemWT$$Type, hotkeyName?: StringJS, wTMenuHostFactory?: $WTDefinition$WTMenuHostFactory$$Type, containerOpener?: $WTDefinition$ContainerOpener$$Type, icon?: $Icon$$Type, terminalName?: StringJS, componentType?: $DataComponentType$$Type<($Unit$$Type)>]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -300,10 +311,13 @@ declare global {
 export type $WTDefinition_ = $WTDefinition$$Type;
 }}
 declare module "de.mari_023.ae2wtlib.wct.ItemWCT" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ItemMenuHost, $ItemMenuHost$$Type} from "appeng.api.implementations.menuobjects.ItemMenuHost"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ItemMenuHostLocator, $ItemMenuHostLocator$$Type} from "appeng.menu.locator.ItemMenuHostLocator"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ItemWT, $ItemWT$$Type} from "de.mari_023.ae2wtlib.api.terminal.ItemWT"
@@ -317,7 +331,7 @@ export class $ItemWCT extends $ItemWT {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "LINKABLE_HANDLER": $IGridLinkableHandler
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -327,7 +341,9 @@ constructor()
 
 public "inventoryTick"(arg0: $ItemStack$$Type, arg1: $Level$$Type, arg2: $Entity$$Type, arg3: integer, arg4: boolean): void
 public "getMenuType"(arg0: $ItemMenuHostLocator$$Type, arg1: $Player$$Type): $MenuType<(any)>
+public "getMenuHost"(arg0: $Player$$Type, arg1: $ItemMenuHostLocator$$Type, arg2: $BlockHitResult$$Type): $ItemMenuHost<(any)>
 public "asItem"(): $Item
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -351,13 +367,13 @@ export class $ActionHostResult extends $Record implements $Result {
 
 constructor(host: $IActionHost$$Type, status: $Status$$Type)
 
+public static "valid"(arg0: $IActionHost$$Type): $ActionHostResult
+public static "invalid"(arg0: $Status$$Type): $ActionHostResult
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "host"(): $IActionHost
 public "status"(): $Status
-public static "valid"(arg0: $IActionHost$$Type): $ActionHostResult
-public static "invalid"(arg0: $Status$$Type): $ActionHostResult
 public "valid"(): boolean
 public "invalid"(): boolean
 }
@@ -365,7 +381,7 @@ public "invalid"(): boolean
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $ActionHostResult$$Type = ({"host"?: $IActionHost$$Type, "status"?: $Status$$Type}) | ([host?: $IActionHost$$Type, status?: $Status$$Type]);
+export type $ActionHostResult$$Type = ({"status"?: $Status$$Type, "host"?: $IActionHost$$Type}) | ([status?: $Status$$Type, host?: $IActionHost$$Type]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -382,13 +398,13 @@ export class $LongResult extends $Record implements $Result {
 
 constructor(result: long, status: $Status$$Type)
 
+public static "valid"(arg0: long): $LongResult
+public static "invalid"(arg0: $Status$$Type): $LongResult
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "result"(): long
 public "status"(): $Status
-public static "valid"(arg0: long): $LongResult
-public static "invalid"(arg0: $Status$$Type): $LongResult
 public "valid"(): boolean
 public "invalid"(): boolean
 }
@@ -405,24 +421,28 @@ declare global {
 export type $LongResult_ = $LongResult$$Type;
 }}
 declare module "de.mari_023.ae2wtlib.wat.ItemWAT" {
-import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$Map, $Map$$Type} from "java.util.Map"
+import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ItemMenuHost, $ItemMenuHost$$Type} from "appeng.api.implementations.menuobjects.ItemMenuHost"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ItemMenuHostLocator, $ItemMenuHostLocator$$Type} from "appeng.menu.locator.ItemMenuHostLocator"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ItemWT, $ItemWT$$Type} from "de.mari_023.ae2wtlib.api.terminal.ItemWT"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Supplier, $Supplier$$Type} from "java.util.function.Supplier"
 import {$MenuType, $MenuType$$Type} from "net.minecraft.world.inventory.MenuType"
-import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$IConfigManager, $IConfigManager$$Type} from "appeng.api.util.IConfigManager"
+import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$IGridLinkableHandler, $IGridLinkableHandler$$Type} from "appeng.api.features.IGridLinkableHandler"
 
 export class $ItemWAT extends $ItemWT {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "LINKABLE_HANDLER": $IGridLinkableHandler
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -430,9 +450,11 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "getConfigManager"(arg0: $Supplier$$Type<($ItemStack$$Type)>): $IConfigManager
 public "getMenuType"(arg0: $ItemMenuHostLocator$$Type, arg1: $Player$$Type): $MenuType<(any)>
+public "getConfigManager"(arg0: $Supplier$$Type<($ItemStack$$Type)>): $IConfigManager
+public "getMenuHost"(arg0: $Player$$Type, arg1: $ItemMenuHostLocator$$Type, arg2: $BlockHitResult$$Type): $ItemMenuHost<(any)>
 public "asItem"(): $Item
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -455,7 +477,7 @@ export class $Icon$Texture extends $Record {
 constructor(location: $ResourceLocation$$Type, width: integer, height: integer)
 
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "location"(): $ResourceLocation
 public "width"(): integer
@@ -494,14 +516,14 @@ constructor(arg0: $Ingredient$$Type, arg1: $WTDefinition$$Type)
 public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "matches"(arg0: $CraftingInput$$Type, arg1: $Level$$Type): boolean
 public "getIngredients"(): $NonNullList<($Ingredient)>
+public "getTerminal"(): $Ingredient
+public "getSerializer"(): $RecipeSerializer<(any)>
 public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
 public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "getSerializer"(): $RecipeSerializer<(any)>
-public "getTerminal"(): $Ingredient
 public "getTerminalDefinition"(): $WTDefinition
 get "ingredients"(): $NonNullList<($Ingredient)>
-get "serializer"(): $RecipeSerializer<(any)>
 get "terminal"(): $Ingredient
+get "serializer"(): $RecipeSerializer<(any)>
 get "terminalDefinition"(): $WTDefinition
 }
 /**
@@ -523,6 +545,8 @@ import {$ItemStack, $ItemStack$$Type} from "net.minecraft.world.item.ItemStack"
 import {$InteractionHand, $InteractionHand$$Type} from "net.minecraft.world.InteractionHand"
 import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ItemMenuHost, $ItemMenuHost$$Type} from "appeng.api.implementations.menuobjects.ItemMenuHost"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 import {$ItemMenuHostLocator, $ItemMenuHostLocator$$Type} from "appeng.menu.locator.ItemMenuHostLocator"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -533,13 +557,12 @@ import {$IConfigManager, $IConfigManager$$Type} from "appeng.api.util.IConfigMan
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
 import {$WirelessTerminalItem, $WirelessTerminalItem$$Type} from "appeng.items.tools.powered.WirelessTerminalItem"
 import {$IGridLinkableHandler, $IGridLinkableHandler$$Type} from "appeng.api.features.IGridLinkableHandler"
-import {$WirelessTerminalMenuHost, $WirelessTerminalMenuHost$$Type} from "appeng.helpers.WirelessTerminalMenuHost"
 
 export class $ItemWT extends $WirelessTerminalItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "LINKABLE_HANDLER": $IGridLinkableHandler
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -547,14 +570,15 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor()
 
-public "open"(arg0: $Player$$Type, arg1: $ItemMenuHostLocator$$Type, arg2: boolean): boolean
 public "use"(arg0: $Level$$Type, arg1: $Player$$Type, arg2: $InteractionHand$$Type): $InteractionResultHolder<($ItemStack)>
+public "open"(arg0: $Player$$Type, arg1: $ItemMenuHostLocator$$Type, arg2: boolean): boolean
+public "tryOpen"(arg0: $Player$$Type, arg1: $ItemMenuHostLocator$$Type, arg2: boolean): boolean
+public "getMenuHost"(arg0: $Player$$Type, arg1: $ItemMenuHostLocator$$Type, arg2: $BlockHitResult$$Type): $ItemMenuHost<(any)>
+public "getMenuType"(arg0: $ItemMenuHostLocator$$Type, arg1: $Player$$Type): $MenuType<(any)>
 public "isNotReplaceableByPickAction"(arg0: $ItemStack$$Type, arg1: $Player$$Type, arg2: integer): boolean
 public "getConfigManager"(arg0: $Supplier$$Type<($ItemStack$$Type)>): $IConfigManager
-public "getMenuType"(arg0: $ItemMenuHostLocator$$Type, arg1: $Player$$Type): $MenuType<(any)>
-public "getMenuHost"(arg0: $Player$$Type, arg1: $ItemMenuHostLocator$$Type, arg2: $BlockHitResult$$Type): $WirelessTerminalMenuHost<(any)>
-public "tryOpen"(arg0: $Player$$Type, arg1: $ItemMenuHostLocator$$Type, arg2: boolean): boolean
 public "asItem"(): $Item
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -577,13 +601,13 @@ import {$RecipeSerializer, $RecipeSerializer$$Type} from "net.minecraft.world.it
 import {$MapCodec, $MapCodec$$Type} from "com.mojang.serialization.MapCodec"
 
 export class $CombineSerializer implements $RecipeSerializer<($Combine)> {
-static readonly "NAME": string
+static readonly "NAME": StringJS
 
 constructor()
 
-public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($Combine)>
 public "codec"(): $MapCodec<($Combine)>
-public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: string, arg1: S): S
+public "streamCodec"(): $StreamCodec<($RegistryFriendlyByteBuf), ($Combine)>
+public static "register"<S extends $RecipeSerializer<(T)>, T extends $Recipe<(any)>>(arg0: StringJS, arg1: S): S
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -618,17 +642,17 @@ constructor(arg0: $Ingredient$$Type, arg1: $Ingredient$$Type, arg2: $WTDefinitio
 public "matches"(arg0: $CraftingInput$$Type, arg1: $Level$$Type): boolean
 public "matches"(arg0: $RecipeInput$$Type, arg1: $Level$$Type): boolean
 public "getIngredients"(): $NonNullList<($Ingredient)>
-public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
-public "getSerializer"(): $RecipeSerializer<(any)>
 public "getTerminalA"(): $Ingredient
 public "getTerminalB"(): $Ingredient
+public "getSerializer"(): $RecipeSerializer<(any)>
+public "assemble"(arg0: $CraftingInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
+public "assemble"(arg0: $RecipeInput$$Type, arg1: $HolderLookup$Provider$$Type): $ItemStack
 public "getTerminalADefinition"(): $WTDefinition
 public "getTerminalBDefinition"(): $WTDefinition
 get "ingredients"(): $NonNullList<($Ingredient)>
-get "serializer"(): $RecipeSerializer<(any)>
 get "terminalA"(): $Ingredient
 get "terminalB"(): $Ingredient
+get "serializer"(): $RecipeSerializer<(any)>
 get "terminalADefinition"(): $WTDefinition
 get "terminalBDefinition"(): $WTDefinition
 }
@@ -688,14 +712,14 @@ static readonly "SWITCH": $Icon
 
 constructor(x: integer, y: integer, width: integer, height: integer, texture: $Icon$Texture$$Type)
 
+public "y"(): integer
 public "equals"(arg0: any): boolean
-public "toString"(): string
+public "toString"(): StringJS
 public "hashCode"(): integer
 public "x"(): integer
-public "y"(): integer
 public "width"(): integer
-public "texture"(): $Icon$Texture
 public "height"(): integer
+public "texture"(): $Icon$Texture
 public "getBlitter"(): $Blitter
 get "blitter"(): $Blitter
 }
@@ -703,7 +727,7 @@ get "blitter"(): $Blitter
  * Class-specific type exported by ProbeJS, use global Type_
  * types for convenience unless there's a naming conflict.
  */
-export type $Icon$$Type = ({"height"?: integer, "x"?: integer, "y"?: integer, "width"?: integer, "texture"?: $Icon$Texture$$Type}) | ([height?: integer, x?: integer, y?: integer, width?: integer, texture?: $Icon$Texture$$Type]);
+export type $Icon$$Type = ({"width"?: integer, "texture"?: $Icon$Texture$$Type, "height"?: integer, "x"?: integer, "y"?: integer}) | ([width?: integer, texture?: $Icon$Texture$$Type, height?: integer, x?: integer, y?: integer]);
 /**
  * Global type exported for convenience, use class-specific
  * types if there's a naming conflict.
@@ -716,12 +740,12 @@ import {$ILinkStatus, $ILinkStatus$$Type} from "appeng.api.storage.ILinkStatus"
 import {$IEnergySource, $IEnergySource$$Type} from "appeng.api.networking.energy.IEnergySource"
 import {$MEStorage, $MEStorage$$Type} from "appeng.api.storage.MEStorage"
 import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
-import {$Actionable, $Actionable$$Type} from "appeng.api.config.Actionable"
 import {$InternalInventory, $InternalInventory$$Type} from "appeng.api.inventories.InternalInventory"
+import {$Actionable, $Actionable$$Type} from "appeng.api.config.Actionable"
 import {$ItemMenuHostLocator, $ItemMenuHostLocator$$Type} from "appeng.menu.locator.ItemMenuHostLocator"
 import {$ActionHostResult, $ActionHostResult$$Type} from "de.mari_023.ae2wtlib.api.results.ActionHostResult"
-import {$LongResult, $LongResult$$Type} from "de.mari_023.ae2wtlib.api.results.LongResult"
 import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$LongResult, $LongResult$$Type} from "de.mari_023.ae2wtlib.api.results.LongResult"
 import {$IGridNode, $IGridNode$$Type} from "appeng.api.networking.IGridNode"
 import {$ItemWT, $ItemWT$$Type} from "de.mari_023.ae2wtlib.api.terminal.ItemWT"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
@@ -735,24 +759,24 @@ static readonly "INV_SINGULARITY": $ResourceLocation
 
 constructor(arg0: $ItemWT$$Type, arg1: $Player$$Type, arg2: $ItemMenuHostLocator$$Type, arg3: $BiConsumer$$Type<($Player), ($ISubMenu)>)
 
-public "consumeIdlePower"(arg0: $Actionable$$Type): boolean
-public "updateLinkStatus"(): void
 public "getInventory"(): $MEStorage
-public "getActionableNode"(): $IGridNode
-public "getSubInventory"(arg0: $ResourceLocation$$Type): $InternalInventory
-public "getViewCellStorage"(): $InternalInventory
 public "getQEFrequency"(): $LongResult
 public "getLinkStatus"(): $ILinkStatus
-public "getCloseHotkey"(): string
-public "updateConnectedAccessPoint"(): void
+public "getCloseHotkey"(): StringJS
 public "findQuantumBridge"(arg0: $Level$$Type, arg1: long): $ActionHostResult
+public "consumeIdlePower"(arg0: $Actionable$$Type): boolean
+public "updateLinkStatus"(): void
+public "getViewCellStorage"(): $InternalInventory
+public "getActionableNode"(): $IGridNode
+public "getSubInventory"(arg0: $ResourceLocation$$Type): $InternalInventory
+public "updateConnectedAccessPoint"(): void
 public static "empty"(): $IEnergySource
 get "inventory"(): $MEStorage
-get "actionableNode"(): $IGridNode
-get "viewCellStorage"(): $InternalInventory
 get "qEFrequency"(): $LongResult
 get "linkStatus"(): $ILinkStatus
-get "closeHotkey"(): string
+get "closeHotkey"(): StringJS
+get "viewCellStorage"(): $InternalInventory
+get "actionableNode"(): $IGridNode
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

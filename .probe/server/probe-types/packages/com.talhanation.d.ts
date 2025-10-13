@@ -1,16 +1,20 @@
 declare module "com.talhanation.smallships.world.item.DrakkarItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ShipItem, $ShipItem$$Type} from "com.talhanation.smallships.world.item.ShipItem"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Boat$Type, $Boat$Type$$Type} from "net.minecraft.world.entity.vehicle.Boat$Type"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $DrakkarItem extends $ShipItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -18,6 +22,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(type: $Boat$Type$$Type, properties: $Item$Properties$$Type)
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -45,32 +50,32 @@ export class $Cannon {
 constructor(owner: $ICannon$$Type)
 
 public "tick"(x: double, y: double, z: double, yaw: double, pitch: double): void
-public "getBarrelEndPoint"(): $Vector3d
-public "getPitch"(): float
-public "getForward"(): $Vector3d
-public "setPitch"(pitch: float): void
 public "getYaw"(): float
 public "setYaw"(yaw: float): void
 public "getPos"(): $Vector3d
-public "getBarrelEndPointLocal"(): $Vector3d
-public "isFuzing"(): boolean
-public "triggerFuze"(shooter: $Entity$$Type, projectileSupplier: $Supplier$$Type<($ICannonProjectile$$Type)>): void
+public "getForward"(): $Vector3d
+public "getPitch"(): float
+public "setPitch"(pitch: float): void
 public "getPrevYaw"(): float
 public "getPrevPitch"(): float
 public "isCooldown"(): boolean
 public "shootAdvanced"(shootVec: $Vec3$$Type, yShootVec: double, driverEntity: $LivingEntity$$Type, speed: double, accuracy: double): void
-get "barrelEndPoint"(): $Vector3d
-get "pitch"(): float
-get "forward"(): $Vector3d
-set "pitch"(value: float)
+public "isFuzing"(): boolean
+public "triggerFuze"(shooter: $Entity$$Type, projectileSupplier: $Supplier$$Type<($ICannonProjectile$$Type)>): void
+public "getBarrelEndPoint"(): $Vector3d
+public "getBarrelEndPointLocal"(): $Vector3d
 get "yaw"(): float
 set "yaw"(value: float)
 get "pos"(): $Vector3d
-get "barrelEndPointLocal"(): $Vector3d
-get "fuzing"(): boolean
+get "forward"(): $Vector3d
+get "pitch"(): float
+set "pitch"(value: float)
 get "prevYaw"(): float
 get "prevPitch"(): float
 get "cooldown"(): boolean
+get "fuzing"(): boolean
+get "barrelEndPoint"(): $Vector3d
+get "barrelEndPointLocal"(): $Vector3d
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -93,8 +98,8 @@ import {$Vector3d, $Vector3d$$Type} from "org.joml.Vector3d"
 
 export interface $ICannonProjectile {
 
- "getAdditionalCannonShootParticles"(): $ParticleOptions
  "shootAndSpawn"(arg0: $Cannon$$Type, arg1: $Vector3d$$Type, arg2: $Vector3f$$Type, arg3: float, arg4: float, arg5: $Entity$$Type): void
+ "getAdditionalCannonShootParticles"(): $ParticleOptions
 
 (arg0: $Cannon, arg1: $Vector3d, arg2: $Vector3f, arg3: float, arg4: float, arg5: $Entity): void
 get "additionalCannonShootParticles"(): $ParticleOptions
@@ -106,8 +111,8 @@ const probejs$$marker: never
 export class $ICannonProjectile$$Static implements $ICannonProjectile {
 
 
- "getAdditionalCannonShootParticles"(): $ParticleOptions
  "shootAndSpawn"(arg0: $Cannon$$Type, arg1: $Vector3d$$Type, arg2: $Vector3f$$Type, arg3: float, arg4: float, arg5: $Entity$$Type): void
+ "getAdditionalCannonShootParticles"(): $ParticleOptions
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -125,18 +130,18 @@ declare module "com.talhanation.smallships.mixin.controlling.BoatAccessor" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $BoatAccessor {
 
- "getDeltaRotation"(): float
- "setDeltaRotation"(arg0: float): void
  "isInputLeft"(): boolean
  "isInputRight"(): boolean
  "isInputUp"(): boolean
  "isInputDown"(): boolean
-get "deltaRotation"(): float
-set "deltaRotation"(value: float)
+ "getDeltaRotation"(): float
+ "setDeltaRotation"(arg0: float): void
 get "inputLeft"(): boolean
 get "inputRight"(): boolean
 get "inputUp"(): boolean
 get "inputDown"(): boolean
+get "deltaRotation"(): float
+set "deltaRotation"(value: float)
 }
 
 export namespace $BoatAccessor {
@@ -145,12 +150,12 @@ const probejs$$marker: never
 export class $BoatAccessor$$Static implements $BoatAccessor {
 
 
- "getDeltaRotation"(): float
- "setDeltaRotation"(arg0: float): void
  "isInputLeft"(): boolean
  "isInputRight"(): boolean
  "isInputUp"(): boolean
  "isInputDown"(): boolean
+ "getDeltaRotation"(): float
+ "setDeltaRotation"(arg0: float): void
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -197,16 +202,20 @@ declare global {
 export type $SimpleContainerAccessor_ = $SimpleContainerAccessor$$Type;
 }}
 declare module "com.talhanation.smallships.world.item.CannonBallItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $CannonBallItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -214,6 +223,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(properties: $Item$Properties$$Type)
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -231,16 +241,16 @@ declare module "com.talhanation.smallships.world.entity.IMixinEntity" {
 export {} // Mark the file as a module, do not remove unless there are other import/exports!
 export interface $IMixinEntity {
 
+ "getPrevXRot"(): float
+ "getPrevYRot"(): float
  "setPreventDismountToCoordinates"(arg0: boolean): void
  "setPreventTeleportOnNextPassengerSync"(arg0: boolean): void
  "doNotTeleportOnNextPassengerSync"(): boolean
  "doNotDismountToCoordinates"(): boolean
- "getPrevXRot"(): float
- "getPrevYRot"(): float
-set "preventDismountToCoordinates"(value: boolean)
-set "preventTeleportOnNextPassengerSync"(value: boolean)
 get "prevXRot"(): float
 get "prevYRot"(): float
+set "preventDismountToCoordinates"(value: boolean)
+set "preventTeleportOnNextPassengerSync"(value: boolean)
 }
 
 export namespace $IMixinEntity {
@@ -249,12 +259,12 @@ const probejs$$marker: never
 export class $IMixinEntity$$Static implements $IMixinEntity {
 
 
+ "getPrevXRot"(): float
+ "getPrevYRot"(): float
  "setPreventDismountToCoordinates"(arg0: boolean): void
  "setPreventTeleportOnNextPassengerSync"(arg0: boolean): void
  "doNotTeleportOnNextPassengerSync"(): boolean
  "doNotDismountToCoordinates"(): boolean
- "getPrevXRot"(): float
- "getPrevYRot"(): float
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -300,18 +310,22 @@ declare global {
 export type $ICannonBallSource_ = $ICannonBallSource$$Type;
 }}
 declare module "com.talhanation.smallships.world.item.ShipItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$BoatItem, $BoatItem$$Type} from "net.minecraft.world.item.BoatItem"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Boat$Type, $Boat$Type$$Type} from "net.minecraft.world.entity.vehicle.Boat$Type"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $ShipItem extends $BoatItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -319,6 +333,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(type: $Boat$Type$$Type, properties: $Item$Properties$$Type)
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -333,18 +348,22 @@ declare global {
 export type $ShipItem_ = $ShipItem$$Type;
 }}
 declare module "com.talhanation.smallships.world.item.GalleyItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ShipItem, $ShipItem$$Type} from "com.talhanation.smallships.world.item.ShipItem"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Boat$Type, $Boat$Type$$Type} from "net.minecraft.world.entity.vehicle.Boat$Type"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $GalleyItem extends $ShipItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -352,6 +371,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(type: $Boat$Type$$Type, properties: $Item$Properties$$Type)
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -366,18 +386,22 @@ declare global {
 export type $GalleyItem_ = $GalleyItem$$Type;
 }}
 declare module "com.talhanation.smallships.world.item.CannonItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
 import {$InteractionResult, $InteractionResult$$Type} from "net.minecraft.world.InteractionResult"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
 import {$UseOnContext, $UseOnContext$$Type} from "net.minecraft.world.item.context.UseOnContext"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $CannonItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -386,6 +410,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 constructor(properties: $Item$Properties$$Type)
 
 public "useOn"(useOnContext: $UseOnContext$$Type): $InteractionResult
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -434,16 +459,20 @@ declare global {
 export type $MouseHandlerAccessor_ = $MouseHandlerAccessor$$Type;
 }}
 declare module "com.talhanation.smallships.world.item.SailItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $SailItem extends $Item {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -451,6 +480,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(properties: $Item$Properties$$Type)
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -503,8 +533,8 @@ import {$ParticleOptions, $ParticleOptions$$Type} from "net.minecraft.core.parti
 export interface $ICannon extends $ICannonBallSource {
 
  "getLevel"(): $Level
- "provideShootParticles"(): $ParticleOptions
  "playSoundAt"(arg0: $SoundEvent$$Type, arg1: float, arg2: float): void
+ "provideShootParticles"(): $ParticleOptions
  "getCannonBallToShoot"(): $CannonBallItem
  "consumeCannonBall"(): void
 get "level"(): $Level
@@ -518,8 +548,8 @@ export class $ICannon$$Static implements $ICannon {
 
 
  "getLevel"(): $Level
- "provideShootParticles"(): $ParticleOptions
  "playSoundAt"(arg0: $SoundEvent$$Type, arg1: float, arg2: float): void
+ "provideShootParticles"(): $ParticleOptions
  "getCannonBallToShoot"(): $CannonBallItem
  "consumeCannonBall"(): void
 }
@@ -536,18 +566,22 @@ declare global {
 export type $ICannon_ = $ICannon$$Type;
 }}
 declare module "com.talhanation.smallships.world.item.BriggItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ShipItem, $ShipItem$$Type} from "com.talhanation.smallships.world.item.ShipItem"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Boat$Type, $Boat$Type$$Type} from "net.minecraft.world.entity.vehicle.Boat$Type"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $BriggItem extends $ShipItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -555,6 +589,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(type: $Boat$Type$$Type, properties: $Item$Properties$$Type)
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_
@@ -577,6 +612,7 @@ export class $ModParticleTypes$SimpleParticleTypeImpl extends $SimpleParticleTyp
 constructor(bl: boolean)
 
 public "getType"(): $ParticleType<(any)>
+public static "init"(arg0: boolean): $SimpleParticleType
 get "type"(): $ParticleType<(any)>
 }
 /**
@@ -592,18 +628,22 @@ declare global {
 export type $ModParticleTypes$SimpleParticleTypeImpl_ = $ModParticleTypes$SimpleParticleTypeImpl$$Type;
 }}
 declare module "com.talhanation.smallships.world.item.CogItem" {
+import {$Player, $Player$$Type} from "net.minecraft.world.entity.player.Player"
+import {$BlockHitResult, $BlockHitResult$$Type} from "net.minecraft.world.phys.BlockHitResult"
 import {$ShipItem, $ShipItem$$Type} from "com.talhanation.smallships.world.item.ShipItem"
 import {$ResourceLocation, $ResourceLocation$$Type} from "net.minecraft.resources.ResourceLocation"
 import {$Map, $Map$$Type} from "java.util.Map"
 import {$Boat$Type, $Boat$Type$$Type} from "net.minecraft.world.entity.vehicle.Boat$Type"
-import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item$Properties, $Item$Properties$$Type} from "net.minecraft.world.item.Item$Properties"
+import {$Block, $Block$$Type} from "net.minecraft.world.level.block.Block"
 import {$Item, $Item$$Type} from "net.minecraft.world.item.Item"
+import {$Level, $Level$$Type} from "net.minecraft.world.level.Level"
+import {$ClipContext$Fluid, $ClipContext$Fluid$$Type} from "net.minecraft.world.level.ClipContext$Fluid"
 
 export class $CogItem extends $ShipItem {
 static readonly "BASE_ATTACK_DAMAGE_ID": $ResourceLocation
 static readonly "DEFAULT_MAX_STACK_SIZE": integer
- "descriptionId": string
+ "descriptionId": StringJS
 static readonly "MAX_BAR_WIDTH": integer
 static readonly "BASE_ATTACK_SPEED_ID": $ResourceLocation
 static readonly "ABSOLUTE_MAX_STACK_SIZE": integer
@@ -611,6 +651,7 @@ static readonly "BY_BLOCK": $Map<($Block), ($Item)>
 
 constructor(type: $Boat$Type$$Type, properties: $Item$Properties$$Type)
 
+public static "bumblezone$callGetPlayerPOVHitResult"(level: $Level$$Type, player: $Player$$Type, fluid: $ClipContext$Fluid$$Type): $BlockHitResult
 }
 /**
  * Class-specific type exported by ProbeJS, use global Type_

@@ -1,13 +1,13 @@
 name = "Immersive Furniture"
-filename = "immersive_furniture-neoforge-0.1.1+1.21.1.jar"
+filename = "immersive_furniture-neoforge-0.1.2+1.21.1.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "8c8e2a2dceeff8fdffb70360e69716402c91c1bd"
+hash = "7472eb7c29d13be0eb04a211de01db208f9aa525"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 7009631
+file-id = 7100274
 project-id = 1283531

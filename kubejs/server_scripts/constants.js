@@ -4,18 +4,6 @@
  * @file Global Constants for use in other scripts.
  */
 
-const ECCENTRIC_TOME_BOOKS = {
-  ae2: [{ count: 1, id: "ae2:guide" }],
-  ars_nouveau: [{ count: 1, id: "ars_nouveau:worn_notebook" }],
-  buildinggadgets2: [{ components: { "patchouli:book": "buildinggadgets2:buildinggadgets2book" }, count: 1, id: "patchouli:guide_book" }],
-  justdirethings: [{ components: { "patchouli:book": "justdirethings:justdirethingsbook" }, count: 1, id: "patchouli:guide_book" }],
-  lightmanscurrency: [{ components: { "patchouli:book": "lightmanscurrency:trader_guide" }, count: 1, id: "patchouli:guide_book" }],
-  modularrouters: [{ components: { "patchouli:book": "modularrouters:book" }, count: 1, id: "patchouli:guide_book" }],
-  pneumaticcraft: [{ components: { "patchouli:book": "pneumaticcraft:book" }, count: 1, id: "patchouli:guide_book" }],
-  simplyswords: [{ components: { "patchouli:book": "simplyswords:runic_grimoire" }, count: 1, id: "patchouli:guide_book" }],
-  productivebees: [{ components: { "patchouli:book": "productivebees:guide" }, count: 1, id: "patchouli:guide_book" }]
-};
-
 /**
  * Minecraft's default colors, as used in vanilla item IDs and by most mods.
  * Note: Some mods use abnormal names for colors, such as Absent By Design (which uses 'silver' in some places

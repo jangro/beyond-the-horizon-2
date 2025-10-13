@@ -92,8 +92,8 @@ ServerEvents.recipes(event => {
   replaceInput('farmersdelight:wheat_dough', '#c:dough/wheat');
   replaceInput('minecolonies:bread_dough', '#c:dough/wheat');
 
-  // // Dust Compatibility
-  // replaceInput('alexscaves:sulfur_dust', '#forge:dusts/sulfur');
+  // Dust Compatibility
+  replaceInput('eidolon_repraised:sulfur_dust', '#c:dusts/sulfur');
 
   // Feather Compatibility
   replaceInputID([

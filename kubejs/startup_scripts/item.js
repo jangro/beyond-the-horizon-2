@@ -30,19 +30,25 @@ StartupEvents.registry("item", event => {
     .unstackable();
 
   // Terminus, Blade of the Dimensional Master
-  // event.create('bth:terminus', 'sword')
-  // .attackDamageBaseline(13.0)
-  // .speedBaseline(-2)
-  // .fireResistant(true)
-  // .rarity('EPIC')
-  // .texture('bth:item/terminus')
-  // .tier('netherite')
-  // .tooltip(Text.translate('tooltip.bth.terminus'))
-  // .translationKey('item.bth.terminus')
-  // .addSpell('bth:terminus_singularity', 1)
-  // .addSpell('bth:terminus_space_fold', 1)
-  // .unstackable();
+  // event.create('bth:terminus', 'magic_sword')
+  //   .attackDamageBaseline(13.0)
+  //   .speedBaseline(-2)
+  //   .fireResistant(true)
+  //   .rarity('EPIC')
+  //   .texture('bth:item/terminus')
+  //   .tier('netherite')
+  //   .tooltip(Text.translate('tooltip.bth.terminus'))
+  //   .translationKey('item.bth.terminus')
+  //   .addSpell('bth:terminus_singularity', 1)
+  //   .addSpell('bth:terminus_space_fold', 1)
+  //   .unstackable();
 
+  // Mob catcher for bounties
+  event.create('bth:spectre_snare')
+    .maxDamage(16)
+    .texture('bth:item/spectre_snare')
+    .tooltip(Text.translate('tooltip.bth.spectre_snare'))
+    .translationKey('item.bth.spectre_snare');
 });
 
 // Make Terminus unbreakable here since we can't do it in the item creation event.

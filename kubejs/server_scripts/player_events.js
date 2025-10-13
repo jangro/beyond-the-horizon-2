@@ -24,6 +24,7 @@ PlayerEvents.loggedIn(event => {
         ars_nouveau:[{count:1,id:"ars_nouveau:worn_notebook"}],\
         buildinggadgets2:[{components:{"patchouli:book":"buildinggadgets2:buildinggadgets2book"},count:1,id:"patchouli:guide_book"}],\
         justdirethings:[{components:{"patchouli:book":"justdirethings:justdirethingsbook"},count:1,id:"patchouli:guide_book"}],\
+        immersiveengineering:[{count:1,id:"immersiveengineering:manual"}],\
         lightmanscurrency:[{components:{"patchouli:book":"lightmanscurrency:trader_guide"},count:1,id:"patchouli:guide_book"}],\
         modularrouters:[{components:{"patchouli:book":"modularrouters:book"},count:1,id:"patchouli:guide_book"}],\
         pneumaticcraft:[{components:{"patchouli:book":"pneumaticcraft:book"},count:1,id:"patchouli:guide_book"}],\
@@ -33,6 +34,9 @@ PlayerEvents.loggedIn(event => {
       tome_id:"${tome_id}"\
     }]`;
     event.player.give(tome);
+
+    // Give player the ftb quests book
+    event.player.give(Item.of('ftbquests:book', 1));
 
     // Give player some random starter food
     let index = Math.floor(FIRST_START_FOODS.length * Math.random());

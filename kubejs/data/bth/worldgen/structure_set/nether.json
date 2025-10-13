@@ -9,39 +9,39 @@
   "structures": [
     {
       "structure": "alshanex_familiars:graveyard",
-      "weight": 7
+      "weight": 6
     },
     {
       "structure": "betterdungeons:small_nether_dungeon",
-      "weight": 7
+      "weight": 6
     },
     {
       "structure": "incendium:abandoned_tower",
-      "weight": 7
+      "weight": 6
     },
     {
       "structure": "incendium:infernal_altar",
-      "weight": 7
+      "weight": 6
     },
     {
       "structure": "incendium:piglin_village",
-      "weight": 7
+      "weight": 6
     },
     {
       "structure": "incendium:pipeline",
-      "weight": 7
+      "weight": 6
     },
     {
       "structure": "incendium:quartz_kitchen",
-      "weight": 7
+      "weight": 6
     },
     {
       "structure": "incendium:ruined_lab",
-      "weight": 7
+      "weight": 6
     },
     {
       "structure": "irons_spellbooks:ancient_battleground",
-      "weight": 7
+      "weight": 6
     },
     {
       "structure": "incendium:forbidden_castle",
@@ -61,11 +61,11 @@
     },
     {
       "structure": "betterfortresses:fortress",
-      "weight": 10
+      "weight": 15
     },
     {
       "structure": "minecraft:bastion_remnant",
-      "weight": 10
+      "weight": 15
     }
   ]
 }

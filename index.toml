@@ -107,7 +107,7 @@ hash = "8d857da6d2545969c2cbb09e234829c1948bdda1dd3a6040fd0936a79ff7bb38"
 
 [[files]]
 file = "config/bcc-common.toml"
-hash = "9b83f7a1ddd744e723647f1c2643d518acdd3095142b836026fcb93dfe8b653e"
+hash = "43c1c82844c8fc151507e3f158b511addcf869ec36d1460a8e484009706c5d96"
 
 [[files]]
 file = "config/betterdays-common.toml"
@@ -143,7 +143,7 @@ hash = "e4ee00e33b10d5893bc57ff3509906be53d4ea87a76c22f0e5cc4dc0120e79e4"
 
 [[files]]
 file = "config/defaultoptions/options.txt"
-hash = "c7e3af29e31010ee416eec2145e9d6f4fa53dcfd87eacaf971fb065d4c542a17"
+hash = "4a429e3cdfc3967348f3c6076732bea0db7e8c62b8e9bb2a8b3dbcfd2d30ec09"
 
 [[files]]
 file = "config/dynamic_fps.json"
@@ -155,7 +155,19 @@ hash = "ff492043eaf454c46e949d5eef32ece90cc5a19feb50a161dd29a43b5732c880"
 
 [[files]]
 file = "config/fancymenu/customizablemenus.txt"
-hash = "a83e520716f7d5fa43025d5991acd6e2160fc43ba604bd4c258b9f5c0812830f"
+hash = "63158186da015e31dfb95e980c4912f4bd7d19d68509ce8e47f109ddb824edc7"
+
+[[files]]
+file = "config/fancymenu/customization/pause_screen_layout.txt"
+hash = "4d766672bf74256f73d4a3b44d4da68520ebfe998710f704db12e09a4c8c0e13"
+
+[[files]]
+file = "config/fancymenu/customization/title_screen_layout.txt"
+hash = "6feb415c76e4c18676196038e57358b2dc67beaccd5f4595d3bd6ebdb9aba2a3"
+
+[[files]]
+file = "config/fancymenu/layout_editor/widgets/element_layer_control.lewidget"
+hash = "ee111210fa959ff00dbd693ae85defa2600c333bb07e7da606301f92992879be"
 
 [[files]]
 file = "config/fancymenu/legacy_checklist.txt"
@@ -163,7 +175,7 @@ hash = "9a25d3dc708e43eabafce5479a13c02dae15bc7f673afb2745b8b2ba48a97dc0"
 
 [[files]]
 file = "config/fancymenu/options.txt"
-hash = "d84be5b5efad8e4921d4c35ea9bf8bbcb64001fa16c46be5100ebfe1844ea29d"
+hash = "b0fb3fdccbc1afb7209a8ee2a57cf808706bba5bafce67a7abd91e63197cf8e1"
 
 [[files]]
 file = "config/fancymenu/ui_themes/dark.json"
@@ -182,11 +194,15 @@ file = "config/forgivingvoid-common.toml"
 hash = "7100a5d755f5bdd452d3cb2f585080fa575c2c8cc93ea08a7f39f0c29912df42"
 
 [[files]]
+file = "config/ftbchunks-client.snbt"
+hash = "a8abd88f1100dc4bfdd53b00df9bbb540096b4c7b2472d70d93ae0f4846da1dc"
+
+[[files]]
 file = "config/horseman-server.toml"
 hash = "b87d823cbffc4e4900624c32ceb98b2d9b1003512f0b626296eb228a9ad4b12f"
 
 [[files]]
-file = "config/immersiveengineering-server.toml"
+file = "config/immersiveengineering-server-bak.toml"
 hash = "b46c4f20577baecf40fa5da3a720eda7a54737a02e84b94cdcb832b9f2950fca"
 
 [[files]]
@@ -195,7 +211,7 @@ hash = "80a23a4938a90bc3ba34f2ee16d6b2619ca131ea6fd11f3328816da94eb1a951"
 
 [[files]]
 file = "config/incontrol/spawn.json"
-hash = "c608cd7e81002e844d4e0682fd73de00fc9c08639b07788f61e6bd65dd60b7d2"
+hash = "8792da5e0f5b28a9cdcd5813562cc2714741ca5bd482780b9f8277df4d105d90"
 
 [[files]]
 file = "config/integrateddynamics-common.toml"
@@ -259,7 +275,7 @@ hash = "b8b56e0d64e07edab3119481e9c43110f947b0701a29119bbde73f1562a3ff7b"
 
 [[files]]
 file = "config/tectonic.json"
-hash = "54beaf0125d47fa2986b88b8bb30b814e26741a461306b2ae819297e930ae406"
+hash = "4b8779dc1c98b49ad113ba2c1ad02a7d88a093ad77e3fa98d87c165601160585"
 
 [[files]]
 file = "kubejs/README.txt"
@@ -762,6 +778,14 @@ file = "kubejs/data/deep_aether/worldgen/structure_set/brass_dungeon.json"
 hash = "25ccdcb5a85eb5c96385885a63c95de9dd88f89834fa047b225b1648b642154b"
 
 [[files]]
+file = "kubejs/data/eidolon_repraised/worldgen/placed_feature/lead_ore_placed.json"
+hash = "1c19578931c6f4c055c58a7d3e9f415598e7b289be103d8338e8d8db1d5973d0"
+
+[[files]]
+file = "kubejs/data/eidolon_repraised/worldgen/placed_feature/silver_ore_placed.json"
+hash = "fe3be9258a0669b5443235cec328957f975577bbc5e8aa02a4fc4c4129d06ef2"
+
+[[files]]
 file = "kubejs/data/eidolon_repraised/worldgen/structure_set/catacomb.json"
 hash = "bda3cb1363f7c36c05e8bd48c161ecc1babd13cb387a5d6570f7ae8e06d4b09d"
 
@@ -1058,6 +1082,22 @@ file = "kubejs/data/oritech/neoforge/biome_modifier/resource_node_rare.json"
 hash = "0aff766a334c757174d810ac822e453fadda59f232b61a8d94a4e171ba5b05e5"
 
 [[files]]
+file = "kubejs/data/oritech/worldgen/configured_feature/resource_node_common.json"
+hash = "06d46391d93085a1c02734cd4b12f894a7fbc91c41fb06cf76532e44f2ee48b3"
+
+[[files]]
+file = "kubejs/data/oritech/worldgen/configured_feature/resource_node_other.json"
+hash = "13a6ca19845cea6e39fa9102583a41ac741300a08c1961e3748cf5b60002599b"
+
+[[files]]
+file = "kubejs/data/oritech/worldgen/configured_feature/resource_node_rare.json"
+hash = "e3beafba25088ba8c4d5dd2c9a83aca9f41b4f01bad195b6d81794fb07b33f04"
+
+[[files]]
+file = "kubejs/data/oritech/worldgen/placed_feature/ore_nickel.json"
+hash = "f145c642a22ef447da8d95cbd3465bf8bd12d41856ea7c57848267930a10e44f"
+
+[[files]]
 file = "kubejs/data/oritech/worldgen/placed_feature/resource_node_common.json"
 hash = "cf5d6b35d11b47fb8d61beef410bcd4c4b3e5fea8c53752d7fcc3dc9978f26a2"
 
@@ -1068,6 +1108,10 @@ hash = "885acc12dc4b061601bf1d8b8cd37626948201e5f375468ca9b56e0b0ccd8f4d"
 [[files]]
 file = "kubejs/data/oritech/worldgen/placed_feature/resource_node_rare.json"
 hash = "3baf6007596e1a39aea9fe131f09a0a26d54c23ce2adc713486f53f2fb26b759"
+
+[[files]]
+file = "kubejs/data/oritech/worldgen/placed_feature/uranium_patch.json"
+hash = "866dc5d959496e69668389b1d85c94696785838e75d999575a642929ff5fbf53"
 
 [[files]]
 file = "kubejs/data/phantasm/worldgen/structure_set/obsidian_tower.json"
@@ -1283,15 +1327,19 @@ hash = "f8fe3bafebbdaa3250686120b3dfaacfe8bf40a9fe5b8e041111bacacfa1e91f"
 
 [[files]]
 file = "kubejs/server_scripts/recipe_viewer/remove_item.js"
-hash = "74a22f29fc41a0eb99cfe8c0fea696be8095a444f6033ca166e29131c48eb154"
+hash = "0bf711225c51f712bcd83d6c29d5be35792c731c91802b3ad20f32563f45763c"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/arsnouveau.js"
 hash = "6a389cf0e99087bce150d612691132e687f6feb43e3c44ec45d659173043cdbd"
 
 [[files]]
+file = "kubejs/server_scripts/recipes/create.js"
+hash = "e0cd2003efd7102847acb95931c203ba2a4a28e808dee7f21c254de95f47e28e"
+
+[[files]]
 file = "kubejs/server_scripts/recipes/enderio.js"
-hash = "09ccd00198177765d0de61ae75305e8516985e95e593092b3a2955fbdce91437"
+hash = "d53d3cf6560203121e108f8663e64b4445e9e93ef53f4897951d5e901ab3b52d"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/exposure.js"
@@ -1307,15 +1355,15 @@ hash = "b31110a0c45fbe4b1d7f5bbe8f79bf8031ea1dd2eddc7bfcb2093a530f712b02"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/remove.js"
-hash = "feb027a82565fcea439fd9535220bc0d35dda12c3c3414d905c2aaa25de6f945"
+hash = "3da2ce8328dc4369029567178f02d07f1d48c22f5e9fb5c4827ef91de3af16c2"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/replace.js"
-hash = "0dc86d7358c029e0dac282516f9dd47f457aaeffaf5b48053442be5479031696"
+hash = "c0ad2693055edb1d7d4bbf679c281e01063049dd188a549ceb2692a19b8cb63e"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/shaped.js"
-hash = "2425393baf510bb2863aa4a29470cbf09da4f9a6cf6476370358a492580589e3"
+hash = "320c5dc5d1cea37c035182bcdbc67b56c6a6157889bf1649b287d1d1a98814d4"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/shapeless.js"
@@ -1331,7 +1379,7 @@ hash = "f295ef0b04fa3a774523208127f7886371e43296ab25b61af0ce9216d7f2686c"
 
 [[files]]
 file = "kubejs/server_scripts/tags/item.js"
-hash = "7ee82156127189393bd1999abe0b5ca8703951c2528906eafd8584ff25d97be1"
+hash = "2b5b3f218221e8752027c3263461540e004f6cffc50b8c74c0c7f693c9643e88"
 
 [[files]]
 file = "kubejs/startup_scripts/fluid.js"
@@ -1807,11 +1855,6 @@ hash = "4fa1d6b802032c2335bd0f2263e2977b376fd22ee07dc5f57dae9797d0c267d3"
 metafile = true
 
 [[files]]
-file = "mods/dynamiclights-reforged.pw.toml"
-hash = "f619c1ed2e189f9d482d081411fccee4bd26c05cce52a5db914f1989303f080c"
-metafile = true
-
-[[files]]
 file = "mods/easy-anvils.pw.toml"
 hash = "541520814421d829976fbb2162e7a195b18e9d82ed3b3c8dc9c7fbc50b2cb491"
 metafile = true
@@ -2102,11 +2145,6 @@ hash = "901106fc6fcb4dcb86c13dd8c1dfb0d26e048387fec5bd610d06082242bd786a"
 metafile = true
 
 [[files]]
-file = "mods/immersive-furniture.pw.toml"
-hash = "94aa145d897698c4f66eb5152a7c31a4c0c32a2de62635407a912c94ba3d1d1f"
-metafile = true
-
-[[files]]
 file = "mods/immersive-machinery.pw.toml"
 hash = "c3f7a308c775e5069042d0e480d9884cd57500a8ba2f08a244337a6de280972d"
 metafile = true
@@ -2249,6 +2287,11 @@ metafile = true
 [[files]]
 file = "mods/kubejs-ars-nouveau.pw.toml"
 hash = "397cb8ac6ad5e1324a87350199fb70047770ebd8c2fc7043ac0baeaa8245324b"
+metafile = true
+
+[[files]]
+file = "mods/kubejs-create.pw.toml"
+hash = "e4dc5a05eb92dd5d717148c8a7e106016dc5143e2c9ce1a11a6750295df1af78"
 metafile = true
 
 [[files]]
@@ -2557,11 +2600,6 @@ hash = "eab2f56ff9135b3b7253ea5a73deae2f887e2876f5f0432936044a6e926937b4"
 metafile = true
 
 [[files]]
-file = "mods/probejs.pw.toml"
-hash = "2a8dd9366ed60e7040e90c1b87722b14729ffe080e693ef43151dea10d25ed38"
-metafile = true
-
-[[files]]
 file = "mods/productivebees.pw.toml"
 hash = "ddcea1d800144fdf0ce33fc5fa0682d66ff381224d163300e0f366084ed987ed"
 metafile = true
@@ -2798,7 +2836,7 @@ metafile = true
 
 [[files]]
 file = "mods/tectonic.pw.toml"
-hash = "f2de9a1da527d6b856787cc232d518dbc5c942034197711ac2a9932ba80a198a"
+hash = "d6aeecdd9896a52f7d98778209e155e517b388a4d252aa29de4070b8e70a7f66"
 metafile = true
 
 [[files]]
@@ -2912,11 +2950,6 @@ hash = "f2dfce29433a6b2a3349db5f4913f4077c74d2e7982c8c4ec51fac5ab09d21ad"
 metafile = true
 
 [[files]]
-file = "mods/xaeros-world-map.pw.toml"
-hash = "feb67f4e3a254fafda303ccdb989354524aaa29bd26f1cc0013764b9f93040d9"
-metafile = true
-
-[[files]]
 file = "mods/yacl.pw.toml"
 hash = "98b96e030686acf083fea4efc8082e68a8e74c4d63da639657e466abf36fd855"
 metafile = true
@@ -2971,24 +3004,29 @@ file = "observable_announce"
 hash = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 
 [[files]]
-file = "resourcepacks/Create Style Redstone Pen v2.zip"
-hash = "4dd3ef755dabd1432b2fee30e30b599c755187a68dbcd8368ebb42c2b8593d4a"
+file = "resourcepacks/ie-reimmersed.pw.toml"
+hash = "4c0aa8d1e725c739c3229ea0970efbd51105453780de07fe43b82a66ec3854f4"
+metafile = true
 
 [[files]]
-file = "resourcepacks/Lower Shield.zip"
-hash = "aeccd177fdc11d6f33237d33341f65901806a7b6d56698417bf52309bece480e"
+file = "resourcepacks/lower-shield.pw.toml"
+hash = "233c2adfcee95b2c88799de5b21cb65c0749fd3ecc48cc33a2ec63c79d849f49"
+metafile = true
 
 [[files]]
-file = "resourcepacks/Midnighttiggers-FCT-Default_1.20_V7.zip"
-hash = "4acb7fc6a22c9860f00c69e13897e47370719b9dbf3b46a1083f9d660393585e"
+file = "resourcepacks/mt-ct-d-a.pw.toml"
+hash = "b5f50fbea26425a440c27fc74ab161aabe972f5d26f82b2fcd6b3fa8ca055b85"
+metafile = true
 
 [[files]]
-file = "resourcepacks/Midnighttiggers-NT_CG-FCT-Default_1.17_V6.zip"
-hash = "3888d9c90ba3f9d42f9e7885253631423f007cc309528ee5c10121cc1062a06d"
+file = "resourcepacks/mt-ct-d.pw.toml"
+hash = "517bfecc147f7a1f9bc8c0813e5eb61910381eb8da01ab99f17893dbf76ec5e8"
+metafile = true
 
 [[files]]
-file = "resourcepacks/Updated_Engineering_v1.7.zip"
-hash = "b3d6ebd50f5ac464be7695a97072fbb85927bf0ac2fbf741d011881347332a5d"
+file = "resourcepacks/redstone-pen-revamped.pw.toml"
+hash = "e649258f1d08f9008566b049070f440a878ce60c051105b0877153c4c6e1fbf4"
+metafile = true
 
 [[files]]
 file = "scripts/gen_structure_sets.py"
@@ -3000,4 +3038,4 @@ hash = "d952d76bc607728cca573472d2d50e4cbb9e87f7b7954417c751d88865a179cb"
 
 [[files]]
 file = "shaderpacks/ComplementaryUnbound_r5.6.1 + EuphoriaPatches_1.6.5.txt"
-hash = "cf144e5793652efb513869283951530987c9732364d1795d250cbf291aded373"
+hash = "e4428fde1554264be32ef3536f32eed85cf22766d50057d11066ea80357de474"

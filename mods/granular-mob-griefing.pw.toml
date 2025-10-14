@@ -1,0 +1,13 @@
+name = "Granular Mob Griefing"
+filename = "granularmobgriefing-1.0.0.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "2206dfd90b87bc411a913584052ae37ee51b43d6"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 6016419
+project-id = 1164495

@@ -1,13 +1,13 @@
 name = "KubeJS Create"
-filename = "kubejs-create-neoforge-2101.3.1-build.6.jar"
+filename = "kubejs-create-neoforge-2101.3.1-build.9.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "3937b623236e8cbd543fbd403cb762beb01f9b5d"
+hash = "a15a5b1d70b25408205b12520bcdcb6f7dc115a1"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 7106060
+file-id = 7127504
 project-id = 429371

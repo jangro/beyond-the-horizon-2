@@ -722,10 +722,6 @@ file = "kubejs/data/compactmachines/recipe/new_machine_tiny.json"
 hash = "4642f835cebdc5a12fdd60dd983c16737388a6b8a8c7c83ef53897bfb1728035"
 
 [[files]]
-file = "kubejs/data/create/kubejs/recipe_schema/mechanical_crafting.json"
-hash = "793f8ea9fbafe949c2c6fcf67e0c5228073cf93c69e9482fa614a48630897b1c"
-
-[[files]]
 file = "kubejs/data/ctov/lithostitched/worldgen_modifier/ctov/pillager_outpost.json"
 hash = "ba015439b284ed9fb6e2a1c729f251303498f1d3a39ae5702550890b5ccda02d"
 
@@ -2449,11 +2445,6 @@ hash = "7fbe3225c134e823a07f3aecedace39fe866f327671ecca928f134399b94008d"
 metafile = true
 
 [[files]]
-file = "mods/kubejs-ars-nouveau.pw.toml"
-hash = "397cb8ac6ad5e1324a87350199fb70047770ebd8c2fc7043ac0baeaa8245324b"
-metafile = true
-
-[[files]]
 file = "mods/kubejs-create.pw.toml"
 hash = "e4dc5a05eb92dd5d717148c8a7e106016dc5143e2c9ce1a11a6750295df1af78"
 metafile = true
@@ -2461,16 +2452,6 @@ metafile = true
 [[files]]
 file = "mods/kubejs-curios.pw.toml"
 hash = "f5758164cc32ca8301640b289f7f5ad9d3ed9104a51ca61da6303af0e202999b"
-metafile = true
-
-[[files]]
-file = "mods/kubejs-enderio.pw.toml"
-hash = "1e6521b5bcb27b66680bd0774471ee54aa881605145d94e75ca7d52b1b4015b9"
-metafile = true
-
-[[files]]
-file = "mods/kubejs-irons-spells.pw.toml"
-hash = "e81c0f1b30c8ca5f7d8fe6bc789bc33d5edc6389953ef4324e4ff9898d89e7f8"
 metafile = true
 
 [[files]]

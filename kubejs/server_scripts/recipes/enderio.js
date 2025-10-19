@@ -61,7 +61,7 @@ ServerEvents.recipes(event => {
       }
     ],
     "output": {
-      "id": "oritech:uranium_gem"
+      "id": "immersiveengineering:raw_uranium"
     }
   }).id(`${ID_PREFIX}alloy_smelting/uranium`);
 
@@ -77,7 +77,7 @@ ServerEvents.recipes(event => {
       }
     ],
     "output": {
-      "id": "createaddition:electrum_ingot"
+      "id": "immersiveengineering:ingot_electrum"
     }
   }).id(`${ID_PREFIX}alloy_smelting/electrum_ingot_from_dust`);
 
@@ -165,7 +165,7 @@ ServerEvents.recipes(event => {
     ],
     "output": {
       "count": 2,
-      "id": "createaddition:electrum_ingot"
+      "id": "immersiveengineering:ingot_electrum"
     }
   }).id(`${ID_PREFIX}alloy_smelting/electrum_ingot`);
 
@@ -431,7 +431,7 @@ ServerEvents.recipes(event => {
         "chance": 1.0,
         "item": {
           "count": 1,
-          "id": "oritech:uranium_gem"
+          "id": "immersiveengineering:raw_uranium"
         },
         "optional": false
       },
@@ -439,7 +439,7 @@ ServerEvents.recipes(event => {
         "chance": 0.33,
         "item": {
           "count": 1,
-          "id": "oritech:uranium_gem"
+          "id": "immersiveengineering:raw_uranium"
         },
         "optional": false
       },

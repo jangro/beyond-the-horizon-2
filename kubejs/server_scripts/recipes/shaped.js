@@ -309,7 +309,7 @@ ServerEvents.recipes(event => {
     'CPC',
     'CGC'
   ], {
-    S: 'create:iron_sheet',
+    S: '#c:plates/iron',
     C: 'pneumaticcraft:plastic',
     P: '#bth:pcb',
     G: '#c:glass_panes',
@@ -320,7 +320,7 @@ ServerEvents.recipes(event => {
     'CPC',
     'CGC'
   ], {
-    S: 'create:iron_sheet',
+    S: '#c:plates/iron',
     B: '#bth:battery',
     C: 'pneumaticcraft:plastic',
     P: '#bth:pcb',
@@ -332,7 +332,7 @@ ServerEvents.recipes(event => {
     'CPC',
     'CGC'
   ], {
-    S: 'createaddition:electrum_sheet',
+    S: '#c:plates/electrum',
     C: 'pneumaticcraft:plastic',
     P: '#bth:pcb',
     G: '#c:glass_panes',
@@ -343,7 +343,7 @@ ServerEvents.recipes(event => {
     'SCS',
     ' S '
   ], {
-    S: 'createaddition:electrum_sheet',
+    S: '#c:plates/electrum',
     C: 'computercraft:computer_normal',
   }).id(`${ID_PREFIX}computer_advanced_upgrade`);
 
@@ -352,7 +352,7 @@ ServerEvents.recipes(event => {
     'CPC',
     'CGC'
   ], {
-    S: 'createaddition:electrum_sheet',
+    S: '#c:plates/electrum',
     B: '#bth:battery',
     C: 'pneumaticcraft:plastic',
     P: '#bth:pcb',
@@ -364,7 +364,7 @@ ServerEvents.recipes(event => {
     'SCS',
     ' S '
   ], {
-    S: 'createaddition:electrum_sheet',
+    S: '#c:plates/electrum',
     C: 'computercraft:pocket_computer_normal',
   }).id(`${ID_PREFIX}pocket_computer_advanced_upgrade`);
 
@@ -373,7 +373,7 @@ ServerEvents.recipes(event => {
     'SNS',
     ' R '
   ], {
-    S: 'create:iron_sheet',
+    S: '#c:plates/iron',
     N: 'minecraft:note_block',
     R: 'minecraft:redstone',
   }).id(`${ID_PREFIX}computercraft_speaker`);
@@ -383,7 +383,7 @@ ServerEvents.recipes(event => {
     'SNS',
     ' P '
   ], {
-    S: 'create:iron_sheet',
+    S: '#c:plates/iron',
     N: 'minecraft:note_block',
     P: 'minecraft:paper',
   }).id(`${ID_PREFIX}computercraft_printer`);
@@ -393,7 +393,7 @@ ServerEvents.recipes(event => {
     'SRS',
     ' R '
   ], {
-    S: 'create:iron_sheet',
+    S: '#c:plates/iron',
     R: 'minecraft:redstone',
   }).id(`${ID_PREFIX}computercraft_disk_drive`);
 
@@ -402,7 +402,7 @@ ServerEvents.recipes(event => {
     'SRS',
     ' S '
   ], {
-    S: 'create:iron_sheet',
+    S: '#c:plates/iron',
     R: 'minecraft:redstone',
   }).id(`${ID_PREFIX}wired_modem`);
 
@@ -411,7 +411,7 @@ ServerEvents.recipes(event => {
     'SES',
     ' S '
   ], {
-    S: 'create:iron_sheet',
+    S: '#c:plates/iron',
     E: 'minecraft:ender_pearl',
   }).id(`${ID_PREFIX}wireless_modem_normal`);
 
@@ -420,7 +420,7 @@ ServerEvents.recipes(event => {
     'SES',
     ' S '
   ], {
-    S: 'createaddition:electrum_sheet',
+    S: '#c:plates/electrum',
     E: 'minecraft:ender_eye',
   }).id(`${ID_PREFIX}wireless_modem_advanced`);
 
@@ -429,7 +429,7 @@ ServerEvents.recipes(event => {
     'SRS',
     '   '
   ], {
-    S: 'create:copper_sheet',
+    S: '#c:plates/copper',
     R: 'minecraft:redstone',
   }).id(`${ID_PREFIX}computercraft_cable`);
 
@@ -438,7 +438,7 @@ ServerEvents.recipes(event => {
     'PGP',
     'SPS'
   ], {
-    S: 'create:iron_sheet',
+    S: '#c:plates/iron',
     P: 'pneumaticcraft:plastic',
     G: '#c:glass_panes',
   }).id(`${ID_PREFIX}monitor_normal`);
@@ -448,7 +448,7 @@ ServerEvents.recipes(event => {
     'PGP',
     'SPS'
   ], {
-    S: 'createaddition:electrum_sheet',
+    S: '#c:plates/electrum',
     P: 'pneumaticcraft:plastic',
     G: '#c:glass_panes',
   }).id(`${ID_PREFIX}monitor_advanced`);
@@ -469,7 +469,7 @@ ServerEvents.recipes(event => {
     'FBF',
     'FFF'
   ], {
-    F: '#c:flour/wheat',
+    F: '#c:flours/wheat',
     B: '#c:buckets/water',
   }).id(`${ID_PREFIX}create_dough`);
 

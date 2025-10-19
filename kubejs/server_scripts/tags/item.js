@@ -62,16 +62,16 @@ ServerEvents.tags('item', event => {
   ]);
 
   event.add('minecraft:swords', [
-    'bth:terminus',
+    // 'bth:terminus',
   ]);
 
   event.add('minecraft:tools', [
-    'bth:terminus',
+    // 'bth:terminus',
     'bth:coconut_maul',
   ]);
 
   event.add('minecraft:weapons', [
-    'bth:terminus',
+    // 'bth:terminus',
     'bth:coconut_maul',
   ]);
 
@@ -88,28 +88,21 @@ ServerEvents.tags('item', event => {
   ]);
 
   // Neoforge Tags
-  event.add('c:dough', [
+  event.add('c:doughs', [
+    'farmersdelight:wheat_dough',
     'minecolonies:bread_dough',
+    'pneumaticcraft:sourdough',
   ]);
 
-  event.add('c:dough/wheat', [
+  event.add('c:doughs/wheat', [
+    'farmersdelight:wheat_dough',
     'minecolonies:bread_dough',
-  ]);
-
-  event.add('c:dusts', [
-    'create:cinder_flour',
-    'create:wheat_flour',
-    'enderio:flour',
   ]);
 
   event.add('c:tools', [
-    'bth:terminus',
+    // 'bth:terminus',
     'bth:coconut_maul',
   ]);
-
-  // Make Alex's Caves the default for raw uranium (fixes ID squeezer recipe)
-  event.removeAll('c:raw_materials/uranium');
-  event.add('c:raw_materials/uranium', 'alexscaves:uranium');
 
   // Tag Create crushed raw ores as dusts so they can replace IE dusts in recipes.
   ['aluminum', 'copper', 'gold', 'iron', 'lead', 'nickel', 'silver'].forEach((material) => {
@@ -117,19 +110,13 @@ ServerEvents.tags('item', event => {
     event.add(`c:dusts/${material}`, `create:crushed_raw_${material}`);
   });
 
-  event.add('c:dusts/flour', [
-    'create:cinder_flour',
-    'create:wheat_flour',
-    'enderio:flour',
-  ]);
-
-  event.add('c:flour', [
+  event.add('c:flours', [
     'create:cinder_flour',
     'enderio:flour',
     'pneumaticcraft:wheat_flour',
   ]);
 
-  event.add('c:flour/wheat', [
+  event.add('c:flours/wheat', [
     'enderio:flour',
     'pneumaticcraft:wheat_flour',
   ]);
@@ -356,10 +343,11 @@ ServerEvents.tags('item', event => {
     'minecolonies:spear',
     'mutantmonsters:endersoul_hand',
     'mutantmonsters:hulk_hammer',
-    'nethersdelight:diamond_machete',
-    'nethersdelight:golden_machete',
-    'nethersdelight:iron_machete',
-    'nethersdelight:netherite_machete',
+    // Mod removed due to issues. Try again later.
+    // 'nethersdelight:diamond_machete',
+    // 'nethersdelight:golden_machete',
+    // 'nethersdelight:iron_machete',
+    // 'nethersdelight:netherite_machete',
   ];
   event.add('c:tools/melee_weapon', swords);
   event.add('minecraft:swords', swords);

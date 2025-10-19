@@ -8,13 +8,13 @@ StartupEvents.registry("item", event => {
 
   // Adventurer's Spellbook
   // A spellbook for Iron's Spells and Spellbooks that comes filled with utility spells useful for explorers, such as recall.
-  event.create('bth:adventurers_spell_book', 'spellbook')
-    .setMaxSpellSlots(8)
-    .addAttribute('minecraft:generic.movement_speed', 0.2, 'add_multiplied_total')
-    .addAttribute('irons_spellbooks:max_mana', 100, 'add_value')
-    // .addSpell('irons_spellbooks:summon_horse', 1)
-    // .addSpell('irons_spellbooks:recall', 1)
-    .translationKey('item.bth.adventurers_spell_book');
+  // event.create('bth:adventurers_spell_book', 'spellbook')
+  //   .setMaxSpellSlots(8)
+  //   .addAttribute('minecraft:generic.movement_speed', 0.2, 'add_multiplied_total')
+  //   .addAttribute('irons_spellbooks:max_mana', 100, 'add_value')
+  //   // .addSpell('irons_spellbooks:summon_horse', 1)
+  //   // .addSpell('irons_spellbooks:recall', 1)
+  //   .translationKey('item.bth.adventurers_spell_book');
 
   // Coconut Maul
   // An easter egg weapon that hits harder but slower than a sword, but not to the same extreme as an axe.

@@ -1,0 +1,14 @@
+name = "IE: Reimmersed"
+filename = "IE Reimmersed v1.0 Neoforge.zip"
+side = "both"
+pin = true
+
+[download]
+hash-format = "sha1"
+hash = "aae1f848678736259771026983b3b70a81020353"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 7041770
+project-id = 1354996

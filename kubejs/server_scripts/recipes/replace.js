@@ -93,7 +93,9 @@ ServerEvents.recipes(event => {
   replaceInput('minecolonies:bread_dough', '#c:dough/wheat');
 
   // Dust Compatibility
-  replaceInput('eidolon_repraised:sulfur_dust', '#c:dusts/sulfur');
+  replaceInput('eidolon_repraised:sulfur', '#c:dusts/sulfur');
+  replaceInput('immersiveengineering:dust_sulfur', '#c:dusts/sulfur');
+
 
   // Feather Compatibility
   replaceInputID([
@@ -236,40 +238,47 @@ ServerEvents.recipes(event => {
   // ----- Output Unification -----
 
   // Dusts
-  replaceOutput('immersiveengineering:dust_sulfur', 'eidolon_repraised:sulfur');
+
+  // Crushed raw ores (Create)
+  replaceOutput('create:crushed_raw_iron', 'immersiveengineering:dust_iron');
 
   // Ingots
-  replaceOutput('immersiveengineering:ingot_electrum', 'createaddition:electrum_ingot');
-  replaceOutput('immersiveengineering:ingot_lead', 'eidolon_repraised:lead_ingot');
-  replaceOutput('immersiveengineering:ingot_silver', 'eidolon_repraised:silver_ingot');
+  replaceOutput('createaddition:electrum_ingot', 'immersiveengineering:ingot_electrum');
+  replaceOutput('eidolon_repraised:lead_ingot', 'immersiveengineering:ingot_lead');
+  replaceOutput('eidolon_repraised:silver_ingot', 'immersiveengineering:ingot_silver');
+  replaceOutput('oritech:electrum_ingot', 'immersiveengineering:ingot_electrum');
+  replaceOutput('oritech:steel_ingot', 'immersiveengineering:ingot_steel');
 
   // Nuggets
-  replaceOutput('immersiveengineering:nugget_copper', 'create:copper_nugget');
-  replaceOutput('immersiveengineering:nugget_electrum', 'createaddition:electrum_nugget');
-  replaceOutput('immersiveengineering:nugget_lead', 'eidolon_repraised:lead_nugget');
-  replaceOutput('immersiveengineering:nugget_silver', 'eidolon_repraised:silver_nugget');
-  replaceOutput('pneumaticcraft:copper_nugget', 'create:copper_nugget');
+  replaceOutput('create:copper_nugget', 'immersiveengineering:nugget_copper');
+  replaceOutput('createaddition:electrum_nugget', 'immersiveengineering:nugget_electrum');
+  replaceOutput('eidolon_repraised:lead_nugget', 'immersiveengineering:nugget_lead');
+  replaceOutput('eidolon_repraised:silver_nugget', 'immersiveengineering:nugget_silver');
+  replaceOutput('oritech:copper_nugget', 'immersiveengineering:nugget_copper');
+  replaceOutput('oritech:electrum_nugget', 'immersiveengineering:nugget_electrum');
+  replaceOutput('pneumaticcraft:copper_nugget', 'immersiveengineering:nugget_copper');
 
   // Plates
-  replaceOutput('immersiveengineering:plate_copper', 'create:copper_sheet');
-  replaceOutput('immersiveengineering:plate_electrum', 'createaddition:electrum_sheet');
-  replaceOutput('immersiveengineering:plate_gold', 'create:golden_sheet');
-  replaceOutput('immersiveengineering:plate_iron', 'create:iron_sheet');
+  replaceOutput('create:copper_sheet', 'immersiveengineering:plate_copper');
+  replaceOutput('create:golden_sheet', 'immersiveengineering:plate_gold');
+  replaceOutput('create:iron_sheet', 'immersiveengineering:plate_iron');
+  replaceOutput('createaddition:electrum_sheet', 'immersiveengineering:plate_electrum');
 
   // Rods
   replaceOutput('createaddition:iron_rod', 'immersiveengineering:stick_iron');
 
   // Ore
-  replaceOutput('immersiveengineering:deepslate_ore_silver', 'eidolon_repraised:deep_silver_ore');
-  replaceOutput('immersiveengineering:ore_silver', 'eidolon_repraised:silver_ore');
+  replaceOutput('eidolon_repraised:deep_silver_ore', 'immersiveengineering:deepslate_ore_silver');
+  replaceOutput('eidolon_repraised:silver_ore', 'immersiveengineering:ore_silver');
 
   // Raw Materials
-  replaceOutput('immersiveengineering:raw_lead', 'eidolon_repraised:raw_lead');
-  replaceOutput('immersiveengineering:raw_silver', 'eidolon_repraised:raw_silver');
+  replaceOutput('eidolon_repraised:raw_lead', 'immersiveengineering:raw_lead');
+  replaceOutput('eidolon_repraised:raw_silver', 'immersiveengineering:raw_silver');
+  // replaceOutput('immersiveengineering:raw_uranium', 'create:crushed_raw_uranium');
 
   // Storage Blocks
-  replaceOutput('immersiveengineering:raw_block_silver', 'eidolon_repraised:raw_silver_block');
-  replaceOutput('immersiveengineering:storage_silver', 'eidolon_repraised:silver_block');
+  replaceOutput('eidolon_repraised:raw_silver_block', 'immersiveengineering:raw_block_silver');
+  replaceOutput('eidolon_repraised:silver_block', 'immersiveengineering:storage_silver');
 
   // Wires
   replaceOutput('createaddition:copper_wire', 'immersiveengineering:wire_copper');
@@ -277,7 +286,7 @@ ServerEvents.recipes(event => {
 
   // Misc
   replaceInput('farmersdelight:rope', 'supplementaries:rope');
-  replaceOutput('bbb:rope', 'supplementaries:rope');
+  // replaceOutput('bbb:rope', 'supplementaries:rope');
   replaceOutput('farmersdelight:rope', 'supplementaries:rope');
   replaceOutput('createaddition:chocolate_cake', 'neapolitan:chocolate_cake');
   replaceOutput('incubation:fried_egg', 'farmersdelight:fried_egg');

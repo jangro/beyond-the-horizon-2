@@ -1,0 +1,71 @@
+[
+  {
+    "biome": "terralith:haze_mountain",
+    "hostile": true,
+    "result": "deny"
+  },
+  {
+    "mob": "minecraft:bat",
+    "mincount": {
+      "amount": 1,
+      "perchunk": true
+    },
+    "result": "deny"
+  },
+  {
+    "mob": "minecraft:cod",
+    "mincount": {
+      "amount": 5,
+      "perplayer": true
+    },
+    "result": "deny"
+  },
+  {
+    "mob": "minecraft:salmon",
+    "mincount": {
+      "amount": 5,
+      "perplayer": true
+    },
+    "result": "deny"
+  },
+  {
+    "mob": "minecraft:dolphin",
+    "mincount": {
+      "amount": 1,
+      "perchunk": true
+    },
+    "result": "deny"
+  },
+  {
+    "mob": "alshanex_familiars:scorcher_pet",
+    "mincount": {
+      "amount": 1,
+      "perchunk": true
+    },
+    "result": "deny"
+  },
+  {
+    "mob": "choccos_mobs:shrimp",
+    "mincount": {
+      "amount": 1,
+      "perchunk": true
+    },
+    "result": "deny"
+  },
+  {
+    "mob": "ecologics:coconut_crab",
+    "mincount": {
+      "amount": 1,
+      "perchunk": true
+    },
+    "result": "deny"
+  },
+  {
+    "mob": "upgrade_aquatic:thrasher",
+    "mincount": {
+      "amount": 3,
+      "perplayer": true
+    },
+    "result": "deny"
+  }
+]

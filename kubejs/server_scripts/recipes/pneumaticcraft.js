@@ -8,152 +8,43 @@ ServerEvents.recipes(event => {
   if (!Platform.isLoaded('pneumaticcraft')) {
     return;
   }
-
   const ID_PREFIX = 'bth:pneumaticcraft/';
+  const pc = event.recipes.pneumaticcraft;
 
-  event.custom({
-    "type": "pneumaticcraft:explosion_crafting",
-    "input": {
-      "count": 1,
-      "item": "minecraft:obsidian"
-    },
-    "loss_rate": 20,
-    "results": [
-      {
-        "count": 1,
-        "id": "minecraft:crying_obsidian"
-      }
-    ]
-  }).id(ID_PREFIX + 'explosion_crafting/crying_obsidian');
+  //
+  // Explosion crafting
+  // explosion_crafting(input [ingredient], loss_rate [int], results [list of result_with_count])
+  //
+  pc.explosion_crafting('minecraft:obsidian', 20, [{ id: 'minecraft:crying_obsidian', count: 1 }]).id(ID_PREFIX + 'explosion_crafting/crying_obsidian');
 
-  event.custom({
-    "type": "pneumaticcraft:pressure_chamber",
-    "inputs": [
-      {
-        "count": 1,
-        "item": "minecraft:obsidian"
-      }
-    ],
-    "pressure": 2.5,
-    "results": [
-      {
-        "count": 1,
-        "id": "minecraft:crying_obsidian"
-      }
-    ]
-  }).id(ID_PREFIX + 'pressure_chamber/crying_obsidian');
-
-
+  //
+  // Pressure chamber
+  // pressure_chamber(inputs [list of ingredients], pressure [double], results [list of result_with_count])
+  //
+  pc.pressure_chamber(['minecraft:obsidian'], 2.5, [{ id: 'minecraft:crying_obsidian', count: 1 }]).id(ID_PREFIX + 'pressure_chamber/crying_obsidian');
 
   //
   // Thermopneumatic Processing Plant
+  // thermo_plant(inputs [object: {item?, fluid?}], outputs [object: {item_output?, fluid_output?}], pressure [double], speed [double], exothermic [boolean], temperature? [object: {min_temp?, max_temp?}])
   //
+  pc.thermo_plant({ item: 'minecraft:sugar', fluid: { tag: 'minecraft:water', amount: 1000 } }, { fluid_output: { id: 'bth:sugar_water', amount: 1000 } }, 2.0, 0.5, false).id(`${ID_PREFIX}thermo_plant/sugar_water`);
+  pc.thermo_plant({ item: 'minecraft:soul_sand', fluid: { tag: 'minecraft:water', amount: 1000 } }, { fluid_output: { id: 'bth:soul_mixture', amount: 1000 } }, 2.0, 0.5, false, { min_temp: 373 }).id(`${ID_PREFIX}thermo_plant/soul_mixture`);
 
-  // Liquid Source
-  event.custom({
-    "type": "pneumaticcraft:thermo_plant",
-    "exothermic": false,
-    "pressure": 2.0,
-    "speed": 0.5,
-    "inputs": {
-      "item": {
-        "item": "ars_nouveau:sourceberry_bush"
-      }
-    },
-    "outputs": {
-      "fluid_output": {
-        "amount": 100,
-        "id": "starbunclemania:source_fluid"
-      }
-    }
-  }).id(`${ID_PREFIX}thermo_plant/source_fluid`);
+  //
+  // Fluid Mixer
+  // fluid_mixer(input1 [fluid_input], input2 [fluid_input], pressure [double], time [int], fluid_output [fluid_output], item_output [optional_item_stack])
+  //
+  pc.fluid_mixer({ fluid: 'integrateddynamics:liquid_chorus', amount: 500 }, { fluid: 'bth:soul_mixture', amount: 500 }, 3.0, 100, { id: 'bth:ender_fuel', amount: 1000 }, {}).id(`${ID_PREFIX}fluid_mixer/ender_fuel`);
 
-  // Liquid Chorus
-  event.custom({
-    "type": "pneumaticcraft:thermo_plant",
-    "exothermic": false,
-    "pressure": 2.0,
-    "speed": 0.5,
-    "inputs": {
-      "item": {
-        "item": "minecraft:popped_chorus_fruit"
-      },
-    },
-    "outputs": {
-      "fluid_output": {
-        "amount": 125,
-        "id": "integrateddynamics:liquid_chorus"
-      },
-    }
-  }).id(`${ID_PREFIX}thermo_plant/liquid_chorus`);
+  //
+  // Mod specific recipes
+  //
+  if (Platform.isLoaded('integrateddynamics')) {
+    pc.thermo_plant({ item: 'minecraft:popped_chorus_fruit' }, { fluid_output: { id: 'integrateddynamics:liquid_chorus', amount: 125 } }, 2.0, 0.5, false).id(`${ID_PREFIX}thermo_plant/liquid_chorus`);
+  }
 
-  // BTH sugar water
-  event.custom({
-    "type": "pneumaticcraft:thermo_plant",
-    "exothermic": false,
-    "pressure": 2.0,
-    "speed": 0.5,
-    "inputs": {
-      "item": {
-        "item": "minecraft:sugar"
-      },
-      "fluid": {
-        "amount": 1000,
-        "tag": "minecraft:water"
-      },
-    },
-    "outputs": {
-      "fluid_output": {
-        "amount": 1000,
-        "id": "bth:sugar_water"
-      },
-    }
-  }).id(`${ID_PREFIX}thermo_plant/sugar_water`);
-
-  // BTH soul mixture
-  event.custom({
-    "type": "pneumaticcraft:thermo_plant",
-    "exothermic": false,
-    "pressure": 2.0,
-    "speed": 0.5,
-    "temperature": {
-      "min_temp": 373
-    },
-    "inputs": {
-      "item": {
-        "item": "minecraft:soul_sand"
-      },
-      "fluid": {
-        "amount": 1000,
-        "tag": "minecraft:water"
-      },
-    },
-    "outputs": {
-      "fluid_output": {
-        "amount": 1000,
-        "id": "bth:soul_mixture"
-      },
-    }
-  }).id(`${ID_PREFIX}thermo_plant/soul_mixture`);
-
-  // BTH ender fuel
-  event.custom({
-    "type": "pneumaticcraft:fluid_mixer",
-    "pressure": 3.0,
-    "time": 100,
-    "input1": {
-      "amount": 500,
-      "fluid": "integrateddynamics:liquid_chorus"
-    },
-    "input2": {
-      "amount": 500,
-      "fluid": "bth:soul_mixture"
-    },
-    "fluid_output": {
-      "amount": 1000,
-      "id": "bth:ender_fuel"
-    },
-    "item_output": {}
-  }).id(`${ID_PREFIX}fluid_mixer/ender_fuel`);
+  if (Platform.isLoaded('starbunclemania')) {
+    pc.thermo_plant({ item: 'ars_nouveau:sourceberry_bush' }, { fluid_output: { id: 'starbunclemania:source_fluid', amount: 100 } }, 2.0, 0.5, false).id(`${ID_PREFIX}thermo_plant/source_fluid`);
+  }
 
 });

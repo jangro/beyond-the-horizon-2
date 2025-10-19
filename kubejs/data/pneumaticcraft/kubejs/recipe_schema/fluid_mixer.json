@@ -1,0 +1,32 @@
+{
+  "keys": [
+    {
+      "name": "input1",
+      "role": "input",
+      "type": "pneumaticcraft:fluid_input"
+    },
+    {
+      "name": "input2",
+      "role": "input",
+      "type": "pneumaticcraft:fluid_input"
+    },
+    {
+      "name": "pressure",
+      "type": "double"
+    },
+    {
+      "name": "time",
+      "type": "int"
+    },
+    {
+      "name": "fluid_output",
+      "role": "output",
+      "type": "pneumaticcraft:fluid_output"
+    },
+    {
+      "name": "item_output",
+      "role": "output",
+      "type": "optional_item_stack"
+    }
+  ]
+}

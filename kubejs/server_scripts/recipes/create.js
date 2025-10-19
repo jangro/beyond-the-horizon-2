@@ -6,11 +6,12 @@
  */
 
 ServerEvents.recipes(event => {
-  if (Platform.isLoaded('create')) {
-    const ID_PREFIX = 'bth:create/';
-    const create = event.recipes.create;
-
-
-
+  if (!Platform.isLoaded('create')) {
+    return;
   }
+  const ID_PREFIX = 'bth:create/';
+  const create = event.recipes.create;
+
+
+
 });

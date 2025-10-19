@@ -815,7 +815,11 @@ hash = "8a078ed2d91c085e2e1a6e5e8284bc9b06eeefc567dc92cbd2e34826857459a1"
 
 [[files]]
 file = "kubejs/data/enderio/kubejs/recipe_components.json"
-hash = "3c238fb8f87fcb2baa0ce25fd0e42e370456b6109d6ae0e8bae76d0104f37426"
+hash = "083a00711fddd979fc1b3f231ce673ba53720bd4ab920ec3471176e36b32df9f"
+
+[[files]]
+file = "kubejs/data/enderio/kubejs/recipe_schema/alloy_smelting.json"
+hash = "cb9c532b704077ebdc5f50623fe7f909ef8448b85f7ca42869a30f67ff920edd"
 
 [[files]]
 file = "kubejs/data/enderio/kubejs/recipe_schema/sag_milling.json"
@@ -1250,6 +1254,26 @@ file = "kubejs/data/phantasm/worldgen/structure_set/obsidian_tower.json"
 hash = "b83c4a4d77b86fb7e7b9bc10b862233a8ee8848f042a14113d334dc0967717d0"
 
 [[files]]
+file = "kubejs/data/pneumaticcraft/kubejs/recipe_components.json"
+hash = "5d386c1a943410549a48c364d5fe4ca09c8b5825fa80fb17a55029e498373267"
+
+[[files]]
+file = "kubejs/data/pneumaticcraft/kubejs/recipe_schema/explosion_crafting.json"
+hash = "f899ce159ada266330e6aa4f7609e2ac7d76f9520cd43c975e75accbce19269c"
+
+[[files]]
+file = "kubejs/data/pneumaticcraft/kubejs/recipe_schema/fluid_mixer.json"
+hash = "d727378493c1d4e5d0343b7b06369ad5d03c5dd3129318b910cffd46e9bb8925"
+
+[[files]]
+file = "kubejs/data/pneumaticcraft/kubejs/recipe_schema/pressure_chamber.json"
+hash = "4d260719cd205330bda5ed3eea548d5138f058e1a57d46de08e67cce2df0d57d"
+
+[[files]]
+file = "kubejs/data/pneumaticcraft/kubejs/recipe_schema/thermo_plant.json"
+hash = "e0001a31bdb096b316b51082de98db477ddcb3203e73ff627cee1621e1178614"
+
+[[files]]
 file = "kubejs/data/pneumaticcraft/worldgen/placed_feature/oil_lake_surface.json"
 hash = "33272d89f5937e53bd985d9a572296ef79a22ecd83a349e78319dcb497fb2f2d"
 
@@ -1463,19 +1487,19 @@ hash = "83e9ec904499a0c6809acf94517152f5aa414b6f6973d20f01ccfc3fe3d4ee9a"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/ae2.js"
-hash = "343124fc2d636aad7f2c98adbcff0d612e1d07ac76e8e27bbefe621e56221afd"
+hash = "e8504e4f657b39d2683a764266a90bd29dfbc2e8165cf89552d6d347fcb1d1cb"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/arsnouveau.js"
-hash = "d3ce6b65fd48dadf70dcdb97cb70ee44747a3aea1a7d3288ad1d783a33c79083"
+hash = "eb94576084df0d02678d179859bb92bce6ea98e02af65dea26adae97e46500fd"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/create.js"
-hash = "9a0c6457f2caa44a642447b624362483b0ce71c602f2f6d4eae5d41d818923c8"
+hash = "111cb68597744fba4bf0c478aade2741bb710131d0171a74a644e5ebad0c2d9b"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/enderio.js"
-hash = "7896bef5956c07b2e12d2ff10135293ee989319a022c876385bc4e55ab64f89d"
+hash = "19d1ae96a45bd9a465ed7dd0bfc603923789ac8060171fd46d706aeb4ace83b7"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/exposure.js"
@@ -1483,15 +1507,15 @@ hash = "257aefb5b72471cf2181593e198fd92763d316cb016ecacb21458c9a45a46fe7"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/immersiveengineering.js"
-hash = "8b2b8d21fb278d0486d9090eb555167b102772d9863ffc465545eebef3195e49"
+hash = "b92d880e30b77591c4c03d5043822f89bd4657b02b84909589f5592da670a834"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/integrateddynamics.js"
-hash = "26827ab2bb7b92130d4406bdfbc247f9b45dc9af5856a324f0d4c3a19da5490d"
+hash = "f0b794fa5e63403ac509829c484b4ffc90299bbaac3753b50504ac7870422ad5"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/pneumaticcraft.js"
-hash = "b31110a0c45fbe4b1d7f5bbe8f79bf8031ea1dd2eddc7bfcb2093a530f712b02"
+hash = "d924c5d6d409eddb1f3ab7d679d41346acea5b179eec1bd00d55f92e61772568"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/remove.js"

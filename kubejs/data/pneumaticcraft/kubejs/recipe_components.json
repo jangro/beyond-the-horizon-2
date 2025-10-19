@@ -1,0 +1,89 @@
+{
+  "pneumaticcraft:item_stack_with_count": {
+    "type": "custom_object",
+    "keys": [
+      {
+        "name": "item",
+        "component": "id"
+      },
+      {
+        "name": "count",
+        "component": "int",
+        "optional": true
+      }
+    ]
+  },
+  "pneumaticcraft:result_with_count": {
+    "type": "custom_object",
+    "keys": [
+      {
+        "name": "id",
+        "component": "id"
+      },
+      {
+        "name": "count",
+        "component": "int",
+        "optional": true
+      }
+    ]
+  },
+  "pneumaticcraft:fluid_stack": {
+    "type": "custom_object",
+    "keys": [
+      {
+        "name": "fluid",
+        "component": "id"
+      },
+      {
+        "name": "amount",
+        "component": "int"
+      }
+    ]
+  },
+  "pneumaticcraft:fluid_stack_with_tag": {
+    "type": "custom_object",
+    "keys": [
+      {
+        "name": "tag",
+        "component": "id"
+      },
+      {
+        "name": "amount",
+        "component": "int"
+      }
+    ]
+  },
+  "pneumaticcraft:fluid_input": {
+    "type": "either",
+    "left": "pneumaticcraft:fluid_stack",
+    "right": "pneumaticcraft:fluid_stack_with_tag"
+  },
+  "pneumaticcraft:fluid_output": {
+    "type": "custom_object",
+    "keys": [
+      {
+        "name": "id",
+        "component": "id"
+      },
+      {
+        "name": "amount",
+        "component": "int"
+      }
+    ]
+  },
+  "pneumaticcraft:temperature_range": {
+    "type": "custom_object",
+    "keys": [
+      {
+        "name": "min_temp",
+        "component": "int",
+        "optional": true
+      },
+      {
+        "name": "max_temp",
+        "component": "int",
+        "optional": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "keys": [
+    {
+      "name": "input",
+      "role": "input",
+      "type": "ingredient"
+    },
+    {
+      "name": "loss_rate",
+      "type": "int"
+    },
+    {
+      "name": "results",
+      "role": "output",
+      "type": {
+        "type": "list",
+        "component": "pneumaticcraft:result_with_count"
+      }
+    }
+  ]
+}

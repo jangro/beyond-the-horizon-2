@@ -1,0 +1,24 @@
+{
+  "keys": [
+    {
+      "name": "inputs",
+      "role": "input",
+      "type": {
+        "type": "list",
+        "component": "ingredient"
+      }
+    },
+    {
+      "name": "pressure",
+      "type": "double"
+    },
+    {
+      "name": "results",
+      "role": "output",
+      "type": {
+        "type": "list",
+        "component": "pneumaticcraft:result_with_count"
+      }
+    }
+  ]
+}

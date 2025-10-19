@@ -1,0 +1,25 @@
+{
+  "keys": [
+    {
+      "name": "inputs",
+      "role": "input",
+      "type": {
+        "type": "list",
+        "component": "enderio:input_with_count"
+      }
+    },
+    {
+      "name": "output",
+      "role": "output",
+      "type": "enderio:alloy_output"
+    },
+    {
+      "name": "energy",
+      "type": "int"
+    },
+    {
+      "name": "experience",
+      "type": "double"
+    }
+  ]
+}

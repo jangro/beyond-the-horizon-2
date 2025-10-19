@@ -1,0 +1,62 @@
+{
+  "keys": [
+    {
+      "name": "inputs",
+      "role": "input",
+      "type": {
+        "type": "custom_object",
+        "keys": [
+          {
+            "name": "item",
+            "component": "optional_ingredient",
+            "optional": true
+          },
+          {
+            "name": "fluid",
+            "component": "pneumaticcraft:fluid_input",
+            "optional": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "outputs",
+      "role": "output",
+      "type": {
+        "type": "custom_object",
+        "keys": [
+          {
+            "name": "item_output",
+            "component": "optional_item_stack",
+            "optional": true,
+            "default_optional": true
+          },
+          {
+            "name": "fluid_output",
+            "component": "pneumaticcraft:fluid_output",
+            "optional": true,
+            "default_optional": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "pressure",
+      "type": "double"
+    },
+    {
+      "name": "speed",
+      "type": "double"
+    },
+    {
+      "name": "exothermic",
+      "type": "boolean"
+    },
+    {
+      "name": "temperature",
+      "type": "pneumaticcraft:temperature_range",
+      "optional": true,
+      "default_optional": true
+    }
+  ]
+}

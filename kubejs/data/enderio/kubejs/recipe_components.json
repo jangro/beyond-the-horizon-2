@@ -34,5 +34,38 @@
           "optional": true
         }
       ]
+    },
+    "enderio:input_with_count": {
+      "type": "custom_object",
+      "keys": [
+        {
+          "name": "item",
+          "component": "id",
+          "optional": true
+        },
+        {
+          "name": "tag",
+          "component": "id",
+          "optional": true
+        },
+        {
+          "name": "count",
+          "component": "positive_int"
+        }
+      ]
+    },
+    "enderio:alloy_output": {
+      "type": "custom_object",
+      "keys": [
+        {
+          "name": "id",
+          "component": "id"
+        },
+        {
+          "name": "count",
+          "component": "positive_int",
+          "optional": true
+        }
+      ]
     }
 }

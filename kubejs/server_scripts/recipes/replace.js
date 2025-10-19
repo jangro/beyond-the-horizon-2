@@ -238,9 +238,11 @@ ServerEvents.recipes(event => {
   // ----- Output Unification -----
 
   // Dusts
+  replaceOutput('immersiveengineering:dust_uranium', 'create:crushed_raw_uranium');
 
   // Crushed raw ores (Create)
-  replaceOutput('create:crushed_raw_iron', 'immersiveengineering:dust_iron');
+  // replaceOutput('immersiveengineering:dust_silver', 'create:crushed_raw_silver');
+  replaceOutput('oritech:iron_clump', 'create:crushed_raw_iron');
 
   // Ingots
   replaceOutput('createaddition:electrum_ingot', 'immersiveengineering:ingot_electrum');

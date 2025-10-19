@@ -24,7 +24,7 @@ RecipeViewerEvents.removeEntries('item', event => {
     'cofh_core:experience',
     'cofh_core:honey',
     'cofh_core:potion',
-    'create:crushed_raw_uranium',
+    // 'create:crushed_raw_uranium',
     'createaddition:copper_wire',
     'createaddition:chocolate_cake',
     'createaddition:electrum_wire',

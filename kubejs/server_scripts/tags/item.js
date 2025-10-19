@@ -105,7 +105,7 @@ ServerEvents.tags('item', event => {
   ]);
 
   // Tag Create crushed raw ores as dusts so they can replace IE dusts in recipes.
-  ['aluminum', 'copper', 'gold', 'iron', 'lead', 'nickel', 'silver'].forEach((material) => {
+  ['aluminum', 'copper', 'gold', 'iron', 'lead', 'nickel', 'platinum', 'silver', 'uranium', 'zinc'].forEach((material) => {
     event.add(`c:dusts`, `create:crushed_raw_${material}`);
     event.add(`c:dusts/${material}`, `create:crushed_raw_${material}`);
   });

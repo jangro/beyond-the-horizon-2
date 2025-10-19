@@ -12,111 +12,32 @@
  * to be 10x faster than the manual version (ie. duration set to one tenth the value).
  */
 ServerEvents.recipes(event => {
-  // Temp: Disable this script as the ID schema isn't finished:
-  // FIXME / TODO: Enable this when the schema is ready.
+  if (Platform.isLoaded('integrateddynamics')) {
+    const ID_PREFIX = 'bth:integrateddynamics/';
+    const id = event.recipes.integrateddynamics;
 
-  const ID_PREFIX = 'bth:integrateddynamics/';
+    // Function signatures
+    // squeezer(input [ingredient], output items [list], output fluid [optional fluid stack])
+    // mechanical_squeezer(input [ingredient], duration [int], output items [list], output fluid [optional fluid stack])
 
-  // Drying Basin
-  // event.recipes.integrateddynamics.drying_basin(output, duration, fluid, item).id(`${ID_PREFIX}drying_basin/id_goes_here`);
+    // Squeezer
+    id.squeezer('forbidden_arcanus:stella_arcanum', [{ item: 'forbidden_arcanus:stellarite_piece' }, { item: 'forbidden_arcanus:stellarite_piece', chance: 0.5 }]).id(`${ID_PREFIX}squeezer/stella_arcanum`);
 
-  // Mechanical Drying Basin
-  // event.recipes.integrateddynamics.mechanical_drying_basin(output, duration, fluid, item).id(`${ID_PREFIX}mechanical_drying_basin/id_goes_here`);
+    // Mechanical Squeezer
+    id.mechanical_squeezer('forbidden_arcanus:stella_arcanum', 40, [{ item: 'forbidden_arcanus:stellarite_piece' }, { item: 'forbidden_arcanus:stellarite_piece', chance: 0.5 }]).id(`${ID_PREFIX}mechanical_squeezer/stella_arcanum`);
 
-  // Squeezer
-  // event.recipes.integrateddynamics.squeezer([Item.of('immersiveengineering:dust_hop_graphite')], Item.of('#forge:dusts/coal_coke', 8)).id(`${ID_PREFIX}squeezer/dust_hop_graphite_from_coal_coke`);
-  if (Platform.isLoaded('irons_spellbooks')) {
-    // event.recipes.integrateddynamics.squeezer([Item.of('irons_spellbooks:arcane_salvage'), Item.of('irons_spellbooks:arcane_salvage').withChance(0.75)], 'irons_spellbooks:arcane_debris').id(`${ID_PREFIX}squeezer/arcane_salvage_from_arcane_debris`);
+
+    // Starbunclemania
+    if (Platform.isLoaded('starbunclemania')) {
+      id.squeezer('ars_nouveau:sourceberry_bush', [], Fluid.of('starbunclemania:source_fluid', 100)).id(`${ID_PREFIX}squeezer/sourceberries`);
+      id.mechanical_squeezer('ars_nouveau:sourceberry_bush', 20, [], Fluid.of('starbunclemania:source_fluid', 100)).id(`${ID_PREFIX}mechanical_squeezer/sourceberries`);
+    }
+
+    if (Platform.isLoaded('immersiveengineering')) {
+      // SV: Looks like the squeezers can't take more than 1 of the input item...
+      // id.squeezer(Ingredient.of('#c:dusts/coal_coke', 8), [{ item: 'immersiveengineering:dust_hop_graphite' }]).id(`${ID_PREFIX}squeezer/dust_hop_graphite_from_coal_coke`);
+      // id.mechanical_squeezer(Ingredient.of('#c:dusts/coal_coke', 8), 40, [{ item: 'immersiveengineering:dust_hop_graphite' }]).id(`${ID_PREFIX}mechanical_squeezer/dust_hop_graphite_from_coal_coke`);
+    }
+
   }
-
-  // Starbunclemania
-  if (Platform.isLoaded('starbunclemania')) {
-    // event.recipes.integrateddynamics.squeezer(Fluid.of('starbunclemania:source_fluid 100'), 'ars_nouveau:sourceberry_bush').id(`${ID_PREFIX}squeezer/sourceberries`);
-    // event.recipes.integrateddynamics.mechanical_squeezer(Fluid.of('starbunclemania:source_fluid 100'), 'ars_nouveau:sourceberry_bush', 20).id(`${ID_PREFIX}mechanical_squeezer/sourceberries`);
-  }
-
-  // Mechanical Squeezer
-  // XXX: schema does not work
-  // event.recipes.integrateddynamics.mechanical_squeezer([Item.of('immersiveengineering:dust_hop_graphite')], Item.of('#forge:dusts/coal_coke', 8), 40).id(`${ID_PREFIX}mechanical_squeezer/dust_hop_graphite_from_coal_coke`);
-  // event.recipes.integrateddynamics.mechanical_squeezer([Item.of('irons_spellbooks:arcane_salvage'), Item.of('irons_spellbooks:arcane_salvage').withChance(0.75)], 'irons_spellbooks:arcane_debris', 40).id(`${ID_PREFIX}mechanical_squeezer/arcane_salvage_from_arcane_debris`);
-
-  // Arcane debris
-  // event.custom({
-  //   "type": "integrateddynamics:squeezer",
-  //   "item": "irons_spellbooks:arcane_debris",
-  //   "result": {
-  //     "items": [
-  //       {
-  //         "item": "irons_spellbooks:arcane_salvage"
-  //       },
-  //       {
-  //         "item": "irons_spellbooks:arcane_salvage",
-  //         "chance": 0.75
-  //       }
-  //     ]
-  //   }
-  // }).id(`${ID_PREFIX}squeezer/arcane_debris`);
-  // event.custom({
-  //   "type": "integrateddynamics:mechanical_squeezer",
-  //   "item": "irons_spellbooks:arcane_debris",
-  //   "result": {
-  //     "items": [
-  //       {
-  //         "item": "irons_spellbooks:arcane_salvage"
-  //       },
-  //       {
-  //         "item": "irons_spellbooks:arcane_salvage",
-  //         "chance": 0.75
-  //       }
-  //     ]
-  //   },
-  //   "duration": 40
-  // }).id(`${ID_PREFIX}mechanical_squeezer/arcane_debris`);
-
-  // Stella arcanum
-  event.custom({
-    "type": "integrateddynamics:squeezer",
-    "input_item": {
-      "item": "forbidden_arcanus:stella_arcanum"
-    },
-    "output_items": [
-      {
-        "item": {
-          "id": "forbidden_arcanus:stella_arcanum",
-          "count": 1
-        }
-      },
-      {
-        "item": {
-          "id": "forbidden_arcanus:stellarite_piece",
-          "count": 1
-        },
-        "chance": 0.5
-      }
-    ]
-  }).id(`${ID_PREFIX}squeezer/stella_arcanum`);
-
-  event.custom({
-    "type": "integrateddynamics:mechanical_squeezer",
-    "input_item": {
-      "item": "forbidden_arcanus:stella_arcanum",
-    },
-    "output_items": [
-      {
-        "item": {
-          "id": "forbidden_arcanus:stellarite_piece",
-          "count": 1
-        },
-      },
-      {
-        "item": {
-          "id": "forbidden_arcanus:stellarite_piece",
-          "count": 1
-        },
-        "chance": 0.5
-      }
-    ],
-    "duration": 40
-  }).id(`${ID_PREFIX}mechanical_squeezer/stella_arcanum`);
-
 });

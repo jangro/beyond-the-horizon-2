@@ -194,7 +194,7 @@ ServerEvents.recipes(event => {
     'neapolitan:milk_bottle',
     // 'nethersdelight:blackstone_furnace',
     // 'paraglider:paraglider',
-    /perfectplushies:.*/,
+    // /perfectplushies:.*/,
     /plushie_buddies:.*/,
     /plushies:.*/,
     'pneumaticcraft:chunkloader_upgrade',
@@ -234,9 +234,9 @@ ServerEvents.recipes(event => {
   ].forEach((recipeID) => event.remove({id: recipeID}));
 
   // Remove IE dusts that are replaced by Create crushed ores
-  ['aluminum', 'copper', 'gold', 'iron', 'lead', 'nickel', 'silver'].forEach((material) =>
-    event.remove({id: `immersiveengineering:dust_${material}`})
-  );
+  // ['aluminum', 'copper', 'gold', 'iron', 'lead', 'nickel', 'silver'].forEach((material) =>
+  //   event.remove({id: `immersiveengineering:dust_${material}`})
+  // );
 
   // XXX: No BBB in 1.21.1 (yet)
   // Remove ladders from Woodworks sawmill so we can add the ones from BBB

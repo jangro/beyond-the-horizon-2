@@ -144,7 +144,7 @@ ServerEvents.recipes(event => {
   // Ingot Compatibility
   replaceInput('eidolon_repraised:arcane_gold_ingot', '#c:ingots/arcane_gold');
   replaceInput('forbidden_arcanus:deorum_ingot', '#c:ingots/arcane_gold');
-  replaceInput('forbidden_arcanus:obsidian_ingot', '#c:ingots/obsidiansteel');
+  // replaceInput('forbidden_arcanus:obsidian_ingot', '#c:ingots/obsidiansteel');
 
   // Leather Compatibility
   replaceInputID([
@@ -181,7 +181,7 @@ ServerEvents.recipes(event => {
   replaceInput('create:iron_sheet', '#c:plates/iron');
   replaceInput('create:golden_sheet', '#c:plates/gold');
   replaceInput('createaddition:zinc_sheet', '#c:plates/zinc');
-  replaceInput('createdeco:zinc_sheet', '#c:plates/zinc');
+  // replaceInput('createdeco:zinc_sheet', '#c:plates/zinc');
 
   // Propeller Compatibility
   replaceInput('immersive_aircraft:propeller', 'create:propeller');
@@ -227,10 +227,10 @@ ServerEvents.recipes(event => {
   replaceInput('immersiveengineering:wire_copper', '#c:wires/copper');
 
   // Misc Compatibility
-  replaceInput('minecraft:blast_furnace', ['minecraft:blast_furnace', 'nethersdelight:blackstone_blast_furnace']);
-  replaceInput('minecraft:furnace', ['minecraft:furnace', 'quark:blackstone_furnace', 'quark:deepslate_furnace']);
-  replaceInput('minecraft:smoker', ['minecraft:smoker', 'nethersdelight:nether_brick_smoker']);
-  replaceInput('nethersdelight:blackstone_furnace', ['minecraft:furnace', 'quark:blackstone_furnace', 'quark:deepslate_furnace']);
+  // replaceInput('minecraft:blast_furnace', ['minecraft:blast_furnace', 'nethersdelight:blackstone_blast_furnace']);
+  // replaceInput('minecraft:furnace', ['minecraft:furnace', 'quark:blackstone_furnace', 'quark:deepslate_furnace']);
+  // replaceInput('minecraft:smoker', ['minecraft:smoker', 'nethersdelight:nether_brick_smoker']);
+  // replaceInput('nethersdelight:blackstone_furnace', ['minecraft:furnace', 'quark:blackstone_furnace', 'quark:deepslate_furnace']);
 
   // Make the alchemist cauldron more accessible
   replaceInputID('irons_spellbooks:alchemist_cauldron', 'irons_spellbooks:cinder_essence', 'minecraft:blaze_powder');
@@ -257,7 +257,7 @@ ServerEvents.recipes(event => {
   replaceOutput('eidolon_repraised:lead_nugget', 'immersiveengineering:nugget_lead');
   replaceOutput('eidolon_repraised:silver_nugget', 'immersiveengineering:nugget_silver');
   replaceOutput('oritech:copper_nugget', 'immersiveengineering:nugget_copper');
-  replaceOutput('oritech:electrum_nugget', 'immersiveengineering:nugget_electrum');
+  // replaceOutput('oritech:electrum_nugget', 'immersiveengineering:nugget_electrum');
   replaceOutput('pneumaticcraft:copper_nugget', 'immersiveengineering:nugget_copper');
 
   // Plates

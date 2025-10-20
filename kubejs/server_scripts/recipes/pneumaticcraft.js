@@ -34,7 +34,7 @@ ServerEvents.recipes(event => {
   // Fluid Mixer
   // fluid_mixer(input1 [fluid_input], input2 [fluid_input], pressure [double], time [int], fluid_output [fluid_output], item_output [optional_item_stack])
   //
-  pc.fluid_mixer({ fluid: 'integrateddynamics:liquid_chorus', amount: 500 }, { fluid: 'bth:soul_mixture', amount: 500 }, 3.0, 100, { id: 'bth:ender_fuel', amount: 1000 }, {}).id(`${ID_PREFIX}fluid_mixer/ender_fuel`);
+  pc.fluid_mixer({ fluid: 'integrateddynamics:liquid_chorus', amount: 500 }, { fluid: 'bth:soul_mixture', amount: 500 }, 3.0, 100, { id: 'bth:ender_fuel', amount: 1000 }, 'minecraft:air').id(`${ID_PREFIX}fluid_mixer/ender_fuel`);
 
   //
   // Mod specific recipes

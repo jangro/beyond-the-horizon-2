@@ -35,9 +35,9 @@ LootJS.lootTables(event => {
 
 
   event.create('bth_structures:chests/dw20/hidden')
-    .createPool(pool => {
-      pool.addEntry(LootEntry.of('bth:adventurers_spell_book', 1));
-    })
+    // .createPool(pool => {
+    //   pool.addEntry(LootEntry.of('bth:adventurers_spell_book', 1));
+    // })
     .createPool(pool => {
       pool.addEntry(LootEntry.of("lightmanscurrency:coin_copper").setCount([6, 18]));
     });

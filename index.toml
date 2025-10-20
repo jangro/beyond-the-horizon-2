@@ -202,6 +202,10 @@ file = "config/horseman-server.toml"
 hash = "b87d823cbffc4e4900624c32ceb98b2d9b1003512f0b626296eb228a9ad4b12f"
 
 [[files]]
+file = "config/immersiveengineering-server.toml"
+hash = "224890fd3a08bcfd70ad4ffcd277b13843610006658ddf7e26b5b864f2663e53"
+
+[[files]]
 file = "config/incontrol-server.toml"
 hash = "80a23a4938a90bc3ba34f2ee16d6b2619ca131ea6fd11f3328816da94eb1a951"
 
@@ -1455,7 +1459,7 @@ hash = "cfa64c523758726296224baaab77d7431d1029468be1380d357e5da9e6156d9f"
 
 [[files]]
 file = "kubejs/server_scripts/loot_tables/chests.js"
-hash = "5e1ecb791e22400c9df69063cb7f859fa6f3b824c62fc1500ed9a7bdca7f57c7"
+hash = "b71a232dc7843cdd8eaeaf956d2d49022be4ea9da4ecf4e62a94ff6b85a55018"
 
 [[files]]
 file = "kubejs/server_scripts/loot_tables/coins.js"
@@ -1479,7 +1483,7 @@ hash = "f8fe3bafebbdaa3250686120b3dfaacfe8bf40a9fe5b8e041111bacacfa1e91f"
 
 [[files]]
 file = "kubejs/server_scripts/recipe_viewer/remove_item.js"
-hash = "83e9ec904499a0c6809acf94517152f5aa414b6f6973d20f01ccfc3fe3d4ee9a"
+hash = "a1484db65f8948c458805f23b56206a3390d320a22914d68948248a9dd803d69"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/ae2.js"
@@ -1511,15 +1515,15 @@ hash = "f0b794fa5e63403ac509829c484b4ffc90299bbaac3753b50504ac7870422ad5"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/pneumaticcraft.js"
-hash = "d924c5d6d409eddb1f3ab7d679d41346acea5b179eec1bd00d55f92e61772568"
+hash = "c2db67a0614bfbac3dae68f4b4501b14da09017e742286c7d83b5426563d5078"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/remove.js"
-hash = "e55ed16a48dbde4dadbad26c579510826158eb43b9d1df4f07b35592766944e2"
+hash = "f475575d2d7308d50519d01f73cfafce3a221158db31b2760d8a91154dd4f4d5"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/replace.js"
-hash = "63ed8eb03b23f23cf54f38ad84a0cbd66496c55eee52bb7acaf7c313c5ef2572"
+hash = "17a556533e605e0ad917043e9ffae4d92a3e850c3b1828ad1d78c05d9df02763"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/shaped.js"

@@ -1,13 +1,13 @@
 name = "Just Enough Immersive Multiblocks"
-filename = "jeimultiblocks-1.21.1-1.0.4.jar"
+filename = "jeimultiblocks-1.21.1-1.0.5.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "ce1a6f1bc7e296befa9784317bd396031b3e9b4b"
+hash = "bcf63c4fc622e59455ab05a8b5f58b60fa39c775"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 6097545
+file-id = 7115672
 project-id = 634571

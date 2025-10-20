@@ -1,6 +1,7 @@
 name = "UnionLib"
 filename = "UnionLib-1.21.1-12.0.18-NeoForge-all.jar"
 side = "both"
+pin = true
 
 [download]
 hash-format = "sha1"

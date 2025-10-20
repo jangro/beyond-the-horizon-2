@@ -1,13 +1,13 @@
 name = "Autumnity"
-filename = "autumnity-1.21.1-6.0.0.jar"
+filename = "autumnity-1.21.1-6.0.1.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "07a29777148ea5ddcfc4dbe54d582ae7d204a121"
+hash = "3863fa0d77f89955b04ecaad9a3a9c91f76937d8"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 6969592
+file-id = 7118591
 project-id = 365045

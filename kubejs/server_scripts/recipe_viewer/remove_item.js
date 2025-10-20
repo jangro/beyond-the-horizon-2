@@ -130,8 +130,8 @@ RecipeViewerEvents.removeEntries('item', event => {
   // });
 
   // Hide IE dusts that are replaced by Create crushed raw ores.
-  // ['aluminum', 'copper', 'gold', 'iron', 'lead', 'nickel', 'silver'].forEach((material) =>
-  //   event.remove(`immersiveengineering:dust_${material}`)
-  // );
+  ['aluminum', 'copper', 'gold', 'iron', 'lead', 'nickel', 'silver', 'uranium'].forEach((material) =>
+    event.remove(`immersiveengineering:dust_${material}`)
+  );
 
 });

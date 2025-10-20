@@ -18,6 +18,11 @@ ServerEvents.recipes(event => {
   //
   eio.sag_milling('minecraft:ancient_debris', [{ item: 'minecraft:netherite_scrap', chance: 1.0 }, { item: 'minecraft:netherite_scrap', chance: 0.75 }], 3600).id(`${ID_PREFIX}sag_milling/ancient_debris`);
 
+  ['aluminum', 'copper', 'gold', 'iron', 'lead', 'nickel', 'platinum', 'silver', 'uranium', 'zinc'].forEach((material) => {
+    eio.sag_milling(`#c:ores/${material}`, [{ item: `create:crushed_raw_${material}`, chance: 1.0 }, { item: `create:crushed_raw_${material}`, chance: 0.10 }, { item: 'minecraft:cobblestone', chance: 0.10 }], 2400).id(`${ID_PREFIX}sag_milling/ore_${material}`);
+    eio.sag_milling(`#c:raw_materials/${material}`, [{ item: `create:crushed_raw_${material}`, chance: 1.0 }, { item: `create:crushed_raw_${material}`, chance: 0.10 }], 2400).id(`${ID_PREFIX}sag_milling/raw_${material}`);
+  });
+
   //
   // Alloy smelting
   // alloy_smelting(inputs [list of input_with_count], output [alloy_output], energy [int], experience [double])

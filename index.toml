@@ -1940,6 +1940,11 @@ hash = "75d4edf6717e04140481699706aa266c8e6cbf57c89dbba52fea49664342a841"
 metafile = true
 
 [[files]]
+file = "mods/critters-and-companions.pw.toml"
+hash = "0b4186cf685950602ef0d103cd6ba04d1ae21bb2c7fa103ac3a43d508b41fe4a"
+metafile = true
+
+[[files]]
 file = "mods/ctrl-q.pw.toml"
 hash = "c2758fe0ee2bf46c61829a5c7026550f0044bb7b04490c6260f5fbc80816c462"
 metafile = true
@@ -2007,6 +2012,11 @@ metafile = true
 [[files]]
 file = "mods/drippy-loading-screen.pw.toml"
 hash = "13993bb08feca6d6663580880ea07570f4e754154c68911e6be61180d334624d"
+metafile = true
+
+[[files]]
+file = "mods/dungeons-delight.pw.toml"
+hash = "878eb007186ae76b8261b494b12301dc7a3c671349775e524c8cdc3fa22cbca1"
 metafile = true
 
 [[files]]
@@ -2812,6 +2822,11 @@ metafile = true
 [[files]]
 file = "mods/ribbits.pw.toml"
 hash = "a8b027bc5cebce99797ed90d096df423991b03f1e6379bc554118861c6a0eeb1"
+metafile = true
+
+[[files]]
+file = "mods/runiclib.pw.toml"
+hash = "f445d83d42915d64022ebfca8459eb4b4f7924423478f82ec919175dcdc508e6"
 metafile = true
 
 [[files]]

@@ -330,6 +330,10 @@ file = "kubejs/assets/compactmachines/lang/en_us.json"
 hash = "d9a2b06b58bfe9593a92935cc19805be2d812b5c37dc0c449a8cb11205ee1cd2"
 
 [[files]]
+file = "kubejs/assets/create/textures/item/crushed_raw_uranium.png"
+hash = "53eafb8914c6d9ae660d64cf0220bc1ccaaaeb626c7d2db7e951583e337b61a2"
+
+[[files]]
 file = "kubejs/client_scripts/main.js"
 hash = "3df46f0add819bf2602642215b5c62f0581ffdaaf97e77c80a8c4d966e05adcf"
 
@@ -1194,6 +1198,10 @@ file = "kubejs/data/oritech/kubejs/recipe_schema/reactor.json"
 hash = "2d6860dc4b1762900bc7ee38eb4c95d6f560e22ce6d4dd95a121417a46ff2247"
 
 [[files]]
+file = "kubejs/data/oritech/kubejs/recipe_schema/refinery.json"
+hash = "dbdab4316b020cdbb689a30a68b912e2902c1fe5f820ba85a9d9ebdc192dd44e"
+
+[[files]]
 file = "kubejs/data/oritech/kubejs/recipe_schema/steam_engine.json"
 hash = "145fb7d26f8633bc5c6b48ca07a61ebbcdd7ba48c1a0bf01251d1dc7cdd76b13"
 
@@ -1483,7 +1491,7 @@ hash = "f8fe3bafebbdaa3250686120b3dfaacfe8bf40a9fe5b8e041111bacacfa1e91f"
 
 [[files]]
 file = "kubejs/server_scripts/recipe_viewer/remove_item.js"
-hash = "46286ed863f30a23812d0ca47928f80711c1dc04f4ee9d87e4b335825a6ce4ef"
+hash = "0920ea1011473e542175cc5123de9ddbab8aa7fe19ad3f0e94baacf61bdb444b"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/ae2.js"
@@ -1499,7 +1507,7 @@ hash = "111cb68597744fba4bf0c478aade2741bb710131d0171a74a644e5ebad0c2d9b"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/enderio.js"
-hash = "5d8ed5a39b7447f09546dacc6760580a89c65a57804cd2e4f487712b95a12671"
+hash = "d03a32326f34717e7353237b96e201239f0c469e0f0a4c3300de5403d5dd3637"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/exposure.js"
@@ -1511,7 +1519,11 @@ hash = "b92d880e30b77591c4c03d5043822f89bd4657b02b84909589f5592da670a834"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/integrateddynamics.js"
-hash = "f0b794fa5e63403ac509829c484b4ffc90299bbaac3753b50504ac7870422ad5"
+hash = "8a44561103dcf88bd0cb26f9d330240936fa5b8a3a2d5e786bda780868ae62d8"
+
+[[files]]
+file = "kubejs/server_scripts/recipes/oritech.js"
+hash = "4e61d73908c5ee1387ae6c54e12cdb6bb0fd50b0fce8f0b462e4aad4c2754404"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/pneumaticcraft.js"
@@ -1523,7 +1535,7 @@ hash = "f475575d2d7308d50519d01f73cfafce3a221158db31b2760d8a91154dd4f4d5"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/replace.js"
-hash = "2f00a514f6f9dee26e951ff7aa5ff5b41c35d89a17e8ba4314cd3209f9079b9a"
+hash = "6278830ba9af11a31e2ede8d5d1bbf4305b1fb3e67f8f1a7ad3dfa957b6b6334"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/shaped.js"

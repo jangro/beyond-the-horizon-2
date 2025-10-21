@@ -118,7 +118,7 @@ ServerEvents.recipes(event => {
     'redstonepen:quill',
     'xercamusic:music_sheet',
   ], 'minecraft:feather', '#c:feathers');
-  event.replaceInput({output:'#minecraft:arrows'}, 'minecraft:feather', '#c:feathers');
+  event.replaceInput({ output: '#minecraft:arrows' }, 'minecraft:feather', '#c:feathers');
 
   // Fibre Compatibility
   replaceInputID('immersiveengineering:crafting/hemp_fabric', 'immersiveengineering:hemp_fiber', ['immersiveengineering:hemp_fiber', 'supplementaries:flax']);
@@ -216,7 +216,7 @@ ServerEvents.recipes(event => {
   ], 'immersiveengineering:ingot_steel', '#bth:ingots/steel');
 
   // Stick / Rod Compatibility
-  event.replaceInput({output:'#minecraft:arrows'}, 'minecraft:stick', '#c:rods/wooden');
+  event.replaceInput({ output: '#minecraft:arrows' }, 'minecraft:stick', '#c:rods/wooden');
 
   // Storage Block Compatibility
   replaceInput('immersiveengineering:raw_block_silver', '#c:storage_blocks/raw_silver');
@@ -238,12 +238,36 @@ ServerEvents.recipes(event => {
   // ----- Output Unification -----
 
   // Dusts
-  // replaceOutput('immersiveengineering:dust_uranium', 'create:crushed_raw_uranium');
 
-  // Crushed raw ores (Create)
-  // replaceOutput('immersiveengineering:dust_silver', 'create:crushed_raw_silver');
-  replaceOutput('oritech:iron_clump', 'create:crushed_raw_iron');
+  // Crushed Raw Ores
+
+  // Machines should always output Create crushed raw ores for raw materials
+  replaceOutput('create:raw_zinc', 'create:crushed_raw_zinc');
+  replaceOutput('immersiveengineering:raw_aluminum', 'create:crushed_raw_aluminum');
+  replaceOutput('immersiveengineering:raw_lead', 'create:crushed_raw_lead');
+  replaceOutput('immersiveengineering:raw_silver', 'create:crushed_raw_silver');
+  replaceOutput('minecraft:raw_copper', 'create:crushed_raw_copper');
+  replaceOutput('minecraft:raw_gold', 'create:crushed_raw_gold');
+  replaceOutput('minecraft:raw_iron', 'create:crushed_raw_iron');
   replaceOutput('oritech:raw_uranium', 'create:crushed_raw_uranium');
+
+
+
+  // TODO: productive bees output replacement
+
+  // Ingots should crush to dust, not crushed raw ore.
+  ['aluminum', 'copper', 'gold', 'iron', 'lead', 'nickel', 'silver', 'uranium'].forEach((material) => {
+    replaceOutputID(`immersiveengineering:crusher/ingot_${material}`, `create:crushed_raw_${material}`, `immersiveengineering:dust_${material}`);
+  });
+
+  // IE doesn't have a platinum dust, so we convert to oritech dust.
+  replaceOutputID('immersiveengineering:crusher/ingot_platinum', 'create:crushed_raw_platinum', 'oritech:platinum_dust');
+
+  // Replace Oritech clumps with Create crushed raw ores.
+  ['copper', 'gold', 'iron', 'nickel', 'platinum'].forEach((material) => {
+    replaceOutput(`oritech:${material}_clump`, `create:crushed_raw_${material}`);
+  });
+
 
   // Ingots
   replaceOutput('createaddition:electrum_ingot', 'immersiveengineering:ingot_electrum');

@@ -36,10 +36,10 @@ RecipeViewerEvents.removeEntries('item', event => {
     // 'createdeco:zinc_coinstack',
     // 'createdeco:zinc_sheet',
     'enderio:flour',
-    'enderio:powdered_copper',
-    'enderio:powdered_gold',
-    'enderio:powdered_iron',
-    'enderio:powdered_obsidian',
+    // 'enderio:powdered_copper',
+    // 'enderio:powdered_gold',
+    // 'enderio:powdered_iron',
+    // 'enderio:powdered_obsidian',
     'enderio:silicon',
     // /everycomp:bbb.*trim$/,
     'farmersdelight:rope',
@@ -130,8 +130,8 @@ RecipeViewerEvents.removeEntries('item', event => {
   // });
 
   // Hide IE dusts that are replaced by Create crushed raw ores.
-  ['aluminum', 'copper', 'gold', 'iron', 'lead', 'nickel', 'silver', 'uranium'].forEach((material) =>
-    event.remove(`immersiveengineering:dust_${material}`)
-  );
+  // ['aluminum', 'copper', 'gold', 'iron', 'lead', 'nickel', 'silver', 'uranium'].forEach((material) =>
+  //   event.remove(`immersiveengineering:dust_${material}`)
+  // );
 
 });

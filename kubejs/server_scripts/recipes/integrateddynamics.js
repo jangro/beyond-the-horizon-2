@@ -22,11 +22,19 @@ ServerEvents.recipes(event => {
   // Squeezer
   // squeezer(input [ingredient], output items [list], output fluid [optional fluid stack])
   //
+  ['aluminum', 'copper', 'gold', 'iron', 'lead', 'nickel', 'platinum', 'silver', 'uranium', 'zinc'].forEach((material) => {
+    event.remove({ id: `integrateddynamics:squeezer/ore/raw_${material}` });
+    id.squeezer(`#c:ores/${material}`, [{ item: `create:crushed_raw_${material}`, chance: 1.0 }, { item: `create:crushed_raw_${material}`, chance: 0.75 }, { item: 'minecraft:cobblestone', chance: 0.10 }]).id(`${ID_PREFIX}squeezer/ore_${material}`);
+  });
 
   //
   // Mechanical Squeezer
   // mechanical_squeezer(input [ingredient], duration [int], output items [list], output fluid [optional fluid stack])
   //
+  ['aluminum', 'copper', 'gold', 'iron', 'lead', 'nickel', 'platinum', 'silver', 'uranium', 'zinc'].forEach((material) => {
+    event.remove({ id: `integrateddynamics:mechanical_squeezer/ore/raw_${material}` });
+    id.mechanical_squeezer(`#c:ores/${material}`, 40, [{ item: `create:crushed_raw_${material}`, chance: 1.0 }, { item: `create:crushed_raw_${material}`, chance: 0.5 }, { item: `create:crushed_raw_${material}`, chance: 0.5 }, { item: 'minecraft:cobblestone', chance: 0.10 }]).id(`${ID_PREFIX}mechanical_squeezer/ore_${material}`);
+  });
 
 
   //

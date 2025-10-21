@@ -330,6 +330,10 @@ file = "kubejs/assets/compactmachines/lang/en_us.json"
 hash = "d9a2b06b58bfe9593a92935cc19805be2d812b5c37dc0c449a8cb11205ee1cd2"
 
 [[files]]
+file = "kubejs/assets/create/models/item/crushed_raw_uranium.json"
+hash = "24327291ff2ff5ea41be8110a111dc2c1e6c595698d19149a0b9d603e23e7513"
+
+[[files]]
 file = "kubejs/assets/create/textures/item/crushed_raw_uranium.png"
 hash = "53eafb8914c6d9ae660d64cf0220bc1ccaaaeb626c7d2db7e951583e337b61a2"
 
@@ -1535,7 +1539,7 @@ hash = "f475575d2d7308d50519d01f73cfafce3a221158db31b2760d8a91154dd4f4d5"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/replace.js"
-hash = "6278830ba9af11a31e2ede8d5d1bbf4305b1fb3e67f8f1a7ad3dfa957b6b6334"
+hash = "9cdbe2091d7ba988a739c3ead9c45010160db9377dcafcf5c32afcc1b627676d"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/shaped.js"

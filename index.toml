@@ -2754,6 +2754,11 @@ hash = "eab2f56ff9135b3b7253ea5a73deae2f887e2876f5f0432936044a6e926937b4"
 metafile = true
 
 [[files]]
+file = "mods/probejs.pw.toml"
+hash = "98bbba48eddf402b09107de563d7b4370d1ae70a1a6210054cd13065072a9d97"
+metafile = true
+
+[[files]]
 file = "mods/productivebees.pw.toml"
 hash = "ddcea1d800144fdf0ce33fc5fa0682d66ff381224d163300e0f366084ed987ed"
 metafile = true
@@ -3191,14 +3196,6 @@ metafile = true
 file = "resourcepacks/redstone-pen-revamped.pw.toml"
 hash = "e649258f1d08f9008566b049070f440a878ce60c051105b0877153c4c6e1fbf4"
 metafile = true
-
-[[files]]
-file = "scripts/gen_structure_sets.py"
-hash = "8def83100904cc2f616de07458e96774da75fd95f23a28313a9943cfcf725d65"
-
-[[files]]
-file = "scripts/structures.yml"
-hash = "d952d76bc607728cca573472d2d50e4cbb9e87f7b7954417c751d88865a179cb"
 
 [[files]]
 file = "shaderpacks/ComplementaryUnbound_r5.6.1 + EuphoriaPatches_1.6.5.txt"

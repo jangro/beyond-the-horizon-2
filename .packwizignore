@@ -7,6 +7,7 @@
 /.vs/
 /.vscode/
 /docs/
+/scripts/
 /kubejs/probe/
 /icon-exports-x32/
 /kubejs/config/probe-settings.json

@@ -1,6 +1,7 @@
 name = "Reforged (formerly Tiered)"
 filename = "Reforged-1.21.1-1.0.10-NeoForge.jar"
 side = "both"
+pin = true
 
 [download]
 hash-format = "sha1"

@@ -47,9 +47,7 @@ ServerEvents.tags('item', event => {
   ]);
 
   event.add('bth:processor', [
-    'ae2:calculation_processor',
     'ae2:engineering_processor',
-    'ae2:logic_processor',
     'create_connected:control_chip',
     'immersiveengineering:circuit_board',
     'oritech:processing_unit',
@@ -113,6 +111,16 @@ ServerEvents.tags('item', event => {
     event.add(`c:dusts`, `create:crushed_raw_${material}`);
     event.add(`c:dusts/${material}`, `create:crushed_raw_${material}`);
   });
+
+  // Prefer Oritech silicon over other mod silicons (remove tag so recipes with tags for output don't pick them).
+  event.remove('c:silicon', 'ae2:silicon');
+  event.remove('c:silicon', 'enderio:silicon');
+
+  // Prefer Oritech and Create dusts over EnderIO powdered materials (remove tag so recipes with tags for output don't pick them).
+  event.remove('c:dusts/coal', 'enderio:powdered_coal');
+  event.remove('c:dusts/quartz', 'enderio:powdered_quartz');
+  event.remove('c:dusts/obsidian', 'enderio:powdered_obsidian');
+
 
   event.add('c:flours', [
     'create:cinder_flour',
@@ -294,7 +302,7 @@ ServerEvents.tags('item', event => {
 
 
   // Shields
-  const shields =  [
+  const shields = [
   ];
   event.add('c:tools/shields', shields);
 

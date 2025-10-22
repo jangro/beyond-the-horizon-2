@@ -75,7 +75,7 @@ ServerEvents.recipes(event => {
   // Use tags instead of items for all dye colours.
   COLORS.forEach((color) => replaceInput(`minecraft:${color}_dye`, `#c:dyes/${color}`));
 
-  // EnderIO
+  // EnderIO improved cable recipes
   replaceInputID('enderio:energy_conduit', 'enderio:conductive_alloy_ingot', 'enderio:conductive_alloy_nugget');
   replaceInputID('enderio:enhanced_energy_conduit', 'enderio:energetic_alloy_ingot', 'enderio:energetic_alloy_nugget');
   replaceInputID('enderio:ender_energy_conduit', 'enderio:vibrant_alloy_ingot', 'enderio:vibrant_alloy_nugget');
@@ -189,6 +189,13 @@ ServerEvents.recipes(event => {
   // Raw Material Compatibility
   replaceInput('immersiveengineering:raw_silver', '#c:raw_materials/silver');
 
+  // Silicon Compatibility
+  // replaceInput('ae2:silicon', '#c:silicon');
+  // replaceInput('enderio:silicon', '#c:silicon');
+  // replaceInput('oritech:silicon', '#c:silicon');
+  replaceOutput('ae2:silicon', 'oritech:silicon');
+  replaceOutput('enderio:silicon', 'oritech:silicon');
+
   // Slime Compatibility
   replaceInputID([
     'minecraft:lead',
@@ -261,6 +268,18 @@ ServerEvents.recipes(event => {
   ['copper', 'gold', 'iron', 'nickel', 'platinum'].forEach((material) => {
     replaceOutput(`oritech:${material}_clump`, `create:crushed_raw_${material}`);
   });
+
+  // Replace Oritech dusts with IE dusts
+  ['copper', 'electrum', 'gold', 'iron', 'nickel', 'steel', 'uranium'].forEach((material) => {
+    replaceOutput(`oritech:${material}_dust`, `immersiveengineering:dust_${material}`);
+  });
+
+  // Replace EnderIO powders with Oritech dusts (squeezer recipes handled in ID file)
+  ['coal', 'quartz'].forEach((material) => {
+    replaceOutput(`enderio:powdered_${material}`, `oritech:${material}_dust`);
+  });
+
+
 
   // Ingots TODO: verify this
   replaceOutput('createaddition:electrum_ingot', 'immersiveengineering:ingot_electrum');

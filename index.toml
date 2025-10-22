@@ -1511,7 +1511,7 @@ hash = "f8fe3bafebbdaa3250686120b3dfaacfe8bf40a9fe5b8e041111bacacfa1e91f"
 
 [[files]]
 file = "kubejs/server_scripts/recipe_viewer/remove_item.js"
-hash = "3563a48a8c6a6254ba27276e5bcd9074f1989fb3f5e6041090d54deaf62f8fbe"
+hash = "6fed1cd189791bd901c680f6f6fb39f85ee77027190707d8cec4b1201d4d2f5d"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/ae2.js"
@@ -1543,7 +1543,7 @@ hash = "b92d880e30b77591c4c03d5043822f89bd4657b02b84909589f5592da670a834"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/integrateddynamics.js"
-hash = "8a44561103dcf88bd0cb26f9d330240936fa5b8a3a2d5e786bda780868ae62d8"
+hash = "1c4b62f33a4b2fedaeee6b71c222ecfc778953256c610333680663945fc1ff80"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/oritech.js"
@@ -1559,7 +1559,7 @@ hash = "57f41c84ed2f0cd80a632b80276bcd51ff381f5cde2c29180fb9500bb96c7444"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/replace.js"
-hash = "c633ab3c49b47d3a1af1af9ceb575cd4ab9fac24d3310495d0b2a61c952699ad"
+hash = "39ec53cc0b27c552be1e6ec0e0851c00131bf77d34818cdadb515d4057a13ca9"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/shaped.js"
@@ -1579,7 +1579,7 @@ hash = "f295ef0b04fa3a774523208127f7886371e43296ab25b61af0ce9216d7f2686c"
 
 [[files]]
 file = "kubejs/server_scripts/tags/item.js"
-hash = "8b3a22f6307827e5b5ea78594931ba674acfa904395f96b6682b232c13bae45e"
+hash = "b1878f30d7a9fb4f68c2bc8988f3c8ae5cf6de9b3126ff32ffed18cc9a5c3f63"
 
 [[files]]
 file = "kubejs/startup_scripts/fluid.js"

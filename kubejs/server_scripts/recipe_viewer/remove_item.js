@@ -14,6 +14,7 @@ RecipeViewerEvents.removeEntries('item', event => {
   // VZ: Why is event.hide(...) marked as deprecated by KubeJS?
   event.remove([
     'ae2:facade',
+    'ae2:silicon',                                      // replaced by oritech silicon
     'aether:aether_portal_frame',
     // 'alexscaves:sulfur_dust',
     // 'bbb:rope',
@@ -35,12 +36,14 @@ RecipeViewerEvents.removeEntries('item', event => {
     // 'createdeco:zinc_coin',
     // 'createdeco:zinc_coinstack',
     // 'createdeco:zinc_sheet',
-    'enderio:flour',                                    // replaced by Create wheat flour
+    'enderio:flour',                                    // replaced by create wheat flour
     // 'enderio:powdered_copper',
     // 'enderio:powdered_gold',
     // 'enderio:powdered_iron',
-    // 'enderio:powdered_obsidian',
-    'enderio:silicon',
+    'enderio:powdered_coal',                            // replaced by oritech coal dust
+    'enderio:powdered_quartz',                          // replaced by oritech quartz dust
+    'enderio:powdered_obsidian',                        // replaced by create obsidian dust
+    'enderio:silicon',                                  // replaced by oritech silicon
     // /everycomp:bbb.*trim$/,
     // 'farmersdelight:rope',
     /ftbquests:.*/,

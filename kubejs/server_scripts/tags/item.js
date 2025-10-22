@@ -46,9 +46,13 @@ ServerEvents.tags('item', event => {
     'quark:soul_bead',
   ]);
 
-  event.add('bth:pcb', [
+  event.add('bth:processor', [
+    'ae2:calculation_processor',
+    'ae2:engineering_processor',
+    'ae2:logic_processor',
     'create_connected:control_chip',
     'immersiveengineering:circuit_board',
+    'oritech:processing_unit',
     'pneumaticcraft:printed_circuit_board',
   ]);
 

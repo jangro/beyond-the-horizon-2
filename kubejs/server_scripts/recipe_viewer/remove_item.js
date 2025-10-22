@@ -24,10 +24,10 @@ RecipeViewerEvents.removeEntries('item', event => {
     // 'cofh_core:experience',
     // 'cofh_core:honey',
     // 'cofh_core:potion',
-    // 'create:crushed_raw_uranium',
-    'createaddition:copper_wire',
-    'createaddition:chocolate_cake',
-    'createaddition:electrum_wire',
+    'createaddition:copper_wire',                       // replaced by IE wire
+    // 'createaddition:chocolate_cake',
+    'createaddition:electrum_wire',                     // replaced by IE wire
+    'createaddition:iron_rod',                          // replaced by IE rod
     // 'createdeco:brass_coin',
     // 'createdeco:brass_coinstack',
     // 'createdeco:industrial_iron_coin',
@@ -35,14 +35,14 @@ RecipeViewerEvents.removeEntries('item', event => {
     // 'createdeco:zinc_coin',
     // 'createdeco:zinc_coinstack',
     // 'createdeco:zinc_sheet',
-    'enderio:flour',
+    'enderio:flour',                                    // replaced by Create wheat flour
     // 'enderio:powdered_copper',
     // 'enderio:powdered_gold',
     // 'enderio:powdered_iron',
     // 'enderio:powdered_obsidian',
     'enderio:silicon',
     // /everycomp:bbb.*trim$/,
-    'farmersdelight:rope',
+    // 'farmersdelight:rope',
     /ftbquests:.*/,
     // 'galosphere:deepslate_silver_ore',
     // 'galosphere:raw_silver',
@@ -93,7 +93,7 @@ RecipeViewerEvents.removeEntries('item', event => {
     // 'paraglider:spirit_orb',
     // 'paraglider:anti_vessel',
     // 'paraglider:essence',
-    'pneumaticcraft:copper_nugget',
+    // 'pneumaticcraft:copper_nugget',
     // /paraglider:.*statue.*/,
     // /perfectplushies:.*/,
     /plushie_buddies:.*/,
@@ -115,9 +115,9 @@ RecipeViewerEvents.removeEntries('item', event => {
     // 'rats:token_piece',
     // /upgrade_aquatic:.*bedroll/,
     // 'v_slab_compat:immersiveengineering/storage_uranium_vertical_slab',
-    /wardrobe:.*backpack/,
+    // /wardrobe:.*backpack/,
     // /waystones:.*/,
-    /woodworks:.*ladder/,
+    // /woodworks:.*ladder/,
   ]);
 
   // ['copper', 'iron', 'gold', 'emerald', 'diamond', 'netherite'].forEach((material) => {

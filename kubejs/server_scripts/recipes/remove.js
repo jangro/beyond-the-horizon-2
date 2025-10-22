@@ -156,9 +156,12 @@ ServerEvents.recipes(event => {
     // 'immersiveengineering:crafting/raw_lead_to_raw_block_lead',
     // 'immersiveengineering:crafting/raw_silver_to_raw_block_silver',
     // 'immersiveengineering:crafting/raw_uranium_to_raw_block_uranium',
-    // 'immersiveengineering:crafting/stick_aluminum',
-    // 'immersiveengineering:crafting/stick_iron',
-    // 'immersiveengineering:crafting/stick_steel',
+
+    'immersiveengineering:crafting/stick_aluminum',  // makes 4 rods instead of 2
+    'immersiveengineering:crafting/stick_iron',      // makes 4 rods instead of 2
+    'immersiveengineering:crafting/stick_netherite', // makes 4 rods instead of 2
+    'immersiveengineering:crafting/stick_steel',     // makes 4 rods instead of 2
+
     // 'immersiveengineering:crafting/storage_lead_to_ingot_lead',
     // 'immersiveengineering:crafting/storage_silver_to_ingot_silver',
     // 'immersiveengineering:crafting/storage_uranium_from_slab',

@@ -237,9 +237,7 @@ ServerEvents.recipes(event => {
 
   // ----- Output Unification -----
 
-  // Dusts
-
-  // Crushed Raw Ores
+  // Dusts and Crushed Raw Ores
 
   // Machines should always output Create crushed raw ores for raw materials
   replaceOutput('create:raw_zinc', 'create:crushed_raw_zinc');
@@ -250,10 +248,6 @@ ServerEvents.recipes(event => {
   replaceOutput('minecraft:raw_gold', 'create:crushed_raw_gold');
   replaceOutput('minecraft:raw_iron', 'create:crushed_raw_iron');
   replaceOutput('oritech:raw_uranium', 'create:crushed_raw_uranium');
-
-
-
-  // TODO: productive bees output replacement
 
   // Ingots should crush to dust, not crushed raw ore.
   ['aluminum', 'copper', 'gold', 'iron', 'lead', 'nickel', 'silver', 'uranium'].forEach((material) => {
@@ -268,15 +262,14 @@ ServerEvents.recipes(event => {
     replaceOutput(`oritech:${material}_clump`, `create:crushed_raw_${material}`);
   });
 
-
-  // Ingots
+  // Ingots TODO: verify this
   replaceOutput('createaddition:electrum_ingot', 'immersiveengineering:ingot_electrum');
   replaceOutput('eidolon_repraised:lead_ingot', 'immersiveengineering:ingot_lead');
   replaceOutput('eidolon_repraised:silver_ingot', 'immersiveengineering:ingot_silver');
   replaceOutput('oritech:electrum_ingot', 'immersiveengineering:ingot_electrum');
   replaceOutput('oritech:steel_ingot', 'immersiveengineering:ingot_steel');
 
-  // Nuggets
+  // Nuggets TODO: verify this
   replaceOutput('create:copper_nugget', 'immersiveengineering:nugget_copper');
   replaceOutput('createaddition:electrum_nugget', 'immersiveengineering:nugget_electrum');
   replaceOutput('eidolon_repraised:lead_nugget', 'immersiveengineering:nugget_lead');
@@ -285,13 +278,14 @@ ServerEvents.recipes(event => {
   // replaceOutput('oritech:electrum_nugget', 'immersiveengineering:nugget_electrum');
   replaceOutput('pneumaticcraft:copper_nugget', 'immersiveengineering:nugget_copper');
 
-  // Plates
+  // Plates TODO: verify this
   replaceOutput('create:copper_sheet', 'immersiveengineering:plate_copper');
   replaceOutput('create:golden_sheet', 'immersiveengineering:plate_gold');
   replaceOutput('create:iron_sheet', 'immersiveengineering:plate_iron');
   replaceOutput('createaddition:electrum_sheet', 'immersiveengineering:plate_electrum');
 
   // Rods
+  // Only iron rod has duplicates, prefer IE
   replaceOutput('createaddition:iron_rod', 'immersiveengineering:stick_iron');
 
   // Ore
@@ -301,7 +295,6 @@ ServerEvents.recipes(event => {
   // Raw Materials
   replaceOutput('eidolon_repraised:raw_lead', 'immersiveengineering:raw_lead');
   replaceOutput('eidolon_repraised:raw_silver', 'immersiveengineering:raw_silver');
-  // replaceOutput('immersiveengineering:raw_uranium', 'create:crushed_raw_uranium');
 
   // Storage Blocks
   replaceOutput('eidolon_repraised:raw_silver_block', 'immersiveengineering:raw_block_silver');

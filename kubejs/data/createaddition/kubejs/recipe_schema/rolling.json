@@ -1,0 +1,22 @@
+{
+  "keys": [
+    {
+      "name": "ingredients",
+      "role": "input",
+      "type": {
+        "type": "list",
+        "component": "ingredient",
+        "min": 1
+      }
+    },
+    {
+      "name": "results",
+      "role": "output",
+      "type": {
+        "type": "list",
+        "component": "item_stack",
+        "min": 1
+      }
+    }
+  ]
+}

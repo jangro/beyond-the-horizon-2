@@ -1,0 +1,34 @@
+{
+  "createaddition:rolling/copper_ingot": {
+    "type": "createaddition:rolling",
+    "ingredients": [
+      {
+        "tag": "c:ingots/copper"
+      }
+    ],
+    "results": [
+      {
+        "count": 2,
+        "id": "createaddition:copper_rod"
+      }
+    ]
+  },
+  "createaddition:liquid_burning/biodiesel": {
+    "neoforge:conditions": [
+      {
+        "type": "createaddition:has_fluid_tag",
+        "fluidTag": "c:biodiesel"
+      }
+    ],
+    "type": "createaddition:liquid_burning",
+    "burn_time": 24000,
+    "ingredients": [
+      {
+        "type": "fluid_tag",
+        "amount": 1000,
+        "fluid_tag": "c:biodiesel"
+      }
+    ],
+    "results": []
+  }
+}

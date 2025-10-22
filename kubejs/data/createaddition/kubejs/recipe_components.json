@@ -1,0 +1,28 @@
+{
+  "createaddition:fluid_ingredient": {
+    "type": "custom_object",
+    "keys": [
+      {
+        "name": "type",
+        "component": "string"
+      },
+      {
+        "name": "amount",
+        "component": "non_negative_int"
+      },
+      {
+        "name": "fluid_tag",
+        "component": "hashed_fluid_tag",
+        "optional": true
+      },
+      {
+        "name": "fluid",
+        "component": {
+          "type": "registry_element",
+          "registry": "fluid"
+        },
+        "optional": true
+      }
+    ]
+  }
+}

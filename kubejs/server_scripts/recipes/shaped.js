@@ -16,7 +16,9 @@
 ServerEvents.recipes(event => {
   const ID_PREFIX = 'bth:crafting/'; // Recipe ID
 
+  //
   // Beyond the Horizon
+  //
   event.shaped('bth:coconut_maul', [
     ' HC',
     ' SH',
@@ -84,7 +86,9 @@ ServerEvents.recipes(event => {
     X: '#c:nuggets/steel'
   }).id(`${ID_PREFIX}minecolonies/gate_iron`);
 
+  //
   // Minecraft
+  //
   COLORS.forEach((color) => {
     if (color !== 'white') {
       event.shaped(`8x minecraft:${color}_wool`, [
@@ -197,7 +201,9 @@ ServerEvents.recipes(event => {
   //   X: 'immersive_aircraft:enhanced_propeller'
   // }).id(`${ID_PREFIX}submarine`);
 
+  //
   // Building Gadgets
+  //
   event.shaped('buildinggadgets2:gadget_building', [
     'IRI',
     'SPS',
@@ -206,7 +212,7 @@ ServerEvents.recipes(event => {
     S: 'minecraft:dispenser',
     R: 'minecraft:redstone',
     I: 'minecraft:iron_ingot',
-    P: '#bth:pcb',
+    P: '#bth:processor',
     B: '#bth:battery',
   }).id(`${ID_PREFIX}gadget_building`);
 
@@ -218,7 +224,7 @@ ServerEvents.recipes(event => {
     S: 'minecraft:ender_pearl',
     R: 'minecraft:redstone',
     I: 'minecraft:iron_ingot',
-    P: '#bth:pcb',
+    P: '#bth:processor',
     B: '#bth:battery',
   }).id(`${ID_PREFIX}gadget_exchanging`);
 
@@ -231,7 +237,7 @@ ServerEvents.recipes(event => {
     T: 'create:super_glue',
     R: 'minecraft:redstone',
     I: 'minecraft:iron_ingot',
-    P: '#bth:pcb',
+    P: '#bth:processor',
     B: '#bth:battery',
   }).id(`${ID_PREFIX}gadget_copy_paste`);
 
@@ -244,7 +250,7 @@ ServerEvents.recipes(event => {
     T: 'create:super_glue',
     R: 'minecraft:redstone',
     I: 'minecraft:iron_ingot',
-    P: '#bth:pcb',
+    P: '#bth:processor',
     B: '#bth:battery',
   }).id(`${ID_PREFIX}gadget_cut_paste`);
 
@@ -256,19 +262,20 @@ ServerEvents.recipes(event => {
     S: 'ars_nouveau:void_prism',
     R: 'minecraft:redstone',
     I: 'minecraft:iron_ingot',
-    P: '#bth:pcb',
+    P: '#bth:processor',
     B: '#bth:battery',
   }).id(`${ID_PREFIX}gadget_destruction`);
 
-
+  //
   // Chunkloaders
+  //
   event.shaped('chunkloaders:single_chunk_loader', [
     ' P ',
     'IBI',
     'ICI'
   ], {
     C: 'minecraft:crying_obsidian',
-    P: '#bth:pcb',
+    P: '#bth:processor',
     B: '#bth:battery',
     I: '#c:ingots/obsidiansteel'
   }).id(`${ID_PREFIX}single_chunk_loader`);
@@ -303,7 +310,9 @@ ServerEvents.recipes(event => {
     E: 'phantasm:crystal_shard',
   }).id(`${ID_PREFIX}ultimate_chunk_loader`);
 
+  //
   // Computer Craft / Advanced Peripherals
+  //
   event.shaped('computercraft:computer_normal', [
     'SSS',
     'CPC',
@@ -311,7 +320,7 @@ ServerEvents.recipes(event => {
   ], {
     S: '#c:plates/iron',
     C: 'pneumaticcraft:plastic',
-    P: '#bth:pcb',
+    P: '#bth:processor',
     G: '#c:glass_panes',
   }).id(`${ID_PREFIX}computer_normal`);
 
@@ -323,7 +332,7 @@ ServerEvents.recipes(event => {
     S: '#c:plates/iron',
     B: '#bth:battery',
     C: 'pneumaticcraft:plastic',
-    P: '#bth:pcb',
+    P: '#bth:processor',
     G: '#c:glass_panes',
   }).id(`${ID_PREFIX}pocket_computer_normal`);
 
@@ -334,7 +343,7 @@ ServerEvents.recipes(event => {
   ], {
     S: '#c:plates/electrum',
     C: 'pneumaticcraft:plastic',
-    P: '#bth:pcb',
+    P: '#bth:processor',
     G: '#c:glass_panes',
   }).id(`${ID_PREFIX}computer_advanced`);
 
@@ -355,7 +364,7 @@ ServerEvents.recipes(event => {
     S: '#c:plates/electrum',
     B: '#bth:battery',
     C: 'pneumaticcraft:plastic',
-    P: '#bth:pcb',
+    P: '#bth:processor',
     G: '#c:glass_panes',
   }).id(`${ID_PREFIX}pocket_computer_advanced`);
 
@@ -511,7 +520,7 @@ ServerEvents.recipes(event => {
     O: '#c:obsidians',
     R: 'minecraft:repeater',
     G: '#c:glass_panes',
-    P: '#bth:pcb'
+    P: '#bth:processor'
   }).id(`${ID_PREFIX}deep_learner`);
 
   event.shaped('hostilenetworks:sim_chamber', [
@@ -524,7 +533,7 @@ ServerEvents.recipes(event => {
     C: 'minecraft:comparator',
     L: 'minecraft:lapis_lazuli',
     G: '#c:glass_panes',
-    P: '#bth:pcb'
+    P: '#bth:processor'
   }).id(`${ID_PREFIX}sim_chamber`);
 
   // Hyperbox
@@ -612,7 +621,9 @@ ServerEvents.recipes(event => {
     N: '#c:nuggets/redstone_alloy'
   }).id(`${ID_PREFIX}enderio_redstone_conduit`);
 
+  //
   // Immersive Engineering
+  //
   event.shaped('2x immersiveengineering:stick_aluminum', [
     'I',
     'I'
@@ -631,10 +642,19 @@ ServerEvents.recipes(event => {
     'I',
     'I'
   ], {
-    I: '#bth:ingots/steel',
+    I: '#c:ingots/steel',
   }).id(`${ID_PREFIX}immersiveengineering_stick_steel`);
 
+  event.shaped('2x immersiveengineering:stick_netherite', [
+    'I',
+    'I'
+  ], {
+    I: '#c:ingots/netherite',
+  }).id(`${ID_PREFIX}immersiveengineering_stick_netherite`);
+
+  //
   // Iron's Spellbooks
+  //
   event.shaped('8x irons_spellbooks:cinder_essence', [
     'AAA',
     'AFA',
@@ -741,7 +761,7 @@ ServerEvents.recipes(event => {
     'EPL',
     ' G '
   ], {
-    P: '#bth:pcb',
+    P: '#bth:processor',
     R: 'minecraft:redstone',
     L: 'minecraft:lapis_lazuli',
     G: 'minecraft:gold_ingot',

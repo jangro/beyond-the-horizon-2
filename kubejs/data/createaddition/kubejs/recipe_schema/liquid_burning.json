@@ -1,0 +1,26 @@
+{
+  "keys": [
+    {
+      "name": "ingredients",
+      "role": "input",
+      "type": {
+        "type": "list",
+        "component": "createaddition:fluid_ingredient",
+        "min": 1
+      }
+    },
+    {
+      "name": "burn_time",
+      "type": "non_negative_int"
+    },
+    {
+      "name": "results",
+      "role": "output",
+      "type": {
+        "type": "list",
+        "component": "item_stack",
+        "min": 0
+      }
+    }
+  ]
+}

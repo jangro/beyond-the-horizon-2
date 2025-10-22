@@ -734,6 +734,22 @@ file = "kubejs/data/compactmachines/recipe/new_machine_tiny.json"
 hash = "4642f835cebdc5a12fdd60dd983c16737388a6b8a8c7c83ef53897bfb1728035"
 
 [[files]]
+file = "kubejs/data/createaddition/kubejs/examples.json"
+hash = "dd113158a3c655d659d612bf77197fe9d045367c318a1da7cda26798dd6fad19"
+
+[[files]]
+file = "kubejs/data/createaddition/kubejs/recipe_components.json"
+hash = "5d9113189b9118a1bde62b60c80e0790cc0462b0b717fb9747ddba9e82525c96"
+
+[[files]]
+file = "kubejs/data/createaddition/kubejs/recipe_schema/liquid_burning.json"
+hash = "06e948b05d29c50cd8e22b404b8d9894a5a80a23e6cce916c0526b5576f9036c"
+
+[[files]]
+file = "kubejs/data/createaddition/kubejs/recipe_schema/rolling.json"
+hash = "9f41dd460ebb24fd64925cd9bd0f59d89a98c0d354ffa02feb1e90a32559019d"
+
+[[files]]
 file = "kubejs/data/ctov/lithostitched/worldgen_modifier/ctov/pillager_outpost.json"
 hash = "ba015439b284ed9fb6e2a1c729f251303498f1d3a39ae5702550890b5ccda02d"
 
@@ -1495,7 +1511,7 @@ hash = "f8fe3bafebbdaa3250686120b3dfaacfe8bf40a9fe5b8e041111bacacfa1e91f"
 
 [[files]]
 file = "kubejs/server_scripts/recipe_viewer/remove_item.js"
-hash = "0920ea1011473e542175cc5123de9ddbab8aa7fe19ad3f0e94baacf61bdb444b"
+hash = "3563a48a8c6a6254ba27276e5bcd9074f1989fb3f5e6041090d54deaf62f8fbe"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/ae2.js"
@@ -1508,6 +1524,10 @@ hash = "eb94576084df0d02678d179859bb92bce6ea98e02af65dea26adae97e46500fd"
 [[files]]
 file = "kubejs/server_scripts/recipes/create.js"
 hash = "111cb68597744fba4bf0c478aade2741bb710131d0171a74a644e5ebad0c2d9b"
+
+[[files]]
+file = "kubejs/server_scripts/recipes/createaddition.js"
+hash = "b03365a628077656a0b5026fa142ed0ef113b418efd8a6e7e87aff5c82328dcb"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/enderio.js"
@@ -1535,15 +1555,15 @@ hash = "c2db67a0614bfbac3dae68f4b4501b14da09017e742286c7d83b5426563d5078"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/remove.js"
-hash = "f475575d2d7308d50519d01f73cfafce3a221158db31b2760d8a91154dd4f4d5"
+hash = "57f41c84ed2f0cd80a632b80276bcd51ff381f5cde2c29180fb9500bb96c7444"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/replace.js"
-hash = "9cdbe2091d7ba988a739c3ead9c45010160db9377dcafcf5c32afcc1b627676d"
+hash = "c633ab3c49b47d3a1af1af9ceb575cd4ab9fac24d3310495d0b2a61c952699ad"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/shaped.js"
-hash = "320c5dc5d1cea37c035182bcdbc67b56c6a6157889bf1649b287d1d1a98814d4"
+hash = "fe9868a13ffcb2034426c50189ad388b9b64c2d9b9a2baf08e8c71e52860a251"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/shapeless.js"
@@ -1559,7 +1579,7 @@ hash = "f295ef0b04fa3a774523208127f7886371e43296ab25b61af0ce9216d7f2686c"
 
 [[files]]
 file = "kubejs/server_scripts/tags/item.js"
-hash = "ccc1e2e3ef9b695e1fa8387810df38ea0714c45fd02b5f2de6c27c02b282bed2"
+hash = "8b3a22f6307827e5b5ea78594931ba674acfa904395f96b6682b232c13bae45e"
 
 [[files]]
 file = "kubejs/startup_scripts/fluid.js"

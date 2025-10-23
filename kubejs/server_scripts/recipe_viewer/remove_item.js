@@ -54,7 +54,7 @@ RecipeViewerEvents.removeEntries('item', event => {
     // 'galosphere:silver_ingot',
     // 'galosphere:silver_nugget',
     // 'galosphere:silver_ore',
-    'immersive_aircraft:propeller',
+    'immersive_aircraft:propeller',                     // replaced by Create propeller
     // 'immersiveengineering:deepslate_ore_lead',
     // 'immersiveengineering:deepslate_ore_silver',
     // 'immersiveengineering:dust_sulfur',
@@ -83,16 +83,29 @@ RecipeViewerEvents.removeEntries('item', event => {
     // 'immersiveengineering:storage_lead',
     // 'immersiveengineering:storage_silver',
     // 'immersiveengineering:storage_uranium',
-    'incubation:fried_egg',
-    'lightmanscurrency:coinmint',
+    'incubation:fried_egg',                             // replaced by Farmers Delight fried egg
+    'lightmanscurrency:coinmint',                       // creation of coins is disabled
     'lightmanscurrency:portable_atm',
     'lightmanscurrency:portable_terminal',
     // 'moreminecarts:chunk_loader',
     // 'moreminecarts:chunkrodite',
     // 'moreminecarts:chunkrodite_block',
     // 'moreminecarts:minecart_with_chunk_loader',
-    'neapolitan:milk_bottle',
+    'neapolitan:milk_bottle',                           // replaced by Farmer's Delight milk bottle
     // 'nethersdelight:blackstone_furnace',
+    'oritech:raw_uranium',                              // replaced by IE raw uranium
+    'oritech:copper_clump',                             // replaced by Create crushed raw ores
+    'oritech:gold_clump',                               // replaced by Create crushed raw ores
+    'oritech:iron_clump',                               // replaced by Create crushed raw ores
+    'oritech:nickel_clump',                             // replaced by Create crushed raw ores
+    'oritech:platinum_clump',                           // replaced by Create crushed raw ores
+    'oritech:copper_dust',                              // replaced by IE dusts
+    'oritech:electrum_dust',                            // replaced by IE dusts
+    'oritech:gold_dust',                                // replaced by IE dusts
+    'oritech:iron_dust',                                // replaced by IE dusts
+    'oritech:nickel_dust',                              // replaced by IE dusts
+    'oritech:steel_dust',                               // replaced by IE dusts
+    'oritech:uranium_dust',                             // replaced by IE dusts
     // 'paraglider:spirit_orb',
     // 'paraglider:anti_vessel',
     // 'paraglider:essence',

@@ -10,7 +10,8 @@ ServerEvents.recipes(event => {
     return;
   }
   const ID_PREFIX = 'bth:create/';
-  const create = event.recipes.create;
+  const c = event.recipes.create;
+
 
 
 

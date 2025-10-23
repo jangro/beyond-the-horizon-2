@@ -10,6 +10,11 @@
  *
  * Note: When adding recipes, the convention is for the mechanical drying basin
  * to be 10x faster than the manual version (ie. duration set to one tenth the value).
+ *
+ * Note 2: The squeezers sometimes use tags for output items so can't be replaced with the regular
+ * replaceOutput function. Options are to remove and recreate the recipe, or remove the tags from the
+ * unwanted items.
+ *
  */
 ServerEvents.recipes(event => {
   if (!Platform.isLoaded('integrateddynamics')) {

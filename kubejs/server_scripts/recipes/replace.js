@@ -96,7 +96,6 @@ ServerEvents.recipes(event => {
   replaceInput('eidolon_repraised:sulfur', '#c:dusts/sulfur');
   replaceInput('immersiveengineering:dust_sulfur', '#c:dusts/sulfur');
 
-
   // Feather Compatibility
   replaceInputID([
     'minecraft:brush',
@@ -141,11 +140,6 @@ ServerEvents.recipes(event => {
     'supplementaries:jar',
   ], 'minecraft:glass', '#c:glass_blocks/colorless');
 
-  // Ingot Compatibility
-  replaceInput('eidolon_repraised:arcane_gold_ingot', '#c:ingots/arcane_gold');
-  replaceInput('forbidden_arcanus:deorum_ingot', '#c:ingots/arcane_gold');
-  // replaceInput('forbidden_arcanus:obsidian_ingot', '#c:ingots/obsidiansteel');
-
   // Leather Compatibility
   replaceInputID([
     'minecraft:book',
@@ -169,7 +163,26 @@ ServerEvents.recipes(event => {
     'xercamusic:drum',
   ], 'minecraft:leather', '#c:leathers');
 
+  // Ingot Compatibility
+  replaceInput('createaddition:electrum_ingot', '#c:ingots/electrum');
+  replaceInput('eidolon_repraised:arcane_gold_ingot', '#c:ingots/arcane_gold');
+  replaceInput('eidolon_repraised:lead_ingot', '#c:ingots/lead');
+  replaceInput('eidolon_repraised:silver_ingot', '#c:ingots/silver');
+  replaceInput('forbidden_arcanus:deorum_ingot', '#c:ingots/arcane_gold');
+  replaceInput('oritech:electrum_ingot', '#c:ingots/electrum');
+  replaceInput('oritech:nickel_ingot', '#c:ingots/nickel');
+  replaceInput('oritech:steel_ingot', '#c:ingots/steel');
+
   // Nugget Compatibility
+  replaceInput('create:copper_nugget', '#c:nuggets/copper');
+  replaceInput('createaddition:electrum_nugget', '#c:nuggets/electrum');
+  replaceInput('eidolon_repraised:arcane_gold_nugget', '#c:nuggets/arcane_gold');
+  replaceInput('eidolon_repraised:lead_nugget', '#c:nuggets/lead');
+  replaceInput('eidolon_repraised:silver_nugget', '#c:nuggets/silver');
+  replaceInput('forbidden_arcanus:deorum_nugget', '#c:nuggets/arcane_gold');
+  replaceInput('oritech:copper_nugget', '#c:nuggets/copper');
+  replaceInput('oritech:nickel_nugget', '#c:nuggets/nickel');
+  replaceInput('pneumaticcraft:copper_nugget', '#c:nuggets/copper');
 
   // Ore Compatibility
   replaceInput('eidolon_repraised:silver_ore', '#c:ores/silver');
@@ -178,10 +191,10 @@ ServerEvents.recipes(event => {
   replaceInput('immersiveengineering:deepslate_ore_silver', '#c:ores/silver');
 
   // Plate Compatibility
-  replaceInput('create:iron_sheet', '#c:plates/iron');
+  replaceInput('create:copper_sheet', '#c:plates/copper');
   replaceInput('create:golden_sheet', '#c:plates/gold');
-  replaceInput('createaddition:zinc_sheet', '#c:plates/zinc');
-  // replaceInput('createdeco:zinc_sheet', '#c:plates/zinc');
+  replaceInput('create:iron_sheet', '#c:plates/iron');
+  replaceInput('createaddition:electrum_sheet', '#c:plates/electrum');
 
   // Propeller Compatibility
   replaceInput('immersive_aircraft:propeller', 'create:propeller');
@@ -220,7 +233,7 @@ ServerEvents.recipes(event => {
     'immersiveengineering:crafting/steel_fence',
     'immersiveengineering:metalpress/rod_steel',
     'createaddition:rolling/steel_ingot',
-  ], 'immersiveengineering:ingot_steel', '#bth:ingots/steel');
+  ], 'immersiveengineering:ingot_steel', '#c:ingots/steel');
 
   // Stick / Rod Compatibility
   event.replaceInput({ output: '#minecraft:arrows' }, 'minecraft:stick', '#c:rods/wooden');
@@ -279,25 +292,24 @@ ServerEvents.recipes(event => {
     replaceOutput(`enderio:powdered_${material}`, `oritech:${material}_dust`);
   });
 
-
-
-  // Ingots TODO: verify this
+  // Ingots
   replaceOutput('createaddition:electrum_ingot', 'immersiveengineering:ingot_electrum');
   replaceOutput('eidolon_repraised:lead_ingot', 'immersiveengineering:ingot_lead');
   replaceOutput('eidolon_repraised:silver_ingot', 'immersiveengineering:ingot_silver');
   replaceOutput('oritech:electrum_ingot', 'immersiveengineering:ingot_electrum');
+  replaceOutput('oritech:nickel_ingot', 'immersiveengineering:ingot_nickel');
   replaceOutput('oritech:steel_ingot', 'immersiveengineering:ingot_steel');
 
-  // Nuggets TODO: verify this
+  // Nuggets
   replaceOutput('create:copper_nugget', 'immersiveengineering:nugget_copper');
   replaceOutput('createaddition:electrum_nugget', 'immersiveengineering:nugget_electrum');
   replaceOutput('eidolon_repraised:lead_nugget', 'immersiveengineering:nugget_lead');
   replaceOutput('eidolon_repraised:silver_nugget', 'immersiveengineering:nugget_silver');
   replaceOutput('oritech:copper_nugget', 'immersiveengineering:nugget_copper');
-  // replaceOutput('oritech:electrum_nugget', 'immersiveengineering:nugget_electrum');
+  replaceOutput('oritech:nickel_nugget', 'immersiveengineering:nugget_nickel');
   replaceOutput('pneumaticcraft:copper_nugget', 'immersiveengineering:nugget_copper');
 
-  // Plates TODO: verify this
+  // Plates
   replaceOutput('create:copper_sheet', 'immersiveengineering:plate_copper');
   replaceOutput('create:golden_sheet', 'immersiveengineering:plate_gold');
   replaceOutput('create:iron_sheet', 'immersiveengineering:plate_iron');
@@ -329,6 +341,8 @@ ServerEvents.recipes(event => {
   replaceOutput('farmersdelight:rope', 'supplementaries:rope');
   replaceOutput('createaddition:chocolate_cake', 'neapolitan:chocolate_cake');
   replaceOutput('incubation:fried_egg', 'farmersdelight:fried_egg');
+
+  replaceInput('minecraft:quartz', '#c:gems/quartz');
 
   // Changes in specific recipes.
   replaceInputID('minecraft:copper_ingot', 'minecraft:copper_block', ['minecraft:copper_block', 'minecraft:waxed_copper_block']);

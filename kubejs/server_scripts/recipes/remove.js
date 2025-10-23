@@ -63,6 +63,7 @@ ServerEvents.recipes(event => {
     // 'create:smelting/ingot_silver_compat_immersiveengineering',
     // 'create:smelting/ingot_uranium_compat_immersiveengineering',
     'create:smoking/bread',
+    'createaddition:pressing/electrum_ingot',
     // 'createdeco:pressing/coins/brass_coin',
     // 'createdeco:pressing/coins/copper_coin',
     // 'createdeco:pressing/coins/gold_coin',

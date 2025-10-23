@@ -33,9 +33,14 @@ ServerEvents.tags('item', event => {
     'minecraft:honeycomb',
   ]);
 
-  event.add('bth:ingots/steel', [
-    'immersiveengineering:ingot_steel',
-    'enderio:dark_steel_ingot',
+  // event.add('bth:ingots/steel', [
+  //   'immersiveengineering:ingot_steel',
+  //   'enderio:dark_steel_ingot',
+  // ]);
+
+  event.add('c:nuggets/arcane_gold', [
+    'eidolon_repraised:arcane_gold_nugget',
+    'forbidden_arcanus:deorum_nugget',
   ]);
 
   event.add('bth:mechanical_soul', [
@@ -121,6 +126,8 @@ ServerEvents.tags('item', event => {
   event.remove('c:dusts/quartz', 'enderio:powdered_quartz');
   event.remove('c:dusts/obsidian', 'enderio:powdered_obsidian');
 
+  // Nugget preference
+  event.remove('c:nuggets/copper', 'create:copper_nugget');
 
   event.add('c:flours', [
     'create:cinder_flour',

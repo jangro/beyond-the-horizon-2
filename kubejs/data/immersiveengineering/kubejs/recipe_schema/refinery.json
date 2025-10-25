@@ -1,0 +1,32 @@
+{
+  "keys": [
+    {
+      "name": "result",
+      "role": "output",
+      "type": "immersiveengineering:fluid_stack"
+    },
+    {
+      "name": "energy",
+      "type": "int"
+    },
+    {
+      "name": "input0",
+      "role": "input",
+      "type": "immersiveengineering:fluid_ingredient"
+    },
+    {
+      "name": "input1",
+      "role": "input",
+      "type": "immersiveengineering:fluid_ingredient",
+      "optional": true,
+      "default_optional": true
+    },
+    {
+      "name": "catalyst",
+      "role": "input",
+      "type": "ingredient",
+      "optional": true,
+      "default_optional": true
+    }
+  ]
+}

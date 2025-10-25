@@ -1,0 +1,19 @@
+{
+  "keys": [
+    {
+      "name": "input0",
+      "role": "input",
+      "type": "ingredient"
+    },
+    {
+      "name": "input1",
+      "role": "input",
+      "type": "ingredient"
+    },
+    {
+      "name": "result",
+      "role": "output",
+      "type": "immersiveengineering:tag_output"
+    }
+  ]
+}

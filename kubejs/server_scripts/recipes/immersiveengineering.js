@@ -21,6 +21,17 @@ ServerEvents.recipes(event => {
   //
 
   //
+  // Mixer
+  //
+  ie.mixer({ id: 'bth:soul_mixture', amount: 1000 }, [{ item: 'minecraft:soul_sand' }], { tag: 'minecraft:water', amount: 1000 }, 200).id(`${ID_PREFIX}mixer/soul_mixture`);
+  ie.mixer({ id: 'bth:sugar_water', amount: 1000 }, [{ item: 'minecraft:sugar' }], { tag: 'minecraft:water', amount: 1000 }, 200).id(`${ID_PREFIX}mixer/sugar_water`);
+
+  //
+  // Refinery
+  //
+  ie.refinery({ id: 'bth:ender_fuel', amount: 1000 }, 4000, { tag: 'bth:liquid_chorus', amount: 500 }, { tag: 'bth:soul_mixture', amount: 500 }).id(`${ID_PREFIX}refinery/ender_fuel`);
+
+  //
   // Mod specific recipes
   //
   if (Platform.isLoaded('blazingbamboo')) {

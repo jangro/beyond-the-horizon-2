@@ -28,6 +28,8 @@ ServerEvents.recipes(event => {
   // mechanical_squeezer(input [ingredient], duration [int], output items [list], output fluid [optional fluid stack])
   // squeezer(input [ingredient], output items [list], output fluid [optional fluid stack])
   //
+
+  // XXX: replaceOutput is now working but let's redo the recipes anyways to balance the outputs with other mods
   ['aluminum', 'copper', 'gold', 'iron', 'lead', 'nickel', 'platinum', 'silver', 'uranium', 'zinc'].forEach((material) => {
     event.remove({ id: `integrateddynamics:mechanical_squeezer/ore/raw_${material}` });
     event.remove({ id: `integrateddynamics:squeezer/ore/raw_${material}` });

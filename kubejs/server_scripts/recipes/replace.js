@@ -300,7 +300,7 @@ ServerEvents.recipes(event => {
   replaceOutput('oritech:nickel_ingot', 'immersiveengineering:ingot_nickel');
   replaceOutput('oritech:steel_ingot', 'immersiveengineering:ingot_steel');
 
-  // Nuggets
+  // Nuggets (XXX: replace doesn't work for crushing and washing recipes)
   replaceOutput('create:copper_nugget', 'immersiveengineering:nugget_copper');
   replaceOutput('createaddition:electrum_nugget', 'immersiveengineering:nugget_electrum');
   replaceOutput('eidolon_repraised:lead_nugget', 'immersiveengineering:nugget_lead');
@@ -354,5 +354,11 @@ ServerEvents.recipes(event => {
   // replaceInputID('quark:building/crafting/vertslabs/polished_tuff_vertical_slab', 'quark:polished_tuff_slab', 'copperandtuffbackport:polished_tuff_slab');
   // replaceInputID('quark:building/crafting/vertslabs/tuff_vertical_slab', 'quark:tuff_slab', 'copperandtuffbackport:tuff_slab');
 
+
+  // test replace crushing and milling outputs
+  event.replaceOutput({},'minecraft:dirt', 'minecraft:blue_wool');
+  event.replaceInput({},'minecraft:mud', 'minecraft:red_wool');
+  // test replace sawing output
+  // event.replaceOutput({},'minecraft:oak_sign', 'minecraft:red_wool');
 
 });

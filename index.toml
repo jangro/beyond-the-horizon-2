@@ -839,11 +839,11 @@ hash = "8a078ed2d91c085e2e1a6e5e8284bc9b06eeefc567dc92cbd2e34826857459a1"
 
 [[files]]
 file = "kubejs/data/enderio/kubejs/recipe_components.json"
-hash = "083a00711fddd979fc1b3f231ce673ba53720bd4ab920ec3471176e36b32df9f"
+hash = "9acad01481d83b775437ac9ba227b5d6edec77af7014acbc22ccef699f6784e7"
 
 [[files]]
 file = "kubejs/data/enderio/kubejs/recipe_schema/alloy_smelting.json"
-hash = "cb9c532b704077ebdc5f50623fe7f909ef8448b85f7ca42869a30f67ff920edd"
+hash = "735ee4ff373142b0b23c069fad7cb36c05a43926221d04926897bcd99d5e60cc"
 
 [[files]]
 file = "kubejs/data/enderio/kubejs/recipe_schema/sag_milling.json"
@@ -991,7 +991,11 @@ hash = "7fe420bf11611db0d9c1be6d0dc519cff4e12de4738e6329e5179e51ef68d419"
 
 [[files]]
 file = "kubejs/data/immersiveengineering/kubejs/recipe_components.json"
-hash = "19a3778417ebc5938c088cecc1dddb5edddb16b2eb01bf0e06cd3e116db9093d"
+hash = "6a59467b3e38c3069b538ddd3b7882ddb0250e598815cd6a6fedc171b65b7cb5"
+
+[[files]]
+file = "kubejs/data/immersiveengineering/kubejs/recipe_schema/alloy.json"
+hash = "2ca0d96aa59d61c376e5d3c63e2696259512dca48555b594f159291e4e3a622d"
 
 [[files]]
 file = "kubejs/data/immersiveengineering/kubejs/recipe_schema/arc_furnace.json"
@@ -1008,6 +1012,14 @@ hash = "dc1c1f0a38ef99aad8f0b3734fa5a11daf943fc467a7d336ac8f4b1f09bd33fd"
 [[files]]
 file = "kubejs/data/immersiveengineering/kubejs/recipe_schema/metal_press.json"
 hash = "cfb784bf652aeca30b256cd65f60996c34bb08a8268b6b209a16c607e8a08d0d"
+
+[[files]]
+file = "kubejs/data/immersiveengineering/kubejs/recipe_schema/mixer.json"
+hash = "d5143d24993ae8621f9fe42528d68a4108497409c1b2951fa3b9a64b6dd22be1"
+
+[[files]]
+file = "kubejs/data/immersiveengineering/kubejs/recipe_schema/refinery.json"
+hash = "245f1068a9dbea3e7804aeb84748427c947c3482a2426807d9ef81d7dfa5ba6a"
 
 [[files]]
 file = "kubejs/data/incendium/worldgen/structure_set/greater_structures.json"
@@ -1498,6 +1510,10 @@ file = "kubejs/server_scripts/loot_tables/constants.js"
 hash = "43fad3040e531d80cf7ed73b22787c2c2e22807cdff89c6143ea1d62f0e30f00"
 
 [[files]]
+file = "kubejs/server_scripts/loot_tables/entities.js"
+hash = "c15e9ec4d6457ec9b51aa2021b367248c589930da7e1a5078a4e7c61c7f27f05"
+
+[[files]]
 file = "kubejs/server_scripts/player_events.js"
 hash = "57cb3b3319a3c18071c0cb7cce5e8b97b4f248541e7254e57556746ffc161e6a"
 
@@ -1511,7 +1527,7 @@ hash = "f8fe3bafebbdaa3250686120b3dfaacfe8bf40a9fe5b8e041111bacacfa1e91f"
 
 [[files]]
 file = "kubejs/server_scripts/recipe_viewer/remove_item.js"
-hash = "cc38252569b29fc21435710c62cd65d2b501a53e9e8e8c441288ef7943a73b5f"
+hash = "b97b7905aad7f9e7c9abfc73eeb36138d550b21513da5c71c5e6b33e645d856f"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/ae2.js"
@@ -1523,7 +1539,7 @@ hash = "eb94576084df0d02678d179859bb92bce6ea98e02af65dea26adae97e46500fd"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/create.js"
-hash = "8be0dba9f058c78a3783f86dc86b64dc4e4421265e7b16fb5c742b3db328d516"
+hash = "24c03ac9b9589a9fc95c0e0678ae5d2f39bd2f842413cef8ea26795d1ebe94e5"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/createaddition.js"
@@ -1539,11 +1555,11 @@ hash = "257aefb5b72471cf2181593e198fd92763d316cb016ecacb21458c9a45a46fe7"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/immersiveengineering.js"
-hash = "b92d880e30b77591c4c03d5043822f89bd4657b02b84909589f5592da670a834"
+hash = "7bc89b302b9e383b81bab7465fb38ad69f2a1296bfec6fcada4862eb85292ff5"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/integrateddynamics.js"
-hash = "1998fd6e32a085f1c2a83ecde33b69a0e13940f40d824a4f3df4514d961ffc98"
+hash = "44117368e57c0e0be308a0bfebc507145e1adaf3b7fc826980b569df1cfdb4c6"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/oritech.js"
@@ -1555,11 +1571,11 @@ hash = "c2db67a0614bfbac3dae68f4b4501b14da09017e742286c7d83b5426563d5078"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/remove.js"
-hash = "9957bb58e573c617851c0d2f6eb7e7a622e7c4a93b345cb1819bf143c4433905"
+hash = "0024e2e8f962a28cd6d9e07528da4da3b9c48648a763551cc4c9b9211864afed"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/replace.js"
-hash = "53e64fbd3ee6980eb2d5601da7e7740558ad44008c71dce23c3f5e1e76413d3b"
+hash = "987c8e5bec922728e0ee328614123fdfebbd488bc1418bc650066fb31dff6b96"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/shaped.js"
@@ -1567,11 +1583,15 @@ hash = "fe9868a13ffcb2034426c50189ad388b9b64c2d9b9a2baf08e8c71e52860a251"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/shapeless.js"
-hash = "9b018f29873d7597481b774b909f01aaead42dd0b17861fbcb858d3afa1d68d7"
+hash = "1f3f0fe77600459e08f68988287e34429644a72845fc2b5797566456c77fc6ce"
 
 [[files]]
 file = "kubejs/server_scripts/tags/biome.js"
 hash = "fcf7bcacac7f29a5e1b16709f6e27146d0db281f2ad032ef9deea7b2e0697514"
+
+[[files]]
+file = "kubejs/server_scripts/tags/fluids.js"
+hash = "cebc7c4bfdb48e893bd049aa596dd9169431c820fc092365993cbcbe55a82639"
 
 [[files]]
 file = "kubejs/server_scripts/tags/generated.js"
@@ -1579,7 +1599,7 @@ hash = "f295ef0b04fa3a774523208127f7886371e43296ab25b61af0ce9216d7f2686c"
 
 [[files]]
 file = "kubejs/server_scripts/tags/item.js"
-hash = "e1fbf5d2d27fe519946d5b5cfc7ef74f18e155db26a2ba583c56a6e5cf69b268"
+hash = "830e2f253cd700a8f01e187bcf1db13e91abe000eb47f3328412403f9c9ef820"
 
 [[files]]
 file = "kubejs/startup_scripts/fluid.js"
@@ -1947,11 +1967,6 @@ metafile = true
 [[files]]
 file = "mods/create-curios-jetpack.pw.toml"
 hash = "dd3ac8991f2af25de63075a7525233dbb520150f9e8fa342ee8fd8f702e0cafa"
-metafile = true
-
-[[files]]
-file = "mods/create-oritech-compat.pw.toml"
-hash = "5a7ddfa185f32139c04995ea366941975c7dad3fb8bbd0ab7992b139983093fa"
 metafile = true
 
 [[files]]
@@ -2491,7 +2506,7 @@ metafile = true
 
 [[files]]
 file = "mods/kubejs-create.pw.toml"
-hash = "ac2911f3688bdd9f2797ff2a288453df880c59cfa977c22e2af262ecfd2ed870"
+hash = "3762c12f3ec0324a46e685adc7d2ffea1545dd7c3a19ef372ef7dc73e6bb44e5"
 metafile = true
 
 [[files]]
@@ -2662,6 +2677,11 @@ metafile = true
 [[files]]
 file = "mods/mutant-monsters.pw.toml"
 hash = "2ed01333d748b430578cbf8db6aa26172bf90cd284314a345679cea6195640d6"
+metafile = true
+
+[[files]]
+file = "mods/my-nethers-delight.pw.toml"
+hash = "0311de96add459a26f7411925de34327312a04f1efda04d3b94c1a87bd7ebd9d"
 metafile = true
 
 [[files]]

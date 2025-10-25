@@ -126,8 +126,14 @@ ServerEvents.tags('item', event => {
   event.remove('c:dusts/quartz', 'enderio:powdered_quartz');
   event.remove('c:dusts/obsidian', 'enderio:powdered_obsidian');
 
-  // Nugget preference
+  // Prefer IE nuggets (remove tags so recipes with tags for output don't pick them).
   event.remove('c:nuggets/copper', 'create:copper_nugget');
+  event.remove('c:nuggets/copper', 'oritech:copper_nugget');
+  event.remove('c:nuggets/copper', 'pneumaticcraft:copper_nugget');
+  event.remove('c:nuggets/lead', 'eidolon_repraised:lead_nugget');
+  event.remove('c:nuggets/nickel', 'oritech:nickel_nugget');
+  event.remove('c:nuggets/silver', 'eidolon_repraised:silver_nugget');
+  event.remove('c:nuggets/electrum', 'createaddition:electrum_nugget');
 
   event.add('c:flours', [
     'create:cinder_flour',

@@ -16,8 +16,9 @@ ServerEvents.recipes(event => {
 
   // Minecraft
   event.shapeless('minecraft:magenta_dye', 'ecologics:azalea_flower').id(`${ID_PREFIX}magenta_dye_from_azalea_flower`);
-  event.shapeless('minecraft:yellow_dye', 'forbidden_arcanus:yellow_orchid').id(`${ID_PREFIX}yellow_dye_from_yellow_orchid`);
+  event.shapeless('minecraft:slime_ball', ['autumnity:snail_goo', '#c:dyes/lime']).id(`${ID_PREFIX}slime_ball_from_snail_goo_and_lime_dye`);
   event.shapeless('minecraft:white_dye', 'ribbits:swamp_daisy').id(`${ID_PREFIX}white_dye_from_swamp_daisy`);
+  event.shapeless('minecraft:yellow_dye', 'forbidden_arcanus:yellow_orchid').id(`${ID_PREFIX}yellow_dye_from_yellow_orchid`);
 
   // Create
   event.shapeless('create:brass_sheet', ['#c:ingots/brass', 'immersiveengineering:hammer']).id(`${ID_PREFIX}hammer/brass_sheet`);

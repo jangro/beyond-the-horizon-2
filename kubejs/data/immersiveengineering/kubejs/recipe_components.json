@@ -77,5 +77,34 @@
         "component": "int"
       }
     ]
+  },
+  "immersiveengineering:fluid_ingredient": {
+    "type": "custom_object",
+    "keys": [
+      {
+        "name": "amount",
+        "component": "non_negative_int"
+      },
+      {
+        "name": "tag",
+        "component": "fluid_tag"
+      }
+    ]
+  },
+  "immersiveengineering:fluid_stack": {
+    "type": "custom_object",
+    "keys": [
+      {
+        "name": "amount",
+        "component": "non_negative_int"
+      },
+      {
+        "name": "id",
+        "component": {
+          "type": "registry_element",
+          "registry": "fluid"
+        }
+      }
+    ]
   }
 }

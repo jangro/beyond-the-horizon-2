@@ -25,10 +25,13 @@ RecipeViewerEvents.removeEntries('item', event => {
     // 'cofh_core:experience',
     // 'cofh_core:honey',
     // 'cofh_core:potion',
+    'create:copper_nugget',                             // replaced by IE nuggets
     'createaddition:copper_wire',                       // replaced by IE wire
     // 'createaddition:chocolate_cake',
     'createaddition:electrum_wire',                     // replaced by IE wire
     'createaddition:iron_rod',                          // replaced by IE rod
+    'createaddition:electrum_ingot',                    // replaced by IE ingots
+    'createaddition:electrum_nugget',                   // replaced by IE nuggets
     // 'createdeco:brass_coin',
     // 'createdeco:brass_coinstack',
     // 'createdeco:industrial_iron_coin',
@@ -36,6 +39,10 @@ RecipeViewerEvents.removeEntries('item', event => {
     // 'createdeco:zinc_coin',
     // 'createdeco:zinc_coinstack',
     // 'createdeco:zinc_sheet',
+    'eidolon_repraised:lead_ingot',                     // replaced by IE ingots
+    'eidolon_repraised:silver_ingot',                   // replaced by IE ingots
+    'eidolon_repraised:lead_nugget',                    // replaced by IE nuggets
+    'eidolon_repraised:silver_nugget',                  // replaced by IE nuggets
     'enderio:flour',                                    // replaced by create wheat flour
     // 'enderio:powdered_copper',
     // 'enderio:powdered_gold',
@@ -106,10 +113,15 @@ RecipeViewerEvents.removeEntries('item', event => {
     'oritech:nickel_dust',                              // replaced by IE dusts
     'oritech:steel_dust',                               // replaced by IE dusts
     'oritech:uranium_dust',                             // replaced by IE dusts
+    'oritech:steel_ingot',                              // replaced by IE ingots
+    'oritech:nickel_ingot',                             // replaced by IE ingots
+    'oritech:electrum_ingot',                           // replaced by IE ingots
+    'oritech:copper_nugget',                            // replaced by IE nuggets
+    'oritech:nickel_nugget',                            // replaced by IE nuggets
     // 'paraglider:spirit_orb',
     // 'paraglider:anti_vessel',
     // 'paraglider:essence',
-    // 'pneumaticcraft:copper_nugget',
+    'pneumaticcraft:copper_nugget',                     // replaced by IE nuggets
     // /paraglider:.*statue.*/,
     // /perfectplushies:.*/,
     /plushie_buddies:.*/,

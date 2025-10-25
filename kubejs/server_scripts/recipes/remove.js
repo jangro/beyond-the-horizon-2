@@ -46,6 +46,10 @@ ServerEvents.recipes(event => {
     'chunkloaders:advanced_chunk_loader',
     'chunkloaders:ultimate_chunk_loader',
     // /clayworks:.*terracotta_brick.*/, // uncomment if we add quark
+
+
+
+
     // 'create:blasting/ingot_lead_compat_immersiveengineering',
     // 'create:blasting/ingot_silver_compat_immersiveengineering',
     // 'create:blasting/ingot_uranium_compat_immersiveengineering',
@@ -199,6 +203,10 @@ ServerEvents.recipes(event => {
     // 'nethersdelight:blackstone_furnace',
     // 'paraglider:paraglider',
     // /perfectplushies:.*/,
+
+    'oritech:splashing/compat/create/nickelclump',                    // use the Create version
+    'oritech:blasting/compat/create/crushed_nickel_to_nickel_ingot',  // use the Create version
+
     /plushie_buddies:.*/,
     /plushies:.*/,
     'pneumaticcraft:chunkloader_upgrade',
@@ -235,7 +243,7 @@ ServerEvents.recipes(event => {
     'v_slab_compat:immersiveengineering/storage_uranium_stonecutter',
     /wardrobe:.*backpack/,
     /woodworks:.*ladder$/,
-  ].forEach((recipeID) => event.remove({id: recipeID}));
+  ].forEach((recipeID) => event.remove({ id: recipeID }));
 
   // Remove IE dusts that are replaced by Create crushed ores
   // ['aluminum', 'copper', 'gold', 'iron', 'lead', 'nickel', 'silver'].forEach((material) =>

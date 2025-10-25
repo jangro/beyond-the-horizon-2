@@ -1,0 +1,27 @@
+{
+  "keys": [
+    {
+      "name": "result",
+      "role": "output",
+      "type": "immersiveengineering:fluid_stack"
+    },
+    {
+      "name": "inputs",
+      "role": "input",
+      "type": {
+        "type": "list",
+        "component": "immersiveengineering:ingredient_with_size",
+        "min": 1
+      }
+    },
+    {
+      "name": "fluid",
+      "role": "input",
+      "type": "immersiveengineering:fluid_ingredient"
+    },
+    {
+      "name": "energy",
+      "type": "int"
+    }
+  ]
+}

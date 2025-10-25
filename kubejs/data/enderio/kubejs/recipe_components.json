@@ -53,19 +53,5 @@
           "component": "positive_int"
         }
       ]
-    },
-    "enderio:alloy_output": {
-      "type": "custom_object",
-      "keys": [
-        {
-          "name": "id",
-          "component": "id"
-        },
-        {
-          "name": "count",
-          "component": "positive_int",
-          "optional": true
-        }
-      ]
     }
 }

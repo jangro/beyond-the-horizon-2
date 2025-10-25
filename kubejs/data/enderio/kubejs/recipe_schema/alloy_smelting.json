@@ -11,7 +11,7 @@
     {
       "name": "output",
       "role": "output",
-      "type": "enderio:alloy_output"
+      "type": "item_stack"
     },
     {
       "name": "energy",

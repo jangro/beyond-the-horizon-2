@@ -2966,6 +2966,11 @@ hash = "17c9ece9ddd4303a323526b0f98e997c38e7a07797954ac81d3e48b169122695"
 metafile = true
 
 [[files]]
+file = "mods/servercore.pw.toml"
+hash = "4abaf62a0f44239cee5d5638b47307f2a9017ef499330b2d74f89080d9a09b00"
+metafile = true
+
+[[files]]
 file = "mods/shoulder-surfing-reloaded.pw.toml"
 hash = "8ef89c818a7b1993b803284318800803c2ad0a1e9329c9fd8d13e104a60a766d"
 metafile = true

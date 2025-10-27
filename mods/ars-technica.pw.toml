@@ -1,13 +1,13 @@
 name = "Ars Technica"
-filename = "ars_technica-1.21.1-2.3.0.jar"
+filename = "ars_technica-1.21.1-2.4.0-beta2.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "1f0d8123808bd4b38d031ad676577821bd645f53"
+hash = "85e924fa808dddb381073f2c9887be9a2bf1d23c"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 6825993
+file-id = 7148058
 project-id = 1096161

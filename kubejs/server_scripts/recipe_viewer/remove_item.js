@@ -101,6 +101,7 @@ RecipeViewerEvents.removeEntries('item', event => {
     // 'moreminecarts:chunkrodite',
     // 'moreminecarts:chunkrodite_block',
     // 'moreminecarts:minecart_with_chunk_loader',
+    'mynethersdelight:slices_of_bread',                 // replaced by refurbished_furniture (MrCrayfish) bread slices
     'neapolitan:milk_bottle',                           // replaced by Farmer's Delight milk bottle
     // 'nethersdelight:blackstone_furnace',
     'oritech:raw_uranium',                              // replaced by IE raw uranium

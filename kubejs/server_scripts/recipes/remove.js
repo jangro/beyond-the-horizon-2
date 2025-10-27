@@ -204,6 +204,7 @@ ServerEvents.recipes(event => {
     // 'moreminecarts:chunkrodite',
     // 'moreminecarts:chunkrodite_from_block',
     // 'moreminecarts:minecart_with_chunk_loader',
+    'mynethersdelight:slices_of_bread',                             // replaced by refurbished_furniture (MrCrayfish) bread slices
     'neapolitan:milk_bottle',
     // 'nethersdelight:blackstone_furnace',
     // 'paraglider:paraglider',

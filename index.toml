@@ -322,6 +322,10 @@ file = "kubejs/assets/bth/textures/item/honey_cake_slice.png"
 hash = "ac0981e54ecf95e87f8a1d3829e28b98a22d17061d299c785e1238d86a73826c"
 
 [[files]]
+file = "kubejs/assets/bth/textures/item/pancake_batter.png"
+hash = "9a90274bb7ea4587dad53355fe4e19e940d075f58ac90879f686f0d0c46e29f3"
+
+[[files]]
 file = "kubejs/assets/bth/textures/item/spectre_snare.png"
 hash = "96753a8dcd7c57912806d10a5faea4bcf04aaa1cc56cce49ff251f06cc8c9d22"
 
@@ -1543,7 +1547,7 @@ hash = "f8fe3bafebbdaa3250686120b3dfaacfe8bf40a9fe5b8e041111bacacfa1e91f"
 
 [[files]]
 file = "kubejs/server_scripts/recipe_viewer/remove_item.js"
-hash = "837ee18564c63bb9233d5cbef37d2f21c56d95ec8c8684a9e8bd3597608cbca5"
+hash = "f950923ddd58d7639ec795ce6b3ed18e2cc4a8d048d5f257e46999c3f1a8e80b"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/ae2.js"
@@ -1555,7 +1559,7 @@ hash = "eb94576084df0d02678d179859bb92bce6ea98e02af65dea26adae97e46500fd"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/create.js"
-hash = "aaeaa71a486e66ac33cce3ff8321e9cff1c29c5e0b07966a53d20d9a225d7eb8"
+hash = "527846e327d18bec5163e8fda32442fcabc415c5e85a5bc9f38df159a45f342c"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/createaddition.js"
@@ -1575,7 +1579,7 @@ hash = "c587e90dd49f748b0a47aab061bb27c43952bff55483a07f77558d26b8bed42b"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/food.js"
-hash = "83d2df94ee8feccc86c082f72aa862c05003f1c99e33b15544ad711dd5b784c9"
+hash = "ac66d37beef749f3f38130098e557bd690af8708b249f06c65dfe10eb66b5515"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/immersiveengineering.js"
@@ -1595,7 +1599,7 @@ hash = "c2db67a0614bfbac3dae68f4b4501b14da09017e742286c7d83b5426563d5078"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/remove.js"
-hash = "66f921b5d821ebd948c0574331f66eeb85e6f75bd959adddab92f61f9774abee"
+hash = "658452a152c4e679a7f7079d929c37a819de18aa8a085e6690c2544a23bdc8b7"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/replace.js"
@@ -1639,7 +1643,7 @@ hash = "f295ef0b04fa3a774523208127f7886371e43296ab25b61af0ce9216d7f2686c"
 
 [[files]]
 file = "kubejs/server_scripts/tags/item.js"
-hash = "7d59c8e921399d1936a485a3209ca2110a59ded9b775f0b6f9319904e412cd9b"
+hash = "62e231cd872b088a4223dc32d96cc4b672b888178329e304166fc4d49cdee764"
 
 [[files]]
 file = "kubejs/startup_scripts/fluid.js"
@@ -1647,7 +1651,7 @@ hash = "2d958392c551fab08f53058de8a4e5e0ff6231fa8fc70bd74f251f224de885eb"
 
 [[files]]
 file = "kubejs/startup_scripts/item.js"
-hash = "c2074cd0955bb4de2e1a814e55b58dfaf132f9491bdd9468006facc5a27f108c"
+hash = "6617edaef0def3e04aeb2114bfa144bb5ec696d46be617d041e114af2c0e8a7f"
 
 [[files]]
 file = "kubejs/startup_scripts/main.js"

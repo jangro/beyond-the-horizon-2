@@ -86,6 +86,10 @@ StartupEvents.registry("item", event => {
   event.create('bth:maple_cookie_dough')
     .texture('minecolonies:item/cookie_dough');
 
+  // Pancake batter (intermediate item for supplementaries' pancake)
+  event.create('bth:pancake_batter')
+    .texture('bth:item/pancake_batter');
+
   // Edible version of supplementary's pancake
   event.create('bth:pancake')
     .food(food => {

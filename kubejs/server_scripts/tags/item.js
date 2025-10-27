@@ -36,7 +36,6 @@ ServerEvents.tags('item', event => {
   event.add('bth:hamburger_bun', [
     'minecolonies:manchet_bread',
     'minecraft:bread',
-    'mynethersdelight:slices_of_bread',
     'pneumaticcraft:sourdough_bread',
     'refurbished_furniture:bread_slice',
     'refurbished_furniture:toast',

@@ -23,6 +23,13 @@ ServerEvents.recipes(event => {
       event.replaceInput({ id: recipes }, from, to);
     }
   };
+  const replaceOutputID = (recipes, from, to) => {
+    if (Array.isArray(recipes)) {
+      recipes.forEach((recipeID) => event.replaceOutput({ id: recipeID }, from, to));
+    } else {
+      event.replaceOutput({ id: recipes }, from, to);
+    }
+  };
 
   const ID_PREFIX = 'bth:foods/';
 
@@ -69,6 +76,8 @@ ServerEvents.recipes(event => {
   replaceInput('pneumaticcraft:wheat_flour', '#c:flours/wheat');
   replaceInputID('aethersdelight:gingerbread_dough', 'minecraft:wheat', '#c:flours/wheat');
   replaceInputID('farmersdelight:pie_crust', 'minecraft:wheat', '#c:flours/wheat');
+  replaceInputID('supplementaries:integration/pancake_fd', '#c:doughs/wheat', '#c:flours/wheat');
+  replaceInputID('supplementaries:integration/pancake_fd', '#c:milk', '#c:foods/milk');
 
   // Don't allow crafting from wheat -> bread directly. These items should really have a dough stage
   replaceInputID('abnormals_delight:pumpkin_bread', 'minecraft:wheat', 'minecraft:bread');
@@ -81,6 +90,11 @@ ServerEvents.recipes(event => {
 
   // Remove wheat (doesn't make sense in recipe)
   // replaceInputID('ends_delight:food/chorus_fruit_pie', 'minecraft:wheat', 'minecraft:air'); // XXX how to remove an ingredient?
+
+  // Pancake requires cooking step
+  replaceOutputID('supplementaries:integration/pancake_fd', 'supplementaries:pancake', 'bth:pancake_batter');
+  event.smelting('supplementaries:pancake', 'bth:pancake_batter').id(`${ID_PREFIX}pancake_from_uncooked`);
+  event.smoking('supplementaries:pancake', 'bth:pancake_batter').id(`${ID_PREFIX}pancake_from_uncooked_smoking`);
 
   // Limit what bread can be used for burgers
   replaceInputID('farmersdelight:hamburger', '#c:foods/bread', '#bth:hamburger_bun');
@@ -110,5 +124,27 @@ ServerEvents.recipes(event => {
   event.recipes.pneumaticcraft.pressure_chamber('#c:crops/wheat', 1.5, [{ id: 'create:wheat_flour', count: 3 }]).id(ID_PREFIX + 'pressure_chamber/wheat_flour');
   event.recipes.pneumaticcraft.explosion_crafting('#c:crops/wheat', 50, [{ id: 'create:wheat_flour', count: 1 }]).id(ID_PREFIX + 'explosion_crafting/wheat_flour');
 
+
+  if (Platform.isLoaded('refurbished_furniture')) {
+    event.custom({
+      "type": "farmersdelight:cutting",
+      "ingredients": [
+        {
+          "item": "minecraft:bread"
+        }
+      ],
+      "result": [
+        {
+          "item": {
+            "count": 6,
+            "id": "refurbished_furniture:bread_slice"
+          }
+        }
+      ],
+      "tool": {
+        "tag": "c:tools/knife"
+      }
+    }).id(`${ID_PREFIX}slicing/bread_to_bread_slices`);
+  }
 
 });

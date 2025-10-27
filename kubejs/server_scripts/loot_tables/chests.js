@@ -43,3 +43,12 @@ LootJS.lootTables(event => {
     });
 
 });
+
+
+LootJS.modifiers((event) => {
+
+  // All chalk loot was removed in remove.js, add back one type
+  event.addTableModifier('minecraft:chests/simple_dungeon')
+    .addLoot(LootEntry.of('chalk:white_chalk').randomChance(0.2));
+
+});

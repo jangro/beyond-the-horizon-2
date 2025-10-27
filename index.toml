@@ -1519,7 +1519,7 @@ hash = "cfa64c523758726296224baaab77d7431d1029468be1380d357e5da9e6156d9f"
 
 [[files]]
 file = "kubejs/server_scripts/loot_tables/chests.js"
-hash = "b71a232dc7843cdd8eaeaf956d2d49022be4ea9da4ecf4e62a94ff6b85a55018"
+hash = "3bf68550ef60a2aeb3d51f899ab8c82bb1318ad0574dac0e0bc518cc08e5a8ae"
 
 [[files]]
 file = "kubejs/server_scripts/loot_tables/coins.js"
@@ -1532,6 +1532,18 @@ hash = "43fad3040e531d80cf7ed73b22787c2c2e22807cdff89c6143ea1d62f0e30f00"
 [[files]]
 file = "kubejs/server_scripts/loot_tables/entities.js"
 hash = "c15e9ec4d6457ec9b51aa2021b367248c589930da7e1a5078a4e7c61c7f27f05"
+
+[[files]]
+file = "kubejs/server_scripts/loot_tables/remove.js"
+hash = "a6792548896aef5588273f2c0aba7e7dc76fc07a0ec502af680914d87483ee28"
+
+[[files]]
+file = "kubejs/server_scripts/loot_tables/replace.js"
+hash = "cd76a22ed2048162127a7c97757dde8bdaedeed4cf63300c0b2cf31534f4a039"
+
+[[files]]
+file = "kubejs/server_scripts/loot_tables/trades.js"
+hash = "82c55fef50cd7999e299f85d091467273885b191b1346033899cc9d31ad71060"
 
 [[files]]
 file = "kubejs/server_scripts/player_events.js"
@@ -1547,7 +1559,7 @@ hash = "f8fe3bafebbdaa3250686120b3dfaacfe8bf40a9fe5b8e041111bacacfa1e91f"
 
 [[files]]
 file = "kubejs/server_scripts/recipe_viewer/remove_item.js"
-hash = "f950923ddd58d7639ec795ce6b3ed18e2cc4a8d048d5f257e46999c3f1a8e80b"
+hash = "74fd9b80ce28a965cd54e2887f57e4581cd48f5dd9401c2e3f7ded75b24800f3"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/ae2.js"

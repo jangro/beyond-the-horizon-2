@@ -26,10 +26,14 @@ RecipeViewerEvents.removeEntries('item', event => {
     // 'cofh_core:experience',
     // 'cofh_core:honey',
     // 'cofh_core:potion',
+    'create:copper_sheet',                              // replaced by IE plate
+    'create:iron_sheet',                                // replaced by IE plate
+    'create:golden_sheet',                              // replaced by IE plate
     'create:copper_nugget',                             // replaced by IE nuggets
     'createaddition:copper_wire',                       // replaced by IE wire
     'createaddition:chocolate_cake',                    // replaced by Neapolitan chocolate cake
     'createaddition:electrum_wire',                     // replaced by IE wire
+    'createaddition:electrum_sheet',                    // replaced by IE plate
     'createaddition:iron_rod',                          // replaced by IE rod
     'createaddition:electrum_ingot',                    // replaced by IE ingots
     'createaddition:electrum_nugget',                   // replaced by IE nuggets
@@ -55,7 +59,7 @@ RecipeViewerEvents.removeEntries('item', event => {
     'enderio:silicon',                                  // replaced by Oritech silicon
     // /everycomp:bbb.*trim$/,
     'farmersdelight:wheat_dough',                       // replaced by Create dough
-    // 'farmersdelight:rope',
+    'farmersdelight:rope',                              // replaced by Supplementaries rope
     /ftbquests:.*/,
     // 'galosphere:deepslate_silver_ore',
     // 'galosphere:raw_silver',

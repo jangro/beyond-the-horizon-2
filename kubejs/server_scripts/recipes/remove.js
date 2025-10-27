@@ -31,6 +31,7 @@ ServerEvents.recipes(event => {
     // 'alexscaves:gunpowder_from_sulfur',
     'ars_nouveau:drygmy_charm',
     'ars_nouveau:whirlisprig_charm',
+    'autumnity:pancake',                                // replaced by Supplementaries pancake
     // 'botania:pure_daisy/sand',
     // 'bountiful:crafting/bountyboard',
     // 'bountiful:crafting/decree',
@@ -68,6 +69,9 @@ ServerEvents.recipes(event => {
     // 'create:smelting/ingot_uranium_compat_immersiveengineering',
     'create:smoking/bread',
     'createaddition:pressing/electrum_ingot',
+    'createaddition:filling/chocolate_cake',            // replaced by more complex crafting recipes
+    'createaddition:filling/honey_cake',                // replaced by more complex crafting recipes
+    'createaddition:filling/cake',                      // replaced by more complex crafting recipes
     // 'createdeco:pressing/coins/brass_coin',
     // 'createdeco:pressing/coins/copper_coin',
     // 'createdeco:pressing/coins/gold_coin',
@@ -97,6 +101,7 @@ ServerEvents.recipes(event => {
     'enderio:alloy_smelting/cake_base',
     'enderio:energy_conduit',
     'enderio:redstone_conduit',
+    'enderio:cake',
     // 'enderio:sag_milling/copper_ore',
     // 'enderio:sag_milling/gold',
     // 'enderio:sag_milling/gold_ore',
@@ -243,6 +248,26 @@ ServerEvents.recipes(event => {
     'v_slab_compat:immersiveengineering/storage_uranium_stonecutter',
     /wardrobe:.*backpack/,
     /woodworks:.*ladder$/,
+
+    // Cakes
+    'deep_aether:skyroot_milk_bucket_cake',
+    'aether:moa_egg_cake',
+    'aether:skyroot_milk_bucket_moa_egg_cake',
+    'neapolitan:cake',
+    'create:crafting/curiosities/cake',
+    'aether:skyroot_milk_bucket_cake',
+    'deep_aether:cake',
+    'minecraft:cake',
+    'farmersdelight:cake_from_milk_bottle',
+    'neapolitan:adzuki_cake',
+    'neapolitan:banana_cake',
+    'neapolitan:chocolate_cake',
+    'neapolitan:mint_cake',
+    'neapolitan:strawberry_cake',
+    'neapolitan:vanilla_cake',
+
+
+
   ].forEach((recipeID) => event.remove({ id: recipeID }));
 
   // Remove IE dusts that are replaced by Create crushed ores

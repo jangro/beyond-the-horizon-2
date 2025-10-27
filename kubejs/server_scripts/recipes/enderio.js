@@ -35,7 +35,7 @@ ServerEvents.recipes(event => {
   // Alloy smelting
   // alloy_smelting(inputs [list of input_with_count], output [alloy_output], energy [int], experience [double])
   //
-  eio.alloy_smelting([{ tag: 'c:flours/wheat', count: 3 }, { tag: 'c:eggs', count: 1 }], { id: 'enderio:cake_base', count: 2 }, 2000, 0.3).id(`${ID_PREFIX}alloy_smelting/cake_base`);
+  // eio.alloy_smelting([{ tag: 'c:flours/wheat', count: 3 }, { tag: 'c:eggs', count: 1 }], { id: 'enderio:cake_base', count: 2 }, 2000, 0.3).id(`${ID_PREFIX}alloy_smelting/cake_base`);
 
   //
   // Mod specific recipes

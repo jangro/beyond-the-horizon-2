@@ -49,6 +49,58 @@ StartupEvents.registry("item", event => {
     .texture('bth:item/spectre_snare')
     .tooltip(Text.translate('tooltip.bth.spectre_snare'))
     .translationKey('item.bth.spectre_snare');
+
+  // Hand whisk to make whipped cream
+  event.create('bth:hand_whisk')
+    .maxDamage(64)
+    .texture('bth:item/hand_whisk')
+    .tooltip(Text.translate('tooltip.bth.hand_whisk'))
+    .translationKey('item.bth.hand_whisk');
+
+  // Whipped cream used for cakes instead of milk
+  event.create('bth:whipped_cream')
+    .food(food => {
+      food.nutrition(2).saturation(1.0)
+    })
+    .texture('bth:item/whipped_cream')
+    .tooltip(Text.translate('tooltip.bth.whipped_cream'))
+    .translationKey('item.bth.whipped_cream');
+
+  // Honey cookie dough
+  event.create('bth:honey_cookie_dough')
+    .texture('minecolonies:item/cookie_dough');
+
+  // Sweet berry cookie dough
+  event.create('bth:sweet_berry_cookie_dough')
+    .texture('minecolonies:item/cookie_dough');
+
+  // Chorus cookie dough
+  event.create('bth:chorus_cookie_dough')
+    .texture('minecolonies:item/cookie_dough');
+
+  // Mulberry cookie dough
+  event.create('bth:mulberry_cookie_dough')
+    .texture('minecolonies:item/cookie_dough');
+
+  // Maple cookie dough
+  event.create('bth:maple_cookie_dough')
+    .texture('minecolonies:item/cookie_dough');
+
+  // Edible version of supplementary's pancake
+  event.create('bth:pancake')
+    .food(food => {
+      food.nutrition(6).saturation(1.0)
+    })
+    .texture('supplementaries:item/pancake');
+
+  // A slice of Create Addition's honey cake
+  event.create('bth:honey_cake_slice')
+    .food(food => {
+      food.nutrition(6).saturation(1.0)
+    })
+    .texture('bth:item/honey_cake_slice')
+    .translationKey('item.bth.honey_cake_slice');
+
 });
 
 // Make Terminus unbreakable here since we can't do it in the item creation event.
@@ -58,3 +110,21 @@ StartupEvents.registry("item", event => {
 //     item.maxDamage = -1;
 //   });
 // });
+
+ItemEvents.modification(event => {
+
+  [
+    'bth:honey_cake_slice',
+    'farmersdelight:cake_slice',
+    'abnormals_delight:chocolate_cake_slice',
+  ].forEach(slice => {
+    event.modify(slice, item => {
+      item.food = {
+        nutrition: 6,
+        saturation: 1.0
+      };
+    });
+  });
+
+
+});

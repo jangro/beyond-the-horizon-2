@@ -39,6 +39,15 @@ ServerEvents.recipes(event => {
     N: '#c:nuggets/iron'
   }).id(`${ID_PREFIX}spectre_snare`);
 
+  event.shaped('bth:hand_whisk', [
+    '   ',
+    ' W ',
+    'S  '
+  ], {
+    W: '#c:wires/iron',
+    S: '#c:rods/wooden',
+  }).id(`${ID_PREFIX}hand_whisk`);
+
   // event.shaped('bth:terminus', [
   //   ' D ',
   //   'SGR',
@@ -798,5 +807,88 @@ ServerEvents.recipes(event => {
     L: '#c:leathers',
     S: '#c:strings'
   }).id(`${ID_PREFIX}quiver`);
+
+  //
+  // Others
+  //
+
+  // Cakes
+  event.shaped('minecraft:cake', [
+    '   ',
+    ' W ',
+    ' B '
+  ], {
+    W: 'bth:whipped_cream',
+    B: 'createaddition:cake_base_baked'
+  }).id(`${ID_PREFIX}cake`);
+
+  event.shaped('createaddition:honey_cake', [
+    '   ',
+    ' H ',
+    ' B '
+  ], {
+    H: '#c:drinks/honey',
+    B: 'createaddition:cake_base_baked'
+  }).id(`${ID_PREFIX}honey_cake`);
+
+  event.shaped('neapolitan:chocolate_cake', [
+    ' C ',
+    ' W ',
+    ' B '
+  ], {
+    C: '#c:foods/chocolate_bar',
+    W: 'bth:whipped_cream',
+    B: 'createaddition:cake_base_baked'
+  }).id(`${ID_PREFIX}chocolate_cake`);
+
+  event.shaped('neapolitan:adzuki_cake', [
+    ' T ',
+    ' W ',
+    ' B '
+  ], {
+    T: 'neapolitan:roasted_adzuki_beans',
+    W: 'bth:whipped_cream',
+    B: 'createaddition:cake_base_baked'
+  }).id(`${ID_PREFIX}adzuki_cake`);
+
+  event.shaped('neapolitan:banana_cake', [
+    ' T ',
+    ' W ',
+    ' B '
+  ], {
+    T: 'neapolitan:banana',
+    W: 'bth:whipped_cream',
+    B: 'createaddition:cake_base_baked'
+  }).id(`${ID_PREFIX}banana_cake`);
+
+  event.shaped('neapolitan:mint_cake', [
+    ' T ',
+    ' W ',
+    ' B '
+  ], {
+    T: 'neapolitan:mint_leaves',
+    W: 'bth:whipped_cream',
+    B: 'createaddition:cake_base_baked'
+  }).id(`${ID_PREFIX}mint_cake`);
+
+  event.shaped('neapolitan:strawberry_cake', [
+    ' T ',
+    ' W ',
+    ' B '
+  ], {
+    T: 'neapolitan:strawberries',
+    W: 'bth:whipped_cream',
+    B: 'createaddition:cake_base_baked'
+  }).id(`${ID_PREFIX}strawberry_cake`);
+
+  event.shaped('neapolitan:vanilla_cake', [
+    ' T ',
+    ' W ',
+    ' B '
+  ], {
+    T: 'neapolitan:dried_vanilla_pods',
+    W: 'bth:whipped_cream',
+    B: 'createaddition:cake_base_baked'
+  }).id(`${ID_PREFIX}vanilla_cake`);
 
 });

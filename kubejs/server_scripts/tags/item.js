@@ -33,15 +33,48 @@ ServerEvents.tags('item', event => {
     'minecraft:honeycomb',
   ]);
 
+  event.add('bth:hamburger_bun', [
+    'minecolonies:manchet_bread',
+    'minecraft:bread',
+    'mynethersdelight:slices_of_bread',
+    'pneumaticcraft:sourdough_bread',
+    'refurbished_furniture:bread_slice',
+    'refurbished_furniture:toast',
+  ]);
+
+  // Remove SOL Valheim tags from cakes - we have our own cake eating mechanic
+  event.remove('sol_valheim_reforged:cakes', [
+    'minecraft:cake',
+    'createaddition:honey_cake',
+  ]);
+  event.remove('sol_valheim_reforged:sliceable_food', [
+    'minecraft:cake',
+    'createaddition:honey_cake',
+  ]);
+
+  // Remove bread tag from sandwich like items that doesn't make sense to use as bread in recipes
+  event.remove('c:foods/bread', [
+    'minecolonies:milky_bread',
+    'minecolonies:sugary_bread',
+    'minecolonies:golden_bread',
+    'minecolonies:stew_trencher',
+    'minecolonies:stuffed_pita',
+    'minecolonies:chorus_bread',
+    'minecolonies:hand_pie',
+    'minecolonies:muffin',
+    'neapolitan:adzuki_bun',
+    'upgrade_aquatic:mulberry_bread',
+  ]);
+
+  event.add('bth:can_grind_flour', [
+    'bth:coconut_maul',
+    'immersiveengineering:hammer',
+  ]);
+
   // event.add('bth:ingots/steel', [
   //   'immersiveengineering:ingot_steel',
   //   'enderio:dark_steel_ingot',
   // ]);
-
-  event.add('c:nuggets/arcane_gold', [
-    'eidolon_repraised:arcane_gold_nugget',
-    'forbidden_arcanus:deorum_nugget',
-  ]);
 
   event.add('bth:mechanical_soul', [
     'advancedperipherals:weak_automata_core',
@@ -94,7 +127,19 @@ ServerEvents.tags('item', event => {
     'tiered:weaponsmiths_hammer',
   ]);
 
-  // Neoforge Tags
+  // Neoforge tags
+  event.add('c:foods/chocolate_bar', [
+    'create:bar_of_chocolate',
+  ]);
+
+  event.add('c:bottles/milk', [
+    'farmersdelight:milk_bottle',
+  ]);
+
+  event.add('c:crops/wheat', [
+    'minecolonies:durum',
+  ]);
+
   event.add('c:doughs', [
     'farmersdelight:wheat_dough',
     'minecolonies:bread_dough',
@@ -116,6 +161,11 @@ ServerEvents.tags('item', event => {
     event.add(`c:dusts`, `create:crushed_raw_${material}`);
     event.add(`c:dusts/${material}`, `create:crushed_raw_${material}`);
   });
+
+  event.add('c:nuggets/arcane_gold', [
+    'eidolon_repraised:arcane_gold_nugget',
+    'forbidden_arcanus:deorum_nugget',
+  ]);
 
   // Prefer Oritech silicon over other mod silicons (remove tag so recipes with tags for output don't pick them).
   event.remove('c:silicon', 'ae2:silicon');

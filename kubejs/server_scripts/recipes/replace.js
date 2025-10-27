@@ -87,11 +87,6 @@ ServerEvents.recipes(event => {
   replaceInputID('eidolon_repraised:candle', '#c:string', '#c:strings'); // Fix bug in mod
   replaceInputID('supplementaries:soap', 'minecraft:porkchop', ['#bth:candle_material', 'minecraft:porkchop']);
 
-  // Dough Compatibility
-  replaceInput('create:dough', '#c:dough/wheat');
-  replaceInput('farmersdelight:wheat_dough', '#c:dough/wheat');
-  replaceInput('minecolonies:bread_dough', '#c:dough/wheat');
-
   // Dust Compatibility
   replaceInput('eidolon_repraised:sulfur', '#c:dusts/sulfur');
   replaceInput('immersiveengineering:dust_sulfur', '#c:dusts/sulfur');
@@ -121,10 +116,6 @@ ServerEvents.recipes(event => {
 
   // Fibre Compatibility
   replaceInputID('immersiveengineering:crafting/hemp_fabric', 'immersiveengineering:hemp_fiber', ['immersiveengineering:hemp_fiber', 'supplementaries:flax']);
-
-  // Flour Compatibility
-  replaceInput('create:wheat_flour', '#c:flour/wheat');
-  replaceInput('pneumaticcraft:wheat_flour', '#c:flour/wheat');
 
   // Glass Compatibility
   replaceInputID([
@@ -355,10 +346,5 @@ ServerEvents.recipes(event => {
   // replaceInputID('quark:building/crafting/vertslabs/tuff_vertical_slab', 'quark:tuff_slab', 'copperandtuffbackport:tuff_slab');
 
 
-  // test replace crushing and milling outputs
-  event.replaceOutput({},'minecraft:dirt', 'minecraft:blue_wool');
-  event.replaceInput({},'minecraft:mud', 'minecraft:red_wool');
-  // test replace sawing output
-  // event.replaceOutput({},'minecraft:oak_sign', 'minecraft:red_wool');
 
 });

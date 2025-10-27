@@ -20,9 +20,19 @@ ServerEvents.recipes(event => {
   event.shapeless('minecraft:white_dye', 'ribbits:swamp_daisy').id(`${ID_PREFIX}white_dye_from_swamp_daisy`);
   event.shapeless('minecraft:yellow_dye', 'forbidden_arcanus:yellow_orchid').id(`${ID_PREFIX}yellow_dye_from_yellow_orchid`);
 
+  // Cakes
+  event.shapeless('createaddition:cake_base', ['#c:eggs', '2x minecraft:sugar', '#c:doughs/wheat']).id(`${ID_PREFIX}cake_base`)
+  // event.shapeless('minecraft:cake', ['createaddition:cake_base_baked', '#c:foods/milk']).id(`${ID_PREFIX}cake_from_cake_base`);
+  // event.shapeless('createaddition:honey_cake', ['createaddition:cake_base_baked', '#c:drinks/honey']).id(`${ID_PREFIX}honey_cake_from_cake_base`);
+  // event.shapeless('neapolitan:vanilla_cake', ['createaddition:cake_base_baked', '#c:milk', 'neapolitan:dried_vanilla_pods']).id(`${ID_PREFIX}vanilla_cake_from_cake_base`);
+  // event.shapeless('neapolitan:chocolate_cake', ['createaddition:cake_base_baked', '#c:milk', 'neapolitan:chocolate_bar']).id(`${ID_PREFIX}chocolate_cake_from_cake_base`);
+  // event.shapeless('neapolitan:strawberry_cake', ['createaddition:cake_base_baked', '#c:milk', '#c:foods/strawberry']).id(`${ID_PREFIX}strawberry_cake_from_cake_base`);
+  // event.shapeless('neapolitan:banana_cake', ['createaddition:cake_base_baked', '#c:milk', '#c:foods/banana']).id(`${ID_PREFIX}banana_cake_from_cake_base`);
+  // event.shapeless('neapolitan:mint_cake', ['createaddition:cake_base_baked', '#c:milk', 'neapolitan:mint_leaves']).id(`${ID_PREFIX}mint_cake_from_cake_base`);
+  // event.shapeless('neapolitan:adzuki_cake', ['createaddition:cake_base_baked', '#c:milk', 'neapolitan:roasted_adzuki_beans']).id(`${ID_PREFIX}adzuki_cake_from_cake_base`);
+
   // Create
   event.shapeless('create:brass_sheet', ['#c:ingots/brass', 'immersiveengineering:hammer']).id(`${ID_PREFIX}hammer/brass_sheet`);
-  event.shapeless('createaddition:zinc_sheet', ['#c:ingots/zinc', 'immersiveengineering:hammer']).id(`${ID_PREFIX}hammer/zinc_sheet`);
   // event.shapeless('createdeco:andesite_sheet', ['create:andesite_alloy', 'immersiveengineering:hammer']).id(`${ID_PREFIX}hammer/andesite_sheet`);
   // event.shapeless('createdeco:industrial_iron_sheet', ['createdeco:industrial_iron_ingot', 'immersiveengineering:hammer']).id(`${ID_PREFIX}hammer/industrial_iron_sheet`);
   // event.shapeless('createdeco:netherite_sheet', ['#c:ingots/netherite', 'immersiveengineering:hammer']).id(`${ID_PREFIX}hammer/netherite_sheet`);
@@ -30,6 +40,7 @@ ServerEvents.recipes(event => {
   // Create Crafts & Additions
   event.shapeless('createaddition:gold_wire', ['#c:plates/gold', 'immersiveengineering:wirecutter']).id(`${ID_PREFIX}cutter/gold_wire`);
   event.shapeless('createaddition:iron_wire', ['#c:plates/iron', 'immersiveengineering:wirecutter']).id(`${ID_PREFIX}cutter/iron_wire`);
+  event.shapeless('createaddition:zinc_sheet', ['#c:ingots/zinc', 'immersiveengineering:hammer']).id(`${ID_PREFIX}hammer/zinc_sheet`);
 
   // Farmer's Delight
   event.shapeless('farmersdelight:organic_compost', [

@@ -16,6 +16,7 @@ RecipeViewerEvents.removeEntries('item', event => {
     'ae2:facade',
     'ae2:silicon',                                      // replaced by oritech silicon
     'aether:aether_portal_frame',
+    'autumnity:pancake',                                // replaced by Supplementaries pancake
     // 'alexscaves:sulfur_dust',
     // 'bbb:rope',
     // 'bountiful:decree',
@@ -27,7 +28,7 @@ RecipeViewerEvents.removeEntries('item', event => {
     // 'cofh_core:potion',
     'create:copper_nugget',                             // replaced by IE nuggets
     'createaddition:copper_wire',                       // replaced by IE wire
-    // 'createaddition:chocolate_cake',
+    'createaddition:chocolate_cake',                    // replaced by Neapolitan chocolate cake
     'createaddition:electrum_wire',                     // replaced by IE wire
     'createaddition:iron_rod',                          // replaced by IE rod
     'createaddition:electrum_ingot',                    // replaced by IE ingots
@@ -43,15 +44,17 @@ RecipeViewerEvents.removeEntries('item', event => {
     'eidolon_repraised:silver_ingot',                   // replaced by IE ingots
     'eidolon_repraised:lead_nugget',                    // replaced by IE nuggets
     'eidolon_repraised:silver_nugget',                  // replaced by IE nuggets
-    'enderio:flour',                                    // replaced by create wheat flour
+    'enderio:flour',                                    // replaced by Create wheat flour
+    'enderio:cake_base',                                // replaced by Create Addition's cake base
     // 'enderio:powdered_copper',
     // 'enderio:powdered_gold',
     // 'enderio:powdered_iron',
-    'enderio:powdered_coal',                            // replaced by oritech coal dust
-    'enderio:powdered_quartz',                          // replaced by oritech quartz dust
-    'enderio:powdered_obsidian',                        // replaced by create obsidian dust
-    'enderio:silicon',                                  // replaced by oritech silicon
+    'enderio:powdered_coal',                            // replaced by Oritech coal dust
+    'enderio:powdered_quartz',                          // replaced by Oritech quartz dust
+    'enderio:powdered_obsidian',                        // replaced by Create obsidian dust
+    'enderio:silicon',                                  // replaced by Oritech silicon
     // /everycomp:bbb.*trim$/,
+    'farmersdelight:wheat_dough',                       // replaced by Create dough
     // 'farmersdelight:rope',
     /ftbquests:.*/,
     // 'galosphere:deepslate_silver_ore',
@@ -122,6 +125,7 @@ RecipeViewerEvents.removeEntries('item', event => {
     // 'paraglider:anti_vessel',
     // 'paraglider:essence',
     'pneumaticcraft:copper_nugget',                     // replaced by IE nuggets
+    'pneumaticcraft:wheat_flour',                       // replaced by Create wheat flour
     // /paraglider:.*statue.*/,
     // /perfectplushies:.*/,
     /plushie_buddies:.*/,

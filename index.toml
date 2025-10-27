@@ -2222,7 +2222,7 @@ metafile = true
 
 [[files]]
 file = "mods/every-compat.pw.toml"
-hash = "057e3875aefc19954cc4c2c46769cc0f9df87817e6633f9a1384dd28190f315c"
+hash = "b21faec70d84d3bdc48a01219fe15b0be2ac70bd8b68ac5e1211ad9cbfae7c2b"
 metafile = true
 
 [[files]]

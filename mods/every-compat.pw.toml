@@ -1,7 +1,6 @@
 name = "Every Compat (Wood Good)"
 filename = "everycomp-1.21-2.11.9-neoforge.jar"
 side = "both"
-pin = true
 
 [download]
 hash-format = "sha1"

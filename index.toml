@@ -1768,7 +1768,7 @@ metafile = true
 
 [[files]]
 file = "mods/ars-elemental.pw.toml"
-hash = "5c489381e4d58aa8a13bd422e3795846efcd8253317c128b37750e495e38bd2e"
+hash = "52c9554b3aab799a3b0f691fa5b8df3b0bfa3aeeedd0003179df834a225710aa"
 metafile = true
 
 [[files]]
@@ -1783,7 +1783,7 @@ metafile = true
 
 [[files]]
 file = "mods/ars-technica.pw.toml"
-hash = "3e9eb1c790dcb9fca0b97548939bce8fa215560b90f0a41adacb0bbb24dc8b4c"
+hash = "ec7e05ebccc0d104928fb97e7ae9ce68e62a74106d53a1ecc770b33d5f3d8e80"
 metafile = true
 
 [[files]]
@@ -1828,7 +1828,7 @@ metafile = true
 
 [[files]]
 file = "mods/better-compatibility-checker.pw.toml"
-hash = "259b74d2a54196605bb40b567b3aedfe59317fa5173ef5e8dab156e8b1ffb424"
+hash = "887accac20ee924c569f880c0ee0eee3307499062dc14199da3fb91abbfb5eea"
 metafile = true
 
 [[files]]
@@ -1863,7 +1863,7 @@ metafile = true
 
 [[files]]
 file = "mods/bookshelf.pw.toml"
-hash = "7b88b772827dd3b80d55023a591508aea57f246abb49003bf3ed3f7bf0c2fec0"
+hash = "bb9412b0160a83a06da8c80d5a802630dbb1a64f2961005043c4caa4e454200f"
 metafile = true
 
 [[files]]
@@ -1873,7 +1873,7 @@ metafile = true
 
 [[files]]
 file = "mods/c2me.pw.toml"
-hash = "020c67fc485c7afe5611694120da4498316c49c82bdee44e66221daf1b11368a"
+hash = "3216e804eacb34555f80d50ee3f36f8c9865109558e601baf4d4658d85101ecc"
 metafile = true
 
 [[files]]
@@ -2042,7 +2042,7 @@ metafile = true
 
 [[files]]
 file = "mods/createaddition.pw.toml"
-hash = "28f410bd2b2ccdd07d537c317d33a755eb86fdacfb90ce2843abb8ce7dbab834"
+hash = "1f45e0960bc4a66c473cd3d331121b5f463e47561acea4c050e852d042ed000f"
 metafile = true
 
 [[files]]
@@ -2078,6 +2078,11 @@ metafile = true
 [[files]]
 file = "mods/curious-armor-stands.pw.toml"
 hash = "dcc2615adce2babd45d4a14720fd918fb0dec3422e59d00d50ef800205632014"
+metafile = true
+
+[[files]]
+file = "mods/cyanide.pw.toml"
+hash = "5dc1d489ff26e602c1816d0f4d41817fca10d2de0be4a6525bcb605dc47bc5d0"
 metafile = true
 
 [[files]]
@@ -2132,7 +2137,7 @@ metafile = true
 
 [[files]]
 file = "mods/dungeons-delight.pw.toml"
-hash = "878eb007186ae76b8261b494b12301dc7a3c671349775e524c8cdc3fa22cbca1"
+hash = "20525a9d8c4491f25693966052a0d41d73f4a243f9e180bf3cab9cbfedbcb916"
 metafile = true
 
 [[files]]
@@ -2222,7 +2227,7 @@ metafile = true
 
 [[files]]
 file = "mods/every-compat.pw.toml"
-hash = "a53f329d1b09c1759221e7a005ce46ffea0fa43a060d7ee6364ec981f0bdf0e0"
+hash = "000295c92ad787ccfaf85a9e133c2ecf7ebb9f4258501b57cbcf476f1563607e"
 metafile = true
 
 [[files]]
@@ -2232,7 +2237,7 @@ metafile = true
 
 [[files]]
 file = "mods/exposure.pw.toml"
-hash = "a8317ab28b8d15291eb0ee51866574c81d1b41848fc04f5e22db2101038c4d35"
+hash = "f6044d74e54c1da9f85d63874f44cfd8695ddc20b257d364d20da5ff95b41ab8"
 metafile = true
 
 [[files]]
@@ -2287,7 +2292,7 @@ metafile = true
 
 [[files]]
 file = "mods/framework.pw.toml"
-hash = "11bc4d2951f2bbb0dd17c77534f05c909987e19203398558713bc515f441d5a2"
+hash = "3944c175d3409b2db40630cdc0be1cad181009cc3c20c925328cb9b04bea0108"
 metafile = true
 
 [[files]]
@@ -2302,7 +2307,7 @@ metafile = true
 
 [[files]]
 file = "mods/ftb-library-forge.pw.toml"
-hash = "eb91dc8a79ecc469d73d567e7ebcd80af4bd70b1b58217769111d3bf08bc669c"
+hash = "ba57e7495c6d4a0fc1b9d365a8d55552071d49a247bb38114d6612f8d9bc2170"
 metafile = true
 
 [[files]]
@@ -2312,7 +2317,7 @@ metafile = true
 
 [[files]]
 file = "mods/ftb-teams-forge.pw.toml"
-hash = "534a7e788b7d5314053261aafec709095f5c5bd202ac21283c58f420474c1365"
+hash = "ec32ed4418310d282eedba77f3e08898037e2a1b7ed904ba9d00971d0aa4b4c9"
 metafile = true
 
 [[files]]
@@ -2567,7 +2572,7 @@ metafile = true
 
 [[files]]
 file = "mods/kubejs-create.pw.toml"
-hash = "3762c12f3ec0324a46e685adc7d2ffea1545dd7c3a19ef372ef7dc73e6bb44e5"
+hash = "c71e9327bf66b970607c871b2d10aa6c7768cbd9e08860f9897bf0d91b66bed6"
 metafile = true
 
 [[files]]
@@ -2697,7 +2702,7 @@ metafile = true
 
 [[files]]
 file = "mods/minecolonies.pw.toml"
-hash = "1654a3f1aab73706ba6c2584cbf865153f0e7abe0b6d1fe74888613f34d3c9d7"
+hash = "2785812785f90a9a4e1c7fc43e00d824056cd583c612c8c04f2dd8fb5616788a"
 metafile = true
 
 [[files]]
@@ -2772,7 +2777,7 @@ metafile = true
 
 [[files]]
 file = "mods/oh-the-biomes-weve-gone.pw.toml"
-hash = "c5c976ed2631dcf28ee9ca6ae601bc12fa993942e4b2a3b9334b23dd9dedeba8"
+hash = "499381231a6c3709489badddd9b125d1f8d6772ab8d9cc9319d8a9841b287cb7"
 metafile = true
 
 [[files]]
@@ -2962,7 +2967,7 @@ metafile = true
 
 [[files]]
 file = "mods/selene.pw.toml"
-hash = "17c9ece9ddd4303a323526b0f98e997c38e7a07797954ac81d3e48b169122695"
+hash = "dbea6c8c7db56125763c0e203d11720416b27da14fa28644f93427d7e9c62e2d"
 metafile = true
 
 [[files]]
@@ -2977,7 +2982,7 @@ metafile = true
 
 [[files]]
 file = "mods/simple-backups.pw.toml"
-hash = "243033139e54f4ed31c168d45ac50e1ec9085fd88d9cc1f3949f52300525a02a"
+hash = "39d77ec4bc9b07b54cbac553b06182e6c95567ba351138c1a761cd2081043797"
 metafile = true
 
 [[files]]
@@ -3002,7 +3007,7 @@ metafile = true
 
 [[files]]
 file = "mods/slice-and-dice.pw.toml"
-hash = "ba8dc70508454b394f6cfc8f9125fbae0a877649f5ba57cc1f7b2e3951704f51"
+hash = "97658372a06b324c2121668e350cd27b02428db882f7f4943182aeef3f4cca75"
 metafile = true
 
 [[files]]
@@ -3042,17 +3047,17 @@ metafile = true
 
 [[files]]
 file = "mods/sophisticated-backpacks-create-integration.pw.toml"
-hash = "b49c835b8b8b3b126138d255c42432657ff44662d3ab09f8fd09157cb9bb1d8a"
+hash = "c966ea02eb59f31dcaeaebe9d96c9b232a2fb16d2fe971729350e567a4ff1bd7"
 metafile = true
 
 [[files]]
 file = "mods/sophisticated-backpacks.pw.toml"
-hash = "e318052a2efc329c74e6e058207addd8b7115d2410c53693d10e80a42b4433d7"
+hash = "1cbd52b71cc29b7898cab67367e4a8885cf7e6dcd202521e0884f9025eaab09d"
 metafile = true
 
 [[files]]
 file = "mods/sophisticated-core.pw.toml"
-hash = "0b87c778b6f890d85640f51ae00eb1018bb6890df6d57b8443271a07639e17e8"
+hash = "1595373ae256fc324d04550d0bc07409a4e140acb38e7766f2757f4163a9579d"
 metafile = true
 
 [[files]]
@@ -3142,7 +3147,7 @@ metafile = true
 
 [[files]]
 file = "mods/the-bumblezone-forge.pw.toml"
-hash = "a533c693c6848f1504282c7fb92a87bdfad389a12080a5d721bdfdbb8f4fda88"
+hash = "2aeb70f41409537fd069efee924a0bda62d5eafd907269696dc5691dc6b34170"
 metafile = true
 
 [[files]]

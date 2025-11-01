@@ -3152,7 +3152,7 @@ metafile = true
 
 [[files]]
 file = "mods/tiered-forge.pw.toml"
-hash = "8f4f6ca9d7dcc8e36bdfaf23c4b97bb59d87f66a4e6361cf2f688c023728df49"
+hash = "c1e91525d0bcdee35355db09074b2fd0ba91a4b79365377eead00fe4f327e570"
 metafile = true
 
 [[files]]
@@ -3197,7 +3197,7 @@ metafile = true
 
 [[files]]
 file = "mods/unionlib.pw.toml"
-hash = "527e95fa4efff68122cbffbf6cb3a338da10f73407e2d22fb7ba6d22dd0a7cd3"
+hash = "7d32d69d63d9487b800fe4af3617c901feb31fbc6920af6f30a7a286de282beb"
 metafile = true
 
 [[files]]

@@ -107,7 +107,7 @@ hash = "8d857da6d2545969c2cbb09e234829c1948bdda1dd3a6040fd0936a79ff7bb38"
 
 [[files]]
 file = "config/bcc-common.toml"
-hash = "bb9303c0d724b90e43587e285e02acb292b61867c8df6c792b4032333fb159db"
+hash = "9869c2956b631adc8f90959b23c78a953b693b8757a781aeafaf3bb674d63a0c"
 
 [[files]]
 file = "config/betterdays-common.toml"
@@ -3151,11 +3151,6 @@ hash = "2aeb70f41409537fd069efee924a0bda62d5eafd907269696dc5691dc6b34170"
 metafile = true
 
 [[files]]
-file = "mods/tiered-forge.pw.toml"
-hash = "c1e91525d0bcdee35355db09074b2fd0ba91a4b79365377eead00fe4f327e570"
-metafile = true
-
-[[files]]
 file = "mods/toast-control.pw.toml"
 hash = "29d1e04030fcbdad4ee91eb9bc0b0d6b8907ffe967c9bd0543e8bb7e3dab5282"
 metafile = true
@@ -3193,11 +3188,6 @@ metafile = true
 [[files]]
 file = "mods/underwater-village.pw.toml"
 hash = "c01c1d21a521b060c536eb8b886c3087ca7d7527eede2d378ffe2fcf5db67e8c"
-metafile = true
-
-[[files]]
-file = "mods/unionlib.pw.toml"
-hash = "7d32d69d63d9487b800fe4af3617c901feb31fbc6920af6f30a7a286de282beb"
 metafile = true
 
 [[files]]

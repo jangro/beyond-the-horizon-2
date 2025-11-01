@@ -119,11 +119,11 @@ hash = "c7eb4f8d5afcb75461dbf82bf07486fdb8d4b9f0f49257ed191d2eff3f1744fe"
 
 [[files]]
 file = "config/biome_replacer.properties"
-hash = "e86fa0309c0b110bcc0b2e95429113699c84aefa3481a600c7c192dcf7dfaa9a"
+hash = "3f695add3c0c8fb259f74a78165af5b1a4c9690ad4911eebae4e08a864566ea6"
 
 [[files]]
 file = "config/biomeswevegone/world_generation.json5"
-hash = "fb8b71f0a4c33dff5446c2f2ceac726c873767d4dc653b917122b75f5d8012be"
+hash = "a423f7bfdebe24103bcd4ece5bde8c34d9516cde8aebb0034522412f1d1f148e"
 
 [[files]]
 file = "config/carryon-common.toml"
@@ -875,7 +875,7 @@ hash = "71221c24a7df799cd29939007afc3c8d33becffca44a5a46cf943e44be405f98"
 
 [[files]]
 file = "kubejs/data/enhancedcelestials/enhancedcelestials/lunar/event/blood_moon.json"
-hash = "e371bf0771a3132a73b33187b64d76a0c05848aca6af690724c5ab779aedf02e"
+hash = "ed90e6355c7b8f7b34acd5495414733de08e38d9f5148612ed2a127f042f990c"
 
 [[files]]
 file = "kubejs/data/enhancedcelestials/enhancedcelestials/lunar/event/blue_moon.json"
@@ -891,7 +891,7 @@ hash = "efb7056f1aa4dadf3f3dbea95b2ce0f65530bf337f4ccd3f085ff5e26f23c780"
 
 [[files]]
 file = "kubejs/data/enhancedcelestials/enhancedcelestials/lunar/event/super_blood_moon.json"
-hash = "9ac9f4bd4005378d9dd1021e94b6ce71c0684dfb746df3a252b94fd45cb7b690"
+hash = "1a45592a332d7bce60e999535b4ebd3cb7d91b14fd3a2174f9f61866a51843c6"
 
 [[files]]
 file = "kubejs/data/enhancedcelestials/enhancedcelestials/lunar/event/super_blue_moon.json"
@@ -1968,6 +1968,11 @@ metafile = true
 [[files]]
 file = "mods/colorful-hearts.pw.toml"
 hash = "57f8e906e0ec4815d1aceb9df17ccb026d74337aa6964737c0757eaf8ad86364"
+metafile = true
+
+[[files]]
+file = "mods/comforts.pw.toml"
+hash = "531d3dd3deb7479e3fd1496a7c2db8606bc7affa33fc57eccddc9904c0ac559e"
 metafile = true
 
 [[files]]
@@ -3228,6 +3233,11 @@ metafile = true
 [[files]]
 file = "mods/villages-and-pillages.pw.toml"
 hash = "a30bd487a41b94bc42ab4572f469fc9997d80131f1ea6f3c95d7ade9514626eb"
+metafile = true
+
+[[files]]
+file = "mods/vista.pw.toml"
+hash = "ab572cf065443f0e7e121a567a2a372633204d8cb2dcc560f505f21ed7b3559b"
 metafile = true
 
 [[files]]

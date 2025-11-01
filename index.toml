@@ -3116,6 +3116,11 @@ hash = "8f857c83c1097e6a0538f71979fb5271f94299a87cbdc68d2a197b57fc101970"
 metafile = true
 
 [[files]]
+file = "mods/stylecolonies.pw.toml"
+hash = "eab08b2dbb1f940da66339c914bee02f24d15419d6345f9bee436755170409c8"
+metafile = true
+
+[[files]]
 file = "mods/supermartijn642s-config-lib.pw.toml"
 hash = "2e42245826ce70d4ad673addb0e5244da388841f1484f03ee5a9426ee33b2229"
 metafile = true

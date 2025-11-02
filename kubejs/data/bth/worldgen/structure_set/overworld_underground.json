@@ -29,6 +29,10 @@
       "weight": 3
     },
     {
+      "structure": "betterdungeons:skeleton_dungeon",
+      "weight": 3
+    },
+    {
       "structure": "betterdungeons:zombie_dungeon",
       "weight": 3
     },

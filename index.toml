@@ -567,11 +567,11 @@ hash = "0c152eda47200834b1f71d9273deaaebb46a614793c2eabf889c780e4c71529f"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/overworld.json"
-hash = "78898edeba6450b15962890b13f6f22b1a3e7517087c59fe49f7c1765d0e1126"
+hash = "91c4be48a04de70a10eb25197ab093c12e93ebd6666ce4e99bbf77cc39f686c4"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/overworld_underground.json"
-hash = "e02fb558a8f2f6154dfb041dc1445ad01acea462a220a99f34263d361a4bf68c"
+hash = "f719ebb8c8e845c8edff6352a9e745578066de2acf71cb2484b0e00436119ceb"
 
 [[files]]
 file = "kubejs/data/bth_structures/loot_table/archeology/dw20.json"

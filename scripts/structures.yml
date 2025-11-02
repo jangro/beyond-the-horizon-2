@@ -58,7 +58,6 @@ overworld:
       - ars_nouveau:hunter_wilden_den
       - ars_nouveau:stalker_wilden_den
       - autumnity:maple_hut
-      - betterdungeons:skeleton_dungeon
       - biomeswevegone:aspen_manor_1
       - biomeswevegone:aspen_manor_2
       - biomeswevegone:bog_trial
@@ -260,6 +259,7 @@ overworld_underground:
       - valhelsia_structures:deep_spawner_room
     common:
       - betterdungeons:spider_dungeon
+      - betterdungeons:skeleton_dungeon
       - betterdungeons:zombie_dungeon
       - terralith:underground/frosted_dungeon
       - terralith:underground/giant_bee_hive

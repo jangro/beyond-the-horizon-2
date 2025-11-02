@@ -19,6 +19,8 @@ ServerEvents.recipes(event => {
   event.shapeless('minecraft:slime_ball', ['autumnity:snail_goo', '#c:dyes/lime']).id(`${ID_PREFIX}slime_ball_from_snail_goo_and_lime_dye`);
   event.shapeless('minecraft:white_dye', 'ribbits:swamp_daisy').id(`${ID_PREFIX}white_dye_from_swamp_daisy`);
   event.shapeless('minecraft:yellow_dye', 'forbidden_arcanus:yellow_orchid').id(`${ID_PREFIX}yellow_dye_from_yellow_orchid`);
+  event.shapeless('2x minecraft:green_dye', ['#c:dyes/yellow', '#c:dyes/blue']).id(`${ID_PREFIX}green_dye_from_yellow_blue`);
+  event.shapeless('3x minecraft:brown_dye', ['#c:dyes/yellow', '#c:dyes/blue', '#c:dyes/red']).id(`${ID_PREFIX}brown_dye_from_yellow_blue_red`);
 
   // Cakes
   event.shapeless('createaddition:cake_base', ['#c:eggs', '2x minecraft:sugar', '#c:doughs/wheat']).id(`${ID_PREFIX}cake_base`)

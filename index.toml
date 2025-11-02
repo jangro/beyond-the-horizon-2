@@ -123,7 +123,7 @@ hash = "e86fa0309c0b110bcc0b2e95429113699c84aefa3481a600c7c192dcf7dfaa9a"
 
 [[files]]
 file = "config/biomeswevegone/world_generation.json5"
-hash = "a423f7bfdebe24103bcd4ece5bde8c34d9516cde8aebb0034522412f1d1f148e"
+hash = "fb8b71f0a4c33dff5446c2f2ceac726c873767d4dc653b917122b75f5d8012be"
 
 [[files]]
 file = "config/carryon-common.toml"

@@ -31,7 +31,7 @@
   "SkyLight": 0,
   "MoonPhase": 0,
   "Difficulty": 0,
-  "DisabledUnderBloodmoon": true,
+  "DisabledUnderBloodmoon": false,
   "DisabledWhenSunny": false,
   "DisabledWhenRaining": false,
   "DisabledWhenThundering": false,

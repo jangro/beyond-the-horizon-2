@@ -25,10 +25,6 @@
       "weight": 20
     },
     {
-      "structure": "betterdungeons:skeleton_dungeon",
-      "weight": 3
-    },
-    {
       "structure": "betterdungeons:spider_dungeon",
       "weight": 3
     },

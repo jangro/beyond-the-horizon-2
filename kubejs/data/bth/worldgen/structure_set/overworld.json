@@ -109,6 +109,10 @@
       "weight": 4
     },
     {
+      "structure": "betterdungeons:skeleton_dungeon",
+      "weight": 4
+    },
+    {
       "structure": "biomeswevegone:aspen_manor_1",
       "weight": 4
     },

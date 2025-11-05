@@ -243,11 +243,23 @@ hash = "fe338d802ead8dd55736b531f0f995ae01c1fd4cb4434f13cef2e9b0149e9933"
 
 [[files]]
 file = "config/lightmanscurrency-common.txt"
-hash = "a796f680e418dd49531985eaa3a1483cee45855e12ab1169feb195dcdc331ff4"
+hash = "65e252f81c5cdc4798e0ee19c828e4bd6c1019cefcec5f71e960ff3133c3ef57"
 
 [[files]]
 file = "config/lightmanscurrency-server.txt"
-hash = "4d7eb0454b26293aaece93e81916bd3bae32185cc7934c90939039f44de9813c"
+hash = "2b6e6738fb680659b4f58889b9d83b21848943e85cdb24877cb9f7b9ee2cf28b"
+
+[[files]]
+file = "config/lightmanscurrency/MasterCoinList.json"
+hash = "9b87091fcfe639895c847f2807363ead9010850fb1681f6bb7b80eba7a278f85"
+
+[[files]]
+file = "config/lightmanscurrency/PersistentTraders.json"
+hash = "95e8f6a7f8690592aef9cd84ce5d9b10ccd245ccf8e8e8ed5701c3aff7ca9fb8"
+
+[[files]]
+file = "config/lightmanscurrency/SeasonalEvents.json"
+hash = "6511a36f46ffe5a8243e78aeb83619f3dd56356b90e99ea53c5d4024fe95bccb"
 
 [[files]]
 file = "config/memorysettings.json"
@@ -291,7 +303,7 @@ hash = "989f3737ae4621b8ff6730bce4cbeeee756921e7e510e0c281c8a350501d98af"
 
 [[files]]
 file = "kubejs/assets/bth/lang/en_us.json"
-hash = "31c4692e7174a4f174c83d5683606c41c35944975f6c01bed169b76c6f4d51b2"
+hash = "b336feca9effe73d76fab1286cb26726eb7ea436424cfe2f0d362e072545ebdc"
 
 [[files]]
 file = "kubejs/assets/bth/models/item/adventurers_spell_book.json"
@@ -1567,7 +1579,7 @@ hash = "f8fe3bafebbdaa3250686120b3dfaacfe8bf40a9fe5b8e041111bacacfa1e91f"
 
 [[files]]
 file = "kubejs/server_scripts/recipe_viewer/remove_item.js"
-hash = "74fd9b80ce28a965cd54e2887f57e4581cd48f5dd9401c2e3f7ded75b24800f3"
+hash = "14b00ce2c097fe53a54320de8d8cd25ded3bb031ae2f492b16b98482dfd75739"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/ae2.js"
@@ -1619,7 +1631,7 @@ hash = "c2db67a0614bfbac3dae68f4b4501b14da09017e742286c7d83b5426563d5078"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/remove.js"
-hash = "658452a152c4e679a7f7079d929c37a819de18aa8a085e6690c2544a23bdc8b7"
+hash = "d4fda6caac08c2b70006170223cadd921032861a02d7db365f2b077b389c7462"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/replace.js"

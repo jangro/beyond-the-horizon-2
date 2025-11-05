@@ -37,12 +37,10 @@ RecipeViewerEvents.removeEntries('item', event => {
     'createaddition:iron_rod',                          // replaced by IE rod
     'createaddition:electrum_ingot',                    // replaced by IE ingots
     'createaddition:electrum_nugget',                   // replaced by IE nuggets
-    // 'createdeco:brass_coin',
-    // 'createdeco:brass_coinstack',
-    // 'createdeco:industrial_iron_coin',
-    // 'createdeco:industrial_iron_coinstack',
-    // 'createdeco:zinc_coin',
-    // 'createdeco:zinc_coinstack',
+    'createdeco:brass_coin',                            // not used
+    'createdeco:brass_coinstack',                       // not used
+    'createdeco:industrial_iron_coin',                  // not used
+    'createdeco:industrial_iron_coinstack',             // not used
     // 'createdeco:zinc_sheet',
     'eidolon_repraised:lead_ingot',                     // replaced by IE ingots
     'eidolon_repraised:silver_ingot',                   // replaced by IE ingots
@@ -157,14 +155,14 @@ RecipeViewerEvents.removeEntries('item', event => {
     // /woodworks:.*ladder/,
   ]);
 
-  // ['copper', 'iron', 'gold', 'emerald', 'diamond', 'netherite'].forEach((material) => {
-  //   event.hide(`lightmanscurrency:coin_${material}`);
-  //   event.hide(`lightmanscurrency:coin_chocolate_${material}`);
-  //   event.hide(`lightmanscurrency:coinpile_${material}`);
-  //   event.hide(`lightmanscurrency:coinpile_chocolate_${material}`);
-  //   event.hide(`lightmanscurrency:coinblock_${material}`);
-  //   event.hide(`lightmanscurrency:coinblock_chocolate_${material}`);
-  // });
+  ['copper', 'iron', 'gold', 'emerald', 'diamond', 'netherite'].forEach((material) => {
+    event.remove(`lightmanscurrency:coin_${material}`);
+    event.remove(`lightmanscurrency:coin_chocolate_${material}`);
+    event.remove(`lightmanscurrency:coinpile_${material}`);
+    event.remove(`lightmanscurrency:coinpile_chocolate_${material}`);
+    event.remove(`lightmanscurrency:coinblock_${material}`);
+    event.remove(`lightmanscurrency:coinblock_chocolate_${material}`);
+  });
 
   // Hide IE dusts that are replaced by Create crushed raw ores.
   // ['aluminum', 'copper', 'gold', 'iron', 'lead', 'nickel', 'silver', 'uranium'].forEach((material) =>

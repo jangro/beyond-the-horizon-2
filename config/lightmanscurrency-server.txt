@@ -198,13 +198,13 @@
 
 	#The cost required to repair a single item durability point with the Money Mending enchantment.
 	#See the wiki for Money Value format: https://github.com/Lightman314/LightmansCurrency/wiki/Money-Value-Arguments
-	#Default: "coin;1-lightmanscurrency:coin_copper"
-	moneyMendingRepairCost="coin;1-lightmanscurrency:coin_copper"
+	#Default: "coin;1-createdeco:zinc_coin"
+	moneyMendingRepairCost="coin;1-createdeco:zinc_coin"
 
 	#The additional cost to repair an item with Infinity applied to it.
 	#See the wiki for Money Value format: https://github.com/Lightman314/LightmansCurrency/wiki/Money-Value-Arguments
-	#Default: "coin;4-lightmanscurrency:coin_copper"
-	moneyMendingInfinityCost="coin;4-lightmanscurrency:coin_copper"
+	#Default: "coin;4-createdeco:zinc_coin"
+	moneyMendingInfinityCost="coin;4-createdeco:zinc_coin"
 
 	#The coin collection radius of the Coin Magnet I enchantment.
 	#Range: 1 -> 50
@@ -254,6 +254,29 @@
 	#Whether players are allowed to bid on an auction when they were also the previous bidder
 	#Default: false
 	doubleBidding=false
+
+	#The percentage of the final bid that will be collected as a fee instead of being given to the auctions owner when the auction is completed
+	#Range: 0 -> 99
+	#Default: 0
+	auctionFeeRate=0
+
+	#A flat fee paid on the creation of an auction by the player submitting it
+	#If they are unable to pay this fee, they will not be able to submit any auctions
+	#See the wiki for Money Value format: https://github.com/Lightman314/LightmansCurrency/wiki/Money-Value-Arguments
+	#Default: "null;empty"
+	auctionSubmitFee="null;empty"
+
+	#Whether the auction fees collected should be stored in the server-wide tax collector as taxes
+	#Includes both the submission fee and the fee taken from the final bid
+	#Useful for those who wish to keep trade of auction fees collected, and/or don't want money to destroyed in this process
+	#Default: true
+	storeFeeInServerTax=true
+
+	#The maximum number of pending auctions each player is allowed to have
+	#Set to 0 to only allow auctions to be posted by admins in LC Admin Mode, or to limit the Auction House to only Persistent Auctions
+	#Range: 0 -> 2147483647
+	#Default: 2147483647
+	playerLimit=2147483647
 
 #Bank Account Settings
 [bank_accounts]
@@ -391,8 +414,8 @@
 
 		#The price per claim chunk purchased.
 		#See the wiki for Money Value format: https://github.com/Lightman314/LightmansCurrency/wiki/Money-Value-Arguments
-		#Default: "coin;1-lightmanscurrency:coin_gold"
-		claimPrice="coin;1-lightmanscurrency:coin_gold"
+		#Default: "coin;1-createdeco:iron_coin"
+		claimPrice="coin;1-createdeco:iron_coin"
 
 		#The maximum number of extra claim chunks allowed to be purchased with this command.
 		#Note: This count includes extra claim chunks given to the player/team via normal FTB Chunks methods as well (if applicable).
@@ -406,8 +429,8 @@
 
 		#The price per forceload chunk purchased.
 		#See the wiki for Money Value format: https://github.com/Lightman314/LightmansCurrency/wiki/Money-Value-Arguments
-		#Default: "coin;1-lightmanscurrency:coin_netherite"
-		forceloadPrice="coin;1-lightmanscurrency:coin_netherite"
+		#Default: "coin;100-createdeco:netherite_coin"
+		forceloadPrice="coin;100-createdeco:netherite_coin"
 
 		#The maximum number of extra forceload chunks allowed to be purchased with this command.
 		#Note: This count includes extra forceload chunks given to the player/team via normal FTB Chunks methods as well (if applicable).

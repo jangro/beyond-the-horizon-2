@@ -12,4 +12,6 @@ ServerEvents.recipes(event => {
 
   event.smelting('createaddition:cake_base_baked', 'createaddition:cake_base').id(`${ID_PREFIX}cake_base`);
 
+  event.smelting('oritech:platinum_ingot', '#c:dusts/platinum').id(`${ID_PREFIX}platinum_ingot_from_dust`);
+
 });

@@ -268,6 +268,14 @@ ServerEvents.recipes(event => {
   // IE doesn't have a platinum dust, so we convert to oritech dust.
   replaceOutputID('immersiveengineering:crusher/ingot_platinum', 'create:crushed_raw_platinum', 'oritech:platinum_dust');
 
+  // XXX: Doesn't work because IE crushing recipes for raw ores/blocks have outputs defined by tags.
+  // IE crusher should output crushed raw ore for raw materials, not dust.
+  // ['aluminum', 'copper', 'gold', 'iron', 'lead', 'nickel', 'silver', 'uranium'].forEach((material) => {
+  //   replaceOutputID(`immersiveengineering:crusher/raw_block_${material}`, `immersiveengineering:dust_${material}`, `create:crushed_raw_${material}`);
+  //   replaceOutputID(`immersiveengineering:crusher/raw_ore_${material}`, `immersiveengineering:dust_${material}`, `create:crushed_raw_${material}`);
+  //   replaceOutputID(`immersiveengineering:crusher/ore_${material}`, `immersiveengineering:dust_${material}`, `create:crushed_raw_${material}`);
+  // });
+
   // Replace Oritech clumps with Create crushed raw ores.
   ['copper', 'gold', 'iron', 'nickel', 'platinum'].forEach((material) => {
     replaceOutput(`oritech:${material}_clump`, `create:crushed_raw_${material}`);

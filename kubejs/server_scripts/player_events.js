@@ -41,6 +41,8 @@ PlayerEvents.loggedIn(event => {
     // Give player some random starter food
     let index = Math.floor(FIRST_START_FOODS.length * Math.random());
     event.player.give(Item.of(FIRST_START_FOODS[index], 8));
+    // Give the food in a lunch basket??
+    // 'supplementaries:lunch_basket[supplementaries:lunch_basket_content={items:[{count:47,id:"mynethersdelight:cooked_loin"},{count:4,id:"minecraft:cooked_beef"},{},{},{},{}],open:1b,selected_slot:0}]'
 
     // Give player a wallet with slightly random amount of coins
     let count = 3 + Math.floor(7 * Math.random());

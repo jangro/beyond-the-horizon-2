@@ -161,6 +161,13 @@ ServerEvents.tags('item', event => {
     event.add(`c:dusts/${material}`, `create:crushed_raw_${material}`);
   });
 
+  // Remove dust tag from IE grits to prevent them being used in recipes that use tags for output. We want Create crushed raw ores instead.
+  // XXX: A better solution would be to replace tag for item in the recipes if possible.
+  // XXX: Making IE prefer ores from Create doesn't fix the crusher but it does fix some other output like hammer crushing.
+  ['aluminum', 'copper', 'gold', 'iron', 'lead', 'nickel', 'silver', 'uranium', 'zinc'].forEach((material) => {
+    event.remove(`c:dusts/${material}`, `immersiveengineering:dust_${material}`);
+  });
+
   event.add('c:nuggets/arcane_gold', [
     'eidolon_repraised:arcane_gold_nugget',
     'forbidden_arcanus:deorum_nugget',

@@ -206,6 +206,10 @@ file = "config/immersiveengineering-server.toml"
 hash = "224890fd3a08bcfd70ad4ffcd277b13843610006658ddf7e26b5b864f2663e53"
 
 [[files]]
+file = "config/immersiveengineering-startup.toml"
+hash = "e9be9097dac1cd579ddfd043dddd0adb725cc1b4dce4ba6811df67f2736c9d7b"
+
+[[files]]
 file = "config/incontrol-server.toml"
 hash = "80a23a4938a90bc3ba34f2ee16d6b2619ca131ea6fd11f3328816da94eb1a951"
 
@@ -256,6 +260,10 @@ hash = "52bbbe8941b67ef9874554c0d603058d4f5ea8edd69ba1bb2a818eefcc4391c1"
 [[files]]
 file = "config/packingtape-server.toml"
 hash = "2cadcb48a90ed8aad0e7194cf589769c8587432f2f26c779e63317fa2589e7d8"
+
+[[files]]
+file = "config/phantasm.json"
+hash = "365567bdcb451a356eb55489e81d6fdb036c41a34f7b2e13bba515d7da0864c9"
 
 [[files]]
 file = "config/simplebackups-common.toml"
@@ -1547,7 +1555,7 @@ hash = "82c55fef50cd7999e299f85d091467273885b191b1346033899cc9d31ad71060"
 
 [[files]]
 file = "kubejs/server_scripts/player_events.js"
-hash = "57cb3b3319a3c18071c0cb7cce5e8b97b4f248541e7254e57556746ffc161e6a"
+hash = "9c7e31eb3c9d6fda6a091c44790b134f97d55fb09f71a5b28a3e65f85c874c51"
 
 [[files]]
 file = "kubejs/server_scripts/recipe_viewer/add_information.js"
@@ -1615,7 +1623,7 @@ hash = "658452a152c4e679a7f7079d929c37a819de18aa8a085e6690c2544a23bdc8b7"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/replace.js"
-hash = "e8aeeb424ab7a2815fe1993647030636c1440630fbecec1d1a396e1c20407774"
+hash = "5e1ccf14cb43f3ff638b37bf970b612fd648c9a84fbc579c9a84920f952c75c6"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/shaped.js"
@@ -1627,7 +1635,7 @@ hash = "c686bcd02ba9ee387fd493763f9633cd534912abc356ecd4422d3de52fbd1964"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/smelting.js"
-hash = "6b1ad152dbfcaafcccf561d3cbc65d81d54c44fbfe608bc756f383c7e8445f85"
+hash = "755a012594b518bc9a26c7d0222e7d17b970d113f787f5d1bf09bcbba0f1aae3"
 
 [[files]]
 file = "kubejs/server_scripts/sol_valheim.js"
@@ -1655,7 +1663,7 @@ hash = "fed073f0427b4d7737585a20fdae3ea46b2a5f3c6a446d34f140adb61c71d00a"
 
 [[files]]
 file = "kubejs/server_scripts/tags/item.js"
-hash = "62e231cd872b088a4223dc32d96cc4b672b888178329e304166fc4d49cdee764"
+hash = "0dce1e16d0815ad2a15227743665f27cef478fac956f2260da1950abc355abd7"
 
 [[files]]
 file = "kubejs/startup_scripts/fluid.js"
@@ -2033,6 +2041,11 @@ metafile = true
 [[files]]
 file = "mods/create-curios-jetpack.pw.toml"
 hash = "dd3ac8991f2af25de63075a7525233dbb520150f9e8fa342ee8fd8f702e0cafa"
+metafile = true
+
+[[files]]
+file = "mods/create-deco.pw.toml"
+hash = "434e5e508e10f7532af539b54b82ca35c3232a633c13fa2b0d01c1769ae0db08"
 metafile = true
 
 [[files]]
@@ -2793,6 +2806,11 @@ metafile = true
 [[files]]
 file = "mods/oh-the-trees-youll-grow.pw.toml"
 hash = "df3d76e31b1eac6927713c77421275d8fd1858ad1f86fa6986fe5f74fdac13a6"
+metafile = true
+
+[[files]]
+file = "mods/oracle-index.pw.toml"
+hash = "ea21ab4265ed974e65283b5f21de23262cb66cc81a28308002bc3245bda8a460"
 metafile = true
 
 [[files]]

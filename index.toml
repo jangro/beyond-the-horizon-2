@@ -143,7 +143,7 @@ hash = "e4ee00e33b10d5893bc57ff3509906be53d4ea87a76c22f0e5cc4dc0120e79e4"
 
 [[files]]
 file = "config/defaultoptions/options.txt"
-hash = "4a429e3cdfc3967348f3c6076732bea0db7e8c62b8e9bb2a8b3dbcfd2d30ec09"
+hash = "07ffe83712ac361dc0e640a4b39793fa896ae08ae0f6d5f1e088aa5dbbf37c9a"
 
 [[files]]
 file = "config/dynamic_fps.json"
@@ -910,18 +910,6 @@ file = "kubejs/data/eidolon_repraised/worldgen/structure_set/stray_tower.json"
 hash = "8a078ed2d91c085e2e1a6e5e8284bc9b06eeefc567dc92cbd2e34826857459a1"
 
 [[files]]
-file = "kubejs/data/enderio/kubejs/recipe_components.json"
-hash = "9acad01481d83b775437ac9ba227b5d6edec77af7014acbc22ccef699f6784e7"
-
-[[files]]
-file = "kubejs/data/enderio/kubejs/recipe_schema/alloy_smelting.json"
-hash = "735ee4ff373142b0b23c069fad7cb36c05a43926221d04926897bcd99d5e60cc"
-
-[[files]]
-file = "kubejs/data/enderio/kubejs/recipe_schema/sag_milling.json"
-hash = "d6387e238df2467f300b1322a3d3000517a341a07df1d73200feff5b1a067907"
-
-[[files]]
 file = "kubejs/data/enderscape/worldgen/structure_set/gateways.json"
 hash = "d42d8b5d7a1d8c6fbf23e51c724ee9b9f22d96041dc3747e3bf9ce0a0c39d281"
 
@@ -1615,7 +1603,7 @@ hash = "f8fe3bafebbdaa3250686120b3dfaacfe8bf40a9fe5b8e041111bacacfa1e91f"
 
 [[files]]
 file = "kubejs/server_scripts/recipe_viewer/remove_item.js"
-hash = "14b00ce2c097fe53a54320de8d8cd25ded3bb031ae2f492b16b98482dfd75739"
+hash = "f75774db6e9d6389966b079b5b3bb2fc6ad7661eb7456cc3d6ed3e03a91801f6"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/ae2.js"
@@ -1635,7 +1623,7 @@ hash = "b03365a628077656a0b5026fa142ed0ef113b418efd8a6e7e87aff5c82328dcb"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/enderio.js"
-hash = "09ff929828c7c2332bf5877aa5ea7d1ed4190a28b27964869313e6b7d2d930e7"
+hash = "fabf67daeeef7c3be292a7df60956bf45a0594a3ecf2b8b3d87545b6eac04b80"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/exposure.js"
@@ -1667,7 +1655,7 @@ hash = "c2db67a0614bfbac3dae68f4b4501b14da09017e742286c7d83b5426563d5078"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/remove.js"
-hash = "d4fda6caac08c2b70006170223cadd921032861a02d7db365f2b077b389c7462"
+hash = "589cbc8f4955f7c9865a9aa12252c193803453c17a425ef0bf07c909aa0e4687"
 
 [[files]]
 file = "kubejs/server_scripts/recipes/replace.js"
@@ -1711,7 +1699,7 @@ hash = "987d9b796a40898ad4d9461779950f29da1a2f7c313a6636f01160a6d9dab17f"
 
 [[files]]
 file = "kubejs/server_scripts/tags/item.js"
-hash = "0dce1e16d0815ad2a15227743665f27cef478fac956f2260da1950abc355abd7"
+hash = "9be45a7a63dc9202563ec79ee29273baeaa6c43a35765cb42f89c77fa8793338"
 
 [[files]]
 file = "kubejs/startup_scripts/fluid.js"
@@ -1728,6 +1716,10 @@ hash = "eee687398a434f9ebc00d6d372542cc8561b55884a1a3607a945ce2e3ad75a59"
 [[files]]
 file = "kubejs/startup_scripts/spell.js"
 hash = "a6eaacbfa0423540491a438423f2c3290b5fbf7846d3ad407b1444ac6ba4f453"
+
+[[files]]
+file = "mods-disabled/every-compat.pw.toml.disabled"
+hash = "b106be4933ed797122a0d9bb37a79b537b9570526a3de241451f87f26bc80b03"
 
 [[files]]
 file = "mods/Graveyard-neoforge-1.21.1-2.6.2.jar"
@@ -1948,8 +1940,8 @@ hash = "11fa4cee80d5456e1681f8229c756d8c4aaa3ce6fcd8ab0bef62f408c95441e6"
 metafile = true
 
 [[files]]
-file = "mods/cc-tweaked-1.21.1-forge-1.116.1.jar"
-hash = "f5e8872a2ccca38aa210c477c84d5f2ba3e8f054328b6816461af4c1f8c460a5"
+file = "mods/cc-tweaked-1.21.1-forge-1.117.1.jar"
+hash = "828d37b1fd2360db026c0cc1053373ada02d1aadd6e3ec3b787c8bfd718615ca"
 
 [[files]]
 file = "mods/chalk.pw.toml"
@@ -2297,11 +2289,6 @@ hash = "dae5c756a77911c18cba191b9844a3b9c20bcdd3dd55de13fc57cf9fe3b79bbe"
 metafile = true
 
 [[files]]
-file = "mods/every-compat.pw.toml"
-hash = "b106be4933ed797122a0d9bb37a79b537b9570526a3de241451f87f26bc80b03"
-metafile = true
-
-[[files]]
 file = "mods/exposure-polaroid.pw.toml"
 hash = "dd315fe6df484cfbb394431e6f3861ba5fafdf3db745875b9698c1ffae86d2f5"
 metafile = true
@@ -2572,6 +2559,11 @@ hash = "e34877bf9d74d3f71c69fdd47ce509fa473fadcdf88f87f79754a522cfa1c60b"
 metafile = true
 
 [[files]]
+file = "mods/irons-lib.pw.toml"
+hash = "de72c43ede23c75ec2c9242add0f3d196dda4d07e31fd02d81a7ac14cc0a140a"
+metafile = true
+
+[[files]]
 file = "mods/irons-spells-n-spellbooks.pw.toml"
 hash = "678fa6583298962cb79fac4cde7a631019429f9e0298d3a3af638b632c883d76"
 metafile = true
@@ -2659,6 +2651,11 @@ metafile = true
 [[files]]
 file = "mods/kubejs-curios.pw.toml"
 hash = "f5758164cc32ca8301640b289f7f5ad9d3ed9104a51ca61da6303af0e202999b"
+metafile = true
+
+[[files]]
+file = "mods/kubejs-enderio.pw.toml"
+hash = "8264a1fd318f5a54c1a866c6a133e9333abf1fb13634df569dab5346ecd31cd9"
 metafile = true
 
 [[files]]
@@ -2962,11 +2959,6 @@ hash = "eab2f56ff9135b3b7253ea5a73deae2f887e2876f5f0432936044a6e926937b4"
 metafile = true
 
 [[files]]
-file = "mods/probejs.pw.toml"
-hash = "98bbba48eddf402b09107de563d7b4370d1ae70a1a6210054cd13065072a9d97"
-metafile = true
-
-[[files]]
 file = "mods/productivebees.pw.toml"
 hash = "d12fa1b17fe41ef2a1081c01eda100e1ec14aca2332972284fc8b8731b3ea387"
 metafile = true
@@ -3094,6 +3086,11 @@ metafile = true
 [[files]]
 file = "mods/simply-swords.pw.toml"
 hash = "d1256812bf0244b3914af4206cba1203dd51a3c849c5592315ac707f8941f9f2"
+metafile = true
+
+[[files]]
+file = "mods/simply-tooltips.pw.toml"
+hash = "529ad0d8a91e6cdbd8e9460f80ad9f4bcb393020749632c2ff77e6835c812a4b"
 metafile = true
 
 [[files]]
@@ -3397,7 +3394,7 @@ hash = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 
 [[files]]
 file = "resourcepacks/ie-reimmersed.pw.toml"
-hash = "f85ec2b6e03fe7506a21e82b345a11fd621fe517b9d1c92126a26f523eca4c9a"
+hash = "05ea99f03c52f180b4fa3094e8381678502bd9b95492b2ed6c1852d949b6ae57"
 metafile = true
 
 [[files]]

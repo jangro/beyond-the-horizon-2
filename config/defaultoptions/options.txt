@@ -42,7 +42,7 @@ ao:true
 prioritizeChunkUpdates:0
 biomeBlendRadius:2
 renderClouds:"true"
-resourcePacks:["vanilla","mod_resources","mod/towntalk:respack","file/Create Style Redstone Pen v2.zip","file/Midnighttiggers-NT_CG-FCT-Default_1.17_V6.zip","file/Lower Shield.zip","mod/pneumaticcraft:fusion_integration","moonlight:merged_pack","builtin/overrides/deep_aether_emissivity","file/IE Reimmersed v1.0 Neoforge.zip","file/Midnighttiggers-FCT-Default_1.20_V8.zip"]
+resourcePacks:["vanilla","mod_resources","mod/towntalk:respack","file/Create Style Redstone Pen v2.zip","file/Midnighttiggers-NT_CG-FCT-Default_1.17_V6.zip","file/Lower Shield.zip","mod/pneumaticcraft:fusion_integration","moonlight:merged_pack","builtin/overrides/deep_aether_emissivity","file/Midnighttiggers-FCT-Default_1.20_V8.zip","file/[Forge] IE Reimmersed v1.1.zip"]
 incompatibleResourcePacks:["file/Create Style Redstone Pen v2.zip","builtin/overrides/deep_aether_emissivity"]
 lastServer:
 lang:en_us

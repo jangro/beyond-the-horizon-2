@@ -193,12 +193,10 @@ ServerEvents.tags('item', event => {
 
   event.add('c:flours', [
     'create:cinder_flour',
-    'enderio:flour',
     'pneumaticcraft:wheat_flour',
   ]);
 
   event.add('c:flours/wheat', [
-    'enderio:flour',
     'pneumaticcraft:wheat_flour',
   ]);
 

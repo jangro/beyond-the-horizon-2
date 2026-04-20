@@ -46,8 +46,6 @@ RecipeViewerEvents.removeEntries('item', event => {
     'eidolon_repraised:silver_ingot',                   // replaced by IE ingots
     'eidolon_repraised:lead_nugget',                    // replaced by IE nuggets
     'eidolon_repraised:silver_nugget',                  // replaced by IE nuggets
-    'enderio:flour',                                    // replaced by Create wheat flour
-    'enderio:cake_base',                                // replaced by Create Addition's cake base
     // 'enderio:powdered_copper',
     // 'enderio:powdered_gold',
     // 'enderio:powdered_iron',

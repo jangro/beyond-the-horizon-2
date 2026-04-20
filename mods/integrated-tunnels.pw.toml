@@ -1,13 +1,13 @@
 name = "Integrated Tunnels"
-filename = "integratedtunnels-1.21.1-neoforge-1.9.0.jar"
+filename = "integratedtunnels-1.21.1-neoforge-1.9.4-606.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "623fa28ce277b6317d9cbcf47029a74e0a9c82d1"
+hash = "f7302a94bc43f3b4f15aabead27481f97aa029f0"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 7076261
+file-id = 7734665
 project-id = 251389

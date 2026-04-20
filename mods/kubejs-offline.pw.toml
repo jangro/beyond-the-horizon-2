@@ -1,13 +1,13 @@
 name = "KubeJS Offline Documentation"
-filename = "kubejsoffline-neoforge-5.0.7.jar"
+filename = "kubejsoffline-neoforge-5.2.0.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "e4a7c02dadae66d188607ab21a1c281618752195"
+hash = "e3f539101059803b7e96d560d27469dc3aeed7f7"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 6873496
+file-id = 7307002
 project-id = 641627

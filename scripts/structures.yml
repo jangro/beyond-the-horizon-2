@@ -62,6 +62,7 @@ overworld:
       - biomeswevegone:aspen_manor_2
       - biomeswevegone:bog_trial
       - bth_structures:battle_grounds
+      - bth_structures:ruined_hangar
       - bth_structures:wagon
       - eidolon_repraised:lab
       - eidolon_repraised:stray_tower

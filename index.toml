@@ -107,7 +107,7 @@ hash = "8d857da6d2545969c2cbb09e234829c1948bdda1dd3a6040fd0936a79ff7bb38"
 
 [[files]]
 file = "config/bcc-common.toml"
-hash = "9869c2956b631adc8f90959b23c78a953b693b8757a781aeafaf3bb674d63a0c"
+hash = "08155783f1360f50d315abb74c44ec3461efa9500170fe41987cd5cbdd3a2478"
 
 [[files]]
 file = "config/betterdays-common.toml"
@@ -587,7 +587,7 @@ hash = "0c152eda47200834b1f71d9273deaaebb46a614793c2eabf889c780e4c71529f"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/overworld.json"
-hash = "91c4be48a04de70a10eb25197ab093c12e93ebd6666ce4e99bbf77cc39f686c4"
+hash = "debef77c45f4b1940cb832bc593af79918621ac9fc84b07db0dafb458cd03390"
 
 [[files]]
 file = "kubejs/data/bth/worldgen/structure_set/overworld_underground.json"
@@ -596,6 +596,10 @@ hash = "f719ebb8c8e845c8edff6352a9e745578066de2acf71cb2484b0e00436119ceb"
 [[files]]
 file = "kubejs/data/bth_structures/loot_table/archeology/dw20.json"
 hash = "38e4e0088d761fbc1b99060d63b920c0db040c82a4990439ae30f55364a84570"
+
+[[files]]
+file = "kubejs/data/bth_structures/loot_table/archeology/hangar.json"
+hash = "b0e09e6d6eae6246e8cf2f3e755f8af5d67005c60b13d3d00aa0eb85219e3bf9"
 
 [[files]]
 file = "kubejs/data/bth_structures/structure/aether_portal_floating.nbt"
@@ -614,12 +618,28 @@ file = "kubejs/data/bth_structures/structure/dw20.nbt"
 hash = "3e9bd548d7db586ca5b4c2f7956f03241f763ff0eb011cc5107d6b2f704aa5cf"
 
 [[files]]
+file = "kubejs/data/bth_structures/structure/ruined_hangar/bunker.nbt"
+hash = "8c786d9197d223e104e0f8daf052a777b3954b0aafdb01f4f83ccd1a7f1e59d8"
+
+[[files]]
+file = "kubejs/data/bth_structures/structure/ruined_hangar/hangar.nbt"
+hash = "bd112e540bbc4d5076781968456a58c1b7278e85638ffb0b985caf0ec1ca0967"
+
+[[files]]
+file = "kubejs/data/bth_structures/structure/ruined_hangar/tower.nbt"
+hash = "e6b43d53175f37e78464d3c1b4d5175c8910e4a8a1e4b544835334f9a50d94d3"
+
+[[files]]
 file = "kubejs/data/bth_structures/structure/wagon.nbt"
 hash = "b084868c35f941428817fcf70f8c753ccaa5e8b13ae480c6b2d572a244d31ba2"
 
 [[files]]
 file = "kubejs/data/bth_structures/worldgen/processor_list/dw20.json"
 hash = "57df3ba8fa69f6cba05ec691296ec7d2e9e93a51bfe661b64352268aeeafadb6"
+
+[[files]]
+file = "kubejs/data/bth_structures/worldgen/processor_list/hangar.json"
+hash = "4bedf1c2f1ab25774718c322df1031605efaa4e0450413cedb8622778d978a1f"
 
 [[files]]
 file = "kubejs/data/bth_structures/worldgen/structure/aether_portal_floating.json"
@@ -640,6 +660,10 @@ hash = "bebe21f1fd0cecf9cd95d404be9decb3696c13c30593b3dd03b4172ccf1a7251"
 [[files]]
 file = "kubejs/data/bth_structures/worldgen/structure/dw20.json"
 hash = "d30c557f6fd751b858f621030a9f4496644477faf497ea78cce41d4649ffa96d"
+
+[[files]]
+file = "kubejs/data/bth_structures/worldgen/structure/ruined_hangar.json"
+hash = "82468c70298d06b1e33cc34f72653987c7f18e0ee8fd405eb06a3f50c8b5e2d8"
 
 [[files]]
 file = "kubejs/data/bth_structures/worldgen/structure/wagon.json"
@@ -668,6 +692,18 @@ hash = "696d01272538d90f888f40dfc3e7ea1e4c48605fbdff82ae0034d832d05fcf39"
 [[files]]
 file = "kubejs/data/bth_structures/worldgen/template_pool/dw20.json"
 hash = "86432355394891c233bdbbe54417a8a13757ce74b5a2d07f2ffc02032d8a1df8"
+
+[[files]]
+file = "kubejs/data/bth_structures/worldgen/template_pool/ruined_hangar/bunker.json"
+hash = "6e68f53e297ca4f52376dbd52cf56a90f4f5ab3a3e7f9cc916854729f47594b8"
+
+[[files]]
+file = "kubejs/data/bth_structures/worldgen/template_pool/ruined_hangar/hangar.json"
+hash = "69521c77f96266760ac60b8c46ec218217f12f0951f5a594da7a9e6469a6e07d"
+
+[[files]]
+file = "kubejs/data/bth_structures/worldgen/template_pool/ruined_hangar/tower.json"
+hash = "089f00d83276c5b5eb66b48c1183fbd04e2e5d288d1e6ed02d2991be931c62cd"
 
 [[files]]
 file = "kubejs/data/bth_structures/worldgen/template_pool/wagon.json"
@@ -1671,7 +1707,7 @@ hash = "cebc7c4bfdb48e893bd049aa596dd9169431c820fc092365993cbcbe55a82639"
 
 [[files]]
 file = "kubejs/server_scripts/tags/generated.js"
-hash = "fed073f0427b4d7737585a20fdae3ea46b2a5f3c6a446d34f140adb61c71d00a"
+hash = "987d9b796a40898ad4d9461779950f29da1a2f7c313a6636f01160a6d9dab17f"
 
 [[files]]
 file = "kubejs/server_scripts/tags/item.js"
@@ -2308,6 +2344,11 @@ metafile = true
 [[files]]
 file = "mods/fishing-bobber-detector.pw.toml"
 hash = "076fa5496f2a724cfec0edaaabe02f7f2564be24a0368522846dfa130c442ff5"
+metafile = true
+
+[[files]]
+file = "mods/forbidden-arcanus-js.pw.toml"
+hash = "df4336509506bfa303f5ef398f7f33eaa1ac2d77b23f4f3ca7f459d08e49588f"
 metafile = true
 
 [[files]]

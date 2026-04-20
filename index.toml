@@ -2082,6 +2082,11 @@ hash = "f4f8b5eb8c1427b6bd83ca70a3dbec9845b8c5a37b9ba72b9a49ee0e45136562"
 metafile = true
 
 [[files]]
+file = "mods/create-aeronautics.pw.toml"
+hash = "64b3518d2d05d07139d18c378366b3adc282d04b10cd2070345551dbc7207a6b"
+metafile = true
+
+[[files]]
 file = "mods/create-connected.pw.toml"
 hash = "3193eadd1b5129f83987593b5abc03a301b962e7da217a15d5e575646711db46"
 metafile = true
@@ -3039,6 +3044,11 @@ metafile = true
 [[files]]
 file = "mods/runiclib.pw.toml"
 hash = "8c5cf0438b0d936fd194be3625b7ed326e3d75ccf2845ac1bf85c36556a5713a"
+metafile = true
+
+[[files]]
+file = "mods/sable.pw.toml"
+hash = "e363a4de151dda6ea2bb6e5bacf7181de2e4206e9f6c27191398d888e72329aa"
 metafile = true
 
 [[files]]

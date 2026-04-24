@@ -134,6 +134,10 @@ file = "config/chunkloaders-common.toml"
 hash = "a910f761a79f6f592f60b9aaae702b9f8c8244a61cb596dacaab544eb658678c"
 
 [[files]]
+file = "config/create_connected-common.toml"
+hash = "9f161aa582411b64095d7a331083c13cf6e1ca38a295ef022ece5416d4bcbecd"
+
+[[files]]
 file = "config/curios-server.toml"
 hash = "e4b7fe26bd5b99cf7edd7c21b54728a21fe813187f5b18e48e92ced5ca8459d4"
 

@@ -2558,11 +2558,6 @@ hash = "bacbda049bf918a3a048f017a23e3197a91d31ab905e25f7a811d69d55344ca6"
 metafile = true
 
 [[files]]
-file = "mods/inventory-sorter.pw.toml"
-hash = "01d2dc33988b6daf0fad9a63b7474832d3876455d1119d6c6e1dde9d203ad718"
-metafile = true
-
-[[files]]
 file = "mods/irisshaders.pw.toml"
 hash = "e34877bf9d74d3f71c69fdd47ce509fa473fadcdf88f87f79754a522cfa1c60b"
 metafile = true

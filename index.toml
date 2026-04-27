@@ -2983,6 +2983,11 @@ hash = "1809164ccad9b87f7e7c6af3e66e42832f22a7a1f961389bb26085e3a9872986"
 metafile = true
 
 [[files]]
+file = "mods/quark.pw.toml"
+hash = "7ae13b171ccba24c8ab09da63389eadada6bc902db9b957e9b9acd46605a17f6"
+metafile = true
+
+[[files]]
 file = "mods/rebind-narrator.pw.toml"
 hash = "e97954e40411b870bbd45ed2125ba3319f9ae8626075c1ee2532da9002d92fc0"
 metafile = true
@@ -3395,6 +3400,11 @@ metafile = true
 [[files]]
 file = "mods/yyzsbackpack.pw.toml"
 hash = "282d15d970ea6ed95a680cfc24b71595dca9fefb9b8deaae3172f67ef5437faf"
+metafile = true
+
+[[files]]
+file = "mods/zeta.pw.toml"
+hash = "d1baffd370868590fcb2785146c278df5781d20994022749c53c0f9b2bffc7fc"
 metafile = true
 
 [[files]]

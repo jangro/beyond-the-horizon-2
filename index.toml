@@ -282,6 +282,10 @@ file = "config/phantasm.json"
 hash = "365567bdcb451a356eb55489e81d6fdb036c41a34f7b2e13bba515d7da0864c9"
 
 [[files]]
+file = "config/quark-common.toml"
+hash = "ae5b501cb8fc866772b5f8bceb8ba68ab5defca4ccdd6904d476102e60fc429d"
+
+[[files]]
 file = "config/simplebackups-common.toml"
 hash = "619d70557a301d89ed3394b23eb7247ca6c1e08a63aac4e577d279fede3bb678"
 
@@ -2089,7 +2093,7 @@ metafile = true
 
 [[files]]
 file = "mods/create-connected.pw.toml"
-hash = "3193eadd1b5129f83987593b5abc03a301b962e7da217a15d5e575646711db46"
+hash = "3b12e639fef9a821167533b31a54df9af083fd89a8a30e36607cbb24015c79e7"
 metafile = true
 
 [[files]]
@@ -2324,7 +2328,7 @@ metafile = true
 
 [[files]]
 file = "mods/farmers-delight.pw.toml"
-hash = "49185aecb9ea9176fb371ff175e7c052970855b62387fe766c252636c3989cbf"
+hash = "0e7ca8cb57c5c68c0f348903430e221677a0ca5392e7ac24e759e8983883fc23"
 metafile = true
 
 [[files]]
@@ -2789,7 +2793,7 @@ metafile = true
 
 [[files]]
 file = "mods/miners-delight-plus.pw.toml"
-hash = "73d3cf8c916f5ad00ff3e94e3d36ddac55499dd2b435abde01799543de067d99"
+hash = "a503afe7828b46e1bdcbdc485b5282fef7f1b3cf175e8c0989fdeecd2589af27"
 metafile = true
 
 [[files]]
@@ -2829,7 +2833,7 @@ metafile = true
 
 [[files]]
 file = "mods/my-nethers-delight.pw.toml"
-hash = "0311de96add459a26f7411925de34327312a04f1efda04d3b94c1a87bd7ebd9d"
+hash = "09abbffdeb521c9bb4cbe16c159835b5fc57084f609cf7beefb780be5658e90d"
 metafile = true
 
 [[files]]

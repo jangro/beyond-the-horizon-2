@@ -2328,7 +2328,7 @@ metafile = true
 
 [[files]]
 file = "mods/farmers-delight.pw.toml"
-hash = "0e7ca8cb57c5c68c0f348903430e221677a0ca5392e7ac24e759e8983883fc23"
+hash = "49185aecb9ea9176fb371ff175e7c052970855b62387fe766c252636c3989cbf"
 metafile = true
 
 [[files]]
@@ -2793,7 +2793,7 @@ metafile = true
 
 [[files]]
 file = "mods/miners-delight-plus.pw.toml"
-hash = "a503afe7828b46e1bdcbdc485b5282fef7f1b3cf175e8c0989fdeecd2589af27"
+hash = "73d3cf8c916f5ad00ff3e94e3d36ddac55499dd2b435abde01799543de067d99"
 metafile = true
 
 [[files]]
@@ -2833,7 +2833,7 @@ metafile = true
 
 [[files]]
 file = "mods/my-nethers-delight.pw.toml"
-hash = "09abbffdeb521c9bb4cbe16c159835b5fc57084f609cf7beefb780be5658e90d"
+hash = "0311de96add459a26f7411925de34327312a04f1efda04d3b94c1a87bd7ebd9d"
 metafile = true
 
 [[files]]

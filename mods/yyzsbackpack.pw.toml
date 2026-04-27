@@ -1,13 +1,13 @@
 name = "yyzsbackpack"
-filename = "yyzsbackpack-neoforge-21.1.2.jar"
+filename = "yyzsbackpack-neoforge-21.1.10.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "ea212874f781087bf9dc51b7fd5286b669914627"
+hash = "8f05a243b51d72d70c5d76eed9c27734defcf312"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 7019339
+file-id = 7996267
 project-id = 1285177
